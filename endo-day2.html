@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Endodontics — Day 2 — Complete</title>
+<style>
+:root{color-scheme:light only;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{background:#ffffff !important;color:#000000 !important;}
+@media (prefers-color-scheme:dark){
+  html,body{background:#ffffff !important;color:#000000 !important;}
+  .card,.hint,.topbar,.toc{background:#ffffff !important;color:#000000 !important;}
+}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;padding:0 14px 120px;line-height:1.65;font-size:17px;}
+h1{font-size:22px;margin:18px 0 4px;}
+.subtitle{color:#444;font-size:14px;margin:0 0 14px;}
+.topbar{position:sticky;top:0;background:#fff !important;border-bottom:2px solid #000;padding:10px 0;z-index:50;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.score{font-weight:700;font-size:15px;}
+.bar{flex:1;min-width:120px;height:12px;background:#eee;border:1px solid #000;border-radius:6px;overflow:hidden;}
+.bar>i{display:block;height:100%;width:0;background:#000;transition:width .3s;}
+.controls button{font-size:13px;padding:6px 10px;border:1px solid #000;background:#fff;border-radius:8px;cursor:pointer;}
+.toc{background:#fff;border:2px solid #000;border-radius:12px;padding:12px 14px;margin:14px 0;}
+.toc b{display:block;margin-bottom:6px;}
+.toc a{display:block;color:#000;text-decoration:none;padding:5px 0;border-bottom:1px dashed #ccc;font-size:15px;}
+.toc a:last-child{border-bottom:0;}
+h2.sec{font-size:18px;border-left:6px solid #000;padding:8px 12px;margin:30px 0 14px;background:#f3f3f3;border-radius:0 8px 8px 0;}
+.card{border:2px solid #000;border-radius:14px;padding:14px 16px;margin:14px 0;background:#fff !important;}
+.card[data-done="1"]{border-color:#157f3b;background:#f3fbf5 !important;}
+.card[data-done="2"]{border-color:#b00;background:#fff7f7 !important;}
+.topic{font-weight:700;font-size:15px;color:#000;margin-bottom:6px;letter-spacing:.2px;text-transform:uppercase;}
+.prompt{font-size:17px;font-weight:600;margin-bottom:10px;}
+.answer{display:none;border-top:1px dashed #999;padding-top:10px;margin-top:4px;}
+.answer.show{display:block;animation:fade .25s;}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.answer ol,.answer ul{margin:6px 0;padding-inline-start:22px;}
+.answer li{margin:4px 0;}
+.answer table{border-collapse:collapse;width:100%;margin:8px 0;font-size:15px;}
+.answer th,.answer td{border:1px solid #000;padding:6px 8px;text-align:left;}
+.answer th{background:#eee;}
+.k{background:#ffd400;color:#b00000 !important;font-weight:700;padding:0 4px;border-radius:3px;}
+.hint{direction:rtl;text-align:right;background:#fff;border:1px solid #000;border-radius:10px;padding:10px 12px;margin-top:12px;font-size:16px;line-height:1.8;}
+.hint .hl{background:#ffd400;color:#b00;font-weight:700;padding:0 5px;border-radius:3px;}
+.hint b{color:#b00000;}
+.btns{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;}
+.btns button{font-size:15px;padding:9px 14px;border-radius:10px;border:2px solid #000;background:#fff;cursor:pointer;font-weight:600;}
+.btns .got{border-color:#157f3b;color:#157f3b;}
+.btns .rev{border-color:#b00;color:#b00;}
+.btns .reveal{background:#000;color:#fff;}
+.foot{margin-top:30px;border-top:2px solid #000;padding-top:14px;font-size:14px;color:#333;}
+.note{background:#ffd400;color:#000;border:1px solid #000;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:15px;}
+</style>
+</head>
+<body>
+<h1>Endodontics — Day 2 — Complete Interactive Review</h1>
+<p class="subtitle">pages 77–152 · obturation → diagnosis → anesthesia → instruments → materials → emergencies → restoration → endo-perio → bleaching · 74 cards · English + شرح عربي وافٍ</p>
+
+<div class="topbar">
+  <span class="score" id="score">0 / 74</span>
+  <span class="bar"><i id="fill"></i></span>
+  <span class="controls">
+    <button onclick="revealAll()">اكشف الكل</button>
+    <button onclick="hideAll()">إخفاء</button>
+    <button onclick="resetAll()">تصفير</button>
+  </span>
+</div>
+
+<div class="note">⭐ = أقسام عالية الأهمية (high-yield). اقرأ السؤال، حاول الإجابة من ذاكرتك، ثم اكشف الجواب وقيّم نفسك.</div>
+
+<div class="toc">
+<b>المحتويات · Contents</b>
+<a href="#sec0">Obturation Techniques (cont.) · Lateral &amp; Vertical Compaction</a>
+<a href="#sec1">Diagnosis Lec 1 · Endodontic Diagnosis ⭐</a>
+<a href="#sec2">Diagnosis Lec 1 · Objective Examination</a>
+<a href="#sec3">Diagnosis Lec 1 · Pulp Testing ⭐</a>
+<a href="#sec4">Lec 2 · Pain &amp; Local Anesthesia ⭐</a>
+<a href="#sec5">Lec 3 · Working Length &amp; Apex Locators ⭐</a>
+<a href="#sec6">Lec 4 · Endodontic Radiography ⭐</a>
+<a href="#sec7">Lec 5 · Intracanal Instruments — Classification ⭐</a>
+<a href="#sec8">Lec 6 · Rotary NiTi Systems ⭐</a>
+<a href="#sec9">Lec 7 · Root Canal Sealers ⭐</a>
+<a href="#sec10">Lec 7 · Core Materials — GP &amp; Resilon ⭐</a>
+<a href="#sec11">Lec 8 · Obturation — Objectives &amp; Techniques ⭐</a>
+<a href="#sec12">Lec 9 · Endodontic Emergencies ⭐</a>
+<a href="#sec13">Lec 10 · Restoration of Treated Teeth ⭐</a>
+<a href="#sec14">Lec 11 · Endo-Perio Relations ⭐</a>
+<a href="#sec15">Lec 12 · Tooth Discoloration &amp; Bleaching ⭐</a>
+<a href="#sec16">Lec 2 · Topical Anesthesia &amp; Referred Pain</a>
+<a href="#sec17">Lec 10 · Composite, Onlays &amp; Endocrowns</a>
+<a href="#sec18">Lec 11 · Vertical Fracture &amp; Developmental Grooves</a>
+<a href="#sec19">Lec 12 · Thermocatalytic &amp; Combination Bleaching</a>
+<a href="#sec20">Lec 4 · Tips for Good Endodontic Radiography</a>
+</div>
+
+<h2 class="sec" id="sec0">Obturation Techniques (cont.) · Lateral &amp; Vertical Compaction</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Lateral compaction — procedure</div>
+  <div class="prompt">Outline the lateral (cold) compaction obturation procedure.</div>
+  <div class="answer">
+    <ol>
+  <li>If the master cone reaches full WL but is <b>loose</b>, take a larger cone or remove 1 mm from its apical end to widen it.</li>
+  <li>Verify master cone position with a <b>radiograph</b>.</li>
+  <li>Mix sealer; coat walls by picking up sealer on the <b>MAF</b> and spinning counter-clockwise.</li>
+  <li>Dip the master cone tip in sealer and seat it.</li>
+  <li>Use a <b>spreader</b> (rotate 180° R&L) to push the cone laterally/apically, making room for auxiliary cones; spreader penetrates the apical 1/3 (stopper marks 2–3 mm from the master tip).</li>
+  <li>Place auxiliary cones (smaller, tips dipped in sealer); repeat until the spreader can't pass beyond the cervical line.</li>
+  <li><b>Radiograph</b> to check the mass; cut excess GP with a <b>very hot</b> instrument below the cervical line; <b>vertically condense</b> with a plugger; clean the chamber with a round bur; place base + coronal restoration.</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الكبس الجانبي البارد — الخطوات:</b> (١) إن وصل القمع الرئيس للطول العامل لكنه <b>رخو</b>، خذ أكبر أو أزل 1مم من طرفه. (٢) تأكّد بالأشعة. (٣) اخلط السيلر وادهن الجدران برفع السيلر على <b>MAF</b> وتدويره عكس عقارب الساعة. (٤) اغمس طرف القمع بالسيلر وأجلسه. (٥) استخدم <b>spreader</b> (دوران 180° يمين/يسار) لدفع القمع جانبياً/قمياً وإفساح مكان للأقماع الإضافية؛ يخترق الثلث القمي (الموقف عند 2–3مم من طرف الرئيس). (٦) أقماع إضافية (أصغر، أطرافها بالسيلر) حتى لا يتجاوز الـspreader الخط العنقي. (٧) أشعة، قطع الفائض بأداة <b>ساخنة جداً</b>، كبس عمودي بالـplugger، تنظيف الحجرة، ثم القاعدة والترميم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Lateral compaction — adv/disadv</div>
+  <div class="prompt">Advantages & disadvantages of lateral compaction.</div>
+  <div class="answer">
+    <b>Advantages:</b> usable in most routine situations; <b>length control</b> with less overfilling and post-op pain.<br>
+  <b>Disadvantages:</b> may not fill canal irregularities; does <b>not produce a homogenous mass</b>; voids/spaces may exist between accessory and master cones.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مزايا الكبس الجانبي:</b> يصلح لمعظم الحالات الروتينية؛ <b>تحكّم بالطول</b> مع حشو زائد وألم أقل. <b>العيوب:</b> قد لا يملأ تفاصيل القناة؛ <b>لا ينتج كتلة متجانسة</b>؛ قد توجد فراغات بين الأقماع الرئيسة والإضافية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Warm vertical compaction</div>
+  <div class="prompt">Describe warm vertical compaction: requirements, idea, adv/disadv.</div>
+  <div class="answer">
+    Introduced to overcome lateral compaction drawbacks. Uses a <b>hot plugger</b> with vertical pressure to compact heat-softened GP into irregularities.
+  Canal must have a <b>funnel shape (continuous taper to apex)</b> + a good apical stop (constriction as small as possible). Tug-back is <b>not necessary</b> here.
+  Backfilling completes the coronal portion.<br>
+  <b>Advantage:</b> excellent apical & lateral sealing, fills lateral/accessory canals.<br>
+  <b>Disadvantages:</b> ↑ risk of <b>vertical root fracture</b>; overfilling/apical extrusion; time-consuming.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الكبس العمودي الحار:</b> أُدخل لتجاوز عيوب الجانبي؛ يستخدم <b>plugger ساخن</b> بضغط عمودي لكبس الـGP المليّن بالحرارة داخل التفاصيل. تحتاج القناة شكل <b>قمع (تضيّق متّصل للقمة)</b> + apical stop جيّد. الـtug-back <b>غير ضروري</b> هنا. ثم backfilling للجزء التاجي. <b>الميزة:</b> سدّ قمي وجانبي ممتاز وملء القنوات الجانبية. <b>العيوب:</b> زيادة خطر <b>الكسر الجذري العمودي</b>، حشو زائد/خروج قمي، واستهلاك وقت.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec1">Diagnosis Lec 1 · Endodontic Diagnosis ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">The 5 stages of diagnosis</div>
+  <div class="prompt">List the 5 stages of making an endodontic diagnosis.</div>
+  <div class="answer">
+    <ol>
+  <li>The patient tells the clinician the <b>reason</b> for seeking advice.</li>
+  <li>The clinician <b>questions</b> the patient about symptoms & history.</li>
+  <li>The clinician performs <b>objective clinical tests</b>.</li>
+  <li>The clinician <b>correlates</b> objective findings with subjective details → a tentative differential list.</li>
+  <li>The clinician formulates a <span class="k">definitive diagnosis</span>.</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مراحل التشخيص الخمس:</b> (١) المريض يذكر <b>سبب</b> مجيئه. (٢) الطبيب <b>يسأل</b> عن الأعراض والقصة. (٣) إجراء <b>الفحوص السريرية الموضوعية</b>. (٤) <b>ربط</b> الموضوعي بالذاتي ← قائمة تشخيص تفريقي مبدئية. (٥) صياغة <b>التشخيص النهائي</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Subjective findings — pain analysis</div>
+  <div class="prompt">What are subjective findings? List the 6 questions asked about pain.</div>
+  <div class="answer">
+    Subjective = obtained by <b>questioning</b> the patient (not evident to the examiner): chief complaint (patient's own words) + history of present illness.
+  Pain is the main reason; ask about:
+  <ol><li><b>Quality:</b> dull, sharp, throbbing, constant.</li><li><b>Location:</b> localized, diffuse, referred, radiating.</li>
+  <li><b>Duration:</b> constant/intermittent (seconds, minutes, hours).</li><li><b>Onset:</b> stimulation-required, intermittent, spontaneous.</li>
+  <li><b>Initiating factors:</b> cold, heat, palpation, percussion.</li><li><b>Relieving factors:</b> cold, heat, medications, sleep.</li></ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الموجودات الذاتية</b> = تُؤخذ بـ<b>سؤال</b> المريض (لا يراها الفاحص): الشكوى الرئيسة (بكلماته) + قصة المرض الحالي. الألم هو السبب الأساسي؛ اسأل عن: (١) <b>النوعية:</b> خابٍ/حادّ/نابض/مستمر. (٢) <b>الموقع:</b> موضعي/منتشر/محال/مُشِعّ. (٣) <b>المدة:</b> مستمر/متقطع (ثوانٍ، دقائق، ساعات). (٤) <b>البدء:</b> يحتاج منبّهاً/متقطع/تلقائي. (٥) <b>عوامل البدء:</b> بارد، ساخن، جس، طرق. (٦) <b>عوامل التخفيف:</b> بارد، ساخن، أدوية، نوم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Medical history</div>
+  <div class="prompt">How does medical history affect endodontic treatment?</div>
+  <div class="answer">
+    <span class="k">No medical condition specifically contraindicates endodontic treatment</span>, but several require special care (Scully & Cawson checklist).
+  If there is any doubt about the patient's health, <b>consult a medical practitioner before initiating treatment</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>القصة الطبية:</b> <b>لا توجد حالة طبية تمنع المعالجة اللبية تحديداً</b>، لكن عدّة حالات تتطلب عناية خاصة (قائمة Scully & Cawson). وعند أي شكّ في صحة المريض <b>استشر الطبيب قبل البدء</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec2">Diagnosis Lec 1 · Objective Examination</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Extraoral examination</div>
+  <div class="prompt">What signs are looked for in extraoral examination?</div>
+  <div class="answer">
+    Inflammatory changes seen extraorally may indicate a serious spreading problem. Look for:
+  <ol><li>Physical limitations (e.g., limited mouth movement when speaking).</li><li><b>Facial asymmetry</b> from swelling.</li>
+  <li>Lymph node involvement.</li><li><b>Skin open sinus tract</b>.</li></ol>
+  Palpate to determine if swelling is <b>localized vs diffuse</b> and <b>firm vs fluctuant</b>. Odontogenic skin sinus tracts close after the offending tooth is treated, leaving a scar.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الفحص خارج الفم:</b> التغيّرات الالتهابية الظاهرة خارجياً قد تدل على انتشار خطير. ابحث عن: (١) قيود حركية (كصعوبة فتح الفم أثناء الكلام). (٢) <b>عدم تناظر وجهي</b> من التورّم. (٣) إصابة العقد اللمفية. (٤) <b>ناسور جلدي مفتوح</b>. وبالجس حدّد إن كان التورّم <b>موضعياً أم منتشراً</b> و<b>قاسياً أم متموّجاً</b>. النواسير الجلدية السنّية تُغلق بعد علاج السن وتترك ندبة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Intraoral exam &amp; sinus tract tracing</div>
+  <div class="prompt">Describe intraoral examination and how to trace a sinus tract.</div>
+  <div class="answer">
+    Examine vestibules/buccal mucosa for swelling, sinus tract, color change; check lingual/palatal tissues; document raised lesions/ulcerations (biopsy if needed); inspect teeth for caries, faulty restorations, missing/deciduous/supernumerary teeth. Palpate swellings (diffuse/localized, firm/fluctuant).<br>
+  <b>Sinus tract tracing:</b> thread a <span class="k">#25 or #30 gutta-percha cone</span> into the opening until resistance is felt, take a periapical radiograph, and follow the cone's path to the source.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الفحص داخل الفم:</b> افحص الدهليز والمخاطية الشدقية للتورّم/الناسور/تغيّر اللون؛ تحقّق من الأنسجة اللسانية والحنكية؛ وثّق الآفات والتقرّحات (خزعة عند الحاجة)؛ افحص الأسنان للتسوّس والترميمات المعيبة والأسنان المفقودة/اللبنية/الزائدة. اجسّ التورّمات (منتشر/موضعي، قاسٍ/متموّج). <b>تتبّع الناسور:</b> أدخل <b>قمع GP قياس #25 أو #30</b> حتى تشعر بمقاومة، خذ صورة، وتتبّع مسار القمع للمصدر.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Palpation, percussion, mobility</div>
+  <div class="prompt">Describe palpation, percussion (vertical/horizontal), and mobility testing.</div>
+  <div class="answer">
+    <b>Palpation:</b> firm index-finger pressure on mucosa over roots/apices → detects periradicular abnormality; does NOT indicate endodontic vs periodontal origin.<br>
+  <b>Percussion:</b> gentle tapping with a blunt handle. <b>Vertical</b> tapping sensitivity → periapical pathosis; <b>horizontal</b> tapping → differentiates periapical vs lateral periodontal lesion.<br>
+  <b>Mobility:</b> proportional to attachment integrity/PDL inflammation; tested with two mirror handles (facial-lingual + vertical); >+1 mm is abnormal; compare to adjacent/contralateral teeth.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الجس (Palpation):</b> ضغط ثابت بالسبابة على المخاطية فوق الجذور ← يكشف خللاً حول الجذر؛ لكنه <b>لا يميّز</b> المصدر اللبي من اللثوي. <b>الطرق (Percussion):</b> نقر لطيف بمقبض غير حادّ؛ <b>عمودي</b> ← آفة حول قمية؛ <b>أفقي</b> ← يميّز الآفة القمية من اللثوية الجانبية. <b>الحركة (Mobility):</b> تتناسب مع سلامة الارتباط/التهاب الرباط؛ تُختبر بمقبضي مرآتين (دهليزي-لساني + عمودي)؛ >+1مم غير طبيعي؛ قارن بالمجاور والمقابل.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Periodontal &amp; occlusal evaluation</div>
+  <div class="prompt">Why evaluate periodontal status and occlusion?</div>
+  <div class="answer">
+    <b>Periodontal:</b> gingivitis/pockets can affect the pulp → periodontal treatment may be needed before/with endo. Deep probing → a <b>narrow defect</b> may indicate a root fracture or an endodontic lesion draining through the gingival crevice (endo-perio lesion).<br>
+  <b>Occlusion:</b> examine for interferences (retruded arc, intercuspal position, lateral excursions) → occlusal trauma can cause <b>acute apical periodontitis</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التقييم اللثوي:</b> التهاب اللثة/الجيوب قد يؤثر على اللب ← قد يلزم علاج لثوي قبل/مع اللبي. السبر العميق: <b>عيب ضيّق</b> قد يدل على كسر جذري أو آفة لبية تُصرّف عبر الميزاب اللثوي (آفة endo-perio). <b>الإطباق:</b> افحص التداخلات (قوس الإطباق المرتدّ، الوضع التقابلي، الحركات الجانبية) ← الرضّ الإطباقي قد يسبّب <b>التهاباً حول قمياً حاداً</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec3">Diagnosis Lec 1 · Pulp Testing ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Objectives of pulp testing</div>
+  <div class="prompt">List the objectives of pulp (sensibility) testing.</div>
+  <div class="answer">
+    <ol>
+  <li>Assess pulp health via qualitative sensory response before restorative/endodontic procedures.</li>
+  <li>Differentiate periapical pathology of <b>pulpal vs periodontal</b> origin.</li>
+  <li>Follow-up after <b>trauma</b>.</li>
+  <li>Check teeth with a history of <b>pulp capping/deep restoration</b>.</li>
+  <li>Diagnose oral pain source (pulpal/periodontal/other).</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أهداف اختبار اللب:</b> (١) تقييم صحة اللب باستجابة حسّية نوعية قبل الترميم/المعالجة. (٢) تمييز الآفة القمية بين <b>لبية ولثوية</b>. (٣) المتابعة بعد <b>الرضّ</b>. (٤) فحص أسنان لها قصة <b>تغطية لبّ/ترميم عميق</b>. (٥) تشخيص مصدر الألم (لبّي/لثوي/آخر).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Cold testing</div>
+  <div class="prompt">Describe cold testing: mechanism, interpretation, methods.</div>
+  <div class="answer">
+    The <b>most common</b> vitality test. Cold contracts dentinal-tubule fluid → outward flow → pain. Differentiates reversible vs irreversible pulpitis & identifies necrotic teeth:
+  pain that <b>subsides on removal = reversible</b>; pain lasting <b>more than a few seconds = irreversible</b>; calcified canals need more time. Useful for <b>porcelain/PFM crowns</b> (no natural surface).
+  Methods: air blast, cold drink, ice stick, <span class="k">ethyl chloride</span> on a cotton pellet.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>اختبار البارد:</b> أكثر اختبارات الحيوية شيوعاً. البرد يقبض سائل الأنابيب العاجية ← تدفّق خارجي ← ألم. يميّز القابل من غير القابل للعكس ويكشف النخر: ألم <b>يزول بزوال المنبّه = قابل للعكس</b>؛ يدوم <b>أكثر من ثوانٍ = لا رجعة فيه</b>؛ القنوات المتكلّسة تحتاج وقتاً أطول. مفيد مع <b>التيجان الخزفية/PFM</b>. الطرق: نفث هواء، شراب بارد، عصا ثلج، <b>إيثيل كلورايد</b> على كرة قطنية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Hot &amp; electric pulp testing</div>
+  <div class="prompt">Describe hot testing and electric pulp testing (EPT).</div>
+  <div class="answer">
+    <b>Hot testing:</b> best when chief complaint is intense pain to heat; locates symptomatic necrotic tooth; use heated GP stick or hot water. <span class="k">Not &gt;5 s</span> — prolonged heat causes biphasic Aδ then C-fiber stimulation → persistent pain.<br>
+  <b>EPT:</b> battery device generating pulsatile stimuli → stimulates <b>Aδ fibers</b>. Probe in middle third of labial surface; isolate (rubber dam) + electrolyte; ground on lip; increase current slowly; test 2–3× & average; use control teeth. <b>False results</b>: newly erupted/traumatized young teeth may not respond; <b>multirooted teeth give inconclusive readings</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>اختبار الساخن:</b> الأفضل حين تكون الشكوى ألماً شديداً للحرارة؛ يحدّد السن المتنخّر العرَضي؛ بعصا GP ساخنة أو ماء ساخن. <b>لا يتجاوز 5 ثوانٍ</b> — الحرارة المطوّلة تنبّه Aδ ثم C ← ألم مستمر. <b>الاختبار الكهربائي (EPT):</b> جهاز ببطارية ينبّه <b>ألياف Aδ</b>؛ المسبار في الثلث الأوسط للسطح الشفوي؛ عزل (حاجز) + إلكتروليت؛ تأريض على الشفة؛ زيادة التيار ببطء؛ اختبار 2–3 مرات والمعدّل؛ أسنان ضابطة. <b>نتائج كاذبة:</b> الأسنان حديثة البزوغ/المرضوضة قد لا تستجيب؛ و<b>متعددة الجذور تعطي قراءات غير حاسمة</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Cavity, bite, staining tests</div>
+  <div class="prompt">Describe the cavity test, bite test, and staining/transillumination for cracks.</div>
+  <div class="answer">
+    <b>Cavity test (last resort):</b> cut access into dentine <b>without anesthesia</b> — pain = vital; no pain = non-vital (proceed with endo).<br>
+  <b>Bite test:</b> for cracked/fractured tooth; bite on a cotton roll/wood/Tooth Slooth. <span class="k">Pain on biting = apical periodontitis; pain on release = cracked tooth</span>.<br>
+  <b>Staining:</b> apply <b>methylene blue</b> dye (penetrates cracks), remove excess with 70% isopropyl alcohol.<br>
+  <b>Transillumination:</b> bright fiberoptic light at the CEJ; fractures block light → the far part appears dark.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>اختبار الحفرة (الملاذ الأخير):</b> فتح في العاج <b>بلا تخدير</b> — ألم = حيّ؛ لا ألم = غير حيّ (تابع المعالجة). <b>اختبار العضّ:</b> للسن المشقوق؛ عضّ على لفافة قطن/خشب/Tooth Slooth. <b>ألم عند العضّ = التهاب حول قمي؛ ألم عند التحرير = سن مشقوق</b>. <b>التلوين:</b> صبغة <b>أزرق الميثيلين</b> (تنفذ للشقوق)، أزل الفائض بكحول إيزوبروبيل 70%. <b>الإضاءة النافذة:</b> ضوء ليفي ساطع عند CEJ؛ الشقوق تحجب الضوء فيبدو الجزء البعيد داكناً.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Radiographs in diagnosis</div>
+  <div class="prompt">What is the role and limitation of radiographs in endodontic diagnosis?</div>
+  <div class="answer">
+    An integral part of diagnosis/prognosis, but <span class="k">should not be relied on alone</span> — without proper history/clinical tests it can misinterpret normality vs pathosis.
+  Radiographs do <b>not show early pulpitis</b> (no PDL widening yet). Findings may include: loss of <b>lamina dura</b> (lateral/apical), periradicular radiolucency (pulp necrosis), pulp/canal <b>calcification</b> (explaining reduced sensitivity responses), and root resorptive defects.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الأشعة في التشخيص:</b> جزء أساسي للتشخيص والإنذار، لكن <b>لا يُعتمد عليها وحدها</b> — دون قصة وفحوص قد تُخطئ في تمييز الطبيعي من المرضي. لا تُظهر <b>التهاب اللب المبكر</b> (لا اتساع رباط بعد). الموجودات قد تشمل: فقد <b>lamina dura</b> (جانبي/قمي)، شفافية حول قمية (نخر)، <b>تكلّس</b> اللب/القناة (يفسّر ضعف الاستجابة للاختبارات)، وعيوب ارتشاف جذري.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec4">Lec 2 · Pain &amp; Local Anesthesia ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Pain &amp; nerve fibers (Aδ vs C)</div>
+  <div class="prompt">Differentiate Aδ and C fibers in the pulp. What is neurogenic inflammation?</div>
+  <div class="answer">
+    The tooth is innervated by <b>Aδ (myelinated)</b> and <b>C (unmyelinated)</b> sensory axons — both nociceptors; C fibers are ~<b>3× more numerous</b>.
+  <ul><li><b>Aδ:</b> myelinated, larger diameter, near pulp-dentin complex → <span class="k">sharp, instant, intermittent</span> pain.</li>
+  <li><b>C fibers:</b> unmyelinated, smaller, distributed in pulp → <span class="k">burning, aching, dull</span> pain.</li></ul>
+  <b>Neurogenic inflammation:</b> inflammation stimulates release of <b>substance P & CGRP</b> → vasodilation → ↑ pulp volume → ↑ pressure on nerve endings → intensified pain.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الألم وألياف العصب:</b> السن يُعصَّب بألياف <b>Aδ (مُغمَدة بالميالين)</b> و<b>C (غير مُغمَدة)</b> — كلاهما مستقبلات ألم، وألياف C أكثر بنحو <b>3 أضعاف</b>. <b>Aδ:</b> أكبر قطراً قرب معقد اللب-العاج ← ألم <b>حادّ فوري متقطع</b>. <b>C:</b> أصغر منتشرة في اللب ← ألم <b>حارق خابٍ</b>. <b>الالتهاب العصبي المنشأ:</b> الالتهاب يحرّر <b>substance P وCGRP</b> ← توسّع وعائي ← زيادة حجم اللب ← ضغط على النهايات العصبية ← اشتداد الألم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Pain reaction threshold (PRT)</div>
+  <div class="prompt">What is PRT and what lowers it? What systemic risks does intense pain pose?</div>
+  <div class="answer">
+    <b>PRT</b> = the point at which a person feels pain. Factors that <b>lower</b> the PRT: (1) pain at the start of treatment; (2) fatigue; (3) fear & anxiety.
+  Intense pain → sudden ↑ blood catecholamines → ↑ BP & heart rate → may induce <b>fainting, angina, asthma, psychiatric reactions</b>. To reduce this, give anesthesia <b>slowly in the supine position</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>عتبة تفاعل الألم (PRT)</b> = النقطة التي يشعر عندها الشخص بالألم. ما <b>يخفضها</b>: (١) وجود ألم بداية العلاج. (٢) الإرهاق. (٣) الخوف والقلق. الألم الشديد ← ارتفاع مفاجئ في الكاتيكولامينات ← ارتفاع الضغط والنبض ← قد يسبّب <b>إغماء، ذبحة، ربو، تفاعلات نفسية</b>. لتقليل ذلك أعطِ التخدير <b>ببطء وبوضع مستلقٍ</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">LA types &amp; mechanism</div>
+  <div class="prompt">What are the two chemical types of local anesthetics, and how do they work?</div>
+  <div class="answer">
+    <b>Esters</b> (procaine, benzocaine) and <b>Amides</b> (lidocaine, mepivacaine, prilocaine, articaine).<br>
+  <b>Mechanism:</b> decrease nerve permeability to <b>Na⁺</b> by blocking <span class="k">voltage-gated sodium channels (VGSCs)</span> → no impulse generation/conduction.
+  LAs are <b>vasodilators</b>; <b>vasoconstrictors</b> are added to constrict vessels → lower systemic absorption, prolong effect, reduce toxicity & bleeding.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أنواع المخدّر الموضعي:</b> <b>إسترات</b> (procaine, benzocaine) و<b>أميدات</b> (lidocaine, mepivacaine, prilocaine, articaine). <b>الآلية:</b> تقليل نفاذية العصب لـ<b>Na⁺</b> بحجب <b>قنوات الصوديوم المبوّبة بالجهد (VGSCs)</b> ← منع توليد/توصيل السيالة. المخدّرات <b>موسّعة للأوعية</b>؛ تُضاف <b>مضيّقات الأوعية</b> لتقبضها ← امتصاص جهازي أقل، أثر أطول، سُمّية ونزف أقل.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">LA in infection &amp; onset confirmation</div>
+  <div class="prompt">Why is anesthesia delayed in infected areas? How is pulpal anesthesia confirmed?</div>
+  <div class="answer">
+    Infection lowers extracellular <b>pH to 5–6 or less</b> → little free-base form crosses the nerve sheath → delayed onset; also injecting into infected tissue may <b>spread infection</b> (use nerve blocks instead).
+  The effective way to confirm pulpal anesthesia is by <b>pulp testing</b>: a <span class="k">negative response = positive pulpal anesthesia</span>.
+  Patients with <b>hyperthyroidism, cardiovascular disease, diabetes</b>, or on <b>tricyclic antidepressants/MAO inhibitors</b> need physician consultation before LA with a vasoconstrictor.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التخدير في العدوى:</b> العدوى تخفض pH خارج الخلية إلى <b>5–6 أو أقل</b> ← يعبر القليل من الشكل القاعدي ← تأخّر البدء؛ والحقن في نسيج مُصاب قد <b>ينشر العدوى</b> (استخدم blocks بدلاً). تأكيد التخدير اللبّي بـ<b>اختبار اللب</b>: <b>استجابة سلبية = تخدير لبّي ناجح</b>. مرضى <b>فرط الدرق، القلب، السكري</b> أو متناولو <b>مضادات الاكتئاب ثلاثية الحلقات/مثبطات MAO</b> يحتاجون استشارة الطبيب قبل المخدّر ذي مضيّق الأوعية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Mandibular anesthesia techniques</div>
+  <div class="prompt">List the techniques for mandibular anesthesia.</div>
+  <div class="answer">
+    <ul>
+  <li><b>Inferior alveolar nerve block (IAN):</b> near the mandibular foramen; anesthetizes mandibular teeth + lingual nerve (not buccal mucosa). 1.8 mL 2% lidocaine + 1:100,000 epi → pulpal anesthesia in ~15 min, lasts ~1 h; two cartridges reduce missed blocks.</li>
+  <li><b>Mandibular (V3) nerve block:</b> all mandibular teeth + buccal/lingual tissues; usually combined with IAN. Techniques: <b>Gow-Gates</b> (anterior to condyle neck) and <b>Akinosi-Vazirani</b> (closed-mouth/limited opening).</li>
+  <li><b>Incisive (mental) nerve block:</b> buccally between the two mandibular premolars → lower lip, buccal mucosa, chin skin, premolars & anteriors.</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تقنيات تخدير الفك السفلي:</b> <b>IAN block:</b> قرب الثقبة الفكية؛ يخدّر أسنان السفلي + العصب اللساني (لا المخاطية الشدقية). 1.8مل ليدوكائين 2% + إبينفرين 1:100,000 ← تخدير لبّي خلال ~15د يدوم ~ساعة؛ خرطوشتان تقلّلان الفشل. <b>V3 block:</b> كل أسنان السفلي + الأنسجة الشدقية/اللسانية؛ يُدمج عادةً مع IAN؛ تقنيتا <b>Gow-Gates</b> (أمام عنق اللقمة) و<b>Akinosi-Vazirani</b> (فم مغلق/فتح محدود). <b>Incisive (mental):</b> دهليزياً بين ضاحكي السفلي ← الشفة السفلى والمخاطية الشدقية وجلد الذقن والضواحك والأمامية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Maxillary anesthesia</div>
+  <div class="prompt">Describe maxillary anesthesia (infiltration) and its duration.</div>
+  <div class="answer">
+    Most common = <b>infiltration</b> with 2% lidocaine + 1:100,000 epi. Success ~<span class="k">87–92%</span>; onset in <b>3–5 min</b>. Duration is the problem:
+  anterior pulpal anesthesia ~<b>30 min</b>, premolar ~<b>40–45 min</b>, then declines → give additional LA depending on procedure length.
+  Blocks (PSA, AMSA, P-ASA, infraorbital, V2) are <b>not required</b> for routine restorative/endodontic procedures.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تخدير الفك العلوي:</b> الأشيع = <b>infiltration</b> بليدوكائين 2% + إبينفرين 1:100,000. النجاح ~<b>87–92%</b>؛ البدء خلال <b>3–5د</b>. المشكلة المدة: الأمامية ~<b>30د</b>، الضواحك ~<b>40–45د</b> ثم يتناقص ← أعطِ مخدّراً إضافياً حسب طول الإجراء. الـblocks (PSA, AMSA, P-ASA, infraorbital, V2) <b>غير لازمة</b> للإجراءات الترميمية/اللبية الروتينية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Supplemental injections</div>
+  <div class="prompt">Describe PDL, intraosseous, and intrapulpal supplemental injections.</div>
+  <div class="answer">
+    <ul>
+  <li><b>PDL injection:</b> needle between tooth & PDL, bevel toward root; 0.2 mL per root; <b>immediate onset</b>, variable duration; needs <b>high pressure</b> (Peripress, Ligmaject, STA device).</li>
+  <li><b>Intraosseous:</b> useful with IAN block (e.g., mandibular 2nd molar); a perforator drills the cortical plate (Stabident), then a 27-G ultrashort needle delivers LA to cancellous bone.</li>
+  <li><b>Intrapulpal:</b> for irreversible pulpitis when other methods fail; needle directly into pulp with force (pressure + pharmacologic). Rapid, profound onset but <b>quite painful</b>; short duration (15–20 min) → remove pulp quickly.</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الحقن الإضافية:</b> <b>PDL:</b> الإبرة بين السن والرباط، الشطبة نحو الجذر؛ 0.2مل لكل جذر؛ <b>بدء فوري</b>، مدة متغيّرة؛ تحتاج <b>ضغطاً عالياً</b> (Peripress, Ligmaject, STA). <b>داخل العظم (intraosseous):</b> مفيد مع IAN (مثل الرحى السفلية الثانية)؛ مثقب يخرق الصفيحة القشرية (Stabident) ثم إبرة 27-G قصيرة جداً توصل المخدّر للعظم الإسفنجي. <b>داخل اللب (intrapulpal):</b> لالتهاب لا رجعة فيه عند فشل الباقي؛ الإبرة في اللب بقوّة (ضغط + دواء)؛ بدء سريع عميق لكن <b>مؤلم جداً</b> ومدّته قصيرة (15–20د) ← أخرج اللب بسرعة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec5">Lec 3 · Working Length &amp; Apex Locators ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">WL determination — radiographic method</div>
+  <div class="prompt">Outline the radiographic method for determining working length.</div>
+  <div class="answer">
+    Essentials: undistorted preop radiograph, coronal access to all canals, endodontic ruler, knowledge of average tooth lengths, a definite <b>reference point</b> (stable, unchanging).
+  <ol><li>Measure the tooth on the preop radiograph.</li><li>Place the file <b>1 mm less</b> than that length; set the rubber stopper at the reference point.</li>
+  <li>Take an X-ray (bisecting or parallel).</li><li>Measure the difference between instrument tip and root end; adjust.</li>
+  <li><b>Subtract 1.0 mm</b> to estimate the apical constriction.</li><li>If external root resorption → <b>shorten by 2 mm</b>; set the ruler at this corrected length.</li></ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تحديد الطول العامل — الطريقة الشعاعية:</b> الأساسيات: صورة غير مشوّهة، وصول تاجي لكل القنوات، مسطرة لبية، معرفة المتوسطات، <b>نقطة مرجعية</b> ثابتة. (١) قِس السن على الصورة. (٢) ضع المبرد <b>أقصر بـ1مم</b>؛ الموقف عند النقطة المرجعية. (٣) خذ أشعة (تنصيف أو موازاة). (٤) قِس الفرق بين طرف الأداة ونهاية الجذر وعدّل. (٥) <b>اطرح 1.0مم</b> لتقدير التضيّق القمي. (٦) مع ارتشاف جذري خارجي ← <b>قصّر 2مم</b>؛ اضبط المسطرة على الطول المصحّح.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">How apex locators work</div>
+  <div class="prompt">Explain the principle of electronic apex locators.</div>
+  <div class="answer">
+    Based on <b>electrical resistance/impedance</b>. The apical constriction has a characteristic resistance of <span class="k">650 ohms</span>.
+  Using Ohm's law (V = R × I), the device delivers a known voltage and measures current via the file + labial hook, computing V/I. When resistance = 650 ohms, the screen displays <b>'0'</b> = tip at the apical constriction.
+  A complete circuit lowers resistance and current flows. <b>Modern</b> types work accurately even with saliva/blood present.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مبدأ محدّد القمة الإلكتروني:</b> يعتمد <b>المقاومة/الممانعة الكهربائية</b>. للتضيّق القمي مقاومة مميّزة <b>650 أوم</b>. بقانون أوم (V = R × I)، يرسل الجهاز جهداً معلوماً ويقيس التيار عبر المبرد + الخطّاف الشفوي ويحسب V/I؛ وعند 650 أوم تظهر <b>'0'</b> = الطرف عند التضيّق القمي. اكتمال الدائرة يخفض المقاومة فيسري التيار. الأنواع <b>الحديثة</b> تعمل بدقّة حتى مع وجود لعاب/دم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Apex locator generations</div>
+  <div class="prompt">Summarize the 6 generations of apex locators.</div>
+  <div class="answer">
+    <ul>
+  <li><b>1st (1969):</b> resistance method; unreliable; painful; electrolytes caused errors.</li>
+  <li><b>2nd (1971):</b> impedance; needed calibration; inaccurate with electrolytes/dry canals.</li>
+  <li><b>3rd:</b> multiple frequencies; works with electrolytes; <span class="k">90–100% accuracy</span>.</li>
+  <li><b>4th:</b> two frequencies (400 Hz & 8 kHz); needs partially dried canals; fails in heavy exudate/blood.</li>
+  <li><b>5th:</b> compares electrical data + math; excellent with blood/exudate but struggles in dry canals (need added liquid).</li>
+  <li><b>6th (adaptive):</b> combines 4th & 5th advantages; <b>no drying/moistening needed</b>; precise with blood/NaOCl/dry canals.</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أجيال محدّد القمة:</b> <b>الأول (1969):</b> مقاومة؛ غير موثوق ومؤلم وتتأثر بالإلكتروليتات. <b>الثاني (1971):</b> ممانعة؛ يحتاج معايرة؛ غير دقيق مع الإلكتروليتات/القنوات الجافة. <b>الثالث:</b> ترددات متعددة؛ يعمل مع الإلكتروليتات؛ دقّة <b>90–100%</b>. <b>الرابع:</b> ترددان (400Hz و8kHz)؛ يحتاج قنوات شبه جافة؛ يفشل مع النزّ/الدم الكثيف. <b>الخامس:</b> يقارن البيانات + معالجة رياضية؛ ممتاز مع الدم/النزّ لكنه يتعثّر في الجافة. <b>السادس (تكيّفي):</b> يجمع مزايا الرابع والخامس؛ <b>لا يحتاج تجفيفاً/ترطيباً</b>؛ دقيق مع الدم/NaOCl/الجافة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Apex locator — contraindication &amp; precautions</div>
+  <div class="prompt">What is the key contraindication and precautions for apex locators?</div>
+  <div class="answer">
+    <b>Contraindication:</b> patients with <span class="k">cardiac pacemakers</span> — electrical stimulation can interfere with pacemaker function.<br>
+  <b>Precautions:</b> remove metallic crown parts (amalgam/crown); estimate root length from preop X-ray; prepare access & clear the chamber; place lip hook (mucosa damp); clip electrode on the file; advance with ¼ turns until '0'; confirm 3×; verify radiographically.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مانع الاستخدام:</b> مرضى <b>ناظمة القلب (pacemaker)</b> — التنبيه الكهربائي قد يعطّل عملها. <b>الاحتياطات:</b> أزل الأجزاء المعدنية (أملغم/تاج)؛ قدّر الطول من الصورة؛ حضّر الفتحة ونظّف الحجرة؛ ضع الخطّاف الشفوي (المخاطية رطبة)؛ ثبّت القطب على المبرد؛ تقدّم بأرباع لفّات حتى '0'؛ أكّد 3 مرات؛ تحقّق شعاعياً.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec6">Lec 4 · Endodontic Radiography ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Bisecting vs paralleling</div>
+  <div class="prompt">Compare the bisecting-angle and paralleling radiographic techniques.</div>
+  <div class="answer">
+    <b>Bisecting:</b> beam perpendicular to the plane bisecting the angle between film and tooth long axis. <b>+</b> easy, quick, no holder, easier with rubber dam.
+  <b>−</b> more distortion/superimposition, cone-cut artifacts, hard to reproduce.<br>
+  <b>Paralleling:</b> film parallel to tooth long axis (holder), beam perpendicular to film. <b>+</b> better accuracy, less distortion, reproducible, easy alignment.
+  <b>−</b> more uncomfortable (impinges palate/floor), hard with shallow palate/gag reflex/long teeth, hard with rubber dam.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تنصيف الزاوية مقابل الموازاة:</b> <b>التنصيف:</b> الشعاع عمودي على المستوى المنصّف للزاوية بين الفيلم والمحور. <b>+</b> سهل سريع بلا حامل وأيسر مع الحاجز. <b>−</b> تشويه/تراكب أكثر، cone-cut، صعب التكرار. <b>الموازاة:</b> الفيلم موازٍ للمحور (حامل) والشعاع عمودي عليه. <b>+</b> دقّة أعلى وتشويه أقل وقابل للتكرار ومحاذاة سهلة. <b>−</b> أقل راحة (يضغط الحنك/الأرضية)، صعب مع الحنك الضحل/التهوّع/الأسنان الطويلة/الحاجز.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">SLOB / buccal object rule</div>
+  <div class="prompt">State the buccal object rule (SLOB) for separating superimposed canals.</div>
+  <div class="answer">
+    When a multi-canalled tooth shows superimposed canals, deviate the cone mesially/distally to separate them: <span class="k">SLOB = Same Lingual, Opposite Buccal</span>.
+  The canal that moves in the <b>same</b> direction as the cone is <b>lingual/palatal</b>; the one moving in the <b>opposite</b> direction is <b>buccal</b>.
+  (Cone moved distally → buccal canal appears mesial; cone moved mesially → buccal canal appears distal.)
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>قاعدة الجسم الشدقي (SLOB):</b> عند تراكب قنوات سن متعدّد القنوات، حرّف المخروط إنسياً/وحشياً لفصلها: <b>SLOB = Same Lingual, Opposite Buccal</b>. القناة التي تتحرك بـ<b>نفس</b> اتجاه المخروط = <b>لسانية/حنكية</b>، والتي تتحرك <b>عكسه</b> = <b>دهليزية</b>. (المخروط وحشياً ← الدهليزية تبدو إنسية؛ والمخروط إنسياً ← الدهليزية تبدو وحشية).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Digital radiography</div>
+  <div class="prompt">What are the types and advantages of digital radiography?</div>
+  <div class="answer">
+    Three variations: <b>direct</b> (solid-state CCD sensor + cable; components: radio/visio/graphy), <b>storage phosphor</b> (PSP plate read by a laser scanner; ~<b>90% dose reduction</b>, image in 20–30 s), and <b>indirect</b> (scanning conventional film).<br>
+  <b>Advantages:</b> low radiation dose, no darkroom (instant image), consistent quality, digital enhancement/enlargement, easy storage/archiving.<br>
+  <b>Disadvantages:</b> expensive; CCD life span; bulky sensor/cable; large disk space.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التصوير الرقمي:</b> ثلاثة أنواع: <b>مباشر</b> (حسّاس CCD + كبل؛ مكوّنات radio/visio/graphy)، <b>الفوسفور المخزِّن (PSP)</b> (تُقرأ بماسح ليزري؛ خفض جرعة ~<b>90%</b> وصورة خلال 20–30ث)، و<b>غير مباشر</b> (مسح فيلم تقليدي). <b>المزايا:</b> جرعة منخفضة، بلا غرفة مظلمة (صورة فورية)، جودة ثابتة، تحسين/تكبير رقمي، أرشفة سهلة. <b>العيوب:</b> مكلف، عمر CCD، حسّاس وكبل ضخمان، مساحة تخزين كبيرة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">CBCT in endodontics</div>
+  <div class="prompt">Describe CBCT: FOV, applications, advantages, limitations.</div>
+  <div class="answer">
+    Cone-beam CT gives <b>3-D images</b> from a single sweep (sensor rotates 180–360°). For endo, a <b>small/limited FOV</b> (≤4×4 cm) gives maximum resolution (voxel ~60–75 µm).<br>
+  <b>Applications:</b> tooth/root/canal morphology & anomalies; periapical pathosis; root resorption/perforations; trauma/fractures; surgical planning; postoperative assessment.<br>
+  <b>Advantages:</b> accurate 3-D anatomy/spatial relationships; view slices in all planes; isotropic voxels.<br>
+  <b>Limitations:</b> lower resolution/contrast than intraoral; more artifacts near high-density objects (enamel/metal); requires the patient to stay still.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>CBCT في اللب:</b> يعطي <b>صوراً ثلاثية الأبعاد</b> بمسح واحد (دوران 180–360°). للّب نستخدم <b>FOV صغيراً</b> (≤4×4سم) لأقصى دقّة (voxel ~60–75µm). <b>التطبيقات:</b> تشكّل السن/الجذور/القنوات وشذوذاتها؛ الآفات حول القمية؛ الارتشاف/الثقوب؛ الرضّ/الكسور؛ تخطيط الجراحة؛ التقييم بعد العملية. <b>المزايا:</b> تشريح ثلاثي دقيق وعلاقات مكانية؛ مقاطع بكل المستويات؛ voxels متساوية. <b>الحدود:</b> دقّة/تباين أقل من داخل الفم؛ artifacts أكثر قرب الكثيف (مينا/معدن)؛ يتطلّب ثبات المريض.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec7">Lec 5 · Intracanal Instruments — Classification ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">The 6 groups</div>
+  <div class="prompt">List the 6 groups of intracanal instruments.</div>
+  <div class="answer">
+    <ol>
+  <li><b>Group I — Manual:</b> barbed broaches, K-type, H-type.</li>
+  <li><b>Group II — Low-speed, latch-type:</b> Gates-Glidden burs, Peeso reamers (coronal part, <b>never in curvature</b>).</li>
+  <li><b>Group III — Engine-driven NiTi rotary:</b> rotating blade adapting to curved canals (most modern instruments).</li>
+  <li><b>Group IV — 3-D adjusting:</b> adapts to canal cross-section too — only the <b>Self-Adjusting File (SAF)</b>.</li>
+  <li><b>Group V — Engine-driven reciprocating</b>.</li>
+  <li><b>Group VI — Ultrasonic</b>.</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مجموعات الأدوات الست:</b> (١) <b>يدوية:</b> barbed broaches وK وH. (٢) <b>بطيئة بمشبك:</b> Gates-Glidden وPeeso (الجزء التاجي، <b>أبداً في الانحناء</b>). (٣) <b>NiTi دوّارة آلية:</b> نصل دوّار يتكيّف مع المنحنية (معظم الحديثة). (٤) <b>متكيّفة ثلاثياً:</b> تتكيّف مع مقطع القناة أيضاً — فقط <b>SAF</b>. (٥) <b>ترددية آلية</b>. (٦) <b>فوق صوتية</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Manual K-type &amp; transportation</div>
+  <div class="prompt">Describe K-type instruments and define transportation.</div>
+  <div class="answer">
+    K-file & K-reamer = oldest dentin-cutting instruments; ground to a tapered square/triangular cross-section then <b>twisted</b> (a file has more flutes/length than a reamer).
+  They work by <b>compression-and-release</b> of dentin. A <b>reaming motion</b> (constant rotation) causes <span class="k">less transportation</span> than a filing motion.
+  <b>Transportation</b> = excessive loss of dentin from the <b>outer wall of a curved canal</b> in the apical segment. As width ↑, flexibility ↓.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أدوات K والـtransportation:</b> K-file وK-reamer أقدم أدوات قطع العاج؛ مقطع مربّع/مثلثي مخروطي ثم <b>ملفوف</b> (الـfile أكثر أخاديد من الـreamer). تعمل بـ<b>ضغط-وتحرير</b> العاج. حركة الـ<b>reaming</b> (دوران ثابت) تسبّب <b>transportation أقل</b> من الـfiling. <b>Transportation</b> = فقد مفرط للعاج من <b>الجدار الخارجي للقناة المنحنية</b> في الجزء القمي. وكلّما زاد العرض قلّت المرونة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">K-flex, Flex-O, Flex-R, H, S files</div>
+  <div class="prompt">Differentiate K-flex, Flex-O-File, Flex-R-file, H-type, and S-file.</div>
+  <div class="answer">
+    <ul>
+  <li><b>K-flex:</b> rhomboid cross-section; 2 acute (cut) + 2 obtuse (debris) edges; greater cutting/flexibility than K.</li>
+  <li><b>Flex-O-File:</b> triangular; better cutting, more debris room, flexible, fracture-resistant; <b>non-cutting tip</b> (no ledge).</li>
+  <li><b>Flex-R-file:</b> tip designed to <b>guide not cut</b> (no ledge); triangular (flexible); cuts best <b>anti-clockwise</b>.</li>
+  <li><b>H-type (Hedström):</b> cuts only on the <b>pulling stroke</b> (positive rake); bending → stress concentration → fatigue fracture; ground from a single continuous flute.</li>
+  <li><b>S-file (Uni-file):</b> S-shaped cross-section; stiffer than Hedström; filing or reaming.</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>المبارد:</b> <b>K-flex:</b> مقطع معيّني؛ حافتان حادّتان (قطع) وحافتان منفرجتان (حطام)؛ قطع ومرونة أعلى من K. <b>Flex-O-File:</b> مثلثي؛ قطع أفضل ومرونة ومقاومة كسر؛ <b>طرف غير قاطع</b> (لا ledge). <b>Flex-R-file:</b> الطرف <b>يوجّه لا يقطع</b> (لا ledge)؛ مثلثي مرن؛ يقطع أفضل <b>عكس عقارب الساعة</b>. <b>H (Hedström):</b> يقطع بـ<b>السحب</b> فقط (rake موجب)؛ ثنيه ← تركّز إجهاد ← كسر تعبي؛ من أخدود واحد متّصل. <b>S-file (Uni-file):</b> مقطع S؛ أصلب من Hedström؛ filing أو reaming.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Group II + NiTi &amp; Golden mediums</div>
+  <div class="prompt">Describe Gates-Glidden/Peeso, NiTi files, and Golden mediums.</div>
+  <div class="answer">
+    <b>Gates-Glidden & Peeso:</b> low-speed, used in the <b>straight coronal portion only</b>; <span class="k">Peeso has higher perforation risk</span> (mainly for post-space).<br>
+  <b>NiTi file:</b> greater elastic flexibility & torsional-fracture resistance than steel; <b>non-cutting tip</b>; maintains canal curvature.<br>
+  <b>Golden mediums:</b> intermediate sizes halfway between ISO sizes = <b>12, 17, 22, 27, 32, 37</b>.<br>
+  <b>Canal Master U:</b> prepares the apical third; non-cutting pilot tip + 1 mm cutting blade → less ledge/transportation.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>المجموعة II وNiTi وGolden mediums:</b> <b>Gates-Glidden وPeeso:</b> بطيئة، تُستخدم في <b>الجزء التاجي المستقيم فقط</b>؛ <b>Peeso خطر ثقبه أعلى</b> (أساساً لمساحة الوتد). <b>مبرد NiTi:</b> مرونة ومقاومة كسر التوائي أعلى من الستيل؛ <b>طرف غير قاطع</b>؛ يحافظ على الانحناء. <b>Golden mediums:</b> أحجام وسيطة بين قياسات ISO = <b>12، 17، 22، 27، 32، 37</b>. <b>Canal Master U:</b> يحضّر الثلث القمي؛ طرف موجّه غير قاطع + نصل قاطع 1مم ← ledge/transportation أقل.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Components of a file</div>
+  <div class="prompt">Define the 5 components of a file: taper, flute, helix angle, rake angle, pitch.</div>
+  <div class="answer">
+    <ol>
+  <li><b>Taper:</b> diameter increase per mm from tip toward handle (e.g., #.02 = 2%; a #25/.02 file is 0.27 mm at 1 mm from tip).</li>
+  <li><b>Flute:</b> the groove collecting tissue/dentin chips (depends on depth, width, configuration, finish).</li>
+  <li><b>Helix angle:</b> angle of the cutting edge with the long axis; gathers debris up the flute.</li>
+  <li><b>Rake angle:</b> angle of the leading edge to the radius; <b>positive/cutting</b> (obtuse) or <b>negative/scraping</b> (acute).</li>
+  <li><b>Pitch:</b> distance between corresponding points of adjacent leading edges; smaller pitch → more spirals → greater helix angle.</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مكوّنات المبرد:</b> (١) <b>Taper:</b> زيادة القطر لكل مم من الطرف نحو المقبض (#.02 = 2%؛ مبرد 25/.02 = 0.27مم على بُعد 1مم من الطرف). (٢) <b>Flute:</b> الأخدود الذي يجمع النسيج/براده العاج (يعتمد على العمق والعرض والشكل والتنعيم). (٣) <b>Helix angle:</b> زاوية الحافة القاطعة مع المحور؛ يرفع الحطام عبر الأخدود. (٤) <b>Rake angle:</b> زاوية الحافة الأمامية مع نصف القطر؛ <b>موجب/قاطع</b> (منفرج) أو <b>سالب/كاشط</b> (حادّ). (٥) <b>Pitch:</b> المسافة بين نقطتين متناظرتين على حافتين متجاورتين؛ الأصغر ← لوالب أكثر ← helix أكبر.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec8">Lec 6 · Rotary NiTi Systems ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">ProFile &amp; GT</div>
+  <div class="prompt">Describe the ProFile and ProFile GT systems.</div>
+  <div class="answer">
+    <b>ProFile (1994):</b> increased tapers; <b>U-shaped cross-section</b> with radial lands + parallel core; 20° helix angle, constant pitch, bullet-shaped <b>non-cutting tip</b>, neutral/slightly negative rake → <b>reaming action</b>, debris transported coronally. Speed <b>275–325 rpm</b>.<br>
+  <b>ProFile GT (Greater Taper):</b> U-shape; four tapers (<b>.06/.08/.10/.12</b>); max coronal diameter 1 mm; variable pitch, increasing flutes toward tip; apical diameter 0.2 mm; rounded non-cutting tips.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>ProFile وGT:</b> <b>ProFile (1994):</b> tapers أكبر؛ مقطع <b>U</b> بـradial lands + لبّ مركزي متوازٍ؛ helix 20°، pitch ثابت، طرف <b>غير قاطع</b> رصاصي، rake محايد/سالب قليلاً ← <b>reaming</b> ونقل الحطام تاجياً. السرعة <b>275–325 rpm</b>. <b>GT (Greater Taper):</b> مقطع U؛ أربعة tapers (<b>.06/.08/.10/.12</b>)؛ أقصى قطر تاجي 1مم؛ pitch متغيّر وأخاديد متزايدة نحو الطرف؛ القطر القمي 0.2مم؛ أطراف مدوّرة غير قاطعة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">ProTaper Universal</div>
+  <div class="prompt">Describe the ProTaper Universal system.</div>
+  <div class="answer">
+    Six instruments: <b>3 shaping + 3 finishing</b> files (plus larger finishers & a retreatment set). Cross-section = <b>modified K-type, convex triangular, sharp edges, no radial lands</b> → stable core + flexibility.
+  <b>Varying tapers</b> along the axis: shaping files' taper <b>increases coronally</b>; finishing files reverse. Finishing F1–F5 tip diameters 0.2/0.25/0.3/0.4/0.5 mm; rounded non-cutting tips. Speed <b>250–300 rpm</b>. Recommended: prepare a <b>glide path</b> + a lateral <b>"brushing"</b> stroke to avoid threading-in.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>ProTaper Universal:</b> ست أدوات: <b>3 تشكيل + 3 إنهاء</b> (+ منهيات أكبر وطقم إعادة معالجة). المقطع = <b>K معدّل، مثلثي محدّب، حواف حادّة، بلا radial lands</b> ← لبّ ثابت + مرونة. <b>tapers متغيّرة</b> على المحور: التشكيل tapers <b>تزيد تاجياً</b> والإنهاء عكسها. أقطار أطراف F1–F5: 0.2/0.25/0.3/0.4/0.5مم؛ أطراف مدوّرة غير قاطعة. السرعة <b>250–300 rpm</b>. يُنصح بـ<b>glide path</b> + حركة <b>"كنس" جانبية</b> لتجنّب الانغراز.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">RaCe, Twisted File, ProTaper Next</div>
+  <div class="prompt">Describe RaCe, Twisted File, and ProTaper Next.</div>
+  <div class="answer">
+    <b>RaCe (1999, FKG):</b> Reamer with Alternating Cutting Edges → reduces threading; triangular/square cross-section; <b>electropolished</b>; round non-cutting tips.<br>
+  <b>Twisted File (2008):</b> first fluted NiTi made by <b>plastic deformation</b> (R-phase twisting); only #25 tip, tapers .04–.12; superior physical properties.<br>
+  <b>ProTaper Next:</b> 5 files X1–X5 (20/04, 25/06, 30/07, 40/06, 50/06); <b>rectangular off-centered</b> cross-section → 2-point dentin contact + space for debris (swaggering motion).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>RaCe وTwisted File وProTaper Next:</b> <b>RaCe (1999, FKG):</b> Reamer بحواف قاطعة متناوبة ← يقلّل الانغراز؛ مقطع مثلثي/مربّع؛ <b>electropolished</b>؛ أطراف مدوّرة غير قاطعة. <b>Twisted File (2008):</b> أول NiTi مُخدَّد بـ<b>تشوّه لدن</b> (لفّ في طور R)؛ طرف #25 فقط، tapers .04–.12؛ خصائص فيزيائية فائقة. <b>ProTaper Next:</b> 5 مبارد X1–X5 (20/04، 25/06، 30/07، 40/06، 50/06)؛ مقطع <b>مستطيل لا مركزي</b> ← تماس نقطتين + مساحة للحطام (حركة تمايل).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">WaveOne reciprocating</div>
+  <div class="prompt">Describe the WaveOne single-file reciprocating system.</div>
+  <div class="answer">
+    <b>Single-use, single-file</b> reciprocating system — usually one hand file then one WaveOne file shapes the canal. Made with <b>M-wire</b> (≈4× the cyclic-fatigue resistance of traditional rotary NiTi). Files:
+  <ul><li><b>Small</b> (narrow canals): ISO 20, taper 6%.</li><li><b>Primary</b> (most canals): ISO 25, apical taper 8% reducing coronally.</li>
+  <li><b>Large</b> (wide canals): ISO 40, apical taper 8% reducing coronally.</li></ul>
+  <b>Reverse cutting action</b>; modified convex-triangular cross-section; variable-pitch flutes improve safety.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>WaveOne الترددي:</b> نظام <b>أحادي الاستخدام بمبرد واحد</b> — عادةً مبرد يدوي ثم WaveOne واحد يشكّل القناة. مصنوع بـ<b>M-wire</b> (مقاومة تعب دوري ~4 أضعاف الـNiTi التقليدي). المبارد: <b>Small</b> (ضيقة): ISO 20، taper 6%. <b>Primary</b> (الأغلب): ISO 25، taper قمي 8% يتناقص تاجياً. <b>Large</b> (واسعة): ISO 40، taper قمي 8%. <b>قطع عكسي</b>؛ مقطع مثلثي محدّب معدّل؛ pitch متغيّر يحسّن الأمان.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">SAF, reciprocating, ultrasonic</div>
+  <div class="prompt">Describe the Self-Adjusting File (SAF), reciprocating handpieces, and ultrasonic/sonic instruments.</div>
+  <div class="answer">
+    <b>SAF:</b> hollow thin-walled NiTi lattice cylinder with abrasive surface; needs a #20 glide path; compressed from 1.5 mm to a #25 size; handpiece gives <b>5000 in-and-out vibrations/min, 0.4 mm amplitude</b>; continuous irrigation removes debris.<br>
+  <b>Reciprocating (Giromatic, 1969):</b> 3000 quarter-turn movements/min; Endo-eze files clean the middle third.<br>
+  <b>Ultrasonic (25–30 kHz):</b> magnetostrictive (needs cooling) vs <b>piezoelectric (little heat)</b>; produce <b>cavitation + acoustic streaming</b>; very efficient for irrigation. <b>Sonic (2–3 kHz):</b> special files (Rispi/Shaper-Sonic).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>SAF والترددي والفوق صوتي:</b> <b>SAF:</b> أسطوانة NiTi مجوّفة شبكية رقيقة بسطح كاشط؛ تحتاج glide path #20؛ تُضغط من 1.5مم لحجم #25؛ القبضة تعطي <b>5000 اهتزازة دخول-خروج/د بسعة 0.4مم</b>؛ ري مستمر يزيل الحطام. <b>الترددي (Giromatic, 1969):</b> 3000 حركة ربع لفّة/د؛ مبارد Endo-eze تنظّف الثلث الأوسط. <b>فوق صوتي (25–30kHz):</b> magnetostrictive (يحتاج تبريداً) مقابل <b>piezoelectric (حرارة قليلة)</b>؛ ينتج <b>cavitation + acoustic streaming</b>؛ فعّال جداً للري. <b>صوتي (2–3kHz):</b> مبارد خاصة (Rispi/Shaper-Sonic).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec9">Lec 7 · Root Canal Sealers ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Functions &amp; ideal properties</div>
+  <div class="prompt">State the functions of a sealer and the properties of an ideal sealer.</div>
+  <div class="answer">
+    <b>Functions:</b> (1) cement the core to the canal wall; (2) fill irregularities GP can't (lateral/accessory canals); (3) lubricate master-cone placement; (4) <b>bactericidal</b>.<br>
+  <b>Ideal properties:</b> tacky for adhesion; hermetic seal; radiopaque; very fine powder; <b>no shrinkage</b> on setting; non-staining; bacteriostatic; <b>slow set</b>; insoluble in tissue fluids; tissue-tolerant; soluble in common solvents.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>وظائف السيلر:</b> (١) لصق المادة الأساسية بجدار القناة. (٢) ملء ما لا تملؤه الـGP (القنوات الجانبية). (٣) تزليق إجلاس القمع الرئيس. (٤) <b>قاتل للجراثيم</b>. <b>خصائص السيلر المثالي:</b> لزج للالتصاق؛ سدّ محكم؛ ظلّي؛ مسحوق ناعم جداً؛ <b>لا انكماش</b> عند التصلّب؛ لا يلوّن؛ موقف للجراثيم؛ <b>تصلّب بطيء</b>؛ غير ذوّاب بسوائل النسيج؛ متحمّل نسيجياً؛ ذوّاب بالمذيبات الشائعة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">ZOE sealers &amp; types</div>
+  <div class="prompt">Describe zinc-oxide eugenol (ZOE) sealers and their types.</div>
+  <div class="answer">
+    <b>ZOE properties:</b> resorbable if extruded; slow set; <b>shrinkage</b>; solubility; <b>stains</b> tooth; antimicrobial.<br>
+  <b>Types:</b> <b>Rickert</b> (first; ZnO + silver + resin + thymol iodide / eugenol + Canada balsam — silver = antimicrobial & radiopaque but <b>stains</b>); <b>Procosol</b> (Rickert without silver); <b>Roth's</b> (non-staining modification); <b>Tubli-Seal</b> (catalyst/base, faster set).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>سيلرات ZOE وأنواعها:</b> <b>الخصائص:</b> قابل للامتصاص إن خرج؛ تصلّب بطيء؛ <b>انكماش</b>؛ ذوبانية؛ <b>يلوّن</b> السن؛ مضاد جراثيم. <b>الأنواع:</b> <b>Rickert</b> (الأول؛ ZnO + فضة + راتنج + ثيمول أيوديد / أوجينول + بلسم كندا — الفضة مضادة وظلّية لكن <b>تلوّن</b>)؛ <b>Procosol</b> (Rickert بلا فضة)؛ <b>Roth's</b> (تعديل لا يلوّن)؛ <b>Tubli-Seal</b> (catalyst/base، تصلّب أسرع).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">CaOH, GI, resin sealers</div>
+  <div class="prompt">Describe calcium hydroxide, glass-ionomer, and resin sealers.</div>
+  <div class="answer">
+    <b>Calcium hydroxide</b> (Sealapex, Apexit): antimicrobial + osteogenic/cementogenic potential, but <b>limited</b> (can't sustain high pH).<br>
+  <b>Glass-ionomer</b> (Ketac-endo): <b>dentin-bonding</b>; hard to condition apical/middle walls; <b>difficult to remove</b> in retreatment; minimal antimicrobial.<br>
+  <b>Resin (no eugenol):</b> epoxy — <b>AH-26</b> (releases formaldehyde) and <b>AH Plus</b> (no formaldehyde, ~4 h working time); methacrylate resins introduced the <b>"monoblock"</b> concept (EndoREZ, Diaket, MetaSEAL/RealSeal; Epiphany with Resilon).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>CaOH وGI والراتنجية:</b> <b>هيدروكسيد الكالسيوم</b> (Sealapex, Apexit): مضاد جراثيم وقدرة تكوين عظم/ملاط لكن <b>محدودة</b> (لا يحافظ على pH عالٍ). <b>الأيونومر الزجاجي</b> (Ketac-endo): <b>يلتصق بالعاج</b>؛ صعب تهيئة الجدران القمية/الوسطى؛ <b>صعب الإزالة</b> بإعادة المعالجة؛ مضاد جراثيم ضئيل. <b>الراتنجية (بلا أوجينول):</b> إيبوكسي — <b>AH-26</b> (يطلق فورمالدهايد) و<b>AH Plus</b> (بلا فورمالدهايد، زمن عمل ~4 ساعات)؛ والميثاكريلية أدخلت مفهوم <b>"monoblock"</b> (EndoREZ, Diaket, MetaSEAL/RealSeal؛ Epiphany مع Resilon).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Silicone &amp; bioceramic sealers</div>
+  <div class="prompt">Describe silicone and bioceramic sealers.</div>
+  <div class="answer">
+    <b>Silicone:</b> RoekoSeal (polyvinylsiloxane, expands slightly on setting); <b>GuttaFlow/GuttaFlow 2</b> (cold flowable GP-in-RoekoSeal in a capsule, injected + single master cone).<br>
+  <b>Bioceramic</b> (zirconium oxide + calcium silicates/phosphate + CaOH): <b>hydrophilic</b> (uses canal moisture to set); <b>no shrinkage</b>; <span class="k">bioactive</span> (induces cementoblasts/osteoblasts → periapical regeneration); antimicrobial during setting. Examples: BioRoot RCS, iRoot SP, Total Fill BC.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>السيليكون والبيوسيراميك:</b> <b>سيليكون:</b> RoekoSeal (بوليفينيل سيلوكسان، يتمدّد قليلاً)؛ <b>GuttaFlow/GuttaFlow 2</b> (GP بارد سائل في RoekoSeal بكبسولة، يُحقن + قمع رئيس واحد). <b>بيوسيراميك</b> (أكسيد الزركونيوم + سيليكات/فوسفات الكالسيوم + CaOH): <b>محبّ للماء</b> (يستخدم رطوبة القناة للتصلّب)؛ <b>لا انكماش</b>؛ <b>نشِط حيوياً</b> (يحرّض cementoblasts/osteoblasts ← تجدّد حول قمي)؛ مضاد جراثيم أثناء التصلّب. أمثلة: BioRoot RCS, iRoot SP, Total Fill BC.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Sealer placement methods</div>
+  <div class="prompt">What are the methods for placing root canal sealer?</div>
+  <div class="answer">
+    <ol>
+  <li><b>Master cone:</b> coat the cone with sealer, insert slowly to full WL (may be insufficient in oval/wide canals).</li>
+  <li><b>Lentulo spiral / file or reamer:</b> manual or rotary, counter-clockwise, until sealer is visible at the orifice.</li>
+  <li><b>Injection (most recommended):</b> flexible cannula tip on a sealer syringe (comes with bioceramics); express to remove trapped air, place at coronal/middle third, inject until it exits the orifice, then insert the master cone to full WL.</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>طرق وضع السيلر:</b> (١) <b>القمع الرئيس:</b> ادهن القمع وأدخله ببطء للطول العامل (قد لا يكفي في القنوات البيضوية/الواسعة). (٢) <b>Lentulo spiral / مبرد أو reamer:</b> يدوياً أو دوّاراً عكس عقارب الساعة حتى يظهر السيلر عند الفوهة. (٣) <b>الحقن (الأكثر توصيةً):</b> طرف أنبوب مرن على محقنة السيلر (يأتي مع البيوسيراميك)؛ اطرد الهواء، ضعه في الثلث التاجي/الأوسط، احقن حتى يخرج من الفوهة، ثم أدخل القمع الرئيس للطول العامل.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec10">Lec 7 · Core Materials — GP &amp; Resilon ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Gutta-percha — phases &amp; composition</div>
+  <div class="prompt">Describe gutta-percha phases, transitions, and composition.</div>
+  <div class="answer">
+    A linear crystalline polymer (1,4-polyisoprene), harder/more brittle than rubber. Two phases: <b>alpha</b> (natural tree form) and <b>beta</b> (processed, used for fillings).
+  Transitions on heating: β→α ~<b>46°C</b>; amorphous ~<b>54–60°C</b>; cones soften >64°C. Slow cooling → alpha; normal cooling → beta.
+  Modern cones: only ~<b>20% gutta-percha</b>, ~<b>60–75% zinc oxide</b>, 5–10% resins/waxes/metal sulfate. Shrinks ~1–2% on cooling.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>Gutta-percha — الأطوار والتركيب:</b> بوليمر بلّوري خطّي (1,4-polyisoprene)، أقسى وأهشّ من المطاط. طوران: <b>ألفا</b> (الطبيعي من الشجرة) و<b>بيتا</b> (المُعالَج، للحشو). تحوّلات بالتسخين: β→α ~<b>46°م</b>؛ لا متبلور ~<b>54–60°م</b>؛ الأقماع تلين >64°م. التبريد البطيء ← ألفا؛ العادي ← بيتا. الأقماع الحديثة: ~<b>20% gutta-percha</b>، ~<b>60–75% أكسيد زنك</b>، 5–10% راتنجات/شموع/كبريتات معدن. تنكمش ~1–2% بالتبريد.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">GP — sterilization, advantages, disadvantages</div>
+  <div class="prompt">How is GP disinfected? List GP advantages and disadvantages.</div>
+  <div class="answer">
+    Cannot be heat-sterilized → disinfect in <span class="k">5.25% NaOCl for 1 min</span> (or 2% glutaraldehyde/CHX, 70% ethanol — less effective). Always needs a <b>sealer</b> (no adherence). Available in ISO .02 taper + larger .04/.06.<br>
+  <b>Advantages:</b> inert, dimensionally stable, non-allergic, non-staining, radiopaque, compactable, softened by heat & solvents.<br>
+  <b>Disadvantages:</b> lack of rigidity, no dentin adherence, no complete adaptation to narrow areas.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تعقيم GP ومزاياها:</b> لا تُعقّم بالحرارة ← تُطهّر بـ<b>NaOCl 5.25% لدقيقة</b> (أو غلوتارألدهيد/CHX 2%، إيثانول 70% — أقل فعالية). تحتاج <b>سيلر</b> دائماً (لا التصاق). متوفّرة بـtaper ISO .02 + الأكبر .04/.06. <b>المزايا:</b> خاملة، ثابتة الأبعاد، غير مؤرّجة، لا تلوّن، ظلّية، قابلة للكبس، تلين بالحرارة والمذيبات. <b>العيوب:</b> نقص صلابة، لا التصاق بالعاج، لا تكيّف كامل في المناطق الضيقة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Resilon &amp; solid materials</div>
+  <div class="prompt">Describe Resilon and the solid obturation materials (silver/Vitallium).</div>
+  <div class="answer">
+    <b>Resilon:</b> a thermoplastic synthetic <b>polyester-polymer</b> filling material developed to bond with the Epiphany sealer; same ISO sizes as GP; contains bioactive glass + radiopaque fillers (~65%); heat/solvent softened. <span class="k">Withdrawn in 2014</span> — it degraded enzymatically over time → poor long-term success.<br>
+  <b>Solid materials:</b> <b>silver cones</b> (flexible, fit narrow curved canals, but <b>corrode</b> → cytotoxic products; no longer used); <b>Vitallium cones/implants</b> (rigid, used as endodontic implants).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>Resilon والمواد الصلبة:</b> <b>Resilon:</b> مادة حشو <b>بوليستر-بوليمر</b> صناعية حرارية طُوّرت لترتبط بسيلر Epiphany؛ بنفس قياسات ISO؛ تحوي زجاجاً نشِطاً + حشوات ظلّية (~65%)؛ تلين بالحرارة/المذيب. <b>سُحبت 2014</b> — تتحلّل إنزيمياً مع الوقت ← نجاح بعيد ضعيف. <b>الصلبة:</b> <b>الأقماع الفضية</b> (مرنة للقنوات الضيقة المنحنية لكنها <b>تتآكل</b> ← نواتج سامّة؛ لم تعد تُستخدم)؛ <b>أقماع/زرعات Vitallium</b> (صلبة كزرعات لبية).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec11">Lec 8 · Obturation — Objectives &amp; Techniques ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Objectives &amp; success factors</div>
+  <div class="prompt">State the objectives of obturation and the 4 radiographic success factors.</div>
+  <div class="answer">
+    <b>Objectives:</b> (1) eliminate coronal leakage of microbes/nutrients; (2) confine residual microbes to prevent proliferation; (3) prevent percolation of periapical fluids feeding microbes; (4) create a favorable environment for healing.<br>
+  <b>Four success factors (radiographic):</b> absence of a periapical lesion; <b>no voids</b> in the obturation; obturation to within <span class="k">2.0 mm of the radiographic apex</span>; an <b>adequate coronal restoration</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أهداف الحشو:</b> (١) منع التسرّب التاجي للجراثيم/المغذّيات. (٢) حصر الجراثيم المتبقية لمنع تكاثرها. (٣) منع تسرّب سوائل القمة المغذّية. (٤) خلق بيئة مواتية للشفاء. <b>عوامل النجاح الأربعة (شعاعياً):</b> غياب الآفة حول القمية؛ <b>لا فراغات</b> في الحشو؛ الحشو ضمن <b>2.0مم من القمة الشعاعية</b>؛ <b>ترميم تاجي جيّد</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Timing of obturation</div>
+  <div class="prompt">What determines the timing of obturation (symptoms, vitality, single-visit)?</div>
+  <div class="answer">
+    <ol>
+  <li><b>Patient symptoms:</b> percussion sensitivity = PDL inflammation → do <b>not</b> obturate until it subsides.</li>
+  <li><b>Vital pulp:</b> obturate in a <b>single visit</b> after complete cleaning/shaping.</li>
+  <li><b>Necrotic pulp:</b> single-visit if <b>asymptomatic</b>; if symptomatic (tenderness, exudate, sinus tract) → obturate after inflammation subsides.</li>
+  <li><b>Negative culture:</b> dependence has decreased (may give false indication).</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>توقيت الحشو:</b> (١) <b>الأعراض:</b> ألم بالطرق = التهاب الرباط ← <b>لا</b> تحشُ حتى يخمد. (٢) <b>لبّ حيّ:</b> الحشو بـ<b>جلسة واحدة</b> بعد التنظيف الكامل. (٣) <b>لبّ متنخّر:</b> جلسة واحدة إن كان <b>لا عرَضياً</b>؛ وإن كان عرَضياً (إيلام، نزّ، ناسور) ← احشُ بعد خمود الالتهاب. (٤) <b>الزرع السلبي:</b> قلّ الاعتماد عليه (قد يعطي مؤشّراً كاذباً).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Warm techniques &amp; continuous wave</div>
+  <div class="prompt">Describe warm lateral, warm vertical, and continuous-wave compaction.</div>
+  <div class="answer">
+    <b>Warm lateral:</b> a <b>heated spreader</b> softens GP during lateral condensation → better adaptation, fewer voids.<br>
+  <b>Warm vertical:</b> 3-D filling; master cone fits 1–2 mm short of apical stop; pluggers prefitted at 5 mm intervals; compact apically then <b>backfill</b> the coronal space (sectional 3–4 mm pieces).<br>
+  <b>Continuous wave (System B):</b> tapered pluggers + master cone cut 0.5 mm short; plugger at 200°C pushes softened GP 3–4 mm apically; hold 10 s for shrinkage; <b>excellent apical control</b>, fast, fills lateral canals.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التقنيات الحارة وContinuous Wave:</b> <b>Warm lateral:</b> <b>spreader ساخن</b> يليّن الـGP أثناء الكبس الجانبي ← تكيّف أفضل وفراغات أقل. <b>Warm vertical:</b> حشو ثلاثي الأبعاد؛ القمع الرئيس يجلس 1–2مم قبل الـapical stop؛ pluggers مُهيّأة كل 5مم؛ كبس قمي ثم <b>backfill</b> للجزء التاجي (قطع 3–4مم). <b>Continuous Wave (System B):</b> pluggers مخروطية + قمع مقصوص 0.5مم قبل الطول؛ plugger بـ200°م يدفع الـGP 3–4مم قمياً؛ ثبّت 10ث للانكماش؛ <b>تحكّم قمي ممتاز</b>، سريع، يملأ القنوات الجانبية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Injection, carrier-based, solvent, pastes</div>
+  <div class="prompt">Describe thermoplastic injection, carrier-based GP, solvent technique, and pastes.</div>
+  <div class="answer">
+    <b>Injection (Obtura III, Calamus, GuttaFlow):</b> a heated "gun" injects thermoplasticized GP pellets via silver needles 3–5 mm from the apex; pluggers (alcohol-dipped) compact; over/under-extension possible.<br>
+  <b>Carrier-based (Thermafil/SoftCore):</b> α-phase GP on a plastic core; verifier fits at WL; remove smear layer; heat carrier, insert without rotation in ~10 s; good for lateral canals but extrusion is a disadvantage.<br>
+  <b>Solvent (chloroform/eucalyptol/xylol):</b> softens GP but <b>shrinks on evaporation → voids</b> + irritates tissues.<br>
+  <b>Pastes:</b> adapt to anatomy but flow → extrusion/incomplete fill; some are <b>toxic (paraformaldehyde)</b> → not used now.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الحقن والمحمولة والمذيب والعجائن:</b> <b>الحقن (Obtura III, Calamus, GuttaFlow):</b> "مسدّس" ساخن يحقن حبيبات GP عبر إبر فضية على 3–5مم من القمة؛ pluggers (مغموسة بكحول) تكبس؛ احتمال زيادة/نقص. <b>المحمولة (Thermafil/SoftCore):</b> GP طور ألفا على لبّ بلاستيكي؛ verifier يجلس عند الطول؛ أزل smear؛ سخّن الحامل وأدخله دون لفّ خلال ~10ث؛ جيّدة للقنوات الجانبية لكن الخروج عيب. <b>المذيب (كلوروفورم/يوكاليبتول/زايلول):</b> يليّن الـGP لكن <b>ينكمش بالتبخّر ← فراغات</b> + تهيّج. <b>العجائن:</b> تتكيّف لكنها تتدفّق ← خروج/حشو ناقص؛ بعضها <b>سام (paraformaldehyde)</b> ← غير مستخدم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Apical barriers &amp; MTA / revascularization</div>
+  <div class="prompt">When are apical barriers needed? Describe MTA and revascularization.</div>
+  <div class="answer">
+    <b>Apical barriers</b> are needed with external apical resorption or when instrumentation extends beyond the root; in <b>immature apices</b> the goal is apical formation (apexification/revascularization), not just closure. Materials: dentin chips, <b>calcium hydroxide</b> (induces apical barrier, cementum/bone), <b>MTA</b>.<br>
+  <b>MTA:</b> sterile, biocompatible, induces hard-tissue formation; placed & compacted apically; after it sets, GP is compacted without extrusion.<br>
+  <b>Revascularization:</b> copious irrigation, minimal prep, antibiotic paste interim, then induce a blood clot covered with MTA → coronal seal restoration.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الحواجز القمية وMTA/إعادة التوعية:</b> تُحتاج <b>الحواجز القمية</b> مع ارتشاف قمي خارجي أو امتداد البرد خلف الجذر؛ وفي <b>القمم غير الناضجة</b> الهدف تكوين قمي (apexification/إعادة توعية) لا مجرد إغلاق. المواد: رقائق عاج، <b>هيدروكسيد الكالسيوم</b> (يحرّض حاجزاً قمياً وملاطاً/عظماً)، <b>MTA</b>. <b>MTA:</b> معقّم، متوافق حيوياً، يحرّض نسيجاً صلباً؛ يُوضع ويُكبس قمياً؛ وبعد تصلّبه تُكبس الـGP دون خروج. <b>إعادة التوعية:</b> ري غزير، تحضير أدنى، عجينة مضاد حيوي مؤقتة، ثم تحريض جلطة دموية تُغطّى بـMTA ← ترميم تاجي محكم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec12">Lec 9 · Endodontic Emergencies ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Classification (Carrotte)</div>
+  <div class="prompt">Classify endodontic emergencies (pre-, during, and post-treatment).</div>
+  <div class="answer">
+    <b>A. Pretreatment:</b> dentin hypersensitivity, symptomatic reversible pulpitis, symptomatic irreversible pulpitis, symptomatic apical periodontitis, acute apical abscess, traumatic injury, cracked tooth syndrome.<br>
+  <b>B. Under treatment:</b> mid-treatment flare-up, pulp exposure, tooth fracture, recently placed restoration, periodontal treatment, <b>hypochlorite accident</b>, tissue emphysema.<br>
+  <b>C. Post-treatment:</b> over-instrumentation, overextended obturation, underfilling, root fracture, high spot of the coronal restoration.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تصنيف الطوارئ (Carrotte):</b> <b>A. قبل العلاج:</b> فرط حساسية العاج، التهاب لب قابل للعكس عرَضي، لا رجعة فيه عرَضي، التهاب حول قمي عرَضي، خراج قمي حاد، رضّ، متلازمة السن المشقوق. <b>B. أثناء العلاج:</b> flare-up، كشف اللب، كسر السن، ترميم حديث، علاج لثوي، <b>حادث الهايبوكلورايت</b>، انتفاخ نسيجي (emphysema). <b>C. بعد العلاج:</b> over-instrumentation، حشو زائد، حشو ناقص، كسر جذر، نقطة عالية في الترميم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Reversible pulpitis &amp; dentin hypersensitivity</div>
+  <div class="prompt">How are dentin hypersensitivity and symptomatic reversible pulpitis managed?</div>
+  <div class="answer">
+    <b>Dentin hypersensitivity:</b> sharp short pain from exposed dentin (gingival recession or enamel loss). Manage by <b>plugging dentinal tubules</b>, desensitizing the nerve, or replacing structure with composite.<br>
+  <b>Symptomatic reversible pulpitis:</b> localized inflammation, lowered Aδ threshold, <b>exaggerated non-lingering</b> response. Manage: remove the cause (excavate caries + restore), recontour a high restoration, or replace it with a sedative dressing if pain persists.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>فرط حساسية العاج والتهاب اللب القابل للعكس العرَضي:</b> <b>فرط الحساسية:</b> ألم حادّ قصير من عاج مكشوف (انحسار لثة أو فقد مينا). يُعالَج بـ<b>سدّ الأنابيب العاجية</b> أو إخماد العصب أو تعويض البنية بالكمبوزِت. <b>الالتهاب القابل للعكس العرَضي:</b> التهاب موضعي، خفض عتبة Aδ، استجابة <b>مبالغة لا تتأخّر</b>. العلاج: إزالة السبب (حفر التسوّس + ترميم)، إعادة تشكيل حشوة عالية، أو استبدالها بضماد مهدّئ إن استمرّ الألم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Irreversible pulpitis &amp; apical periodontitis (mgmt)</div>
+  <div class="prompt">Management of symptomatic irreversible pulpitis and symptomatic apical periodontitis.</div>
+  <div class="answer">
+    <b>Symptomatic irreversible pulpitis</b> (intermittent/spontaneous pain, prolonged after stimulus): clean canals to WL, place a medicament (<b>calcium hydroxide</b>), temporize, check occlusion, prescribe analgesics.<br>
+  <b>Symptomatic apical periodontitis</b> (elevated tooth, pain on biting, percussion sensitivity = hallmark): relieve occlusion, access, <b>total pulp extirpation</b>, clean, irrigate & dry, CaOH medicament, temporize, analgesics.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>علاج اللب اللا رجعي العرَضي والتهاب حول القمي العرَضي:</b> <b>اللا رجعي العرَضي</b> (ألم متقطع/تلقائي يطول بعد المنبّه): نظّف القنوات للطول العامل، ضع دواءً (<b>هيدروكسيد كالسيوم</b>)، حشوة مؤقتة، تحقّق من الإطباق، مسكّنات. <b>التهاب حول قمي عرَضي</b> (السن مرتفع، ألم بالعض، الطرق = العلامة المميّزة): خفّف الإطباق، فتح، <b>إخراج كامل للّب</b>، تنظيف، ري وتجفيف، دواء CaOH، حشوة مؤقتة، مسكّنات.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Acute abscess &amp; cracked tooth</div>
+  <div class="prompt">Management of acute periapical abscess and cracked tooth syndrome.</div>
+  <div class="answer">
+    <b>Acute periapical abscess</b> (swelling, tooth elevation, systemic fever): <b>pulp debridement</b>, incision & drainage if swelling, <b>do NOT leave the tooth open</b> between visits, antibiotics only if systemic signs, relieve occlusion, NSAIDs. LA near swelling is contraindicated (painful, spreads infection, ineffective) → use blocks.<br>
+  <b>Cracked tooth syndrome</b> (incomplete fracture, vital pulp, large restorations; pain on lateral chewing of a cotton roll): reduce occlusal contact, assess crack extent; crown coverage if crown-only; endo if pulp involved & crack above bone; <b>extraction if crack is below alveolar bone</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الخراج الحاد والسن المشقوق:</b> <b>الخراج القمي الحاد</b> (تورّم، شعور بارتفاع السن، حرارة جهازية): <b>إفراغ اللب</b>، شقّ وتصريف إن وُجد تورّم، <b>لا تترك السن مفتوحاً</b> بين الجلسات، مضاد حيوي فقط مع أعراض جهازية، خفّف الإطباق، NSAIDs. التخدير قرب التورّم ممنوع (مؤلم، ينشر العدوى، غير فعّال) ← استخدم blocks. <b>متلازمة السن المشقوق</b> (كسر غير كامل، لبّ حيّ، حشوات كبيرة؛ ألم عند المضغ الجانبي للفافة قطن): قلّل التماس الإطباقي، قيّم امتداد الشقّ؛ تاج إن كان في التاج فقط؛ معالجة لبية إن أُصيب اللب والشقّ فوق العظم؛ <b>خلع إن كان الشقّ تحت عظم السنخ</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Flare-up &amp; hypochlorite accident</div>
+  <div class="prompt">Describe mid-treatment flare-up and hypochlorite accident management.</div>
+  <div class="answer">
+    <b>Flare-up</b> (pain/swelling during RCT). Risk factors: over-instrumentation/obturation, inadequate debridement, periapical debris extrusion, preop pain/swelling, single-visit in acute periodontitis, retreatment, apprehension, allergies. Manage: reassure, complete debridement (no extrusion), drainage if pus, relieve occlusion, <b>CaOH</b> medicament, analgesics ± antibiotics.<br>
+  <b>Hypochlorite accident</b> (forceful injection, wide/immature apex, resorption → edema, ecchymosis, necrosis, paresthesia; recovery 7–10 days): immediate aspiration + <b>ice packs</b>, antibiotics/analgesics/antihistamines, steroids ± hospitalization in severe cases, cold packs then warm packs after 24 h.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الـFlare-up وحادث الهايبوكلورايت:</b> <b>Flare-up</b> (ألم/تورّم أثناء العلاج). عوامل الخطر: over-instrumentation/حشو زائد، تنظيف ناقص، خروج حطام، ألم/تورّم قبل العلاج، جلسة واحدة في التهاب حادّ، إعادة معالجة، قلق، تحسّس. العلاج: طمأنة، تنظيف كامل (بلا خروج)، تصريف إن وُجد صديد، خفّف الإطباق، دواء <b>CaOH</b>، مسكّنات ± مضاد حيوي. <b>حادث الهايبوكلورايت</b> (حقن بقوّة، قمة واسعة/غير ناضجة، ارتشاف ← وذمة، كدمة، نخر، تنميل؛ الشفاء 7–10 أيام): شفط فوري + <b>كمّادات ثلج</b>، مضادات حيوية/مسكّنات/مضادات هيستامين، ستيرويدات ± إدخال مستشفى في الشديدة، كمّادات باردة ثم دافئة بعد 24 ساعة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec13">Lec 10 · Restoration of Treated Teeth ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Why treated teeth are weaker &amp; options</div>
+  <div class="prompt">Why are endodontically treated teeth weaker, and what are the restoration options?</div>
+  <div class="answer">
+    Dentin is weakened in shear strength/toughness due to ~<b>9% moisture loss</b> and brittleness after loss of vitality. Conserve as much structure as possible.
+  <b>Options by tooth loss:</b>
+  <ul><li><b>Direct composite</b> — minimal loss.</li>
+  <li><b>Indirect onlays/endocrowns</b> — conserve structure (endocrown combines post+core+crown in one).</li>
+  <li><b>Full crown</b> — significant loss; often needs a post & core for retention.</li></ul>
+  Posterior teeth should have <b>cuspal/occlusal coverage</b> (onlay); crowns only when multiple large restorations or great structure loss.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>لماذا الأسنان المعالَجة أضعف وخيارات الترميم:</b> العاج يضعف في القصّ والمتانة بسبب فقد رطوبة ~<b>9%</b> والهشاشة بعد فقد الحيوية. احفظ أكبر قدر من البنية. <b>الخيارات حسب الفقد:</b> <b>كمبوزِت مباشر</b> (فقد بسيط)؛ <b>onlays/endocrowns</b> غير مباشرة (الـendocrown يجمع post+core+crown)؛ <b>تاج كامل</b> (فقد كبير، غالباً يحتاج post & core). الأسنان الخلفية تحتاج <b>تغطية حدبية/إطباقية</b> (onlay)، والتيجان فقط مع حشوات كبيرة متعددة أو فقد كبير.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Posts — guidelines &amp; types</div>
+  <div class="prompt">What are the clinical guidelines for post dimensions and the types of posts?</div>
+  <div class="answer">
+    A post gives retention to the core but does <b>not strengthen</b> the tooth (esp. metal posts). Tapered posts = least retentive; <b>threaded = most retentive</b> but cause stress concentration → root fracture.<br>
+  <b>Guidelines:</b> post = <b>¾ root length</b> (or keep <span class="k">5 mm of apical GP</span>); confined to the <b>straight</b> part of the canal; width as wide as the canal without extra widening.<br>
+  <b>Types:</b> custom (gold/base metal); prefabricated (metal, carbon fiber, <b>glass fiber</b>, quartz, zirconia). Fiber posts have a modulus closer to dentin.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الأوتاد — الإرشادات والأنواع:</b> الوتد يعطي إرساءً للـcore لكنه <b>لا يقوّي</b> السن (خاصةً المعدني). المخروطية أقلّ إرساءً، و<b>الملولبة (threaded) الأكثر إرساءً</b> لكنها تركّز الإجهاد ← كسر جذر. <b>الإرشادات:</b> الوتد = <b>¾ طول الجذر</b> (أو إبقاء <b>5مم GP قمية</b>)؛ محصور في الجزء <b>المستقيم</b>؛ عرضه بعرض القناة دون توسيع زائد. <b>الأنواع:</b> مخصّص (ذهب/معدن قاعدي)؛ جاهز (معدن، ألياف كربون، <b>ألياف زجاج</b>، كوارتز، زركونيا). أوتاد الألياف معاملها أقرب للعاج.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">The ferrule</div>
+  <div class="prompt">What is the ferrule and why is it important?</div>
+  <div class="answer">
+    The <b>ferrule</b> is formed by the crown's walls/margins encasing at least <span class="k">2–3 mm of sound tooth structure</span> above the gingival level. It significantly reduces fracture by reinforcing the tooth externally and dissipating concentrated forces; a longer ferrule increases fracture resistance and resists lateral post forces & crown leverage.<br>
+  <b>Crown prep requirements:</b> ferrule ≥2–3 mm; parallel axial walls; completely encircle the tooth; margin on solid structure; no invasion of adjacent tissues.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الـFerrule (الطوق):</b> يتكوّن من جدران/حواف التاج محيطةً بـ<b>2–3مم على الأقل من بنية سليمة</b> فوق مستوى اللثة. يقلّل الكسر كثيراً بتقوية السن خارجياً وتوزيع القوى المتركّزة؛ والأطول يزيد مقاومة الكسر ويقاوم قوى الوتد الجانبية ورافعة التاج. <b>متطلبات تحضير التاج:</b> ferrule ≥2–3مم؛ جدران محورية متوازية؛ إحاطة كاملة بالسن؛ الحافة على بنية صلبة؛ دون غزو الأنسجة المجاورة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec14">Lec 11 · Endo-Perio Relations ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Pathways &amp; lateral canals</div>
+  <div class="prompt">How do pulp and periodontium communicate (pathways)?</div>
+  <div class="answer">
+    Tooth function depends on periodontal health. Communication pathways:
+  <ul><li><b>Lateral canals:</b> normal anatomy, more in the <b>apical & furcation</b> regions; connect pulp & periodontal tissue → infection in one spreads to the other; radiolucency may appear lateral to the root or in the bifurcation.</li>
+  <li><b>Dentinal tubules:</b> inflamed/necrotic pulp can reach the attachment apparatus through tubules (interradicular lesions).</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مسارات الاتصال والقنوات الجانبية:</b> وظيفة السن تعتمد على صحة النسيج حول السني. المسارات: <b>القنوات الجانبية:</b> تشريح طبيعي، أكثر في منطقتي <b>القمة والتفرّق</b>؛ تربط اللب بالنسيج اللثوي ← عدوى أحدهما تنتقل للآخر؛ قد تظهر الشفافية جانب الجذر أو في التفرّق. <b>الأنابيب العاجية:</b> اللب الملتهب/المتنخّر قد يصل جهاز الارتباط عبرها (آفات بين الجذور).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Classification of endo-perio lesions</div>
+  <div class="prompt">Classify endo-perio lesions (5 categories).</div>
+  <div class="answer">
+    <ol>
+  <li><b>Primary endodontic:</b> sinus tract from apex/lateral canal drains through the sulcus; tooth <b>non-vital</b>; RCT alone heals it.</li>
+  <li><b>Primary endodontic + secondary periodontal:</b> untreated endo lesion + plaque/calculus → needs <b>both</b> treatments.</li>
+  <li><b>Primary periodontal:</b> plaque/calculus from sulcus → apex; tooth <b>vital</b>, mobile; prognosis depends on periodontal therapy.</li>
+  <li><b>Primary periodontal + secondary endodontic:</b> deep pocketing reaches & exposes pulp via lateral canals/tubules; needs both treatments.</li>
+  <li><b>True combined lesion:</b> endo & perio lesions join, clinically indistinguishable; prognosis depends on periodontal destruction.</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تصنيف آفات endo-perio (خمسة):</b> (١) <b>لبية أولية:</b> ناسور من القمة/قناة جانبية يُصرّف عبر الميزاب؛ السن <b>غير حيّ</b>؛ RCT وحده يشفيها. (٢) <b>لبية أولية + لثوية ثانوية:</b> آفة لبية غير معالَجة + قلح/جير ← تحتاج <b>العلاجين</b>. (٣) <b>لثوية أولية:</b> قلح/جير من الميزاب ← القمة؛ السن <b>حيّ</b> ومتحرّك؛ الإنذار حسب العلاج اللثوي. (٤) <b>لثوية أولية + لبية ثانوية:</b> جيب عميق يصل اللب عبر القنوات/الأنابيب؛ تحتاج العلاجين. (٥) <b>آفة مشتركة حقيقية:</b> تتّحد الآفتان ويصعب تمييزهما؛ الإنذار حسب التخريب اللثوي.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Pulpal vs periodontal — differential</div>
+  <div class="prompt">Give the key differential points between pulpal and periodontal disease.</div>
+  <div class="answer">
+    <table><thead><tr><th></th><th>Pulpal</th><th>Periodontal</th></tr></thead><tbody>
+  <tr><td>Etiology</td><td>Pulp infection</td><td>Periodontal infection</td></tr>
+  <tr><td>Vitality</td><td><b>Non-vital</b></td><td><b>Vital</b></td></tr>
+  <tr><td>Pockets</td><td>Single, narrow</td><td>Multiple, wide coronally</td></tr>
+  <tr><td>Pattern</td><td>Localized</td><td>Generalized</td></tr>
+  <tr><td>Bone loss</td><td>Wider apically</td><td>Wider coronally</td></tr>
+  <tr><td>Vertical bone loss</td><td>No</td><td>Yes</td></tr>
+  <tr><td>Treatment</td><td>Root canal</td><td>Periodontal</td></tr>
+  </tbody></table>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التمييز بين اللبي واللثوي:</b> <b>السبب:</b> عدوى لب / عدوى لثة. <b>الحيوية:</b> <b>غير حيّ</b> / <b>حيّ</b>. <b>الجيوب:</b> مفرد ضيّق / متعدد واسع تاجياً. <b>النمط:</b> موضعي / معمّم. <b>فقد العظم:</b> أوسع قمياً / أوسع تاجياً. <b>فقد عظم عمودي:</b> لا / نعم. <b>العلاج:</b> معالجة لبية / علاج لثوي.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Hemisection &amp; root resection</div>
+  <div class="prompt">Define hemisection and root resection, and their indications.</div>
+  <div class="answer">
+    When part of a tooth is untreatable, that part is removed and the rest kept functional (after complete RCT). Indications: <b>endodontic</b> (separated instrument, perforation, obstructed canal), <b>periodontal</b> (furcation involvement, severe disease of one root), <b>restorative</b> (large caries/erosion, perforation, fracture).<br>
+  <b>Hemisection:</b> removal of <b>half a tooth</b> (e.g., mesial root of a mandibular first molar) with later separate crowning → better furcation access.<br>
+  <b>Root resection:</b> removal of <b>one root</b> from a multirooted tooth <b>without</b> removing coronal structure (e.g., maxillary molars).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>نصف السن وقطع الجذر:</b> حين يتعذّر علاج جزء من السن، يُزال ويُبقى الباقي وظيفياً (بعد RCT كامل). الاستطبابات: <b>لبية</b> (أداة منكسرة، ثقب، قناة مسدودة)، <b>لثوية</b> (إصابة تفرّق، مرض شديد لجذر)، <b>ترميمية</b> (تسوّس/تآكل كبير، ثقب، كسر). <b>Hemisection:</b> إزالة <b>نصف السن</b> (مثل الجذر الإنسي للرحى السفلية الأولى) ثم تتويج منفصل ← وصول أفضل للتفرّق. <b>Root resection:</b> إزالة <b>جذر واحد</b> من سن متعدد الجذور <b>دون</b> إزالة البنية التاجية (الأرحاء العلوية).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec15">Lec 12 · Tooth Discoloration &amp; Bleaching ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Causes of discoloration</div>
+  <div class="prompt">Classify the causes of tooth discoloration.</div>
+  <div class="answer">
+    <b>Patient-related:</b> pulp necrosis (by-products discolor dentin → intracoronal bleach), intrapulpal hemorrhage (iron sulphides), dentin hypercalcification (yellow), age.<br>
+  <b>Tooth/developmental:</b> enamel hypocalcification (white-brown intact), enamel hypoplasia (porous); systemic — erythroblastosis fetalis (Rh, green/brown/blue), sickle cell, amelogenesis/dentinogenesis imperfecta.<br>
+  <b>Drug-related:</b> <b>tetracycline</b> (binds calcium → yellow-gray-brown), endemic <b>fluorosis</b> (chalky white-brown), chlorhexidine surface stain.<br>
+  <b>Dentist-related:</b> pulp remnants, intracanal medicaments, obturation materials left in chamber, amalgam, pins/posts, composite microleakage.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أسباب تغيّر اللون:</b> <b>متعلقة بالمريض:</b> نخر اللب (نواتجه تلوّن العاج ← تبييض داخلي)، نزف داخل اللب (كبريتيدات الحديد)، فرط تكلّس العاج (أصفر)، العمر. <b>السن/تطوّرية:</b> نقص تكلّس المينا (أبيض-بني سليم)، نقص تنسّج المينا (مسامي)؛ جهازية — erythroblastosis fetalis (Rh، أخضر/بني/أزرق)، فقر الدم المنجلي، amelogenesis/dentinogenesis imperfecta. <b>دوائية:</b> <b>تتراسيكلين</b> (يرتبط بالكالسيوم ← أصفر-رمادي-بني)، <b>فلورة</b> متوطّنة (أبيض طبشوري-بني)، صبغة سطحية من الكلورهيكسيدين. <b>متعلقة بالطبيب:</b> بقايا لب، أدوية القناة، مواد حشو متروكة بالحجرة، أملغم، أوتاد، تسرّب كمبوزِت.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Bleaching materials &amp; mechanism</div>
+  <div class="prompt">What are the main bleaching materials and the mechanism of bleaching?</div>
+  <div class="answer">
+    <ul>
+  <li><b>Hydrogen peroxide (Superoxol, 30–35%):</b> strong but caustic (burns tissue).</li>
+  <li><b>Sodium perborate:</b> stable when dry; with water → sodium metaborate + H₂O₂ + O₂; <b>safe & easily controlled → intracoronal bleaching</b>.</li>
+  <li><b>Carbamide peroxide (urea H₂O₂, 3–45%, usually 10%):</b> breaks down to ~3.5% H₂O₂ + urea/ammonia/CO₂.</li>
+  </ul>
+  <b>Mechanism:</b> a <span class="k">redox (oxidation-reduction) reaction</span> — unstable peroxides form free radicals that degrade the <b>organic</b> structure of hard tissue to by-products (CO₂); inorganic molecules don't react.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مواد التبييض والآلية:</b> <b>بيروكسيد الهيدروجين (Superoxol، 30–35%):</b> قوي لكنه كاوٍ (يحرق النسيج). <b>بيربورات الصوديوم:</b> ثابت جافاً؛ مع الماء ← ميتابورات صوديوم + H₂O₂ + O₂؛ <b>آمن وسهل التحكّم ← تبييض داخلي</b>. <b>بيروكسيد الكارباميد (يوريا H₂O₂، 3–45%، عادةً 10%):</b> يتفكّك لـ~3.5% H₂O₂ + يوريا/أمونيا/CO₂. <b>الآلية:</b> <b>تفاعل أكسدة-اختزال (redox)</b> — بيروكسيدات غير مستقرة تكوّن جذوراً حرّة تُفكّك البنية <b>العضوية</b> للنسيج الصلب إلى نواتج (CO₂)؛ والجزيئات اللاعضوية لا تتفاعل.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Walking bleach technique</div>
+  <div class="prompt">Describe the intracoronal (walking bleach) technique and bleaching side effects.</div>
+  <div class="answer">
+    <b>Walking bleach:</b> (1) radiograph to confirm good obturation; (2) isolate with rubber dam; (3) access & clean the chamber of GP/filling; (4) place a <b>2 mm glass-ionomer barrier</b> over the coronal orifice (protect tubules); (5) place fresh <b>sodium perborate/water</b> mix; (6) temporize; (7) recall in 1–2 weeks, repeat as needed; (8) finally restore with composite.<br>
+  <b>Side effects:</b> tooth sensitivity (esp. H₂O₂ + heat); ↓ enamel hardness (restored by fluoride); transient ↓ pulpal blood flow; <span class="k">external cervical resorption (with &gt;30% H₂O₂)</span>; composite surface roughening + microleakage.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تقنية Walking Bleach (الداخلي):</b> (١) أشعة لتأكيد حشو جيّد؛ (٢) عزل بحاجز؛ (٣) فتح وتنظيف الحجرة من الـGP/الحشو؛ (٤) <b>حاجز أيونومر زجاجي 2مم</b> فوق الفوهة (حماية الأنابيب)؛ (٥) مزيج طازج <b>بيربورات صوديوم/ماء</b>؛ (٦) حشوة مؤقتة؛ (٧) مراجعة بعد 1–2 أسبوع وكرّر عند الحاجة؛ (٨) أخيراً ترميم بالكمبوزِت. <b>الآثار الجانبية:</b> حساسية (خاصةً H₂O₂ + حرارة)؛ نقص صلابة المينا (يُصلَح بالفلورايد)؛ نقص مؤقت لتدفّق دم اللب؛ <b>ارتشاف عنقي خارجي (مع H₂O₂ >30%)</b>؛ خشونة سطح الكمبوزِت + تسرّب.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec16">Lec 2 · Topical Anesthesia &amp; Referred Pain</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Topical anesthesia</div>
+  <div class="prompt">What is topical anesthesia used for and what is it composed of?</div>
+  <div class="answer">
+    Topical anesthesia minimizes the surface discomfort of needle insertion (effective to a depth of <b>2–3 mm</b>). It is applied before injection to reduce the initial sting.
+  Composed of <b>benzocaine</b> (up to 20%) or <b>lidocaine</b> as a solution/ointment (5%) or spray (up to 10%).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التخدير الموضعي السطحي (Topical):</b> يقلّل انزعاج سطح دخول الإبرة (فعّال حتى عمق <b>2–3مم</b>)، ويُطبّق قبل الحقن لتقليل الوخز الأولي. يتكوّن من <b>بنزوكائين</b> (حتى 20%) أو <b>ليدوكائين</b> كمحلول/مرهم (5%) أو بخّاخ (حتى 10%).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Dental &amp; referred pain</div>
+  <div class="prompt">What is referred pain in the dental context?</div>
+  <div class="answer">
+    Most oral/dental pain can be traced to its source, but in some cases pain is experienced <b>away from its source</b> — on the same side but in the <b>other jaw</b>, or in the ears, eyes, or sinus. Careful diagnosis is needed to reveal the actual affected tooth or related anatomic structure (especially in non-dental pain). <b>Selective anesthesia</b> can help distinguish a mandibular vs maxillary source.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الألم المُحال (Referred pain):</b> معظم آلام الفم تُتبّع لمصدرها، لكن أحياناً يُشعر بالألم <b>بعيداً عن مصدره</b> — في نفس الجهة لكن <b>الفك الآخر</b>، أو الأذن أو العين أو الجيب. يلزم تشخيص دقيق لكشف السن المصاب فعلاً أو البنية التشريحية المرتبطة (خاصةً في الألم غير السنّي). و<b>التخدير الانتقائي</b> يساعد في تمييز المصدر السفلي من العلوي.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec17">Lec 10 · Composite, Onlays &amp; Endocrowns</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Direct composite &amp; indirect onlays</div>
+  <div class="prompt">When is a direct composite vs an indirect onlay/endocrown indicated?</div>
+  <div class="answer">
+    <b>Direct composite:</b> when only a <b>minimal amount</b> of coronal structure is lost. Composites have ~<b>280 MPa</b> compressive strength and a Young's modulus (~10–16 GPa) close to dentin.<br>
+  <b>Indirect onlays/endocrowns:</b> conserve remaining structure (the alternative being to eliminate cusps/walls for a full crown). The <b>endocrown</b> combines the post, core, and crown in one component. Onlays are lab-made from hybrid resin composite or ceramics; light/pressure/vacuum processing increases polymer conversion and mechanical properties.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الكمبوزِت المباشر مقابل الـonlay/endocrown:</b> <b>الكمبوزِت المباشر:</b> عند فقد <b>قدر بسيط</b> فقط من البنية التاجية. مقاومة انضغاطه ~<b>280 ميغاباسكال</b> ومعامل يونغ (~10–16 GPa) قريب من العاج. <b>الـonlays/endocrowns غير المباشرة:</b> تحفظ البنية المتبقية (البديل إزالة الحدبات/الجدران لتاج كامل). الـ<b>endocrown</b> يجمع الوتد والـcore والتاج في قطعة واحدة. الـonlays تُصنع مخبرياً من كمبوزِت هجين أو خزف؛ ومعالجة الضوء/الضغط/التفريغ تزيد تحوّل البوليمر وخصائصه الميكانيكية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec18">Lec 11 · Vertical Fracture &amp; Developmental Grooves</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Vertical fracture &amp; developmental grooves</div>
+  <div class="prompt">Describe vertical root fracture and developmental grooves as endo-perio conditions.</div>
+  <div class="answer">
+    <b>Vertical fracture:</b> a tooth with a vertical fracture may show bone loss <b>along the fracture line</b>, affecting both pulp and periodontal tissue. Because of the poor prognosis, treatment is usually <b>extraction</b>.<br>
+  <b>Developmental grooves:</b> most often on the <b>palatal surface of the maxillary lateral incisor</b>; the groove extends apically, causing localized periodontitis and bone loss along the root. Asymptomatic until plaque invades the epithelial attachment and reaches the groove → rapid periodontal infection (pulp may be secondarily infected). Treatment: <b>surgical correction of the groove + periodontal treatment</b> (± endo if pulp affected).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الكسر العمودي والأخاديد التطوّرية:</b> <b>الكسر العمودي:</b> السن المكسور عمودياً قد يُظهر فقد عظم <b>على طول خط الكسر</b> ويصيب اللب والنسيج اللثوي معاً. ولسوء الإنذار يكون العلاج عادةً <b>الخلع</b>. <b>الأخاديد التطوّرية:</b> غالباً على <b>السطح الحنكي للقاطع الجانبي العلوي</b>؛ يمتد الأخدود قمياً مسبّباً التهاباً لثوياً موضعياً وفقد عظم على طول الجذر. لا عرَضي حتى تغزو اللويحة الارتباط الظهاري وتصل الأخدود ← عدوى لثوية سريعة (وقد يُصاب اللب ثانوياً). العلاج: <b>تصحيح جراحي للأخدود + علاج لثوي</b> (± معالجة لبية إن أُصيب اللب).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec19">Lec 12 · Thermocatalytic &amp; Combination Bleaching</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Thermocatalytic &amp; combination bleaching</div>
+  <div class="prompt">Describe the thermocatalytic technique and combination (internal + external) bleaching.</div>
+  <div class="answer">
+    <b>Thermocatalytic:</b> (1) isolate with rubber dam; (2) place the bleaching agent (H₂O₂ or sodium perborate or both) in the chamber; (3) apply <b>heat</b> (hot stick or light source); (4) repeat until satisfactory; (5) wash, seal with a cotton pellet + temporary; (6) recall after 2–3 weeks to assess; (7) place a permanent seal.<br>
+  <b>Combination (internal + external discoloration):</b> (a) intracoronal bleaching + <b>in-office</b> bleaching (H₂O₂ on the facial surface + heat source); or (b) intracoronal bleaching + <b>home</b> bleaching using a night-guard template with H₂O₂ gel.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التبييض الحراري التحفيزي والمدمج:</b> <b>Thermocatalytic:</b> (١) عزل بحاجز؛ (٢) ضع عامل التبييض (H₂O₂ أو بيربورات صوديوم أو كليهما) في الحجرة؛ (٣) طبّق <b>حرارة</b> (عصا ساخنة أو مصدر ضوء)؛ (٤) كرّر حتى الرضا؛ (٥) اغسل وأغلق بكرة قطن + مؤقت؛ (٦) مراجعة بعد 2–3 أسابيع للتقييم؛ (٧) إغلاق دائم. <b>المدمج (تلوّن داخلي + خارجي):</b> (أ) تبييض داخلي + <b>عيادي</b> (H₂O₂ على السطح الدهليزي + مصدر حرارة)؛ أو (ب) تبييض داخلي + <b>منزلي</b> بقالب واقٍ ليلي مع جل H₂O₂.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec20">Lec 4 · Tips for Good Endodontic Radiography</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Practical radiography tips &amp; info gained</div>
+  <div class="prompt">List practical tips for good endodontic radiography and the information it provides.</div>
+  <div class="answer">
+    <b>Tips:</b> use <b>radiolucent</b> rubber dam frames (metal frames/clamps mask structures); date & mount films chronologically; quick automated processing (developer/fixer at 100°F) gives a clear film fast; digital allows clear zoom (no magnifying lens needed).<br>
+  <b>Information gained:</b> crown & pulp anatomy; hard-tissue alterations (sclerosis/resorption); number/size/location/direction of roots; working-length estimation; related structures (mental foramen, maxillary sinus); master-cone position; obturation success; <b>instrument separation or perforations</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>نصائح التصوير والمعلومات المكتسبة:</b> <b>النصائح:</b> استخدم إطارات حاجز <b>شفّافة للأشعة</b> (المعدنية والـclamps تحجب البنى)؛ أرّخ الأفلام ورتّبها زمنياً؛ المعالجة الآلية السريعة (المحمّض/المثبّت عند 100°ف) تعطي فيلماً واضحاً بسرعة؛ والرقمي يتيح تكبيراً واضحاً (بلا عدسة). <b>المعلومات:</b> تشريح التاج واللب؛ تغيّرات النسيج الصلب (تصلّب/ارتشاف)؛ عدد/حجم/موقع/اتجاه الجذور؛ تقدير الطول العامل؛ البنى المجاورة (الثقبة الذقنية، الجيب الفكي)؛ موضع القمع الرئيس؛ نجاح الحشو؛ <b>انفصال أداة أو ثقوب</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="foot">
+✅ غطّى هذا الملف كامل مادة اليوم الثاني (ص 77–152): إكمال تقنيات الحشو، التشخيص اللبي والفحوص واختبارات اللب، التحكّم بالألم والتخدير الموضعي، الطول العامل ومحدّدات القمة (الأجيال)، التصوير الشعاعي وCBCT، تصنيف الأدوات ومكوّنات المبرد، أنظمة NiTi الدوّارة، السيلرات ومواد الحشو، أهداف الحشو وتقنياته والحواجز القمية، الطوارئ اللبية، ترميم الأسنان المعالَجة والأوتاد والـferrule، علاقة اللب-اللثة، وتغيّر اللون والتبييض.<br><br>
+عدد الكلمات (إنجليزي + عربي): <b>10519</b> كلمة.
+</div>
+
+<script>
+const total=74;
+function upd(){
+  let done=document.querySelectorAll('.card[data-done="1"]').length;
+  document.getElementById('score').textContent=done+' / '+total;
+  document.getElementById('fill').style.width=(done/total*100)+'%';
+}
+function revealCard(b){
+  const card=b.closest('.card');
+  card.querySelector('.answer').classList.add('show');
+  b.style.display='none';
+  card.querySelector('.got').style.display='inline-block';
+  card.querySelector('.rev').style.display='inline-block';
+}
+function rate(b,good){
+  const card=b.closest('.card');
+  card.setAttribute('data-done',good?'1':'2');
+  upd();
+}
+function revealAll(){
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelector('.answer').classList.add('show');
+    c.querySelector('.reveal').style.display='none';
+    c.querySelector('.got').style.display='inline-block';
+    c.querySelector('.rev').style.display='inline-block';
+  });
+}
+function hideAll(){
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelector('.answer').classList.remove('show');
+    c.querySelector('.reveal').style.display='inline-block';
+    c.querySelector('.got').style.display='none';
+    c.querySelector('.rev').style.display='none';
+  });
+}
+function resetAll(){
+  document.querySelectorAll('.card').forEach(c=>c.setAttribute('data-done','0'));
+  hideAll();upd();
+}
+upd();
+</script>
+</body>
+</html>
