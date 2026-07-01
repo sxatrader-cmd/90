@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Operative Dentistry — Day 3 — Complete</title>
+<style>
+:root{color-scheme:light only;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{background:#ffffff !important;color:#000000 !important;}
+@media (prefers-color-scheme:dark){
+  html,body{background:#ffffff !important;color:#000000 !important;}
+  .card,.hint,.topbar,.toc{background:#ffffff !important;color:#000000 !important;}
+}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;padding:0 14px 120px;line-height:1.65;font-size:17px;}
+h1{font-size:22px;margin:18px 0 4px;}
+.subtitle{color:#444;font-size:14px;margin:0 0 14px;}
+.topbar{position:sticky;top:0;background:#fff !important;border-bottom:2px solid #000;padding:10px 0;z-index:50;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.score{font-weight:700;font-size:15px;}
+.bar{flex:1;min-width:120px;height:12px;background:#eee;border:1px solid #000;border-radius:6px;overflow:hidden;}
+.bar>i{display:block;height:100%;width:0;background:#000;transition:width .3s;}
+.controls button{font-size:13px;padding:6px 10px;border:1px solid #000;background:#fff;border-radius:8px;cursor:pointer;}
+.toc{background:#fff;border:2px solid #000;border-radius:12px;padding:12px 14px;margin:14px 0;}
+.toc b{display:block;margin-bottom:6px;}
+.toc a{display:block;color:#000;text-decoration:none;padding:5px 0;border-bottom:1px dashed #ccc;font-size:15px;}
+.toc a:last-child{border-bottom:0;}
+h2.sec{font-size:18px;border-left:6px solid #000;padding:8px 12px;margin:30px 0 14px;background:#f3f3f3;border-radius:0 8px 8px 0;}
+.card{border:2px solid #000;border-radius:14px;padding:14px 16px;margin:14px 0;background:#fff !important;}
+.card[data-done="1"]{border-color:#157f3b;background:#f3fbf5 !important;}
+.card[data-done="2"]{border-color:#b00;background:#fff7f7 !important;}
+.topic{font-weight:700;font-size:15px;color:#000;margin-bottom:6px;letter-spacing:.2px;text-transform:uppercase;}
+.prompt{font-size:17px;font-weight:600;margin-bottom:10px;}
+.answer{display:none;border-top:1px dashed #999;padding-top:10px;margin-top:4px;}
+.answer.show{display:block;animation:fade .25s;}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.answer ol,.answer ul{margin:6px 0;padding-inline-start:22px;}
+.answer li{margin:4px 0;}
+.answer table{border-collapse:collapse;width:100%;margin:8px 0;font-size:15px;}
+.answer th,.answer td{border:1px solid #000;padding:6px 8px;text-align:left;}
+.answer th{background:#eee;}
+.k{background:#ffd400;color:#b00000 !important;font-weight:700;padding:0 4px;border-radius:3px;}
+.hint{direction:rtl;text-align:right;background:#fff;border:1px solid #000;border-radius:10px;padding:10px 12px;margin-top:12px;font-size:16px;line-height:1.8;}
+.hint .hl{background:#ffd400;color:#b00;font-weight:700;padding:0 5px;border-radius:3px;}
+.hint b{color:#b00000;}
+.btns{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;}
+.btns button{font-size:15px;padding:9px 14px;border-radius:10px;border:2px solid #000;background:#fff;cursor:pointer;font-weight:600;}
+.btns .got{border-color:#157f3b;color:#157f3b;}
+.btns .rev{border-color:#b00;color:#b00;}
+.btns .reveal{background:#000;color:#fff;}
+.foot{margin-top:30px;border-top:2px solid #000;padding-top:14px;font-size:14px;color:#333;}
+.note{background:#ffd400;color:#000;border:1px solid #000;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:15px;}
+</style>
+</head>
+<body>
+<h1>Operative Dentistry — Day 3 — Complete Interactive Review</h1>
+<p class="subtitle">pages 1–70 · definitions & nomenclature → G.V. Black classification → instruments → sterilization → cavity preparation (Cl I/II/III) → cements & pulp protection · 63 cards · English + شرح عربي وافٍ</p>
+
+<div class="topbar">
+  <span class="score" id="score">0 / 63</span>
+  <span class="bar"><i id="fill"></i></span>
+  <span class="controls">
+    <button onclick="revealAll()">اكشف الكل</button>
+    <button onclick="hideAll()">إخفاء</button>
+    <button onclick="resetAll()">تصفير</button>
+  </span>
+</div>
+
+<div class="note">⭐ = أقسام عالية الأهمية (high-yield). اقرأ السؤال، حاول الإجابة من ذاكرتك، ثم اكشف الجواب وقيّم نفسك.</div>
+
+<div class="toc">
+<b>المحتويات · Contents</b>
+<a href="#sec0">Lec 1 · Operative Dentistry — Definitions &amp; Objectives ⭐</a>
+<a href="#sec1">Lec 1 · Cavity Nomenclature — Walls, Angles &amp; Surfaces ⭐</a>
+<a href="#sec2">Lec 1 · G.V. Black Classification &amp; Spread of Caries ⭐</a>
+<a href="#sec3">Lec 2 · Hand Instruments — Parts &amp; Formula</a>
+<a href="#sec4">Lec 2 · Cutting Instruments</a>
+<a href="#sec5">Lec 2 · Non-cutting Instruments</a>
+<a href="#sec6">Lec 2 · Grasps, Rotary Instruments &amp; Burs</a>
+<a href="#sec7">Lec 3 · Sterilization Methods ⭐</a>
+<a href="#sec8">Lec 3 · Disinfection &amp; Asepsis</a>
+<a href="#sec9">Lec 4 · Cavity Classification &amp; Preparation Steps ⭐</a>
+<a href="#sec10">Lec 4 · Class I Cavity Preparation ⭐</a>
+<a href="#sec11">Lec 5 · Class II Amalgam Preparation ⭐</a>
+<a href="#sec12">Lec 6 · Class III Amalgam Preparation</a>
+<a href="#sec13">Lec 8 · Cements &amp; Pulp Protection — Liners vs Bases ⭐</a>
+<a href="#sec14">Lec 8 · Zinc Phosphate &amp; ZOE Cements ⭐</a>
+<a href="#sec15">Lec 9 · Polycarboxylate, Glass Ionomer &amp; Resin Cements ⭐</a>
+<a href="#sec16">Lec 9 · Varnish, Bonding, Ca(OH)₂ &amp; Protection Protocols ⭐</a>
+<a href="#sec17">Lec 1 · Caries Process &amp; Tooth Structure (Detailed)</a>
+<a href="#sec18">Lec 2 · Instrument Formulas &amp; Bur Selection (Detailed)</a>
+<a href="#sec19">Lec 3 · Disinfection Categories &amp; Monitoring (Detailed)</a>
+<a href="#sec20">Lec 4–5 · Resistance &amp; Retention Principles (Detailed) ⭐</a>
+<a href="#sec21">Lec 8–9 · Cement Insertion &amp; Clinical Use (Detailed)</a>
+<a href="#sec22">Lec 4–5 · Convenience, Finishing &amp; Cleaning (Detailed)</a>
+<a href="#sec23">Lec 8–9 · Material Reactions &amp; Manipulation (Detailed)</a>
+</div>
+
+<h2 class="sec" id="sec0">Lec 1 · Operative Dentistry — Definitions &amp; Objectives ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Core definitions</div>
+  <div class="prompt">Define operative dentistry, caries, and cavity preparation.</div>
+  <div class="answer">
+    <b>Operative dentistry:</b> the ART & SCIENCE of diagnosis & treatment of defects of teeth (caries, discoloration, fracture, malformation) that do <b>not</b> require full-coverage restorations, returning them to correct form, function & esthetics.<br>
+  <b>Caries:</b> an <span class="k">irreversible microbial disease</span> of the calcified tissues — demineralization of the inorganic portion + destruction of the organic substance → often cavitation.<br>
+  <b>Cavity preparation:</b> a mechanical alteration of the tooth to receive a restorative material that returns it to proper form, function & esthetics.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التعاريف الأساسية:</b> <b>طب الأسنان الترميمي (Operative):</b> فنّ وعلم تشخيص وعلاج عيوب الأسنان (تسوّس، تلوّن، كسر، تشوّه) التي <b>لا</b> تحتاج تغطية كاملة، لإعادتها للشكل والوظيفة والجمال الصحيح. <b>التسوّس (Caries):</b> <b>مرض جرثومي لا رجعة فيه</b> للأنسجة المتكلّسة — إزالة معادن الجزء اللاعضوي + تدمير المادة العضوية ← غالباً تكهّف. <b>تحضير الحفرة:</b> تعديل ميكانيكي للسن لاستقبال مادة ترميمية تعيده للشكل والوظيفة والجمال.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Objectives of tooth preparation</div>
+  <div class="prompt">List the general objectives of tooth preparation.</div>
+  <div class="answer">
+    <ol>
+  <li>Remove diseased tissue (caries) as necessary.</li>
+  <li>Restore the <b>integrity</b> of the tooth surface.</li>
+  <li>Restore <b>function</b> so that under mastication neither tooth nor restoration fractures, and the restoration is not displaced.</li>
+  <li>Restore the <b>appearance</b> (esthetics) of the tooth.</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أهداف تحضير السن:</b> (١) إزالة النسيج المريض (التسوّس) حسب الحاجة. (٢) استعادة <b>سلامة</b> سطح السن. (٣) استعادة <b>الوظيفة</b> بحيث لا ينكسر السن ولا الترميم تحت قوّة المضغ ولا يُزاح الترميم. (٤) استعادة <b>مظهر</b> السن (الجمال).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec1">Lec 1 · Cavity Nomenclature — Walls, Angles &amp; Surfaces ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Tooth surfaces &amp; directions</div>
+  <div class="prompt">Define the tooth surface terms: mesial, distal, lingual, facial/labial/buccal, gingival, occlusal/incisal, proximal.</div>
+  <div class="answer">
+    <ul>
+  <li><b>Mesial</b> = toward the midline of the arch; <b>Distal</b> = away from the midline.</li>
+  <li><b>Lingual</b> = toward the tongue; <b>Facial</b> = toward cheek/lip (<b>labial</b> for anteriors, <b>buccal</b> for posteriors).</li>
+  <li><b>Gingival</b> = toward the gingiva.</li>
+  <li><b>Occlusal</b> = chewing surface of posteriors; <b>Incisal</b> = biting edge of anteriors.</li>
+  <li><b>Proximal</b> = the surface facing an adjacent tooth (mesial & distal).</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أسطح السن والاتجاهات:</b> <b>إنسي (Mesial)</b> = نحو منتصف القوس؛ <b>وحشي (Distal)</b> = بعيداً عنه. <b>لساني (Lingual)</b> = نحو اللسان؛ <b>دهليزي (Facial)</b> = نحو الخدّ/الشفة (<b>شفوي labial</b> للأمامية، <b>خدّي buccal</b> للخلفية). <b>لثوي (Gingival)</b> = نحو اللثة. <b>إطباقي (Occlusal)</b> = سطح مضغ الخلفية؛ <b>قاطع (Incisal)</b> = حافة عضّ الأمامية. <b>داني (Proximal)</b> = السطح المواجه للسن المجاور (إنسي ووحشي).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Cavity walls</div>
+  <div class="prompt">Define marginal ridge, pulpal floor, axial wall, and the tooth's long axis.</div>
+  <div class="answer">
+    <ul>
+  <li><b>Marginal ridge:</b> the border of the lingual surfaces of anteriors and the occlusal surfaces of posteriors.</li>
+  <li><b>Pulpal floor (pulpal wall):</b> the cavity surface facing the pulp, <b>perpendicular</b> to the long axis.</li>
+  <li><b>Axial wall:</b> parallel to the long axis, adjacent to the pulp chamber (in Cl II).</li>
+  <li><b>Long axis:</b> an imaginary line through the center of the tooth dividing it into two identical halves.</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>جدران الحفرة:</b> <b>الحافة الحُفّية (Marginal ridge):</b> حدّ السطوح اللسانية للأمامية والإطباقية للخلفية. <b>الأرضية اللبية (Pulpal floor):</b> سطح الحفرة المواجه للّب، <b>عمودي</b> على المحور الطولي. <b>الجدار المحوري (Axial wall):</b> موازٍ للمحور الطولي ومجاور لحجرة اللب (في Cl II). <b>المحور الطولي:</b> خطّ وهمي يمرّ بمركز السن ويقسمه نصفين متطابقين.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Line, point &amp; cavosurface angles</div>
+  <div class="prompt">Define line angle, point angle, and cavosurface line angle.</div>
+  <div class="answer">
+    <ul>
+  <li><b>Line angle:</b> the junction of <b>two</b> walls (e.g., axio-pulpal line angle).</li>
+  <li><b>Point angle:</b> the junction of <b>three</b> walls (e.g., facio-axio-gingival point angle).</li>
+  <li><b>Cavosurface line angle:</b> formed by the junction of a cavity wall and the external tooth surface; named by the adjacent wall (e.g., gingival cavosurface line angle).</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الزوايا الخطّية والنقطية والسطحية:</b> <b>الزاوية الخطّية (Line angle):</b> التقاء <b>جدارين</b> (مثل axio-pulpal). <b>الزاوية النقطية (Point angle):</b> التقاء <b>ثلاثة</b> جدران (مثل facio-axio-gingival). <b>زاوية السطح الحُفّي (Cavosurface line angle):</b> تتكوّن من التقاء جدار الحفرة بالسطح الخارجي للسن، وتُسمّى باسم الجدار المجاور (مثل gingival cavosurface).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec2">Lec 1 · G.V. Black Classification &amp; Spread of Caries ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">G.V. Black classes I–VI</div>
+  <div class="prompt">State G.V. Black's classification of carious lesions (Class I–VI).</div>
+  <div class="answer">
+    <ul>
+  <li><b>Class I:</b> pits & fissures on facial/lingual/occlusal of molars & premolars, and lingual of maxillary anteriors.</li>
+  <li><b>Class II:</b> proximal surfaces of <b>posterior</b> teeth (molars & premolars).</li>
+  <li><b>Class III:</b> proximal surfaces of <b>anterior</b> teeth (<b>not</b> involving the incisal edge).</li>
+  <li><b>Class IV:</b> proximal surfaces of anteriors <b>with</b> incisal angle involvement.</li>
+  <li><b>Class V:</b> facial & lingual surfaces in the <b>gingival third</b>.</li>
+  <li><b>Class VI:</b> pits/wear defects on incisal edges of anteriors or cusp tips of posteriors.</li>
+  </ul>
+  G.V. Black is the <span class="k">father of operative dentistry</span>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تصنيف G.V. Black (I–VI):</b> <b>Class I:</b> الحُفَر والشقوق على الإطباقي/الدهليزي/اللساني للأرحاء والضواحك، واللساني للأمامية العلوية. <b>Class II:</b> الأسطح الدانية للأسنان <b>الخلفية</b>. <b>Class III:</b> الأسطح الدانية للأسنان <b>الأمامية</b> (<b>دون</b> الحافة القاطعة). <b>Class IV:</b> الأسطح الدانية للأمامية <b>مع</b> إصابة الزاوية القاطعة. <b>Class V:</b> الأسطح الدهليزية واللسانية في <b>الثلث اللثوي</b>. <b>Class VI:</b> حُفَر/تآكل على الحواف القاطعة للأمامية أو رؤوس حدبات الخلفية. وG.V. Black هو <b>أبو طب الأسنان الترميمي</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Caries classification by site</div>
+  <div class="prompt">How is caries classified by anatomical site?</div>
+  <div class="answer">
+    <ul>
+  <li><b>Occlusal (pit & fissure) caries.</b></li>
+  <li><b>Smooth-surface caries</b> (proximal & cervical).</li>
+  <li><b>Linear enamel caries:</b> in the neonatal line region of maxillary anteriors (hypocalcemia or birth trauma).</li>
+  <li><b>Root-surface caries:</b> more common in <b>older patients</b> (gingival recession); often <b>asymptomatic, rapidly progressing</b>, closer to the pulp, harder to restore.</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تصنيف التسوّس حسب الموقع:</b> <b>تسوّس إطباقي</b> (حُفَر وشقوق). <b>تسوّس الأسطح الملساء</b> (داني وعنقي). <b>تسوّس مينائي خطّي:</b> في منطقة الخطّ الوليدي للأمامية العلوية (نقص كالسيوم أو رضّ ولادة). <b>تسوّس سطح الجذر:</b> أشيع في <b>كبار السن</b> (انحسار اللثة)؛ غالباً <b>لا عرَضي وسريع التقدّم</b>، أقرب للّب وأصعب ترميماً.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Spread of caries (triangles)</div>
+  <div class="prompt">Describe the shape (triangle) caries takes in enamel and dentin on occlusal vs smooth surfaces.</div>
+  <div class="answer">
+    Caries follows the direction of <b>enamel rods</b> / <b>dentinal tubules</b>:<br>
+  <b>Occlusal (pit & fissure):</b> in enamel → a triangle with <b>base toward the dentin (DEJ), apex toward the occlusal surface</b>; in dentin → a triangle with <b>base toward the DEJ, apex toward the pulp</b>.<br>
+  <b>Smooth (proximal) surfaces:</b> in enamel → triangle with <b>base toward the outer surface, apex toward the DEJ</b>; in dentin → <b>base toward the DEJ, apex toward the pulp</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>انتشار التسوّس (المثلثات):</b> يتّبع التسوّس اتجاه <b>قضبان المينا</b> / <b>الأنابيب العاجية</b>: <b>الإطباقي (حُفَر وشقوق):</b> في المينا ← مثلث <b>قاعدته نحو العاج (DEJ) ورأسه نحو السطح الإطباقي</b>؛ في العاج ← مثلث <b>قاعدته نحو DEJ ورأسه نحو اللب</b>. <b>الأسطح الملساء (الدانية):</b> في المينا ← مثلث <b>قاعدته نحو السطح الخارجي ورأسه نحو DEJ</b>؛ في العاج ← <b>قاعدته نحو DEJ ورأسه نحو اللب</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec3">Lec 2 · Hand Instruments — Parts &amp; Formula</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Materials &amp; categories</div>
+  <div class="prompt">What materials are used for hand instruments, and what are the two categories?</div>
+  <div class="answer">
+    <b>G.V. Black</b> gave the first acceptable nomenclature/classification. Historically <b>carbon steel</b> (harder, holds sharpness) was primary; now <b>stainless steel</b> is preferred (stays bright with steam/dry-heat sterilization; <b>chromium</b> = corrosion resistance, <b>carbon</b> = hardness).<br>
+  Two categories: <b>cutting</b> and <b>non-cutting</b> instruments.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>المواد والفئات:</b> وضع <b>G.V. Black</b> أول تسمية/تصنيف مقبول. تاريخياً كان <b>الفولاذ الكربوني</b> الأساس (أقسى ويحفظ الحدّة)؛ والآن يُفضَّل <b>الستانلس ستيل</b> (يبقى لامعاً مع تعقيم البخار/الحرارة الجافة؛ <b>الكروم</b> = مقاومة تآكل، <b>الكربون</b> = صلابة). الفئتان: أدوات <b>قاطعة</b> و<b>غير قاطعة</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Parts &amp; shank angles</div>
+  <div class="prompt">What are the three parts of a hand cutting instrument and the shank angle types?</div>
+  <div class="answer">
+    Three parts: <b>handle</b>, <b>shank</b>, and <b>blade</b> (in non-cutting instruments the blade is replaced by a <b>nib/working end</b>).
+  <ul><li><b>Blade/nib:</b> the working end; double-ended instruments have a blade at each end.</li>
+  <li><b>Shank:</b> connects handle to blade; may be straight, mon-angle, bin-angle, triple-angle, or quadri-angle. <b>Contra-angle</b> = two or more angles. Angles keep the blade edge within <b>1–2 mm</b> of the handle's long axis to concentrate force and prevent rotation.</li>
+  <li><b>Handle:</b> grasped by the operator.</li></ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الأجزاء وزوايا العنق:</b> ثلاثة أجزاء: <b>المقبض</b> و<b>العنق (shank)</b> و<b>النصل (blade)</b> (في غير القاطعة يُستبدل النصل بـ<b>nib/طرف عامل</b>). <b>النصل/الـnib:</b> الطرف العامل؛ ومزدوجة الطرف لها نصل بكل طرف. <b>العنق:</b> يصل المقبض بالنصل؛ قد يكون مستقيماً أو بزاوية/زاويتين/ثلاث/أربع. <b>Contra-angle</b> = زاويتان فأكثر. الزوايا تُبقي حدّ النصل ضمن <b>1–2مم</b> من محور المقبض لتركيز القوّة ومنع الدوران. <b>المقبض:</b> يُمسك به المشغّل.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Instrument formula (3- &amp; 4-number)</div>
+  <div class="prompt">Explain G.V. Black's 3-number and 4-number instrument formulas.</div>
+  <div class="answer">
+    <b>3-number formula</b> (cutting edge at a right angle to the blade — e.g., <b>enamel hatchet</b>):
+  (1) width of blade in <b>tenths of a mm</b>; (2) length of blade in <b>mm</b>; (3) angle of blade with handle axis in <b>centigrade</b>.<br>
+  <b>4-number formula</b> (cutting edge at an angle other than right — e.g., <b>gingival margin trimmer / angle former</b>):
+  (1) width in tenths mm; (2) angle the <b>cutting edge</b> forms with the handle axis (centigrade); (3) length in mm; (4) angle the blade forms with the handle axis (centigrade).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>صيغة الأداة (٣ و٤ أرقام):</b> <b>صيغة 3 أرقام</b> (الحدّ القاطع بزاوية قائمة مع النصل — مثل <b>enamel hatchet</b>): (١) عرض النصل بـ<b>أعشار المم</b>؛ (٢) طول النصل بالـ<b>مم</b>؛ (٣) زاوية النصل مع محور المقبض بالـ<b>سنتيغراد</b>. <b>صيغة 4 أرقام</b> (الحدّ القاطع بزاوية غير قائمة — مثل <b>gingival margin trimmer</b>): (١) العرض بأعشار المم؛ (٢) زاوية <b>الحدّ القاطع</b> مع محور المقبض (سنتيغراد)؛ (٣) الطول بالمم؛ (٤) زاوية النصل مع محور المقبض (سنتيغراد).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec4">Lec 2 · Cutting Instruments</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Chisel, hoe, hatchet</div>
+  <div class="prompt">Describe the chisel, hoe, and hatchet.</div>
+  <div class="answer">
+    <ul>
+  <li><b>Chisel:</b> straight/slightly curved/bin-angle shank; bevel on <b>one side</b>; cutting edge <b>perpendicular</b> to handle axis; cuts enamel & dentin with a <b>pushing</b> motion.</li>
+  <li><b>Hoe:</b> like a chisel (edge perpendicular to handle axis) but the blade is at a <b>greater angle</b> from the handle's long axis; same uses.</li>
+  <li><b>Hatchet (enamel hatchet):</b> cutting edge <b>parallel</b> to the handle's long axis, beveled on one side; cuts enamel & dentin; comes as <b>right/left</b> types.</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الإزميل والمعزقة والفأس:</b> <b>Chisel (إزميل):</b> عنق مستقيم/منحنٍ قليلاً/bin-angle؛ شطب من <b>جهة واحدة</b>؛ الحدّ القاطع <b>عمودي</b> على محور المقبض؛ يقطع المينا والعاج بحركة <b>دفع</b>. <b>Hoe (معزقة):</b> كالإزميل (الحدّ عمودي على المحور) لكن نصله بزاوية <b>أكبر</b> من المحور؛ نفس الاستخدامات. <b>Hatchet (فأس المينا):</b> الحدّ القاطع <b>موازٍ</b> لمحور المقبض، مشطوب من جهة واحدة؛ يقطع المينا والعاج؛ يأتي <b>يمين/يسار</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Gingival margin trimmer &amp; spoon excavator</div>
+  <div class="prompt">Describe the gingival margin trimmer and the spoon excavator (discoid/cleoid).</div>
+  <div class="answer">
+    <b>Gingival margin trimmer (GMT):</b> bevels the <b>gingival enamel margin</b> of proximo-occlusal preparations and the <b>axiopulpal line angle</b> of Cl II; like a hatchet but the blade is <b>curved</b> and the cutting edge is at an angle (not parallel) to the blade's long axis; made as right/left and mesial/distal pairs.<br>
+  <b>Spoon excavator:</b> curved blade, semicircular cutting edge (spoon-like); removes caries; left & right types. A disk-like blade = <b>discoid</b>; a claw-like blade = <b>cleoid</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مشذّب الحافة اللثوية وملعقة الحفر:</b> <b>Gingival margin trimmer (GMT):</b> يشطب <b>الحافة المينائية اللثوية</b> لتحضيرات الداني-الإطباقي وزاوية <b>axiopulpal</b> في Cl II؛ كالفأس لكن نصله <b>منحنٍ</b> والحدّ بزاوية (غير موازية) لمحور النصل؛ يُصنع يمين/يسار وأزواج إنسية/وحشية. <b>Spoon excavator (ملعقة):</b> نصل منحنٍ بحدّ نصف دائري (كالملعقة)؛ يزيل التسوّس؛ يمين ويسار. النصل القرصي = <b>discoid</b>، والنصل المخلبي = <b>cleoid</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec5">Lec 2 · Non-cutting Instruments</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Diagnostic instruments</div>
+  <div class="prompt">List the diagnostic instruments and their uses.</div>
+  <div class="answer">
+    <ol>
+  <li><b>Mirror:</b> indirect visualization, light reflection, soft-tissue retraction (tongue/cheek/lip).</li>
+  <li><b>Probe/explorer:</b> feel surface irregularities, determine dentin hardness & detect caries; shapes: sickle, straight, angled.</li>
+  <li><b>Tweezers (cotton forceps):</b> carry small items into the patient's mouth.</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أدوات التشخيص:</b> (١) <b>المرآة:</b> رؤية غير مباشرة، عكس الضوء، إبعاد الأنسجة الرخوة (لسان/خدّ/شفة). (٢) <b>المسبار/الـexplorer:</b> تحسّس عدم انتظام السطح، تحديد صلابة العاج وكشف التسوّس؛ أشكاله: منجلي/مستقيم/مزوّى. (٣) <b>الملقط (cotton forceps):</b> حمل أشياء صغيرة لفم المريض.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Plastic &amp; amalgam instruments</div>
+  <div class="prompt">Describe plastic instruments and amalgam instruments.</div>
+  <div class="answer">
+    <b>Plastic (filling) instruments:</b> carry/shape tooth-colored material (composite, GI), pack temporary filling, place base/lining. Examples: <b>Ash 49</b> (cylindrical nibs, rounded ends), <b>Ash 6</b> (carver-like, non-sharp margin), <b>Dycal applicator</b> (small round nib), <b>cement spatula</b> (mixing).<br>
+  <b>Amalgam instruments:</b> <b>condenser</b> (compresses amalgam; round flat nib), <b>burnisher</b> (round/oval/cone; burnishes margins, smooths surface, shapes matrix), <b>carver</b> (shapes amalgam/composite; flat sharp nib), <b>amalgam carrier</b> (carries amalgam into the cavity).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أدوات الحشو والأملغم:</b> <b>أدوات الحشو (Plastic):</b> حمل/تشكيل المواد بلون السن (كمبوزِت، GI)، حشو مؤقت، وضع القاعدة/البطانة. أمثلة: <b>Ash 49</b> (أطراف أسطوانية مدوّرة)، <b>Ash 6</b> (شبيه بالنحّات بحافة غير حادّة)، <b>Dycal applicator</b> (طرف مدوّر صغير)، <b>cement spatula</b> (للخلط). <b>أدوات الأملغم:</b> <b>Condenser</b> (يكبس الأملغم؛ طرف مدوّر مسطّح)، <b>Burnisher</b> (مدوّر/بيضوي/مخروطي؛ يصقل الحواف ويملّس السطح ويشكّل المصفوفة)، <b>Carver</b> (ينحت الأملغم/الكمبوزِت؛ طرف مسطّح حادّ)، <b>Amalgam carrier</b> (يحمل الأملغم للحفرة).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec6">Lec 2 · Grasps, Rotary Instruments &amp; Burs</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Instrument grasps</div>
+  <div class="prompt">Describe the three hand-instrument grasps.</div>
+  <div class="answer">
+    <ul>
+  <li><b>Pen grasp:</b> like holding a pen — thumb, index & middle finger pads hold the instrument; ring (± little) fingertip rests on a nearby tooth as a rest; palm faces away.</li>
+  <li><b>Inverted pen grasp:</b> same fingers, but the hand is rotated so the palm faces more toward the operator; used mostly for <b>upper teeth with indirect vision</b>.</li>
+  <li><b>Palm-and-thumb grasp:</b> handle in the palm, grasped by all fingers; thumb is free and rests on a nearby tooth of the same arch.</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>طرق إمساك الأداة:</b> <b>Pen grasp:</b> كإمساك القلم — وسائد الإبهام والسبابة والوسطى تمسك الأداة؛ طرف البنصر (± الخنصر) يرتكز على سن مجاور؛ الكفّ بعيد عن المشغّل. <b>Inverted pen grasp:</b> نفس الأصابع لكن تُدار اليد فيتّجه الكفّ نحو المشغّل؛ يُستخدم غالباً لـ<b>الأسنان العلوية بالرؤية غير المباشرة</b>. <b>Palm-and-thumb grasp:</b> المقبض في الكفّ وتمسكه كل الأصابع؛ الإبهام حرّ يرتكز على سن مجاور بنفس القوس.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Handpieces — low vs high speed</div>
+  <div class="prompt">Compare low-speed and high-speed handpieces.</div>
+  <div class="answer">
+    Two basic handpieces: <b>straight</b> (lab work) and <b>contra-angle</b> (intraoral).<br>
+  <b>Low-speed</b> (500–15,000 rpm): remove carious dentin (round bur, slow), finish the cavity (round sharp edges, flatten floor), finish/polish restorations.<br>
+  <b>High-speed</b> (>160,000 up to 500,000 rpm): preferred for <b>cutting enamel & dentin</b>; efficient penetration/extension; use <b>small-diameter burs</b>; generates heat → needs <b>water coolant + high-efficiency evacuation</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>القبضات — بطيئة مقابل سريعة:</b> قبضتان أساسيتان: <b>مستقيمة</b> (للمختبر) و<b>contra-angle</b> (داخل الفم). <b>البطيئة</b> (500–15,000 لفّة/د): إزالة العاج المسوّس (بُرّ مدوّر ببطء)، إنهاء الحفرة (تدوير الحواف، تسطيح الأرضية)، إنهاء/تلميع الترميمات. <b>السريعة</b> (>160,000 حتى 500,000 لفّة/د): تُفضَّل لـ<b>قطع المينا والعاج</b>؛ اختراق/توسيع فعّال؛ تُستخدم <b>بُرَ صغيرة القطر</b>؛ تولّد حرارة ← تحتاج <b>تبريد ماء + شفط عالي الكفاءة</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Burs — parts &amp; shapes</div>
+  <div class="prompt">Describe the parts of a bur and the basic head shapes.</div>
+  <div class="answer">
+    Burs may be stainless steel, carbide, or diamond; functions: cutting, abrasive, finishing, polishing.<br>
+  <b>Parts:</b> <b>shank</b> (fits/locks into the handpiece, receives rotation), <b>neck</b> (connects head to shank), <b>head</b> (working part with cutting edges).<br>
+  <b>Basic shapes:</b> <b>Round</b> (initial entry, retentive holes, caries removal); <b>Inverted cone</b> (apex toward shank — flatten floor, ↑ depth, undercuts); <b>Fissure</b> (elongated cylindrical, straight or tapered — outline form, cut walls/floor/margins).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>البُرَ — الأجزاء والأشكال:</b> قد تكون ستانلس ستيل أو كربايد أو ماس؛ وظائفها: قطع، كشط، إنهاء، تلميع. <b>الأجزاء:</b> <b>shank</b> (يدخل/يُقفل في القبضة ويستقبل الدوران)، <b>neck</b> (يصل الرأس بالـshank)، <b>head</b> (الجزء العامل بالحواف القاطعة). <b>الأشكال الأساسية:</b> <b>مدوّر (Round)</b> (دخول أولي، حُفَر إرساء، إزالة تسوّس)؛ <b>مخروط مقلوب (Inverted cone)</b> (الرأس نحو الـshank — تسطيح الأرضية، زيادة العمق، undercuts)؛ <b>شقّي (Fissure)</b> (أسطواني ممدود مستقيم أو مدبّب — شكل الخطّ الخارجي، قطع الجدران/الأرضية/الحواف).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec7">Lec 3 · Sterilization Methods ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Sterilization vs disinfection</div>
+  <div class="prompt">Define sterilization and disinfection. What are the 4 accepted methods of sterilization?</div>
+  <div class="answer">
+    <b>Sterilization:</b> any process that removes/kills <span class="k">all</span> microbial life, <b>including resistant bacterial spores</b>, by physical or chemical means.<br>
+  <b>Disinfection:</b> a lesser process offering variable infection control — does <b>not</b> kill all microorganisms (some viruses may survive).<br>
+  <b>Four methods:</b> (1) steam pressure (autoclave); (2) chemical vapor pressure (chemiclave); (3) dry heat (dryclave); (4) ethylene oxide.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التعقيم مقابل التطهير:</b> <b>التعقيم (Sterilization):</b> أي عملية تزيل/تقتل <b>كل</b> أشكال الحياة الميكروبية <b>بما فيها الأبواغ البكتيرية المقاومة</b>، بوسائل فيزيائية أو كيميائية. <b>التطهير (Disinfection):</b> عملية أقل تعطي تحكّماً متغيّراً — <b>لا</b> تقتل كل الكائنات (قد تنجو بعض الفيروسات). <b>الطرق الأربع:</b> (١) بخار بضغط (autoclave)؛ (٢) بخار كيميائي بضغط (chemiclave)؛ (٣) حرارة جافة (dryclave)؛ (٤) أكسيد الإيثيلين.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Autoclave (steam pressure)</div>
+  <div class="prompt">Describe autoclaving: parameters, uses, advantages, disadvantages.</div>
+  <div class="answer">
+    <b>Parameters:</b> 250°F (121°C) for a minimum of <b>15 min at 15 psi</b>; wrapped instruments can drop to <b>3 min at 273°F (134°C)/20 psi</b>.<br>
+  <b>Used for:</b> handpieces, orthodontic pliers, impression trays, surgical instruments.<br>
+  <b>Advantages:</b> most rapid/effective for cloth & towel packs; economical; good penetration; short time; easily monitored.<br>
+  <b>Disadvantages:</b> heat-sensitive items can't be used; <b>rusts carbon-steel</b> instruments/burs; corrodes steel necks/shanks of diamonds & carbides; <b>dulls unprotected cutting edges</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الأوتوكلاف (بخار بضغط):</b> <b>المعايير:</b> 250°ف (121°م) لمدة <b>15د على الأقل عند 15 psi</b>؛ والملفوفة تنخفض إلى <b>3د عند 273°ف (134°م)/20 psi</b>. <b>يُستخدم لـ:</b> القبضات، كمّاشات التقويم، صواني الطبعات، الأدوات الجراحية. <b>المزايا:</b> الأسرع/الأفعل لحزم القماش والمناشف؛ اقتصادي؛ اختراق جيّد؛ وقت قصير؛ سهل المراقبة. <b>العيوب:</b> الأدوات الحسّاسة للحرارة لا تُستخدم؛ <b>يُصدئ أدوات/بُرَ الفولاذ الكربوني</b>؛ يُتلف أعناق الماس والكربايد؛ <b>يُكلّل الحواف القاطعة غير المحميّة</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Chemiclave &amp; dry heat</div>
+  <div class="prompt">Describe chemical vapor (chemiclave) and dry-heat sterilization.</div>
+  <div class="answer">
+    <b>Chemiclave:</b> chemical vapor under pressure at <b>270°F (131°C), 20 lb</b>, ~½-hour cycle; needs a prescribed chemical. <b>Used for:</b> periodontal/restorative/endodontic instruments, corrosion-sensitive carbon-steel burs & pliers. <b>+</b> no rust/corrosion. <b>−</b> heat-sensitive items damaged; light packaging only; heavy cloth may not be penetrated.<br>
+  <b>Dry heat (hot air oven):</b> >320°F (160°C) for <b>1–2 h</b>; fan + thermostat. <b>Used for:</b> endodontic instruments, condensers, hand instruments, pliers, surgical instruments, burs. <b>+</b> carbon steel doesn't rust (if well dried); economical. <b>−</b> damages rubber/plastic; long cycles; crowding defeats it; <b>poor heat conduction → less penetration</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>Chemiclave والحرارة الجافة:</b> <b>Chemiclave:</b> بخار كيميائي بضغط عند <b>270°ف (131°م) و20 رطل</b>، دورة ~نصف ساعة؛ يحتاج كيميائياً موصوفاً. <b>لـ:</b> أدوات اللثة/الترميم/اللب، وبُرَ/كمّاشات الفولاذ الكربوني الحسّاسة للتآكل. <b>+</b> بلا صدأ/تآكل. <b>−</b> يُتلف الحسّاس للحرارة؛ تغليف خفيف فقط؛ القماش الثقيل قد لا يُخترق. <b>الحرارة الجافة (فرن الهواء الساخن):</b> >320°ف (160°م) لـ<b>1–2 ساعة</b>؛ مروحة + ثرموستات. <b>لـ:</b> أدوات اللب، condensers، الأدوات اليدوية، الكمّاشات، الجراحية، البُرَ. <b>+</b> الفولاذ الكربوني لا يصدأ (إن جُفّف جيّداً)؛ اقتصادي. <b>−</b> يُتلف المطاط/البلاستيك؛ دورات طويلة؛ الازدحام يُفسده؛ <b>توصيل حراري ضعيف ← اختراق أقل</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Ethylene oxide &amp; liquid sterilants</div>
+  <div class="prompt">Describe ethylene oxide sterilization and liquid sterilants.</div>
+  <div class="answer">
+    <b>Ethylene oxide:</b> the <b>best method for complex, heat-sensitive</b> instruments & delicate materials (e.g., rotary handpieces). A gas below 100°C, <b>highly explosive/flammable</b>, highly penetrative, non-corrosive, bactericidal; sterilizes towels, metal & plastic instruments.<br>
+  <b>Liquid sterilants/high-level disinfectants:</b> <b>glutaraldehyde 2–3%</b> kills bacterial spores in <b>6–10 hours</b>; greater dilutions discouraged for repeated use; placing wet items in the tray dilutes the solution.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أكسيد الإيثيلين والمعقّمات السائلة:</b> <b>أكسيد الإيثيلين:</b> <b>أفضل طريقة للأدوات المعقّدة الحسّاسة للحرارة</b> والمواد الرقيقة (كالقبضات الدوّارة). غاز دون 100°م، <b>شديد الانفجار/الاشتعال</b>، عالي الاختراق، غير مُسبّب للتآكل، قاتل للجراثيم؛ يعقّم المناشف والأدوات المعدنية والبلاستيكية. <b>المعقّمات السائلة/مطهّرات عالية المستوى:</b> <b>الغلوتارألدهيد 2–3%</b> يقتل الأبواغ خلال <b>6–10 ساعات</b>؛ يُنهى عن التخفيف الزائد للاستخدام المتكرّر؛ ووضع أدوات مبلّلة في الصينية يخفّف المحلول.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec8">Lec 3 · Disinfection &amp; Asepsis</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Surface &amp; laboratory disinfection</div>
+  <div class="prompt">How are surfaces and laboratory items disinfected?</div>
+  <div class="answer">
+    <b>Surfaces:</b> clean contaminated countertops/unit surfaces with disposable toweling + cleaning agent, then disinfect with a chemical germicide (<b>phenolics, iodophors, chlorine compounds</b>). Fresh daily <b>sodium hypochlorite</b> (¼ cup bleach : 1 gallon water) is an inexpensive intermediate-level germicide — but corrosive to metals (esp. aluminum).<br>
+  <b>Laboratory:</b> items used in the mouth (impressions, bite registrations, prostheses, appliances) must be cleaned & disinfected <b>before and after</b> lab manipulation and before placement in the mouth.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تطهير الأسطح والمختبر:</b> <b>الأسطح:</b> نظّف الأسطح الملوّثة بمنشفة تُرمى + منظّف، ثم طهّر بمبيد كيميائي (<b>الفينولات، اليودوفور، مركّبات الكلور</b>). <b>هيبوكلوريت الصوديوم</b> الطازج يومياً (¼ كوب مبيّض : 1 غالون ماء) مبيد متوسّط المستوى رخيص — لكنه أكّال للمعادن (خاصةً الألمنيوم). <b>المختبر:</b> ما يُستخدم في الفم (الطبعات، تسجيلات العضّة، التركيبات، الأجهزة) يجب تنظيفه وتطهيره <b>قبل وبعد</b> المعالجة المختبرية وقبل وضعه في الفم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Handpiece sterilization &amp; waste disposal</div>
+  <div class="prompt">How are handpieces sterilized and how is waste disposed of?</div>
+  <div class="answer">
+    <b>Handpiece (after each patient):</b> run it (connected to air/water) to discharge for ≥<b>30 s</b>; leave the bur in place while cleaning the outside with detergent + warm water; <b>sterilize in an autoclave</b>; lubricate with pressurized oil if recommended (until clean oil appears). Contaminated unit attachments (saliva ejectors, evacuators, air/water syringes) → disposable covers or intermediate-level germicide.<br>
+  <b>Waste disposal:</b> liquid waste → drain to sanitary sewer; sharps (needles/scalpels) → intact into <b>puncture-resistant containers</b>; blood-contaminated solid waste → sealed sturdy impervious bags.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تعقيم القبضة والتخلّص من النفايات:</b> <b>القبضة (بعد كل مريض):</b> شغّلها (موصولة بالهواء/الماء) للتفريغ ≥<b>30ث</b>؛ اترك البُرّ مكانه أثناء تنظيف الخارج بمنظّف + ماء دافئ؛ <b>عقّمها بالأوتوكلاف</b>؛ زيّتها بزيت مضغوط إن أُوصِي (حتى يخرج زيت نظيف). الملحقات الملوّثة (شافطات اللعاب، المفرغات، محاقن الهواء/الماء) ← أغطية تُرمى أو مبيد متوسّط المستوى. <b>التخلّص من النفايات:</b> السائلة ← مصرف صحّي؛ الحادّة (إبر/مشارط) ← سليمة في <b>حاويات مقاومة للوخز</b>؛ النفايات الصلبة الملوّثة بالدم ← أكياس محكمة متينة غير منفذة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec9">Lec 4 · Cavity Classification &amp; Preparation Steps ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Classification by surface &amp; site</div>
+  <div class="prompt">Classify cavities by surface involvement and by site (G.J. Mount sites).</div>
+  <div class="answer">
+    <b>By surface involvement:</b>
+  <ul><li><b>Simple:</b> one surface (e.g., occlusal — Cl I).</li>
+  <li><b>Compound:</b> two surfaces (e.g., mesio-occlusal MO — Cl II).</li>
+  <li><b>Complex:</b> three or more surfaces.</li></ul>
+  <b>By site:</b> <b>Site 1</b> = pits/fissures/enamel defects on occlusal & other smooth surfaces; <b>Site 2</b> = proximal enamel at contact areas; <b>Site 3</b> = cervical third / exposed root after recession.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التصنيف حسب السطح والموقع:</b> <b>حسب السطح:</b> <b>بسيطة (Simple):</b> سطح واحد (إطباقي — Cl I). <b>مركّبة (Compound):</b> سطحان (mesio-occlusal — Cl II). <b>معقّدة (Complex):</b> ثلاثة أسطح أو أكثر. <b>حسب الموقع:</b> <b>Site 1</b> = الحُفَر/الشقوق/عيوب المينا على الإطباقي والأسطح الملساء؛ <b>Site 2</b> = المينا الدانية عند مناطق التماس؛ <b>Site 3</b> = الثلث العنقي / الجذر المكشوف بعد الانحسار.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">The 7 steps of cavity preparation</div>
+  <div class="prompt">List G.V. Black's seven steps of cavity preparation.</div>
+  <div class="answer">
+    <ol>
+  <li>Obtain <b>outline form</b>.</li>
+  <li>Obtain <b>resistance form</b>.</li>
+  <li>Obtain <b>retention form</b>.</li>
+  <li>Obtain <b>convenience form</b>.</li>
+  <li>Remove remaining carious dentin.</li>
+  <li>Finish the enamel walls & margins.</li>
+  <li>Perform the <b>toilet</b> of the cavity (clean).</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>خطوات تحضير الحفرة السبع (G.V. Black):</b> (١) الحصول على <b>الشكل الخارجي (outline)</b>. (٢) <b>شكل المقاومة (resistance)</b>. (٣) <b>شكل الإرساء (retention)</b>. (٤) <b>شكل الملاءمة (convenience)</b>. (٥) إزالة العاج المسوّس المتبقّي. (٦) إنهاء جدران المينا والحواف. (٧) <b>تنظيف الحفرة (toilet)</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Objectives of cavity preparation</div>
+  <div class="prompt">State the objectives of cavity preparation.</div>
+  <div class="answer">
+    <ol>
+  <li>Remove diseased tissue while <b>protecting the pulp</b>.</li>
+  <li>Locate the restoration margins as <b>conservatively</b> as possible.</li>
+  <li>Ensure the cavity form is not under the direct force of mastication.</li>
+  <li>Allow functional placement of the restorative material.</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أهداف تحضير الحفرة:</b> (١) إزالة النسيج المريض مع <b>حماية اللب</b>. (٢) وضع حواف الترميم بأكثر <b>تحفّظ</b> ممكن. (٣) ضمان ألا يقع شكل الحفرة تحت قوّة المضغ المباشرة. (٤) السماح بوضع وظيفي للمادة الترميمية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec10">Lec 4 · Class I Cavity Preparation ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Outline form &amp; extension for prevention</div>
+  <div class="prompt">Describe the outline form of a Class I cavity and 'extension for prevention'.</div>
+  <div class="answer">
+    <b>Outline form</b> = the shape the cavosurface line angle assumes after preparation.
+  <ul><li>Gain initial access via the <b>most carious</b> part.</li>
+  <li>Margins on <b>sound</b> tooth structure.</li>
+  <li>Include <b>all occlusal fissures & developmental grooves</b> even when caries hasn't extended through them — carious dentin may be present at the base of a sealed fissure → <span class="k">extension for prevention</span>.</li></ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الشكل الخارجي وextension for prevention:</b> <b>Outline form</b> = الشكل الذي تتّخذه زاوية السطح الحُفّي بعد التحضير. <b>ابدأ الوصول</b> عبر الجزء <b>الأكثر تسوّساً</b>؛ الحواف على بنية <b>سليمة</b>؛ <b>اشمل كل الشقوق الإطباقية والأخاديد التطوّرية</b> حتى لو لم يمتدّ التسوّس فيها — فقد يوجد عاج مسوّس في قاع الشقّ المغلق ← <b>التوسيع للوقاية (extension for prevention)</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Resistance form (Cl I)</div>
+  <div class="prompt">What features provide resistance form in a Class I cavity?</div>
+  <div class="answer">
+    Shape enabling tooth & restoration to withstand occlusal forces without fracture:
+  <ul><li>Facio-lingual width <b>≤ ¼ intercuspal distance (ICD)</b>.</li>
+  <li>Cavosurface line angle <b>90°–110°</b> (removes unsupported enamel; <90° → tooth fractures).</li>
+  <li><b>Smooth (flat) pulpal floor</b> → no stress concentration.</li>
+  <li>Mesial & distal walls slightly <b>diverge occlusally</b> (within enamel-rod direction → no unsupported enamel at the marginal ridge).</li>
+  <li>All internal line angles <b>rounded</b>.</li>
+  <li>Occlusal amalgam thickness <b>1.5–2.0 mm</b>.</li></ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>شكل المقاومة (Cl I):</b> الشكل الذي يمكّن السن والترميم من تحمّل قوى الإطباق دون كسر: العرض الدهليزي-اللساني <b>≤ ¼ المسافة بين الحدبات (ICD)</b>؛ زاوية السطح الحُفّي <b>90°–110°</b> (إزالة المينا غير المسنودة؛ <90° ← يتكسّر السن)؛ <b>أرضية لبية ملساء (مسطّحة)</b> ← لا تركّز إجهاد؛ الجدران الإنسية والوحشية <b>تتباعد إطباقياً</b> قليلاً (ضمن اتجاه قضبان المينا ← لا مينا غير مسنودة عند الحافة الحُفّية)؛ كل الزوايا الخطّية الداخلية <b>مدوّرة</b>؛ سُمك الأملغم الإطباقي <b>1.5–2.0مم</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Retention, convenience, finishing (Cl I)</div>
+  <div class="prompt">Describe retention form, convenience form, and the finishing/cleaning steps for Cl I.</div>
+  <div class="answer">
+    <b>Retention form</b> (resists tipping/lifting displacement): opposing walls parallel or <b>converging occlusally (~5°)</b> on buccal & lingual walls; <b>flat floor</b>; outline as small as possible.<br>
+  <b>Convenience form:</b> adequate observation/accessibility via good depth (<b>1.5–2 mm</b>) and width (¼ ICD).<br>
+  <b>Remove remaining caries:</b> spoon excavator or large round bur at slow speed.<br>
+  <b>Finish enamel walls:</b> smooth, remove unsupported enamel. <b>Clean:</b> wash & dry the cavity.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الإرساء والملاءمة والإنهاء (Cl I):</b> <b>شكل الإرساء</b> (يقاوم الإزاحة بالميل/الرفع): الجدران المتقابلة متوازية أو <b>متقاربة إطباقياً (~5°)</b> على الجدارين الدهليزي واللساني؛ <b>أرضية مسطّحة</b>؛ الشكل الخارجي أصغر ما يمكن. <b>الملاءمة:</b> رؤية/وصول كافٍ بعمق جيّد (<b>1.5–2مم</b>) وعرض (¼ ICD). <b>إزالة التسوّس المتبقّي:</b> ملعقة حفر أو بُرّ مدوّر كبير ببطء. <b>إنهاء جدران المينا:</b> تنعيم وإزالة المينا غير المسنودة. <b>التنظيف:</b> غسل وتجفيف الحفرة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec11">Lec 5 · Class II Amalgam Preparation ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Outline form &amp; initial depth (Cl II)</div>
+  <div class="prompt">Describe the outline form and initial depth of a Class II amalgam preparation.</div>
+  <div class="answer">
+    Class II = preparations involving the <b>proximal surfaces of posterior</b> teeth (2-, 3-, or 4-surface).
+  <ul><li>Facio-lingual width of walls <b>¼ ICD</b>.</li>
+  <li>Preserve marginal-ridge strength (<b>~2 mm</b> thickness).</li>
+  <li>Depth into dentin <b>1.5–2 mm</b>.</li>
+  <li>Extend to sound structure; include all pits & fissures (extension for prevention).</li></ul>
+  Clinically: enter the pit nearest the proximal surface with a <b>punch cut (No. 245 bur)</b>, keeping the bur's long axis parallel to the crown's long axis; the bur should be rotating before contact and until removed.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الشكل الخارجي والعمق الأولي (Cl II):</b> Cl II = تحضيرات تشمل <b>الأسطح الدانية للأسنان الخلفية</b> (سطحان/ثلاثة/أربعة). العرض الدهليزي-اللساني للجدران <b>¼ ICD</b>؛ حافظ على قوّة الحافة الحُفّية (<b>~2مم</b>)؛ العمق في العاج <b>1.5–2مم</b>؛ امتدّ للبنية السليمة واشمل كل الحُفَر والشقوق (extension for prevention). سريرياً: ادخل الحفرة الأقرب للسطح الداني بـ<b>punch cut (بُرّ No. 245)</b>، مع إبقاء محور البُرّ موازياً لمحور التاج؛ ويجب أن يدور البُرّ قبل التماس وحتى الإخراج.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Resistance form (Cl II)</div>
+  <div class="prompt">What provides resistance form in a Class II amalgam preparation?</div>
+  <div class="answer">
+    <ul>
+  <li>Facio-lingual width <b>≤ ¼ ICD</b>.</li>
+  <li>Margins (cavosurface) <b>90°–110°</b>; remove unsupported enamel.</li>
+  <li>Smooth pulpal floor & <b>gingival seat</b>.</li>
+  <li>Mesial/distal walls parallel, slightly diverge occlusally (enamel-rod direction).</li>
+  <li><b>Rounded internal line angles</b> + box shape.</li>
+  <li>Occlusal amalgam <b>1.5–2.0 mm</b> thick; <b>rounded axio-pulpal line angle</b>.</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>شكل المقاومة (Cl II):</b> العرض الدهليزي-اللساني <b>≤ ¼ ICD</b>؛ الحواف (cavosurface) <b>90°–110°</b> وإزالة المينا غير المسنودة؛ أرضية لبية و<b>مقعد لثوي (gingival seat)</b> ملساوان؛ الجدران الإنسية/الوحشية متوازية تتباعد إطباقياً قليلاً (اتجاه قضبان المينا)؛ <b>زوايا خطّية داخلية مدوّرة</b> + شكل صندوقي؛ الأملغم الإطباقي <b>1.5–2.0مم</b>؛ <b>زاوية axio-pulpal مدوّرة</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Retention form &amp; proximal box (Cl II)</div>
+  <div class="prompt">Describe retention form and proximal box preparation (ditch cut) for Cl II.</div>
+  <div class="answer">
+    <b>Retention:</b> facial & lingual walls parallel or <b>converging occlusally (~5°)</b>; flat pulpal floor & gingival seat; <b>dovetail</b>; retentive grooves/locks in the axiofacial & axiolingual line angles; occlusal convergence of the box.<br>
+  <b>Proximal box (ditch cut):</b> objectives — include all caries/faults/old restoration, remove unsupported enamel, establish ≤<b>0.5 mm clearance</b> with the adjacent tooth (facial/lingual/gingival). Place the bur over the <b>DEJ</b> on the pulpal floor near the marginal ridge, cut the ditch gingivally, then move facially & lingually along the DEJ to create the <b>axial wall</b>; extend just beyond caries/contact; finalize margins with hand instruments (chisel, hatchet, GMT).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الإرساء والصندوق الداني (Cl II):</b> <b>الإرساء:</b> الجداران الدهليزي واللساني متوازيان أو <b>متقاربان إطباقياً (~5°)</b>؛ أرضية لبية ومقعد لثوي مسطّحان؛ <b>dovetail</b>؛ أخاديد/أقفال إرساء في زوايا axiofacial وaxiolingual؛ تقارب الصندوق إطباقياً. <b>الصندوق الداني (ditch cut):</b> الأهداف — شمل كل التسوّس/العيوب/الترميم القديم، إزالة المينا غير المسنودة، تحقيق خلوص ≤<b>0.5مم</b> مع السن المجاور (دهليزياً/لسانياً/لثوياً). ضع البُرّ فوق <b>DEJ</b> على الأرضية قرب الحافة الحُفّية، اقطع الأخدود لثوياً ثم تحرّك دهليزياً ولسانياً على طول DEJ لإنشاء <b>الجدار المحوري</b>؛ امتدّ بعد التسوّس/التماس بقليل؛ وأنهِ الحواف بالأدوات اليدوية (إزميل، فأس، GMT).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec12">Lec 6 · Class III Amalgam Preparation</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Indications &amp; contraindications</div>
+  <div class="prompt">State the indications, contraindications, advantages and disadvantages of Cl III amalgam.</div>
+  <div class="answer">
+    <b>Indications</b> (few — usually the <b>distal of canines</b>): extensive prep with minimal facial involvement; gingival margin mainly in cementum; difficult moisture control.<br>
+  <b>Contraindications:</b> esthetically important areas (visible metal).<br>
+  <b>Advantages:</b> stronger than other Cl III direct restorations; easier to place; less expensive; easier to finish/polish.<br>
+  <b>Disadvantages:</b> metallic color; less conservative prep than esthetic materials.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الاستطبابات والموانع (Cl III أملغم):</b> <b>الاستطبابات</b> (قليلة — عادةً <b>وحشي الأنياب</b>): تحضير واسع بإصابة دهليزية بسيطة؛ الحافة اللثوية غالباً في الملاط؛ صعوبة التحكّم بالرطوبة. <b>الموانع:</b> المناطق الجمالية المهمّة (معدن ظاهر). <b>المزايا:</b> أقوى من الترميمات المباشرة الأخرى للصنف III؛ أسهل وضعاً؛ أرخص؛ أسهل إنهاءً/تلميعاً. <b>العيوب:</b> اللون المعدني؛ تحضير أقل تحفّظاً من المواد الجمالية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Tooth preparation (Cl III)</div>
+  <div class="prompt">Describe the tooth preparation, retention grooves and lingual dovetail for Cl III amalgam.</div>
+  <div class="answer">
+    Usually a <b>lingual access</b> on the distal of a maxillary canine (facial approach for mandibular if lesion is more facial). Bur (e.g., No. 2 round) positioned perpendicular to the lingual surface but angled mesially, close to the adjacent tooth → conserves marginal-ridge enamel. <b>Initial axial depth 0.5 mm</b> inside the DEJ (<b>0.75 mm</b> when the gingival margin is on the root/cementum); box-like preparation.<br>
+  <b>Gingival retention groove:</b> No. ½ round bur in the axio-facio-gingival point angle, maintaining 0.2 mm dentin from the DEJ; groove depth ~0.25 mm. <b>Incisal cove</b> in the axio-incisal point angle.<br>
+  <b>Lingual dovetail</b> (if needed): prepared <b>after</b> the proximal portion; conservative (not beyond the mesio-distal midpoint); axial depth ~1 mm.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تحضير السن (Cl III):</b> عادةً <b>وصول لساني</b> على وحشي الناب العلوي (نهج دهليزي للسفلي إن كانت الآفة أكثر دهليزيةً). البُرّ (مثل No. 2 مدوّر) عمودي على السطح اللساني لكن بزاوية إنسية قرب السن المجاور ← يحافظ على مينا الحافة الحُفّية. <b>العمق المحوري الأولي 0.5مم</b> داخل DEJ (<b>0.75مم</b> حين تكون الحافة اللثوية على الجذر/الملاط)؛ تحضير صندوقي. <b>أخدود الإرساء اللثوي:</b> بُرّ مدوّر No. ½ في زاوية axio-facio-gingival مع إبقاء 0.2مم عاج من DEJ؛ عمق الأخدود ~0.25مم. <b>incisal cove</b> في زاوية axio-incisal. <b>Lingual dovetail</b> (عند الحاجة): يُحضّر <b>بعد</b> الجزء الداني؛ متحفّظ (لا يتجاوز منتصف المسافة الإنسية-الوحشية)؛ عمق محوري ~1مم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec13">Lec 8 · Cements &amp; Pulp Protection — Liners vs Bases ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Why use bases &amp; liners</div>
+  <div class="prompt">What types of protection do cements provide, and why are bases/liners used?</div>
+  <div class="answer">
+    Cements provide <b>chemical, electrical, thermal</b> protection + pulp medication & mechanical protection.<br>
+  <b>Reasons:</b> insulation against temperature/electrical stimuli under metallic restorations (amalgam); mechanical protection (distribute stress across dentin); reduce microleakage; cement cast/ceramic restorations; pulp capping; some are bactericidal/bacteriostatic; prevent long-term pulp damage; cement orthodontic bands.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>لماذا القواعد والبطانات:</b> توفّر السمنتات حماية <b>كيميائية وكهربائية وحرارية</b> + تدويةً للّب وحمايةً ميكانيكية. <b>الأسباب:</b> عزل ضدّ الحرارة/الكهرباء تحت الترميمات المعدنية (أملغم)؛ حماية ميكانيكية (توزيع الإجهاد عبر العاج)؛ تقليل التسرّب الدقيق؛ تثبيت الترميمات المصبوبة/الخزفية؛ تغطية لبية؛ بعضها قاتل/موقف للجراثيم؛ منع ضرر لبي بعيد المدى؛ تثبيت حلقات التقويم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Liners vs bases</div>
+  <div class="prompt">Differentiate liners and bases (definition and function).</div>
+  <div class="answer">
+    <b>Liners:</b> thin coating/layer. Functions: barrier against <b>chemical</b> irritation (NOT thermal insulators); reduce marginal leakage (↓ post-op sensitivity); electrical insulation (galvanic shock). Examples: <b>varnish, Ca(OH)₂, resin bond</b>. Most needed under metallic restorations not well bonded.<br>
+  <b>Bases:</b> cover deep dentin (thicker). Functions: <b>thermal insulation</b>; mechanical protection (resist condensation forces); chemical barrier. Always leave adequate thickness for the final restoration.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>البطانات مقابل القواعد:</b> <b>البطانات (Liners):</b> طبقة رقيقة. وظائفها: حاجز ضدّ التهيّج <b>الكيميائي</b> (ليست عوازل حرارية)؛ تقليل التسرّب الحافّي (↓ الحساسية بعد العلاج)؛ عزل كهربائي (الصدمة الغلفانية). أمثلة: <b>الورنيش، Ca(OH)₂، resin bond</b>. أكثر ما تُحتاج تحت الترميمات المعدنية غير الملتصقة جيّداً. <b>القواعد (Bases):</b> تغطّي العاج العميق (أسمك). وظائفها: <b>عزل حراري</b>؛ حماية ميكانيكية (تقاوم قوى الكبس)؛ حاجز كيميائي. واترك دائماً سُمكاً كافياً للترميم النهائي.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Ideal lining properties</div>
+  <div class="prompt">List the properties of an ideal lining material.</div>
+  <div class="answer">
+    Compatible with the restorative material; non-irritant to the pulp; prevents pulp-dentin injury from restoratives; insoluble in oral fluids; sufficient physical strength during restoration insertion; prevents heat/cold conduction from metallic restorations; bacteriostatic (e.g., <b>ZOE</b>); improves marginal seal (ZOE → also a temporary restorative); easy to manipulate; <b>radiopaque</b> on X-ray.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>خصائص مادة البطانة المثالية:</b> متوافقة مع المادة الترميمية؛ غير مهيّجة للّب؛ تمنع إصابة معقد اللب-العاج من المواد الترميمية؛ غير ذوّابة بسوائل الفم؛ قوّة فيزيائية كافية أثناء وضع الترميم؛ تمنع توصيل الحرارة/البرودة من الترميمات المعدنية؛ موقفة للجراثيم (مثل <b>ZOE</b>)؛ تحسّن السدّ الحافّي (ZOE ← ترميم مؤقت أيضاً)؛ سهلة المعالجة؛ <b>ظلّية</b> بالأشعة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec14">Lec 8 · Zinc Phosphate &amp; ZOE Cements ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Zinc phosphate — composition &amp; reaction</div>
+  <div class="prompt">Describe zinc phosphate cement: composition, setting reaction, advantages, uses.</div>
+  <div class="answer">
+    <b>Composition:</b> powder = mainly zinc oxide + magnesium oxide + silicon dioxide; liquid = <b>ortho-phosphoric acid (40%)</b> + metallic salts (slow the reaction) + water.<br>
+  <b>Setting:</b> exothermic; initial mix is <b>highly acidic</b> (ZnO + phosphoric acid → amorphous zinc phosphate + unreacted ZnO + heat).<br>
+  <b>Advantages:</b> easy to manipulate; high strength; withstands mechanical trauma; good thermal-shock protection.<br>
+  <b>Uses:</b> base (high compressive strength); luting cast restorations; cementing orthodontic bands; rarely temporary dressing.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الزنك فوسفات — التركيب والتفاعل:</b> <b>التركيب:</b> المسحوق = أساساً أكسيد زنك + أكسيد مغنيسيوم + ثاني أكسيد سيليكون؛ السائل = <b>حمض الأورثوفوسفوريك (40%)</b> + أملاح معدنية (تبطئ التفاعل) + ماء. <b>التصلّب:</b> ناشر للحرارة؛ المزيج الأولي <b>شديد الحموضة</b> (ZnO + حمض فوسفوريك ← زنك فوسفات لا متبلور + ZnO غير متفاعل + حرارة). <b>المزايا:</b> سهل المعالجة؛ قوّة عالية؛ يتحمّل الرضّ الميكانيكي؛ حماية جيّدة من الصدمة الحرارية. <b>الاستخدامات:</b> قاعدة (قوّة انضغاط عالية)؛ تثبيت الترميمات المصبوبة؛ تثبيت حلقات التقويم؛ نادراً ضماد مؤقت.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Zinc phosphate — properties &amp; manipulation</div>
+  <div class="prompt">Summarize key properties and manipulation rules for zinc phosphate.</div>
+  <div class="answer">
+    <b>Properties:</b> two consistencies (<b>luting</b> = low P/L, creamy; <b>base</b> = high P/L, putty); setting time <b>2–8 min</b> at 37°C; acidity neutralizes by ~48 h; shrinks on hardening (↓ by higher P/L); good thermal/electrical insulator.<br>
+  <b>Manipulation:</b> mix on a <b>cool, thick, clean glass slab</b> (~21°C) to dissipate heat; incorporate powder in small increments over a large area; keep liquid bottle <b>tightly closed</b> (water gain → faster set; loss → slower); mixing time <b>60–90 s</b>. <b>Frozen slab method</b> (6°C/−10°C) increases working time & shortens setting time.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الزنك فوسفات — الخصائص والمعالجة:</b> <b>الخصائص:</b> قوامان (<b>luting</b> = نسبة مسحوق/سائل منخفضة، كريمي؛ <b>base</b> = نسبة عالية، عجيني)؛ زمن التصلّب <b>2–8د</b> عند 37°م؛ الحموضة تتعادل بنحو 48 ساعة؛ ينكمش عند التصلّب (يقلّ بزيادة P/L)؛ عازل حراري/كهربائي جيّد. <b>المعالجة:</b> اخلط على <b>لوح زجاجي بارد سميك نظيف</b> (~21°م) لتبديد الحرارة؛ أضف المسحوق بكمّيات صغيرة على مساحة واسعة؛ أبقِ زجاجة السائل <b>محكمة الإغلاق</b> (اكتساب ماء ← تصلّب أسرع؛ فقده ← أبطأ)؛ زمن الخلط <b>60–90ث</b>. <b>طريقة اللوح المجمّد</b> (6°م/−10°م) تزيد زمن العمل وتقصّر زمن التصلّب.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">ZOE cement</div>
+  <div class="prompt">Describe zinc oxide–eugenol (ZOE) cement: composition, setting, properties, uses.</div>
+  <div class="answer">
+    <b>Composition:</b> powder = zinc oxide + white rosin (↓ brittleness) + zinc acetate (↑ strength); liquid = eugenol + olive oil (plasticizer). Strength can be boosted with PMMA polymer or alumina + EBA.<br>
+  <b>Setting:</b> <b>not</b> exothermic (no cool slab); <b>moisture is essential</b>; bulk powder added first; average set ~<b>8 min</b>.<br>
+  <b>Properties:</b> <b>neutral pH (7)</b> → safe in moderately deep cavities; <b>sedative</b> to the pulp; radiopaque; excellent seal.<br>
+  <b>Uses:</b> temporary restoration; modified type for crown/bridge cementation & base; endodontic sealer. <span class="k">Not used under composite — it impairs polymerization</span>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>سمنت ZOE:</b> <b>التركيب:</b> المسحوق = أكسيد زنك + روزن أبيض (↓ الهشاشة) + أسيتات زنك (↑ القوّة)؛ السائل = أوجينول + زيت زيتون (ملدّن). تُزاد القوّة بـPMMA أو ألومينا + EBA. <b>التصلّب:</b> <b>غير</b> ناشر للحرارة (لا لوح بارد)؛ <b>الرطوبة ضرورية</b>؛ يُضاف معظم المسحوق أولاً؛ المتوسّط ~<b>8د</b>. <b>الخصائص:</b> <b>pH محايد (7)</b> ← آمن في الحُفَر المتوسّطة العمق؛ <b>مهدّئ</b> للّب؛ ظلّي؛ سدّ ممتاز. <b>الاستخدامات:</b> ترميم مؤقت؛ النوع المعدّل لتثبيت التيجان/الجسور وكقاعدة؛ سيلر لبّي. <b>لا يُستخدم تحت الكمبوزِت — يُعيق البلمرة</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec15">Lec 9 · Polycarboxylate, Glass Ionomer &amp; Resin Cements ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Zinc polycarboxylate</div>
+  <div class="prompt">Describe zinc polycarboxylate cement: composition, properties, uses.</div>
+  <div class="answer">
+    <b>Composition:</b> powder = zinc oxide + magnesium oxide; liquid = <b>polyacrylic acid (32–42%)</b> in water (or water-settable powder with 15–18% polyacrylic acid).<br>
+  <b>Properties:</b> <span class="k">chemically adheres to enamel & dentin</span> (carboxylate groups chelate calcium); large molecule can't penetrate tubules → <b>low pulp irritation</b> (good for sensitive teeth/base); short setting time (2–6 min); more soluble than zinc phosphate.<br>
+  <b>Uses:</b> luting agent; base; orthodontic band cementation. <b>Manipulation:</b> dry cool slab; mix within <b>30–40 s</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>زنك بولي كربوكسيلات:</b> <b>التركيب:</b> المسحوق = أكسيد زنك + أكسيد مغنيسيوم؛ السائل = <b>حمض بولي أكريليك (32–42%)</b> في ماء (أو مسحوق يتصلّب بالماء يحوي 15–18% حمض بولي أكريليك). <b>الخصائص:</b> <b>يلتصق كيميائياً بالمينا والعاج</b> (مجاميع الكربوكسيلات تخلب الكالسيوم)؛ الجزيء الكبير لا يخترق الأنابيب ← <b>تهيّج لبي منخفض</b> (جيّد للأسنان الحسّاسة/كقاعدة)؛ زمن تصلّب قصير (2–6د)؛ أكثر ذوباناً من الزنك فوسفات. <b>الاستخدامات:</b> تثبيت؛ قاعدة؛ تثبيت حلقات التقويم. <b>المعالجة:</b> لوح بارد جافّ؛ الخلط خلال <b>30–40ث</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Glass ionomer cement (GIC)</div>
+  <div class="prompt">Describe glass ionomer cement: composition, properties, classification.</div>
+  <div class="answer">
+    <b>Composition:</b> powder = fluoro-alumino-silicate glass; liquid = polyacrylic + itaconic acid copolymer.<br>
+  <b>Properties:</b> compressive strength > zinc phosphate; <span class="k">very water-sensitive during setting</span> (isolate; coat with varnish after initial set ~7 min; full set 24 h); <b>chemically bonds</b> to tooth (ionic interaction with Ca/PO₄; etching ↑ bond); <b>releases fluoride</b> → anticariogenic (good for high-caries patients).<br>
+  <b>Classification:</b> <b>Type I</b> = luting (low film thickness, rapid set); <b>Type II</b> = restorative (II-1 esthetic, II-2 reinforced); <b>Type III</b> = lining & fissure sealant (low viscosity, rapid set).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>سمنت الأيونومر الزجاجي (GIC):</b> <b>التركيب:</b> المسحوق = زجاج فلورو-ألومينو-سيليكات؛ السائل = بوليمر مشترك من حمض بولي أكريليك + إيتاكونيك. <b>الخصائص:</b> قوّة انضغاط > الزنك فوسفات؛ <b>شديد الحساسية للماء أثناء التصلّب</b> (اعزل؛ اطلِه بورنيش بعد التصلّب الأولي ~7د؛ التصلّب الكامل 24 ساعة)؛ <b>يلتصق كيميائياً</b> بالسن (تفاعل أيوني مع Ca/PO₄؛ الحفر يزيد الالتصاق)؛ <b>يطلق فلورايد</b> ← مضاد تسوّس (جيّد لمرضى التسوّس العالي). <b>التصنيف:</b> <b>Type I</b> = تثبيت (سُمك فيلم منخفض، تصلّب سريع)؛ <b>Type II</b> = ترميمي (II-1 جمالي، II-2 مقوّى)؛ <b>Type III</b> = بطانة وسادّ شقوق (لزوجة منخفضة، تصلّب سريع).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Resin cements</div>
+  <div class="prompt">Describe resin cements: composition, curing, properties, uses.</div>
+  <div class="answer">
+    Thin versions of restorative resins (e.g., Calibra, Panavia) — resin matrix + inorganic fillers (silica/glass, 40–80% by weight). Bond to enamel via <b>acid-etch + bonding agent</b>.
+  <b>Curing:</b> self-cure (two pastes), light-cure (single component), or <b>dual-cure</b>.<br>
+  <b>Properties:</b> insoluble in oral fluids; higher filler → higher strength/stiffness, less polymerization shrinkage, lower thermal expansion; some add fluoride.<br>
+  <b>Uses:</b> luting cast or tooth-colored restorations (ceramic, lab composite); high-filler types as a base.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>السمنتات الراتنجية:</b> نسخ رقيقة من الراتنجات الترميمية (مثل Calibra وPanavia) — مطرس راتنجي + حشوات لاعضوية (سيليكا/زجاج، 40–80% وزناً). تلتصق بالمينا عبر <b>الحفر الحمضي + bonding agent</b>. <b>التصلّب:</b> ذاتي (عجينتان)، ضوئي (مكوّن واحد)، أو <b>مزدوج (dual)</b>. <b>الخصائص:</b> غير ذوّابة بسوائل الفم؛ حشوات أعلى ← قوّة/صلابة أعلى وانكماش بلمرة أقل وتمدّد حراري أقل؛ بعضها يضيف فلورايد. <b>الاستخدامات:</b> تثبيت الترميمات المصبوبة أو بلون السن (خزف، كمبوزِت مخبري)؛ والأنواع عالية الحشو كقاعدة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec16">Lec 9 · Varnish, Bonding, Ca(OH)₂ &amp; Protection Protocols ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Cavity varnish</div>
+  <div class="prompt">Describe cavity varnish: function, properties, and when NOT to use it.</div>
+  <div class="answer">
+    <b>Varnish</b> = natural/synthetic resins in a solvent (alcohol/chloroform/acetone) leaving a thin film.<br>
+  <b>Functions:</b> reduce penetration of oral fluids around amalgam (inhibits early microleakage); occlude tubule orifices to limit acid penetration from zinc phosphate; reduce post-op sensitivity.<br>
+  <b>Properties:</b> no mechanical strength, no thermal insulation (thin film); apply ≥2 thin layers.<br>
+  <b>Do NOT use</b> with <b>glass ionomer</b> (blocks fluoride release/chemical bond) or under <b>composite</b> (inhibits polymerization) → use Ca(OH)₂ under composite instead.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>ورنيش الحفرة:</b> <b>الورنيش</b> = راتنجات طبيعية/صناعية في مذيب (كحول/كلوروفورم/أسيتون) يترك فيلماً رقيقاً. <b>الوظائف:</b> تقليل نفاذ سوائل الفم حول الأملغم (يكبح التسرّب المبكر)؛ سدّ فوّهات الأنابيب للحدّ من نفاذ حمض الزنك فوسفات؛ تقليل الحساسية بعد العلاج. <b>الخصائص:</b> بلا قوّة ميكانيكية ولا عزل حراري (فيلم رقيق)؛ طبّق ≥طبقتين رقيقتين. <b>لا تستخدمه</b> مع <b>الأيونومر الزجاجي</b> (يمنع إطلاق الفلورايد/الالتصاق الكيميائي) ولا تحت <b>الكمبوزِت</b> (يثبّط البلمرة) ← استخدم Ca(OH)₂ تحت الكمبوزِت.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Bonding agents &amp; calcium hydroxide</div>
+  <div class="prompt">Describe bonding agents and calcium hydroxide as protective materials.</div>
+  <div class="answer">
+    <b>Bonding agents:</b> unfilled resins for mechanical adhesion of composite to <b>conditioned (37% phosphoric acid, 15–60 s)</b> enamel/dentin; act as a liner in shallow cavities (occlude tubules → ↓ sensitivity); amalgam bond seals against microleakage.<br>
+  <b>Calcium hydroxide</b> (Dycal, etc., two-paste): alkaline pH <b>9.2–11.7</b> (neutralizes zinc phosphate acidity); <b>antimicrobial</b> (indirect pulp capping); <span class="k">stimulates odontoblasts → secondary dentin bridge</span> (direct pulp capping); needs water/humidity to set; short set (1–2 min); resin-modified light-cure versions exist.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>عوامل الربط وهيدروكسيد الكالسيوم:</b> <b>عوامل الربط (Bonding):</b> راتنجات غير محشوّة للالتصاق الميكانيكي للكمبوزِت بالمينا/العاج <b>المُهيّأ (حمض فوسفوريك 37%، 15–60ث)</b>؛ تعمل كبطانة في الحُفَر السطحية (تسدّ الأنابيب ← ↓ الحساسية)؛ وamalgam bond يسدّ ضدّ التسرّب. <b>هيدروكسيد الكالسيوم</b> (Dycal، عجينتان): pH قلوي <b>9.2–11.7</b> (يعادل حموضة الزنك فوسفات)؛ <b>مضاد جراثيم</b> (تغطية لبية غير مباشرة)؛ <b>يحفّز الأرومات السنّية ← جسر عاج ثانوي</b> (تغطية لبية مباشرة)؛ يحتاج ماءً/رطوبة للتصلّب؛ تصلّب قصير (1–2د)؛ وتوجد نسخ معدّلة بالراتنج تتصلّب بالضوء.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Cavity depth &amp; protection protocol</div>
+  <div class="prompt">How is pulp protection chosen according to cavity depth (shallow/moderate/deep/exposure)?</div>
+  <div class="answer">
+    Lining placement: pulpal floor (Cl I), pulpal floor + axial wall (Cl II), axial wall (Cl III/IV/V) — and should <b>not</b> reach the margins (except varnish/bonding). In amalgam cavities, base must not block the undercuts/grooves.
+  <ul><li><b>Shallow:</b> no base needed — amalgam → 2 coats varnish/amalgam bond; composite → etch + bonding agent.</li>
+  <li><b>Moderately deep:</b> varnish on floor/walls + a cement base (zinc phosphate or modified ZOE).</li>
+  <li><b>Deep:</b> Ca(OH)₂ liner on pulpal/axial walls + cement base + varnish; modern protocol: <b>Dycal + glass-ionomer base</b>.</li>
+  <li><b>Deep with pulp exposure:</b> direct pulp capping — Ca(OH)₂ over exposure + base (GI preferred); restore ASAP; secondary dentin barrier forms in weeks.</li></ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>عمق الحفرة وبروتوكول الحماية:</b> وضع البطانة: الأرضية اللبية (Cl I)، الأرضية + الجدار المحوري (Cl II)، الجدار المحوري (Cl III/IV/V) — ويجب ألا تصل الحواف (عدا الورنيش/الـbonding). وفي حُفَر الأملغم لا تسدّ القاعدة الـundercuts/الأخاديد. <b>سطحية:</b> لا قاعدة — أملغم ← طبقتا ورنيش/amalgam bond؛ كمبوزِت ← حفر + bonding. <b>متوسّطة العمق:</b> ورنيش على الأرضية/الجدران + قاعدة سمنت (زنك فوسفات أو ZOE معدّل). <b>عميقة:</b> بطانة Ca(OH)₂ على الجدارين اللبي/المحوري + قاعدة سمنت + ورنيش؛ والبروتوكول الحديث: <b>Dycal + قاعدة أيونومر زجاجي</b>. <b>عميقة مع كشف اللب:</b> تغطية لبية مباشرة — Ca(OH)₂ فوق الكشف + قاعدة (يُفضّل GI)؛ رمّم بأسرع وقت؛ ويتكوّن حاجز العاج الثانوي خلال أسابيع.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec17">Lec 1 · Caries Process &amp; Tooth Structure (Detailed)</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Bacteria &amp; the nature of the carious lesion</div>
+  <div class="prompt">How do bacteria drive the caries process, and why does the lesion follow tooth structure?</div>
+  <div class="answer">
+    Caries is a <b>microbial</b> disease: bacteria ferment carbohydrates producing acids that <b>demineralize the inorganic portion</b> of enamel/dentin and then enzymatically <b>destroy the organic matrix</b>, eventually leading to cavitation. The lesion is not random — it advances along the histologic architecture of the tooth, <b>following the direction of enamel rods</b> in enamel and the <b>dentinal tubules</b> in dentin. This is why a sealed fissure can still harbor carious dentin at its base, and why clinicians apply <b>extension for prevention</b> to fissure systems.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الجراثيم وطبيعة الآفة التسوّسية:</b> التسوّس مرض <b>جرثومي</b>: تخمّر الجراثيم الكربوهيدرات منتجةً أحماضاً <b>تُزيل معادن الجزء اللاعضوي</b> للمينا/العاج ثم <b>تُدمّر المطرس العضوي</b> إنزيمياً منتهيةً بالتكهّف. والآفة ليست عشوائية — تتقدّم وفق البنية النسيجية للسن، <b>متّبعةً اتجاه قضبان المينا</b> في المينا و<b>الأنابيب العاجية</b> في العاج. لذلك قد يبقى عاج مسوّس في قاع شقّ مغلق، ولهذا يطبّق الطبيب <b>التوسيع للوقاية</b> على نظام الشقوق.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Why margins must be on sound structure</div>
+  <div class="prompt">Why must restoration margins be placed on sound tooth structure, and what governs the cavosurface angle?</div>
+  <div class="answer">
+    Margins placed on <b>sound</b> (non-carious, non-undermined) structure prevent recurrent caries and marginal breakdown. Unsupported enamel — enamel rods with no underlying dentin — must be removed because it fractures under occlusal load. The <b>cavosurface line angle of 90°–110°</b> is chosen because an angle <b>less than 90°</b> leaves a thin, fracture-prone enamel edge on the tooth, while an angle <b>greater than 110°</b> leaves a thin, weak edge of the restoration. Rounding internal line angles avoids stress concentration that could crack either the tooth or the restoration.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>لماذا تكون الحواف على بنية سليمة:</b> وضع الحواف على بنية <b>سليمة</b> (غير مسوّسة وغير مقوّضة) يمنع التسوّس المتكرّر وانهيار الحافة. ويجب إزالة المينا غير المسنودة — قضبان مينا بلا عاج تحتها — لأنها تنكسر تحت حمل الإطباق. وتُختار زاوية السطح الحُفّي <b>90°–110°</b> لأن الزاوية <b>أقل من 90°</b> تترك حافة مينا رقيقة قابلة للكسر على السن، بينما <b>أكبر من 110°</b> تترك حافة ترميم رقيقة ضعيفة. وتدوير الزوايا الخطّية الداخلية يتجنّب تركّز الإجهاد الذي قد يشقّ السن أو الترميم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec18">Lec 2 · Instrument Formulas &amp; Bur Selection (Detailed)</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Worked formula examples</div>
+  <div class="prompt">Interpret the formulas: enamel hatchet (10-7-14) and gingival margin trimmer (12½-100-7-14).</div>
+  <div class="answer">
+    <b>Enamel hatchet (10-7-14)</b> — a 3-number instrument: blade width <b>10 tenths-mm = 1.0 mm</b>; blade length <b>7 mm</b>; blade angle to handle axis <b>14 centigrade</b>. The cutting edge is at a right angle to the blade.<br>
+  <b>Gingival margin trimmer (12½-100-7-14)</b> — a 4-number instrument: width <b>12½ tenths-mm = 1.25 mm</b>; cutting-edge angle to handle axis <b>100 centigrade</b>; blade length <b>7 mm</b>; blade angle to handle axis <b>14 centigrade</b>. The extra (second) number is needed because the cutting edge is at an angle other than a right angle to the blade. GMTs come as mesial and distal pairs and as right/left.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أمثلة محلولة على الصيغ:</b> <b>Enamel hatchet (10-7-14)</b> — أداة 3 أرقام: عرض النصل <b>10 أعشار مم = 1.0مم</b>؛ طول النصل <b>7مم</b>؛ زاوية النصل مع محور المقبض <b>14 سنتيغراد</b>. والحدّ القاطع بزاوية قائمة مع النصل. <b>Gingival margin trimmer (12½-100-7-14)</b> — أداة 4 أرقام: العرض <b>12½ أعشار مم = 1.25مم</b>؛ زاوية الحدّ القاطع مع المحور <b>100 سنتيغراد</b>؛ طول النصل <b>7مم</b>؛ زاوية النصل مع المحور <b>14 سنتيغراد</b>. ويُحتاج الرقم الإضافي (الثاني) لأن الحدّ القاطع بزاوية غير قائمة مع النصل. وتأتي الـGMT أزواجاً إنسية ووحشية ويمين/يسار.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Matching the bur to the task</div>
+  <div class="prompt">How is bur shape matched to each preparation task, and why is speed important?</div>
+  <div class="answer">
+    <b>Round bur</b> → initial penetration into the tooth, removing carious dentin, and cutting retentive holes/coves (e.g., the No. ½ round bur for Cl III gingival grooves). <b>Inverted cone</b> → flattening the pulpal floor, deepening the cavity, and creating undercuts for mechanical retention. <b>Fissure bur</b> (straight or tapered) → developing the outline form and cutting walls/floor/margins; a tapered fissure helps create the slight occlusal divergence of proximal walls.
+  <b>Speed:</b> low speed (≤15,000 rpm) for caries removal and finishing with tactile control; high speed (>160,000 rpm) for efficient enamel/dentin cutting — but it generates heat, so small-diameter burs with <b>water coolant + evacuation</b> are mandatory.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مطابقة البُرّ للمهمّة:</b> <b>المدوّر</b> ← الاختراق الأولي وإزالة العاج المسوّس وقطع حُفَر/أخاديد الإرساء (مثل بُرّ No. ½ لأخاديد Cl III اللثوية). <b>المخروط المقلوب</b> ← تسطيح الأرضية اللبية وتعميق الحفرة وعمل الـundercuts للإرساء الميكانيكي. <b>الشقّي</b> (مستقيم أو مدبّب) ← تطوير الشكل الخارجي وقطع الجدران/الأرضية/الحواف؛ والمدبّب يساعد على التباعد الإطباقي الطفيف للجدران الدانية. <b>السرعة:</b> البطيئة (≤15,000 لفّة/د) لإزالة التسوّس والإنهاء بتحكّم لمسي؛ والسريعة (>160,000) لقطع المينا/العاج بكفاءة — لكنها تولّد حرارة فيجب استخدام بُرَ صغيرة مع <b>تبريد ماء + شفط</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec19">Lec 3 · Disinfection Categories &amp; Monitoring (Detailed)</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Categories of sterilization &amp; instrument selection</div>
+  <div class="prompt">What are the categories of sterilization, and how do you choose a method for a given instrument?</div>
+  <div class="answer">
+    Sterilization is classified into <b>physical methods</b>, <b>chemical methods</b>, and a <b>combination</b> of both. Choosing a method depends on the instrument's heat/moisture tolerance: heat-stable metal instruments and handpieces tolerate the <b>autoclave</b>; corrosion-sensitive carbon-steel burs/pliers do better in the <b>chemiclave</b> or well-dried <b>dry heat</b>; and complex, heat-sensitive devices are best handled by <b>ethylene oxide</b>. Reusable items contacting mucosa or penetrating tissue <b>must</b> be cleaned then sterilized by an accepted, monitorable method — and the process should be routinely tested (e.g., biologic/chemical indicators).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>فئات التعقيم واختيار الطريقة:</b> يُصنّف التعقيم إلى <b>طرق فيزيائية</b> و<b>كيميائية</b> و<b>توليفة</b> منهما. ويعتمد الاختيار على تحمّل الأداة للحرارة/الرطوبة: الأدوات المعدنية الثابتة حرارياً والقبضات تتحمّل <b>الأوتوكلاف</b>؛ وبُرَ/كمّاشات الفولاذ الكربوني الحسّاسة للتآكل أفضل في <b>الـchemiclave</b> أو <b>الحرارة الجافة</b> المجفّفة جيّداً؛ والأجهزة المعقّدة الحسّاسة للحرارة أفضل بـ<b>أكسيد الإيثيلين</b>. وما يُعاد استخدامه مما يلامس المخاطية أو يخترق النسيج <b>يجب</b> تنظيفه ثم تعقيمه بطريقة مقبولة قابلة للمراقبة — وتُختبر العملية دورياً (مؤشّرات حيوية/كيميائية).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec20">Lec 4–5 · Resistance &amp; Retention Principles (Detailed) ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Resistance form — protecting tooth AND restoration</div>
+  <div class="prompt">Summarize how resistance form protects both the tooth and the restoration.</div>
+  <div class="answer">
+    Resistance form is the cavity shape that lets <b>both</b> tooth and restoration withstand occlusal forces.
+  <b>Protecting the tooth:</b> facio-lingual width ≤ <b>¼ intercuspal distance</b> (less tooth removed → stronger cusps); cavosurface 90°–110° (no unsupported enamel); smooth pulpal floor (no stress concentration); rounded internal line angles.
+  <b>Protecting the restoration:</b> cavosurface 90°–110° (an obtuse restoration margin >110° is thin and fractures); adequate bulk — occlusal <b>amalgam 1.5–2.0 mm</b> thick; smooth pulpal floor & gingival seat so forces are evenly distributed; rounded axio-pulpal line angle to avoid a thin amalgam at that junction.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>شكل المقاومة — حماية السن والترميم معاً:</b> هو شكل الحفرة الذي يجعل <b>كليهما</b> يتحمّل قوى الإطباق. <b>حماية السن:</b> العرض الدهليزي-اللساني ≤ <b>¼ المسافة بين الحدبات</b> (إزالة سنّ أقل ← حدبات أقوى)؛ السطح الحُفّي 90°–110° (لا مينا غير مسنودة)؛ أرضية لبية ملساء (لا تركّز إجهاد)؛ زوايا داخلية مدوّرة. <b>حماية الترميم:</b> السطح الحُفّي 90°–110° (الحافة المنفرجة >110° رقيقة وتنكسر)؛ سُمك كافٍ — <b>الأملغم الإطباقي 1.5–2.0مم</b>؛ أرضية ومقعد لثوي ملساوان لتوزيع القوى؛ وزاوية axio-pulpal مدوّرة لتجنّب أملغم رقيق هناك.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Retention features — grooves, dovetail, convergence</div>
+  <div class="prompt">What features create retention in Class I and Class II preparations?</div>
+  <div class="answer">
+    Retention form resists <b>tipping or lifting</b> displacement of the restoration:
+  <ul><li><b>Occlusal convergence</b> of buccal & lingual walls (~5°) so the cavity is slightly undercut.</li>
+  <li><b>Flat pulpal floor</b> (and flat gingival seat in Cl II) to prevent movement.</li>
+  <li><b>Dovetail</b> (occlusal lock) — resists proximal displacement in Cl II; a correct dovetail has a defined isthmus.</li>
+  <li><b>Retentive grooves/locks</b> placed in the axiofacial and axiolingual line angles of the proximal box.</li>
+  <li>Keeping the outline as small as possible reduces displacing forces.</li></ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>وسائل الإرساء — الأخاديد وdovetail والتقارب:</b> شكل الإرساء يقاوم إزاحة الترميم بـ<b>الميل أو الرفع</b>: <b>تقارب إطباقي</b> للجدارين الدهليزي واللساني (~5°) فتصبح الحفرة مقوّضة قليلاً؛ <b>أرضية لبية مسطّحة</b> (ومقعد لثوي مسطّح في Cl II) لمنع الحركة؛ <b>dovetail</b> (قفل إطباقي) يقاوم الإزاحة الدانية في Cl II وله isthmus محدّد؛ <b>أخاديد/أقفال إرساء</b> في زاويتي axiofacial وaxiolingual للصندوق الداني؛ وإبقاء الشكل الخارجي أصغر ما يمكن يقلّل قوى الإزاحة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Cl II proximal box — clearance &amp; finishing</div>
+  <div class="prompt">What are the clearance and finishing requirements of the Cl II proximal box?</div>
+  <div class="answer">
+    The proximal box isolates the proximal enamel via the <b>ditch cut</b> along the DEJ. Final margins must achieve <b>≤0.5 mm clearance</b> with the adjacent tooth facially, lingually and gingivally — enough for finishing and matrix placement without over-cutting. The bur creates the axial wall by moving facially & lingually along the DEJ; the ditch extends just beyond the caries/contact area. Final facial, lingual and gingival margins are refined with <b>hand instruments</b> (chisel, hatchet, gingival margin trimmer), and weakened enamel along the gingival wall is removed with the GMT in a <b>scraping motion</b>. The <b>axio-pulpal line angle is rounded</b> (often with the GMT) to avoid a thin amalgam there.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الصندوق الداني في Cl II — الخلوص والإنهاء:</b> يعزل الصندوق الداني المينا الدانية عبر <b>ditch cut</b> على طول DEJ. ويجب أن تحقّق الحواف النهائية <b>خلوصاً ≤0.5مم</b> مع السن المجاور دهليزياً ولسانياً ولثوياً — يكفي للإنهاء ووضع المصفوفة دون قطع زائد. يُنشئ البُرّ الجدار المحوري بالتحرّك دهليزياً ولسانياً على طول DEJ؛ ويمتدّ الأخدود بعد التسوّس/التماس بقليل. وتُنقّح الحواف الدهليزية واللسانية واللثوية بـ<b>الأدوات اليدوية</b> (إزميل، فأس، GMT)، وتُزال المينا الضعيفة على الجدار اللثوي بالـGMT بحركة <b>كشط</b>. وتُدوَّر <b>زاوية axio-pulpal</b> (غالباً بالـGMT) لتجنّب أملغم رقيق.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec21">Lec 8–9 · Cement Insertion &amp; Clinical Use (Detailed)</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Inserting zinc phosphate as a base</div>
+  <div class="prompt">Describe the clinical steps of inserting zinc phosphate cement as a base.</div>
+  <div class="answer">
+    (1) The tooth structure should be <b>dry</b> for better adhesion and a harder set. (2) Roll a small quantity into a ball between thumb and finger, pick it up on a probe tip, and carry it into the cavity. (3) Shape it with the appropriate instrument — <b>Ash 49</b> on the pulpal floor, or <b>Ash 6</b> to adapt it on the axial wall in Cl II — coating the instrument with cement powder so it doesn't stick; mold the <b>axio-pulpal line angle</b> round. (4) Remove excess from retention grooves/pits and walls with a small excavator. (5) Delay any bur trimming for <b>≥10 min</b> to avoid dislodgement (use sharp burs, low speed, minimal pressure). Leave adequate space for the restoration; keep cement off the margins and out of undercuts.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>وضع الزنك فوسفات كقاعدة:</b> (١) يجب أن تكون بنية السن <b>جافّة</b> لالتصاق أفضل وتصلّب أقسى. (٢) دحرج كمّية صغيرة كرةً بين الإبهام والإصبع، التقطها بطرف المسبار، واحملها للحفرة. (٣) شكّلها بالأداة المناسبة — <b>Ash 49</b> على الأرضية اللبية، أو <b>Ash 6</b> لتكييفها على الجدار المحوري في Cl II — مع طلاء الأداة بمسحوق السمنت كي لا يلتصق؛ وشكّل <b>زاوية axio-pulpal</b> مدوّرة. (٤) أزل الفائض من أخاديد/حُفَر الإرساء والجدران بحفّار صغير. (٥) أجّل أي تشذيب بالبُرّ <b>≥10د</b> لتجنّب الإزاحة (بُرَ حادّة، سرعة بطيئة، ضغط أدنى). واترك مساحة كافية للترميم؛ وأبقِ السمنت بعيداً عن الحواف وخارج الـundercuts.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Choosing the right cement clinically</div>
+  <div class="prompt">Match common cements to their best clinical use.</div>
+  <div class="answer">
+    <ul>
+  <li><b>Zinc phosphate</b> → high-strength base; luting cast restorations & orthodontic bands (but acidic early → not in very deep cavities without a sub-base).</li>
+  <li><b>ZOE</b> → sedative temporary restoration & base (neutral pH); endodontic sealer; <b>never under composite</b>.</li>
+  <li><b>Polycarboxylate</b> → base/luting for <b>sensitive teeth</b> (low pulp irritation, chemical adhesion).</li>
+  <li><b>Glass ionomer</b> → base/luting/restorative; <b>fluoride release</b> for high-caries patients; chemical bond to tooth.</li>
+  <li><b>Resin cement</b> → luting ceramic/lab-composite/cast restorations; high-filler types as a base.</li>
+  <li><b>Ca(OH)₂</b> → liner & direct/indirect pulp capping (stimulates secondary dentin).</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>اختيار السمنت سريرياً:</b> <b>الزنك فوسفات</b> ← قاعدة عالية القوّة؛ تثبيت الترميمات المصبوبة وحلقات التقويم (لكنه حمضي مبكراً ← ليس في الحُفَر العميقة جداً دون sub-base). <b>ZOE</b> ← ترميم مؤقت مهدّئ وقاعدة (pH محايد)؛ سيلر لبّي؛ <b>أبداً تحت الكمبوزِت</b>. <b>البولي كربوكسيلات</b> ← قاعدة/تثبيت للأسنان <b>الحسّاسة</b> (تهيّج لبي منخفض، التصاق كيميائي). <b>الأيونومر الزجاجي</b> ← قاعدة/تثبيت/ترميم؛ <b>إطلاق فلورايد</b> لمرضى التسوّس العالي؛ التصاق كيميائي بالسن. <b>السمنت الراتنجي</b> ← تثبيت الخزف/الكمبوزِت المخبري/المصبوب؛ والأنواع عالية الحشو كقاعدة. <b>Ca(OH)₂</b> ← بطانة وتغطية لبية مباشرة/غير مباشرة (يحفّز العاج الثانوي).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">General clinical considerations for lining</div>
+  <div class="prompt">What general clinical rules apply when placing liners and bases?</div>
+  <div class="answer">
+    (1) The prepared cavity must be <b>clean and dry</b>; isolate the quadrant completely from saliva because lining/base materials are water-sensitive during application & setting. (2) All liners/bases dissolve in saliva over time, so they should <b>not reach the cavity margins</b> (except varnish and bonding agents) — lining goes on the pulpal floor (Cl I), pulpal floor + axial wall (Cl II), or axial wall (Cl III/IV/V). (3) In amalgam cavities, the base must <b>not</b> extend onto the walls, because that would block the buccolingual undercuts and the retentive holes/grooves/pins essential for amalgam retention.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>اعتبارات سريرية عامة للبطانة:</b> (١) يجب أن تكون الحفرة <b>نظيفة وجافّة</b>؛ اعزل الربع تماماً عن اللعاب لأن مواد البطانة/القاعدة حسّاسة للماء أثناء الوضع والتصلّب. (٢) كل البطانات/القواعد تذوب في اللعاب مع الوقت، لذا يجب ألا <b>تصل حواف الحفرة</b> (عدا الورنيش وعوامل الربط) — توضع البطانة على الأرضية اللبية (Cl I)، الأرضية + الجدار المحوري (Cl II)، أو الجدار المحوري (Cl III/IV/V). (٣) في حُفَر الأملغم يجب ألا تمتدّ القاعدة على الجدران، لأن ذلك يسدّ الـundercuts الدهليزية-اللسانية وحُفَر/أخاديد/دبابيس الإرساء الضرورية لإرساء الأملغم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec22">Lec 4–5 · Convenience, Finishing &amp; Cleaning (Detailed)</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Convenience form &amp; the final three steps</div>
+  <div class="prompt">Explain convenience form and the last three steps of cavity preparation (caries removal, finishing, toilet).</div>
+  <div class="answer">
+    <b>Convenience form</b> is the shape that gives adequate <b>observation, accessibility, and ease of operation</b> while preparing and restoring the tooth — achieved by establishing good depth (<b>1.5–2 mm</b>) and the correct width (<b>¼ ICD</b>) so instruments and restorative material can be placed without hindrance.<br>
+  <b>Removal of remaining caries:</b> deep dentinal caries is removed with a <b>spoon excavator</b> or a <b>large round bur at slow speed</b>, conserving sound dentin to avoid pulp exposure.<br>
+  <b>Finishing enamel walls:</b> make the walls smooth and remove unsupported enamel so margins are strong.<br>
+  <b>Toilet of the cavity:</b> remove all debris by washing the cavity and drying it before lining/restoration.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>شكل الملاءمة والخطوات الثلاث الأخيرة:</b> <b>شكل الملاءمة (Convenience)</b> هو الشكل الذي يمنح <b>رؤيةً ووصولاً وسهولة عمل</b> كافية أثناء التحضير والترميم — ويتحقّق بعمق جيّد (<b>1.5–2مم</b>) والعرض الصحيح (<b>¼ ICD</b>) كي تُوضع الأدوات والمادة الترميمية دون عائق. <b>إزالة التسوّس المتبقّي:</b> يُزال العاج المسوّس العميق بـ<b>ملعقة الحفر</b> أو <b>بُرّ مدوّر كبير ببطء</b>، مع الحفاظ على العاج السليم لتجنّب كشف اللب. <b>إنهاء جدران المينا:</b> تنعيم الجدران وإزالة المينا غير المسنودة لتكون الحواف قوية. <b>تنظيف الحفرة (Toilet):</b> إزالة كل الفتات بغسل الحفرة وتجفيفها قبل البطانة/الترميم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Cl II occlusal step — bur orientation</div>
+  <div class="prompt">Describe the bur orientation and isthmus requirements when cutting the Cl II occlusal step.</div>
+  <div class="answer">
+    Enter the pit nearest the involved proximal surface with a <b>punch cut using a No. 245 bur</b>, keeping the <b>long axis of the bur parallel to the long axis of the crown</b>. The bur must already be rotating before it touches the tooth and should not stop rotating until removed. Initial entry depth is <b>1.5–2 mm</b>. Maintaining the same depth and orientation, extend to include the central groove and the opposite pit (this forms the <b>dovetail</b> retention). The <b>isthmus width</b> should be as narrow as possible and no wider than <b>¼ ICD</b>; the bur may be tilted slightly to give the facial/lingual walls a slight occlusal convergence and the mesial/distal walls an occlusal divergence.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الخطوة الإطباقية في Cl II — توجيه البُرّ:</b> ادخل الحفرة الأقرب للسطح الداني المصاب بـ<b>punch cut ببُرّ No. 245</b>، مع إبقاء <b>محور البُرّ موازياً لمحور التاج</b>. ويجب أن يكون البُرّ داخل الدوران قبل ملامسة السن وألا يتوقّف حتى الإخراج. عمق الدخول الأولي <b>1.5–2مم</b>. ومع الحفاظ على العمق والتوجيه، امتدّ ليشمل الأخدود المركزي والحفرة المقابلة (يشكّل إرساء <b>dovetail</b>). وعرض الـ<b>isthmus</b> أضيق ما يمكن ولا يتجاوز <b>¼ ICD</b>؛ ويمكن إمالة البُرّ قليلاً لإعطاء الجدارين الدهليزي/اللساني تقارباً إطباقياً طفيفاً والجدارين الإنسي/الوحشي تباعداً إطباقياً.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec23">Lec 8–9 · Material Reactions &amp; Manipulation (Detailed)</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">ZOE setting &amp; strengthened versions</div>
+  <div class="prompt">Describe the ZOE setting reaction and how its strength is increased for luting.</div>
+  <div class="answer">
+    <b>Setting reaction:</b> zinc oxide (powder) + eugenol (liquid) → <b>zinc eugenolate</b> + unreacted zinc oxide. The reaction is <b>not exothermic</b>, so no cooled slab is needed, and the <b>presence of moisture is essential</b> for setting; the bulk of powder is added first, then smaller increments. Average setting time ~<b>8 minutes</b>.<br>
+  <b>Strengthened (for luting):</b> two compositional changes increase strength — adding <b>methyl methacrylate polymer</b> to the powder, or adding <b>alumina (Al₂O₃)</b> to the powder with <b>ethoxybenzoic acid (EBA)</b> to the liquid. These reinforced types are used for crown & bridge cementation and as cement bases.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تصلّب ZOE والنسخ المقوّاة:</b> <b>تفاعل التصلّب:</b> أكسيد الزنك (مسحوق) + أوجينول (سائل) ← <b>زنك أوجينولات</b> + أكسيد زنك غير متفاعل. التفاعل <b>غير ناشر للحرارة</b> فلا يلزم لوح بارد، و<b>وجود الرطوبة ضروري</b> للتصلّب؛ يُضاف معظم المسحوق أولاً ثم كمّيات أصغر. ومتوسّط زمن التصلّب ~<b>8 دقائق</b>. <b>المقوّى (للتثبيت):</b> تغييران تركيبيان يزيدان القوّة — إضافة <b>بوليمر ميثيل ميثاكريلات</b> للمسحوق، أو إضافة <b>ألومينا (Al₂O₃)</b> للمسحوق مع <b>حمض الإيثوكسي بنزويك (EBA)</b> للسائل. وتُستخدم هذه الأنواع المقوّاة لتثبيت التيجان والجسور وكقواعد سمنت.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">GIC water sensitivity &amp; enamel etching</div>
+  <div class="prompt">Why is glass ionomer water-sensitive, and how does etching improve its bond?</div>
+  <div class="answer">
+    GIC is <b>very sensitive to water contact during setting</b>, so the field must be isolated completely. If used as a filling, once it reaches its <b>initial set (~7 min)</b> the surface is coated with a protective agent (e.g., varnish) because the <b>complete setting reaction takes 24 hours</b> — early moisture would wash out ions and weaken it, while desiccation causes cracking.<br>
+  GIC <b>bonds chemically</b> to tooth by ionic interaction with calcium/phosphate ions of enamel/dentin. <b>Conditioning the enamel with 37% phosphoric acid</b> produces micro-porosities that add <b>mechanical retention</b>, increasing the overall bond strength on top of the chemical bond.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>حساسية GIC للماء والحفر المينائي:</b> الـGIC <b>شديد الحساسية لملامسة الماء أثناء التصلّب</b>، فيجب عزل المجال تماماً. وإن استُخدم حشواً، فبعد بلوغه <b>التصلّب الأولي (~7د)</b> يُطلى السطح بعامل واقٍ (كالورنيش) لأن <b>التفاعل الكامل يستغرق 24 ساعة</b> — فالرطوبة المبكرة تغسل الأيونات وتُضعفه، والجفاف يسبّب التشقّق. ويلتصق الـGIC <b>كيميائياً</b> بالسن عبر تفاعل أيوني مع كالسيوم/فوسفات المينا/العاج. و<b>تهيئة المينا بحمض الفوسفوريك 37%</b> تنتج مسامات دقيقة تضيف <b>إرساءً ميكانيكياً</b> فترفع قوّة الالتصاق الكلية فوق الرابطة الكيميائية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Varnish application &amp; liquid care</div>
+  <div class="prompt">How is cavity varnish applied correctly, and how is the liquid cared for?</div>
+  <div class="answer">
+    Varnish is applied with a small round piece of cotton: place a thin layer on the preparation and gently dry it with a stream of air. A <b>minimum of two thin layers</b> is applied because, as the first layer dries, it leaves small voids — the second layer fills these and produces a more continuous coating. The varnish bottle must be <b>tightly capped immediately</b> after use to minimize solvent loss (which would thicken it). Most varnishes come with a separate bottle of pure solvent used to thin varnish that has become too thick and to remove varnish from external tooth surfaces.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تطبيق الورنيش والعناية بالسائل:</b> يُطبّق الورنيش بقطعة قطن مدوّرة صغيرة: ضع طبقة رقيقة على التحضير وجفّفها بلطف بتيار هواء. ويُطبّق <b>طبقتان رقيقتان على الأقل</b> لأن الطبقة الأولى عند جفافها تترك فراغات صغيرة — فتملؤها الثانية وتنتج طلاءً أكثر اتّصالاً. ويجب <b>إغلاق زجاجة الورنيش بإحكام فوراً</b> بعد الاستخدام لتقليل فقد المذيب (الذي يُثخّنه). ومعظم أنواع الورنيش تأتي بزجاجة مذيب نقي منفصلة تُستخدم لتخفيف الورنيش إذا أصبح ثخيناً ولإزالته عن أسطح السن الخارجية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="foot">
+✅ غطّى هذا الملف كامل مادة اليوم الثالث — المعالجة (Operative/Conservative) ص 1–70: تعريفات طب الأسنان الترميمي والتسوّس وتحضير الحفرة، تسميات الأسطح والجدران والزوايا، تصنيف G.V. Black وانتشار التسوّس، الأدوات اليدوية (القاطعة وغير القاطعة) وصيغها والأدوات الدوّارة والبُرَ، التعقيم بطرقه الأربع والتطهير، تصنيف الحُفَر وخطوات التحضير وتحضير الصنف الأول والثاني والثالث للأملغم، والسمنتات وحماية اللب (البطانات والقواعد، الزنك فوسفات، ZOE، البولي كربوكسيلات، الأيونومر الزجاجي، الراتنجية، الورنيش، عوامل الربط، هيدروكسيد الكالسيوم، وبروتوكول الحماية حسب عمق الحفرة).<br><br>
+عدد الكلمات (إنجليزي + عربي): <b>10071</b> كلمة.
+</div>
+
+<script>
+const total=63;
+function upd(){
+  let done=document.querySelectorAll('.card[data-done="1"]').length;
+  document.getElementById('score').textContent=done+' / '+total;
+  document.getElementById('fill').style.width=(done/total*100)+'%';
+}
+function revealCard(b){
+  const card=b.closest('.card');
+  card.querySelector('.answer').classList.add('show');
+  b.style.display='none';
+  card.querySelector('.got').style.display='inline-block';
+  card.querySelector('.rev').style.display='inline-block';
+}
+function rate(b,good){
+  const card=b.closest('.card');
+  card.setAttribute('data-done',good?'1':'2');
+  upd();
+}
+function revealAll(){
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelector('.answer').classList.add('show');
+    c.querySelector('.reveal').style.display='none';
+    c.querySelector('.got').style.display='inline-block';
+    c.querySelector('.rev').style.display='inline-block';
+  });
+}
+function hideAll(){
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelector('.answer').classList.remove('show');
+    c.querySelector('.reveal').style.display='inline-block';
+    c.querySelector('.got').style.display='none';
+    c.querySelector('.rev').style.display='none';
+  });
+}
+function resetAll(){
+  document.querySelectorAll('.card').forEach(c=>c.setAttribute('data-done','0'));
+  hideAll();upd();
+}
+upd();
+</script>
+</body>
+</html>

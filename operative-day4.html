@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Operative Dentistry — Day 4 — Complete</title>
+<style>
+:root{color-scheme:light only;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{background:#ffffff !important;color:#000000 !important;}
+@media (prefers-color-scheme:dark){
+  html,body{background:#ffffff !important;color:#000000 !important;}
+  .card,.hint,.topbar,.toc{background:#ffffff !important;color:#000000 !important;}
+}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;padding:0 14px 120px;line-height:1.65;font-size:17px;}
+h1{font-size:22px;margin:18px 0 4px;}
+.subtitle{color:#444;font-size:14px;margin:0 0 14px;}
+.topbar{position:sticky;top:0;background:#fff !important;border-bottom:2px solid #000;padding:10px 0;z-index:50;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.score{font-weight:700;font-size:15px;}
+.bar{flex:1;min-width:120px;height:12px;background:#eee;border:1px solid #000;border-radius:6px;overflow:hidden;}
+.bar>i{display:block;height:100%;width:0;background:#000;transition:width .3s;}
+.controls button{font-size:13px;padding:6px 10px;border:1px solid #000;background:#fff;border-radius:8px;cursor:pointer;}
+.toc{background:#fff;border:2px solid #000;border-radius:12px;padding:12px 14px;margin:14px 0;}
+.toc b{display:block;margin-bottom:6px;}
+.toc a{display:block;color:#000;text-decoration:none;padding:5px 0;border-bottom:1px dashed #ccc;font-size:15px;}
+.toc a:last-child{border-bottom:0;}
+h2.sec{font-size:18px;border-left:6px solid #000;padding:8px 12px;margin:30px 0 14px;background:#f3f3f3;border-radius:0 8px 8px 0;}
+.card{border:2px solid #000;border-radius:14px;padding:14px 16px;margin:14px 0;background:#fff !important;}
+.card[data-done="1"]{border-color:#157f3b;background:#f3fbf5 !important;}
+.card[data-done="2"]{border-color:#b00;background:#fff7f7 !important;}
+.topic{font-weight:700;font-size:15px;color:#000;margin-bottom:6px;letter-spacing:.2px;text-transform:uppercase;}
+.prompt{font-size:17px;font-weight:600;margin-bottom:10px;}
+.answer{display:none;border-top:1px dashed #999;padding-top:10px;margin-top:4px;}
+.answer.show{display:block;animation:fade .25s;}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.answer ol,.answer ul{margin:6px 0;padding-inline-start:22px;}
+.answer li{margin:4px 0;}
+.answer table{border-collapse:collapse;width:100%;margin:8px 0;font-size:15px;}
+.answer th,.answer td{border:1px solid #000;padding:6px 8px;text-align:left;}
+.answer th{background:#eee;}
+.k{background:#ffd400;color:#b00000 !important;font-weight:700;padding:0 4px;border-radius:3px;}
+.hint{direction:rtl;text-align:right;background:#fff;border:1px solid #000;border-radius:10px;padding:10px 12px;margin-top:12px;font-size:16px;line-height:1.8;}
+.hint .hl{background:#ffd400;color:#b00;font-weight:700;padding:0 5px;border-radius:3px;}
+.hint b{color:#b00000;}
+.btns{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;}
+.btns button{font-size:15px;padding:9px 14px;border-radius:10px;border:2px solid #000;background:#fff;cursor:pointer;font-weight:600;}
+.btns .got{border-color:#157f3b;color:#157f3b;}
+.btns .rev{border-color:#b00;color:#b00;}
+.btns .reveal{background:#000;color:#fff;}
+.foot{margin-top:30px;border-top:2px solid #000;padding-top:14px;font-size:14px;color:#333;}
+.note{background:#ffd400;color:#000;border:1px solid #000;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:15px;}
+</style>
+</head>
+<body>
+<h1>Operative Dentistry — Day 4 — Complete Interactive Review</h1>
+<p class="subtitle">pages 71–140 · complex amalgam & pins → amalgam failure → calcium-silicate cements (MTA/Biodentine) → composite (composition/classification) → light curing & bonding → composite Cl III/IV/V & posterior Cl I/II → patient assessment · 60 cards · English + شرح عربي وافٍ</p>
+
+<div class="topbar">
+  <span class="score" id="score">0 / 60</span>
+  <span class="bar"><i id="fill"></i></span>
+  <span class="controls">
+    <button onclick="revealAll()">اكشف الكل</button>
+    <button onclick="hideAll()">إخفاء</button>
+    <button onclick="resetAll()">تصفير</button>
+  </span>
+</div>
+
+<div class="note">⭐ = أقسام عالية الأهمية (high-yield). اقرأ السؤال، حاول الإجابة من ذاكرتك، ثم اكشف الجواب وقيّم نفسك.</div>
+
+<div class="toc">
+<b>المحتويات · Contents</b>
+<a href="#sec0">Lec 11 · Complex Amalgam — Indications &amp; Cusp Capping ⭐</a>
+<a href="#sec1">Lec 11 · Secondary Retention — Coves, Locks &amp; Slots</a>
+<a href="#sec2">Lec 11 · Pins — Types &amp; Retention Factors ⭐</a>
+<a href="#sec3">Lec 11 · Pin Placement &amp; Problems ⭐</a>
+<a href="#sec4">Lec 11 · Amalgam Restoration Failure ⭐</a>
+<a href="#sec5">Calcium Silicate Base Cements — MTA, Biodentine, TheraCal ⭐</a>
+<a href="#sec6">Lec 12 · Composite Resin — Introduction ⭐</a>
+<a href="#sec7">Lec 12 · Composite Composition &amp; Classification ⭐</a>
+<a href="#sec8">Lec 13 · Light-Activation Sources</a>
+<a href="#sec9">Lec 13 · Polymerization &amp; Shrinkage Stress ⭐</a>
+<a href="#sec10">Lec 13 · Acid Etching &amp; Smear Layer ⭐</a>
+<a href="#sec11">Lec 13 · Adhesion to Dentin &amp; Bonding Generations ⭐</a>
+<a href="#sec12">Lec 14 · Composite Cl III / IV / V Preparation ⭐</a>
+<a href="#sec13">Lec 15 · Posterior Composite &amp; Amalgam vs Composite ⭐</a>
+<a href="#sec14">Lec 15 · Composite Placement Techniques ⭐</a>
+<a href="#sec15">Lec 1 (Dr. Abdullah) · Patient Assessment &amp; Diagnosis</a>
+<a href="#sec16">Lec 12 · Composite Types in Detail</a>
+<a href="#sec17">Lec 11 · Complex Amalgam — Resistance &amp; Retention (Detailed)</a>
+<a href="#sec18">Lec 14 · Conventional Cl III Composite — Full Steps</a>
+<a href="#sec19">MTA · Indications &amp; Clinical Notes</a>
+<a href="#sec20">Lec 13 · Bonding — Clinical Application</a>
+<a href="#sec21">Lec 1 (Dr. Abdullah) · Evaluation of the Dentition</a>
+<a href="#sec22">Pulp Protection by Cavity Depth (Amalgam) — Recap</a>
+<a href="#sec23">Lec 12 · Composite Chemistry &amp; Handling (Detailed)</a>
+<a href="#sec24">Lec 14 · Cl V Modified &amp; Cl IV Esthetic Notes</a>
+<a href="#sec25">Lec 1 (Dr. Abdullah) · Medical &amp; Dental History (Detailed)</a>
+<a href="#sec26">Lec 11 · Marginal Deterioration &amp; Contact/Overhang</a>
+<a href="#sec27">Lec 13 · Depth of Cure &amp; Etching Quality</a>
+<a href="#sec28">Lec 14–15 · Preparation Design Selection</a>
+<a href="#sec29">Lec 11 · Cusp Capping &amp; Pin Orientation (Detailed)</a>
+</div>
+
+<h2 class="sec" id="sec0">Lec 11 · Complex Amalgam — Indications &amp; Cusp Capping ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">When to use complex amalgam</div>
+  <div class="prompt">When are complex amalgam restorations considered, and what are the indications/contraindications?</div>
+  <div class="answer">
+    Considered when <b>large amounts of tooth structure are missing</b>, one or more cusps need capping, and increased resistance/retention are needed (e.g., MODFL).<br>
+  <b>Indications:</b> control restorations in teeth with <b>questionable pulpal/periodontal prognosis</b>; control restorations in acute/severe caries; <b>foundations</b> (abutments for fixed prostheses).<br>
+  <b>Contraindications:</b> esthetically important areas; a tooth that cannot be properly restored directly due to anatomic/functional considerations.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>متى نستخدم الأملغم المعقّد:</b> يُنظر فيه عند <b>فقد كمّية كبيرة من بنية السن</b>، أو حاجة حدبة/حدبات للتغطية، أو الحاجة لمقاومة/إرساء أكبر (مثل MODFL). <b>الاستطبابات:</b> ترميمات ضابطة لأسنان ذات <b>إنذار لبّي/لثوي مشكوك</b>؛ ترميمات ضابطة في التسوّس الحادّ/الشديد؛ <b>أساسات (foundations)</b> (دعامات للتركيبات الثابتة). <b>الموانع:</b> المناطق الجمالية المهمّة؛ سنّ لا يمكن ترميمه مباشرةً جيّداً لاعتبارات تشريحية/وظيفية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Cusp capping</div>
+  <div class="prompt">When and how is cusp capping performed in complex amalgam?</div>
+  <div class="answer">
+    <b>When:</b> when the facio-lingual extension of the occlusal preparation exceeds <span class="k">two-thirds the intercuspal distance</span>, cusp reduction for capping is usually required for adequate resistance form.<br>
+  <b>How:</b> reduce a <b>minimum of 2 mm</b> on the occlusal surface of each capped cusp (using the side of a carbide fissure bur) so the final amalgam over the cusp is ≥2 mm thick. The reduced cusp's contour should mimic the normal cusp; round any sharp internal corners to reduce stress concentration and improve fracture resistance.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تغطية الحدبات (Cusp capping):</b> <b>متى:</b> عندما يتجاوز الامتداد الدهليزي-اللساني للتحضير الإطباقي <b>ثلثي المسافة بين الحدبات</b> يلزم عادةً تخفيض الحدبة للتغطية لتحقيق مقاومة كافية. <b>كيف:</b> خفّض <b>2مم كحدّ أدنى</b> على السطح الإطباقي لكل حدبة مُغطّاة (بجانب بُرّ شقّي كربايد) ليكون الأملغم فوق الحدبة ≥2مم. ويجب أن تحاكي حدبة المخفّضة الكنتور الطبيعي؛ ودوّر الزوايا الداخلية الحادّة لتقليل تركّز الإجهاد وتحسين مقاومة الكسر.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec1">Lec 11 · Secondary Retention — Coves, Locks &amp; Slots</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Why secondary retention &amp; coves/locks</div>
+  <div class="prompt">Why is secondary retention needed after cusp reduction, and what are coves and locks?</div>
+  <div class="answer">
+    Cusp reduction <b>decreases the height of the vertical walls</b>, so primary retention drops → secondary retention means are required.
+  <ul><li><b>Coves:</b> prepared in a <b>horizontal</b> plane.</li>
+  <li><b>Locks:</b> prepared in a <b>vertical</b> plane.</li></ul>
+  Locks and coves should be prepared <b>before</b> preparing pinholes and inserting pins. Where possible, opposing vertical walls should converge occlusally (primary retention); pulpal and gingival walls should be flat and perpendicular to the long axis.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>لماذا الإرساء الثانوي والـcoves/locks:</b> تخفيض الحدبة <b>يقلّل ارتفاع الجدران العمودية</b> فيهبط الإرساء الأولي ← تلزم وسائل إرساء ثانوية. <b>Coves:</b> تُحضّر في مستوى <b>أفقي</b>. <b>Locks:</b> تُحضّر في مستوى <b>عمودي</b>. وتُحضّر الـlocks والـcoves <b>قبل</b> تحضير حُفَر الدبابيس وإدخالها. وحيثما أمكن يجب أن تتقارب الجدران العمودية المتقابلة إطباقياً (إرساء أولي)؛ والجداران اللبي واللثوي مسطّحان وعموديان على المحور الطولي.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Slots</div>
+  <div class="prompt">Describe slots as a secondary retention feature.</div>
+  <div class="answer">
+    <b>Slots</b> may be prepared along the gingival floor, or in addition to pinholes. A slot should be prepared <span class="k">0.5 mm pulpal to the DEJ</span> and at least <b>0.5 mm in depth</b>. Slots provide auxiliary resistance and retention when conventional features are insufficient because of limited remaining tooth structure.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الأخاديد (Slots):</b> قد تُحضّر على طول الأرضية اللثوية، أو إضافةً لحُفَر الدبابيس. ويُحضّر الأخدود على بُعد <b>0.5مم لبّياً من DEJ</b> وبعمق <b>0.5مم على الأقل</b>. توفّر الأخاديد مقاومةً وإرساءً مساعدين عندما تكون الوسائل التقليدية غير كافية بسبب قلّة بنية السن المتبقية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec2">Lec 11 · Pins — Types &amp; Retention Factors ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Pin-retained amalgam adv/disadv</div>
+  <div class="prompt">What are the advantages and disadvantages of pin-retained amalgam?</div>
+  <div class="answer">
+    <b>Advantages:</b> more <b>conservative</b> of tooth cutting than slots/crowns; time-saving (<b>one visit</b> vs two for a cast); better resistance & retention; more economical than a cast.<br>
+  <b>Disadvantages:</b> difficult to penetrate when little dentin remains; <b>stress induced</b> into tooth structure; risk of <b>perforation</b> into the pulp or external surface; requires at least <b>4 mm of occlusal clearance</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مزايا/عيوب الأملغم المدعّم بالدبابيس:</b> <b>المزايا:</b> أكثر <b>تحفّظاً</b> في قطع السن من الأخاديد/التيجان؛ يوفّر الوقت (<b>جلسة واحدة</b> مقابل جلستين للمصبوب)؛ مقاومة وإرساء أفضل؛ أوفر من المصبوب. <b>العيوب:</b> صعوبة الاختراق عند قلّة العاج؛ <b>إجهاد يُحدَث</b> في بنية السن؛ خطر <b>الثقب</b> نحو اللب أو السطح الخارجي؛ يتطلّب <b>4مم خلوصاً إطباقياً</b> على الأقل.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Three types of pins</div>
+  <div class="prompt">Compare self-threading, cemented, and friction-locked pins.</div>
+  <div class="answer">
+    <ul>
+  <li><b>Self-threading:</b> retained by threads engaging the dentin; <span class="k">most retentive</span> & most widely used; pinhole is <b>0.1 mm smaller</b> than the pin (dentin elasticity allows insertion); depth ~1.5–2 mm. Can cause dentin craze lines.</li>
+  <li><b>Cemented:</b> threaded/serrated stainless-steel pins cemented into holes <b>0.05 mm larger</b> than the pin (zinc phosphate/polycarboxylate); <b>least stress</b> but <b>least retentive</b>; depth 3 mm.</li>
+  <li><b>Friction-locked:</b> hole <b>0.025 mm smaller</b> than the pin; tapped in, retained by dentin resiliency; <b>2–3× more retentive than cemented</b>.</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أنواع الدبابيس الثلاثة:</b> <b>Self-threading (ذاتي اللولبة):</b> يُثبّت بلوالب تعشّق العاج؛ <b>الأكثر إرساءً</b> والأوسع استخداماً؛ الحفرة <b>أصغر بـ0.1مم</b> من الدبوس (مرونة العاج تسمح)؛ العمق ~1.5–2مم؛ قد يسبّب شقوقاً في العاج. <b>Cemented (مُسمنت):</b> دبابيس ستانلس ملولبة/مسنّنة تُسمنت في حُفَر <b>أكبر بـ0.05مم</b> (زنك فوسفات/بولي كربوكسيلات)؛ <b>أقلّ إجهاداً</b> لكن <b>أقلّ إرساءً</b>؛ العمق 3مم. <b>Friction-locked (احتكاكي):</b> الحفرة <b>أصغر بـ0.025مم</b>؛ يُدَقّ ويُثبّت بمرونة العاج؛ <b>أكثر إرساءً 2–3 أضعاف من المُسمنت</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Factors affecting pin retention</div>
+  <div class="prompt">What factors affect the retention of a pin in dentin and amalgam?</div>
+  <div class="answer">
+    <ol>
+  <li><b>Type:</b> self-threading (most) > friction-locked > cemented (least).</li>
+  <li><b>Surface characteristics:</b> number & depth of serrations/threads; the self-threading shape gives the greatest retention.</li>
+  <li><b>Orientation, number, diameter:</b> <b>non-parallel</b> placement ↑ retention; avoid excessive bending (interferes with condensation, weakens the pin) — bend only enough to leave ~<b>1 mm amalgam</b> between pin and external surface.</li>
+  <li><b>Extension:</b> extension into dentin/amalgam <b>>2 mm is unnecessary</b> and contraindicated (preserves dentin & amalgam strength).</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>عوامل إرساء الدبوس في العاج والأملغم:</b> (١) <b>النوع:</b> ذاتي اللولبة (الأكثر) > احتكاكي > مُسمنت (الأقل). (٢) <b>خصائص السطح:</b> عدد وعمق التسنينات/اللوالب؛ وشكل ذاتي اللولبة يعطي أكبر إرساء. (٣) <b>التوجيه والعدد والقطر:</b> الوضع <b>غير المتوازي</b> يزيد الإرساء؛ تجنّب الثني المفرط (يعيق الكبس ويُضعف الدبوس) — اثنِ بما يكفي لترك ~<b>1مم أملغم</b> بين الدبوس والسطح الخارجي. (٤) <b>الامتداد:</b> الامتداد في العاج/الأملغم <b>>2مم غير ضروري</b> وممنوع (للحفاظ على قوّة العاج والأملغم).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec3">Lec 11 · Pin Placement &amp; Problems ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Pin size &amp; number (TMS)</div>
+  <div class="prompt">Describe pin size selection (TMS) and the rules for the number of pins.</div>
+  <div class="answer">
+    <b>Size (Thread Mate System, largest→smallest): Regular, Minim, Minikin, Minuta.</b> <b>Minikin</b> is usually the pin of choice for severely involved posterior teeth (↓ crazing/penetration/perforation risk); <b>Minim</b> is a backup if the Minikin hole is over-prepared; <b>Regular</b> is rarely used (creates significant stress); <b>Minuta</b> is too small for posteriors → used for anteriors.<br>
+  <b>Number:</b> as a rule <b>one pin per cusp or marginal ridge</b>; use the fewest possible; if >1, keep <b>3–5 mm between pins</b>. More pins ↑ retention, but excessive pins fracture the tooth and weaken the amalgam.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>حجم الدبوس وعددها (TMS):</b> <b>الأحجام (من الأكبر للأصغر): Regular, Minim, Minikin, Minuta.</b> <b>Minikin</b> عادةً الخيار للأسنان الخلفية شديدة الإصابة (↓ خطر التشقّق/الاختراق/الثقب)؛ <b>Minim</b> احتياطي إن تجاوز تحضير حفرة الـMinikin؛ <b>Regular</b> نادر (يُحدث إجهاداً كبيراً)؛ <b>Minuta</b> صغير جداً للخلفية ← للأمامية. <b>العدد:</b> كقاعدة <b>دبوس لكل حدبة أو حافة حُفّية</b>؛ استخدم الأقلّ؛ وإن كان >1 فاترك <b>3–5مم بين الدبابيس</b>. الأكثر يزيد الإرساء لكن المفرط يكسر السن ويُضعف الأملغم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Pin location rules</div>
+  <div class="prompt">What are the rules for pinhole location?</div>
+  <div class="answer">
+    <ul>
+  <li>Occlusal clearance sufficient for <b>2 mm of amalgam</b> over the pin.</li>
+  <li>Pinhole located <b>halfway between the pulp and the DEJ/external surface</b> — no closer than <b>0.5–1 mm to the DEJ</b> and no closer than <b>1–1.5 mm to the external surface</b>.</li>
+  <li>Parallel to the adjacent external tooth surface.</li>
+  <li><b>≥0.5 mm space</b> around the pin circumference for condensation.</li>
+  <li>Prepared on a <b>flat surface perpendicular</b> to the intended pinhole direction.</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>قواعد موقع الدبوس:</b> خلوص إطباقي يكفي لـ<b>2مم أملغم</b> فوق الدبوس؛ الحفرة <b>في منتصف المسافة بين اللب وDEJ/السطح الخارجي</b> — لا أقرب من <b>0.5–1مم من DEJ</b> ولا أقرب من <b>1–1.5مم من السطح الخارجي</b>؛ موازية للسطح الخارجي المجاور؛ <b>≥0.5مم مساحة</b> حول محيط الدبوس للكبس؛ تُحضّر على <b>سطح مسطّح عمودي</b> على اتجاه الحفرة المقصود.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Pin problems &amp; management</div>
+  <div class="prompt">How are broken drills/pins, loose pins, and pulp penetration/perforation managed?</div>
+  <div class="answer">
+    <b>Broken drill/pin:</b> choose an alternate location ≥<b>1.5 mm away</b> and prepare another pinhole.<br>
+  <b>Loose pin:</b> remove it, re-prepare the hole with the <b>next largest drill</b> and insert the appropriate pin (or prepare a new same-size hole 1.5 mm away).<br>
+  <b>Pulp penetration</b> (hemorrhage in the hole / abrupt loss of resistance): treat like a small mechanical exposure — control hemorrhage, place a <b>Ca(OH)₂</b> liner over the opening, prepare another hole 1.5–2 mm away.<br>
+  <b>External perforation:</b> if <b>occlusal to the gingival attachment</b> → cut the pin flush (or remove, enlarge slightly, restore with amalgam); if <b>apical to the attachment</b> → reflect tissue surgically, remove bone, enlarge, restore with amalgam.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مشاكل الدبوس وإدارتها:</b> <b>كسر المثقب/الدبوس:</b> اختر موقعاً بديلاً ≥<b>1.5مم بعيداً</b> وحضّر حفرة أخرى. <b>دبوس رخو:</b> أزله وأعد تحضير الحفرة بـ<b>المثقب الأكبر التالي</b> وأدخل الدبوس المناسب (أو حفرة جديدة بنفس الحجم على بُعد 1.5مم). <b>اختراق اللب</b> (نزف في الحفرة / فقد مفاجئ للمقاومة): عامله كتعرّض ميكانيكي صغير — أوقف النزف، ضع بطانة <b>Ca(OH)₂</b> فوق الفتحة، وحضّر حفرة أخرى على بُعد 1.5–2مم. <b>ثقب خارجي:</b> إن كان <b>إطباقياً للارتباط اللثوي</b> ← اقطع الدبوس بمستوى السطح (أو أزله ووسّع قليلاً ورمّم بالأملغم)؛ وإن كان <b>قمياً للارتباط</b> ← اقلب النسيج جراحياً، أزل العظم، وسّع، ورمّم بالأملغم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec4">Lec 11 · Amalgam Restoration Failure ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Causes of amalgam failure</div>
+  <div class="prompt">List the main causes of amalgam restoration failure.</div>
+  <div class="answer">
+    <ol>
+  <li><b>Secondary caries:</b> the predominant cause of Cl I/II failure (esp. high-caries patients) — recurrent caries around margins.</li>
+  <li><b>Isthmus / marginal-ridge fracture:</b> from an <b>un-rounded axio-pulpal line angle</b>, a marginal ridge left too high, or improper matrix removal.</li>
+  <li><b>Tooth fracture:</b> excessive cutting/caries → thin walls; sharp internal line angles concentrate stress.</li>
+  <li><b>Marginal deterioration/fracture:</b> improper margin prep, improper carving/finishing, excess mercury, low-copper amalgam, amalgam expansion.</li>
+  <li><b>Other:</b> gingival <b>overhang</b> (no/improper wedge), improper contact area → periodontal problems.</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أسباب فشل الأملغم:</b> (١) <b>التسوّس الثانوي:</b> السبب الغالب لفشل Cl I/II (خاصةً مرضى التسوّس العالي) — تسوّس متكرّر حول الحواف. (٢) <b>كسر الـisthmus / الحافة الحُفّية:</b> من <b>زاوية axio-pulpal غير مدوّرة</b>، أو حافة حُفّية مرتفعة جداً، أو إزالة خاطئة للمصفوفة. (٣) <b>كسر السن:</b> قطع/تسوّس مفرط ← جدران رقيقة؛ والزوايا الداخلية الحادّة تركّز الإجهاد. (٤) <b>تدهور/كسر الحافة:</b> تحضير حافة خاطئ، نحت/إنهاء خاطئ، فائض زئبق، أملغم منخفض النحاس، تمدّد الأملغم. (٥) <b>أخرى:</b> <b>overhang</b> لثوي (بلا wedge أو خاطئ)، منطقة تماس خاطئة ← مشاكل لثوية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec5">Calcium Silicate Base Cements — MTA, Biodentine, TheraCal ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Calcium silicate cements — overview</div>
+  <div class="prompt">What are the general characteristics, drawbacks, and uses of calcium silicate base cements?</div>
+  <div class="answer">
+    <b>Characteristics:</b> biocompatible; sufficient mechanical qualities; <b>set and seal in wet/blood-contaminated fields</b>; when submerged in body fluids they chemically precipitate a <b>calcium-phosphate/apatite layer</b>.<br>
+  <b>Drawbacks:</b> prolonged setting time; lack of radiopacity; difficult handling.<br>
+  <b>Uses:</b> root-apex restoration, pulp capping, pulp-regeneration bridges, endodontic sealer.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>سمنتات سيليكات الكالسيوم — نظرة عامة:</b> <b>الخصائص:</b> متوافقة حيوياً؛ خصائص ميكانيكية كافية؛ <b>تتصلّب وتسدّ في وسط رطب/ملوّث بالدم</b>؛ وعند غمرها بسوائل الجسم تُرسّب كيميائياً <b>طبقة فوسفات كالسيوم/أباتيت</b>. <b>العيوب:</b> زمن تصلّب طويل؛ نقص الظلّية؛ صعوبة المناولة. <b>الاستخدامات:</b> ترميم قمة الجذر، تغطية لبية، جسور تجديد اللب، سيلر لبّي.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">MTA</div>
+  <div class="prompt">Describe MTA: colors, composition, pH, setting time, key properties.</div>
+  <div class="answer">
+    <b>MTA</b> comes in <b>gray and white</b>. Gray = tricalcium silicate + dicalcium silicate + tricalcium aluminate + <b>bismuth oxide</b> + calcium sulfate + <b>tetracalcium aluminoferrite</b>; white lacks the tetracalcium aluminoferrite (hence white).<br>
+  pH when set = <span class="k">12.5</span> (biological properties similar to Ca(OH)₂). Setting time <b>2 h 45 min</b>. Unlike Ca(OH)₂ it produces a <b>hard, non-resorbable</b> surface and is <b>hydrophilic</b> (sets in moisture).<br>
+  <b>Manipulation:</b> mix powder + liquid to putty; loose granular aggregate doesn't stick to instruments → carry with an amalgam carrier or MAP system, then compact with burnishers/micro-pluggers.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>MTA:</b> يأتي <b>رمادياً وأبيض</b>. الرمادي = سيليكات ثلاثي الكالسيوم + ثنائي الكالسيوم + ألومينات ثلاثي الكالسيوم + <b>أكسيد البزموت</b> + كبريتات كالسيوم + <b>ألومينوفيرّيت رباعي الكالسيوم</b>؛ والأبيض يفتقر لرباعي الكالسيوم ألومينوفيرّيت (لذا أبيض). pH عند التصلّب = <b>12.5</b> (خصائص حيوية شبيهة بـCa(OH)₂). زمن التصلّب <b>ساعتان و45 دقيقة</b>. وخلافاً لـCa(OH)₂ يعطي سطحاً <b>صلباً غير قابل للامتصاص</b> وهو <b>محبّ للماء</b> (يتصلّب بالرطوبة). <b>المناولة:</b> اخلط المسحوق + السائل لقوام عجيني؛ والركام الحبيبي المفكّك لا يلتصق بالأدوات ← احمله بحامل أملغم أو نظام MAP ثم اكبسه بالـburnishers/micro-pluggers.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Biodentine &amp; TheraCal LC</div>
+  <div class="prompt">Compare Biodentine and TheraCal LC.</div>
+  <div class="answer">
+    <b>Biodentine:</b> a calcium-silicate cement in a capsule (ideal powder/liquid ratio); <b>rapid set (~12 min)</b> vs MTA's 3–4 h; better biologic, handling & physical properties and <b>superior sealing</b> than MTA.<br>
+  <b>TheraCal LC:</b> a <b>resin-modified</b> calcium silicate for direct/indirect pulp capping and as a protective liner under composite/amalgam/cements. <b>Light-cured</b> (may generate heat), one-paste, with <b>instant high Ca release (short-term)</b> — whereas Dycal gives instant low Ca release (long-term). Moisture-tolerant, radiopaque; calcium release stimulates hydroxyapatite/secondary-dentin bridge; alkaline pH promotes healing.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>Biodentine وTheraCal LC:</b> <b>Biodentine:</b> سمنت سيليكات كالسيوم في كبسولة (نسبة مسحوق/سائل مثالية)؛ <b>تصلّب سريع (~12د)</b> مقابل 3–4 ساعات لـMTA؛ خصائص حيوية ومناولة وفيزيائية أفضل و<b>سدّ متفوّق</b> على MTA. <b>TheraCal LC:</b> سيليكات كالسيوم <b>معدّل بالراتنج</b> لتغطية لبية مباشرة/غير مباشرة وكبطانة واقية تحت الكمبوزِت/الأملغم/السمنتات. <b>يتصلّب بالضوء</b> (قد يولّد حرارة)، عجينة واحدة، مع <b>إطلاق كالسيوم عالٍ فوري (قصير المدى)</b> — بينما Dycal يعطي إطلاقاً منخفضاً فورياً (طويل المدى). متحمّل للرطوبة وظلّي؛ إطلاق الكالسيوم يحرّض الهيدروكسي أباتيت/جسر العاج الثانوي؛ وpH القلوي يعزّز الشفاء.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec6">Lec 12 · Composite Resin — Introduction ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Indications &amp; contraindications</div>
+  <div class="prompt">State the indications and contraindications for composite resin.</div>
+  <div class="answer">
+    Introduced commercially in <b>1962 by Bowen</b>; the most popular tooth-colored material.<br>
+  <b>Indications:</b> Class I–VI restorations; core buildups; fissure sealants & preventive resin restorations; esthetic procedures (partial/full veneers, contour modifications, diastema closure); cements for indirect restorations; temporary restorations.<br>
+  <b>Contraindications:</b> area that <b>cannot be isolated</b>; non-esthetic Cl V; restorations extending onto the root surface (gap formation); <b>heavy occlusal stress</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>استطبابات وموانع الكمبوزِت:</b> أُدخل تجارياً <b>عام 1962 بواسطة Bowen</b>؛ وهو أشهر مادة بلون السن. <b>الاستطبابات:</b> ترميمات Class I–VI؛ بناء اللبّات (cores)؛ سادّات الشقوق والترميمات الوقائية؛ إجراءات جمالية (قشور جزئية/كاملة، تعديل الكنتور، إغلاق الفرجات)؛ سمنتات للترميمات غير المباشرة؛ ترميمات مؤقتة. <b>الموانع:</b> منطقة <b>لا يمكن عزلها</b>؛ Cl V غير الجمالية؛ ترميمات تمتدّ لسطح الجذر (تكوّن فجوة)؛ <b>إجهاد إطباقي شديد</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Advantages &amp; disadvantages</div>
+  <div class="prompt">List the advantages and disadvantages of composite.</div>
+  <div class="answer">
+    <b>Advantages:</b> esthetics; <b>conservative</b> (less extension, uniform depth not needed, mechanical retention usually not needed); easier/less complex preparation; low thermal conductivity; <b>bonded</b> → good retention, low microleakage, minimal interfacial staining, strengthens remaining tooth; repairable.<br>
+  <b>Disadvantages — material:</b> polymerization shrinkage; occlusal wear in high-stress areas; higher coefficient of thermal expansion. <b>Technique:</b> time-consuming; technique-sensitive; costlier than amalgam.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مزايا وعيوب الكمبوزِت:</b> <b>المزايا:</b> الجمالية؛ <b>متحفّظ</b> (امتداد أقل، لا يلزم عمق موحّد، لا يلزم إرساء ميكانيكي غالباً)؛ تحضير أسهل/أبسط؛ توصيل حراري منخفض؛ <b>يلتصق</b> ← إرساء جيّد وتسرّب أقلّ وتلطّخ حافّي أدنى ويقوّي السن المتبقّي؛ قابل للإصلاح. <b>العيوب — المادة:</b> انكماش البلمرة؛ تآكل إطباقي في مناطق الإجهاد العالي؛ معامل تمدّد حراري أعلى. <b>التقنية:</b> مستهلك للوقت؛ حسّاس للتقنية؛ أغلى من الأملغم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec7">Lec 12 · Composite Composition &amp; Classification ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Composition of composite</div>
+  <div class="prompt">Describe the composition of resin composite and the function of each component.</div>
+  <div class="answer">
+    <ol>
+  <li><b>Organic resin matrix</b> (e.g., <b>BIS-GMA</b> dimethacrylate) — the backbone/monomer system.</li>
+  <li><b>Inorganic filler</b> (fused silica, quartz, glass) — reduces shrinkage & thermal expansion, improves strength/esthetics/handling, provides radiopacity.</li>
+  <li><b>Coupling agent</b> (<b>silane</b>) — bonds resin to filler, transfers forces, prevents water penetration at the interface.</li>
+  <li><b>Initiator system</b> — activates setting.</li>
+  <li><b>Stabilizers</b> and <b>pigments</b>.</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تركيب الكمبوزِت:</b> (١) <b>المطرس الراتنجي العضوي</b> (مثل <b>BIS-GMA</b> ثنائي الميثاكريلات) — العمود الفقري/نظام المونومر. (٢) <b>الحشوة اللاعضوية</b> (سيليكا منصهرة، كوارتز، زجاج) — تقلّل الانكماش والتمدّد الحراري وتحسّن القوّة/الجمال/المناولة وتعطي الظلّية. (٣) <b>عامل الاقتران</b> (<b>سيلان</b>) — يربط الراتنج بالحشوة وينقل القوى ويمنع نفاذ الماء عند البينية. (٤) <b>نظام البادئ</b> — يفعّل التصلّب. (٥) <b>المثبّتات</b> و<b>الأصبغة</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Classification of composite</div>
+  <div class="prompt">How are composites classified (by filler size, polymerization, matrix)?</div>
+  <div class="answer">
+    <b>By filler size:</b> macrofilled, microfilled, hybrid, nano (nanofilled).<br>
+  <b>By polymerization:</b> light-cure, chemical-cure, dual-cure.<br>
+  <b>By matrix:</b> BIS-GMA, UDMA.<br>
+  <b>Conventional:</b> 75–80% inorganic filler by weight, ~8 µm particles, hard rough surface, strontium/barium glass (radiopaque).<br>
+  <b>Microfilled (1980):</b> highly polishable, smooth surface (small particles).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تصنيف الكمبوزِت:</b> <b>حسب حجم الحشوة:</b> macrofilled، microfilled، hybrid، nano. <b>حسب البلمرة:</b> ضوئي، كيميائي، مزدوج. <b>حسب المطرس:</b> BIS-GMA، UDMA. <b>التقليدي:</b> 75–80% حشوة لاعضوية وزناً، جسيمات ~8µm، سطح خشن قاسٍ، زجاج سترونشيوم/باريوم (ظلّي). <b>Microfilled (1980):</b> عالي القابلية للتلميع، سطح ناعم (جسيمات صغيرة).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Composite types &amp; activation</div>
+  <div class="prompt">Describe flowable, packable, reinforced composites and the activation methods.</div>
+  <div class="answer">
+    <b>Flowable:</b> inferior physical properties (lower wear/strength); used in small Cl I, fissure sealants, marginal repair, as a first liner increment under hybrid/packable; easy to use, good wettability.<br>
+  <b>Packable (condensable):</b> more viscous/stiff; filler prevents particle sliding; easier proximal contact; handles like amalgam.<br>
+  <b>Reinforced:</b> resin + randomly-oriented E-glass fiber + particulate filler; a base in high-stress large cavities.<br>
+  <b>Activation:</b> <b>chemical</b> (two-paste, limited working time, air-bubble risk); <b>light</b> (single paste, no mixing, less porosity, clinician-controlled working time); <b>dual</b> (slow self-cure completes areas not adequately light-cured, e.g., interproximal).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أنواع الكمبوزِت والتفعيل:</b> <b>Flowable:</b> خصائص فيزيائية أدنى (تآكل/قوّة أقلّ)؛ للـCl I الصغيرة وسادّات الشقوق وإصلاح الحواف وكطبقة بطانة أولى تحت الهجين/الـpackable؛ سهل وجيّد الترطيب. <b>Packable (قابل للكبس):</b> أكثر لزوجة/صلابة؛ الحشوة تمنع انزلاق الجسيمات؛ تماس داني أسهل؛ يُناول كالأملغم. <b>Reinforced (مقوّى):</b> راتنج + ألياف E-glass عشوائية + حشوة جزيئية؛ كقاعدة في الحُفَر الكبيرة عالية الإجهاد. <b>التفعيل:</b> <b>كيميائي</b> (عجينتان، زمن عمل محدود، خطر فقاعات)؛ <b>ضوئي</b> (عجينة واحدة، بلا خلط، مسامية أقلّ، زمن عمل يتحكّم به الطبيب)؛ <b>مزدوج</b> (تصلّب ذاتي بطيء يكمل ما لم يُبلمر ضوئياً كفايةً، مثل الداني).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec8">Lec 13 · Light-Activation Sources</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Light-curing sources</div>
+  <div class="prompt">Describe the light-activation sources used for composite curing.</div>
+  <div class="answer">
+    <ul>
+  <li><b>UV light (late 1960s):</b> early pit/fissure sealants; abandoned — eye hazards and altered oral flora (ionizing risk).</li>
+  <li><b>QTH (Quartz-Tungsten-Halogen):</b> handheld; filters emit blue light; composites strongly absorb ~<b>470 nm</b>.</li>
+  <li><b>Argon laser:</b> high-intensity output at <b>488 nm</b> → rapid polymerization.</li>
+  <li><b>Plasma-Arc (PAC, short-arc xenon, mid-1990s):</b> very rapid (claims of 1–10 s or <1 s).</li>
+  <li><b>LED (blue light-emitting diode):</b> wavelengths matching the photoinitiator (CQ); uses doped semiconductors instead of hot filaments.</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مصادر التصلّب الضوئي:</b> <b>الأشعة فوق البنفسجية (أواخر الستينيات):</b> سادّات شقوق مبكرة؛ هُجرت — أخطار على العين وتغيّر الفلورا الفموية. <b>QTH (كوارتز-تنغستن-هالوجين):</b> يدوي؛ مرشّحات تُصدر ضوءاً أزرق؛ ويمتصّ الكمبوزِت بقوّة ~<b>470 نانومتر</b>. <b>ليزر الأرغون:</b> خرج عالي الشدّة عند <b>488 نانومتر</b> ← بلمرة سريعة. <b>Plasma-Arc (PAC، زينون، منتصف التسعينيات):</b> سريع جداً (ادّعاءات 1–10ث أو <1ث). <b>LED (ثنائي باعث للضوء الأزرق):</b> أطوال موجية تطابق البادئ الضوئي (CQ)؛ يستخدم أنصاف نواقل مطعّمة بدل الفتائل الساخنة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec9">Lec 13 · Polymerization &amp; Shrinkage Stress ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">The polymerization process</div>
+  <div class="prompt">Describe how resin composite polymerizes.</div>
+  <div class="answer">
+    Composite solidifies by <b>polymerization</b> — the resin matrix undergoes gelation, transforming from a <b>viscous-elastic</b> to a <b>rigid-plastic</b> phase.
+  In the <b>early stages</b>, monomers are converted into polymeric chains; after a certain degree of conversion, the predominant reaction becomes <b>cross-linking</b> of the chains, forming a strong polymeric network.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>عملية البلمرة:</b> يتصلّب الكمبوزِت بـ<b>البلمرة</b> — يمرّ المطرس الراتنجي بمرحلة تهلّم متحوّلاً من طور <b>لزج-مرن</b> إلى طور <b>صلب-لدن</b>. في <b>المراحل المبكرة</b> تتحوّل المونومرات إلى سلاسل بوليمرية؛ وبعد بلوغ درجة تحوّل معيّنة يصبح التفاعل الغالب هو <b>التشابك (cross-linking)</b> بين السلاسل مكوّناً شبكة بوليمرية قوية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Reducing shrinkage stress (C-factor)</div>
+  <div class="prompt">What factors reduce polymerization shrinkage stress?</div>
+  <div class="answer">
+    <ol>
+  <li><b>Cavity design (C-factor):</b> the ratio of bonded to unbonded surface area. A <b>high C-factor</b> (as in Class I and Class V) increases shrinkage stress on the tooth-resin interface → debonding.</li>
+  <li><b>Placement technique:</b> place composite in <b>increments</b> to reduce the volume shrinking at once.</li>
+  <li><b>Formulation:</b> <b>non-bonded microfiller</b> particles act as stress-relieving sites within the composite.</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تقليل إجهاد الانكماش (C-factor):</b> (١) <b>تصميم الحفرة (C-factor):</b> نسبة المساحة الملتصقة إلى غير الملتصقة. الـ<b>C-factor العالي</b> (كما في Class I وClass V) يزيد إجهاد الانكماش على بينية السن-الراتنج ← انفصال. (٢) <b>تقنية الوضع:</b> ضع الكمبوزِت بـ<b>طبقات (increments)</b> لتقليل الحجم المنكمش دفعةً. (٣) <b>التركيبة:</b> جسيمات <b>microfiller غير الملتصقة</b> تعمل كمواقع تخفيف إجهاد داخل الكمبوزِت.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec10">Lec 13 · Acid Etching &amp; Smear Layer ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Acid etching &amp; smear layer</div>
+  <div class="prompt">Define acid etching and the smear layer.</div>
+  <div class="answer">
+    <b>Acid etching:</b> a physical process creating a microscopically rough enamel surface (enamel tags); the first successful technique to bond materials to tooth; uses <b>37% ortho-phosphoric acid</b> (a "conditioner").<br>
+  <b>Smear layer:</b> created when a rotary/hand instrument works on dentin — a surface texture that <b>closes off the dentinal tubules</b>; lightly adhered, containing tooth cuttings, saliva, bacteria and debris.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الحفر الحمضي والطبقة الملطّخة:</b> <b>الحفر الحمضي (Acid etching):</b> عملية فيزيائية تُنشئ سطح مينا خشناً مجهرياً (enamel tags)؛ أول تقنية ناجحة لربط المواد بالسن؛ تستخدم <b>حمض أورثوفوسفوريك 37%</b> ("مهيّئ conditioner"). <b>الطبقة الملطّخة (Smear layer):</b> تنشأ عند عمل أداة دوّارة/يدوية على العاج — قوام سطحي <b>يسدّ الأنابيب العاجية</b>؛ ملتصق بخفّة يحوي براده السن واللعاب والجراثيم والفتات.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Enamel vs dentin etching</div>
+  <div class="prompt">Compare enamel etching and dentin etching (mechanism, time, retention).</div>
+  <div class="answer">
+    <b>Enamel etching:</b> 37% phosphoric acid removes ~<b>10 µm</b> of enamel, exposing prisms → the <b>honeycomb</b> effect; ↑ surface energy → better wetting; resin flows into micro-retentive areas (resin tags); retention ~<b>30 MPa</b>; etch <b>15–30 s</b>, rinse 10 s. Properly etched enamel looks <b>frosty/chalky white</b> (built-in quality check). Over-etching forms precipitates that inhibit bonding.<br>
+  <b>Dentin etching:</b> 37% acid <b>removes the smear layer</b> and tubule plugs, decalcifying a few microns; time <b>10–15 s</b>; if contaminated with saliva/blood, re-etch for only 5 s.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>حفر المينا مقابل العاج:</b> <b>حفر المينا:</b> حمض 37% يزيل ~<b>10µm</b> من المينا كاشفاً المواشير ← تأثير <b>قرص العسل</b>؛ يرفع طاقة السطح ← ترطيب أفضل؛ الراتنج يتدفّق للمناطق المجهرية (resin tags)؛ الإرساء ~<b>30 ميغاباسكال</b>؛ الحفر <b>15–30ث</b> والشطف 10ث. المينا المحفورة جيّداً تبدو <b>بيضاء طبشورية</b> (فحص جودة ذاتي). والحفر الزائد يكوّن رواسب تعيق الالتصاق. <b>حفر العاج:</b> حمض 37% <b>يزيل الطبقة الملطّخة</b> وسدادات الأنابيب مزيلاً معادن بضعة ميكرونات؛ الزمن <b>10–15ث</b>؛ وإن تلوّث بلعاب/دم أعِد الحفر 5ث فقط.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec11">Lec 13 · Adhesion to Dentin &amp; Bonding Generations ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Etch–Primer–Bond &amp; the hybrid layer</div>
+  <div class="prompt">Describe the roles of etchant, primer, and bonding agent, and the hybrid layer.</div>
+  <div class="answer">
+    <b>Etchant (E):</b> dentin etch ~15 s — removes the smear layer, exposes intertubular/peritubular collagen, opens tubules, decreases surface free energy.<br>
+  <b>Primer (P):</b> bifunctional (hydrophilic + hydrophobic) molecules that envelop collagen fibrils and re-establish surface energy compatible with hydrophobic resins.<br>
+  <b>Bonding agent (B):</b> mostly hydrophobic monomers (e.g., Bis-GMA) that copolymerize with primer and penetrate interfibrillar spaces → the structural backbone.<br>
+  <b>Hybrid layer:</b> a resin-impregnated dentin surface that seals the tubules, is <b>acid-resistant</b>, and prevents bacterial penetration → protects the pulp.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الحفر–التمهيد–الرابط والطبقة الهجينة:</b> <b>الحفر (E):</b> حفر العاج ~15ث — يزيل الطبقة الملطّخة، يكشف الكولاجين بين/حول الأنابيب، يفتح الأنابيب، يخفض طاقة السطح. <b>المُمهّد (Primer):</b> جزيئات ثنائية الوظيفة (محبّة وكارهة للماء) تغلّف ألياف الكولاجين وتعيد طاقة السطح لتوافق الراتنجات الكارهة للماء. <b>الرابط (Bonding):</b> مونومرات غالباً كارهة للماء (مثل Bis-GMA) تتبلمر مع المُمهّد وتنفذ للمسافات بين الألياف ← العمود البنيوي. <b>الطبقة الهجينة (Hybrid layer):</b> سطح عاج مشرّب بالراتنج يسدّ الأنابيب و<b>يقاوم الحمض</b> ويمنع نفاذ الجراثيم ← يحمي اللب.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Bonding generations (4th–7th)</div>
+  <div class="prompt">Distinguish total-etch and self-etch bonding systems and their generations.</div>
+  <div class="answer">
+    <b>Total-etch (etch & rinse):</b> acid removes the smear layer, then primer + adhesive penetrate the open tubules.
+  <ul><li><b>4th generation</b> = 3-step: etch → primer → bond.</li>
+  <li><b>5th generation</b> = 2-step: etch → bond (primer + resin combined).</li></ul>
+  <b>Self-etch:</b> leaves the smear intact/plugged, partially demineralized by a self-etching primer and replaced with resin filler into tubular dentin.
+  <ul><li><b>6th generation</b> = 2-step: self-etching primer (acid + primer) → bonding resin.</li>
+  <li><b>7th generation</b> = 1-step: single self-etching adhesive (acid + primer + bond).</li></ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أجيال الـBonding (4–7):</b> <b>Total-etch (حفر وشطف):</b> الحمض يزيل الطبقة الملطّخة ثم يخترق المُمهّد + اللاصق الأنابيب المفتوحة. <b>الجيل الرابع</b> = 3 خطوات: حفر ← تمهيد ← ربط. <b>الجيل الخامس</b> = خطوتان: حفر ← ربط (تمهيد + راتنج معاً). <b>Self-etch (ذاتي الحفر):</b> يترك الطبقة الملطّخة سليمة/مسدودة، ويزيل معادنها جزئياً مُمهّد ذاتي الحفر ويستبدلها بحشوة راتنجية في العاج الأنبوبي. <b>الجيل السادس</b> = خطوتان: مُمهّد ذاتي الحفر (حمض + تمهيد) ← راتنج ربط. <b>الجيل السابع</b> = خطوة واحدة: لاصق ذاتي الحفر واحد (حمض + تمهيد + ربط).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec12">Lec 14 · Composite Cl III / IV / V Preparation ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Three preparation designs &amp; Cl III approach</div>
+  <div class="prompt">What are the three composite preparation designs, and when is a facial vs lingual approach used for Cl III?</div>
+  <div class="answer">
+    Three designs (sometimes combined): <b>Conventional</b>, <b>Beveled conventional</b>, <b>Modified</b>.<br>
+  <b>Cl III lingual approach:</b> conserve facial enamel for esthetics; lesion positioned/accessible lingually; color match less critical; discoloration less visible.<br>
+  <b>Cl III facial approach:</b> lesion positioned facially; irregular alignment makes lingual access hard; extensive facial caries; faulty restoration originally facial.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تصاميم التحضير الثلاثة ونهج Cl III:</b> ثلاثة تصاميم (قد تُدمج): <b>تقليدي</b>، <b>تقليدي مشطوف</b>، <b>معدّل</b>. <b>نهج Cl III اللساني:</b> حفظ مينا الوجه للجمال؛ الآفة لسانية/يسهل الوصول إليها لسانياً؛ مطابقة اللون أقل حرجاً؛ التلوّن أقل ظهوراً. <b>نهج Cl III الدهليزي:</b> الآفة دهليزية؛ اصطفاف غير منتظم يصعّب الوصول اللساني؛ تسوّس دهليزي واسع؛ ترميم معيب كان دهليزياً أصلاً.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Modified &amp; beveled Cl III specifics</div>
+  <div class="prompt">Describe the modified Cl III preparation and the bevel in beveled-conventional Cl III.</div>
+  <div class="answer">
+    <b>Modified Cl III</b> (most used; small/moderate lesions; most conservative): entry with a ½/1/2 round bur within the inciso-gingival dimension, perpendicular to enamel; remove caries; <b>no uniform axial wall</b>; the prep looks <b>scooped/concave</b>; place a cavosurface bevel (except gingival margin) at 45° using a flame/round bur, width <b>0.25–0.5 mm</b>.<br>
+  <b>Beveled conventional</b> (defective restoration in the crown / large lesion needing retention): initial axial depth 0.2 mm into dentin/DEJ (~0.75–1.25 mm total); convex axial wall following tooth contour; retention grooves along gingivo-axial (± inciso-axial) line angle 0.25 mm; bevel enamel except at the gingival margin.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تفاصيل Cl III المعدّل والمشطوف:</b> <b>Cl III المعدّل</b> (الأكثر استخداماً؛ آفات صغيرة/متوسطة؛ الأكثر تحفّظاً): دخول ببُرّ مدوّر ½/1/2 ضمن البُعد القاطع-اللثوي عمودياً على المينا؛ إزالة التسوّس؛ <b>لا جدار محوري موحّد</b>؛ يبدو التحضير <b>مغرفياً/مقعّراً</b>؛ ضع شطبة سطحية (عدا الحافة اللثوية) بزاوية 45° ببُرّ لهبي/مدوّر، عرضها <b>0.25–0.5مم</b>. <b>المشطوف التقليدي</b> (ترميم معيب في التاج / آفة كبيرة تحتاج إرساءً): عمق محوري أولي 0.2مم في العاج/DEJ (~0.75–1.25مم إجمالاً)؛ جدار محوري محدّب يتبع كنتور السن؛ أخاديد إرساء على زاوية gingivo-axial (± inciso-axial) 0.25مم؛ شطب المينا عدا الحافة اللثوية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Cl IV &amp; Cl V composite</div>
+  <div class="prompt">Describe Cl IV and Cl V composite preparations.</div>
+  <div class="answer">
+    <b>Cl IV:</b> preoperative occlusion assessment is critical (margins in non-contact areas); shade selection harder; similar to Cl III but <b>extended to the incisal angle</b>. For a simple <b>fracture</b> with no caries/pulp involvement, only a <b>1.0–2 mm enamel bevel</b> around the periphery is needed. <b>Pins are not needed</b> — adhesion provides retention.<br>
+  <b>Cl V:</b> <b>Conventional</b> (only for the root-surface portion) — 90° cavosurface, tapered fissure or round bur entry at 45°, axial depth 0.75 mm, groove retention. <b>Beveled conventional</b> — for defective restorations/large lesions; axial 0.2 mm (0.5 with groove); no groove if periphery is in enamel. <b>Modified</b> — small enamel lesions; scooped, divergent walls, no 90° margin, ~0.2 mm depth.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>كمبوزِت Cl IV وCl V:</b> <b>Cl IV:</b> تقييم الإطباق قبل العمل حاسم (الحواف في مناطق لا تماس)؛ اختيار اللون أصعب؛ يشبه Cl III لكن <b>يمتدّ للزاوية القاطعة</b>. وللـ<b>كسر</b> البسيط بلا تسوّس/إصابة لب يكفي <b>شطب مينا 1.0–2مم</b> حول المحيط. <b>لا حاجة للدبابيس</b> — الالتصاق يوفّر الإرساء. <b>Cl V:</b> <b>التقليدي</b> (لجزء سطح الجذر فقط) — سطح حُفّي 90°، دخول ببُرّ شقّي مدبّب/مدوّر بزاوية 45°، عمق محوري 0.75مم، إرساء بأخدود. <b>المشطوف التقليدي</b> — للترميمات المعيبة/الآفات الكبيرة؛ محوري 0.2مم (0.5 مع أخدود)؛ لا أخدود إن كان المحيط في المينا. <b>المعدّل</b> — آفات مينائية صغيرة؛ مغرفي، جدران متباعدة، بلا حافة 90°، عمق ~0.2مم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec13">Lec 15 · Posterior Composite &amp; Amalgam vs Composite ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Cl I composite designs</div>
+  <div class="prompt">Describe the conventional and modified Cl I composite designs.</div>
+  <div class="answer">
+    <b>Conventional / conventional-with-bevel:</b> amalgam-like preparation; facial/lingual extension & width depend on caries or old restoration; preserve cusps & marginal ridge as much as possible; conservative outline; remaining marginal ridge <b>2 mm</b>; bevel added to increase retention.<br>
+  <b>Modified:</b> no uniform/flat pulpal floor or axial walls; as conservative as possible; cavity size determined by the caries.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تصاميم كمبوزِت Cl I:</b> <b>التقليدي / التقليدي بشطبة:</b> تحضير شبيه بالأملغم؛ الامتداد والعرض الدهليزي/اللساني حسب التسوّس أو الترميم القديم؛ حفظ الحدبات والحافة الحُفّية قدر الإمكان؛ شكل خارجي متحفّظ؛ الحافة الحُفّية المتبقية <b>2مم</b>؛ شطبة تُضاف لزيادة الإرساء. <b>المعدّل:</b> لا أرضية لبية/جدران محورية موحّدة أو مسطّحة؛ الأكثر تحفّظاً؛ حجم الحفرة يحدّده التسوّس.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Cl I amalgam vs composite</div>
+  <div class="prompt">Compare Cl I amalgam and composite preparations (similarities & differences).</div>
+  <div class="answer">
+    <b>Similarities:</b> remove unsupported enamel; round all angles (↓ stress); walls parallel to the long axis.<br>
+  <b>Differences:</b>
+  <ul><li><b>Outline:</b> amalgam includes all pits/fissures (extension for prevention), width ¼ ICD; composite is <b>limited to the defect (NO extension for prevention)</b>, most conservative.</li>
+  <li><b>Retention:</b> amalgam = <b>mechanical</b> (walls parallel/slightly convergent, depends on design, flat floor); composite = <b>chemical</b> (± dentinal groove/enamel bevel).</li>
+  <li><b>Resistance:</b> amalgam depth 1.5–2 mm, smooth floor; composite depth not necessarily uniform (~1–2 mm), <b>rough walls</b>.</li></ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>Cl I أملغم مقابل كمبوزِت:</b> <b>التشابه:</b> إزالة المينا غير المسنودة؛ تدوير كل الزوايا (↓ الإجهاد)؛ الجدران موازية للمحور. <b>الاختلاف:</b> <b>الشكل الخارجي:</b> الأملغم يشمل كل الحُفَر/الشقوق (extension for prevention) بعرض ¼ ICD؛ والكمبوزِت <b>محصور بالعيب (بلا extension for prevention)</b> والأكثر تحفّظاً. <b>الإرساء:</b> الأملغم <b>ميكانيكي</b> (جدران متوازية/متقاربة قليلاً، يعتمد على التصميم، أرضية مسطّحة)؛ والكمبوزِت <b>كيميائي</b> (± أخدود عاجي/شطبة مينا). <b>المقاومة:</b> الأملغم عمق 1.5–2مم وأرضية ملساء؛ والكمبوزِت عمق غير موحّد بالضرورة (~1–2مم) و<b>جدران خشنة</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Cl II composite designs</div>
+  <div class="prompt">Describe the conventional, modified, and slot Cl II composite designs.</div>
+  <div class="answer">
+    <b>Conventional / beveled conventional:</b> for moderate-to-very-large caries; composed of a Cl I + proximal box; walls perpendicular to the long axis; <b>roughened walls</b>; proximal-box bevels <b>0.5–1 mm</b> on facial/lingual cavosurface margins (accessible for finishing/polishing).<br>
+  <b>Modified (box-like):</b> for a small proximal lesion with no occlusal caries; proximal box only; depth by caries; walls ≥90°; <b>no bevel</b>.<br>
+  <b>Slot preparation:</b> minimally invasive; proximal caries accessed from facial/lingual rather than through the marginal ridge.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تصاميم كمبوزِت Cl II:</b> <b>التقليدي / المشطوف:</b> لتسوّس متوسّط لكبير جداً؛ مكوّن من Cl I + صندوق داني؛ جدران عمودية على المحور؛ <b>جدران خشنة</b>؛ شطبات الصندوق الداني <b>0.5–1مم</b> على الحواف الدهليزية/اللسانية (يسهل الإنهاء/التلميع). <b>المعدّل (صندوقي):</b> لآفة دانية صغيرة بلا تسوّس إطباقي؛ صندوق داني فقط؛ العمق بالتسوّس؛ الجدران ≥90°؛ <b>بلا شطبة</b>. <b>Slot preparation:</b> أدنى تدخّل؛ الوصول للتسوّس الداني من الدهليزي/اللساني بدل الحافة الحُفّية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec14">Lec 15 · Composite Placement Techniques ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Layering, bulk &amp; sandwich techniques</div>
+  <div class="prompt">Describe the posterior composite placement techniques.</div>
+  <div class="answer">
+    <ul>
+  <li><b>Layering (incremental):</b> each increment <b>≤2 mm</b>, each fully polymerized before the next (↓ shrinkage stress).</li>
+  <li><b>Wedge-shape (oblique) layering:</b> wedge-shaped increments cured only from the occlusal.</li>
+  <li><b>Bulk technique:</b> one bulk increment <b>4–5 mm</b> without traditional layering (special bulk-fill systems).</li>
+  <li><b>Sandwich technique:</b> two materials — glass ionomer or flowable composite as a liner under composite; <b>closed</b> and <b>open</b> sandwich variants; mainly used when the gingival margin extends beyond the CEJ.</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تقنيات وضع الكمبوزِت الخلفي:</b> <b>الطبقات (incremental):</b> كل طبقة <b>≤2مم</b>، تُبلمر كلياً قبل التالية (↓ إجهاد الانكماش). <b>الطبقات المائلة (Oblique/wedge):</b> طبقات إسفينية تُصلّب من الإطباقي فقط. <b>Bulk:</b> طبقة واحدة كتلية <b>4–5مم</b> دون طبقات تقليدية (أنظمة bulk-fill خاصة). <b>Sandwich:</b> مادتان — أيونومر زجاجي أو كمبوزِت سائل كبطانة تحت الكمبوزِت؛ نوعان <b>مغلق</b> و<b>مفتوح</b>؛ تُستخدم أساساً حين تمتدّ الحافة اللثوية خلف CEJ.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Clinical composite placement steps</div>
+  <div class="prompt">Outline the general clinical steps for placing a direct composite restoration.</div>
+  <div class="answer">
+    (1) Isolate and protect the adjacent tooth with a <b>polyester strip + wedge</b>. (2) Apply the gel etchant, extending ~0.5 mm beyond the margins onto adjacent unprepared enamel; leave <b>15 s</b>. (3) Wash off the etchant and dry. (4) Apply the <b>bonding system</b> to all etched structure with a microbrush and cure ~<b>10 s</b>. (5) Place the composite <b>incrementally</b>, curing each increment ~<b>20 s</b>. (6) <b>Finish and polish</b> — trim excess, then use polishers with enhancers and polishing paste.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>خطوات وضع الكمبوزِت المباشر:</b> (١) اعزل واحمِ السن المجاور بـ<b>شريط بوليستر + wedge</b>. (٢) طبّق جل الحفر ممتداً ~0.5مم خلف الحواف على المينا المجاورة غير المحضّرة؛ اتركه <b>15ث</b>. (٣) اغسل الحفر وجفّف. (٤) طبّق <b>نظام الربط</b> على كل البنية المحفورة بـmicrobrush وصلّب ~<b>10ث</b>. (٥) ضع الكمبوزِت <b>طبقاتٍ</b> مصلّباً كل طبقة ~<b>20ث</b>. (٦) <b>أنهِ ولمّع</b> — أزل الفائض ثم استخدم ملمّعات مع enhancers ومعجون تلميع.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec15">Lec 1 (Dr. Abdullah) · Patient Assessment &amp; Diagnosis</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Patient assessment foundations</div>
+  <div class="prompt">What are the pretreatment considerations and the key components of patient assessment?</div>
+  <div class="answer">
+    Pretreatment considerations — <b>patient assessment, examination/diagnosis, and treatment planning</b> — are the foundation of sound care. Before examination, <b>infection control</b> is addressed (barrier protection: masks, eyewear, gloves, gowns).<br>
+  <b>Medical history</b> identifies conditions that alter/complicate/contraindicate treatment: contagious diseases (precautions/referral), allergies/medications, systemic/cardiac disease (less strenuous procedures or antibiotic prophylaxis), aging changes.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أسس تقييم المريض:</b> اعتبارات ما قبل العلاج — <b>تقييم المريض والفحص/التشخيص والتخطيط العلاجي</b> — هي أساس الرعاية السليمة. وقبل الفحص يُعالَج <b>ضبط العدوى</b> (حماية حاجزية: كمّامات، نظّارات، قفّازات، أردية). <b>القصة الطبية</b> تحدّد ما يغيّر/يعقّد/يمنع العلاج: أمراض معدية (احتياطات/إحالة)، تحسّس/أدوية، أمراض جهازية/قلبية (إجراءات أخفّ أو وقاية بمضاد حيوي)، تغيّرات الشيخوخة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Chief complaint, dental history &amp; exam</div>
+  <div class="prompt">Describe the role of chief complaint, dental history, and the clinical examination.</div>
+  <div class="answer">
+    <b>Chief complaint (CC):</b> usually the first information — the patient's problem <b>in their own words</b>; discuss onset, duration, symptoms, related factors; recording it starts a positive relationship, guides diagnostic tests, and ensures it's on the problem list.<br>
+  <b>Dental history:</b> past treatment tolerance; ask specifically about thermal sensitivity, chewing discomfort, gingival bleeding, pain (patients may not volunteer these).<br>
+  <b>Clinical examination:</b> systematic, in a <b>clean, dry, well-illuminated</b> mouth with mirror/explorer/periodontal probe; may need scaling/flossing/prophylaxis first; includes assessment of <b>caries risk and plaque</b> for prognosis and hygiene instruction.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الشكوى الرئيسة والقصة السنّية والفحص:</b> <b>الشكوى الرئيسة (CC):</b> عادةً أول معلومة — مشكلة المريض <b>بكلماته</b>؛ ناقش البدء والمدة والأعراض والعوامل؛ وتسجيلها يبدأ علاقة إيجابية ويوجّه الاختبارات ويضمن إدراجها في قائمة المشاكل. <b>القصة السنّية:</b> تحمّل العلاج السابق؛ اسأل تحديداً عن الحساسية الحرارية وانزعاج المضغ ونزف اللثة والألم (قد لا يذكرها المريض تلقائياً). <b>الفحص السريري:</b> منهجي في فمٍ <b>نظيف جافّ جيّد الإضاءة</b> بمرآة/مسبار/مسبار لثوي؛ قد يحتاج تقليحاً/تنظيفاً أولاً؛ ويشمل تقييم <b>خطر التسوّس واللويحة</b> للإنذار وتعليم النظافة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec16">Lec 12 · Composite Types in Detail</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Microfilled composites</div>
+  <div class="prompt">Describe microfilled composites: particle size, filler content, properties, uses.</div>
+  <div class="answer">
+    Introduced in <b>1980</b>; <b>highly polishable</b> with a very smooth surface (resistant to plaque, debris, stains) and good esthetics. Particle size <b>0.01–0.04 µm</b>; filler content <b>35–50% by weight</b>. Because of the <b>lower filler content</b>, some physical properties are <b>inferior</b> (lower wear resistance/strength).<br>
+  <b>Use:</b> low-stress restorations — the buccal and lingual surfaces of <b>Class III and Class V</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الكمبوزِت الدقيق الحشو (Microfilled):</b> أُدخل <b>1980</b>؛ <b>عالي القابلية للتلميع</b> بسطح ناعم جداً (مقاوم للّويحة والفتات والبقع) وجمال جيّد. حجم الجسيمات <b>0.01–0.04µm</b>؛ محتوى الحشوة <b>35–50% وزناً</b>. وبسبب <b>قلّة الحشوة</b> فبعض خصائصه الفيزيائية <b>أدنى</b> (مقاومة تآكل/قوّة أقلّ). <b>الاستخدام:</b> ترميمات منخفضة الإجهاد — الأسطح الشدقية واللسانية لـ<b>Class III وClass V</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Hybrid &amp; nanofill composites</div>
+  <div class="prompt">Describe hybrid and nanofill composites and their uses.</div>
+  <div class="answer">
+    <b>Hybrid:</b> combines conventional + microfilled properties; <b>75–85% filler</b> by weight; particle size <b>0.4–1 µm</b>; physical properties superior to conventional; the <b>predominant direct esthetic resin</b> with universal applicability. <b>Use:</b> moderate-stress restorations where strength/wear resistance matter more than surface luster — <b>Class I, II, IV</b>.<br>
+  <b>Nanofill:</b> extremely small particles (<b>0.005–0.01 µm</b>) → high filler levels → good physical properties + esthetics; <b>highly polishable</b>; increasingly popular.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الكمبوزِت الهجين والنانوي:</b> <b>Hybrid:</b> يجمع خصائص التقليدي + الدقيق؛ <b>75–85% حشوة</b> وزناً؛ حجم الجسيمات <b>0.4–1µm</b>؛ خصائص فيزيائية أعلى من التقليدي؛ <b>الراتنج الجمالي المباشر الغالب</b> بتطبيق شامل. <b>الاستخدام:</b> ترميمات متوسّطة الإجهاد حيث القوّة/مقاومة التآكل أهمّ من لمعان السطح — <b>Class I وII وIV</b>. <b>Nanofill:</b> جسيمات صغيرة جداً (<b>0.005–0.01µm</b>) ← مستويات حشوة عالية ← خصائص فيزيائية وجمال جيّد؛ <b>عالي التلميع</b>؛ متزايد الشعبية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec17">Lec 11 · Complex Amalgam — Resistance &amp; Retention (Detailed)</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Resistance/retention in severely broken teeth</div>
+  <div class="prompt">How are resistance and retention achieved in a severely broken-down tooth for complex amalgam?</div>
+  <div class="answer">
+    In a tooth severely involved with caries, any <b>undermined enamel or weak structure</b> subject to fracture must be removed and restored. When conventional retention is inadequate because of insufficient remaining structure, <b>pins, slots, and amalgam bonding</b> are used to enhance retention — and these also add <b>resistance form</b>. As more tooth structure is lost, more auxiliary retention is required. Where possible, opposing vertical walls should <b>converge occlusally</b> (primary retention), and the pulpal and gingival walls should be relatively flat and perpendicular to the long axis.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>المقاومة/الإرساء في السن المتهدّم بشدّة:</b> في سنّ شديد الإصابة بالتسوّس يجب إزالة أي <b>مينا مقوّضة أو بنية ضعيفة</b> معرّضة للكسر وترميمها. وحين يكون الإرساء التقليدي غير كافٍ لقلّة البنية المتبقية، تُستخدم <b>الدبابيس والأخاديد وربط الأملغم</b> لتعزيز الإرساء — وهي تضيف <b>مقاومةً</b> أيضاً. وكلّما زاد الفقد لزم إرساء مساعد أكثر. وحيثما أمكن يجب أن <b>تتقارب الجدران العمودية إطباقياً</b> (إرساء أولي)، والجداران اللبي واللثوي مسطّحان نسبياً وعموديان على المحور.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Self-threading pin insertion — technique</div>
+  <div class="prompt">Describe the technique and precautions for inserting a self-threading pin (twist drill).</div>
+  <div class="answer">
+    The pinhole is prepared with a <b>twist drill</b> on a flat surface perpendicular to the intended direction. A twist drill will <b>break if stressed laterally</b> or if allowed to <b>stop rotating before removal</b> from the hole — so keep it rotating on withdrawal. The hole for a self-threading pin is <b>0.1 mm smaller</b> than the pin; dentin elasticity lets the threaded pin engage. Depth is ~1.5–2 mm. Bend the pin only enough to leave ~1 mm of amalgam over it; excessive bending weakens the pin and interferes with condensation. Keep pins ≥3–5 mm apart when multiple.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>إدخال الدبوس ذاتي اللولبة — التقنية:</b> تُحضّر الحفرة بـ<b>مثقب لولبي (twist drill)</b> على سطح مسطّح عمودي على الاتجاه المقصود. والمثقب <b>ينكسر إن أُجهد جانبياً</b> أو إن <b>توقّف دورانه قبل إخراجه</b> — فأبقِه داخل الدوران أثناء السحب. وحفرة الدبوس ذاتي اللولبة <b>أصغر بـ0.1مم</b> من الدبوس؛ ومرونة العاج تتيح تعشيق اللولب. العمق ~1.5–2مم. واثنِ الدبوس بما يكفي لترك ~1مم أملغم فوقه؛ فالثني المفرط يُضعفه ويعيق الكبس. وأبقِ الدبابيس ≥3–5مم متباعدة عند تعدّدها.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec18">Lec 14 · Conventional Cl III Composite — Full Steps</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Conventional Cl III (root surface) steps</div>
+  <div class="prompt">List the steps of a conventional Class III composite preparation on the root surface.</div>
+  <div class="answer">
+    Indicated for restorations involving the <b>root surface</b>:
+  <ol><li>Prepare the outline form on the root surface with a No. ½, 1, or 2 round bur.</li>
+  <li>Extend into sound walls.</li>
+  <li>Extend <b>pulpally 0.75 mm</b> in depth.</li>
+  <li>Gingival/cervical and incisal walls <b>perpendicular</b> to the root surface (box-like).</li>
+  <li>Prepare a continuous <b>retention groove 0.25 mm</b> (½ the bur diameter) into dentin of the gingival & incisal walls with a ¼ round bur.</li>
+  <li>Place the groove at the junction of the axial and external walls.</li>
+  <li>Clean and inspect the final preparation.</li></ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>خطوات Cl III التقليدي (سطح الجذر):</b> يُستطبّ للترميمات التي تشمل <b>سطح الجذر</b>: (١) حضّر الشكل الخارجي على سطح الجذر ببُرّ مدوّر No. ½/1/2. (٢) امتدّ للجدران السليمة. (٣) امتدّ <b>لبّياً 0.75مم</b> عمقاً. (٤) الجدران اللثوية/العنقية والقاطعة <b>عمودية</b> على سطح الجذر (صندوقية). (٥) حضّر <b>أخدود إرساء متّصلاً 0.25مم</b> (نصف قطر البُرّ) في عاج الجدارين اللثوي والقاطع ببُرّ مدوّر ¼. (٦) ضع الأخدود عند التقاء الجدارين المحوري والخارجي. (٧) نظّف وافحص التحضير النهائي.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Beveled conventional Cl III — lingual access cautions</div>
+  <div class="prompt">What are the key cautions and bevel details for a beveled conventional Cl III (lingual access)?</div>
+  <div class="answer">
+    Use a No. ½/1/2 round bur to enlarge the opening for caries removal; extend external walls to sound structure with a straight bur; extend gingival/incisal walls to the caries/old restoration. <b>Unless necessary, DO NOT</b> extend into the facial surface or subgingivally. Create initial axial depth <b>0.2 mm into dentin/DEJ</b> (~0.75–1.25 mm total); the axial wall is <b>convex</b>, following tooth contour. Remove infected dentin (round bur/spoon) and unsupported enamel. If needed, place retention grooves at the gingivo-axial (± inciso-axial) line angle. Place a cavosurface <b>bevel at 45°</b> (flame/round bur), width <b>0.25–0.5 mm</b>, except at the gingival margin.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>Cl III المشطوف التقليدي (وصول لساني) — التحذيرات والشطبة:</b> استخدم بُرّاً مدوّراً No. ½/1/2 لتوسيع الفتحة لإزالة التسوّس؛ ومدّد الجدران الخارجية للبنية السليمة ببُرّ مستقيم؛ ومدّد الجدارين اللثوي/القاطع للتسوّس/الترميم القديم. <b>ما لم يلزم، لا</b> تمتدّ للسطح الدهليزي ولا تحت اللثة. أنشئ عمقاً محورياً أولياً <b>0.2مم في العاج/DEJ</b> (~0.75–1.25مم إجمالاً)؛ والجدار المحوري <b>محدّب</b> يتبع كنتور السن. أزل العاج المصاب (بُرّ مدوّر/ملعقة) والمينا غير المسنودة. وعند الحاجة ضع أخاديد إرساء عند زاوية gingivo-axial (± inciso-axial). وضع شطبة سطحية <b>بزاوية 45°</b> (بُرّ لهبي/مدوّر) عرضها <b>0.25–0.5مم</b> عدا الحافة اللثوية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec19">MTA · Indications &amp; Clinical Notes</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">MTA indications &amp; why it suits wet fields</div>
+  <div class="prompt">What are the main indications for MTA, and why does it perform well in moisture?</div>
+  <div class="answer">
+    MTA is used for <b>root-end (apex) restoration</b>, <b>pulp capping</b> (direct/indirect), <b>pulp-regeneration bridges/apexification</b>, <b>perforation repair</b>, and as an <b>endodontic sealer/apical barrier</b>. Because it is <b>hydrophilic</b>, it <b>sets and seals in the presence of moisture and blood</b> — a major advantage over materials that fail in wet fields. When submerged in body fluids it precipitates a <b>calcium-phosphate/apatite layer</b>, encouraging hard-tissue formation; its high pH (12.5) gives Ca(OH)₂-like biologic behaviour, but unlike Ca(OH)₂ it forms a <b>hard, non-resorbable</b> barrier. Drawbacks: long set (~2h45m–4h) and handling difficulty.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>استطبابات MTA ولماذا يناسب الوسط الرطب:</b> يُستخدم MTA لـ<b>ترميم قمة الجذر</b>، و<b>التغطية اللبية</b> (مباشرة/غير مباشرة)، و<b>جسور تجديد اللب/الـapexification</b>، و<b>إصلاح الثقوب</b>، وكـ<b>سيلر لبّي/حاجز قمي</b>. ولأنه <b>محبّ للماء</b> فإنه <b>يتصلّب ويسدّ بوجود الرطوبة والدم</b> — ميزة كبيرة على المواد التي تفشل في الوسط الرطب. وعند غمره بسوائل الجسم يُرسّب <b>طبقة فوسفات كالسيوم/أباتيت</b> تشجّع تكوين النسيج الصلب؛ وpH العالي (12.5) يعطيه سلوكاً حيوياً شبيهاً بـCa(OH)₂، لكنه خلافاً له يكوّن حاجزاً <b>صلباً غير قابل للامتصاص</b>. عيوبه: تصلّب طويل (~2س45د–4س) وصعوبة مناولة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec20">Lec 13 · Bonding — Clinical Application</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Why remove/handle the smear layer</div>
+  <div class="prompt">Why does the treatment of the smear layer differ between total-etch and self-etch systems?</div>
+  <div class="answer">
+    The <b>smear layer</b> plugs the dentinal tubules and is only lightly adhered, carrying cutting debris, saliva and bacteria. In <b>total-etch</b> systems the acid <b>removes the smear layer completely</b>, opening the tubules so primer and adhesive can penetrate and form the hybrid layer — but this demands careful moisture control (over-dried collagen collapses). In <b>self-etch</b> systems the smear layer is <b>left in place and incorporated</b>: a self-etching primer partially demineralizes it and infiltrates resin simultaneously, reducing post-op sensitivity and technique sensitivity because there is no separate rinse/dry step that can over-dry the dentin.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>لماذا تختلف معالجة الطبقة الملطّخة:</b> <b>الطبقة الملطّخة</b> تسدّ الأنابيب العاجية وملتصقة بخفّة، وتحمل براده القطع واللعاب والجراثيم. في أنظمة <b>total-etch</b> يزيل الحمض <b>الطبقة كلياً</b> فاتحاً الأنابيب ليخترق المُمهّد واللاصق ويكوّن الطبقة الهجينة — لكنها تتطلّب تحكّماً دقيقاً بالرطوبة (الكولاجين المُفرَط تجفيفه ينهار). وفي أنظمة <b>self-etch</b> تُترك الطبقة <b>وتُدمَج</b>: مُمهّد ذاتي الحفر يزيل معادنها جزئياً ويرشّح الراتنج آنياً، فيقلّل الحساسية بعد العلاج وحساسية التقنية لعدم وجود خطوة شطف/تجفيف منفصلة قد تُفرط تجفيف العاج.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Sandwich technique — open vs closed</div>
+  <div class="prompt">Explain the open and closed sandwich techniques and when they are used.</div>
+  <div class="answer">
+    The <b>sandwich technique</b> layers a glass ionomer (or flowable composite) liner beneath the composite, mainly when the <b>gingival margin extends beyond the CEJ</b> (onto root dentin/cementum where bonding is less reliable). The GI bonds chemically to dentin and releases fluoride.
+  <ul><li><b>Closed sandwich:</b> the liner is <b>completely covered</b> by composite and is not exposed to the oral cavity.</li>
+  <li><b>Open sandwich:</b> part of the liner (usually the gingival/proximal margin) is <b>left exposed</b> to the oral environment.</li></ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تقنية الساندويتش — مفتوح مقابل مغلق:</b> تضع <b>تقنية الساندويتش</b> بطانة أيونومر زجاجي (أو كمبوزِت سائل) تحت الكمبوزِت، أساساً حين <b>تمتدّ الحافة اللثوية خلف CEJ</b> (على عاج الجذر/الملاط حيث الالتصاق أقلّ موثوقية). والـGI يلتصق كيميائياً بالعاج ويطلق فلورايد. <b>الساندويتش المغلق:</b> البطانة <b>مغطّاة كلياً</b> بالكمبوزِت ولا تتعرّض للفم. <b>الساندويتش المفتوح:</b> جزء من البطانة (عادةً الحافة اللثوية/الدانية) <b>يُترك مكشوفاً</b> للوسط الفموي.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec21">Lec 1 (Dr. Abdullah) · Evaluation of the Dentition</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Infection control &amp; barrier protection</div>
+  <div class="prompt">What infection-control measures precede examination, and why do they matter?</div>
+  <div class="answer">
+    Before, during and after every patient visit, appropriate <b>infection-control</b> measures must be instituted. <b>Barrier protection</b> of personnel — <b>masks, protective eyewear, gloves and gowns</b> — is a standard requirement for dental procedures. These barriers protect both the clinician and the patient from cross-contamination by blood and oral fluids, and complement instrument sterilization and surface disinfection covered earlier. Infection control is addressed <b>before</b> examination and diagnosis so the whole visit proceeds under aseptic conditions.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>ضبط العدوى والحماية الحاجزية:</b> قبل وأثناء وبعد كل زيارة يجب تطبيق تدابير <b>ضبط العدوى</b> المناسبة. و<b>الحماية الحاجزية</b> للطاقم — <b>كمّامات، نظّارات واقية، قفّازات، أردية</b> — متطلّب قياسي للإجراءات السنّية. تحمي هذه الحواجز الطبيب والمريض من التلوّث المتبادل بالدم وسوائل الفم، وتكمّل تعقيم الأدوات وتطهير الأسطح المذكورين سابقاً. ويُعالَج ضبط العدوى <b>قبل</b> الفحص والتشخيص لتسير الزيارة كلها في ظروف معقّمة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Assessment of caries risk &amp; the dentition</div>
+  <div class="prompt">Why is baseline caries-risk and plaque assessment important, and what does dentition evaluation involve?</div>
+  <div class="answer">
+    Determining <b>baseline caries risk and plaque levels</b> at the initial examination provides a basis for <b>communication</b> with the patient and for establishing a <b>prognosis</b> for restorative care; the patient can then be given oral-hygiene instructions. Only after plaque assessment can other areas be examined properly. An accurate examination requires <b>clean, dry, well-illuminated</b> teeth — often needing initial scaling, flossing, and a prophylaxis first. The intraoral assessment systematically evaluates the <b>periodontium, dentition, and occlusion</b> using a mirror, explorer, and periodontal probe.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تقييم خطر التسوّس والأسنان:</b> تحديد <b>خطر التسوّس ومستوى اللويحة</b> الأساسي في الفحص الأولي يوفّر أساساً لـ<b>التواصل</b> مع المريض ولوضع <b>إنذار</b> للرعاية الترميمية؛ ثم تُعطى تعليمات النظافة الفموية. ولا يمكن فحص المناطق الأخرى جيّداً إلا بعد تقييم اللويحة. ويتطلّب الفحص الدقيق أسناناً <b>نظيفة جافّة جيّدة الإضاءة</b> — غالباً بحاجة لتقليح وتنظيف بالخيط وتلميع أولاً. ويقيّم الفحص داخل الفم منهجياً <b>النسيج حول السني والأسنان والإطباق</b> بمرآة ومسبار ومسبار لثوي.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec22">Pulp Protection by Cavity Depth (Amalgam) — Recap</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Liner/base placement under amalgam by depth</div>
+  <div class="prompt">Summarize how varnish, liners, and bases are used under amalgam according to cavity depth.</div>
+  <div class="answer">
+    <ul>
+  <li><b>Shallow:</b> no base needed — apply <b>two thin coats of varnish or amalgam bond</b> (chemical protection) before insertion.</li>
+  <li><b>Moderate depth:</b> a <b>liner</b> may be placed for thermal protection/pulpal medication, seating the amalgam on sound dentin; varnish coats floor & walls, then a cement base contours the missing dentin.</li>
+  <li><b>Very deep:</b> place <b>calcium hydroxide</b> in the deepest region where infected dentin was excavated (judged within 0.5 mm of the pulp), then a <b>glass-ionomer base</b>. Amalgam bonding systems are advocated as a substitute for liner/varnish, except for the Ca(OH)₂ liner in the deepest region.</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>البطانة/القاعدة تحت الأملغم حسب العمق (تلخيص):</b> <b>سطحية:</b> لا قاعدة — طبّق <b>طبقتين رقيقتين من الورنيش أو amalgam bond</b> (حماية كيميائية) قبل الوضع. <b>متوسّطة العمق:</b> قد تُوضع <b>بطانة</b> للحماية الحرارية/تدوية اللب مع إجلاس الأملغم على عاج سليم؛ الورنيش يغطّي الأرضية والجدران ثم قاعدة سمنت تعوّض العاج المفقود. <b>عميقة جداً:</b> ضع <b>هيدروكسيد الكالسيوم</b> في أعمق منطقة حُفر منها العاج المصاب (ضمن 0.5مم من اللب) ثم <b>قاعدة أيونومر زجاجي</b>. ويُنصح بأنظمة ربط الأملغم بديلاً للبطانة/الورنيش عدا بطانة Ca(OH)₂ في أعمق منطقة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec23">Lec 12 · Composite Chemistry &amp; Handling (Detailed)</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">BIS-GMA matrix &amp; silane coupling</div>
+  <div class="prompt">Why is BIS-GMA used as the matrix, and what exactly does the silane coupling agent do?</div>
+  <div class="answer">
+    <b>BIS-GMA</b> (a dimethacrylate monomer) forms the <b>backbone</b> of the resin system: it is a large, viscous molecule that polymerizes into a cross-linked network giving the composite its rigidity and dimensional stability, while its two reactive methacrylate ends allow extensive cross-linking. Because BIS-GMA alone is too viscous, lower-viscosity diluent monomers are usually added for handling.<br>
+  The <b>silane coupling agent</b> is bifunctional: one end bonds chemically to the <b>inorganic filler</b> and the other to the <b>organic resin matrix</b>. This (1) unites the two phases into a single load-bearing material, (2) <b>transfers stress</b> from the flexible matrix to the stiff filler particles, and (3) <b>prevents water</b> from penetrating along the filler-resin interface (which would otherwise cause hydrolytic breakdown and staining).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مطرس BIS-GMA وعامل السيلان:</b> <b>BIS-GMA</b> (مونومر ثنائي الميثاكريلات) يشكّل <b>العمود الفقري</b> لنظام الراتنج: جزيء كبير لزج يتبلمر لشبكة متشابكة تعطي الكمبوزِت صلابته وثباته البُعدي، ونهايتاه الميثاكريليّتان تتيحان تشابكاً واسعاً. ولأن BIS-GMA وحده لزج جداً تُضاف عادةً مونومرات مخفّفة أقلّ لزوجة للمناولة. و<b>عامل السيلان</b> ثنائي الوظيفة: طرف يرتبط كيميائياً بـ<b>الحشوة اللاعضوية</b> وآخر بـ<b>المطرس الراتنجي العضوي</b>. وهذا (١) يوحّد الطورين في مادة واحدة حاملة للحمل، (٢) <b>ينقل الإجهاد</b> من المطرس المرن إلى جسيمات الحشوة الصلبة، (٣) <b>يمنع الماء</b> من النفاذ على بينية الحشوة-الراتنج (وإلا لحدث تحلّل مائي وتلطّخ).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Chemical vs light cure — practical trade-offs</div>
+  <div class="prompt">What are the practical trade-offs between chemically-cured and light-cured composites?</div>
+  <div class="answer">
+    <b>Chemically-cured (self-cure):</b> a two-paste catalyst/base system; mixing chemically activates polymerization at a <b>uniform rate through the bulk</b>, so viscosity rises gradually and the <b>working time is limited/fixed</b> — the technique is time-sensitive and mixing risks incorporating <b>air bubbles</b> that harm physical/mechanical properties.<br>
+  <b>Light-cured:</b> a <b>single paste</b> requiring no mixing → <b>reduced porosity</b> and better wear/abrasion resistance; the working time is <b>controlled by the clinician</b> (harden on demand). Supplied in various shades in opaque syringes that protect the material from ambient light. <b>Dual-cure</b> combines both, using a slow self-cure to polymerize regions the light cannot adequately reach (e.g., deep interproximal areas).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الكيميائي مقابل الضوئي — الموازنات العملية:</b> <b>الكيميائي (ذاتي التصلّب):</b> نظام عجينتين catalyst/base؛ الخلط يفعّل البلمرة كيميائياً بـ<b>معدّل موحّد عبر الكتلة</b> فترتفع اللزوجة تدريجياً و<b>زمن العمل محدود/ثابت</b> — التقنية حسّاسة للوقت والخلط قد يُدخل <b>فقاعات هواء</b> تضرّ الخصائص الفيزيائية/الميكانيكية. <b>الضوئي:</b> <b>عجينة واحدة</b> بلا خلط ← <b>مسامية أقلّ</b> ومقاومة تآكل/سحل أفضل؛ وزمن العمل <b>يتحكّم به الطبيب</b> (يتصلّب عند الطلب). يُورَّد بدرجات لون في محاقن معتمة تحمي المادة من الضوء المحيط. و<b>المزدوج</b> يجمع بينهما مستخدماً تصلّباً ذاتياً بطيئاً لبلمرة المناطق التي لا يصلها الضوء كفايةً (كالمناطق الدانية العميقة).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec24">Lec 14 · Cl V Modified &amp; Cl IV Esthetic Notes</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Modified Cl V — full features</div>
+  <div class="prompt">Describe the features and steps of a modified Class V composite preparation.</div>
+  <div class="answer">
+    The <b>modified Cl V</b> is indicated for <b>small/moderate lesions entirely within enamel</b>. Its features: <b>no butt-joint</b> is prepared, <b>no retention groove</b>, the lesion is simply <b>scooped out</b>, the walls are <b>divergent</b>, and the axial wall does <b>not</b> have a uniform depth. Prepare with a round or elliptical instrument, extending initially no deeper than <b>0.2 mm</b>; make no effort to create a 90° cavosurface margin. Remove infected enamel with a round bur or excavator. Because retention comes from <b>adhesion</b>, mechanical features are minimized to keep the preparation maximally conservative.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>Cl V المعدّل — الميزات كاملة:</b> يُستطبّ الـ<b>Cl V المعدّل</b> للآفات <b>الصغيرة/المتوسّطة الواقعة كلياً في المينا</b>. ميزاته: <b>لا وصلة زاويّة (butt-joint)</b>، <b>لا أخدود إرساء</b>، تُغرَف الآفة ببساطة، والجدران <b>متباعدة</b>، والجدار المحوري <b>ليس</b> بعمق موحّد. حضّر بأداة مدوّرة أو بيضوية، ممتداً أولاً بما لا يتجاوز <b>0.2مم</b>؛ ولا تسعَ لحافة سطحية 90°. أزل المينا المصابة ببُرّ مدوّر أو حفّار. ولأن الإرساء من <b>الالتصاق</b> تُقلَّل الوسائل الميكانيكية لإبقاء التحضير أقصى تحفّظاً.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Cl IV esthetic &amp; occlusal considerations</div>
+  <div class="prompt">What esthetic and occlusal considerations are critical for Class IV composite?</div>
+  <div class="answer">
+    Class IV involves the proximal surface <b>and the incisal angle</b> of an anterior tooth, so it is highly visible: <b>shade selection is more difficult</b> and must account for translucency at the incisal edge. A <b>preoperative occlusion assessment is very important</b> — margins should be placed in <b>non-contact areas</b> so occlusal forces don't load the restoration margin and cause chipping/debonding. For a simple fracture with no caries or pulp involvement, the only preparation needed is a <b>1.0–2 mm enamel bevel</b> around the periphery to maximize bonding surface and blend the margin. <b>Retentive pins are not needed</b> because the adhesive technique provides sufficient retention.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>اعتبارات Cl IV الجمالية والإطباقية:</b> يشمل Cl IV السطح الداني <b>والزاوية القاطعة</b> لسنّ أمامي فهو شديد الظهور: <b>اختيار اللون أصعب</b> ويجب مراعاة الشفافية عند الحافة القاطعة. و<b>تقييم الإطباق قبل العمل مهمّ جداً</b> — تُوضع الحواف في <b>مناطق لا تماس</b> كي لا تحمّل القوى الإطباقية حافة الترميم فتسبّب تكسّراً/انفصالاً. وللكسر البسيط بلا تسوّس أو إصابة لب، التحضير الوحيد اللازم هو <b>شطبة مينا 1.0–2مم</b> حول المحيط لزيادة سطح الالتصاق ودمج الحافة. و<b>لا حاجة للدبابيس</b> لأن التقنية اللاصقة توفّر إرساءً كافياً.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec25">Lec 1 (Dr. Abdullah) · Medical &amp; Dental History (Detailed)</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Medical systemic care phase</div>
+  <div class="prompt">What is the medical systemic care phase, and what four things might the medical history reveal?</div>
+  <div class="answer">
+    The <b>medical systemic care phase</b> covers aspects of treatment that affect the patient's systemic health. A comprehensive medical history helps identify conditions that could <b>alter, complicate, or contraindicate</b> dental procedures. It may reveal: (1) <b>contagious diseases</b> requiring special precautions/procedures or referral; (2) <b>allergies or medications</b> that contraindicate certain drugs; (3) <b>systemic diseases and cardiac abnormalities</b> demanding less strenuous procedures or prophylactic antibiotic coverage; and (4) <b>physiologic changes of aging</b> that alter clinical presentation and influence treatment.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>طور الرعاية الجهازية الطبية:</b> يغطّي <b>طور الرعاية الجهازية الطبية</b> جوانب العلاج التي تؤثّر على الصحة الجهازية للمريض. والقصة الطبية الشاملة تساعد على تحديد ما قد <b>يغيّر أو يعقّد أو يمنع</b> الإجراءات السنّية. وقد تكشف: (١) <b>أمراضاً معدية</b> تتطلّب احتياطات/إجراءات خاصة أو إحالة؛ (٢) <b>تحسّساً أو أدوية</b> تمنع عقاقير معيّنة؛ (٣) <b>أمراضاً جهازية وشذوذات قلبية</b> تستلزم إجراءات أخفّ أو تغطية وقائية بمضاد حيوي؛ (٤) <b>تغيّرات فيزيولوجية للشيخوخة</b> تغيّر الصورة السريرية وتؤثّر على العلاج.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">When dental history triggers special tests</div>
+  <div class="prompt">How does the dental history guide the need for special diagnostic tests?</div>
+  <div class="answer">
+    A brief history of past dental treatment reveals the patient's <b>tolerance</b> for care and flags likely problems. Ask specifically about previous <b>fractured/lost restorations, trauma, infection, thermal sensitivity, discomfort on chewing, gingival bleeding, and pain</b> — patients often do not volunteer these. When the history includes symptoms suggestive of <b>pulpal damage or an incomplete tooth fracture</b>, specific diagnostic tests (e.g., pulp sensibility tests, bite tests, transillumination) should be performed during the examination, and the findings correlated with the radiographic and clinical picture before treatment planning.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>متى تستدعي القصة السنّية اختبارات خاصة:</b> تكشف القصة الموجزة للعلاج السابق <b>تحمّل</b> المريض للرعاية وتنبّه للمشاكل المحتملة. اسأل تحديداً عن <b>ترميمات مكسورة/مفقودة، رضّ، عدوى، حساسية حرارية، انزعاج عند المضغ، نزف لثوي، ألم</b> — فالمرضى غالباً لا يذكرونها تلقائياً. وحين تتضمّن القصة أعراضاً توحي بـ<b>ضرر لبّي أو كسر سنّي غير كامل</b>، يجب إجراء اختبارات تشخيصية محدّدة (اختبارات حيوية اللب، اختبارات العضّ، الإضاءة النافذة) أثناء الفحص، وربط النتائج بالصورة الشعاعية والسريرية قبل التخطيط العلاجي.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec26">Lec 11 · Marginal Deterioration &amp; Contact/Overhang</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Why amalgam margins deteriorate</div>
+  <div class="prompt">Explain the specific factors behind marginal deterioration of amalgam and the consequences of overhangs/poor contacts.</div>
+  <div class="answer">
+    Marginal deterioration (ditching/fracture of the amalgam edge) results from: <b>improper marginal preparation</b> (wrong cavosurface angle leaving a thin amalgam or enamel edge), <b>improper carving/finishing</b> (flash left at the margin), <b>excess mercury</b> (weakens and expands the set alloy), <b>low-copper amalgam</b> (the weak γ₂ phase corrodes and creeps), and <b>amalgam expansion</b>. Clinically, a <b>gingival overhang</b> — from not using or misusing the wedge — and an <b>improper proximal contact</b> lead to plaque retention and <b>periodontal problems</b>. Correct margin design (90–110°, adequate bulk), careful condensation/carving, proper matrix and wedge use, and a high-copper alloy all reduce these failures.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>لماذا تتدهور حواف الأملغم:</b> ينتج تدهور الحافة (تحفّر/كسر حافة الأملغم) من: <b>تحضير حافة خاطئ</b> (زاوية سطحية خاطئة تترك أملغماً أو مينا رقيقة)، <b>نحت/إنهاء خاطئ</b> (بقاء زوائد عند الحافة)، <b>فائض زئبق</b> (يُضعف السبيكة ويمدّدها)، <b>أملغم منخفض النحاس</b> (طور γ₂ الضعيف يتآكل ويزحف)، و<b>تمدّد الأملغم</b>. وسريرياً يؤدّي <b>overhang لثوي</b> — من عدم استخدام الـwedge أو إساءته — و<b>تماس داني خاطئ</b> لاحتباس اللويحة و<b>مشاكل لثوية</b>. والتصميم الصحيح للحافة (90–110° وسُمك كافٍ)، والكبس/النحت الدقيق، والاستخدام السليم للمصفوفة والـwedge، والسبيكة عالية النحاس، كلها تقلّل هذه الإخفاقات.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec27">Lec 13 · Depth of Cure &amp; Etching Quality</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Why increments are ≤2 mm (depth of cure)</div>
+  <div class="prompt">Why must light-cured composite be placed in increments no thicker than 2 mm?</div>
+  <div class="answer">
+    Curing light is <b>attenuated</b> (scattered and absorbed by filler and pigment) as it passes through composite, so light intensity — and therefore the <b>degree of conversion</b> — falls with depth. Beyond about <b>2 mm</b>, the deeper resin may be <b>under-cured</b>, leaving unreacted monomer that is weaker, more soluble, more likely to cause pulpal irritation, and prone to <b>gap formation</b>. Placing composite in <b>≤2 mm increments, each fully polymerized before the next</b>, ensures adequate depth of cure and also reduces polymerization shrinkage stress by limiting the volume shrinking at once. Bulk-fill materials are specially formulated (more translucent, modified initiators) to allow 4–5 mm increments.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>لماذا الطبقات ≤2مم (عمق التصلّب):</b> يضعف ضوء التصليب (يتشتّت ويُمتصّ بالحشوة والصبغة) وهو يعبر الكمبوزِت، فتنخفض شدّة الضوء — ومعها <b>درجة التحوّل</b> — مع العمق. وبعد ~<b>2مم</b> قد يكون الراتنج الأعمق <b>غير متصلّب كفايةً</b> تاركاً مونومراً غير متفاعل أضعف وأكثر ذوباناً وأكثر تهييجاً للّب وأميل لـ<b>تكوّن فجوة</b>. ووضع الكمبوزِت بـ<b>طبقات ≤2مم، تُبلمر كل واحدة كلياً قبل التالية</b>، يضمن عمق تصلّب كافياً ويقلّل أيضاً إجهاد الانكماش بتحديد الحجم المنكمش دفعةً. ومواد الـbulk-fill مصمّمة خصيصاً (أكثر شفافية، بادئات معدّلة) لتسمح بطبقات 4–5مم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Recognizing correct etching</div>
+  <div class="prompt">How do you recognize correctly etched enamel, and what happens with over-etching or contamination?</div>
+  <div class="answer">
+    Correctly etched enamel appears <b>frosty or chalky white</b> when dried — a built-in quality-control check that the micro-porous, high-surface-energy pattern (the honeycomb) has formed, giving ~30 MPa bond strength through resin tags. If the surface does <b>not</b> look frosty, re-etch. <b>Over-etching</b> forms calcium-phosphate <b>precipitates/crystals</b> on the surface that <b>inhibit bonding</b>, and can collapse the etch pattern. If the etched surface is <b>contaminated with saliva or blood</b>, it must be re-etched — but only for about <b>5 seconds</b>, since the surface is already conditioned.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التعرّف على الحفر الصحيح:</b> المينا المحفورة جيّداً تبدو <b>بيضاء طبشورية/صقيعية</b> عند التجفيف — فحص جودة ذاتي يدلّ على تكوّن النمط المسامي عالي الطاقة (قرص العسل) الذي يعطي إرساءً ~30 ميغاباسكال عبر resin tags. وإن لم يبدُ الصقيع أعِد الحفر. و<b>الحفر الزائد</b> يكوّن <b>رواسب/بلّورات</b> فوسفات كالسيوم على السطح <b>تعيق الالتصاق</b> وقد تُطبق نمط الحفر. وإن <b>تلوّث السطح المحفور بلعاب أو دم</b> وجب إعادة حفره — لكن لـ<b>5 ثوانٍ</b> فقط لأن السطح مُهيّأ أصلاً.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec28">Lec 14–15 · Preparation Design Selection</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Choosing conventional vs beveled vs modified</div>
+  <div class="prompt">How do you choose among conventional, beveled-conventional, and modified composite preparations?</div>
+  <div class="answer">
+    <ul>
+  <li><b>Conventional:</b> for large preparations or restorations subject to <b>heavy occlusal forces</b>, and for lesions/margins on the <b>root surface</b> (where there is no enamel to bevel). It has defined walls and butt-joint margins.</li>
+  <li><b>Beveled conventional:</b> for <b>replacing a defective restoration in the crown</b> or a large lesion needing extra retention/resistance; a <b>bevel</b> (0.25–0.5 mm at 45°) is added to enamel margins to increase bonding surface and improve the marginal blend — but not at gingival margins on the root.</li>
+  <li><b>Modified:</b> the <b>most conservative and most used</b>; for small/moderate enamel lesions; scooped/concave with no specific wall form, retention from adhesion alone.</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>اختيار التقليدي مقابل المشطوف مقابل المعدّل:</b> <b>التقليدي:</b> للتحضيرات الكبيرة أو الترميمات المعرّضة لـ<b>قوى إطباقية شديدة</b>، وللآفات/الحواف على <b>سطح الجذر</b> (حيث لا مينا للشطب). له جدران محدّدة وحواف butt-joint. <b>المشطوف التقليدي:</b> لـ<b>استبدال ترميم معيب في التاج</b> أو آفة كبيرة تحتاج إرساءً/مقاومةً إضافية؛ تُضاف <b>شطبة</b> (0.25–0.5مم بزاوية 45°) لحواف المينا لزيادة سطح الالتصاق ودمج الحافة — لكن ليس عند الحواف اللثوية على الجذر. <b>المعدّل:</b> <b>الأكثر تحفّظاً والأكثر استخداماً</b>؛ للآفات المينائية الصغيرة/المتوسّطة؛ مغرفي/مقعّر بلا شكل جدار محدّد، والإرساء من الالتصاق وحده.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec29">Lec 11 · Cusp Capping &amp; Pin Orientation (Detailed)</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Capped-cusp contour &amp; internal rounding</div>
+  <div class="prompt">Why must a capped cusp reproduce normal contour and have rounded internal corners?</div>
+  <div class="answer">
+    When a cusp is reduced <b>≥2 mm</b> and covered by amalgam, the <b>occlusal contour of the capped cusp should mimic the normal (unreduced) cusp</b> so that occlusal contacts and excursive movements load the restoration favourably rather than concentrating force on a flat or mis-shaped surface. Equally important, any <b>sharp internal corners</b> created in the preparation must be <b>rounded</b>: sharp internal angles act as stress-concentration points in the set amalgam, from which cracks initiate under repeated occlusal loading. Rounding these angles distributes stress and significantly improves the amalgam's resistance to fracture, which is the whole purpose of capping in a heavily broken-down tooth.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>كنتور الحدبة المُغطّاة وتدوير الزوايا الداخلية:</b> عند تخفيض حدبة <b>≥2مم</b> وتغطيتها بالأملغم، يجب أن <b>يحاكي الكنتور الإطباقي للحدبة المُغطّاة الحدبة الطبيعية (غير المخفّضة)</b> كي تُحمّل التماساتُ الإطباقية والحركاتُ الجانبية الترميمَ بشكل مؤاتٍ بدل تركيز القوّة على سطح مسطّح أو مشوّه. والأهمّ أن أي <b>زوايا داخلية حادّة</b> تنشأ في التحضير يجب <b>تدويرها</b>: فالزوايا الداخلية الحادّة تعمل كنقاط تركّز إجهاد في الأملغم المتصلّب تبدأ منها الشقوق تحت الحمل الإطباقي المتكرّر. وتدوير هذه الزوايا يوزّع الإجهاد ويحسّن كثيراً مقاومة الأملغم للكسر، وهو كامل الغرض من التغطية في سنّ متهدّم بشدّة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Non-parallel pin orientation</div>
+  <div class="prompt">Why does non-parallel placement of multiple pins improve retention, and what limits apply?</div>
+  <div class="answer">
+    When more than one pin is used, placing them in a <b>non-parallel</b> orientation locks the amalgam mass mechanically, because the restoration cannot be withdrawn along a single path of draw — each pin resists displacement in a different direction, greatly increasing overall retention and resistance. However, this is bounded by strict limits: keep pins <b>3–5 mm apart</b>, use the <b>fewest</b> that achieve the needed retention (as a rule <b>one per cusp/marginal ridge</b>), and do not extend a pin <b>more than 2 mm</b> into either dentin or amalgam. Excessive numbers or over-extension of pins <b>fracture the tooth and weaken the amalgam</b>, defeating the purpose. Bend a pin only enough to leave ~1 mm of amalgam over it, since bending interferes with condensation and weakens the pin.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>توجيه الدبابيس غير المتوازي:</b> عند استخدام أكثر من دبوس، فإن وضعها بتوجيه <b>غير متوازٍ</b> يقفل كتلة الأملغم ميكانيكياً، لأن الترميم لا يمكن سحبه على مسار واحد — كل دبوس يقاوم الإزاحة في اتجاه مختلف، فيزيد الإرساء والمقاومة كثيراً. لكن يحدّها ضوابط صارمة: أبقِ الدبابيس <b>3–5مم متباعدة</b>، واستخدم <b>الأقلّ</b> الذي يحقّق الإرساء اللازم (كقاعدة <b>واحد لكل حدبة/حافة حُفّية</b>)، ولا تمدّ الدبوس <b>أكثر من 2مم</b> في العاج أو الأملغم. فالعدد المفرط أو الامتداد الزائد <b>يكسر السن ويُضعف الأملغم</b> ويُبطل الغرض. واثنِ الدبوس بما يكفي لترك ~1مم أملغم فوقه فقط، لأن الثني يعيق الكبس ويُضعف الدبوس.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="foot">
+✅ غطّى هذا الملف الجديدَ من مادة اليوم الرابع — المعالجة (Operative) ص 71–140: ترميمات الأملغم المعقّدة وتغطية الحدبات والإرساء الثانوي (coves/locks/slots)، الدبابيس (أنواعها وعوامل إرساءها ووضعها ومشاكلها)، أسباب فشل الأملغم، سمنتات سيليكات الكالسيوم (MTA وBiodentine وTheraCal)، الكمبوزِت (التعريف والاستطبابات والتركيب والتصنيف والأنواع)، مصادر الضوء والبلمرة وإجهاد الانكماش (C-factor)، الحفر الحمضي والطبقة الملطّخة والالتصاق بالعاج والطبقة الهجينة وأجيال الـbonding، تحضير حُفَر الكمبوزِت (Cl III/IV/V وCl I/II الخلفية) ومقارنة الأملغم بالكمبوزِت وتقنيات الوضع، وتقييم المريض والتشخيص. (قسم السمنتات التقليدية مكرّر من اليوم الثالث فاكتُفي بالجديد).<br><br>
+عدد الكلمات (إنجليزي + عربي): <b>10085</b> كلمة.
+</div>
+
+<script>
+const total=60;
+function upd(){
+  let done=document.querySelectorAll('.card[data-done="1"]').length;
+  document.getElementById('score').textContent=done+' / '+total;
+  document.getElementById('fill').style.width=(done/total*100)+'%';
+}
+function revealCard(b){
+  const card=b.closest('.card');
+  card.querySelector('.answer').classList.add('show');
+  b.style.display='none';
+  card.querySelector('.got').style.display='inline-block';
+  card.querySelector('.rev').style.display='inline-block';
+}
+function rate(b,good){
+  const card=b.closest('.card');
+  card.setAttribute('data-done',good?'1':'2');
+  upd();
+}
+function revealAll(){
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelector('.answer').classList.add('show');
+    c.querySelector('.reveal').style.display='none';
+    c.querySelector('.got').style.display='inline-block';
+    c.querySelector('.rev').style.display='inline-block';
+  });
+}
+function hideAll(){
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelector('.answer').classList.remove('show');
+    c.querySelector('.reveal').style.display='inline-block';
+    c.querySelector('.got').style.display='none';
+    c.querySelector('.rev').style.display='none';
+  });
+}
+function resetAll(){
+  document.querySelectorAll('.card').forEach(c=>c.setAttribute('data-done','0'));
+  hideAll();upd();
+}
+upd();
+</script>
+</body>
+</html>
