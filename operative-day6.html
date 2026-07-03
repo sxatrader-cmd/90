@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Operative Dentistry — Day 6 — Complete</title>
+<style>
+:root{color-scheme:light only;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{background:#ffffff !important;color:#000000 !important;}
+@media (prefers-color-scheme:dark){
+  html,body{background:#ffffff !important;color:#000000 !important;}
+  .card,.hint,.topbar,.toc{background:#ffffff !important;color:#000000 !important;}
+}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;padding:0 14px 120px;line-height:1.65;font-size:17px;}
+h1{font-size:22px;margin:18px 0 4px;}
+.subtitle{color:#444;font-size:14px;margin:0 0 14px;}
+.topbar{position:sticky;top:0;background:#fff !important;border-bottom:2px solid #000;padding:10px 0;z-index:50;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.score{font-weight:700;font-size:15px;}
+.bar{flex:1;min-width:120px;height:12px;background:#eee;border:1px solid #000;border-radius:6px;overflow:hidden;}
+.bar>i{display:block;height:100%;width:0;background:#000;transition:width .3s;}
+.controls button{font-size:13px;padding:6px 10px;border:1px solid #000;background:#fff;border-radius:8px;cursor:pointer;}
+.toc{background:#fff;border:2px solid #000;border-radius:12px;padding:12px 14px;margin:14px 0;}
+.toc b{display:block;margin-bottom:6px;}
+.toc a{display:block;color:#000;text-decoration:none;padding:5px 0;border-bottom:1px dashed #ccc;font-size:15px;}
+.toc a:last-child{border-bottom:0;}
+h2.sec{font-size:18px;border-left:6px solid #000;padding:8px 12px;margin:30px 0 14px;background:#f3f3f3;border-radius:0 8px 8px 0;}
+.card{border:2px solid #000;border-radius:14px;padding:14px 16px;margin:14px 0;background:#fff !important;}
+.card[data-done="1"]{border-color:#157f3b;background:#f3fbf5 !important;}
+.card[data-done="2"]{border-color:#b00;background:#fff7f7 !important;}
+.topic{font-weight:700;font-size:15px;color:#000;margin-bottom:6px;letter-spacing:.2px;text-transform:uppercase;}
+.prompt{font-size:17px;font-weight:600;margin-bottom:10px;}
+.answer{display:none;border-top:1px dashed #999;padding-top:10px;margin-top:4px;}
+.answer.show{display:block;animation:fade .25s;}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.answer ol,.answer ul{margin:6px 0;padding-inline-start:22px;}
+.answer li{margin:4px 0;}
+.answer table{border-collapse:collapse;width:100%;margin:8px 0;font-size:15px;}
+.answer th,.answer td{border:1px solid #000;padding:6px 8px;text-align:left;}
+.answer th{background:#eee;}
+.k{background:#ffd400;color:#b00000 !important;font-weight:700;padding:0 4px;border-radius:3px;}
+.hint{direction:rtl;text-align:right;background:#fff;border:1px solid #000;border-radius:10px;padding:10px 12px;margin-top:12px;font-size:16px;line-height:1.8;}
+.hint .hl{background:#ffd400;color:#b00;font-weight:700;padding:0 5px;border-radius:3px;}
+.hint b{color:#b00000;}
+.btns{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;}
+.btns button{font-size:15px;padding:9px 14px;border-radius:10px;border:2px solid #000;background:#fff;cursor:pointer;font-weight:600;}
+.btns .got{border-color:#157f3b;color:#157f3b;}
+.btns .rev{border-color:#b00;color:#b00;}
+.btns .reveal{background:#000;color:#fff;}
+.foot{margin-top:30px;border-top:2px solid #000;padding-top:14px;font-size:14px;color:#333;}
+.note{background:#ffd400;color:#000;border:1px solid #000;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:15px;}
+</style>
+</head>
+<body>
+<h1>Operative Dentistry — Day 6 — Complete Interactive Review</h1>
+<p class="subtitle">pages 211–279 · ozone → vital pulp therapy (liner, indirect/direct pulp capping, pulpotomy) → fluoride-releasing materials (varnish, GIC, RMGIC, compomer, giomer) → indirect esthetic restorations (inlays/onlays, CAD/CAM) · 54 cards · English + شرح عربي وافٍ</p>
+
+<div class="topbar">
+  <span class="score" id="score">0 / 54</span>
+  <span class="bar"><i id="fill"></i></span>
+  <span class="controls">
+    <button onclick="revealAll()">اكشف الكل</button>
+    <button onclick="hideAll()">إخفاء</button>
+    <button onclick="resetAll()">تصفير</button>
+  </span>
+</div>
+
+<div class="note">⭐ = أقسام عالية الأهمية (high-yield). اقرأ السؤال، حاول الإجابة من ذاكرتك، ثم اكشف الجواب وقيّم نفسك.</div>
+
+<div class="toc">
+<b>المحتويات · Contents</b>
+<a href="#sec0">Caries Removal · Ozone Treatment</a>
+<a href="#sec1">Lec 11 · Vital Pulp Therapy — Overview &amp; Protective Liner ⭐</a>
+<a href="#sec2">Lec 11 · Indirect Pulp Capping &amp; Selective Caries Removal ⭐</a>
+<a href="#sec3">Lec 11 · Direct Pulp Capping (DPC) ⭐</a>
+<a href="#sec4">Lec 11 · Partial &amp; Full Pulpotomy ⭐</a>
+<a href="#sec5">Fluoride-Releasing Materials · Mechanisms ⭐</a>
+<a href="#sec6">Fluoride Materials · Varnish &amp; Glass Ionomer ⭐</a>
+<a href="#sec7">Fluoride Materials · RMGIC, Compomer &amp; Giomer ⭐</a>
+<a href="#sec8">Lec 13 · Indirect Esthetic Restorations — Direct vs Indirect ⭐</a>
+<a href="#sec9">Lec 13 · Inlay/Onlay Materials &amp; Fabrication ⭐</a>
+<a href="#sec10">Lec 13 · Ceramic vs Composite &amp; CAD/CAM</a>
+<a href="#sec11">Lec 18 · Inlay vs Onlay — Definitions &amp; Indications ⭐</a>
+<a href="#sec12">Lec 18 · Composite Inlays/Onlays (IRC)</a>
+<a href="#sec13">Lec 19 · Composite Inlay — Semi-direct Intraoral Technique</a>
+<a href="#sec14">Lec 19 · Flexible Model &amp; Indirect Techniques</a>
+<a href="#sec15">Lec 18 · IRC Generations &amp; Ceramic Materials</a>
+<a href="#sec16">Lec 20/21 · Ceramic Inlay/Onlay Preparation Principles ⭐</a>
+<a href="#sec17">Lec 20/21 · Cusp Coverage &amp; Overlay Rules ⭐</a>
+<a href="#sec18">Lec 20/21 · Preparation Types &amp; Proximal Box</a>
+<a href="#sec19">Laser Safety in Operative Dentistry</a>
+<a href="#sec20">Composite Restoration · Matrix &amp; Wedging</a>
+<a href="#sec21">Deep Caries · Clinical Decision Summary ⭐</a>
+<a href="#sec22">Indirect Restorations · Bonding &amp; Longevity Recap</a>
+<a href="#sec23">Deep Caries · Hemostasis &amp; Sealing Essentials</a>
+</div>
+
+<h2 class="sec" id="sec0">Caries Removal · Ozone Treatment</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Ozone therapy for caries</div>
+  <div class="prompt">How does ozone treatment work on caries, and what are its advantages?</div>
+  <div class="answer">
+    An ozone device takes in air, produces ozone gas, and delivers it through a hose into a <b>disposable sterile cup</b> that seals around the lesion (so ozone can't leak into the mouth); gas is refreshed at 615 cc/min. Around <b>20–40 seconds</b> of application penetrates carious dentin to <b>eliminate live bacteria, fungi and viruses</b> and primes the tissue for <b>remineralization</b>.<br>
+  <b>Advantages:</b> non-invasive & painless; no allergy; microorganisms don't develop resistance; short treatment time (20–120 s/lesion); studies show <b>75–100%</b> of treated lesions become harder over 1 year.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>علاج الأوزون للتسوّس:</b> يأخذ جهاز الأوزون الهواء وينتج غاز الأوزون ويوصله عبر خرطوم إلى <b>كوب معقّم يُرمى</b> يُحكم حول الآفة (فلا يتسرّب للفم)؛ ويُجدَّد الغاز بمعدّل 615 سم³/د. ونحو <b>20–40 ثانية</b> من التطبيق تخترق العاج المسوّس لـ<b>القضاء على الجراثيم والفطريات والفيروسات الحيّة</b> وتهيّئ النسيج لـ<b>إعادة التمعدن</b>. <b>المزايا:</b> غير جراحي وغير مؤلم؛ لا تحسّس؛ لا تكوّن الجراثيم مقاومةً له؛ وقت قصير (20–120ث/آفة)؛ وتُظهر الدراسات أن <b>75–100%</b> من الآفات المعالَجة تصير أقسى خلال سنة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec1">Lec 11 · Vital Pulp Therapy — Overview &amp; Protective Liner ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Vital pulp therapy &amp; the hardness criterion</div>
+  <div class="prompt">What is vital pulp therapy, and what criterion guides carious dentin removal?</div>
+  <div class="answer">
+    The pulp is highly vascularized with a potential to heal, so every effort should preserve its vitality. In asymptomatic vital teeth with deep lesions, <b>conservative caries removal</b> (less tissue loss / lower exposure risk) is balanced against removing enough tissue for restoration longevity. The criterion guiding carious dentin removal is <span class="k">hardness, judged by tactile feedback</span>. When a very deep lesion risks pulp exposure, strategies to preserve vitality are used — collectively <b>vital pulp therapy</b>: a procedure that treats a compromised pulp <b>without full removal of all healthy pulp tissue</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>المعالجة اللبية الحيوية ومعيار الصلابة:</b> اللب غنيّ بالأوعية وله قدرة على الشفاء، فيجب بذل كل جهد للحفاظ على حيويته. وفي الأسنان الحيّة اللاعرَضية ذات الآفات العميقة، تُوازَن <b>الإزالة المتحفّظة للتسوّس</b> (فقد نسيج أقلّ / خطر كشف أقلّ) مقابل إزالة نسيج كافٍ لعمر الترميم. والمعيار الموجّه لإزالة العاج المسوّس هو <b>الصلابة، بالتغذية اللمسية</b>. وحين تهدّد آفة عميقة جداً بكشف اللب تُستخدم استراتيجيات حفظ الحيوية — مجتمعةً <b>المعالجة اللبية الحيوية</b>: إجراء يعالج لبّاً معتلاً <b>دون إزالة كل النسيج اللبّي السليم</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Protective liner</div>
+  <div class="prompt">What is a protective liner, and what are its indications and objectives?</div>
+  <div class="answer">
+    A <b>protective liner</b> is a material placed on the pulpal surface of a preparation, covering exposed dentin tubules, to act as a barrier between the restorative/cement and the pulp (commonly <b>calcium hydroxide + glass ionomer</b>).<br>
+  <b>Indications:</b> in a tooth with a normal pulp where dentin is exposed and all caries is removed — a <b>radiopaque</b> liner between restoration and dentin minimizes thermal/chemical injury, promotes healing, induces reactionary dentin, and reduces postoperative sensitivity.<br>
+  <b>Objectives:</b> preserve vitality, promote pulp healing & tertiary dentin, minimize microleakage — with no adverse post-treatment sensitivity/pain/swelling.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>البطانة الواقية:</b> مادة تُوضع على السطح اللبّي للتحضير تغطّي الأنابيب العاجية المكشوفة، لتكون حاجزاً بين الترميم/السمنت واللب (غالباً <b>هيدروكسيد الكالسيوم + أيونومر زجاجي</b>). <b>الاستطبابات:</b> في سنّ بلبّ طبيعي حيث يُكشف العاج ويُزال كل التسوّس — بطانة <b>ظلّية</b> بين الترميم والعاج تقلّل الأذى الحراري/الكيميائي وتعزّز الشفاء وتحرّض العاج التفاعلي وتقلّل الحساسية بعد العلاج. <b>الأهداف:</b> حفظ الحيوية، تعزيز شفاء اللب والعاج الثالثي، تقليل التسرّب — دون حساسية/ألم/تورّم بعد العلاج.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec2">Lec 11 · Indirect Pulp Capping &amp; Selective Caries Removal ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Indirect pulp capping (IPC) concept</div>
+  <div class="prompt">What is indirect pulp capping, and what is its historical/biological basis?</div>
+  <div class="answer">
+    Sir John Tomes (1859): it is better to leave a layer of discolored dentine to protect the pulp than to risk the tooth. In <b>IPC</b>, carious dentine near the pulp is <b>deliberately preserved</b> (to avoid pulp exposure) and covered with a suitable material — applicable when the lesion extends to <b>¾ of dentin thickness</b> on radiograph and removal would expose the pulp. <b>Demineralised dentine, if bacteria-free, will remineralise</b> once the infection source is eliminated. (Caries-disclosing dyes may over-stain deep dentin near the pulp → over-excavation.)
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مفهوم التغطية اللبية غير المباشرة (IPC):</b> قال Sir John Tomes (1859): تركُ طبقة عاج متلوّن لحماية اللب أفضل من المخاطرة بالسن. في <b>IPC</b> يُحفَظ العاج المسوّس قرب اللب <b>عمداً</b> (لتجنّب كشف اللب) ويُغطّى بمادة مناسبة — يُطبَّق حين تمتدّ الآفة لـ<b>¾ سُمك العاج</b> شعاعياً وتؤدّي إزالتها لكشف اللب. و<b>العاج منزوع المعادن، إن كان خالياً من الجراثيم، يُعيد التمعدن</b> بعد إزالة مصدر العدوى. (وصبغات كشف التسوّس قد تفرط تلوين العاج العميق قرب اللب ← حفر زائد.)</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Selective / stepwise caries removal</div>
+  <div class="prompt">Differentiate the two methods of selective carious tissue removal for IPC.</div>
+  <div class="answer">
+    <b>Selective carious tissue removal</b> = partial removal leaving bacteria-free demineralized (affected) dentine; removing the heavily infected biomass while retaining affected dentine preserves vitality. Two methods:
+  <ul><li><b>Incomplete caries removal (one visit):</b> no subsequent re-entry — the cavity is not reopened after 3–6 months.</li>
+  <li><b>Stepwise caries removal (two visits):</b> a <b>second entry</b> after 3–6 months to remove the remaining soft affected dentine completely.</li></ul>
+  Both reduce pulp exposures.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الإزالة الانتقائية/المرحلية للتسوّس:</b> <b>الإزالة الانتقائية</b> = إزالة جزئية تترك عاجاً منزوع المعادن خالياً من الجراثيم (متأثّراً)؛ وإزالة الكتلة شديدة العدوى مع إبقاء العاج المتأثّر تحفظ الحيوية. طريقتان: <b>إزالة غير كاملة (جلسة واحدة):</b> بلا إعادة دخول — لا يُفتح التجويف بعد 3–6 أشهر. <b>إزالة مرحلية (جلستان):</b> <b>دخول ثانٍ</b> بعد 3–6 أشهر لإزالة العاج الطري المتأثّر المتبقّي كلياً. وكلاهما يقلّل كشف اللب.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">IPC materials, indications &amp; procedure</div>
+  <div class="prompt">What materials and indications apply to IPC, and outline the stepwise procedure.</div>
+  <div class="answer">
+    <b>Materials:</b> an antibacterial liner — <b>Ca(OH)₂, MTA, Biodentine, or ZOE</b> (stimulates secondary dentine) — optionally followed by an <b>adhesive base</b> (glass ionomer/RMGI) for an antibacterial + adhesive seal.<br>
+  <b>Indications:</b> radiographically deep lesion encroaching on the pulp; <b>no spontaneous pain</b>; normal vitality response.<br>
+  <b>Stepwise procedure:</b> rubber-dam isolation → remove all peripheral caries (large round bur/spoon) → debride only soft caries near the pulp → place Ca(OH)₂/ZOE liner → seal with base/adhesive cement → after 3–6 months remove cement → inspect for remineralization/hard dentin → remove residual soft dentin → place the permanent restoration.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مواد IPC واستطباباته وإجراؤه:</b> <b>المواد:</b> بطانة مضادة للجراثيم — <b>Ca(OH)₂ أو MTA أو Biodentine أو ZOE</b> (تحرّض العاج الثانوي) — تُتبَع اختيارياً بـ<b>قاعدة لاصقة</b> (أيونومر/RMGI) لسدّ مضادّ للجراثيم ولاصق. <b>الاستطبابات:</b> آفة عميقة شعاعياً تقترب من اللب؛ <b>لا ألم تلقائي</b>؛ استجابة حيوية طبيعية. <b>الإجراء المرحلي:</b> عزل بحاجز مطاطي ← إزالة كل التسوّس المحيطي (بُرّ مدوّر كبير/ملعقة) ← إزالة العاج الطري فقط قرب اللب ← بطانة Ca(OH)₂/ZOE ← سدّ بقاعدة/سمنت لاصق ← بعد 3–6 أشهر أزل السمنت ← افحص إعادة التمعدن/العاج الصلب ← أزل العاج الطري المتبقّي ← ضع الترميم الدائم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec3">Lec 11 · Direct Pulp Capping (DPC) ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Definition, indications &amp; contraindications</div>
+  <div class="prompt">Define direct pulp capping and state its indications and contraindications.</div>
+  <div class="answer">
+    <b>DPC</b> = dressing an <b>exposed pulp</b> to maintain vitality.<br>
+  <b>Indications:</b> recent (<b>≤24 h</b>) traumatic or mechanical non-carious exposures during preparation; only for <b>immature permanent teeth</b> or mature permanent teeth with <b>simple restorative needs</b>.<br>
+  <b>Contraindications:</b> mature teeth with <b>inflamed pulps</b> (e.g., carious exposures) should NOT be capped; <b>pre-operative sensitivity</b> is a contraindication.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التعريف والاستطبابات والموانع:</b> <b>DPC</b> = تضميد <b>لبّ مكشوف</b> للحفاظ على حيويته. <b>الاستطبابات:</b> تعرّضات رضّية حديثة (<b>≤24 ساعة</b>) أو ميكانيكية غير تسوّسية أثناء التحضير؛ فقط لـ<b>الأسنان الدائمة غير الناضجة</b> أو الدائمة الناضجة ذات <b>حاجات ترميمية بسيطة</b>. <b>الموانع:</b> الأسنان الناضجة ذات <b>لبّ ملتهب</b> (كالتعرّضات التسوّسية) يجب ألا تُغطّى؛ و<b>الحساسية قبل العملية</b> مانع.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Requirements for success</div>
+  <div class="prompt">What three conditions are required for successful direct pulp therapy?</div>
+  <div class="answer">
+    <ol>
+  <li><b>Pulp not inflamed</b> — no signs/symptoms of irreversible pulpitis.</li>
+  <li><b>Hemorrhage properly controlled</b> — mechanical pressure with a sterile dry/saline cotton pellet; <b>NaOCl (2.5%/3%/5.25%)</b> is biocompatible and effective for hemostasis; <b>chlorhexidine</b> also works.</li>
+  <li><b>A non-toxic capping material</b> — traditionally <b>calcium hydroxide</b> (antibacterial, disinfects superficial pulp); <b>MTA and Biodentine</b> also used.</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>متطلبات النجاح:</b> (١) <b>اللب غير ملتهب</b> — لا علامات/أعراض التهاب لا رجعي. (٢) <b>ضبط النزف جيّداً</b> — ضغط ميكانيكي بكرة قطن جافّة/بمحلول ملحي معقّمة؛ و<b>NaOCl (2.5%/3%/5.25%)</b> متوافق حيوياً وفعّال للإرقاء؛ والكلورهيكسيدين يعمل أيضاً. (٣) <b>مادة تغطية غير سامّة</b> — تقليدياً <b>هيدروكسيد الكالسيوم</b> (مضاد جراثيم يطهّر اللب السطحي)؛ ويُستخدم <b>MTA وBiodentine</b> أيضاً.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Ca(OH)₂ disadvantages vs MTA</div>
+  <div class="prompt">What are the disadvantages of calcium hydroxide as a capping material compared with MTA?</div>
+  <div class="answer">
+    <b>Calcium hydroxide disadvantages:</b>
+  <ol><li>Does <b>not seal</b> the exposed pulp from the external environment → needs an additional base (e.g., RMGI) for a bacterial seal.</li>
+  <li>Dentin bridges under Ca(OH)₂ contain <b>"tunnel defects"</b> leaving the pulp open to recurring infection via microleakage; <b>MTA forms a bridge free of tunnel defects</b>.</li>
+  <li>Ca(OH)₂ tends to <b>soften, disintegrate, and dissolve</b> over time → voids/pathways for bacteria.</li></ol>
+  <b>MTA</b> is dimensionally stable, doesn't dissolve, gives a good barrier against fluids/bacteria, and its alkalinity stimulates dentinal bridging.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>عيوب Ca(OH)₂ مقابل MTA:</b> (١) <b>لا يسدّ</b> اللب المكشوف عن الوسط الخارجي ← يحتاج قاعدة إضافية (مثل RMGI) لسدّ جرثومي. (٢) جسور العاج تحت Ca(OH)₂ تحوي <b>"عيوب نفقية (tunnel defects)"</b> تترك اللب مفتوحاً لعدوى متكرّرة عبر التسرّب؛ بينما <b>MTA يكوّن جسراً خالياً من العيوب النفقية</b>. (٣) Ca(OH)₂ يميل لـ<b>الليونة والتفكّك والذوبان</b> مع الوقت ← فراغات/مسارات للجراثيم. و<b>MTA</b> ثابت الأبعاد لا يذوب ويعطي حاجزاً جيّداً ضدّ السوائل/الجراثيم، وقلويّته تحرّض تجسير العاج.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">DPC technique, recall &amp; prognosis</div>
+  <div class="prompt">Outline the DPC technique, recall schedule, and prognosis.</div>
+  <div class="answer">
+    <b>Technique:</b> anesthetize → rubber dam → disinfect with chlorhexidine, rinse with anesthetic/saline → control hemorrhage (cotton pellet ± NaOCl/CHX) → apply pure Ca(OH)₂ mixed with sterile water/saline (or hard-setting liner if pulp is small) directly on the exposure → light-cure an <b>RMGI base/liner</b> to protect it and improve seal → good temporary → wait <b>4–6 weeks</b> for final restoration.<br>
+  <b>Recall:</b> EPT + thermal + palpation/percussion at 3–4 weeks, 3, 6, 12 months, then yearly; periodic radiographs (periapical radiolucency; root development in immature teeth); hard-tissue barriers may appear as early as 6 weeks.<br>
+  <b>Prognosis:</b> ~<b>80%</b> under ideal conditions (uninflamed pulp + good coronal seal).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تقنية DPC والمتابعة والإنذار:</b> <b>التقنية:</b> تخدير ← حاجز مطاطي ← تطهير بالكلورهيكسيدين وشطف بالمخدّر/الملحي ← ضبط النزف (كرة قطن ± NaOCl/CHX) ← ضع Ca(OH)₂ نقياً ممزوجاً بماء/ملحي معقّم (أو بطانة صلبة إن كان اللب صغيراً) مباشرةً على التعرّض ← صلّب ضوئياً <b>قاعدة/بطانة RMGI</b> لحمايته وتحسين السدّ ← مؤقت جيّد ← انتظر <b>4–6 أسابيع</b> للترميم النهائي. <b>المتابعة:</b> EPT + حراري + جس/طرق عند 3–4 أسابيع و3 و6 و12 شهراً ثم سنوياً؛ وأشعة دورية (شفافية حول قمية؛ نمو الجذر في غير الناضجة)؛ وقد تظهر حواجز النسيج الصلب مبكراً عند 6 أسابيع. <b>الإنذار:</b> ~<b>80%</b> في الظروف المثالية (لبّ غير ملتهب + سدّ تاجي جيّد).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec4">Lec 11 · Partial &amp; Full Pulpotomy ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Partial (Cvek) pulpotomy</div>
+  <div class="prompt">Define partial pulpotomy, its indications, and technique.</div>
+  <div class="answer">
+    <b>Partial (Cvek) pulpotomy</b> = removal of inflamed pulp tissue to the level of healthy coronal pulp using a <b>sterile high-speed diamond under copious water</b>; excision is complete when the pulp stump no longer bleeds excessively.<br>
+  <b>Indications:</b> similar to DPC (immature or mature teeth with simple restorative needs), chosen when pulpal inflammation is expected to be <b>greater than normal</b>.<br>
+  <b>Technique:</b> anesthesia/isolation/disinfection → remove <b>1–2 mm</b> of superficial pulp with the diamond; if bleeding continues, extend apically; rinse (saline/anesthetic), dry; use NaOCl/CHX for hemostasis; <b>avoid a blood clot</b> (worsens prognosis); apply pure Ca(OH)₂ (or hard-setting liner) → RMGI liner/base → adhesive + restoration.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>بضع اللب الجزئي (Cvek):</b> = إزالة النسيج اللبّي الملتهب لمستوى اللب التاجي السليم بـ<b>ماسة معقّمة عالية السرعة تحت ماء غزير</b>؛ ويكتمل القطع حين يتوقّف جذع اللب عن النزف المفرط. <b>الاستطبابات:</b> شبيهة بـDPC (أسنان غير ناضجة أو ناضجة بحاجات بسيطة)، تُختار حين يُتوقّع التهاب لبّي <b>أكبر من المعتاد</b>. <b>التقنية:</b> تخدير/عزل/تطهير ← أزل <b>1–2مم</b> من اللب السطحي بالماسة؛ وإن استمرّ النزف امتدّ قمياً؛ اشطف (ملحي/مخدّر) وجفّف؛ استخدم NaOCl/CHX للإرقاء؛ <b>تجنّب الجلطة الدموية</b> (تسوّئ الإنذار)؛ ضع Ca(OH)₂ نقياً (أو بطانة صلبة) ← بطانة/قاعدة RMGI ← لاصق + ترميم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Partial pulpotomy advantages &amp; prognosis</div>
+  <div class="prompt">What advantages does partial pulpotomy offer over DPC, and what is its prognosis?</div>
+  <div class="answer">
+    <b>Advantages over DPC:</b>
+  <ul><li>Superficial <b>inflamed pulp tissue is removed</b> during preparation of the pulpal cavity.</li>
+  <li>Ca(OH)₂ <b>disinfects</b> the pulp/dentin and removes additional inflamed tissue.</li>
+  <li>It provides <b>space</b> for the materials needed to achieve a bacteria-tight seal.</li></ul>
+  <b>Prognosis:</b> ~<b>95%</b> success — but this figure is for <b>traumatized</b> teeth (predictable inflammation level); the success rate for <b>carious exposures is currently unknown</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مزايا بضع اللب الجزئي وإنذاره:</b> <b>المزايا على DPC:</b> يُزال <b>النسيج اللبّي الملتهب السطحي</b> أثناء تحضير التجويف اللبّي؛ وCa(OH)₂ <b>يطهّر</b> اللب/العاج ويزيل نسيجاً ملتهباً إضافياً؛ ويوفّر <b>مساحةً</b> للمواد اللازمة لسدّ محكم ضدّ الجراثيم. <b>الإنذار:</b> نجاح ~<b>95%</b> — لكن هذا الرقم للأسنان <b>المرضوضة</b> (مستوى التهاب متوقّع)؛ ومعدّل النجاح لـ<b>التعرّضات التسوّسية غير معروف حالياً</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Full pulpotomy</div>
+  <div class="prompt">Define full pulpotomy and its indications/technique.</div>
+  <div class="answer">
+    A <b>full pulpotomy</b> = removal of the <b>entire coronal pulp</b> to the level of the root canal orifice(s).<br>
+  <b>Indications:</b> similar to partial pulpotomy, except the pulp is likely to have <b>more extensive inflammation</b>, or the coronal pulp is rather small.<br>
+  <b>Technique:</b> like partial pulpotomy but the <b>entire coronal pulp mass is removed</b> (down to the canal orifices), then capped with calcium hydroxide as in partial pulpotomy. <b>Recall</b> follows the same intervals as a direct pulp cap/partial pulpotomy.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>بضع اللب الكامل:</b> = إزالة <b>كامل اللب التاجي</b> لمستوى فوّهة/فوّهات القناة الجذرية. <b>الاستطبابات:</b> شبيهة ببضع اللب الجزئي، إلا أن اللب غالباً ذو <b>التهاب أوسع</b>، أو أن اللب التاجي صغير نسبياً. <b>التقنية:</b> كبضع اللب الجزئي لكن تُزال <b>كامل كتلة اللب التاجي</b> (حتى فوّهات القنوات) ثم يُغطّى بهيدروكسيد الكالسيوم كما في الجزئي. و<b>المتابعة</b> بنفس فترات التغطية اللبية المباشرة/بضع اللب الجزئي.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec5">Fluoride-Releasing Materials · Mechanisms ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">The caries balance &amp; fluoride&#x27;s role</div>
+  <div class="prompt">How does the demineralization/remineralization balance work, and where does fluoride fit?</div>
+  <div class="answer">
+    Caries is a multifactorial disease with a bacterial etiology: bacteria metabolize <b>sucrose/fructose/glucose</b> and secrete organic acids (<b>lactic, propionic, formic</b>) that dissolve calcium & phosphate from the tooth (<b>demineralization</b>). During neutral-pH periods, saliva's calcium & phosphate drive <b>remineralization</b>. The availability of <b>fluoride ions enhances remineralization and prevents demineralization</b>. Fluoride can be delivered professionally, in dentifrices, and via <b>fluoride-releasing restorative materials</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>توازن التسوّس ودور الفلورايد:</b> التسوّس مرض متعدّد العوامل بسبب جرثومي: تستقلب الجراثيم <b>السكروز/الفركتوز/الغلوكوز</b> وتفرز أحماضاً عضوية (<b>لاكتيك، بروبيونيك، فورميك</b>) تُذيب الكالسيوم والفوسفات من السن (<b>إزالة معادن</b>). وفي فترات الـpH المحايد، يدفع كالسيوم وفوسفات اللعاب <b>إعادة التمعدن</b>. وتوفّر <b>أيونات الفلورايد يعزّز إعادة التمعدن ويمنع إزالة المعادن</b>. ويُوصَل الفلورايد مهنياً وفي المعاجين وعبر <b>مواد ترميمية مطلِقة للفلورايد</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Four ways fluoride protects teeth</div>
+  <div class="prompt">By which mechanisms does fluoride protect teeth from decay?</div>
+  <div class="answer">
+    <ol>
+  <li><b>Inhibits demineralization:</b> fluoride binds the calcium & phosphate ions that dissolve from enamel under acid attack, keeping them at the surface.</li>
+  <li><b>Enhances remineralization:</b> topical fluoride speeds growth of new mineral on partially-demineralized subsurface crystals — fluoride adsorbs to crystals and attracts calcium then phosphate.</li>
+  <li><b>Antimicrobial:</b> interferes with cariogenic bacteria and reduces their acid production (↓ carbohydrate metabolism).</li>
+  </ol>
+  Fluoride-releasing materials are especially recommended for <b>root-surface caries</b> (dentin needs more fluoride than enamel to remineralize). Release/uptake ranks from <b>superior (GIC) to inferior (resin composite)</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>طرق حماية الفلورايد الأربع:</b> (١) <b>يثبّط إزالة المعادن:</b> يربط أيونات الكالسيوم والفوسفات الذائبة من المينا تحت الهجوم الحمضي فيُبقيها عند السطح. (٢) <b>يعزّز إعادة التمعدن:</b> الفلورايد الموضعي يسرّع نمو معدن جديد على البلّورات تحت السطحية منزوعة المعادن جزئياً — يمتزّ على البلّورات ويجذب الكالسيوم ثم الفوسفات. (٣) <b>مضاد جراثيم:</b> يتداخل مع الجراثيم المسبّبة للتسوّس ويقلّل إنتاجها للحمض (↓ استقلاب الكربوهيدرات). ويُوصى بالمواد المطلِقة للفلورايد خاصةً لـ<b>تسوّس سطح الجذر</b> (العاج يحتاج فلورايد أكثر من المينا). ويتدرّج الإطلاق/الالتقاط من <b>الأعلى (GIC) للأدنى (الكمبوزِت الراتنجي)</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec6">Fluoride Materials · Varnish &amp; Glass Ionomer ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Fluoride varnish</div>
+  <div class="prompt">What is fluoride varnish used for and how is it applied?</div>
+  <div class="answer">
+    Fluoride varnish is <b>effective in preventing caries on permanent teeth</b> and has recently been shown to <b>prevent/reduce caries in the primary teeth of young children</b>. Application is quick and easy — <b>small droplets applied directly to the tooth surface</b>. It is a professionally-applied topical fluoride adjunct in caries prevention.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>ورنيش الفلورايد:</b> فعّال في <b>الوقاية من تسوّس الأسنان الدائمة</b>، وثبت حديثاً أنه <b>يمنع/يقلّل التسوّس في الأسنان اللبنية للأطفال الصغار</b>. والتطبيق سريع وسهل — <b>قطرات صغيرة تُوضع مباشرةً على سطح السن</b>. وهو فلورايد موضعي يُطبَّق مهنياً كمساعد في الوقاية من التسوّس.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Glass ionomer cement (GIC) as a fluoride material</div>
+  <div class="prompt">How does GIC release fluoride, and what are its main characteristics and limitations?</div>
+  <div class="answer">
+    GIC = ion-cross-linked polymer matrix around glass-reinforcing filler; the acidic polyacrylic-acid liquid (<b>pH ≤ 1.0</b>) dissolves the periphery of the alumino-silicate glass, releasing calcium, aluminum, <b>fluoride</b>, silicon; true <b>chemical bonds</b> form at tooth/filling interfaces.<br>
+  <b>Characteristics:</b> chemically bonds to enamel/dentin with little heat/shrinkage; biocompatible; <b>fluoride release → cariostatic & antimicrobial</b>; low setting shrinkage; thermal expansion similar to tooth. <b>Limitations as a restorative:</b> moisture sensitivity, low esthetics, low mechanical strength & wear resistance → <b>least durable</b> (may suffice for primary teeth). Best as a <b>luting/lining material</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الأيونومر الزجاجي (GIC) كمادة فلورايد:</b> GIC = مطرس بوليمر متشابك أيونياً حول حشوة زجاجية؛ والسائل الحمضي (حمض بولي أكريليك، <b>pH ≤ 1.0</b>) يُذيب أطراف زجاج الألومينوسيليكات مطلِقاً كالسيوم وألمنيوم و<b>فلورايد</b> وسيليكون؛ وتتكوّن <b>روابط كيميائية</b> حقيقية عند بينيات السن/الحشوة. <b>الخصائص:</b> يلتصق كيميائياً بالمينا/العاج بحرارة/انكماش قليل؛ متوافق حيوياً؛ <b>إطلاق فلورايد ← موقف للتسوّس ومضاد جراثيم</b>؛ انكماش تصلّب منخفض؛ تمدّد حراري قريب من السن. <b>حدوده كمادة ترميم:</b> حساسية للرطوبة، جمال منخفض، قوّة ميكانيكية ومقاومة تآكل منخفضة ← <b>الأقلّ متانةً</b> (قد يكفي للّبنية). أفضل كـ<b>مادة تثبيت/بطانة</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec7">Fluoride Materials · RMGIC, Compomer &amp; Giomer ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Resin-modified glass ionomer (RMGIC)</div>
+  <div class="prompt">How does RMGIC differ from conventional GIC, and what are its key properties?</div>
+  <div class="answer">
+    RMGIC adds resin components (e.g., <b>HEMA</b>) to conventional GI; more complex ones add light-polymerizable side chains.<br>
+  <b>Key properties:</b> chemical bond to enamel/dentin with little heat/shrinkage; <b>higher, more stable shear bond to dentin</b> than conventional GI; can <b>directly bond to composite</b> (useful in GI/composite laminate/sandwich); highly biocompatible with better adaptation/seal; big rise in compressive strength but <b>brittle, low tensile strength, low abrasion resistance</b> → unsuitable for high-stress posteriors; <b>fluoride release ≥ conventional GI</b>; greater curing shrinkage → use <b>incremental placement</b>. A desirable alternative to amalgam for <b>primary teeth</b> and as a liner/base.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الأيونومر الزجاجي المعدّل بالراتنج (RMGIC):</b> يضيف مكوّنات راتنجية (مثل <b>HEMA</b>) للـGI التقليدي؛ والأعقد يضيف سلاسل جانبية تتبلمر بالضوء. <b>الخصائص:</b> ربط كيميائي بالمينا/العاج بحرارة/انكماش قليل؛ <b>ربط قصّي بالعاج أعلى وأثبت</b> من التقليدي؛ يمكنه <b>الالتصاق مباشرةً بالكمبوزِت</b> (مفيد في الترميم المصفّح/الساندويتش)؛ متوافق حيوياً بتكيّف/سدّ أفضل؛ ارتفاع كبير في قوّة الانضغاط لكنه <b>هشّ، قوّة شدّ منخفضة، مقاومة سحل منخفضة</b> ← غير مناسب للخلفية عالية الإجهاد؛ <b>إطلاق فلورايد ≥ التقليدي</b>؛ وانكماش تصلّب أكبر ← استخدم <b>الوضع الطبقي</b>. بديل مرغوب للأملغم في <b>الأسنان اللبنية</b> وكبطانة/قاعدة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Compomer (polyacid-modified resin composite)</div>
+  <div class="prompt">What is a compomer, and what are its adhesion, fluoride, and clinical features?</div>
+  <div class="answer">
+    A <b>compomer</b> contains the major ingredients of both composite (resin) and GIC (polyalkenoate acid + glass fillers) <b>except water</b>. <b>Fluoride release</b> > composite but < GIC (lasts ≥300 days).<br>
+  <b>Adhesion (two mechanisms):</b> self-adhesive via <b>carboxyl (–COOH)</b> groups forming ionic bonds with tooth calcium (no acid etch needed), plus a primer/adhesive system. <b>Light-cured only</b>; <b>lower bond to dentin</b> than RMGI/conventional GI. Radiopacity slightly > enamel (helps detect recurrent caries). <b>Clinical:</b> easy to manipulate, no etching required, non-sticky → faster finishing (good for children); place in ≤2–3 mm increments cured ≥40 s. Used as liner/base, restoration, and fissure sealant.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الكومبومر (كمبوزِت راتنجي معدّل بالحمض):</b> يحوي مكوّنات الكمبوزِت (راتنج) والـGIC (حمض بولي ألكينوات + حشوات زجاجية) <b>عدا الماء</b>. <b>إطلاق الفلورايد</b> > الكمبوزِت و< GIC (يدوم ≥300 يوم). <b>الالتصاق (آليتان):</b> ذاتي عبر مجاميع <b>الكربوكسيل (–COOH)</b> التي تكوّن روابط أيونية مع كالسيوم السن (بلا حفر حمضي)، إضافةً لنظام primer/adhesive. <b>يتصلّب بالضوء فقط</b>؛ و<b>ربطه بالعاج أقلّ</b> من RMGI/التقليدي. وظلّيته أعلى قليلاً من المينا (يساعد كشف التسوّس المتكرّر). <b>سريرياً:</b> سهل المناولة، لا يحتاج حفراً، غير لزج ← إنهاء أسرع (جيّد للأطفال)؛ يُوضع بطبقات ≤2–3مم تُصلّب ≥40ث. يُستخدم بطانةً/قاعدةً وترميماً وسادّ شقوق.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Giomer (S-PRG technology)</div>
+  <div class="prompt">What is a giomer, and what advantages does S-PRG technology provide?</div>
+  <div class="answer">
+    A <b>giomer</b> is a tooth-colored restorative using a resin base + <b>pre-reacted glass ionomer (PRG)</b> technology, developed to overcome compomer weaknesses (technique sensitivity, limited fluoride release, water-sorption decline).<br>
+  <b>S-PRG technology</b> delivers some GI properties — <b>fluoride release and recharge</b> (helps prevent recurrence) — plus composite properties — excellent esthetics, easy polishability, biocompatibility, smooth surface. It also has an <b>antiplaque effect</b>, forming a film with saliva that minimizes plaque adhesion and inhibits bacterial colonization; microleakage scores are comparable to composite in permanent teeth.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الجيومر (تقنية S-PRG):</b> <b>الجيومر</b> مادة بلون السن تستخدم قاعدة راتنجية + تقنية <b>الأيونومر الزجاجي المتفاعل مسبقاً (PRG)</b>، طُوّرت لتجاوز ضعف الكومبومر (حساسية التقنية، إطلاق فلورايد محدود، تدهور بامتصاص الماء). و<b>تقنية S-PRG</b> تقدّم بعض خصائص الـGI — <b>إطلاق فلورايد وإعادة شحن</b> (يمنع التكرار) — مع خصائص الكمبوزِت — جمال ممتاز، تلميع سهل، توافق حيوي، سطح ناعم. وله <b>أثر مضاد للّويحة</b>، مكوّناً غشاءً مع اللعاب يقلّل التصاق اللويحة ويثبّط الاستعمار الجرثومي؛ ودرجات تسرّبه مقارِبة للكمبوزِت في الأسنان الدائمة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec8">Lec 13 · Indirect Esthetic Restorations — Direct vs Indirect ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Why indirect inlays/onlays reduce shrinkage stress</div>
+  <div class="prompt">What problem of direct composite do indirect inlays/onlays solve?</div>
+  <div class="answer">
+    A direct composite is the <b>most conservative</b> posterior restoration, but light-curing causes <b>polymerization shrinkage</b> → stretch forces on the bond/tooth → potential postoperative sensitivity and microleakage if not relieved by elastomeric flow. This is minor in small Cl II but a bigger concern in <b>large lesions</b>. With an <b>indirect inlay/onlay</b>, the restoration is cured outside the mouth, so only the <b>thin layer of luting resin</b> is subject to polymerization shrinkage at placement — greatly reducing the stress problem.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>لماذا تقلّل الـinlays/onlays غير المباشرة إجهاد الانكماش:</b> الكمبوزِت المباشر <b>الأكثر تحفّظاً</b> خلفياً، لكن التصليب الضوئي يسبّب <b>انكماش بلمرة</b> ← قوى شدّ على الربط/السن ← حساسية بعد العلاج وتسرّب محتمل إن لم يخفّفها التدفّق المطّاطي. وهذا بسيط في Cl II الصغيرة لكنه أكبر في <b>الآفات الكبيرة</b>. ومع <b>inlay/onlay غير مباشر</b> يُصلّب الترميم خارج الفم، فلا يتعرّض للانكماش عند الوضع سوى <b>الطبقة الرقيقة من راتنج التثبيت</b> — مقلّلاً مشكلة الإجهاد كثيراً.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Indirect restorations &amp; their advantages</div>
+  <div class="prompt">What are indirect esthetic restorations, and what advantages do they have over direct composite?</div>
+  <div class="answer">
+    <b>Indirect esthetic restorations</b> are fabricated <b>outside the mouth</b> — lab-processed composites or ceramics (porcelain fired on refractory dies, hot-pressed glasses), or via <b>CAD/CAM</b>.<br>
+  <b>Advantages over direct composite:</b> improved physical properties; better wear resistance; reduced polymerization shrinkage; ability to <b>strengthen remaining tooth structure</b>; more precise control of contours and contacts; biocompatible with good tissue response.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الترميمات غير المباشرة ومزاياها:</b> <b>الترميمات الجمالية غير المباشرة</b> تُصنع <b>خارج الفم</b> — كمبوزِت مخبري أو خزف (بورسلين محروق على قوالب حرارية، زجاج مكبوس حراري)، أو عبر <b>CAD/CAM</b>. <b>مزاياها على الكمبوزِت المباشر:</b> خصائص فيزيائية أفضل؛ مقاومة تآكل أفضل؛ انكماش بلمرة أقلّ؛ قدرة على <b>تقوية بنية السن المتبقية</b>؛ تحكّم أدقّ بالكنتور والتماسات؛ توافق حيوي واستجابة نسيجية جيّدة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec9">Lec 13 · Inlay/Onlay Materials &amp; Fabrication ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Material choice: inlay vs onlay</div>
+  <div class="prompt">Which materials are preferred for inlays vs onlays, and why?</div>
+  <div class="answer">
+    For <b>inlays</b>, <b>indirect composite</b> is currently the preferred material. For <b>onlays</b>, the market leans more toward <b>ceramics</b> than indirect composite (but not by much). Numerous clinical trials show ceramic inlays/onlays are viable over time. Compared with ceramic, <b>indirect composite</b> can be fabricated more easily in the lab, shows improved <b>wear compatibility against opposing enamel</b>, and can be <b>repaired more easily intra-orally</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>اختيار المادة: inlay مقابل onlay:</b> للـ<b>inlays</b> يُفضّل حالياً <b>الكمبوزِت غير المباشر</b>. وللـ<b>onlays</b> يميل السوق أكثر للـ<b>سيراميك</b> من الكمبوزِت غير المباشر (لكن ليس بفارق كبير). وتُظهر تجارب سريرية عديدة أن inlays/onlays السيراميك ناجحة مع الزمن. ومقارنةً بالسيراميك، <b>الكمبوزِت غير المباشر</b> يُصنع أسهل في المختبر، ويُظهر <b>توافق تآكل أفضل ضدّ المينا المقابلة</b>، ويمكن <b>إصلاحه أسهل داخل الفم</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Semi-direct techniques (intraoral vs extraoral)</div>
+  <div class="prompt">Describe the semi-direct intraoral and extraoral techniques for indirect composite.</div>
+  <div class="answer">
+    Indirect composite can be made fully in the lab (indirect technique) or by combined <b>direct/indirect</b> techniques:
+  <ul><li><b>Semi-direct intraoral:</b> composite is placed <b>directly into the cavity</b>, condensed, carved and cured, then <b>removed for extraoral final curing</b> and cemented. Requires <b>no impression and no temporization</b>.</li>
+  <li><b>Semi-direct extraoral:</b> an <b>impression is made</b>, and the restoration is fabricated on the resultant model, then cemented.</li></ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التقنيات شبه المباشرة (داخل/خارج الفم):</b> يُصنع الكمبوزِت غير المباشر كلياً في المختبر (تقنية غير مباشرة) أو بتقنيات <b>مباشرة/غير مباشرة</b> مشتركة: <b>شبه مباشرة داخل الفم:</b> يُوضع الكمبوزِت <b>مباشرةً في الحفرة</b> ويُكبس ويُنحت ويُصلّب، ثم <b>يُخرَج للتصليب النهائي خارج الفم</b> ويُسمنت. ولا تحتاج <b>طبعةً ولا مؤقتاً</b>. <b>شبه مباشرة خارج الفم:</b> تُؤخذ <b>طبعة</b> ويُصنع الترميم على النموذج الناتج ثم يُسمنت.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Effectiveness, longevity &amp; repair</div>
+  <div class="prompt">What does evidence say about tooth reinforcement, longevity, and repair of indirect composite?</div>
+  <div class="answer">
+    <b>Tooth reinforcement:</b> with significant <b>enamel bond</b> surfaces, tooth reinforcement reaches <b>70–80%</b> of the original tooth strength.<br>
+  <b>Longevity:</b> a significant number of patients show longevity <b>greater than 10 years</b>.<br>
+  <b>Repair:</b> indirect <b>composite is more predictably repaired</b> intra-orally than ceramic, extending longevity without full replacement (which removes extra tooth structure). To repair: roughen the fractured area (enamel + existing composite) with a diamond bur, often micro-etch the restoration, then etch the cavity, apply bonding, build up with <b>direct composite</b>, finish and polish.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الفعالية والعمر والإصلاح:</b> <b>تقوية السن:</b> مع أسطح <b>ربط مينائي</b> كبيرة تبلغ التقوية <b>70–80%</b> من قوّة السن الأصلية. <b>العمر:</b> عدد كبير من المرضى يُظهرون عمراً <b>أكثر من 10 سنوات</b>. <b>الإصلاح:</b> <b>الكمبوزِت</b> غير المباشر يُصلَح داخل الفم بموثوقية أكبر من السيراميك، فيُطيل العمر دون استبدال كامل (الذي يزيل بنية سنّ إضافية). وللإصلاح: خشّن المنطقة المكسورة (المينا + الكمبوزِت الموجود) ببُرّ ماسي، وغالباً حفر مجهري للترميم، ثم احفر الحفرة، وضع الربط، وابنِ بـ<b>كمبوزِت مباشر</b>، وأنهِ ولمّع.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec10">Lec 13 · Ceramic vs Composite &amp; CAD/CAM</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">CAD/CAM technology</div>
+  <div class="prompt">What is CAD/CAM technology used for in indirect restorations?</div>
+  <div class="answer">
+    <b>CAD/CAM</b> (computer-aided design / computer-assisted manufacturing) is currently available and used to <b>fabricate ceramic restorations</b>. It captures the preparation digitally, designs the restoration on-screen, and mills it from a ceramic block — allowing precise contours/contacts and, in chairside systems, single-visit delivery. An ideal esthetic indirect material must simulate the natural tooth in <b>color, translucence, and texture</b>, with adequate strength/wear, good marginal adaptation/sealing, insolubility, biocompatibility, and lasting color stability.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تقنية CAD/CAM:</b> <b>CAD/CAM</b> (تصميم/تصنيع بمساعدة الحاسوب) متوفّرة حالياً وتُستخدم لـ<b>تصنيع الترميمات الخزفية</b>. تلتقط التحضير رقمياً، وتصمّم الترميم على الشاشة، وتُفرِزه من كتلة خزفية — متيحةً كنتوراً/تماسات دقيقة، وفي الأنظمة الجانبية للكرسي تسليماً بجلسة واحدة. والمادة الجمالية غير المباشرة المثالية يجب أن تحاكي السن الطبيعي في <b>اللون والشفافية والملمس</b>، مع قوّة/تآكل كافٍ، وتكيّف/سدّ حافّي جيّد، وعدم ذوبان، وتوافق حيوي، وثبات لون دائم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Bonding: the key to inlay/onlay success</div>
+  <div class="prompt">Why is bonding central to the success of composite and ceramic inlays/onlays?</div>
+  <div class="answer">
+    Bonding lets the inlay/onlay <b>fit the tooth in its finest details</b> and provides good <b>marginal adaptation</b>. It also <b>strengthens the remaining tooth structure</b> by uniting restoration and tooth into one load-bearing unit — a major advantage over non-bonded cast restorations. Because the bulk of the restoration is polymerized (and, for indirect, post-cured) <b>outside the mouth</b>, shrinkage stress at placement is limited to the thin luting layer, and a good final polish is achievable. Adequate enamel margins are preferred because <b>enamel bonding is the most reliable</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الربط: مفتاح نجاح inlay/onlay:</b> يتيح الربط للـinlay/onlay <b>ملاءمة السن بأدقّ تفاصيله</b> ويوفّر <b>تكيّفاً حافّياً</b> جيّداً. ويُقوّي أيضاً <b>بنية السن المتبقية</b> بتوحيد الترميم والسن في وحدة حاملة للحمل — ميزة كبيرة على الترميمات المصبوبة غير المرتبطة. ولأن معظم الترميم يُبلمر (وللأنواع غير المباشرة يُصلّب لاحقاً) <b>خارج الفم</b>، ينحصر إجهاد الانكماش عند الوضع في طبقة التثبيت الرقيقة، ويمكن تحقيق تلميع نهائي جيّد. وتُفضّل حواف المينا الكافية لأن <b>الربط بالمينا هو الأوثق</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec11">Lec 18 · Inlay vs Onlay — Definitions &amp; Indications ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Inlay vs onlay</div>
+  <div class="prompt">Differentiate an inlay from an onlay.</div>
+  <div class="answer">
+    Both are indirect restorations (cast metal, ceramic, or composite) that conserve tooth structure relative to a crown (no need to replace the whole outer enamel).<br>
+  <b>Inlay:</b> an indirect restoration that <b>neither supports nor replaces a cusp</b>; it is essentially a <b>centric stop</b> and gives no cusp protection during lateral/protrusive excursions.<br>
+  <b>Onlay:</b> an indirect restoration that <b>covers one or more cusps</b>, extending through and beyond the cusp tip to the facial/lingual and proximal slopes — so occlusion in all functional positions is supported by the <b>restorative material</b> rather than the covered cusps.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>Inlay مقابل Onlay:</b> كلاهما ترميم غير مباشر (معدن مصبوب، خزف، أو كمبوزِت) يحفظ بنية السن مقارنةً بالتاج (لا حاجة لاستبدال كامل المينا الخارجية). <b>Inlay:</b> ترميم غير مباشر <b>لا يدعم ولا يستبدل حدبة</b>؛ هو أساساً <b>centric stop</b> ولا يحمي الحدبة أثناء الحركات الجانبية/الأمامية. <b>Onlay:</b> ترميم غير مباشر <b>يغطّي حدبةً أو أكثر</b>، ممتداً عبر رأس الحدبة وبعده لمنحدراتها الدهليزية/اللسانية والدانية — فيدعم الإطباق في كل المواضع الوظيفية <b>مادة الترميم</b> لا الحدبات المُغطّاة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Indications for indirect tooth-colored restorations</div>
+  <div class="prompt">When are indirect tooth-colored inlays/onlays indicated?</div>
+  <div class="answer">
+    <ol>
+  <li><b>Esthetics:</b> Cl I/II in esthetically important areas.</li>
+  <li><b>Large defects/restorations:</b> wide faciolingual Cl I/II needing cusp coverage — adhesive indirect restorations <b>strengthen the remaining tooth</b>, allow easier contour development and better durability/wear resistance (but need sufficient bulk or they fracture, esp. in molars).</li>
+  <li><b>Uncooperative patient:</b> minimize chairside time (impression + lab steps).</li>
+  <li><b>Occlusal problems</b> (attrition with lost vertical dimension → TMJ issues).</li>
+  <li><b>Esthetic defects</b> (fluorosis, tetracycline stains hard to remove otherwise).</li>
+  <li><b>Lack of accessibility.</b></li>
+  </ol>
+  Also required: good oral hygiene; no marked undercuts; sufficient tooth for bonding; occlusal load ≤ flexural strength; no excessive wear; margins ideally in enamel.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>استطبابات الترميمات غير المباشرة بلون السن:</b> (١) <b>الجمال:</b> Cl I/II في مناطق جمالية مهمّة. (٢) <b>عيوب/ترميمات كبيرة:</b> Cl I/II واسعة دهليزياً-لسانياً تحتاج تغطية حدبات — الترميمات اللاصقة غير المباشرة <b>تقوّي السن المتبقّي</b> وتسهّل الكنتور وتعطي متانة/مقاومة تآكل أفضل (لكنها تحتاج سُمكاً كافياً وإلا انكسرت، خاصةً الأرحاء). (٣) <b>مريض غير متعاون:</b> تقليل وقت الكرسي (طبعة + خطوات مخبرية). (٤) <b>مشاكل إطباقية</b> (attrition مع فقد البُعد العمودي ← مشاكل المفصل الفكي). (٥) <b>عيوب جمالية</b> (فلوروسيس، بقع تتراسيكلين يصعب إزالتها). (٦) <b>نقص الوصول.</b> ويلزم أيضاً: نظافة فموية جيّدة؛ لا تقويضات واضحة؛ سنّ كافٍ للربط؛ حمل إطباقي ≤ قوّة الانثناء؛ لا تآكل مفرط؛ والحواف مثالياً في المينا.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Contraindications</div>
+  <div class="prompt">What are the contraindications for indirect tooth-colored restorations?</div>
+  <div class="answer">
+    <ol>
+  <li><b>Heavy occlusal forces:</b> ceramics fracture with insufficient bulk or excessive stress (bruxing/clenching).</li>
+  <li><b>Inability to maintain a dry field:</b> adhesive techniques require near-perfect moisture control.</li>
+  <li><b>Deep subgingival preparations:</b> hard to record with an impression and to finish — enamel margins are strongly preferred (esp. gingival margins of proximal boxes). (Not absolute.)</li>
+  <li><b>Poor oral hygiene.</b></li>
+  <li><b>Insufficient tooth structure for bonding.</b></li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الموانع:</b> (١) <b>قوى إطباقية شديدة:</b> السيراميك ينكسر مع سُمك غير كافٍ أو إجهاد مفرط (صرير/إطباق). (٢) <b>تعذّر الحفاظ على مجال جافّ:</b> التقنيات اللاصقة تتطلّب تحكّماً شبه مثالي بالرطوبة. (٣) <b>تحضيرات عميقة تحت اللثة:</b> صعبة التسجيل بالطبعة والإنهاء — وتُفضّل حواف المينا بقوّة (خاصةً الحواف اللثوية للصناديق الدانية). (ليست مطلقة.) (٤) <b>نظافة فموية سيّئة.</b> (٥) <b>بنية سنّ غير كافية للربط.</b></div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec12">Lec 18 · Composite Inlays/Onlays (IRC)</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Why indirect resin composites (IRC)?</div>
+  <div class="prompt">What problems of direct composite do indirect resin composites (IRC) address?</div>
+  <div class="answer">
+    In larger posterior restorations, direct composite still suffers <b>polymerization shrinkage</b> → improper sealing → microleakage, postoperative sensitivity, recurrent caries; proper interproximal contact and complete deep cure are also challenges. <b>Indirect resin composites (IRC)</b> shift polymerization shrinkage <b>onto the bench (not the mouth)</b> and improve properties. Their key feature is a <b>post-polymerization phase</b> (final curing after initial light-cure) — light, thermal, or both (± nitrogen pressure) — that raises the degree of conversion toward <b>~100%</b>, reducing internal shrinkage stress and improving mechanical/optical properties and fit.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>لماذا الكمبوزِت غير المباشر (IRC)؟:</b> في الترميمات الخلفية الأكبر يبقى الكمبوزِت المباشر يعاني <b>انكماش البلمرة</b> ← سدّ ناقص ← تسرّب وحساسية وتسوّس متكرّر؛ والتماس الداني السليم والتصلّب العميق الكامل تحدّيان أيضاً. و<b>الكمبوزِت الراتنجي غير المباشر (IRC)</b> ينقل انكماش البلمرة <b>للمنضدة (لا الفم)</b> ويحسّن الخصائص. وميزته المفتاحية <b>طور ما بعد البلمرة</b> (تصليب نهائي بعد الضوئي الأولي) — ضوئي أو حراري أو كلاهما (± ضغط نيتروجين) — يرفع درجة التحوّل نحو <b>~100%</b>، مقلّلاً الإجهاد الداخلي ومحسّناً الخصائص الميكانيكية/البصرية والملاءمة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Ceramic vs composite inlay — wear consideration</div>
+  <div class="prompt">How do ceramic and composite inlays compare regarding wear, cost, and bruxism?</div>
+  <div class="answer">
+    The <b>hardness of a ceramic inlay largely exceeds</b> that of a composite inlay, which can cause <b>long-term abrasion of the opposing teeth</b> — so ceramic inlays are <b>not indicated in the presence of parafunction</b>. Ceramic also has higher cost and greater manufacturing difficulty. Therefore, the <b>indirect composite inlay remains an excellent, less-expensive alternative</b>, especially in cases of <b>bruxism</b>, where it is kinder to the opposing dentition.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>السيراميك مقابل الكمبوزِت — اعتبار التآكل:</b> <b>صلابة السيراميك تفوق بكثير</b> صلابة الكمبوزِت، مما قد يسبّب <b>سحلاً طويل المدى للأسنان المقابلة</b> — لذا <b>لا يُستطبّ السيراميك مع الوظيفة الشاذّة</b>. وللسيراميك أيضاً كلفة أعلى وصعوبة تصنيع أكبر. لذا يبقى <b>الكمبوزِت غير المباشر بديلاً ممتازاً أقلّ كلفةً</b>، خاصةً في <b>الصرير (bruxism)</b>، حيث يكون ألطف على الأسنان المقابلة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec13">Lec 19 · Composite Inlay — Semi-direct Intraoral Technique</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Fabrication techniques overview</div>
+  <div class="prompt">What are the main techniques for fabricating composite resin inlays/onlays?</div>
+  <div class="answer">
+    Two main approaches:
+  <ul><li><b>I. Combined direct/indirect (semi-direct), in-office:</b> (A) <b>semi-direct intraoral</b> — built on the tooth itself; (B) <b>semi-direct extraoral (flexible model)</b> — built on a flexible cast.</li>
+  <li><b>II. Indirect technique on a stone die</b> (in-office or laboratory) — requires an impression.</li></ul>
+  Semi-direct techniques move polymerization shrinkage outside the final cementation and often need no separate temporization.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>نظرة على تقنيات التصنيع:</b> نهجان رئيسان: <b>I. مباشر/غير مباشر مشترك (شبه مباشر)، في العيادة:</b> (A) <b>شبه مباشر داخل الفم</b> — يُبنى على السن نفسه؛ (B) <b>شبه مباشر خارج الفم (النموذج المرن)</b> — يُبنى على قالب مرن. <b>II. تقنية غير مباشرة على قالب حجري</b> (في العيادة أو المختبر) — تحتاج طبعة. والتقنيات شبه المباشرة تنقل انكماش البلمرة خارج التثبيت النهائي وغالباً لا تحتاج مؤقتاً منفصلاً.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Semi-direct intraoral steps</div>
+  <div class="prompt">Outline the steps of the semi-direct intraoral composite inlay technique.</div>
+  <div class="answer">
+    <ol>
+  <li><b>Lubricate</b> the tooth/preparation with a compatible lubricant (allows removal after intraoral curing).</li>
+  <li><b>Matrix & wedge:</b> a retainerless clear matrix + clear reflecting wedges at the gingival margins (wedges create separation to establish proximal contact).</li>
+  <li><b>Place composite:</b> high-viscosity paste into the proximal box and occlusal, condensed with a ball burnisher (lightly coated with primer/adhesive so composite doesn't stick); cure interproximal 60 s, then occlusal 60 s.</li>
+  <li><b>Remove</b> the inlay gently.</li>
+  <li><b>Oven tempering:</b> coat all surfaces with separator (prevents the <b>oxygen-inhibited layer</b>), light-cure 60 s more, then temper in a special oven.</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>خطوات شبه المباشر داخل الفم:</b> (١) <b>تزييت</b> السن/التحضير بمزلّق متوافق (يتيح الإخراج بعد التصليب داخل الفم). (٢) <b>المصفوفة والـwedge:</b> مصفوفة شفّافة بلا حامل + أسافين عاكسة شفّافة عند الحواف اللثوية (تُحدث فصلاً لإنشاء التماس الداني). (٣) <b>وضع الكمبوزِت:</b> عجينة عالية اللزوجة في الصندوق الداني والإطباقي، تُكبس بـball burnisher (مطليّ قليلاً بـprimer/adhesive كي لا يلتصق)؛ صلّب الداني 60ث ثم الإطباقي 60ث. (٤) <b>أخرِج</b> الـinlay بلطف. (٥) <b>التقسية بالفرن:</b> اطلِ كل الأسطح بفاصل (يمنع <b>الطبقة المثبَّطة بالأكسجين</b>)، صلّب 60ث إضافية، ثم قسِّ في فرن خاصّ.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">The oxygen-inhibited layer</div>
+  <div class="prompt">What is the oxygen-inhibited layer, and why is it prevented during inlay curing?</div>
+  <div class="answer">
+    The <b>oxygen-inhibited layer</b> is a sticky, resin-rich, <b>uncured surface layer</b> that always forms when composite or bonding resin is polymerized <b>in air</b> — oxygen interferes with the free-radical polymerization at the exposed surface. For an inlay, this layer is undesirable on the final external surfaces because it stays tacky and under-cured, so a <b>separator lubricant is painted over all inlay surfaces before final curing/tempering</b> to exclude air and allow complete polymerization. (During incremental direct layering, the same layer is actually useful for bonding successive increments.)
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الطبقة المثبَّطة بالأكسجين:</b> هي طبقة سطحية <b>لزجة غنية بالراتنج غير متصلّبة</b> تتكوّن دائماً عند بلمرة الكمبوزِت أو راتنج الربط <b>في الهواء</b> — إذ يعيق الأكسجين البلمرة الجذرية عند السطح المكشوف. وفي الـinlay هذه الطبقة غير مرغوبة على الأسطح الخارجية النهائية لأنها تبقى دبقة وناقصة التصلّب، لذا <b>يُطلى فاصل مزلّق على كل أسطح الـinlay قبل التصليب/التقسية النهائية</b> لعزل الهواء وإتمام البلمرة. (وأثناء الطبقات المباشرة المتتالية تكون الطبقة نفسها مفيدةً لربط الطبقات المتعاقبة.)</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec14">Lec 19 · Flexible Model &amp; Indirect Techniques</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Semi-direct extraoral (flexible model) technique</div>
+  <div class="prompt">Describe the flexible model technique and its advantages/disadvantages.</div>
+  <div class="answer">
+    An extraoral alternative that uses a <b>flexible cast</b> instead of the natural tooth as the die — one appointment, no provisional. A PVS or alginate <b>single-quadrant impression</b> captures the margins; a firm light-bodied PVS is injected into the preparation impression, backed with putty, to form a flexible cast; the resin inlay is then built as in the intraoral technique.<br>
+  <b>Advantages:</b> lower cost, more convenient, less patient trauma than full indirect; can be made by dentist/in-office tech; no provisional (less contamination); less polymerization shrinkage; fast (seat ~8 min after impression).<br>
+  <b>Disadvantages:</b> impression-material cost/setting time and possible die deformation; not for <b>thin weak cusps</b> (flexible die reduces accuracy); no opposing reference (single-quadrant).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تقنية النموذج المرن (شبه مباشر خارج الفم):</b> بديل خارج الفم يستخدم <b>قالباً مرناً</b> بدل السن الطبيعي كقالب — جلسة واحدة، بلا مؤقت. تلتقط طبعة <b>ربع واحد</b> (PVS أو ألجينات) الحواف؛ ويُحقن PVS خفيف القوام في طبعة التحضير ويُدعَم بمعجون لتكوين قالب مرن؛ ثم يُبنى الـinlay كما في التقنية داخل الفم. <b>المزايا:</b> كلفة أقلّ، أيسر، رضّ أقلّ للمريض من غير المباشر الكامل؛ يصنعه الطبيب/فنّي العيادة؛ بلا مؤقت (تلوّث أقلّ)؛ انكماش بلمرة أقلّ؛ سريع (الوضع ~8 دقائق بعد الطبعة). <b>العيوب:</b> كلفة/زمن تصلّب مواد الطبعة واحتمال تشوّه القالب؛ لا يصلح لـ<b>حدبات رقيقة ضعيفة</b> (القالب المرن يقلّل الدقّة)؛ لا مرجع مقابل (طبعة ربع واحد).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Indirect technique on a stone die</div>
+  <div class="prompt">Outline the indirect (stone die) composite inlay technique.</div>
+  <div class="answer">
+    Needs an <b>impression</b>; can be one-visit (in-office) or two-visit (lab).
+  <ol><li><b>Impression:</b> polyether or PVS; pour in die stone immediately (fast-setting stone, ~5 min, for in-office).</li>
+  <li><b>Provisionalization</b> (for multi-visit).</li>
+  <li><b>Cast prep:</b> mount and section the die, keeping gingival contacts intact.</li>
+  <li><b>Fabrication:</b> outline margins with red pencil, apply separator; build the correct shade (two layers for dentin/enamel shading), light-cure 40 s; remove from die.</li>
+  <li><b>Heat treatment:</b> oven <b>18 min at 100°C</b>.</li>
+  <li><b>Finish/polish:</b> carve with fine diamonds/stones, polish with paste on a buff wheel.</li>
+  <li><b>Characterization:</b> ultrasonic clean, apply resin colorants to pits/fissures, light-cure 40 s.</li></ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التقنية غير المباشرة على قالب حجري:</b> تحتاج <b>طبعة</b>؛ بجلسة واحدة (عيادة) أو جلستين (مختبر). (١) <b>الطبعة:</b> بولي إيثر أو PVS؛ صبّها بحجر القالب فوراً (حجر سريع ~5د للعيادة). (٢) <b>المؤقت</b> (للجلسات المتعدّدة). (٣) <b>تحضير القالب:</b> ركّب وقسّم القالب مع إبقاء التماسات اللثوية سليمة. (٤) <b>التصنيع:</b> حدّد الحواف بقلم أحمر، طبّق فاصلاً؛ ابنِ اللون الصحيح (طبقتان لتظليل العاج/المينا)، صلّب 40ث؛ أخرِج من القالب. (٥) <b>المعالجة الحرارية:</b> فرن <b>18د عند 100°م</b>. (٦) <b>الإنهاء/التلميع:</b> انحت بماسات/أحجار ناعمة، لمّع بمعجون على عجلة. (٧) <b>التمييز:</b> نظّف بالموجات فوق الصوتية، طبّق ملوّنات راتنجية على الحُفَر/الشقوق، صلّب 40ث.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Provisional restoration for inlays/onlays</div>
+  <div class="prompt">Why and how is a provisional restoration made for indirect inlays/onlays?</div>
+  <div class="answer">
+    A <b>provisional</b> is necessary for indirect systems needing more than one appointment. It <b>protects the pulp-dentin complex</b> in vital teeth, <b>maintains the position</b> of the prepared tooth in the arch, and <b>protects adjacent soft tissues</b>. It can be made conventionally from <b>acrylic resins or bis-acryl composite</b>. Critically, <b>avoid bonding the temporary to the preparation</b> — apply a lubricant to the preparation if needed, especially when a resin-based material is used to block out undercuts and level the walls, so the provisional lifts off cleanly at the cementation visit.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الترميم المؤقت للـinlays/onlays:</b> <b>المؤقت</b> ضروري للأنظمة غير المباشرة التي تحتاج أكثر من جلسة. وهو <b>يحمي معقد اللب-العاج</b> في الأسنان الحيّة، و<b>يحافظ على موضع</b> السن المحضّر في القوس، و<b>يحمي الأنسجة الرخوة المجاورة</b>. ويُصنع تقليدياً من <b>راتنجات أكريليك أو كمبوزِت bis-acryl</b>. والأهمّ: <b>تجنّب التصاق المؤقت بالتحضير</b> — طبّق مزلّقاً على التحضير عند الحاجة، خاصةً حين تُستخدم مادة راتنجية لسدّ التقويضات وتسوية الجدران، كي يُرفع المؤقت بنظافة في جلسة التثبيت.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec15">Lec 18 · IRC Generations &amp; Ceramic Materials</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">First vs second generation IRCs</div>
+  <div class="prompt">How do first- and second-generation indirect resin composites (IRCs) differ?</div>
+  <div class="answer">
+    On light initiation, camphorquinone forms free radicals → a highly cross-linked polymer, but <b>25–50% of methacrylate groups remain unpolymerized</b>; inlay composites get an <b>extraoral secondary cure</b> to raise conversion and cut shrinkage effects (only the <b>luting cement's</b> shrinkage is unavoidable).<br>
+  <b>First generation:</b> improved in lab studies but <b>failed clinically</b> — low flexural strength, low modulus, low wear resistance (low filler / high matrix). Examples: Visio-Gem, Dentacolor, SR Isosit, Concept.<br>
+  <b>Second generation:</b> improved in structure/composition, polymerization, and <b>fiber reinforcement</b>; <b>microhybrid</b> filler (~0.041 µm) instead of microfilled, with filler ~twice the matrix → better mechanical/wear properties and less shrinkage. Examples: Artglass, belleGlass HP, Solidex.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الجيل الأول مقابل الثاني من IRC:</b> عند البدء الضوئي يكوّن الكامفوركينون جذوراً حرّة ← بوليمر عالي التشابك، لكن <b>25–50% من مجاميع الميثاكريلات تبقى غير مبلمرة</b>؛ وكمبوزِت الـinlay ينال <b>تصليباً ثانوياً خارج الفم</b> لرفع التحوّل وتقليل أثر الانكماش (يبقى انكماش <b>سمنت التثبيت</b> وحده لا مفرّ منه). <b>الجيل الأول:</b> تحسّن مخبرياً لكنه <b>فشل سريرياً</b> — قوّة انثناء ومعامل ومقاومة تآكل منخفضة (حشوة قليلة/مطرس عالٍ). أمثلة: Visio-Gem، Dentacolor، SR Isosit، Concept. <b>الجيل الثاني:</b> تحسّن في البنية/التركيب والبلمرة و<b>تقوية الألياف</b>؛ حشوة <b>microhybrid</b> (~0.041µm) بدل microfilled، بحشوة ~ضعف المطرس ← خصائص ميكانيكية/تآكل أفضل وانكماش أقلّ. أمثلة: Artglass، belleGlass HP، Solidex.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Feldspathic porcelain &amp; glass-ceramics</div>
+  <div class="prompt">Describe feldspathic porcelain and hot-pressed glass-ceramics for inlays/onlays.</div>
+  <div class="answer">
+    Ceramics' physical properties come <b>closer to enamel</b> than composites — excellent wear resistance and a thermal expansion close to tooth.<br>
+  <b>Feldspathic porcelain:</b> partially crystalline minerals (<b>feldspar, silica, alumina</b>) dispersed in a <b>glass matrix</b>; finely ground powder mixed with liquid, shaped, then <b>fired/fused</b> into a translucent tooth-like material — some inlays/onlays are made by firing porcelain on <b>refractory dies</b>.<br>
+  <b>Hot-pressed glass-ceramics (1968):</b> glasses modified with <b>nucleating agents</b> and heat-treated into organized crystalline "glass-ceramics" — stronger, higher melting point. <b>Dicor</b> used a <b>lost-wax, centrifugal casting</b> process (drawback: translucency needing external shading); newer <b>leucite-reinforced</b> systems use lost-wax but are <b>heat-pressed pneumatically</b> rather than centrifuged.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>البورسلين الفلدسباري والزجاج-سيراميك:</b> خصائص السيراميك الفيزيائية <b>أقرب للمينا</b> من الكمبوزِت — مقاومة تآكل ممتازة وتمدّد حراري قريب من السن. <b>البورسلين الفلدسباري:</b> معادن بلّورية جزئياً (<b>فلدسبار، سيليكا، ألومينا</b>) موزّعة في <b>مطرس زجاجي</b>؛ مسحوق ناعم يُمزج بسائل، يُشكّل، ثم <b>يُحرق/يُصهر</b> لمادة شفّافة شبيهة بالسن — وبعض الـinlays/onlays تُصنع بحرق البورسلين على <b>قوالب حرارية (refractory dies)</b>. <b>الزجاج-سيراميك المكبوس حرارياً (1968):</b> زجاج مُعدَّل بـ<b>عوامل نواة</b> ومعالَج حرارياً لسيراميك بلّوري منظّم — أقوى وأعلى انصهاراً. و<b>Dicor</b> استخدم عملية <b>الشمع المفقود والصبّ بالطرد المركزي</b> (عيبه: الشفافية تحتاج تظليلاً خارجياً)؛ والأنظمة الأحدث <b>المقوّاة باللوسايت</b> تستخدم الشمع المفقود لكنها <b>مكبوسة حرارياً هوائياً</b> لا بالطرد المركزي.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec16">Lec 20/21 · Ceramic Inlay/Onlay Preparation Principles ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Three requirements for ceramic preparation</div>
+  <div class="prompt">What three primary requirements govern tooth preparation for ceramic inlays/onlays?</div>
+  <div class="answer">
+    Because ceramic is inherently fragile and adhesively bonded (little seating pressure), a <b>divergent, relatively non-retentive</b> preparation is advocated (unlike retentive gold preps). Three requirements:
+  <ol><li><b>Avoid internal stress concentrations</b> — eliminate undercuts, keep walls/floor smooth and even, and <b>round all internal line/point angles</b>.</li>
+  <li><b>Adequate ceramic thickness</b> — strength rises with thickness only up to a point; <b>&gt;2 mm risks pulp damage without added fracture strength</b>, so a <b>uniform 2 mm occlusal thickness is ideal</b>.</li>
+  <li><b>A passive insertion axis</b> — so the restoration seats without stress.</li></ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>ثلاثة متطلبات لتحضير السيراميك:</b> لأن السيراميك هشّ بطبيعته ويُثبَّت لاصقياً (ضغط إجلاس قليل)، يُنصح بتحضير <b>متباعد قليل الإرساء</b> (خلاف التحضيرات الذهبية الإرسائية). ثلاثة متطلبات: (١) <b>تجنّب تركّز الإجهاد الداخلي</b> — أزل التقويضات، وأبقِ الجدران/الأرضية ملساء ومستوية، و<b>دوّر كل الزوايا الداخلية الخطّية/النقطية</b>. (٢) <b>سُمك سيراميك كافٍ</b> — القوّة تزيد بالسُمك حتى حدّ؛ و<b>&gt;2مم يخاطر بأذى اللب دون زيادة مقاومة الكسر</b>، لذا <b>سُمك إطباقي موحّد 2مم مثالي</b>. (٣) <b>محور إدخال سلبي (passive)</b> — ليجلس الترميم دون إجهاد.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Occlusal preparation &amp; margins</div>
+  <div class="prompt">Describe the occlusal preparation, wall flare, isthmus, and margin design for ceramic inlays.</div>
+  <div class="answer">
+    Use <b>tapering</b> carbide/diamond burs to create occlusally <b>divergent</b> facial/lingual walls. The occlusal floor follows a <b>shallow V shape</b> (uniform ceramic thickness); no extension beyond the initial defect. Axial reduction giving <b>1.5–2 mm</b> uniform thickness suffices. Walls flared <b>5–15° total (ideal 10–12°)</b> — more than cast metal (2–5°/wall). <b>Round all line angles</b>; isthmus <b>minimum 2 mm</b> to avoid ceramic fracture. Line areas &lt;0.5 mm from pulp with Ca(OH)₂; block out undercuts with liner/base. <b>Unlike gold, bevels are NOT indicated</b> — all margins get a <b>90° butt-joint</b> cavosurface angle (minimizes ceramic chipping). No retentive forms (grooves/pinholes/dovetails) needed since retention is adhesive.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التحضير الإطباقي والحواف:</b> استخدم بُرَ كربايد/ماسية <b>مدبّبة</b> لإنشاء جدران دهليزية/لسانية <b>متباعدة إطباقياً</b>. والأرضية الإطباقية تتبع <b>شكل V ضحلاً</b> (سُمك سيراميك موحّد)؛ بلا امتداد خلف العيب الأولي. وتخفيض محوري يعطي <b>1.5–2مم</b> موحّداً يكفي. والجدران متباعدة <b>5–15° إجمالاً (المثالي 10–12°)</b> — أكثر من المعدن المصبوب (2–5°/جدار). <b>دوّر كل الزوايا الخطّية</b>؛ والـisthmus <b>2مم كحدّ أدنى</b> لتجنّب كسر السيراميك. وبطّن المناطق &lt;0.5مم من اللب بـCa(OH)₂؛ واسدد التقويضات ببطانة/قاعدة. و<b>خلافاً للذهب لا تُستطبّ الشطبات</b> — كل الحواف بزاوية سطح حُفّي <b>90° butt-joint</b> (يقلّل تقصّف السيراميك). ولا حاجة لأشكال إرساء (أخاديد/حُفَر دبابيس/dovetails) لأن الإرساء لاصقي.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec17">Lec 20/21 · Cusp Coverage &amp; Overlay Rules ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Cusp coverage thickness &amp; when to overlay</div>
+  <div class="prompt">What thickness of coverage is needed for cusps, and when should a cusp be overlaid?</div>
+  <div class="answer">
+    For onlays, cover <b>nonworking cusps with ≥1.5 mm</b> and <b>working cusps with ≥2 mm</b> of material; if the onlayed cusp shows in the smile, reduce a further 1–2 mm with a 1 mm chamfer for esthetics.<br>
+  <b>When to overlay:</b> the more unfavorable the cavity, the more one should cover cusps to prevent coronal fracture. Generally, if a <b>vital</b> cusp's thinnest thickness is <b>&lt;2 mm</b> → cover it; for <b>non-vital</b> posteriors the limit is <b>&lt;3 mm</b>. When there is <b>no dentin support</b> under the cusp tip → onlay it. Block out undercuts with <b>bonded resin/RMGI — not by cutting healthy tooth</b> (preserves conservatism). Bruxers/clenchers → overlay more aggressively.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>سُمك تغطية الحدبات ومتى نغطّي:</b> في الـonlays غطِّ <b>الحدبات غير العاملة بـ≥1.5مم</b> و<b>العاملة بـ≥2مم</b> من المادة؛ وإن ظهرت الحدبة المُغطّاة في الابتسامة فخفّض 1–2مم إضافية مع chamfer 1مم للجمال. <b>متى نغطّي:</b> كلّما ساءت الحفرة زادت الحاجة لتغطية الحدبات لمنع الكسر التاجي. وعموماً إن كان أرقّ سُمك لحدبة <b>حيّة &lt;2مم</b> ← غطِّها؛ وللأسنان <b>غير الحيّة</b> الخلفية الحدّ <b>&lt;3مم</b>. وعند <b>غياب سند عاجي</b> تحت رأس الحدبة ← غطِّها (onlay). واسدد التقويضات بـ<b>راتنج لاصق/RMGI — لا بقطع سنّ سليم</b> (حفاظاً على التحفّظ). ومرضى الصرير ← غطِّ بأكثر حزم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Working vs nonworking cusp &amp; enamel rod direction</div>
+  <div class="prompt">How do margin position and enamel rod direction affect the decision to overlay working vs nonworking cusps?</div>
+  <div class="answer">
+    For cemented castings, overlay a <b>working cusp</b> when the cavosurface margin is <b>&gt;50%</b> up the cuspal incline; a <b>nonworking cusp</b> margin can extend up to <b>75%</b> before overlay is considered. For bonded restorations these guidelines are modified (bonding reinforces the tooth): the <b>palatal/working cusp is onlaid even with dentin support if the margin is within 1 mm of the tip</b>; beyond 1 mm the cusp gains dentin support and bond strength rises. <b>Enamel rod direction:</b> at the cusp tip rods are nearly <b>vertical</b> → etching hits their sides; as the margin moves away from the tip the rod <b>ends</b> get etched → <b>higher bond strength</b>. The nonworking/buccal cusp is <b>not onlaid even at the tip</b> if posteriors disclude in lateral movements (no forces on it).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الحدبة العاملة مقابل غير العاملة واتجاه القضبان:</b> للمصبوبات المُسمنتة غطِّ <b>الحدبة العاملة</b> حين تكون حافة السطح الحُفّي <b>&gt;50%</b> صعوداً على منحدر الحدبة؛ وحافة <b>غير العاملة</b> تمتدّ حتى <b>75%</b> قبل التفكير بالتغطية. وللترميمات اللاصقة تُعدَّل هذه القواعد (الربط يقوّي السن): <b>الحدبة الحنكية/العاملة تُغطّى حتى مع سند عاجي إن كانت الحافة ضمن 1مم من الرأس</b>؛ وبعد 1مم تكتسب الحدبة سنداً عاجياً وترتفع قوّة الربط. <b>اتجاه القضبان:</b> عند رأس الحدبة القضبان شبه <b>عمودية</b> ← الحفر يصيب جوانبها؛ وكلّما ابتعدت الحافة عن الرأس تُحفر <b>نهايات</b> القضبان ← <b>قوّة ربط أعلى</b>. والحدبة غير العاملة/الشدقية <b>لا تُغطّى حتى عند الرأس</b> إن كانت الأسنان الخلفية تتباعد في الحركات الجانبية (لا قوى عليها).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec18">Lec 20/21 · Preparation Types &amp; Proximal Box</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Butt-joint, bevel &amp; shoulder preparations</div>
+  <div class="prompt">Compare the butt-joint, bevel, and shoulder preparation types for onlays.</div>
+  <div class="answer">
+    <ul>
+  <li><b>Butt joint:</b> minimal preparation → suited to adhesive techniques; an occlusal reduction following the cusps/sulcus (generally flat but inclined). <b>Indications:</b> cuspal reduction to protect from occlusal load; cuspal fracture in the occlusal (or middle) third; strong occlusal abrasion/erosion (± raising vertical dimension).</li>
+  <li><b>Bevel:</b> like the butt joint but with an inclined <b>45°+ bevel, ~1–1.5 mm</b> (usually buccal, sometimes palatal); a full bevel if all-around. <b>Indications:</b> gradual esthetic restoration-tooth transition; wider external enamel (better adhesion); more peripheral space.</li>
+  <li><b>Shoulder:</b> a rounded shoulder (~1 mm) at the periphery with a central resin build-up/block-out; maximizes enamel for adhesion. <b>Indications:</b> previous cuspal fracture to the cervical/middle third; where greater structural protection with a cervical grasp is needed.</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تحضيرات butt-joint وbevel وshoulder:</b> <b>Butt joint:</b> تحضير أدنى ← مناسب للتقنيات اللاصقة؛ تخفيض إطباقي يتبع الحدبات/الأخدود (مسطّح عموماً لكن مائل). <b>الاستطبابات:</b> تخفيض حدبة للحماية من الحمل؛ كسر حدبة في الثلث الإطباقي (أو الأوسط)؛ سحل/تآكل إطباقي شديد (± رفع البُعد العمودي). <b>Bevel:</b> كالـbutt joint لكن بشطبة مائلة <b>45°+، ~1–1.5مم</b> (شدقية عادةً، وأحياناً حنكية)؛ وشطبة كاملة إن كانت محيطية. <b>الاستطبابات:</b> انتقال جمالي متدرّج بين الترميم والسن؛ مينا خارجية أوسع (ربط أفضل)؛ مساحة محيطية أكثر. <b>Shoulder:</b> كتف مدوّر (~1مم) محيطياً مع بناء/سدّ راتنجي مركزي؛ يعظّم المينا للربط. <b>الاستطبابات:</b> كسر حدبة سابق للثلث العنقي/الأوسط؛ وحيث يلزم حماية بنيوية أكبر بقبضة عنقية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Proximal box for ceramic inlay (MO/DO)</div>
+  <div class="prompt">How is the proximal box prepared for a ceramic inlay?</div>
+  <div class="answer">
+    Variations may or may not involve the proximal walls (turning it into an <b>MO or DO</b>). Preserve <b>marginal ridges</b> when they need not be involved. To prepare the box: <b>protect the adjacent tooth with a metal strip</b> and remove the contact point; deepen the reduction by <b>2/3 of the coronal height</b> gingivally; keep the <b>isthmus ≥2 mm</b> for adequate restoration resistance. Extend the gingival margins <b>as minimally as possible</b> (enamel margins are preferred for bonding), and prepare the margins as a <b>butt joint</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الصندوق الداني للـinlay الخزفي (MO/DO):</b> قد تشمل التنويعات الجدران الدانية أو لا (فتصير <b>MO أو DO</b>). احفظ <b>الحواف الحُفّية</b> حين لا تلزم مشاركتها. ولتحضير الصندوق: <b>احمِ السن المجاور بشريط معدني</b> وأزل نقطة التماس؛ عمّق التخفيض بـ<b>ثلثي الارتفاع التاجي</b> لثوياً؛ وأبقِ <b>الـisthmus ≥2مم</b> لمقاومة كافية. ومدّد الحواف اللثوية <b>بأقلّ قدر ممكن</b> (تُفضّل حواف المينا للربط)، وحضّر الحواف كـ<b>butt joint</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec19">Laser Safety in Operative Dentistry</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Laser safety precautions</div>
+  <div class="prompt">What safety precautions are essential during dental laser procedures?</div>
+  <div class="answer">
+    Protect <b>non-target tissue, especially the eyes</b>, from stray beams. Reflective surfaces (instruments, mirrors, polished restorations) can redirect laser energy → prefer <b>matte instruments</b>. Wear protective eyeglasses: <b>green</b> for Nd:YAG, <b>amber</b> for Argon, <b>clear</b> for CO₂; cover the <b>patient's eyes with moist gauze</b>. Shield non-target oral tissues with wet gauze packs. The <b>laser plume</b> (vaporized tissue) is <b>infectious</b> → use an evacuation/filtration system; operator and assistant wear glasses and surgical masks. Use <b>extreme caution near explosive gases</b> such as anesthetics.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>احتياطات سلامة الليزر:</b> احمِ <b>النسيج غير المستهدف، خاصةً العينين</b>، من الأشعّة الشاردة. والأسطح العاكسة (الأدوات، المرايا، الترميمات المصقولة) قد تعيد توجيه طاقة الليزر ← فضّل <b>أدوات مطفية (matte)</b>. والبس نظّارات واقية: <b>خضراء</b> لـNd:YAG، <b>كهرمانية</b> لـArgon، <b>شفّافة</b> لـCO₂؛ وغطِّ <b>عيني المريض بشاش رطب</b>. واحمِ الأنسجة الفموية غير المستهدفة بحشوات شاش مبلّل. و<b>عمود الليزر (plume)</b> (نسيج متبخّر) <b>مُعدٍ</b> ← استخدم نظام شفط/ترشيح؛ ويلبس المشغّل والمساعد نظّارات وكمّامات جراحية. وتوخَّ <b>حذراً شديداً قرب الغازات المتفجّرة</b> كالمخدّرات.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec20">Composite Restoration · Matrix &amp; Wedging</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Matrix selection &amp; multiple wedging</div>
+  <div class="prompt">How do clear plastic vs metal matrices compare, and why is multiple wedging useful?</div>
+  <div class="answer">
+    <b>Clear plastic matrices</b> (with a light-reflecting wedge) allow curing light to penetrate from <b>multiple directions</b>. However, <b>tight interproximal contacts are more easily developed with ultrathin metal matrices</b> — easier to place, hold shape better, and can be burnished against the adjacent tooth; spring-like metal rings hold the ends tight and exert a continuous <b>separating force</b>.<br>
+  <b>Multiple wedging</b> (inserting a wedge and reapplying seating pressure several times) opens the contact more effectively than a single placement; the wedge also <b>protects the rubber dam and gingiva</b> from laceration (reducing leakage), and <b>pre-wedging separation</b> promotes conservative preparation and protects adjacent teeth.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>اختيار المصفوفة والتوسيع المتعدّد (wedging):</b> <b>المصفوفات البلاستيكية الشفّافة</b> (مع wedge عاكس للضوء) تتيح نفاذ ضوء التصليب من <b>اتجاهات متعدّدة</b>. لكن <b>التماسات الدانية المُحكمة تُنشأ أسهل بمصفوفات معدنية رقيقة جداً</b> — أسهل وضعاً، وتحفظ شكلها أفضل، وتُصقل ضدّ السن المجاور؛ وحلقات معدنية زنبركية تُبقي الأطراف مشدودة وتمارس <b>قوّة فصل</b> مستمرّة. و<b>التوسيع المتعدّد</b> (إدخال wedge وإعادة ضغط الإجلاس مراراً) يفتح التماس أفعل من الوضع المفرد؛ والـwedge يحمي أيضاً <b>الحاجز المطاطي واللثة</b> من التمزّق (يقلّل التسرّب)، و<b>الفصل بالتوسيع المسبق</b> يعزّز التحضير المتحفّظ ويحمي الأسنان المجاورة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">General concepts for composite preparation</div>
+  <div class="prompt">What general concepts and preparation designs apply to composite restorations?</div>
+  <div class="answer">
+    <b>General concepts:</b> (1) <b>Conservation</b> — limit prep to the defect; no extension for prevention or proximal-contact clearance unless needed for matrix placement (treat separate fissure lesions separately). (2) <b>Variable depth</b> — pulpal/axial walls need not be flat. (3) <b>Enamel bevel</b> — added in some cases to increase etch/bond area and expose rods <b>end-on</b> for a better etch pattern; occlusal cavosurface bevels are usually <b>contraindicated</b>; bevel the gingival margin only if it's in enamel well away from the CEJ.<br>
+  <b>Designs:</b> <b>conventional</b> (amalgam-like but less extension, rough walls; moderate/large Cl I/II & root surface); <b>beveled conventional</b> (Cl III/IV/V/VI); <b>modified</b> (most conservative, micromechanical retention, no set wall form; small/initial lesions).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مفاهيم عامة لتحضير الكمبوزِت:</b> (١) <b>التحفّظ</b> — احصر التحضير بالعيب؛ بلا extension for prevention أو إخلاء تماس داني إلا لِلَزوم وضع المصفوفة (عالِج آفات الشقوق المنفصلة منفصلةً). (٢) <b>عمق متغيّر</b> — الجدران اللبية/المحورية لا يلزم أن تكون مسطّحة. (٣) <b>شطبة المينا</b> — تُضاف أحياناً لزيادة مساحة الحفر/الربط وكشف القضبان <b>end-on</b> لنمط حفر أفضل؛ وشطبات السطح الحُفّي الإطباقي عادةً <b>ممنوعة</b>؛ واشطب الحافة اللثوية فقط إن كانت في المينا بعيداً عن CEJ. <b>التصاميم:</b> <b>تقليدي</b> (شبيه بالأملغم لكن امتداد أقلّ وجدران خشنة؛ Cl I/II المتوسّطة/الكبيرة وسطح الجذر)؛ <b>مشطوف تقليدي</b> (Cl III/IV/V/VI)؛ <b>معدّل</b> (الأكثر تحفّظاً، إرساء ميكانيكي مجهري، بلا شكل جدار محدّد؛ الآفات الصغيرة/الأولية).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Advanced placement: snow-plow &amp; injection molding</div>
+  <div class="prompt">Describe the incremental variations and the snow-plow and injection-molding techniques.</div>
+  <div class="answer">
+    <b>Incremental layering</b> (≤2 mm/layer) is the standard — enough light penetration for full cure, better marginal quality, prevents wall deformation, reduces C-factor/shrinkage stress; variations include <b>horizontal, oblique, centripetal, split-horizontal, three-site, and successive cusp build-up</b>. <b>Bulk</b> = one 4–5 mm mass (usually packable) to reduce cavosurface-margin stress.<br>
+  <b>Snow-plow:</b> an <b>uncured flowable</b> is placed on the pulpal floor/gingival margin of the proximal box, then a denser composite is packed on top — the flowable is pushed into a very thin layer (excess extruded) and both are <b>cured together as one increment</b>.<br>
+  <b>Injection molding:</b> a modified snow-plow where an <b>uncured adhesive (surfactant)</b> is placed first, then flowable, then packable — all <b>three cured simultaneously</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الوضع المتقدّم: snow-plow وinjection molding:</b> <b>الطبقات (≤2مم/طبقة)</b> هي المعيار — نفاذ ضوء كافٍ للتصلّب الكامل، جودة حافّية أفضل، يمنع تشوّه الجدار، يقلّل C-factor/إجهاد الانكماش؛ وتنويعاته: <b>أفقي، مائل، مركزي (centripetal)، أفقي مشطور، ثلاثي المواقع، وبناء الحدبات المتتالي</b>. <b>Bulk</b> = كتلة واحدة 4–5مم (packable عادةً) لتقليل إجهاد الحافة الحُفّية. <b>Snow-plow:</b> يُوضع <b>flowable غير مصلّب</b> على الأرضية اللبية/الحافة اللثوية للصندوق الداني، ثم يُكبس كمبوزِت أكثف فوقه — فيُدفع الـflowable لطبقة رقيقة جداً (يخرج الفائض) ويُصلّبان <b>معاً كطبقة واحدة</b>. <b>Injection molding:</b> snow-plow معدّل يُوضع فيه <b>لاصق غير مصلّب (surfactant)</b> أولاً ثم flowable ثم packable — وتُصلّب <b>الثلاث معاً آنياً</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec21">Deep Caries · Clinical Decision Summary ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Choosing among vital pulp therapy options</div>
+  <div class="prompt">How does the clinician choose among protective liner, IPC, direct pulp capping, and pulpotomy?</div>
+  <div class="answer">
+    The choice follows the <b>depth of the lesion and the state of the pulp</b>. If dentin is exposed but <b>all caries is removed and the pulp is normal</b> → a <b>protective liner</b> suffices. If the lesion reaches ~<b>¾ of dentin</b> and full removal would expose the pulp, but there is <b>no spontaneous pain and normal vitality</b> → <b>indirect pulp capping</b> (leave bacteria-free affected dentin). If the pulp is <b>exposed</b> (recent traumatic/mechanical, ≤24 h, uninflamed, immature or simple mature tooth) → <b>direct pulp capping</b> (~80% success). If <b>inflammation is expected to be greater than normal</b> → <b>partial (Cvek) pulpotomy</b> (~95% in trauma); and if inflammation is more extensive or the coronal pulp is small → <b>full pulpotomy</b>. Throughout, the guiding tissue criterion is <b>hardness</b>, hemostasis and a <b>bacteria-tight seal</b> are essential, and MTA/Biodentine are preferred over Ca(OH)₂ for a stable, tunnel-defect-free bridge.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br>يتبع الاختيار <b>عمق الآفة وحالة اللب</b>. إن انكشف العاج و<b>أُزيل كل التسوّس واللب طبيعي</b> ← <b>بطانة واقية</b> تكفي. وإن بلغت الآفة ~<b>¾ العاج</b> وكانت الإزالة الكاملة ستكشف اللب، لكن <b>لا ألم تلقائي والحيوية طبيعية</b> ← <b>تغطية لبية غير مباشرة</b> (اترك العاج المتأثّر الخالي من الجراثيم). وإن كان اللب <b>مكشوفاً</b> (رضّي/ميكانيكي حديث ≤٢٤س، غير ملتهب، سن غير ناضج أو ناضج بسيط) ← <b>تغطية لبية مباشرة</b> (~٨٠% نجاح). وإن كان <b>الالتهاب متوقّعاً أكبر من المعتاد</b> ← <b>بضع لب جزئي (Cvek)</b> (~٩٥% في الرضّ)؛ وإن كان الالتهاب أوسع أو اللب التاجي صغيراً ← <b>بضع لب كامل</b>. وطوالها المعيار النسيجي الموجّه هو <b>الصلابة</b>، والإرقاء و<b>السدّ المحكم ضدّ الجراثيم</b> ضروريان، ويُفضّل MTA/Biodentine على Ca(OH)₂ لجسر ثابت خالٍ من العيوب النفقية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Fluoride-material selection ladder</div>
+  <div class="prompt">How does one rank fluoride-releasing materials by fluoride release and clinical role?</div>
+  <div class="answer">
+    Fluoride release/uptake ranks from <b>superior to inferior: GIC → RMGIC → compomer → giomer/fluoride-releasing composite → plain resin composite</b>. <b>GIC</b> gives the most fluoride and chemical bonding but is <b>least durable</b> (moisture-sensitive, weak) → best as luting/lining or in primary teeth. <b>RMGIC</b> adds resin for a stronger, more stable dentin bond and can bond to composite (sandwich) but stays brittle → liner/base and primary-tooth restorations. <b>Compomer</b> releases less fluoride, bonds via carboxyl groups (no etch), is easy and fast → good for children as liner/base/sealant/restoration. <b>Giomer</b> (S-PRG) gives fluoride release <b>and recharge</b> plus composite-level esthetics and an antiplaque film, with microleakage comparable to composite. Match the material to the site: high fluoride need (root caries, high-risk, primary teeth) favors GIC/RMGIC; esthetic permanent restorations favor giomer/composite.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br>يتدرّج إطلاق/التقاط الفلورايد من <b>الأعلى للأدنى: GIC ← RMGIC ← compomer ← giomer/كمبوزِت مطلِق للفلورايد ← كمبوزِت عادي</b>. <b>GIC</b> يعطي أكثر فلورايد وربطاً كيميائياً لكنه <b>الأقلّ متانةً</b> (حسّاس للرطوبة، ضعيف) ← أفضل للتثبيت/البطانة أو الأسنان اللبنية. <b>RMGIC</b> يضيف راتنجاً لربط عاجي أقوى وأثبت ويلتصق بالكمبوزِت (ساندويتش) لكنه يبقى هشّاً ← بطانة/قاعدة وترميمات لبنية. <b>Compomer</b> يطلق فلورايداً أقلّ، يرتبط بمجاميع الكربوكسيل (بلا حفر)، سهل وسريع ← جيّد للأطفال بطانةً/قاعدةً/سادّاً/ترميماً. <b>Giomer</b> (S-PRG) يعطي إطلاق فلورايد <b>وإعادة شحن</b> مع جمال بمستوى الكمبوزِت وغشاء مضاد للويحة، وتسرّب مقارب للكمبوزِت. وطابق المادة للموقع: الحاجة العالية للفلورايد (تسوّس الجذر، عالي الخطر، لبنية) تفضّل GIC/RMGIC؛ والترميمات الجمالية الدائمة تفضّل giomer/كمبوزِت.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec22">Indirect Restorations · Bonding &amp; Longevity Recap</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Why indirect restorations strengthen the tooth</div>
+  <div class="prompt">Summarize how bonded indirect inlays/onlays strengthen remaining tooth structure and what determines their long-term success.</div>
+  <div class="answer">
+    A bonded inlay/onlay unites the restoration and the tooth into a <b>single homogeneous, load-bearing structure</b>, so occlusal forces are distributed across the whole complex rather than concentrated on thin residual walls. With significant <b>enamel bond</b> surfaces, tooth reinforcement can reach <b>70–80%</b> of the intact tooth's strength, and a large share of restorations last <b>&gt;10 years</b>. Long-term success depends on: adequate <b>ceramic/composite bulk</b> (uniform ~2 mm; thin areas fracture), <b>enamel margins</b> for reliable bonding (esp. gingival margins of proximal boxes), a <b>90° butt-joint</b> for ceramics (minimizes chipping), <b>rounded internal angles</b> (no stress concentration), a <b>passive insertion axis</b>, near-perfect <b>moisture control</b> during adhesive cementation, and — for composite — a good <b>post-polymerization cure and final polish</b>. Ceramic is more wear-stable but harder on opposing teeth (avoid in bruxism); composite is more repairable intra-orally.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br>يوحّد الـinlay/onlay اللاصق الترميم والسن في <b>بنية واحدة متجانسة حاملة للحمل</b>، فتتوزّع القوى الإطباقية على المعقّد كلّه لا على جدران رقيقة متبقّية. ومع أسطح <b>ربط مينائي</b> كبيرة تبلغ التقوية <b>٧٠–٨٠%</b> من قوّة السن السليم، ويدوم جزء كبير <b>&gt;١٠ سنوات</b>. ويعتمد النجاح بعيد المدى على: <b>سُمك سيراميك/كمبوزِت</b> كافٍ (موحّد ~2مم؛ المناطق الرقيقة تنكسر)، و<b>حواف مينائية</b> لربط موثوق (خاصةً الحواف اللثوية للصناديق الدانية)، و<b>butt-joint 90°</b> للسيراميك (يقلّل التقصّف)، و<b>زوايا داخلية مدوّرة</b> (بلا تركّز إجهاد)، و<b>محور إدخال سلبي</b>، و<b>تحكّم شبه مثالي بالرطوبة</b> أثناء التثبيت اللاصق، وللكمبوزِت <b>تصليب ما بعد البلمرة وتلميع نهائي</b> جيّد. والسيراميك أثبت تآكلاً لكنه أقسى على الأسنان المقابلة (تجنّبه في الصرير)؛ والكمبوزِت أسهل إصلاحاً داخل الفم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec23">Deep Caries · Hemostasis &amp; Sealing Essentials</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Hemostasis and the bacteria-tight seal</div>
+  <div class="prompt">Why are hemostasis and a bacteria-tight seal decisive for vital pulp therapy success?</div>
+  <div class="answer">
+    Two factors repeatedly determine whether vital pulp therapy succeeds. First, <b>hemostasis</b>: bleeding at the exposure must be controlled with a sterile cotton pellet (dry or saline) and, if needed, <b>NaOCl (2.5–5.25%)</b> or <b>chlorhexidine</b> — both biocompatible hemostatic disinfectants. Persistent uncontrollable bleeding signals deeper inflammation and a worse prognosis, and a <b>blood clot must not be allowed to form</b> under the capping material, as it compromises healing. Second, the <b>bacteria-tight seal</b>: because calcium hydroxide does not seal and its dentin bridges may have tunnel defects, a covering base such as <b>RMGI</b> plus a well-sealed coronal restoration is essential to block microleakage during the healing phase; MTA and Biodentine improve on this by forming a stable, non-dissolving, tunnel-defect-free barrier. When both hemostasis and sealing are achieved on an uninflamed pulp, direct pulp capping reaches ~80% and partial pulpotomy ~95% (in trauma) success.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br>عاملان يحدّدان تكراراً نجاح المعالجة اللبية الحيوية. الأوّل <b>الإرقاء</b>: يجب ضبط النزف عند التعرّض بكرة قطن معقّمة (جافّة أو ملحية) وعند الحاجة <b>NaOCl (2.5–5.25%)</b> أو <b>كلورهيكسيدين</b> — وكلاهما مطهّر مُرقئ متوافق حيوياً. والنزف المستمرّ غير المنضبط يدلّ على التهاب أعمق وإنذار أسوأ، ويجب <b>ألا تتكوّن جلطة دموية</b> تحت مادة التغطية لأنّها تُضعف الشفاء. والثاني <b>السدّ المحكم ضدّ الجراثيم</b>: ولأن هيدروكسيد الكالسيوم لا يسدّ وجسوره قد تحوي عيوباً نفقية، تلزم قاعدة تغطية كـ<b>RMGI</b> مع ترميم تاجي محكم لمنع التسرّب أثناء الشفاء؛ وMTA وBiodentine يتفوّقان بحاجز ثابت لا يذوب خالٍ من العيوب النفقية. وعند تحقّق الإرقاء والسدّ على لب غير ملتهب تبلغ التغطية المباشرة ~80% وبضع اللب الجزئي ~95% (في الرضّ).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="foot">
+✅ غطّى هذا الملف الجديدَ من مادة اليوم السادس — المعالجة (Operative) ص 211–279، وهو آخر أيام المادة: علاج الأوزون للتسوّس، المعالجة اللبية الحيوية (البطانة الواقية، التغطية اللبية غير المباشرة والإزالة الانتقائية/المرحلية للتسوّس، التغطية اللبية المباشرة وCa(OH)₂ مقابل MTA، بضع اللب الجزئي Cvek والكامل)، المواد المطلِقة للفلورايد (آليات الفلورايد الأربع، الورنيش، GIC، RMGIC، compomer، giomer)، والترميمات الجمالية غير المباشرة (inlays/onlays، المباشر مقابل غير المباشر، التقنيات شبه المباشرة، التقوية والعمر والإصلاح، السيراميك مقابل الكمبوزِت، CAD/CAM). (قسم تصنيف الكمبوزِت وخصائصه مكرّر من اليوم الرابع فاكتُفي بالجديد). 🎉 بهذا تكتمل مادة المعالجة (الأيام ٣–٦).<br><br>
+عدد الكلمات (إنجليزي + عربي): <b>10140</b> كلمة.
+</div>
+
+<script>
+const total=54;
+function upd(){
+  let done=document.querySelectorAll('.card[data-done="1"]').length;
+  document.getElementById('score').textContent=done+' / '+total;
+  document.getElementById('fill').style.width=(done/total*100)+'%';
+}
+function revealCard(b){
+  const card=b.closest('.card');
+  card.querySelector('.answer').classList.add('show');
+  b.style.display='none';
+  card.querySelector('.got').style.display='inline-block';
+  card.querySelector('.rev').style.display='inline-block';
+}
+function rate(b,good){
+  const card=b.closest('.card');
+  card.setAttribute('data-done',good?'1':'2');
+  upd();
+}
+function revealAll(){
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelector('.answer').classList.add('show');
+    c.querySelector('.reveal').style.display='none';
+    c.querySelector('.got').style.display='inline-block';
+    c.querySelector('.rev').style.display='inline-block';
+  });
+}
+function hideAll(){
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelector('.answer').classList.remove('show');
+    c.querySelector('.reveal').style.display='inline-block';
+    c.querySelector('.got').style.display='none';
+    c.querySelector('.rev').style.display='none';
+  });
+}
+function resetAll(){
+  document.querySelectorAll('.card').forEach(c=>c.setAttribute('data-done','0'));
+  hideAll();upd();
+}
+upd();
+</script>
+</body>
+</html>
