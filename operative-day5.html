@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Operative Dentistry — Day 5 — Complete</title>
+<style>
+:root{color-scheme:light only;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{background:#ffffff !important;color:#000000 !important;}
+@media (prefers-color-scheme:dark){
+  html,body{background:#ffffff !important;color:#000000 !important;}
+  .card,.hint,.topbar,.toc{background:#ffffff !important;color:#000000 !important;}
+}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;padding:0 14px 120px;line-height:1.65;font-size:17px;}
+h1{font-size:22px;margin:18px 0 4px;}
+.subtitle{color:#444;font-size:14px;margin:0 0 14px;}
+.topbar{position:sticky;top:0;background:#fff !important;border-bottom:2px solid #000;padding:10px 0;z-index:50;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.score{font-weight:700;font-size:15px;}
+.bar{flex:1;min-width:120px;height:12px;background:#eee;border:1px solid #000;border-radius:6px;overflow:hidden;}
+.bar>i{display:block;height:100%;width:0;background:#000;transition:width .3s;}
+.controls button{font-size:13px;padding:6px 10px;border:1px solid #000;background:#fff;border-radius:8px;cursor:pointer;}
+.toc{background:#fff;border:2px solid #000;border-radius:12px;padding:12px 14px;margin:14px 0;}
+.toc b{display:block;margin-bottom:6px;}
+.toc a{display:block;color:#000;text-decoration:none;padding:5px 0;border-bottom:1px dashed #ccc;font-size:15px;}
+.toc a:last-child{border-bottom:0;}
+h2.sec{font-size:18px;border-left:6px solid #000;padding:8px 12px;margin:30px 0 14px;background:#f3f3f3;border-radius:0 8px 8px 0;}
+.card{border:2px solid #000;border-radius:14px;padding:14px 16px;margin:14px 0;background:#fff !important;}
+.card[data-done="1"]{border-color:#157f3b;background:#f3fbf5 !important;}
+.card[data-done="2"]{border-color:#b00;background:#fff7f7 !important;}
+.topic{font-weight:700;font-size:15px;color:#000;margin-bottom:6px;letter-spacing:.2px;text-transform:uppercase;}
+.prompt{font-size:17px;font-weight:600;margin-bottom:10px;}
+.answer{display:none;border-top:1px dashed #999;padding-top:10px;margin-top:4px;}
+.answer.show{display:block;animation:fade .25s;}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.answer ol,.answer ul{margin:6px 0;padding-inline-start:22px;}
+.answer li{margin:4px 0;}
+.answer table{border-collapse:collapse;width:100%;margin:8px 0;font-size:15px;}
+.answer th,.answer td{border:1px solid #000;padding:6px 8px;text-align:left;}
+.answer th{background:#eee;}
+.k{background:#ffd400;color:#b00000 !important;font-weight:700;padding:0 4px;border-radius:3px;}
+.hint{direction:rtl;text-align:right;background:#fff;border:1px solid #000;border-radius:10px;padding:10px 12px;margin-top:12px;font-size:16px;line-height:1.8;}
+.hint .hl{background:#ffd400;color:#b00;font-weight:700;padding:0 5px;border-radius:3px;}
+.hint b{color:#b00000;}
+.btns{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;}
+.btns button{font-size:15px;padding:9px 14px;border-radius:10px;border:2px solid #000;background:#fff;cursor:pointer;font-weight:600;}
+.btns .got{border-color:#157f3b;color:#157f3b;}
+.btns .rev{border-color:#b00;color:#b00;}
+.btns .reveal{background:#000;color:#fff;}
+.foot{margin-top:30px;border-top:2px solid #000;padding-top:14px;font-size:14px;color:#333;}
+.note{background:#ffd400;color:#000;border:1px solid #000;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:15px;}
+</style>
+</head>
+<body>
+<h1>Operative Dentistry — Day 5 — Complete Interactive Review</h1>
+<p class="subtitle">pages 141–210 · patient assessment & treatment planning → enamel biology → dentin biology & sensitivity → cervical lesions (erosion/abrasion/abfraction) → pulp irritants & defense · 54 cards · English + شرح عربي وافٍ</p>
+
+<div class="topbar">
+  <span class="score" id="score">0 / 54</span>
+  <span class="bar"><i id="fill"></i></span>
+  <span class="controls">
+    <button onclick="revealAll()">اكشف الكل</button>
+    <button onclick="hideAll()">إخفاء</button>
+    <button onclick="resetAll()">تصفير</button>
+  </span>
+</div>
+
+<div class="note">⭐ = أقسام عالية الأهمية (high-yield). اقرأ السؤال، حاول الإجابة من ذاكرتك، ثم اكشف الجواب وقيّم نفسك.</div>
+
+<div class="toc">
+<b>المحتويات · Contents</b>
+<a href="#sec0">Lec 1 · Caries Detection &amp; Pulp Testing ⭐</a>
+<a href="#sec1">Lec 2 · Evaluation of Existing Restorations ⭐</a>
+<a href="#sec2">Lec 2 · Occlusion, Wear &amp; Cracked Tooth ⭐</a>
+<a href="#sec3">Lec 2 · Periodontium, Radiographs, Casts &amp; Treatment Plan</a>
+<a href="#sec4">Lec 3 · Enamel — Histology &amp; Structure ⭐</a>
+<a href="#sec5">Lec 3 · Enamel — Acid Etching &amp; Rod Orientation ⭐</a>
+<a href="#sec6">Lec 3 · Enamel — Properties ⭐</a>
+<a href="#sec7">Lec 3 · Enamel — Clinical Appearance &amp; Diagnosis ⭐</a>
+<a href="#sec8">Lec 4 · Dentin — Formation &amp; Tubules ⭐</a>
+<a href="#sec9">Lec 4 · Dentin — DEJ &amp; Composition ⭐</a>
+<a href="#sec10">Lec 4 · Dentin — Types &amp; Sclerosis</a>
+<a href="#sec11">Lec 4 · Physiologic &amp; Tertiary Dentin ⭐</a>
+<a href="#sec12">Lec 5 · Dentin — Function &amp; Distinguishing from Enamel</a>
+<a href="#sec13">Lec 5 · Dentin — Permeability &amp; Sensitivity ⭐</a>
+<a href="#sec14">Cervical Lesions — Carious &amp; Non-carious ⭐</a>
+<a href="#sec15">NCCL Types — Erosion, Abrasion, Abfraction ⭐</a>
+<a href="#sec16">Class V Treatment &amp; Sandwich Technique</a>
+<a href="#sec17">Pulp Irritants &amp; Defense of the Dentin-Pulp Complex ⭐</a>
+<a href="#sec18">Lec 2 · Esthetic Evaluation of the Dentition</a>
+<a href="#sec19">Lec 3–4 · Enamel Spindles &amp; Mantle Dentin (Detailed)</a>
+<a href="#sec20">Lec 5 · Managing Dentinal Sensitivity ⭐</a>
+<a href="#sec21">Lec 4–5 · Dentin Defense in Depth</a>
+<a href="#sec22">Lec 2 · Restorative Sequencing Rationale</a>
+<a href="#sec23">Lec 5 · Dentin Support &amp; Conservative Restoration</a>
+<a href="#sec24">Lec 1–2 · Test Interpretation &amp; Occlusal Management</a>
+<a href="#sec25">Lec 3–4 · Enamel–Dentin Interface &amp; Aging</a>
+<a href="#sec26">Lec 5 · Smear Layer in Adhesive Dentistry</a>
+</div>
+
+<h2 class="sec" id="sec0">Lec 1 · Caries Detection &amp; Pulp Testing ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Detecting pit/fissure vs smooth-surface caries</div>
+  <div class="prompt">How are pit-and-fissure and smooth-surface caries lesions detected?</div>
+  <div class="answer">
+    <b>Pit & fissure:</b> may begin near the DEJ, so it must be extensive to show on radiograph. The classic <b>sharp-explorer "stickiness"</b> sign is <span class="k">unreliable</span> (false +/−) and can even cavitate a demineralized fissure (preventing remineralization). <b>Visual inspection of a clean, dry tooth with magnification</b> is reliable — lesions appear as a <b>gray or gray-yellow opacity</b> under the enamel; fiberoptic transillumination helps.<br>
+  <b>Smooth-surface:</b> proximal caries are hardest to detect (inaccessible) → detected by <b>radiograph</b> (posteriors) or radiograph/transillumination (anteriors); buccal/lingual caries are easily seen visually/tactilely.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>كشف تسوّس الحُفَر/الشقوق مقابل الأسطح الملساء:</b> <b>الحُفَر والشقوق:</b> قد يبدأ قرب DEJ فيجب أن يكون واسعاً ليظهر شعاعياً. وعلامة <b>"لزوجة" المسبار الحادّ</b> الكلاسيكية <b>غير موثوقة</b> (إيجابيات/سلبيات كاذبة) وقد تُكهّف شقاً منزوع المعادن (تمنع إعادة التمعدن). و<b>الفحص البصري لسنّ نظيف جافّ بالتكبير</b> موثوق — تبدو الآفة <b>عتامة رمادية أو رمادية-صفراء</b> تحت المينا؛ والإضاءة النافذة تساعد. <b>الأسطح الملساء:</b> التسوّس الداني الأصعب كشفاً (غير متاح) ← يُكشف بـ<b>الأشعة</b> (الخلفية) أو الأشعة/الإضاءة النافذة (الأمامية)؛ والتسوّس الشدقي/اللساني يُرى بسهولة بصرياً/لمسياً.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Pulp vitality tests</div>
+  <div class="prompt">Describe the pulp vitality tests: thermal, electric, and test cavity.</div>
+  <div class="answer">
+    Any tooth with an extensive restoration or questionable vitality should be tested.
+  <ul><li><b>Thermal (cold/hot):</b> cold via a refrigerant-saturated pellet (tetrafluoroethane) or an ice pencil in an anesthetic cartridge; hot via heated gutta-percha.</li>
+  <li><b>Electric pulp tester (EPT):</b> limited — cannot be used in a wet field or on metallic restorations (unless adjacent teeth are insulated); it does <b>not reflect pulp health or prognosis</b>.</li>
+  <li><b>Test cavity (last resort):</b> when thermal/electric fail — cut dentin <b>without anesthesia</b>; pain/sensitivity on cutting confirms vitality.</li></ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>اختبارات حيوية اللب:</b> يُختبر كل سنّ ذي ترميم واسع أو حيوية مشكوكة. <b>الحراري (بارد/ساخن):</b> البارد بكرة مشبعة بمبرّد (tetrafluoroethane) أو قلم ثلج في خرطوشة مخدّر؛ الساخن بـgutta-percha ساخنة. <b>الاختبار الكهربائي (EPT):</b> محدود — لا يُستخدم في وسط رطب أو على ترميمات معدنية (إلا بعزل المجاورة)؛ ولا <b>يعكس صحة اللب أو إنذاره</b>. <b>حفرة الاختبار (الملاذ الأخير):</b> عند فشل الحراري/الكهربائي — اقطع العاج <b>بلا تخدير</b>؛ الألم/الحساسية عند القطع تؤكّد الحيوية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Percussion &amp; palpation</div>
+  <div class="prompt">What do the percussion and palpation tests indicate?</div>
+  <div class="answer">
+    <b>Percussion:</b> gently tap occlusal/incisal surfaces of the suspected + adjacent teeth with a mirror handle. Pain suggests <b>periodontal membrane injury</b> from pulpal or periodontal inflammation. Caution on maxillary teeth — teeth near the maxillary sinus may hurt on percussion with <b>maxillary sinusitis</b>.<br>
+  <b>Palpation:</b> rub the index finger along the facial/lingual mucosa over the apex. Tenderness may indicate an <b>advanced alveolar abscess or periapical pathosis</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الطرق والجس:</b> <b>الطرق (Percussion):</b> انقر بلطف الأسطح الإطباقية/القاطعة للسن المشتبه والمجاور بمقبض مرآة. الألم يوحي بـ<b>إصابة الرباط حول السني</b> من التهاب لبّي أو لثوي. احذر في الأسنان العلوية — القريبة من الجيب الفكي قد تؤلم بالطرق مع <b>التهاب الجيب الفكي</b>. <b>الجس (Palpation):</b> افرك السبابة على المخاطية الدهليزية/اللسانية فوق القمة. الإيلام قد يدل على <b>خراج سنخي متقدّم أو آفة حول قمية</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec1">Lec 2 · Evaluation of Existing Restorations ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Integrity, margins &amp; caries</div>
+  <div class="prompt">How are structural integrity, marginal opening, and caries assessed in an existing restoration?</div>
+  <div class="answer">
+    <b>Structural integrity:</b> a <b>fracture line</b> indicates replacement.<br>
+  <b>Marginal opening:</b> for <b>amalgam</b>, marginal <b>ditching does NOT require replacement</b> (corrosion products reseal the margin) unless recurrent caries; for <b>composite</b>, a marginal gap warrants repair/replacement; for <b>glass ionomer</b>, a gap is less critical (anticariogenic) — replace only if adjacent structure becomes carious or staining is esthetically unacceptable (anteriors).<br>
+  <b>Caries:</b> combine visual + tactile + radiographic; a <b>radiolucency around a radiopaque restoration</b> or soft structure indicates caries → repair/replace.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>السلامة والحواف والتسوّس:</b> <b>السلامة البنيوية:</b> <b>خطّ الكسر</b> يستوجب الاستبدال. <b>الفتحة الحافّية:</b> في <b>الأملغم</b> <b>التحفّر الحافّي لا يستوجب الاستبدال</b> (نواتج التآكل تُعيد إغلاق الحافة) إلا مع تسوّس متكرّر؛ في <b>الكمبوزِت</b> الفجوة الحافّية تستوجب الإصلاح/الاستبدال؛ في <b>الأيونومر الزجاجي</b> الفجوة أقلّ حرجاً (مضاد تسوّس) — استبدل فقط إن تسوّست البنية المجاورة أو كان التلطّخ غير مقبول جمالياً (الأمامية). <b>التسوّس:</b> اجمع البصري + اللمسي + الشعاعي؛ <b>شفافية حول ترميم ظلّي</b> أو بنية طرية تدل على تسوّس ← إصلاح/استبدال.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Restoration &amp; periodontal health / contacts / esthetics</div>
+  <div class="prompt">How do restorations affect periodontal health, contacts, and esthetics?</div>
+  <div class="answer">
+    <b>Periodontal:</b> surface roughness, interproximal <b>overhangs</b>, and impingement on the <b>biologic width</b> (~2–3 mm apico-coronal zone of junctional epithelium + connective-tissue attachment) all cause inflammation; open/rough subgingival margins harbor plaque.<br>
+  <b>Contacts:</b> check all interproximal contacts with floss (should pass smoothly); open/tight contacts → food impaction/pathosis. Evaluate occlusal contacts — primary occlusal trauma or infra-occlusion (allows super-eruption) may need alteration/replacement.<br>
+  <b>Esthetics:</b> metal display, discoloration/poor shade, poor contour, poor tissue response.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الترميم والصحة اللثوية/التماسات/الجمال:</b> <b>اللثوي:</b> خشونة السطح، و<b>overhangs</b> الدانية، والتعدّي على <b>العرض البيولوجي (biologic width)</b> (~2–3مم من الظهارة الملتحمة + الارتباط الضامّ) كلها تسبّب التهاباً؛ والحواف تحت اللثوية المفتوحة/الخشنة تحتبس اللويحة. <b>التماسات:</b> افحص كل التماسات الدانية بالخيط (يمرّ بسلاسة)؛ المفتوحة/الضيقة ← انحشار طعام/آفة. وقيّم التماسات الإطباقية — الرضّ الإطباقي الأولي أو نقص الإطباق (يسمح بالبزوغ الزائد) قد يستلزم تعديلاً/استبدالاً. <b>الجمال:</b> ظهور معدن، تلوّن/لون سيّئ، كنتور رديء، استجابة نسيجية سيّئة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec2">Lec 2 · Occlusion, Wear &amp; Cracked Tooth ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Occlusion &amp; attrition</div>
+  <div class="prompt">What factors are evaluated in occlusal examination, and what is attrition?</div>
+  <div class="answer">
+    <b>Occlusal factors:</b> interferences between centric relation and maximum intercuspation; number/position of occlusal contacts and their stress; amount/pattern of <b>attrition</b>; interarch space for the restoration. These influence material selection and preparation/restoration design.<br>
+  <b>Attrition:</b> excessive occlusal wear from <b>parafunction (bruxism)</b> — facets on opposing teeth match well. Prevention: an <b>occlusal resin appliance</b> (night guard/bite plane) + patient education.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الإطباق والتآكل (Attrition):</b> <b>عوامل الإطباق:</b> التداخلات بين العلاقة المركزية وأقصى تداخل حدبي؛ عدد/موقع التماسات الإطباقية وإجهادها؛ مقدار/نمط <b>الـattrition</b>؛ المسافة بين القوسين للترميم. وتؤثّر هذه في اختيار المادة وتصميم التحضير/الترميم. <b>Attrition:</b> تآكل إطباقي مفرط من <b>الوظيفة الشاذّة (صرير bruxism)</b> — وتتطابق الأوجه على الأسنان المتقابلة. الوقاية: <b>جهاز راتنجي إطباقي</b> (واقٍ ليلي/مستوى عضّ) + تثقيف المريض.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Cracked-tooth syndrome</div>
+  <div class="prompt">Describe cracked-tooth syndrome: symptoms, diagnosis, treatment.</div>
+  <div class="answer">
+    A common result of <b>incomplete tooth fracture</b>; patients feel <b>cold sensitivity and sharp, short pains on chewing</b>. The <b>nonfunctional cusps</b> fracture most; often with parafunction/malocclusion; age-related, peak <b>33–50 years</b>. Hard to diagnose (radiograph/percussion/pulp tests usually non-diagnostic). Two most useful tests:
+  <ul><li><b>Transillumination:</b> light is interrupted at the crack → the far portion appears dark.</li>
+  <li><b>Biting test (most definitive):</b> bite a wooden stick/rubber wheel to reproduce the symptom and localize the crack.</li></ul>
+  <b>Treatment:</b> splint the sections with a <b>cuspal-coverage restoration</b> (amalgam/composite, crown, or onlay).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>متلازمة السن المشقوق:</b> نتيجة شائعة لـ<b>كسر سنّي غير كامل</b>؛ يشعر المريض بـ<b>حساسية للبرد وألم حادّ قصير عند المضغ</b>. تنكسر <b>الحدبات غير الوظيفية</b> أكثر؛ وغالباً مع وظيفة شاذّة/سوء إطباق؛ ومرتبط بالعمر، الذروة <b>33–50 سنة</b>. صعب التشخيص (الأشعة/الطرق/اختبارات اللب غير حاسمة عادةً). أنفع اختبارين: <b>الإضاءة النافذة:</b> ينقطع الضوء عند الشقّ ← يبدو الجزء البعيد داكناً. <b>اختبار العضّ (الأكثر حسماً):</b> عضّ عصا خشب/عجلة مطاط لإعادة العرَض وتحديد الشقّ. <b>العلاج:</b> تجبير الأجزاء بـ<b>ترميم يغطّي الحدبات</b> (أملغم/كمبوزِت، تاج، أو onlay).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec3">Lec 2 · Periodontium, Radiographs, Casts &amp; Treatment Plan</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Periodontium &amp; radiographic evaluation</div>
+  <div class="prompt">Why and how is the periodontium evaluated, and what are the radiographic indications & the 'burnout' artifact?</div>
+  <div class="answer">
+    <b>Periodontium</b> is evaluated to judge (1) its effect on the treatment plan and (2) the effect of restorations on periodontal health. Assess attachment levels, bony support, mobility, tissue health, and radiographs; the most consistent inflammation sign is <b>bleeding on probing</b>. Estimate future margins vs the biologic width.<br>
+  <b>Radiographic indications:</b> previous perio/RCT, pain/trauma, large/deep restorations, deep caries, swelling/mobility/sinus tract, abutment teeth, unusual morphology, unexplained missing teeth. Beware <b>"burnout"</b> — a non-carious radiolucency where the beam crosses thinner tooth (often cervically) that can be mistaken for caries; radiolucent materials can also mimic caries.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تقييم النسيج حول السني والأشعة:</b> يُقيّم <b>النسيج حول السني</b> لتحديد (١) أثره على الخطة و(٢) أثر الترميمات على صحته. قيّم مستويات الارتباط والدعم العظمي والحركة وصحة النسيج والأشعة؛ وأثبت علامة للالتهاب هي <b>النزف عند السبر</b>. وقدّر مواقع الحواف المستقبلية مقابل العرض البيولوجي. <b>استطبابات الأشعة:</b> علاج لثوي/لبّي سابق، ألم/رضّ، ترميمات كبيرة/عميقة، تسوّس عميق، تورّم/حركة/ناسور، أسنان دعامة، تشكّل غير معتاد، أسنان مفقودة بلا سبب. واحذر <b>"burnout"</b> — شفافية غير تسوّسية حيث يعبر الشعاع سنّاً أرقّ (عنقياً غالباً) قد تُلتبس بالتسوّس؛ وبعض المواد الشفافة شعاعياً تحاكي التسوّس أيضاً.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Treatment plan &amp; sequencing</div>
+  <div class="prompt">What four factors guide restoring an individual tooth, and how is treatment sequenced?</div>
+  <div class="answer">
+    <b>Four factors:</b> (1) amount & form of remaining tooth structure; (2) functional need of the tooth; (3) esthetic need; (4) the overall treatment-plan objective. <b>Diagnostic casts</b> reveal facets/margins hard to see intraorally and (mounted on a semi-adjustable articulator) allow occlusal assessment.<br>
+  <b>Sequencing (disease-control phase, using amalgam/composite/GI):</b> dictated by (1) <b>severity</b> (most symptomatic/deepest/most debilitated tooth first), (2) esthetic needs, (3) effective use of time. Treat the most acute area each appointment; complete <b>quadrant by quadrant</b> when possible.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الخطة العلاجية والتسلسل:</b> <b>أربعة عوامل</b> لترميم سنّ مفرد: (١) مقدار وشكل البنية المتبقية؛ (٢) الحاجة الوظيفية؛ (٣) الحاجة الجمالية؛ (٤) هدف الخطة الكلّي. و<b>النماذج التشخيصية</b> تكشف الأوجه/الحواف الصعبة داخل الفم و(مركّبة على articulator شبه قابل للتعديل) تتيح تقييم الإطباق. <b>التسلسل (طور ضبط المرض، بالأملغم/الكمبوزِت/GI):</b> يحكمه (١) <b>الشدّة</b> (الأكثر عرَضاً/الأعمق/الأكثر تهدّماً أولاً)، (٢) الحاجات الجمالية، (٣) الاستخدام الفعّال للوقت. عالج المنطقة الأكثر إلحاحاً كل جلسة؛ وأكمل <b>ربعاً ربعاً</b> عند الإمكان.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec4">Lec 3 · Enamel — Histology &amp; Structure ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Ameloblasts, Nasmyth membrane &amp; pellicle</div>
+  <div class="prompt">How is enamel formed, and why can't it repair itself? What are Nasmyth membrane and pellicle?</div>
+  <div class="answer">
+    Enamel is formed by <b>ameloblasts</b> and provides a hard, durable, protective cap. It <b>cannot repair itself</b> once destroyed because the ameloblast <b>degenerates after forming the enamel rod</b>. The ameloblast's final act is secreting a membrane over the rod end — the <b>Nasmyth membrane (primary enamel cuticle)</b> — which covers the newly erupted tooth and is worn away by mastication/cleaning. It is replaced by the <b>pellicle</b> (a precipitate of salivary proteins); microorganisms may invade the pellicle to form <b>bacterial plaque</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الأروماد المينائية وغشاء Nasmyth والبيليكل:</b> تتكوّن المينا بخلايا <b>الأروماد المينائية (ameloblasts)</b> وتوفّر غطاءً واقياً صلباً. و<b>لا تُصلِح نفسها</b> بعد تلفها لأن الأرومة <b>تتنكّس بعد تكوين قضيب المينا</b>. وآخر أفعالها إفراز غشاء فوق نهاية القضيب — <b>غشاء Nasmyth (البشرة المينائية الأولية)</b> — يغطّي السن حديث البزوغ ويُزال بالمضغ/التنظيف. ويُستبدل بـ<b>البيليكل</b> (راسب بروتينات لعابية)؛ وقد تغزوه الجراثيم مكوّنةً <b>اللويحة الجرثومية</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Enamel rods &amp; crystals</div>
+  <div class="prompt">Describe the structural organization of enamel (rods/prisms and crystals).</div>
+  <div class="answer">
+    Enamel is composed of <b>millions of enamel rods (prisms)</b>, densely packed with a wavy course, each extending from the <b>DEJ to the external surface</b>. Each prism is built of millions of small elongated <b>apatite crystals</b> tightly packed in a distinct orientation that gives strength and identity. An <b>organic matrix / prism sheath</b> surrounds the crystals. The spacing/orientation of crystals and the amount of organic matrix make the <b>rod boundary and central core differentially soluble</b> when briefly exposed to weak acids — the basis of acid etching.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>قضبان المينا وبلّوراتها:</b> تتكوّن المينا من <b>ملايين قضبان المينا (المواشير)</b>، متراصّة بمسار متموّج، يمتدّ كلٌّ من <b>DEJ للسطح الخارجي</b>. ويُبنى كل موشور من ملايين <b>بلّورات الأباتيت</b> الممدودة المتراصّة باتّجاه مميّز يعطي القوّة والهوية. ويحيط <b>مطرس عضوي / غمد الموشور</b> بالبلّورات. وتباعد/توجيه البلّورات ومقدار المطرس العضوي يجعل <b>حدّ القضيب واللبّ المركزي مختلفَي الذوبانية</b> عند التعرّض القصير لحمض ضعيف — وهو أساس الحفر الحمضي.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec5">Lec 3 · Enamel — Acid Etching &amp; Rod Orientation ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Acid etching of enamel</div>
+  <div class="prompt">What does acid etching do to enamel, and why is it a conservative alternative?</div>
+  <div class="answer">
+    Acid produces an <b>irregular, pitted surface with microscopic undercuts</b> and a <b>higher surface energy</b>; resin monomer flows in, polymerizes, and forms <b>retentive resin tags</b>. With <b>30,000–40,000 rods/mm²</b>, etching increases the bondable surface area <b>10–20 fold</b>, so micromechanical bonding is significant (~30 MPa). This acid-etch retention is a <b>conservative, reliable alternative</b> to traditional mechanical methods (retentive grooves, pins, extension for prevention).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الحفر الحمضي للمينا:</b> ينتج الحمض <b>سطحاً غير منتظم محفوراً بتقويضات مجهرية</b> و<b>طاقة سطح أعلى</b>؛ فيتدفّق مونومر الراتنج ويتبلمر مكوّناً <b>resin tags إرسائية</b>. ومع <b>30,000–40,000 قضيب/مم²</b> يزيد الحفر المساحة القابلة للربط <b>10–20 ضعفاً</b>، فيكون الربط الميكانيكي المجهري كبيراً (~30 ميغاباسكال). وهذا الإرساء بالحفر <b>بديل متحفّظ موثوق</b> للطرق الميكانيكية التقليدية (أخاديد الإرساء، الدبابيس، extension for prevention).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Enamel rod orientation &amp; the bevel principle</div>
+  <div class="prompt">How are enamel rods oriented, and why does this dictate beveling the cavosurface margin?</div>
+  <div class="answer">
+    Starting ~1 mm from the CEJ, rods on vertical surfaces run occlusally/incisally at ~<b>60°</b>, progressively becoming <b>parallel to the long axis</b> toward marginal ridges/cusp tips; rods beneath occlusal fissures are parallel to the long axis (±20° at fissure sides). In the cervical region rods run <b>outward and slightly apically</b>.<br>
+  <b>Principle:</b> losing the rods forming the cavosurface margin creates a gap → leakage → secondary caries. So <b>bevel or parallel the rod direction and avoid undercutting them</b>; cervically, an <b>obtuse cavosurface angle</b> parallels the rods and preserves margin integrity.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>توجيه قضبان المينا ومبدأ الشطب:</b> بدءاً ~1مم من CEJ، تسير القضبان على الأسطح العمودية إطباقياً/قاطعياً بنحو <b>60°</b>، وتصبح تدريجياً <b>موازية للمحور</b> نحو الحواف الحُفّية/رؤوس الحدبات؛ والقضبان تحت الشقوق الإطباقية موازية للمحور (±20° عند جانبي الشقّ). وفي المنطقة العنقية تسير <b>للخارج ومائلة قمياً قليلاً</b>. <b>المبدأ:</b> فقد القضبان المكوّنة لحافة السطح الحُفّي يُنشئ فجوة ← تسرّب ← تسوّس ثانوي. لذا <b>اشطب أو وازِ اتجاه القضبان وتجنّب تقويضها</b>؛ وعنقياً <b>زاوية سطح حُفّي منفرجة</b> توازي القضبان وتحفظ سلامة الحافة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec6">Lec 3 · Enamel — Properties ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Hardness, brittleness, permeability</div>
+  <div class="prompt">Describe the hardness, brittleness, and permeability of enamel.</div>
+  <div class="answer">
+    <b>Hardness:</b> the hardest substance in the body — <b>HV ≈ 275</b>, about <b>4–5× harder than dentin</b> (HV ≈ 65).<br>
+  <b>Brittleness:</b> very brittle → requires a <b>dentin base</b> to withstand masticatory stress; rods without dentin support (from caries or poor cavity design) fracture away easily.<br>
+  <b>Permeability:</b> mature enamel is ~<b>90% inorganic hydroxyapatite</b> by volume with a little organic matrix and <b>4–12% water</b> (in intercrystalline spaces & micropores). It is <b>semipermeable</b> — fluids/ions diffuse in 3-D, so demineralization, caries, remineralization, and fluoride uptake are active throughout, not just at the surface.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الصلابة والهشاشة والنفاذية:</b> <b>الصلابة:</b> أصلب مادة في الجسم — <b>HV ≈ 275</b>، أصلب من العاج بنحو <b>4–5 أضعاف</b> (HV ≈ 65). <b>الهشاشة:</b> هشّة جداً ← تحتاج <b>قاعدة عاج</b> لتحمّل إجهاد المضغ؛ والقضبان بلا سند عاجي (من التسوّس أو سوء التصميم) تتكسّر بسهولة. <b>النفاذية:</b> المينا الناضجة ~<b>90% هيدروكسي أباتيت لاعضوي</b> حجماً مع قليل من المطرس العضوي و<b>4–12% ماء</b> (في المسافات بين البلّورات والمسام الدقيقة). وهي <b>شبه نفوذة</b> — تنتشر السوائل/الأيونات ثلاثياً، فتكون إزالة المعادن والتسوّس وإعادة التمعدن وامتصاص الفلورايد فعّالة في العمق لا السطح فقط.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Solubility &amp; color</div>
+  <div class="prompt">Describe the acid solubility and color of enamel, and the fluoride effect.</div>
+  <div class="answer">
+    <b>Solubility:</b> enamel dissolves in acid non-uniformly — solubility <b>increases from the surface toward the DEJ</b>. <b>Fluoride</b> (during formation or topically applied) <b>decreases surface solubility</b>, lowers demineralization rate, and enhances remineralization (fluoride concentration decreases toward the DEJ).<br>
+  <b>Color:</b> enamel is <b>translucent</b> and glossy (light yellow to grayish white), so tooth color mainly reflects the <b>underlying dentin</b>, enamel thickness, and stains. Enamel is thickest at cusp tips/incisal edges and thin cervically. Enamel becomes <b>temporarily whiter</b> within minutes of isolation (loss of loosely-bound water <1%) → <span class="k">select shade before isolation</span>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الذوبانية واللون:</b> <b>الذوبانية:</b> تذوب المينا بالحمض بشكل غير منتظم — تزداد <b>من السطح نحو DEJ</b>. و<b>الفلورايد</b> (أثناء التكوّن أو موضعياً) <b>يقلّل ذوبانية السطح</b> ومعدّل إزالة المعادن ويعزّز إعادة التمعدن (يقلّ تركيز الفلورايد نحو DEJ). <b>اللون:</b> المينا <b>شفافة</b> لامعة (أصفر فاتح لأبيض رمادي)، فلون السن يعكس أساساً <b>العاج تحتها</b> وسُمك المينا والبقع. والمينا أسمك عند رؤوس الحدبات/الحواف القاطعة وأرقّ عنقياً. وتصبح المينا <b>أكثر بياضاً مؤقتاً</b> خلال دقائق من العزل (فقد ماء ضعيف الارتباط <1%) ← <b>اختر اللون قبل العزل</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec7">Lec 3 · Enamel — Clinical Appearance &amp; Diagnosis ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">White spot, cavitation, wear</div>
+  <div class="prompt">Describe the clinical signs: white spot lesion, cavitation, and wear.</div>
+  <div class="answer">
+    <b>Color change (demineralization):</b> subsurface porosity from carious demineralization on a smooth surface shows as a <b>milky white opacity — the white spot lesion</b>; later, subsurface cavitation at the DEJ imparts a <b>blue/gray</b> color to overlying enamel.<br>
+  <b>Cavitation:</b> when enamel breaks away a cavity forms → a restoration is needed; if untreated it expands, weakening the crown and letting microbes reach deep dentin/pulp; root caries (gingival to CEJ) complicates isolation/access.<br>
+  <b>Wear:</b> enamel wears by attrition/friction against opposing enamel or harder materials (porcelain) → rounded contacts ground to <b>flat facets</b>; design margins to avoid high-stress occlusal-contact areas.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>البقعة البيضاء والتكهّف والتآكل:</b> <b>تغيّر اللون (إزالة المعادن):</b> المسامية تحت السطحية من التسوّس على سطح أملس تظهر كـ<b>عتامة بيضاء حليبية — البقعة البيضاء (white spot)</b>؛ ولاحقاً يمنح التكهّف تحت السطحي عند DEJ لوناً <b>أزرق/رمادياً</b> للمينا فوقه. <b>التكهّف:</b> عند تكسّر المينا تتكوّن حفرة ← يلزم ترميم؛ وإن أُهمل يتوسّع فيُضعف التاج ويسمح للجراثيم ببلوغ العاج العميق/اللب؛ وتسوّس الجذر (لثوياً لـCEJ) يعقّد العزل/الوصول. <b>التآكل:</b> تتآكل المينا بالـattrition/الاحتكاك ضدّ مينا مقابلة أو مواد أقسى (خزف) ← تُطحن التماسات المدوّرة لـ<b>أوجه مسطّحة</b>؛ صمّم الحواف لتجنّب مناطق التماس الإطباقي عالية الإجهاد.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Faults, fissures &amp; cracks</div>
+  <div class="prompt">Why are fissures caries-prone, and when do cracks require cuspal coverage?</div>
+  <div class="answer">
+    <b>Faults & fissures:</b> a deep fissure forms from <b>incomplete fusion of enamel lobes</b> during development; the narrow clefts shelter acidogenic bacteria — pits/fissures are <span class="k">8× more vulnerable to caries</span> than smooth surfaces. Inspect enamel around fissures for demineralization/cavitation to decide on intervention.<br>
+  <b>Cracks:</b> pronounced cracks extending from developmental grooves across marginal ridges to axial walls (or from large restoration margins) may cause <b>cuspal fracture</b>. When a crack extends through dentin or the patient has pain on chewing, the tooth needs a restoration with <b>complete cuspal coverage</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>العيوب والشقوق والتشقّقات:</b> <b>العيوب والشقوق:</b> الشقّ العميق ينشأ من <b>عدم اندماج فصوص المينا</b> أثناء النمو؛ والشقوق الضيقة تؤوي الجراثيم المحمّضة — فالحُفَر/الشقوق <b>أكثر عرضةً للتسوّس 8 أضعاف</b> من الأسطح الملساء. افحص المينا حول الشقوق لإزالة المعادن/التكهّف لتقرير التدخّل. <b>التشقّقات:</b> التشقّقات البارزة الممتدّة من الأخاديد التطوّرية عبر الحواف الحُفّية للجدران المحورية (أو من حواف الترميمات الكبيرة) قد تسبّب <b>كسر حدبة</b>. وحين يمتدّ الشقّ عبر العاج أو يتألّم المريض عند المضغ يحتاج السن ترميماً بـ<b>تغطية حدبية كاملة</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec8">Lec 4 · Dentin — Formation &amp; Tubules ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Dentinogenesis &amp; odontoblasts</div>
+  <div class="prompt">How is dentin formed, and why is it a living tissue?</div>
+  <div class="answer">
+    Dentin is a mineralized connective tissue covered by enamel (crown) and cementum (root), enclosing the pulp. <b>Dentinogenesis</b> is by <b>odontoblasts</b> — their cell bodies are in the pulp, but their processes (<b>Tomes fibers</b>) extend <b>100–200 µm</b> into the tubules; this makes dentin a <b>living tissue</b> able to react to stimuli. Processes extending past the DEJ into enamel form <b>enamel spindles</b> (responsible for sensitivity during enamel preparation). Formation begins just before enamel, the newest layer always on the pulpal surface, spreading from cusp tip to apex at ~<b>4 µm/day</b>; unlike enamel, it <b>continues throughout the life of the pulp</b>. <b>Predentin</b> is the unmineralized zone next to odontoblasts.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تكوّن العاج والأروماد السنّية:</b> العاج نسيج ضامّ متمعدن تغطّيه المينا (التاج) والملاط (الجذر) ويحيط باللب. و<b>تكوّن العاج</b> بـ<b>الأروماد السنّية (odontoblasts)</b> — أجسامها في اللب لكن استطالاتها (<b>ألياف Tomes</b>) تمتدّ <b>100–200µm</b> في الأنابيب؛ وهذا يجعل العاج <b>نسيجاً حيّاً</b> يتفاعل مع المنبّهات. والاستطالات العابرة لـDEJ إلى المينا تكوّن <b>مغازل المينا (enamel spindles)</b> (المسؤولة عن الحساسية أثناء تحضير المينا). ويبدأ التكوّن قبيل المينا، والطبقة الأحدث دائماً على السطح اللبّي، منتشراً من رأس الحدبة للقمة بنحو <b>4µm/يوم</b>؛ وخلافاً للمينا <b>يستمرّ طوال حياة اللب</b>. و<b>predentin</b> هو المنطقة غير المتمعدنة قرب الأروماد.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Dentinal tubules</div>
+  <div class="prompt">Describe the dentinal tubules: number, diameter, orientation, canaliculi.</div>
+  <div class="answer">
+    Tubules run through the full width of dentin from pulp to DEJ; each holds a <b>Tomes fiber</b> and is lined by highly-mineralized <b>peritubular dentin</b>. Tubules are ~<b>10% of dentin volume</b>. Their number rises from <b>15,000–20,000/mm² at the DEJ</b> to <b>45,000–65,000/mm² at the pulp</b>; diameter rises from <b>0.5–0.9 µm at the DEJ</b> to <b>2–3 µm near the pulp</b>. They are generally <b>perpendicular to the DEJ</b>. Small lateral openings — <b>canaliculi / lateral canals</b> — arise from secondary branches of odontoblastic processes. In mature dentin the process extends ~⅓ of the dentin thickness.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الأنابيب العاجية:</b> تمرّ عبر كامل عرض العاج من اللب لـDEJ؛ يحوي كلٌّ <b>ليف Tomes</b> ويُبطّن بـ<b>العاج حول الأنبوبي (peritubular)</b> عالي التمعدن. وتشكّل ~<b>10% من حجم العاج</b>. ويرتفع عددها من <b>15,000–20,000/مم² عند DEJ</b> إلى <b>45,000–65,000/مم² عند اللب</b>؛ والقطر من <b>0.5–0.9µm عند DEJ</b> إلى <b>2–3µm قرب اللب</b>. وهي عموماً <b>عمودية على DEJ</b>. والفتحات الجانبية الصغيرة — <b>canaliculi / قنوات جانبية</b> — تنشأ من فروع ثانوية للاستطالات. وفي العاج الناضج تمتدّ الاستطالة ~⅓ سُمك العاج.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec9">Lec 4 · Dentin — DEJ &amp; Composition ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Dentinoenamel junction (DEJ)</div>
+  <div class="prompt">Describe the DEJ and its functional importance.</div>
+  <div class="answer">
+    The <b>DEJ</b> is the transition between highly-mineralized enamel and collagen-containing dentin. It must <b>resist fracture and separation</b> under extreme occlusal loading. Its width is <b>2–15 µm</b>. Some <b>collagen fibers</b> from the dentin extend through this transitional zone and become embedded in the more highly-mineralized enamel, adding to the <b>strength and resilience</b> of the junction between the two tissues.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الوصل المينائي-العاجي (DEJ):</b> هو الانتقال بين المينا عالية التمعدن والعاج الحاوي للكولاجين. ويجب أن <b>يقاوم الكسر والانفصال</b> تحت الحمل الإطباقي الشديد. وعرضه <b>2–15µm</b>. وبعض <b>ألياف الكولاجين</b> من العاج تمتدّ عبر هذه المنطقة الانتقالية وتنغرس في المينا الأعلى تمعدناً، مضيفةً <b>قوّةً ومرونةً</b> للوصل بين النسيجين.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Dentin composition</div>
+  <div class="prompt">State the composition of mature dentin and compare its crystals to enamel.</div>
+  <div class="answer">
+    Mature dentin is <b>less hard than enamel but slightly harder than bone</b>. By weight it is ~<b>45–50% inorganic</b> (mineralized), <b>30% organic</b>, <b>25% water</b>. The organic material is ~<b>90% type I collagen</b> + 10% non-collagenous proteins. The mineral is <b>calcium hydroxyapatite</b> [Ca₁₀(PO₄)₆(OH)₂]. Dentin crystals are <b>platelike and ~30% smaller</b> than enamel crystals (thickness ~3.5 nm near DEJ → ~2 nm near pulp); small amounts of carbonate/fluoride are present. <b>Mineral content increases with age.</b>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تركيب العاج:</b> العاج الناضج <b>أقلّ صلابة من المينا لكنه أقسى قليلاً من العظم</b>. ووزناً ~<b>45–50% لاعضوي</b> (متمعدن)، <b>30% عضوي</b>، <b>25% ماء</b>. والمادة العضوية ~<b>90% كولاجين نوع I</b> + 10% بروتينات غير كولاجينية. والمعدن <b>هيدروكسي أباتيت الكالسيوم</b> [Ca₁₀(PO₄)₆(OH)₂]. وبلّورات العاج <b>صفائحية و~30% أصغر</b> من بلّورات المينا (السُمك ~3.5nm قرب DEJ ← ~2nm قرب اللب)؛ وتوجد كمّيات صغيرة من الكربونات/الفلورايد. و<b>المحتوى المعدني يزداد مع العمر</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec10">Lec 4 · Dentin — Types &amp; Sclerosis</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Intertubular vs peritubular dentin</div>
+  <div class="prompt">Differentiate intertubular and peritubular dentin, and define dentin sclerosis.</div>
+  <div class="answer">
+    <b>Intertubular dentin:</b> the hydroxyapatite-embedded <b>collagen matrix between tubules</b> — the bulk of dentin structure.<br>
+  <b>Peritubular dentin:</b> the <b>hypermineralized</b> dentin lining the tubule walls; it gradually <b>thickens with age</b>, making dentin harder, denser, and <b>less sensitive</b> (restricted tubular fluid flow). This increased mineral in primary dentin is <b>dentin sclerosis</b> (physiologic when from aging).<br>
+  Outer dentin (near DEJ): tubules far apart, intertubular = 96% of area. Inner dentin: larger tubules, intertubular only ~12% → inner dentin is ~<b>8× more permeable</b> than dentin near the DEJ.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>العاج بين الأنبوبي مقابل حول الأنبوبي:</b> <b>بين الأنبوبي (Intertubular):</b> <b>مطرس الكولاجين المطمور بالهيدروكسي أباتيت بين الأنابيب</b> — معظم بنية العاج. <b>حول الأنبوبي (Peritubular):</b> العاج <b>عالي التمعدن</b> المبطّن لجدران الأنابيب؛ يزداد <b>سُمكاً مع العمر</b> فيصير العاج أقسى وأكثف و<b>أقلّ حساسية</b> (تقييد تدفّق السائل الأنبوبي). وهذا المعدن المتزايد في العاج الأولي هو <b>تصلّب العاج (dentin sclerosis)</b> (فيزيولوجي حين يكون من الشيخوخة). العاج الخارجي (قرب DEJ): أنابيب متباعدة، وبين الأنبوبي = 96% من المساحة. العاج الداخلي: أنابيب أكبر، وبين الأنبوبي ~12% ← العاج الداخلي <b>أنفذ ~8 أضعاف</b> من العاج قرب DEJ.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Sclerotic dentin (clinical)</div>
+  <div class="prompt">Describe sclerotic dentin and its clinical significance.</div>
+  <div class="answer">
+    <b>Sclerotic (transparent) dentin</b> results from aging or mild irritation (slow caries, attrition, abrasion, erosion, occlusal trauma): tubular content is replaced by calcified material that <b>obliterates the tubules</b> (progressing from DEJ pulpally). It is <b>harder, denser, less sensitive, and more protective</b> of the pulp. Aging → <b>physiologic sclerosis</b>; mild irritation → <b>reactive sclerosis</b>. Clinically it is <b>shiny, darkly colored, and hard to the explorer</b> (fresh normal dentin is duller and softer), often found under old restorations. It walls off the lesion by sealing the tubules → greatly reduced permeability; appears translucent under light microscopy (the <b>translucent zone</b>).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>العاج المتصلّب (سريرياً):</b> <b>العاج المتصلّب (الشفّاف)</b> ينتج من الشيخوخة أو التهيّج الخفيف (تسوّس بطيء، attrition، abrasion، erosion، رضّ إطباقي): يُستبدل محتوى الأنبوب بمادة متكلّسة <b>تطمس الأنابيب</b> (متقدّمةً من DEJ لبّياً). وهو <b>أقسى وأكثف وأقلّ حساسية وأكثر حمايةً</b> للّب. الشيخوخة ← <b>تصلّب فيزيولوجي</b>؛ التهيّج الخفيف ← <b>تصلّب تفاعلي</b>. وسريرياً <b>لامع داكن اللون وقاسٍ للمسبار</b> (العاج الطبيعي الطازج أبهت وأطرى)، ويوجد غالباً تحت الترميمات القديمة. ويعزل الآفة بسدّ الأنابيب ← نفاذية أقلّ بكثير؛ ويبدو شفّافاً بالمجهر الضوئي (<b>المنطقة الشفّافة</b>).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec11">Lec 4 · Physiologic &amp; Tertiary Dentin ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Primary &amp; secondary dentin</div>
+  <div class="prompt">Differentiate primary (including mantle) and secondary physiologic dentin.</div>
+  <div class="answer">
+    <b>Primary dentin:</b> formed relatively quickly until root formation is complete. The first 150-µm layer under the enamel is <b>mantle dentin</b> — 4% less mineralized, with collagen <b>perpendicular</b> (not parallel) to the DEJ. Odontoblasts produce primary (mainly intertubular) dentin at <b>4–8 µm/day</b>; the bulk around the pulp is <b>circumpulpal dentin</b>.<br>
+  <b>Secondary dentin:</b> slowly formed (<b>1–2 µm/day</b>, decreasing with age but continuing while the tooth is vital); deposited mainly at the <b>pulp horns and roof/floor</b> → the pulp chamber narrows occluso-gingivally over decades, <b>reducing the risk of pulp exposure</b> in older patients (informs preparation & pin placement).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>العاج الأولي والثانوي:</b> <b>الأولي:</b> يتكوّن بسرعة نسبياً حتى اكتمال الجذر. وأول طبقة 150µm تحت المينا هي <b>عاج الوشاح (mantle)</b> — أقلّ تمعدناً 4%، وكولاجينه <b>عمودي</b> (لا موازٍ) لـDEJ. وتنتج الأروماد العاج الأولي (أساساً بين أنبوبي) بمعدّل <b>4–8µm/يوم</b>؛ والكتلة حول اللب هي <b>العاج المحيط باللب (circumpulpal)</b>. <b>الثانوي:</b> يتكوّن ببطء (<b>1–2µm/يوم</b>، يقلّ مع العمر لكنه يستمرّ ما دام السن حيّاً)؛ يترسّب أساساً عند <b>قرون اللب والسقف/الأرضية</b> ← تضيق حجرة اللب إطباقياً-لثوياً عبر العقود، <b>مقلّلاً خطر كشف اللب</b> لدى كبار السن (يوجّه التحضير ووضع الدبابيس).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Tertiary dentin (reactionary vs reparative)</div>
+  <div class="prompt">Distinguish reactionary and reparative tertiary dentin.</div>
+  <div class="answer">
+    <b>Tertiary dentin</b> forms in response to injury (caries, bur heat/trauma, attrition, abrasion, erosion):
+  <ul><li><b>Reactionary dentin:</b> secreted by <b>surviving original odontoblasts</b> reacting to a milder stimulus; a modified atubular matrix. Its barrier is superior because there is <b>no tubular continuity</b> between the affected primary dentin and the reactionary dentin.</li>
+  <li><b>Reparative dentin:</b> when intense injury <b>destroys the odontoblasts</b>, within ~15 days–3 weeks pulp stem/mesenchymal cells differentiate into <b>odontoblast-like cells</b> that lay down <b>irregular, atubular</b> dentin confined to the irritated area.</li></ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>العاج الثالثي (تفاعلي مقابل ترميمي):</b> <b>العاج الثالثي</b> يتكوّن استجابةً للإصابة (تسوّس، حرارة/رضّ البُرّ، attrition، abrasion، erosion): <b>التفاعلي (Reactionary):</b> تفرزه <b>الأروماد الأصلية الناجية</b> استجابةً لمنبّه أخفّ؛ مطرس معدّل عديم الأنابيب. وحاجزه متفوّق لعدم وجود <b>استمرارية أنبوبية</b> بين العاج الأولي المصاب والعاج التفاعلي. <b>الترميمي (Reparative):</b> حين تُدمّر الإصابة الشديدة <b>الأروماد</b>، تتمايز خلايا جذعية/ميزنشيمية من اللب خلال ~15 يوماً–3 أسابيع إلى <b>خلايا شبيهة بالأروماد</b> تضع عاجاً <b>غير منتظم عديم الأنابيب</b> محصوراً بالمنطقة المتهيّجة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec12">Lec 5 · Dentin — Function &amp; Distinguishing from Enamel</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Functions of dentin</div>
+  <div class="prompt">List the functions of dentin (structure, color, elasticity, support, protection).</div>
+  <div class="answer">
+    <ol>
+  <li><b>Structure:</b> forms the bulk of the tooth (crown & root).</li>
+  <li><b>Color:</b> coronal dentin gives the translucent enamel its yellow hue; pulp death → dentin discoloration → darkened crown.</li>
+  <li><b>Elasticity:</b> high tensile strength provides an elastic base for brittle enamel (tensile strength: enamel <b>10 MPa</b>, dentin <b>98 MPa</b>) — absorbs heavy occlusal loads.</li>
+  <li><b>Support:</b> intact dentin gives strength/rigidity; fracture resistance falls with deeper/wider preparations (an endo-access posterior retains only ~⅓ of intact fracture resistance) → be conservative; consider inlay/onlay/crown for large loss.</li>
+  <li><b>Protection:</b> a vital protective encasement for the pulp that transmits stimuli via tubules.</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>وظائف العاج:</b> (١) <b>البنية:</b> يشكّل كتلة السن (التاج والجذر). (٢) <b>اللون:</b> العاج التاجي يعطي المينا الشفّافة لونها الأصفر؛ وموت اللب ← تلوّن العاج ← تاج داكن. (٣) <b>المرونة:</b> قوّة شدّ عالية توفّر قاعدة مرنة للمينا الهشّة (قوّة الشدّ: المينا <b>10 ميغاباسكال</b>، العاج <b>98 ميغاباسكال</b>) — يمتصّ الأحمال الإطباقية الثقيلة. (٤) <b>الدعم:</b> العاج السليم يعطي القوّة/الصلابة؛ وتقلّ مقاومة الكسر مع التحضيرات الأعمق/الأعرض (سنّ خلفي بفتحة لبية يحتفظ بـ~⅓ مقاومة الكسر السليمة) ← كن متحفّظاً؛ وفكّر بـinlay/onlay/تاج للفقد الكبير. (٥) <b>الحماية:</b> غلاف حيّ واقٍ للّب ينقل المنبّهات عبر الأنابيب.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Distinguishing dentin from enamel</div>
+  <div class="prompt">How is dentin distinguished from enamel during preparation (color, reflectance, hardness, sound)?</div>
+  <div class="answer">
+    <ul>
+  <li><b>Color:</b> enamel is translucent; dentin is <b>yellow-white and slightly darker</b> (darker/brown-black in older teeth or with old restorations/slow caries).</li>
+  <li><b>Reflectance:</b> dentin is <b>opaquer and duller</b>; enamel is shiny.</li>
+  <li><b>Hardness:</b> dentin is <b>softer</b> (a sharp explorer catches in it); ~⅕ the hardness of enamel; harder near the DEJ than near the pulp; flexible (supports brittle enamel).</li>
+  <li><b>Sound:</b> enamel gives a <b>sharper, higher-pitched</b> sound than dentin under a moving explorer tip.</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تمييز العاج عن المينا:</b> <b>اللون:</b> المينا شفّافة؛ والعاج <b>أصفر-أبيض وأغمق قليلاً</b> (أغمق/بني-أسود في الأسنان الأكبر أو مع ترميمات قديمة/تسوّس بطيء). <b>الانعكاس:</b> العاج <b>أكثر عتامةً وبهتاناً</b>؛ والمينا لامعة. <b>الصلابة:</b> العاج <b>أطرى</b> (المسبار الحادّ يعلق فيه)؛ ~⅕ صلابة المينا؛ أقسى قرب DEJ منه قرب اللب؛ ومرن (يسند المينا الهشّة). <b>الصوت:</b> المينا تعطي صوتاً <b>أحدّ وأعلى نبرة</b> من العاج تحت طرف مسبار متحرّك.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec13">Lec 5 · Dentin — Permeability &amp; Sensitivity ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Permeability, microleakage &amp; remaining dentin thickness</div>
+  <div class="prompt">How do dentin permeability, microleakage, and remaining dentin thickness relate to pulp protection?</div>
+  <div class="answer">
+    <b>Microleakage</b> = diffusion of bacteria/fluids/ions/molecules into the tooth-restoration interface via capillary action → acidic/bacterial products penetrate the gap → <b>secondary caries</b> + pulpal irritation. No material/technique gives a perfect hermetic seal (gingival cementum/dentin margins leak most). Varnishes, liners, and dentin bonding adhesives help seal margins/dentin. The <b>remaining dentin thickness (RDT)</b> is the key determinant of diffusion into the pulp — thicker RDT means smaller-diameter, longer tubules → much less toxic/bacterial insult. <b>Regional differences:</b> coronal dentin > root dentin in permeability; occlusal pulpal floor is least permeable (only ~30% of tubules patent), but the <b>proximal box/gingival margins sit where dentin is most permeable</b> → more prone to recurrent caries.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>النفاذية والتسرّب الدقيق وسُمك العاج المتبقّي:</b> <b>التسرّب الدقيق</b> = انتشار الجراثيم/السوائل/الأيونات إلى بينية السن-الترميم بالخاصّية الشعرية ← نفاذ نواتج حمضية/جرثومية عبر الفجوة ← <b>تسوّس ثانوي</b> + تهيّج لبّي. ولا مادة/تقنية تعطي سدّاً محكماً تماماً (حواف الملاط/العاج اللثوية الأكثر تسرّباً). والورنيش والبطانات ولواصق العاج تساعد على سدّ الحواف/العاج. و<b>سُمك العاج المتبقّي (RDT)</b> هو المحدّد الأهمّ للانتشار للّب — فالأسمك يعني أنابيب أصغر قطراً وأطول ← أذى سُمّي/جرثومي أقلّ بكثير. <b>فروق إقليمية:</b> العاج التاجي أنفذ من الجذري؛ والأرضية اللبية الإطباقية الأقلّ نفاذيةً (~30% فقط من الأنابيب مفتوحة)، لكن <b>الصندوق الداني/الحواف اللثوية تقع حيث العاج الأنفذ</b> ← أميل للتسوّس المتكرّر.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Theories of dentin sensitivity</div>
+  <div class="prompt">Summarize the four theories of dentin sensitivity and which is accepted.</div>
+  <div class="answer">
+    Dentin is neither vascularized nor innervated except ~20% of inner-dentin tubules; sensitivity is explained by:
+  <ol><li><b>Direct innervation:</b> nerves reach the DEJ — weak (outer dentin isn't innervated; anesthetic on dentin doesn't stop pain).</li>
+  <li><b>Odontoblast receptor:</b> odontoblasts act as receptors — weak (they are matrix-forming, non-excitable; no synapses shown).</li>
+  <li><b>Thermal shock:</b> temperature transferred to the pulp, especially with thin dentin → protection by an insulating base.</li>
+  <li><b>Hydrodynamic (accepted):</b> stimuli (air, cold/heat, tactile) speed the outward tubular fluid flow → displaces odontoblasts and stretches nerve endings → Na⁺ entry → depolarization → pain.</li></ol>
+  <b>Clinical shift:</b> since the hydrodynamic theory, reducing sensitivity is by <b>sealing/occluding the tubules</b> (bonding, oxalates, strontium, fluoride, calcium-silicate) rather than thermal insulation → emphasis on the restoration-tooth interface.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>نظريات حساسية العاج:</b> العاج غير موعّى ولا معصّب عدا ~20% من أنابيب العاج الداخلي؛ وتُفسَّر الحساسية بـ: (١) <b>التعصيب المباشر:</b> الأعصاب تبلغ DEJ — ضعيفة (العاج الخارجي غير معصّب؛ والمخدّر على العاج لا يوقف الألم). (٢) <b>مستقبِل الأرومة:</b> الأروماد كمستقبِلات — ضعيفة (مكوّنة للمطرس، غير قابلة للإثارة؛ لا مشابك). (٣) <b>الصدمة الحرارية:</b> نقل الحرارة للّب خاصةً مع عاج رقيق → الحماية بقاعدة عازلة. (٤) <b>الهيدروديناميكية (المقبولة):</b> المنبّهات (هواء، برد/حرارة، لمس) تسرّع تدفّق السائل الأنبوبي للخارج ← تُزيح الأروماد وتشدّ النهايات العصبية ← دخول Na⁺ ← إزالة استقطاب ← ألم. <b>التحوّل السريري:</b> منذ النظرية الهيدروديناميكية صار تقليل الحساسية بـ<b>سدّ/إغلاق الأنابيب</b> (الربط، الأكسالات، السترونشيوم، الفلورايد، سيليكات الكالسيوم) لا بالعزل الحراري ← التركيز على بينية الترميم-السن.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec14">Cervical Lesions — Carious &amp; Non-carious ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Cervical caries &amp; root caries detection</div>
+  <div class="prompt">What are cervical lesions, and how is root caries best detected?</div>
+  <div class="answer">
+    <b>Cervical (Class V) lesions</b> are carious and non-carious defects in the gingival third of facial/lingual surfaces. Carious ones come from plaque acids demineralizing the surface; a non-caries cause is a <b>non-carious cervical lesion (NCCL)</b>.<br>
+  Coronal (enamel) cervical caries is easily seen (color change), but <b>tooth color is a poor predictor of root-caries damage</b> — a discolored root may be hard/sclerotic (no restoration needed) while a normal-colored one may be soft. Disclosing dyes are inconsistent on roots → the <b>best clinical indicator is surface softness</b> tested with an instrument.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التسوّس العنقي وكشف تسوّس الجذر:</b> <b>الآفات العنقية (Class V)</b> عيوب تسوّسية وغير تسوّسية في الثلث اللثوي للأسطح الدهليزية/اللسانية. التسوّسية من أحماض اللويحة التي تزيل معادن السطح؛ والسبب غير التسوّسي هو <b>آفة عنقية غير تسوّسية (NCCL)</b>. والتسوّس العنقي التاجي (المينائي) يُرى بسهولة (تغيّر لون)، لكن <b>لون السن مؤشّر رديء لضرر تسوّس الجذر</b> — فالجذر المتلوّن قد يكون قاسياً/متصلّباً (لا يحتاج ترميماً) والطبيعي اللون قد يكون طرياً. وصبغات الكشف غير ثابتة على الجذور ← <b>أفضل مؤشّر سريري هو طراوة السطح</b> بالفحص بأداة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">NCCL etiology &amp; access/isolation</div>
+  <div class="prompt">What is the etiology of NCCLs, and what challenges do cervical margins pose for access/isolation?</div>
+  <div class="answer">
+    <b>NCCLs</b> have a <b>multifactorial etiology: stress, friction, and biocorrosion</b>; prevalence 5–85%, most common in premolars/molars, increasing with age.<br>
+  <b>Access/isolation:</b> supragingival lesions are easy, but once the lesion goes <b>below the free gingival margin</b>, isolation for caries removal/preparation/finishing is hard. Incomplete access → retained caries or a poor tooth-restoration interface → microleakage and premature failure. Use cotton rolls + retraction cord; a rubber dam if it extends subgingivally; if that fails, a <b>surgical (gingivoplasty)</b> approach — ideally done <b>≥6 weeks before</b> restoration so the margin heals to a stable position.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>سبب NCCL والوصول/العزل:</b> <b>الـNCCL</b> سببها <b>متعدّد العوامل: الإجهاد والاحتكاك والتآكل الحيوي</b>؛ انتشارها 5–85%، أشيع في الضواحك/الأرحاء، ويزداد مع العمر. <b>الوصول/العزل:</b> الآفات فوق اللثوية سهلة، لكن حين تنزل <b>تحت الحافة اللثوية الحرّة</b> يصعب العزل لإزالة التسوّس/التحضير/الإنهاء. والوصول الناقص ← تسوّس متبقٍّ أو بينية سيّئة ← تسرّب دقيق وفشل مبكر. استخدم لفافات قطن + خيط إزاحة؛ وحاجزاً مطاطياً إن امتدّت تحت اللثة؛ وإن فشل فنهج <b>جراحي (gingivoplasty)</b> — يُفضّل قبل الترميم بـ<b>≥6 أسابيع</b> ليلتئم الهامش لوضع مستقرّ.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec15">NCCL Types — Erosion, Abrasion, Abfraction ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Erosion</div>
+  <div class="prompt">Define erosion and describe its clinical stages.</div>
+  <div class="answer">
+    <b>Erosion:</b> loss of tooth structure by <b>chemical action</b> (not bacteria) — common with constant citrus intake, chlorinated pool water, or GI problems exposing teeth to gastric acid; classically <b>rounded, cupped-out defects</b>. Stages: <b>early</b> — a smooth, silky glazed enamel surface, coronal to the CEJ with an intact enamel ring at the gingival margin; <b>intermediate</b> — shallow flat concavities with rounded borders, enamel may be lost exposing a polished dentin surface with rounded cusps/incisal edges; <b>severe</b> — continuing dentin loss triggers reactionary/reparative dentin obliterating tubules to compensate.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التآكل الكيميائي (Erosion):</b> فقد بنية السن بـ<b>فعل كيميائي</b> (لا جرثومي) — شائع مع تناول الحمضيات المستمرّ، أو ماء المسابح المكلور، أو مشاكل هضمية تعرّض الأسنان لحمض المعدة؛ وكلاسيكياً <b>عيوب مدوّرة مقعّرة</b>. المراحل: <b>مبكرة</b> — سطح مينا أملس حريري لمّاع، تاجياً لـCEJ مع حلقة مينا سليمة عند الحافة اللثوية؛ <b>متوسّطة</b> — تقعّرات مسطّحة ضحلة بحواف مدوّرة، وقد تُفقد المينا كاشفةً سطح عاج مصقول برؤوس حدبات/حواف قاطعة مدوّرة؛ <b>شديدة</b> — استمرار فقد العاج يحفّز عاجاً تفاعلياً/ترميمياً يطمس الأنابيب تعويضاً.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Abrasion &amp; abfraction</div>
+  <div class="prompt">Differentiate abrasion and abfraction.</div>
+  <div class="answer">
+    <b>Abrasion:</b> loss of tooth structure by <b>mechanical/frictional forces</b> — most commonly <b>excessive tooth brushing</b> (also floss, toothpicks, appliances); appears as <b>V-shaped notches</b>. Factors: brushing technique, brush type, toothpaste abrasiveness, duration/intensity. It can progress rapidly at the CEJ (thin enamel) and may reach the pulp.<br>
+  <b>Abfraction:</b> loss due to <b>flexural forces</b> — a theory that as teeth <b>flex under occlusal load</b>, cervical stress causes enamel/dentin hydroxyapatite <b>microfractures</b> and dislodgement (facilitated by thin cervical enamel); seen with heavy occlusal loads/<b>bruxism</b>. Management for all: identify and <b>eliminate the cause</b>; relieve hypersensitivity with desensitizers/fluoride/bonding, or restore.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>السحل والانبثاق (Abrasion وAbfraction):</b> <b>Abrasion:</b> فقد بـ<b>قوى ميكانيكية/احتكاكية</b> — أشيعها <b>التفريش المفرط</b> (وأيضاً الخيط والأعواد والأجهزة)؛ يظهر كـ<b>أخاديد على شكل V</b>. عوامله: أسلوب التفريش، نوع الفرشاة، كشط المعجون، المدة/الشدّة. وقد يتقدّم بسرعة عند CEJ (مينا رقيقة) وقد يبلغ اللب. <b>Abfraction:</b> فقد بـ<b>قوى انثنائية</b> — نظرية أن انثناء الأسنان <b>تحت الحمل الإطباقي</b> يسبّب إجهاداً عنقياً يُحدث <b>كسوراً مجهرية</b> في هيدروكسي أباتيت المينا/العاج وانخلاعها (يسهّلها رقّة المينا العنقية)؛ يُرى مع أحمال إطباقية شديدة/<b>صرير</b>. الإدارة للجميع: تحديد و<b>إزالة السبب</b>؛ وتخفيف الحساسية بمزيلات الحساسية/الفلورايد/الربط، أو الترميم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec16">Class V Treatment &amp; Sandwich Technique</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Cl V restorative materials &amp; indications for NCCL treatment</div>
+  <div class="prompt">When are NCCLs treated, and what materials are used for Class V restorations?</div>
+  <div class="answer">
+    <b>Treat NCCLs</b> to protect remaining structure (extensive/progressing loss), restore esthetics, control/reduce sensitivity, or accommodate an RPD clasp. Small asymptomatic lesions are managed by <b>prophylaxis</b> (causal therapy, fluoride, documentation, follow-up). Extent of restoration = extent of the lesion; remove all demineralized structure and unsupported enamel.<br>
+  <b>Materials — non-esthetic:</b> amalgam, gold foil/inlay (rare). <b>Esthetic:</b> resin composite (with dentin bonding), composite + GI base (sandwich), flowable composite, glass ionomer, resin-modified GI, compomer, porcelain inlay (rare).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مواد Cl V واستطبابات علاج NCCL:</b> <b>عالج الـNCCL</b> لحماية البنية المتبقية (فقد واسع/متقدّم)، أو استعادة الجمال، أو ضبط/تقليل الحساسية، أو استيعاب مشبك طقم متحرّك. والآفات الصغيرة اللاعرَضية تُدار بـ<b>الوقاية</b> (علاج السبب، فلورايد، توثيق، متابعة). وامتداد الترميم = امتداد الآفة؛ أزل كل البنية منزوعة المعادن والمينا غير المسنودة. <b>المواد — غير جمالية:</b> أملغم، رقاقة/حشوة ذهب (نادرة). <b>جمالية:</b> كمبوزِت (مع ربط عاجي)، كمبوزِت + قاعدة GI (ساندويتش)، كمبوزِت سائل، أيونومر زجاجي، GI معدّل بالراتنج، كومبومر، حشوة خزفية (نادرة).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Sandwich (laminate) technique for Cl V</div>
+  <div class="prompt">Describe the sandwich technique for Class V and its rationale.</div>
+  <div class="answer">
+    The <b>sandwich (laminate) technique</b> combines the advantages of <b>glass ionomer</b> (chemical bond to dentin, fluoride release, reduced microleakage) and <b>composite</b> (esthetics, polishability, abrasion resistance). GIC is used as an <b>intermediate layer</b> replacing missing dentin, with a composite veneer over it. It can be <b>open</b> (GIC at the gingival margin left exposed) or <b>closed</b> (GIC completely covered by composite). It is especially useful when the gingival margin lies on root dentin/cementum where composite bonding alone is less reliable.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تقنية الساندويتش (المصفّحة) لـCl V:</b> تجمع <b>تقنية الساندويتش</b> مزايا <b>الأيونومر الزجاجي</b> (التصاق كيميائي بالعاج، إطلاق فلورايد، تقليل التسرّب) و<b>الكمبوزِت</b> (الجمال، التلميع، مقاومة السحل). يُستخدم الـGIC <b>طبقةً وسيطةً</b> تعوّض العاج المفقود، مع قشرة كمبوزِت فوقه. وتكون <b>مفتوحة</b> (الـGIC عند الحافة اللثوية مكشوف) أو <b>مغلقة</b> (الـGIC مغطّى كلياً بالكمبوزِت). ومفيدة خاصةً حين تقع الحافة اللثوية على عاج/ملاط الجذر حيث ربط الكمبوزِت وحده أقلّ موثوقية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec17">Pulp Irritants &amp; Defense of the Dentin-Pulp Complex ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Thermal, laser &amp; air-abrasion irritation</div>
+  <div class="prompt">How do dental procedures cause thermal pulp irritation, and how do laser and air abrasion compare?</div>
+  <div class="answer">
+    Tooth preparation, composite polymerization, and finishing/polishing can raise intrapulpal temperature; an increase of <b>5.5°C for 10 s</b> can cause histologic pulp damage (irreversible pulpitis/necrosis) — hence water coolant.<br>
+  <b>Laser</b> (CO₂, Er:YAG, FEL): cuts hard/soft tissue with minimal pulpal response comparable to high-speed rotary; effect depends on beam power and absorption; must be used in a <b>pulsating (not continuous)</b> manner to limit heat.<br>
+  <b>Air abrasion (kinetic prep):</b> generates heat and gives <b>loss of tactile sensation</b> (hard to judge cutting progress); used for stain removal and cleaning pits/fissures before sealing; no more traumatic to the pulp than rotary in animal studies.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التهيّج الحراري والليزر والسحل الهوائي:</b> تحضير السن وبلمرة الكمبوزِت والإنهاء/التلميع قد ترفع حرارة اللب؛ وارتفاع <b>5.5°م لـ10ث</b> قد يسبّب ضرراً نسيجياً للّب (التهاب لا رجعي/نخر) — لذا تبريد الماء. <b>الليزر</b> (CO₂، Er:YAG، FEL): يقطع النسيج الصلب/الرخو باستجابة لبية أدنى تُماثل الدوّار السريع؛ يعتمد الأثر على قدرة الشعاع وامتصاصه؛ ويجب استخدامه <b>نابضاً (لا مستمراً)</b> للحدّ من الحرارة. <b>السحل الهوائي (تحضير حركي):</b> يولّد حرارة ويسبّب <b>فقد الإحساس اللمسي</b> (يصعب تقدير تقدّم القطع)؛ يُستخدم لإزالة البقع وتنظيف الحُفَر/الشقوق قبل السدّ؛ وليس أكثر رضّاً للّب من الدوّار في دراسات الحيوان.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Defense mechanisms of the dentin-pulp complex</div>
+  <div class="prompt">List the defense reactions of the dentin-pulp complex to injury.</div>
+  <div class="answer">
+    The dentin and pulp are one <b>dentin-pulp complex</b>; reactions to injury (caries, operative procedures, attrition) are mainly odontoblast-driven:
+  <ol><li><b>Reduced dentin permeability:</b> plasma-protein/fibrin coagulation in tubules beneath a cut cavity + intratubular mineral/collagen/bacteria + the smear layer → intratubular occlusion.</li>
+  <li><b>Dead tracts:</b> empty tubules (degenerated odontoblastic processes) under caries, sealed pulpally by impermeable calcified tissue protecting the pulp.</li>
+  <li><b>Sclerotic dentin:</b> mineral obliteration of tubules → harder, less permeable, less sensitive.</li>
+  <li><b>Tertiary dentin</b> (reactionary/reparative): new dentin walling off the insult.</li></ol>
+  If the lesion isn't arrested/removed and restored, bacterial toxins reach the pulp → strong inflammation → pulp necrosis.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>دفاعات معقد اللب-العاج:</b> العاج واللب <b>معقد واحد</b>؛ وتفاعلاته للإصابة (تسوّس، إجراءات، attrition) أروماديّة أساساً: (١) <b>خفض نفاذية العاج:</b> تخثّر بروتينات البلازما/الفيبرين في الأنابيب تحت حفرة مقطوعة + معادن/كولاجين/جراثيم داخل أنبوبية + الطبقة الملطّخة ← انسداد داخل أنبوبي. (٢) <b>المسارات الميتة (Dead tracts):</b> أنابيب فارغة (استطالات متنكّسة) تحت التسوّس، مسدودة لبّياً بنسيج متكلّس غير نفوذ يحمي اللب. (٣) <b>العاج المتصلّب:</b> طمس معدني للأنابيب ← أقسى وأقلّ نفاذية وحساسية. (٤) <b>العاج الثالثي</b> (تفاعلي/ترميمي): عاج جديد يعزل الأذى. وإن لم تُوقَف الآفة/تُزَل وتُرمَّم، تبلغ السموم الجرثومية اللب ← التهاب شديد ← نخر لبّي.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec18">Lec 2 · Esthetic Evaluation of the Dentition</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Common esthetic problems &amp; treatment range</div>
+  <div class="prompt">What esthetic problems are assessed across the dentition, and what is the range of treatment?</div>
+  <div class="answer">
+    Beyond individual restorations, assess the esthetics of the <b>whole dentition</b>: (1) stained/discolored anterior teeth; (2) unaesthetic contours (length, width, incisal-edge shape, axial contour); (3) unaesthetic position/spacing; (4) carious lesions & unaesthetic restorations; (5) unaesthetic color/contour of tissue adjacent to anterior restorations, including excessive gingival display (<b>"gummy smile"</b>).<br>
+  <b>Treatment range:</b> from conservative — <b>microabrasion or bleaching</b> — to more invasive — <b>resin or ceramic veneers, or complete-coverage crowns</b>; periodontal, endodontic, or orthodontic procedures may also be needed depending on the problem.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>المشاكل الجمالية الشائعة ومدى العلاج:</b> إضافةً للترميمات المفردة، قيّم جمال <b>الأسنان ككل</b>: (١) أسنان أمامية متلوّنة؛ (٢) كنتور غير جمالي (الطول، العرض، شكل الحافة القاطعة، الكنتور المحوري)؛ (٣) وضع/تباعد غير جمالي؛ (٤) آفات تسوّسية وترميمات غير جمالية؛ (٥) لون/كنتور غير جمالي للنسيج المجاور للترميمات الأمامية، ومنه ظهور لثوي مفرط (<b>"الابتسامة اللثوية gummy smile"</b>). <b>مدى العلاج:</b> من المتحفّظ — <b>الصنفرة الدقيقة أو التبييض</b> — إلى الأكثر تدخّلاً — <b>قشور راتنجية أو خزفية، أو تيجان كاملة التغطية</b>؛ وقد تلزم إجراءات لثوية أو لبية أو تقويمية حسب المشكلة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Diagnostic casts</div>
+  <div class="prompt">What information do diagnostic casts provide?</div>
+  <div class="answer">
+    Diagnostic casts let the dentist see areas that are <b>visually inaccessible</b> during the clinical exam. <b>Facets and marginal openings</b> that are hard to see intraorally are readily visible on casts. For cases with multiple missing teeth, casts <b>mounted on a semi-adjustable articulator</b> allow assessment of the occlusal relationship and planning of restorative treatment (e.g., interarch space, occlusal scheme) before any tooth is prepared.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>النماذج التشخيصية:</b> تتيح النماذج التشخيصية للطبيب رؤية مناطق <b>يتعذّر رؤيتها بصرياً</b> أثناء الفحص السريري. و<b>الأوجه (facets) والفتحات الحافّية</b> الصعبة داخل الفم تُرى بسهولة على النماذج. وفي حالات فقد أسنان متعدّدة، تتيح النماذج <b>المركّبة على articulator شبه قابل للتعديل</b> تقييم العلاقة الإطباقية وتخطيط الترميم (كالمسافة بين القوسين والمخطّط الإطباقي) قبل تحضير أي سنّ.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec19">Lec 3–4 · Enamel Spindles &amp; Mantle Dentin (Detailed)</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Enamel spindles &amp; sensitivity in enamel prep</div>
+  <div class="prompt">What are enamel spindles, and why is enamel preparation sometimes sensitive?</div>
+  <div class="answer">
+    Some odontoblastic processes (Tomes fibers) extend <b>beyond the DEJ into the enamel</b>, forming structures called <b>enamel spindles</b>. Because these are living odontoblastic extensions, they are <b>responsible for the sensitivity sensation felt during cavity preparation in enamel</b> — even though enamel itself is an acellular, non-vital tissue. This links back to the concept of the dentin-pulp complex: the odontoblast bridges dentin, DEJ, and even the inner enamel, so stimuli at these interfaces can be transmitted toward the pulp.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مغازل المينا والحساسية أثناء تحضير المينا:</b> بعض استطالات الأروماد (ألياف Tomes) تمتدّ <b>خلف DEJ إلى المينا</b> مكوّنةً بنى تُسمّى <b>مغازل المينا (enamel spindles)</b>. ولأنها استطالات أروماديّة حيّة، فهي <b>مسؤولة عن إحساس الحساسية أثناء تحضير الحفرة في المينا</b> — رغم أن المينا نفسها نسيج لا خلوي غير حيّ. ويعود هذا لمفهوم معقد اللب-العاج: فالأرومة تجسر العاج وDEJ وحتى المينا الداخلية، فتُنقل المنبّهات عند هذه البينيات نحو اللب.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Mantle &amp; circumpulpal dentin</div>
+  <div class="prompt">Differentiate mantle dentin and circumpulpal dentin.</div>
+  <div class="answer">
+    <b>Mantle dentin</b> is the <b>first-formed 150-µm layer</b> of primary dentin immediately beneath the enamel. It differs from the rest of primary dentin: it is <b>4% less mineralized</b>, and its collagen fibers are oriented <b>perpendicular</b> to the DEJ (rather than parallel). <b>Circumpulpal dentin</b> is the <b>bulk of primary dentin surrounding the pulp chamber and canals</b>, formed after the mantle layer at 4–8 µm/day; synthesis then slows to 1–2 µm/day (secondary dentin) but continues while the tooth is vital. This ongoing deposition is why pulp chambers narrow with age.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>عاج الوشاح والعاج المحيط باللب:</b> <b>عاج الوشاح (Mantle)</b> هو <b>أول طبقة 150µm</b> من العاج الأولي مباشرةً تحت المينا. ويختلف عن بقية العاج الأولي: <b>أقلّ تمعدناً 4%</b>، وألياف كولاجينه <b>عمودية</b> على DEJ (لا موازية). و<b>العاج المحيط باللب (Circumpulpal)</b> هو <b>كتلة العاج الأولي حول حجرة اللب والقنوات</b>، يتكوّن بعد طبقة الوشاح بمعدّل 4–8µm/يوم؛ ثم يبطؤ التخليق لـ1–2µm/يوم (عاج ثانوي) لكنه يستمرّ ما دام السن حيّاً. وهذا الترسّب المستمرّ سبب ضيق حجرات اللب مع العمر.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec20">Lec 5 · Managing Dentinal Sensitivity ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Treating dentinal hypersensitivity</div>
+  <div class="prompt">How is dentinal hypersensitivity treated and prevented?</div>
+  <div class="answer">
+    Sensitivity comes from <b>exposed open tubules</b> connecting pulp and oral cavity; degree depends on the number/size of open tubules (fluid-flow changes → mechanoreceptor pain). Options:
+  <ul><li><b>Surgical root coverage</b> (connective-tissue grafts) — best for hypersensitivity from gingival recession.</li>
+  <li><b>Occlude the tubules:</b> dentin adhesives (short-term relief); <b>oxalate</b> solutions (± electrophoresis); <b>stannous fluoride</b>; <b>potassium nitrate</b> (in dentifrices or office gel — effective desensitizer); <b>strontium chloride</b>; and <b>calcium-silicate cements</b> (remineralization).</li></ul>
+  These agents work by occluding tubules or by nerve desensitization, consistent with the hydrodynamic theory.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>علاج فرط حساسية العاج:</b> تأتي الحساسية من <b>أنابيب مفتوحة مكشوفة</b> تصل اللب بالفم؛ وتعتمد الدرجة على عدد/حجم الأنابيب المفتوحة (تغيّرات تدفّق السائل ← ألم بالمستقبِلات الميكانيكية). الخيارات: <b>تغطية الجذر الجراحية</b> (طعوم نسيج ضامّ) — الأفضل للحساسية من انحسار اللثة. <b>سدّ الأنابيب:</b> لواصق العاج (راحة قصيرة المدى)؛ محاليل <b>الأكسالات</b> (± electrophoresis)؛ <b>فلوريد القصدير (stannous)</b>؛ <b>نترات البوتاسيوم</b> (في المعاجين أو جل العيادة — مزيل حساسية فعّال)؛ <b>كلوريد السترونشيوم</b>؛ و<b>سمنتات سيليكات الكالسيوم</b> (إعادة تمعدن). وتعمل هذه بسدّ الأنابيب أو إخماد العصب، بما يتّسق مع النظرية الهيدروديناميكية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Hydrodynamic vs thermal-shock: clinical implication</div>
+  <div class="prompt">How does the hydrodynamic theory change the clinical approach compared with the thermal-shock theory?</div>
+  <div class="answer">
+    Under the <b>thermal-shock theory</b>, protection from temperature change came from placing an <b>insulating base</b> (e.g., cement) under the restoration. Under the <b>hydrodynamic theory</b>, if the tubules are <b>occluded/sealed</b>, rapid outward fluid flow is prevented and temperature changes do not induce pain — so reducing thermal sensitivity is best achieved by <b>effective sealing of the dentinal tubules</b> rather than thermal insulation. The hydrodynamic theory is now generally accepted and has shifted restorative practice <b>away from thermal insulation toward dentinal sealing</b>, with increasing emphasis on the integrity of the restoration-preparation interface in adhesive restorations.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الهيدروديناميكية مقابل الصدمة الحرارية: الأثر السريري:</b> وفق <b>نظرية الصدمة الحرارية</b> كانت الحماية من تغيّر الحرارة بوضع <b>قاعدة عازلة</b> (كالسمنت) تحت الترميم. ووفق <b>النظرية الهيدروديناميكية</b>، إذا <b>سُدّت/أُغلقت الأنابيب</b> يُمنع التدفّق الخارجي السريع للسائل فلا تُحدث تغيّرات الحرارة ألماً — فتقليل الحساسية الحرارية أفضل بـ<b>سدّ الأنابيب العاجية بفعالية</b> لا بالعزل الحراري. والنظرية الهيدروديناميكية مقبولة عموماً الآن ونقلت الممارسة الترميمية <b>من العزل الحراري نحو سدّ العاج</b>، مع تركيز متزايد على سلامة بينية الترميم-التحضير في الترميمات اللاصقة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec21">Lec 4–5 · Dentin Defense in Depth</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Why the reactionary dentin barrier is superior</div>
+  <div class="prompt">Why does reactionary (reparative) dentin form an effective barrier, and what happens if the lesion is not treated?</div>
+  <div class="answer">
+    When a tooth is exposed to thermal, mechanical, or chemical stimuli over time, the rate, thickness, and organization of <b>reactionary dentin</b> depend on the <b>intensity and duration</b> of the stimulus. Its barrier is <b>superior because there is no tubular continuity</b> between the affected, permeable tubules of the regular primary dentin and those within the reactionary dentin — so diffusion toward the pulp is interrupted. The tooth thus compensates for traumatic/carious loss of peripheral dentin by depositing new dentin and reducing tubular permeability. <b>However</b>, unless the lesion is arrested or removed and a restoration placed, bacterial toxins continue to diffuse to the pulp, initiating a strong inflammatory response that can end in <b>pulp necrosis</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>لماذا حاجز العاج التفاعلي متفوّق:</b> عند تعرّض السن لمنبّهات حرارية أو ميكانيكية أو كيميائية عبر الزمن، يعتمد معدّل وسُمك وتنظيم <b>العاج التفاعلي</b> على <b>شدّة ومدّة</b> المنبّه. وحاجزه <b>متفوّق لعدم وجود استمرارية أنبوبية</b> بين أنابيب العاج الأولي المصابة النفوذة وتلك داخل العاج التفاعلي — فينقطع الانتشار نحو اللب. وهكذا يعوّض السن فقد العاج المحيطي الرضّي/التسوّسي بترسيب عاج جديد وتقليل نفاذية الأنابيب. <b>لكن</b> ما لم تُوقَف الآفة أو تُزَل ويُوضَع ترميم، تستمرّ السموم الجرثومية بالانتشار للّب مُطلقةً استجابة التهابية شديدة قد تنتهي بـ<b>النخر اللبّي</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Dead tracts</div>
+  <div class="prompt">What are dead tracts and how do they protect the pulp?</div>
+  <div class="answer">
+    <b>Dead tracts</b> are regions of <b>empty dentinal tubules</b> in primary dentin that result from <b>degeneration of the odontoblastic processes</b>, found under most carious cavities. At the <b>proximal (pulpal) end</b> of these tubules, the dead tract is <b>sealed off by a layer of impermeable calcified tissue</b>, which protects the pulp from further diffusion of irritants through those now-empty channels. Dead tracts are one of the recognized defensive reactions of the dentin-pulp complex, alongside reduced permeability, sclerotic dentin, and tertiary dentin formation.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>المسارات الميتة (Dead tracts):</b> هي مناطق من <b>الأنابيب العاجية الفارغة</b> في العاج الأولي تنتج من <b>تنكّس استطالات الأروماد</b>، وتوجد تحت معظم الحُفَر المتسوّسة. وعند <b>الطرف اللبّي</b> لهذه الأنابيب يُسدّ المسار الميت بـ<b>طبقة نسيج متكلّس غير نفوذ</b>، تحمي اللب من مزيد من انتشار المهيّجات عبر تلك القنوات الفارغة. والمسارات الميتة أحد التفاعلات الدفاعية المعروفة لمعقد اللب-العاج، إلى جانب خفض النفاذية والعاج المتصلّب وتكوين العاج الثالثي.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Regional permeability &amp; clinical relevance</div>
+  <div class="prompt">Why does regional dentin permeability matter for restoration margins?</div>
+  <div class="answer">
+    Dentin permeability is <b>not uniform</b>. <b>Coronal dentin is much more permeable than root dentin</b>, and within the crown the <b>occlusal pulpal floor is the least permeable</b> region — only about <b>30% of its tubules are patent</b> over their full length. In contrast, the <b>proximal box and gingival margins are located where dentin is most permeable</b>. This is clinically important because those same proximal/gingival areas are <b>most susceptible to microleakage and recurrent caries</b> — so extra care with sealing, marginal adaptation, and material choice (e.g., fluoride-releasing GI at gingival margins) is warranted there.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>النفاذية الإقليمية وأهميتها السريرية:</b> نفاذية العاج <b>غير منتظمة</b>. <b>العاج التاجي أنفذ بكثير من الجذري</b>، وضمن التاج تكون <b>الأرضية اللبية الإطباقية الأقلّ نفاذيةً</b> — نحو <b>30% فقط من أنابيبها مفتوحة</b> على كامل طولها. بالمقابل، يقع <b>الصندوق الداني والحواف اللثوية حيث العاج الأنفذ</b>. وهذا مهمّ سريرياً لأن هذه المناطق الدانية/اللثوية نفسها <b>الأكثر عرضةً للتسرّب الدقيق والتسوّس المتكرّر</b> — فتُبرَّر عناية إضافية بالسدّ والتكيّف الحافّي واختيار المادة (كأيونومر مطلِق للفلورايد عند الحواف اللثوية) هناك.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec22">Lec 2 · Restorative Sequencing Rationale</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Why disease-control sequencing follows severity</div>
+  <div class="prompt">Explain the rationale for sequencing disease-control restorations by severity, esthetics, and time.</div>
+  <div class="answer">
+    In the disease-control phase, active caries is stabilized with direct restorations (amalgam, composite, glass ionomer). Sequencing is dictated by three considerations working together: (1) <b>Severity</b> — the most symptomatic tooth, the tooth with the deepest lesion, or the most debilitated tooth is restored first, because these carry the highest risk of pulpal involvement or fracture if left untreated; (2) <b>Esthetic needs</b> — visible anterior problems may be prioritized for patient wellbeing; (3) <b>Effective use of time</b> — completing restorations <b>quadrant by quadrant</b> where possible minimizes anesthesia and isolation setups and optimizes chair time. At each appointment, treatment is directed to the area in most acute need.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>لماذا يتبع تسلسل ضبط المرض الشدّة:</b> في طور ضبط المرض يُثبَّت التسوّس النشط بترميمات مباشرة (أملغم، كمبوزِت، أيونومر زجاجي). ويحكم التسلسل ثلاثة اعتبارات معاً: (١) <b>الشدّة</b> — السن الأكثر عرَضاً أو ذو الآفة الأعمق أو الأكثر تهدّماً يُرمّم أولاً، لأنها الأعلى خطراً لإصابة اللب أو الكسر إن تُركت؛ (٢) <b>الحاجات الجمالية</b> — قد تُقدَّم المشاكل الأمامية الظاهرة لراحة المريض؛ (٣) <b>الاستخدام الفعّال للوقت</b> — إكمال الترميمات <b>ربعاً ربعاً</b> حيثما أمكن يقلّل إعدادات التخدير والعزل ويحسّن وقت الكرسي. وفي كل جلسة يُوجَّه العلاج للمنطقة الأكثر إلحاحاً.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec23">Lec 5 · Dentin Support &amp; Conservative Restoration</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Fracture resistance &amp; the conservative principle</div>
+  <div class="prompt">How does cavity size affect fracture resistance, and what conservative strategy follows?</div>
+  <div class="answer">
+    Tooth strength and rigidity depend on <b>intact dentin</b>. Fracture resistance falls significantly as the <b>depth and width of the preparation increase</b> — for example, a posterior tooth with an <b>endodontic access preparation retains only about one-third</b> of the fracture resistance of an intact tooth. This dictates a <b>conservative initial approach</b>: localized removal of carious structure, placement of a <b>bonded restoration</b>, and a sealant where indicated. Only when large amounts of structure are lost should the dentist consider an <b>inlay, onlay, or crown</b>. It is also noted that <b>high concentrations of bleaching agents</b> may adversely affect the fracture toughness of dentin.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مقاومة الكسر ومبدأ التحفّظ:</b> تعتمد قوّة السن وصلابته على <b>العاج السليم</b>. وتقلّ مقاومة الكسر كثيراً مع زيادة <b>عمق وعرض التحضير</b> — فمثلاً السن الخلفي بـ<b>فتحة معالجة لبية يحتفظ بنحو ثلث</b> مقاومة الكسر لسنّ سليم. وهذا يفرض <b>نهجاً أولياً متحفّظاً</b>: إزالة موضعية للبنية المسوّسة، ووضع <b>ترميم لاصق</b>، وسادّ عند الحاجة. ولا يُفكَّر بـ<b>inlay أو onlay أو تاج</b> إلا عند فقد كمّيات كبيرة من البنية. ويُلاحَظ أيضاً أن <b>التركيزات العالية لعوامل التبييض</b> قد تؤثّر سلباً على متانة كسر العاج.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Color &amp; discoloration from pulp changes</div>
+  <div class="prompt">How does dentin determine tooth color, and what causes darkening of the crown?</div>
+  <div class="answer">
+    Because the overlying enamel is <b>translucent</b>, the <b>coronal dentin provides the underlying color</b> of the crown — giving the white enamel its yellow hue, which is a deeper tone in permanent teeth. When the pulp becomes <b>infected or dies</b>, there is <b>discoloration of the dentin</b>, which shows through the translucent enamel as a <b>darkened clinical crown</b>. This is why shade assessment considers dentin, enamel thickness, and stains together — and why non-vital teeth often require internal (walking) bleaching or a veneer/crown for esthetic correction.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>اللون والتلوّن من تغيّرات اللب:</b> لأن المينا فوقه <b>شفّافة</b>، يوفّر <b>العاج التاجي اللون الأساسي</b> للتاج — مانحاً المينا البيضاء لونها الأصفر، وهو أعمق في الأسنان الدائمة. وحين يُصاب اللب بالعدوى أو <b>يموت</b>، يحدث <b>تلوّن العاج</b> الذي يظهر عبر المينا الشفّافة كـ<b>تاج سريري داكن</b>. لذا يراعي تقييم اللون العاجَ وسُمك المينا والبقع معاً — ولهذا تحتاج الأسنان غير الحيّة غالباً تبييضاً داخلياً (walking) أو قشرة/تاجاً للتصحيح الجمالي.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec24">Lec 1–2 · Test Interpretation &amp; Occlusal Management</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Interpreting pulp &amp; percussion tests cautiously</div>
+  <div class="prompt">What cautions apply when interpreting pulp vitality and percussion tests?</div>
+  <div class="answer">
+    <b>Electric pulp tester:</b> it indicates only whether vital nerve tissue responds — it does <b>not</b> reflect the pulp's health or prognosis, cannot be used reliably in a <b>wet field</b> or on <b>metallic restorations</b> (unless adjacent teeth are insulated). <b>Thermal tests</b> add information (lingering pain suggests irreversible change), and a <b>test cavity</b> is a last resort confirming vitality by pain on cutting dentin without anesthesia. <b>Percussion:</b> a positive response suggests periodontal-membrane injury from pulpal or periodontal inflammation — but on <b>maxillary teeth near the sinus</b>, maxillary sinusitis can also cause percussion pain, so correlate with history and other findings before concluding.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تفسير اختبارات اللب والطرق بحذر:</b> <b>الاختبار الكهربائي:</b> يدلّ فقط على استجابة نسيج عصبي حيّ — ولا <b>يعكس</b> صحة اللب أو إنذاره، ولا يُستخدم بموثوقية في <b>وسط رطب</b> أو على <b>ترميمات معدنية</b> (إلا بعزل المجاورة). و<b>الاختبارات الحرارية</b> تضيف معلومات (الألم المتأخّر يوحي بتغيّر لا رجعي)، و<b>حفرة الاختبار</b> ملاذ أخير يؤكّد الحيوية بالألم عند قطع العاج بلا تخدير. <b>الطرق:</b> الاستجابة الإيجابية توحي بإصابة الرباط حول السني من التهاب لبّي أو لثوي — لكن في <b>الأسنان العلوية قرب الجيب</b>، قد يسبّب التهاب الجيب الفكي ألم طرق أيضاً، فاربط بالقصة والموجودات الأخرى قبل الاستنتاج.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Managing occlusal wear (attrition)</div>
+  <div class="prompt">How is occlusal wear from attrition/parafunction managed, and why does it matter for restorations?</div>
+  <div class="answer">
+    Excessive occlusal wear from <b>parafunction (bruxism)</b> produces well-matching <b>facets</b> on opposing teeth and can flatten cusps, expose dentin, and even lose cusps entirely. Management combines <b>an occlusal resin appliance (night guard/bite plane)</b> to protect teeth from further wear, and <b>patient education</b> about the habit. This matters for restorations because heavy occlusal load and parafunction predispose to material wear and fracture — so the <b>cavity outline should be designed so that restoration margins avoid critical high-stress areas of occlusal contact</b>, and material selection/cuspal coverage should account for the load.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>إدارة التآكل الإطباقي (Attrition):</b> التآكل الإطباقي المفرط من <b>الوظيفة الشاذّة (صرير)</b> ينتج <b>أوجهاً متطابقة</b> على الأسنان المتقابلة وقد يُسطّح الحدبات ويكشف العاج بل يفقدها كلياً. وتجمع الإدارة <b>جهازاً راتنجياً إطباقياً (واقٍ ليلي/مستوى عضّ)</b> لحماية الأسنان من مزيد من التآكل، و<b>تثقيف المريض</b> عن العادة. ويهمّ هذا للترميمات لأن الحمل الإطباقي الشديد والوظيفة الشاذّة يهيّئان لتآكل المادة وكسرها — لذا <b>يُصمَّم الشكل الخارجي للحفرة بحيث تتجنّب حواف الترميم مناطق التماس الإطباقي عالية الإجهاد</b>، ويُراعى الحملُ في اختيار المادة/تغطية الحدبات.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec25">Lec 3–4 · Enamel–Dentin Interface &amp; Aging</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Why enamel needs a dentin base</div>
+  <div class="prompt">Explain, using enamel and dentin properties, why enamel must be supported by dentin.</div>
+  <div class="answer">
+    Enamel is the <b>hardest</b> tissue in the body (HV ≈ 275, 4–5× dentin) but it is also <b>very brittle</b> with a low tensile strength (<b>~10 MPa</b> vs dentin's <b>~98 MPa</b>). Brittle materials fail suddenly under tensile or flexural load. Dentin, though softer, is <b>flexible and elastic</b>, so it acts as a <b>resilient cushion that absorbs heavy occlusal loads</b> and lets the whole tooth deform slightly without cracking. Enamel rods that <b>lose their dentin base</b> — through caries or an over-cut cavity that leaves unsupported enamel — <b>fracture away easily</b> from neighboring rods. This is the biologic reason a cavity design must never leave unsupported enamel and must respect rod direction at the margins.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>لماذا تحتاج المينا قاعدة عاج:</b> المينا أصلب أنسجة الجسم (HV ≈ 275، 4–5 أضعاف العاج) لكنها <b>هشّة جداً</b> بقوّة شدّ منخفضة (<b>~10 ميغاباسكال</b> مقابل <b>~98</b> للعاج). والمواد الهشّة تفشل فجأةً تحت حمل شدّ أو انثناء. أما العاج فرغم طراوته <b>مرن ومطّاطي</b>، فيعمل كـ<b>وسادة مرنة تمتصّ الأحمال الإطباقية الثقيلة</b> وتسمح للسن كله بالتشوّه قليلاً دون تشقّق. وقضبان المينا التي <b>تفقد قاعدتها العاجية</b> — بالتسوّس أو حفرة مفرطة تترك مينا غير مسنودة — <b>تتكسّر بسهولة</b> عن القضبان المجاورة. وهذا السبب البيولوجي لوجوب ألا يترك تصميم الحفرة مينا غير مسنودة وأن يحترم اتجاه القضبان عند الحواف.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Aging changes in enamel &amp; dentin</div>
+  <div class="prompt">Summarize how enamel and dentin change with age and the clinical consequences.</div>
+  <div class="answer">
+    <b>Enamel</b> becomes more worn (attrition), may crack, and its surface stains accumulate; because enamel is semipermeable, long-term fluoride exposure lowers its acid solubility over time.<br>
+  <b>Dentin</b> shows several age changes: continuous <b>secondary dentin</b> deposition narrows the pulp chamber occluso-gingivally (<b>reducing pulp-exposure risk</b> during preparation in older patients); <b>peritubular dentin thickens</b> and tubules progressively fill (<b>physiologic sclerosis</b>) → dentin becomes harder, denser, less permeable, and <b>less sensitive</b>; and mineral content rises overall. Clinically, older teeth are <b>less sensitive and more protected</b> but their <b>reduced pulp size</b> and brittleness must be respected when designing preparations and placing retentive features such as pins.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تغيّرات المينا والعاج مع العمر:</b> <b>المينا</b> تزداد تآكلاً (attrition)، وقد تتشقّق، وتتراكم بقع سطحها؛ ولأنها شبه نفوذة يخفض تعرّض الفلورايد الطويل ذوبانيتها الحمضية مع الوقت. <b>العاج</b> يُظهر عدّة تغيّرات عمرية: ترسّب <b>العاج الثانوي</b> المستمرّ يضيّق حجرة اللب إطباقياً-لثوياً (<b>يقلّل خطر كشف اللب</b> أثناء التحضير لدى كبار السن)؛ و<b>يثخن العاج حول الأنبوبي</b> وتمتلئ الأنابيب تدريجياً (<b>تصلّب فيزيولوجي</b>) ← يصير العاج أقسى وأكثف وأقلّ نفاذيةً و<b>أقلّ حساسية</b>؛ ويرتفع المحتوى المعدني إجمالاً. وسريرياً تكون الأسنان الأكبر <b>أقلّ حساسية وأكثر حمايةً</b> لكن يجب احترام <b>صغر حجم اللب</b> وهشاشتها عند تصميم التحضيرات ووضع وسائل الإرساء كالدبابيس.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec26">Lec 5 · Smear Layer in Adhesive Dentistry</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Smear layer — friend or obstacle?</div>
+  <div class="prompt">What is the smear layer, and why is it viewed differently by total-etch and self-etch philosophies?</div>
+  <div class="answer">
+    When dentin is cut with a bur, the exposed tubules are covered by a tenacious layer of grinding debris called the <b>smear layer</b>, which adheres to the surface and partially plugs the tubular orifices. On one hand this naturally <b>lowers dentin permeability</b> and limits fluid/bacterial movement — a protective effect. On the other hand it is only <b>weakly attached</b> and contains bacteria and debris, so it is an unreliable bonding substrate. <b>Total-etch</b> philosophy <b>removes the smear layer</b> with 37% phosphoric acid to open the tubules for resin infiltration and hybrid-layer formation, but this raises local permeability and outward fluid flow, which can reduce long-term bond strength if moisture control is poor. <b>Self-etch</b> philosophy <b>keeps the smear layer</b>, partially demineralizing and incorporating it with a self-etching primer, reducing post-operative sensitivity. The choice reflects a trade-off between maximal bond and tubule-sealing/technique-forgiveness.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br>عند قطع العاج بالبُرّ تُغطّى الأنابيب المكشوفة بطبقة عنيدة من براده الطحن تُسمّى <b>الطبقة الملطّخة (smear layer)</b>، تلتصق بالسطح وتسدّ فوّهات الأنابيب جزئياً. من جهة تُخفّض هذه طبيعياً <b>نفاذية العاج</b> وتحدّ من حركة السوائل/الجراثيم — أثر واقٍ. ومن جهة أخرى هي <b>ضعيفة الارتباط</b> وتحوي جراثيم وفتاتاً، فهي أساس ربط غير موثوق. فلسفة <b>total-etch</b> <b>تزيل الطبقة</b> بحمض الفوسفوريك 37% لفتح الأنابيب لترشيح الراتنج وتكوين الطبقة الهجينة، لكن هذا يرفع النفاذية الموضعية والتدفّق الخارجي للسائل مما قد يقلّل قوّة الربط بعيدة المدى إن ساء التحكّم بالرطوبة. وفلسفة <b>self-etch</b> <b>تُبقي الطبقة</b>، مزيلةً معادنها جزئياً ومُدمِجةً إياها بمُمهّد ذاتي الحفر، فتقلّل الحساسية بعد العلاج. والاختيار يعكس موازنةً بين أقصى ربط وسدّ الأنابيب/التسامح التقني.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="foot">
+✅ غطّى هذا الملف مادة اليوم الخامس — المعالجة (Operative) ص 141–210، وهي مادة تأسيسية بيولوجية: تقييم المريض (كشف التسوّس، اختبارات اللب، الطرق والجس)، تقييم الترميمات الموجودة والإطباق والتآكل ومتلازمة السن المشقوق، تقييم النسيج حول السني والأشعة والنماذج والخطة العلاجية وتسلسلها، بيولوجيا المينا (الأروماد، البنية، الحفر الحمضي، اتجاه القضبان، الخصائص، المظهر السريري)، بيولوجيا العاج (التكوّن، الأنابيب، DEJ، التركيب، الأنواع، التصلّب، العاج الأولي/الثانوي/الثالثي، الوظيفة، النفاذية والتسرّب، ونظريات الحساسية الأربع)، الآفات العنقية التسوّسية وغير التسوّسية (Erosion/Abrasion/Abfraction) وعلاج Cl V وتقنية الساندويتش، ومهيّجات اللب (الحرارة/الليزر/السحل الهوائي) ودفاعات معقد اللب-العاج.<br><br>
+عدد الكلمات (إنجليزي + عربي): <b>10098</b> كلمة.
+</div>
+
+<script>
+const total=54;
+function upd(){
+  let done=document.querySelectorAll('.card[data-done="1"]').length;
+  document.getElementById('score').textContent=done+' / '+total;
+  document.getElementById('fill').style.width=(done/total*100)+'%';
+}
+function revealCard(b){
+  const card=b.closest('.card');
+  card.querySelector('.answer').classList.add('show');
+  b.style.display='none';
+  card.querySelector('.got').style.display='inline-block';
+  card.querySelector('.rev').style.display='inline-block';
+}
+function rate(b,good){
+  const card=b.closest('.card');
+  card.setAttribute('data-done',good?'1':'2');
+  upd();
+}
+function revealAll(){
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelector('.answer').classList.add('show');
+    c.querySelector('.reveal').style.display='none';
+    c.querySelector('.got').style.display='inline-block';
+    c.querySelector('.rev').style.display='inline-block';
+  });
+}
+function hideAll(){
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelector('.answer').classList.remove('show');
+    c.querySelector('.reveal').style.display='inline-block';
+    c.querySelector('.got').style.display='none';
+    c.querySelector('.rev').style.display='none';
+  });
+}
+function resetAll(){
+  document.querySelectorAll('.card').forEach(c=>c.setAttribute('data-done','0'));
+  hideAll();upd();
+}
+upd();
+</script>
+</body>
+</html>
