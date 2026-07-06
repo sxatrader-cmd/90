@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Week 1 Consolidation — Active Recall Review</title>
+<style>
+:root{color-scheme:light only;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{background:#ffffff !important;color:#000000 !important;}
+@media (prefers-color-scheme:dark){
+  html,body{background:#ffffff !important;color:#000000 !important;}
+  .card,.hint,.topbar,.toc{background:#ffffff !important;color:#000000 !important;}
+}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;padding:0 14px 120px;line-height:1.65;font-size:17px;}
+h1{font-size:22px;margin:18px 0 4px;}
+.subtitle{color:#444;font-size:14px;margin:0 0 14px;}
+.topbar{position:sticky;top:0;background:#fff !important;border-bottom:2px solid #000;padding:10px 0;z-index:50;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.score{font-weight:700;font-size:15px;}
+.bar{flex:1;min-width:120px;height:12px;background:#eee;border:1px solid #000;border-radius:6px;overflow:hidden;}
+.bar>i{display:block;height:100%;width:0;background:#000;transition:width .3s;}
+.controls button{font-size:13px;padding:6px 10px;border:1px solid #000;background:#fff;border-radius:8px;cursor:pointer;}
+.toc{background:#fff;border:2px solid #000;border-radius:12px;padding:12px 14px;margin:14px 0;}
+.toc b{display:block;margin-bottom:6px;}
+.toc a{display:block;color:#000;text-decoration:none;padding:5px 0;border-bottom:1px dashed #ccc;font-size:15px;}
+.toc a:last-child{border-bottom:0;}
+h2.sec{font-size:18px;border-left:6px solid #000;padding:8px 12px;margin:30px 0 14px;background:#f3f3f3;border-radius:0 8px 8px 0;}
+.card{border:2px solid #000;border-radius:14px;padding:14px 16px;margin:14px 0;background:#fff !important;}
+.card[data-done="1"]{border-color:#157f3b;background:#f3fbf5 !important;}
+.card[data-done="2"]{border-color:#b00;background:#fff7f7 !important;}
+.topic{font-weight:700;font-size:15px;color:#000;margin-bottom:6px;letter-spacing:.2px;text-transform:uppercase;}
+.prompt{font-size:17px;font-weight:600;margin-bottom:10px;}
+.answer{display:none;border-top:1px dashed #999;padding-top:10px;margin-top:4px;}
+.answer.show{display:block;animation:fade .25s;}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.answer ol,.answer ul{margin:6px 0;padding-inline-start:22px;}
+.answer li{margin:4px 0;}
+.answer table{border-collapse:collapse;width:100%;margin:8px 0;font-size:15px;}
+.answer th,.answer td{border:1px solid #000;padding:6px 8px;text-align:left;}
+.answer th{background:#eee;}
+.k{background:#ffd400;color:#b00000 !important;font-weight:700;padding:0 4px;border-radius:3px;}
+.hint{direction:rtl;text-align:right;background:#fff;border:1px solid #000;border-radius:10px;padding:10px 12px;margin-top:12px;font-size:16px;line-height:1.8;}
+.hint .hl{background:#ffd400;color:#b00;font-weight:700;padding:0 5px;border-radius:3px;}
+.hint b{color:#b00000;}
+.btns{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;}
+.btns button{font-size:15px;padding:9px 14px;border-radius:10px;border:2px solid #000;background:#fff;cursor:pointer;font-weight:600;}
+.btns .got{border-color:#157f3b;color:#157f3b;}
+.btns .rev{border-color:#b00;color:#b00;}
+.btns .reveal{background:#000;color:#fff;}
+.foot{margin-top:30px;border-top:2px solid #000;padding-top:14px;font-size:14px;color:#333;}
+.note{background:#ffd400;color:#000;border:1px solid #000;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:15px;}
+</style>
+</head>
+<body>
+<h1>مراجعة تثبيت الأسبوع الأول 🔄</h1>
+<p class="subtitle">يوم التثبيت (اليوم ٧) · استرجاع نشط لأهمّ نقاط الأسبوع: حشوات الجذور (يومان) + المعالجة كاملةً (٤ أيام) · 26 بطاقة عالية العائد · اقرأ السؤال، استرجع الإجابة بصوتك، ثم اكشفها</p>
+
+<div class="topbar">
+  <span class="score" id="score">0 / 26</span>
+  <span class="bar"><i id="fill"></i></span>
+  <span class="controls">
+    <button onclick="revealAll()">اكشف الكل</button>
+    <button onclick="hideAll()">إخفاء</button>
+    <button onclick="resetAll()">تصفير</button>
+  </span>
+</div>
+
+<div class="note">⭐ = أقسام عالية الأهمية (high-yield). اقرأ السؤال، حاول الإجابة من ذاكرتك، ثم اكشف الجواب وقيّم نفسك.</div>
+
+<div class="toc">
+<b>المحتويات · Contents</b>
+<a href="#sec0">⭐ حشوات الجذور · تشريح اللب والتشخيص ⭐</a>
+<a href="#sec1">⭐ حشوات الجذور · التحضير والأدوات وطول العمل ⭐</a>
+<a href="#sec2">⭐ المعالجة · التسميات وتصنيف G.V. Black ⭐</a>
+<a href="#sec3">⭐ المعالجة · التعقيم والأملغم ⭐</a>
+<a href="#sec4">⭐ المعالجة · الكمبوزِت والالتصاق ⭐</a>
+<a href="#sec5">⭐ المعالجة · بيولوجيا المينا والعاج ⭐</a>
+<a href="#sec6">⭐ المعالجة · الآفات العنقية والسن المشقوق ⭐</a>
+<a href="#sec7">⭐ المعالجة · اللب الحيوي والفلورايد والترميمات غير المباشرة ⭐</a>
+</div>
+
+<h2 class="sec" id="sec0">⭐ حشوات الجذور · تشريح اللب والتشخيص ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Pulp anatomy &amp; functions</div>
+  <div class="prompt">Pulp zones (outer→inner) and its four functions?</div>
+  <div class="answer">
+    Zones: <b>odontoblastic layer</b> → <b>cell-free zone of Weil</b> → <b>cell-rich zone</b> → <b>pulp core</b>.<br>
+  Functions: <span class="k">Formative</span> (dentin), <span class="k">Nutritive</span>, <span class="k">Sensory</span> (pain only), <span class="k">Defensive/protective</span> (tertiary dentin, immune).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مناطق اللب (من الخارج للداخل):</b> الطبقة الأروماديّة ← منطقة Weil الخالية من الخلايا ← المنطقة الغنية بالخلايا ← لبّ المركز. <b>الوظائف الأربع:</b> <b>التكوينية</b> (العاج)، <b>التغذوية</b>، <b>الحسّية</b> (ألم فقط)، <b>الدفاعية</b> (عاج ثالثي + مناعة).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Pulp vitality tests logic</div>
+  <div class="prompt">What do thermal and EPT tests actually measure, and their key limits?</div>
+  <div class="answer">
+    <b>Thermal (cold/hot):</b> assess pulp response; lingering pain = <b>irreversible pulpitis</b>. <b>EPT:</b> tests nerve response only — <b>does NOT reflect pulp health/prognosis</b>; fails on wet field/metal restorations. <b>Percussion</b> = periapical (PDL) status, not pulp.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الحراري (بارد/ساخن):</b> يقيس استجابة اللب؛ والألم المتأخّر = <b>التهاب لا رجعي</b>. <b>EPT:</b> يختبر استجابة العصب فقط — <b>لا يعكس صحة اللب/إنذاره</b>؛ ويفشل في الوسط الرطب/الترميمات المعدنية. و<b>الطرق</b> = حالة ما حول القمة (PDL) لا اللب.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Irreversible vs reversible pulpitis</div>
+  <div class="prompt">Key distinction between reversible and irreversible pulpitis?</div>
+  <div class="answer">
+    <b>Reversible:</b> sharp pain to stimulus that <b>stops when stimulus removed</b>; no spontaneous pain. <b>Irreversible:</b> <b>spontaneous, lingering</b> pain (lasts after stimulus gone), may worsen lying down → needs RCT or extraction.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الرجعي:</b> ألم حادّ للمنبّه <b>يزول بزوال المنبّه</b>؛ بلا ألم تلقائي. <b>اللا رجعي:</b> ألم <b>تلقائي متأخّر</b> (يستمرّ بعد زوال المنبّه)، قد يشتدّ بالاستلقاء ← يحتاج معالجة لبية أو قلعاً.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec1">⭐ حشوات الجذور · التحضير والأدوات وطول العمل ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Access opening objectives</div>
+  <div class="prompt">Three objectives of endodontic access cavity?</div>
+  <div class="answer">
+    (1) <b>Straight-line access</b> to canal orifices/apical third; (2) <b>conserve</b> sound tooth structure; (3) <b>unroof the pulp chamber</b> completely (remove all roof + pulp horns). Access shapes: <b>triangular</b> (anteriors/maxillary molars), <b>rhomboidal</b> (maxillary molars), <b>trapezoidal</b> (mandibular molars).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أهداف فتحة الوصول:</b> (١) <b>وصول مستقيم</b> لفوّهات القنوات/الثلث القمي؛ (٢) <b>حفظ</b> البنية السليمة؛ (٣) <b>إزالة سقف حجرة اللب</b> كلياً (كل السقف + قرون اللب). <b>الأشكال:</b> <b>مثلثي</b> (الأمامية)، <b>معيّني</b> (الأرحاء العلوية)، <b>شبه منحرف</b> (الأرحاء السفلية).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Working length</div>
+  <div class="prompt">What is the ideal apical endpoint, and how is working length determined?</div>
+  <div class="answer">
+    Ideal endpoint = the <span class="k">apical constriction (minor foramen / CDJ)</span>, ~<b>0.5–1 mm short of the radiographic apex</b>. Determined by: <b>electronic apex locator</b> (most accurate) + <b>radiograph</b>; tactile sense as adjunct.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>النقطة القمية المثالية</b> = <b>التضيّق القمي (الثقبة الصغرى / CDJ)</b>، ~<b>0.5–1مم قبل القمة الشعاعية</b>. ويُحدَّد بـ<b>محدّد الذروة الإلكتروني</b> (الأدقّ) + <b>الأشعة</b>؛ والإحساس اللمسي مساعد.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Irrigation — NaOCl</div>
+  <div class="prompt">Main irrigant, its role, and what removes the smear layer?</div>
+  <div class="answer">
+    <b>NaOCl (2.5–5.25%):</b> the primary irrigant — dissolves organic tissue, antibacterial, lubricant. It does <b>NOT</b> remove the inorganic smear layer → use <b>EDTA 17%</b> (chelates) for that. Final rinse often <b>chlorhexidine 2%</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>NaOCl (2.5–5.25%):</b> المروّي الأساسي — يذيب النسيج العضوي، مضاد جراثيم، مزلّق. لكنه <b>لا</b> يزيل الطبقة الملطّخة اللاعضوية ← استخدم <b>EDTA 17%</b> (مخلّب) لذلك. والشطف النهائي غالباً <b>كلورهيكسيدين 2%</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Obturation</div>
+  <div class="prompt">Obturation goal, standard material, and main techniques?</div>
+  <div class="answer">
+    Goal: <b>3-D hermetic seal</b> of the canal system. Material: <b>gutta-percha + sealer</b> (GP is the core; sealer fills voids). Techniques: <b>cold lateral compaction</b> (standard), <b>warm vertical compaction</b>, single-cone. Resilon = a resin-based GP alternative.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الهدف:</b> <b>سدّ محكم ثلاثي الأبعاد</b> لنظام القناة. <b>المادة:</b> <b>غوتّا بيركا + سيلر</b> (GP اللبّ؛ والسيلر يملأ الفراغات). <b>التقنيات:</b> <b>الكبس الجانبي البارد</b> (المعياري)، <b>الكبس العمودي الساخن</b>، المخروط المفرد. وResilon بديل راتنجي للـGP.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec2">⭐ المعالجة · التسميات وتصنيف G.V. Black ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">G.V. Black classification</div>
+  <div class="prompt">Recall Black's six classes of cavities.</div>
+  <div class="answer">
+    <b>I:</b> pits & fissures (occlusal, buccal/lingual pits, palatal of incisors).<br>
+  <b>II:</b> proximal of <b>posteriors</b>.<br>
+  <b>III:</b> proximal of <b>anteriors, NO incisal angle</b>.<br>
+  <b>IV:</b> proximal of anteriors <b>WITH incisal angle</b>.<br>
+  <b>V:</b> gingival third (cervical) of all teeth.<br>
+  <b>VI:</b> incisal edges / cusp tips (Simon's addition).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>I:</b> الحُفَر والشقوق (إطباقي، حُفَر شدقية/لسانية، حنكي القواطع). <b>II:</b> داني <b>الخلفية</b>. <b>III:</b> داني <b>الأمامية بلا زاوية قاطعة</b>. <b>IV:</b> داني الأمامية <b>مع الزاوية القاطعة</b>. <b>V:</b> الثلث اللثوي (العنقي) لكل الأسنان. <b>VI:</b> الحواف القاطعة/رؤوس الحدبات (إضافة Simon).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Cavity walls &amp; angles</div>
+  <div class="prompt">Difference between a line angle and a point angle; name the axial vs pulpal wall.</div>
+  <div class="answer">
+    <b>Line angle</b> = junction of <b>two</b> walls; <b>point angle</b> = junction of <b>three</b> walls. <b>Pulpal wall</b> = perpendicular to long axis (floor of occlusal); <b>axial wall</b> = parallel to long axis (internal wall of Cl II/III/V).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الزاوية الخطّية</b> = التقاء <b>جدارين</b>؛ <b>الزاوية النقطية</b> = التقاء <b>ثلاثة</b>. <b>الجدار اللبّي</b> = عمودي على المحور (أرضية الإطباقي)؛ <b>الجدار المحوري</b> = موازٍ للمحور (الجدار الداخلي لـCl II/III/V).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Steps of cavity prep (Black)</div>
+  <div class="prompt">Initial vs final stage steps of cavity preparation?</div>
+  <div class="answer">
+    <b>Initial:</b> outline form → resistance form → retention form → convenience form. <b>Final:</b> remove remaining caries/old material → pulp protection → finish enamel walls/margins → toilet (clean/inspect) the cavity.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الأولية:</b> الشكل الخارجي ← شكل المقاومة ← شكل الإرساء ← شكل الملاءمة. <b>النهائية:</b> إزالة التسوّس/المادة القديمة المتبقية ← حماية اللب ← إنهاء جدران/حواف المينا ← تنظيف وفحص الحفرة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec3">⭐ المعالجة · التعقيم والأملغم ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Sterilization methods</div>
+  <div class="prompt">The four sterilization methods and the autoclave standard?</div>
+  <div class="answer">
+    Steam (<b>autoclave</b>), dry heat, chemical vapor, ethylene oxide gas. Autoclave standard: <span class="k">121°C at 15 psi for 15–20 min</span> (or 134°C/~3 min). Sterilization = kills <b>all</b> microbes incl. spores; disinfection does not.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الطرق:</b> البخار (<b>الأوتوكلاف</b>)، الحرارة الجافة، البخار الكيميائي، غاز أكسيد الإيثيلين. معيار الأوتوكلاف: <b>121°م عند 15 psi لمدة 15–20د</b> (أو 134°م/~3د). التعقيم يقتل <b>كل</b> الميكروبات بما فيها الأبواغ؛ التطهير لا.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Complex amalgam — cusp capping &amp; pins</div>
+  <div class="prompt">When cap a cusp, and rank pin retention by type?</div>
+  <div class="answer">
+    Cap when occlusal facio-lingual extension <b>&gt; ⅔ intercuspal distance</b>; reduce <b>≥2 mm</b>. Pin retention: <b>self-threading &gt; friction-locked &gt; cemented</b>. One pin per cusp; keep 3–5 mm apart; extend ≤2 mm into dentin/amalgam.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>غطِّ الحدبة</b> حين يتجاوز الامتداد الدهليزي-اللساني الإطباقي <b>ثلثي المسافة بين الحدبات</b>؛ خفّض <b>≥2مم</b>. <b>إرساء الدبابيس:</b> <b>ذاتي اللولبة &gt; احتكاكي &gt; مُسمنت</b>. دبوس لكل حدبة؛ 3–5مم بينها؛ الامتداد ≤2مم في العاج/الأملغم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Amalgam failure causes</div>
+  <div class="prompt">Main causes of amalgam restoration failure?</div>
+  <div class="answer">
+    <b>Secondary caries</b> (most common), isthmus/marginal-ridge fracture (un-rounded axiopulpal angle), tooth fracture (thin walls/sharp angles), marginal deterioration (excess mercury, low-copper, poor carving), gingival overhang.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التسوّس الثانوي</b> (الأشيع)، كسر الـisthmus/الحافة الحُفّية (زاوية axiopulpal غير مدوّرة)، كسر السن (جدران رقيقة/زوايا حادّة)، تدهور الحافة (فائض زئبق، منخفض النحاس، نحت رديء)، وoverhang لثوي.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec4">⭐ المعالجة · الكمبوزِت والالتصاق ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Composite composition</div>
+  <div class="prompt">Four key components of composite and each role?</div>
+  <div class="answer">
+    <b>Resin matrix</b> (BIS-GMA/UDMA) — backbone; <b>inorganic filler</b> — ↓shrinkage/thermal exp., ↑strength; <b>silane coupling agent</b> — binds filler↔resin, transfers stress; <b>initiator</b> (camphorquinone) — starts polymerization.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>المطرس الراتنجي</b> (BIS-GMA/UDMA) — العمود الفقري؛ <b>الحشوة اللاعضوية</b> — ↓الانكماش/التمدّد الحراري، ↑القوّة؛ <b>عامل السيلان</b> — يربط الحشوة↔الراتنج وينقل الإجهاد؛ <b>البادئ</b> (كامفوركينون) — يبدأ البلمرة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">C-factor &amp; incremental placement</div>
+  <div class="prompt">What is C-factor, and how is shrinkage stress reduced?</div>
+  <div class="answer">
+    <b>C-factor</b> = ratio of bonded : unbonded surfaces. High C-factor (<b>Cl I & V</b>) = highest shrinkage stress. Reduce by: <b>incremental layering ≤2 mm</b>, non-bonded microfiller, and the sandwich/flowable liner.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>C-factor</b> = نسبة الأسطح الملتصقة : غير الملتصقة. العالي (<b>Cl I وV</b>) = أعلى إجهاد انكماش. ويُقلَّل بـ<b>الطبقات ≤2مم</b>، والـmicrofiller غير الملتصق، وبطانة الساندويتش/الـflowable.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Enamel vs dentin etching</div>
+  <div class="prompt">Etch times and the hybrid layer?</div>
+  <div class="answer">
+    <b>Enamel:</b> 37% phosphoric acid <b>15–30 s</b> → frosty white, ~30 MPa bond via resin tags. <b>Dentin:</b> <b>10–15 s</b> (removes smear layer); resin infiltrates collagen → <span class="k">hybrid layer</span> (seals tubules, acid-resistant).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>المينا:</b> حمض فوسفوريك 37% لـ<b>15–30ث</b> ← أبيض صقيعي، إرساء ~30 ميغاباسكال عبر resin tags. <b>العاج:</b> <b>10–15ث</b> (يزيل الطبقة الملطّخة)؛ الراتنج يرشّح الكولاجين ← <b>الطبقة الهجينة</b> (تسدّ الأنابيب، تقاوم الحمض).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Bonding generations</div>
+  <div class="prompt">Total-etch vs self-etch generations?</div>
+  <div class="answer">
+    <b>Total-etch (etch & rinse):</b> 4th = 3-step (etch/primer/bond); 5th = 2-step (etch, then primer+bond). <b>Self-etch:</b> 6th = 2-step (self-etch primer, then bond); 7th = 1-step (all-in-one).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>Total-etch (حفر وشطف):</b> الرابع = 3 خطوات (حفر/تمهيد/ربط)؛ الخامس = خطوتان (حفر ثم تمهيد+ربط). <b>Self-etch:</b> السادس = خطوتان (مُمهّد ذاتي الحفر ثم ربط)؛ السابع = خطوة واحدة (الكل في واحد).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec5">⭐ المعالجة · بيولوجيا المينا والعاج ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Enamel key numbers</div>
+  <div class="prompt">Composition, hardness, and why enamel needs dentin support?</div>
+  <div class="answer">
+    ~<b>90% inorganic</b> hydroxyapatite, 4–12% water; hardest tissue (HV ~275, 4–5× dentin) but <b>very brittle</b> (tensile ~10 MPa). Needs a flexible <b>dentin base</b> (tensile ~98 MPa) to absorb occlusal load — unsupported rods fracture easily.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br>~<b>90% لاعضوي</b> هيدروكسي أباتيت، 4–12% ماء؛ أصلب نسيج (HV ~275، 4–5 أضعاف العاج) لكنه <b>هشّ جداً</b> (شدّ ~10 ميغاباسكال). يحتاج <b>قاعدة عاج</b> مرنة (شدّ ~98) لامتصاص الحمل — والقضبان غير المسنودة تتكسّر بسهولة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Dentin tubules &amp; types</div>
+  <div class="prompt">Tubule density gradient and intertubular vs peritubular dentin?</div>
+  <div class="answer">
+    Tubules: <b>15–20k/mm² at DEJ → 45–65k/mm² at pulp</b>; wider near pulp → inner dentin ~8× more permeable. <b>Intertubular</b> = collagen bulk between tubules; <b>peritubular</b> = hypermineralized tubule lining (thickens with age = <b>sclerosis</b>).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الأنابيب:</b> <b>15–20 ألف/مم² عند DEJ ← 45–65 ألف/مم² عند اللب</b>؛ أوسع قرب اللب ← العاج الداخلي أنفذ ~8 أضعاف. <b>بين الأنبوبي</b> = كتلة الكولاجين بين الأنابيب؛ <b>حول الأنبوبي</b> = بطانة عالية التمعدن (تثخن مع العمر = <b>التصلّب</b>).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Tertiary dentin</div>
+  <div class="prompt">Reactionary vs reparative dentin?</div>
+  <div class="answer">
+    <b>Reactionary:</b> made by <b>surviving original odontoblasts</b> (mild stimulus); superior barrier (no tubular continuity). <b>Reparative:</b> when odontoblasts <b>die</b>, new odontoblast-like cells form irregular atubular dentin (~15 days–3 wk).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التفاعلي:</b> تصنعه <b>الأروماد الأصلية الناجية</b> (منبّه خفيف)؛ حاجز متفوّق (لا استمرارية أنبوبية). <b>الترميمي:</b> حين <b>تموت</b> الأروماد، تكوّن خلايا شبيهة عاجاً غير منتظم عديم الأنابيب (~15 يوماً–3 أسابيع).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Dentin sensitivity — accepted theory</div>
+  <div class="prompt">Which theory explains dentin sensitivity, and the clinical implication?</div>
+  <div class="answer">
+    <span class="k">Hydrodynamic theory</span> (accepted): stimuli speed outward tubular fluid flow → stretch nerve endings → pain. Clinical: reduce sensitivity by <b>occluding/sealing tubules</b> (bonding, oxalates, fluoride, K-nitrate, Ca-silicate) — not thermal insulation.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>النظرية الهيدروديناميكية</b> (المقبولة): المنبّهات تسرّع تدفّق السائل الأنبوبي للخارج ← تشدّ النهايات العصبية ← ألم. سريرياً: تُقلَّل الحساسية بـ<b>سدّ/إغلاق الأنابيب</b> (ربط، أكسالات، فلورايد، نترات البوتاسيوم، سيليكات كالسيوم) — لا بالعزل الحراري.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec6">⭐ المعالجة · الآفات العنقية والسن المشقوق ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">NCCL types</div>
+  <div class="prompt">Differentiate erosion, abrasion, and abfraction.</div>
+  <div class="answer">
+    <b>Erosion:</b> chemical (acid) → rounded cupped defects. <b>Abrasion:</b> mechanical friction (over-brushing) → <b>V-shaped notches</b>. <b>Abfraction:</b> flexural occlusal load → cervical microfractures (bruxism). Management: <b>eliminate the cause</b> first.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>Erosion:</b> كيميائي (حمض) ← عيوب مدوّرة مقعّرة. <b>Abrasion:</b> احتكاك ميكانيكي (تفريش مفرط) ← <b>أخاديد V</b>. <b>Abfraction:</b> حمل إطباقي انثنائي ← كسور عنقية مجهرية (صرير). الإدارة: <b>إزالة السبب</b> أولاً.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Cracked-tooth syndrome</div>
+  <div class="prompt">Symptoms, best diagnostic tests, and treatment?</div>
+  <div class="answer">
+    Symptoms: cold sensitivity + <b>sharp pain on chewing</b> (nonfunctional cusps). Best tests: <b>bite test</b> (most definitive) + <b>transillumination</b>. Treatment: <b>cuspal-coverage restoration</b> (onlay/crown) to splint the segments.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الأعراض:</b> حساسية للبرد + <b>ألم حادّ عند المضغ</b> (الحدبات غير الوظيفية). <b>أفضل الاختبارات:</b> <b>اختبار العضّ</b> (الأحسم) + <b>الإضاءة النافذة</b>. <b>العلاج:</b> <b>ترميم يغطّي الحدبات</b> (onlay/تاج) لتجبير الأجزاء.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec7">⭐ المعالجة · اللب الحيوي والفلورايد والترميمات غير المباشرة ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Vital pulp therapy ladder</div>
+  <div class="prompt">Match depth/pulp state to the right procedure.</div>
+  <div class="answer">
+    Caries to ¾ dentin, no pain, vital → <b>indirect pulp cap</b>. Fresh exposure (≤24h, uninflamed, immature/simple) → <b>direct pulp cap</b> (~80%). Greater inflammation → <b>partial (Cvek) pulpotomy</b> (~95% trauma). More extensive → <b>full pulpotomy</b>. Criterion = <b>hardness</b>; MTA/Biodentine &gt; Ca(OH)₂ (no tunnel defects).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br>تسوّس لـ¾ العاج، بلا ألم، حيّ → <b>تغطية غير مباشرة</b>. تعرّض حديث (≤24س، غير ملتهب، غير ناضج/بسيط) → <b>تغطية مباشرة</b> (~80%). التهاب أكبر → <b>بضع لب جزئي (Cvek)</b> (~95% رضّ). أوسع → <b>بضع لب كامل</b>. المعيار = <b>الصلابة</b>؛ MTA/Biodentine &gt; Ca(OH)₂ (بلا عيوب نفقية).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Fluoride materials ladder</div>
+  <div class="prompt">Rank fluoride-releasing materials and fluoride's 4 mechanisms.</div>
+  <div class="answer">
+    Release: <b>GIC &gt; RMGIC &gt; compomer &gt; giomer/composite</b>. Fluoride: (1) inhibits demineralization, (2) enhances remineralization, (3) antimicrobial (↓acid). GIC bonds chemically + fluoride but least durable → luting/lining/primary teeth.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الإطلاق:</b> <b>GIC &gt; RMGIC &gt; compomer &gt; giomer/كمبوزِت</b>. <b>الفلورايد:</b> (١) يثبّط إزالة المعادن، (٢) يعزّز إعادة التمعدن، (٣) مضاد جراثيم (↓الحمض). وGIC يلتصق كيميائياً + فلورايد لكنه الأقلّ متانةً → تثبيت/بطانة/أسنان لبنية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Inlay vs onlay &amp; ceramic prep</div>
+  <div class="prompt">Inlay vs onlay definition and the key ceramic prep rule?</div>
+  <div class="answer">
+    <b>Inlay:</b> no cusp coverage (centric stop). <b>Onlay:</b> covers ≥1 cusp. Ceramic prep: <b>uniform ~2 mm</b> thickness (>2 mm risks pulp, no strength gain), <b>90° butt-joint</b> (no bevels), rounded internal angles, retention is <b>adhesive</b>. Onlay cusps: nonworking ≥1.5 mm, working ≥2 mm.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>Inlay:</b> بلا تغطية حدبات (centric stop). <b>Onlay:</b> يغطّي حدبةً أو أكثر. <b>تحضير السيراميك:</b> سُمك <b>موحّد ~2مم</b> (>2مم يخاطر باللب بلا زيادة قوّة)، <b>butt-joint 90°</b> (بلا شطبات)، زوايا داخلية مدوّرة، والإرساء <b>لاصقي</b>. حدبات الـonlay: غير عاملة ≥1.5مم، عاملة ≥2مم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="foot">
+🔄 هذا ملف التثبيت لليوم السابع — يجمع أعلى النقاط عائداً من أسبوعك الأول. كيف تستعمله: (١) اقرأ عنوان البطاقة والسؤال، (٢) أغلق عينيك واسترجع الإجابة بصوتك أو على ورقة (Active Recall)، (٣) اكشف الإجابة وقيّم نفسك: «حفظتها» أو «أعدها». (٤) في نهاية كل مادة اختبر نفسك دون النظر. راجع هذا الملف بعد يوم، ثم بعد ٣ أيام، ثم أسبوع (Spaced Repetition). البطاقات المعلّمة بـ⭐ هي الأعلى احتمالاً في الامتحان. للتفاصيل الكاملة ارجع لملفات الأيام ١–٦.<br><br>
+عدد الكلمات (إنجليزي + عربي): <b>2020</b> كلمة.
+</div>
+
+<script>
+const total=26;
+function upd(){
+  let done=document.querySelectorAll('.card[data-done="1"]').length;
+  document.getElementById('score').textContent=done+' / '+total;
+  document.getElementById('fill').style.width=(done/total*100)+'%';
+}
+function revealCard(b){
+  const card=b.closest('.card');
+  card.querySelector('.answer').classList.add('show');
+  b.style.display='none';
+  card.querySelector('.got').style.display='inline-block';
+  card.querySelector('.rev').style.display='inline-block';
+}
+function rate(b,good){
+  const card=b.closest('.card');
+  card.setAttribute('data-done',good?'1':'2');
+  upd();
+}
+function revealAll(){
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelector('.answer').classList.add('show');
+    c.querySelector('.reveal').style.display='none';
+    c.querySelector('.got').style.display='inline-block';
+    c.querySelector('.rev').style.display='inline-block';
+  });
+}
+function hideAll(){
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelector('.answer').classList.remove('show');
+    c.querySelector('.reveal').style.display='inline-block';
+    c.querySelector('.got').style.display='none';
+    c.querySelector('.rev').style.display='none';
+  });
+}
+function resetAll(){
+  document.querySelectorAll('.card').forEach(c=>c.setAttribute('data-done','0'));
+  hideAll();upd();
+}
+upd();
+</script>
+</body>
+</html>
