@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Crowns & Bridges — Day 8 — Complete</title>
+<style>
+:root{color-scheme:light only;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{background:#ffffff !important;color:#000000 !important;}
+@media (prefers-color-scheme:dark){
+  html,body{background:#ffffff !important;color:#000000 !important;}
+  .card,.hint,.topbar,.toc{background:#ffffff !important;color:#000000 !important;}
+}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;padding:0 14px 120px;line-height:1.65;font-size:17px;}
+h1{font-size:22px;margin:18px 0 4px;}
+.subtitle{color:#444;font-size:14px;margin:0 0 14px;}
+.topbar{position:sticky;top:0;background:#fff !important;border-bottom:2px solid #000;padding:10px 0;z-index:50;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.score{font-weight:700;font-size:15px;}
+.bar{flex:1;min-width:120px;height:12px;background:#eee;border:1px solid #000;border-radius:6px;overflow:hidden;}
+.bar>i{display:block;height:100%;width:0;background:#000;transition:width .3s;}
+.controls button{font-size:13px;padding:6px 10px;border:1px solid #000;background:#fff;border-radius:8px;cursor:pointer;}
+.toc{background:#fff;border:2px solid #000;border-radius:12px;padding:12px 14px;margin:14px 0;}
+.toc b{display:block;margin-bottom:6px;}
+.toc a{display:block;color:#000;text-decoration:none;padding:5px 0;border-bottom:1px dashed #ccc;font-size:15px;}
+.toc a:last-child{border-bottom:0;}
+h2.sec{font-size:18px;border-left:6px solid #000;padding:8px 12px;margin:30px 0 14px;background:#f3f3f3;border-radius:0 8px 8px 0;}
+.card{border:2px solid #000;border-radius:14px;padding:14px 16px;margin:14px 0;background:#fff !important;}
+.card[data-done="1"]{border-color:#157f3b;background:#f3fbf5 !important;}
+.card[data-done="2"]{border-color:#b00;background:#fff7f7 !important;}
+.topic{font-weight:700;font-size:15px;color:#000;margin-bottom:6px;letter-spacing:.2px;text-transform:uppercase;}
+.prompt{font-size:17px;font-weight:600;margin-bottom:10px;}
+.answer{display:none;border-top:1px dashed #999;padding-top:10px;margin-top:4px;}
+.answer.show{display:block;animation:fade .25s;}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.answer ol,.answer ul{margin:6px 0;padding-inline-start:22px;}
+.answer li{margin:4px 0;}
+.answer table{border-collapse:collapse;width:100%;margin:8px 0;font-size:15px;}
+.answer th,.answer td{border:1px solid #000;padding:6px 8px;text-align:left;}
+.answer th{background:#eee;}
+.k{background:#ffd400;color:#b00000 !important;font-weight:700;padding:0 4px;border-radius:3px;}
+.hint{direction:rtl;text-align:right;background:#fff;border:1px solid #000;border-radius:10px;padding:10px 12px;margin-top:12px;font-size:16px;line-height:1.8;}
+.hint .hl{background:#ffd400;color:#b00;font-weight:700;padding:0 5px;border-radius:3px;}
+.hint b{color:#b00000;}
+.btns{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;}
+.btns button{font-size:15px;padding:9px 14px;border-radius:10px;border:2px solid #000;background:#fff;cursor:pointer;font-weight:600;}
+.btns .got{border-color:#157f3b;color:#157f3b;}
+.btns .rev{border-color:#b00;color:#b00;}
+.btns .reveal{background:#000;color:#fff;}
+.foot{margin-top:30px;border-top:2px solid #000;padding-top:14px;font-size:14px;color:#333;}
+.note{background:#ffd400;color:#000;border:1px solid #000;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:15px;}
+.mcq-wrap{margin-top:40px;border-top:3px double #000;padding-top:20px;}
+.mcq-title{background:#000;color:#fff;padding:10px 14px;border-radius:8px;font-size:19px;}
+.mcq-note{font-size:13px;color:#444;margin:10px 0 6px;}
+.mcq-scorebar{position:sticky;top:56px;z-index:40;background:#fff8d6;border:2px solid #000;border-radius:8px;padding:8px 12px;font-size:15px;margin:10px 0 18px;}
+.mcq-reset{background:#000;color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:13px;cursor:pointer;}
+.mcq-q{border:1.5px solid #999;border-radius:10px;padding:14px 16px;margin:14px 0;background:#fff;}
+.mcq-stem{font-weight:600;font-size:15.5px;margin-bottom:10px;line-height:1.55;}
+.mcq-num{display:inline-block;min-width:26px;height:26px;line-height:26px;text-align:center;background:#000;color:#fff;border-radius:50%;font-size:13px;margin-inline-end:6px;}
+.mcq-opts{display:flex;flex-direction:column;gap:7px;}
+.mcq-opt{text-align:start;background:#f4f4f4;border:1.5px solid #ccc;border-radius:7px;padding:9px 12px;font-size:14.5px;cursor:pointer;transition:.12s;color:#000;font-family:inherit;}
+.mcq-opt:hover{background:#eaeaea;}
+.mcq-opt.correct{background:#c9f2cd;border-color:#1a8f2a;font-weight:600;}
+.mcq-opt.wrong{background:#f8cfcf;border-color:#c02020;}
+.mcq-opt.locked{cursor:default;opacity:.92;}
+.mcq-exp{display:none;margin-top:10px;padding:10px 12px;background:#fff8d6;border-inline-start:4px solid #000;border-radius:6px;font-size:13.5px;line-height:1.6;direction:rtl;text-align:right;}
+.mcq-exp.show{display:block;}
+.mcq-exp b{color:#b00;}
+.mcq-final{margin-top:18px;padding:14px;border-radius:10px;font-size:17px;font-weight:700;text-align:center;display:none;}
+.mcq-final.show{display:block;}
+</style>
+</head>
+<body>
+<h1>Crowns &amp; Bridges — Day 8 — Complete 🦷</h1>
+<p class="subtitle">مادة جديدة · التيجان والجسور ص ١–٦٩ · مقدّمة التعويضات الثابتة → المبادئ الميكانيكية الحيوية والإرساء → خطوط الإنهاء → التاج المعدني الكامل → PFM → الخزفي الكامل → تاج ¾ → الوتد واللبّ (Post & Core) → الطبعات · 56 بطاقة + اختبار MCQ في النهاية · English + شرح عربي وافٍ</p>
+
+<div class="topbar">
+  <span class="score" id="score">0 / 56</span>
+  <span class="bar"><i id="fill"></i></span>
+  <span class="controls">
+    <button onclick="revealAll()">اكشف الكل</button>
+    <button onclick="hideAll()">إخفاء</button>
+    <button onclick="resetAll()">تصفير</button>
+  </span>
+</div>
+
+<div class="note">⭐ = أقسام عالية الأهمية (high-yield). اقرأ السؤال، حاول الإجابة من ذاكرتك، ثم اكشف الجواب وقيّم نفسك.</div>
+
+<div class="toc">
+<b>المحتويات · Contents</b>
+<a href="#sec0">Lec 1 · Introduction to Fixed Prosthodontics ⭐</a>
+<a href="#sec1">Lec 1 · Bridge Components &amp; Purposes ⭐</a>
+<a href="#sec2">Lec 1 · Diagnosis &amp; Tooth Preparation Objectives ⭐</a>
+<a href="#sec3">Lec 2 · Biomechanical Principles &amp; Retention/Resistance ⭐</a>
+<a href="#sec4">Lec 2 · Factors Affecting Retention &amp; Resistance ⭐</a>
+<a href="#sec5">Lec 2 · Structural Durability &amp; Periodontium ⭐</a>
+<a href="#sec6">Lec 3 · Finishing Lines — Knife Edge &amp; Chamfer ⭐</a>
+<a href="#sec7">Lec 3 · Finishing Lines — Shoulder Variants ⭐</a>
+<a href="#sec8">Lec 4 · Full Metal Crown ⭐</a>
+<a href="#sec9">Lec 5 · Porcelain Fused to Metal (PFM) Crown ⭐</a>
+<a href="#sec10">Lec 6 · All-Ceramic Crown (Jacket Crown) ⭐</a>
+<a href="#sec11">Lec 7 · Three-Quarter (Partial Veneer) Crown ⭐</a>
+<a href="#sec12">Lec 8 · Post (Dowel) Crown — Components &amp; Types ⭐</a>
+<a href="#sec13">Lec 9 · Impressions for Crown &amp; Bridge</a>
+<a href="#sec14">Lec 4 · Axial Surface Preparation &amp; Seating Groove</a>
+<a href="#sec15">Lec 5 · PFM — Detailed Advantages &amp; Limitations</a>
+<a href="#sec16">Lec 6 · All-Ceramic Preparation Steps</a>
+<a href="#sec17">Lec 8 · Keyway, Antirotation &amp; Contra-bevel</a>
+<a href="#sec18">Lec 9 · Impression Materials &amp; Techniques</a>
+<a href="#sec19">Lec 2 · Preservation of Tooth Structure (Detailed)</a>
+<a href="#sec20">Lec 2 · Retention–Resistance (Integrated Review) ⭐</a>
+<a href="#sec21">Lec 1–2 · Esthetics &amp; Periodontal Integration</a>
+<a href="#sec22">Lec 1 · Bridge Types &amp; Connectors (Overview)</a>
+<a href="#sec23">Lec 1 · Diagnosis — Radiographic Assessment (Detailed)</a>
+</div>
+
+<h2 class="sec" id="sec0">Lec 1 · Introduction to Fixed Prosthodontics ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Fixed prosthodontics &amp; what it includes</div>
+  <div class="prompt">Define fixed prosthodontics and list what it includes.</div>
+  <div class="answer">
+    <b>Prosthodontics</b> = the dental specialty concerned with making <b>artificial replacements</b> for missing parts of the mouth and jaw (also "prosthetic dentistry").<br>
+  <b>Fixed prosthodontics (crown & bridge)</b> = the branch dealing with restoring damaged teeth with artificial crowns and replacing missing natural teeth by a prosthesis <b>permanently cemented</b> in place (a fixed partial denture).<br>
+  <b>Includes:</b> inlays, onlays, veneers, crowns, and fixed partial dentures (bridges).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التعويضات السنّية (Prosthodontics)</b> = تخصّص طبّ الأسنان المعنيّ بصنع <b>بدائل صناعية</b> للأجزاء المفقودة من الفم والفك. <b>التعويضات الثابتة (التيجان والجسور)</b> = الفرع الذي يرمّم الأسنان المتضرّرة بتيجان صناعية ويعوّض الأسنان المفقودة بتعويض <b>مثبّت دائماً بالسمنت</b> (جسر / fixed partial denture). <b>تشمل:</b> الحشوات المصبوبة (inlays)، الـonlays، القشور (veneers)، التيجان، والجسور.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Crown definition &amp; classification by coverage</div>
+  <div class="prompt">Define a crown and classify crowns by coverage area.</div>
+  <div class="answer">
+    <b>Crown:</b> a fixed <b>extra-coronal</b> artificial restoration of the coronal portion of a natural tooth; it must restore the <b>morphology, contour, and function</b> and protect remaining tooth structure.<br>
+  <b>By coverage:</b>
+  <ul><li><b>Complete crown:</b> covers all the coronal portion (full metal, PFM, all-ceramic).</li>
+  <li><b>Partial crown:</b> covers part of the crown (¾ crown, ⅞ crown).</li>
+  <li><b>Complete replacement:</b> replaces the natural crown entirely, retained by a <b>dowel (post)</b> in the root canal (post crown).</li></ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التاج (Crown):</b> ترميم صناعي ثابت <b>خارج تاجي</b> للجزء التاجي من السن الطبيعي؛ يجب أن يعيد <b>الشكل والكنتور والوظيفة</b> ويحمي البنية المتبقية. <b>حسب التغطية:</b> <b>تاج كامل:</b> يغطّي كل الجزء التاجي (معدني كامل، PFM، خزفي كامل). <b>تاج جزئي:</b> يغطّي جزءاً من التاج (¾، ⅞). <b>استبدال كامل:</b> يستبدل التاج الطبيعي كلياً، ويُثبَّت بـ<b>وتد (post)</b> في قناة الجذر (post crown).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Crown classification by material</div>
+  <div class="prompt">Classify crowns according to the materials used.</div>
+  <div class="answer">
+    <ol>
+  <li><b>Metal crown:</b> gold alloy or alternatives (full metal crown, ¾ crown).</li>
+  <li><b>Non-metal crown:</b> acrylic resin, zirconium, or porcelain (jacket crown).</li>
+  <li><b>Combination of metal + plastic:</b> porcelain fused to metal (PFM) crown.</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تصنيف التيجان حسب المادة:</b> (١) <b>تاج معدني:</b> سبيكة ذهب أو بدائلها (معدني كامل، ¾). (٢) <b>تاج غير معدني:</b> راتنج أكريليك، زركونيوم، أو بورسلين (jacket crown). (٣) <b>مزيج معدن + بلاستيك:</b> البورسلين المندمج بالمعدن (PFM).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec1">Lec 1 · Bridge Components &amp; Purposes ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Bridge &amp; its components</div>
+  <div class="prompt">Define a bridge and its three main components.</div>
+  <div class="answer">
+    <b>Bridge:</b> a fixed dental prosthesis that replaces/restores the function & esthetics of one or more missing teeth and <b>cannot be removed by the patient</b>; supported by natural teeth/roots. The supporting tooth = <b>abutment</b>.<br>
+  <b>Components:</b>
+  <ul><li><b>Retainer:</b> the part seated over/on/in the abutment (major or minor).</li>
+  <li><b>Pontic:</b> the suspended member that replaces the missing tooth.</li>
+  <li><b>Connector:</b> joins retainer and pontic — <b>fixed (rigid)</b> or <b>movable (flexible)</b>. A retainer on a fixed connector = <b>major retainer</b>; on a movable connector = <b>minor retainer</b>.</li></ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الجسر (Bridge):</b> تعويض سنّي ثابت يعوّض/يعيد وظيفة وجمال سنّ مفقود أو أكثر و<b>لا يمكن للمريض إزالته</b>؛ يُسنَد بأسنان/جذور طبيعية. والسن الساند = <b>الدعامة (abutment)</b>. <b>المكوّنات:</b> <b>الحاصرة (Retainer):</b> الجزء الجالس على/في الدعامة (كبرى أو صغرى). <b>البنطية (Pontic):</b> العضو المعلّق الذي يعوّض السن المفقود. <b>الرابط (Connector):</b> يصل الحاصرة بالبنطية — <b>ثابت (صلب)</b> أو <b>متحرّك (مرن)</b>. والحاصرة على رابط ثابت = <b>حاصرة كبرى</b>؛ وعلى رابط متحرّك = <b>حاصرة صغرى</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Purposes of crown construction</div>
+  <div class="prompt">List the purposes of constructing a crown.</div>
+  <div class="answer">
+    <ol>
+  <li>Restore a <b>grossly damaged/fractured</b> tooth or one with a heavy filling.</li>
+  <li>Restore <b>masticatory function and speech</b>.</li>
+  <li>Restore <b>esthetics</b> (hypoplastic conditions — hereditary or acquired).</li>
+  <li>Maintain <b>periodontal health</b> by recontouring occlusion and preventing food impaction.</li>
+  <li><b>Alter the occlusion</b> as part of occlusal reconstruction.</li>
+  <li>Serve as a <b>bridge retainer</b>.</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أغراض صنع التاج:</b> (١) ترميم سنّ <b>متضرّر/مكسور</b> بشدّة أو ذي حشوة كبيرة. (٢) استعادة <b>وظيفة المضغ والنطق</b>. (٣) استعادة <b>الجمال</b> (حالات نقص التنسّج الوراثية أو المكتسبة). (٤) الحفاظ على <b>الصحة اللثوية</b> بإعادة تشكيل الإطباق ومنع انحشار الطعام. (٥) <b>تغيير الإطباق</b> كجزء من إعادة البناء الإطباقي. (٦) العمل كـ<b>حاصرة جسر</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Steps in cast restoration construction</div>
+  <div class="prompt">List the clinical vs laboratory steps in constructing cast restorations.</div>
+  <div class="answer">
+    <b>Clinical steps (1–4, 11):</b> diagnosis → tooth preparation → final impression → temporary (provisional) restoration → … → try-in & cementation.<br>
+  <b>Laboratory steps (5–10):</b> working model → waxing → investing → burn-out (wax elimination) → casting → cleaning & finishing.<br>
+  <b>Note:</b> these steps concern <b>cast</b> restorations (metal or metal+plastic). <b>All-ceramic</b> restorations use other lab procedures such as <b>CAD/CAM</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>خطوات صنع الترميم المصبوب:</b> <b>الخطوات السريرية (1–4، 11):</b> التشخيص ← تحضير السن ← الطبعة النهائية ← الترميم المؤقت ← … ← التجربة والتثبيت. <b>الخطوات المخبرية (5–10):</b> النموذج العملي ← الشمع ← التغليف (investing) ← حرق الشمع (burn-out) ← الصبّ ← التنظيف والإنهاء. <b>ملاحظة:</b> هذه الخطوات للترميمات <b>المصبوبة</b> (معدن أو معدن+بلاستيك)؛ أما <b>الخزفية الكاملة</b> فتُصنع بطرق أخرى مثل <b>CAD/CAM</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec2">Lec 1 · Diagnosis &amp; Tooth Preparation Objectives ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Diagnosis — periodontal, dental &amp; radiographic</div>
+  <div class="prompt">What does diagnosis for crown & bridge include, and the ideal crown/root ratio?</div>
+  <div class="answer">
+    <b>(a) Periodontal exam:</b> ensure proper oral hygiene (no plaque on crown margins → caries).<br>
+  <b>(b) Dental exam:</b> <b>visual</b> (occlusion, crowding, spacing, rotation, tilting/drifting, supra-eruption, remaining structure, caries, old fillings) + <b>radiographic</b> (root shape/number, surrounding structures, bone support = <b>crown/root ratio</b>; also lesions, RCT, fractures, bone loss, unerupted teeth).<br>
+  <b>Ideal crown/root ratio</b> for an abutment = <span class="k">1:2</span> (acceptable minimum often cited as 2:3).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التشخيص — لثوي وسنّي وشعاعي:</b> <b>(أ) فحص لثوي:</b> نظافة فموية سليمة (لا لويحة على حواف التاج ← تسوّس). <b>(ب) فحص سنّي:</b> <b>بصري</b> (الإطباق، الازدحام، التباعد، الدوران، الميلان/الانجراف، البزوغ الزائد، البنية المتبقية، التسوّس، الحشوات القديمة) + <b>شعاعي</b> (شكل/عدد الجذور، البنى المحيطة، الدعم العظمي = <b>نسبة التاج/الجذر</b>؛ وأيضاً الآفات، المعالجة اللبية، الكسور، فقد العظم، الأسنان المنطمرة). <b>نسبة التاج/الجذر المثالية</b> للدعامة = <b>1:2</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Objectives &amp; disadvantages of tooth preparation</div>
+  <div class="prompt">State the objectives of tooth preparation and the disadvantages of crowns.</div>
+  <div class="answer">
+    <b>Objectives:</b> (1) <b>eliminate undercuts</b> from axial surfaces (facial, proximal, palatal/lingual); (2) provide <b>enough space</b> for the restoration to withstand mastication (metal needs little, plastic needs more); (3) <b>not enlarge</b> the tooth size; (4) provide good <b>esthetics</b>.<br>
+  <b>Disadvantages of crowns:</b> (1) <b>heat</b> during cutting may harm the pulp → use water coolant; (2) <b>over-preparation</b> → pulp irritation/exposure/death and weakened tooth; (3) <b>periodontal problems</b> (food impaction → gingivitis, pockets, secondary caries).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أهداف تحضير السن وعيوب التيجان:</b> <b>الأهداف:</b> (١) <b>إزالة التقويضات</b> من الأسطح المحورية (الدهليزي، الداني، الحنكي/اللساني)؛ (٢) توفير <b>مساحة كافية</b> ليتحمّل الترميم المضغ (المعدن يحتاج قليلاً والبلاستيك أكثر)؛ (٣) <b>عدم تكبير</b> حجم السن؛ (٤) <b>جمال</b> جيّد. <b>عيوب التيجان:</b> (١) <b>الحرارة</b> أثناء القطع قد تؤذي اللب ← تبريد بالماء؛ (٢) <b>التحضير الزائد</b> ← تهيّج/كشف/موت اللب وإضعاف السن؛ (٣) <b>مشاكل لثوية</b> (انحشار طعام ← التهاب لثة، جيوب، تسوّس ثانوي).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec3">Lec 2 · Biomechanical Principles &amp; Retention/Resistance ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Five biomechanical principles</div>
+  <div class="prompt">List the five biomechanical principles that limit tooth preparation design.</div>
+  <div class="answer">
+    <ol>
+  <li><b>Preservation of tooth structure</b> — conservative; excess removal → thermal hypersensitivity, pulpitis/necrosis, over-taper/shortening (↓retention).</li>
+  <li><b>Retention and resistance form.</b></li>
+  <li><b>Structural durability</b> of the restoration.</li>
+  <li><b>Preservation of the periodontium.</b></li>
+  <li><b>Marginal integrity.</b></li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>المبادئ الميكانيكية الحيوية الخمسة:</b> (١) <b>حفظ بنية السن</b> — متحفّظ؛ والإزالة الزائدة ← حساسية حرارية والتهاب/نخر لبّي وزيادة تحدّب/تقصير (↓الإرساء). (٢) <b>شكل الإرساء والمقاومة.</b> (٣) <b>المتانة البنيوية</b> للترميم. (٤) <b>حفظ النسيج حول السني.</b> (٥) <b>سلامة الحافة.</b></div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Retention vs resistance &amp; path of insertion</div>
+  <div class="prompt">Define retention, resistance, and path of insertion.</div>
+  <div class="answer">
+    <b>Retention:</b> the ability of the preparation to resist dislodgment by forces along the <b>path of insertion</b>.<br>
+  <b>Resistance:</b> the ability to resist dislodgment by forces directed <b>obliquely or horizontally</b>.<br>
+  <b>Path of insertion:</b> an imaginary line along which the restoration is inserted/removed without lateral forces on the abutment. A crown should have a <b>single path of insertion</b> to be retentive; usually <b>parallel to the long axis</b> (exception: ¾ crown on anteriors = parallel to the incisal two-thirds).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الإرساء مقابل المقاومة ومسار الإدخال:</b> <b>الإرساء (Retention):</b> قدرة التحضير على مقاومة الخلع بقوى على <b>مسار الإدخال</b>. <b>المقاومة (Resistance):</b> مقاومة الخلع بقوى <b>مائلة أو أفقية</b>. <b>مسار الإدخال:</b> خطّ وهمي يُدخَل/يُخرَج عليه الترميم دون قوى جانبية على الدعامة. ويجب أن يكون للتاج <b>مسار إدخال واحد</b> ليكون مُرسىً؛ عادةً <b>موازٍ للمحور الطولي</b> (الاستثناء: ¾ للأمامية = موازٍ للثلثين القاطعين).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Taper / convergence angle</div>
+  <div class="prompt">What is the convergence angle, and what is the ideal value?</div>
+  <div class="answer">
+    <b>Convergence angle</b> = the angle between the two opposing axial walls of a prepared tooth; it determines the taper. <span class="k">The greater the taper, the less the retention.</span> The ideal, most-used value is <b>5–6°</b>. Near-parallel walls give the greatest retention but are hard to achieve without undercuts / seating difficulty. <b>Resistance</b>: the more parallel the walls, the more the resistance — a <b>short, wide preparation</b> must be kept nearly parallel to achieve adequate resistance.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>زاوية التقارب (Convergence angle):</b> الزاوية بين الجدارين المحوريين المتقابلين للسن المحضّر؛ تحدّد التحدّب. <b>كلّما زاد التحدّب قلّ الإرساء.</b> والقيمة المثالية الأكثر استخداماً <b>5–6°</b>. والجدران شبه المتوازية تعطي أكبر إرساء لكنها صعبة دون تقويضات/صعوبة إجلاس. <b>المقاومة:</b> كلّما توازت الجدران زادت المقاومة — والتحضير <b>القصير العريض</b> يجب إبقاء جدرانه شبه متوازية لتحقيق مقاومة كافية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec4">Lec 2 · Factors Affecting Retention &amp; Resistance ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Surface area, length &amp; tooth diameter</div>
+  <div class="prompt">How do surface area, preparation length, and tooth diameter affect retention/resistance?</div>
+  <div class="answer">
+    <b>Surface area (↑ = ↑retention):</b> depends on tooth <b>size</b> (molar > premolar), <b>extent of coverage</b> (full crown > ¾ crown on same tooth), and <b>accessory features</b> (boxes, grooves, pinholes).<br>
+  <b>Length/height (↑ = ↑retention & resistance):</b> taller preparations are more retentive.<br>
+  <b>Tooth diameter:</b> a crown on a <b>narrow</b> tooth can resist tipping better than on a wide tooth — the narrower tooth has a <b>shorter rotation radius</b> → lower tangent line and larger resisting area.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>المساحة السطحية والطول وقطر السن:</b> <b>المساحة (↑=↑إرساء):</b> تعتمد على <b>حجم</b> السن (رحى > ضاحك)، و<b>مدى التغطية</b> (تاج كامل > ¾ على نفس السن)، و<b>الميزات الإضافية</b> (صناديق، أخاديد، حُفَر دبابيس). <b>الطول/الارتفاع (↑=↑إرساء ومقاومة):</b> التحضيرات الأطول أكثر إرساءً. <b>قطر السن:</b> التاج على سنّ <b>ضيّق</b> يقاوم الإمالة أفضل من العريض — لأن الضيّق له <b>نصف قطر دوران أقصر</b> ← خطّ مماس أدنى ومساحة مقاومة أكبر.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Texture &amp; extra retention means</div>
+  <div class="prompt">How do surface texture and auxiliary features affect retention?</div>
+  <div class="answer">
+    <b>Texture:</b> depending on the luting cement, <b>rough surfaces are more retentive</b> than smooth ones (mechanical interlocking).<br>
+  <b>Extra retention means:</b> retention is greatly enhanced by adding <b>grooves, pinholes, or boxes</b>. These auxiliary features are especially useful when the preparation is short or otherwise lacks retention.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الملمس ووسائل الإرساء الإضافية:</b> <b>الملمس:</b> حسب سمنت التثبيت، <b>الأسطح الخشنة أكثر إرساءً</b> من الملساء (تعشيق ميكانيكي). <b>وسائل الإرساء الإضافية:</b> يتعزّز الإرساء كثيراً بإضافة <b>الأخاديد أو حُفَر الدبابيس أو الصناديق</b>. وهذه مفيدة خاصةً حين يكون التحضير قصيراً أو يفتقر للإرساء.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec5">Lec 2 · Structural Durability &amp; Periodontium ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Occlusal reduction &amp; functional cusp bevel</div>
+  <div class="prompt">What is the occlusal reduction requirement, and what is the functional cusp bevel (FCB)?</div>
+  <div class="answer">
+    <b>Structural durability</b> needs the restoration to be rigid (bulk) → adequate tooth removal.<br>
+  <b>Occlusal reduction:</b> <b>1–1.5 mm</b>; must be <b>planar/anatomical</b> (follow the cusp inclines) → uniform thickness. Avoid steep sharp planes (stress) and flat reduction (thin metal → perforation); don't lower the whole surface (destructive + shortens axial walls → ↓retention).<br>
+  <b>Functional cusps</b> = centric-stop cusps (<b>palatal of upper</b>, <b>buccal of lower</b> posteriors).<br>
+  <b>Functional cusp bevel (FCB):</b> a wide bevel on functional cusps giving adequate restoration thickness without over-cutting. If omitted → too-thin restoration or over-built crown → premature contact.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التخفيض الإطباقي وشطبة الحدبة الوظيفية (FCB):</b> <b>المتانة البنيوية</b> تتطلّب ترميماً صلباً (سُمك) ← إزالة سنّ كافية. <b>التخفيض الإطباقي:</b> <b>1–1.5مم</b>؛ ويجب أن يكون <b>مستوياً/تشريحياً</b> (يتبع ميلان الحدبات) ← سُمك موحّد. تجنّب المستويات الحادّة (إجهاد) والتخفيض المسطّح (معدن رقيق ← ثقب)؛ ولا تُخفّض السطح كله (مُدمّر + يقصّر الجدران المحورية ← ↓إرساء). <b>الحدبات الوظيفية</b> = حدبات التماس المركزي (<b>حنكية العلوية</b>، <b>شدقية السفلية</b>). <b>شطبة الحدبة الوظيفية (FCB):</b> شطبة عريضة على الحدبات الوظيفية تعطي سُمكاً كافياً دون قطع زائد. وإن حُذفت ← ترميم رقيق جداً أو مُبالَغ في بنائه ← تماس مبكّر.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Margin placement &amp; marginal integrity</div>
+  <div class="prompt">Compare supragingival vs subgingival margin placement, and state marginal integrity requirements.</div>
+  <div class="answer">
+    Finishing line can be <b>supragingival, subgingival, or equigingival</b>.<br>
+  <b>Supragingival (preferred):</b> easy to prepare/finish, good vision, easy impression, easy to keep clean, usually on hard enamel, less destructive.<br>
+  <b>Subgingival (only when needed):</b> for <b>esthetics</b>, extra retention (short crowns), or caries/filling at the margin (margin must be on sound structure).<br>
+  <b>Marginal integrity:</b> the restoration survives only if the margin is closely adapted; it must <b>fit closely</b> against the finishing line, have <b>sufficient strength</b>, and be placed where the dentist can finish and the patient can clean.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>وضع الحافة وسلامتها:</b> يمكن وضع خطّ الإنهاء <b>فوق اللثة أو تحتها أو بمستواها</b>. <b>فوق اللثوي (المفضّل):</b> سهل التحضير/الإنهاء، رؤية جيّدة، طبعة سهلة، سهل التنظيف، غالباً على مينا صلبة، أقلّ تدميراً. <b>تحت اللثوي (عند اللزوم فقط):</b> للـ<b>جمال</b>، أو إرساء إضافي (تيجان قصيرة)، أو تسوّس/حشوة عند الحافة (يجب أن تكون على بنية سليمة). <b>سلامة الحافة:</b> لا يبقى الترميم إلا إذا انطبقت الحافة بإحكام؛ يجب أن <b>تنطبق تماماً</b> على خطّ الإنهاء، وتكون <b>قوّتها كافية</b>، وتُوضع حيث يُنهي الطبيب ويُنظّف المريض.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec6">Lec 3 · Finishing Lines — Knife Edge &amp; Chamfer ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Finishing line &amp; its six designs</div>
+  <div class="prompt">What is the finishing line, and list the six design types.</div>
+  <div class="answer">
+    <b>Finishing line (preparation margin):</b> the final margin separating prepared from unprepared tooth structure; must be <b>smoothly continuous</b> from one surface to another (or it interferes with seating). It is a <b>critical area — most failures start here</b>.<br>
+  <b>Six designs:</b> (1) Knife edge (feather edge), (2) Chamfer, (3) Heavy chamfer, (4) Shoulder, (5) Radial shoulder, (6) Shoulder with bevel.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>خطّ الإنهاء وتصاميمه الستة:</b> <b>خطّ الإنهاء (حافة التحضير):</b> الحافة النهائية الفاصلة بين البنية المحضّرة وغير المحضّرة؛ يجب أن يكون <b>متّصلاً بسلاسة</b> من سطح لآخر (وإلا أعاق الإجلاس). وهو <b>منطقة حرجة — معظم الإخفاقات تبدأ منها</b>. <b>التصاميم الستة:</b> (١) حافة السكّين (feather)، (٢) chamfer، (٣) heavy chamfer، (٤) كتف (shoulder)، (٥) كتف شعاعي (radial shoulder)، (٦) كتف بشطبة (shoulder with bevel).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Knife edge finishing line</div>
+  <div class="prompt">Describe the knife edge finishing line: bur, angle, advantages, disadvantages, indications.</div>
+  <div class="answer">
+    <b>Knife edge (feather end):</b> made with a <b>pointed tapered fissure bur (long needle diamond)</b>; forms a cavo-surface angle <b>&gt;135°</b>; the <b>most conservative</b> line but the margin is <b>weak</b> (insufficient bulk).<br>
+  <b>Advantages:</b> most conservative, easy to prepare, <b>burnishable</b> margin.<br>
+  <b>Disadvantages:</b> hard for the technician to identify; thin margin difficult to wax/cast accurately; susceptible to distortion.<br>
+  <b>Indications:</b> full metal crown (all surfaces); lingual/proximal surfaces of full veneer, ¾, and post crowns.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>حافة السكّين (Knife edge):</b> تُصنع بـ<b>بُرّ شقّي مدبّب (إبرة ماسية طويلة)</b>؛ تكوّن زاوية سطح حُفّي <b>&gt;135°</b>؛ <b>الأكثر تحفّظاً</b> لكن الحافة <b>ضعيفة</b> (سُمك غير كافٍ). <b>المزايا:</b> الأكثر تحفّظاً، سهلة التحضير، حافة <b>قابلة للصقل (burnishable)</b>. <b>العيوب:</b> صعبة التمييز على الفنّي؛ حافة رقيقة صعبة الشمع/الصبّ بدقّة؛ عرضة للتشوّه. <b>الاستطبابات:</b> التاج المعدني الكامل (كل الأسطح)؛ والأسطح اللسانية/الدانية للتاج الكامل و¾ وpost crown.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Chamfer &amp; heavy chamfer</div>
+  <div class="prompt">Compare the chamfer and heavy chamfer finishing lines.</div>
+  <div class="answer">
+    <b>Chamfer:</b> like a deeper knife edge; cavo-surface angle <b>130–160°</b>; made with a <b>round-end tapered fissure bur</b>; provides adequate cervical space (proper contour without over-contouring) but the margin is <b>thick → unburnishable</b>. <b>Indications:</b> areas covered by <b>metal only</b> (full metal crown; lingual/proximal of full veneer, ¾, post crowns).<br>
+  <b>Heavy chamfer:</b> a <b>90° cavo-surface angle with a large-radius internal angle</b> → better support for ceramic. <b>Indications:</b> <b>PFM</b> and <b>all-ceramic</b> crowns.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>Chamfer وHeavy chamfer:</b> <b>Chamfer:</b> كحافة سكّين أعمق؛ زاوية سطح حُفّي <b>130–160°</b>؛ تُصنع بـ<b>بُرّ شقّي مدوّر الطرف</b>؛ توفّر مساحة عنقية كافية (كنتور سليم دون زيادة) لكن الحافة <b>سميكة ← غير قابلة للصقل</b>. <b>الاستطبابات:</b> المناطق المغطّاة بـ<b>معدن فقط</b>. <b>Heavy chamfer:</b> زاوية سطح حُفّي <b>90° مع زاوية داخلية كبيرة نصف القطر</b> ← دعم أفضل للخزف. <b>الاستطبابات:</b> تيجان <b>PFM</b> و<b>الخزفية الكاملة</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec7">Lec 3 · Finishing Lines — Shoulder Variants ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Shoulder (butt) &amp; radial shoulder</div>
+  <div class="prompt">Describe the shoulder and radial shoulder finishing lines.</div>
+  <div class="answer">
+    <b>Shoulder (butt):</b> the <b>least conservative</b> line (most tooth removed); axial walls meet the finishing line at a <b>right angle (90°)</b>; made with a <b>flat-end tapered fissure bur</b>. Used when <b>bulk is required for strength/esthetics</b> → mainly the <b>jacket crown</b> (porcelain/acrylic — brittle, need thickness; also better shade/esthetics).<br>
+  <b>Radial shoulder:</b> a shoulder with <b>rounded internal line angles</b> → reduces stress concentration on tooth and restoration; developed for <b>all-ceramic</b> crowns to increase fracture strength.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الكتف (Butt) والكتف الشعاعي:</b> <b>الكتف (Shoulder):</b> <b>الأقلّ تحفّظاً</b> (أكثر إزالة سنّ)؛ تلتقي الجدران المحورية بخطّ الإنهاء بـ<b>زاوية قائمة (90°)</b>؛ يُصنع بـ<b>بُرّ شقّي مسطّح الطرف</b>. يُستخدم حين يلزم <b>سُمك للقوّة/الجمال</b> ← أساساً <b>jacket crown</b> (بورسلين/أكريليك — هشّ يحتاج سُمكاً؛ وأيضاً لون/جمال أفضل). <b>الكتف الشعاعي (Radial):</b> كتف بـ<b>زوايا داخلية مدوّرة</b> ← يقلّل تركّز الإجهاد على السن والترميم؛ طُوّر للتيجان <b>الخزفية الكاملة</b> لزيادة مقاومة الكسر.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Shoulder with bevel</div>
+  <div class="prompt">Describe the shoulder with bevel: objectives and indications.</div>
+  <div class="answer">
+    <b>Shoulder with bevel:</b> a shoulder plus a <b>45° bevel</b>.<br>
+  <b>Objectives of the bevel:</b> (1) provides a <b>burnishable margin</b> for metal that may extend subgingivally (thinner = more adaptable); (2) provides <b>space for shape/contour</b>; (3) <b>reduces marginal discrepancies</b>; (4) <b>removes unsupported enamel</b>.<br>
+  <b>Indications:</b> (1) combination of metal + facing material (acrylic/porcelain) as in the <b>labial surface of a full veneer crown</b>; (2) recommended for <b>extremely short walls</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الكتف بشطبة (Shoulder with bevel):</b> كتف + <b>شطبة 45°</b>. <b>أهداف الشطبة:</b> (١) توفّر <b>حافة قابلة للصقل</b> للمعدن الذي قد يمتدّ تحت اللثة (الأرقّ أكثر انطباقاً)؛ (٢) توفّر <b>مساحة للشكل/الكنتور</b>؛ (٣) <b>تقلّل تفاوت الحواف</b>؛ (٤) <b>تزيل المينا غير المسنودة</b>. <b>الاستطبابات:</b> (١) مزيج معدن + مادة تكسية (أكريليك/بورسلين) كما في <b>السطح الشفوي للتاج الكامل</b>؛ (٢) يُنصح بها لـ<b>الجدران القصيرة جداً</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec8">Lec 4 · Full Metal Crown ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Full metal crown — definition, alloys, indications</div>
+  <div class="prompt">Define the full metal crown, its alloys, and main indications.</div>
+  <div class="answer">
+    <b>Full metal crown:</b> covers all axial + occlusal surfaces, made of metal; commonly for <b>posterior teeth</b> when esthetics is not a concern; best retention/resistance (all walls + occlusal included).<br>
+  <b>Alloys:</b> high-noble (gold), low-noble (silver-palladium, gold-palladium), non-noble (nickel-chromium).<br>
+  <b>Indications:</b> extensive destruction/large amalgam (protect remaining structure); <b>endodontically treated</b> teeth; maximum retention needed (short crown); recontouring for an RPD clasp; bridge retainer; minor inclination/occlusal-plane correction; high caries index.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التاج المعدني الكامل — التعريف والسبائك والاستطبابات:</b> يغطّي كل الأسطح المحورية + الإطباقية، معدني؛ شائع للـ<b>أسنان الخلفية</b> حين لا يهمّ الجمال؛ أفضل إرساء/مقاومة (كل الجدران + الإطباقي). <b>السبائك:</b> نبيلة عالية (ذهب)، نبيلة منخفضة (فضّة-بلاديوم، ذهب-بلاديوم)، غير نبيلة (نيكل-كروم). <b>الاستطبابات:</b> تهدّم واسع/أملغم كبير (حماية البنية)؛ أسنان <b>معالَجة لبياً</b>؛ حاجة لأقصى إرساء (تاج قصير)؛ إعادة تشكيل لمشبك طقم متحرّك؛ حاصرة جسر؛ تصحيح ميلان بسيط/مستوى إطباقي؛ مؤشّر تسوّس عالٍ.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Full metal crown — adv/disadv &amp; contraindications</div>
+  <div class="prompt">State the advantages, disadvantages, and contraindications of the full metal crown.</div>
+  <div class="answer">
+    <b>Advantages:</b> greater retention & strength; high resistance to deformation; axial contour modification possible; <b>more conservative</b> than PFM/all-ceramic full crowns.<br>
+  <b>Disadvantages:</b> extensive tooth removal vs partial crowns; difficult vitality testing (esp. EPT); may interfere with taste; <b>metal display</b>.<br>
+  <b>Contraindications:</b> high esthetic demand; when less than maximum retention is enough; when a more conservative crown (¾) can be used (intact buccal, short-span bridge); low caries index.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التاج المعدني الكامل — المزايا/العيوب والموانع:</b> <b>المزايا:</b> إرساء وقوّة أكبر؛ مقاومة عالية للتشوّه؛ إمكان تعديل الكنتور المحوري؛ <b>أكثر تحفّظاً</b> من PFM/الخزفي الكامل. <b>العيوب:</b> إزالة سنّ واسعة مقابل التيجان الجزئية؛ صعوبة اختبار الحيوية (خاصةً EPT)؛ قد يتداخل مع التذوّق؛ <b>ظهور المعدن</b>. <b>الموانع:</b> حاجة جمالية عالية؛ حين يكفي إرساء أقلّ من الأقصى؛ حين يمكن تاج أكثر تحفّظاً (¾) (سطح شدقي سليم، جسر قصير)؛ مؤشّر تسوّس منخفض.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Depth orientation grooves &amp; occlusal prep</div>
+  <div class="prompt">What are depth orientation grooves (DOG), and what is the occlusal reduction target for a full metal crown?</div>
+  <div class="answer">
+    <b>Depth orientation grooves (DOG):</b> grooves cut in the tooth surface as a <b>guide/reference</b> for the amount to remove; without them, under/over-preparation and repeated checking occur. Groove depth = the fissure bur's diameter (e.g., 1.5 mm bur → 1.5 mm groove on functional cusps; 1 mm bur → non-functional).<br>
+  <b>Occlusal reduction:</b> <b>1.5 mm over functional cusps, 1 mm over non-functional</b>; <b>planar/anatomical</b> reduction; a <b>wide bevel on functional cusps</b>; check clearance in centric & eccentric. Recommended finishing line = <b>chamfer</b> (round-end tapered fissure bur); knife edge may also be used.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أخاديد توجيه العمق (DOG) والتحضير الإطباقي:</b> <b>DOG:</b> أخاديد تُحفر في سطح السن كـ<b>دليل/مرجع</b> لمقدار الإزالة؛ وبدونها يحدث تحضير ناقص/زائد وفحص متكرّر. عمق الأخدود = قطر البُرّ الشقّي (بُرّ 1.5مم ← أخدود 1.5مم على الحدبات الوظيفية؛ بُرّ 1مم ← غير الوظيفية). <b>التخفيض الإطباقي:</b> <b>1.5مم فوق الوظيفية، 1مم فوق غير الوظيفية</b>؛ تخفيض <b>مستوٍ/تشريحي</b>؛ <b>شطبة عريضة على الوظيفية</b>؛ افحص الخلوص مركزياً ولا مركزياً. وخطّ الإنهاء الموصى = <b>chamfer</b> (بُرّ شقّي مدوّر الطرف)؛ ويمكن حافة السكّين.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec9">Lec 5 · Porcelain Fused to Metal (PFM) Crown ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">PFM concept &amp; reduction amounts</div>
+  <div class="prompt">What is a PFM crown, and what are the key reduction amounts (anterior)?</div>
+  <div class="answer">
+    <b>PFM:</b> a metal coping veneered with porcelain — combines metal <b>strength</b> with porcelain <b>esthetics</b>. Preparation is a <b>combination</b>: <b>deep facial reduction</b> (metal + porcelain) and shallower reduction where covered by metal only.<br>
+  <b>Anterior amounts:</b> incisal <b>2 mm</b> (translucency); labial <b>1.5–2 mm</b> = <b>0.5 mm metal coping + 1 mm porcelain</b> (0.2 opaque + 0.5 body/dentin + 0.3 incisal/enamel). Labial reduced in <b>two planes</b> (gingival + incisal) to follow anatomy, avoid the pulp, and give space for metal+porcelain.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مفهوم PFM ومقادير التخفيض (أمامي):</b> <b>PFM:</b> كوبنة معدنية مكسوّة بالبورسلين — تجمع <b>قوّة</b> المعدن مع <b>جمال</b> البورسلين. والتحضير <b>مزيج</b>: <b>تخفيض شفوي عميق</b> (معدن + بورسلين) وأقلّ حيث يُغطّى بمعدن فقط. <b>المقادير الأمامية:</b> قاطع <b>2مم</b> (شفافية)؛ شفوي <b>1.5–2مم</b> = <b>0.5مم كوبنة معدن + 1مم بورسلين</b> (0.2 opaque + 0.5 body/dentin + 0.3 incisal/enamel). ويُخفّض الشفوي بـ<b>مستويين</b> (لثوي + قاطع) لمتابعة التشريح وتجنّب اللب وإعطاء مساحة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">PFM finishing lines &amp; posterior amounts</div>
+  <div class="prompt">Which finishing lines are used for PFM, and what are the posterior reduction amounts?</div>
+  <div class="answer">
+    <b>Finishing lines:</b> gingivo-facial (metal+porcelain) = <b>shoulder, radial shoulder, or heavy chamfer</b>; the remaining surfaces (metal only) = <b>chamfer or knife edge</b>. The labial shoulder joins the palatal chamfer at a line angle called the <b>"wing"</b>.<br>
+  <b>Posterior amounts:</b> same principles as full metal crown but with <b>deep reduction where metal + porcelain</b>: <b>1.5 mm non-functional cusps, 2 mm functional cusps, 1.5–2 mm facial</b>. A <b>silicone index</b> guides/checks the amount of reduction.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>خطوط إنهاء PFM ومقادير الخلفية:</b> <b>خطوط الإنهاء:</b> اللثوي-الشفوي (معدن+بورسلين) = <b>كتف أو كتف شعاعي أو heavy chamfer</b>؛ والأسطح الباقية (معدن فقط) = <b>chamfer أو حافة سكّين</b>. ويلتقي الكتف الشفوي بالـchamfer الحنكي بزاوية خطّية تُسمّى <b>"الجناح (wing)"</b>. <b>مقادير الخلفية:</b> نفس مبادئ التاج المعدني لكن مع <b>تخفيض عميق حيث المعدن + البورسلين</b>: <b>1.5مم غير الوظيفية، 2مم الوظيفية، 1.5–2مم الشفوي</b>. ويوجّه <b>دليل السيليكون</b> فحص مقدار التخفيض.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Full metal crown with acrylic facing</div>
+  <div class="prompt">Describe the full metal crown with acrylic facing.</div>
+  <div class="answer">
+    A full metal crown whose <b>labial/buccal surface is covered with tooth-colored acrylic resin</b> — used before porcelain and still used for its <b>lower cost</b> vs PFM. Combines metal strength/accuracy with acrylic esthetics; preparation involves <b>deep facial reduction</b>; finishing line = <b>shoulder with bevel facially</b>, chamfer/knife edge elsewhere (subgingival if esthetics critical). <b>Disadvantages (from the acrylic):</b> discoloration over time, wear, and poor tissue compatibility with the gingiva.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التاج المعدني الكامل بتكسية أكريليك:</b> تاج معدني كامل <b>سطحه الشفوي/الشدقي مغطّى براتنج أكريليك بلون السن</b> — استُخدم قبل البورسلين وما زال لـ<b>كلفته الأقلّ</b> مقابل PFM. يجمع قوّة/دقّة المعدن مع جمال الأكريليك؛ ويشمل التحضير <b>تخفيضاً شفوياً عميقاً</b>؛ وخطّ الإنهاء = <b>كتف بشطبة شفوياً</b>، وchamfer/حافة سكّين لبقيّة الأسطح (تحت لثوي إن كان الجمال حرجاً). <b>العيوب (من الأكريليك):</b> تلوّن مع الوقت، تآكل، وتوافق نسيجي رديء مع اللثة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec10">Lec 6 · All-Ceramic Crown (Jacket Crown) ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">All-ceramic crown — features, adv, disadv</div>
+  <div class="prompt">Describe the all-ceramic crown with its advantages and disadvantages.</div>
+  <div class="answer">
+    <b>All-ceramic (complete ceramic) crown:</b> the <b>most esthetically pleasing</b> fixed restoration (no metal to block light → best color/translucency), but made entirely of ceramic → the <b>weakest</b> crown (fracture-prone) and <b>not conservative</b>; mostly a <b>single restoration on incisors</b>.<br>
+  <b>Advantages:</b> superior esthetics; good tissue response even for subgingival margins; slightly more conservative of the facial wall.<br>
+  <b>Disadvantages:</b> reduced strength vs PFM; preparation extremely critical; least conservative preps; brittle; single restoration only.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التاج الخزفي الكامل (Jacket) — الميزات والمزايا والعيوب:</b> <b>الخزفي الكامل:</b> <b>الأجمل</b> بين الترميمات الثابتة (لا معدن يحجب الضوء ← أفضل لون/شفافية)، لكنه خزفي بالكامل ← <b>الأضعف</b> (عرضة للكسر) و<b>غير متحفّظ</b>؛ وغالباً <b>ترميم مفرد على القواطع</b>. <b>المزايا:</b> جمال متفوّق؛ استجابة نسيجية جيّدة حتى للحواف تحت اللثوية؛ أكثر تحفّظاً قليلاً للجدار الشفوي. <b>العيوب:</b> قوّة أقلّ من PFM؛ تحضير حرج جداً؛ من أقلّ التحضيرات تحفّظاً؛ هشّ؛ ترميم مفرد فقط.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">All-ceramic — indications &amp; contraindications</div>
+  <div class="prompt">State the indications and contraindications for an all-ceramic crown.</div>
+  <div class="answer">
+    <b>Indications:</b> high esthetic requirements; considerable proximal caries; endodontically treated teeth with post & core; incisal edge reasonably intact; favorable distribution of occlusal load.<br>
+  <b>Contraindications:</b> when superior strength is required (PFM more appropriate); teeth thin faciolingually; unfavorable occlusal load distribution; insufficient coronal structure for support (very short teeth); edge-to-edge occlusion; <b>bruxism</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الخزفي الكامل — الاستطبابات والموانع:</b> <b>الاستطبابات:</b> حاجة جمالية عالية؛ تسوّس داني كبير؛ أسنان معالَجة لبياً مع post & core؛ حافة قاطعة سليمة معقولاً؛ توزيع مؤاتٍ للحمل الإطباقي. <b>الموانع:</b> حين تلزم قوّة متفوّقة (PFM أنسب)؛ أسنان رقيقة دهليزياً-لسانياً؛ توزيع غير مؤاتٍ للحمل؛ بنية تاجية غير كافية للدعم (أسنان قصيرة جداً)؛ إطباق حافة-لحافة؛ <b>صرير (bruxism)</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">PJC preparation requirements</div>
+  <div class="prompt">What are the key preparation requirements for a porcelain jacket crown (PJC)?</div>
+  <div class="answer">
+    <ol>
+  <li>Preparation as <b>long as possible</b> to support porcelain (short prep → lingual stress concentration → fracture).</li>
+  <li>A <b>shoulder of uniform 1 mm width</b> as the gingival finishing line (flat seat resisting incisal force); <b>shoulder or radial shoulder all around</b>.</li>
+  <li><b>Incisal reduction 1.5–2 mm</b> (clearance in all movements); flat incisal with slight lingual inclination (upper) / labial (lower).</li>
+  <li><b>Round all sharp angles</b> (reduce stress-concentration fracture).</li>
+  <li>Avoid on edge-to-edge occlusion; centric contacts best confined to the <b>middle third of the lingual</b>.</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>متطلبات تحضير التاج البورسلين (PJC):</b> (١) تحضير <b>أطول ما أمكن</b> لدعم البورسلين (القصير ← تركّز إجهاد لساني ← كسر). (٢) <b>كتف بعرض موحّد 1مم</b> كخطّ إنهاء لثوي (مقعد مسطّح يقاوم القوّة القاطعة)؛ <b>كتف أو كتف شعاعي حول المحيط</b>. (٣) <b>تخفيض قاطع 1.5–2مم</b> (خلوص في كل الحركات)؛ قاطع مسطّح بميل لساني طفيف (العلوي)/شفوي (السفلي). (٤) <b>دوّر كل الزوايا الحادّة</b> (تقليل الكسر بتركّز الإجهاد). (٥) تجنّبه في الإطباق حافة-لحافة؛ والتماسات المركزية تُحصر في <b>الثلث الأوسط اللساني</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Acrylic jacket crown (AJC)</div>
+  <div class="prompt">What is an acrylic jacket crown, and its main use and disadvantages?</div>
+  <div class="answer">
+    <b>Acrylic jacket crown (AJC):</b> made entirely of tooth-colored acrylic resin; near-perfect appearance when fitted, but later <b>discoloration and loss of contour</b>; <b>poor adaptation</b> (high coefficient of thermal expansion). Mostly used as a <b>temporary crown</b>, or for selected patients (e.g., young patients awaiting complete eruption before the definitive crown). Preparation is basically the same as PJC.<br>
+  <b>Disadvantages:</b> poor marginal fit, poor tissue response, discoloration with time, loss of contour (wears easily).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التاج الأكريليك (AJC):</b> مصنوع كلياً من راتنج أكريليك بلون السن؛ مظهر شبه مثالي عند التركيب لكن لاحقاً <b>تلوّن وفقد كنتور</b>؛ <b>تكيّف ضعيف</b> (معامل تمدّد حراري عالٍ). يُستخدم غالباً كـ<b>تاج مؤقت</b>، أو لمرضى مختارين (كالصغار بانتظار اكتمال البزوغ قبل التاج الدائم). والتحضير أساساً كـPJC. <b>العيوب:</b> ملاءمة حافّية ضعيفة، استجابة نسيجية ضعيفة، تلوّن مع الوقت، فقد كنتور (يتآكل بسهولة).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec11">Lec 7 · Three-Quarter (Partial Veneer) Crown ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">¾ crown — definition, uses, indications</div>
+  <div class="prompt">Define the ¾ crown and give its uses and indications.</div>
+  <div class="answer">
+    <b>¾ crown:</b> a cast metal restoration covering three surfaces (occlusal/incisal, palatal/lingual, and proximals) while <b>leaving the labial/buccal surface unprepared</b>; less retentive/resistant than a full veneer crown; usable anterior or posterior.<br>
+  <b>Uses:</b> retainer for a short-span bridge; single restoration; anterior splint.<br>
+  <b>Indications:</b> posterior — moderate structure loss with <b>intact well-supported buccal surface</b>, FPD retainer; anterior — sufficient bulk with intact labial surface, FPD retainer/splinting.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تاج الـ¾ — التعريف والاستخدامات والاستطبابات:</b> <b>تاج ¾:</b> ترميم معدني مصبوب يغطّي ثلاثة أسطح (إطباقي/قاطع، حنكي/لساني، والدانيان) مع <b>ترك السطح الشفوي/الشدقي غير محضّر</b>؛ أقلّ إرساءً/مقاومةً من التاج الكامل؛ يُستخدم أمامياً أو خلفياً. <b>الاستخدامات:</b> حاصرة لجسر قصير؛ ترميم مفرد؛ تجبير أمامي. <b>الاستطبابات:</b> خلفي — فقد بنية متوسّط مع <b>سطح شدقي سليم مسنود</b>، حاصرة جسر؛ أمامي — سُمك كافٍ مع سطح شفوي سليم، حاصرة/تجبير.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">¾ crown — advantages, disadvantages, proximal grooves</div>
+  <div class="prompt">State the advantages/disadvantages of the ¾ crown and the role of proximal grooves.</div>
+  <div class="answer">
+    <b>Advantages:</b> conservative; easy margin access; less gingival irritation than a full crown; easy cement escape/good seating; <b>EPT possible</b>; complete seating directly visible.<br>
+  <b>Disadvantages:</b> difficult preparation; more recurrent caries along the cavo-surface angle; possible <b>metal display</b> (lower anteriors/posteriors); less retention/resistance than a full crown; limited path-of-withdrawal adjustment.<br>
+  <b>Proximal grooves:</b> placed parallel to the path of withdrawal (and to each other) to <b>improve retention/resistance</b> and define the path of insertion — a key feature that partly compensates for the uncovered buccal wall.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تاج ¾ — المزايا والعيوب والأخاديد الدانية:</b> <b>المزايا:</b> متحفّظ؛ وصول سهل للحواف؛ تهيّج لثوي أقلّ من التاج الكامل؛ خروج سمنت سهل/إجلاس جيّد؛ <b>EPT ممكن</b>؛ الإجلاس الكامل مرئي مباشرةً. <b>العيوب:</b> تحضير صعب؛ تسوّس متكرّر أكثر على زاوية السطح الحُفّي؛ احتمال <b>ظهور معدن</b> (الأمامية/الخلفية السفلية)؛ إرساء/مقاومة أقلّ من الكامل؛ تعديل محدود لمسار الإخراج. <b>الأخاديد الدانية:</b> تُوضع موازيةً لمسار الإخراج (ولبعضها) لـ<b>تحسين الإرساء/المقاومة</b> وتحديد مسار الإدخال — ميزة مفتاحية تعوّض جزئياً عن الجدار الشدقي غير المُغطّى.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec12">Lec 8 · Post (Dowel) Crown — Components &amp; Types ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Post crown components &amp; indications</div>
+  <div class="prompt">What are the components of a post crown and its indications?</div>
+  <div class="answer">
+    A post crown restores an <b>endodontically treated</b> tooth with little coronal structure. <b>Components:</b>
+  <ul><li><b>Crown:</b> the final restoration over the core (full metal/veneer/jacket).</li>
+  <li><b>Core:</b> coronal addition to the post giving retention for the crown.</li>
+  <li><b>Post (dowel):</b> extends into the root canal for support/retention.</li></ul>
+  <b>Indications:</b> insufficient coronal structure where <b>intra-canal retention is the only option</b>; realignment of a malposed tooth; bridge retainer; short clinical crown.<br>
+  <b>Contraindications:</b> unsuccessful endodontics; significant coronal structure remaining; inadequate root length; caries on root/canal.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مكوّنات التاج الوتدي واستطباباته:</b> يرمّم التاج الوتدي سنّاً <b>معالَجاً لبياً</b> بقليل من البنية التاجية. <b>المكوّنات:</b> <b>التاج:</b> الترميم النهائي فوق اللبّ (معدني/كامل/jacket). <b>اللبّ (Core):</b> إضافة تاجية للوتد تعطي إرساءً للتاج. <b>الوتد (Post):</b> يمتدّ في قناة الجذر للدعم/الإرساء. <b>الاستطبابات:</b> بنية تاجية غير كافية حيث <b>الإرساء داخل القناة هو الخيار الوحيد</b>؛ إعادة اصطفاف سنّ سيّئ الموضع؛ حاصرة جسر؛ تاج سريري قصير. <b>الموانع:</b> معالجة لبية فاشلة؛ بنية تاجية كبيرة متبقية؛ طول جذر غير كافٍ؛ تسوّس على الجذر/القناة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">One-unit vs two-unit post crown</div>
+  <div class="prompt">Differentiate one-unit and two-unit post crowns, and the post classification.</div>
+  <div class="answer">
+    <b>One-unit:</b> the crown is a direct extension of the dowel (post+core+crown one piece); indicated when there is insufficient space for both a retentive core and a separate crown (e.g., very short lower incisor).<br>
+  <b>Two-unit (post & core + crown):</b> crown can be replaced later without disturbing the post-core → indicated in <b>young patients (&lt;18)</b> and when the tooth is a bridge abutment; marginal fit is independent of the dowel.<br>
+  <b>Post classification:</b> <b>prefabricated</b> (stainless steel/carbon fiber/fiberglass; simple, no canal reproduction needed) vs <b>customized cast</b> (from a negative canal reproduction; conforms closely; not for narrow/severely curved canals).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الوتدي أحادي مقابل ثنائي الوحدة:</b> <b>أحادي الوحدة:</b> التاج امتداد مباشر للوتد (post+core+crown قطعة واحدة)؛ يُستطبّ حين لا مساحة لكلٍّ من لبّ مُرسٍ وتاج منفصل (كقاطع سفلي قصير جداً). <b>ثنائي الوحدة (post & core + crown):</b> يمكن استبدال التاج لاحقاً دون إزعاج الوتد ← يُستطبّ في <b>الصغار (&lt;18)</b> وحين يكون السن دعامة جسر؛ والملاءمة الحافّية مستقلّة عن الوتد. <b>تصنيف الوتد:</b> <b>جاهز الصنع</b> (ستانلس/ألياف كربون/زجاج؛ بسيط، لا يحتاج نسخ القناة) مقابل <b>مصبوب مخصّص</b> (من نسخة سلبية للقناة؛ يطابقها بدقّة؛ ليس للقنوات الضيّقة/شديدة الانحناء).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Post length, diameter &amp; retention factors</div>
+  <div class="prompt">State the ideal post length, diameter, and factors affecting post-crown retention.</div>
+  <div class="answer">
+    <b>Length:</b> = <b>2/3 of the root length</b>, or equal to the crown length, whichever is greater; leave <b>at least 3–5 mm of GP at the apex</b> (apical seal) — ~8 mm deep from CEJ. Removes GP with <b>Peeso reamers</b> (blunt non-cutting tip → follows path, avoids perforation).<br>
+  <b>Diameter:</b> ≤ <b>1/3 root diameter at CEJ</b>, and at least <b>2 mm less than root diameter mid-root</b>.<br>
+  <b>Retention factors:</b> post length; diameter; canal shape (<b>parallel-sided &gt; tapered</b>); accessory means (<b>keyway/pins/grooves</b> — anti-rotation); rough post surface &gt; smooth. A <b>contra-bevel</b> (collar) prevents remaining-structure fracture.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>طول الوتد وقطره وعوامل الإرساء:</b> <b>الطول:</b> = <b>2/3 طول الجذر</b>، أو مساوٍ لطول التاج، أيّهما أكبر؛ واترك <b>3–5مم على الأقل من GP عند القمة</b> (سدّ قمي) — ~8مم عمقاً من CEJ. ويُزال GP بـ<b>Peeso reamers</b> (طرف كليل غير قاطع ← يتبع المسار ويتجنّب الثقب). <b>القطر:</b> ≤ <b>1/3 قطر الجذر عند CEJ</b>، وأقلّ بـ<b>2مم على الأقل من قطر الجذر منتصفه</b>. <b>عوامل الإرساء:</b> الطول؛ القطر؛ شكل القناة (<b>متوازية &gt; مدبّبة</b>)؛ وسائل إضافية (<b>keyway/دبابيس/أخاديد</b> — ضدّ الدوران)؛ سطح خشن &gt; أملس. و<b>الشطبة المضادّة (contra-bevel)</b> (طوق) تمنع كسر البنية المتبقية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec13">Lec 9 · Impressions for Crown &amp; Bridge</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Impression — definition &amp; objective</div>
+  <div class="prompt">Define an impression and its objective in crown & bridge work.</div>
+  <div class="answer">
+    <b>Impression:</b> a <b>negative</b> reproduction/likeness of an object, from which a <b>positive</b> reproduction (cast) is obtained. Since patterns can't be made directly in the mouth, an impression of the teeth and surrounding structures is needed to obtain a <b>cast</b>, which is then used to fabricate the restoration in the lab. An <b>elastic impression material</b> is placed in a tray, inserted, and removed after setting.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الطبعة — التعريف والهدف:</b> <b>الطبعة:</b> نسخة <b>سلبية</b> لجسم، تُشتقّ منها نسخة <b>إيجابية</b> (نموذج/cast). ولأنه لا يمكن صنع النماذج مباشرةً في الفم، تلزم طبعة للأسنان والبنى المحيطة للحصول على <b>نموذج</b> يُصنع عليه الترميم في المختبر. وتُوضع <b>مادة طبعة مرنة</b> في حامل (tray)، تُدخَل وتُزال بعد التصلّب.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Gingival retraction &amp; its purpose</div>
+  <div class="prompt">Why is gingival retraction needed before a final impression?</div>
+  <div class="answer">
+    When the finishing line is at or below the gingival margin, the material must record it accurately. <b>Gingival retraction</b> (retraction cord ± hemostatic/astringent, or other methods) <b>temporarily displaces the gingival tissue laterally and vertically</b> and controls fluid/hemorrhage, creating <b>space and access</b> so the low-viscosity impression material flows around the entire finishing line. Without adequate retraction, the margin is not captured → a poorly-fitting restoration and marginal failure.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>إزاحة اللثة وغرضها:</b> حين يكون خطّ الإنهاء عند الحافة اللثوية أو تحتها، يجب أن تسجّله المادة بدقّة. و<b>إزاحة اللثة</b> (خيط إزاحة ± مادة مرقئة/قابضة، أو طرق أخرى) <b>تزيح النسيج اللثوي مؤقتاً جانبياً وعمودياً</b> وتضبط السوائل/النزف، مُنشئةً <b>مساحةً ووصولاً</b> ليتدفّق مادة الطبعة منخفضة اللزوجة حول كامل خطّ الإنهاء. وبدون إزاحة كافية لا تُلتقط الحافة ← ترميم سيّئ الملاءمة وفشل حافّي.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec14">Lec 4 · Axial Surface Preparation &amp; Seating Groove</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Buccal &amp; lingual surface preparation</div>
+  <div class="prompt">How are the buccal and lingual surfaces prepared for a full metal crown?</div>
+  <div class="answer">
+    <b>Buccal surface:</b> place <b>three DOG (1 mm depth)</b> — one in the center of the wall and one in each mesial and distal transitional line angle — <b>parallel to the long axis</b> (or the proposed path of insertion). Then move the bur mesially/distally following the surface inclination to remove islands between the grooves. The gingival extent determines the margin position (supragingival preferred). A <b>round-end tapered fissure bur</b> is used during axial reduction to obtain the <b>chamfer</b> finishing line.<br>
+  <b>Lingual surface:</b> prepared the <b>same as the buccal surface</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تحضير السطحين الشدقي واللساني:</b> <b>الشدقي:</b> ضع <b>ثلاثة DOG (عمق 1مم)</b> — واحداً في وسط الجدار وواحداً في كل زاوية خطّية انتقالية إنسية وقاصية — <b>موازيةً للمحور الطولي</b> (أو مسار الإدخال المقترح). ثم حرّك البُرّ إنسياً/قاصياً متتبّعاً ميلان السطح لإزالة الجزر بين الأخاديد. ويحدّد الامتداد اللثوي موضع الحافة (فوق اللثوي مفضّل). ويُستخدم <b>بُرّ شقّي مدوّر الطرف</b> أثناء التخفيض المحوري للحصول على خطّ إنهاء <b>chamfer</b>. <b>اللساني:</b> يُحضّر <b>كالشدقي تماماً</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Proximal preparation &amp; seating groove</div>
+  <div class="prompt">How is the proximal surface reduced, and what is the purpose of a seating groove?</div>
+  <div class="answer">
+    <b>Proximal reduction:</b> use a <b>very thin long pointed tapered diamond (long needle)</b> resting on the prepared tooth (to protect the adjacent tooth), moving up/down to open the contact bucco-lingually; then a round-end tapered fissure bur planes the wall forming a chamfer. A <b>safe-sided disc</b> or a <b>matrix band on the adjacent tooth</b> can protect it. Finally smooth all surfaces to remove sharp line/point angles (stress concentration).<br>
+  <b>Seating groove</b> (buccal of lower molar / palatal of upper molar): (1) a <b>guide</b> during crown placement; (2) <b>prevents rotation</b> (↑resistance); (3) <b>improves retention</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التحضير الداني وأخدود الإجلاس:</b> <b>التخفيض الداني:</b> استخدم <b>ماسة مدبّبة رفيعة طويلة (long needle)</b> مستندةً على السن المحضّر (لحماية المجاور)، متحرّكاً صعوداً/هبوطاً لفتح التماس دهليزياً-لسانياً؛ ثم بُرّ شقّي مدوّر يسوّي الجدار مكوّناً chamfer. ويمكن حماية المجاور بـ<b>قرص آمن الجانب</b> أو <b>شريط مصفوفة على المجاور</b>. وأخيراً نعّم كل الأسطح لإزالة الزوايا الحادّة (تركّز إجهاد). <b>أخدود الإجلاس</b> (شدقي الرحى السفلية / حنكي العلوية): (١) <b>دليل</b> أثناء وضع التاج؛ (٢) <b>يمنع الدوران</b> (↑مقاومة)؛ (٣) <b>يحسّن الإرساء</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec15">Lec 5 · PFM — Detailed Advantages &amp; Limitations</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">PFM — why most widely used</div>
+  <div class="prompt">Why is the PFM crown the most widely used fixed restoration?</div>
+  <div class="answer">
+    The <b>PFM crown</b> is a full metal crown with the facial surface (or all surfaces) covered by ceramic: a ceramic layer bonded to a thin cast metal coping. It <b>combines the strength and accurate fit</b> of the cast metal coping with the <b>cosmetics of ceramic</b> — i.e., the advantages of the full metal crown's strength and the all-ceramic crown's esthetics, without the all-ceramic crown's fragility. This balance is why it is the most widely used fixed restoration.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>PFM — لماذا الأكثر استخداماً:</b> <b>تاج PFM</b> تاج معدني كامل سطحه الوجهي (أو كل الأسطح) مغطّى بالخزف: طبقة خزف مرتبطة بكوبنة معدنية مصبوبة رقيقة. وهو <b>يجمع قوّة ودقّة ملاءمة</b> الكوبنة المعدنية مع <b>جمال الخزف</b> — أي مزايا قوّة التاج المعدني الكامل وجمال الخزفي الكامل، دون هشاشة الخزفي الكامل. وهذا التوازن سبب كونه الأكثر استخداماً.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">PFM disadvantages, indications &amp; contraindications</div>
+  <div class="prompt">List the disadvantages, indications, and contraindications of the PFM crown.</div>
+  <div class="answer">
+    <b>Disadvantages:</b> substantial tooth removal; porcelain can fracture (brittle); shade selection difficult; <b>esthetics inferior to a porcelain jacket crown</b>; gingival-margin discoloration over time; more expensive.<br>
+  <b>Indications:</b> teeth needing complete coverage for esthetics; bridge retainer; and generally similar to full metal crown indications.<br>
+  <b>Contraindications:</b> teeth with a <b>large pulp</b> (exposure risk during deep reduction); intact buccal wall (a more conservative retainer suffices); short crowns; patient with poor oral hygiene.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>عيوب PFM واستطباباته وموانعه:</b> <b>العيوب:</b> إزالة سنّ كبيرة؛ البورسلين قد ينكسر (هشّ)؛ اختيار اللون صعب؛ <b>جمال أدنى من التاج البورسلين الكامل</b>؛ تلوّن الحافة اللثوية مع الوقت؛ أغلى. <b>الاستطبابات:</b> أسنان تحتاج تغطية كاملة للجمال؛ حاصرة جسر؛ وعموماً كاستطبابات التاج المعدني الكامل. <b>الموانع:</b> أسنان ذات <b>لبّ كبير</b> (خطر الكشف أثناء التخفيض العميق)؛ جدار شدقي سليم (يكفي حاصرة أكثر تحفّظاً)؛ تيجان قصيرة؛ مريض بنظافة فموية سيّئة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec16">Lec 6 · All-Ceramic Preparation Steps</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">PJC incisal &amp; labial reduction</div>
+  <div class="prompt">Describe the incisal and labial reduction for a porcelain jacket crown.</div>
+  <div class="answer">
+    A <b>silicone index</b> is made before reduction. <b>Incisal reduction:</b> <b>1.5–2 mm</b> clearance for porcelain in all mandibular movements (2 mm for posteriors on all cusps); DOG ~1.3 mm with a flat-end tapered bur parallel to the incisal inclination; check clearance centric & eccentric. <b>Labial reduction (two planes):</b> <b>incisal plane</b> — three DOG (1 mm) parallel to the surface inclination; <b>gingival plane</b> — DOG (1 mm) parallel to the long axis, reduced with a flat-end tapered fissure bur to create a <b>shoulder</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تخفيض PJC القاطع والشفوي:</b> يُصنع <b>دليل سيليكون</b> قبل التخفيض. <b>التخفيض القاطع:</b> خلوص <b>1.5–2مم</b> للبورسلين في كل حركات الفك (2مم للخلفية على كل الحدبات)؛ DOG ~1.3مم ببُرّ مسطّح الطرف موازٍ لميل القاطع؛ افحص الخلوص مركزياً ولا مركزياً. <b>التخفيض الشفوي (مستويان):</b> <b>المستوى القاطع</b> — ثلاثة DOG (1مم) موازية لميل السطح؛ <b>المستوى اللثوي</b> — DOG (1مم) موازية للمحور، تُخفَّض ببُرّ شقّي مسطّح لإنشاء <b>كتف</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">PJC lingual/proximal reduction &amp; finishing line</div>
+  <div class="prompt">Describe the lingual and proximal reduction and the finishing line for a PJC.</div>
+  <div class="answer">
+    <b>Lingual reduction:</b> as for PFM but deeper. <b>Cingulum area</b> — DOG ~0.8 mm centrally, reduced with a <b>small wheel diamond</b> following the tooth concavity. <b>Lingual axial</b> — DOG ~0.8 mm parallel to the long axis, reduced with a flat-end tapered fissure bur to create a <b>shoulder</b>. <b>Proximal reduction:</b> same as full metal crown. Then <b>smooth</b> the preparation to remove sharp angles.<br>
+  <b>Finishing line:</b> a <b>shoulder or radial shoulder all around</b> is advocated for a PJC; sharp angles must be rounded to avoid stress-concentration points.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تخفيض PJC اللساني/الداني وخطّ الإنهاء:</b> <b>اللساني:</b> كـPFM لكن أعمق. <b>منطقة الحُدَيبة (cingulum)</b> — DOG ~0.8مم مركزياً، تُخفَّض بـ<b>ماسة عجلة صغيرة</b> متتبّعةً تقعّر السن. <b>المحوري اللساني</b> — DOG ~0.8مم موازٍ للمحور، يُخفَّض ببُرّ شقّي مسطّح لإنشاء <b>كتف</b>. <b>التخفيض الداني:</b> كالتاج المعدني الكامل. ثم <b>نعّم</b> التحضير لإزالة الزوايا الحادّة. <b>خطّ الإنهاء:</b> يُنصح بـ<b>كتف أو كتف شعاعي حول المحيط</b> للـPJC؛ وتُدوَّر الزوايا الحادّة لتجنّب نقاط تركّز الإجهاد.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec17">Lec 8 · Keyway, Antirotation &amp; Contra-bevel</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Keyway &amp; antirotation devices</div>
+  <div class="prompt">What is a keyway, and what are the antirotation devices for a post crown?</div>
+  <div class="answer">
+    A <b>keyway</b> is a small channel (~<b>1 mm wide, 4 mm</b> extending into the canal orifice), cut with a flat-end fissure bur in the area of <b>greatest bulk</b>.<br>
+  <b>Advantages:</b> (1) acts as a <b>guide</b> during dowel placement; (2) acts as an <b>anti-rotational device</b> (prevents post rotation); (3) improves retention.<br>
+  <b>Antirotation devices:</b> (A) keyway; (B) a <b>triangular</b> shape for incisors / <b>elliptical</b> for the upper canine; (C) pins. In multi-rooted teeth the post goes in the <b>largest canal</b> (palatal in upper molar, distal in lower molar, buccal in maxillary premolar) and another canal is used for the keyway.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الـKeyway وأجهزة منع الدوران:</b> الـ<b>keyway</b> قناة صغيرة (~<b>1مم عرضاً و4مم</b> ممتدّة لفوّهة القناة)، تُحفر ببُرّ شقّي مسطّح في منطقة <b>أكبر كتلة</b>. <b>المزايا:</b> (١) <b>دليل</b> أثناء وضع الوتد؛ (٢) <b>جهاز مانع للدوران</b> (يمنع دوران الوتد)؛ (٣) يحسّن الإرساء. <b>أجهزة منع الدوران:</b> (أ) keyway؛ (ب) شكل <b>مثلثي</b> للقواطع / <b>بيضوي</b> للناب العلوي؛ (ج) دبابيس. وفي الأسنان متعدّدة الجذور يُوضع الوتد في <b>أكبر قناة</b> (حنكية العلوية، قاصية السفلية، شدقية ضاحك العلوي) وتُستخدم قناة أخرى للـkeyway.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Contra-bevel &amp; post preparation requirements</div>
+  <div class="prompt">What is a contra-bevel, and list the post preparation requirements.</div>
+  <div class="answer">
+    <b>Contra-bevel:</b> a bevel placed (with a flame bur) around the <b>occlusal external periphery</b> of the preparation when supragingival structure remains → provides a <b>collar (ferrule)</b> that holds the remaining tooth together and prevents fracture.<br>
+  <b>Post prep requirements:</b> (1) post as long as possible without jeopardizing the apical seal; (2) prepare a contra-bevel when possible; (3) canal diameter ≤ 1/3 root diameter at CEJ and ≥ 2 mm less than root diameter mid-root; (4) leave a <b>1 mm vertical wall</b> between core margin and shoulder (support, prevents root fracture); (5) avoid burs in the canal that create undercuts.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الشطبة المضادّة ومتطلبات تحضير الوتد:</b> <b>الشطبة المضادّة (Contra-bevel):</b> شطبة تُوضع (ببُرّ لهبي) حول <b>المحيط الخارجي الإطباقي</b> للتحضير حين تبقى بنية فوق لثوية ← توفّر <b>طوقاً (ferrule)</b> يمسك البنية المتبقية ويمنع الكسر. <b>متطلبات تحضير الوتد:</b> (١) وتد أطول ما أمكن دون تهديد السدّ القمي؛ (٢) شطبة مضادّة عند الإمكان؛ (٣) قطر القناة ≤ 1/3 قطر الجذر عند CEJ و≥ 2مم أقلّ من قطر الجذر منتصفه؛ (٤) اترك <b>جدار عمودي 1مم</b> بين حافة اللبّ والكتف (دعم، يمنع كسر الجذر)؛ (٥) تجنّب بُرَ القناة التي تُحدث تقويضات.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec18">Lec 9 · Impression Materials &amp; Techniques</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Elastomeric impression materials</div>
+  <div class="prompt">What impression materials are used for crown & bridge, and why elastomers?</div>
+  <div class="answer">
+    Crown & bridge requires an <b>elastic (elastomeric)</b> material that records fine detail and can be withdrawn past undercuts without permanent distortion. Common elastomers: <b>addition silicone (polyvinyl siloxane / PVS)</b> — excellent accuracy/dimensional stability, hydrophobic (needs a dry field); <b>polyether</b> — very accurate, hydrophilic, stiff (good for margins but hard to remove); condensation silicone and polysulfide (older). They are supplied in light-, medium-, and heavy/putty-body viscosities used together (e.g., putty-wash technique).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مواد الطبعة المطّاطية:</b> يتطلّب التيجان والجسور مادة <b>مرنة (elastomeric)</b> تسجّل التفاصيل الدقيقة وتُسحَب عبر التقويضات دون تشوّه دائم. الشائعة: <b>سيليكون الإضافة (PVS)</b> — دقّة وثبات أبعاد ممتاز، كاره للماء (يحتاج مجالاً جافّاً)؛ <b>بولي إيثر</b> — دقيق جداً، محبّ للماء، صلب (جيّد للحواف لكن صعب الإزالة)؛ وسيليكون التكثيف والبولي سلفايد (أقدم). وتُورَّد بقوامات خفيفة ومتوسّطة وثقيلة/معجونية تُستخدم معاً (تقنية putty-wash).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Provisional (temporary) restoration</div>
+  <div class="prompt">Why is a provisional restoration needed, and what are its requirements?</div>
+  <div class="answer">
+    A <b>provisional restoration</b> is placed between preparation and cementation of the final crown. <b>Functions:</b> protect the pulp-dentin complex; maintain the position of the prepared tooth (prevent drifting/over-eruption of the abutment and opposing/adjacent teeth); protect the periodontium; restore function/esthetics/comfort; allow evaluation. <b>Requirements:</b> good marginal fit, proper contour and contacts, smooth surface, adequate strength, and easy removal (non-eugenol temporary cement if a resin final cement will be used, since eugenol interferes with resin polymerization).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الترميم المؤقت:</b> يُوضع <b>الترميم المؤقت</b> بين التحضير وتثبيت التاج النهائي. <b>الوظائف:</b> حماية معقد اللب-العاج؛ الحفاظ على موضع السن المحضّر (منع انجراف/بزوغ زائد للدعامة والأسنان المقابلة/المجاورة)؛ حماية النسيج حول السني؛ استعادة الوظيفة/الجمال/الراحة؛ إتاحة التقييم. <b>المتطلبات:</b> ملاءمة حافّية جيّدة، كنتور وتماسات سليمة، سطح ناعم، قوّة كافية، وإزالة سهلة (سمنت مؤقت خالٍ من الأوجينول إن كان السمنت النهائي راتنجياً، لأن الأوجينول يعيق بلمرة الراتنج).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec19">Lec 2 · Preservation of Tooth Structure (Detailed)</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Why conservation is the first principle</div>
+  <div class="prompt">Explain why preservation of tooth structure is the first biomechanical principle and the harms of over-reduction.</div>
+  <div class="answer">
+    Preservation of tooth structure is the <b>first principle</b> because the prepared tooth must remain <b>vital and strong</b> enough to support the restoration for years. Preparation must be <b>conservative</b> — remove the minimal amount needed. <b>Harms of excessive reduction:</b> (1) approaching the pulp → <b>thermal hypersensitivity, pulpal inflammation, and necrosis</b>; (2) an <b>over-tapered</b> or <b>shortened</b> preparation that loses <b>retention and resistance</b>; (3) general weakening of the remaining tooth. Conservation must always be balanced against providing enough space for the restorative material's bulk and strength.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>لماذا التحفّظ أول مبدأ:</b> حفظ بنية السن هو <b>المبدأ الأول</b> لأن السن المحضّر يجب أن يبقى <b>حيّاً وقوياً</b> كفايةً لدعم الترميم سنين. والتحضير يجب أن يكون <b>متحفّظاً</b> — إزالة أقلّ قدر لازم. <b>أضرار الإزالة الزائدة:</b> (١) الاقتراب من اللب ← <b>حساسية حرارية والتهاب لبّي ونخر</b>؛ (٢) تحضير <b>مفرط التحدّب</b> أو <b>قصير</b> يفقد <b>الإرساء والمقاومة</b>؛ (٣) إضعاف عام للسن المتبقّي. ويجب دائماً موازنة التحفّظ مع توفير مساحة كافية لسُمك المادة الترميمية وقوّتها.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec20">Lec 2 · Retention–Resistance (Integrated Review) ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">How the six retention factors work together</div>
+  <div class="prompt">Integrate the six factors affecting retention and resistance into a clinical picture.</div>
+  <div class="answer">
+    A retentive, resistant preparation is achieved by combining: (1) <b>minimal taper</b> (5–6° convergence — the single most important factor; more taper = less retention); (2) <b>maximal surface area</b> (larger tooth, greater coverage, accessory boxes/grooves/pinholes); (3) <b>adequate length/height</b> (taller = more retention and resistance); (4) favorable <b>tooth diameter</b> (a narrow tooth resists tipping better — shorter rotation radius); (5) appropriate <b>surface texture</b> (rougher = more retentive with the right cement); and (6) <b>extra retention means</b> (grooves, boxes, pinholes) when the preparation is short. The goal is a <b>single path of insertion</b> with limited freedom of displacement.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>كيف تتكامل عوامل الإرساء الستة:</b> يتحقّق التحضير المُرسى المقاوم بدمج: (١) <b>أدنى تحدّب</b> (تقارب 5–6° — العامل الأهمّ؛ زيادة التحدّب = إرساء أقلّ)؛ (٢) <b>أقصى مساحة سطحية</b> (سنّ أكبر، تغطية أكبر، صناديق/أخاديد/حُفَر إضافية)؛ (٣) <b>طول/ارتفاع كافٍ</b> (الأطول = إرساء ومقاومة أكثر)؛ (٤) <b>قطر سنّ</b> مؤاتٍ (الضيّق يقاوم الإمالة أفضل — نصف قطر دوران أقصر)؛ (٥) <b>ملمس</b> مناسب (الأخشن = أكثر إرساءً مع السمنت الصحيح)؛ (٦) <b>وسائل إرساء إضافية</b> (أخاديد، صناديق، حُفَر) حين يكون التحضير قصيراً. والهدف <b>مسار إدخال واحد</b> بحرّية إزاحة محدودة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Structural durability — occlusal &amp; axial together</div>
+  <div class="prompt">How do occlusal reduction, functional cusp bevel, and axial reduction jointly ensure structural durability?</div>
+  <div class="answer">
+    Structural durability requires the restoration to be <b>rigid enough not to flex, perforate, or fracture</b> — which demands sufficient bulk, created by adequate tooth removal. <b>Occlusal reduction (1–1.5 mm, planar/anatomical)</b> gives thickness to resist wear/perforation while preserving axial-wall length. The <b>functional cusp bevel</b> adds thickness at the critical stress-bearing functional cusps without over-cutting (its omission → thin restoration or an over-built crown with premature contact). <b>Axial reduction</b> provides thickness so the crown won't flex under occlusal load. Together they balance bulk (durability) against conservation (pulp/retention).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>المتانة البنيوية — الإطباقي والمحوري معاً:</b> تتطلّب المتانة أن يكون الترميم <b>صلباً لا ينثني ولا يُثقَب ولا ينكسر</b> — وهذا يستلزم سُمكاً كافياً يُصنع بإزالة سنّ كافية. <b>التخفيض الإطباقي (1–1.5مم، مستوٍ/تشريحي)</b> يعطي سُمكاً يقاوم التآكل/الثقب مع حفظ طول الجدار المحوري. و<b>شطبة الحدبة الوظيفية</b> تضيف سُمكاً عند الحدبات الوظيفية الحرجة دون قطع زائد (وحذفها ← ترميم رقيق أو تاج مبالَغ ببنائه بتماس مبكّر). و<b>التخفيض المحوري</b> يوفّر سُمكاً كي لا ينثني التاج تحت الحمل. وتوازن هذه معاً بين السُمك (المتانة) والتحفّظ (اللب/الإرساء).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec21">Lec 1–2 · Esthetics &amp; Periodontal Integration</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">How crown design protects the periodontium</div>
+  <div class="prompt">How does crown design preserve periodontal health?</div>
+  <div class="answer">
+    Periodontal preservation is one of the five biomechanical principles. Key measures: place the <b>margin supragingivally whenever possible</b> (easier cleaning, less inflammation, usually on hard enamel); give the restoration <b>proper contact, embrasure form, occlusion, and a healthy occluso-gingival contour</b> (avoid over-contouring, which traps plaque). Poor design causes <b>food impaction → gingivitis, periodontal pockets, and secondary caries</b>. When a subgingival margin is unavoidable (esthetics, retention, caries at the margin), it must respect the biologic width and be kept smooth and well-adapted.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>كيف يحمي تصميم التاج النسيج حول السني:</b> حفظ النسيج حول السني أحد المبادئ الميكانيكية الخمسة. الإجراءات المفتاحية: ضع <b>الحافة فوق اللثة كلّما أمكن</b> (تنظيف أسهل، التهاب أقلّ، غالباً على مينا صلبة)؛ وأعطِ الترميم <b>تماساً وشكل embrasure وإطباقاً وكنتوراً إطباقياً-لثوياً صحّياً</b> (تجنّب الكنتور الزائد الذي يحتبس اللويحة). والتصميم الرديء يسبّب <b>انحشار طعام ← التهاب لثة وجيوب وتسوّس ثانوي</b>. وحين يكون الهامش تحت اللثوي لا مفرّ منه (جمال، إرساء، تسوّس عند الحافة) يجب احترام العرض البيولوجي وإبقاؤه ناعماً منطبقاً.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Silicone index — purpose across preparations</div>
+  <div class="prompt">What is a silicone index and why is it used in esthetic crown preparations?</div>
+  <div class="answer">
+    A <b>silicone index</b> is a putty impression taken of the tooth (or a diagnostic wax-up) <b>before</b> reduction, then sectioned. During and after preparation it is seated back to <b>check the exact amount of tooth structure removed</b> in each plane (incisal, labial, lingual). This ensures <b>adequate but not excessive reduction</b> — critical for PFM and all-ceramic crowns, where too little reduction causes over-contouring/poor esthetics and too much risks the pulp and weakens the tooth. It is essentially a customized depth gauge for the whole preparation.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>دليل السيليكون — الغرض عبر التحضيرات:</b> <b>دليل السيليكون</b> طبعة معجونية تُؤخذ للسن (أو للتشميع التشخيصي) <b>قبل</b> التخفيض، ثم تُقسَّم. وأثناء التحضير وبعده يُعاد إجلاسها لـ<b>فحص المقدار الدقيق المُزال</b> في كل مستوى (قاطع، شفوي، لساني). وهذا يضمن <b>تخفيضاً كافياً غير مفرط</b> — حاسم للـPFM والخزفي الكامل، حيث القليل يسبّب كنتوراً زائداً/جمالاً رديئاً والكثير يخاطر باللب ويُضعف السن. وهو أساساً مقياس عمق مخصّص للتحضير كله.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec22">Lec 1 · Bridge Types &amp; Connectors (Overview)</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Fixed vs movable connectors &amp; bridge design</div>
+  <div class="prompt">How do fixed (rigid) and movable (flexible) connectors differ, and how do they define major vs minor retainers?</div>
+  <div class="answer">
+    A <b>connector</b> joins the retainer(s) and pontic(s) of a bridge. A <b>fixed (rigid) connector</b> is a solid, soldered or cast-in-one union that transmits all functional forces directly between the units and does not allow independent movement; a retainer attached to a fixed connector is a <b>major retainer</b>. A <b>movable (flexible) connector</b> incorporates a stress-breaker (e.g., a key-and-keyway) that allows a limited, defined movement between the components — useful when abutments have differing degrees of mobility or when a non-parallel abutment (a <b>pier/intermediate abutment</b> situation) would otherwise create damaging leverage; a retainer attached to a movable connector is a <b>minor retainer</b>. Choosing the connector type is central to distributing occlusal load without overstressing an abutment.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الرابط (Connector)</b> يصل حاصرة/حاصرات الجسر ببنطيته/بنطياته. و<b>الرابط الثابت (الصلب)</b> اتحاد صلب ملحوم أو مصبوب قطعةً واحدة ينقل كل القوى الوظيفية مباشرةً بين الوحدات ولا يسمح بحركة مستقلّة؛ والحاصرة المتّصلة برابط ثابت هي <b>حاصرة كبرى</b>. أما <b>الرابط المتحرّك (المرن)</b> فيضمّ كاسر إجهاد (مثل key-and-keyway) يسمح بحركة محدودة معرّفة بين المكوّنات — مفيد حين تختلف درجات حركة الدعامات أو حين تسبّب دعامة غير موازية (حالة الدعامة الوسطية / pier abutment) رافعةً مؤذية؛ والحاصرة المتّصلة برابط متحرّك هي <b>حاصرة صغرى</b>. واختيار نوع الرابط محوري في توزيع الحمل الإطباقي دون إجهاد مفرط للدعامة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">From wax pattern to casting (lost-wax overview)</div>
+  <div class="prompt">Summarize the laboratory lost-wax sequence that converts a wax pattern into a cast metal restoration.</div>
+  <div class="answer">
+    After the working model is made, the technician performs the <b>lost-wax (cire-perdue) casting</b> sequence: (1) <b>Waxing</b> — a wax pattern of the restoration is carved on the die to the exact contour, margins, and occlusion; (2) <b>Spruing</b> — a sprue former is attached to create the channel for molten metal; (3) <b>Investing</b> — the pattern is surrounded by a heat-resistant investment material that sets into a mold; (4) <b>Burn-out (wax elimination)</b> — the mold is heated so the wax is completely vaporized, leaving a hollow cavity; (5) <b>Casting</b> — molten alloy is forced (centrifugally or by pressure) into the mold cavity; (6) <b>Cleaning and finishing</b> — the casting is divested, the sprue removed, and the restoration finished and polished before try-in and cementation. Accuracy at every stage determines marginal fit.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br>بعد صنع النموذج العملي ينفّذ الفنّي تسلسل <b>الصبّ بالشمع المفقود (lost-wax)</b>: (١) <b>التشميع</b> — يُنحت نموذج شمعي للترميم على القالب بالكنتور والحواف والإطباق الدقيق؛ (٢) <b>وضع القناة (Spruing)</b> — يُلحَق مشكّل قناة لإنشاء ممرّ المعدن المنصهر؛ (٣) <b>التغليف (Investing)</b> — يُحاط النموذج بمادة تغليف مقاومة للحرارة تتصلّب كقالب؛ (٤) <b>حرق الشمع (Burn-out)</b> — يُسخَّن القالب فيتبخّر الشمع كلياً تاركاً تجويفاً؛ (٥) <b>الصبّ (Casting)</b> — تُدفَع السبيكة المنصهرة (بالطرد المركزي أو الضغط) إلى تجويف القالب؛ (٦) <b>التنظيف والإنهاء</b> — يُنزع التغليف والقناة ويُنهى الترميم ويُلمّع قبل التجربة والتثبيت. ودقّة كل مرحلة تحدّد الملاءمة الحافّية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec23">Lec 1 · Diagnosis — Radiographic Assessment (Detailed)</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">What the radiograph reveals for abutment selection</div>
+  <div class="prompt">What specific information does the radiograph provide when assessing a tooth as a bridge abutment, and why does each matter?</div>
+  <div class="answer">
+    The radiograph is decisive in judging whether a tooth can serve as an abutment. It reveals: (1) the <b>shape and number of roots</b> — multi-rooted, divergent roots resist tipping forces better than a single conical root; (2) the <b>bone support</b>, expressed as the <b>crown/root ratio</b> — ideally <b>1:2</b>, with an acceptable minimum often cited around 1:1; a poor ratio means the abutment cannot bear the extra load of a pontic; (3) the condition of the <b>surrounding periodontal structures</b> (periodontal ligament space, lamina dura, bone level); (4) any <b>periapical lesion</b>, existing <b>root canal treatment</b> and its quality, <b>root/tooth fracture</b>, <b>bone loss</b>, <b>internal/external resorption</b>, and <b>unerupted teeth</b>. Each of these directly affects the <b>prognosis</b>: an abutment must have a healthy periodontium, adequate bone support, sound structure, and — if non-vital — a well-obturated canal before it is loaded by a fixed prosthesis.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br>الأشعة حاسمة في تقرير صلاحية السن كدعامة. تكشف: (١) <b>شكل وعدد الجذور</b> — الجذور المتعدّدة المتباعدة تقاوم قوى الإمالة أفضل من جذر مخروطي مفرد؛ (٢) <b>الدعم العظمي</b> معبَّراً عنه بـ<b>نسبة التاج/الجذر</b> — المثالية <b>1:2</b>، والحدّ الأدنى المقبول غالباً ~1:1؛ والنسبة السيّئة تعني أن الدعامة لا تتحمّل حمل البنطية الإضافي؛ (٣) حالة <b>البنى حول السنية المحيطة</b> (مسافة الرباط، الصفيحة القاسية، مستوى العظم)؛ (٤) أي <b>آفة حول قمية</b>، و<b>معالجة لبية</b> موجودة وجودتها، و<b>كسر جذر/سن</b>، و<b>فقد عظم</b>، و<b>امتصاص داخلي/خارجي</b>، و<b>أسنان منطمرة</b>. وكلٌّ منها يؤثّر مباشرةً على <b>الإنذار</b>: فالدعامة يجب أن يكون نسيجها حول السني سليماً ودعمها العظمي كافياً وبنيتها سليمة — وإن كانت غير حيّة — بقناة محشوّة جيّداً قبل تحميلها بتعويض ثابت.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Path of insertion — clinical importance</div>
+  <div class="prompt">Why must a crown preparation have a single path of insertion, and what is the exception for the anterior ¾ crown?</div>
+  <div class="answer">
+    For a crown to be retentive it must have a <b>single path of insertion</b> — one imaginary line along which the restoration seats and is withdrawn without generating lateral forces on the abutment. A preparation with <b>unlimited freedom of displacement</b> (e.g., an over-tapered, short prep) is much less retentive, because the restoration can be dislodged along many directions. By deliberately <b>limiting the path of withdrawal</b> — through near-parallel axial walls (5–6° convergence), adequate length, and auxiliary grooves/boxes — the clinician improves retention. The path is usually <b>parallel to the long axis of the tooth</b>. The classic <b>exception is the ¾ crown on anterior teeth</b>, where the path of insertion should be parallel to the <b>incisal two-thirds of the crown, not the long axis</b>, so that the restoration seats correctly over the sloped lingual/incisal contour while keeping the labial surface intact.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br>كي يكون التاج مُرسىً يجب أن يكون له <b>مسار إدخال واحد</b> — خطّ وهمي واحد يجلس عليه الترميم ويُسحَب دون توليد قوى جانبية على الدعامة. والتحضير ذو <b>حرّية الإزاحة غير المحدودة</b> (كتحضير مفرط التحدّب قصير) أقلّ إرساءً بكثير، لأن الترميم يمكن خلعه في اتّجاهات كثيرة. وبتعمّد <b>تحديد مسار الإخراج</b> — عبر جدران محورية شبه متوازية (تقارب 5–6°) وطول كافٍ وأخاديد/صناديق مساعدة — يحسّن الطبيب الإرساء. والمسار عادةً <b>موازٍ للمحور الطولي للسن</b>. و<b>الاستثناء الكلاسيكي هو تاج ¾ للأسنان الأمامية</b>، حيث يجب أن يكون مسار الإدخال موازياً لـ<b>الثلثين القاطعين للتاج لا للمحور الطولي</b>، ليجلس الترميم صحيحاً فوق الكنتور اللساني/القاطع المائل مع إبقاء السطح الشفوي سليماً.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="mcq-wrap">
+  <h2 class="mcq-title">📝 اختبار MCQ · اختبر نفسك (20 سؤالاً)</h2>
+  <div class="mcq-note">اختر إجابةً لكل سؤال. سيظهر الصحيح باللون الأخضر والخطأ بالأحمر مع شرح موجز. النتيجة تُحسب تلقائياً في الأعلى.</div>
+  <div class="mcq-scorebar">النتيجة · Score: <b id="mcqScore">0 / 20</b> &nbsp;·&nbsp; <button class="mcq-reset" onclick="mcqReset()">🔄 إعادة الاختبار</button></div>
+  
+<div class="mcq-q" id="mcq0">
+  <div class="mcq-stem"><span class="mcq-num">1</span> The ideal crown/root ratio for a tooth used as an abutment for a fixed partial denture is:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="0" data-o="0" onclick="pick(0,0)"><b>A.</b> 1:1</button>
+<button class="mcq-opt" data-q="0" data-o="1" onclick="pick(0,1)"><b>B.</b> 1:2</button>
+<button class="mcq-opt" data-q="0" data-o="2" onclick="pick(0,2)"><b>C.</b> 2:1</button>
+<button class="mcq-opt" data-q="0" data-o="3" onclick="pick(0,3)"><b>D.</b> 1:3</button></div>
+  <div class="mcq-exp" id="exp0"></div>
+</div>
+
+<div class="mcq-q" id="mcq1">
+  <div class="mcq-stem"><span class="mcq-num">2</span> Which crown covers all coronal surfaces EXCEPT the buccal/labial surface?</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="1" data-o="0" onclick="pick(1,0)"><b>A.</b> Full metal crown</button>
+<button class="mcq-opt" data-q="1" data-o="1" onclick="pick(1,1)"><b>B.</b> Three-quarter (¾) crown</button>
+<button class="mcq-opt" data-q="1" data-o="2" onclick="pick(1,2)"><b>C.</b> Post crown</button>
+<button class="mcq-opt" data-q="1" data-o="3" onclick="pick(1,3)"><b>D.</b> Jacket crown</button></div>
+  <div class="mcq-exp" id="exp1"></div>
+</div>
+
+<div class="mcq-q" id="mcq2">
+  <div class="mcq-stem"><span class="mcq-num">3</span> The most commonly used convergence (taper) angle for adequate retention is:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="2" data-o="0" onclick="pick(2,0)"><b>A.</b> 2–3°</button>
+<button class="mcq-opt" data-q="2" data-o="1" onclick="pick(2,1)"><b>B.</b> 5–6°</button>
+<button class="mcq-opt" data-q="2" data-o="2" onclick="pick(2,2)"><b>C.</b> 10–12°</button>
+<button class="mcq-opt" data-q="2" data-o="3" onclick="pick(2,3)"><b>D.</b> 15–20°</button></div>
+  <div class="mcq-exp" id="exp2"></div>
+</div>
+
+<div class="mcq-q" id="mcq3">
+  <div class="mcq-stem"><span class="mcq-num">4</span> Retention is the ability of the preparation to resist dislodgment by forces directed:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="3" data-o="0" onclick="pick(3,0)"><b>A.</b> Obliquely to the restoration</button>
+<button class="mcq-opt" data-q="3" data-o="1" onclick="pick(3,1)"><b>B.</b> Horizontally to the restoration</button>
+<button class="mcq-opt" data-q="3" data-o="2" onclick="pick(3,2)"><b>C.</b> Along the path of insertion</button>
+<button class="mcq-opt" data-q="3" data-o="3" onclick="pick(3,3)"><b>D.</b> In any lateral direction</button></div>
+  <div class="mcq-exp" id="exp3"></div>
+</div>
+
+<div class="mcq-q" id="mcq4">
+  <div class="mcq-stem"><span class="mcq-num">5</span> Which finishing line is the MOST conservative but provides a weak margin?</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="4" data-o="0" onclick="pick(4,0)"><b>A.</b> Shoulder</button>
+<button class="mcq-opt" data-q="4" data-o="1" onclick="pick(4,1)"><b>B.</b> Heavy chamfer</button>
+<button class="mcq-opt" data-q="4" data-o="2" onclick="pick(4,2)"><b>C.</b> Knife edge (feather)</button>
+<button class="mcq-opt" data-q="4" data-o="3" onclick="pick(4,3)"><b>D.</b> Radial shoulder</button></div>
+  <div class="mcq-exp" id="exp4"></div>
+</div>
+
+<div class="mcq-q" id="mcq5">
+  <div class="mcq-stem"><span class="mcq-num">6</span> The finishing line that forms a 90° cavo-surface angle with a large-radius internal angle, used for PFM and all-ceramic crowns, is:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="5" data-o="0" onclick="pick(5,0)"><b>A.</b> Knife edge</button>
+<button class="mcq-opt" data-q="5" data-o="1" onclick="pick(5,1)"><b>B.</b> Chamfer</button>
+<button class="mcq-opt" data-q="5" data-o="2" onclick="pick(5,2)"><b>C.</b> Heavy chamfer</button>
+<button class="mcq-opt" data-q="5" data-o="3" onclick="pick(5,3)"><b>D.</b> Radial shoulder</button></div>
+  <div class="mcq-exp" id="exp5"></div>
+</div>
+
+<div class="mcq-q" id="mcq6">
+  <div class="mcq-stem"><span class="mcq-num">7</span> A round-end tapered fissure bur is used to create which finishing line?</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="6" data-o="0" onclick="pick(6,0)"><b>A.</b> Shoulder</button>
+<button class="mcq-opt" data-q="6" data-o="1" onclick="pick(6,1)"><b>B.</b> Chamfer</button>
+<button class="mcq-opt" data-q="6" data-o="2" onclick="pick(6,2)"><b>C.</b> Knife edge</button>
+<button class="mcq-opt" data-q="6" data-o="3" onclick="pick(6,3)"><b>D.</b> Shoulder with bevel</button></div>
+  <div class="mcq-exp" id="exp6"></div>
+</div>
+
+<div class="mcq-q" id="mcq7">
+  <div class="mcq-stem"><span class="mcq-num">8</span> The occlusal reduction for a full metal crown over the FUNCTIONAL cusps is:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="7" data-o="0" onclick="pick(7,0)"><b>A.</b> 0.5 mm</button>
+<button class="mcq-opt" data-q="7" data-o="1" onclick="pick(7,1)"><b>B.</b> 1 mm</button>
+<button class="mcq-opt" data-q="7" data-o="2" onclick="pick(7,2)"><b>C.</b> 1.5 mm</button>
+<button class="mcq-opt" data-q="7" data-o="3" onclick="pick(7,3)"><b>D.</b> 2.5 mm</button></div>
+  <div class="mcq-exp" id="exp7"></div>
+</div>
+
+<div class="mcq-q" id="mcq8">
+  <div class="mcq-stem"><span class="mcq-num">9</span> Functional cusps that provide the centric stops of occlusion are the:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="8" data-o="0" onclick="pick(8,0)"><b>A.</b> Buccal of upper &amp; lingual of lower posteriors</button>
+<button class="mcq-opt" data-q="8" data-o="1" onclick="pick(8,1)"><b>B.</b> Palatal of upper &amp; buccal of lower posteriors</button>
+<button class="mcq-opt" data-q="8" data-o="2" onclick="pick(8,2)"><b>C.</b> Buccal of upper &amp; buccal of lower posteriors</button>
+<button class="mcq-opt" data-q="8" data-o="3" onclick="pick(8,3)"><b>D.</b> Palatal of upper &amp; lingual of lower posteriors</button></div>
+  <div class="mcq-exp" id="exp8"></div>
+</div>
+
+<div class="mcq-q" id="mcq9">
+  <div class="mcq-stem"><span class="mcq-num">10</span> Depth orientation grooves (DOG) are used mainly to:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="9" data-o="0" onclick="pick(9,0)"><b>A.</b> Increase retention of the crown</button>
+<button class="mcq-opt" data-q="9" data-o="1" onclick="pick(9,1)"><b>B.</b> Guide the amount of tooth structure removed</button>
+<button class="mcq-opt" data-q="9" data-o="2" onclick="pick(9,2)"><b>C.</b> Create the finishing line</button>
+<button class="mcq-opt" data-q="9" data-o="3" onclick="pick(9,3)"><b>D.</b> Improve esthetics</button></div>
+  <div class="mcq-exp" id="exp9"></div>
+</div>
+
+<div class="mcq-q" id="mcq10">
+  <div class="mcq-stem"><span class="mcq-num">11</span> In a PFM crown, the total labial reduction (metal coping + porcelain) is about:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="10" data-o="0" onclick="pick(10,0)"><b>A.</b> 0.5 mm</button>
+<button class="mcq-opt" data-q="10" data-o="1" onclick="pick(10,1)"><b>B.</b> 1 mm</button>
+<button class="mcq-opt" data-q="10" data-o="2" onclick="pick(10,2)"><b>C.</b> 1.5–2 mm</button>
+<button class="mcq-opt" data-q="10" data-o="3" onclick="pick(10,3)"><b>D.</b> 3 mm</button></div>
+  <div class="mcq-exp" id="exp10"></div>
+</div>
+
+<div class="mcq-q" id="mcq11">
+  <div class="mcq-stem"><span class="mcq-num">12</span> The line angle where the labial shoulder meets the palatal chamfer in an anterior PFM preparation is called the:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="11" data-o="0" onclick="pick(11,0)"><b>A.</b> Wing</button>
+<button class="mcq-opt" data-q="11" data-o="1" onclick="pick(11,1)"><b>B.</b> Keyway</button>
+<button class="mcq-opt" data-q="11" data-o="2" onclick="pick(11,2)"><b>C.</b> Cingulum</button>
+<button class="mcq-opt" data-q="11" data-o="3" onclick="pick(11,3)"><b>D.</b> Collar</button></div>
+  <div class="mcq-exp" id="exp11"></div>
+</div>
+
+<div class="mcq-q" id="mcq12">
+  <div class="mcq-stem"><span class="mcq-num">13</span> The shoulder (butt) finishing line is MOST associated with which crown?</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="12" data-o="0" onclick="pick(12,0)"><b>A.</b> Full metal crown</button>
+<button class="mcq-opt" data-q="12" data-o="1" onclick="pick(12,1)"><b>B.</b> Three-quarter crown</button>
+<button class="mcq-opt" data-q="12" data-o="2" onclick="pick(12,2)"><b>C.</b> Jacket (all-ceramic/acrylic) crown</button>
+<button class="mcq-opt" data-q="12" data-o="3" onclick="pick(12,3)"><b>D.</b> Post crown</button></div>
+  <div class="mcq-exp" id="exp12"></div>
+</div>
+
+<div class="mcq-q" id="mcq13">
+  <div class="mcq-stem"><span class="mcq-num">14</span> Which is a CONTRAINDICATION for an all-ceramic crown?</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="13" data-o="0" onclick="pick(13,0)"><b>A.</b> High esthetic requirement</button>
+<button class="mcq-opt" data-q="13" data-o="1" onclick="pick(13,1)"><b>B.</b> Endodontically treated tooth with post &amp; core</button>
+<button class="mcq-opt" data-q="13" data-o="2" onclick="pick(13,2)"><b>C.</b> Bruxism</button>
+<button class="mcq-opt" data-q="13" data-o="3" onclick="pick(13,3)"><b>D.</b> Considerable proximal caries</button></div>
+  <div class="mcq-exp" id="exp13"></div>
+</div>
+
+<div class="mcq-q" id="mcq14">
+  <div class="mcq-stem"><span class="mcq-num">15</span> The ideal length of a dowel post is:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="14" data-o="0" onclick="pick(14,0)"><b>A.</b> 1/3 of the root length</button>
+<button class="mcq-opt" data-q="14" data-o="1" onclick="pick(14,1)"><b>B.</b> Equal to the apical 3 mm</button>
+<button class="mcq-opt" data-q="14" data-o="2" onclick="pick(14,2)"><b>C.</b> 2/3 of the root length (or = crown length, whichever is greater)</button>
+<button class="mcq-opt" data-q="14" data-o="3" onclick="pick(14,3)"><b>D.</b> The full root length</button></div>
+  <div class="mcq-exp" id="exp14"></div>
+</div>
+
+<div class="mcq-q" id="mcq15">
+  <div class="mcq-stem"><span class="mcq-num">16</span> The apical gutta-percha seal that must remain after post space preparation is at least:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="15" data-o="0" onclick="pick(15,0)"><b>A.</b> 1 mm</button>
+<button class="mcq-opt" data-q="15" data-o="1" onclick="pick(15,1)"><b>B.</b> 3–5 mm</button>
+<button class="mcq-opt" data-q="15" data-o="2" onclick="pick(15,2)"><b>C.</b> 8 mm</button>
+<button class="mcq-opt" data-q="15" data-o="3" onclick="pick(15,3)"><b>D.</b> 10 mm</button></div>
+  <div class="mcq-exp" id="exp15"></div>
+</div>
+
+<div class="mcq-q" id="mcq16">
+  <div class="mcq-stem"><span class="mcq-num">17</span> Which instrument is preferred for removing gutta-percha during post space preparation?</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="16" data-o="0" onclick="pick(16,0)"><b>A.</b> Gates-Glidden drill</button>
+<button class="mcq-opt" data-q="16" data-o="1" onclick="pick(16,1)"><b>B.</b> Peeso reamer</button>
+<button class="mcq-opt" data-q="16" data-o="2" onclick="pick(16,2)"><b>C.</b> H-file</button>
+<button class="mcq-opt" data-q="16" data-o="3" onclick="pick(16,3)"><b>D.</b> Round bur</button></div>
+  <div class="mcq-exp" id="exp16"></div>
+</div>
+
+<div class="mcq-q" id="mcq17">
+  <div class="mcq-stem"><span class="mcq-num">18</span> A two-unit post crown (post &amp; core + separate crown) is particularly indicated in:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="17" data-o="0" onclick="pick(17,0)"><b>A.</b> Patients over 60</button>
+<button class="mcq-opt" data-q="17" data-o="1" onclick="pick(17,1)"><b>B.</b> Young patients under 18</button>
+<button class="mcq-opt" data-q="17" data-o="2" onclick="pick(17,2)"><b>C.</b> Teeth with no remaining structure only</button>
+<button class="mcq-opt" data-q="17" data-o="3" onclick="pick(17,3)"><b>D.</b> Non-vital molars only</button></div>
+  <div class="mcq-exp" id="exp17"></div>
+</div>
+
+<div class="mcq-q" id="mcq18">
+  <div class="mcq-stem"><span class="mcq-num">19</span> The recommended finishing line for a full metal crown is:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="18" data-o="0" onclick="pick(18,0)"><b>A.</b> Shoulder</button>
+<button class="mcq-opt" data-q="18" data-o="1" onclick="pick(18,1)"><b>B.</b> Chamfer</button>
+<button class="mcq-opt" data-q="18" data-o="2" onclick="pick(18,2)"><b>C.</b> Radial shoulder</button>
+<button class="mcq-opt" data-q="18" data-o="3" onclick="pick(18,3)"><b>D.</b> Shoulder with bevel</button></div>
+  <div class="mcq-exp" id="exp18"></div>
+</div>
+
+<div class="mcq-q" id="mcq19">
+  <div class="mcq-stem"><span class="mcq-num">20</span> Placing the preparation margin SUPRAGINGIVALLY is preferred because:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="19" data-o="0" onclick="pick(19,0)"><b>A.</b> It gives better esthetics in the anterior</button>
+<button class="mcq-opt" data-q="19" data-o="1" onclick="pick(19,1)"><b>B.</b> It is easier to prepare/finish, keep clean, and is less destructive</button>
+<button class="mcq-opt" data-q="19" data-o="2" onclick="pick(19,2)"><b>C.</b> It always provides more retention</button>
+<button class="mcq-opt" data-q="19" data-o="3" onclick="pick(19,3)"><b>D.</b> It is required for all PFM crowns</button></div>
+  <div class="mcq-exp" id="exp19"></div>
+</div>
+  <div class="mcq-final" id="mcqFinal"></div>
+</div>
+
+<div class="foot">
+✅ غطّى هذا الملف مادة اليوم الثامن — التيجان والجسور (Crowns & Bridges) ص 1–69: مقدّمة التعويضات الثابتة وأنواع التيجان والجسر ومكوّناته وأغراض التاج وخطوات الصنع والتشخيص؛ المبادئ الميكانيكية الحيوية الخمسة والإرساء/المقاومة وزاوية التقارب وعوامل الإرساء والمتانة البنيوية وحفظ النسيج حول السني؛ خطوط الإنهاء الستة (حافة السكّين، chamfer، heavy chamfer، الكتف، الكتف الشعاعي، الكتف بشطبة)؛ التاج المعدني الكامل وأخاديد DOG؛ تاج PFM والتاج المعدني بتكسية أكريليك؛ التاج الخزفي الكامل والـPJC والـAJC؛ تاج الـ¾؛ التاج الوتدي (Post & Core) بأنواعه وطول/قطر الوتد وعوامل إرساءه؛ والطبعات وإزاحة اللثة. 🦷 هذه أولى أيام مادة التيجان والجسور (الأيام ٨–١١). وفي نهاية الملف اختبار MCQ لتقييم نفسك.<br><br>
+عدد الكلمات (إنجليزي + عربي): <b>10125</b> كلمة.
+</div>
+
+<script>
+const total=56;
+function upd(){
+  let done=document.querySelectorAll('.card[data-done="1"]').length;
+  document.getElementById('score').textContent=done+' / '+total;
+  document.getElementById('fill').style.width=(done/total*100)+'%';
+}
+function revealCard(b){
+  const card=b.closest('.card');
+  card.querySelector('.answer').classList.add('show');
+  b.style.display='none';
+  card.querySelector('.got').style.display='inline-block';
+  card.querySelector('.rev').style.display='inline-block';
+}
+function rate(b,good){
+  const card=b.closest('.card');
+  card.setAttribute('data-done',good?'1':'2');
+  upd();
+}
+function revealAll(){
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelector('.answer').classList.add('show');
+    c.querySelector('.reveal').style.display='none';
+    c.querySelector('.got').style.display='inline-block';
+    c.querySelector('.rev').style.display='inline-block';
+  });
+}
+function hideAll(){
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelector('.answer').classList.remove('show');
+    c.querySelector('.reveal').style.display='inline-block';
+    c.querySelector('.got').style.display='none';
+    c.querySelector('.rev').style.display='none';
+  });
+}
+function resetAll(){
+  document.querySelectorAll('.card').forEach(c=>c.setAttribute('data-done','0'));
+  hideAll();upd();
+}
+upd();
+
+// ---- MCQ logic ----
+const MCQ=[{"q": "The ideal crown/root ratio for a tooth used as an abutment for a fixed partial denture is:", "opts": ["1:1", "1:2", "2:1", "1:3"], "correct": 1, "exp": "1:2 is ideal. النسبة المثالية للتاج/الجذر للدعامة = 1:2."}, {"q": "Which crown covers all coronal surfaces EXCEPT the buccal/labial surface?", "opts": ["Full metal crown", "Three-quarter (¾) crown", "Post crown", "Jacket crown"], "correct": 1, "exp": "The ¾ crown leaves the labial/buccal surface unprepared. تاج ¾ يترك السطح الشفوي/الشدقي غير محضّر."}, {"q": "The most commonly used convergence (taper) angle for adequate retention is:", "opts": ["2–3°", "5–6°", "10–12°", "15–20°"], "correct": 1, "exp": "5–6° is ideal; greater taper = less retention. 5–6° مثالية؛ وزيادة التحدّب تقلّل الإرساء."}, {"q": "Retention is the ability of the preparation to resist dislodgment by forces directed:", "opts": ["Obliquely to the restoration", "Horizontally to the restoration", "Along the path of insertion", "In any lateral direction"], "correct": 2, "exp": "Retention resists forces ALONG the path of insertion; resistance handles oblique/horizontal forces. الإرساء يقاوم القوى على مسار الإدخال؛ والمقاومة تقاوم المائلة/الأفقية."}, {"q": "Which finishing line is the MOST conservative but provides a weak margin?", "opts": ["Shoulder", "Heavy chamfer", "Knife edge (feather)", "Radial shoulder"], "correct": 2, "exp": "Knife edge removes least tooth structure but is weak (thin margin). حافة السكّين الأكثر تحفّظاً لكنها ضعيفة."}, {"q": "The finishing line that forms a 90° cavo-surface angle with a large-radius internal angle, used for PFM and all-ceramic crowns, is:", "opts": ["Knife edge", "Chamfer", "Heavy chamfer", "Radial shoulder"], "correct": 2, "exp": "Heavy chamfer = 90° cavosurface + rounded internal angle → supports ceramic. Heavy chamfer يدعم الخزف."}, {"q": "A round-end tapered fissure bur is used to create which finishing line?", "opts": ["Shoulder", "Chamfer", "Knife edge", "Shoulder with bevel"], "correct": 1, "exp": "Chamfer is made with a round-end tapered fissure bur (130–160°). الـchamfer ببُرّ شقّي مدوّر الطرف."}, {"q": "The occlusal reduction for a full metal crown over the FUNCTIONAL cusps is:", "opts": ["0.5 mm", "1 mm", "1.5 mm", "2.5 mm"], "correct": 2, "exp": "1.5 mm over functional cusps, 1 mm over non-functional. 1.5مم فوق الوظيفية، 1مم فوق غير الوظيفية."}, {"q": "Functional cusps that provide the centric stops of occlusion are the:", "opts": ["Buccal of upper & lingual of lower posteriors", "Palatal of upper & buccal of lower posteriors", "Buccal of upper & buccal of lower posteriors", "Palatal of upper & lingual of lower posteriors"], "correct": 1, "exp": "Functional = palatal of upper + buccal of lower posteriors. الوظيفية = حنكية العلوية + شدقية السفلية."}, {"q": "Depth orientation grooves (DOG) are used mainly to:", "opts": ["Increase retention of the crown", "Guide the amount of tooth structure removed", "Create the finishing line", "Improve esthetics"], "correct": 1, "exp": "DOG act as a depth guide/reference to avoid under/over-preparation. DOG دليل عمق لتجنّب التحضير الناقص/الزائد."}, {"q": "In a PFM crown, the total labial reduction (metal coping + porcelain) is about:", "opts": ["0.5 mm", "1 mm", "1.5–2 mm", "3 mm"], "correct": 2, "exp": "1.5–2 mm labial = 0.5 mm metal + 1 mm porcelain. 1.5–2مم = 0.5 معدن + 1 بورسلين."}, {"q": "The line angle where the labial shoulder meets the palatal chamfer in an anterior PFM preparation is called the:", "opts": ["Wing", "Keyway", "Cingulum", "Collar"], "correct": 0, "exp": "This junction is called the 'wing'. تُسمّى هذه الزاوية 'الجناح (wing)'."}, {"q": "The shoulder (butt) finishing line is MOST associated with which crown?", "opts": ["Full metal crown", "Three-quarter crown", "Jacket (all-ceramic/acrylic) crown", "Post crown"], "correct": 2, "exp": "Shoulder gives bulk for brittle jacket-crown materials. الكتف يعطي سُمكاً لمواد الـjacket الهشّة."}, {"q": "Which is a CONTRAINDICATION for an all-ceramic crown?", "opts": ["High esthetic requirement", "Endodontically treated tooth with post & core", "Bruxism", "Considerable proximal caries"], "correct": 2, "exp": "Bruxism contraindicates all-ceramic (brittle, fracture-prone). الصرير مانع للخزفي الكامل."}, {"q": "The ideal length of a dowel post is:", "opts": ["1/3 of the root length", "Equal to the apical 3 mm", "2/3 of the root length (or = crown length, whichever is greater)", "The full root length"], "correct": 2, "exp": "2/3 root length or = crown length (greater), leaving 3–5 mm apical GP. 2/3 الجذر أو طول التاج، مع 3–5مم GP قمياً."}, {"q": "The apical gutta-percha seal that must remain after post space preparation is at least:", "opts": ["1 mm", "3–5 mm", "8 mm", "10 mm"], "correct": 1, "exp": "Leave ≥3–5 mm apical GP to preserve the seal. اترك ≥3–5مم GP قمياً للسدّ."}, {"q": "Which instrument is preferred for removing gutta-percha during post space preparation?", "opts": ["Gates-Glidden drill", "Peeso reamer", "H-file", "Round bur"], "correct": 1, "exp": "Peeso reamers have a blunt non-cutting tip → follow the canal, avoid perforation. Peeso reamer طرف كليل يتجنّب الثقب."}, {"q": "A two-unit post crown (post & core + separate crown) is particularly indicated in:", "opts": ["Patients over 60", "Young patients under 18", "Teeth with no remaining structure only", "Non-vital molars only"], "correct": 1, "exp": "Two-unit allows replacing the crown later without disturbing the post → good for <18. الثنائي يتيح استبدال التاج لاحقاً → جيّد للصغار."}, {"q": "The recommended finishing line for a full metal crown is:", "opts": ["Shoulder", "Chamfer", "Radial shoulder", "Shoulder with bevel"], "correct": 1, "exp": "Chamfer is recommended for full metal crowns (knife edge also possible). الـchamfer موصى للتاج المعدني الكامل."}, {"q": "Placing the preparation margin SUPRAGINGIVALLY is preferred because:", "opts": ["It gives better esthetics in the anterior", "It is easier to prepare/finish, keep clean, and is less destructive", "It always provides more retention", "It is required for all PFM crowns"], "correct": 1, "exp": "Supragingival margins are easier to prepare/finish/clean and less destructive. الحافة فوق اللثوية أسهل وأقلّ تدميراً."}];
+const mcqTotal=20;
+let mcqAnswered={};
+function pick(qi,oi){
+  if(mcqAnswered[qi]!==undefined) return;
+  mcqAnswered[qi]=oi;
+  const correct=MCQ[qi].correct;
+  const opts=document.querySelectorAll('#mcq'+qi+' .mcq-opt');
+  opts.forEach(b=>{
+    b.classList.add('locked');
+    const o=parseInt(b.getAttribute('data-o'));
+    if(o===correct) b.classList.add('correct');
+    if(o===oi && oi!==correct) b.classList.add('wrong');
+  });
+  const exp=document.getElementById('exp'+qi);
+  const ok=(oi===correct);
+  exp.innerHTML=(ok?'✅ <b>إجابة صحيحة</b> — ':'❌ <b>إجابة خاطئة</b> — الصحيح: <b>'+String.fromCharCode(65+correct)+'</b> — ')+MCQ[qi].exp;
+  exp.classList.add('show');
+  mcqScore();
+}
+function mcqScore(){
+  let s=0;
+  for(const k in mcqAnswered){ if(mcqAnswered[k]===MCQ[k].correct) s++; }
+  document.getElementById('mcqScore').textContent=s+' / '+mcqTotal;
+  if(Object.keys(mcqAnswered).length===mcqTotal){
+    const f=document.getElementById('mcqFinal');
+    const pct=Math.round(s/mcqTotal*100);
+    let msg,bg;
+    if(pct>=80){msg='🎉 ممتاز! '+s+'/'+mcqTotal+' ('+pct+'%) — إتقان قوي.';bg='#c9f2cd';}
+    else if(pct>=60){msg='👍 جيّد: '+s+'/'+mcqTotal+' ('+pct+'%) — راجع البطاقات المعلّمة بـ⭐.';bg='#fff3c4';}
+    else{msg='📚 '+s+'/'+mcqTotal+' ('+pct+'%) — أعد قراءة الملف ثم أعد الاختبار.';bg='#f8cfcf';}
+    f.textContent=msg;f.style.background=bg;f.classList.add('show');
+  }
+}
+function mcqReset(){
+  mcqAnswered={};
+  document.querySelectorAll('.mcq-opt').forEach(b=>b.classList.remove('correct','wrong','locked'));
+  document.querySelectorAll('.mcq-exp').forEach(e=>{e.classList.remove('show');e.innerHTML='';});
+  document.getElementById('mcqScore').textContent='0 / '+mcqTotal;
+  document.getElementById('mcqFinal').classList.remove('show');
+  document.getElementById('mcq0').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
