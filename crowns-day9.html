@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Crowns & Bridges — Day 9 — Complete</title>
+<style>
+:root{color-scheme:light only;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{background:#ffffff !important;color:#000000 !important;}
+@media (prefers-color-scheme:dark){
+  html,body{background:#ffffff !important;color:#000000 !important;}
+  .card,.hint,.topbar,.toc{background:#ffffff !important;color:#000000 !important;}
+}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;padding:0 14px 120px;line-height:1.65;font-size:17px;}
+h1{font-size:22px;margin:18px 0 4px;}
+.subtitle{color:#444;font-size:14px;margin:0 0 14px;}
+.topbar{position:sticky;top:0;background:#fff !important;border-bottom:2px solid #000;padding:10px 0;z-index:50;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.score{font-weight:700;font-size:15px;}
+.bar{flex:1;min-width:120px;height:12px;background:#eee;border:1px solid #000;border-radius:6px;overflow:hidden;}
+.bar>i{display:block;height:100%;width:0;background:#000;transition:width .3s;}
+.controls button{font-size:13px;padding:6px 10px;border:1px solid #000;background:#fff;border-radius:8px;cursor:pointer;}
+.toc{background:#fff;border:2px solid #000;border-radius:12px;padding:12px 14px;margin:14px 0;}
+.toc b{display:block;margin-bottom:6px;}
+.toc a{display:block;color:#000;text-decoration:none;padding:5px 0;border-bottom:1px dashed #ccc;font-size:15px;}
+.toc a:last-child{border-bottom:0;}
+h2.sec{font-size:18px;border-left:6px solid #000;padding:8px 12px;margin:30px 0 14px;background:#f3f3f3;border-radius:0 8px 8px 0;}
+.card{border:2px solid #000;border-radius:14px;padding:14px 16px;margin:14px 0;background:#fff !important;}
+.card[data-done="1"]{border-color:#157f3b;background:#f3fbf5 !important;}
+.card[data-done="2"]{border-color:#b00;background:#fff7f7 !important;}
+.topic{font-weight:700;font-size:15px;color:#000;margin-bottom:6px;letter-spacing:.2px;text-transform:uppercase;}
+.prompt{font-size:17px;font-weight:600;margin-bottom:10px;}
+.answer{display:none;border-top:1px dashed #999;padding-top:10px;margin-top:4px;}
+.answer.show{display:block;animation:fade .25s;}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.answer ol,.answer ul{margin:6px 0;padding-inline-start:22px;}
+.answer li{margin:4px 0;}
+.answer table{border-collapse:collapse;width:100%;margin:8px 0;font-size:15px;}
+.answer th,.answer td{border:1px solid #000;padding:6px 8px;text-align:left;}
+.answer th{background:#eee;}
+.k{background:#ffd400;color:#b00000 !important;font-weight:700;padding:0 4px;border-radius:3px;}
+.hint{direction:rtl;text-align:right;background:#fff;border:1px solid #000;border-radius:10px;padding:10px 12px;margin-top:12px;font-size:16px;line-height:1.8;}
+.hint .hl{background:#ffd400;color:#b00;font-weight:700;padding:0 5px;border-radius:3px;}
+.hint b{color:#b00000;}
+.btns{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;}
+.btns button{font-size:15px;padding:9px 14px;border-radius:10px;border:2px solid #000;background:#fff;cursor:pointer;font-weight:600;}
+.btns .got{border-color:#157f3b;color:#157f3b;}
+.btns .rev{border-color:#b00;color:#b00;}
+.btns .reveal{background:#000;color:#fff;}
+.foot{margin-top:30px;border-top:2px solid #000;padding-top:14px;font-size:14px;color:#333;}
+.note{background:#ffd400;color:#000;border:1px solid #000;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:15px;}
+.mcq-wrap{margin-top:40px;border-top:3px double #000;padding-top:20px;}
+.mcq-title{background:#000;color:#fff;padding:10px 14px;border-radius:8px;font-size:19px;}
+.mcq-note{font-size:13px;color:#444;margin:10px 0 6px;}
+.mcq-scorebar{position:sticky;top:56px;z-index:40;background:#fff8d6;border:2px solid #000;border-radius:8px;padding:8px 12px;font-size:15px;margin:10px 0 18px;}
+.mcq-reset{background:#000;color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:13px;cursor:pointer;}
+.mcq-q{border:1.5px solid #999;border-radius:10px;padding:14px 16px;margin:14px 0;background:#fff;}
+.mcq-stem{font-weight:600;font-size:15.5px;margin-bottom:10px;line-height:1.55;}
+.mcq-num{display:inline-block;min-width:26px;height:26px;line-height:26px;text-align:center;background:#000;color:#fff;border-radius:50%;font-size:13px;margin-inline-end:6px;}
+.mcq-opts{display:flex;flex-direction:column;gap:7px;}
+.mcq-opt{text-align:start;background:#f4f4f4;border:1.5px solid #ccc;border-radius:7px;padding:9px 12px;font-size:14.5px;cursor:pointer;transition:.12s;color:#000;font-family:inherit;}
+.mcq-opt:hover{background:#eaeaea;}
+.mcq-opt.correct{background:#c9f2cd;border-color:#1a8f2a;font-weight:600;}
+.mcq-opt.wrong{background:#f8cfcf;border-color:#c02020;}
+.mcq-opt.locked{cursor:default;opacity:.92;}
+.mcq-exp{display:none;margin-top:10px;padding:10px 12px;background:#fff8d6;border-inline-start:4px solid #000;border-radius:6px;font-size:13.5px;line-height:1.6;direction:rtl;text-align:right;}
+.mcq-exp.show{display:block;}
+.mcq-exp b{color:#b00;}
+.mcq-final{margin-top:18px;padding:14px;border-radius:10px;font-size:17px;font-weight:700;text-align:center;display:none;}
+.mcq-final.show{display:block;}
+</style>
+</head>
+<body>
+<h1>Crowns &amp; Bridges — Day 9 — Complete 🦷</h1>
+<p class="subtitle">التيجان والجسور ص ٧٠–١٣٨ · إزاحة اللثة → تقنيات الطبعة (والرقمية) → الترميم المؤقت → النموذج العملي والقالب → التشميع والـsprue → التغليف → الحرق والصبّ والسبائك → التنظيف والإنهاء والتلميع وسلامة الحافة → التثبيت (سمنتات التثبيت) · 49 بطاقة + اختبار MCQ في النهاية · English + شرح عربي وافٍ</p>
+
+<div class="topbar">
+  <span class="score" id="score">0 / 49</span>
+  <span class="bar"><i id="fill"></i></span>
+  <span class="controls">
+    <button onclick="revealAll()">اكشف الكل</button>
+    <button onclick="hideAll()">إخفاء</button>
+    <button onclick="resetAll()">تصفير</button>
+  </span>
+</div>
+
+<div class="note">⭐ = أقسام عالية الأهمية (high-yield). اقرأ السؤال، حاول الإجابة من ذاكرتك، ثم اكشف الجواب وقيّم نفسك.</div>
+
+<div class="toc">
+<b>المحتويات · Contents</b>
+<a href="#sec0">Lec 10 · Gingival Retraction ⭐</a>
+<a href="#sec1">Lec 11 · Impression Techniques ⭐</a>
+<a href="#sec2">Lec 12 · Provisional Restoration — Objectives &amp; Requirements ⭐</a>
+<a href="#sec3">Lec 12 · Preformed &amp; Customized Temporaries</a>
+<a href="#sec4">Lec 13 · Working Cast &amp; Die ⭐</a>
+<a href="#sec5">Lec 14 · Wax Pattern &amp; Sprue ⭐</a>
+<a href="#sec6">Lec 15 · Investing ⭐</a>
+<a href="#sec7">Lec 16 · Burnout &amp; Casting ⭐</a>
+<a href="#sec8">Lec 17 · Cleaning, Finishing &amp; Polishing</a>
+<a href="#sec9">Lec 18 · Cementation (Luting Agents) ⭐</a>
+<a href="#sec10">Lec 17 · Seating the Casting on the Die</a>
+<a href="#sec11">Lec 18 · Clinical Try-In &amp; Contact Evaluation ⭐</a>
+<a href="#sec12">Lec 18 · Resin, RMGI &amp; Other Luting Cements ⭐</a>
+<a href="#sec13">Lec 18 · Cementation Technique &amp; Cement Selection</a>
+<a href="#sec14">Lec 11 · Impression Requirements (Integrated) ⭐</a>
+<a href="#sec15">Lec 15–16 · Casting Shrinkage Compensation (Integrated) ⭐</a>
+<a href="#sec16">Lec 10 · Gingival Retraction (Clinical Selection)</a>
+</div>
+
+<h2 class="sec" id="sec0">Lec 10 · Gingival Retraction ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Gingival retraction — definition &amp; objectives</div>
+  <div class="prompt">What is gingival retraction, and what are its objectives?</div>
+  <div class="answer">
+    <b>Gingival retraction:</b> a procedure that <b>temporarily exposes the finishing line</b> by enlarging the gingival sulcus, so a good impression capturing the subgingival margin can be made. Needed when the finishing line is <b>subgingival or equigingival</b>.<br>
+  <b>Objectives:</b> (1) create <b>access</b> for the impression material to the subgingival preparation; (2) provide enough <b>thickness</b> of impression material at the finishing line (prevents tearing/distortion); (3) <b>control crevicular fluid</b> that would cause voids in the impression.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>إزاحة اللثة — التعريف والأهداف:</b> <b>إزاحة اللثة:</b> إجراء <b>يكشف خطّ الإنهاء مؤقتاً</b> بتوسيع الأخدود اللثوي، ليُؤخذ طبعة جيّدة تسجّل الحافة تحت اللثوية. تلزم حين يكون خطّ الإنهاء <b>تحت اللثة أو بمستواها</b>. <b>الأهداف:</b> (١) إنشاء <b>وصول</b> لمادة الطبعة للتحضير تحت اللثوي؛ (٢) توفير <b>سُمك</b> كافٍ لمادة الطبعة عند خطّ الإنهاء (يمنع التمزّق/التشوّه)؛ (٣) <b>ضبط السائل اللثوي</b> الذي يسبّب فراغات في الطبعة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Mechanical &amp; chemo-mechanical retraction</div>
+  <div class="prompt">Compare mechanical and chemo-mechanical gingival retraction.</div>
+  <div class="answer">
+    <b>Mechanical:</b> applies pressure to open the sulcus — via a temporary crown with a slightly long margin (left 24 h), or a <b>plain retraction cord</b> (medicament-free; most common mechanical means).<br>
+  <b>Chemo-mechanical:</b> uses a cord <b>pre-impregnated with a medicament</b> (vasoconstrictor — adrenaline, aluminum chloride, or ferric sulfate). Packed with a plastic instrument (Ash No.6/49) into the sulcus, the cord mechanically pushes the gingiva away while the medicament + pressure cause <b>transient gingival ischemia</b> → tissue shrinkage + fluid control. Left <b>10 minutes</b> (keep dry), then removed, leaving space to inject impression material.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الإزاحة الميكانيكية والكيميائية-الميكانيكية:</b> <b>الميكانيكية:</b> تضغط لفتح الأخدود — بتاج مؤقت بحافة أطول قليلاً (يُترك 24س)، أو <b>خيط إزاحة سادة</b> (خالٍ من الدواء؛ أشيع وسيلة ميكانيكية). <b>الكيميائية-الميكانيكية:</b> تستخدم خيطاً <b>مُشبعاً بدواء</b> (مضيّق أوعية — أدرينالين، كلوريد الألمنيوم، أو كبريتات الحديد). يُحشى بأداة بلاستيكية (Ash No.6/49) في الأخدود، فيدفع الخيط اللثة ميكانيكياً بينما يسبّب الدواء + الضغط <b>نقص تروية لثوي عابر</b> ← انكماش نسيج + ضبط سائل. يُترك <b>10 دقائق</b> (أبقِ جافّاً)، ثم يُزال تاركاً مساحةً لحقن مادة الطبعة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Cordless, electrosurgical &amp; laser retraction</div>
+  <div class="prompt">Describe the cordless (paste), electrosurgical, and laser retraction methods.</div>
+  <div class="answer">
+    <b>Cordless (retraction paste):</b> introduced because cords may injure the sulcular epithelium and bleeding is hard to control — e.g., <b>Expasyl (15% aluminum chloride)</b> and <b>Magic Foam Cord (PVS)</b>; gives <b>non-traumatic, non-invasive</b> tissue management with excellent hemostasis.<br>
+  <b>Electrosurgical:</b> removes gingival tissue from the finishing-line area while controlling hemorrhage; <b>contraindicated with gingival inflammation/periodontal disease</b> (gingivectomy may be done instead).<br>
+  <b>Laser:</b> <b>Nd:YAG</b> is used; advantages — often no anesthesia, minimal bleeding (coagulation), sterilizes/minimizes infection, minimal collateral damage, faster healing; disadvantages — <b>slow and expensive</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الإزاحة بلا خيط والكهربائية والليزر:</b> <b>بلا خيط (معجون إزاحة):</b> أُدخِلت لأن الخيوط قد تؤذي ظهارة الأخدود ويصعب ضبط النزف — مثل <b>Expasyl (كلوريد ألمنيوم 15%)</b> و<b>Magic Foam Cord (PVS)</b>؛ تعطي معالجة نسيج <b>غير رضّية غير باضعة</b> بإرقاء ممتاز. <b>الكهربائية:</b> تزيل نسيج اللثة من منطقة خطّ الإنهاء مع ضبط النزف؛ <b>ممنوعة مع التهاب اللثة/مرض حول سني</b> (قد يُجرى استئصال لثة بدلاً). <b>الليزر:</b> يُستخدم <b>Nd:YAG</b>؛ المزايا — غالباً بلا تخدير، نزف أدنى (تخثّر)، يعقّم/يقلّل العدوى، أذى جانبي أدنى، شفاء أسرع؛ العيوب — <b>بطيء ومكلف</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec1">Lec 11 · Impression Techniques ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Single mix (monophase) technique</div>
+  <div class="prompt">Describe the single mix (monophase) impression technique and the pseudoplastic property.</div>
+  <div class="answer">
+    Used with a <b>single-viscosity</b> material (medium body polyether or addition silicone). These are <b>pseudoplastic</b> — they show <b>shear thinning</b>: viscosity <b>decreases under high shear</b> (mixing, syringing) but the same material in the tray keeps its viscosity — so one material serves both syringe and tray.<br>
+  <b>Procedure:</b> mix once → part in the tray, part in the syringe → inject around the preparation starting with the <b>critical finishing line</b>, then prepared teeth, then the arch → seat the loaded tray over the whole arch → remove after complete setting.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تقنية الخلط المفرد (Monophase):</b> تُستخدم مع مادة <b>أحادية اللزوجة</b> (بولي إيثر أو سيليكون إضافة متوسّط القوام). وهي <b>pseudoplastic</b> — تُظهر <b>ترقّقاً بالقصّ</b>: تقلّ اللزوجة <b>تحت القصّ العالي</b> (الخلط، الحقن) بينما تحفظ المادة نفسها في الحامل لزوجتها — فمادة واحدة تخدم المحقنة والحامل. <b>الإجراء:</b> اخلط مرّة ← جزء في الحامل وجزء في المحقنة ← احقن حول التحضير بدءاً بـ<b>خطّ الإنهاء الحرج</b>، ثم الأسنان المحضّرة، ثم القوس ← أجلِس الحامل المحمّل فوق القوس كله ← أزل بعد التصلّب الكامل.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Double mix &amp; putty-wash techniques</div>
+  <div class="prompt">Compare the double mix and putty-wash impression techniques.</div>
+  <div class="answer">
+    <b>Double mix:</b> uses <b>two viscosities</b> (heavy + light) mixed at the same time — light body in the syringe (injected on the arch starting at the prepared tooth), heavy body in the tray; seating pressure from the heavy body forces the light body into the details/finishing line.<br>
+  <b>Putty-wash:</b> uses a high-viscosity putty. <b>Before preparation</b> — take a preoperative putty impression, remove, prepare tooth, then inject light body and reseat. <b>After preparation</b> — heavy body + a polyethylene spacer, set, remove spacer, then light body reseated. Developed for <b>condensation silicones</b> — most polymerization shrinkage occurs in the putty (preliminary), confining final shrinkage to the thin wash.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الخلط المزدوج وputty-wash:</b> <b>الخلط المزدوج:</b> يستخدم <b>لزوجتين</b> (ثقيل + خفيف) تُخلطان معاً — الخفيف في المحقنة (يُحقن على القوس بدءاً بالسن المحضّر)، والثقيل في الحامل؛ وضغط إجلاس الثقيل يدفع الخفيف إلى التفاصيل/خطّ الإنهاء. <b>Putty-wash:</b> يستخدم معجوناً عالي اللزوجة. <b>قبل التحضير</b> — طبعة معجون أولية، تُزال، يُحضّر السن، ثم يُحقن الخفيف ويُعاد الإجلاس. <b>بعد التحضير</b> — معجون + فاصل بولي إيثيلين، يتصلّب، يُزال الفاصل، ثم الخفيف يُعاد إجلاسه. طُوّرت لـ<b>سيليكونات التكثيف</b> — معظم انكماش البلمرة يحدث في المعجون (الأولي)، فينحصر الانكماش النهائي في الطبقة الرقيقة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Post crown impression &amp; impression inspection</div>
+  <div class="prompt">How is an impression taken for a post crown, and what is checked after removal?</div>
+  <div class="answer">
+    <b>Post crown impression:</b> must record the <b>inside of the root canal</b> — hard to insert material into the tiny canal and it may tear/distort on removal/pouring. So the light body inside the canal is <b>reinforced</b> with a <b>plastic (impression) post or a stainless steel wire</b> inserted into the canal to support the material.<br>
+  <b>Inspection after removal:</b> (1) the <b>finishing line is continuous</b> all around; (2) <b>no air bubbles</b> at the preparation; (3) the material is <b>well attached to the tray</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>طبعة التاج الوتدي وفحص الطبعة:</b> <b>طبعة التاج الوتدي:</b> يجب أن تسجّل <b>داخل قناة الجذر</b> — يصعب إدخال المادة في القناة الدقيقة وقد تتمزّق/تتشوّه عند الإزالة/الصبّ. لذا يُدعَّم الخفيف داخل القناة بـ<b>وتد بلاستيكي (impression post) أو سلك ستانلس</b> يُدخَل في القناة لدعم المادة. <b>الفحص بعد الإزالة:</b> (١) <b>خطّ الإنهاء متّصل</b> حول المحيط؛ (٢) <b>لا فقاعات هواء</b> عند التحضير؛ (٣) المادة <b>ملتصقة جيّداً بالحامل</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Impression disinfection &amp; digital impression</div>
+  <div class="prompt">How are impressions disinfected, and what is a digital impression?</div>
+  <div class="answer">
+    <b>Disinfection:</b> important against viral diseases (hepatitis B, AIDS, herpes simplex) transferable to gypsum models. Common: <b>spraying or immersion</b> in 1% sodium hypochlorite, 2% potentiated glutaraldehyde, or iodophor.<br>
+  <b>Digital impression:</b> the most recent development — an <b>intra-oral scanner</b> captures an optical image of the prepared teeth, transferred electronically to fabricate an articulated working model on which restorations are designed by software linked to a milling machine (<b>CAD/CAM</b>). Advantages: no uncomfortable physical impression; on-screen detail check; excellent marginal fit/occlusion; can verify occlusal reduction.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تطهير الطبعة والطبعة الرقمية:</b> <b>التطهير:</b> مهمّ ضدّ الأمراض الفيروسية (التهاب الكبد B، الإيدز، الهربس) المنتقلة لنماذج الجبس. الشائع: <b>الرشّ أو الغمر</b> في هيبوكلوريت الصوديوم 1%، غلوتارألدهيد 2% مُقوّى، أو iodophor. <b>الطبعة الرقمية:</b> أحدث تطوّر — <b>ماسح داخل فموي</b> يلتقط صورة بصرية للأسنان المحضّرة، تُنقل إلكترونياً لتصنيع نموذج عملي مركّب تُصمَّم عليه الترميمات ببرنامج موصول بآلة فرز (<b>CAD/CAM</b>). المزايا: بلا طبعة فيزيائية مزعجة؛ فحص التفاصيل على الشاشة؛ ملاءمة حافّية/إطباق ممتاز؛ يمكن التحقّق من التخفيض الإطباقي.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec2">Lec 12 · Provisional Restoration — Objectives &amp; Requirements ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Provisional restoration — definition &amp; objectives</div>
+  <div class="prompt">Define a provisional restoration and list its objectives.</div>
+  <div class="answer">
+    <b>Provisional (temporary) restoration:</b> a crown used during the <b>interim between tooth preparation and final cementation</b>.<br>
+  <b>Objectives:</b> (1) protect the tooth from <b>thermal/chemical/osmotic</b> pain stimuli; (2) prevent <b>sensitivity/pulp irritation</b> (dentinal tubules are cut during preparation); (3) prevent <b>movement</b> of prepared, adjacent, and opposing teeth (no supra-eruption/drifting); (4) protect the <b>gingiva</b> from irritation/food impaction; (5) provide <b>esthetics, phonetics, function</b>; (6) prevent <b>tooth fracture</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الترميم المؤقت — التعريف والأهداف:</b> <b>الترميم المؤقت:</b> تاج يُستخدم في <b>الفترة بين تحضير السن والتثبيت النهائي</b>. <b>الأهداف:</b> (١) حماية السن من منبّهات الألم <b>الحرارية/الكيميائية/التناضحية</b>؛ (٢) منع <b>الحساسية/تهيّج اللب</b> (تُقطع الأنابيب العاجية أثناء التحضير)؛ (٣) منع <b>حركة</b> الأسنان المحضّرة والمجاورة والمقابلة (لا بزوغ زائد/انجراف)؛ (٤) حماية <b>اللثة</b> من التهيّج/انحشار الطعام؛ (٥) توفير <b>الجمال والنطق والوظيفة</b>؛ (٦) منع <b>كسر السن</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Requirements of an optimum provisional</div>
+  <div class="prompt">What are the requirements of an optimum provisional restoration?</div>
+  <div class="answer">
+    <ol>
+  <li>Must <b>seal and insulate</b> the prepared surface from the oral environment (prevent sensitivity/pulp irritation).</li>
+  <li>Must have <b>good marginal fit, proper contour, and a smooth surface</b> (gingival health + plaque control).</li>
+  <li>Must maintain <b>proper contacts</b> with adjacent/opposing teeth (prevent supra-eruption & drifting).</li>
+  <li>Must have enough <b>strength and retention</b> to withstand forces without fracture/dislodgment, and remain <b>intact during removal</b> for possible reuse.</li>
+  <li>Must provide <b>esthetics, phonetics, and function</b>.</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>متطلبات الترميم المؤقت الأمثل:</b> (١) يجب أن <b>يسدّ ويعزل</b> السطح المحضّر عن الوسط الفموي (منع الحساسية/تهيّج اللب). (٢) ملاءمة حافّية جيّدة وكنتور سليم وسطح ناعم (صحة لثوية + ضبط لويحة). (٣) الحفاظ على <b>تماسات سليمة</b> مع المجاورة/المقابلة (منع البزوغ الزائد والانجراف). (٤) <b>قوّة وإرساء</b> كافيان لتحمّل القوى دون كسر/خلع، والبقاء <b>سليماً أثناء الإزالة</b> لإمكان إعادة استخدامه. (٥) توفير <b>الجمال والنطق والوظيفة</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Types of provisional restorations</div>
+  <div class="prompt">What are the three main types of provisional restorations?</div>
+  <div class="answer">
+    <ol>
+  <li><b>Preformed temporary crowns:</b> a shell of plastic or metal cemented directly (after adjustment) or after resin lining; for single or multiple preparations.</li>
+  <li><b>Customized (chairside) temporary restorations:</b> made from a mold of the patient's teeth taken before preparation, filled with Bis-acryl/composite resin.</li>
+  <li><b>Laboratory-made temporary restorations.</b></li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أنواع الترميمات المؤقتة:</b> (١) <b>التيجان المؤقتة الجاهزة:</b> قشرة بلاستيك أو معدن تُسمنت مباشرةً (بعد التعديل) أو بعد بطانة راتنجية؛ لتحضير مفرد أو متعدّد. (٢) <b>الترميمات المؤقتة المخصّصة (chairside):</b> من قالب لأسنان المريض يُؤخذ قبل التحضير، يُملأ براتنج Bis-acryl/كمبوزِت. (٣) <b>الترميمات المؤقتة المصنوعة مخبرياً.</b></div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec3">Lec 12 · Preformed &amp; Customized Temporaries</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Preformed temporary crowns — metal, plastic, celluloid</div>
+  <div class="prompt">Describe the types of preformed temporary crowns.</div>
+  <div class="answer">
+    <b>Metal:</b> mainly posterior; stainless steel, nickel-chromium, or aluminum (aluminum most common — non-anatomical flat-topped or anatomical). Trim the cervical margin with scissors, seat, check margins/occlusion, smooth, cement with <b>ZOE</b>.<br>
+  <b>Plastic:</b> mostly anterior — <b>acrylic</b> (older) and <b>polycarbonate</b> (with micro glass fibers; anterior + posterior). Can be <b>relined</b> with resin to improve fit.<br>
+  <b>Celluloid crown forms:</b> thin translucent cellulose acetate acting as a <b>mold</b>; coat tooth with Vaseline, make escape holes, fill with Bis-acryl/composite, seat until set (remove Bis-acryl at semi-plastic stage — exothermic).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التيجان المؤقتة الجاهزة — معدن، بلاستيك، سيلولويد:</b> <b>معدن:</b> خلفية أساساً؛ ستانلس، نيكل-كروم، أو ألمنيوم (الألمنيوم أشيع — مسطّح غير تشريحي أو تشريحي). قصّ الحافة العنقية بمقصّ، أجلِس، افحص الحواف/الإطباق، نعّم، سمنت بـ<b>ZOE</b>. <b>بلاستيك:</b> أمامية غالباً — <b>أكريليك</b> (أقدم) و<b>بولي كربونات</b> (بألياف زجاج دقيقة؛ أمامي + خلفي). يمكن <b>إعادة بطانتها</b> بالراتنج لتحسين الملاءمة. <b>أشكال السيلولويد:</b> أسيتات سيلولوز شفّافة رقيقة كـ<b>قالب</b>؛ اطلِ السن بالفازلين، اصنع ثقوب تنفيس، املأ بـBis-acryl/كمبوزِت، أجلِس حتى التصلّب (أزل Bis-acryl في الطور شبه اللدن — ناشر للحرارة).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Customized temporary — indirect vs direct method</div>
+  <div class="prompt">Compare the indirect and direct impression methods for customized temporaries and the advantages of indirect.</div>
+  <div class="answer">
+    Both use a <b>preoperative over-impression</b> filled with tooth-colored resin. <b>Indirect:</b> a preoperative impression → after preparation, a cast is poured; resin is placed in the over-impression, the cast seated into it, resin sets, crown removed/trimmed/cemented (ZOE). <b>Direct:</b> same but done <b>directly in the mouth</b> (no study cast needed).<br>
+  <b>Advantages of indirect over direct:</b> (1) no direct contact of free <b>monomer</b> with tooth/gingiva (avoids irritation/allergy); (2) avoids subjecting the tooth to the <b>exothermic polymerization heat</b>; (3) saves chair time.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>المؤقت المخصّص — الطريقة غير المباشرة مقابل المباشرة:</b> كلاهما يستخدم <b>طبعة تغطية قبل التحضير (over-impression)</b> تُملأ براتنج بلون السن. <b>غير المباشرة:</b> طبعة قبل التحضير ← بعد التحضير يُصبّ نموذج؛ يُوضع الراتنج في طبعة التغطية، ويُجلَس النموذج فيها، يتصلّب الراتنج، يُزال التاج/يُشذّب/يُسمنت (ZOE). <b>المباشرة:</b> نفسها لكن <b>مباشرةً في الفم</b> (بلا نموذج دراسي). <b>مزايا غير المباشرة:</b> (١) لا تماس مباشر لـ<b>المونومر</b> الحرّ مع السن/اللثة (تجنّب التهيّج/التحسّس)؛ (٢) تجنّب تعريض السن لـ<b>حرارة البلمرة الناشرة</b>؛ (٣) توفير وقت الكرسي.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec4">Lec 13 · Working Cast &amp; Die ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Working cast &amp; die — definitions &amp; requirements</div>
+  <div class="prompt">Define the working cast and die, and state their requirements.</div>
+  <div class="answer">
+    <b>Working (master) cast:</b> a replica of the prepared too/teeth, ridge, and arch, obtained from the final impression; the wax pattern is made on it. <b>Requirements:</b> reproduce all impression detail; free of air bubbles (esp. finishing line/occlusal); no distortion; trimmed at prepared-tooth margins (<b>ditching</b>) for carving access; allow precise articulation.<br>
+  <b>Die:</b> the positive reproduction of a <b>single</b> prepared tooth on which the wax pattern is made. <b>Requirements:</b> reproduce the tooth exactly; free of bubbles/voids; return to its exact position on the cast; stable even when the cast is inverted.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>النموذج العملي والقالب — التعريفات والمتطلبات:</b> <b>النموذج العملي (master):</b> نسخة للسن/الأسنان المحضّرة والحرف والقوس، من الطبعة النهائية؛ ويُصنع عليه النموذج الشمعي. <b>المتطلبات:</b> إعادة كل تفاصيل الطبعة؛ خالٍ من الفقاعات (خاصةً خطّ الإنهاء/الإطباقي)؛ بلا تشوّه؛ مشذّب عند حواف السن المحضّر (<b>ditching</b>) لوصول النحت؛ يتيح تركيباً دقيقاً. <b>القالب (Die):</b> النسخة الإيجابية لسنّ <b>مفرد</b> محضّر يُصنع عليه النموذج الشمعي. <b>المتطلبات:</b> إعادة السن تماماً؛ بلا فقاعات/فراغات؛ يعود لموضعه الدقيق على النموذج؛ ثابت حتى عند قلب النموذج.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Die materials &amp; gypsum types (ADA)</div>
+  <div class="prompt">List the die material types and the ADA classification of dental gypsum.</div>
+  <div class="answer">
+    <b>Die materials</b> (critical properties = dimensional stability + abrasion resistance): silver-plated, copper-plated, amalgam, and <b>stone dies</b>. <b>Stone die advantages:</b> easy to prepare, works with all impression materials, cheap, easy to manipulate.<br>
+  <b>ADA gypsum types:</b> <b>Type I</b> — impression plaster; <b>Type II</b> — model plaster; <b>Type III</b> — dental stone; <b>Type IV</b> — high-strength dental stone (<b>die stone</b>).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مواد القالب وأنواع الجبس (ADA):</b> <b>مواد القالب</b> (الخاصّتان الحرجتان = ثبات الأبعاد + مقاومة السحل): مطليّ بالفضّة، مطليّ بالنحاس، أملغم، و<b>قوالب حجرية</b>. <b>مزايا القالب الحجري:</b> سهل التحضير، يعمل مع كل مواد الطبعة، رخيص، سهل المناولة. <b>أنواع جبس ADA:</b> <b>النوع I</b> — جبس طبعة؛ <b>النوع II</b> — جبس نموذج؛ <b>النوع III</b> — حجر أسنان؛ <b>النوع IV</b> — حجر أسنان عالي القوّة (<b>die stone</b>).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Removable dies — dowel pins &amp; Pindex</div>
+  <div class="prompt">Compare separated dies, dowel-pin removable dies, and the Pindex system.</div>
+  <div class="answer">
+    <b>Separated dies (multiple pour):</b> the impression is poured <b>twice</b> — one cast is sectioned into individual separated dies, the other is articulated.<br>
+  <b>Removable dies (dowel pins):</b> the impression is poured <b>once</b>; ready-made tapered cylindrical metal <b>dowel pins</b> (one flat side for positive seating) orient each die to the cast, allowing easy removal and accurate replacement. Two stone layers are poured (die layer + base) with a separator between; the cast is then sectioned around each prepared tooth (diverging toward the occlusal) to free the die.<br>
+  <b>Pindex system:</b> a machine drills <b>parallel holes</b> from the underside of a trimmed cast (poured without positioning pins) → dies removed/replaced repeatedly with great precision.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>القوالب المتحرّكة — dowel pins وPindex:</b> <b>القوالب المنفصلة (صبّ متعدّد):</b> تُصبّ الطبعة <b>مرّتين</b> — نموذج يُقسَّم لقوالب منفصلة، والآخر يُركَّب. <b>القوالب المتحرّكة (dowel pins):</b> تُصبّ الطبعة <b>مرّة واحدة</b>؛ ودبابيس <b>dowel</b> معدنية جاهزة مدبّبة أسطوانية (بجانب مسطّح للإجلاس المحدّد) توجّه كل قالب للنموذج، متيحةً إزالةً سهلة وإعادةً دقيقة. تُصبّ طبقتا حجر (طبقة القالب + القاعدة) بفاصل بينهما؛ ثم يُقسَّم النموذج حول كل سنّ محضّر (متباعداً نحو الإطباقي) لتحرير القالب. <b>نظام Pindex:</b> آلة تحفر <b>ثقوباً متوازية</b> من أسفل نموذج مشذّب (مصبوب بلا دبابيس توضيع) ← قوالب تُزال/تُعاد مراراً بدقّة عالية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec5">Lec 14 · Wax Pattern &amp; Sprue ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Wax pattern — requirements &amp; techniques</div>
+  <div class="prompt">What are the requirements of inlay wax and the wax pattern techniques?</div>
+  <div class="answer">
+    <b>Inlay wax requirements:</b> flows when molten to record detail; becomes <b>rigid when cooled</b>; carves without chipping/smearing at fine margins.<br>
+  <b>Techniques:</b> <b>Intraoral (direct)</b> — pattern made in the mouth with Type I inlay wax (for posterior inlays and anterior post-crowns); <b>Extraoral (indirect)</b> — Type II inlay wax on the die of the working cast.<br>
+  <b>Advantages of indirect over direct:</b> reduces chair time; allows visualization + direct margin access; easiest means of fabricating a cast restoration.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>النموذج الشمعي — المتطلبات والتقنيات:</b> <b>متطلبات شمع الحشو:</b> يسيل منصهراً ليسجّل التفاصيل؛ يصير <b>صلباً بالتبريد</b>؛ يُنحت دون تقصّف/تلطيخ عند الحواف الدقيقة. <b>التقنيات:</b> <b>داخل الفم (مباشر)</b> — يُصنع النموذج في الفم بشمع حشو نوع I (للحشوات الخلفية والتيجان الوتدية الأمامية)؛ <b>خارج الفم (غير مباشر)</b> — شمع حشو نوع II على قالب النموذج العملي. <b>مزايا غير المباشر:</b> يقلّل وقت الكرسي؛ يتيح الرؤية + وصول الحافة المباشر؛ أسهل وسيلة لصنع ترميم مصبوب.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Waxing procedure &amp; lost-wax overview</div>
+  <div class="prompt">Outline the extraoral waxing procedure and define the lost-wax technique.</div>
+  <div class="answer">
+    <b>Waxing (extraoral):</b> apply die spacer/lubricant → dip the preparation in molten wax to make a <b>wax coping</b> (first layer) → build the <b>proximal</b> surfaces & contacts → build the <b>axial walls</b> to normal contour → build the <b>occlusal</b> following the curve of Spee/Wilson, adjust occlusion centric/eccentric → check margins for no over/under-extension.<br>
+  <b>Lost-wax technique:</b> surrounding the wax pattern with a heat-resistant <b>investment</b> mold, eliminating the wax by heating, then introducing molten metal into the mold cavity through a channel called the <b>sprue</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>إجراء التشميع ونظرة على الشمع المفقود:</b> <b>التشميع (خارج الفم):</b> طبّق فاصل/مزلّق القالب ← اغمس التحضير في شمع منصهر لعمل <b>coping شمعي</b> (الطبقة الأولى) ← ابنِ الأسطح <b>الدانية</b> والتماسات ← ابنِ <b>الجدران المحورية</b> للكنتور الطبيعي ← ابنِ <b>الإطباقي</b> متتبّعاً منحنى Spee/Wilson، وعدّل الإطباق مركزياً/لا مركزياً ← افحص الحواف لعدم زيادة/نقص الامتداد. <b>تقنية الشمع المفقود:</b> إحاطة النموذج الشمعي بقالب <b>تغليف</b> مقاوم للحرارة، وإزالة الشمع بالتسخين، ثم إدخال المعدن المنصهر لتجويف القالب عبر قناة تُسمّى <b>sprue</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Sprue — requirements, dimensions, location</div>
+  <div class="prompt">What is a sprue, and state its requirements, dimensions, and location.</div>
+  <div class="answer">
+    <b>Sprue:</b> a small-diameter pin (wax/plastic/metal); one end attached to the wax pattern, the other to the crucible former — provides the channel for molten metal after burnout.<br>
+  <b>Requirements:</b> allow molten wax to escape; allow metal to flow with <b>minimal turbulence</b>; the metal within it must stay molten slightly longer (a <b>reservoir</b> compensating solidification shrinkage).<br>
+  <b>Dimensions/location:</b> diameter <b>as large as possible</b> (better flow + reservoir); length adjusted so the pattern margin is ~<b>6 mm</b> from the ring end (pattern centered in the ring); attached to the <b>bulkiest, non-centric area</b> at an angle for free flow.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الـSprue — المتطلبات والأبعاد والموقع:</b> <b>Sprue:</b> دبوس صغير القطر (شمع/بلاستيك/معدن)؛ طرف متّصل بالنموذج الشمعي والآخر بمشكّل البوتقة — يوفّر قناة المعدن المنصهر بعد الحرق. <b>المتطلبات:</b> يسمح بهروب الشمع المنصهر؛ يسمح بتدفّق المعدن بـ<b>أقلّ اضطراب</b>؛ ويجب أن يبقى المعدن داخله منصهراً أطول قليلاً (<b>خزّان</b> يعوّض انكماش التصلّب). <b>الأبعاد/الموقع:</b> القطر <b>أكبر ما أمكن</b> (تدفّق أفضل + خزّان)؛ الطول مضبوط بحيث تبعد حافة النموذج ~<b>6مم</b> عن طرف الحلقة (النموذج في مركز الحلقة)؛ يُلحَق بـ<b>أضخم منطقة غير مركزية</b> بزاوية للتدفّق الحرّ.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec6">Lec 15 · Investing ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Investing — definition, objectives &amp; components</div>
+  <div class="prompt">What is investing, and what are its objectives and required components?</div>
+  <div class="answer">
+    <b>Investing:</b> surrounding the wax pattern with a heat-resistant mold that accurately duplicates its shape, to obtain a mold cavity after burnout.<br>
+  <b>Objectives:</b> (1) accurate reproduction of the pattern's anatomical form; (2) sufficient strength to withstand burnout heat + casting; (3) <b>compensation expansion equal to the metal's solidification shrinkage</b> — the mold cavity must be slightly larger than the pattern (else the restoration will be undersized).<br>
+  <b>Components needed:</b> casting ring, ring liner, crucible former, investment material.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التغليف — التعريف والأهداف والمكوّنات:</b> <b>التغليف (Investing):</b> إحاطة النموذج الشمعي بقالب مقاوم للحرارة يطابق شكله بدقّة، للحصول على تجويف قالب بعد الحرق. <b>الأهداف:</b> (١) إعادة دقيقة للشكل التشريحي للنموذج؛ (٢) قوّة كافية لتحمّل حرارة الحرق + الصبّ؛ (٣) <b>تمدّد تعويضي مساوٍ لانكماش تصلّب المعدن</b> — يجب أن يكون تجويف القالب أكبر قليلاً من النموذج (وإلا صار الترميم أصغر). <b>المكوّنات:</b> حلقة الصبّ، بطانة الحلقة، مشكّل البوتقة، مادة التغليف.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Casting ring, ring liner &amp; crucible former</div>
+  <div class="prompt">What are the functions of the casting ring, ring liner, and crucible former?</div>
+  <div class="answer">
+    <b>Casting ring (metal):</b> holds the investment during setting and <b>restricts expansion</b> — alone it gives no expansion, so a liner is needed.<br>
+  <b>Ring liner:</b> a compressible lining (e.g., asbestos 0.6 mm — carcinogenic, so fiberglass now) that <b>allows the investment to expand</b> (enlarging the mold to compensate solidification shrinkage), eases removal after burnout, and insulates against heat loss. Should be <b>3 mm shorter than both ring ends</b> (binds investment to ring, prevents slippage).<br>
+  <b>Crucible former:</b> a cone-shaped rubber/metal base of the ring to which the sprue's other end attaches — positions the pattern and creates a cone entrance for molten metal.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>حلقة الصبّ وبطانتها ومشكّل البوتقة:</b> <b>حلقة الصبّ (معدن):</b> تمسك التغليف أثناء التصلّب و<b>تقيّد التمدّد</b> — وحدها لا تعطي تمدّداً، فتلزم بطانة. <b>بطانة الحلقة:</b> بطانة قابلة للانضغاط (أسبستوس 0.6مم — مسرطن، فالآن ألياف زجاج) <b>تسمح للتغليف بالتمدّد</b> (توسيع القالب لتعويض انكماش التصلّب)، تسهّل الإزالة بعد الحرق، وتعزل ضدّ فقد الحرارة. يجب أن تكون <b>أقصر 3مم من طرفي الحلقة</b> (تربط التغليف بالحلقة، تمنع الانزلاق). <b>مشكّل البوتقة:</b> قاعدة مخروطية مطاط/معدن للحلقة يُلحَق بها الطرف الآخر للـsprue — يوضّع النموذج ويصنع مدخلاً مخروطياً للمعدن المنصهر.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Investment materials — gypsum vs phosphate bonded</div>
+  <div class="prompt">Compare gypsum-bonded and phosphate-bonded investment materials.</div>
+  <div class="answer">
+    Both consist of a <b>binder + refractory (silica)</b>.<br>
+  <b>Gypsum-bonded:</b> binder = calcium sulfate hemihydrate; for <b>low-melting alloys</b>. Unstable above <b>650°C</b> — decomposition releases sulfur into the mold → brittle gold casting.<br>
+  <b>Phosphate-bonded:</b> binder = magnesium phosphate + ammonium phosphate; withstands <b>high casting temperatures</b> → used for high-melting alloys (e.g., PFM, base metals).<br>
+  <b>Mixing:</b> manual (spatula) or mechanical (vacuum mixer — bubble-free), poured by brush or vacuum technique.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مواد التغليف — الجبسية مقابل الفوسفاتية:</b> كلاهما <b>رابط + مادة حرارية (سيليكا)</b>. <b>الجبسية:</b> الرابط = كبريتات كالسيوم نصف مائية؛ للـ<b>سبائك منخفضة الانصهار</b>. غير مستقرّة فوق <b>650°م</b> — التحلّل يطلق الكبريت في القالب ← صبّة ذهب هشّة. <b>الفوسفاتية:</b> الرابط = فوسفات مغنيسيوم + فوسفات أمونيوم؛ تتحمّل <b>حرارة صبّ عالية</b> ← تُستخدم للسبائك عالية الانصهار (PFM، المعادن الأساسية). <b>الخلط:</b> يدوي (ملعقة) أو ميكانيكي (خلّاط تفريغ — بلا فقاعات)، يُصبّ بتقنية الفرشاة أو التفريغ.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec7">Lec 16 · Burnout &amp; Casting ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Burnout procedure &amp; advantages</div>
+  <div class="prompt">What is the burnout procedure, its advantages, and temperature steps?</div>
+  <div class="answer">
+    <b>Burnout:</b> heating the invested ring in a thermostatic oven until wax traces vaporize, creating the mold cavity.<br>
+  <b>Advantages:</b> (1) eliminate wax/plastic from the cavity; (2) eliminate moisture; (3) produce the <b>expansion</b> to compensate solidification shrinkage; (4) raise mold temperature to permit metal flow.<br>
+  <b>Steps:</b> heat to <b>200°C for 30 min</b> (wax/water vaporize) → then <b>480–650°C for 45 min</b> (final burnout); keep the ring centered; <b>never</b> place in an overheated oven (too-rapid rise cracks the investment/distorts the cavity).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الحرق ومزاياه:</b> <b>الحرق (Burnout):</b> تسخين الحلقة المغلّفة في فرن منظّم حتى تتبخّر آثار الشمع، مُنشئاً تجويف القالب. <b>المزايا:</b> (١) إزالة الشمع/البلاستيك من التجويف؛ (٢) إزالة الرطوبة؛ (٣) إحداث <b>التمدّد</b> لتعويض انكماش التصلّب؛ (٤) رفع حرارة القالب لتمكين تدفّق المعدن. <b>الخطوات:</b> سخّن لـ<b>200°م لمدة 30د</b> (يتبخّر الشمع/الماء) ← ثم <b>480–650°م لمدة 45د</b> (الحرق النهائي)؛ أبقِ الحلقة في المركز؛ و<b>لا</b> تضعها في فرن محمّى زيادةً (الارتفاع السريع يشقّ التغليف/يشوّه التجويف).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Casting alloys &amp; the flame zones</div>
+  <div class="prompt">Classify the casting alloys and describe the flame zones.</div>
+  <div class="answer">
+    <b>Alloys:</b> (1) <b>Precious</b> (≥75% noble — gold/platinum/palladium; ADA gold types I soft, II moderate, III hard, IV extra-hard); (2) <b>Semiprecious</b> (silver-palladium, e.g., 60% Pd/30% Ag); (3) <b>Non-precious</b> (nickel-chromium, cobalt-chromium — need phosphate-bonded investment for high melting temp).<br>
+  <b>Flame zones:</b> (1) <b>mixing zone</b> (cool, colorless); (2) <b>combustion zone</b> (greyish-yellow, oxidizing — keep away from metal); (3) <b>reducing zone</b> (bluish, <b>hottest — the only zone to melt the metal</b>); (4) <b>oxidizing zone</b> (behind reducing). Melting in an oxidizing atmosphere → impurities, strength change, altered shrinkage, more corrosion.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>سبائك الصبّ ومناطق اللهب:</b> <b>السبائك:</b> (١) <b>ثمينة</b> (≥75% نبيلة — ذهب/بلاتين/بلاديوم؛ أنواع الذهب ADA: I طريّ، II متوسّط، III صلب، IV صلب جداً)؛ (٢) <b>شبه ثمينة</b> (فضّة-بلاديوم، مثلاً 60% Pd/30% Ag)؛ (٣) <b>غير ثمينة</b> (نيكل-كروم، كوبالت-كروم — تحتاج تغليفاً فوسفاتياً للحرارة العالية). <b>مناطق اللهب:</b> (١) <b>الخلط</b> (باردة عديمة اللون)؛ (٢) <b>الاحتراق</b> (رمادية-صفراء، مؤكسِدة — أبعِدها عن المعدن)؛ (٣) <b>الاختزال</b> (زرقاء، <b>الأسخن — المنطقة الوحيدة لصهر المعدن</b>)؛ (٤) <b>الأكسدة</b> (خلف الاختزال). والصهر في جوّ مؤكسِد ← شوائب، تغيّر قوّة، انكماش متغيّر، تآكل أكثر.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Centrifugal casting &amp; flux</div>
+  <div class="prompt">Describe centrifugal casting and the role of flux.</div>
+  <div class="answer">
+    <b>Casting force</b> must overcome the molten alloy's high surface tension and the resistance of gas in the mold. The common <b>centrifugal casting machine</b> has a crucible to melt the alloy and an arm that throws the molten alloy into the mold by centrifugal action (given 3 clockwise turns, 4 for metal-ceramic alloys).<br>
+  <b>Flux:</b> a <b>deoxidizing agent</b> added to the alloy to prevent oxidation and increase the fluidity of the molten alloy. <b>Note:</b> no flux for PFM alloys (upsets alloy balance / interferes with bonding); melt the metal only with the <b>reducing zone</b> of the flame.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الصبّ بالطرد المركزي والـflux:</b> <b>قوّة الصبّ</b> يجب أن تتغلّب على التوتّر السطحي العالي للسبيكة المنصهرة ومقاومة الغاز في القالب. و<b>آلة الطرد المركزي</b> الشائعة لها بوتقة لصهر السبيكة وذراع يقذف المنصهر للقالب بالطرد المركزي (تُعطى 3 لفّات، 4 للسبائك المعدنية-الخزفية). <b>الـFlux:</b> <b>عامل مزيل للأكسدة</b> يُضاف للسبيكة لمنع الأكسدة وزيادة سيولة المنصهر. <b>ملاحظة:</b> لا flux لسبائك PFM (يخلّ بتوازن السبيكة/يتداخل مع الارتباط)؛ واصهر المعدن فقط بـ<b>منطقة الاختزال</b> من اللهب.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec8">Lec 17 · Cleaning, Finishing &amp; Polishing</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Quenching, pickling &amp; sandblasting</div>
+  <div class="prompt">What are quenching, pickling, and sandblasting in cast restoration cleaning?</div>
+  <div class="answer">
+    <b>Quenching:</b> immediately plunging the hot casting ring under cold water — (1) <b>anneals</b> the alloy (better working qualities for finishing); (2) disintegrates the hot investment on contact with cold water.<br>
+  <b>Sandblasting:</b> a machine throwing sand + compressed air to remove remaining investment residues.<br>
+  <b>Pickling:</b> placing the casting in a pickling solution (<b>~50% hydrochloric acid</b>) to (1) remove <b>oxide</b> from the metal surface; (2) remove remaining investment. The restoration is then ready for finishing.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التبريد المفاجئ والتخليل والسفع الرملي:</b> <b>Quenching:</b> غمر حلقة الصبّ الساخنة فوراً تحت ماء بارد — (١) <b>يُلدّن</b> السبيكة (خصائص شغل أفضل للإنهاء)؛ (٢) يفكّك التغليف الساخن عند ملامسة الماء البارد. <b>السفع الرملي:</b> آلة تقذف رملاً + هواءً مضغوطاً لإزالة بقايا التغليف. <b>التخليل (Pickling):</b> وضع الصبّة في محلول تخليل (<b>~50% حمض هيدروكلوريك</b>) لـ(١) إزالة <b>الأكسيد</b> من سطح المعدن؛ (٢) إزالة بقايا التغليف. ثم تصبح جاهزة للإنهاء.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Finishing &amp; polishing</div>
+  <div class="prompt">Describe finishing and polishing of a cast restoration and their purposes.</div>
+  <div class="answer">
+    <b>Finishing:</b> the sprue is cut with a <b>carborundum separating disc</b> (not pliers/cutters — they cause distorting stress); excess is recontoured with stones/sand discs. Then seat on the die, adjust occlusion (green stone), and finish the margin — <b>subgingival margins on the die</b> with a burnisher (no intraoral finishing — risks tooth/periodontium), <b>supragingival on the tooth</b> (burnisher/dull bur).<br>
+  <b>Polishing:</b> to obtain a <b>glossy, plaque-resistant, tarnish/corrosion-resistant</b> surface with good appearance; abrasives on stone/rubber wheel/paper discs/paste — most common is <b>Tripoli on a soft Robinson bristle brush</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الإنهاء والتلميع:</b> <b>الإنهاء:</b> يُقطع الـsprue بـ<b>قرص فصل كربوراندوم</b> (لا كمّاشة/قاطعات — تسبّب إجهاد تشوّه)؛ ويُعاد تشكيل الفائض بأحجار/أقراص. ثم أجلِس على القالب، عدّل الإطباق (حجر أخضر)، وأنهِ الحافة — <b>الحواف تحت اللثوية على القالب</b> بمصقلة (لا إنهاء داخل الفم — يخاطر بالسن/النسيج)، و<b>فوق اللثوية على السن</b> (مصقلة/بُرّ كليل). <b>التلميع:</b> لسطح <b>لمّاع مقاوم للّويحة والتلطّخ/التآكل</b> بمظهر جيّد؛ كواشط على عجلة حجر/مطاط/أقراص/معجون — الأشيع <b>Tripoli على فرشاة Robinson ناعمة</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Marginal integrity &amp; types of marginal defects</div>
+  <div class="prompt">How is marginal integrity checked, and what are the types of marginal defects?</div>
+  <div class="answer">
+    <b>Checking:</b> use a sharp probe moved in <b>two directions</b>: (1) restoration→tooth — a catch = <b>underextended (short) margin</b>; (2) tooth→restoration — a catch = <b>overextended (long) margin</b>; smooth both ways = correct; probe enters a space = <b>open margin</b>. Then check <b>stability</b> (no rocking/rotation).<br>
+  <b>Marginal defect types:</b> (1) <b>short</b> (underextension — margin short of the finishing line); (2) <b>long/overhang</b> (beyond the finishing line); (3) <b>open</b> (space between margin and tooth); (4) <b>overcontoured</b> (bulky). Margin finishing aims for a ≥1 mm closely-adapted margin to prevent microleakage.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>سلامة الحافة وأنواع عيوبها:</b> <b>الفحص:</b> مسبار حادّ يُحرَّك في <b>اتّجاهين</b>: (١) الترميم→السن — التعلّق = <b>حافة قصيرة (ناقصة)</b>؛ (٢) السن→الترميم — التعلّق = <b>حافة طويلة (زائدة)</b>؛ والانسياب في الاتّجاهين = صحيح؛ ودخول المسبار فراغاً = <b>حافة مفتوحة</b>. ثم افحص <b>الثبات</b> (لا تأرجح/دوران). <b>أنواع العيوب:</b> (١) <b>قصيرة</b> (ناقصة الامتداد)؛ (٢) <b>طويلة/overhang</b> (تتجاوز خطّ الإنهاء)؛ (٣) <b>مفتوحة</b> (فراغ بين الحافة والسن)؛ (٤) <b>زائدة الكنتور</b> (ضخمة). ويهدف إنهاء الحافة لحافة ≥1مم منطبقة بإحكام لمنع التسرّب.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec9">Lec 18 · Cementation (Luting Agents) ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Function &amp; properties of an ideal luting agent</div>
+  <div class="prompt">What are the functions of cement and the properties of an ideal luting agent?</div>
+  <div class="answer">
+    <b>Functions:</b> (1) secure lasting <b>retention</b> of the restoration; (2) <b>seal</b> the gap against fluid/bacteria; (3) act as an <b>insulating barrier</b> (thermal/galvanic).<br>
+  <b>Ideal luting agent properties:</b> good working/setting time; adequate strength; <b>compressible into a thin layer</b>; good sealing and non-toxic to pulp; adheres well to the restoration's inner surface; low viscosity and low solubility.<br>
+  <b>Retention factors:</b> preparation geometry (taper/height/surface area), casting fit/surface texture, cement mechanical properties (compressive/tensile/shear/adhesion/film thickness), and differences in thermal expansion between tooth, casting, and cement.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>وظيفة السمنت وخصائص العامل المثالي:</b> <b>الوظائف:</b> (١) <b>إرساء</b> دائم للترميم؛ (٢) <b>سدّ</b> الفجوة ضدّ السوائل/الجراثيم؛ (٣) <b>حاجز عازل</b> (حراري/جلفاني). <b>خصائص العامل المثالي:</b> زمن شغل/تصلّب جيّد؛ قوّة كافية؛ <b>قابل للانضغاط لطبقة رقيقة</b>؛ سدّ جيّد وغير سامّ للّب؛ يلتصق جيّداً بالسطح الداخلي للترميم؛ لزوجة وذوبانية منخفضة. <b>عوامل الإرساء:</b> هندسة التحضير (التحدّب/الارتفاع/المساحة)، ملاءمة الصبّة/ملمسها، خصائص السمنت الميكانيكية (انضغاط/شدّ/قصّ/التصاق/سُمك طبقة)، وفروق التمدّد الحراري بين السن والصبّة والسمنت.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Soft vs hard cements &amp; zinc phosphate</div>
+  <div class="prompt">Differentiate soft and hard cements, and describe zinc phosphate cement.</div>
+  <div class="answer">
+    <b>Soft cements:</b> for <b>provisional</b> cementation of definitive crowns when a trial period is needed (e.g., significant occlusion/esthetic change). <b>Hard cements:</b> for definitive cementation — <b>conventional</b> (acid-base → insoluble salt + water: zinc phosphate, polycarboxylate, glass ionomer), <b>resin</b> (set by polymerization), or hybrid.<br>
+  <b>Zinc phosphate:</b> ZnO powder + phosphoric acid; compressive strength <b>14,000–16,000 PSI</b>; <b>low pH (~3.5)</b> at cementation (may irritate pulp initially). <b>Advantages:</b> good compressive strength/film thickness, reasonable working time, water-resistant, long track record. <b>Disadvantages:</b> low tensile strength, no chemical bonding, not acid-resistant. Good default for retentive conventional crowns/posts.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>السمنتات الطريّة مقابل الصلبة والزنك فوسفات:</b> <b>الطريّة:</b> للتثبيت <b>المؤقت</b> للتيجان النهائية حين تلزم فترة تجربة (كتغيير إطباق/جمال كبير). <b>الصلبة:</b> للتثبيت النهائي — <b>تقليدية</b> (حمض-قاعدة ← ملح غير ذائب + ماء: زنك فوسفات، بولي كربوكسيلات، أيونومر زجاجي)، <b>راتنجية</b> (تتصلّب بالبلمرة)، أو هجينة. <b>الزنك فوسفات:</b> مسحوق ZnO + حمض فوسفوريك؛ قوّة انضغاط <b>14,000–16,000 PSI</b>؛ <b>pH منخفض (~3.5)</b> عند التثبيت (قد يهيّج اللب مبدئياً). <b>المزايا:</b> قوّة انضغاط/سُمك طبقة جيّد، زمن شغل معقول، مقاوم للماء، سجلّ طويل. <b>العيوب:</b> قوّة شدّ منخفضة، لا ربط كيميائي، غير مقاوم للحمض. خيار افتراضي جيّد للتيجان/الأوتاد التقليدية المُرسية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Polycarboxylate &amp; glass ionomer luting cements</div>
+  <div class="prompt">Compare polycarboxylate and glass ionomer as luting cements.</div>
+  <div class="answer">
+    <b>Polycarboxylate:</b> adheres to enamel, dentine, and stainless steel (not gold alloy); setting pH ~<b>4.8</b> but the large polyacrylic-acid molecule → <b>less pulp effect</b>; bond to enamel ~1300 PSI, to dentine less (~480 PSI). <b>Advantages:</b> good compressive strength, adequate working time, bonds to tooth, less acidic than zinc phosphate. <b>Disadvantages:</b> low tensile strength, deforms under load, hard to get low film thickness.<br>
+  <b>Glass ionomer:</b> compressive strength ~<b>18,600 PSI</b>; bonds to enamel (more) and dentine; <b>releases fluoride</b> (inhibits secondary caries) — a key advantage as a luting agent for crowns/bridges.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>البولي كربوكسيلات والأيونومر الزجاجي كسمنتات تثبيت:</b> <b>البولي كربوكسيلات:</b> يلتصق بالمينا والعاج والستانلس (لا سبيكة الذهب)؛ pH التصلّب ~<b>4.8</b> لكن جزيء حمض البولي أكريليك الكبير ← <b>أثر لبّي أقلّ</b>؛ الربط بالمينا ~1300 PSI، والعاج أقلّ (~480 PSI). <b>المزايا:</b> قوّة انضغاط جيّدة، زمن شغل كافٍ، يرتبط بالسن، أقلّ حمضيةً من الزنك فوسفات. <b>العيوب:</b> قوّة شدّ منخفضة، يتشوّه تحت الحمل، صعوبة سُمك طبقة منخفض. <b>الأيونومر الزجاجي:</b> قوّة انضغاط ~<b>18,600 PSI</b>؛ يرتبط بالمينا (أكثر) والعاج؛ <b>يطلق فلورايد</b> (يثبّط التسوّس الثانوي) — ميزة مفتاحية كعامل تثبيت للتيجان/الجسور.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec10">Lec 17 · Seating the Casting on the Die</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Inspecting &amp; seating the casting on the die</div>
+  <div class="prompt">How is the cast restoration inspected and seated on the die, and why must it seat without pressure?</div>
+  <div class="answer">
+    First, inspect the <b>inner surface</b> of the casting for <b>nodules or metal bubbles</b> that would prevent seating (magnification may help); remove them with a high-speed round bur. Then seat the crown on the die — it must seat <b>without any pressure</b>. If there is interference, re-inspect the inner surface and relieve contact areas until complete pressure-free seating is achieved. <span class="k">Seating with pressure will crack and distort the die.</span> Then transfer the die+casting to the working cast, adjust the interproximal relationship to a slight contact, and adjust the occlusion (centric & eccentric) with articulating paper — ensuring complete seating so you don't grind it out of occlusion.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>فحص وإجلاس الصبّة على القالب:</b> أولاً افحص <b>السطح الداخلي</b> للصبّة بحثاً عن <b>عُقيدات أو فقاعات معدن</b> تمنع الإجلاس (قد يساعد التكبير)؛ أزلها ببُرّ مدوّر عالي السرعة. ثم أجلِس التاج على القالب — يجب أن يجلس <b>دون أي ضغط</b>. وإن وُجد تداخل، أعد فحص السطح الداخلي وأزِح مناطق التماس حتى إجلاس كامل بلا ضغط. <b>والإجلاس بضغط يشقّ القالب ويشوّهه.</b> ثم انقل القالب+الصبّة للنموذج العملي، وعدّل العلاقة الدانية لتماس طفيف، وعدّل الإطباق (مركزي ولا مركزي) بورق الإطباق — مع ضمان الإجلاس الكامل كي لا تبردها خارج الإطباق.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Finishing/polishing sequence &amp; the 1 mm rule</div>
+  <div class="prompt">Summarize the casting finishing/polishing sequence and the key margin rule.</div>
+  <div class="answer">
+    <b>Sequence:</b> (1) contour the <b>sprue stump</b>; (2) adjust <b>interproximal contacts</b>; (3) adjust <b>occlusion</b>; (4) clean & polish <b>occlusal grooves</b>; (5) polish <b>axial walls</b> — while <b>protecting the interproximal contact</b>. <b>Key rule:</b> when polishing, <span class="k">stop 1 mm from the margins</span> to avoid over-thinning or distorting the critical marginal area. Axial walls are smoothed with a rubber wheel bur (placed parallel to the margin near it), and the occlusal surface finished with small finishing burs before intraoral try-in.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تسلسل الإنهاء/التلميع وقاعدة الـ1مم:</b> <b>التسلسل:</b> (١) شكّل <b>جذمور الـsprue</b>؛ (٢) عدّل <b>التماسات الدانية</b>؛ (٣) عدّل <b>الإطباق</b>؛ (٤) نظّف ولمّع <b>الأخاديد الإطباقية</b>؛ (٥) لمّع <b>الجدران المحورية</b> — مع <b>حماية التماس الداني</b>. <b>القاعدة المفتاحية:</b> عند التلميع <b>توقّف على بُعد 1مم من الحواف</b> لتجنّب ترقيق/تشويه منطقة الحافة الحرجة. وتُنعَّم الجدران المحورية بعجلة مطاطية (توضع موازيةً للحافة قربها)، ويُنهى السطح الإطباقي ببُرَ إنهاء صغيرة قبل التجربة داخل الفم.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec11">Lec 18 · Clinical Try-In &amp; Contact Evaluation ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Clinical try-in — with or without anesthesia</div>
+  <div class="prompt">Is anesthesia used during clinical try-in, and how is the casting seated on the prepared tooth?</div>
+  <div class="answer">
+    <b>Try-in is usually done WITHOUT anesthesia</b> — this preserves <b>unimpaired tactile sensation</b>, which is very valuable during occlusal adjustment (the patient can feel a high spot). Anesthesia is used only if the patient is uncooperative.<br>
+  <b>Seating:</b> first remove the temporary and <b>clean all cement remnants</b> from the prepared tooth (remnants block seating) — using a <b>Backhaus towel clamp</b> or <b>GC pliers</b>. Then seat the restoration on the prepared tooth <b>with pressure</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التجربة السريرية — بتخدير أو بدونه:</b> <b>تُجرى التجربة عادةً بدون تخدير</b> — إذ يحفظ <b>الإحساس اللمسي السليم</b> المهمّ جداً أثناء تعديل الإطباق (يشعر المريض بالنقطة العالية). ويُستخدم التخدير فقط إن كان المريض غير متعاون. <b>الإجلاس:</b> أزل المؤقت أولاً و<b>نظّف كل بقايا السمنت</b> من السن المحضّر (البقايا تمنع الإجلاس) — بـ<b>ملقط منشفة Backhaus</b> أو <b>GC pliers</b>. ثم أجلِس الترميم على السن المحضّر <b>بضغط</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Evaluating the interproximal contact with floss</div>
+  <div class="prompt">How is the interproximal contact evaluated with dental floss, and what do the findings mean?</div>
+  <div class="answer">
+    Pass <b>dental floss</b> between the restoration and the adjacent natural tooth — it should have <b>slight resistance</b> (like the other contacts in the mouth). Findings:
+  <ul><li><b>Heavy resistance</b> (floss can't pass) → the contact is <b>too heavy → must be reduced</b>.</li>
+  <li><b>No resistance</b> (floss passes easily) → the contact is <b>under-contoured / deficient</b> → either remake the restoration or <b>add solder</b> to that area.</li></ul>
+  A correct contact gives slight, even resistance.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تقييم التماس الداني بالخيط:</b> مرّر <b>الخيط السنّي</b> بين الترميم والسن المجاور — يجب أن يكون بـ<b>مقاومة طفيفة</b> (كباقي التماسات في الفم). النتائج: <b>مقاومة شديدة</b> (لا يمرّ الخيط) → التماس <b>ثقيل جداً → يجب تقليله</b>. <b>لا مقاومة</b> (يمرّ بسهولة) → التماس <b>ناقص الكنتور/قاصر</b> → إمّا إعادة الترميم أو <b>إضافة لحام (solder)</b> لتلك المنطقة. والتماس الصحيح يعطي مقاومةً طفيفةً متساوية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Pressure-indicating paste for interferences</div>
+  <div class="prompt">How are internal seating interferences identified when the contact is correct but the crown won't fully seat?</div>
+  <div class="answer">
+    If the contact is perfect but the crown does <b>not seat completely</b>, there is likely <b>internal interference</b> (metal bubbles or an undercut). Use a <b>pressure-indicating paste (silicone wash)</b> or spray: place it on the <b>inner surface</b> of the crown, seat the crown on the prepared tooth with pressure, then remove and inspect — any <b>shiny (pressure) area</b> indicates an interference that must be relieved (e.g., with a round bur). Repeat until the crown seats completely.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>معجون كشف الضغط للتداخلات:</b> إن كان التماس مثالياً لكن التاج <b>لا يجلس كلياً</b>، فالأرجح وجود <b>تداخل داخلي</b> (فقاعات معدن أو تقويض). استخدم <b>معجون كشف الضغط (silicone wash)</b> أو رذاذاً: ضعه على <b>السطح الداخلي</b> للتاج، أجلِس التاج على السن بضغط، ثم أزله وافحص — أي <b>منطقة لامعة (ضغط)</b> تدلّ على تداخل يجب إزالته (ببُرّ مدوّر مثلاً). كرّر حتى يجلس التاج كلياً.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec12">Lec 18 · Resin, RMGI &amp; Other Luting Cements ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Zinc silicophosphate &amp; glass ionomer recap</div>
+  <div class="prompt">What are the key features of zinc silicophosphate cement, and recap glass ionomer's luting profile?</div>
+  <div class="answer">
+    <b>Zinc silicophosphate:</b> a mixture of zinc phosphate + silicate cement; compressive strength ~<b>22,000 PSI</b> (higher than ZPC) with slightly lower solubility; <b>anti-cariogenic (fluoride content)</b>; but <b>highly acidic low pH → pulp irritant</b>.<br>
+  <b>Glass ionomer (luting):</b> compressive strength ~18,600 PSI, bonds to enamel (more) and dentine, <b>releases fluoride</b>. Advantages: fluoride release; acidity similar to ZPC on mixing. Disadvantages: <b>sensitive to early moisture</b> contamination, low tensile strength, not acid-resistant. Used for conventional crowns where the patient had a high caries rate; an alternative to zinc phosphate.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الزنك سيليكوفوسفات وملخّص الأيونومر:</b> <b>الزنك سيليكوفوسفات:</b> مزيج زنك فوسفات + سمنت سيليكات؛ قوّة انضغاط ~<b>22,000 PSI</b> (أعلى من ZPC) بذوبانية أقلّ قليلاً؛ <b>مضاد للتسوّس (محتوى فلورايد)</b>؛ لكنه <b>عالي الحموضة منخفض pH → مهيّج للّب</b>. <b>الأيونومر الزجاجي (تثبيت):</b> قوّة انضغاط ~18,600 PSI، يرتبط بالمينا (أكثر) والعاج، <b>يطلق فلورايد</b>. المزايا: إطلاق فلورايد؛ حموضة كالـZPC عند الخلط. العيوب: <b>حسّاس للرطوبة المبكّرة</b>، قوّة شدّ منخفضة، غير مقاوم للحمض. يُستخدم للتيجان التقليدية لمريض عالي التسوّس؛ بديل للزنك فوسفات.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Resin luting cement</div>
+  <div class="prompt">How are resin luting cements classified, and what are their advantages, disadvantages, and best uses?</div>
+  <div class="answer">
+    <b>Classification:</b> by polymerization — <b>chemical cure</b> (for metal restorations), <b>light cure</b> (for ceramic restorations), or <b>dual cure</b> — and by the presence of a dentine bonding mechanism.<br>
+  <b>Advantages:</b> good compressive and <b>high tensile strength</b> (vs conventional cements); resistant to water and relatively to acid dissolution; can <b>strengthen a ceramic restoration if bond is obtained</b>.<br>
+  <b>Disadvantages:</b> film thickness varies; excess at the margin is hard to remove (esp. proximally).<br>
+  <b>Best uses:</b> must be used with an effective <b>dentine bonding agent</b>; the <b>material of choice for porcelain veneers, ceramic onlays, and resin-bonded ceramic crowns</b>; helpful where preparation geometry is sub-optimal.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>سمنت التثبيت الراتنجي:</b> <b>التصنيف:</b> حسب البلمرة — <b>تصلّب كيميائي</b> (للترميمات المعدنية)، <b>ضوئي</b> (للخزفية)، أو <b>مزدوج</b> — وحسب وجود آلية ربط عاجي. <b>المزايا:</b> قوّة انضغاط جيّدة و<b>شدّ عالية</b> (مقابل التقليدية)؛ مقاوم للماء ونسبياً للحمض؛ يمكنه <b>تقوية الترميم الخزفي إن تحقّق الربط</b>. <b>العيوب:</b> سُمك الطبقة متغيّر؛ والفائض عند الحافة صعب الإزالة (خاصةً دانياً). <b>أفضل الاستخدامات:</b> يجب استخدامه مع <b>عامل ربط عاجي</b> فعّال؛ و<b>الخيار الأمثل لقشور البورسلين والـonlays الخزفية والتيجان الخزفية المرتبطة بالراتنج</b>؛ ومفيد حيث تكون هندسة التحضير دون المثلى.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">RMGI &amp; compomer luting cements</div>
+  <div class="prompt">What are RMGI luting cements, and their advantages, disadvantages, and cautions?</div>
+  <div class="answer">
+    <b>RMGI cements:</b> a hybrid of traditional GIC + small light-curing resin additions — combine the <b>strength and insolubility of resin</b> with the <b>fluoride release of GIC</b>, introduced to overcome conventional GI's moisture sensitivity and low strength. Popular for luting due to <b>high dentine bond strength</b> and a <b>very thin film</b>. Compomers are related but closer to composites (GI reaction proceeds slowly as moisture is absorbed).<br>
+  <b>Advantages:</b> good compressive/tensile strength, reasonable working time, water-resistant, fluoride release.<br>
+  <b>Disadvantages:</b> short track record; <b>may expand and crack overlying porcelain</b> (water absorption) → caution with ceramic crowns.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>سمنتات RMGI والكومبومر:</b> <b>سمنتات RMGI:</b> هجين GIC تقليدي + إضافات راتنج ضوئية صغيرة — تجمع <b>قوّة وعدم ذوبان الراتنج</b> مع <b>إطلاق فلورايد الـGIC</b>، أُدخِلت لتجاوز حساسية الرطوبة وضعف الـGI التقليدي. شائعة للتثبيت لـ<b>ربط عاجي عالٍ</b> و<b>طبقة رقيقة جداً</b>. والكومبومر قريب لكنه أقرب للكمبوزِت (تفاعل الـGI يجري ببطء بامتصاص الرطوبة). <b>المزايا:</b> قوّة انضغاط/شدّ جيّدة، زمن شغل معقول، مقاوم للماء، إطلاق فلورايد. <b>العيوب:</b> سجلّ قصير؛ و<b>قد يتمدّد ويشقّ البورسلين المغطّي</b> (امتصاص ماء) → حذر مع التيجان الخزفية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec13">Lec 18 · Cementation Technique &amp; Cement Selection</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Why plain ZOE is not used for permanent cementation</div>
+  <div class="prompt">Why is plain zinc oxide-eugenol not used for permanent cementation, and how is it improved?</div>
+  <div class="answer">
+    <b>Plain ZOE</b> is a classical <b>soft cement</b> used only for <b>temporary</b> cementation because: (1) <b>poor oral durability</b> from continuous <b>eugenol loss</b>; (2) <b>low compressive strength</b>. To improve it, <b>modified ZOE (EBA)</b> was introduced by adding <b>2-ethoxybenzoic acid (EBA), aluminum oxide, and PMMA</b>, raising strength. (Also recall: eugenol interferes with resin polymerization, so a non-eugenol temporary cement is used when a resin final cement is planned.)
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>لماذا لا يُستخدم ZOE العادي للتثبيت الدائم:</b> <b>ZOE العادي</b> سمنت <b>طريّ</b> كلاسيكي يُستخدم للتثبيت <b>المؤقت</b> فقط لأن: (١) <b>متانة فموية ضعيفة</b> من <b>فقد الأوجينول</b> المستمرّ؛ (٢) <b>قوّة انضغاط منخفضة</b>. ولتحسينه أُدخِل <b>ZOE المعدّل (EBA)</b> بإضافة <b>حمض 2-إيثوكسي بنزويك (EBA) وأكسيد الألمنيوم وPMMA</b>، فترتفع القوّة. (وتذكّر: الأوجينول يعيق بلمرة الراتنج، فيُستخدم مؤقت خالٍ من الأوجينول عند التخطيط لسمنت نهائي راتنجي.)</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Zinc phosphate cementation technique</div>
+  <div class="prompt">Outline the step-by-step cementation technique with zinc phosphate cement.</div>
+  <div class="answer">
+    <ol>
+  <li>Remove the temporary and <b>clean all cement residues</b> from the prepared tooth.</li>
+  <li><b>Isolate</b> the tooth with cotton rolls (dry field).</li>
+  <li>Partial pulp protection with <b>two layers of cavity varnish</b>.</li>
+  <li>Mix the cement <b>slowly over a wide area on a cool glass slab</b> to incorporate maximum powder (reduce acidity).</li>
+  <li>Coat the inside of the clean dry casting (apply some into internal grooves/boxes).</li>
+  <li>Seat the crown with pressure; have the patient bite on a <b>wooden stick/cotton roll for 3–4 minutes</b> (complete seating).</li>
+  <li>After setting, remove excess from interproximal/cervical areas and under the bridge with a probe and floss.</li>
+  <li>Check occlusion.</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تقنية التثبيت بالزنك فوسفات:</b> (١) أزل المؤقت و<b>نظّف كل بقايا السمنت</b> من السن. (٢) <b>اعزل</b> السن بلفّات قطن (مجال جافّ). (٣) حماية لبّية جزئية بـ<b>طبقتي ورنيش تجويف</b>. (٤) اخلط السمنت <b>ببطء على مساحة واسعة على لوح زجاجي بارد</b> لإدخال أقصى مسحوق (تقليل الحموضة). (٥) اطلِ داخل الصبّة النظيفة الجافّة (وضع بعضه في الأخاديد/الصناديق الداخلية). (٦) أجلِس التاج بضغط؛ ودع المريض يعضّ على <b>عود خشبي/لفّة قطن 3–4 دقائق</b> (إجلاس كامل). (٧) بعد التصلّب أزل الفائض من المناطق الدانية/العنقية وتحت الجسر بمسبار وخيط. (٨) افحص الإطباق.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Choosing the right luting agent</div>
+  <div class="prompt">How is the luting agent selected for a given cast restoration?</div>
+  <div class="answer">
+    No single cement is perfect — selection depends on knowledge of the available materials, the <b>type of restoration</b>, the patient's requirements, and the clinician's expertise. In practice: <b>zinc phosphate</b> is a mainstay for conventional retentive metal crowns/posts (long track record, excellent clinical performance); <b>resin cements</b> are used for all-ceramic crowns, veneers, and metal/metal-ceramic restorations where <b>retention and resistance form is compromised</b> (they can bond and strengthen ceramic); <b>glass ionomer/RMGI</b> suit patients with high caries risk (fluoride) or borderline retention; and <b>ZOE</b> is reserved for provisional cementation.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>اختيار عامل التثبيت المناسب:</b> لا سمنت مثالي — والاختيار يعتمد على معرفة المواد المتاحة و<b>نوع الترميم</b> ومتطلبات المريض وخبرة الطبيب. عملياً: <b>الزنك فوسفات</b> ركيزة للتيجان/الأوتاد المعدنية التقليدية المُرسية (سجلّ طويل، أداء ممتاز)؛ و<b>السمنتات الراتنجية</b> للتيجان الخزفية والقشور والترميمات المعدنية/المعدنية-الخزفية حيث يكون <b>شكل الإرساء والمقاومة منقوصاً</b> (تربط وتقوّي الخزف)؛ و<b>الأيونومر/RMGI</b> يناسب عالي خطر التسوّس (فلورايد) أو الإرساء الحدّي؛ ويُحجَز <b>ZOE</b> للتثبيت المؤقت.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec14">Lec 11 · Impression Requirements (Integrated) ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Requirements for a good final impression</div>
+  <div class="prompt">What are the requirements needed to obtain a good final impression, and why is a dry field essential?</div>
+  <div class="answer">
+    Five requirements: (1) a <b>special tray</b>; (2) an <b>impression syringe</b>; (3) <b>gingival retraction</b> when the finishing line is subgingival/equigingival; (4) a <b>good understanding of the impression material's physical properties</b> (for correct handling); (5) a <b>dry field of operation</b>.<br>
+  <b>Why dry field:</b> all elastic impression materials <b>except hydrocolloids are hydrophobic</b> — they do not displace moisture. Any moisture present therefore produces <b>voids or folds</b> in the final impression, distorting the finishing-line detail. So retraction (for fluid control) plus isolation is essential wherever the margin sits at or below the gingiva.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>متطلبات الطبعة النهائية الجيّدة:</b> خمسة متطلبات: (١) <b>حامل خاصّ</b>؛ (٢) <b>محقنة طبعة</b>؛ (٣) <b>إزاحة لثة</b> حين يكون خطّ الإنهاء تحت اللثة/بمستواها؛ (٤) <b>فهم جيّد للخصائص الفيزيائية</b> لمادة الطبعة (للمناولة الصحيحة)؛ (٥) <b>مجال عمل جافّ</b>. <b>لماذا المجال الجافّ:</b> كل مواد الطبعة المرنة <b>عدا الهيدروكولويد كارهة للماء</b> — لا تزيح الرطوبة. فأي رطوبة تُنتج <b>فراغات أو طيّات</b> في الطبعة النهائية، مشوّهةً تفاصيل خطّ الإنهاء. لذا الإزاحة (لضبط السائل) مع العزل ضروريان حيثما كانت الحافة عند اللثة أو تحتها.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">VLA composites (Revotek) for provisionals</div>
+  <div class="prompt">What are visible light-activated (VLA) composites for provisionals, and their advantages?</div>
+  <div class="answer">
+    <b>VLA composites</b> are light-cured, single-component, sculptable malleable resins with a clay/dough consistency (e.g., <b>Revotek LC</b>, a UDMA putty stick). A portion is cut, adapted onto the preparation directly in the mouth, sculpted, the patient occludes to establish the scheme, then it is light-activated <b>10 s in the mouth</b>, removed, and given a final <b>20 s</b> exposure; finish, polish, and cement with temporary cement.<br>
+  <b>Advantages:</b> no methyl methacrylate → <b>no exothermic heat, odor, or irritation</b>; fast and easy; no mixing/messy powder-liquid; no heavy oxygen-inhibited layer (unlike bis-acryls); and <b>no preoperative impression/stent/wax-up needed</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>كمبوزِت VLA (Revotek) للمؤقتات:</b> <b>كمبوزِت VLA</b> راتنجات لدنة قابلة للنحت أحادية المكوّن تتصلّب بالضوء بقوام صلصالي/عجيني (مثل <b>Revotek LC</b>، عصا UDMA معجونية). يُقطع جزء، يُكيّف على التحضير مباشرةً في الفم، يُنحت، يعضّ المريض لإرساء المخطّط، ثم يُصلّب بالضوء <b>10ث في الفم</b>، يُزال، ويُعطى تعريضاً نهائياً <b>20ث</b>؛ ثم يُنهى ويُلمّع ويُسمنت بسمنت مؤقت. <b>المزايا:</b> بلا ميثيل ميثاكريلات → <b>بلا حرارة ناشرة أو رائحة أو تهيّج</b>؛ سريع وسهل؛ بلا خلط/مسحوق-سائل فوضوي؛ بلا طبقة مثبّطة بالأكسجين ثقيلة (خلاف bis-acryls)؛ و<b>لا يحتاج طبعة قبل التحضير/قالباً/تشميعاً</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec15">Lec 15–16 · Casting Shrinkage Compensation (Integrated) ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">How the whole system compensates casting shrinkage</div>
+  <div class="prompt">Trace how the investing–burnout–casting system compensates for the metal's solidification shrinkage.</div>
+  <div class="answer">
+    When molten alloy solidifies it <b>shrinks</b>, so the finished casting would be smaller than the wax pattern unless compensated. The system compensates in several linked ways: (1) the <b>investment provides compensation expansion</b> — its setting and thermal (hygroscopic) expansion enlarge the mold cavity to slightly exceed the pattern; (2) the <b>ring liner</b> gives a compressible outer layer against which the investment can expand outward (a rigid ring alone would restrict expansion → an undersized casting); (3) the <b>burnout</b> produces the necessary thermal expansion and raises the mold temperature so metal flows fully; and (4) the <b>sprue acts as a reservoir</b> of still-molten metal that feeds the casting during solidification, offsetting shrinkage porosity. Together these make the cavity slightly larger than the pattern so the final casting fits.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>كيف يعوّض النظام كله انكماش الصبّ:</b> عند تصلّب السبيكة المنصهرة <b>تنكمش</b>، فتصير الصبّة النهائية أصغر من النموذج الشمعي ما لم يُعوَّض ذلك. ويعوّض النظام بطرق مترابطة: (١) <b>التغليف يوفّر تمدّداً تعويضياً</b> — تمدّده عند التصلّب والحراري (الرطبي) يوسّع تجويف القالب ليتجاوز النموذج قليلاً؛ (٢) <b>بطانة الحلقة</b> تعطي طبقة خارجية قابلة للانضغاط يتمدّد التغليف نحوها للخارج (والحلقة الصلبة وحدها تقيّد التمدّد ← صبّة أصغر)؛ (٣) <b>الحرق</b> يُنتج التمدّد الحراري اللازم ويرفع حرارة القالب ليتدفّق المعدن كلياً؛ (٤) <b>الـsprue خزّان</b> معدن ما زال منصهراً يغذّي الصبّة أثناء التصلّب، معوّضاً مسامية الانكماش. وتجعل هذه معاً التجويف أكبر قليلاً من النموذج فتلائم الصبّة النهائية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">High-melting vs low-melting alloy casting differences</div>
+  <div class="prompt">How does casting differ between high-melting and low-melting alloys?</div>
+  <div class="answer">
+    Five practical differences: (1) <b>torch:</b> a <b>single-orifice</b> torch melts gold-platinum and silver-palladium, while a <b>multi-orifice</b> torch melts base-metal (nickel-chromium) alloys; (2) <b>crucible:</b> a <b>quartz</b> crucible is used for high-melting alloys (the asbestos liner isn't used — high heat decomposes it and contaminates the melt); (3) <b>flux:</b> <b>no flux</b> for PFM alloys (it upsets alloy balance and interferes with bonding); (4) <b>casting force:</b> high-melting alloys need <b>extra winding</b> of the casting-machine arm; (5) <b>casting temperature:</b> gold-platinum ~1300 °F, base metal ~1500 °F, versus gold alloy ~1200 °F.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>فروق صبّ السبائك عالية مقابل منخفضة الانصهار:</b> خمسة فروق عملية: (١) <b>الشعلة:</b> شعلة <b>أحادية الفوّهة</b> تصهر الذهب-البلاتين والفضّة-البلاديوم، بينما شعلة <b>متعدّدة الفوّهات</b> تصهر السبائك المعدنية الأساسية (نيكل-كروم)؛ (٢) <b>البوتقة:</b> بوتقة <b>كوارتز</b> للسبائك عالية الانصهار (لا تُستخدم بطانة الأسبستوس — الحرارة العالية تحلّلها وتلوّث المنصهر)؛ (٣) <b>الـflux:</b> <b>بلا flux</b> لسبائك PFM (يخلّ بتوازن السبيكة ويتداخل مع الارتباط)؛ (٤) <b>قوّة الصبّ:</b> السبائك عالية الانصهار تحتاج <b>لفّاً إضافياً</b> لذراع آلة الصبّ؛ (٥) <b>حرارة الصبّ:</b> الذهب-البلاتين ~1300°ف، المعدن الأساسي ~1500°ف، مقابل سبيكة الذهب ~1200°ف.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec16">Lec 10 · Gingival Retraction (Clinical Selection)</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Choosing a gingival retraction method</div>
+  <div class="prompt">How does the clinician choose among the five gingival retraction methods based on the clinical situation?</div>
+  <div class="answer">
+    The choice balances effectiveness against tissue trauma and the patient’s periodontal state. <b>Plain mechanical cord</b> (or a slightly long temporary crown left 24 h) suits a simple case needing only physical displacement. <b>Chemo-mechanical cord</b> (impregnated with adrenaline, aluminum chloride, or ferric sulfate, packed 10 minutes) is the workhorse when both displacement and <b>fluid/hemorrhage control</b> are needed — it produces transient ischemia and tissue shrinkage, though it is technique-sensitive and can injure the sulcular epithelium. The <b>cordless paste technique</b> (Expasyl 15% aluminum chloride, Magic Foam Cord PVS) is chosen when a <b>non-traumatic, non-invasive</b> approach with excellent hemostasis is preferred, or when cord placement is difficult. <b>Electrosurgery</b> removes tissue with good hemostasis but is <b>contraindicated with gingival inflammation or periodontal disease</b> (do gingivectomy instead). <b>Nd:YAG laser</b> gives minimal bleeding, sterilization, and faster healing — often without anesthesia — but is slow and expensive. The finishing-line depth, tissue health, bleeding tendency, and cost all steer the decision.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br>يوازن الاختيار بين الفعالية ورضّ النسيج وحالة اللثة. <b>الخيط الميكانيكي السادة</b> (أو تاج مؤقّت أطول يُترك 24س) يناسب حالة بسيطة تحتاج إزاحة فيزيائية فقط. <b>الخيط الكيميائي-الميكانيكي</b> (مُشبع بأدرينالين أو كلوريد ألمنيوم أو كبريتات حديد، يُحشى 10 دقائق) هو الأساس حين يلزم الإزاحة و<b>ضبط السائل/النزف</b> معاً — يُحدث نقص تروية عابراً وانكماش نسيج، لكنه حسّاس للتقنية وقد يؤذي ظهارة الأخدود. و<b>تقنية المعجون بلا خيط</b> (Expasyl 15% كلوريد ألمنيوم، Magic Foam Cord PVS) تُختار حين يُفضّل نهج <b>غير رضّي غير باضع</b> بإرقاء ممتاز، أو حين يصعب وضع الخيط. و<b>الجراحة الكهربائية</b> تزيل النسيج بإرقاء جيّد لكنها <b>ممنوعة مع التهاب اللثة أو المرض حول السني</b> (استئصال لثة بدلاً). و<b>ليزر Nd:YAG</b> يعطي نزفاً أدنى وتعقيماً وشفاءً أسرع — غالباً بلا تخدير — لكنه بطيء ومكلف. وعمق خطّ الإنهاء وصحة النسيج وميل النزف والكلفة توجّه القرار.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Impression-technique selection by material viscosity</div>
+  <div class="prompt">How does the number of available viscosities determine which impression technique is used?</div>
+  <div class="answer">
+    The impression technique is matched to how many <b>viscosities</b> the material is supplied in and to the shrinkage behavior of the material. A <b>single (monophase) technique</b> is used with one medium-body pseudoplastic material (polyether or addition silicone): shear-thinning lets the same mix serve both syringe (thinned under high shear) and tray (unaffected). A <b>double mix technique</b> is used when the material comes in <b>two viscosities</b> — light body in the syringe records the fine finishing-line detail, while heavy body in the tray provides the seating pressure that forces the light body into the margins. A <b>putty-wash technique</b> uses a high-viscosity putty plus a light wash, and was specifically developed for <b>condensation silicones</b>: taking the bulky putty impression first confines most polymerization shrinkage to that preliminary step, leaving only the thin wash layer to shrink at the final stage — improving dimensional accuracy. For a <b>post crown</b>, whichever technique is used, the intracanal light body must be reinforced with an impression post or stainless-steel wire.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br>تُطابَق تقنية الطبعة مع عدد <b>اللزوجات</b> المتوفّرة للمادة ومع سلوك انكماشها. فـ<b>التقنية المفردة (monophase)</b> تُستخدم مع مادة متوسّطة واحدة pseudoplastic (بولي إيثر أو سيليكون إضافة): الترقّق بالقصّ يتيح للمزيج نفسه خدمة المحقنة (يرقّ تحت القصّ العالي) والحامل (لا يتأثّر). و<b>التقنية المزدوجة</b> حين تأتي المادة بـ<b>لزوجتين</b> — الخفيف في المحقنة يسجّل تفاصيل خطّ الإنهاء الدقيقة، والثقيل في الحامل يوفّر ضغط الإجلاس الذي يدفع الخفيف للحواف. و<b>putty-wash</b> تستخدم معجوناً عالي اللزوجة + طبقة خفيفة، وطُوّرت خصيصاً لـ<b>سيليكونات التكثيف</b>: أخذ طبعة المعجون أولاً يحصر معظم انكماش البلمرة في تلك الخطوة الأولية، تاركاً الطبقة الرقيقة وحدها تنكمش في المرحلة النهائية — محسّناً دقّة الأبعاد. وللتاج الوتدي، أيّاً كانت التقنية، يجب دعم الخفيف داخل القناة بوتد طبعة أو سلك ستانلس.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">The full cast-restoration workflow (integrated recap)</div>
+  <div class="prompt">Trace the complete sequence from final impression to cemented cast restoration, naming the key checkpoint at each stage.</div>
+  <div class="answer">
+    Day 9 covers the second half of the crown journey. After tooth preparation, the workflow is: (1) <b>Gingival retraction</b> when the margin is subgingival — checkpoint: the finishing line is exposed and the sulcus fluid controlled. (2) <b>Final impression</b> (single/double mix or putty-wash; reinforced for a post crown) — checkpoint: continuous finishing line, no bubbles, material bonded to the tray; then disinfect. (3) <b>Provisional restoration</b> — checkpoint: seals/insulates the tooth, good margins/contacts, cemented with ZOE. (4) <b>Working cast &amp; die</b> poured (die stone, dowel pins/Pindex) — checkpoint: exact reproduction, removable/replaceable die. (5) <b>Waxing &amp; spruing</b> — checkpoint: correct contour/margins, sprue on the bulkiest non-centric area ~6 mm from the ring. (6) <b>Investing</b> (ring + liner + crucible former) — checkpoint: compensation expansion for shrinkage. (7) <b>Burnout</b> (200°C/30 min then 480–650°C/45 min) — checkpoint: wax fully vaporized, no overheating. (8) <b>Casting</b> (reducing flame, flux, centrifugal) — checkpoint: complete fill, no oxidation. (9) <b>Cleaning/finishing/polishing</b> (quench, sandblast, pickle; stop 1 mm from margins) — checkpoint: marginal integrity by two-direction probing, stability. (10) <b>Clinical try-in</b> (no anesthesia; floss contact check; pressure-indicating paste) then (11) <b>cementation</b> with the appropriate luting agent. Marginal integrity is the single most critical checkpoint throughout — most failures start at the margin.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br>يغطّي اليوم التاسع النصف الثاني من رحلة التاج. بعد تحضير السن، التسلسل: (١) <b>إزاحة اللثة</b> حين تكون الحافة تحت لثوية — التحقّق: انكشاف خطّ الإنهاء وضبط سائل الأخدود. (٢) <b>الطبعة النهائية</b> (خلط مفرد/مزدوج أو putty-wash؛ مدعّمة للتاج الوتدي) — التحقّق: خطّ إنهاء متّصل، بلا فقاعات، المادة ملتصقة بالحامل؛ ثم التطهير. (٣) <b>الترميم المؤقّت</b> — التحقّق: يسدّ/يعزل السن، حواف/تماسات جيّدة، يُسمنت بـZOE. (٤) <b>النموذج العملي والقالب</b> (die stone، dowel pins/Pindex) — التحقّق: إعادة دقيقة، قالب قابل للإزالة/الإعادة. (٥) <b>التشميع والـsprue</b> — التحقّق: كنتور/حواف صحيحة، الـsprue على أضخم منطقة غير مركزية ~6مم من الحلقة. (٦) <b>التغليف</b> (حلقة + بطانة + مشكّل بوتقة) — التحقّق: تمدّد تعويضي للانكماش. (٧) <b>الحرق</b> (200°م/30د ثم 480–650°م/45د) — التحقّق: تبخّر الشمع كلياً، بلا إفراط حراري. (٨) <b>الصبّ</b> (لهب الاختزال، flux، طرد مركزي) — التحقّق: ملء كامل، بلا أكسدة. (٩) <b>التنظيف/الإنهاء/التلميع</b> (quench، سفع، pickle؛ توقّف 1مم من الحواف) — التحقّق: سلامة الحافة بالمسبار ثنائي الاتّجاه، والثبات. (١٠) <b>التجربة السريرية</b> (بلا تخدير؛ فحص التماس بالخيط؛ معجون كشف الضغط) ثم (١١) <b>التثبيت</b> بالعامل المناسب. وسلامة الحافة أهمّ نقطة تحقّق طوال الرحلة — فمعظم الإخفاقات تبدأ من الحافة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Compensation expansion vs solidification shrinkage — the core balance</div>
+  <div class="prompt">Why must the mold cavity end up slightly LARGER than the wax pattern, and what happens if it does not?</div>
+  <div class="answer">
+    Cast dental alloys <b>contract as they solidify and cool</b> from casting temperature to room temperature — this <b>solidification (and thermal) shrinkage</b> would make the finished restoration <b>smaller than the wax pattern</b>, producing an ill-fitting crown with open or short margins. To counter this, the investment is engineered to <b>expand</b> during setting and heating (setting expansion, hygroscopic expansion, and thermal expansion during burnout) so the <b>mold cavity becomes slightly larger than the pattern</b> by an amount that <b>equals the alloy’s shrinkage</b>. The <b>ring liner</b> is essential here: it gives the investment room to expand outward; a rigid ring with no liner restricts expansion, so the casting comes out undersized. If compensation is <b>insufficient</b>, the casting is too small (won’t seat / open margins); if <b>excessive</b>, it is too large (loose, poor marginal fit). Getting this balance right — shrinkage matched by compensation expansion — is what makes an accurately fitting cast restoration possible.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br>السبائك السنية المصبوبة <b>تنكمش عند التصلّب والتبريد</b> من حرارة الصبّ لحرارة الغرفة — وهذا <b>انكماش التصلّب (والحراري)</b> يجعل الترميم النهائي <b>أصغر من النموذج الشمعي</b>، منتجاً تاجاً سيّئ الملاءمة بحواف مفتوحة أو قصيرة. ولمواجهة ذلك يُصمّم التغليف لي<b>تمدّد</b> أثناء التصلّب والتسخين (تمدّد التصلّب والرطبي والحراري أثناء الحرق) ليصير <b>تجويف القالب أكبر قليلاً من النموذج</b> بمقدار <b>يساوي انكماش السبيكة</b>. و<b>بطانة الحلقة</b> جوهرية: تعطي التغليف مجالاً للتمدّد للخارج؛ والحلقة الصلبة بلا بطانة تقيّد التمدّد فتخرج الصبّة أصغر. فإن كان التعويض <b>ناقصاً</b> خرجت الصبّة صغيرة (لا تجلس/حواف مفتوحة)؛ وإن كان <b>زائداً</b> خرجت كبيرة (رخوة، ملاءمة حافّية رديئة). وضبط هذا التوازن — انكماش يقابله تمدّد تعويضي — هو ما يتيح ترميماً مصبوباً دقيق الملاءمة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="mcq-wrap">
+  <h2 class="mcq-title">📝 اختبار MCQ · اختبر نفسك (20 سؤالاً)</h2>
+  <div class="mcq-note">اختر إجابةً لكل سؤال. سيظهر الصحيح باللون الأخضر والخطأ بالأحمر مع شرح موجز. النتيجة تُحسب تلقائياً في الأعلى.</div>
+  <div class="mcq-scorebar">النتيجة · Score: <b id="mcqScore">0 / 20</b> &nbsp;·&nbsp; <button class="mcq-reset" onclick="mcqReset()">🔄 إعادة الاختبار</button></div>
+  
+<div class="mcq-q" id="mcq0">
+  <div class="mcq-stem"><span class="mcq-num">1</span> Gingival retraction is needed when the finishing line is:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="0" data-o="0" onclick="pick(0,0)"><b>A.</b> Only supragingival</button>
+<button class="mcq-opt" data-q="0" data-o="1" onclick="pick(0,1)"><b>B.</b> Subgingival or equigingival</button>
+<button class="mcq-opt" data-q="0" data-o="2" onclick="pick(0,2)"><b>C.</b> On the incisal edge</button>
+<button class="mcq-opt" data-q="0" data-o="3" onclick="pick(0,3)"><b>D.</b> Always, for every crown</button></div>
+  <div class="mcq-exp" id="exp0"></div>
+</div>
+
+<div class="mcq-q" id="mcq1">
+  <div class="mcq-stem"><span class="mcq-num">2</span> In the chemo-mechanical retraction technique, the medicament-impregnated cord is left in the sulcus for about:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="1" data-o="0" onclick="pick(1,0)"><b>A.</b> 1 minute</button>
+<button class="mcq-opt" data-q="1" data-o="1" onclick="pick(1,1)"><b>B.</b> 10 minutes</button>
+<button class="mcq-opt" data-q="1" data-o="2" onclick="pick(1,2)"><b>C.</b> 30 minutes</button>
+<button class="mcq-opt" data-q="1" data-o="3" onclick="pick(1,3)"><b>D.</b> 60 minutes</button></div>
+  <div class="mcq-exp" id="exp1"></div>
+</div>
+
+<div class="mcq-q" id="mcq2">
+  <div class="mcq-stem"><span class="mcq-num">3</span> A common vasoconstrictor used to impregnate retraction cords is:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="2" data-o="0" onclick="pick(2,0)"><b>A.</b> Sodium hypochlorite</button>
+<button class="mcq-opt" data-q="2" data-o="1" onclick="pick(2,1)"><b>B.</b> Aluminum chloride</button>
+<button class="mcq-opt" data-q="2" data-o="2" onclick="pick(2,2)"><b>C.</b> Calcium hydroxide</button>
+<button class="mcq-opt" data-q="2" data-o="3" onclick="pick(2,3)"><b>D.</b> Eugenol</button></div>
+  <div class="mcq-exp" id="exp2"></div>
+</div>
+
+<div class="mcq-q" id="mcq3">
+  <div class="mcq-stem"><span class="mcq-num">4</span> Which laser is used for gingival retraction?</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="3" data-o="0" onclick="pick(3,0)"><b>A.</b> CO₂ laser</button>
+<button class="mcq-opt" data-q="3" data-o="1" onclick="pick(3,1)"><b>B.</b> Argon laser</button>
+<button class="mcq-opt" data-q="3" data-o="2" onclick="pick(3,2)"><b>C.</b> Nd:YAG laser</button>
+<button class="mcq-opt" data-q="3" data-o="3" onclick="pick(3,3)"><b>D.</b> Er:YAG laser</button></div>
+  <div class="mcq-exp" id="exp3"></div>
+</div>
+
+<div class="mcq-q" id="mcq4">
+  <div class="mcq-stem"><span class="mcq-num">5</span> Impression materials being pseudoplastic means they:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="4" data-o="0" onclick="pick(4,0)"><b>A.</b> Increase viscosity under shear</button>
+<button class="mcq-opt" data-q="4" data-o="1" onclick="pick(4,1)"><b>B.</b> Show shear thinning (viscosity decreases under high shear)</button>
+<button class="mcq-opt" data-q="4" data-o="2" onclick="pick(4,2)"><b>C.</b> Never set</button>
+<button class="mcq-opt" data-q="4" data-o="3" onclick="pick(4,3)"><b>D.</b> Are hydrophilic</button></div>
+  <div class="mcq-exp" id="exp4"></div>
+</div>
+
+<div class="mcq-q" id="mcq5">
+  <div class="mcq-stem"><span class="mcq-num">6</span> In the double mix impression technique, the light body is loaded in the:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="5" data-o="0" onclick="pick(5,0)"><b>A.</b> Tray</button>
+<button class="mcq-opt" data-q="5" data-o="1" onclick="pick(5,1)"><b>B.</b> Syringe</button>
+<button class="mcq-opt" data-q="5" data-o="2" onclick="pick(5,2)"><b>C.</b> Crucible</button>
+<button class="mcq-opt" data-q="5" data-o="3" onclick="pick(5,3)"><b>D.</b> Casting ring</button></div>
+  <div class="mcq-exp" id="exp5"></div>
+</div>
+
+<div class="mcq-q" id="mcq6">
+  <div class="mcq-stem"><span class="mcq-num">7</span> For a post crown impression, the light body inside the canal is reinforced with:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="6" data-o="0" onclick="pick(6,0)"><b>A.</b> A cotton pellet</button>
+<button class="mcq-opt" data-q="6" data-o="1" onclick="pick(6,1)"><b>B.</b> A plastic impression post or stainless steel wire</button>
+<button class="mcq-opt" data-q="6" data-o="2" onclick="pick(6,2)"><b>C.</b> Gutta-percha</button>
+<button class="mcq-opt" data-q="6" data-o="3" onclick="pick(6,3)"><b>D.</b> A paper point</button></div>
+  <div class="mcq-exp" id="exp6"></div>
+</div>
+
+<div class="mcq-q" id="mcq7">
+  <div class="mcq-stem"><span class="mcq-num">8</span> The most commonly used cement for temporary crowns and bridges is:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="7" data-o="0" onclick="pick(7,0)"><b>A.</b> Zinc phosphate</button>
+<button class="mcq-opt" data-q="7" data-o="1" onclick="pick(7,1)"><b>B.</b> Glass ionomer</button>
+<button class="mcq-opt" data-q="7" data-o="2" onclick="pick(7,2)"><b>C.</b> Zinc oxide-eugenol</button>
+<button class="mcq-opt" data-q="7" data-o="3" onclick="pick(7,3)"><b>D.</b> Resin cement</button></div>
+  <div class="mcq-exp" id="exp7"></div>
+</div>
+
+<div class="mcq-q" id="mcq8">
+  <div class="mcq-stem"><span class="mcq-num">9</span> An advantage of the INDIRECT method for customized temporaries over the direct method is:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="8" data-o="0" onclick="pick(8,0)"><b>A.</b> It is faster in the mouth</button>
+<button class="mcq-opt" data-q="8" data-o="1" onclick="pick(8,1)"><b>B.</b> It avoids exothermic polymerization heat on the tooth</button>
+<button class="mcq-opt" data-q="8" data-o="2" onclick="pick(8,2)"><b>C.</b> It needs no impression</button>
+<button class="mcq-opt" data-q="8" data-o="3" onclick="pick(8,3)"><b>D.</b> It uses metal crowns</button></div>
+  <div class="mcq-exp" id="exp8"></div>
+</div>
+
+<div class="mcq-q" id="mcq9">
+  <div class="mcq-stem"><span class="mcq-num">10</span> Which ADA gypsum type is high-strength die stone?</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="9" data-o="0" onclick="pick(9,0)"><b>A.</b> Type I</button>
+<button class="mcq-opt" data-q="9" data-o="1" onclick="pick(9,1)"><b>B.</b> Type II</button>
+<button class="mcq-opt" data-q="9" data-o="2" onclick="pick(9,2)"><b>C.</b> Type III</button>
+<button class="mcq-opt" data-q="9" data-o="3" onclick="pick(9,3)"><b>D.</b> Type IV</button></div>
+  <div class="mcq-exp" id="exp9"></div>
+</div>
+
+<div class="mcq-q" id="mcq10">
+  <div class="mcq-stem"><span class="mcq-num">11</span> The two critical properties of a die material are dimensional stability and:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="10" data-o="0" onclick="pick(10,0)"><b>A.</b> Color</button>
+<button class="mcq-opt" data-q="10" data-o="1" onclick="pick(10,1)"><b>B.</b> Abrasion resistance</button>
+<button class="mcq-opt" data-q="10" data-o="2" onclick="pick(10,2)"><b>C.</b> Fluoride release</button>
+<button class="mcq-opt" data-q="10" data-o="3" onclick="pick(10,3)"><b>D.</b> Translucency</button></div>
+  <div class="mcq-exp" id="exp10"></div>
+</div>
+
+<div class="mcq-q" id="mcq11">
+  <div class="mcq-stem"><span class="mcq-num">12</span> In the lost-wax technique, the sprue&#x27;s main purpose is to:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="11" data-o="0" onclick="pick(11,0)"><b>A.</b> Hold the die in place</button>
+<button class="mcq-opt" data-q="11" data-o="1" onclick="pick(11,1)"><b>B.</b> Provide a channel for molten metal into the mold cavity</button>
+<button class="mcq-opt" data-q="11" data-o="2" onclick="pick(11,2)"><b>C.</b> Retract the gingiva</button>
+<button class="mcq-opt" data-q="11" data-o="3" onclick="pick(11,3)"><b>D.</b> Polish the casting</button></div>
+  <div class="mcq-exp" id="exp11"></div>
+</div>
+
+<div class="mcq-q" id="mcq12">
+  <div class="mcq-stem"><span class="mcq-num">13</span> The hottest zone of the flame, and the only one that should contact the metal during melting, is the:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="12" data-o="0" onclick="pick(12,0)"><b>A.</b> Mixing zone</button>
+<button class="mcq-opt" data-q="12" data-o="1" onclick="pick(12,1)"><b>B.</b> Combustion zone</button>
+<button class="mcq-opt" data-q="12" data-o="2" onclick="pick(12,2)"><b>C.</b> Reducing zone</button>
+<button class="mcq-opt" data-q="12" data-o="3" onclick="pick(12,3)"><b>D.</b> Oxidizing zone</button></div>
+  <div class="mcq-exp" id="exp12"></div>
+</div>
+
+<div class="mcq-q" id="mcq13">
+  <div class="mcq-stem"><span class="mcq-num">14</span> Phosphate-bonded investment is preferred over gypsum-bonded because it:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="13" data-o="0" onclick="pick(13,0)"><b>A.</b> Is cheaper</button>
+<button class="mcq-opt" data-q="13" data-o="1" onclick="pick(13,1)"><b>B.</b> Withstands high casting temperatures</button>
+<button class="mcq-opt" data-q="13" data-o="2" onclick="pick(13,2)"><b>C.</b> Sets faster</button>
+<button class="mcq-opt" data-q="13" data-o="3" onclick="pick(13,3)"><b>D.</b> Releases fluoride</button></div>
+  <div class="mcq-exp" id="exp13"></div>
+</div>
+
+<div class="mcq-q" id="mcq14">
+  <div class="mcq-stem"><span class="mcq-num">15</span> During burnout, the ring should never be placed in an overheated oven because:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="14" data-o="0" onclick="pick(14,0)"><b>A.</b> The metal will melt too early</button>
+<button class="mcq-opt" data-q="14" data-o="1" onclick="pick(14,1)"><b>B.</b> A too-rapid temperature rise cracks the investment and distorts the mold</button>
+<button class="mcq-opt" data-q="14" data-o="2" onclick="pick(14,2)"><b>C.</b> The wax will not melt</button>
+<button class="mcq-opt" data-q="14" data-o="3" onclick="pick(14,3)"><b>D.</b> The sprue will detach</button></div>
+  <div class="mcq-exp" id="exp14"></div>
+</div>
+
+<div class="mcq-q" id="mcq15">
+  <div class="mcq-stem"><span class="mcq-num">16</span> Quenching the casting immediately after casting serves to:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="15" data-o="0" onclick="pick(15,0)"><b>A.</b> Add oxide to the metal</button>
+<button class="mcq-opt" data-q="15" data-o="1" onclick="pick(15,1)"><b>B.</b> Anneal the alloy and disintegrate the hot investment</button>
+<button class="mcq-opt" data-q="15" data-o="2" onclick="pick(15,2)"><b>C.</b> Increase the melting point</button>
+<button class="mcq-opt" data-q="15" data-o="3" onclick="pick(15,3)"><b>D.</b> Polish the surface</button></div>
+  <div class="mcq-exp" id="exp15"></div>
+</div>
+
+<div class="mcq-q" id="mcq16">
+  <div class="mcq-stem"><span class="mcq-num">17</span> Pickling of a cast restoration is done to:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="16" data-o="0" onclick="pick(16,0)"><b>A.</b> Add fluoride</button>
+<button class="mcq-opt" data-q="16" data-o="1" onclick="pick(16,1)"><b>B.</b> Remove oxide and remaining investment from the metal</button>
+<button class="mcq-opt" data-q="16" data-o="2" onclick="pick(16,2)"><b>C.</b> Increase film thickness</button>
+<button class="mcq-opt" data-q="16" data-o="3" onclick="pick(16,3)"><b>D.</b> Sterilize the die</button></div>
+  <div class="mcq-exp" id="exp16"></div>
+</div>
+
+<div class="mcq-q" id="mcq17">
+  <div class="mcq-stem"><span class="mcq-num">18</span> When checking marginal integrity, a probe that catches moving from restoration TOWARD tooth indicates a:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="17" data-o="0" onclick="pick(17,0)"><b>A.</b> Correct margin</button>
+<button class="mcq-opt" data-q="17" data-o="1" onclick="pick(17,1)"><b>B.</b> Short (underextended) margin</button>
+<button class="mcq-opt" data-q="17" data-o="2" onclick="pick(17,2)"><b>C.</b> Long (overextended) margin</button>
+<button class="mcq-opt" data-q="17" data-o="3" onclick="pick(17,3)"><b>D.</b> Overcontoured margin</button></div>
+  <div class="mcq-exp" id="exp17"></div>
+</div>
+
+<div class="mcq-q" id="mcq18">
+  <div class="mcq-stem"><span class="mcq-num">19</span> Which luting cement releases fluoride and bonds to enamel and dentine?</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="18" data-o="0" onclick="pick(18,0)"><b>A.</b> Zinc phosphate</button>
+<button class="mcq-opt" data-q="18" data-o="1" onclick="pick(18,1)"><b>B.</b> Glass ionomer</button>
+<button class="mcq-opt" data-q="18" data-o="2" onclick="pick(18,2)"><b>C.</b> Zinc silicophosphate</button>
+<button class="mcq-opt" data-q="18" data-o="3" onclick="pick(18,3)"><b>D.</b> Polysulfide</button></div>
+  <div class="mcq-exp" id="exp18"></div>
+</div>
+
+<div class="mcq-q" id="mcq19">
+  <div class="mcq-stem"><span class="mcq-num">20</span> Zinc phosphate cement&#x27;s low pH (~3.5) at the time of cementation may cause:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="19" data-o="0" onclick="pick(19,0)"><b>A.</b> Fluoride release</button>
+<button class="mcq-opt" data-q="19" data-o="1" onclick="pick(19,1)"><b>B.</b> Pulp irritation</button>
+<button class="mcq-opt" data-q="19" data-o="2" onclick="pick(19,2)"><b>C.</b> Chemical bonding to gold</button>
+<button class="mcq-opt" data-q="19" data-o="3" onclick="pick(19,3)"><b>D.</b> Increased translucency</button></div>
+  <div class="mcq-exp" id="exp19"></div>
+</div>
+  <div class="mcq-final" id="mcqFinal"></div>
+</div>
+
+<div class="foot">
+✅ غطّى هذا الملف مادة اليوم التاسع — التيجان والجسور (Crowns & Bridges) ص 70–138: إزاحة اللثة (الميكانيكية، الكيميائية-الميكانيكية، بلا خيط Expasyl/Magic Foam، الكهربائية، الليزر Nd:YAG)؛ تقنيات الطبعة (الخلط المفرد/المزدوج، putty-wash، طبعة التاج الوتدي، التطهير، الطبعة الرقمية CAD/CAM)؛ الترميم المؤقت (أهدافه ومتطلباته وأنواعه: الجاهزة، المخصّصة المباشرة/غير المباشرة، VLA)؛ النموذج العملي والقالب (أنواع الجبس ADA، dowel pins، Pindex)؛ التشميع والـsprue؛ التغليف (الحلقة والبطانة ومشكّل البوتقة، الجبسي مقابل الفوسفاتي)؛ الحرق والصبّ (السبائك، مناطق اللهب، الطرد المركزي، الـflux)؛ التنظيف والإنهاء والتلميع وسلامة الحافة وأنواع عيوبها؛ والتثبيت (وظائف السمنت، الطريّ مقابل الصلب، الزنك فوسفات والبولي كربوكسيلات والأيونومر الزجاجي). 🦷 هذا اليوم الثاني من مادة التيجان والجسور. وفي نهاية الملف اختبار MCQ لتقييم نفسك.<br><br>
+عدد الكلمات (إنجليزي + عربي): <b>10136</b> كلمة.
+</div>
+
+<script>
+const total=49;
+function upd(){
+  let done=document.querySelectorAll('.card[data-done="1"]').length;
+  document.getElementById('score').textContent=done+' / '+total;
+  document.getElementById('fill').style.width=(done/total*100)+'%';
+}
+function revealCard(b){
+  const card=b.closest('.card');
+  card.querySelector('.answer').classList.add('show');
+  b.style.display='none';
+  card.querySelector('.got').style.display='inline-block';
+  card.querySelector('.rev').style.display='inline-block';
+}
+function rate(b,good){
+  const card=b.closest('.card');
+  card.setAttribute('data-done',good?'1':'2');
+  upd();
+}
+function revealAll(){
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelector('.answer').classList.add('show');
+    c.querySelector('.reveal').style.display='none';
+    c.querySelector('.got').style.display='inline-block';
+    c.querySelector('.rev').style.display='inline-block';
+  });
+}
+function hideAll(){
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelector('.answer').classList.remove('show');
+    c.querySelector('.reveal').style.display='inline-block';
+    c.querySelector('.got').style.display='none';
+    c.querySelector('.rev').style.display='none';
+  });
+}
+function resetAll(){
+  document.querySelectorAll('.card').forEach(c=>c.setAttribute('data-done','0'));
+  hideAll();upd();
+}
+upd();
+
+// ---- MCQ logic ----
+const MCQ=[{"q": "Gingival retraction is needed when the finishing line is:", "opts": ["Only supragingival", "Subgingival or equigingival", "On the incisal edge", "Always, for every crown"], "correct": 1, "exp": "Retraction exposes a subgingival/equigingival finishing line for the impression. الإزاحة تكشف الحافة تحت اللثوية/بمستواها للطبعة."}, {"q": "In the chemo-mechanical retraction technique, the medicament-impregnated cord is left in the sulcus for about:", "opts": ["1 minute", "10 minutes", "30 minutes", "60 minutes"], "correct": 1, "exp": "The cord is left ~10 minutes (keeping the field dry). يُترك الخيط ~10 دقائق مع إبقاء المجال جافّاً."}, {"q": "A common vasoconstrictor used to impregnate retraction cords is:", "opts": ["Sodium hypochlorite", "Aluminum chloride", "Calcium hydroxide", "Eugenol"], "correct": 1, "exp": "Adrenaline, aluminum chloride, or ferric sulfate are used. تُستخدم الأدرينالين أو كلوريد الألمنيوم أو كبريتات الحديد."}, {"q": "Which laser is used for gingival retraction?", "opts": ["CO₂ laser", "Argon laser", "Nd:YAG laser", "Er:YAG laser"], "correct": 2, "exp": "Nd:YAG is used for gingival retraction. يُستخدم Nd:YAG للإزاحة اللثوية."}, {"q": "Impression materials being pseudoplastic means they:", "opts": ["Increase viscosity under shear", "Show shear thinning (viscosity decreases under high shear)", "Never set", "Are hydrophilic"], "correct": 1, "exp": "Pseudoplastic = shear thinning; viscosity drops during syringing/mixing. Pseudoplastic = ترقّق بالقصّ؛ تقلّ اللزوجة أثناء الحقن/الخلط."}, {"q": "In the double mix impression technique, the light body is loaded in the:", "opts": ["Tray", "Syringe", "Crucible", "Casting ring"], "correct": 1, "exp": "Light body → syringe; heavy body → tray. الخفيف في المحقنة؛ الثقيل في الحامل."}, {"q": "For a post crown impression, the light body inside the canal is reinforced with:", "opts": ["A cotton pellet", "A plastic impression post or stainless steel wire", "Gutta-percha", "A paper point"], "correct": 1, "exp": "An impression post/SS wire supports the material to prevent tearing. وتد الطبعة/سلك الستانلس يدعم المادة لمنع التمزّق."}, {"q": "The most commonly used cement for temporary crowns and bridges is:", "opts": ["Zinc phosphate", "Glass ionomer", "Zinc oxide-eugenol", "Resin cement"], "correct": 2, "exp": "ZOE is used — promotes healing and allows easy removal. ZOE يعزّز الشفاء ويتيح إزالةً سهلة."}, {"q": "An advantage of the INDIRECT method for customized temporaries over the direct method is:", "opts": ["It is faster in the mouth", "It avoids exothermic polymerization heat on the tooth", "It needs no impression", "It uses metal crowns"], "correct": 1, "exp": "Indirect avoids free monomer contact and exothermic heat on the prepared tooth. غير المباشرة تتجنّب المونومر الحرّ وحرارة البلمرة على السن."}, {"q": "Which ADA gypsum type is high-strength die stone?", "opts": ["Type I", "Type II", "Type III", "Type IV"], "correct": 3, "exp": "Type IV = high-strength dental stone (die stone). النوع IV = حجر عالي القوّة (die stone)."}, {"q": "The two critical properties of a die material are dimensional stability and:", "opts": ["Color", "Abrasion resistance", "Fluoride release", "Translucency"], "correct": 1, "exp": "Die material needs dimensional stability + abrasion resistance. القالب يحتاج ثبات أبعاد + مقاومة سحل."}, {"q": "In the lost-wax technique, the sprue's main purpose is to:", "opts": ["Hold the die in place", "Provide a channel for molten metal into the mold cavity", "Retract the gingiva", "Polish the casting"], "correct": 1, "exp": "The sprue is the channel for molten metal after burnout. الـsprue قناة المعدن المنصهر بعد الحرق."}, {"q": "The hottest zone of the flame, and the only one that should contact the metal during melting, is the:", "opts": ["Mixing zone", "Combustion zone", "Reducing zone", "Oxidizing zone"], "correct": 2, "exp": "The reducing (bluish) zone is hottest and non-contaminating. منطقة الاختزال (الزرقاء) الأسخن وغير ملوّثة."}, {"q": "Phosphate-bonded investment is preferred over gypsum-bonded because it:", "opts": ["Is cheaper", "Withstands high casting temperatures", "Sets faster", "Releases fluoride"], "correct": 1, "exp": "Phosphate-bonded withstands high-melting alloys; gypsum decomposes >650°C. الفوسفاتي يتحمّل السبائك عالية الانصهار؛ الجبسي يتحلّل >650°م."}, {"q": "During burnout, the ring should never be placed in an overheated oven because:", "opts": ["The metal will melt too early", "A too-rapid temperature rise cracks the investment and distorts the mold", "The wax will not melt", "The sprue will detach"], "correct": 1, "exp": "Rapid heating cracks the investment/distorts the cavity. التسخين السريع يشقّ التغليف/يشوّه التجويف."}, {"q": "Quenching the casting immediately after casting serves to:", "opts": ["Add oxide to the metal", "Anneal the alloy and disintegrate the hot investment", "Increase the melting point", "Polish the surface"], "correct": 1, "exp": "Quenching anneals the alloy and breaks up the hot investment. Quenching يُلدّن السبيكة ويفكّك التغليف الساخن."}, {"q": "Pickling of a cast restoration is done to:", "opts": ["Add fluoride", "Remove oxide and remaining investment from the metal", "Increase film thickness", "Sterilize the die"], "correct": 1, "exp": "Pickling (≈50% HCl) removes surface oxide and investment. التخليل (~50% HCl) يزيل الأكسيد وبقايا التغليف."}, {"q": "When checking marginal integrity, a probe that catches moving from restoration TOWARD tooth indicates a:", "opts": ["Correct margin", "Short (underextended) margin", "Long (overextended) margin", "Overcontoured margin"], "correct": 1, "exp": "A catch restoration→tooth = underextended (short) margin. التعلّق ترميم→سن = حافة قصيرة (ناقصة)."}, {"q": "Which luting cement releases fluoride and bonds to enamel and dentine?", "opts": ["Zinc phosphate", "Glass ionomer", "Zinc silicophosphate", "Polysulfide"], "correct": 1, "exp": "Glass ionomer bonds to tooth and releases fluoride (inhibits secondary caries). الأيونومر يرتبط بالسن ويطلق فلورايد."}, {"q": "Zinc phosphate cement's low pH (~3.5) at the time of cementation may cause:", "opts": ["Fluoride release", "Pulp irritation", "Chemical bonding to gold", "Increased translucency"], "correct": 1, "exp": "Its initial acidity (~3.5) may irritate the pulp. حمضيّته الأولية (~3.5) قد تهيّج اللب."}];
+const mcqTotal=20;
+let mcqAnswered={};
+function pick(qi,oi){
+  if(mcqAnswered[qi]!==undefined) return;
+  mcqAnswered[qi]=oi;
+  const correct=MCQ[qi].correct;
+  const opts=document.querySelectorAll('#mcq'+qi+' .mcq-opt');
+  opts.forEach(b=>{
+    b.classList.add('locked');
+    const o=parseInt(b.getAttribute('data-o'));
+    if(o===correct) b.classList.add('correct');
+    if(o===oi && oi!==correct) b.classList.add('wrong');
+  });
+  const exp=document.getElementById('exp'+qi);
+  const ok=(oi===correct);
+  exp.innerHTML=(ok?'✅ <b>إجابة صحيحة</b> — ':'❌ <b>إجابة خاطئة</b> — الصحيح: <b>'+String.fromCharCode(65+correct)+'</b> — ')+MCQ[qi].exp;
+  exp.classList.add('show');
+  mcqScore();
+}
+function mcqScore(){
+  let s=0;
+  for(const k in mcqAnswered){ if(mcqAnswered[k]===MCQ[k].correct) s++; }
+  document.getElementById('mcqScore').textContent=s+' / '+mcqTotal;
+  if(Object.keys(mcqAnswered).length===mcqTotal){
+    const f=document.getElementById('mcqFinal');
+    const pct=Math.round(s/mcqTotal*100);
+    let msg,bg;
+    if(pct>=80){msg='🎉 ممتاز! '+s+'/'+mcqTotal+' ('+pct+'%) — إتقان قوي.';bg='#c9f2cd';}
+    else if(pct>=60){msg='👍 جيّد: '+s+'/'+mcqTotal+' ('+pct+'%) — راجع البطاقات المعلّمة بـ⭐.';bg='#fff3c4';}
+    else{msg='📚 '+s+'/'+mcqTotal+' ('+pct+'%) — أعد قراءة الملف ثم أعد الاختبار.';bg='#f8cfcf';}
+    f.textContent=msg;f.style.background=bg;f.classList.add('show');
+  }
+}
+function mcqReset(){
+  mcqAnswered={};
+  document.querySelectorAll('.mcq-opt').forEach(b=>b.classList.remove('correct','wrong','locked'));
+  document.querySelectorAll('.mcq-exp').forEach(e=>{e.classList.remove('show');e.innerHTML='';});
+  document.getElementById('mcqScore').textContent='0 / '+mcqTotal;
+  document.getElementById('mcqFinal').classList.remove('show');
+  document.getElementById('mcq0').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>

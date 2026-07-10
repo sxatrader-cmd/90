@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Crowns & Bridges — Day 10 — Complete</title>
+<style>
+:root{color-scheme:light only;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{background:#ffffff !important;color:#000000 !important;}
+@media (prefers-color-scheme:dark){
+  html,body{background:#ffffff !important;color:#000000 !important;}
+  .card,.hint,.topbar,.toc{background:#ffffff !important;color:#000000 !important;}
+}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;padding:0 14px 120px;line-height:1.65;font-size:17px;}
+h1{font-size:22px;margin:18px 0 4px;}
+.subtitle{color:#444;font-size:14px;margin:0 0 14px;}
+.topbar{position:sticky;top:0;background:#fff !important;border-bottom:2px solid #000;padding:10px 0;z-index:50;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.score{font-weight:700;font-size:15px;}
+.bar{flex:1;min-width:120px;height:12px;background:#eee;border:1px solid #000;border-radius:6px;overflow:hidden;}
+.bar>i{display:block;height:100%;width:0;background:#000;transition:width .3s;}
+.controls button{font-size:13px;padding:6px 10px;border:1px solid #000;background:#fff;border-radius:8px;cursor:pointer;}
+.toc{background:#fff;border:2px solid #000;border-radius:12px;padding:12px 14px;margin:14px 0;}
+.toc b{display:block;margin-bottom:6px;}
+.toc a{display:block;color:#000;text-decoration:none;padding:5px 0;border-bottom:1px dashed #ccc;font-size:15px;}
+.toc a:last-child{border-bottom:0;}
+h2.sec{font-size:18px;border-left:6px solid #000;padding:8px 12px;margin:30px 0 14px;background:#f3f3f3;border-radius:0 8px 8px 0;}
+.card{border:2px solid #000;border-radius:14px;padding:14px 16px;margin:14px 0;background:#fff !important;}
+.card[data-done="1"]{border-color:#157f3b;background:#f3fbf5 !important;}
+.card[data-done="2"]{border-color:#b00;background:#fff7f7 !important;}
+.topic{font-weight:700;font-size:15px;color:#000;margin-bottom:6px;letter-spacing:.2px;text-transform:uppercase;}
+.prompt{font-size:17px;font-weight:600;margin-bottom:10px;}
+.answer{display:none;border-top:1px dashed #999;padding-top:10px;margin-top:4px;}
+.answer.show{display:block;animation:fade .25s;}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.answer ol,.answer ul{margin:6px 0;padding-inline-start:22px;}
+.answer li{margin:4px 0;}
+.answer table{border-collapse:collapse;width:100%;margin:8px 0;font-size:15px;}
+.answer th,.answer td{border:1px solid #000;padding:6px 8px;text-align:left;}
+.answer th{background:#eee;}
+.k{background:#ffd400;color:#b00000 !important;font-weight:700;padding:0 4px;border-radius:3px;}
+.hint{direction:rtl;text-align:right;background:#fff;border:1px solid #000;border-radius:10px;padding:10px 12px;margin-top:12px;font-size:16px;line-height:1.8;}
+.hint .hl{background:#ffd400;color:#b00;font-weight:700;padding:0 5px;border-radius:3px;}
+.hint b{color:#b00000;}
+.btns{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;}
+.btns button{font-size:15px;padding:9px 14px;border-radius:10px;border:2px solid #000;background:#fff;cursor:pointer;font-weight:600;}
+.btns .got{border-color:#157f3b;color:#157f3b;}
+.btns .rev{border-color:#b00;color:#b00;}
+.btns .reveal{background:#000;color:#fff;}
+.foot{margin-top:30px;border-top:2px solid #000;padding-top:14px;font-size:14px;color:#333;}
+.note{background:#ffd400;color:#000;border:1px solid #000;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:15px;}
+.mcq-wrap{margin-top:40px;border-top:3px double #000;padding-top:20px;}
+.mcq-title{background:#000;color:#fff;padding:10px 14px;border-radius:8px;font-size:19px;}
+.mcq-note{font-size:13px;color:#444;margin:10px 0 6px;}
+.mcq-scorebar{position:sticky;top:56px;z-index:40;background:#fff8d6;border:2px solid #000;border-radius:8px;padding:8px 12px;font-size:15px;margin:10px 0 18px;}
+.mcq-reset{background:#000;color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:13px;cursor:pointer;}
+.mcq-q{border:1.5px solid #999;border-radius:10px;padding:14px 16px;margin:14px 0;background:#fff;}
+.mcq-stem{font-weight:600;font-size:15.5px;margin-bottom:10px;line-height:1.55;}
+.mcq-num{display:inline-block;min-width:26px;height:26px;line-height:26px;text-align:center;background:#000;color:#fff;border-radius:50%;font-size:13px;margin-inline-end:6px;}
+.mcq-opts{display:flex;flex-direction:column;gap:7px;}
+.mcq-opt{text-align:start;background:#f4f4f4;border:1.5px solid #ccc;border-radius:7px;padding:9px 12px;font-size:14.5px;cursor:pointer;transition:.12s;color:#000;font-family:inherit;}
+.mcq-opt:hover{background:#eaeaea;}
+.mcq-opt.correct{background:#c9f2cd;border-color:#1a8f2a;font-weight:600;}
+.mcq-opt.wrong{background:#f8cfcf;border-color:#c02020;}
+.mcq-opt.locked{cursor:default;opacity:.92;}
+.mcq-exp{display:none;margin-top:10px;padding:10px 12px;background:#fff8d6;border-inline-start:4px solid #000;border-radius:6px;font-size:13.5px;line-height:1.6;direction:rtl;text-align:right;}
+.mcq-exp.show{display:block;}
+.mcq-exp b{color:#b00;}
+.mcq-final{margin-top:18px;padding:14px;border-radius:10px;font-size:17px;font-weight:700;text-align:center;display:none;}
+.mcq-final.show{display:block;}
+</style>
+</head>
+<body>
+<h1>Crowns &amp; Bridges — Day 10 — Complete 🦷</h1>
+<p class="subtitle">التيجان والجسور — الجسور (FPD) ص ١٣٩–٢١٠ · تقييم الدعامة (السن/الجذر/حول السني وقانون Ante) → ميكانيكا الجسر (span وقانون العارضة والدعامة المزدوجة وانحناء القوس) → الدعامة الوسطية والرحى المائلة والناب → حاصرات الجسر → البنطية (الأنواع والمتطلبات) → الحرف المتبقّي → الروابط → مواد الطبعة المطّاطية · 42 بطاقة + اختبار MCQ في النهاية · English + شرح عربي وافٍ</p>
+
+<div class="topbar">
+  <span class="score" id="score">0 / 42</span>
+  <span class="bar"><i id="fill"></i></span>
+  <span class="controls">
+    <button onclick="revealAll()">اكشف الكل</button>
+    <button onclick="hideAll()">إخفاء</button>
+    <button onclick="resetAll()">تصفير</button>
+  </span>
+</div>
+
+<div class="note">⭐ = أقسام عالية الأهمية (high-yield). اقرأ السؤال، حاول الإجابة من ذاكرتك، ثم اكشف الجواب وقيّم نفسك.</div>
+
+<div class="toc">
+<b>المحتويات · Contents</b>
+<a href="#sec0">Lec 2 · Abutment Evaluation — Tooth &amp; Root Factors ⭐</a>
+<a href="#sec1">Lec 2 · Periodontal Factors &amp; Ante&#x27;s Law ⭐</a>
+<a href="#sec2">Lec 3 · Bridge Biomechanics — Span &amp; Law of Beam ⭐</a>
+<a href="#sec3">Lec 4 · Pier Abutment &amp; Non-Rigid Connector ⭐</a>
+<a href="#sec4">Lec 4 · Tilted Molar &amp; Canine Replacement ⭐</a>
+<a href="#sec5">Lec 5 · Bridge Retainers — Major/Minor &amp; Types ⭐</a>
+<a href="#sec6">Lec 5 · Special Retainer Types</a>
+<a href="#sec7">Lec 6 · Pontic — Functions &amp; Requirements ⭐</a>
+<a href="#sec8">Lec 6 · Pontic Designs ⭐</a>
+<a href="#sec9">Lec 6 · Residual Ridge Assessment</a>
+<a href="#sec10">Lec 6 · Connectors ⭐</a>
+<a href="#sec11">Lec 7 · Elastomeric Impression Materials ⭐</a>
+<a href="#sec12">Lec 5 · Complete-Coverage Retainers</a>
+<a href="#sec13">Lec 5 · Post Crown &amp; Occlusal Coverage</a>
+<a href="#sec14">Lec 5 · Bridge Types &amp; Retainer Classification ⭐</a>
+<a href="#sec15">Lec 7 · Digital Scanning &amp; Impression Disinfection</a>
+<a href="#sec16">Lec 2–6 · Bridge Design Decision (Integrated) ⭐</a>
+</div>
+
+<h2 class="sec" id="sec0">Lec 2 · Abutment Evaluation — Tooth &amp; Root Factors ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Abutment &amp; tooth-related factors</div>
+  <div class="prompt">What is an abutment, and which tooth-related factors affect its selection?</div>
+  <div class="answer">
+    An <b>abutment</b> is the tooth (or root) that supports and retains a fixed prosthesis. <b>Tooth-related factors:</b>
+  <ul><li><b>Shape:</b> conical/peg/bulbous/tapered crowns interfere with parallelism → often need full coverage (e.g., peg laterals, thin incisors, mandibular premolars with poor lingual cusps).</li>
+  <li><b>Crown length:</b> must be adequate occlusocervically for retention (short crowns → full coverage/crown lengthening).</li>
+  <li><b>Health (caries/pulp):</b> sound teeth allow ideal preparation; carious teeth need caries removal + lining + restoration; <b>vital preferred</b>, pulpless only after RCT, avoid pulp-capped teeth (RCT risk).</li>
+  <li><b>Axial relationship:</b> rotation/tilting/malposition may exclude a tooth (torque damages support / loosens retainer) or dictate a specific retainer.</li></ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الدعامة والعوامل المتعلّقة بالسن:</b> <b>الدعامة (Abutment)</b> هي السن (أو الجذر) الذي يسند ويُرسي التعويض الثابت. <b>العوامل المتعلّقة بالسن:</b> <b>الشكل:</b> التيجان المخروطية/الوتدية/المنتفخة/المدبّبة تعيق التوازي ← غالباً تغطية كاملة (peg laterals، قواطع رقيقة، ضواحك سفلية بحدبات لسانية ضعيفة). <b>طول التاج:</b> يجب أن يكون كافياً إطباقياً-عنقياً للإرساء (التيجان القصيرة ← تغطية كاملة/تطويل تاج). <b>الصحة (تسوّس/لبّ):</b> السليمة تتيح تحضيراً مثالياً؛ المسوّسة تحتاج إزالة التسوّس + بطانة + ترميم؛ و<b>الحيّة مفضّلة</b>، وغير الحيّة فقط بعد معالجة لبية، وتُتجنّب المُغطّاة لبياً (خطر المعالجة اللبية). <b>العلاقة المحورية:</b> الدوران/الميلان/سوء الموضع قد يستبعد السن (العزم يتلف السند/يرخي الحاصرة) أو يفرض حاصرةً محدّدة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Root-related factors</div>
+  <div class="prompt">Which root-related factors determine an abutment's ability to handle occlusal forces?</div>
+  <div class="answer">
+    <ul>
+  <li><b>Root configuration:</b> a root <b>wider labiolingually than mesiodistally (elliptic cross-section)</b> offers better support than a circular one of similar area; <b>parallel-sided roots with developmental depressions</b> resist forces better than smooth conical roots; a single root with <b>irregular shape/apical-third curvature</b> is preferable to a perfect taper; <b>multi-rooted teeth with separated roots</b> give greater stability.</li>
+  <li><b>Root length:</b> longer roots = stronger abutment (length ∝ stability/strength).</li>
+  <li><b>Crown/root ratio:</b> <b>2:3 is optimum</b>; <b>1:1 is the minimum acceptable</b> (adequate only if the opposing occlusion is mobile/periodontally involved or artificial → less force).</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>العوامل المتعلّقة بالجذر:</b> <b>تشكيل الجذر:</b> الجذر <b>الأعرض شفوياً-لسانياً منه إنسياً-وحشياً (مقطع بيضوي)</b> يعطي سنداً أفضل من الدائري بنفس المساحة؛ و<b>الجذور المتوازية ذات الانخفاضات التطوّرية</b> تقاوم القوى أفضل من المخروطية الملساء؛ وجذر مفرد بـ<b>شكل غير منتظم/انحناء بالثلث القمي</b> أفضل من التدبيب المثالي؛ و<b>الأسنان متعدّدة الجذور المنفصلة</b> تعطي ثباتاً أكبر. <b>طول الجذر:</b> الأطول = دعامة أقوى (الطول ∝ الثبات/القوّة). <b>نسبة التاج/الجذر:</b> <b>2:3 المثلى</b>؛ و<b>1:1 الحدّ الأدنى المقبول</b> (كافٍ فقط إن كان الإطباق المقابل متحرّكاً/متأثّراً حول سنياً أو صناعياً ← قوّة أقلّ).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec1">Lec 2 · Periodontal Factors &amp; Ante&#x27;s Law ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Gingivo-periodontal factors</div>
+  <div class="prompt">What gingivo-periodontal conditions must an abutment satisfy?</div>
+  <div class="answer">
+    Abutment teeth must be <b>free from periodontal disease, pockets, osseous defects, and gingival inflammation</b>, with an adequate zone of <b>attached gingiva</b>. The supporting tissue must be <b>healthy and inflammation-free</b>, and the tooth must show <b>no mobility</b> (it will carry an extra load). <b>Intraoral radiographs</b> evaluate bone architecture — the alveolar bone support must be healthy with good <b>trabecular architecture</b> and no bone defect/loss. Bone support is one of the most important abutment-evaluation factors.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>العوامل اللثوية-حول السنية:</b> يجب أن تكون الدعامات <b>خاليةً من المرض حول السني والجيوب والعيوب العظمية والتهاب اللثة</b>، مع منطقة كافية من <b>اللثة الملتصقة</b>. والنسيج الساند يجب أن يكون <b>سليماً خالياً من الالتهاب</b>، والسن <b>بلا حركة</b> (سيحمل حملاً إضافياً). و<b>الأشعّة داخل الفموية</b> تقيّم بنية العظم — والدعم العظمي السنخي يجب أن يكون سليماً بـ<b>بنية تربيقية</b> جيّدة بلا عيب/فقد عظم. والدعم العظمي أحد أهمّ عوامل تقييم الدعامة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Ante&#x27;s Law &amp; root surface area</div>
+  <div class="prompt">State Ante's Law and how it guides the number of abutments.</div>
+  <div class="answer">
+    The <b>periodontal ligament (root surface / pericemental) area</b> measures an abutment's potency. Tylman: "two abutments can support two pontics." Johnston et al. refined this into <span class="k">Ante's Law: the root surface area of the abutment teeth must be equal to or greater than that of the teeth being replaced</span>.<br>
+  <b>Application:</b> one missing tooth → predictably replaceable with healthy abutments (a secondary abutment can be added to boost load capacity); two missing teeth → an FPD can work but the limit is approached; <b>three missing posterior teeth</b> (or when pontics' root area exceeds the abutments') → <b>high risk / unacceptable</b> for an FPD.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>قانون Ante ومساحة سطح الجذر:</b> <b>مساحة الرباط حول السني (سطح الجذر)</b> تقيس قدرة الدعامة. قال Tylman: «دعامتان تسندان بنطيتين». وحسّنه Johnston وزملاؤه لـ<b>قانون Ante: مساحة سطح جذور الدعامات يجب أن تساوي أو تفوق مساحة سطح جذور الأسنان المُستبدَلة</b>. <b>التطبيق:</b> سنّ مفقود واحد ← يُستبدل بموثوقية مع دعامات سليمة (يمكن إضافة دعامة ثانوية لزيادة قدرة التحمّل)؛ سنّان مفقودان ← يمكن جسر لكن يُقترب الحدّ؛ <b>ثلاثة أسنان خلفية مفقودة</b> (أو حين تفوق مساحة جذور البنطيات مساحة الدعامات) ← <b>خطر عالٍ / غير مقبول</b> للجسر.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec2">Lec 3 · Bridge Biomechanics — Span &amp; Law of Beam ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Biomechanical considerations &amp; span length</div>
+  <div class="prompt">What biomechanical factors govern bridge design, and how does span length affect it?</div>
+  <div class="answer">
+    The bridge must handle occlusal and dislodging forces (<b>torque, flexure, tension</b>), and occlusion must distribute forces evenly. Key factors: <b>span dimension, pontic characteristics, connectors, abutment, and masticatory forces</b>.<br>
+  <b>Span length</b> = distance between abutments. One missing tooth is ideal; 2–3 adjacent teeth need careful evaluation. Longer spans place <b>more load on the PDL</b> and are <b>less rigid</b> — all FPDs flex under load, and the longer the span the greater the flexing. <b>Deflection varies directly with the cube of the length and inversely with the cube of the occlusogingival thickness of the pontic.</b>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الاعتبارات الميكانيكية وطول المسافة (span):</b> يجب أن يتحمّل الجسر القوى الإطباقية والخالعة (<b>عزم، انثناء، شدّ</b>)، وأن يوزّع الإطباق القوى بالتساوي. العوامل: <b>بُعد المسافة، خصائص البنطية، الروابط، الدعامة، وقوى المضغ</b>. <b>طول المسافة (span)</b> = المسافة بين الدعامات. سنّ مفقود واحد مثالي؛ و2–3 أسنان تحتاج تقييماً دقيقاً. والمسافات الأطول تضع <b>حملاً أكبر على الرباط</b> وهي <b>أقلّ صلابةً</b> — كل الجسور تنثني تحت الحمل، وكلّما طالت المسافة زاد الانثناء. و<b>الانحراف يتناسب طردياً مع مكعّب الطول وعكسياً مع مكعّب السُمك الإطباقي-اللثوي للبنطية.</b></div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Law of beam — length &amp; connector height</div>
+  <div class="prompt">How do span length and connector height affect flexure (law of beam)?</div>
+  <div class="answer">
+    The <b>law of beam</b> (engineering): flexure increases with the <b>cube (power of three)</b> of the change.<br>
+  <b>Length:</b> vs a single-tooth pontic, a <b>two-tooth span bends 8× as much</b>, and a <b>three-tooth span bends 27× as much</b> → replacing three missing posterior teeth with an FPD rarely has a favorable prognosis (esp. mandibular → prefer RPD/implants).<br>
+  <b>Connector/pontic height:</b> as height decreases, flexure increases by the cube → <b>halving the connector (occlusogingival) height yields 8× the flexure</b>. So a long-span FPD on short mandibular teeth flexes excessively → porcelain fracture, connector breakage, retainer loosening/caries.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>قانون العارضة — الطول وارتفاع الرابط:</b> <b>قانون العارضة</b> (هندسي): الانثناء يزيد بـ<b>مكعّب (الأس الثالث)</b> التغيّر. <b>الطول:</b> مقابل بنطية سنّ واحد، مسافة سنّين <b>تنثني 8 أضعاف</b>، وثلاثة أسنان <b>27 ضعفاً</b> ← استبدال ثلاثة أسنان خلفية بجسر نادراً ما يكون إنذاره مؤاتياً (خاصةً السفلي ← يُفضّل طقم متحرّك/زرعات). <b>ارتفاع الرابط/البنطية:</b> بنقص الارتفاع يزيد الانثناء بالمكعّب ← <b>تنصيف ارتفاع الرابط (الإطباقي-اللثوي) يعطي 8 أضعاف الانثناء</b>. فالجسر الطويل على أسنان سفلية قصيرة ينثني زيادةً ← كسر بورسلين، كسر رابط، ارتخاء/تسوّس الحاصرة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Minimizing flexing &amp; double abutment</div>
+  <div class="prompt">How is flexing minimized, and when is a double abutment used?</div>
+  <div class="answer">
+    <b>To minimize flexing:</b> select a pontic design with greater <b>occlusogingival dimension</b>; make pontics/connectors <b>as bulky as possible</b> for rigidity (without harming gingival health); for a long span or unfavorable crown/root ratio, use <b>double abutments</b>.<br>
+  <b>Double abutment</b> = two adjacent abutments at one/both ends of an FPD. <b>Indications:</b> increase retention, increase supporting PDL/bone area, unfavorable crown/root ratio, long-span FPD, splinting periodontally compromised teeth. <b>Criteria:</b> the secondary abutment must have as much root surface area and as favorable a crown/root ratio as the primary, and its retainer must be <b>at least as retentive</b> (tensile forces act on it when the pontic flexes).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تقليل الانثناء والدعامة المزدوجة:</b> <b>لتقليل الانثناء:</b> اختر بنطية بـ<b>بُعد إطباقي-لثوي أكبر</b>؛ واجعل البنطيات/الروابط <b>أضخم ما أمكن</b> للصلابة (دون ضرر لثوي)؛ وللمسافة الطويلة أو نسبة التاج/الجذر غير المؤاتية استخدم <b>دعامات مزدوجة</b>. <b>الدعامة المزدوجة</b> = دعامتان متجاورتان في طرف/طرفي الجسر. <b>الاستطبابات:</b> زيادة الإرساء، زيادة مساحة الرباط/العظم الساندة، نسبة تاج/جذر غير مؤاتية، جسر طويل، تجبير أسنان متأثّرة حول سنياً. <b>المعايير:</b> يجب أن تملك الدعامة الثانوية مساحة سطح جذر ونسبة تاج/جذر مؤاتية كالأساسية، وحاصرتها <b>لا تقلّ إرساءً</b> (قوى الشدّ تؤثّر عليها عند انثناء البنطية).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Arch curvature &amp; lever arm</div>
+  <div class="prompt">How does arch curvature create a torqueing (lever-arm) problem, and how is it solved?</div>
+  <div class="answer">
+    When pontics lie <b>outside the interabutment line</b>, they act as a <b>lever arm</b> producing a torqueing movement — a common problem when replacing all four maxillary incisors. It is more pronounced in a <b>pointed/tapered arch anteriorly</b> (the more taper, the longer the lever arm, the more torque); a <b>more circular arch</b> reduces it.<br>
+  <b>Solution:</b> obtain additional retention in the direction opposite the lever arm, at a distance from the interabutment axis equal to the lever-arm length — i.e., use <b>two abutments at each end</b> of a long anterior FPD (e.g., <b>first premolars as secondary abutments</b> for a canine-to-canine four-pontic maxillary FPD) to resist tipping.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>انحناء القوس وذراع الرافعة:</b> حين تقع البنطيات <b>خارج خطّ ما بين الدعامتين</b>، تعمل كـ<b>ذراع رافعة</b> مُنتِجةً حركة عزم — مشكلة شائعة عند استبدال القواطع العلوية الأربعة. وتزداد في <b>القوس المدبّب أمامياً</b> (كلّما زاد التدبيب طال ذراع الرافعة وزاد العزم)؛ و<b>القوس الأكثر استدارةً</b> يقلّلها. <b>الحلّ:</b> احصل على إرساء إضافي في الاتّجاه المعاكس لذراع الرافعة، على مسافة من محور ما بين الدعامتين تساوي طول الذراع — أي استخدم <b>دعامتين في كل طرف</b> للجسر الأمامي الطويل (مثلاً <b>الضاحكان الأولان كدعامات ثانوية</b> لجسر علوي من ناب لناب بأربع بنطيات) لمقاومة الإمالة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec3">Lec 4 · Pier Abutment &amp; Non-Rigid Connector ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Pier (intermediate) abutment problem</div>
+  <div class="prompt">What is a pier abutment, and why is it a problem?</div>
+  <div class="answer">
+    A <b>pier (intermediate) abutment</b> is a natural tooth located <b>between two terminal abutments</b> supporting a fixed/removable prosthesis. Because it lies in the middle of the span, it creates <b>huge stresses on the terminal abutments</b> and acts as a <b>fulcrum</b>, causing failure of the weaker retainer — these forces loosen the retainer/casting or cause marginal leakage → extensive caries.<br>
+  <b>Solutions:</b> (1) use extremely retentive retainers; (2) if periodontal support is adequate, cantilever one segment on one side of the pier; (3) use a <b>non-rigid connector</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مشكلة الدعامة الوسطية (Pier):</b> <b>الدعامة الوسطية</b> سنّ طبيعي يقع <b>بين دعامتين طرفيّتين</b> يسند تعويضاً ثابتاً/متحرّكاً. ولأنها في وسط المسافة تُحدث <b>إجهادات هائلة على الدعامات الطرفية</b> وتعمل كـ<b>نقطة ارتكاز (fulcrum)</b>، مسبّبةً فشل الحاصرة الأضعف — فتُرخي هذه القوى الحاصرة/الصبّة أو تسبّب تسرّباً حافّياً ← تسوّس واسع. <b>الحلول:</b> (١) حاصرات عالية الإرساء؛ (٢) إن كان الدعم حول السني كافياً، اجعل جزءاً كابولياً على جانب الدعامة الوسطية؛ (٣) استخدم <b>رابطاً غير صلب (non-rigid)</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Non-rigid connector &amp; keyway location</div>
+  <div class="prompt">How does a non-rigid connector work, and where should the keyway be placed on a pier abutment?</div>
+  <div class="answer">
+    A <b>non-rigid connector</b> is a broken-stress mechanical union of retainer (<b>dovetail keyway</b>) and pontic (<b>T-shaped key</b>). It transfers shear stress to supporting bone rather than the connectors, minimizes mesiodistal torquing, and lets abutments move independently.<br>
+  <b>Location:</b> the keyway is placed within the <b>distal contours of the pier abutment</b>; the key on the <b>mesial side of the distal pontic</b>. <b>Why distal, not mesial?</b> Posterior teeth lean/tilt <b>mesially</b> under occlusal force — a keyway on the distal means mesial movement <b>seats the key more solidly</b>; a mesial keyway would <b>unseat</b> the key during mesial movement, causing pathologic mobility or retainer failure.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الرابط غير الصلب وموقع الـkeyway:</b> <b>الرابط غير الصلب</b> اتحاد ميكانيكي كاسر للإجهاد بين الحاصرة (<b>keyway على شكل ذيل الحمامة</b>) والبنطية (<b>key على شكل T</b>). ينقل إجهاد القصّ للعظم الساند لا للروابط، ويقلّل العزم الإنسي-الوحشي، ويتيح حركة الدعامات باستقلال. <b>الموقع:</b> يُوضع الـkeyway ضمن <b>الحدود الوحشية للدعامة الوسطية</b>؛ والـkey على <b>الجانب الإنسي للبنطية الوحشية</b>. <b>لماذا وحشياً لا إنسياً؟</b> الأسنان الخلفية تميل <b>إنسياً</b> تحت القوّة الإطباقية — فالـkeyway الوحشي يعني أن الحركة الإنسية <b>تُجلِس الـkey أرسخ</b>؛ بينما الإنسي <b>يُخرِج</b> الـkey أثناء الحركة الإنسية، مسبّباً حركة مرضية أو فشل الحاصرة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec4">Lec 4 · Tilted Molar &amp; Canine Replacement ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Tilted molar abutment — the problem &amp; solutions</div>
+  <div class="prompt">Why is a mesially tilted molar a problem for an FPD, and what are the solutions?</div>
+  <div class="answer">
+    Early loss of the mandibular first molar → the second molar <b>tilts mesially</b> (with 3rd-molar eruption), so the abutments no longer allow a <b>parallel path of insertion</b>. Solutions:
+  <ol><li><b>Orthodontic uprighting</b> of the tilted molar (distributes forces, eliminates mesial bony defects; extract 3rd molars to help; ~3 months).</li>
+  <li><b>Proximal half-crown</b> retainer (a ¾ crown rotated 90° leaving the distal uncovered) — only if the distal is caries-free/not decalcified, low caries incidence, excellent hygiene.</li>
+  <li><b>Telescope crown & coping</b> retainer.</li>
+  <li><b>Non-rigid connector</b> (box/keyway in the premolar's distal; not on the tilted molar's mesial → would tip it more).</li></ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الرحى المائلة — المشكلة والحلول:</b> فقد الرحى الأولى السفلية مبكّراً ← تميل الرحى الثانية <b>إنسياً</b> (مع بزوغ الثالثة)، فلا تسمح الدعامات بـ<b>مسار إدخال متوازٍ</b>. الحلول: (١) <b>تقويم (uprighting)</b> للرحى المائلة (يوزّع القوى، يزيل العيوب العظمية الإنسية؛ اقلع الأرحاء الثالثة للمساعدة؛ ~3 أشهر). (٢) حاصرة <b>نصف تاج داني (proximal half-crown)</b> (تاج ¾ مُدار 90° يترك الوحشي مكشوفاً) — فقط إن كان الوحشي خالياً من التسوّس/غير منزوع المعادن، بمعدّل تسوّس منخفض ونظافة ممتازة. (٣) حاصرة <b>تاج تلسكوبي وكوبنة</b>. (٤) <b>رابط غير صلب</b> (صندوق/keyway في وحشي الضاحك؛ لا على إنسي الرحى المائلة ← يزيد ميلانها).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Canine replacement FPD</div>
+  <div class="prompt">Why is a canine replacement FPD difficult, and what points must be considered?</div>
+  <div class="answer">
+    FPDs replacing canines are difficult because the canine often lies <b>outside the interabutment axis</b>, and the abutments are the <b>lateral incisor (weakest tooth in the arch)</b> and the <b>first premolar (weakest posterior tooth)</b>. A <b>maxillary</b> canine FPD suffers more stress than a mandibular one — maxillary forces are transmitted <b>outward (labially) against the inside of the curve (weakest point)</b>, whereas mandibular forces go <b>inward (lingually) against the outside of the curve (strongest point)</b>.<br>
+  <b>Considerations:</b> any canine-replacement FPD is <b>complex</b>; it should replace <b>no more than one additional tooth</b>; and a canine + two contiguous teeth edentulous space is best restored with <b>implants or an RPD</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>جسر تعويض الناب:</b> جسور تعويض الأنياب صعبة لأن الناب غالباً <b>خارج محور ما بين الدعامتين</b>، والدعامتان هما <b>القاطع الجانبي (أضعف سنّ في القوس)</b> و<b>الضاحك الأول (أضعف سنّ خلفي)</b>. وجسر الناب <b>العلوي</b> يعاني إجهاداً أكبر من السفلي — فقوى العلوي تُنقل <b>للخارج (شفوياً) ضدّ داخل المنحنى (أضعف نقطة)</b>، بينما قوى السفلي <b>للداخل (لسانياً) ضدّ خارج المنحنى (أقوى نقطة)</b>. <b>الاعتبارات:</b> أي جسر تعويض ناب <b>معقّد</b>؛ ويجب ألا يعوّض <b>أكثر من سنّ إضافي واحد</b>؛ ومساحة فقد الناب + سنّين متجاورين تُرمّم أفضل بـ<b>زرعات أو طقم متحرّك</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec5">Lec 5 · Bridge Retainers — Major/Minor &amp; Types ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Retainer definition, major vs minor</div>
+  <div class="prompt">What is a bridge retainer, and differentiate major and minor retainers.</div>
+  <div class="answer">
+    A <b>bridge retainer</b> unites the abutment to the restoration — it takes support from the abutment and gives stabilization/retention to the prosthesis, seated over or in the abutment and connecting the pontic to it.<br>
+  <b>Major retainer:</b> used in fixed-fixed, spring, and cantilever bridges; in a fixed-mobile bridge it is at <b>one end only</b>. It must be <b>retentive and cover the whole occlusal surface</b> (rigid connection to pontic).<br>
+  <b>Minor retainer:</b> the lesser retainer of a fixed-mobile bridge, into which a <b>movable connector</b> from the pontic seats; it does <b>not need full occlusal coverage</b> (flexible connection to pontic).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تعريف الحاصرة والكبرى مقابل الصغرى:</b> <b>حاصرة الجسر</b> توحّد الدعامة بالترميم — تأخذ السند من الدعامة وتعطي تثبيتاً/إرساءً للتعويض، جالسةً على أو في الدعامة وواصلةً البنطية بها. <b>الحاصرة الكبرى:</b> تُستخدم في الجسور fixed-fixed والزنبركية والكابولية؛ وفي fixed-mobile تكون في <b>طرف واحد فقط</b>. يجب أن تكون <b>مُرسِيةً وتغطّي كامل السطح الإطباقي</b> (ربط صلب بالبنطية). <b>الحاصرة الصغرى:</b> الحاصرة الأقلّ في جسر fixed-mobile، يجلس فيها <b>رابط متحرّك</b> من البنطية؛ ولا تحتاج <b>تغطية إطباقية كاملة</b> (ربط مرن بالبنطية).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Retainer types by material &amp; selection criteria</div>
+  <div class="prompt">What are the retainer types by material, and the criteria for choosing a retainer?</div>
+  <div class="answer">
+    <b>By material:</b> all-metal (most conservative, simplest, cheapest — posterior where esthetics isn't critical); metal-ceramic, all-ceramic, zirconium (anterior/esthetic); acrylic (temporary bridge).<br>
+  <b>Selection criteria:</b> (1) <b>alignment</b> of abutments (parallel → complete/partial crown; non-parallel → complete crown, less conservative); (2) <b>esthetics</b> (critical → PFM/all-ceramic/zirconium/¾); (3) <b>condition</b> of abutments (extensive caries/fracture → complete coverage); (4) <b>conservation</b> (inlay/onlay > partial > complete; full metal > PFM > all-ceramic); (5) <b>cost</b>; (6) <b>size/position</b>; (7) <b>caries susceptibility</b> (poor hygiene → complete crown); (8) <b>retention required</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أنواع الحاصرات حسب المادة ومعايير الاختيار:</b> <b>حسب المادة:</b> معدنية كاملة (الأكثر تحفّظاً، الأبسط، الأرخص — خلفية حيث لا يهمّ الجمال)؛ معدنية-خزفية، خزفية كاملة، زركونيوم (أمامية/جمالية)؛ أكريليك (جسر مؤقت). <b>معايير الاختيار:</b> (١) <b>اصطفاف</b> الدعامات (متوازية → تاج كامل/جزئي؛ غير متوازية → تاج كامل أقلّ تحفّظاً)؛ (٢) <b>الجمال</b> (حرج → PFM/خزفي/زركونيوم/¾)؛ (٣) <b>حالة</b> الدعامات (تسوّس/كسر واسع → تغطية كاملة)؛ (٤) <b>التحفّظ</b> (inlay/onlay > جزئي > كامل؛ معدني كامل > PFM > خزفي)؛ (٥) <b>الكلفة</b>؛ (٦) <b>الحجم/الموضع</b>؛ (٧) <b>قابلية التسوّس</b> (نظافة سيّئة → تاج كامل)؛ (٨) <b>الإرساء المطلوب</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Factors affecting required retention</div>
+  <div class="prompt">What factors affect the amount of retention a bridge retainer needs?</div>
+  <div class="answer">
+    <ol>
+  <li><b>Span length & rigidity:</b> longer span → greater stresses → more likely to un-cement and flex (the longer the span, the stronger all components must be).</li>
+  <li><b>Type of bridge:</b> fixed-fixed needs stronger retainers than fixed-mobile (little retention needed for the minor retainer).</li>
+  <li><b>Strength of the bite:</b> heavier bite → thicker/stronger retainer (varies with age, sex, muscular development).</li>
+  <li><b>Tooth to be replaced:</b> a molar pontic stresses the abutment more than a lower incisor.</li>
+  <li><b>Occlusal coverage:</b> full coverage always indicated for fixed-fixed (protects cusps, esp. large restorations/RCT teeth).</li>
+  <li><b>Patient habits:</b> clenching/bruxism/pipe smoking → thicker/stronger retainer.</li>
+  </ol>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>عوامل الإرساء المطلوب:</b> (١) <b>طول المسافة والصلابة:</b> الأطول → إجهاد أكبر → احتمال فقد التثبيت والانثناء (كلّما طالت وجب أن تقوى كل المكوّنات). (٢) <b>نوع الجسر:</b> fixed-fixed يحتاج حاصرات أقوى من fixed-mobile (الحاصرة الصغرى تحتاج إرساءً قليلاً). (٣) <b>قوّة العضّة:</b> الأثقل → حاصرة أسمك/أقوى (تختلف بالعمر والجنس والنموّ العضلي). (٤) <b>السن المُستبدَل:</b> بنطية الرحى تُجهد الدعامة أكثر من قاطع سفلي. (٥) <b>التغطية الإطباقية:</b> الكاملة دائماً لـfixed-fixed (تحمي الحدبات، خاصةً الترميمات الكبيرة/أسنان المعالجة اللبية). (٦) <b>عادات المريض:</b> الإطباق/الصرير/تدخين الغليون → حاصرة أسمك/أقوى.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec6">Lec 5 · Special Retainer Types</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Telescopic, resin-bonded &amp; pinledge retainers</div>
+  <div class="prompt">Describe telescopic, resin-bonded, and pinledge retainers.</div>
+  <div class="answer">
+    <b>Telescopic retainer:</b> two copings, one over the other — the <b>primary (inner) coping modifies tooth morphology / changes the path of insertion</b>, the secondary (outer) fits over it; recommended when the FPD path doesn't coincide with the abutment's long axis.<br>
+  <b>Resin-bonded retainer:</b> the <b>most conservative</b> (minimal prep, acid-etched, esthetic, economical, non-irritating); needs sufficient <b>enamel for etching</b>; contraindicated with base-metal allergy, inadequate enamel (caries/restoration/attrition), or thin incisors.<br>
+  <b>Pinledge:</b> a partial-veneer retainer incorporating <b>pinholes for retention</b>; for undamaged anterior teeth, high esthetics, when proximal grooves can't be prepared, or to alter maxillary anterior lingual contour.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الحاصرات التلسكوبية والراتنجية والـpinledge:</b> <b>التلسكوبية:</b> كوبنتان واحدة فوق الأخرى — <b>الأولية (الداخلية) تعدّل شكل السن / تغيّر مسار الإدخال</b>، والثانوية (الخارجية) تجلس فوقها؛ يُنصح بها حين لا يتوافق مسار الجسر مع محور الدعامة. <b>الراتنجية:</b> <b>الأكثر تحفّظاً</b> (تحضير أدنى، حفر حمضي، جمالية، اقتصادية، غير مهيّجة)؛ تحتاج <b>مينا كافية للحفر</b>؛ تُمنع مع تحسّس المعادن الأساسية، أو مينا غير كافية (تسوّس/ترميم/سحل)، أو قواطع رقيقة. <b>Pinledge:</b> حاصرة قشرة جزئية بـ<b>حُفَر دبابيس للإرساء</b>؛ للأسنان الأمامية غير المتضرّرة، والجمال العالي، وحين يتعذّر تحضير الأخاديد الدانية، أو لتعديل الكنتور اللساني الأمامي العلوي.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec7">Lec 6 · Pontic — Functions &amp; Requirements ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Pontic definition, materials &amp; functions</div>
+  <div class="prompt">What is a pontic, what materials are used, and what are its functions?</div>
+  <div class="answer">
+    A <b>pontic</b> is the <b>suspended portion of the FPD</b> that replaces the lost natural tooth to restore function and esthetics; connected to the retainer by a <b>rigid (solder joint)</b> or <b>non-rigid (key & keyway)</b> connection. It consists of metal backing, solder joint, and facing.<br>
+  <b>Materials:</b> entirely cast metal, porcelain, or zirconium, or metal backing + porcelain/acrylic facing (full metal → posterior; metal-with-facing/full-ceramic/zirconium → anterior).<br>
+  <b>Functions:</b> (1) mastication; (2) <b>speech/phonetics</b> (restricts air passage through the edentulous area); (3) <b>esthetics</b> (fills spaces, supports lips/cheeks); (4) <b>maintenance of teeth relationship</b> (prevents movement of adjacent/opposing teeth).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تعريف البنطية وموادها ووظائفها:</b> <b>البنطية (Pontic)</b> هي <b>الجزء المعلّق من الجسر</b> الذي يعوّض السن المفقود لاستعادة الوظيفة والجمال؛ تُوصَل بالحاصرة بربط <b>صلب (لحام)</b> أو <b>غير صلب (key & keyway)</b>. وتتكوّن من ظهر معدني ولحام وتكسية. <b>المواد:</b> معدن مصبوب بالكامل، بورسلين، أو زركونيوم، أو ظهر معدني + تكسية بورسلين/أكريليك (معدني كامل → خلفي؛ معدني بتكسية/خزفي/زركونيوم → أمامي). <b>الوظائف:</b> (١) المضغ؛ (٢) <b>النطق</b> (يقيّد مرور الهواء عبر المنطقة الفارغة)؛ (٣) <b>الجمال</b> (يملأ الفراغات، يسند الشفتين/الخدّين)؛ (٤) <b>الحفاظ على علاقة الأسنان</b> (يمنع حركة المجاورة/المقابلة).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Ideal pontic requirements — biologic &amp; mechanical</div>
+  <div class="prompt">What are the biologic and mechanical requirements of an ideal pontic?</div>
+  <div class="answer">
+    <b>Biologic:</b> (1) <b>hygienic</b> — allows cleaning of the underlying tissue (brushes, superfloss); prevents tissue irritation; (2) <b>pressure-free (passive) tissue contact</b> — a saliva-film thickness suffices; tissue surface should be <b>convex and made of ceramic</b>; (3) <b>glazed porcelain or highly polished metal (gold)</b> are preferred for tissue contact — <b>resins must NOT be used near soft tissue</b> (porous, retain plaque); (4) embrasures opened wide for gingival massage; (5) proper labial/lingual contour matching adjacent teeth.<br>
+  <b>Mechanical:</b> strong enough to withstand forces without deformation (<b>rigid</b>; high-stress sites → all-metal rather than metal-ceramic); reducing occlusal width by <b>~20%</b> can reduce torque and ease cleaning.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>متطلبات البنطية المثالية — الحيوية والميكانيكية:</b> <b>الحيوية:</b> (١) <b>صحّية</b> — تتيح تنظيف النسيج تحتها (فراش، superfloss)؛ وتمنع تهيّج النسيج؛ (٢) <b>تماس نسيجي بلا ضغط (سلبي)</b> — يكفي سُمك غشاء لعاب؛ والسطح النسيجي يجب أن يكون <b>محدّباً ومن خزف</b>؛ (٣) <b>البورسلين المزجّج أو المعدن العالي التلميع (ذهب)</b> مفضّلان للتماس النسيجي — و<b>يجب ألا تُستخدم الراتنجات قرب النسيج الرخو</b> (مسامية، تحتبس اللويحة)؛ (٤) فتح الـembrasures للتدليك اللثوي؛ (٥) كنتور شفوي/لساني سليم يطابق المجاورة. <b>الميكانيكية:</b> قويّة كفايةً لتحمّل القوى دون تشوّه (<b>صلبة</b>؛ مواقع الإجهاد العالي → معدنية كاملة لا معدنية-خزفية)؛ وتقليل العرض الإطباقي <b>~20%</b> يقلّل العزم ويسهّل التنظيف.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec8">Lec 6 · Pontic Designs ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Ridge lap, modified ridge lap &amp; conical pontics</div>
+  <div class="prompt">Compare the saddle (ridge lap), modified ridge lap, and conical pontic designs.</div>
+  <div class="answer">
+    <b>Ridge lap (saddle):</b> tissue surface <b>concave buccolingually</b>, overlapping the ridge — largest contact area, most natural feeling, but the <b>most difficult to clean → SHOULD NEVER BE USED</b>.<br>
+  <b>Modified ridge lap:</b> saddle on the buccal, <b>convex on the lingual</b> — more cleansable, less irritation, gives a tooth illusion; best features of saddle + hygienic; used in the appearance zone.<br>
+  <b>Conical (bullet/spheroid):</b> egg-shaped, <b>convex with one-point ridge contact</b> — easiest to clean; for non-esthetic areas / knife-edge ridges / posteriors; not for broad flat ridges (traps debris).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>Ridge lap والمعدّل والمخروطي:</b> <b>Ridge lap (سرجي):</b> السطح النسيجي <b>مقعّر شدقياً-لسانياً</b>، يتراكب على الحرف — أكبر مساحة تماس، أطبع إحساس، لكنه <b>الأصعب تنظيفاً ← يجب ألا يُستخدم أبداً</b>. <b>Modified ridge lap:</b> سرجي شدقياً، <b>محدّب لسانياً</b> — أسهل تنظيفاً، تهيّج أقلّ، يعطي وهم السن؛ يجمع أفضل ميزات السرجي + الصحّي؛ يُستخدم في منطقة الظهور. <b>المخروطي (bullet):</b> بيضوي، <b>محدّب بتماس نقطة واحدة مع الحرف</b> — الأسهل تنظيفاً؛ للمناطق غير الجمالية / الحروف الحادّة / الخلفية؛ ليس للحروف المسطّحة العريضة (يحتبس الفتات).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Ovate, modified ovate &amp; hygienic pontics</div>
+  <div class="prompt">Describe the ovate, modified ovate, and hygienic (sanitary) pontic designs.</div>
+  <div class="answer">
+    <b>Ovate:</b> <b>excellent esthetics</b> — a convex tissue surface residing in a soft-tissue depression, appearing to emerge from the gingiva; needs careful planning + <b>surgical ridge preparation</b>; harder to clean. For maxillary incisors/premolars.<br>
+  <b>Modified ovate:</b> height of contour moved <b>1–1.5 mm apical and palatal to the gingival margin</b>; excellent esthetics, easier cleaning, <b>little/no surgical augmentation needed</b>.<br>
+  <b>Hygienic (sanitary/wash-through):</b> <b>entirely metal, NO tissue contact</b> — most cleansable, convex, <b>3 mm space + 3 mm thickness</b>; for the non-appearance zone in mandibular posteriors; patient acceptance questionable. <b>Modified hygienic (archway):</b> gingival portion shaped like an archway → adds connector bulk/strength, reduces stress.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>Ovate والمعدّل والصحّي:</b> <b>Ovate:</b> <b>جمال ممتاز</b> — سطح نسيجي محدّب يستقرّ في انخفاض نسيجي، يبدو خارجاً من اللثة؛ يحتاج تخطيطاً دقيقاً + <b>تحضيراً جراحياً للحرف</b>؛ أصعب تنظيفاً. للقواطع/الضواحك العلوية. <b>Modified ovate:</b> ارتفاع الكنتور مُزاح <b>1–1.5مم قمياً وحنكياً عن الحافة اللثوية</b>؛ جمال ممتاز، تنظيف أسهل، <b>لا حاجة (أو قليلة) للتعزيز الجراحي</b>. <b>الصحّي (Sanitary/wash-through):</b> <b>معدني كلياً، بلا تماس نسيجي</b> — الأكثر قابليةً للتنظيف، محدّب، <b>فراغ 3مم + سُمك 3مم</b>؛ لمنطقة عدم الظهور في الخلفية السفلية؛ قبول المريض مشكوك. <b>الصحّي المعدّل (Archway):</b> الجزء اللثوي كقوس → يضيف سُمك/قوّة للرابط، ويقلّل الإجهاد.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec9">Lec 6 · Residual Ridge Assessment</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Pontic space &amp; residual ridge contour</div>
+  <div class="prompt">Why assess available pontic space and residual ridge contour, and what is Siebert's classification?</div>
+  <div class="answer">
+    <b>Pontic space:</b> an FPD normally prevents tilting/drifting into the edentulous space; if movement already occurred, space is reduced and fabrication complicated. Overly small pontics <b>trap food and are hard to clean</b> (and unesthetic anteriorly) → may need orthodontic repositioning or modified abutments.<br>
+  <b>Residual ridge contour:</b> an ideal ridge has smooth attached gingiva and enough height for the pontic to appear to <b>emerge from the ridge</b>; ridge loss causes <b>open gingival embrasures (black triangles)</b> → food entrapment.<br>
+  <b>Siebert's classification of ridge defects:</b> <b>Class I</b> — faciolingual (width) loss, normal height; <b>Class II</b> — height loss, normal width; <b>Class III</b> — combined loss.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>مساحة البنطية وكنتور الحرف المتبقّي:</b> <b>مساحة البنطية:</b> الجسر عادةً يمنع الميلان/الانجراف للمنطقة الفارغة؛ وإن حدثت الحركة تقلّ المساحة ويتعقّد التصنيع. والبنطيات الصغيرة جداً <b>تحتبس الطعام وتصعب تنظيفها</b> (وغير جمالية أمامياً) → قد تحتاج إعادة توضيع تقويمية أو تعديل دعامات. <b>كنتور الحرف المتبقّي:</b> الحرف المثالي له لثة ملتصقة ناعمة وارتفاع كافٍ لتبدو البنطية <b>خارجةً من الحرف</b>؛ وفقد الحرف يسبّب <b>embrasures لثوية مفتوحة (مثلثات سوداء)</b> → احتباس طعام. <b>تصنيف Siebert لعيوب الحرف:</b> <b>الصنف I</b> — فقد شفوي-لساني (عرض) بارتفاع طبيعي؛ <b>الصنف II</b> — فقد ارتفاع بعرض طبيعي؛ <b>الصنف III</b> — فقد مشترك.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Ridge preservation &amp; modification</div>
+  <div class="prompt">How is the residual ridge preserved or modified for pontics?</div>
+  <div class="answer">
+    <b>Preservation</b> (at extraction): (1) <b>alveolar architecture preservation</b> — prepare abutments before extraction, place an immediate provisional FPD with an <b>ovate</b> tissue-side pontic extending ~2.5 mm apical to the facial gingival margin (supports papillae, acts as a healing template within 1 mm of the bone contour); (2) <b>socket conditioning (Alvelac pack)</b> — a porous, osteoconductive, biodegradable PLGA/PVA scaffold maintaining socket height/width, resorbed in ~2–6 months.<br>
+  <b>Modification</b> (pre-existing ridge): <b>ridge reduction</b> (excessive/irregular soft tissue, poor cleansability) or <b>ridge augmentation</b> (bone resorption/long unesthetic pontic) using fibrous/osseous/synthetic materials.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>حفظ وتعديل الحرف:</b> <b>الحفظ</b> (عند القلع): (١) <b>حفظ البنية السنخية</b> — حضّر الدعامات قبل القلع، وضع جسراً مؤقتاً فورياً ببنطية <b>ovate</b> على الجهة النسيجية تمتدّ ~2.5مم قمياً عن الحافة اللثوية الشفوية (تسند الحليمات، تعمل كقالب شفاء ضمن 1مم من كنتور العظم)؛ (٢) <b>تكييف السنخ (Alvelac)</b> — سقالة PLGA/PVA مسامية موصلة للعظم متحلّلة حيوياً تحفظ ارتفاع/عرض السنخ، تُمتصّ خلال ~2–6 أشهر. <b>التعديل</b> (حرف موجود): <b>تخفيض الحرف</b> (نسيج رخو زائد/غير منتظم، تنظيف رديء) أو <b>تعزيز الحرف</b> (امتصاص عظم/بنطية طويلة غير جمالية) بمواد ليفية/عظمية/صنعية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec10">Lec 6 · Connectors ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Connector definition &amp; rigid connector types</div>
+  <div class="prompt">What is a connector, and what are the types of rigid connectors?</div>
+  <div class="answer">
+    A <b>connector</b> is the part of the bridge that joins the individual components (retainer-pontic, retainer-retainer, pontic-pontic), via a <b>rigid (fixed)</b> or <b>non-rigid (movable)</b> connection.<br>
+  <b>Rigid connector types (by fabrication):</b>
+  <ul><li><b>Cast:</b> the multiunit bridge is cast in a single piece — stronger than soldered, carvable for best appearance.</li>
+  <li><b>Soldered:</b> pontic and connector made separately, then joined with an intermediate alloy of <b>lower melting temperature</b> than the parent metal.</li>
+  <li><b>Welded:</b> melting the adjacent surfaces with heat/pressure.</li>
+  <li><b>Loop:</b> used when a <b>diastema</b> must be maintained.</li></ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تعريف الرابط وأنواع الروابط الصلبة:</b> <b>الرابط (Connector)</b> جزء الجسر الذي يصل المكوّنات (حاصرة-بنطية، حاصرة-حاصرة، بنطية-بنطية)، عبر ربط <b>صلب (ثابت)</b> أو <b>غير صلب (متحرّك)</b>. <b>أنواع الروابط الصلبة (حسب التصنيع):</b> <b>مصبوب:</b> يُصبّ الجسر متعدّد الوحدات قطعةً واحدة — أقوى من الملحوم، قابل للنحت لأفضل مظهر. <b>ملحوم:</b> تُصنع البنطية والرابط منفصلين ثم يُوصَلان بسبيكة وسيطة <b>أخفض انصهاراً</b> من المعدن الأمّ. <b>ملحوم بالانصهار (Welded):</b> صهر الأسطح المتجاورة بحرارة/ضغط. <b>حلقي (Loop):</b> يُستخدم حين يجب الحفاظ على <b>فرجة (diastema)</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Non-rigid connector &amp; connector design principles</div>
+  <div class="prompt">When is a non-rigid connector indicated, and what are the connector design principles?</div>
+  <div class="answer">
+    <b>Non-rigid connector:</b> indicated when two abutments <b>cannot share a common path of placement</b>, to segment a large complex bridge into shorter compartments for easier seating, or to reduce occlusal force on a weak abutment. The movable joint (key-keyway) has two pieces: the <b>key</b> attached to the mesial of the pontic, the <b>keyway channel</b> attached to the distal of the anterior abutment (minor retainer).<br>
+  <b>Design principles:</b> (1) <b>Size</b> — large enough to prevent distortion/fracture, not so large as to cause periodontal problems; (2) <b>Shape</b> — tissue surface curved faciolingually, polished/smooth for cleaning; (3) <b>Position</b> — anteriorly place the connector <b>lingually</b>; posteriorly in the <b>occlusal third and more lingually</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الرابط غير الصلب ومبادئ تصميم الروابط:</b> <b>الرابط غير الصلب:</b> يُستطبّ حين <b>لا تتشارك دعامتان مسار إدخال واحداً</b>، لتقسيم جسر كبير معقّد لأقسام أقصر لسهولة الإجلاس، أو لتقليل القوّة الإطباقية على دعامة ضعيفة. والمفصل المتحرّك (key-keyway) قطعتان: <b>الـkey</b> ملحق بإنسي البنطية، و<b>قناة الـkeyway</b> ملحقة بوحشي الدعامة الأمامية (الحاصرة الصغرى). <b>مبادئ التصميم:</b> (١) <b>الحجم</b> — كبير كفايةً لمنع التشوّه/الكسر، لا كبير لدرجة مشاكل حول سنية؛ (٢) <b>الشكل</b> — السطح النسيجي منحنٍ شفوياً-لسانياً، مصقول/ناعم للتنظيف؛ (٣) <b>الموضع</b> — أمامياً ضع الرابط <b>لسانياً</b>؛ وخلفياً في <b>الثلث الإطباقي وأكثر لسانياً</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec11">Lec 7 · Elastomeric Impression Materials ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Impression material properties &amp; hydrophilicity</div>
+  <div class="prompt">What properties must a final impression material have, and what does hydrophilicity mean?</div>
+  <div class="answer">
+    A crown-and-bridge impression material must: (1) be <b>elastic</b> (withdraw past undercuts without distortion/fracture); (2) have suitable <b>hydrophilicity</b>; (3) have adequate <b>tear resistance</b>; (4) have <b>dimensional stability/accuracy</b>; (5) have clinical handling/setting; (6) be non-toxic.<br>
+  <b>Hydrophilicity:</b> <b>hydrophilic</b> materials have high affinity for moisture (<b>low contact angle</b>) → good surface wetting and high detail. <b>Hydrophobic</b> materials have low affinity (<b>high contact angle</b>) → poor wetting, less detail, and require <b>strict moisture control</b>.<br>
+  <b>Dimensional change</b> causes: polymerization contraction, by-product/accelerator liberation, water absorption (humidity), or temperature change.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>خصائص مادة الطبعة والمحبّة للماء:</b> يجب أن تكون مادة طبعة التيجان والجسور: (١) <b>مرنة</b> (تُسحَب عبر التقويضات دون تشوّه/تمزّق)؛ (٢) بـ<b>محبّة للماء</b> مناسبة؛ (٣) بمقاومة <b>تمزّق</b> كافية؛ (٤) بـ<b>ثبات أبعاد/دقّة</b>؛ (٥) بمناولة/تصلّب سريري؛ (٦) غير سامّة. <b>المحبّة للماء:</b> المواد <b>المحبّة للماء</b> ذات ألفة عالية للرطوبة (<b>زاوية تماس منخفضة</b>) → ترطيب سطحي جيّد وتفاصيل عالية. و<b>الكارهة للماء</b> ذات ألفة منخفضة (<b>زاوية تماس عالية</b>) → ترطيب رديء وتفاصيل أقلّ وتحتاج <b>ضبط رطوبة صارماً</b>. <b>تغيّر الأبعاد</b> يسبّبه: انكماش البلمرة، تحرّر ناتج ثانوي/مسرّع، امتصاص ماء (رطوبة)، أو تغيّر حرارة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Polysulfide &amp; polyether</div>
+  <div class="prompt">Compare polysulfide and polyether impression materials.</div>
+  <div class="answer">
+    <b>Polysulfide</b> (two-paste base+catalyst; light/medium/heavy): <b>Advantages</b> — accurate if poured without delay (max 48 h storage), long working time (multiple preps), excellent tear resistance. <b>Disadvantages</b> — messy with objectionable odor, long setting time, shrinkage toward the tray (water by-product evaporation, continuous setting, unrecovered strain). Use a special tray with a 4 mm spacer; remove in a single pull.<br>
+  <b>Polyether</b> (e.g., Impregum): <b>Advantages</b> — fast setting (<5 min), <b>no by-product</b>, dimensionally stable, relatively <b>hydrophilic</b>, adequate tear resistance/very good elastic properties. <b>Disadvantages</b> — swells in high humidity (water absorption); <b>rigid when set</b> → considerable force to remove.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>البولي سلفايد والبولي إيثر:</b> <b>البولي سلفايد</b> (عجينتان قاعدة+مسرّع؛ خفيف/متوسّط/ثقيل): <b>المزايا</b> — دقيق إن صُبّ دون تأخير (تخزين 48س كحدّ أقصى)، زمن شغل طويل (تحضيرات متعدّدة)، مقاومة تمزّق ممتازة. <b>العيوب</b> — فوضوي برائحة كريهة، زمن تصلّب طويل، انكماش نحو الحامل (تبخّر الماء الناتج، تصلّب مستمرّ، انفعال غير مسترجَع). استخدم حاملاً خاصاً بفاصل 4مم؛ وأزله بسحبة واحدة. <b>البولي إيثر</b> (مثل Impregum): <b>المزايا</b> — تصلّب سريع (<5د)، <b>بلا ناتج ثانوي</b>، ثابت الأبعاد، <b>محبّ للماء</b> نسبياً، مقاومة تمزّق كافية/خصائص مرنة جيّدة جداً. <b>العيوب</b> — ينتفخ في الرطوبة العالية (امتصاص ماء)؛ <b>صلب عند التصلّب</b> → يحتاج قوّةً كبيرة للإزالة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Condensation vs addition silicone</div>
+  <div class="prompt">Compare condensation and addition silicone (PVS) impression materials.</div>
+  <div class="answer">
+    <b>Condensation silicone:</b> odorless, pigmentable, short mouth setting (6–8 min), less affected by heat/humidity than polysulfide; but dimensional stability is <b>less than polysulfide</b> (though better than reversible hydrocolloid). <b>Disadvantages</b> — poor wetting (very hydrophobic), and <b>volatile by-product (ethyl alcohol)</b> → weight loss/shrinkage on storage.<br>
+  <b>Addition silicone (PVS/vinyl polysiloxane):</b> the <b>most dimensionally stable</b> (no by-product) — accurate, high elasticity, adequate tear resistance, neutral color/taste. <b>Disadvantages</b> — <b>hydrophobic</b> (strict moisture control; surfactants can be added); <b>sulfur from latex gloves inhibits setting</b> (don't touch the tooth with latex before seating); delay pouring 1–2 h (liberates hydrogen gas → bubbles).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>سيليكون التكثيف مقابل الإضافة (PVS):</b> <b>سيليكون التكثيف:</b> عديم الرائحة، قابل للتلوين، تصلّب فموي قصير (6–8د)، أقلّ تأثّراً بالحرارة/الرطوبة من البولي سلفايد؛ لكن ثبات أبعاده <b>أقلّ من البولي سلفايد</b> (وإن كان أفضل من الهيدروكولويد الرجعي). <b>العيوب</b> — ترطيب رديء (كاره للماء جداً)، و<b>ناتج ثانوي متطاير (كحول إيثيلي)</b> → فقد وزن/انكماش بالتخزين. <b>سيليكون الإضافة (PVS):</b> <b>الأثبت أبعاداً</b> (بلا ناتج ثانوي) — دقيق، مرونة عالية، مقاومة تمزّق كافية، لون/طعم محايد. <b>العيوب</b> — <b>كاره للماء</b> (ضبط رطوبة صارم؛ يمكن إضافة surfactants)؛ و<b>كبريت قفازات اللاتكس يثبّط تصلّبه</b> (لا تلمس السن باللاتكس قبل الإجلاس)؛ وأخّر الصبّ 1–2س (يحرّر غاز الهيدروجين → فقاعات).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec12">Lec 5 · Complete-Coverage Retainers</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Full metal &amp; PFM as bridge retainers</div>
+  <div class="prompt">Compare the full metal crown and PFM crown as bridge retainers.</div>
+  <div class="answer">
+    <b>Full metal crown retainer:</b> the most conservative complete-coverage retainer, for the posterior region when esthetics isn't needed; best <b>retention and resistance</b> (all axial surfaces included); indicated for extensive destruction, clasp reception, endodontically-treated teeth, high caries index. Advantages: great retention/resistance, strong even in thin sections, conservative, easy to prepare. Disadvantages: poor esthetics, hard to test vitality (esp. EPT), taste interference, tarnish/corrosion.<br>
+  <b>PFM retainer:</b> the <b>most widely used when esthetics matters</b> — combines full-metal strength with ceramic esthetics; indicated when esthetics + high retention/resistance are needed; contraindicated with a large pulp chamber, intact buccal wall, or when a more conservative retainer suffices. Disadvantages: substantial tooth removal, porcelain fracture risk, difficult shade, inferior to all-ceramic esthetically, costlier.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>المعدني الكامل وPFM كحاصرتي جسر:</b> <b>حاصرة المعدني الكامل:</b> أكثر حاصرات التغطية الكاملة تحفّظاً، للخلفية حين لا يلزم الجمال؛ أفضل <b>إرساء ومقاومة</b> (كل الأسطح المحورية)؛ تُستطبّ للتهدّم الواسع، واستقبال المشبك، والأسنان المعالَجة لبياً، ومؤشّر التسوّس العالي. المزايا: إرساء/مقاومة كبيرة، قويّة حتى في المقاطع الرقيقة، متحفّظة، سهلة التحضير. العيوب: جمال رديء، صعوبة اختبار الحيوية (خاصةً EPT)، تداخل التذوّق، تلطّخ/تآكل. <b>حاصرة PFM:</b> <b>الأكثر استخداماً حين يهمّ الجمال</b> — تجمع قوّة المعدن الكامل مع جمال الخزف؛ تُستطبّ حين يلزم الجمال + إرساء/مقاومة عالية؛ وتُمنع مع حجرة لبّ كبيرة أو جدار شدقي سليم أو حين تكفي حاصرة أكثر تحفّظاً. العيوب: إزالة سنّ كبيرة، خطر كسر البورسلين، لون صعب، أدنى جمالاً من الخزفي، أغلى.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">All-ceramic &amp; ¾ crown as retainers</div>
+  <div class="prompt">Compare the all-ceramic crown and the ¾ crown as bridge retainers.</div>
+  <div class="answer">
+    <b>All-ceramic retainer:</b> the <b>most esthetically pleasing</b> (no metal to block light); indicated for high esthetics, considerable proximal caries, endodontically-treated teeth with post & core, favorable occlusal load; contraindicated when high strength is needed, thin faciolingual teeth, insufficient coronal structure, unfavorable load, and <b>bruxism</b>.<br>
+  <b>¾ crown retainer:</b> covers three surfaces leaving the buccal/labial intact; <b>less retention/resistance</b> than full coverage; indicated for short-span bridges, teeth with good crown length and labiolingual thickness, good hygiene/low caries, good abutment alignment; contraindicated in short teeth, poor hygiene, grossly carious teeth, long-span bridges, poorly-aligned/endodontically-treated abutments. Advantages: conservative, good esthetics, supragingival margins, vitality testable. Disadvantages: recurrent caries at the cavosurface angle, possible metal display, difficult preparation.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الخزفي الكامل وتاج ¾ كحاصرتين:</b> <b>حاصرة الخزفي الكامل:</b> <b>الأجمل</b> (لا معدن يحجب الضوء)؛ تُستطبّ للجمال العالي والتسوّس الداني الكبير والأسنان المعالَجة لبياً مع post & core والحمل المؤاتي؛ وتُمنع حين تلزم قوّة عالية، وأسنان رقيقة دهليزياً-لسانياً، وبنية تاجية غير كافية، وحمل غير مؤاتٍ، و<b>الصرير</b>. <b>حاصرة ¾:</b> تغطّي ثلاثة أسطح تاركةً الشدقي/الشفوي سليماً؛ <b>إرساء/مقاومة أقلّ</b> من الكاملة؛ تُستطبّ للجسور القصيرة، وأسنان بطول تاج وسُمك دهليزي-لساني جيّد، ونظافة جيّدة/تسوّس منخفض، واصطفاف جيّد؛ وتُمنع في الأسنان القصيرة والنظافة السيّئة والمسوّسة بشدّة والجسور الطويلة والدعامات سيّئة الاصطفاف/المعالَجة لبياً. المزايا: متحفّظة، جمال جيّد، حواف فوق لثوية، اختبار حيوية ممكن. العيوب: تسوّس متكرّر عند زاوية السطح الحُفّي، احتمال ظهور معدن، تحضير صعب.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Inlay &amp; onlay as bridge retainers</div>
+  <div class="prompt">How are inlays and onlays used as bridge retainers, and their contraindications?</div>
+  <div class="answer">
+    <b>Inlay:</b> a fixed <b>intracoronal</b> restoration made outside the tooth to match the prepared cavity, then luted in; can be a single restoration or a <b>minor retainer</b> for an FPD; made of gold alloy or ceramic. <b>Contraindicated</b> with high caries index, poor hygiene, MODs, and poor dentin support needing wide preparation.<br>
+  <b>Onlay:</b> restores one/more cusps and adjoining or the entire occlusal surface, retained mechanically or by adhesive; for extensively damaged posteriors needing wide MOD restorations; can serve as an FPD retainer. <b>Contraindicated</b> with high caries risk, poor hygiene, short clinical crown, extruded teeth, and bruxism.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الـinlay والـonlay كحاصرتي جسر:</b> <b>Inlay:</b> ترميم ثابت <b>داخل تاجي</b> يُصنع خارج السن ليطابق الحفرة المحضّرة ثم يُثبَّت؛ يكون ترميماً مفرداً أو <b>حاصرةً صغرى</b> لجسر؛ من سبيكة ذهب أو خزف. <b>يُمنع</b> مع مؤشّر تسوّس عالٍ ونظافة سيّئة وحفر MOD وسند عاجي ضعيف يحتاج تحضيراً واسعاً. <b>Onlay:</b> يرمّم حدبةً أو أكثر والسطح الإطباقي المجاور أو كامله، يُرسى ميكانيكياً أو لاصقياً؛ للخلفية المتضرّرة بشدّة المحتاجة ترميمات MOD واسعة؛ ويصلح حاصرة جسر. <b>يُمنع</b> مع خطر تسوّس عالٍ ونظافة سيّئة وتاج سريري قصير وأسنان بازغة زيادةً والصرير.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec13">Lec 5 · Post Crown &amp; Occlusal Coverage</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Post crown as a bridge retainer</div>
+  <div class="prompt">How is a post crown used as a bridge retainer, and what does its retention depend on?</div>
+  <div class="answer">
+    A <b>post crown</b> replaces the coronal portion completely, retained by a post cemented into the root canal of an <b>endodontically-treated</b> tooth; it reinforces the remaining structure by distributing forces to the supporting tissue. Indicated for endodontically-treated abutments, short clinical crowns, and realignment of malposed abutments. In multi-rooted teeth the post goes in the <b>largest canal</b> (palatal in maxillary molar, distal in mandibular molar, buccal in maxillary premolar).<br>
+  <b>Retention depends on:</b> (1) canal taper (parallel-sided > tapered); (2) <b>post length</b> (2/3 root, = clinical crown, 4–5 mm from apex, 8 mm from CEJ); (3) <b>diameter</b> (⅓ root at CEJ, ≥2 mm less than mid-root diameter); (4) surface texture. The root must have adequate length/width, no sharp mid-third angulation, no resorption, and a <b>well-condensed apical-third root filling</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التاج الوتدي كحاصرة جسر:</b> <b>التاج الوتدي</b> يعوّض الجزء التاجي كلياً، مُرسىً بوتد مُسمنت في قناة سنّ <b>معالَج لبياً</b>؛ ويقوّي البنية المتبقية بتوزيع القوى للنسيج الساند. يُستطبّ للدعامات المعالَجة لبياً والتيجان السريرية القصيرة وإعادة اصطفاف الدعامات سيّئة الموضع. وفي متعدّدة الجذور يُوضع الوتد في <b>أكبر قناة</b> (حنكية العلوية، وحشية السفلية، شدقية ضاحك العلوي). <b>يعتمد الإرساء على:</b> (١) تدبيب القناة (المتوازية > المدبّبة)؛ (٢) <b>طول الوتد</b> (2/3 الجذر، = التاج السريري، 4–5مم من القمة، 8مم من CEJ)؛ (٣) <b>القطر</b> (⅓ الجذر عند CEJ، أقلّ بـ≥2مم من قطر منتصف الجذر)؛ (٤) الملمس. ويجب أن يكون للجذر طول/عرض كافٍ، بلا تزوٍّ حادّ بالثلث الأوسط، بلا امتصاص، وحشوة جذر <b>محكمة في الثلث القمي</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Occlusal coverage in bridges</div>
+  <div class="prompt">When is full occlusal coverage required in a bridge, and why?</div>
+  <div class="answer">
+    A <b>major retainer rigidly connected to the pontic (fixed-fixed design) needs full occlusal coverage</b>, whereas a <b>minor retainer with a movable connection does not</b>. <b>Full occlusal coverage is always indicated</b> because it gives the abutment <b>complete protection during mastication</b> with no possibility of cusp fracture (important for MOD inlays or endodontically-treated teeth), and it ensures the cement lute does not fail. The occlusal reduction must be sufficient to give the material enough thickness to be rigid.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>التغطية الإطباقية في الجسور:</b> <b>الحاصرة الكبرى المرتبطة صلباً بالبنطية (تصميم fixed-fixed) تحتاج تغطية إطباقية كاملة</b>، بينما <b>الحاصرة الصغرى ذات الربط المتحرّك لا تحتاجها</b>. و<b>التغطية الإطباقية الكاملة تُستطبّ دائماً</b> لأنها تعطي الدعامة <b>حمايةً كاملة أثناء المضغ</b> دون إمكان كسر الحدبة (مهمّ لحشوات MOD أو الأسنان المعالَجة لبياً)، وتضمن ألا يفشل التثبيت. ويجب أن يكون التخفيض الإطباقي كافياً ليعطي المادة سُمكاً يجعلها صلبة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec14">Lec 5 · Bridge Types &amp; Retainer Classification ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Types of bridges (by design)</div>
+  <div class="prompt">What are the main bridge (FPD) designs and how do their retainers differ?</div>
+  <div class="answer">
+    <ul>
+  <li><b>Fixed-fixed:</b> a <b>major retainer at both ends</b>, both rigidly connected to the pontic → needs full occlusal coverage and the strongest retainers; induces the greatest stress on the cementing media.</li>
+  <li><b>Fixed-mobile (fixed-movable):</b> a <b>major retainer at one end</b> and a <b>minor retainer</b> at the other joined by a movable (non-rigid) connector → the minor retainer needs little retention (conservative, e.g., a class III inlay on the canine distal for a premolar replacement).</li>
+  <li><b>Cantilever:</b> the pontic is supported at <b>one end only</b> (major retainer).</li>
+  <li><b>Spring bridge:</b> uses a long connector bar; the major retainer is remote from the pontic.</li>
+  </ul>
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>أنواع الجسور (حسب التصميم):</b> <b>fixed-fixed:</b> <b>حاصرة كبرى في الطرفين</b>، كلتاهما مرتبطة صلباً بالبنطية → يحتاج تغطية إطباقية كاملة وأقوى الحاصرات؛ ويُحدث أكبر إجهاد على وسط التثبيت. <b>fixed-mobile (fixed-movable):</b> <b>حاصرة كبرى في طرف</b> و<b>حاصرة صغرى</b> في الآخر يصلهما رابط متحرّك (غير صلب) → الصغرى تحتاج إرساءً قليلاً (متحفّظة، مثلاً inlay صنف III على وحشي الناب لتعويض ضاحك). <b>cantilever (كابولي):</b> البنطية مسنودة من <b>طرف واحد فقط</b> (حاصرة كبرى). <b>spring bridge (زنبركي):</b> يستخدم قضيب رابط طويل؛ والحاصرة الكبرى بعيدة عن البنطية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Retainer classification by preparation design</div>
+  <div class="prompt">How are retainers classified by preparation design, and what are the standard vs non-standard designs?</div>
+  <div class="answer">
+    <b>By preparation design:</b>
+  <ul><li><b>Extracoronal:</b> complete crown or partial crown.</li>
+  <li><b>Intracoronal:</b> inlay, onlay.</li>
+  <li><b>Intraradicular:</b> post & core.</li></ul>
+  <b>Specific designs:</b> <b>Standard</b> — full metal crown, ¾ crown, ⅞ crown, post crown, PFM, full zirconium, combination. <b>Non-standard</b> — implant, inlay, onlay, and the <b>resin-bonded "Maryland Bridge"</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تصنيف الحاصرات حسب تصميم التحضير:</b> <b>حسب تصميم التحضير:</b> <b>خارج تاجي (Extracoronal):</b> تاج كامل أو جزئي. <b>داخل تاجي (Intracoronal):</b> inlay، onlay. <b>داخل جذري (Intraradicular):</b> post & core. <b>التصاميم النوعية:</b> <b>قياسية</b> — معدني كامل، ¾، ⅞، وتدي، PFM، زركونيوم كامل، توليفة. <b>غير قياسية</b> — زرعة، inlay، onlay، والجسر الراتنجي <b>"Maryland Bridge"</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Requirements of an ideal retainer &amp; the five principles</div>
+  <div class="prompt">What are the requirements of an ideal retainer, and which five principles limit abutment preparation?</div>
+  <div class="answer">
+    <b>Ideal retainer requirements:</b> (1) maximum retention; (2) maximum esthetics; (3) preserve pulp vitality; (4) conservative preparation (least traumatic reduction); (5) biologically accepted by surrounding tissues; (6) withstand masticatory forces; (7) easily constructed.<br>
+  <b>Five preparation principles</b> (same as for single crowns): (1) <b>preservation of tooth structure</b>; (2) <b>retention and resistance form</b>; (3) <b>structural durability</b>; (4) <b>preservation of the periodontium</b>; (5) <b>marginal integrity</b>. Retention/resistance in turn depend on taper (5–6°), surface area, length/height, tooth diameter, texture, and accessory means.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>متطلبات الحاصرة المثالية والمبادئ الخمسة:</b> <b>متطلبات الحاصرة المثالية:</b> (١) أقصى إرساء؛ (٢) أقصى جمال؛ (٣) حفظ حيوية اللب؛ (٤) تحضير متحفّظ (أقلّ إزالة رضّية)؛ (٥) مقبولة حيوياً للأنسجة المحيطة؛ (٦) تتحمّل قوى المضغ؛ (٧) سهلة الصنع. <b>مبادئ التحضير الخمسة</b> (كالتيجان المفردة): (١) <b>حفظ بنية السن</b>؛ (٢) <b>شكل الإرساء والمقاومة</b>؛ (٣) <b>المتانة البنيوية</b>؛ (٤) <b>حفظ النسيج حول السني</b>؛ (٥) <b>سلامة الحافة</b>. والإرساء/المقاومة يعتمدان بدورهما على التحدّب (5–6°)، والمساحة السطحية، والطول/الارتفاع، وقطر السن، والملمس، والوسائل الإضافية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec15">Lec 7 · Digital Scanning &amp; Impression Disinfection</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Intraoral digital scanners — open vs closed systems</div>
+  <div class="prompt">What are open- and closed-system intraoral scanners, and how is scanning done?</div>
+  <div class="answer">
+    <b>Open-system:</b> creates <b>STL files</b> (Standard Tessellation/Triangle Language) that are <b>manufacturer-independent</b> — usable in any CAD software / CAM device from different companies.<br>
+  <b>Closed-system:</b> collects and manipulates data within <b>one manufacturer's integrated system</b> — no interchangeability with other companies, but a one-stop support solution.<br>
+  <b>Scanning procedure:</b> after preparation and tissue retraction to visualize the margins, the tooth is <b>dried</b>; some systems need an <b>oxide powder</b> to remove optical highlights and enhance scan quality; scanners capture the preparation geometry via <b>static images or a video stream</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>الماسحات الرقمية داخل الفموية — الأنظمة المفتوحة مقابل المغلقة:</b> <b>المفتوحة:</b> تُنشئ <b>ملفات STL</b> (Standard Tessellation/Triangle Language) <b>مستقلّة عن المصنّع</b> — تُستخدم في أي برنامج CAD / جهاز CAM من شركات مختلفة. <b>المغلقة:</b> تجمع وتعالج البيانات ضمن <b>نظام مُصنّع واحد مدمج</b> — بلا تبادلية مع الشركات الأخرى، لكن بحلّ دعم موحّد. <b>إجراء المسح:</b> بعد التحضير وإزاحة النسيج لرؤية الحواف، يُجفَّف السن؛ وبعض الأنظمة تحتاج <b>مسحوق أكسيد</b> لإزالة الوهج البصري وتحسين جودة المسح؛ وتلتقط الماسحات هندسة التحضير عبر <b>صور ساكنة أو تدفّق فيديو</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Impression disinfection — disinfectant vs antiseptic</div>
+  <div class="prompt">Why must impressions be disinfected, and what distinguishes a disinfectant from an antiseptic?</div>
+  <div class="answer">
+    Set impressions are a <b>reservoir for pathogens</b> (bacteria, fungi, viruses) picked up from the mouth; they can transmit microorganisms into the stone/plaster during pouring, posing a <b>cross-infection risk</b> to clinical, transport, and laboratory personnel — so an infection-prevention protocol must be followed before, during, and after impression taking.<br>
+  <b>Antiseptic vs disinfectant:</b> an <b>antiseptic</b> destroys/inhibits microorganisms on <b>living tissue (cells)</b>; a <b>disinfectant</b> is a <b>stronger chemical</b> for <b>non-living objects/surfaces</b>. Impression disinfection uses disinfectants (spray or immersion — e.g., 1% sodium hypochlorite, glutaraldehyde, iodophor).
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br><b>تطهير الطبعة — المطهّر مقابل المعقّم الحيوي:</b> الطبعات المتصلّبة <b>خزّان للممرضات</b> (جراثيم، فطريات، فيروسات) من الفم؛ وتنقل الأحياء الدقيقة للحجر/الجبس أثناء الصبّ، مشكّلةً <b>خطر عدوى متصالبة</b> للعاملين السريريين والنقل والمختبر — فيجب اتّباع بروتوكول وقاية قبل الطبعة وأثناءها وبعدها. <b>المعقّم الحيوي (Antiseptic) مقابل المطهّر (Disinfectant):</b> <b>المعقّم الحيوي</b> يقتل/يثبّط الأحياء على <b>النسيج الحيّ (الخلايا)</b>؛ و<b>المطهّر</b> <b>مادة أقوى</b> لـ<b>الأجسام/الأسطح غير الحيّة</b>. وتطهير الطبعة يستخدم مطهّرات (رشّ أو غمر — مثل هيبوكلوريت الصوديوم 1%، غلوتارألدهيد، iodophor).</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+<h2 class="sec" id="sec16">Lec 2–6 · Bridge Design Decision (Integrated) ⭐</h2>
+
+<div class="card" data-done="0">
+  <div class="topic">Integrating abutment evaluation, Ante’s law, and span biomechanics</div>
+  <div class="prompt">How do abutment evaluation, Ante’s law, and the law of beam together determine whether an FPD is feasible?</div>
+  <div class="answer">
+    Deciding whether to place a fixed partial denture is a single integrated judgement built from three linked assessments. First, <b>abutment evaluation</b>: each prospective abutment is judged on crown shape/length/health/axial relationship, on root configuration and length, on a <b>crown/root ratio</b> (2:3 optimum, 1:1 minimum), and on a healthy inflammation-free periodontium with no mobility. Second, <b>Ante’s law</b> quantifies support: the combined <b>root surface (pericemental) area of the abutments must equal or exceed that of the teeth being replaced</b> — one missing tooth is predictably replaceable, two approaches the limit, and three posterior teeth (or pontic root area exceeding abutment area) is high-risk. Third, the <b>law of beam</b> governs the mechanics of the span: flexure rises with the <b>cube of span length</b> (a 3-unit pontic bends 27× a single) and inversely with the <b>cube of connector/pontic occlusogingival height</b> (halving height → 8× flexure), so long spans on short teeth flex destructively. When any of these three is unfavourable — poor abutment, inadequate root-surface ratio, or an over-long/under-tall span — the clinician compensates with <b>double abutments</b>, bulkier connectors, or greater occlusogingival height, or abandons the FPD in favour of an <b>implant-supported prosthesis or RPD</b>.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br>قرار وضع الجسر حكم متكامل واحد يُبنى من ثلاثة تقييمات مترابطة. أولاً <b>تقييم الدعامة</b>: تُقيّم كل دعامة محتملة بشكل/طول/صحة التاج والعلاقة المحورية، وتشكيل الجذر وطوله، و<b>نسبة التاج/الجذر</b> (2:3 المثلى، 1:1 الحدّ الأدنى)، ونسيج حول سني سليم خالٍ من الالتهاب بلا حركة. ثانياً <b>قانون Ante</b> يُكمّم السند: مجموع <b>مساحة سطح جذور الدعامات يجب أن يساوي أو يفوق مساحة الأسنان المُستبدَلة</b> — فسنّ مفقود واحد يُستبدَل بموثوقية، واثنان يقتربان من الحدّ، وثلاثة خلفية (أو مساحة جذور البنطيات تفوق الدعامات) خطرة. ثالثاً <b>قانون العارضة</b> يحكم ميكانيكا المسافة: الانثناء يرتفع بـ<b>مكعّب طول المسافة</b> (بنطية 3 وحدات تنثني 27 ضعفاً للمفردة) وعكسياً مع <b>مكعّب الارتفاع الإطباقي-اللثوي للرابط/البنطية</b> (تنصيف الارتفاع ← 8 أضعاف الانثناء)، فالمسافات الطويلة على أسنان قصيرة تنثني بشكل مدمّر. وحين يكون أيّ من هذه الثلاثة غير مؤاتٍ — دعامة ضعيفة، أو نسبة مساحة جذر غير كافية، أو مسافة مفرطة الطول/قصيرة الارتفاع — يعوّض الطبيب بـ<b>دعامات مزدوجة</b> أو روابط أضخم أو ارتفاع إطباقي-لثوي أكبر، أو يتخلّى عن الجسر لصالح <b>تعويض مدعوم بالزرعات أو طقم متحرّك</b>.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Matching the pontic design to esthetic zone and cleansability</div>
+  <div class="prompt">How does the clinician match a pontic design to the balance between esthetics and cleansability?</div>
+  <div class="answer">
+    Pontic selection is a trade-off between <b>esthetics</b> (natural emergence from the ridge) and <b>biologic cleansability</b> (access to keep the tissue surface plaque-free), guided by whether the site is in the <b>appearance zone</b>. The <b>saddle (ridge lap)</b> gives the most natural look and largest tissue contact but is impossible to clean — it <b>should never be used</b>. In the <b>appearance zone</b>, the <b>modified ridge lap</b> is the workhorse: saddle-like buccally for esthetics, convex lingually for cleansability. Where maximum esthetics is demanded (maxillary incisors/premolars) and surgical ridge preparation is acceptable, the <b>ovate</b> pontic appears to emerge from a soft-tissue hollow; the <b>modified ovate</b> gives similar esthetics with easier cleaning and little or no surgery. In the <b>non-appearance zone</b> (mandibular posteriors), cleansability dominates: the <b>conical</b> pontic gives one-point contact on a narrow/knife-edge ridge, and the <b>hygienic (sanitary)</b> pontic — all metal, 3 mm clear of the tissue — is the most cleansable, with the <b>modified hygienic (archway)</b> adding connector bulk for strength. Ridge defects (Siebert I–III) may first require ridge preservation or augmentation so the chosen pontic can achieve a natural emergence profile.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br>اختيار البنطية موازنة بين <b>الجمال</b> (بروز طبيعي من الحرف) و<b>قابلية التنظيف الحيوية</b> (الوصول لإبقاء السطح النسيجي خالياً من اللويحة)، موجّهة بوقوع الموقع في <b>منطقة الظهور</b> من عدمه. فـ<b>السرجي (ridge lap)</b> يعطي أطبع مظهر وأكبر تماس لكنه يستحيل تنظيفه — <b>يجب ألا يُستخدم</b>. وفي <b>منطقة الظهور</b> الـ<b>modified ridge lap</b> هو الأساس: سرجي شدقياً للجمال، محدّب لسانياً للتنظيف. وحيث يُطلب أقصى جمال (قواطع/ضواحك علوية) ويُقبل التحضير الجراحي، يبدو الـ<b>ovate</b> خارجاً من انخفاض نسيجي؛ والـ<b>modified ovate</b> يعطي جمالاً مماثلاً بتنظيف أسهل وجراحة قليلة أو معدومة. وفي <b>منطقة عدم الظهور</b> (خلفية سفلية) تسود قابلية التنظيف: الـ<b>مخروطي</b> بتماس نقطة واحدة على حرف ضيّق/حادّ، والـ<b>صحّي (sanitary)</b> — معدني بالكامل بفارق 3مم عن النسيج — الأكثر قابلية للتنظيف، والـ<b>صحّي المعدّل (archway)</b> يضيف سُمك رابط للقوّة. وعيوب الحرف (Siebert I–III) قد تحتاج أولاً حفظاً أو تعزيزاً ليحقّق البنطية المختارة بروزاً طبيعياً.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Choosing the bridge retainer — balancing eight assessment factors</div>
+  <div class="prompt">How does the clinician weigh the eight assessment factors to select the most suitable bridge retainer for each abutment?</div>
+  <div class="answer">
+    Retainer choice is a balance of eight factors, resolved for each abutment individually. (1) <b>Alignment</b>: near-parallel abutments allow a conservative complete or partial crown; non-parallel abutments usually force a complete crown (less conservative) or a telescopic retainer/non-rigid connector to reconcile the paths of insertion. (2) <b>Esthetics</b>: an appearance-zone abutment needs PFM, all-ceramic, zirconium, or a ¾ crown, whereas a posterior out of view can take a full metal retainer. (3) <b>Condition of the abutment</b>: extensive caries, large restorations, or fracture involving the buccal wall mandate complete coverage, and a non-vital tooth may need a post-and-core. (4) <b>Conservation</b>: the preference ladder runs inlay/onlay > partial coverage > complete coverage, and full metal > PFM > all-ceramic — sound buccal enamel favours partial coverage. (5) <b>Cost</b>: metal < PFM < all-ceramic/zirconium. (6) <b>Size/position</b>: a partial crown needs a large, long tooth. (7) <b>Caries susceptibility</b>: poor hygiene pushes toward complete crowns. (8) <b>Retention required</b>: this rises with span length, bridge type (fixed-fixed needs more than fixed-mobile), bite strength, the tooth being replaced, and parafunctional habits — and the retainer’s retention must always be at least as great as for the same restoration made as a single unit. The final choice is the retainer that simultaneously satisfies the abutment’s biology, the bridge’s mechanics, and the patient’s esthetic and financial needs.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br>اختيار الحاصرة موازنة بين ثمانية عوامل، تُحلّ لكل دعامة على حدة. (١) <b>الاصطفاف</b>: الدعامات شبه المتوازية تتيح تاجاً كاملاً/جزئياً متحفّظاً؛ وغير المتوازية تفرض تاجاً كاملاً (أقلّ تحفّظاً) أو حاصرة تلسكوبية/رابطاً غير صلب للتوفيق بين مسارات الإدخال. (٢) <b>الجمال</b>: دعامة منطقة الظهور تحتاج PFM أو خزفياً أو زركونيوم أو ¾، والخلفية غير الظاهرة تقبل حاصرة معدنية كاملة. (٣) <b>حالة الدعامة</b>: التسوّس الواسع أو الترميمات الكبيرة أو الكسر الشامل للجدار الشدقي يوجب التغطية الكاملة، والسن غير الحيّ قد يحتاج post-and-core. (٤) <b>التحفّظ</b>: السلّم inlay/onlay > جزئي > كامل، ومعدني كامل > PFM > خزفي — والمينا الشدقية السليمة ترجّح التغطية الجزئية. (٥) <b>الكلفة</b>: معدن < PFM < خزفي/زركونيوم. (٦) <b>الحجم/الموضع</b>: التاج الجزئي يحتاج سنّاً كبيراً طويلاً. (٧) <b>قابلية التسوّس</b>: النظافة السيّئة تدفع نحو التيجان الكاملة. (٨) <b>الإرساء المطلوب</b>: يرتفع بطول المسافة ونوع الجسر (fixed-fixed أكثر من fixed-mobile) وقوّة العضّة والسن المُستبدَل والعادات الشاذّة — وإرساء الحاصرة يجب ألا يقلّ عن نفس الترميم كوحدة مفردة. والاختيار النهائي هو الحاصرة التي تُرضي آنياً بيولوجيا الدعامة وميكانيكا الجسر وحاجات المريض الجمالية والمالية.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Managing the difficult abutment — pier, tilted molar, and canine (integrated)</div>
+  <div class="prompt">How are the three classic difficult-abutment situations — pier abutment, tilted molar, and canine replacement — recognized and managed?</div>
+  <div class="answer">
+    Three abutment situations repeatedly complicate bridge design, and each has a signature problem and set of solutions. The <b>pier (intermediate) abutment</b> sits between two terminal abutments and acts as a <b>fulcrum</b>, concentrating stress on the terminals and loosening the weaker retainer with subsequent leakage and caries; it is managed with <b>extremely retentive retainers</b>, by <b>cantilevering</b> one segment when periodontal support allows, or most reliably with a <b>non-rigid connector</b> whose keyway is placed on the <b>distal</b> of the pier (so mesial drift seats rather than unseats the key). The <b>mesially tilted molar</b> (after early first-molar loss) destroys the parallel path of insertion; it is managed by <b>orthodontic uprighting</b> (ideal, ~3 months, extract third molars to help), a <b>proximal half-crown</b> (only with a caries-free distal and excellent hygiene), a <b>telescope crown and coping</b>, or a <b>non-rigid connector</b> — with the choice steered by which surfaces are already destroyed. The <b>canine replacement</b> is inherently complex because the canine lies outside the interabutment axis and its abutments are the weak lateral incisor and first premolar; the maxillary canine bridge is more stressed (forces directed outward against the weak inside of the curve), so no canine FPD should replace more than one additional tooth, and a canine-plus-two-teeth space is better served by <b>implants or an RPD</b>. In all three, the unifying principle is redirecting or breaking the destructive leverage before it fails the weakest link.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br>ثلاثة مواقف دعامة تُعقّد تصميم الجسر مراراً، ولكلّ مشكلة مميّزة وحلول. الـ<b>دعامة الوسطية (pier)</b> تقع بين دعامتين طرفيتين وتعمل كـ<b>نقطة ارتكاز</b>، فتركّز الإجهاد على الطرفيتين وتُرخي الحاصرة الأضعف مع تسرّب وتسوّس؛ وتُدار بـ<b>حاصرات عالية الإرساء</b>، أو <b>تصميم كابولي</b> حين يسمح الدعم حول السني، أو الأوثق <b>رابط غير صلب</b> يُوضع keywayه على <b>وحشي</b> الدعامة (فالميل الإنسي يُجلِس الـkey لا يُخرجه). والـ<b>رحى المائلة إنسياً</b> (بعد فقد الرحى الأولى مبكراً) تدمّر مسار الإدخال المتوازي؛ وتُدار بـ<b>تقويم (uprighting)</b> (الأمثل، ~3 أشهر، اقلع الأرحاء الثالثة للمساعدة)، أو <b>نصف تاج داني</b> (فقط بوحشي خالٍ من التسوّس ونظافة ممتازة)، أو <b>تاج تلسكوبي وكوبنة</b>، أو <b>رابط غير صلب</b> — والاختيار يتبع أيّ الأسطح مدمّرة أصلاً. والـ<b>تعويض الناب</b> معقّد أصلاً لأن الناب خارج محور ما بين الدعامتين ودعامتاه القاطع الجانبي الضعيف والضاحك الأول؛ وجسر الناب العلوي أكثر إجهاداً (قوى للخارج ضدّ داخل المنحنى الضعيف)، فلا ينبغي أن يعوّض جسر الناب أكثر من سنّ إضافي واحد، ومساحة الناب + سنّين تُخدم أفضل بـ<b>زرعات أو طقم متحرّك</b>. وفي الثلاثة المبدأ الجامع هو إعادة توجيه الرافعة المدمّرة أو كسرها قبل أن تُفشِل أضعف حلقة.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="card" data-done="0">
+  <div class="topic">Connector occlusal coverage &amp; design — the load-transfer link</div>
+  <div class="prompt">Why is the connector the critical load-transfer link in a bridge, and how do its coverage and design decisions follow from that role?</div>
+  <div class="answer">
+    The <b>connector</b> is where occlusal load is transferred between pontic and retainer, so its coverage and design follow directly from how force must be routed. A <b>major retainer rigidly connected to the pontic (fixed-fixed)</b> receives the full masticatory load and therefore needs <b>full occlusal coverage</b> — protecting the abutment cusps from fracture (vital for MOD-inlay or endodontically-treated teeth) and ensuring the cement lute does not fail; a <b>minor retainer with a non-rigid connection</b> carries less and does not need full coverage. The connector’s <b>size</b> must be large enough to resist distortion/fracture under this load yet not so large as to impinge on the gingival embrasure and cause periodontal problems; its <b>shape</b> should be curved faciolingually and highly polished for cleansability; and its <b>position</b> is lingual anteriorly and in the occlusal third (more lingual) posteriorly. When abutments cannot share a path of insertion or one abutment is weak, a <b>non-rigid connector</b> breaks the stress and transfers shear to bone rather than to the connectors — the same logic that dictates its use on a pier abutment. Thus every connector decision is a direct answer to the question of how load should reach the supporting bone without overstressing the weakest component.
+    <div class="hint"><span class="hl">شرح بالعربي:</span><br>الـ<b>رابط (connector)</b> هو موضع نقل الحمل الإطباقي بين البنطية والحاصرة، فتغطيته وتصميمه يتبعان مباشرةً كيف يُوجّه الحمل. فـ<b>الحاصرة الكبرى المرتبطة صلباً بالبنطية (fixed-fixed)</b> تتلقّى الحمل المضغي الكامل فتحتاج <b>تغطية إطباقية كاملة</b> — تحمي حدبات الدعامة من الكسر (مهمّ لحشوات MOD أو الأسنان المعالَجة لبياً) وتضمن ألا يفشل التثبيت؛ والـ<b>حاصرة الصغرى بربط غير صلب</b> تحمل أقلّ ولا تحتاج تغطية كاملة. و<b>حجم</b> الرابط يجب أن يكون كبيراً كفايةً لمقاومة التشوّه/الكسر تحت الحمل لكن لا كبيراً لدرجة التعدّي على الـembrasure اللثوي فيُحدث مشاكل حول سنية؛ و<b>شكله</b> منحنٍ شفوياً-لسانياً وعالي التلميع للتنظيف؛ و<b>موضعه</b> لساني أمامياً وفي الثلث الإطباقي (أكثر لسانية) خلفياً. وحين لا تتشارك الدعامات مسار إدخال أو تكون دعامة ضعيفة، يكسر الـ<b>رابط غير الصلب</b> الإجهاد وينقل القصّ للعظم لا للروابط — نفس منطق استخدامه على الدعامة الوسطية. فكلّ قرار في الرابط جواب مباشر لكيف يصل الحمل للعظم الساند دون إجهاد أضعف مكوّن.</div>
+  </div>
+  <div class="btns">
+    <button class="reveal" onclick="revealCard(this)">📖 اكشف الجواب · Reveal</button>
+    <button class="got" onclick="rate(this,1)" style="display:none">✅ حفظتها · Got it</button>
+    <button class="rev" onclick="rate(this,0)" style="display:none">🔁 راجعها · Review</button>
+  </div>
+</div>
+
+<div class="mcq-wrap">
+  <h2 class="mcq-title">📝 اختبار MCQ · اختبر نفسك (20 سؤالاً)</h2>
+  <div class="mcq-note">اختر إجابةً لكل سؤال. سيظهر الصحيح باللون الأخضر والخطأ بالأحمر مع شرح موجز. النتيجة تُحسب تلقائياً في الأعلى.</div>
+  <div class="mcq-scorebar">النتيجة · Score: <b id="mcqScore">0 / 20</b> &nbsp;·&nbsp; <button class="mcq-reset" onclick="mcqReset()">🔄 إعادة الاختبار</button></div>
+  
+<div class="mcq-q" id="mcq0">
+  <div class="mcq-stem"><span class="mcq-num">1</span> The optimum crown/root ratio for a tooth to be used as an abutment is:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="0" data-o="0" onclick="pick(0,0)"><b>A.</b> 1:1</button>
+<button class="mcq-opt" data-q="0" data-o="1" onclick="pick(0,1)"><b>B.</b> 2:3</button>
+<button class="mcq-opt" data-q="0" data-o="2" onclick="pick(0,2)"><b>C.</b> 1:2</button>
+<button class="mcq-opt" data-q="0" data-o="3" onclick="pick(0,3)"><b>D.</b> 3:2</button></div>
+  <div class="mcq-exp" id="exp0"></div>
+</div>
+
+<div class="mcq-q" id="mcq1">
+  <div class="mcq-stem"><span class="mcq-num">2</span> Ante&#x27;s Law states that the root surface area of the abutments must be:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="1" data-o="0" onclick="pick(1,0)"><b>A.</b> Half that of the teeth being replaced</button>
+<button class="mcq-opt" data-q="1" data-o="1" onclick="pick(1,1)"><b>B.</b> Equal to or greater than that of the teeth being replaced</button>
+<button class="mcq-opt" data-q="1" data-o="2" onclick="pick(1,2)"><b>C.</b> Less than that of the pontics</button>
+<button class="mcq-opt" data-q="1" data-o="3" onclick="pick(1,3)"><b>D.</b> Equal to the crown height</button></div>
+  <div class="mcq-exp" id="exp1"></div>
+</div>
+
+<div class="mcq-q" id="mcq2">
+  <div class="mcq-stem"><span class="mcq-num">3</span> According to the law of beam, a three-tooth pontic span bends how much compared with a single pontic?</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="2" data-o="0" onclick="pick(2,0)"><b>A.</b> 3 times</button>
+<button class="mcq-opt" data-q="2" data-o="1" onclick="pick(2,1)"><b>B.</b> 9 times</button>
+<button class="mcq-opt" data-q="2" data-o="2" onclick="pick(2,2)"><b>C.</b> 27 times</button>
+<button class="mcq-opt" data-q="2" data-o="3" onclick="pick(2,3)"><b>D.</b> 8 times</button></div>
+  <div class="mcq-exp" id="exp2"></div>
+</div>
+
+<div class="mcq-q" id="mcq3">
+  <div class="mcq-stem"><span class="mcq-num">4</span> Halving the occlusogingival height of a connector/pontic changes flexure by a factor of:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="3" data-o="0" onclick="pick(3,0)"><b>A.</b> 2</button>
+<button class="mcq-opt" data-q="3" data-o="1" onclick="pick(3,1)"><b>B.</b> 4</button>
+<button class="mcq-opt" data-q="3" data-o="2" onclick="pick(3,2)"><b>C.</b> 8</button>
+<button class="mcq-opt" data-q="3" data-o="3" onclick="pick(3,3)"><b>D.</b> 16</button></div>
+  <div class="mcq-exp" id="exp3"></div>
+</div>
+
+<div class="mcq-q" id="mcq4">
+  <div class="mcq-stem"><span class="mcq-num">5</span> A pier abutment is problematic because it:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="4" data-o="0" onclick="pick(4,0)"><b>A.</b> Improves esthetics</button>
+<button class="mcq-opt" data-q="4" data-o="1" onclick="pick(4,1)"><b>B.</b> Acts as a fulcrum causing failure of the weaker retainer</button>
+<button class="mcq-opt" data-q="4" data-o="2" onclick="pick(4,2)"><b>C.</b> Increases retention of all retainers</button>
+<button class="mcq-opt" data-q="4" data-o="3" onclick="pick(4,3)"><b>D.</b> Eliminates the need for pontics</button></div>
+  <div class="mcq-exp" id="exp4"></div>
+</div>
+
+<div class="mcq-q" id="mcq5">
+  <div class="mcq-stem"><span class="mcq-num">6</span> On a pier abutment, the keyway of a non-rigid connector should be placed on the:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="5" data-o="0" onclick="pick(5,0)"><b>A.</b> Mesial surface</button>
+<button class="mcq-opt" data-q="5" data-o="1" onclick="pick(5,1)"><b>B.</b> Distal surface</button>
+<button class="mcq-opt" data-q="5" data-o="2" onclick="pick(5,2)"><b>C.</b> Occlusal surface</button>
+<button class="mcq-opt" data-q="5" data-o="3" onclick="pick(5,3)"><b>D.</b> Buccal surface</button></div>
+  <div class="mcq-exp" id="exp5"></div>
+</div>
+
+<div class="mcq-q" id="mcq6">
+  <div class="mcq-stem"><span class="mcq-num">7</span> A mesially tilted second molar abutment that cannot be orthodontically uprighted is best managed with a:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="6" data-o="0" onclick="pick(6,0)"><b>A.</b> Saddle pontic</button>
+<button class="mcq-opt" data-q="6" data-o="1" onclick="pick(6,1)"><b>B.</b> Non-rigid connector or telescope crown</button>
+<button class="mcq-opt" data-q="6" data-o="2" onclick="pick(6,2)"><b>C.</b> Resin-bonded retainer</button>
+<button class="mcq-opt" data-q="6" data-o="3" onclick="pick(6,3)"><b>D.</b> Hygienic pontic</button></div>
+  <div class="mcq-exp" id="exp6"></div>
+</div>
+
+<div class="mcq-q" id="mcq7">
+  <div class="mcq-stem"><span class="mcq-num">8</span> A maxillary canine replacement FPD is subjected to more stress than a mandibular one because forces are directed:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="7" data-o="0" onclick="pick(7,0)"><b>A.</b> Inward against the strongest point</button>
+<button class="mcq-opt" data-q="7" data-o="1" onclick="pick(7,1)"><b>B.</b> Outward (labially) against the inside of the curve (weakest point)</button>
+<button class="mcq-opt" data-q="7" data-o="2" onclick="pick(7,2)"><b>C.</b> Vertically only</button>
+<button class="mcq-opt" data-q="7" data-o="3" onclick="pick(7,3)"><b>D.</b> Along the long axis</button></div>
+  <div class="mcq-exp" id="exp7"></div>
+</div>
+
+<div class="mcq-q" id="mcq8">
+  <div class="mcq-stem"><span class="mcq-num">9</span> The major retainer of a bridge must:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="8" data-o="0" onclick="pick(8,0)"><b>A.</b> Have no occlusal coverage</button>
+<button class="mcq-opt" data-q="8" data-o="1" onclick="pick(8,1)"><b>B.</b> Cover the whole occlusal surface with rigid connection to the pontic</button>
+<button class="mcq-opt" data-q="8" data-o="2" onclick="pick(8,2)"><b>C.</b> Always be an inlay</button>
+<button class="mcq-opt" data-q="8" data-o="3" onclick="pick(8,3)"><b>D.</b> Be made of acrylic</button></div>
+  <div class="mcq-exp" id="exp8"></div>
+</div>
+
+<div class="mcq-q" id="mcq9">
+  <div class="mcq-stem"><span class="mcq-num">10</span> The MOST conservative bridge retainer requiring minimal tooth preparation is the:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="9" data-o="0" onclick="pick(9,0)"><b>A.</b> Full metal crown</button>
+<button class="mcq-opt" data-q="9" data-o="1" onclick="pick(9,1)"><b>B.</b> PFM crown</button>
+<button class="mcq-opt" data-q="9" data-o="2" onclick="pick(9,2)"><b>C.</b> Resin-bonded retainer</button>
+<button class="mcq-opt" data-q="9" data-o="3" onclick="pick(9,3)"><b>D.</b> Post crown</button></div>
+  <div class="mcq-exp" id="exp9"></div>
+</div>
+
+<div class="mcq-q" id="mcq10">
+  <div class="mcq-stem"><span class="mcq-num">11</span> Which pontic design has the largest tissue contact but SHOULD NEVER be used due to poor cleansability?</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="10" data-o="0" onclick="pick(10,0)"><b>A.</b> Ridge lap (saddle)</button>
+<button class="mcq-opt" data-q="10" data-o="1" onclick="pick(10,1)"><b>B.</b> Conical</button>
+<button class="mcq-opt" data-q="10" data-o="2" onclick="pick(10,2)"><b>C.</b> Hygienic</button>
+<button class="mcq-opt" data-q="10" data-o="3" onclick="pick(10,3)"><b>D.</b> Ovate</button></div>
+  <div class="mcq-exp" id="exp10"></div>
+</div>
+
+<div class="mcq-q" id="mcq11">
+  <div class="mcq-stem"><span class="mcq-num">12</span> Which pontic is made entirely of metal with NO tissue contact, used in mandibular posterior non-appearance zones?</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="11" data-o="0" onclick="pick(11,0)"><b>A.</b> Ovate pontic</button>
+<button class="mcq-opt" data-q="11" data-o="1" onclick="pick(11,1)"><b>B.</b> Modified ridge lap</button>
+<button class="mcq-opt" data-q="11" data-o="2" onclick="pick(11,2)"><b>C.</b> Hygienic (sanitary) pontic</button>
+<button class="mcq-opt" data-q="11" data-o="3" onclick="pick(11,3)"><b>D.</b> Conical pontic</button></div>
+  <div class="mcq-exp" id="exp11"></div>
+</div>
+
+<div class="mcq-q" id="mcq12">
+  <div class="mcq-stem"><span class="mcq-num">13</span> The ovate pontic is characterized by:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="12" data-o="0" onclick="pick(12,0)"><b>A.</b> No tissue contact</button>
+<button class="mcq-opt" data-q="12" data-o="1" onclick="pick(12,1)"><b>B.</b> A convex surface residing in a soft-tissue depression, requiring surgical preparation</button>
+<button class="mcq-opt" data-q="12" data-o="2" onclick="pick(12,2)"><b>C.</b> A concave saddle over the ridge</button>
+<button class="mcq-opt" data-q="12" data-o="3" onclick="pick(12,3)"><b>D.</b> One-point contact only</button></div>
+  <div class="mcq-exp" id="exp12"></div>
+</div>
+
+<div class="mcq-q" id="mcq13">
+  <div class="mcq-stem"><span class="mcq-num">14</span> Which material is preferred for the tissue-contacting surface of a pontic?</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="13" data-o="0" onclick="pick(13,0)"><b>A.</b> Acrylic resin</button>
+<button class="mcq-opt" data-q="13" data-o="1" onclick="pick(13,1)"><b>B.</b> Glazed porcelain or highly polished gold</button>
+<button class="mcq-opt" data-q="13" data-o="2" onclick="pick(13,2)"><b>C.</b> Composite</button>
+<button class="mcq-opt" data-q="13" data-o="3" onclick="pick(13,3)"><b>D.</b> Zinc phosphate</button></div>
+  <div class="mcq-exp" id="exp13"></div>
+</div>
+
+<div class="mcq-q" id="mcq14">
+  <div class="mcq-stem"><span class="mcq-num">15</span> A rigid connector made by casting the multiunit bridge in one piece is:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="14" data-o="0" onclick="pick(14,0)"><b>A.</b> Weaker than soldered</button>
+<button class="mcq-opt" data-q="14" data-o="1" onclick="pick(14,1)"><b>B.</b> Stronger than soldered and carvable for best appearance</button>
+<button class="mcq-opt" data-q="14" data-o="2" onclick="pick(14,2)"><b>C.</b> Only for diastema cases</button>
+<button class="mcq-opt" data-q="14" data-o="3" onclick="pick(14,3)"><b>D.</b> A stress-breaker</button></div>
+  <div class="mcq-exp" id="exp14"></div>
+</div>
+
+<div class="mcq-q" id="mcq15">
+  <div class="mcq-stem"><span class="mcq-num">16</span> A loop connector is specifically used when:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="15" data-o="0" onclick="pick(15,0)"><b>A.</b> The abutments are tilted</button>
+<button class="mcq-opt" data-q="15" data-o="1" onclick="pick(15,1)"><b>B.</b> A diastema must be maintained</button>
+<button class="mcq-opt" data-q="15" data-o="2" onclick="pick(15,2)"><b>C.</b> The pontic is a molar</button>
+<button class="mcq-opt" data-q="15" data-o="3" onclick="pick(15,3)"><b>D.</b> There is a pier abutment</button></div>
+  <div class="mcq-exp" id="exp15"></div>
+</div>
+
+<div class="mcq-q" id="mcq16">
+  <div class="mcq-stem"><span class="mcq-num">17</span> In Siebert&#x27;s classification, a Class I ridge defect is:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="16" data-o="0" onclick="pick(16,0)"><b>A.</b> Loss of ridge height with normal width</button>
+<button class="mcq-opt" data-q="16" data-o="1" onclick="pick(16,1)"><b>B.</b> Faciolingual (width) loss with normal height</button>
+<button class="mcq-opt" data-q="16" data-o="2" onclick="pick(16,2)"><b>C.</b> Combined loss of height and width</button>
+<button class="mcq-opt" data-q="16" data-o="3" onclick="pick(16,3)"><b>D.</b> No defect</button></div>
+  <div class="mcq-exp" id="exp16"></div>
+</div>
+
+<div class="mcq-q" id="mcq17">
+  <div class="mcq-stem"><span class="mcq-num">18</span> Which impression material is the MOST dimensionally stable because it releases no by-product?</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="17" data-o="0" onclick="pick(17,0)"><b>A.</b> Polysulfide</button>
+<button class="mcq-opt" data-q="17" data-o="1" onclick="pick(17,1)"><b>B.</b> Condensation silicone</button>
+<button class="mcq-opt" data-q="17" data-o="2" onclick="pick(17,2)"><b>C.</b> Addition silicone (PVS)</button>
+<button class="mcq-opt" data-q="17" data-o="3" onclick="pick(17,3)"><b>D.</b> Reversible hydrocolloid</button></div>
+  <div class="mcq-exp" id="exp17"></div>
+</div>
+
+<div class="mcq-q" id="mcq18">
+  <div class="mcq-stem"><span class="mcq-num">19</span> The setting of addition silicone (PVS) can be inhibited by:</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="18" data-o="0" onclick="pick(18,0)"><b>A.</b> Fluoride varnish</button>
+<button class="mcq-opt" data-q="18" data-o="1" onclick="pick(18,1)"><b>B.</b> Sulfur from latex gloves</button>
+<button class="mcq-opt" data-q="18" data-o="2" onclick="pick(18,2)"><b>C.</b> Cold water</button>
+<button class="mcq-opt" data-q="18" data-o="3" onclick="pick(18,3)"><b>D.</b> Zinc oxide</button></div>
+  <div class="mcq-exp" id="exp18"></div>
+</div>
+
+<div class="mcq-q" id="mcq19">
+  <div class="mcq-stem"><span class="mcq-num">20</span> Which impression material is relatively hydrophilic and sets in under 5 minutes but becomes rigid, needing force to remove?</div>
+  <div class="mcq-opts"><button class="mcq-opt" data-q="19" data-o="0" onclick="pick(19,0)"><b>A.</b> Polysulfide</button>
+<button class="mcq-opt" data-q="19" data-o="1" onclick="pick(19,1)"><b>B.</b> Polyether</button>
+<button class="mcq-opt" data-q="19" data-o="2" onclick="pick(19,2)"><b>C.</b> Condensation silicone</button>
+<button class="mcq-opt" data-q="19" data-o="3" onclick="pick(19,3)"><b>D.</b> Addition silicone</button></div>
+  <div class="mcq-exp" id="exp19"></div>
+</div>
+  <div class="mcq-final" id="mcqFinal"></div>
+</div>
+
+<div class="foot">
+✅ غطّى هذا الملف مادة اليوم العاشر — التيجان والجسور (Crowns & Bridges) ص 139–210، وهو قلب موضوع الجسور (FPD): تقييم الدعامة (عوامل السن: الشكل والطول والصحة والعلاقة المحورية؛ عوامل الجذر والتشكيل ونسبة التاج/الجذر 2:3؛ العوامل حول السنية وقانون Ante)؛ ميكانيكا الجسر (طول المسافة span وقانون العارضة: سنّان 8 أضعاف وثلاثة 27 ضعفاً؛ ارتفاع الرابط؛ الدعامة المزدوجة؛ انحناء القوس وذراع الرافعة)؛ الدعامة الوسطية (pier) والرابط غير الصلب وموقع الـkeyway؛ الرحى المائلة وتعويض الناب؛ حاصرات الجسر (الكبرى/الصغرى، معايير الاختيار، التلسكوبية والراتنجية والـpinledge)؛ البنطية (الوظائف والمتطلبات الحيوية/الميكانيكية وكل التصاميم: ridge lap، المعدّل، المخروطي، ovate، المعدّل، الصحّي)؛ الحرف المتبقّي (تصنيف Siebert والحفظ والتعديل)؛ الروابط (الصلبة المصبوبة/الملحومة/الحلقية وغير الصلبة ومبادئ التصميم)؛ ومواد الطبعة المطّاطية الأربع (بولي سلفايد، بولي إيثر، سيليكون التكثيف والإضافة PVS). 🦷 هذا اليوم الثالث من مادة التيجان والجسور. وفي نهاية الملف اختبار MCQ لتقييم نفسك.<br><br>
+عدد الكلمات (إنجليزي + عربي): <b>10259</b> كلمة.
+</div>
+
+<script>
+const total=42;
+function upd(){
+  let done=document.querySelectorAll('.card[data-done="1"]').length;
+  document.getElementById('score').textContent=done+' / '+total;
+  document.getElementById('fill').style.width=(done/total*100)+'%';
+}
+function revealCard(b){
+  const card=b.closest('.card');
+  card.querySelector('.answer').classList.add('show');
+  b.style.display='none';
+  card.querySelector('.got').style.display='inline-block';
+  card.querySelector('.rev').style.display='inline-block';
+}
+function rate(b,good){
+  const card=b.closest('.card');
+  card.setAttribute('data-done',good?'1':'2');
+  upd();
+}
+function revealAll(){
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelector('.answer').classList.add('show');
+    c.querySelector('.reveal').style.display='none';
+    c.querySelector('.got').style.display='inline-block';
+    c.querySelector('.rev').style.display='inline-block';
+  });
+}
+function hideAll(){
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelector('.answer').classList.remove('show');
+    c.querySelector('.reveal').style.display='inline-block';
+    c.querySelector('.got').style.display='none';
+    c.querySelector('.rev').style.display='none';
+  });
+}
+function resetAll(){
+  document.querySelectorAll('.card').forEach(c=>c.setAttribute('data-done','0'));
+  hideAll();upd();
+}
+upd();
+
+// ---- MCQ logic ----
+const MCQ=[{"q": "The optimum crown/root ratio for a tooth to be used as an abutment is:", "opts": ["1:1", "2:3", "1:2", "3:2"], "correct": 1, "exp": "2:3 is optimum; 1:1 is the minimum acceptable. 2:3 المثلى؛ و1:1 الحدّ الأدنى المقبول."}, {"q": "Ante's Law states that the root surface area of the abutments must be:", "opts": ["Half that of the teeth being replaced", "Equal to or greater than that of the teeth being replaced", "Less than that of the pontics", "Equal to the crown height"], "correct": 1, "exp": "Abutment root surface area ≥ that of the replaced teeth. مساحة جذور الدعامات ≥ مساحة الأسنان المُستبدَلة."}, {"q": "According to the law of beam, a three-tooth pontic span bends how much compared with a single pontic?", "opts": ["3 times", "9 times", "27 times", "8 times"], "correct": 2, "exp": "Flexure ∝ cube of length: 3³ = 27 times. الانثناء ∝ مكعّب الطول: 3³ = 27 ضعفاً."}, {"q": "Halving the occlusogingival height of a connector/pontic changes flexure by a factor of:", "opts": ["2", "4", "8", "16"], "correct": 2, "exp": "Flexure ∝ cube: halving height → 2³ = 8× flexure. الانثناء ∝ المكعّب: تنصيف الارتفاع → 8 أضعاف."}, {"q": "A pier abutment is problematic because it:", "opts": ["Improves esthetics", "Acts as a fulcrum causing failure of the weaker retainer", "Increases retention of all retainers", "Eliminates the need for pontics"], "correct": 1, "exp": "The middle (pier) abutment acts as a fulcrum stressing terminal abutments. الدعامة الوسطية تعمل كنقطة ارتكاز تُجهد الدعامات الطرفية."}, {"q": "On a pier abutment, the keyway of a non-rigid connector should be placed on the:", "opts": ["Mesial surface", "Distal surface", "Occlusal surface", "Buccal surface"], "correct": 1, "exp": "Distal placement lets mesial drift seat the key more solidly. الوضع الوحشي يجعل الميل الإنسي يُجلِس الـkey أرسخ."}, {"q": "A mesially tilted second molar abutment that cannot be orthodontically uprighted is best managed with a:", "opts": ["Saddle pontic", "Non-rigid connector or telescope crown", "Resin-bonded retainer", "Hygienic pontic"], "correct": 1, "exp": "Non-rigid connector/telescope crown handles the path-of-insertion discrepancy. الرابط غير الصلب/التاج التلسكوبي يعالج تفاوت مسار الإدخال."}, {"q": "A maxillary canine replacement FPD is subjected to more stress than a mandibular one because forces are directed:", "opts": ["Inward against the strongest point", "Outward (labially) against the inside of the curve (weakest point)", "Vertically only", "Along the long axis"], "correct": 1, "exp": "Maxillary forces go outward against the curve's weakest inner point. قوى العلوي للخارج ضدّ أضعف نقطة داخلية للمنحنى."}, {"q": "The major retainer of a bridge must:", "opts": ["Have no occlusal coverage", "Cover the whole occlusal surface with rigid connection to the pontic", "Always be an inlay", "Be made of acrylic"], "correct": 1, "exp": "Major retainer = full occlusal coverage + rigid connection. الحاصرة الكبرى = تغطية إطباقية كاملة + ربط صلب."}, {"q": "The MOST conservative bridge retainer requiring minimal tooth preparation is the:", "opts": ["Full metal crown", "PFM crown", "Resin-bonded retainer", "Post crown"], "correct": 2, "exp": "Resin-bonded retainers need minimal, acid-etched preparation. الحاصرات الراتنجية تحتاج تحضيراً أدنى بحفر حمضي."}, {"q": "Which pontic design has the largest tissue contact but SHOULD NEVER be used due to poor cleansability?", "opts": ["Ridge lap (saddle)", "Conical", "Hygienic", "Ovate"], "correct": 0, "exp": "The saddle/ridge lap overlaps the ridge and traps plaque → never used. السرجي يتراكب على الحرف ويحتبس اللويحة → لا يُستخدم."}, {"q": "Which pontic is made entirely of metal with NO tissue contact, used in mandibular posterior non-appearance zones?", "opts": ["Ovate pontic", "Modified ridge lap", "Hygienic (sanitary) pontic", "Conical pontic"], "correct": 2, "exp": "The hygienic/sanitary pontic has a 3 mm space with no tissue contact. الصحّي بلا تماس نسيجي بفراغ 3مم."}, {"q": "The ovate pontic is characterized by:", "opts": ["No tissue contact", "A convex surface residing in a soft-tissue depression, requiring surgical preparation", "A concave saddle over the ridge", "One-point contact only"], "correct": 1, "exp": "Ovate sits in a soft-tissue hollow → excellent esthetics, needs surgery. Ovate يستقرّ في انخفاض نسيجي → جمال ممتاز يحتاج جراحة."}, {"q": "Which material is preferred for the tissue-contacting surface of a pontic?", "opts": ["Acrylic resin", "Glazed porcelain or highly polished gold", "Composite", "Zinc phosphate"], "correct": 1, "exp": "Glazed porcelain/polished gold; resins must not contact soft tissue (porous). البورسلين المزجّج/الذهب المصقول؛ والراتنج يُمنع قرب النسيج."}, {"q": "A rigid connector made by casting the multiunit bridge in one piece is:", "opts": ["Weaker than soldered", "Stronger than soldered and carvable for best appearance", "Only for diastema cases", "A stress-breaker"], "correct": 1, "exp": "Cast connectors are stronger than soldered and carvable. الروابط المصبوبة أقوى من الملحومة وقابلة للنحت."}, {"q": "A loop connector is specifically used when:", "opts": ["The abutments are tilted", "A diastema must be maintained", "The pontic is a molar", "There is a pier abutment"], "correct": 1, "exp": "Loop connectors maintain an existing diastema. الرابط الحلقي يحافظ على فرجة موجودة."}, {"q": "In Siebert's classification, a Class I ridge defect is:", "opts": ["Loss of ridge height with normal width", "Faciolingual (width) loss with normal height", "Combined loss of height and width", "No defect"], "correct": 1, "exp": "Class I = faciolingual width loss, normal height. الصنف I = فقد عرض شفوي-لساني بارتفاع طبيعي."}, {"q": "Which impression material is the MOST dimensionally stable because it releases no by-product?", "opts": ["Polysulfide", "Condensation silicone", "Addition silicone (PVS)", "Reversible hydrocolloid"], "correct": 2, "exp": "Addition silicone (PVS) has no reaction by-product → most stable. سيليكون الإضافة بلا ناتج ثانوي → الأثبت."}, {"q": "The setting of addition silicone (PVS) can be inhibited by:", "opts": ["Fluoride varnish", "Sulfur from latex gloves", "Cold water", "Zinc oxide"], "correct": 1, "exp": "Latex-glove sulfur inhibits PVS setting → avoid latex contact before seating. كبريت اللاتكس يثبّط تصلّب PVS."}, {"q": "Which impression material is relatively hydrophilic and sets in under 5 minutes but becomes rigid, needing force to remove?", "opts": ["Polysulfide", "Polyether", "Condensation silicone", "Addition silicone"], "correct": 1, "exp": "Polyether is hydrophilic, fast-setting, but rigid when set. البولي إيثر محبّ للماء سريع التصلّب لكنه صلب."}];
+const mcqTotal=20;
+let mcqAnswered={};
+function pick(qi,oi){
+  if(mcqAnswered[qi]!==undefined) return;
+  mcqAnswered[qi]=oi;
+  const correct=MCQ[qi].correct;
+  const opts=document.querySelectorAll('#mcq'+qi+' .mcq-opt');
+  opts.forEach(b=>{
+    b.classList.add('locked');
+    const o=parseInt(b.getAttribute('data-o'));
+    if(o===correct) b.classList.add('correct');
+    if(o===oi && oi!==correct) b.classList.add('wrong');
+  });
+  const exp=document.getElementById('exp'+qi);
+  const ok=(oi===correct);
+  exp.innerHTML=(ok?'✅ <b>إجابة صحيحة</b> — ':'❌ <b>إجابة خاطئة</b> — الصحيح: <b>'+String.fromCharCode(65+correct)+'</b> — ')+MCQ[qi].exp;
+  exp.classList.add('show');
+  mcqScore();
+}
+function mcqScore(){
+  let s=0;
+  for(const k in mcqAnswered){ if(mcqAnswered[k]===MCQ[k].correct) s++; }
+  document.getElementById('mcqScore').textContent=s+' / '+mcqTotal;
+  if(Object.keys(mcqAnswered).length===mcqTotal){
+    const f=document.getElementById('mcqFinal');
+    const pct=Math.round(s/mcqTotal*100);
+    let msg,bg;
+    if(pct>=80){msg='🎉 ممتاز! '+s+'/'+mcqTotal+' ('+pct+'%) — إتقان قوي.';bg='#c9f2cd';}
+    else if(pct>=60){msg='👍 جيّد: '+s+'/'+mcqTotal+' ('+pct+'%) — راجع البطاقات المعلّمة بـ⭐.';bg='#fff3c4';}
+    else{msg='📚 '+s+'/'+mcqTotal+' ('+pct+'%) — أعد قراءة الملف ثم أعد الاختبار.';bg='#f8cfcf';}
+    f.textContent=msg;f.style.background=bg;f.classList.add('show');
+  }
+}
+function mcqReset(){
+  mcqAnswered={};
+  document.querySelectorAll('.mcq-opt').forEach(b=>b.classList.remove('correct','wrong','locked'));
+  document.querySelectorAll('.mcq-exp').forEach(e=>{e.classList.remove('show');e.innerHTML='';});
+  document.getElementById('mcqScore').textContent='0 / '+mcqTotal;
+  document.getElementById('mcqFinal').classList.remove('show');
+  document.getElementById('mcq0').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
