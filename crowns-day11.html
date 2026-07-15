@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crowns & Bridges — Day 11 — Complete</title>
+<style>
+:root{color-scheme:light;}
+*{box-sizing:border-box;}
+html,body{background:#fff !important;color:#000 !important;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Tahoma,Arial,sans-serif;line-height:1.7;max-width:900px;margin:0 auto;padding:0 16px 60px;background:#fff;color:#000;}
+h1{font-size:23px;text-align:center;margin:18px 0 6px;}
+.subtitle{color:#444;font-size:14px;margin:0 0 14px;text-align:center;}
+.topbar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:2px solid #000;padding:8px 0;margin-bottom:10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;font-size:13px;}
+.topbar b{font-size:15px;}
+.ctrlbtn{background:#000;color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:12.5px;cursor:pointer;font-family:inherit;}
+.progress{background:#eee;border-radius:8px;height:10px;flex:1;min-width:120px;overflow:hidden;border:1px solid #999;}
+.progress>span{display:block;height:100%;background:#1a8f2a;width:0%;}
+.toc{background:#f7f7f7;border:1px solid #ccc;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:13.5px;}
+.toc a{display:block;color:#0645ad;text-decoration:none;padding:2px 0;}
+.sec{background:#000;color:#fff;padding:9px 13px;border-radius:8px;font-size:18px;margin:26px 0 12px;}
+.card{border:1.5px solid #999;border-radius:12px;padding:15px 17px;margin:14px 0;background:#fff;}
+.topic{font-weight:700;font-size:16px;margin-bottom:6px;}
+.prompt{font-size:15.5px;margin-bottom:10px;}
+.reveal{background:#000;color:#fff;border:none;border-radius:7px;padding:8px 14px;font-size:14px;cursor:pointer;font-family:inherit;}
+.answer{display:none;margin-top:12px;}
+.answer.show{display:block;}
+.en{font-size:14.5px;line-height:1.65;margin-bottom:10px;}
+.k{background:#ffd400;color:#b00;font-weight:700;padding:1px 4px;border-radius:3px;}
+.hint{background:#fff8d6;border-inline-start:4px solid #000;border-radius:6px;padding:10px 13px;font-size:14px;line-height:1.75;direction:rtl;text-align:right;}
+.hint b{color:#b00;}
+.en b{color:#000;}
+.btns{margin-top:10px;display:flex;gap:8px;}
+.btns button{border:1.5px solid #000;background:#fff;border-radius:6px;padding:5px 12px;font-size:13px;cursor:pointer;font-family:inherit;}
+.btns .rev{border-color:#b00;color:#b00;}
+.btns .gotit{border-color:#1a8f2a;color:#1a8f2a;}
+.foot{margin-top:30px;border-top:2px solid #000;padding-top:14px;font-size:14px;color:#333;}
+.note{background:#ffd400;color:#000;border:1px solid #000;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:15px;}
+.mcq-wrap{margin-top:40px;border-top:3px double #000;padding-top:20px;}
+.mcq-title{background:#000;color:#fff;padding:10px 14px;border-radius:8px;font-size:19px;}
+.mcq-note{font-size:13px;color:#444;margin:10px 0 6px;}
+.mcq-scorebar{position:sticky;top:56px;z-index:40;background:#fff8d6;border:2px solid #000;border-radius:8px;padding:8px 12px;font-size:15px;margin:10px 0 18px;}
+.mcq-reset{background:#000;color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:13px;cursor:pointer;font-family:inherit;}
+.mcq-q{border:1.5px solid #999;border-radius:10px;padding:14px 16px;margin:14px 0;background:#fff;}
+.mcq-stem{font-weight:600;font-size:15.5px;margin-bottom:10px;line-height:1.55;}
+.mcq-num{display:inline-block;min-width:26px;height:26px;line-height:26px;text-align:center;background:#000;color:#fff;border-radius:50%;font-size:13px;margin-inline-end:6px;}
+.mcq-opts{display:flex;flex-direction:column;gap:7px;}
+.mcq-opt{text-align:start;background:#f4f4f4;border:1.5px solid #ccc;border-radius:7px;padding:9px 12px;font-size:14.5px;cursor:pointer;transition:.12s;color:#000;font-family:inherit;}
+.mcq-opt:hover{background:#eaeaea;}
+.mcq-opt.correct{background:#c9f2cd;border-color:#1a8f2a;font-weight:600;}
+.mcq-opt.wrong{background:#f8cfcf;border-color:#c02020;}
+.mcq-opt.locked{cursor:default;opacity:.92;}
+.mcq-exp{display:none;margin-top:10px;padding:10px 12px;background:#fff8d6;border-inline-start:4px solid #000;border-radius:6px;font-size:13.5px;line-height:1.6;direction:rtl;text-align:right;}
+.mcq-exp.show{display:block;}
+.mcq-exp b{color:#b00;}
+.mcq-final{margin-top:18px;padding:14px;border-radius:10px;font-size:17px;font-weight:700;text-align:center;display:none;}
+.mcq-final.show{display:block;}
+</style>
+</head>
+<body>
+<h1>Crowns &amp; Bridges — Day 11 — Complete 🦷</h1>
+<p class="subtitle">التيجان والجسور (النهاية) ص ١٤٦–٢٧٥ · علم اللون واختيار اللون (Shade) → أنظمة الخزف الكامل → فشل التيجان والجسور (حيوي/ميكانيكي/جمالي/صيانة) · 42 بطاقة + اختبار MCQ في النهاية · English + شرح عربي وافٍ</p>
+
+<div class="topbar">
+<b>التقدّم:</b>
+<span id="scoreTxt">0 / 42</span>
+<div class="progress"><span id="progBar"></span></div>
+<button class="ctrlbtn" onclick="revealAll()">اكشف الكل</button>
+<button class="ctrlbtn" onclick="hideAll()">أخفِ الكل</button>
+<button class="ctrlbtn" onclick="resetAll()">إعادة</button>
+</div>
+
+<div class="note">📌 طريقة الاستعمال: اقرأ السؤال، استرجع الإجابة بصوتك، ثم اكشفها وقيّم نفسك. البطاقات المعلّمة بـ⭐ عالية العائد. وفي نهاية الملف اختبار MCQ.</div>
+
+<div class="toc"><b>المحتويات:</b>
+<a href="#sec0">Lec 9 · Color Science — Dimensions &amp; Light ⭐</a>
+<a href="#sec1">Lec 9 · Shade Selection Methods &amp; Principles ⭐</a>
+<a href="#sec2">Lec 12 · All-Ceramic Systems ⭐</a>
+<a href="#sec3">Lec 13 · Failure in Crown &amp; Bridge — Overview ⭐</a>
+<a href="#sec4">Lec 13 · Mechanical &amp; Design Failures ⭐</a>
+<a href="#sec5">Lec 13 · Esthetic, Discomfort &amp; Maintenance Failures</a>
+<a href="#sec6">Lec 10 · Provisional Restoration Materials</a>
+<a href="#sec7">Lec 9 · Applying Color Theory (Integrated) ⭐</a>
+<a href="#sec8">Lec 11 · Cementation — Bonding Mechanisms ⭐</a>
+<a href="#sec9">Lec 10 · Provisional Cementation &amp; Limitations</a>
+<a href="#sec10">Crowns &amp; Bridges · Subject Synthesis (Integrated) ⭐</a>
+<a href="#sec11">Lec 14 · Dental Ceramic &amp; Strengthening ⭐</a>
+<a href="#sec12">Lec 14 · Ceramic Classification &amp; Composition</a>
+</div>
+
+<h2 class="sec" id="sec0">Lec 9 · Color Science — Dimensions &amp; Light ⭐</h2>
+<div class="card" id="c0_0">
+<div class="topic">Three dimensions of color &amp; why value is most important</div>
+<div class="prompt">What are the three dimensions of color, and why is value considered the most important?</div>
+<button class="reveal" onclick="revealCard('c0_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_0">
+<div class="en">The three dimensions of color are <b>hue</b> (the color itself — e.g., red, yellow), <b>chroma</b> (the intensity/saturation of the hue), and <b>value</b> (lightness/darkness — brightness).<br>
+  <b>Value is the most important</b> because: (1) lightness/darkness differences are <b>readily detected even by untrained observers</b>; (2) value differences are <b>easily detected at any viewing distance</b> (close-up and far), whereas hue and chroma become harder to quantify as distance increases.<br>
+  <b>Natural teeth</b> (Clark, 1931 — 6000 teeth): hue <b>6 YR to 9.3 Y</b>, value <b>4 to 8</b>, chroma <b>0 to 7</b>.</div>
+<div class="hint"><b>أبعاد اللون الثلاثة ولماذا القيمة الأهمّ:</b> أبعاد اللون الثلاثة: <b>الصبغة (Hue)</b> (اللون نفسه — أحمر، أصفر)، <b>التشبّع (Chroma)</b> (شدّة/كثافة الصبغة)، <b>القيمة (Value)</b> (الفتحة/الغمقة — السطوع). <b>القيمة الأهمّ</b> لأن: (١) فروق الفتحة/الغمقة <b>تُكتشف بسهولة حتى من غير المدرّبين</b>؛ (٢) فروق القيمة <b>تُكتشف على أي مسافة رؤية</b> (قريبة وبعيدة)، بينما تصعب الصبغة والتشبّع بازدياد المسافة. <b>الأسنان الطبيعية</b> (Clark 1931 — 6000 سنّ): الصبغة <b>6 YR إلى 9.3 Y</b>، القيمة <b>4 إلى 8</b>، التشبّع <b>0 إلى 7</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c0_1">
+<div class="topic">Nature of light — the three light sources</div>
+<div class="prompt">How do the three light sources affect shade matching, and which is best?</div>
+<button class="reveal" onclick="revealCard('c0_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_1">
+<div class="en"><b>Incandescent light:</b> emits a high concentration of <b>yellow</b> waves → not suitable for shade matching.<br>
+  <b>Fluorescent light:</b> emits a high concentration of <b>blue</b> waves → not suitable either. (The dental <b>chair light is not recommended</b> — it's overpowering and interferes with fine color discrimination.)<br>
+  <b>Natural daylight:</b> the <b>best</b> — closest to emitting the full spectrum of white light, used as the standard. Morning/evening light is rich in yellow/orange (shorter blue/green wavelengths scatter before penetrating the atmosphere); the <b>hours around noon (mid-day)</b> show the full spectrum → the <b>ideal time for color matching</b>.</div>
+<div class="hint"><b>طبيعة الضوء — مصادر الضوء الثلاثة:</b> <b>الضوء المتوهّج (Incandescent):</b> يبعث تركيزاً عالياً من موجات <b>صفراء</b> → غير مناسب لمطابقة اللون. <b>الفلوري (Fluorescent):</b> يبعث تركيزاً عالياً من موجات <b>زرقاء</b> → غير مناسب أيضاً. (و<b>ضوء الكرسي غير موصى</b> — طاغٍ ويتداخل مع التمييز اللوني الدقيق.) <b>ضوء النهار الطبيعي:</b> <b>الأفضل</b> — الأقرب لبثّ طيف الضوء الأبيض الكامل، ويُستخدم معياراً. وضوء الصباح/المساء غنيّ بالأصفر/البرتقالي (الأطوال الزرقاء/الخضراء الأقصر تتشتّت قبل اختراق الغلاف الجوي)؛ و<b>ساعات الظهيرة (منتصف النهار)</b> تُظهر الطيف الكامل → <b>الوقت المثالي لمطابقة اللون</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c0_2">
+<div class="topic">Physical properties &amp; the opal effect (opalescence)</div>
+<div class="prompt">How do an object's physical properties determine its color, and what is the opal effect?</div>
+<button class="reveal" onclick="revealCard('c0_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_2">
+<div class="en">When light strikes an object, some wavelengths are <b>absorbed</b>, some <b>transmitted</b> through it, and the rest <b>reflected</b> — the color we see is the <b>reflected</b> light. A tooth must be <b>free of plaque/stains</b> to perceive its true color. As opacity increases, value/brightness increases; the <b>higher the value, the lower the transparency</b> (a more transparent tooth appears greyer).<br>
+  <b>Opal effect (opalescence):</b> fine <b>hydroxyapatite crystals</b> in enamel reflect <b>short wavelengths</b> and let <b>long wavelengths</b> pass through. So highly translucent areas have a <b>lower value</b> (light passes away from the viewer). Teeth show <b>bluish areas in reflected light</b> and <b>orange-red areas in transmitted light</b>; translucent areas look grey, the opaque incisal edge looks white.</div>
+<div class="hint"><b>الخصائص الفيزيائية وتأثير الأوبال (Opalescence):</b> حين يصطدم الضوء بجسم، تُمتصّ بعض الأطوال، ويُنفَذ بعضها خلاله، ويُعكَس الباقي — واللون الذي نراه هو الضوء <b>المنعكس</b>. ويجب أن يكون السن <b>خالياً من اللويحة/التصبّغ</b> لإدراك لونه الحقيقي. وبازدياد العتامة تزيد القيمة/السطوع؛ و<b>كلّما زادت القيمة قلّت الشفافية</b> (السن الأشفّ يبدو أكثر رماديةً). <b>تأثير الأوبال:</b> بلّورات <b>الهيدروكسي أباتيت</b> الدقيقة في المينا تعكس <b>الأطوال القصيرة</b> وتمرّر <b>الطويلة</b>. فالمناطق العالية الشفافية لها <b>قيمة أدنى</b> (الضوء يمرّ بعيداً عن الناظر). وتُظهر الأسنان <b>مناطق زرقاء بالضوء المنعكس</b> و<b>مناطق برتقالية-حمراء بالضوء النافذ</b>؛ والمناطق الشفّافة تبدو رمادية، والحافة القاطعة المعتمة بيضاء.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c0_3">
+<div class="topic">Metamerism &amp; the subjective observer</div>
+<div class="prompt">What is metamerism, and how does the observer's eye affect shade selection?</div>
+<button class="reveal" onclick="revealCard('c0_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_3">
+<div class="en"><b>Metamerism:</b> the phenomenon where two objects <b>appear to match under one light source but not under a different one</b>. Clinically, a tooth and a restorative material of differing shades may appear matched under one light but show discrepancy in daylight → shade selection must be evaluated under <b>multiple light sources</b>.<br>
+  <b>Subjective observer:</b> in the retina, <b>rods detect only value (lightness/darkness)</b>, while <b>cones perceive hue and chroma</b>. <b>Color-deficiency</b> affects ~<b>8% of males and 0.5% of females</b>: achromatism (no hue sensitivity), dichromatism (two hues), anomalous trichromatism (all three, with a cone-pigment abnormality). Dentists should have color vision evaluated and seek assistance if deficient.</div>
+<div class="hint"><b>تبدّل اللون (Metamerism) والناظر الذاتي:</b> <b>Metamerism:</b> ظاهرة يبدو فيها جسمان <b>متطابقين تحت مصدر ضوء لكن غير متطابقين تحت آخر</b>. وسريرياً قد يبدو سنّ ومادة ترميم بلونين مختلفين متطابقين تحت ضوء لكن يظهر التباين في ضوء النهار → فيجب تقييم اختيار اللون تحت <b>مصادر ضوء متعدّدة</b>. <b>الناظر الذاتي:</b> في الشبكية، <b>العصيّ (rods) تكشف القيمة فقط (الفتحة/الغمقة)</b>، بينما <b>المخاريط (cones) تدرك الصبغة والتشبّع</b>. و<b>عوز اللون</b> يصيب ~<b>8% من الذكور و0.5% من الإناث</b>: achromatism (لا حسّ صبغة)، dichromatism (صبغتان)، anomalous trichromatism (الثلاث مع خلل صبغة مخروطية). ويجب أن يُقيّم الطبيب رؤيته اللونية ويستعين إن كان لديه عوز.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec1">Lec 9 · Shade Selection Methods &amp; Principles ⭐</h2>
+<div class="card" id="c1_0">
+<div class="topic">Shade selection methods &amp; principles</div>
+<div class="prompt">What are the main shade selection methods, and the key clinical principles?</div>
+<button class="reveal" onclick="revealCard('c1_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c1_0">
+<div class="en"><b>Methods:</b> (1) <b>visual</b> shade matching (comparison with a shade guide); (2) <b>instrumental</b> color analysis (digital shade-scanning devices); (3) <b>photography</b>.<br>
+  <b>Principles:</b> (1) teeth must be <b>clean and moist</b>; (2) <b>remove bright colors</b> from view (makeup, tinted glasses, bright gloves; neutral walls); (3) view the patient at <b>eye level</b>; (4) evaluate under <b>multiple light sources</b>; (5) match at the <b>beginning of the appointment</b>; (6) compare <b>quickly (avoid eye fatigue)</b>; (7) select from <b>3–6 feet</b> (representative viewing distance); (8) use <b>color contrastors</b>; (9) hold the shade tab <b>edge-to-edge / adjacent</b> to the tooth (above a mandibular or below a maxillary tooth) — not over it (false background).</div>
+<div class="hint"><b>طرق اختيار اللون ومبادئه:</b> <b>الطرق:</b> (١) المطابقة <b>البصرية</b> (مقارنة بدليل ألوان)؛ (٢) التحليل <b>الآلي</b> (أجهزة مسح لون رقمية)؛ (٣) <b>التصوير</b>. <b>المبادئ:</b> (١) أسنان <b>نظيفة ورطبة</b>؛ (٢) <b>أزل الألوان الزاهية</b> (مكياج، نظّارات ملوّنة، قفازات زاهية؛ جدران محايدة)؛ (٣) انظر للمريض <b>بمستوى العين</b>؛ (٤) قيّم تحت <b>مصادر ضوء متعدّدة</b>؛ (٥) طابِق في <b>بداية الموعد</b>؛ (٦) قارِن <b>بسرعة (تجنّب إجهاد العين)</b>؛ (٧) اختر من <b>3–6 أقدام</b> (مسافة رؤية ممثّلة)؛ (٨) استخدم <b>مباينات لونية</b>؛ (٩) أمسك عيّنة اللون <b>محاذيةً</b> للسن (فوق سنّ سفلي أو تحت علوي) — لا فوقه (خلفية كاذبة).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c1_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c1_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c1_1">
+<div class="topic">Vita Classic shade guide</div>
+<div class="prompt">How is the Vita Classic shade guide organized and used?</div>
+<button class="reveal" onclick="revealCard('c1_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c1_1">
+<div class="en">The <b>Vita Classic (Vitapan Classical)</b> is very popular — tabs of similar hue are clustered into <b>letter groups</b>: <b>A (red-yellow/reddish-brown), B (yellow/reddish-yellow), C (grey), D (red-yellow-grey/reddish-grey)</b>.<br>
+  <b>Manufacturer sequence:</b> (1) <b>hue selection</b> (pick the letter group); (2) <b>chroma selection</b> (pick the number within the group); (3) <b>value selection</b> — since value isn't inherent in this guide, a <b>value-ordered guide</b> is recommended (arranged brightest→darkest: B1, A1, B2, D2, A2, C1, C2, D4, A3, D3, B3, A3.5, B4, C3, A4, C4); (4) <b>final check/revision</b>.</div>
+<div class="hint"><b>دليل Vita Classic:</b> <b>Vita Classic (Vitapan Classical)</b> شائع جداً — تُجمَّع عيّنات الصبغة المتشابهة في <b>مجموعات حرفية</b>: <b>A (أحمر-أصفر)، B (أصفر)، C (رمادي)، D (أحمر-أصفر-رمادي)</b>. <b>تسلسل الشركة:</b> (١) <b>اختيار الصبغة</b> (المجموعة الحرفية)؛ (٢) <b>اختيار التشبّع</b> (الرقم داخل المجموعة)؛ (٣) <b>اختيار القيمة</b> — ولأن القيمة ليست متأصّلة في هذا الدليل، يُنصح بـ<b>دليل مرتّب بالقيمة</b> (من الأسطع للأغمق: B1, A1, B2, D2, A2, C1, C2, D4, A3, D3, B3, A3.5, B4, C3, A4, C4)؛ (٤) <b>الفحص/المراجعة النهائية</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c1_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c1_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c1_2">
+<div class="topic">Vita 3D-Master &amp; Linearguide</div>
+<div class="prompt">How does the Vita 3D-Master guide work, and what is the Linearguide?</div>
+<button class="reveal" onclick="revealCard('c1_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c1_2">
+<div class="en"><b>Vita 3D-Master:</b> more precise — tooth color is divided into <b>5 value levels</b>; within each value group there are chroma samples and a hue deviation (M = medium hue, with L = more yellowish and R = more reddish). <b>Steps:</b> (1) determine <b>value</b> (start with the darkest group, move left; pick group 1–5); (2) determine <b>chroma</b> (remove the middle M tab, fan the samples, pick one); (3) determine <b>hue</b> (is the tooth more yellowish or reddish than the sample?).<br>
+  <b>Vita Linearguide 3D-Master:</b> same 29 shades/principles in a sleeker linear design — two steps: first the <b>Valueguide</b> (lightness 0–5), then the corresponding <b>Chroma/Hueguide</b>.</div>
+<div class="hint"><b>Vita 3D-Master وLinearguide:</b> <b>Vita 3D-Master:</b> أدقّ — يُقسَّم لون السن لـ<b>5 مستويات قيمة</b>؛ وداخل كل مجموعة قيمة عيّنات تشبّع وانحراف صبغة (M = صبغة وسطى، L = أكثر صُفرةً، R = أكثر حُمرةً). <b>الخطوات:</b> (١) حدّد <b>القيمة</b> (ابدأ بأغمق مجموعة، تحرّك يساراً؛ اختر مجموعة 1–5)؛ (٢) حدّد <b>التشبّع</b> (أزل عيّنة M الوسطى، افرد العيّنات، اختر واحدة)؛ (٣) حدّد <b>الصبغة</b> (هل السن أكثر صُفرةً أم حُمرةً من العيّنة؟). <b>Vita Linearguide 3D-Master:</b> نفس الـ29 لوناً/المبادئ بتصميم خطّي أنيق — خطوتان: أولاً <b>Valueguide</b> (الفتحة 0–5)، ثم <b>Chroma/Hueguide</b> المقابل.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c1_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c1_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c1_3">
+<div class="topic">Instrumental color analysis — spectrophotometer vs colorimeter</div>
+<div class="prompt">Compare the spectrophotometer and colorimeter for instrumental shade analysis, and the role of photography.</div>
+<button class="reveal" onclick="revealCard('c1_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c1_3">
+<div class="en"><b>Spectrophotometer:</b> measures natural tooth coloration <b>precisely and scientifically</b> against a known color/shading system, indicating deviations/gradations of value, chroma, and hue — gives the technician all the color clues; the <b>most accurate</b> instrumental method.<br>
+  <b>Colorimeter:</b> analyzes tooth color against <b>preloaded data</b> and determines the closest shade tab; <b>typically less accurate</b> than the spectrophotometer but adequate for most cases.<br>
+  Both <b>eliminate ambient light</b> → far more practical/accurate than visual shade taking with color contrastors.<br>
+  <b>Photography:</b> effective — provides the ceramist a "palette" of shades rather than a single tab; a closest-match shade tab is placed next to the tooth and photographed together.</div>
+<div class="hint"><b>التحليل الآلي — الطيفي مقابل اللوني:</b> <b>المطياف (Spectrophotometer):</b> يقيس لون السن <b>بدقّة علمية</b> مقابل نظام لون معروف، مبيّناً انحرافات/تدرّجات القيمة والتشبّع والصبغة — يعطي الفنّي كل مفاتيح اللون؛ وهو <b>الأدقّ</b> بين الطرق الآلية. <b>المقياس اللوني (Colorimeter):</b> يحلّل اللون مقابل <b>بيانات محمّلة مسبقاً</b> ويحدّد أقرب عيّنة؛ <b>أقلّ دقّةً</b> عادةً من المطياف لكنه كافٍ لأغلب الحالات. وكلاهما <b>يُلغي الضوء المحيط</b> → أعمليّ وأدقّ بكثير من الأخذ البصري بالمباينات اللونية. <b>التصوير:</b> فعّال — يعطي الفنّي «لوحة» ألوان بدل عيّنة واحدة؛ تُوضع أقرب عيّنة بجانب السن ويُصوّران معاً.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c1_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c1_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec2">Lec 12 · All-Ceramic Systems ⭐</h2>
+<div class="card" id="c2_0">
+<div class="topic">Monolithic vs bilayered &amp; sintering technique</div>
+<div class="prompt">What is the difference between monolithic and bilayered all-ceramic restorations, and describe the sintering technique.</div>
+<button class="reveal" onclick="revealCard('c2_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c2_0">
+<div class="en">An all-ceramic restoration may be <b>monolithic (uni-layer)</b> — a single ceramic material — or <b>bilayered</b> — a ceramic <b>core</b> covered by a ceramic <b>veneer</b>.<br>
+  <b>1. Powder-slurry (sintering) ceramics:</b> ceramic powder is mixed with liquid into a <b>slurry</b>, built up layer by layer on the die to form the contour, then <b>sintered</b>. <b>Sintering</b> = heating closely packed particles to <b>just below the melting point</b> so they bond (interparticle diffusion), decreasing surface area / increasing density into a solid mass. Used for <b>veneers, inlays, and some anterior crowns</b>.</div>
+<div class="hint"><b>أحادي الطبقة مقابل ثنائي الطبقة وتقنية التلبيد:</b> قد يكون الترميم الخزفي الكامل <b>أحادي الطبقة (monolithic)</b> — مادة خزفية واحدة — أو <b>ثنائي الطبقة (bilayered)</b> — <b>نواة</b> خزفية مغطّاة بـ<b>تكسية</b> خزفية. <b>1. الخزف بالتلبيد (Sintering):</b> يُمزج مسحوق خزفي بسائل لعمل <b>ملاط (slurry)</b>، يُبنى طبقةً طبقة على القالب لتكوين الكنتور، ثم <b>يُلبَّد</b>. و<b>التلبيد</b> = تسخين الجسيمات المتراصّة <b>لما دون الانصهار مباشرةً</b> لترتبط (انتشار بين الجسيمات)، فتقلّ المساحة/تزيد الكثافة لكتلة صلبة. يُستخدم لـ<b>القشور والحشوات وبعض التيجان الأمامية</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c2_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c2_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c2_1">
+<div class="topic">Slip-casting (infiltrated) &amp; hot-pressing (pressable)</div>
+<div class="prompt">Describe the slip-casting and hot-pressing all-ceramic techniques.</div>
+<button class="reveal" onclick="revealCard('c2_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c2_1">
+<div class="en"><b>2. Infiltrated ceramic (slip-casting):</b> a ceramic slurry is applied to a <b>porous refractory die</b>, compacting the particles into a porous crystalline core, which is sintered then <b>infiltrated with a lanthanum-based glass</b> → two interpenetrating continuous networks (a glassy phase + a crystalline infrastructure) giving high strength; a veneering porcelain then adds shade/contour.<br>
+  <b>3. Pressable ceramic (hot-pressing):</b> external pressure at high temperature <b>injects/presses molten ceramic into a lost-wax mold</b> (after waxing and investing). <b>First generation:</b> leucite-reinforced; <b>second generation:</b> lithium disilicate-based. Example: <b>IPS Empress (Ivoclar)</b>.</div>
+<div class="hint"><b>السباكة بالملاط (المُشرَّب) والكبس الحراري (القابل للكبس):</b> <b>2. الخزف المُشرَّب (Slip-casting):</b> يُطبَّق ملاط خزفي على <b>قالب حراري مسامي</b>، فيتراصّ الجسيمات لنواة بلّورية مسامية، تُلبَّد ثم <b>تُشرَّب بزجاج قائم على اللانثانم</b> → شبكتان متداخلتان متّصلتان (طور زجاجي + بنية بلّورية) تعطيان قوّةً عالية؛ ثم يضيف بورسلين التكسية اللون/الكنتور. <b>3. الخزف القابل للكبس (Hot-pressing):</b> ضغط خارجي بحرارة عالية <b>يحقن/يكبس الخزف المنصهر في قالب شمع مفقود</b> (بعد التشميع والتغليف). <b>الجيل الأول:</b> مقوّى باللوسايت؛ <b>الثاني:</b> قائم على ثنائي سيليكات الليثيوم. مثال: <b>IPS Empress (Ivoclar)</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c2_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c2_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c2_2">
+<div class="topic">Castable &amp; machinable (CAD/CAM) ceramics</div>
+<div class="prompt">Describe the castable and machinable (CAD/CAM) all-ceramic techniques.</div>
+<button class="reveal" onclick="revealCard('c2_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c2_2">
+<div class="en"><b>4. Castable ceramic:</b> the restoration is fabricated by a <b>casting technique</b> — molten ceramic (supplied as a solid ceramic block) is cast into a previously prepared mold cavity.<br>
+  <b>5. Machinable ceramic (milling):</b> gradual removal of material with rotating multi-bladed cutters/diamond heads.
+  <ul><li><b>Copy milling:</b> a resin pattern is made on the tooth/master die, scanned, then used as a <b>copying guide</b> for the milling machine.</li>
+  <li><b>CAD/CAM:</b> the prepared tooth is <b>optically impressed</b> (intraoral camera), the restoration is <b>designed by computer</b> over that image, then <b>ceramic blocks are milled</b> by a computer-controlled machine.</li></ul></div>
+<div class="hint"><b>الخزف القابل للصبّ والقابل للفرز (CAD/CAM):</b> <b>4. الخزف القابل للصبّ:</b> يُصنع الترميم بـ<b>تقنية الصبّ</b> — يُصبّ الخزف المنصهر (يُورَّد ككتلة خزفية صلبة) في تجويف قالب محضّر مسبقاً. <b>5. الخزف القابل للفرز (Milling):</b> إزالة تدريجية للمادة بقواطع/رؤوس ماسية متعدّدة الشفرات دوّارة. <b>Copy milling:</b> يُصنع نموذج راتنجي على السن/القالب الأمّ، يُمسَح، ثم يُستخدم كـ<b>دليل نسخ</b> لآلة الفرز. <b>CAD/CAM:</b> يُطبَع السن المحضّر <b>بصرياً</b> (كاميرا داخل فموية)، ويُصمَّم الترميم <b>بالحاسوب</b> فوق الصورة، ثم <b>تُفرز كتل خزفية</b> بآلة محكومة حاسوبياً.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c2_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c2_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec3">Lec 13 · Failure in Crown &amp; Bridge — Overview ⭐</h2>
+<div class="card" id="c3_0">
+<div class="topic">Manifestations &amp; general causes of failure</div>
+<div class="prompt">How does failure of a fixed prosthesis manifest, and what are the four general causes?</div>
+<button class="reveal" onclick="revealCard('c3_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c3_0">
+<div class="en">Failures should be balanced against advantages — some bridges fail from day one, others last over 40 years.<br>
+  <b>Manifestations</b> (patient complaints, immediate or delayed): pain, inability to function, dissatisfaction with esthetics, broken teeth/restoration, inflammatory swelling, bad taste, bad breath, bleeding gums, anxiety.<br>
+  <b>Four general causes:</b> (1) improper case selection; (2) faulty diagnosis and treatment plan; (3) inaccurate clinical or laboratory procedures; (4) poor patient care and maintenance after insertion.<br>
+  For discussion, failures divide into <b>biological, mechanical, esthetic, and maintenance</b> problems (mechanical are more under the clinician's control; biological are less controllable).</div>
+<div class="hint"><b>مظاهر فشل التعويض الثابت وأسبابه العامّة:</b> يُوازَن الفشل مقابل المزايا — بعض الجسور تفشل من اليوم الأول وأخرى تدوم فوق 40 سنة. <b>المظاهر</b> (شكاوى المريض، فورية أو متأخّرة): ألم، عجز عن الوظيفة، عدم رضا جمالي، أسنان/ترميم مكسور، تورّم التهابي، طعم سيّئ، نَفَس كريه، نزف لثة، قلق. <b>الأسباب العامّة الأربعة:</b> (١) اختيار حالة خاطئ؛ (٢) تشخيص وخطّة علاج معيبة؛ (٣) إجراءات سريرية أو مخبرية غير دقيقة؛ (٤) رعاية وصيانة سيّئة بعد التركيب. وللنقاش تُقسَّم الإخفاقات لمشاكل <b>حيوية وميكانيكية وجمالية وصيانة</b> (الميكانيكية أكثر تحت سيطرة الطبيب؛ والحيوية أقلّ ضبطاً).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c3_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c3_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c3_1">
+<div class="topic">Biological failure — caries</div>
+<div class="prompt">Why is caries the most common biological cause of bridge failure, and what causes it?</div>
+<button class="reveal" onclick="revealCard('c3_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c3_1">
+<div class="en"><b>Caries is the most common cause of failure</b> of fixed restorations, and it is <b>very difficult to detect</b> (clinically or radiographically) when complete coverage is used.<br>
+  <b>Causes:</b> (a) <b>open or over/under-extended margin</b> (short/long) → fluid seepage dissolves cement → food debris impaction → caries; (b) <b>loss of retention</b> from marginal seepage; (c) a <b>high-caries-risk patient</b> (poor oral hygiene); (d) <b>reduced salivary flow</b>; (e) <b>perforation</b> of the restoration (poor structural durability). Prevention centers on accurate margins, good retention, and patient hygiene/recall.</div>
+<div class="hint"><b>الفشل الحيوي — التسوّس:</b> <b>التسوّس أشيع سبب لفشل</b> الترميمات الثابتة، و<b>كشفه صعب جداً</b> (سريرياً أو شعاعياً) عند استخدام التغطية الكاملة. <b>الأسباب:</b> (أ) <b>حافة مفتوحة أو زائدة/ناقصة الامتداد</b> (قصيرة/طويلة) → تسرّب سائل يذيب السمنت → انحشار فتات طعام → تسوّس؛ (ب) <b>فقد الإرساء</b> من التسرّب الحافّي؛ (ج) مريض <b>عالي خطر التسوّس</b> (نظافة سيّئة)؛ (د) <b>نقص تدفّق اللعاب</b>؛ (هـ) <b>ثقب</b> الترميم (متانة بنيوية ضعيفة). والوقاية محورها الحواف الدقيقة والإرساء الجيّد ونظافة المريض واستدعاؤه.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c3_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c3_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c3_2">
+<div class="topic">Biological failure — pulpal injury</div>
+<div class="prompt">What causes pulpal injury in bridge work, and how is pulpal pain verified?</div>
+<button class="reveal" onclick="revealCard('c3_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c3_2">
+<div class="en">Pulpal injury is not uncommon; it results from microbial, chemical, mechanical, and thermal irritation, and is most often associated with <b>small teeth</b> needing massive reduction — so good evaluation matters (teeth with questionable pulp → do RCT first). Pain/discomfort may last up to <b>~six months</b>.<br>
+  <b>Causes:</b> (I) <b>overheating</b> (lack of coolant, very high speed, insufficient/worn bur, direct temporary crown); (II) <b>improper/absent temporary protection</b>; (III) <b>irritating cement</b>; (IV) <b>over-reduction</b> / microscopic pulp exposure; (V) <b>recurrent caries</b> under a full crown; (VI) <b>traumatic occlusion</b>.<br>
+  <b>Verify pulp vitality:</b> full crown → <b>thermal</b> test; partial crown → <b>electrical</b> test; <b>radiograph</b> → check periapical status.</div>
+<div class="hint"><b>الفشل الحيوي — أذيّة اللب:</b> أذيّة اللب ليست نادرة؛ تنتج عن تهيّج جرثومي وكيميائي وميكانيكي وحراري، وترتبط غالباً بـ<b>الأسنان الصغيرة</b> المحتاجة تخفيضاً كبيراً — فالتقييم الجيّد مهمّ (الأسنان مشكوكة اللب → معالجة لبية أولاً). وقد يدوم الألم/الانزعاج حتى <b>~ستة أشهر</b>. <b>الأسباب:</b> (I) <b>فرط الحرارة</b> (نقص تبريد، سرعة عالية جداً، بُرّ غير كافٍ/بالٍ، تاج مؤقت مباشر)؛ (II) <b>حماية مؤقتة غير سليمة/غائبة</b>؛ (III) <b>سمنت مهيّج</b>؛ (IV) <b>تخفيض زائد</b> / كشف لبّ مجهري؛ (V) <b>تسوّس متكرّر</b> تحت تاج كامل؛ (VI) <b>إطباق رضّي</b>. <b>التحقّق من الحيوية:</b> تاج كامل → اختبار <b>حراري</b>؛ تاج جزئي → <b>كهربائي</b>؛ <b>أشعّة</b> → فحص حول القمة.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c3_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c3_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c3_3">
+<div class="topic">Biological failure — periodontal &amp; soft tissue</div>
+<div class="prompt">What periodontal/soft-tissue problems cause bridge failure, and their most common causes?</div>
+<button class="reveal" onclick="revealCard('c3_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c3_3">
+<div class="en">Periodontal breakdown may lead to <b>loss of the abutment</b>; the patient suffers abutment mobility, pocket formation, periodontal abscess, pain preventing mastication on that side, and bad odor/taste.<br>
+  <b>Most common causes:</b> (I) <b>over-contouring</b> of the crown; (II) insufficient interproximal clearance/reduction or over-contour; (III) <b>deficient interproximal contact</b>; (IV) increased cervico-occlusal connector length; (V) improper tissue-pontic relation (<b>saddle design</b>); (VI) over-extended subgingival finish line; (VII) irregular/rough crown edges; (VIII) <b>failure of contact → food impaction</b>; (IX) ill-fitting crown; (X) foreign body; (XI) improper pontic design; (XII) improper connector design.</div>
+<div class="hint"><b>الفشل الحيوي — حول السني والنسيج الرخو:</b> قد يؤدّي الانهيار حول السني لـ<b>فقد الدعامة</b>؛ ويعاني المريض حركة الدعامة وتكوّن الجيوب والخرّاج حول السني وألماً يمنع المضغ على ذلك الجانب ورائحة/طعماً سيّئاً. <b>الأسباب الأشيع:</b> (I) <b>الكنتور الزائد</b> للتاج؛ (II) خلوص/تخفيض داني غير كافٍ أو كنتور زائد؛ (III) <b>تماس داني قاصر</b>؛ (IV) زيادة طول الرابط العنقي-الإطباقي؛ (V) علاقة نسيج-بنطية غير سليمة (<b>تصميم سرجي</b>)؛ (VI) خطّ إنهاء تحت لثوي زائد الامتداد؛ (VII) حواف تاج خشنة/غير منتظمة؛ (VIII) <b>فشل التماس → انحشار طعام</b>؛ (IX) تاج سيّئ الملاءمة؛ (X) جسم غريب؛ (XI) تصميم بنطية غير سليم؛ (XII) تصميم رابط غير سليم.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c3_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c3_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec4">Lec 13 · Mechanical &amp; Design Failures ⭐</h2>
+<div class="card" id="c4_0">
+<div class="topic">Mechanical failure — looseness (cementation failure)</div>
+<div class="prompt">Why do fixed-fixed bridges commonly loosen, and what causes looseness?</div>
+<button class="reveal" onclick="revealCard('c4_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c4_0">
+<div class="en">Loss of retention is uncommon for <b>individual crowns</b>, but because of <b>leverage forces on fixed-fixed bridges</b>, a common failure is <b>one retainer loosening while the other stays cemented</b> (allowing leakage/caries under the loose one).<br>
+  <b>Causes of looseness:</b> (a) <b>poor retention</b> from inadequate/faulty preparation (convergence angle, length, surface area); (b) <b>faulty cementation</b> — poor mixing, no dry field, poor seating, wrong cement type; (c) <b>faulty restoration</b> — open/overhang margin, wear/perforation, deformation; (d) <b>premature contact (torque)</b>; (e) <b>caries</b>; (f) <b>poor retainer design selection</b>.</div>
+<div class="hint"><b>الفشل الميكانيكي — الارتخاء (فشل التثبيت):</b> فقد الإرساء غير شائع للتيجان <b>المفردة</b>، لكن بسبب <b>قوى الرافعة على جسور fixed-fixed</b> يشيع الفشل بـ<b>ارتخاء حاصرة بينما تبقى الأخرى مثبّتة</b> (يتيح تسرّباً/تسوّساً تحت المرتخية). <b>أسباب الارتخاء:</b> (أ) <b>إرساء ضعيف</b> من تحضير غير كافٍ/معيب (زاوية التقارب، الطول، المساحة)؛ (ب) <b>تثبيت معيب</b> — خلط رديء، لا مجال جافّ، إجلاس سيّئ، نوع سمنت خاطئ؛ (ج) <b>ترميم معيب</b> — حافة مفتوحة/overhang، تآكل/ثقب، تشوّه؛ (د) <b>تماس مبكّر (عزم)</b>؛ (هـ) <b>تسوّس</b>؛ (و) <b>اختيار تصميم حاصرة سيّئ</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c4_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c4_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c4_1">
+<div class="topic">Mechanical failure — porcelain fracture &amp; distortion</div>
+<div class="prompt">What causes porcelain fracture and distortion/fracture in crowns and bridges?</div>
+<button class="reveal" onclick="revealCard('c4_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c4_1">
+<div class="en"><b>Porcelain fracture:</b>
+  <ul><li><b>Ceramic crown:</b> faulty lab technique (improper condensation, air bubbles, inadequate firing, faulty CAD/CAM protocol) or faulty preparation.</li>
+  <li><b>PFM:</b> faulty technique (poor coping design) or <b>metal framework flexing</b>.</li></ul>
+  <b>Distortion or fracture</b> of the restoration and <b>faulty structural durability</b> also occur — the restoration must be rigid (adequate bulk) to resist occlusal loads; thin sections perforate/distort. <b>Fracture of the abutment tooth</b> can result from over-reduction and the tooth's health state.</div>
+<div class="hint"><b>الفشل الميكانيكي — كسر البورسلين والتشوّه:</b> <b>كسر البورسلين:</b> <b>التاج الخزفي:</b> تقنية مخبرية معيبة (تكثيف غير سليم، فقاعات هواء، حرق غير كافٍ، بروتوكول CAD/CAM معيب) أو تحضير معيب. <b>PFM:</b> تقنية معيبة (تصميم كوبنة رديء) أو <b>انثناء الهيكل المعدني</b>. و<b>تشوّه أو كسر</b> الترميم و<b>المتانة البنيوية المعيبة</b> يحدثان أيضاً — فالترميم يجب أن يكون صلباً (سُمك كافٍ) لمقاومة الأحمال؛ والمقاطع الرقيقة تُثقَب/تتشوّه. و<b>كسر السن الدعامة</b> قد ينتج من التخفيض الزائد وحالة صحّة السن.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c4_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c4_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c4_2">
+<div class="topic">Design failure — under- vs over-prescribed bridges</div>
+<div class="prompt">Differentiate under-prescribed and over-prescribed bridge design failures.</div>
+<button class="reveal" onclick="revealCard('c4_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c4_2">
+<div class="en"><b>Under-prescribed:</b> designs that are <b>unstable or have too few abutments</b> — e.g., a cantilever carrying too long a pontic span, a fixed-movable with too long a span, abutments with too little support, or being <b>too conservative</b> (intracoronal inlays for a fixed-fixed bridge). Little can be done other than <b>remove and replace with a different design</b>.<br>
+  <b>Over-prescribed:</b> including <b>more abutments than necessary</b> (fate dictates the unnecessary retainer fails), or over-prescribing the retainers themselves (complete crowns where partial/intracoronal would suffice; metal-ceramic where all-metal was enough) — risking unnecessary tooth reduction and pulp death.</div>
+<div class="hint"><b>فشل التصميم — الجسور ناقصة مقابل زائدة الوصف:</b> <b>ناقصة الوصف (Under-prescribed):</b> تصاميم <b>غير مستقرّة أو بدعامات قليلة جداً</b> — كجسر كابولي ببنطية طويلة جداً، أو fixed-movable بمسافة طويلة، أو دعامات ضعيفة السند، أو <b>مفرطة التحفّظ</b> (حشوات داخل تاجية لجسر fixed-fixed). ولا يُفعَل شيء غير <b>إزالته واستبداله بتصميم آخر</b>. <b>زائدة الوصف (Over-prescribed):</b> تضمين <b>دعامات أكثر من اللازم</b> (والقدر يقضي بفشل الحاصرة غير الضرورية)، أو المبالغة في الحاصرات نفسها (تيجان كاملة حيث تكفي جزئية/داخل تاجية؛ معدنية-خزفية حيث تكفي معدنية كاملة) — مخاطرةً بتخفيض سنّ غير ضروري وموت اللب.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c4_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c4_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec5">Lec 13 · Esthetic, Discomfort &amp; Maintenance Failures</h2>
+<div class="card" id="c5_0">
+<div class="topic">Esthetic failure &amp; patient discomfort</div>
+<div class="prompt">What causes esthetic failure and patient discomfort after a bridge?</div>
+<button class="reveal" onclick="revealCard('c5_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c5_0">
+<div class="en"><b>Esthetic failure</b> (shape, size, position, and shade collectively determine esthetic value): (a) <b>improper shade selection</b>; (b) poor harmony/contour between restoration and natural teeth; (c) <b>failure to mask metal color</b>; (d) unnecessary metal display; (e) improper cement selection; (f) irregular/rough surface → discoloration.<br>
+  <b>Patient discomfort:</b> (a) soft-tissue irritation from improper pontic design/food accumulation; (b) deficient interproximal contact → food impaction; (c) <b>traumatic occlusion</b> (faulty construction/diagnosis, overloading, premature contact); (d) food retention on occlusal surface; (e) poor contouring (<b>over-contour → over-protection & under-stimulation</b>; <b>under-contour → gingival trauma</b>); (f) sensitive cervical margin; (g) seating failure (too-thick cement, insufficient pressure).</div>
+<div class="hint"><b>الفشل الجمالي وانزعاج المريض:</b> <b>الفشل الجمالي</b> (الشكل والحجم والموضع واللون تحدّد مجتمعةً القيمة الجمالية): (أ) <b>اختيار لون خاطئ</b>؛ (ب) تناسق/كنتور رديء بين الترميم والأسنان الطبيعية؛ (ج) <b>فشل إخفاء لون المعدن</b>؛ (د) ظهور معدن غير ضروري؛ (هـ) اختيار سمنت خاطئ؛ (و) سطح خشن/غير منتظم → تصبّغ. <b>انزعاج المريض:</b> (أ) تهيّج نسيج رخو من تصميم بنطية سيّئ/تراكم طعام؛ (ب) تماس داني قاصر → انحشار طعام؛ (ج) <b>إطباق رضّي</b> (بناء/تشخيص معيب، تحميل زائد، تماس مبكّر)؛ (د) احتباس طعام على السطح الإطباقي؛ (هـ) كنتور رديء (<b>زائد → حماية مفرطة وتحفيز ناقص</b>؛ <b>ناقص → رضّ لثوي</b>)؛ (و) حافة عنقية حسّاسة؛ (ز) فشل إجلاس (سمنت سميك جداً، ضغط غير كافٍ).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c5_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c5_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c5_1">
+<div class="topic">Maintenance failure</div>
+<div class="prompt">What is maintenance failure, and how is it prevented?</div>
+<button class="reveal" onclick="revealCard('c5_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c5_1">
+<div class="en"><b>Maintenance failure:</b> even a <b>well-made restoration</b> can fail due to <b>poor oral hygiene and improper maintenance</b>. Two responsibilities prevent it: (1) the <b>patient</b> must be <b>fully informed of their role</b> in the success or failure of the restoration (hygiene, cleaning devices, diet); (2) the <b>dentist</b> must <b>recall the patient for periodic clinical and radiographic examination</b> to detect early any harmful changes (recurrent caries, marginal breakdown, periodontal change, occlusal wear) before they cause irreversible failure.</div>
+<div class="hint"><b>فشل الصيانة:</b> حتى الترميم <b>المُتقَن</b> قد يفشل بسبب <b>النظافة الفموية السيّئة والصيانة غير السليمة</b>. ومسؤوليتان تمنعانه: (١) يجب <b>إعلام المريض كاملاً بدوره</b> في نجاح الترميم أو فشله (النظافة، أدوات التنظيف، الحمية)؛ (٢) يجب على <b>الطبيب استدعاء المريض لفحص سريري وشعاعي دوري</b> لاكتشاف أي تغيّرات ضارّة مبكّراً (تسوّس متكرّر، انهيار حافّي، تغيّر حول سني، تآكل إطباقي) قبل أن تسبّب فشلاً لا رجعة فيه.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c5_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c5_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec6">Lec 10 · Provisional Restoration Materials</h2>
+<div class="card" id="c6_0">
+<div class="topic">Ideal provisional &amp; its objectives (recap)</div>
+<div class="prompt">What are the objectives an ideal provisional restoration must meet?</div>
+<button class="reveal" onclick="revealCard('c6_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c6_0">
+<div class="en">A provisional restoration serves the interim between preparation and final placement. Objectives: (1) <b>pulp protection</b> — seal and insulate the prepared surface from the oral environment (prevent sensitivity/irritation); (2) <b>occlusal compatibility and tooth position</b> — establish/maintain occlusion and prevent drifting/supra-eruption; (3) <b>periodontal health</b> — proper contour/margins facilitating plaque removal.<br>
+  <b>Ideal properties</b> include: easily fabricated, good marginal fit/contour, adequate strength, esthetic, dimensionally stable, <b>chemically compatible with the luting cement</b>, and <b>easy to repair</b>.</div>
+<div class="hint"><b>الترميم المؤقت المثالي وأهدافه (مراجعة):</b> يخدم الترميم المؤقت الفترة بين التحضير والتركيب النهائي. الأهداف: (١) <b>حماية اللب</b> — سدّ وعزل السطح المحضّر عن الوسط الفموي (منع الحساسية/التهيّج)؛ (٢) <b>التوافق الإطباقي وموضع السن</b> — إرساء/حفظ الإطباق ومنع الانجراف/البزوغ الزائد؛ (٣) <b>الصحة اللثوية</b> — كنتور/حواف سليمة تسهّل إزالة اللويحة. <b>الخصائص المثالية:</b> سهل الصنع، ملاءمة/كنتور حافّي جيّد، قوّة كافية، جمالي، ثابت الأبعاد، <b>متوافق كيميائياً مع سمنت التثبيت</b>، و<b>سهل الإصلاح</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c6_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c6_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c6_1">
+<div class="topic">Acrylic provisional materials (PMMA &amp; poly-R)</div>
+<div class="prompt">Compare polymethyl methacrylate (PMMA) and poly-R' methacrylate provisional materials.</div>
+<button class="reveal" onclick="revealCard('c6_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c6_1">
+<div class="en"><b>Polymethyl methacrylate (PMMA):</b> <b>Advantages</b> — low cost, good wear resistance, good esthetics, high polishability, good color stability. <b>Disadvantages</b> — significant <b>exothermic heat</b>, high <b>shrinkage (~8%)</b>, strong objectionable odor, short working time, hard to repair, must be mixed, radiolucent.<br>
+  <b>Poly-R' methacrylate (R' = ethyl, vinyl, isobutyl):</b> <b>Advantages</b> — low cost, <b>less heat</b> and <b>less shrinkage</b> than PMMA, extended working time. <b>Disadvantages</b> — less esthetic, poor wear resistance, poor color stability, strong odor, hard to repair, must be mixed, radiolucent.</div>
+<div class="hint"><b>مواد المؤقت الأكريليكية (PMMA وpoly-R):</b> <b>بولي ميثيل ميثاكريلات (PMMA):</b> <b>المزايا</b> — كلفة منخفضة، مقاومة تآكل جيّدة، جمال جيّد، تلميع عالٍ، ثبات لون جيّد. <b>العيوب</b> — <b>حرارة ناشرة</b> كبيرة، <b>انكماش عالٍ (~8%)</b>، رائحة كريهة قوية، زمن شغل قصير، صعب الإصلاح، يُخلَط، شفّاف شعاعياً. <b>بولي-R ميثاكريلات (R = إيثيل، فينيل، أيزوبيوتيل):</b> <b>المزايا</b> — كلفة منخفضة، <b>حرارة أقلّ</b> و<b>انكماش أقلّ</b> من PMMA، زمن شغل ممتدّ. <b>العيوب</b> — أقلّ جمالاً، مقاومة تآكل ضعيفة، ثبات لون ضعيف، رائحة قوية، صعب الإصلاح، يُخلَط، شفّاف شعاعياً.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c6_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c6_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c6_2">
+<div class="topic">Bis-acryl composites &amp; epimines</div>
+<div class="prompt">What are the advantages and disadvantages of bis-acryl composite and epimine provisional materials?</div>
+<button class="reveal" onclick="revealCard('c6_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c6_2">
+<div class="en"><b>Bis-acryl composites:</b> <b>Advantages</b> — <b>less shrinkage</b> than acrylics, <b>minimal heat</b>, relatively high strength, minimal odor, excellent esthetics, mostly <b>automix delivery</b>, repairable/characterizable with resin composite, easy to trim, good color stability, <b>radiopaque</b>. <b>Disadvantages</b> — costlier than acrylics, some lack a rubbery stage, viscosity can't be altered, a <b>sticky (oxygen-inhibited) surface layer</b> after polymerization, may be <b>more brittle</b> than acrylics.<br>
+  <b>Epimines (resin):</b> low exothermic heat, low residual monomer, and low volumetric shrinkage.</div>
+<div class="hint"><b>كمبوزِت Bis-acryl والـEpimines:</b> <b>Bis-acryl composites:</b> <b>المزايا</b> — <b>انكماش أقلّ</b> من الأكريليك، <b>حرارة أدنى</b>، قوّة عالية نسبياً، رائحة أدنى، جمال ممتاز، غالباً <b>خلط آلي (automix)</b>، قابل للإصلاح/التوصيف بالكمبوزِت، سهل التشذيب، ثبات لون جيّد، <b>معتم شعاعياً</b>. <b>العيوب</b> — أغلى من الأكريليك، بعضها بلا طور مطّاطي، لا يمكن تغيير اللزوجة، <b>طبقة سطحية لزجة (مثبّطة بالأكسجين)</b> بعد البلمرة، قد يكون <b>أهشّ</b> من الأكريليك. <b>Epimines (راتنج):</b> حرارة ناشرة منخفضة، مونومر متبقٍّ منخفض، وانكماش حجمي منخفض.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c6_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c6_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c6_3">
+<div class="topic">Reinforcing provisional restorations</div>
+<div class="prompt">When and how are provisional restorations reinforced?</div>
+<button class="reveal" onclick="revealCard('c6_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c6_3">
+<div class="en">Provisional restorations may need reinforcement (e.g., a <b>metal casting/wire</b>) to increase strength. <b>Indications for reinforcement:</b> (1) a <b>long-span</b> provisional bridge; (2) <b>excessive occlusal force</b> on the restoration (e.g., bruxism, reduced inter-occlusal clearance). Reinforcement resists flexure/fracture during the interim period until the definitive restoration is cemented — the same beam-mechanics logic that governs the definitive bridge (longer/thinner spans flex more) applies to the provisional.</div>
+<div class="hint"><b>تقوية الترميمات المؤقتة:</b> قد تحتاج الترميمات المؤقتة تقوية (كـ<b>صبّة/سلك معدني</b>) لزيادة القوّة. <b>استطبابات التقوية:</b> (١) جسر مؤقت <b>طويل المسافة</b>؛ (٢) <b>قوّة إطباقية زائدة</b> على الترميم (كالصرير، نقص الخلوص بين الإطباقي). والتقوية تقاوم الانثناء/الكسر خلال الفترة الانتقالية حتى تثبيت الترميم النهائي — وينطبق نفس منطق ميكانيكا العارضة الحاكم للجسر النهائي (المسافات الأطول/الأرقّ تنثني أكثر) على المؤقت.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c6_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c6_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec7">Lec 9 · Applying Color Theory (Integrated) ⭐</h2>
+<div class="card" id="c7_0">
+<div class="topic">Putting color theory into a shade-matching protocol</div>
+<div class="prompt">How do the factors affecting color combine into a practical shade-matching protocol?</div>
+<button class="reveal" onclick="revealCard('c7_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c7_0">
+<div class="en">A reliable shade match integrates every color factor at once. Control the <b>light</b> first: match under <b>natural mid-day daylight</b> (full spectrum) and confirm under a second source to expose <b>metamerism</b> — a pair matching under one light but not another. Prepare the <b>object</b>: the tooth must be <b>clean and moist</b> (plaque/dehydration falsify color; a drying tooth rises in value/opacity). Manage the <b>observer</b>: work at eye level, remove bright surrounding colors, use a neutral background/color contrastor, and compare <b>quickly</b> (cones fatigue). Read the dimensions in the guide's order — for <b>3D-Master</b>, <b>value first</b> (the most important and distance-robust dimension), then chroma, then hue; for <b>Vita Classic</b>, hue → chroma, then cross-check value with a value-ordered guide. Confirm with <b>photography</b> (a shade tab beside the tooth) or an <b>instrument</b> (spectrophotometer > colorimeter) which removes ambient-light error. The whole protocol exists because a single glance under one light is the least reliable way to capture value, chroma, and hue simultaneously.</div>
+<div class="hint"><b>تحويل نظرية اللون لبروتوكول عملي للمطابقة:</b> المطابقة الموثوقة تدمج كل عوامل اللون معاً. اضبط <b>الضوء</b> أولاً: طابِق تحت <b>ضوء نهار الظهيرة الطبيعي</b> (طيف كامل) وأكّد تحت مصدر ثانٍ لكشف <b>تبدّل اللون (metamerism)</b> — زوج يتطابق تحت ضوء دون آخر. وجهّز <b>الجسم</b>: يجب أن يكون السن <b>نظيفاً ورطباً</b> (اللويحة/الجفاف يزيّفان اللون؛ والسن الجافّ ترتفع قيمته/عتامته). وأدِر <b>الناظر</b>: اعمل بمستوى العين، أزل الألوان المحيطة الزاهية، استخدم خلفيةً محايدة/مباينة لونية، وقارِن <b>بسرعة</b> (المخاريط تُجهَد). واقرأ الأبعاد بترتيب الدليل — في <b>3D-Master</b> <b>القيمة أولاً</b> (الأهمّ والأثبت مع المسافة) ثم التشبّع ثم الصبغة؛ وفي <b>Vita Classic</b> الصبغة → التشبّع ثم مراجعة القيمة بدليل مرتّب بالقيمة. وأكّد بـ<b>التصوير</b> (عيّنة بجانب السن) أو <b>جهاز</b> (المطياف > المقياس اللوني) يُزيل خطأ الضوء المحيط. والبروتوكول كلّه موجود لأن نظرةً واحدة تحت ضوء واحد أقلّ الطرق موثوقيةً لالتقاط القيمة والتشبّع والصبغة معاً.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c7_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c7_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c7_1">
+<div class="topic">Selecting an all-ceramic fabrication technique</div>
+<div class="prompt">How does the clinician/technician choose among the all-ceramic fabrication techniques?</div>
+<button class="reveal" onclick="revealCard('c7_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c7_1">
+<div class="en">The five fabrication routes trade <b>strength against esthetics and workflow</b>. <b>Sintering (powder-slurry)</b> gives the finest layering control and translucency → ideal for <b>veneers, inlays, and anterior crowns</b> where esthetics dominates and load is modest. <b>Slip-casting (infiltrated)</b> builds a glass-infiltrated crystalline core → <b>high strength</b> for cores that then receive a veneering porcelain (bilayered) for shade. <b>Hot-pressing (pressable)</b> uses a lost-wax mold with leucite (1st gen) or <b>lithium disilicate (2nd gen, e.g., IPS Empress)</b> → a strong, esthetic monolithic or core option. <b>Castable</b> uses a casting technique from a solid block. <b>Machinable (CAD/CAM or copy milling)</b> mills a block after optical/scanned design → excellent reproducibility, marginal fit, and speed, and dominates modern practice. The decision weighs the <b>required strength</b> (posterior load, bruxism → stronger cores/monolithic), the <b>esthetic demand</b> (anterior → layered/translucent), and the <b>available technology</b> (a CAD/CAM workflow vs a conventional lab).</div>
+<div class="hint"><b>اختيار تقنية تصنيع الخزف الكامل:</b> الطرق الخمس تفاضل <b>القوّة مقابل الجمال وسير العمل</b>. <b>التلبيد (powder-slurry)</b> يعطي أدقّ تحكّم بالطبقات وشفافية → مثالي لـ<b>القشور والحشوات والتيجان الأمامية</b> حيث يسود الجمال والحمل معتدل. <b>السباكة بالملاط (المُشرَّب)</b> يبني نواةً بلّورية مُشرَّبة بالزجاج → <b>قوّة عالية</b> لنوى تتلقّى بعدها بورسلين تكسية (ثنائي الطبقة) للّون. <b>الكبس الحراري (pressable)</b> يستخدم قالب شمع مفقود بلوسايت (جيل أول) أو <b>ثنائي سيليكات الليثيوم (جيل ثانٍ، مثل IPS Empress)</b> → خيار أحادي/نواة قوي وجمالي. <b>القابل للصبّ</b> يستخدم الصبّ من كتلة صلبة. <b>القابل للفرز (CAD/CAM أو copy milling)</b> يفرز كتلةً بعد تصميم بصري/ممسوح → قابلية تكرار وملاءمة حافّية وسرعة ممتازة، ويسود الممارسة الحديثة. والقرار يوازن <b>القوّة المطلوبة</b> (حمل خلفي، صرير → نوى/أحادي أقوى)، و<b>الطلب الجمالي</b> (أمامي → طبقي/شفّاف)، و<b>التقنية المتاحة</b> (سير CAD/CAM مقابل مختبر تقليدي).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c7_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c7_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c7_2">
+<div class="topic">Synthesizing failure prevention</div>
+<div class="prompt">How do the categories of bridge failure map onto preventive actions across the whole treatment?</div>
+<button class="reveal" onclick="revealCard('c7_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c7_2">
+<div class="en">Every failure category traces back to a controllable stage. <b>Biological failures</b> — caries, pulpal injury, periodontal breakdown — are prevented by <b>accurate supragingival margins</b>, conservative reduction with coolant and temporary protection, non-irritant cement, proper contour/embrasures (never over-contour), and correct pontic/connector design; caries specifically demands sealed margins and a low-caries-risk patient. <b>Mechanical failures</b> — looseness, porcelain fracture, distortion — are prevented by adequate <b>retention/resistance form</b> (5–6° taper, length, surface area, auxiliary features), sound cementation (dry field, good mix/seating, right cement), rigid restorations with enough bulk, and — for fixed-fixed bridges — respecting beam mechanics (short/tall spans, double abutments). <b>Design failures</b> are avoided by neither under- nor over-prescribing (enough but not excess abutments; the least destructive adequate retainer). <b>Esthetic failures</b> are prevented by correct shade selection and metal masking; and <b>maintenance failures</b> by informing the patient of their role and instituting periodic clinical/radiographic recall. In short, failure prevention is diagnosis → design → preparation → lab → cementation → recall, each stage guarding a different failure mode.</div>
+<div class="hint"><b>تركيب الوقاية من الفشل:</b> كل فئة فشل تعود لمرحلة قابلة للضبط. <b>الإخفاقات الحيوية</b> — التسوّس وأذيّة اللب والانهيار حول السني — تُمنع بـ<b>حواف فوق لثوية دقيقة</b>، وتخفيض متحفّظ بتبريد وحماية مؤقتة، وسمنت غير مهيّج، وكنتور/embrasures سليم (لا كنتور زائد أبداً)، وتصميم بنطية/رابط صحيح؛ والتسوّس تحديداً يتطلّب حواف محكمة ومريضاً منخفض الخطر. <b>الإخفاقات الميكانيكية</b> — الارتخاء وكسر البورسلين والتشوّه — تُمنع بـ<b>شكل إرساء/مقاومة</b> كافٍ (تحدّب 5–6°، طول، مساحة، ميزات إضافية)، وتثبيت سليم (مجال جافّ، خلط/إجلاس جيّد، سمنت صحيح)، وترميمات صلبة بسُمك كافٍ، و— لجسور fixed-fixed — احترام ميكانيكا العارضة (مسافات قصيرة/مرتفعة، دعامات مزدوجة). و<b>فشل التصميم</b> يُتجنّب بعدم النقص ولا الإفراط في الوصف (دعامات كافية لا زائدة؛ أقلّ حاصرة تدميراً وكافية). و<b>الإخفاقات الجمالية</b> تُمنع باختيار لون صحيح وإخفاء المعدن؛ و<b>إخفاقات الصيانة</b> بإعلام المريض بدوره وإرساء استدعاء سريري/شعاعي دوري. باختصار: الوقاية = تشخيص → تصميم → تحضير → مختبر → تثبيت → استدعاء، كل مرحلة تحرس نمط فشل مختلفاً.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c7_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c7_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec8">Lec 11 · Cementation — Bonding Mechanisms ⭐</h2>
+<div class="card" id="c8_0">
+<div class="topic">Permanent cementation &amp; the three bonding mechanisms</div>
+<div class="prompt">What is permanent cementation, and what are the three bonding mechanisms of luting agents?</div>
+<button class="reveal" onclick="revealCard('c8_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c8_0">
+<div class="en"><b>Cementation is the culmination</b> of all prior stages — once cemented there is no scope for modification. A <b>luting agent</b> holds the restoration to the tooth; note that <b>dental cement does NOT contribute to the retention</b> (retention comes from the preparation geometry). Three bonding mechanisms:
+  <ul><li><b>Non-adhesive (mechanical) luting:</b> the agent fills macro-spaces/irregularities between tooth and restoration; on setting it provides a <b>mechanical interlock</b> preventing removal.</li>
+  <li><b>Micromechanical bonding:</b> deep irregularities created by etching — <b>phosphoric acid on enamel, hydrofluoric acid on ceramics, electrolytic/chemical etching or sandblasting on metal</b>.</li>
+  <li><b>Molecular adhesion:</b> physical forces + chemical bonds between molecules of the two substances.</li></ul></div>
+<div class="hint"><b>التثبيت الدائم وآليات الربط الثلاث:</b> <b>التثبيت ذروة</b> كل المراحل السابقة — وبعده لا مجال للتعديل. و<b>عامل التثبيت</b> يمسك الترميم بالسن؛ ولاحظ أن <b>السمنت لا يساهم في الإرساء</b> (الإرساء من هندسة التحضير). ثلاث آليات ربط: <b>التثبيت غير اللاصق (الميكانيكي):</b> يملأ العامل الفراغات/اللامنتظمات بين السن والترميم؛ وعند التصلّب يعطي <b>تعشيقاً ميكانيكياً</b> يمنع الإزالة. <b>الربط الميكانيكي المجهري:</b> لامنتظمات عميقة بالحفر — <b>فوسفوريك على المينا، هيدروفلوريك على الخزف، حفر كهربائي/كيميائي أو سفع رملي على المعدن</b>. <b>الالتصاق الجزيئي:</b> قوى فيزيائية + روابط كيميائية بين جزيئات المادّتين.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c8_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c8_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c8_1">
+<div class="topic">Properties &amp; functions of an ideal luting agent</div>
+<div class="prompt">What are the properties of an ideal luting agent and the functions of cement?</div>
+<button class="reveal" onclick="revealCard('c8_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c8_1">
+<div class="en"><b>Ideal luting agent properties:</b> (1) <b>low film thickness (≤25 µm)</b>; (2) <b>adequate strength (minimum 70 MPa)</b>; (3) low viscosity and solubility; (4) adequate working time; (5) reasonable setting time; (6) good sealing and non-toxic to the pulp (biocompatible); (7) <b>radiopaque</b>; (8) adhesion to tooth and restorative materials.<br>
+  <b>Functions of cement:</b> (1) secure lasting <b>retention</b> of the restoration; (2) <b>seal the gap</b> against fluid/bacterial penetration; (3) act as an <b>insulating barrier</b> (thermal/galvanic).<br>
+  <b>Retention factors:</b> preparation geometry (taper/height/surface area), restoration fit/surface texture, cement mechanical properties, and thermal-expansion differences between tooth, restoration, and cement.</div>
+<div class="hint"><b>خصائص ووظائف عامل التثبيت المثالي:</b> <b>الخصائص:</b> (١) <b>سُمك طبقة منخفض (≤25 ميكرون)</b>؛ (٢) <b>قوّة كافية (70 ميغاباسكال حدّاً أدنى)</b>؛ (٣) لزوجة وذوبانية منخفضة؛ (٤) زمن شغل كافٍ؛ (٥) زمن تصلّب معقول؛ (٦) سدّ جيّد وغير سامّ للّب (متوافق حيوياً)؛ (٧) <b>معتم شعاعياً</b>؛ (٨) التصاق بالسن والمواد الترميمية. <b>وظائف السمنت:</b> (١) <b>إرساء</b> دائم للترميم؛ (٢) <b>سدّ الفجوة</b> ضدّ نفاذ السوائل/الجراثيم؛ (٣) <b>حاجز عازل</b> (حراري/جلفاني). <b>عوامل الإرساء:</b> هندسة التحضير (التحدّب/الارتفاع/المساحة)، ملاءمة الترميم/ملمسه، خصائص السمنت الميكانيكية، وفروق التمدّد الحراري بين السن والترميم والسمنت.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c8_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c8_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c8_2">
+<div class="topic">Luting agent selection recap</div>
+<div class="prompt">Summarize the properties and best use of the main permanent luting agents.</div>
+<button class="reveal" onclick="revealCard('c8_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c8_2">
+<div class="en"><b>Zinc phosphate:</b> compressive strength <b>14,000–16,000 PSI</b>, low pH (~3.5, may irritate the pulp — use cavity varnish); the proven default for retentive conventional crowns/posts.<br>
+  <b>Zinc silicophosphate:</b> <b>22,000 PSI</b>, anti-cariogenic (fluoride), but highly acidic → rarely used now.<br>
+  <b>Polycarboxylate:</b> bonds to enamel (1300 PSI)/dentine (480 PSI), pH 4.8→neutral, <b>less pulp effect</b> (large molecule).<br>
+  <b>Glass ionomer:</b> <b>18,600 PSI</b>, bonds to tooth, <b>releases fluoride</b> (inhibits secondary caries), moisture-sensitive early → good for high-caries-risk patients.<br>
+  <b>Resin cement:</b> chemical bond, high strength, <b>reduces ceramic fracture</b>, low solubility; hard to remove excess, costly, pulp irritant → choice for ceramics/veneers.</div>
+<div class="hint"><b>ملخّص اختيار عامل التثبيت:</b> <b>الزنك فوسفات:</b> قوّة انضغاط <b>14,000–16,000 PSI</b>، pH منخفض (~3.5، قد يهيّج اللب — استخدم ورنيش تجويف)؛ الخيار المُثبَت للتيجان/الأوتاد التقليدية المُرسية. <b>الزنك سيليكوفوسفات:</b> <b>22,000 PSI</b>، مضاد للتسوّس (فلورايد)، لكنه عالي الحموضة → نادر الاستخدام اليوم. <b>البولي كربوكسيلات:</b> يرتبط بالمينا (1300 PSI)/العاج (480 PSI)، pH 4.8→محايد، <b>أثر لبّي أقلّ</b> (جزيء كبير). <b>الأيونومر الزجاجي:</b> <b>18,600 PSI</b>، يرتبط بالسن، <b>يطلق فلورايد</b> (يثبّط التسوّس الثانوي)، حسّاس للرطوبة مبكّراً → جيّد لعالي خطر التسوّس. <b>السمنت الراتنجي:</b> ربط كيميائي، قوّة عالية، <b>يقلّل كسر الخزف</b>، ذوبانية منخفضة؛ صعب إزالة الفائض، مكلف، مهيّج للّب → خيار الخزف/القشور.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c8_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c8_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec9">Lec 10 · Provisional Cementation &amp; Limitations</h2>
+<div class="card" id="c9_0">
+<div class="topic">Temporary cements — ZOE variants</div>
+<div class="prompt">Which cement is used for provisional restorations, and what are its variants?</div>
+<button class="reveal" onclick="revealCard('c9_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c9_0">
+<div class="en"><b>Zinc oxide-eugenol (ZOE)</b> is the <b>most commonly used</b> cementing medium for temporary crowns and bridges — it promotes healing and allows easy removal. Zinc phosphate, polycarboxylate, and glass ionomer are <b>not used</b> for provisionals (their high strength makes intentional removal difficult).<br>
+  <b>Variants:</b> (1) <b>reinforced ZOE (ZOEBA)</b> — stronger; (2) <b>non-eugenol cements</b> — use carboxylic acids in place of eugenol so they <b>don't soften resin</b> provisionals (and don't inhibit resin final-cement polymerization); (3) <b>TempBond Clear</b> — translucent, with <b>Triclosan</b> (antibacterial/antifungal).</div>
+<div class="hint"><b>السمنتات المؤقتة — أنواع ZOE:</b> <b>أكسيد الزنك-أوجينول (ZOE)</b> هو <b>الأكثر استخداماً</b> لتثبيت التيجان والجسور المؤقتة — يعزّز الشفاء ويتيح إزالةً سهلة. والزنك فوسفات والبولي كربوكسيلات والأيونومر <b>لا تُستخدم</b> للمؤقتات (قوّتها العالية تصعّب الإزالة المقصودة). <b>الأنواع:</b> (١) <b>ZOE المقوّى (ZOEBA)</b> — أقوى؛ (٢) <b>سمنتات خالية من الأوجينول</b> — تستخدم أحماضاً كربوكسيلية بدل الأوجينول فلا <b>تُليّن</b> المؤقتات الراتنجية (ولا تعيق بلمرة السمنت النهائي الراتنجي)؛ (٣) <b>TempBond Clear</b> — شفّاف، بـ<b>Triclosan</b> (مضاد جراثيم/فطريات).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c9_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c9_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c9_1">
+<div class="topic">Limitations of provisional restorations</div>
+<div class="prompt">What are the limitations of provisional restorations?</div>
+<button class="reveal" onclick="revealCard('c9_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c9_1">
+<div class="en"><ul>
+  <li><b>Lack of adequate strength</b> — fracture is possible in long-span FPDs, bruxism, and reduced inter-occlusal clearance (→ reinforce).</li>
+  <li><b>Inadequate marginal adaptation.</b></li>
+  <li><b>Poor esthetics</b> in long-term provisionals.</li>
+  <li><b>Plaque accumulation</b> from poor surface characteristics.</li>
+  <li><b>Compromised bonding</b> characteristics.</li>
+  <li><b>Mild to moderate tissue irritation.</b></li>
+  </ul>
+  These limitations are why a provisional is a temporary measure — the definitive restoration must follow within a reasonable period.</div>
+<div class="hint"><b>حدود الترميمات المؤقتة:</b> <b>نقص القوّة الكافية</b> — الكسر ممكن في الجسور الطويلة والصرير ونقص الخلوص بين الإطباقي (← قوِّها). <b>تكيّف حافّي غير كافٍ.</b> <b>جمال رديء</b> في المؤقتات طويلة الأمد. <b>تراكم لويحة</b> من خصائص سطح رديئة. <b>خصائص ربط منقوصة.</b> <b>تهيّج نسيجي خفيف لمتوسّط.</b> وهذه الحدود سبب كون المؤقت إجراءً مؤقتاً — فيجب أن يتبعه الترميم النهائي خلال فترة معقولة.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c9_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c9_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c9_2">
+<div class="topic">Clinical try-in — evaluation sequence</div>
+<div class="prompt">What is the sequence for evaluating a seated crown at try-in?</div>
+<button class="reveal" onclick="revealCard('c9_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c9_2">
+<div class="en">Try-in has three stages: pre-operative evaluation on the die, seating on the tooth, and evaluation of the seated restoration (best <b>without anesthesia</b> to preserve tactile sensation). On the die, the restoration must seat <b>without pressure</b>; inspect the inner surface for nodules/bubbles (remove with a round bur) and ensure a uniform cement space.<br>
+  <b>Evaluation sequence of the seated crown:</b> (1) <b>proximal contacts</b> (slight resistance like natural teeth — 0.05 mm shim stock/floss); (2) <b>marginal integrity</b> (probe two directions; short/long/open margins); (3) <b>retention and stability</b> (no rocking); (4) <b>occlusion</b> (centric and eccentric); (5) <b>polishing/characterization and glazing</b>.</div>
+<div class="hint"><b>التجربة السريرية — تسلسل التقييم:</b> للتجربة ثلاث مراحل: تقييم على القالب، الإجلاس على السن، وتقييم الترميم المُجلَس (الأفضل <b>بلا تخدير</b> لحفظ الإحساس اللمسي). وعلى القالب يجب أن يجلس الترميم <b>بلا ضغط</b>؛ افحص السطح الداخلي للعُقيدات/الفقاعات (أزلها ببُرّ مدوّر) واضمن مساحة سمنت موحّدة. <b>تسلسل تقييم التاج المُجلَس:</b> (١) <b>التماسات الدانية</b> (مقاومة طفيفة كالأسنان الطبيعية — shim stock 0.05مم/خيط)؛ (٢) <b>سلامة الحافة</b> (مسبار في اتّجاهين؛ حواف قصيرة/طويلة/مفتوحة)؛ (٣) <b>الإرساء والثبات</b> (لا تأرجح)؛ (٤) <b>الإطباق</b> (مركزي ولا مركزي)؛ (٥) <b>التلميع/التوصيف والتزجيج</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c9_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c9_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec10">Crowns &amp; Bridges · Subject Synthesis (Integrated) ⭐</h2>
+<div class="card" id="c10_0">
+<div class="topic">The complete crown &amp; bridge journey — from diagnosis to recall</div>
+<div class="prompt">Trace the entire crown-and-bridge treatment sequence and name the single guiding principle at each stage.</div>
+<button class="reveal" onclick="revealCard('c10_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c10_0">
+<div class="en">The crown-and-bridge subject (Days 8–11) is one continuous clinical journey, each stage guarded by a principle. <b>Diagnosis and treatment planning</b>: assess periodontal health, tooth/root condition, and the <b>crown/root ratio</b> (2:3 optimum, 1:1 minimum), and for bridges apply <b>Ante’s law</b> and the <b>law of beam</b> to judge feasibility — guiding principle: only load an abutment that can bear it. <b>Tooth preparation</b>: shaped by the five biomechanical principles (preservation of structure, retention/resistance with 5–6° taper, structural durability, periodontal preservation, marginal integrity) and the correct <b>finishing line</b> for the chosen material — guiding principle: remove the minimum that still gives the restoration bulk and retention. <b>Impression</b>: gingival retraction plus an accurate elastomer (addition silicone most stable, polyether hydrophilic) capturing a continuous finish line — guiding principle: record the margin precisely. <b>Provisional</b>: protect the pulp, maintain position, cement with ZOE — guiding principle: preserve the prepared tooth. <b>Laboratory</b>: working cast/die, waxing, investing with compensation expansion, burnout, casting or CAD/CAM ceramics, and — for esthetics — correct <b>shade selection</b> under daylight — guiding principle: accuracy and esthetics together. <b>Try-in and cementation</b>: check contacts, margins, stability, occlusion (ideally without anesthesia), then lute with the appropriate agent — guiding principle: marginal integrity above all. <b>Recall and maintenance</b>: periodic examination to catch caries, periodontal, or mechanical failure early — guiding principle: the restoration is only as durable as its upkeep. Marginal integrity is the thread running through every stage, because most failures start at the margin.</div>
+<div class="hint">مادة التيجان والجسور (الأيام ٨–١١) رحلة سريرية واحدة متّصلة، كل مرحلة يحرسها مبدأ. <b>التشخيص والتخطيط</b>: قيّم الصحة حول السنية وحالة السن/الجذر و<b>نسبة التاج/الجذر</b> (2:3 المثلى، 1:1 الأدنى)، وللجسور طبّق <b>قانون Ante</b> و<b>قانون العارضة</b> — المبدأ: لا تُحمّل دعامة فوق طاقتها. <b>التحضير</b>: تحكمه المبادئ الخمسة (حفظ البنية، الإرساء/المقاومة بتحدّب 5–6°، المتانة، حفظ النسيج، سلامة الحافة) و<b>خطّ الإنهاء</b> المناسب للمادة — المبدأ: أزل الأدنى الذي يعطي سُمكاً وإرساءً. <b>الطبعة</b>: إزاحة لثة + مطّاط دقيق (سيليكون الإضافة الأثبت، البولي إيثر المحبّ للماء) يسجّل خطّ إنهاء متّصلاً — المبدأ: سجّل الحافة بدقّة. <b>المؤقت</b>: احمِ اللب، احفظ الموضع، ثبّت بـZOE — المبدأ: احفظ السن المحضّر. <b>المختبر</b>: نموذج/قالب، تشميع، تغليف بتمدّد تعويضي، حرق، صبّ أو خزف CAD/CAM، وللجمال <b>اختيار لون</b> صحيح تحت ضوء النهار — المبدأ: الدقّة والجمال معاً. <b>التجربة والتثبيت</b>: افحص التماسات والحواف والثبات والإطباق (مثالياً بلا تخدير)، ثم ثبّت بالعامل المناسب — المبدأ: سلامة الحافة فوق كل شيء. <b>الاستدعاء والصيانة</b>: فحص دوري لالتقاط التسوّس والمشاكل حول السنية/الميكانيكية مبكّراً — المبدأ: الترميم بقدر صيانته. وسلامة الحافة هي الخيط المارّ في كل مرحلة، فمعظم الإخفاقات تبدأ من الحافة.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c10_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c10_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c10_1">
+<div class="topic">Why value dominates, translucency, and the esthetic result</div>
+<div class="prompt">Why is value the dominant esthetic variable, and how do translucency and opalescence shape a natural-looking ceramic restoration?</div>
+<button class="reveal" onclick="revealCard('c10_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c10_1">
+<div class="en">A natural-looking ceramic restoration succeeds or fails mostly on <b>value</b> (lightness/darkness), which is why it is chosen first in the 3D-Master system and why a value mismatch is the most visible error. Value dominates for two reasons: lightness/darkness differences are detected even by untrained eyes, and they remain detectable at conversational distance, whereas hue and chroma blur as distance grows — so a crown with correct hue and chroma but wrong value still looks obviously artificial across a room. <b>Translucency</b> interacts directly with value: the more translucent an area, the <b>lower</b> its value, because light passes through and away from the viewer rather than reflecting back (a very translucent incisal edge looks greyer/darker). <b>Opalescence</b> — from enamel hydroxyapatite crystals reflecting short (blue) wavelengths and transmitting long (orange-red) ones — gives natural teeth their bluish incisal halo in reflected light and warm glow in transmitted light; a monochromatic, over-opaque ceramic that ignores this looks flat and lifeless. The clinician therefore reproduces not a single flat shade but a <b>gradient of value with layered translucency</b>, captured under daylight and communicated to the ceramist via photography or an instrument — because the eye reads the interplay of value, translucency, and opalescence as “natural,” and reads their absence as “fake.” This is also why esthetic failure (improper shade, unmasked metal, wrong cement shade) is listed among the true causes of bridge failure: an accurate but unesthetic restoration has still failed one of its core objectives.</div>
+<div class="hint">الترميم الخزفي الطبيعي المظهر ينجح أو يفشل غالباً بسبب <b>القيمة</b> (الفتحة/الغمقة)، ولهذا تُختار أولاً في نظام 3D-Master، ولهذا خطأ القيمة أوضح الأخطاء. وتسود القيمة لسببين: فروق الفتحة/الغمقة تُكتشف حتّى بالعين غير المدرّبة، وتبقى مكتشَفة على مسافة الحديث، بينما تتلاشى الصبغة والتشبّع بالبعد — فتاج بصبغة وتشبّع صحيحين لكن بقيمة خاطئة يبدو مصطنعاً من بعيد. و<b>الشفافية</b> تتفاعل مباشرةً مع القيمة: كلّما زادت شفافية منطقة <b>قلّت</b> قيمتها، لأن الضوء يمرّ بعيداً عن الناظر بدل أن ينعكس (فالحافة القاطعة الشفّافة جداً تبدو أرمد/أغمق). و<b>الأوبال (Opalescence)</b> — من بلّورات هيدروكسي أباتيت المينا التي تعكس الأطوال القصيرة (الزرقاء) وتمرّر الطويلة (البرتقالية-الحمراء) — يعطي الأسنان الطبيعية هالتها الزرقاء القاطعة بالضوء المنعكس وتوهّجها الدافئ بالنافذ؛ والخزف الأحادي اللون المفرط العتامة الذي يتجاهل ذلك يبدو مسطّحاً بلا حياة. فيستنسخ الطبيب لا لوناً مسطّحاً واحداً بل <b>تدرّج قيمة بشفافية متطبّقة</b>، ملتقطاً تحت ضوء النهار وموصّلاً للفنّي بالتصوير أو جهاز — لأن العين تقرأ تداخل القيمة والشفافية والأوبال كـ«طبيعي»، وغيابها كـ«مزيّف». ولهذا يُعدّ الفشل الجمالي (لون خاطئ، معدن بادٍ، لون سمنت خاطئ) من أسباب فشل الجسر الحقيقية: فالترميم الدقيق غير الجمالي أخفق في أحد أهدافه الجوهرية.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c10_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c10_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec11">Lec 14 · Dental Ceramic &amp; Strengthening ⭐</h2>
+<div class="card" id="c11_0">
+<div class="topic">Dental ceramic — definition &amp; why it is brittle</div>
+<div class="prompt">What is dental ceramic, why is it esthetically superior, and why is it brittle?</div>
+<button class="reveal" onclick="revealCard('c11_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c11_0">
+<div class="en"><b>Ceramic</b> (Greek "keramikos" = burnt earth) = any material with both metallic and non-metallic ions (silicon, boron, oxygen), formed by heat, with a partially/completely <b>crystalline</b> final structure (e.g., cements, gypsum, porcelain, glasses). <b>Dental porcelain</b> makes the most esthetic restorations and is soft-tissue compatible — superior to polymers in <b>shade reproduction, translucency, biocompatibility, chemical stability, and abrasion resistance</b>.<br>
+  But porcelain is very hard yet <b>extremely brittle</b> (fractures easily). To combat this, ceramics are <b>reinforced with particles, supported by a substructure (as in PFM), or made purely polycrystalline</b>. Development pursues two paths: (1) a high-strength (non-esthetic) core veneered with esthetic ceramic; (2) a ceramic combining strength <b>and</b> esthetics.</div>
+<div class="hint"><b>الخزف السنّي — التعريف ولماذا هشّ:</b> <b>الخزف (Ceramic)</b> (يونانية «keramikos» = طين محروق) = أي مادة بأيونات معدنية ولامعدنية (سيليكون، بورون، أكسجين)، تتكوّن بالحرارة، ببنية نهائية <b>بلّورية</b> جزئياً/كلياً (كالسمنتات والجبس والبورسلين والزجاج). و<b>البورسلين السنّي</b> يصنع أجمل الترميمات ومتوافق مع النسيج الرخو — متفوّق على البوليمرات في <b>استنساخ اللون والشفافية والتوافق الحيوي والثبات الكيميائي ومقاومة السحل</b>. لكن البورسلين صلب جداً لكنه <b>هشّ للغاية</b> (ينكسر بسهولة). ولمواجهة ذلك تُقوّى الخزفيات <b>بجسيمات، أو تُسنَد ببنية تحتية (كما في PFM)، أو تُصنع بلّورية بحتة</b>. ويتّبع التطوير مسارين: (١) نواة عالية القوّة (غير جمالية) مكسوّة بخزف جمالي؛ (٢) خزف يجمع القوّة <b>والجمال</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c11_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c11_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c11_1">
+<div class="topic">Extrinsic strengthening — residual compressive stress</div>
+<div class="prompt">How is ceramic strengthened extrinsically by introducing residual compressive stresses?</div>
+<button class="reveal" onclick="revealCard('c11_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c11_1">
+<div class="en">Extrinsic methods introduce <b>residual compressive stresses</b> in the ceramic surface:
+  <ul><li><b>Ion exchange (chemical tempering):</b> a sodium-containing glass is placed in molten <b>potassium nitrate</b>; the larger <b>potassium ion (35% larger than sodium)</b> squeezes into sodium's place → large surface <b>residual compressive stress</b>.</li>
+  <li><b>Thermal tempering:</b> rapidly <b>quenching</b> the hot softened surface creates a rigid glass skin around a molten core; as the core solidifies and shrinks, it puts the outer surface in compression.</li>
+  <li><b>Thermal compatibility (PFM):</b> the metal's coefficient of thermal expansion is designed slightly <b>higher</b> than the porcelain's, so on cooling the metal contracts more → compresses the porcelain → added strength.</li></ul></div>
+<div class="hint"><b>التقوية الخارجية — الإجهاد الانضغاطي المتبقّي:</b> الطرق الخارجية تُدخِل <b>إجهادات انضغاطية متبقّية</b> في سطح الخزف: <b>التبادل الأيوني (التقسية الكيميائية):</b> يُوضع زجاج حاوٍ للصوديوم في <b>نترات بوتاسيوم</b> منصهرة؛ فأيون <b>البوتاسيوم الأكبر (أكبر 35% من الصوديوم)</b> يُحشر مكان الصوديوم ← <b>إجهاد انضغاطي</b> سطحي كبير. <b>التقسية الحرارية:</b> <b>التبريد المفاجئ</b> للسطح الساخن الليّن يصنع قشرة زجاج صلبة حول نواة منصهرة؛ وعند تصلّب النواة وانكماشها تضع السطح الخارجي في انضغاط. <b>التوافق الحراري (PFM):</b> يُصمَّم معامل تمدّد المعدن أعلى قليلاً من البورسلين، فعند التبريد ينكمش المعدن أكثر ← يضغط البورسلين ← قوّة إضافية.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c11_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c11_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c11_2">
+<div class="topic">Intrinsic strengthening &amp; transformation-toughening zirconia</div>
+<div class="prompt">How is ceramic strengthened intrinsically, and what is transformation-toughening zirconia (TTZ)?</div>
+<button class="reveal" onclick="revealCard('c11_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c11_2">
+<div class="en">Intrinsic methods <b>interrupt crack propagation</b>:
+  <ul><li><b>Dispersion of a crystalline phase:</b> adding tough particles (<b>Al₂O₃, MgO, zirconia</b>) to glass — cracks cannot penetrate them. Alumina was added (<b>Hi-Ceram 40%, In-Ceram 85%</b>) to let porcelain be used <b>without a metal substructure</b> (all-ceramic crowns/bridges/inlays/onlays).</li>
+  <li><b>Transformation toughening (TTZ):</b> "<b>ceramic steel</b>" — under the stress of an advancing crack, <b>zirconium oxide (ZrO₂) grains transform</b> (tetragonal → monoclinic) with a volume increase that <b>squeezes the crack tip shut</b>. The energy for transformation is taken from the crack's propagation energy, hindering it and preventing failure — hence "ceramic steel." Examples of high-strength cores: aluminum oxide (Procera AllCeram), partially-stabilized zirconia (Cercon, Lava).</li></ul></div>
+<div class="hint"><b>التقوية الداخلية وزركونيا التحوّل (TTZ):</b> الطرق الداخلية <b>تقطع انتشار الشقّ</b>: <b>تشتيت طور بلّوري:</b> إضافة جسيمات صلدة (<b>Al₂O₃، MgO، زركونيا</b>) للزجاج — لا تستطيع الشقوق اختراقها. وأُضيف الألومينا (<b>Hi-Ceram 40%، In-Ceram 85%</b>) ليُستخدم البورسلين <b>دون بنية معدنية</b> (تيجان/جسور/حشوات خزفية كاملة). <b>التقوية بالتحوّل (TTZ):</b> «<b>الفولاذ الخزفي</b>» — تحت إجهاد شقّ متقدّم، <b>تتحوّل حبيبات أكسيد الزركونيوم (ZrO₂)</b> (رباعي → أحادي الميل) بزيادة حجم <b>تُطبق رأس الشقّ</b>. وطاقة التحوّل تُؤخَذ من طاقة انتشار الشقّ، فتعيقه وتمنع الفشل — ومن هنا «الفولاذ الخزفي». أمثلة النوى عالية القوّة: أكسيد الألمنيوم (Procera AllCeram)، والزركونيا المستقرّة جزئياً (Cercon، Lava).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c11_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c11_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec12">Lec 14 · Ceramic Classification &amp; Composition</h2>
+<div class="card" id="c12_0">
+<div class="topic">Classification of dental ceramics by glass content</div>
+<div class="prompt">How are dental ceramics classified by glass content, and what does each group offer?</div>
+<button class="reveal" onclick="revealCard('c12_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c12_0">
+<div class="en">Kelly and Benetti classify ceramics by <b>glass content</b> into three groups:
+  <ul><li><b>Predominantly glassy materials:</b> best mimic the optical properties of enamel/dentine (amorphous 3-D atomic network, no regular pattern); derived from <b>feldspar (aluminosilicate glasses)</b>; resistant to crystallization, long firing range, biocompatible — the <b>esthetic</b> ceramics.</li>
+  <li><b>Particle-filled glasses (glass-ceramics):</b> filler particles improve mechanical properties and control optical effects (opalescence, color, opacity). Adding <b>17–25% leucite</b> makes porcelain thermally compatible with dental alloys → "dispersion strengthening."</li>
+  <li><b>Polycrystalline ceramics:</b> no glassy phase — densely packed regular atoms make crack propagation difficult → <b>tougher/stronger</b>, but relatively <b>opaque</b>, hard to process (needs CAD/CAM) → used as <b>core substructure</b> (aluminum oxide, partially-stabilized zirconia: Procera, Cercon, Lava).</li></ul>
+  A newer system adds <b>resin-matrix ("hybrid") ceramics</b>.</div>
+<div class="hint"><b>تصنيف الخزفيات حسب محتوى الزجاج:</b> يصنّف Kelly وBenetti الخزفيات بـ<b>محتوى الزجاج</b> لثلاث مجموعات: <b>مواد زجاجية غالباً:</b> الأفضل في محاكاة خصائص المينا/العاج البصرية (شبكة ذرّية ثلاثية غير منتظمة)؛ مشتقّة من <b>الفلدسبار (زجاج سيليكات ألومينية)</b>؛ مقاومة للتبلور، مدى حرق طويل، متوافقة حيوياً — الخزفيات <b>الجمالية</b>. <b>زجاج ممتلئ بالجسيمات (glass-ceramics):</b> جسيمات الحشو تحسّن الخصائص الميكانيكية وتضبط التأثيرات البصرية (الأوبال، اللون، العتامة). وإضافة <b>17–25% لوسايت</b> تجعل البورسلين متوافقاً حرارياً مع السبائك → «تقوية بالتشتيت». <b>خزفيات بلّورية بحتة:</b> بلا طور زجاجي — ذرّات منتظمة متراصّة تصعّب انتشار الشقّ → <b>أقوى/أصلب</b>، لكن <b>معتمة</b> نسبياً، صعبة المعالجة (تحتاج CAD/CAM) → تُستخدم <b>نواةً</b> (أكسيد ألمنيوم، زركونيا مستقرّة جزئياً: Procera، Cercon، Lava). ونظام أحدث يضيف <b>الخزفيات الراتنجية («الهجينة»)</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c12_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c12_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c12_1">
+<div class="topic">Composition of feldspathic (traditional) porcelain</div>
+<div class="prompt">What are the three main components of traditional feldspathic porcelain and their roles?</div>
+<button class="reveal" onclick="revealCard('c12_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c12_1">
+<div class="en"><ul>
+  <li><b>Kaolin (11–12%):</b> white clay-like hydrated aluminum silicate; makes the material <b>workable/moldable</b> (binds particles, sticky), maintains form during drying/firing, reacts with feldspar for rigidity, and gives <b>opacity</b> to the fired porcelain.</li>
+  <li><b>Feldspar (70–90%):</b> alkaline aluminum-potassium silicate — the <b>bulk</b> of dental porcelain; a translucent glossy <b>matrix</b> binding kaolin and quartz. Alumina may replace silica to <b>increase strength and opacity</b> → used as a <b>core under regular translucent porcelain</b> (aluminous porcelain, ~40–50% alumina, e.g., Hi-Ceram — opaque, so only a coping/core).</li>
+  <li><b>Quartz (silica):</b> forms the <b>refractory skeleton</b> around which the others fuse/flow; a filler that increases strength and helps the crown hold its form during firing.</li></ul></div>
+<div class="hint"><b>تركيب البورسلين الفلدسباري (التقليدي):</b> <b>الكاولين (11–12%):</b> سيليكات ألمنيوم مائية شبيهة بالطين الأبيض؛ يجعل المادة <b>قابلة للتشكيل</b> (يربط الجسيمات، لزج)، يحفظ الشكل أثناء التجفيف/الحرق، يتفاعل مع الفلدسبار للصلابة، ويعطي <b>عتامة</b> للبورسلين المحروق. <b>الفلدسبار (70–90%):</b> سيليكات ألمنيوم-بوتاسيوم قلوية — <b>الكتلة الأساسية</b> للبورسلين؛ <b>مطرس</b> شفّاف لمّاع يربط الكاولين والكوارتز. وقد تحلّ الألومينا محلّ السيليكا لـ<b>زيادة القوّة والعتامة</b> → تُستخدم <b>نواةً تحت بورسلين شفّاف عادي</b> (بورسلين ألوميني ~40–50% ألومينا، مثل Hi-Ceram — معتم، فيُستخدم كوبنةً/نواةً فقط). <b>الكوارتز (سيليكا):</b> يشكّل <b>الهيكل الحراري</b> الذي تنصهر/تسيل حوله البقية؛ حشوة تزيد القوّة وتساعد التاج على حفظ شكله أثناء الحرق.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c12_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c12_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c12_2">
+<div class="topic">From composition to clinical choice — why ceramic type follows the case</div>
+<div class="prompt">How does the glass-versus-crystalline balance of a ceramic translate into which restoration you choose for a given tooth?</div>
+<button class="reveal" onclick="revealCard('c12_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c12_2">
+<div class="en">The single trade-off running through all dental ceramics is <b>glass content versus crystalline content</b>, and it maps directly onto the esthetics-versus-strength decision for each case. <b>Predominantly glassy (feldspathic) ceramics</b> are the most translucent and best mimic enamel/dentine, but they are the weakest — so they suit low-load, high-esthetic work: <b>veneers, anterior single crowns, and porcelain veneering</b> over a stronger core. Adding filler particles gives <b>particle-filled glass-ceramics</b> (e.g., 17–25% leucite for PFM compatibility, or lithium disilicate for pressable crowns) that raise strength while keeping useful esthetics — a middle ground for anterior and premolar crowns. At the far end, <b>polycrystalline ceramics</b> (alumina, partially-stabilized zirconia) have no glass phase, so cracks cannot travel easily and — with transformation toughening, the “ceramic steel” effect — they are the strongest, but they are relatively opaque and must be milled by CAD/CAM, so they serve as <b>high-strength cores/substructures or monolithic posterior units</b>, often veneered for anterior esthetics. Thus the clinician reads the case first — occlusal load, span, bruxism, and how visible the tooth is — and then selects the ceramic whose position on the glass–crystalline spectrum matches: more glass where the eye dominates, more crystal where the bite dominates. The strengthening methods (ion exchange, thermal tempering, thermal compatibility, dispersion, transformation toughening) are all ways of pushing a given ceramic further along that spectrum without losing more esthetics than the case can afford.</div>
+<div class="hint">المفاضلة الوحيدة المارّة في كل الخزفيات السنية هي <b>محتوى الزجاج مقابل المحتوى البلّوري</b>، وتنعكس مباشرةً على قرار الجمال مقابل القوّة لكل حالة. فالخزفيات <b>الزجاجية غالباً (الفلدسبارية)</b> الأشفّ والأفضل في محاكاة المينا/العاج، لكنها الأضعف — فتناسب العمل منخفض الحمل عالي الجمال: <b>القشور، التيجان الأمامية المفردة، وتكسية البورسلين</b> فوق نواة أقوى. وإضافة جسيمات الحشو تعطي <b>glass-ceramics</b> (مثل 17–25% لوسايت لتوافق PFM، أو ثنائي سيليكات الليثيوم للتيجان المكبوسة) ترفع القوّة مع جمال مفيد — حلّ وسط للتيجان الأمامية والضاحكة. وفي الطرف الأقصى، الخزفيات <b>البلّورية البحتة</b> (ألومينا، زركونيا مستقرّة جزئياً) بلا طور زجاجي، فلا تسري الشقوق بسهولة، و— بالتقوية بالتحوّل «الفولاذ الخزفي» — هي الأقوى، لكنها معتمة نسبياً وتُفرَز بـCAD/CAM، فتصلح <b>نوى/بنى عالية القوّة أو وحدات خلفية أحادية</b>، غالباً مكسوّة للجمال الأمامي. فيقرأ الطبيب الحالة أولاً — الحمل الإطباقي والمسافة والصرير ومدى ظهور السن — ثم يختار الخزف الذي يطابق موقعه على طيف الزجاج–البلّور: زجاج أكثر حيث تسود العين، وبلّور أكثر حيث تسود العضّة. وطرق التقوية كلّها وسائل لدفع خزف معيّن أبعد على ذلك الطيف دون خسارة جمال أكثر ممّا تحتمله الحالة.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c12_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c12_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c12_3">
+<div class="topic">Opacifiers and the illusion of a natural tooth</div>
+<div class="prompt">What are opacifiers in dental porcelain, and how do value, opacity, and translucency combine to make a restoration look natural?</div>
+<button class="reveal" onclick="revealCard('c12_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c12_3">
+<div class="en"><b>Opacifiers</b> are metal-oxide additives — commonly oxides of <b>zirconium, titanium, and tin</b> — mixed into dental porcelain to control how much light passes through versus scatters back. They matter because a natural tooth is not uniformly translucent: the <b>opaque incisal edge appears white</b> while <b>translucent areas appear grey</b>, and the dentine core is more opaque and chromatic than the enamel that overlies it. A ceramist reproduces this by layering an <b>opaque core</b> (or an aluminous/polycrystalline substructure) to mask any dark background or metal, then building progressively more translucent dentine and enamel layers over it. The interplay is governed by the value rule from color science: increasing opacity <b>raises value</b> (brightness) while lowering translucency, and the more translucent a region the <b>lower</b> its value because light passes away from the viewer. Getting the opacifier balance wrong produces the two classic esthetic failures — too opaque and the crown looks flat, chalky, and lifeless (“monolithic”); too translucent and it looks grey and dark, especially at the incisal. So opacifiers, layering, and translucency are the tools by which the abstract color dimensions (value, chroma, hue) become a restoration the eye accepts as a real tooth — closing the loop between the color theory at the start of this material and the finished ceramic at its end.</div>
+<div class="hint"><b>المعتِمات (Opacifiers)</b> إضافات أكاسيد معدنية — غالباً أكاسيد <b>الزركونيوم والتيتانيوم والقصدير</b> — تُمزج في البورسلين لضبط مقدار نفاذ الضوء مقابل تشتته. وهي مهمّة لأن السن الطبيعي ليس موحّد الشفافية: فال<b>حافة القاطعة المعتمة تبدو بيضاء</b> بينما <b>المناطق الشفّافة تبدو رمادية</b>، ونواة العاج أعتم وأكثر تشبّعاً من المينا فوقه. ويستنسخ الفنّي ذلك بتطبيق <b>نواة معتمة</b> (أو بنية ألومينية/بلّورية) لإخفاء أي خلفية داكنة أو معدن، ثم يبني طبقات عاج ومينا أكثر شفافيةً تدريجياً فوقها. ويحكم التداخل قاعدة القيمة: زيادة العتامة <b>ترفع القيمة</b> (السطوع) وتخفض الشفافية، وكلّما زادت شفافية منطقة <b>قلّت</b> قيمتها لأن الضوء يمرّ بعيداً عن الناظر. وخطأ توازن المعتِم ينتج الفشلين الجماليين الكلاسيكيين — المفرط العتامة يبدو مسطّحاً طباشيرياً بلا حياة، والمفرط الشفافية يبدو رمادياً داكناً خاصةً قاطعياً. فالمعتِمات والتطبيق الطبقي والشفافية هي الأدوات التي تحوّل أبعاد اللون المجرّدة (القيمة، التشبّع، الصبغة) لترميم تقبله العين كسنّ حقيقي — مُغلقةً الحلقة بين نظرية اللون في بداية المادة والخزف المنجز في نهايتها.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c12_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c12_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+
+<div class="mcq-wrap">
+<h2 class="mcq-title">📝 اختبار MCQ · اختبر نفسك (20 سؤالاً)</h2>
+<div class="mcq-note">اختر إجابةً لكل سؤال. سيظهر الصحيح بالأخضر والخطأ بالأحمر مع شرح موجز. النتيجة تُحسب تلقائياً في الأعلى.</div>
+<div class="mcq-scorebar">النتيجة · Score: <b id="mcqScore">0 / 20</b> &nbsp;·&nbsp; <button class="mcq-reset" onclick="mcqReset()">🔄 إعادة الاختبار</button></div>
+<div class="mcq-q" id="mcq0">
+<div class="mcq-stem"><span class="mcq-num">1</span> Which dimension of color is considered the MOST important in shade selection?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="0" data-o="0" onclick="pick(0,0)"><b>A.</b> Hue</button>
+<button class="mcq-opt" data-q="0" data-o="1" onclick="pick(0,1)"><b>B.</b> Chroma</button>
+<button class="mcq-opt" data-q="0" data-o="2" onclick="pick(0,2)"><b>C.</b> Value</button>
+<button class="mcq-opt" data-q="0" data-o="3" onclick="pick(0,3)"><b>D.</b> Translucency</button></div>
+<div class="mcq-exp" id="exp0"></div>
+</div>
+<div class="mcq-q" id="mcq1">
+<div class="mcq-stem"><span class="mcq-num">2</span> The intensity or saturation of a color is its:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="1" data-o="0" onclick="pick(1,0)"><b>A.</b> Hue</button>
+<button class="mcq-opt" data-q="1" data-o="1" onclick="pick(1,1)"><b>B.</b> Chroma</button>
+<button class="mcq-opt" data-q="1" data-o="2" onclick="pick(1,2)"><b>C.</b> Value</button>
+<button class="mcq-opt" data-q="1" data-o="3" onclick="pick(1,3)"><b>D.</b> Opalescence</button></div>
+<div class="mcq-exp" id="exp1"></div>
+</div>
+<div class="mcq-q" id="mcq2">
+<div class="mcq-stem"><span class="mcq-num">3</span> The best light source for shade matching is:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="2" data-o="0" onclick="pick(2,0)"><b>A.</b> Incandescent light</button>
+<button class="mcq-opt" data-q="2" data-o="1" onclick="pick(2,1)"><b>B.</b> Fluorescent light</button>
+<button class="mcq-opt" data-q="2" data-o="2" onclick="pick(2,2)"><b>C.</b> Natural daylight (mid-day)</button>
+<button class="mcq-opt" data-q="2" data-o="3" onclick="pick(2,3)"><b>D.</b> Dental chair light</button></div>
+<div class="mcq-exp" id="exp2"></div>
+</div>
+<div class="mcq-q" id="mcq3">
+<div class="mcq-stem"><span class="mcq-num">4</span> Incandescent light is unsuitable for shade matching because it emits a high concentration of:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="3" data-o="0" onclick="pick(3,0)"><b>A.</b> Blue waves</button>
+<button class="mcq-opt" data-q="3" data-o="1" onclick="pick(3,1)"><b>B.</b> Yellow waves</button>
+<button class="mcq-opt" data-q="3" data-o="2" onclick="pick(3,2)"><b>C.</b> Green waves</button>
+<button class="mcq-opt" data-q="3" data-o="3" onclick="pick(3,3)"><b>D.</b> Ultraviolet waves</button></div>
+<div class="mcq-exp" id="exp3"></div>
+</div>
+<div class="mcq-q" id="mcq4">
+<div class="mcq-stem"><span class="mcq-num">5</span> The phenomenon where two objects match under one light source but not under another is:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="4" data-o="0" onclick="pick(4,0)"><b>A.</b> Opalescence</button>
+<button class="mcq-opt" data-q="4" data-o="1" onclick="pick(4,1)"><b>B.</b> Fluorescence</button>
+<button class="mcq-opt" data-q="4" data-o="2" onclick="pick(4,2)"><b>C.</b> Metamerism</button>
+<button class="mcq-opt" data-q="4" data-o="3" onclick="pick(4,3)"><b>D.</b> Translucency</button></div>
+<div class="mcq-exp" id="exp4"></div>
+</div>
+<div class="mcq-q" id="mcq5">
+<div class="mcq-stem"><span class="mcq-num">6</span> In the retina, which receptors perceive hue and chroma?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="5" data-o="0" onclick="pick(5,0)"><b>A.</b> Rods</button>
+<button class="mcq-opt" data-q="5" data-o="1" onclick="pick(5,1)"><b>B.</b> Cones</button>
+<button class="mcq-opt" data-q="5" data-o="2" onclick="pick(5,2)"><b>C.</b> Both equally</button>
+<button class="mcq-opt" data-q="5" data-o="3" onclick="pick(5,3)"><b>D.</b> Neither</button></div>
+<div class="mcq-exp" id="exp5"></div>
+</div>
+<div class="mcq-q" id="mcq6">
+<div class="mcq-stem"><span class="mcq-num">7</span> Color-deficiency (defective color vision) affects approximately what percentage of males?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="6" data-o="0" onclick="pick(6,0)"><b>A.</b> 0.5%</button>
+<button class="mcq-opt" data-q="6" data-o="1" onclick="pick(6,1)"><b>B.</b> 2%</button>
+<button class="mcq-opt" data-q="6" data-o="2" onclick="pick(6,2)"><b>C.</b> 8%</button>
+<button class="mcq-opt" data-q="6" data-o="3" onclick="pick(6,3)"><b>D.</b> 20%</button></div>
+<div class="mcq-exp" id="exp6"></div>
+</div>
+<div class="mcq-q" id="mcq7">
+<div class="mcq-stem"><span class="mcq-num">8</span> In the Vita Classic shade guide, group A represents which hue?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="7" data-o="0" onclick="pick(7,0)"><b>A.</b> Yellow</button>
+<button class="mcq-opt" data-q="7" data-o="1" onclick="pick(7,1)"><b>B.</b> Grey</button>
+<button class="mcq-opt" data-q="7" data-o="2" onclick="pick(7,2)"><b>C.</b> Red-yellow (reddish-brown)</button>
+<button class="mcq-opt" data-q="7" data-o="3" onclick="pick(7,3)"><b>D.</b> Red-grey</button></div>
+<div class="mcq-exp" id="exp7"></div>
+</div>
+<div class="mcq-q" id="mcq8">
+<div class="mcq-stem"><span class="mcq-num">9</span> The manufacturer&#x27;s recommended first step when using the Vita Classic shade guide is:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="8" data-o="0" onclick="pick(8,0)"><b>A.</b> Value selection</button>
+<button class="mcq-opt" data-q="8" data-o="1" onclick="pick(8,1)"><b>B.</b> Chroma selection</button>
+<button class="mcq-opt" data-q="8" data-o="2" onclick="pick(8,2)"><b>C.</b> Hue selection</button>
+<button class="mcq-opt" data-q="8" data-o="3" onclick="pick(8,3)"><b>D.</b> Final check</button></div>
+<div class="mcq-exp" id="exp8"></div>
+</div>
+<div class="mcq-q" id="mcq9">
+<div class="mcq-stem"><span class="mcq-num">10</span> In the Vita 3D-Master guide, the FIRST step of shade taking is to determine the:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="9" data-o="0" onclick="pick(9,0)"><b>A.</b> Hue</button>
+<button class="mcq-opt" data-q="9" data-o="1" onclick="pick(9,1)"><b>B.</b> Chroma</button>
+<button class="mcq-opt" data-q="9" data-o="2" onclick="pick(9,2)"><b>C.</b> Value (lightness level)</button>
+<button class="mcq-opt" data-q="9" data-o="3" onclick="pick(9,3)"><b>D.</b> Translucency</button></div>
+<div class="mcq-exp" id="exp9"></div>
+</div>
+<div class="mcq-q" id="mcq10">
+<div class="mcq-stem"><span class="mcq-num">11</span> The MOST accurate instrument for scientific color analysis of a tooth is the:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="10" data-o="0" onclick="pick(10,0)"><b>A.</b> Colorimeter</button>
+<button class="mcq-opt" data-q="10" data-o="1" onclick="pick(10,1)"><b>B.</b> Spectrophotometer</button>
+<button class="mcq-opt" data-q="10" data-o="2" onclick="pick(10,2)"><b>C.</b> Shade guide</button>
+<button class="mcq-opt" data-q="10" data-o="3" onclick="pick(10,3)"><b>D.</b> Radiograph</button></div>
+<div class="mcq-exp" id="exp10"></div>
+</div>
+<div class="mcq-q" id="mcq11">
+<div class="mcq-stem"><span class="mcq-num">12</span> An all-ceramic restoration with a ceramic core covered by a ceramic veneer is described as:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="11" data-o="0" onclick="pick(11,0)"><b>A.</b> Monolithic</button>
+<button class="mcq-opt" data-q="11" data-o="1" onclick="pick(11,1)"><b>B.</b> Bilayered</button>
+<button class="mcq-opt" data-q="11" data-o="2" onclick="pick(11,2)"><b>C.</b> Castable</button>
+<button class="mcq-opt" data-q="11" data-o="3" onclick="pick(11,3)"><b>D.</b> Machinable</button></div>
+<div class="mcq-exp" id="exp11"></div>
+</div>
+<div class="mcq-q" id="mcq12">
+<div class="mcq-stem"><span class="mcq-num">13</span> Sintering of dental ceramic means heating closely packed particles to:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="12" data-o="0" onclick="pick(12,0)"><b>A.</b> Above the melting point</button>
+<button class="mcq-opt" data-q="12" data-o="1" onclick="pick(12,1)"><b>B.</b> Just below the melting point</button>
+<button class="mcq-opt" data-q="12" data-o="2" onclick="pick(12,2)"><b>C.</b> Room temperature</button>
+<button class="mcq-opt" data-q="12" data-o="3" onclick="pick(12,3)"><b>D.</b> The boiling point</button></div>
+<div class="mcq-exp" id="exp12"></div>
+</div>
+<div class="mcq-q" id="mcq13">
+<div class="mcq-stem"><span class="mcq-num">14</span> The slip-casting all-ceramic technique produces strength by infiltrating the porous core with:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="13" data-o="0" onclick="pick(13,0)"><b>A.</b> Zirconia powder</button>
+<button class="mcq-opt" data-q="13" data-o="1" onclick="pick(13,1)"><b>B.</b> Lanthanum-based glass</button>
+<button class="mcq-opt" data-q="13" data-o="2" onclick="pick(13,2)"><b>C.</b> Acrylic resin</button>
+<button class="mcq-opt" data-q="13" data-o="3" onclick="pick(13,3)"><b>D.</b> Gold alloy</button></div>
+<div class="mcq-exp" id="exp13"></div>
+</div>
+<div class="mcq-q" id="mcq14">
+<div class="mcq-stem"><span class="mcq-num">15</span> Second-generation hot-pressed (pressable) dental ceramics are based on:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="14" data-o="0" onclick="pick(14,0)"><b>A.</b> Leucite</button>
+<button class="mcq-opt" data-q="14" data-o="1" onclick="pick(14,1)"><b>B.</b> Lithium disilicate</button>
+<button class="mcq-opt" data-q="14" data-o="2" onclick="pick(14,2)"><b>C.</b> Feldspar</button>
+<button class="mcq-opt" data-q="14" data-o="3" onclick="pick(14,3)"><b>D.</b> Alumina</button></div>
+<div class="mcq-exp" id="exp14"></div>
+</div>
+<div class="mcq-q" id="mcq15">
+<div class="mcq-stem"><span class="mcq-num">16</span> The MOST common biological cause of failure of a fixed restoration is:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="15" data-o="0" onclick="pick(15,0)"><b>A.</b> Pulpal injury</button>
+<button class="mcq-opt" data-q="15" data-o="1" onclick="pick(15,1)"><b>B.</b> Caries</button>
+<button class="mcq-opt" data-q="15" data-o="2" onclick="pick(15,2)"><b>C.</b> Periodontal breakdown</button>
+<button class="mcq-opt" data-q="15" data-o="3" onclick="pick(15,3)"><b>D.</b> Porcelain fracture</button></div>
+<div class="mcq-exp" id="exp15"></div>
+</div>
+<div class="mcq-q" id="mcq16">
+<div class="mcq-stem"><span class="mcq-num">17</span> A fixed-fixed bridge commonly fails by:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="16" data-o="0" onclick="pick(16,0)"><b>A.</b> Both retainers loosening simultaneously</button>
+<button class="mcq-opt" data-q="16" data-o="1" onclick="pick(16,1)"><b>B.</b> One retainer loosening while the other stays cemented</button>
+<button class="mcq-opt" data-q="16" data-o="2" onclick="pick(16,2)"><b>C.</b> Pontic dissolving</button>
+<button class="mcq-opt" data-q="16" data-o="3" onclick="pick(16,3)"><b>D.</b> Connector melting</button></div>
+<div class="mcq-exp" id="exp16"></div>
+</div>
+<div class="mcq-q" id="mcq17">
+<div class="mcq-stem"><span class="mcq-num">18</span> To verify pulpal pain under a FULL metal crown, the appropriate vitality test is:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="17" data-o="0" onclick="pick(17,0)"><b>A.</b> Electric pulp test</button>
+<button class="mcq-opt" data-q="17" data-o="1" onclick="pick(17,1)"><b>B.</b> Thermal test</button>
+<button class="mcq-opt" data-q="17" data-o="2" onclick="pick(17,2)"><b>C.</b> Percussion only</button>
+<button class="mcq-opt" data-q="17" data-o="3" onclick="pick(17,3)"><b>D.</b> No test possible</button></div>
+<div class="mcq-exp" id="exp17"></div>
+</div>
+<div class="mcq-q" id="mcq18">
+<div class="mcq-stem"><span class="mcq-num">19</span> An over-contoured crown most typically leads to:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="18" data-o="0" onclick="pick(18,0)"><b>A.</b> Over-stimulation of the gingiva</button>
+<button class="mcq-opt" data-q="18" data-o="1" onclick="pick(18,1)"><b>B.</b> Plaque accumulation with under-stimulation (periodontal problems)</button>
+<button class="mcq-opt" data-q="18" data-o="2" onclick="pick(18,2)"><b>C.</b> Increased translucency</button>
+<button class="mcq-opt" data-q="18" data-o="3" onclick="pick(18,3)"><b>D.</b> Better hygiene</button></div>
+<div class="mcq-exp" id="exp18"></div>
+</div>
+<div class="mcq-q" id="mcq19">
+<div class="mcq-stem"><span class="mcq-num">20</span> Using intracoronal inlays as retainers for a fixed-fixed bridge is an example of:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="19" data-o="0" onclick="pick(19,0)"><b>A.</b> Over-prescribed design</button>
+<button class="mcq-opt" data-q="19" data-o="1" onclick="pick(19,1)"><b>B.</b> Under-prescribed (too conservative) design</button>
+<button class="mcq-opt" data-q="19" data-o="2" onclick="pick(19,2)"><b>C.</b> Ideal design</button>
+<button class="mcq-opt" data-q="19" data-o="3" onclick="pick(19,3)"><b>D.</b> Maintenance failure</button></div>
+<div class="mcq-exp" id="exp19"></div>
+</div>
+<div class="mcq-final" id="mcqFinal"></div>
+</div>
+
+<div class="foot">
+✅ غطّى هذا الملف مادة اليوم الحادي عشر — التيجان والجسور (Crowns &amp; Bridges) ص 146–275، وهو نهاية الكتاب: <b>علم اللون واختيار اللون</b> (أبعاد اللون الثلاثة وأهمّية القيمة، مصادر الضوء، الخصائص الفيزيائية وتأثير الأوبال، تبدّل اللون Metamerism، الناظر الذاتي وعوز اللون، طرق ومبادئ اختيار اللون، أدلّة Vita Classic و3D-Master وLinearguide، والتحليل الآلي بالمطياف والمقياس اللوني والتصوير)؛ <b>أنظمة الخزف الكامل</b> (أحادي/ثنائي الطبقة، التلبيد، السباكة بالملاط، الكبس الحراري، الصبّ، والفرز CAD/CAM)؛ و<b>فشل التيجان والجسور</b> (المظاهر والأسباب العامّة؛ الحيوي: التسوّس وأذيّة اللب والمشاكل حول السنية؛ الميكانيكي: الارتخاء وكسر البورسلين والتشوّه؛ فشل التصميم ناقص/زائد الوصف؛ الجمالي والانزعاج والصيانة). 🎉 بهذا تكتمل مادة التيجان والجسور (الأيام ٨–١١).<br><br>
+احفظ الملف باسم <b>crowns-day11.html</b>. للتفاعل الكامل افتحه في Safari.
+</div>
+
+<script>
+let mastered={};
+function revealCard(id){document.getElementById('ans_'+id).classList.add('show');}
+function rate(id,ok){mastered[id]=ok;upd();}
+function upd(){
+  let done=Object.values(mastered).filter(v=>v===1).length;
+  document.getElementById('scoreTxt').textContent=done+' / 42';
+  document.getElementById('progBar').style.width=(done/42*100)+'%';
+}
+function revealAll(){document.querySelectorAll('.answer').forEach(a=>a.classList.add('show'));}
+function hideAll(){document.querySelectorAll('.answer').forEach(a=>a.classList.remove('show'));}
+function resetAll(){mastered={};hideAll();upd();}
+upd();
+
+const MCQ=[{"q": "Which dimension of color is considered the MOST important in shade selection?", "opts": ["Hue", "Chroma", "Value", "Translucency"], "correct": 2, "exp": "Value (lightness/darkness) is most important — detected easily at any distance. القيمة الأهمّ — تُكتشف بسهولة على أي مسافة."}, {"q": "The intensity or saturation of a color is its:", "opts": ["Hue", "Chroma", "Value", "Opalescence"], "correct": 1, "exp": "Chroma = intensity/saturation of the hue. التشبّع = شدّة/كثافة الصبغة."}, {"q": "The best light source for shade matching is:", "opts": ["Incandescent light", "Fluorescent light", "Natural daylight (mid-day)", "Dental chair light"], "correct": 2, "exp": "Natural mid-day daylight gives the full spectrum. ضوء النهار الطبيعي عند الظهيرة يعطي الطيف الكامل."}, {"q": "Incandescent light is unsuitable for shade matching because it emits a high concentration of:", "opts": ["Blue waves", "Yellow waves", "Green waves", "Ultraviolet waves"], "correct": 1, "exp": "Incandescent = high yellow; fluorescent = high blue. المتوهّج غنيّ بالأصفر؛ والفلوري بالأزرق."}, {"q": "The phenomenon where two objects match under one light source but not under another is:", "opts": ["Opalescence", "Fluorescence", "Metamerism", "Translucency"], "correct": 2, "exp": "Metamerism → evaluate shade under multiple light sources. Metamerism → قيّم اللون تحت مصادر متعدّدة."}, {"q": "In the retina, which receptors perceive hue and chroma?", "opts": ["Rods", "Cones", "Both equally", "Neither"], "correct": 1, "exp": "Cones perceive hue/chroma; rods detect only value. المخاريط تدرك الصبغة/التشبّع؛ والعصيّ القيمة فقط."}, {"q": "Color-deficiency (defective color vision) affects approximately what percentage of males?", "opts": ["0.5%", "2%", "8%", "20%"], "correct": 2, "exp": "~8% of males and 0.5% of females. ~8% من الذكور و0.5% من الإناث."}, {"q": "In the Vita Classic shade guide, group A represents which hue?", "opts": ["Yellow", "Grey", "Red-yellow (reddish-brown)", "Red-grey"], "correct": 2, "exp": "A = red-yellow, B = yellow, C = grey, D = red-yellow-grey. A أحمر-أصفر، B أصفر، C رمادي، D أحمر-أصفر-رمادي."}, {"q": "The manufacturer's recommended first step when using the Vita Classic shade guide is:", "opts": ["Value selection", "Chroma selection", "Hue selection", "Final check"], "correct": 2, "exp": "Sequence: hue → chroma → value → final check. التسلسل: صبغة → تشبّع → قيمة → فحص."}, {"q": "In the Vita 3D-Master guide, the FIRST step of shade taking is to determine the:", "opts": ["Hue", "Chroma", "Value (lightness level)", "Translucency"], "correct": 2, "exp": "3D-Master starts with value (5 levels), then chroma, then hue. يبدأ 3D-Master بالقيمة (5 مستويات) ثم التشبّع ثم الصبغة."}, {"q": "The MOST accurate instrument for scientific color analysis of a tooth is the:", "opts": ["Colorimeter", "Spectrophotometer", "Shade guide", "Radiograph"], "correct": 1, "exp": "The spectrophotometer is more accurate than the colorimeter. المطياف أدقّ من المقياس اللوني."}, {"q": "An all-ceramic restoration with a ceramic core covered by a ceramic veneer is described as:", "opts": ["Monolithic", "Bilayered", "Castable", "Machinable"], "correct": 1, "exp": "Bilayered = core + veneer; monolithic = single material. ثنائي الطبقة = نواة + تكسية؛ أحادي = مادة واحدة."}, {"q": "Sintering of dental ceramic means heating closely packed particles to:", "opts": ["Above the melting point", "Just below the melting point", "Room temperature", "The boiling point"], "correct": 1, "exp": "Sintering = heating to just below melting so particles bond. التلبيد = تسخين لما دون الانصهار لترتبط الجسيمات."}, {"q": "The slip-casting all-ceramic technique produces strength by infiltrating the porous core with:", "opts": ["Zirconia powder", "Lanthanum-based glass", "Acrylic resin", "Gold alloy"], "correct": 1, "exp": "A lanthanum-based glass infiltrates the porous crystalline core. زجاج قائم على اللانثانم يُشرّب النواة البلّورية المسامية."}, {"q": "Second-generation hot-pressed (pressable) dental ceramics are based on:", "opts": ["Leucite", "Lithium disilicate", "Feldspar", "Alumina"], "correct": 1, "exp": "1st gen = leucite, 2nd gen = lithium disilicate. الجيل الأول لوسايت؛ والثاني ثنائي سيليكات الليثيوم."}, {"q": "The MOST common biological cause of failure of a fixed restoration is:", "opts": ["Pulpal injury", "Caries", "Periodontal breakdown", "Porcelain fracture"], "correct": 1, "exp": "Caries is the most common cause, hard to detect under full coverage. التسوّس الأشيع، صعب الكشف تحت التغطية الكاملة."}, {"q": "A fixed-fixed bridge commonly fails by:", "opts": ["Both retainers loosening simultaneously", "One retainer loosening while the other stays cemented", "Pontic dissolving", "Connector melting"], "correct": 1, "exp": "Leverage loosens one retainer while the other stays attached → leakage/caries. الرافعة تُرخي حاصرةً وتبقى الأخرى مثبّتة."}, {"q": "To verify pulpal pain under a FULL metal crown, the appropriate vitality test is:", "opts": ["Electric pulp test", "Thermal test", "Percussion only", "No test possible"], "correct": 1, "exp": "Full crown → thermal test; partial crown → electric test. تاج كامل → حراري؛ جزئي → كهربائي."}, {"q": "An over-contoured crown most typically leads to:", "opts": ["Over-stimulation of the gingiva", "Plaque accumulation with under-stimulation (periodontal problems)", "Increased translucency", "Better hygiene"], "correct": 1, "exp": "Over-contour → over-protection/under-stimulation → periodontal problems. الكنتور الزائد → حماية مفرطة/تحفيز ناقص → مشاكل لثوية."}, {"q": "Using intracoronal inlays as retainers for a fixed-fixed bridge is an example of:", "opts": ["Over-prescribed design", "Under-prescribed (too conservative) design", "Ideal design", "Maintenance failure"], "correct": 1, "exp": "Too-conservative retainers for a fixed-fixed bridge = under-prescribed design failure. حاصرات مفرطة التحفّظ لجسر fixed-fixed = فشل تصميم ناقص الوصف."}];
+const mcqTotal=20;
+let mcqAnswered={};
+function pick(qi,oi){
+  if(mcqAnswered[qi]!==undefined) return;
+  mcqAnswered[qi]=oi;
+  const correct=MCQ[qi].correct;
+  const opts=document.querySelectorAll('#mcq'+qi+' .mcq-opt');
+  opts.forEach(b=>{
+    b.classList.add('locked');
+    const o=parseInt(b.getAttribute('data-o'));
+    if(o===correct) b.classList.add('correct');
+    if(o===oi && oi!==correct) b.classList.add('wrong');
+  });
+  const exp=document.getElementById('exp'+qi);
+  const ok=(oi===correct);
+  exp.innerHTML=(ok?'✅ <b>إجابة صحيحة</b> — ':'❌ <b>إجابة خاطئة</b> — الصحيح: <b>'+String.fromCharCode(65+correct)+'</b> — ')+MCQ[qi].exp;
+  exp.classList.add('show');
+  mcqScore();
+}
+function mcqScore(){
+  let s=0;
+  for(const k in mcqAnswered){ if(mcqAnswered[k]===MCQ[k].correct) s++; }
+  document.getElementById('mcqScore').textContent=s+' / '+mcqTotal;
+  if(Object.keys(mcqAnswered).length===mcqTotal){
+    const f=document.getElementById('mcqFinal');
+    const pct=Math.round(s/mcqTotal*100);
+    let msg,bg;
+    if(pct>=80){msg='🎉 ممتاز! '+s+'/'+mcqTotal+' ('+pct+'%) — إتقان قوي.';bg='#c9f2cd';}
+    else if(pct>=60){msg='👍 جيّد: '+s+'/'+mcqTotal+' ('+pct+'%) — راجع البطاقات المعلّمة بـ⭐.';bg='#fff3c4';}
+    else{msg='📚 '+s+'/'+mcqTotal+' ('+pct+'%) — أعد قراءة الملف ثم أعد الاختبار.';bg='#f8cfcf';}
+    f.textContent=msg;f.style.background=bg;f.classList.add('show');
+  }
+}
+function mcqReset(){
+  mcqAnswered={};
+  document.querySelectorAll('.mcq-opt').forEach(b=>b.classList.remove('correct','wrong','locked'));
+  document.querySelectorAll('.mcq-exp').forEach(e=>{e.classList.remove('show');e.innerHTML='';});
+  document.getElementById('mcqScore').textContent='0 / '+mcqTotal;
+  document.getElementById('mcqFinal').classList.remove('show');
+  document.getElementById('mcq0').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
