@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oral Medicine — Day 12 — Complete</title>
+<style>
+:root{color-scheme:light;}
+*{box-sizing:border-box;}
+html,body{background:#fff !important;color:#000 !important;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Tahoma,Arial,sans-serif;line-height:1.7;max-width:900px;margin:0 auto;padding:0 16px 60px;background:#fff;color:#000;}
+h1{font-size:23px;text-align:center;margin:18px 0 6px;}
+.subtitle{color:#444;font-size:14px;margin:0 0 14px;text-align:center;}
+.topbar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:2px solid #000;padding:8px 0;margin-bottom:10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;font-size:13px;}
+.topbar b{font-size:15px;}
+.ctrlbtn{background:#000;color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:12.5px;cursor:pointer;font-family:inherit;}
+.progress{background:#eee;border-radius:8px;height:10px;flex:1;min-width:120px;overflow:hidden;border:1px solid #999;}
+.progress>span{display:block;height:100%;background:#1a8f2a;width:0%;}
+.toc{background:#f7f7f7;border:1px solid #ccc;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:13.5px;}
+.toc a{display:block;color:#0645ad;text-decoration:none;padding:2px 0;}
+.sec{background:#000;color:#fff;padding:9px 13px;border-radius:8px;font-size:18px;margin:26px 0 12px;}
+.card{border:1.5px solid #999;border-radius:12px;padding:15px 17px;margin:14px 0;background:#fff;}
+.topic{font-weight:700;font-size:16px;margin-bottom:6px;}
+.prompt{font-size:15.5px;margin-bottom:10px;}
+.reveal{background:#000;color:#fff;border:none;border-radius:7px;padding:8px 14px;font-size:14px;cursor:pointer;font-family:inherit;}
+.answer{display:none;margin-top:12px;}
+.answer.show{display:block;}
+.en{font-size:14.5px;line-height:1.65;margin-bottom:10px;}
+.k{background:#ffd400;color:#b00;font-weight:700;padding:1px 4px;border-radius:3px;}
+.hint{background:#fff8d6;border-inline-start:4px solid #000;border-radius:6px;padding:10px 13px;font-size:14px;line-height:1.75;direction:rtl;text-align:right;}
+.hint b{color:#b00;}
+.en b{color:#000;}
+.btns{margin-top:10px;display:flex;gap:8px;}
+.btns button{border:1.5px solid #000;background:#fff;border-radius:6px;padding:5px 12px;font-size:13px;cursor:pointer;font-family:inherit;}
+.btns .rev{border-color:#b00;color:#b00;}
+.btns .gotit{border-color:#1a8f2a;color:#1a8f2a;}
+.foot{margin-top:30px;border-top:2px solid #000;padding-top:14px;font-size:14px;color:#333;}
+.note{background:#ffd400;color:#000;border:1px solid #000;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:15px;}
+.mcq-wrap{margin-top:40px;border-top:3px double #000;padding-top:20px;}
+.mcq-title{background:#000;color:#fff;padding:10px 14px;border-radius:8px;font-size:19px;}
+.mcq-note{font-size:13px;color:#444;margin:10px 0 6px;}
+.mcq-scorebar{position:sticky;top:56px;z-index:40;background:#fff8d6;border:2px solid #000;border-radius:8px;padding:8px 12px;font-size:15px;margin:10px 0 18px;}
+.mcq-reset{background:#000;color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:13px;cursor:pointer;font-family:inherit;}
+.mcq-q{border:1.5px solid #999;border-radius:10px;padding:14px 16px;margin:14px 0;background:#fff;}
+.mcq-stem{font-weight:600;font-size:15.5px;margin-bottom:10px;line-height:1.55;}
+.mcq-num{display:inline-block;min-width:26px;height:26px;line-height:26px;text-align:center;background:#000;color:#fff;border-radius:50%;font-size:13px;margin-inline-end:6px;}
+.mcq-opts{display:flex;flex-direction:column;gap:7px;}
+.mcq-opt{text-align:start;background:#f4f4f4;border:1.5px solid #ccc;border-radius:7px;padding:9px 12px;font-size:14.5px;cursor:pointer;transition:.12s;color:#000;font-family:inherit;}
+.mcq-opt:hover{background:#eaeaea;}
+.mcq-opt.correct{background:#c9f2cd;border-color:#1a8f2a;font-weight:600;}
+.mcq-opt.wrong{background:#f8cfcf;border-color:#c02020;}
+.mcq-opt.locked{cursor:default;opacity:.92;}
+.mcq-exp{display:none;margin-top:10px;padding:10px 12px;background:#fff8d6;border-inline-start:4px solid #000;border-radius:6px;font-size:13.5px;line-height:1.6;direction:rtl;text-align:right;}
+.mcq-exp.show{display:block;}
+.mcq-exp b{color:#b00;}
+.mcq-final{margin-top:18px;padding:14px;border-radius:10px;font-size:17px;font-weight:700;text-align:center;display:none;}
+.mcq-final.show{display:block;}
+</style>
+</head>
+<body>
+<h1>Oral Medicine — Day 12 — Complete 🩺</h1>
+<p class="subtitle">مادة جديدة · طب الفم ص ١–٧٣ · مبادئ التشخيص الفموي: مقدّمة طب الفم → أخذ القصّة (الأسئلة، العمر، الجنس، PC/HPC، PMH/DH، FH/SH/ROS) → الفحص العامّ وخارج الفم وعلامات الجلد → فحص العقد اللمفية وتصريفها واعتلالها → الفحص داخل الفم والمتغيّرات الطبيعية · 41 بطاقة + اختبار MCQ في النهاية · English + شرح عربي وافٍ</p>
+
+<div class="topbar">
+<b>التقدّم:</b>
+<span id="scoreTxt">0 / 41</span>
+<div class="progress"><span id="progBar"></span></div>
+<button class="ctrlbtn" onclick="revealAll()">اكشف الكل</button>
+<button class="ctrlbtn" onclick="hideAll()">أخفِ الكل</button>
+<button class="ctrlbtn" onclick="resetAll()">إعادة</button>
+</div>
+
+<div class="note">📌 طريقة الاستعمال: اقرأ السؤال، استرجع الإجابة بصوتك، ثم اكشفها وقيّم نفسك. البطاقات المعلّمة بـ⭐ عالية العائد. وفي نهاية الملف اختبار MCQ.</div>
+
+<div class="toc"><b>المحتويات:</b>
+<a href="#sec0">Lec 1 · Introduction to Oral Medicine ⭐</a>
+<a href="#sec1">Lec 1 · History Components — Age &amp; Sex ⭐</a>
+<a href="#sec2">Lec 1 · Presenting Complaint &amp; HPC ⭐</a>
+<a href="#sec3">Lec 1 · Family, Social History &amp; ROS</a>
+<a href="#sec4">Lec 1 · The Examination — General ⭐</a>
+<a href="#sec5">Lec 2 · Abnormal Facial Color &amp; Skin Signs ⭐</a>
+<a href="#sec6">Lec 3 · Lymph Node Examination ⭐</a>
+<a href="#sec7">Lec 3 · Lymphadenopathy — Causes ⭐</a>
+<a href="#sec8">Lec 5 · Intraoral Examination ⭐</a>
+<a href="#sec9">Lec 4 · Neck Masses &amp; Specific Node Groups</a>
+<a href="#sec10">Lec 4 · Salivary Gland Examination</a>
+<a href="#sec11">Lec 2 · Facial Signs of Systemic Disease</a>
+<a href="#sec12">Lec 1–5 · Oral Diagnosis Process (Integrated) ⭐</a>
+<a href="#sec13">Lec 1 · Aging, Immunity &amp; Clinical Relevance</a>
+<a href="#sec14">Lec 3 · Lymphatic System &amp; Node Interpretation (Detailed)</a>
+</div>
+
+<h2 class="sec" id="sec0">Lec 1 · Introduction to Oral Medicine ⭐</h2>
+<div class="card" id="c0_0">
+<div class="topic">What is oral medicine &amp; its scope</div>
+<div class="prompt">Define oral medicine and describe its scope.</div>
+<button class="reveal" onclick="revealCard('c0_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_0">
+<div class="en"><b>Oral medicine</b> is concerned with the <b>clinical diagnosis and non-surgical management</b> of <b>non-dental pathologies</b> affecting the orofacial region (mouth and face). Many systemic diseases show signs/symptoms in the orofacial region (cutaneous, GI, hematological, and other systemic diseases).<br>
+  <b>Scope includes:</b> oral mucosal diseases (lichen planus, Behçet's disease, pemphigus vulgaris); <b>pre-malignant lesions</b> (leukoplakia, erythroplakia); acute/chronic orofacial pain (paroxysmal/continuous neuralgias, myofascial pain, atypical facial pain, migraine); managing <b>medically-compromised patients</b> (cancer-related oral mucositis, bisphosphonate-related osteonecrosis, radiation-related pathology); <b>dry mouth</b> (Sjögren's syndrome); and burning mouth syndrome, trigeminal neuralgia, and TMJ disorders.</div>
+<div class="hint"><b>ما هو طب الفم ونطاقه:</b> <b>طب الفم (Oral Medicine)</b> يُعنى بـ<b>التشخيص السريري والتدبير غير الجراحي</b> لـ<b>الأمراض غير السنّية</b> المؤثّرة في المنطقة الفموية-الوجهية (الفم والوجه). وكثير من الأمراض الجهازية تُظهر علامات/أعراضاً في هذه المنطقة (جلدية، هضمية، دموية، وجهازية أخرى). <b>النطاق يشمل:</b> أمراض الغشاء المخاطي الفموي (الحزاز المنبسط، داء بهجت، الفقاع الشائع)؛ <b>الآفات ما قبل الخبيثة</b> (طلاوة بيضاء leukoplakia، طلاوة حمراء erythroplakia)؛ الألم الفموي-الوجهي الحادّ/المزمن (الألم العصبي الانتيابي/المستمرّ، الألم اللفافي العضلي، الألم الوجهي اللانمطي، الشقيقة)؛ تدبير <b>المرضى المنقوصين طبياً</b> (التهاب الغشاء المخاطي المرتبط بالسرطان، نخر العظم المرتبط بالبيسفوسفونات، أمراض العلاج الإشعاعي)؛ <b>جفاف الفم</b> (متلازمة شوغرن)؛ ومتلازمة الفم الحارق والألم العصبي مثلث التوائم واضطرابات المفصل الفكي الصدغي.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c0_1">
+<div class="topic">History taking — the first step</div>
+<div class="prompt">Why is history taking the first step, and what skills does it require?</div>
+<button class="reveal" onclick="revealCard('c0_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_1">
+<div class="en">The <b>first step</b> in dealing with a patient is <b>history taking</b> — obtaining a true, representative account of what troubles the patient and how it has evolved. It is not easy: it takes <b>practice, patience, understanding, and concentration</b>. The history is a <b>sharing of experience</b> between patient and dentist, and a consultation lets a patient unburden themselves.<br>
+  <b>Consultation skills:</b> go beyond knowing what to ask — sometimes <b>questions must be avoided</b> (they limit the patient to "answers"). <b>Complete the history by reviewing</b> what the patient told you: repeat back the important points so they can correct any misunderstandings.<br>
+  <b>Note:</b> never give false information — if unsure of an answer, ask a senior or get proper information (e.g., leaflets).</div>
+<div class="hint"><b>أخذ القصّة المرضية — الخطوة الأولى:</b> <b>الخطوة الأولى</b> في التعامل مع المريض هي <b>أخذ القصّة (History)</b> — الحصول على حكاية صادقة ممثّلة لما يزعج المريض وكيف تطوّرت. وليست سهلة: تحتاج <b>ممارسةً وصبراً وفهماً وتركيزاً</b>. والقصّة <b>مشاركة خبرة</b> بين المريض والطبيب، والاستشارة تتيح للمريض التنفيس. <b>مهارات الاستشارة:</b> تتجاوز معرفة ما تسأل — وأحياناً <b>يجب تجنّب الأسئلة</b> (تحصر المريض في «إجابات»). <b>أكمل القصّة بالمراجعة:</b> أعد النقاط المهمّة ليصحّح المريض أي سوء فهم. <b>ملاحظة:</b> لا تعطِ معلومات خاطئة — إن لم تتأكّد، اسأل طبيباً أقدم أو احصل على معلومات صحيحة (كالنشرات).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c0_2">
+<div class="topic">Types of questions in history taking</div>
+<div class="prompt">What are the three types of questions used in history taking?</div>
+<button class="reveal" onclick="revealCard('c0_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_2">
+<div class="en"><b>1. Open questions</b> — the <b>gold standard</b>; they don't suggest a "right" answer and let the patient express what's on their mind (e.g., "How are you?", "Tell me about your pain"). They can also obtain specific symptom information, but can't always delve deep enough.<br>
+  <b>2. Questions with options</b> — used to <b>pin down</b> exactly what the patient means when open questioning fails; use with care (danger of getting the answer you wanted). <b>Avoid specific medical terms</b> — e.g., don't describe a "burning type of pain" to a neurological-pain patient.<br>
+  <b>3. Leading questions</b> — <b>best avoided</b>; they lead the patient down an avenue framed by your own assumptions. Better to ask openly: "Have you noticed anything that makes your pain worse?" </div>
+<div class="hint"><b>أنواع الأسئلة في أخذ القصّة:</b> <b>1. الأسئلة المفتوحة</b> — <b>المعيار الذهبي</b>؛ لا توحي بإجابة «صحيحة» وتتيح للمريض التعبير عمّا يشغله (مثل «كيف حالك؟»، «حدّثني عن ألمك»). وتحصل على معلومات عرض محدّدة أيضاً، لكنها لا تتعمّق دائماً. <b>2. الأسئلة ذات الخيارات</b> — لـ<b>تحديد</b> ما يعنيه المريض بدقّة حين يفشل السؤال المفتوح؛ تُستخدم بحذر (خطر الحصول على الإجابة التي أردتَها). <b>تجنّب المصطلحات الطبية</b> — مثلاً لا تصف «ألماً حارقاً» لمريض ألم عصبي. <b>3. الأسئلة الموجِّهة</b> — <b>الأفضل تجنّبها</b>؛ تقود المريض في مسار تؤطّره افتراضاتك. والأفضل السؤال المفتوح: «هل لاحظت ما يزيد ألمك؟»</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec1">Lec 1 · History Components — Age &amp; Sex ⭐</h2>
+<div class="card" id="c1_0">
+<div class="topic">Importance of age in the history</div>
+<div class="prompt">Why is the patient's age important, and what age-related changes matter in oral medicine?</div>
+<button class="reveal" onclick="revealCard('c1_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c1_0">
+<div class="en"><b>Age is the first thing</b> to start the history with; it matters for chronic/recurrent conditions from earlier adult stages: degenerative bone/joint disease affecting the <b>TMJ</b>, chronic brain syndrome, malnutrition, mental disorders, and <b>drugs</b> (elderly have altered pharmacodynamics/pharmacokinetics → altered absorption, distribution, metabolism, excretion; more drug-drug/drug-food reactions).<br>
+  <b>Age-related changes:</b> ↓cortical/trabecular bone (osteoporotic fractures), ↓muscle fibers (atrophy), joint changes (cartilage erosion, ↑calcium deposits, osteoarthritis); orally: ↓dentin, gingival recession, ↓bone density, ↓tongue papillae (taste change), ↑salt/sugar taste threshold, ↓salivary secretion, tooth loss, ↑mucosal infection/malignancy, ↓immune response, ↓secretory IgA, ↓T-lymphocytes, ↑autoantibodies.</div>
+<div class="hint"><b>أهمّية العمر في القصّة:</b> <b>العمر أول ما تبدأ به</b> القصّة؛ ويهمّ للحالات المزمنة/المتكرّرة من مراحل البلوغ المبكّرة: مرض العظم/المفصل التنكّسي المؤثّر في <b>المفصل الفكي الصدغي (TMJ)</b>، متلازمة الدماغ المزمنة، سوء التغذية، الاضطرابات النفسية، و<b>الأدوية</b> (كبار السنّ لديهم حرائك/ديناميكا دوائية متغيّرة → امتصاص وتوزيع واستقلاب وإطراح متغيّر؛ وتفاعلات دواء-دواء/دواء-طعام أكثر). <b>التغيّرات المرتبطة بالعمر:</b> ↓العظم القشري/التربيقي (كسور هشاشة)، ↓ألياف العضل (ضمور)، تغيّرات مفصلية (تآكل غضروف، ↑ترسّب كالسيوم، فصال عظمي)؛ وفموياً: ↓العاج، انحسار لثوي، ↓كثافة العظم، ↓حليمات اللسان (تغيّر تذوّق)، ↑عتبة تذوّق الملح/السكر، ↓إفراز اللعاب، فقد أسنان، ↑عدوى/خباثة مخاطية، ↓استجابة مناعية، ↓IgA الإفرازي، ↓اللمفاويات التائية، ↑الأضداد الذاتية.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c1_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c1_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c1_1">
+<div class="topic">Importance of sex/gender in the history</div>
+<div class="prompt">How does the patient's sex influence the differential of orofacial conditions?</div>
+<button class="reveal" onclick="revealCard('c1_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c1_1">
+<div class="en">Certain conditions have a <b>sex predilection</b>:
+  <ul><li><b>Malignant melanoma</b> — increasing incidence in <b>males</b>.</li>
+  <li><b>Squamous cell carcinoma (SCC)</b> — more in <b>males</b>.</li>
+  <li><b>Mucous membrane / cicatricial pemphigoid</b> — more in <b>females</b>.</li>
+  <li><b>Epulis and pregnancy epulis</b> — occur in <b>females</b> (highest circulating estrogen).</li>
+  <li><b>Mucocele</b> — more in <b>females</b>.</li></ul>
+  Knowing the sex-related epidemiology helps shape the differential diagnosis early.</div>
+<div class="hint"><b>أهمّية الجنس في القصّة:</b> بعض الحالات لها <b>ميل جنسي</b>: <b>الميلانوما الخبيثة</b> — تزداد في <b>الذكور</b>. <b>السرطانة حرشفية الخلايا (SCC)</b> — أكثر في <b>الذكور</b>. <b>الفقعان الغشائي المخاطي/الندبي</b> — أكثر في <b>الإناث</b>. <b>الوَرَم اللثوي (Epulis) وورم الحمل اللثوي</b> — في <b>الإناث</b> (أعلى إستروجين دائر). <b>القيلة المخاطية (Mucocele)</b> — أكثر في <b>الإناث</b>. ومعرفة الوبائيات المرتبطة بالجنس تساعد في تشكيل التشخيص التفريقي مبكّراً.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c1_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c1_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec2">Lec 1 · Presenting Complaint &amp; HPC ⭐</h2>
+<div class="card" id="c2_0">
+<div class="topic">Presenting complaint (PC) &amp; analyzing pain (SOCRATES)</div>
+<div class="prompt">What is the presenting complaint, and how is the history of the presenting complaint (especially pain) analyzed?</div>
+<button class="reveal" onclick="revealCard('c2_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c2_0">
+<div class="en">The <b>presenting complaint (PC)</b> is the patient's main problem in their own words. The <b>history of the presenting complaint (HPC)</b> gathers detail — for pain, analyze:
+  <ul><li><b>Site:</b> where exactly is the pain?</li>
+  <li><b>Onset:</b> when did it start; constant/intermittent, gradual/sudden?</li>
+  <li><b>Character:</b> sharp, burning, tight?</li>
+  <li><b>Radiation:</b> does it move anywhere?</li>
+  <li><b>Associations:</b> anything else (sweating, vomiting)?</li>
+  <li><b>Time course:</b> any time pattern; how long does it last?</li>
+  <li><b>Exacerbating/relieving factors.</b></li>
+  <li><b>Severity:</b> 1–10 scale.</li></ul>
+  (This is the classic SOCRATES pain framework.)</div>
+<div class="hint"><b>الشكوى الحالية (PC) وتحليل الألم (SOCRATES):</b> <b>الشكوى الحالية (PC)</b> هي مشكلة المريض الرئيسة بكلماته. و<b>قصّة الشكوى الحالية (HPC)</b> تجمع التفاصيل — وللألم حلّل: <b>الموقع (Site):</b> أين الألم بالضبط؟ <b>البدء (Onset):</b> متى بدأ؛ مستمرّ/متقطّع، تدريجي/مفاجئ؟ <b>الطابع (Character):</b> حادّ، حارق، ضاغط؟ <b>الانتشار (Radiation):</b> هل ينتقل؟ <b>المصاحبات (Associations):</b> شيء آخر (تعرّق، قيء)؟ <b>المسار الزمني:</b> نمط زمني؛ كم يدوم؟ <b>عوامل التفاقم/التخفيف.</b> <b>الشدّة:</b> مقياس 1–10. (وهذا إطار الألم الكلاسيكي SOCRATES.)</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c2_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c2_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c2_1">
+<div class="topic">Past medical history (PMH) &amp; drug history (DH)</div>
+<div class="prompt">What do the past medical history and drug history cover, and which immunosuppressants matter in oral medicine?</div>
+<button class="reveal" onclick="revealCard('c2_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c2_1">
+<div class="en"><b>PMH:</b> gather information about the patient's other medical problems.<br>
+  <b>DH:</b> find out all medications (dose and frequency) and any <b>allergies</b>. <b>Immunosuppressants used in oral medicine</b>:
+  <ul><li><b>Cyclosporine, azathioprine (Imuran)</b> — azathioprine can cause a rare fatal hepatosplenic lymphoma.</li>
+  <li><b>Steroids</b> (prednisone, methylprednisolone, dexamethasone) — stop cytokine production, deplete T/B cells and eosinophils, and impair immune-cell travel to infection sites.</li>
+  <li><b>Colchicine</b> — diarrhea/nausea/vomiting; liver/kidney/muscle damage; low blood counts; dangerous interactions.</li>
+  <li><b>Dapsone</b> — jaundice, numbness/tingling, breathing trouble.</li></ul></div>
+<div class="hint"><b>القصّة المرضية السابقة (PMH) وقصّة الأدوية (DH):</b> <b>PMH:</b> اجمع معلومات مشاكل المريض الطبية الأخرى. <b>DH:</b> اعرف كل الأدوية (الجرعة والتواتر) وأي <b>تحسّس (allergies)</b>. <b>مثبّطات المناعة المستخدمة في طب الفم:</b> <b>سيكلوسبورين، آزاثيوبرين (Imuran)</b> — الأخير قد يسبّب لمفوماً كبدياً طحالياً نادراً مميتاً. <b>الستيرويدات</b> (بريدنيزون، ميثيل بريدنيزولون، ديكساميثازون) — توقف إنتاج السيتوكينات، وتستنزف الخلايا التائية/البائية والحمضات، وتعيق وصول الخلايا المناعية لمواقع العدوى. <b>الكولشيسين</b> — إسهال/غثيان/قيء؛ أذى كبدي/كلوي/عضلي؛ نقص تعداد الدم؛ تفاعلات خطيرة. <b>الدابسون</b> — يرقان، خدر/تنميل، صعوبة تنفّس.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c2_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c2_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec3">Lec 1 · Family, Social History &amp; ROS</h2>
+<div class="card" id="c3_0">
+<div class="topic">Family history (FH)</div>
+<div class="prompt">What is a family history, and which inherited conditions should it screen for?</div>
+<button class="reveal" onclick="revealCard('c3_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c3_0">
+<div class="en">A <b>family health history</b> compiles medical conditions affecting the patient and close family members — it extends beyond the patient's own problems to those of each immediate family member (e.g., diabetes, cardiac history). It should go back <b>at least 3 generations</b>.<br>
+  <b>Screen for genetic conditions:</b> polycystic kidney disease; hematological diseases (<b>haemophilia</b>); <b>autosomal recessive</b> (sickle cell anemia, alpha-thalassaemia); <b>autosomal dominant</b> (neurofibromatosis, myotonic dystrophy, Huntington's disease); cardiovascular disorders (hypertrophic cardiomyopathy HCM, Marfan's syndrome, familial hypercholesterolemia). <span class="k">Any child of an affected individual has a 50% chance of being affected by a dominant inherited disease.</span></div>
+<div class="hint"><b>القصّة العائلية (FH):</b> <b>القصّة الصحّية العائلية</b> تجمع الحالات الطبية المؤثّرة في المريض وأفراد أسرته المقرّبين — وتتجاوز مشاكل المريض نفسه لمشاكل كل فرد من الأسرة المباشرة (كالسكّري والقصّة القلبية). ويجب أن تعود <b>3 أجيال على الأقل</b>. <b>افحص الحالات الوراثية:</b> داء الكلى متعدّد الكيسات؛ الأمراض الدموية (<b>الناعور/الهيموفيليا</b>)؛ <b>الصبغي الجسدي المتنحّي</b> (فقر الدم المنجلي، ألفا ثلاسيميا)؛ <b>الصبغي الجسدي السائد</b> (الورام الليفي العصبي، الحثل العضلي التوتّري، داء هنتنغتون)؛ الاضطرابات القلبية الوعائية (اعتلال عضلة القلب الضخامي HCM، متلازمة مارفان، فرط كوليسترول الدم العائلي). <b>وأي طفل لفرد مصاب لديه فرصة 50% للإصابة بمرض وراثي سائد.</b></div>
+<div class="btns">
+<button class="gotit" onclick="rate('c3_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c3_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c3_1">
+<div class="topic">Social history (SH) &amp; review of systems (ROS)</div>
+<div class="prompt">What does the social history cover, and which systems are covered in the review of systems?</div>
+<button class="reveal" onclick="revealCard('c3_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c3_1">
+<div class="en"><b>Social history (SH):</b> the patient's background — always ask about <b>smoking and alcohol</b>, and who lives with the patient. <b>Smoking</b> is linked to lesions like <b>leukoplakia and nicotinic stomatitis</b>. <b>Alcohol:</b> suspect it with an elevated <b>MCV (mean corpuscular volume)</b> in the absence of vitamin B12/folate deficiency, or unexplained abnormal liver function tests.<br>
+  <b>Review of systems (ROS):</b> a short screen of the other body systems not covered in the HPC: <b>CVS, respiratory, GIT, neurology, genitourinary/renal, musculoskeletal, and psychiatry</b>.</div>
+<div class="hint"><b>القصّة الاجتماعية (SH) ومراجعة الأجهزة (ROS):</b> <b>القصّة الاجتماعية:</b> خلفية المريض — اسأل دائماً عن <b>التدخين والكحول</b>، ومن يعيش مع المريض. و<b>التدخين</b> مرتبط بآفات كـ<b>الطلاوة البيضاء والتهاب الفم النيكوتيني</b>. <b>الكحول:</b> اشتبه به مع ارتفاع <b>MCV (متوسّط حجم الكرية)</b> بغياب عوز فيتامين B12/الفولات، أو خلل غير مفسَّر في وظائف الكبد. <b>مراجعة الأجهزة (ROS):</b> مسح قصير لأجهزة الجسم الأخرى غير المشمولة في HPC: <b>القلبي الوعائي، التنفّسي، الهضمي، العصبي، البولي التناسلي/الكلوي، العضلي الهيكلي، والنفسي</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c3_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c3_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec4">Lec 1 · The Examination — General ⭐</h2>
+<div class="card" id="c4_0">
+<div class="topic">The three areas of a complete examination</div>
+<div class="prompt">What are the three areas covered by a complete examination of the patient?</div>
+<button class="reveal" onclick="revealCard('c4_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c4_0">
+<div class="en">A complete examination covers three areas:
+  <ol><li><b>The general examination</b> — briefly assesses the patient's general appearance.</li>
+  <li><b>The extraoral head and neck soft tissue examination</b> — focuses on the head and neck.</li>
+  <li><b>The intraoral soft tissue examination</b> — determines if the soft tissue is <b>within normal limits (WNL)</b>.</li></ol>
+  <b>Asymmetries</b> of the head and neck are assessed by standing directly in front of the patient and comparing the two sides. Most people aren't perfectly symmetrical, but significant asymmetries should be noted and the cause obtained (e.g., previous surgeries, nerve paralysis from CVA/stroke, tumors, infections). Record details in the chart (e.g., "3 cm scar in left submandibular area from gland stone removal").</div>
+<div class="hint"><b>مناطق الفحص الكامل الثلاث:</b> يغطّي الفحص الكامل ثلاث مناطق: (١) <b>الفحص العامّ</b> — تقييم موجز للمظهر العامّ. (٢) <b>فحص النسيج الرخو للرأس والعنق خارج الفم</b> — يركّز على الرأس والعنق. (٣) <b>فحص النسيج الرخو داخل الفم</b> — يحدّد إن كان النسيج <b>ضمن الحدود الطبيعية (WNL)</b>. و<b>اللاتناظرات (Asymmetries)</b> تُقيَّم بالوقوف أمام المريض مباشرةً ومقارنة الجانبين. ومعظم الناس غير متناظرين تماماً، لكن اللاتناظرات المهمّة يجب تسجيلها ومعرفة سببها (كالجراحات السابقة، شلل عصب من سكتة، أورام، عداوى). سجّل التفاصيل في السجلّ (مثل «ندبة 3سم في المنطقة تحت الفكّية اليسرى من إزالة حصاة غدّة»).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c4_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c4_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c4_1">
+<div class="topic">General examination — appearance clues</div>
+<div class="prompt">What does the general examination observe, and why does it start immediately?</div>
+<button class="reveal" onclick="revealCard('c4_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c4_1">
+<div class="en">The general examination starts <b>as soon as the patient enters</b> the operatory. Observe general appearance, <b>symmetry, gait, and mobility</b>, and note facial asymmetries, lesions, or scars during history taking — these may give clues to medical conditions.<br>
+  <b>Example:</b> a patient in a wheelchair — find the reason in the medical history. If they had a <b>stroke</b>, they may need help transferring to the chair, their post-stroke medications could affect treatment, and physical limitations may impair oral hygiene. <b>Decreased head/neck mobility</b> should be noted as it may affect the patient's ability to tolerate dental procedures.</div>
+<div class="hint"><b>الفحص العامّ — مفاتيح المظهر:</b> يبدأ الفحص العامّ <b>فور دخول المريض</b> العيادة. راقب المظهر العامّ و<b>التناظر والمشية والحركة</b>، وسجّل اللاتناظرات الوجهية أو الآفات أو الندوب أثناء أخذ القصّة — فقد تعطي مفاتيح لحالات طبية. <b>مثال:</b> مريض على كرسي متحرّك — اعرف السبب من القصّة الطبية. وإن كان أصيب بـ<b>سكتة</b>، فقد يحتاج مساعدةً للانتقال للكرسي، وأدويته بعد السكتة قد تؤثّر في العلاج، والقيود الجسدية قد تعيق النظافة الفموية. و<b>نقص حركة الرأس/العنق</b> يجب تسجيله لأنه قد يؤثّر في قدرة المريض على تحمّل الإجراءات.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c4_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c4_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec5">Lec 2 · Abnormal Facial Color &amp; Skin Signs ⭐</h2>
+<div class="card" id="c5_0">
+<div class="topic">Skin signs of bleeding, jaundice &amp; anemia</div>
+<div class="prompt">What do petechiae/ecchymosis, yellow skin, and pale skin indicate on facial examination?</div>
+<button class="reveal" onclick="revealCard('c5_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c5_0">
+<div class="en">The exposed skin gives clues to medical status:
+  <ul><li><b>Petechiae, ecchymosis, or hematoma</b> → ask about <b>bleeding problems</b> or blood thinners.</li>
+  <li><b>Yellowish skin (jaundice)</b> → high <b>bilirubin</b> (a yellow-orange bile pigment); skin, sclera, and mucous membranes turn yellow. Causes include hepatitis, gallstones, tumors; in adults jaundice is usually more serious. (Infant jaundice appears day 2–4; press the forehead/nose — yellow where pressed = jaundice.)</li>
+  <li><b>Pale skin</b> → possible <b>anemia</b> (fewer normal RBCs → less oxygen delivered): from nutritional deficiency, blood loss, or a blood cancer (leukemia); also low BP or infection.</li>
+  <li><b>Clubbing of the fingers</b> → heart or respiratory problems.</li></ul></div>
+<div class="hint"><b>علامات الجلد للنزف واليرقان وفقر الدم:</b> الجلد المكشوف يعطي مفاتيح الحالة الطبية: <b>الفرفريات (petechiae) والكدمات (ecchymosis) أو الورم الدموي</b> → اسأل عن <b>مشاكل النزف</b> أو مميّعات الدم. <b>الجلد المصفرّ (يرقان)</b> → <b>بيليروبين</b> مرتفع (صباغ صفراوي برتقالي-أصفر)؛ يصفرّ الجلد والصلبة والأغشية المخاطية. الأسباب: التهاب الكبد، حصى المرارة، أورام؛ وفي البالغين اليرقان أخطر عادةً. (يرقان الرضيع يظهر يوم 2–4؛ اضغط الجبهة/الأنف — الاصفرار مكان الضغط = يرقان.) <b>الجلد الشاحب</b> → <b>فقر دم</b> محتمل (كريات أقلّ → أكسجين أقلّ): من عوز غذائي أو فقد دم أو سرطان دم (لوكيميا)؛ وأيضاً ضغط منخفض أو عدوى. <b>تعجّر الأصابع (Clubbing)</b> → مشاكل قلبية أو تنفّسية.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c5_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c5_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c5_1">
+<div class="topic">Skin pigmentation changes</div>
+<div class="prompt">What causes altered skin pigmentation (vitiligo, melasma, brown spots)?</div>
+<button class="reveal" onclick="revealCard('c5_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c5_1">
+<div class="en"><ul>
+  <li><b>Vitiligo:</b> the skin <b>loses its pigment cells (melanocytes)</b> → discolored patches on skin, hair, mucous membranes.</li>
+  <li><b>Melasma (chloasma):</b> tan/brown patches on the forehead, cheeks, upper lip, nose, chin — the "pregnancy mask" (also from birth-control pills or postmenopausal estrogen; men can develop it too); may resolve after pregnancy.</li>
+  <li><b>Post-inflammatory pigmentation change</b> (hyper- or hypopigmentation) after skin infection, blisters, burns, or trauma — usually <b>not permanent</b>.</li>
+  <li><b>Brown spots:</b> overproduction of <b>melanin</b> (the pigment of skin/hair/eyes, made by melanocytes that "soak up sunlight").</li></ul>
+  Other factors: lifestyle, hormonal changes, sun exposure, repeated friction, and aging.</div>
+<div class="hint"><b>تغيّرات تصبّغ الجلد:</b> <b>البهاق (Vitiligo):</b> يفقد الجلد <b>خلاياه الصباغية (الميلانوسايت)</b> → بقع فاقدة اللون في الجلد والشعر والأغشية المخاطية. <b>الكلف (Melasma):</b> بقع سمراء/بنّية على الجبهة والوجنتين والشفة العليا والأنف والذقن — «قناع الحمل» (وأيضاً من حبوب منع الحمل أو إستروجين ما بعد الإياس؛ ويصيب الرجال)؛ قد يزول بعد الحمل. <b>تغيّر التصبّغ بعد الالتهاب</b> (فرط أو نقص تصبّغ) بعد عدوى جلدية أو فقاعات أو حروق أو رضّ — عادةً <b>غير دائم</b>. <b>البقع البنّية:</b> فرط إنتاج <b>الميلانين</b> (صباغ الجلد/الشعر/العين، تصنعه الميلانوسايت التي «تمتصّ الشمس»). عوامل أخرى: نمط الحياة، تغيّرات هرمونية، تعرّض شمسي، احتكاك متكرّر، والتقدّم بالعمر.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c5_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c5_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c5_2">
+<div class="topic">Renal skin signs &amp; blue nevi</div>
+<div class="prompt">What skin changes suggest kidney disease, and what are blue nevi?</div>
+<button class="reveal" onclick="revealCard('c5_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c5_2">
+<div class="en"><b>Kidney disease:</b> when kidneys fail, <b>toxins build up</b> in the skin causing color changes. Retained pigments called <b>urochromes</b> (normally excreted by healthy kidneys) give a <b>grayish, almost metallic</b> skin color; another finding is <b>uremic frost</b>.<br>
+  <b>Blue nevi:</b> localized <b>benign proliferations of melanocytes</b>, congenital or acquired.
+  <ul><li><b>Common blue nevi:</b> 2–10 mm; small round-to-oval, smooth, well-defined papules with <b>bluish-black</b> pigmentation.</li>
+  <li><b>Cellular blue nevi:</b> less common, >1 cm, bluish-black, may be mistaken for <b>nodular melanoma</b>; rarely undergo malignant transformation.</li></ul>
+  <b>Basal cell carcinoma</b> presence should also be noted.</div>
+<div class="hint"><b>علامات الجلد الكلوية والوحمات الزرقاء:</b> <b>مرض الكلى:</b> حين تفشل الكلى <b>تتراكم السموم</b> في الجلد مسبّبةً تغيّرات لونية. والأصبغة المحتبَسة المسمّاة <b>يوروكرومات (urochromes)</b> (تُطرَح عادةً بالكلى السليمة) تعطي لوناً <b>رمادياً شبه معدني</b>؛ وعلامة أخرى هي <b>الصقيع البولي (uremic frost)</b>. <b>الوحمات الزرقاء (Blue nevi):</b> <b>تكاثرات سليمة موضعية للميلانوسايت</b>، خلقية أو مكتسبة. <b>الشائعة:</b> 2–10مم؛ حطاطات صغيرة مستديرة-بيضوية ملساء محدّدة بتصبّغ <b>أسود مزرقّ</b>. <b>الخلوية:</b> أقلّ شيوعاً، >1سم، سوداء مزرقّة، قد تُخلَط بـ<b>الميلانوما العقيدية</b>؛ ونادراً تتحوّل خبيثةً. ويجب أيضاً تسجيل وجود <b>السرطانة قاعدية الخلايا</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c5_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c5_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c5_3">
+<div class="topic">Facial features — moon facies</div>
+<div class="prompt">What is moon facies, and what does it indicate?</div>
+<button class="reveal" onclick="revealCard('c5_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c5_3">
+<div class="en"><b>Moon facies</b> (moon face): the face gradually swells into a <b>rounded shape</b> when extra fat builds up on the sides of the face. It is often related to <b>obesity</b> but can be from <b>Cushing's syndrome</b> — hence a "Cushingoid appearance." <b>Cushing's syndrome</b> occurs when the body is exposed for long periods to high levels of the hormone <b>cortisol</b> (endogenous overproduction or long-term steroid therapy). Recognizing moon facies prompts investigation for cortisol excess and awareness of the associated systemic effects (hypertension, diabetes, immunosuppression) relevant to dental management.</div>
+<div class="hint"><b>ملامح الوجه — الوجه القمري (Moon facies):</b> <b>الوجه القمري:</b> ينتفخ الوجه تدريجياً لـ<b>شكل مستدير</b> حين تتراكم دهون زائدة على جانبيه. وغالباً يرتبط بـ<b>البدانة</b> لكن قد يكون من <b>متلازمة كوشينغ</b> — ومن هنا «المظهر الكوشينغي». و<b>متلازمة كوشينغ</b> تحدث حين يتعرّض الجسم فتراتٍ طويلة لمستويات عالية من هرمون <b>الكورتيزول</b> (فرط إنتاج داخلي أو علاج ستيرويدي طويل الأمد). والتعرّف على الوجه القمري يستدعي تحرّي فرط الكورتيزول والوعي بآثاره الجهازية (ارتفاع ضغط، سكّري، تثبيط مناعي) المهمّة للتدبير السنّي.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c5_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c5_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec6">Lec 3 · Lymph Node Examination ⭐</h2>
+<div class="card" id="c6_0">
+<div class="topic">Lymph nodes — function &amp; consistency clues</div>
+<div class="prompt">What is the function of lymph nodes, and what do consistency and tenderness tell you?</div>
+<button class="reveal" onclick="revealCard('c6_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c6_0">
+<div class="en"><b>Lymph nodes</b> are part of the immune system — most readily palpable when fighting infection. Infection can originate from the organs they drain, or within the node itself (<b>lymphadenitis</b>).<br>
+  <b>Consistency:</b>
+  <ul><li><b>Soft</b> → insignificant.</li>
+  <li><b>Rubbery</b> → classically <b>lymphoma</b>.</li>
+  <li><b>Hard</b> → classically <b>malignancy</b> and granulomatous infection.</li></ul>
+  <b>Tenderness:</b> <b>tender</b> → classically <b>infection</b>; <b>non-tender</b> → classically <b>malignancy</b>.</div>
+<div class="hint"><b>العقد اللمفية — الوظيفة ومفاتيح القوام:</b> <b>العقد اللمفية</b> جزء من الجهاز المناعي — تُجسّ بسهولة أكثر حين تكافح العدوى. وقد تنشأ العدوى من الأعضاء التي تصرّفها، أو داخل العقدة نفسها (<b>التهاب العقد اللمفية</b>). <b>القوام:</b> <b>طريّة</b> → غير ذي أهمّية. <b>مطّاطية</b> → كلاسيكياً <b>لمفوما</b>. <b>صلبة</b> → كلاسيكياً <b>خباثة</b> والتهاب حبيبومي. <b>المضض:</b> <b>مؤلمة</b> → كلاسيكياً <b>عدوى</b>؛ <b>غير مؤلمة</b> → كلاسيكياً <b>خباثة</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c6_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c6_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c6_1">
+<div class="topic">Lymph node exam technique &amp; significant sites</div>
+<div class="prompt">What is the lymph node examination technique, and which node sites are especially significant?</div>
+<button class="reveal" onclick="revealCard('c6_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c6_1">
+<div class="en"><b>Technique:</b> always evaluate for <b>symmetry</b> (clinically significant nodes are classically asymmetric); use the <b>pads of the fingertips</b> (most sensitive); examine both sides simultaneously, walking the fingers with steady gentle pressure. Identify <b>salivary glands</b> (by location) and the <b>carotid artery/bulb</b> (by pulsation) as non-lymph-node structures.<br>
+  <b>Significant sites:</b>
+  <ul><li><b>Supraclavicular fossa</b> — most significant; often indicates a deep process.</li>
+  <li><b>Left supraclavicular (Virchow's node)</b> — classic sign of an <b>abdominal</b> process.</li>
+  <li><b>Right supraclavicular</b> — classic sign of an <b>intrathoracic</b> process.</li>
+  <li><b>Infraclavicular</b> — classically breast cancer or malignant lymphoma.</li></ul></div>
+<div class="hint"><b>تقنية فحص العقد والمواقع المهمّة:</b> <b>التقنية:</b> قيّم دائماً <b>التناظر</b> (العقد المهمّة سريرياً لا متناظرة كلاسيكياً)؛ استخدم <b>وسائد أطراف الأصابع</b> (الأكثر حسّاسية)؛ افحص الجانبين معاً، محرّكاً الأصابع بضغط لطيف ثابت. وميّز <b>الغدد اللعابية</b> (بالموقع) و<b>الشريان السباتي/بصلته</b> (بالنبض) كبنى ليست عقداً لمفية. <b>المواقع المهمّة:</b> <b>الحفرة فوق الترقوية</b> — الأهمّ؛ تدلّ غالباً على عملية عميقة. <b>فوق الترقوية اليسرى (عقدة Virchow)</b> — علامة كلاسيكية لعملية <b>بطنية</b>. <b>فوق الترقوية اليمنى</b> — علامة كلاسيكية لعملية <b>داخل صدرية</b>. <b>تحت الترقوية</b> — كلاسيكياً سرطان ثدي أو لمفوما خبيثة.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c6_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c6_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c6_2">
+<div class="topic">Cervical lymph node groups &amp; their drainage</div>
+<div class="prompt">List the main cervical lymph node groups and what each drains.</div>
+<button class="reveal" onclick="revealCard('c6_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c6_2">
+<div class="en"><ul>
+  <li><b>Anterior cervical</b> (superficial + deep; on/beneath the SCM): drains the internal throat structures, part of the posterior pharynx, tonsils, and thyroid gland.</li>
+  <li><b>Posterior cervical</b> (behind SCM, in front of trapezius): drains the skin on the back of the head; enlarges in upper respiratory infections (e.g., mononucleosis).</li>
+  <li><b>Tonsillar</b> (just below the mandibular angle): drains the tonsillar and posterior pharyngeal regions.</li>
+  <li><b>Submandibular</b> (under the jaw): drains the floor of the mouth.</li>
+  <li><b>Submental</b> (below the chin): drains the <b>teeth and intraoral cavity</b>.</li>
+  <li><b>Supraclavicular</b> (above the clavicle): drains part of the thoracic cavity and abdomen.</li></ul>
+  Knowing drainage helps localize the source efficiently.</div>
+<div class="hint"><b>مجموعات العقد العنقية وتصريفها:</b> <b>العنقية الأمامية</b> (سطحية + عميقة؛ على/تحت القترائية SCM): تصرّف بنى الحلق الداخلية وجزءاً من البلعوم الخلفي واللوزتين والغدّة الدرقية. <b>العنقية الخلفية</b> (خلف SCM، أمام شبه المنحرفة): تصرّف جلد مؤخّرة الرأس؛ وتتضخّم في عداوى الجهاز التنفّسي العلوي (كعدد الوحيدات). <b>اللوزية</b> (أسفل زاوية الفكّ): تصرّف مناطق اللوزتين والبلعوم الخلفي. <b>تحت الفكّية</b> (تحت الفكّ): تصرّف أرض الفم. <b>تحت الذقنية</b> (تحت الذقن): تصرّف <b>الأسنان وجوف الفم</b>. <b>فوق الترقوية</b> (فوق الترقوة): تصرّف جزءاً من جوف الصدر والبطن. ومعرفة التصريف تساعد في تحديد المصدر بكفاءة.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c6_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c6_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c6_3">
+<div class="topic">Interpreting node findings — infection vs malignancy</div>
+<div class="prompt">How do you distinguish inflammatory from malignant/chronic lymph node enlargement?</div>
+<button class="reveal" onclick="revealCard('c6_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c6_3">
+<div class="en"><b>Acute infection:</b> nodes are <b>firm, tender, enlarged, and warm</b>; inflammation can spread to the overlying skin (reddened). If untreated, the center may become <b>necrotic</b> → fluid/debris accumulate = an <b>abscess</b>, feeling like a tensely filled balloon/grape (<b>fluctuance</b>).<br>
+  <b>Post-infection (benign residual):</b> nodes may remain permanently enlarged but should be <b>non-tender, small (<1 cm), rubbery</b> — common in the submandibular/tonsillar region of healthy people (sequelae of past pharyngitis/dental infection).<br>
+  <b>Malignancy:</b> may involve nodes primarily (e.g., lymphoma) or by metastasis (e.g., SCC, frequently from an intraoral primary); malignant nodes are classically <b>hard, non-tender, and fixed</b>. The node's location can indicate the malignancy's site.</div>
+<div class="hint"><b>تفسير موجودات العقد — عدوى مقابل خباثة:</b> <b>العدوى الحادّة:</b> العقد <b>صلبة مؤلمة متضخّمة دافئة</b>؛ وقد ينتشر الالتهاب للجلد المغطّي (احمرار). وإن تُركت، قد يتنخّر مركزها → يتراكم سائل/حطام = <b>خرّاج</b>، يُحَسّ ككيس مشدود/عنبة (<b>تموّج fluctuance</b>). <b>بعد العدوى (بقيّة سليمة):</b> قد تبقى العقد متضخّمة دائماً لكن يجب أن تكون <b>غير مؤلمة، صغيرة (<1سم)، مطّاطية</b> — شائعة في المنطقة تحت الفكّية/اللوزية عند الأصحّاء (تلوٍ لالتهاب بلعوم/عدوى سنّية سابقة). <b>الخباثة:</b> قد تصيب العقد أوّلياً (كاللمفوما) أو بالنقائل (كـSCC، غالباً من ورم أوّلي داخل فموي)؛ والعقد الخبيثة كلاسيكياً <b>صلبة غير مؤلمة ثابتة</b>. وموقع العقدة قد يدلّ على موقع الخباثة.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c6_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c6_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec7">Lec 3 · Lymphadenopathy — Causes ⭐</h2>
+<div class="card" id="c7_0">
+<div class="topic">Generalized lymphadenopathy — definition &amp; infectious causes</div>
+<div class="prompt">Define generalized lymphadenopathy and list its infectious causes.</div>
+<button class="reveal" onclick="revealCard('c7_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c7_0">
+<div class="en"><b>Generalized lymphadenopathy</b> = enlargement of <b>more than 2 non-contiguous lymph node groups</b>. A thorough history and physical exam are critical. Causes: infections, autoimmune diseases, malignancies, histiocytoses, storage diseases, benign hyperplasia, and drug reactions.<br>
+  <b>Infections (most often systemic viral):</b> <b>infectious mononucleosis</b> (EBV) → widespread adenopathy; roseola infantum (HHV-6), CMV, varicella, adenovirus; <b>HIV</b> (generalized adenopathy may be the presenting sign; HIV children have ↑TB risk). Some <b>bacterial</b> infections cause generalized adenopathy: typhoid fever (Salmonella typhi), syphilis, plague, tuberculosis, and endocarditis-related bacteremia. Parasites: toxoplasmosis.</div>
+<div class="hint"><b>اعتلال العقد المعمّم — التعريف والأسباب العدوائية:</b> <b>اعتلال العقد المعمّم</b> = تضخّم <b>أكثر من مجموعتين غير متجاورتين</b> من العقد. والقصّة الدقيقة والفحص السريري حاسمان. الأسباب: عداوى، أمراض مناعية ذاتية، خباثات، داء المنسجات، أمراض الاختزان، فرط تنسّج سليم، وتفاعلات دوائية. <b>العداوى (غالباً فيروسية جهازية):</b> <b>عدد الوحيدات الخمجي</b> (EBV) → اعتلال واسع؛ الوردية الطفلية (HHV-6)، CMV، الحماق، الفيروس الغدّي؛ <b>HIV</b> (قد يكون الاعتلال المعمّم علامته الأولى؛ وأطفال HIV لديهم ↑خطر سلّ). وبعض العداوى <b>الجرثومية</b> تسبّب اعتلالاً معمّماً: الحمّى التيفية (السالمونيلا التيفية)، الزهري، الطاعون، السلّ، وتجرثم الدم المرتبط بالتهاب الشغاف. الطفيليات: داء المقوّسات (toxoplasmosis).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c7_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c7_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c7_1">
+<div class="topic">Malignant, storage &amp; drug causes</div>
+<div class="prompt">How do malignancy, storage diseases, and drugs cause generalized lymphadenopathy?</div>
+<button class="reveal" onclick="revealCard('c7_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c7_1">
+<div class="en"><b>Malignancy:</b> often with <b>constitutional signs</b> — fever, anorexia, aches, weight loss, night sweats. Generalized adenopathy is present at diagnosis in <b>2/3 of ALL</b> and <b>1/3 of AML</b> children; lymphomas more often present regionally. Malignant nodes tend to be <b>firmer, less mobile, or matted</b> (but benign reactive fibrotic nodes can also feel firm — misleading).<br>
+  <b>Storage diseases:</b> a key manifestation of <b>lipid storage diseases</b> — Niemann-Pick (sphingomyelin/lipids accumulate in spleen, liver, nodes, CNS) and Gaucher (glucosylceramide → engorged spleen, nodes, bone marrow).<br>
+  <b>Drug reactions:</b> within weeks of starting <b>phenytoin</b> → regional/generalized node enlargement + severe maculopapular rash, fever, hepatosplenomegaly, jaundice, anemia (abates 2–3 months after stopping). Also mephenytoin, pyrimethamine, phenylbutazone, allopurinol, isoniazid.</div>
+<div class="hint"><b>الأسباب الخبيثة والاختزانية والدوائية:</b> <b>الخباثة:</b> غالباً بـ<b>علامات دستورية</b> — حمّى، قهم، آلام، نقص وزن، تعرّق ليلي. والاعتلال المعمّم موجود عند التشخيص في <b>2/3 من ابيضاض الدم اللمفاوي الحادّ ALL</b> و<b>1/3 من النقوي الحادّ AML</b> عند الأطفال؛ واللمفومات تظهر إقليمياً أكثر. والعقد الخبيثة تميل لأن تكون <b>أصلب، أقلّ حركة، أو متلبّدة</b> (لكن العقد التفاعلية السليمة الليفية قد تُحَسّ صلبةً أيضاً — مُضلِّل). <b>أمراض الاختزان:</b> مظهر مفتاحي لـ<b>أمراض اختزان الشحوم</b> — نيمان-بيك (سفينغوميلين/شحوم في الطحال والكبد والعقد والجهاز العصبي) وغوشيه (غلوكوزيل سيراميد → تضخّم الطحال والعقد ونقي العظم). <b>التفاعلات الدوائية:</b> خلال أسابيع من بدء <b>الفينيتوين</b> → تضخّم عقد إقليمي/معمّم + طفح بقعي حطاطي شديد، حمّى، ضخامة كبدية طحالية، يرقان، فقر دم (يخفّ 2–3 أشهر بعد الإيقاف). وأيضاً ميفينيتوين، بيريميثامين، فينيل بوتازون، ألوبيورينول، أيزونيازيد.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c7_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c7_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c7_2">
+<div class="topic">Cervical lymphadenopathy &amp; ominous signs</div>
+<div class="prompt">What drains into cervical nodes, and which findings are ominous?</div>
+<button class="reveal" onclick="revealCard('c7_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c7_2">
+<div class="en"><b>Cervical lymphadenopathy</b> is common (especially in children). Cervical nodes drain the <b>tongue, external ear, parotid gland</b>, and deeper neck structures (larynx, thyroid, trachea); inflammation/infection of these areas engorges the respective node groups. In children, cervical adenopathy is usually <b>infectious</b>.<br>
+  <b>Ominous signs:</b> lymphadenopathy <b>posterior to the sternocleidomastoid</b> carries a higher risk of serious underlying disease. Autoimmune causes include <b>juvenile rheumatoid arthritis</b> (especially in acute phases), sarcoidosis, and graft-versus-host disease. Neoplasms to consider: <b>squamous cell carcinoma, nasopharyngeal carcinoma, thyroid carcinoma</b>. Distinguishing from lymphoma requires histology, immunophenotyping, and gene-rearrangement studies.</div>
+<div class="hint"><b>اعتلال العقد العنقية والعلامات المنذرة:</b> <b>اعتلال العقد العنقية</b> شائع (خاصةً الأطفال). والعقد العنقية تصرّف <b>اللسان والأذن الخارجية والغدّة النكفية</b> وبنى العنق العميقة (الحنجرة، الدرقية، الرغامى)؛ والتهاب/عدوى هذه المناطق يُضخّم مجموعات العقد المقابلة. وفي الأطفال، الاعتلال العنقي عادةً <b>عدوائي</b>. <b>العلامات المنذرة:</b> الاعتلال <b>خلف القترائية (SCM)</b> يحمل خطراً أعلى لمرض كامن خطير. والأسباب المناعية الذاتية تشمل <b>التهاب المفاصل الرثياني اليفعي</b> (خاصةً الأطوار الحادّة)، الساركويد، وداء الطُعم ضدّ الثوي. والأورام المطروحة: <b>السرطانة حرشفية الخلايا، سرطانة البلعوم الأنفي، سرطانة الدرقية</b>. والتمييز عن اللمفوما يتطلّب نسيجاً مرضياً وتنميطاً مناعياً ودراسات إعادة ترتيب الجينات.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c7_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c7_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec8">Lec 5 · Intraoral Examination ⭐</h2>
+<div class="card" id="c8_0">
+<div class="topic">Intraoral examination — principles</div>
+<div class="prompt">What principles guide the intraoral examination when an oral lesion is present?</div>
+<button class="reveal" onclick="revealCard('c8_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c8_0">
+<div class="en">When examining an oral lesion, consider:
+  <ul><li>the <b>presence</b> of the oral lesion;</li>
+  <li>any <b>associated systemic disease</b>;</li>
+  <li>the <b>risk factors</b>;</li>
+  <li>the <b>medication</b> that may affect the oral mucosal lesion;</li>
+  <li>the <b>associated symptoms</b> with the lesion;</li>
+  <li>the <b>age of onset, duration, and size</b>, etc.</li></ul>
+  The intraoral soft-tissue examination determines whether the tissue is <b>within normal limits (WNL)</b>, and a key skill is <b>distinguishing normal structures/variants from true pathology</b>.</div>
+<div class="hint"><b>الفحص داخل الفم — المبادئ:</b> عند فحص آفة فموية، ضع في الحسبان: <b>وجود</b> الآفة الفموية؛ أي <b>مرض جهازي مصاحب</b>؛ <b>عوامل الخطر</b>؛ <b>الدواء</b> الذي قد يؤثّر في الآفة المخاطية؛ <b>الأعراض المصاحبة</b> للآفة؛ و<b>عمر البدء والمدّة والحجم</b> إلخ. وفحص النسيج الرخو داخل الفم يحدّد إن كان النسيج <b>ضمن الحدود الطبيعية (WNL)</b>، ومهارة أساسية هي <b>تمييز البنى/المتغيّرات الطبيعية عن المرض الحقيقي</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c8_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c8_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c8_1">
+<div class="topic">Normal structures mistaken for lesions</div>
+<div class="prompt">Which normal oral structures may be mistaken for lesions?</div>
+<button class="reveal" onclick="revealCard('c8_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c8_1">
+<div class="en"><ul>
+  <li><b>Stensen's duct:</b> the parotid duct, opening on the posterior buccal mucosa <b>opposite the maxillary molars</b>; the opening may be flat or slightly raised.</li>
+  <li><b>Circumvallate papillae:</b> a <b>V-shaped row</b> of rounded papillae at the junction of the anterior 2/3 and posterior 1/3 of the tongue.</li>
+  <li><b>Lingual tonsils:</b> on the posterolateral oral tongue; may enlarge with viral infections.</li>
+  <li><b>Plica fimbriata:</b> mucosal folds on the ventral tongue on either side of the lingual frenum; may look fringed due to mucosal tags.</li></ul>
+  Recognizing these prevents unnecessary alarm or biopsy.</div>
+<div class="hint"><b>البنى الطبيعية التي قد تُخلَط بالآفات:</b> <b>قناة ستنسن (Stensen's duct):</b> قناة الغدّة النكفية، تفتح على المخاطية الشدقية الخلفية <b>مقابل الأرحاء العلوية</b>؛ وقد يكون فتحها مسطّحاً أو مرتفعاً قليلاً. <b>الحليمات الكأسية (Circumvallate):</b> <b>صفّ على شكل V</b> من حليمات مستديرة عند ملتقى الثلثين الأماميين والثلث الخلفي للسان. <b>اللوزتان اللسانيتان:</b> على الجهة الخلفية الجانبية للسان؛ قد تتضخّمان مع العداوى الفيروسية. <b>Plica fimbriata:</b> طيّات مخاطية على بطن اللسان على جانبي اللجام اللساني؛ قد تبدو مهدّبة بزوائد مخاطية. والتعرّف عليها يمنع القلق أو الخزعة غير الضرورية.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c8_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c8_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c8_2">
+<div class="topic">Common normal variants of the tongue &amp; mucosa</div>
+<div class="prompt">What are fissured tongue, geographic tongue, varicosities, and Fordyce granules?</div>
+<button class="reveal" onclick="revealCard('c8_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c8_2">
+<div class="en"><ul>
+  <li><b>Fissured tongue:</b> multiple grooves on the dorsum (occasionally lateral) — a common benign condition in <b>2–5%</b> of the population; may associate with geographic tongue.</li>
+  <li><b>Geographic tongue (benign migratory glossitis):</b> benign, in <b>1–3%</b> — semicircular well-demarcated depapillated areas on the dorsum/lateral tongue that migrate over time.</li>
+  <li><b>Varicosities:</b> enlarged veins, commonly on the <b>ventral tongue</b>; usually a benign age-related finding.</li>
+  <li><b>Fordyce granules:</b> ectopic sebaceous glands, commonly on the buccal mucosa or the lateral vermilion of the upper lip — a normal variant.</li></ul></div>
+<div class="hint"><b>المتغيّرات الطبيعية الشائعة للسان والمخاطية:</b> <b>اللسان المشقّق (Fissured):</b> أخاديد متعدّدة على الظهر (أحياناً الجانب) — حالة سليمة شائعة في <b>2–5%</b> من الناس؛ قد ترتبط باللسان الجغرافي. <b>اللسان الجغرافي (التهاب اللسان الهاجر السليم):</b> سليم، في <b>1–3%</b> — مناطق نصف دائرية محدّدة فاقدة الحليمات على الظهر/جانب اللسان تهاجر مع الوقت. <b>الدوالي (Varicosities):</b> أوردة متضخّمة، شائعة على <b>بطن اللسان</b>؛ عادةً موجودة سليمة مرتبطة بالعمر. <b>حبيبات فوردايس (Fordyce):</b> غدد دهنية هاجرة، شائعة على المخاطية الشدقية أو الحافة الحمراء الجانبية للشفة العليا — متغيّر طبيعي.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c8_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c8_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c8_3">
+<div class="topic">Salivary gland terminology</div>
+<div class="prompt">Define sialadenitis, sialolithiasis, sialectasis, and sialadenosis.</div>
+<button class="reveal" onclick="revealCard('c8_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c8_3">
+<div class="en"><ul>
+  <li><b>Sialadenitis:</b> <b>inflammation</b> of a salivary gland — acute or chronic, infective or autoimmune.</li>
+  <li><b>Sialolithiasis:</b> <b>stone-related disease</b> within the ductal systems of a gland.</li>
+  <li><b>Sialectasis:</b> <b>dilation of a duct</b> due to stones or strictures.</li>
+  <li><b>Sialadenosis:</b> <b>non-neoplastic, non-inflammatory swelling</b> with acinar hypertrophy and ductal atrophy.</li></ul>
+  On examination, the submandibular gland is felt 2–3 cm anterior to the sternomastoid, below the mandibular ramus, with a rubbery consistency; it should not be fixed to the floor of the mouth/tongue, and the duct course is checked for a stone.</div>
+<div class="hint"><b>مصطلحات الغدد اللعابية:</b> <b>التهاب الغدّة اللعابية (Sialadenitis):</b> <b>التهاب</b> غدّة لعابية — حادّ أو مزمن، عدوائي أو مناعي ذاتي. <b>التحصّي اللعابي (Sialolithiasis):</b> <b>مرض متعلّق بالحصى</b> داخل الأنظمة القنوية للغدّة. <b>توسّع القناة (Sialectasis):</b> <b>توسّع قناة</b> بسبب الحصى أو التضيّقات. <b>الداء الغدّي اللعابي (Sialadenosis):</b> <b>تورّم غير ورمي غير التهابي</b> مع ضخامة عنيبية وضمور قنوي. وعند الفحص، تُجَسّ الغدّة تحت الفكّية على بُعد 2–3سم أمام القترائية، أسفل رأس الفكّ، بقوام مطّاطي؛ ويجب ألا تكون ثابتةً بأرض الفم/اللسان، ويُفحَص مسار القناة بحثاً عن حصاة.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c8_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c8_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec9">Lec 4 · Neck Masses &amp; Specific Node Groups</h2>
+<div class="card" id="c9_0">
+<div class="topic">Differential of neck masses (lateral vs midline)</div>
+<div class="prompt">What are the differentials for lateral and midline neck masses?</div>
+<button class="reveal" onclick="revealCard('c9_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c9_0">
+<div class="en"><b>Lateral neck masses:</b> cystic hygroma, sialadenitis (submandibular gland), vascular malformations, squamous cell carcinoma of the head and neck, lymphoma, leukemia, and enlarged lymph nodes.<br>
+  <b>Midline neck masses</b> (in the hyoid region): <b>thyroglossal duct cyst</b>, <b>dermoid cyst</b>, cystic hygroma, and thyroid tumor.<br>
+  Distinguishing a mass by its location, consistency, mobility, and relation to swallowing/tongue protrusion (a thyroglossal cyst moves with tongue protrusion) helps narrow the differential before investigation.</div>
+<div class="hint"><b>تشخيص كتل العنق (الجانبية مقابل الناصفة):</b> <b>الكتل الجانبية:</b> الورم اللمفاوي الكيسي (cystic hygroma)، التهاب الغدّة تحت الفكّية، التشوّهات الوعائية، السرطانة حرشفية الخلايا للرأس والعنق، اللمفوما، اللوكيميا، والعقد اللمفية المتضخّمة. <b>الكتل الناصفة</b> (في منطقة العظم اللامي): <b>الكيسة القناتية الدرقية اللسانية (thyroglossal duct cyst)</b>، <b>الكيسة الجلدانية (dermoid)</b>، الورم اللمفاوي الكيسي، وورم الدرقية. وتمييز الكتلة بموقعها وقوامها وحركتها وعلاقتها بالبلع/إخراج اللسان (الكيسة القناتية الدرقية تتحرّك بإخراج اللسان) يساعد في تضييق التشخيص قبل الاستقصاء.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c9_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c9_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c9_1">
+<div class="topic">Preauricular &amp; supraclavicular nodes</div>
+<div class="prompt">What do the preauricular and supraclavicular nodes drain, and their key lymphadenopathy causes?</div>
+<button class="reveal" onclick="revealCard('c9_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c9_1">
+<div class="en"><b>Preauricular nodes</b> (anterior to the ear tragus) — drain the lateral eyelids, palpebral conjunctiva, temporal skin, anterior ear pinna, and external auditory canal. <b>Causes:</b> SCC/BCC, epithelioma, facial chancre, erysipelas, ophthalmic herpes zoster, rubella, trachoma, atypical mycobacterial infection, cat-scratch disease, type I branchial cleft cyst, parotid tumor/parotitis.<br>
+  <b>Supraclavicular nodes</b> — right drains mid-chest, esophagus, lungs; left (<b>Virchow's node</b>) drains via the thoracic duct (chest, abdomen). <span class="k">Malignancy represents ~90% of supraclavicular lymphadenopathy in patients >40 years</span>; also lymphoma, mediastinal disease, TB, fungal lung infections, sarcoidosis.</div>
+<div class="hint"><b>العقد أمام الأذنية وفوق الترقوية:</b> <b>العقد أمام الأذنية</b> (أمام زنمة الأذن) — تصرّف الجفنين الجانبيين، الملتحمة الجفنية، الجلد الصدغي، صيوان الأذن الأمامي، والقناة السمعية الخارجية. <b>الأسباب:</b> SCC/BCC، ورم ظهاري، قرح وجهي، الحمرة (erysipelas)، الهربس النطاقي العيني، الحصبة الألمانية، التراخوما، عدوى فطرية لا نمطية، داء خدش القطّ، كيسة الشقّ الغلصمي النوع I، ورم/التهاب نكفي. <b>العقد فوق الترقوية</b> — اليمنى تصرّف منتصف الصدر والمريء والرئتين؛ واليسرى (<b>عقدة Virchow</b>) تصرّف عبر القناة الصدرية (الصدر، البطن). <b>والخباثة تمثّل ~90% من اعتلال العقد فوق الترقوية في المرضى >40 سنة</b>؛ وأيضاً اللمفوما، مرض المنصف، السلّ، عداوى الرئة الفطرية، الساركويد.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c9_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c9_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c9_2">
+<div class="topic">Submental, submandibular &amp; occipital node drainage</div>
+<div class="prompt">What do the submental, submandibular, and occipital nodes drain?</div>
+<button class="reveal" onclick="revealCard('c9_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c9_2">
+<div class="en"><b>Submental nodes</b> (below the chin) — drain the lower lip, floor of mouth, tip of tongue, skin of cheek. Causes: mononucleosis (EBV), CMV, toxoplasmosis; consider thyroglossal duct cyst, dermoid cyst, cystic hygroma, thyroid tumor.<br>
+  <b>Submandibular nodes</b> (below the jaw angle) — drain the tongue, submaxillary gland, lip/mouth mucosa, medial conjunctiva. Causes: tinea capitis, pharyngitis (mononucleosis/URI), atypical mycobacterial infection, cat-scratch disease, rubella, and <b>dental infections</b>.<br>
+  <b>Occipital/suboccipital nodes</b> (base of skull) — drain the back of the scalp and head; suboccipital lymphadenopathy may cause <b>headache</b>.</div>
+<div class="hint"><b>تصريف العقد تحت الذقنية وتحت الفكّية والقذالية:</b> <b>العقد تحت الذقنية</b> (تحت الذقن) — تصرّف الشفة السفلى، أرض الفم، طرف اللسان، جلد الخدّ. الأسباب: عدد الوحيدات (EBV)، CMV، داء المقوّسات؛ وفكّر في الكيسة القناتية الدرقية، الكيسة الجلدانية، الورم اللمفاوي الكيسي، ورم الدرقية. <b>العقد تحت الفكّية</b> (تحت زاوية الفكّ) — تصرّف اللسان، الغدّة تحت الفكّية، مخاطية الشفة/الفم، الملتحمة الإنسية. الأسباب: سعفة الرأس، التهاب البلعوم (عدد الوحيدات/عدوى تنفّسية علوية)، عدوى فطرية لا نمطية، داء خدش القطّ، الحصبة الألمانية، و<b>العداوى السنّية</b>. <b>العقد القذالية/تحت القذالية</b> (قاعدة الجمجمة) — تصرّف مؤخّرة فروة الرأس والرأس؛ واعتلالها قد يسبّب <b>صداعاً</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c9_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c9_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec10">Lec 4 · Salivary Gland Examination</h2>
+<div class="card" id="c10_0">
+<div class="topic">Examining the parotid &amp; submandibular glands</div>
+<div class="prompt">How are the parotid and submandibular glands examined?</div>
+<button class="reveal" onclick="revealCard('c10_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c10_0">
+<div class="en"><b>Parotid gland:</b> examine for swelling in front of and below the ear; inspect <b>Stensen's duct</b> orifice (opposite the maxillary molars) for flow/pus by drying the area and milking the gland. A diffuse parotid swelling may be parotitis, a tumor, or sialadenosis.<br>
+  <b>Submandibular gland:</b> palpated <b>bimanually</b> (a finger intraorally in the floor of mouth + fingers extraorally under the jaw); the gland is felt 2–3 cm anterior to the sternomastoid, below the mandibular ramus, with a <b>rubbery consistency</b>. It should <b>not be fixed</b> to the floor of mouth/tongue (fixation suggests malignancy); check the duct course for a <b>stone</b>. Differentiate a submandibular swelling from superior cervical nodes (deep to the sternomastoid).</div>
+<div class="hint"><b>فحص الغدّتين النكفية وتحت الفكّية:</b> <b>الغدّة النكفية:</b> افحص التورّم أمام الأذن وتحتها؛ وافحص فتحة <b>قناة ستنسن</b> (مقابل الأرحاء العلوية) للتدفّق/القيح بتجفيف المنطقة وعصر الغدّة. والتورّم النكفي المنتشر قد يكون التهاباً نكفياً أو ورماً أو داءً غدّياً لعابياً. <b>الغدّة تحت الفكّية:</b> تُجَسّ <b>بكلتا اليدين (bimanual)</b> (إصبع داخل الفم في أرض الفم + أصابع خارج الفم تحت الفكّ)؛ وتُحَسّ على بُعد 2–3سم أمام القترائية، أسفل رأس الفكّ، بقوام <b>مطّاطي</b>. ويجب ألا تكون <b>ثابتة</b> بأرض الفم/اللسان (الثبات يوحي بالخباثة)؛ وافحص مسار القناة بحثاً عن <b>حصاة</b>. وميّز التورّم تحت الفكّي عن العقد العنقية العلوية (العميقة للقترائية).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c10_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c10_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec11">Lec 2 · Facial Signs of Systemic Disease</h2>
+<div class="card" id="c11_0">
+<div class="topic">Facies as a diagnostic clue</div>
+<div class="prompt">How can the overall facial appearance (facies) point to a systemic diagnosis?</div>
+<button class="reveal" onclick="revealCard('c11_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c11_0">
+<div class="en">The face is a rich source of diagnostic clues, and a characteristic <b>facies</b> can suggest a systemic condition at a glance:
+  <ul><li><b>Moon facies</b> (rounded, fat on the sides) → obesity or <b>Cushing's syndrome</b> (cortisol excess).</li>
+  <li><b>Down syndrome</b> → upslanting palpebral fissures, small ears, short neck, and a tongue that tends to protrude (relative macroglossia).</li>
+  <li><b>Acromegaly</b> → enlarged jaw, brow, and coarse features from growth-hormone excess.</li>
+  <li><b>Jaundiced facies</b> → yellow skin/sclera from hyperbilirubinemia (liver disease).</li>
+  <li><b>Pale facies</b> → anemia.</li></ul>
+  Recognizing a facies prompts a targeted history and examination for the underlying systemic disease before dental treatment.</div>
+<div class="hint"><b>ملامح الوجه (Facies) كمفتاح تشخيصي:</b> الوجه مصدر غنيّ بالمفاتيح، وقد توحي <b>ملامح مميّزة</b> بحالة جهازية من النظرة الأولى: <b>الوجه القمري</b> (مستدير، دهون على الجانبين) → بدانة أو <b>متلازمة كوشينغ</b> (فرط كورتيزول). <b>متلازمة داون</b> → شقوق جفنية مائلة للأعلى، أذنان صغيرتان، عنق قصير، ولسان يميل للبروز (ضخامة لسان نسبية). <b>ضخامة النهايات (Acromegaly)</b> → فكّ وجبهة متضخّمان وملامح خشنة من فرط هرمون النموّ. <b>الوجه اليرقاني</b> → جلد/صلبة صفراء من فرط البيليروبين (مرض كبدي). <b>الوجه الشاحب</b> → فقر دم. والتعرّف على الملامح يستدعي قصّةً وفحصاً موجّهين للمرض الجهازي قبل العلاج السنّي.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c11_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c11_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c11_1">
+<div class="topic">When to refer &amp; red flags in oral diagnosis</div>
+<div class="prompt">What red-flag findings on oral/head-and-neck examination warrant urgent referral?</div>
+<button class="reveal" onclick="revealCard('c11_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c11_1">
+<div class="en">Certain findings are <b>red flags</b> for serious disease and warrant urgent referral/investigation:
+  <ul><li>a <b>hard, non-tender, fixed</b> lymph node (classic for malignancy);</li>
+  <li>a <b>supraclavicular node</b> (esp. left/Virchow's, or in a patient >40) — ~90% malignant over 40;</li>
+  <li>a persistent oral ulcer (>2–3 weeks) or a non-healing lesion;</li>
+  <li>a red (erythroplakia) or white (leukoplakia) patch that cannot be wiped off;</li>
+  <li>unexplained <b>constitutional symptoms</b> (fever, weight loss, night sweats) with lymphadenopathy;</li>
+  <li>a neck mass fixed to deep structures.</li></ul>
+  When uncertain, do not give false reassurance — a biopsy may be necessary to establish the diagnosis.</div>
+<div class="hint"><b>متى تُحيل والعلامات المنذرة في التشخيص الفموي:</b> بعض الموجودات <b>علامات منذرة</b> لمرض خطير وتستوجب إحالةً/استقصاءً عاجلاً: عقدة لمفية <b>صلبة غير مؤلمة ثابتة</b> (كلاسيكية للخباثة)؛ <b>عقدة فوق الترقوية</b> (خاصةً اليسرى/Virchow، أو في مريض >40) — ~90% خبيثة فوق 40؛ قرحة فموية مستمرّة (>2–3 أسابيع) أو آفة لا تلتئم؛ بقعة حمراء (طلاوة حمراء) أو بيضاء (طلاوة بيضاء) لا تُمسَح؛ <b>أعراض دستورية</b> غير مفسَّرة (حمّى، نقص وزن، تعرّق ليلي) مع اعتلال عقد؛ كتلة عنق ثابتة على البنى العميقة. وعند الشكّ لا تعطِ طمأنةً كاذبة — فقد تلزم خزعة لتأكيد التشخيص.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c11_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c11_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec12">Lec 1–5 · Oral Diagnosis Process (Integrated) ⭐</h2>
+<div class="card" id="c12_0">
+<div class="topic">Building a diagnosis from history and examination</div>
+<div class="prompt">How do the components of history and examination combine into a systematic oral diagnosis?</div>
+<button class="reveal" onclick="revealCard('c12_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c12_0">
+<div class="en">Oral diagnosis is a systematic funnel that narrows from a broad story to a specific diagnosis. It begins with the <b>history</b>, gathered mostly through <b>open questions</b> (the gold standard) and completed by reviewing what the patient said. The <b>age</b> frames the likely conditions (degenerative and drug-related problems in the elderly; the age-related mucosal, immune, and salivary changes) and the <b>sex</b> shifts the differential (SCC and melanoma commoner in males; pemphigoid, epulis, and mucocele commoner in females). The <b>presenting complaint</b> in the patient's own words is analysed — for pain via <b>SOCRATES</b> (site, onset, character, radiation, associations, time course, exacerbating/relieving factors, severity). The <b>past medical, drug, family, and social histories</b> plus a <b>review of systems</b> then place the complaint in the patient's whole-body context (immunosuppressants, inherited disease over three generations, smoking/alcohol links to leukoplakia and raised MCV). Only then comes the <b>examination</b> in three tiers — general appearance and facies, the extraoral head-and-neck soft tissues (skin colour signs, asymmetries, and a systematic lymph-node exam reading consistency and tenderness), and the intraoral soft tissues assessed against normal structures and variants. Each layer either confirms or reshapes the differential built from the history, and where a red flag appears — a hard fixed node, a supraclavicular node, a non-healing lesion — the process escalates to investigation or biopsy rather than reassurance. The discipline is to let the history generate the hypotheses and the examination test them, never the reverse.</div>
+<div class="hint">التشخيص الفموي قمع منهجي يضيق من قصّة واسعة لتشخيص محدّد. يبدأ بال<b>قصّة</b>، تُجمع غالباً بال<b>أسئلة المفتوحة</b> (المعيار الذهبي) وتُكمل بمراجعة ما قاله المريض. وال<b>عمر</b> يؤطّر الحالات المحتملة (المشاكل التنكّسية والدوائية في كبار السنّ؛ والتغيّرات المخاطية والمناعية واللعابية المرتبطة بالعمر) وال<b>جنس</b> يزيح التشخيص التفريقي (SCC والميلانوما أكثر في الذكور؛ والفقعان والورم اللثوي والقيلة أكثر في الإناث). وتُحلّل <b>الشكوى الحالية</b> بكلمات المريض — وللألم بـ<b>SOCRATES</b> (الموقع، البدء، الطابع، الانتشار، المصاحبات، المسار الزمني، عوامل التفاقم/التخفيف، الشدّة). ثم <b>القصّة المرضية والدوائية والعائلية والاجتماعية</b> و<b>مراجعة الأجهزة</b> تضع الشكوى في سياق الجسم كلّه (مثبّطات المناعة، المرض الوراثي عبر ثلاثة أجيال، ارتباط التدخين/الكحول بالطلاوة وارتفاع MCV). وعندئذٍ يأتي <b>الفحص</b> بثلاث طبقات — المظهر العامّ والملامح، والنسيج الرخو خارج الفم (علامات لون الجلد، اللاتناظرات، وفحص العقد المنهجي قراءةً للقوام والمضض)، والنسيج الرخو داخل الفم مُقيّماً مقابل البنى الطبيعية والمتغيّرات. وكلّ طبقة إمّا تؤكّد أو تعيد تشكيل التشخيص التفريقي المبنيّ من القصّة، وحيث تظهر علامة منذرة — عقدة صلبة ثابتة، عقدة فوق ترقوية، آفة لا تلتئم — يتصاعد الأمر للاستقصاء أو الخزعة لا للطمأنة. والانضباط أن تدع القصّة تولّد الفرضيات والفحص يختبرها، لا العكس.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c12_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c12_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c12_1">
+<div class="topic">Why the lymph node exam is a window on the whole body</div>
+<div class="prompt">Why is a careful lymph node examination one of the most informative parts of the head-and-neck exam?</div>
+<button class="reveal" onclick="revealCard('c12_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c12_1">
+<div class="en">The lymph node examination is a window onto processes far beyond the mouth, because nodes are the drainage and surveillance stations of the immune system — what enlarges them reflects what is happening in the tissue they drain or in the body at large. Three properties read together carry most of the information. <b>Consistency</b>: soft nodes are insignificant, <b>rubbery</b> suggests lymphoma, and <b>hard</b> suggests malignancy or granulomatous infection. <b>Tenderness</b>: tender nodes classically mean infection, non-tender ones classically mean malignancy. <b>Symmetry and mobility</b>: clinically significant nodes are classically asymmetric, and fixed matted nodes are worrying. Location then localises the source through known drainage pathways — submental nodes drain the teeth and intraoral cavity, submandibular the floor of mouth and tongue, so a dental or intraoral infection announces itself there; while a <b>supraclavicular node</b> points deep into the body, the left (Virchow’s) to the abdomen via the thoracic duct and the right to the chest, and in a patient over 40 such a node is malignant in about 90% of cases. Generalised enlargement of more than two non-contiguous groups shifts thinking toward systemic causes — viral infections (EBV mononucleosis, CMV, HIV), malignancies (the leukaemias and lymphomas, often with fever, weight loss, and night sweats), storage diseases (Niemann-Pick, Gaucher), and drug reactions (classically phenytoin). Thus a few minutes of careful palpation can redirect the whole diagnosis from a local dental problem to a systemic one, which is exactly why it is never skipped.</div>
+<div class="hint">فحص العقد اللمفية نافذة على عمليات تتجاوز الفم بكثير، لأن العقد محطّات التصريف والمراقبة للجهاز المناعي — فما يُضخّمها يعكس ما يجري في النسيج الذي تصرّفه أو في الجسم عموماً. وثلاث خواصّ تُقرأ معاً تحمل معظم المعلومة. <b>القوام</b>: الطريّة غير ذات أهمّية، وال<b>مطّاطية</b> توحي باللمفوما، وال<b>صلبة</b> بالخباثة أو الالتهاب الحبيبومي. <b>المضض</b>: المؤلمة كلاسيكياً عدوى، وغير المؤلمة خباثة. <b>التناظر والحركة</b>: العقد المهمّة لا متناظرة كلاسيكياً، والثابتة المتلبّدة مقلقة. ثم يُوضِع الموقع المصدر عبر مسارات التصريف المعروفة — فالتحت ذقنية تصرّف الأسنان وجوف الفم، والتحت فكّية أرض الفم واللسان، فالعدوى السنّية أو الفموية تُعلِن عن نفسها هناك؛ بينما ال<b>عقدة فوق الترقوية</b> تشير عميقاً داخل الجسم، اليسرى (Virchow) للبطن عبر القناة الصدرية واليمنى للصدر، وفي مريض فوق 40 تكون خبيثة في نحو 90%. والتضخّم المعمّم لأكثر من مجموعتين غير متجاورتين يزيح التفكير نحو الأسباب الجهازية — العداوى الفيروسية (EBV، CMV، HIV)، والخباثات (الابيضاضات واللمفومات، غالباً بحمّى ونقص وزن وتعرّق ليلي)، وأمراض الاختزان (نيمان-بيك، غوشيه)، والتفاعلات الدوائية (الفينيتوين كلاسيكياً). فدقائق من الجسّ الدقيق قد توجّه التشخيص كلّه من مشكلة سنّية موضعية إلى مرض جهازي، ولهذا لا يُتجاوز أبداً.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c12_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c12_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec13">Lec 1 · Aging, Immunity &amp; Clinical Relevance</h2>
+<div class="card" id="c13_0">
+<div class="topic">Immune changes with aging (immunosenescence)</div>
+<div class="prompt">What immune-system changes occur with aging, and why do they matter clinically?</div>
+<button class="reveal" onclick="revealCard('c13_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c13_0">
+<div class="en">With aging the immune system declines (<b>immunosenescence</b>): the <b>thymus gland involutes</b> and <b>thymopoietin decreases</b>; <b>lymphoid tissue decreases</b>; <b>T-lymphocytes decrease</b>; <b>antibody production is impaired</b>; <b>secretory IgA declines</b>; and <b>autoantibodies increase</b>. As a result there is an <b>increased incidence of autoimmune disease</b>, a <b>reduced response to acute infection</b>, and a <b>potential for recurrence of latent herpes zoster</b>.<br>
+  <b>Clinical relevance:</b> older patients have increased mucosal-surface infection potential and malignancy incidence, so lesions must be evaluated carefully, healing may be slower, and reactivation of latent viruses (e.g., shingles) should be anticipated.</div>
+<div class="hint"><b>التغيّرات المناعية مع التقدّم بالعمر (شيخوخة المناعة):</b> مع الشيخوخة يتراجع الجهاز المناعي (<b>immunosenescence</b>): <b>تضمر الغدّة الزعترية</b> و<b>ينقص الثيموبويتين</b>؛ <b>ينقص النسيج اللمفاوي</b>؛ <b>تنقص اللمفاويات التائية</b>؛ <b>يضعف إنتاج الأضداد</b>؛ <b>ينخفض IgA الإفرازي</b>؛ و<b>تزداد الأضداد الذاتية</b>. ونتيجةً لذلك: <b>ازدياد أمراض المناعة الذاتية</b>، و<b>نقص الاستجابة للعدوى الحادّة</b>، و<b>احتمال نكس الهربس النطاقي الكامن</b>. <b>الأهمّية السريرية:</b> كبار السنّ لديهم احتمال عدوى مخاطية وخباثة أعلى، فتُقيَّم الآفات بعناية، وقد يكون الالتئام أبطأ، ويُتوقّع إعادة تنشيط الفيروسات الكامنة (كالحزام الناري).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c13_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c13_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c13_1">
+<div class="topic">Why the drug history is critical in oral medicine</div>
+<div class="prompt">Why is the drug history especially critical in oral medicine, and what allergy detail matters?</div>
+<button class="reveal" onclick="revealCard('c13_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c13_1">
+<div class="en">The drug history is critical because many medications <b>cause or modify oral lesions</b>, interact with dental treatment, or signal an underlying immune condition. Always record every drug with its <b>dose and frequency</b>, and ask specifically about <b>allergies</b>.<br>
+  <b>Key immunosuppressants</b> in oral medicine (cyclosporine, azathioprine, steroids, colchicine, dapsone) each carry warnings: <b>steroids</b> deplete T/B cells and eosinophils and impair immune-cell migration; <b>azathioprine</b> can cause a rare fatal lymphoma; <b>colchicine</b> and <b>dapsone</b> have serious organ/blood toxicities. Recognizing these guides safe management and explains oral findings (e.g., gingival overgrowth with cyclosporine, or opportunistic infections in the immunosuppressed).</div>
+<div class="hint"><b>لماذا قصّة الأدوية حرجة في طب الفم:</b> قصّة الأدوية حرجة لأن كثيراً من الأدوية <b>تسبّب أو تعدّل الآفات الفموية</b>، أو تتفاعل مع العلاج السنّي، أو تشير لحالة مناعية كامنة. سجّل دائماً كل دواء بـ<b>جرعته وتواتره</b>، واسأل تحديداً عن <b>التحسّس</b>. <b>مثبّطات المناعة المفتاحية</b> في طب الفم (سيكلوسبورين، آزاثيوبرين، ستيرويدات، كولشيسين، دابسون) لكلٍّ تحذيرات: <b>الستيرويدات</b> تستنزف الخلايا التائية/البائية والحمضات وتعيق هجرة الخلايا المناعية؛ <b>الآزاثيوبرين</b> قد يسبّب لمفوماً نادراً مميتاً؛ و<b>الكولشيسين</b> و<b>الدابسون</b> لهما سمّيات عضوية/دموية خطيرة. والتعرّف عليها يوجّه التدبير الآمن ويفسّر الموجودات الفموية (كفرط نموّ اللثة مع السيكلوسبورين، أو العداوى الانتهازية عند المثبَّطين مناعياً).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c13_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c13_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c13_2">
+<div class="topic">Completing the consultation &amp; documentation</div>
+<div class="prompt">How should the consultation be completed and documented?</div>
+<button class="reveal" onclick="revealCard('c13_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c13_2">
+<div class="en"><b>Complete the history by reviewing</b> what the patient told you — repeat the important points back so they can correct misunderstandings or errors. Allow the patient to ask questions, and <b>never give false information</b>; if unsure, consult a senior or provide proper information later (e.g., leaflets).<br>
+  <b>Documentation:</b> record findings precisely and objectively in the chart, including the exact description of any asymmetry or lesion (e.g., "3 cm scar in the left submandibular area from gland-stone removal"), the site/size/duration of lesions, node characteristics, and the working differential. Accurate documentation supports follow-up, medico-legal safety, and communication with colleagues.</div>
+<div class="hint"><b>إكمال الاستشارة والتوثيق:</b> <b>أكمل القصّة بالمراجعة</b> — أعد النقاط المهمّة ليصحّح المريض أي سوء فهم أو خطأ. وأتِح له طرح الأسئلة، و<b>لا تعطِ معلومات خاطئة</b>؛ وإن لم تتأكّد، استشر طبيباً أقدم أو قدّم معلومات صحيحة لاحقاً (كالنشرات). <b>التوثيق:</b> سجّل الموجودات بدقّة وموضوعية في السجلّ، بما فيها الوصف الدقيق لأي لاتناظر أو آفة (مثل «ندبة 3سم في المنطقة تحت الفكّية اليسرى من إزالة حصاة غدّة»)، وموقع/حجم/مدّة الآفات، وخصائص العقد، والتشخيص التفريقي العملي. والتوثيق الدقيق يدعم المتابعة والسلامة الطبية-القانونية والتواصل مع الزملاء.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c13_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c13_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec14">Lec 3 · Lymphatic System &amp; Node Interpretation (Detailed)</h2>
+<div class="card" id="c14_0">
+<div class="topic">Lymphatic terminology and the anatomy of drainage</div>
+<div class="prompt">Define the key lymphatic terms and explain how drainage anatomy underlies node interpretation.</div>
+<button class="reveal" onclick="revealCard('c14_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c14_0">
+<div class="en">A precise vocabulary underpins node examination. <b>Lymphadenitis</b> is inflammation of a lymph node itself; <b>lymphadenopathy</b> is any abnormal enlargement of nodes (regional or generalised); <b>lymphoma</b> is a malignancy arising within lymphoid tissue; <b>lymphatic vessels</b> carry <b>lymphatic fluid</b> from the tissues through the <b>lymphatic system</b> and its nodes back to the bloodstream. The clinical power of the exam comes from the fixed, if approximate, <b>drainage anatomy</b>: each node group filters lymph from a defined territory, so an enlarged node points back to disease in the region it drains or to a systemic process. Along the neck, the <b>anterior cervical chain</b> runs with the sternocleidomastoid and drains the pharynx and tonsils; the <b>posterior chain</b> runs toward the trapezius and drains the back of the scalp (enlarging in mononucleosis); <b>tonsillar</b> nodes sit below the mandibular angle; <b>submandibular</b> nodes drain the floor of mouth and tongue; <b>submental</b> nodes drain the lower lip, floor of mouth, and tongue tip — and, importantly, the teeth and intraoral cavity, so dental infection localises here. Because drainage pathways vary and overlap, descriptions are approximations, but knowing them lets the clinician search efficiently: find an enlarged node, recall what it drains, and examine that territory for the primary problem.</div>
+<div class="hint">مفردات دقيقة تسند فحص العقد. <b>التهاب العقدة (Lymphadenitis)</b> التهاب العقدة نفسها؛ <b>اعتلال العقد (Lymphadenopathy)</b> أي تضخّم غير طبيعي (إقليمي أو معمّم)؛ <b>اللمفوما (Lymphoma)</b> خباثة تنشأ في النسيج اللمفاوي؛ و<b>الأوعية اللمفية</b> تحمل <b>السائل اللمفي</b> من الأنسجة عبر <b>الجهاز اللمفي</b> وعقده إلى الدم. وقوّة الفحص تأتي من <b>تشريح التصريف</b> الثابت (ولو تقريباً): فكل مجموعة تُرشّح لمف إقليم محدّد، فالعقدة المتضخّمة تشير لمرض في المنطقة التي تصرّفها أو لعملية جهازية. وعلى العنق، ال<b>سلسلة العنقية الأمامية</b> تجري مع القترائية وتصرّف البلعوم واللوزتين؛ وال<b>سلسلة الخلفية</b> تتجه لشبه المنحرفة وتصرّف مؤخّرة الفروة (تتضخّم في عدد الوحيدات)؛ وال<b>لوزية</b> أسفل زاوية الفكّ؛ وال<b>تحت فكّية</b> تصرّف أرض الفم واللسان؛ وال<b>تحت ذقنية</b> تصرّف الشفة السفلى وأرض الفم وطرف اللسان — والأهمّ: الأسنان وجوف الفم، فالعدوى السنّية تتوضّع هنا. ولأن المسارات تتفاوت وتتداخل فالأوصاف تقريبية، لكن معرفتها تتيح بحثاً كفؤاً: جد العقدة، تذكّر ما تصرّفه، وافحص ذلك الإقليم للمشكلة الأوّلية.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c14_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c14_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c14_1">
+<div class="topic">Pediatric versus adult lymphadenopathy</div>
+<div class="prompt">How does the interpretation of lymphadenopathy differ between children and adults?</div>
+<button class="reveal" onclick="revealCard('c14_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c14_1">
+<div class="en">The same enlarged node carries a very different meaning depending on the patient’s age, so the interpretation must be age-adjusted. In <b>children</b>, cervical lymphadenopathy is common and usually <b>benign and infectious</b> — viral upper respiratory infections, mononucleosis (EBV), and dental or pharyngeal infections account for most cases, and small palpable submandibular or tonsillar nodes in an otherwise well child are usually just sequelae of past infection. Certain childhood malignancies do present with nodes — generalised lymphadenopathy is found at diagnosis in about two thirds of children with acute lymphoblastic leukaemia and one third with acute myeloblastic leukaemia — but abnormalities on the blood count usually point to the diagnosis, and juvenile rheumatoid arthritis is an autoimmune cause worth remembering. In <b>adults</b>, and especially those over 40, a persistent or hard, non-tender, fixed node shifts the probability sharply toward <b>malignancy</b>: a supraclavicular node in this age group is malignant in roughly 90% of cases, and metastatic squamous cell carcinoma from an intraoral primary is a classic cause of a hard cervical node. Across both groups, the reassuring picture is a small (<1 cm), soft-to-rubbery, mobile, non-tender node that regresses; the worrying picture is a large, hard, fixed, non-tender, or matted node, node enlargement posterior to the sternocleidomastoid, or nodes accompanied by constitutional symptoms — any of which should prompt investigation and, if the picture remains equivocal, a biopsy.</div>
+<div class="hint">نفس العقدة المتضخّمة تحمل معنىً مختلفاً جداً حسب عمر المريض، فالتفسير يُعدّل بالعمر. ففي <b>الأطفال</b>، اعتلال العقد العنقية شائع وعادةً <b>سليم وعدوائي</b> — العداوى الفيروسية التنفّسية العلوية وعدد الوحيدات (EBV) والعداوى السنّية/البلعومية تفسّر معظمها، والعقد الصغيرة تحت الفكّية/اللوزية في طفل سليم عادةً تلوٍ لعدوى سابقة. وبعض خباثات الطفولة تظهر بعقد — فالاعتلال المعمّم يُوجد عند التشخيص في نحو ثلثي أطفال ALL وثلث أطفال AML — لكن شذوذ تعداد الدم عادةً يدلّ على التشخيص، والتهاب المفاصل الرثياني اليفعي سبب مناعي يُذكَر. وفي <b>البالغين</b>، وخاصةً فوق 40، العقدة المستمرّة أو الصلبة غير المؤلمة الثابتة تزيح الاحتمال بحدّة نحو <b>الخباثة</b>: فالعقدة فوق الترقوية في هذه الفئة خبيثة في نحو 90%، والنقيلة من SCC من ورم أوّلي داخل فموي سبب كلاسيكي لعقدة عنقية صلبة. وفي الفئتين، الصورة المطمئنة عقدة صغيرة (<1سم) طريّة-مطّاطية متحرّكة غير مؤلمة تتراجع؛ والمقلقة كبيرة صلبة ثابتة غير مؤلمة أو متلبّدة، أو خلف القترائية، أو مصحوبة بأعراض دستورية — وأيّها يستدعي استقصاءً، وإن بقيت الصورة ملتبسة فخزعة.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c14_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c14_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c14_2">
+<div class="topic">The oral cavity as a mirror of systemic health</div>
+<div class="prompt">Why is the mouth described as a mirror of systemic health, and what are practical examples relevant to the dentist?</div>
+<button class="reveal" onclick="revealCard('c14_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c14_2">
+<div class="en">The mouth is often called a <b>mirror of systemic health</b> because its mucosa, gingiva, tongue, salivary glands, and the surrounding skin and lymph nodes frequently show the earliest or clearest signs of disease elsewhere in the body — which is the whole rationale of oral medicine as a discipline. Many <b>systemic diseases manifest orofacially</b>: cutaneous, gastrointestinal, and haematological disorders all have oral signs, and the dentist is sometimes the first clinician to notice them. Practical examples the dentist should recognise include: <b>pale mucosa and skin</b> suggesting anaemia (reduced red cells and oxygen delivery); <b>petechiae or ecchymoses</b> pointing to a bleeding disorder or anticoagulant use; <b>yellow mucosa and sclera</b> indicating jaundice and liver disease; a <b>grey, almost metallic skin</b> with uraemic frost in kidney failure; <b>moon facies</b> signalling Cushing’s syndrome or long-term steroids; the facial features of <b>Down syndrome</b> or <b>acromegaly</b>; and <b>lymphadenopathy</b> that may be the presenting sign of infection (EBV, HIV), malignancy (leukaemia, lymphoma, metastatic carcinoma), or a drug reaction. Recognising these means the dentist must take a thorough history — medical, drug, family, social — and perform the full three-tier examination, because managing the tooth safely often depends on identifying the systemic condition behind the oral sign, and because early recognition of a red-flag finding can be life-saving through timely referral.</div>
+<div class="hint">يُوصَف الفم غالباً بأنه <b>مرآة الصحة الجهازية</b> لأن مخاطيته ولثته ولسانه وغدده اللعابية والجلد والعقد المحيطة تُظهر غالباً أبكر أو أوضح علامات مرض في موضع آخر من الجسم — وهذا جوهر طب الفم كتخصّص. فكثير من <b>الأمراض الجهازية تتجلّى فموياً-وجهياً</b>: فالاضطرابات الجلدية والهضمية والدموية لها علامات فموية، وقد يكون طبيب الأسنان أوّل من يلاحظها. ومن الأمثلة العملية: <b>شحوب المخاطية والجلد</b> يوحي بفقر الدم؛ <b>الفرفريات أو الكدمات</b> تشير لاضطراب نزف أو مميّعات؛ <b>المخاطية والصلبة الصفراء</b> تدلّ على يرقان ومرض كبدي؛ <b>جلد رمادي شبه معدني</b> مع الصقيع البولي في الفشل الكلوي؛ <b>الوجه القمري</b> يشير لكوشينغ أو الستيرويدات طويلة الأمد؛ وملامح <b>متلازمة داون</b> أو <b>ضخامة النهايات</b>؛ و<b>اعتلال العقد</b> قد يكون العلامة الأولى لعدوى (EBV، HIV) أو خباثة (ابيضاض، لمفوما، نقيلة) أو تفاعل دوائي. والتعرّف على هذه يعني أن يأخذ الطبيب قصّة وافية — مرضية ودوائية وعائلية واجتماعية — ويُجري الفحص الثلاثي الكامل، لأن تدبير السنّ بأمان يعتمد غالباً على تحديد الحالة الجهازية خلف العلامة الفموية، ولأن التعرّف المبكّر على علامة منذرة قد ينقذ حياة عبر الإحالة في الوقت المناسب.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c14_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c14_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c14_3">
+<div class="topic">Putting it together — a practical first-visit workflow</div>
+<div class="prompt">What is a practical step-by-step workflow for the first oral-medicine visit, and what does each step guard against?</div>
+<button class="reveal" onclick="revealCard('c14_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c14_3">
+<div class="en">A first oral-medicine visit follows a repeatable workflow, and each step guards against a specific error. <b>1. Greet and observe</b> from the moment the patient enters — note gait, mobility, general appearance, and facies (moon face, Down, acromegaly, jaundice, pallor); this guards against missing a systemic clue that reframes everything. <b>2. Take the history with open questions</b> — presenting complaint in the patient’s words, then the pain analysed by SOCRATES; this guards against leading the patient to your own assumption. <b>3. Layer in past medical, drug, family (three generations), and social histories plus a review of systems</b> — this guards against treating a local sign while missing immunosuppression, an inherited disorder, or a smoking/alcohol link. <b>4. General examination</b> — appearance, symmetry, skin-colour signs; guards against overlooking bleeding, jaundice, anaemia, or renal signs. <b>5. Extraoral head-and-neck examination</b> — systematic lymph-node palpation reading consistency, tenderness, symmetry, and drainage; guards against missing the node that reveals infection or malignancy. <b>6. Intraoral examination</b> — assess soft tissue against normal structures and variants (Stensen’s duct, circumvallate papillae, fissured/geographic tongue, Fordyce granules); guards against mistaking normal for pathology or vice versa. <b>7. Synthesise, document, and decide</b> — build a differential, record findings precisely, and either manage, review, or refer; guards against false reassurance when a red flag (hard fixed node, supraclavicular node, non-healing lesion) demands investigation or biopsy. Followed consistently, this sequence turns a scattered set of observations into a defensible diagnosis.</div>
+<div class="hint">تتبع أوّل زيارة لطب الفم سير عمل قابلاً للتكرار، وكلّ خطوة تحرس من خطأ محدّد. <b>١. رحّب وراقِب</b> منذ دخول المريض — المشية والحركة والمظهر العامّ والملامح (الوجه القمري، داون، ضخامة النهايات، اليرقان، الشحوب)؛ يحرس من فوات مفتاح جهازي يعيد تأطير كل شيء. <b>٢. خذ القصّة بأسئلة مفتوحة</b> — الشكوى بكلمات المريض، ثم الألم بـSOCRATES؛ يحرس من توجيه المريض لافتراضك. <b>٣. أضف القصّة المرضية والدوائية والعائلية (ثلاثة أجيال) والاجتماعية ومراجعة الأجهزة</b>؛ يحرس من علاج علامة موضعية مع فوات تثبيط مناعي أو اضطراب وراثي أو ارتباط تدخين/كحول. <b>٤. الفحص العامّ</b> — المظهر والتناظر وعلامات لون الجلد؛ يحرس من إغفال النزف أو اليرقان أو فقر الدم أو العلامات الكلوية. <b>٥. فحص الرأس والعنق خارج الفم</b> — جسّ العقد المنهجي قراءةً للقوام والمضض والتناظر والتصريف؛ يحرس من فوات العقدة التي تكشف عدوى أو خباثة. <b>٦. الفحص داخل الفم</b> — قيّم النسيج الرخو مقابل البنى الطبيعية والمتغيّرات (قناة ستنسن، الحليمات الكأسية، اللسان المشقّق/الجغرافي، حبيبات فوردايس)؛ يحرس من خلط الطبيعي بالمرضي أو العكس. <b>٧. اجمع ووثّق وقرّر</b> — ابنِ تشخيصاً تفريقياً، سجّل بدقّة، وإمّا عالِج أو تابِع أو أحِل؛ يحرس من الطمأنة الكاذبة حين تستدعي علامة منذرة (عقدة صلبة ثابتة، عقدة فوق ترقوية، آفة لا تلتئم) استقصاءً أو خزعة. وباتّباعه بانتظام يحوّل هذا التسلسل ملاحظات مبعثرة إلى تشخيص يُدافع عنه.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c14_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c14_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+
+<div class="mcq-wrap">
+<h2 class="mcq-title">📝 اختبار MCQ · اختبر نفسك (20 سؤالاً)</h2>
+<div class="mcq-note">اختر إجابةً لكل سؤال. سيظهر الصحيح بالأخضر والخطأ بالأحمر مع شرح موجز. النتيجة تُحسب تلقائياً في الأعلى.</div>
+<div class="mcq-scorebar">النتيجة · Score: <b id="mcqScore">0 / 20</b> &nbsp;·&nbsp; <button class="mcq-reset" onclick="mcqReset()">🔄 إعادة الاختبار</button></div>
+<div class="mcq-q" id="mcq0">
+<div class="mcq-stem"><span class="mcq-num">1</span> Oral medicine is primarily concerned with the:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="0" data-o="0" onclick="pick(0,0)"><b>A.</b> Surgical removal of impacted teeth</button>
+<button class="mcq-opt" data-q="0" data-o="1" onclick="pick(0,1)"><b>B.</b> Clinical diagnosis and non-surgical management of non-dental orofacial pathology</button>
+<button class="mcq-opt" data-q="0" data-o="2" onclick="pick(0,2)"><b>C.</b> Placement of dental implants</button>
+<button class="mcq-opt" data-q="0" data-o="3" onclick="pick(0,3)"><b>D.</b> Fabrication of dentures</button></div>
+<div class="mcq-exp" id="exp0"></div>
+</div>
+<div class="mcq-q" id="mcq1">
+<div class="mcq-stem"><span class="mcq-num">2</span> Which type of question is considered the GOLD STANDARD in history taking?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="1" data-o="0" onclick="pick(1,0)"><b>A.</b> Leading questions</button>
+<button class="mcq-opt" data-q="1" data-o="1" onclick="pick(1,1)"><b>B.</b> Questions with options</button>
+<button class="mcq-opt" data-q="1" data-o="2" onclick="pick(1,2)"><b>C.</b> Open questions</button>
+<button class="mcq-opt" data-q="1" data-o="3" onclick="pick(1,3)"><b>D.</b> Closed yes/no questions</button></div>
+<div class="mcq-exp" id="exp1"></div>
+</div>
+<div class="mcq-q" id="mcq2">
+<div class="mcq-stem"><span class="mcq-num">3</span> Which type of question is BEST avoided during history taking?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="2" data-o="0" onclick="pick(2,0)"><b>A.</b> Open questions</button>
+<button class="mcq-opt" data-q="2" data-o="1" onclick="pick(2,1)"><b>B.</b> Leading questions</button>
+<button class="mcq-opt" data-q="2" data-o="2" onclick="pick(2,2)"><b>C.</b> Screening questions</button>
+<button class="mcq-opt" data-q="2" data-o="3" onclick="pick(2,3)"><b>D.</b> Review-of-systems questions</button></div>
+<div class="mcq-exp" id="exp2"></div>
+</div>
+<div class="mcq-q" id="mcq3">
+<div class="mcq-stem"><span class="mcq-num">4</span> In analyzing the history of presenting pain (SOCRATES), &#x27;Does anything make it better or worse?&#x27; assesses:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="3" data-o="0" onclick="pick(3,0)"><b>A.</b> Site</button>
+<button class="mcq-opt" data-q="3" data-o="1" onclick="pick(3,1)"><b>B.</b> Character</button>
+<button class="mcq-opt" data-q="3" data-o="2" onclick="pick(3,2)"><b>C.</b> Exacerbating/relieving factors</button>
+<button class="mcq-opt" data-q="3" data-o="3" onclick="pick(3,3)"><b>D.</b> Radiation</button></div>
+<div class="mcq-exp" id="exp3"></div>
+</div>
+<div class="mcq-q" id="mcq4">
+<div class="mcq-stem"><span class="mcq-num">5</span> Pregnancy epulis occurs mainly in females because of high circulating:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="4" data-o="0" onclick="pick(4,0)"><b>A.</b> Cortisol</button>
+<button class="mcq-opt" data-q="4" data-o="1" onclick="pick(4,1)"><b>B.</b> Estrogen</button>
+<button class="mcq-opt" data-q="4" data-o="2" onclick="pick(4,2)"><b>C.</b> Insulin</button>
+<button class="mcq-opt" data-q="4" data-o="3" onclick="pick(4,3)"><b>D.</b> Thyroxine</button></div>
+<div class="mcq-exp" id="exp4"></div>
+</div>
+<div class="mcq-q" id="mcq5">
+<div class="mcq-stem"><span class="mcq-num">6</span> Squamous cell carcinoma of the oral cavity is more common in:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="5" data-o="0" onclick="pick(5,0)"><b>A.</b> Females</button>
+<button class="mcq-opt" data-q="5" data-o="1" onclick="pick(5,1)"><b>B.</b> Males</button>
+<button class="mcq-opt" data-q="5" data-o="2" onclick="pick(5,2)"><b>C.</b> Children</button>
+<button class="mcq-opt" data-q="5" data-o="3" onclick="pick(5,3)"><b>D.</b> Neonates</button></div>
+<div class="mcq-exp" id="exp5"></div>
+</div>
+<div class="mcq-q" id="mcq6">
+<div class="mcq-stem"><span class="mcq-num">7</span> An elevated MCV in the absence of B12/folate deficiency should raise suspicion of:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="6" data-o="0" onclick="pick(6,0)"><b>A.</b> Smoking</button>
+<button class="mcq-opt" data-q="6" data-o="1" onclick="pick(6,1)"><b>B.</b> Alcohol excess</button>
+<button class="mcq-opt" data-q="6" data-o="2" onclick="pick(6,2)"><b>C.</b> Diabetes</button>
+<button class="mcq-opt" data-q="6" data-o="3" onclick="pick(6,3)"><b>D.</b> Hypertension</button></div>
+<div class="mcq-exp" id="exp6"></div>
+</div>
+<div class="mcq-q" id="mcq7">
+<div class="mcq-stem"><span class="mcq-num">8</span> A family history should ideally go back at least:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="7" data-o="0" onclick="pick(7,0)"><b>A.</b> 1 generation</button>
+<button class="mcq-opt" data-q="7" data-o="1" onclick="pick(7,1)"><b>B.</b> 2 generations</button>
+<button class="mcq-opt" data-q="7" data-o="2" onclick="pick(7,2)"><b>C.</b> 3 generations</button>
+<button class="mcq-opt" data-q="7" data-o="3" onclick="pick(7,3)"><b>D.</b> 5 generations</button></div>
+<div class="mcq-exp" id="exp7"></div>
+</div>
+<div class="mcq-q" id="mcq8">
+<div class="mcq-stem"><span class="mcq-num">9</span> Yellowing of the skin, sclera, and mucous membranes due to high bilirubin is called:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="8" data-o="0" onclick="pick(8,0)"><b>A.</b> Vitiligo</button>
+<button class="mcq-opt" data-q="8" data-o="1" onclick="pick(8,1)"><b>B.</b> Melasma</button>
+<button class="mcq-opt" data-q="8" data-o="2" onclick="pick(8,2)"><b>C.</b> Jaundice</button>
+<button class="mcq-opt" data-q="8" data-o="3" onclick="pick(8,3)"><b>D.</b> Cyanosis</button></div>
+<div class="mcq-exp" id="exp8"></div>
+</div>
+<div class="mcq-q" id="mcq9">
+<div class="mcq-stem"><span class="mcq-num">10</span> Vitiligo is caused by loss of:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="9" data-o="0" onclick="pick(9,0)"><b>A.</b> Red blood cells</button>
+<button class="mcq-opt" data-q="9" data-o="1" onclick="pick(9,1)"><b>B.</b> Melanocytes (pigment cells)</button>
+<button class="mcq-opt" data-q="9" data-o="2" onclick="pick(9,2)"><b>C.</b> Keratinocytes</button>
+<button class="mcq-opt" data-q="9" data-o="3" onclick="pick(9,3)"><b>D.</b> Sebaceous glands</button></div>
+<div class="mcq-exp" id="exp9"></div>
+</div>
+<div class="mcq-q" id="mcq10">
+<div class="mcq-stem"><span class="mcq-num">11</span> Moon facies (Cushingoid appearance) results from prolonged high levels of:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="10" data-o="0" onclick="pick(10,0)"><b>A.</b> Estrogen</button>
+<button class="mcq-opt" data-q="10" data-o="1" onclick="pick(10,1)"><b>B.</b> Cortisol</button>
+<button class="mcq-opt" data-q="10" data-o="2" onclick="pick(10,2)"><b>C.</b> Melatonin</button>
+<button class="mcq-opt" data-q="10" data-o="3" onclick="pick(10,3)"><b>D.</b> Adrenaline</button></div>
+<div class="mcq-exp" id="exp10"></div>
+</div>
+<div class="mcq-q" id="mcq11">
+<div class="mcq-stem"><span class="mcq-num">12</span> A lymph node with a RUBBERY consistency is classically associated with:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="11" data-o="0" onclick="pick(11,0)"><b>A.</b> Acute infection</button>
+<button class="mcq-opt" data-q="11" data-o="1" onclick="pick(11,1)"><b>B.</b> Lymphoma</button>
+<button class="mcq-opt" data-q="11" data-o="2" onclick="pick(11,2)"><b>C.</b> Normal node</button>
+<button class="mcq-opt" data-q="11" data-o="3" onclick="pick(11,3)"><b>D.</b> Salivary gland</button></div>
+<div class="mcq-exp" id="exp11"></div>
+</div>
+<div class="mcq-q" id="mcq12">
+<div class="mcq-stem"><span class="mcq-num">13</span> A tender lymph node is classically a sign of:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="12" data-o="0" onclick="pick(12,0)"><b>A.</b> Malignancy</button>
+<button class="mcq-opt" data-q="12" data-o="1" onclick="pick(12,1)"><b>B.</b> Infection</button>
+<button class="mcq-opt" data-q="12" data-o="2" onclick="pick(12,2)"><b>C.</b> Lymphoma</button>
+<button class="mcq-opt" data-q="12" data-o="3" onclick="pick(12,3)"><b>D.</b> Normal finding</button></div>
+<div class="mcq-exp" id="exp12"></div>
+</div>
+<div class="mcq-q" id="mcq13">
+<div class="mcq-stem"><span class="mcq-num">14</span> The left supraclavicular node (Virchow&#x27;s node) is a classical sign of a(n):</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="13" data-o="0" onclick="pick(13,0)"><b>A.</b> Intrathoracic process</button>
+<button class="mcq-opt" data-q="13" data-o="1" onclick="pick(13,1)"><b>B.</b> Abdominal process</button>
+<button class="mcq-opt" data-q="13" data-o="2" onclick="pick(13,2)"><b>C.</b> Dental infection</button>
+<button class="mcq-opt" data-q="13" data-o="3" onclick="pick(13,3)"><b>D.</b> Skin infection</button></div>
+<div class="mcq-exp" id="exp13"></div>
+</div>
+<div class="mcq-q" id="mcq14">
+<div class="mcq-stem"><span class="mcq-num">15</span> The submental lymph nodes drain the:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="14" data-o="0" onclick="pick(14,0)"><b>A.</b> Back of the scalp</button>
+<button class="mcq-opt" data-q="14" data-o="1" onclick="pick(14,1)"><b>B.</b> Teeth and intraoral cavity</button>
+<button class="mcq-opt" data-q="14" data-o="2" onclick="pick(14,2)"><b>C.</b> Thyroid gland</button>
+<button class="mcq-opt" data-q="14" data-o="3" onclick="pick(14,3)"><b>D.</b> External ear</button></div>
+<div class="mcq-exp" id="exp14"></div>
+</div>
+<div class="mcq-q" id="mcq15">
+<div class="mcq-stem"><span class="mcq-num">16</span> Generalized lymphadenopathy is defined as enlargement of:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="15" data-o="0" onclick="pick(15,0)"><b>A.</b> A single node</button>
+<button class="mcq-opt" data-q="15" data-o="1" onclick="pick(15,1)"><b>B.</b> More than 2 non-contiguous node groups</button>
+<button class="mcq-opt" data-q="15" data-o="2" onclick="pick(15,2)"><b>C.</b> Only cervical nodes</button>
+<button class="mcq-opt" data-q="15" data-o="3" onclick="pick(15,3)"><b>D.</b> Only inguinal nodes</button></div>
+<div class="mcq-exp" id="exp15"></div>
+</div>
+<div class="mcq-q" id="mcq16">
+<div class="mcq-stem"><span class="mcq-num">17</span> Which drug, within weeks of starting, can cause lymphadenopathy with rash, fever, and hepatosplenomegaly?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="16" data-o="0" onclick="pick(16,0)"><b>A.</b> Amoxicillin</button>
+<button class="mcq-opt" data-q="16" data-o="1" onclick="pick(16,1)"><b>B.</b> Phenytoin</button>
+<button class="mcq-opt" data-q="16" data-o="2" onclick="pick(16,2)"><b>C.</b> Paracetamol</button>
+<button class="mcq-opt" data-q="16" data-o="3" onclick="pick(16,3)"><b>D.</b> Metformin</button></div>
+<div class="mcq-exp" id="exp16"></div>
+</div>
+<div class="mcq-q" id="mcq17">
+<div class="mcq-stem"><span class="mcq-num">18</span> Which finding is the MOST significant/ominous on lymph node examination?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="17" data-o="0" onclick="pick(17,0)"><b>A.</b> A soft submental node</button>
+<button class="mcq-opt" data-q="17" data-o="1" onclick="pick(17,1)"><b>B.</b> A supraclavicular fossa node</button>
+<button class="mcq-opt" data-q="17" data-o="2" onclick="pick(17,2)"><b>C.</b> A small mobile node</button>
+<button class="mcq-opt" data-q="17" data-o="3" onclick="pick(17,3)"><b>D.</b> A tender node with a cold</button></div>
+<div class="mcq-exp" id="exp17"></div>
+</div>
+<div class="mcq-q" id="mcq18">
+<div class="mcq-stem"><span class="mcq-num">19</span> Stensen&#x27;s duct opens onto the buccal mucosa opposite the:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="18" data-o="0" onclick="pick(18,0)"><b>A.</b> Mandibular incisors</button>
+<button class="mcq-opt" data-q="18" data-o="1" onclick="pick(18,1)"><b>B.</b> Maxillary molars</button>
+<button class="mcq-opt" data-q="18" data-o="2" onclick="pick(18,2)"><b>C.</b> Soft palate</button>
+<button class="mcq-opt" data-q="18" data-o="3" onclick="pick(18,3)"><b>D.</b> Floor of the mouth</button></div>
+<div class="mcq-exp" id="exp18"></div>
+</div>
+<div class="mcq-q" id="mcq19">
+<div class="mcq-stem"><span class="mcq-num">20</span> Geographic tongue (benign migratory glossitis) is seen in approximately what percentage of the population?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="19" data-o="0" onclick="pick(19,0)"><b>A.</b> 1–3%</button>
+<button class="mcq-opt" data-q="19" data-o="1" onclick="pick(19,1)"><b>B.</b> 10–15%</button>
+<button class="mcq-opt" data-q="19" data-o="2" onclick="pick(19,2)"><b>C.</b> 25%</button>
+<button class="mcq-opt" data-q="19" data-o="3" onclick="pick(19,3)"><b>D.</b> 50%</button></div>
+<div class="mcq-exp" id="exp19"></div>
+</div>
+<div class="mcq-final" id="mcqFinal"></div>
+</div>
+
+<div class="foot">
+✅ غطّى هذا الملف مادة اليوم الثاني عشر — طب الفم (Oral Medicine) ص 1–73، مبادئ التشخيص الفموي والفحص السريري: مقدّمة طب الفم ونطاقه؛ أخذ القصّة (أنواع الأسئلة: المفتوحة/ذات الخيارات/الموجِّهة، أهمّية العمر والجنس، الشكوى الحالية وقصّتها SOCRATES، القصّة المرضية والدوائية والعائلية والاجتماعية ومراجعة الأجهزة)؛ الفحص العامّ وخارج الفم (اللاتناظرات، علامات الجلد للنزف واليرقان وفقر الدم، تغيّرات التصبّغ، الوجه القمري)؛ فحص العقد اللمفية (القوام والمضض، التقنية، المجموعات العنقية وتصريفها، تمييز العدوى عن الخباثة، اعتلال العقد المعمّم وأسبابه)؛ والفحص داخل الفم (المبادئ، البنى الطبيعية والمتغيّرات، مصطلحات الغدد اللعابية). 🩺 هذه أولى أيام مادة طب الفم (٤٣٦ صفحة). وفي نهاية الملف اختبار MCQ لتقييم نفسك.<br><br>
+احفظ الملف باسم <b>oral-medicine-day12.html</b>. للتفاعل الكامل افتحه في Safari.
+</div>
+
+<script>
+let mastered={};
+function revealCard(id){document.getElementById('ans_'+id).classList.add('show');}
+function rate(id,ok){mastered[id]=ok;upd();}
+function upd(){
+  let done=Object.values(mastered).filter(v=>v===1).length;
+  document.getElementById('scoreTxt').textContent=done+' / 41';
+  document.getElementById('progBar').style.width=(done/41*100)+'%';
+}
+function revealAll(){document.querySelectorAll('.answer').forEach(a=>a.classList.add('show'));}
+function hideAll(){document.querySelectorAll('.answer').forEach(a=>a.classList.remove('show'));}
+function resetAll(){mastered={};hideAll();upd();}
+upd();
+
+const MCQ=[{"q": "Oral medicine is primarily concerned with the:", "opts": ["Surgical removal of impacted teeth", "Clinical diagnosis and non-surgical management of non-dental orofacial pathology", "Placement of dental implants", "Fabrication of dentures"], "correct": 1, "exp": "Oral medicine = clinical diagnosis + non-surgical management of non-dental orofacial disease. طب الفم = تشخيص سريري + تدبير غير جراحي للأمراض غير السنّية."}, {"q": "Which type of question is considered the GOLD STANDARD in history taking?", "opts": ["Leading questions", "Questions with options", "Open questions", "Closed yes/no questions"], "correct": 2, "exp": "Open questions don't suggest an answer and let the patient express freely. الأسئلة المفتوحة لا توحي بإجابة وتتيح التعبير الحرّ."}, {"q": "Which type of question is BEST avoided during history taking?", "opts": ["Open questions", "Leading questions", "Screening questions", "Review-of-systems questions"], "correct": 1, "exp": "Leading questions frame the patient with your assumptions. الأسئلة الموجِّهة تؤطّر المريض بافتراضاتك."}, {"q": "In analyzing the history of presenting pain (SOCRATES), 'Does anything make it better or worse?' assesses:", "opts": ["Site", "Character", "Exacerbating/relieving factors", "Radiation"], "correct": 2, "exp": "This is the exacerbating/relieving factors component. هذا عنصر عوامل التفاقم/التخفيف."}, {"q": "Pregnancy epulis occurs mainly in females because of high circulating:", "opts": ["Cortisol", "Estrogen", "Insulin", "Thyroxine"], "correct": 1, "exp": "Epulis/pregnancy epulis relate to highest circulating estrogen. الورم اللثوي/ورم الحمل مرتبط بأعلى إستروجين دائر."}, {"q": "Squamous cell carcinoma of the oral cavity is more common in:", "opts": ["Females", "Males", "Children", "Neonates"], "correct": 1, "exp": "SCC (and malignant melanoma) is more common in males. SCC (والميلانوما الخبيثة) أكثر في الذكور."}, {"q": "An elevated MCV in the absence of B12/folate deficiency should raise suspicion of:", "opts": ["Smoking", "Alcohol excess", "Diabetes", "Hypertension"], "correct": 1, "exp": "High MCV without B12/folate deficiency suggests alcohol excess. ارتفاع MCV دون عوز B12/فولات يوحي بإفراط الكحول."}, {"q": "A family history should ideally go back at least:", "opts": ["1 generation", "2 generations", "3 generations", "5 generations"], "correct": 2, "exp": "Family history should extend back at least 3 generations. القصّة العائلية تعود 3 أجيال على الأقلّ."}, {"q": "Yellowing of the skin, sclera, and mucous membranes due to high bilirubin is called:", "opts": ["Vitiligo", "Melasma", "Jaundice", "Cyanosis"], "correct": 2, "exp": "Jaundice = high bilirubin; causes include hepatitis, gallstones, tumors. اليرقان = بيليروبين مرتفع."}, {"q": "Vitiligo is caused by loss of:", "opts": ["Red blood cells", "Melanocytes (pigment cells)", "Keratinocytes", "Sebaceous glands"], "correct": 1, "exp": "Vitiligo = loss of melanocytes → depigmented patches. البهاق = فقد الميلانوسايت → بقع فاقدة اللون."}, {"q": "Moon facies (Cushingoid appearance) results from prolonged high levels of:", "opts": ["Estrogen", "Cortisol", "Melatonin", "Adrenaline"], "correct": 1, "exp": "Moon facies is linked to excess cortisol (Cushing's syndrome). الوجه القمري مرتبط بفرط الكورتيزول (كوشينغ)."}, {"q": "A lymph node with a RUBBERY consistency is classically associated with:", "opts": ["Acute infection", "Lymphoma", "Normal node", "Salivary gland"], "correct": 1, "exp": "Rubbery = classically lymphoma; hard = malignancy; soft = insignificant. مطّاطية = لمفوما؛ صلبة = خباثة."}, {"q": "A tender lymph node is classically a sign of:", "opts": ["Malignancy", "Infection", "Lymphoma", "Normal finding"], "correct": 1, "exp": "Tender = infection; non-tender = classically malignancy. مؤلمة = عدوى؛ غير مؤلمة = خباثة."}, {"q": "The left supraclavicular node (Virchow's node) is a classical sign of a(n):", "opts": ["Intrathoracic process", "Abdominal process", "Dental infection", "Skin infection"], "correct": 1, "exp": "Virchow's (left supraclavicular) node → abdominal process; right → intrathoracic. عقدة Virchow اليسرى → عملية بطنية."}, {"q": "The submental lymph nodes drain the:", "opts": ["Back of the scalp", "Teeth and intraoral cavity", "Thyroid gland", "External ear"], "correct": 1, "exp": "Submental nodes drain the teeth and intraoral cavity. العقد تحت الذقنية تصرّف الأسنان وجوف الفم."}, {"q": "Generalized lymphadenopathy is defined as enlargement of:", "opts": ["A single node", "More than 2 non-contiguous node groups", "Only cervical nodes", "Only inguinal nodes"], "correct": 1, "exp": ">2 non-contiguous groups = generalized lymphadenopathy. أكثر من مجموعتين غير متجاورتين = اعتلال معمّم."}, {"q": "Which drug, within weeks of starting, can cause lymphadenopathy with rash, fever, and hepatosplenomegaly?", "opts": ["Amoxicillin", "Phenytoin", "Paracetamol", "Metformin"], "correct": 1, "exp": "Phenytoin can cause this drug-reaction lymphadenopathy syndrome. الفينيتوين يسبّب متلازمة اعتلال العقد الدوائية هذه."}, {"q": "Which finding is the MOST significant/ominous on lymph node examination?", "opts": ["A soft submental node", "A supraclavicular fossa node", "A small mobile node", "A tender node with a cold"], "correct": 1, "exp": "Supraclavicular nodes often indicate a deep serious process. العقد فوق الترقوية تدلّ غالباً على عملية عميقة خطيرة."}, {"q": "Stensen's duct opens onto the buccal mucosa opposite the:", "opts": ["Mandibular incisors", "Maxillary molars", "Soft palate", "Floor of the mouth"], "correct": 1, "exp": "Stensen's (parotid) duct opens opposite the maxillary molars. قناة ستنسن تفتح مقابل الأرحاء العلوية."}, {"q": "Geographic tongue (benign migratory glossitis) is seen in approximately what percentage of the population?", "opts": ["1–3%", "10–15%", "25%", "50%"], "correct": 0, "exp": "Geographic tongue occurs in ~1–3%; fissured tongue in ~2–5%. اللسان الجغرافي ~1–3%؛ والمشقّق ~2–5%."}];
+const mcqTotal=20;
+let mcqAnswered={};
+function pick(qi,oi){
+  if(mcqAnswered[qi]!==undefined) return;
+  mcqAnswered[qi]=oi;
+  const correct=MCQ[qi].correct;
+  const opts=document.querySelectorAll('#mcq'+qi+' .mcq-opt');
+  opts.forEach(b=>{
+    b.classList.add('locked');
+    const o=parseInt(b.getAttribute('data-o'));
+    if(o===correct) b.classList.add('correct');
+    if(o===oi && oi!==correct) b.classList.add('wrong');
+  });
+  const exp=document.getElementById('exp'+qi);
+  const ok=(oi===correct);
+  exp.innerHTML=(ok?'✅ <b>إجابة صحيحة</b> — ':'❌ <b>إجابة خاطئة</b> — الصحيح: <b>'+String.fromCharCode(65+correct)+'</b> — ')+MCQ[qi].exp;
+  exp.classList.add('show');
+  mcqScore();
+}
+function mcqScore(){
+  let s=0;
+  for(const k in mcqAnswered){ if(mcqAnswered[k]===MCQ[k].correct) s++; }
+  document.getElementById('mcqScore').textContent=s+' / '+mcqTotal;
+  if(Object.keys(mcqAnswered).length===mcqTotal){
+    const f=document.getElementById('mcqFinal');
+    const pct=Math.round(s/mcqTotal*100);
+    let msg,bg;
+    if(pct>=80){msg='🎉 ممتاز! '+s+'/'+mcqTotal+' ('+pct+'%) — إتقان قوي.';bg='#c9f2cd';}
+    else if(pct>=60){msg='👍 جيّد: '+s+'/'+mcqTotal+' ('+pct+'%) — راجع البطاقات المعلّمة بـ⭐.';bg='#fff3c4';}
+    else{msg='📚 '+s+'/'+mcqTotal+' ('+pct+'%) — أعد قراءة الملف ثم أعد الاختبار.';bg='#f8cfcf';}
+    f.textContent=msg;f.style.background=bg;f.classList.add('show');
+  }
+}
+function mcqReset(){
+  mcqAnswered={};
+  document.querySelectorAll('.mcq-opt').forEach(b=>b.classList.remove('correct','wrong','locked'));
+  document.querySelectorAll('.mcq-exp').forEach(e=>{e.classList.remove('show');e.innerHTML='';});
+  document.getElementById('mcqScore').textContent='0 / '+mcqTotal;
+  document.getElementById('mcqFinal').classList.remove('show');
+  document.getElementById('mcq0').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
