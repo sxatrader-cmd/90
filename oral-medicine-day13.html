@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oral Medicine — Day 13 — Complete</title>
+<style>
+:root{color-scheme:light;}
+*{box-sizing:border-box;}
+html,body{background:#fff !important;color:#000 !important;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Tahoma,Arial,sans-serif;line-height:1.7;max-width:900px;margin:0 auto;padding:0 16px 60px;background:#fff;color:#000;}
+h1{font-size:23px;text-align:center;margin:18px 0 6px;}
+.subtitle{color:#444;font-size:14px;margin:0 0 14px;text-align:center;}
+.topbar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:2px solid #000;padding:8px 0;margin-bottom:10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;font-size:13px;}
+.topbar b{font-size:15px;}
+.ctrlbtn{background:#000;color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:12.5px;cursor:pointer;font-family:inherit;}
+.progress{background:#eee;border-radius:8px;height:10px;flex:1;min-width:120px;overflow:hidden;border:1px solid #999;}
+.progress>span{display:block;height:100%;background:#1a8f2a;width:0%;}
+.toc{background:#f7f7f7;border:1px solid #ccc;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:13.5px;}
+.toc a{display:block;color:#0645ad;text-decoration:none;padding:2px 0;}
+.sec{background:#000;color:#fff;padding:9px 13px;border-radius:8px;font-size:18px;margin:26px 0 12px;}
+.card{border:1.5px solid #999;border-radius:12px;padding:15px 17px;margin:14px 0;background:#fff;}
+.topic{font-weight:700;font-size:16px;margin-bottom:6px;}
+.prompt{font-size:15.5px;margin-bottom:10px;}
+.reveal{background:#000;color:#fff;border:none;border-radius:7px;padding:8px 14px;font-size:14px;cursor:pointer;font-family:inherit;}
+.answer{display:none;margin-top:12px;}
+.answer.show{display:block;}
+.en{font-size:14.5px;line-height:1.65;margin-bottom:10px;}
+.k{background:#ffd400;color:#b00;font-weight:700;padding:1px 4px;border-radius:3px;}
+.hint{background:#fff8d6;border-inline-start:4px solid #000;border-radius:6px;padding:10px 13px;font-size:14px;line-height:1.75;direction:rtl;text-align:right;}
+.hint b{color:#b00;}
+.en b{color:#000;}
+.btns{margin-top:10px;display:flex;gap:8px;}
+.btns button{border:1.5px solid #000;background:#fff;border-radius:6px;padding:5px 12px;font-size:13px;cursor:pointer;font-family:inherit;}
+.btns .rev{border-color:#b00;color:#b00;}
+.btns .gotit{border-color:#1a8f2a;color:#1a8f2a;}
+.foot{margin-top:30px;border-top:2px solid #000;padding-top:14px;font-size:14px;color:#333;}
+.note{background:#ffd400;color:#000;border:1px solid #000;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:15px;}
+.mcq-wrap{margin-top:40px;border-top:3px double #000;padding-top:20px;}
+.mcq-title{background:#000;color:#fff;padding:10px 14px;border-radius:8px;font-size:19px;}
+.mcq-note{font-size:13px;color:#444;margin:10px 0 6px;}
+.mcq-scorebar{position:sticky;top:56px;z-index:40;background:#fff8d6;border:2px solid #000;border-radius:8px;padding:8px 12px;font-size:15px;margin:10px 0 18px;}
+.mcq-reset{background:#000;color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:13px;cursor:pointer;font-family:inherit;}
+.mcq-q{border:1.5px solid #999;border-radius:10px;padding:14px 16px;margin:14px 0;background:#fff;}
+.mcq-stem{font-weight:600;font-size:15.5px;margin-bottom:10px;line-height:1.55;}
+.mcq-num{display:inline-block;min-width:26px;height:26px;line-height:26px;text-align:center;background:#000;color:#fff;border-radius:50%;font-size:13px;margin-inline-end:6px;}
+.mcq-opts{display:flex;flex-direction:column;gap:7px;}
+.mcq-opt{text-align:start;background:#f4f4f4;border:1.5px solid #ccc;border-radius:7px;padding:9px 12px;font-size:14.5px;cursor:pointer;transition:.12s;color:#000;font-family:inherit;}
+.mcq-opt:hover{background:#eaeaea;}
+.mcq-opt.correct{background:#c9f2cd;border-color:#1a8f2a;font-weight:600;}
+.mcq-opt.wrong{background:#f8cfcf;border-color:#c02020;}
+.mcq-opt.locked{cursor:default;opacity:.92;}
+.mcq-exp{display:none;margin-top:10px;padding:10px 12px;background:#fff8d6;border-inline-start:4px solid #000;border-radius:6px;font-size:13.5px;line-height:1.6;direction:rtl;text-align:right;}
+.mcq-exp.show{display:block;}
+.mcq-exp b{color:#b00;}
+.mcq-final{margin-top:18px;padding:14px;border-radius:10px;font-size:17px;font-weight:700;text-align:center;display:none;}
+.mcq-final.show{display:block;}
+</style>
+</head>
+<body>
+<h1>Oral Medicine — Day 13 — Complete 🩺</h1>
+<p class="subtitle">طب الفم ص ٧٤–١٤٦ · الاستقصاءات المخبرية: CBC (الكريات البيض والحمر والصفيحات) → فقر الدم (عوز الحديد، الوبيل، اللاتنسّجي، الانحلالي، الثلاسيميا، المنجلي) → اختبارات الإرقاء (زمن النزف/التخثّر، PT، APTT) → ESR/INR → الخزعة والتصوير والزرع · 37 بطاقة + اختبار MCQ في النهاية · English + شرح عربي وافٍ</p>
+
+<div class="topbar">
+<b>التقدّم:</b>
+<span id="scoreTxt">0 / 37</span>
+<div class="progress"><span id="progBar"></span></div>
+<button class="ctrlbtn" onclick="revealAll()">اكشف الكل</button>
+<button class="ctrlbtn" onclick="hideAll()">أخفِ الكل</button>
+<button class="ctrlbtn" onclick="resetAll()">إعادة</button>
+</div>
+
+<div class="note">📌 طريقة الاستعمال: اقرأ السؤال، استرجع الإجابة بصوتك، ثم اكشفها وقيّم نفسك. البطاقات المعلّمة بـ⭐ عالية العائد. وفي نهاية الملف اختبار MCQ.</div>
+
+<div class="toc"><b>المحتويات:</b>
+<a href="#sec0">Lec 6 · Complete Blood Count (CBC) ⭐</a>
+<a href="#sec1">Lec 6 · RBC &amp; Platelets ⭐</a>
+<a href="#sec2">Lec 6 · Iron Deficiency Anemia ⭐</a>
+<a href="#sec3">Lec 6 · Pernicious Anemia ⭐</a>
+<a href="#sec4">Lec 6 · Aplastic Anemia</a>
+<a href="#sec5">Lec 6 · Hemolytic Anemia ⭐</a>
+<a href="#sec6">Lec 6 · Thalassaemia &amp; Sickle Cell ⭐</a>
+<a href="#sec7">Lec 7 · Hemostasis Tests — Bleeding &amp; Clotting ⭐</a>
+<a href="#sec8">Lec 7 · ESR &amp; INR ⭐</a>
+<a href="#sec9">Lec 7 · INR Interpretation</a>
+<a href="#sec10">Lec 8 · Biopsy ⭐</a>
+<a href="#sec11">Lec 8 · Cytology, Frozen Section &amp; Imaging</a>
+<a href="#sec12">Lec 6 · Interpreting the CBC as a Whole (Integrated) ⭐</a>
+<a href="#sec13">Lec 7–8 · Bleeding Work-up &amp; Biopsy Choice (Integrated) ⭐</a>
+<a href="#sec14">Lec 6–8 · Lab Values &amp; Dental Relevance</a>
+</div>
+
+<h2 class="sec" id="sec0">Lec 6 · Complete Blood Count (CBC) ⭐</h2>
+<div class="card" id="c0_0">
+<div class="topic">The CBC &amp; its clinical importance in dentistry</div>
+<div class="prompt">What is the complete blood count (CBC), and why must the dentist understand it?</div>
+<button class="reveal" onclick="revealCard('c0_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_0">
+<div class="en">The <b>complete blood count (CBC)</b> is one of the most commonly ordered blood tests; it measures the three cellular components of blood — <b>white blood cells (WBCs), red blood cells (RBCs), and platelets</b> — along with hemoglobin and related indices. Many conditions cause increases or decreases in these cell populations; some need treatment, others resolve on their own.<br>
+  <b>Why the dentist cares:</b> the CBC reveals <b>anemia</b> (affecting healing/anesthesia), <b>infection or leukemia</b> (abnormal WBCs), and <b>bleeding risk</b> (low platelets) before invasive treatment. <span class="k">Recent blood transfusions affect CBC results</span>, and <b>normal values for babies/children differ from adults</b>, so age-specific reference ranges must be used.</div>
+<div class="hint"><b>تعداد الدم الكامل (CBC) وأهمّيته السريرية في طب الأسنان:</b> <b>تعداد الدم الكامل (CBC)</b> من أكثر تحاليل الدم طلباً؛ يقيس المكوّنات الخلوية الثلاثة — <b>الكريات البيض (WBCs) والكريات الحمر (RBCs) والصفيحات (platelets)</b> — مع الهيموغلوبين والمؤشّرات المرتبطة. وكثير من الحالات تسبّب زيادةً أو نقصاً في هذه المجموعات؛ بعضها يحتاج علاجاً وبعضها يُشفى ذاتياً. <b>لماذا يهمّ الطبيب:</b> يكشف الـCBC <b>فقر الدم</b> (يؤثّر في الالتئام/التخدير)، و<b>العدوى أو اللوكيميا</b> (كريات بيض شاذّة)، و<b>خطر النزف</b> (صفيحات منخفضة) قبل العلاج الباضع. <b>والنقل الدموي الحديث يؤثّر في نتائج الـCBC</b>، و<b>القيم الطبيعية للرضّع/الأطفال تختلف عن البالغين</b>، فتُستخدم مجالات مرجعية حسب العمر.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c0_1">
+<div class="topic">White blood cells &amp; neutrophils</div>
+<div class="prompt">What is the role of white blood cells, and what causes high or low neutrophils?</div>
+<button class="reveal" onclick="revealCard('c0_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_1">
+<div class="en"><b>White blood cells (WBCs / leukocytes)</b> fight infection; the <b>differential</b> breaks them into neutrophils, lymphocytes, monocytes, eosinophils, and basophils. A high total WBC = <b>leukocytosis</b>; a low total = <b>leukopenia</b>.<br>
+  <b>Neutrophils</b> (the most numerous, first responders to bacterial infection):
+  <ul><li><b>High (neutrophilia):</b> acute bacterial infection, inflammation, physical/emotional stress, tissue injury, and some leukemias.</li>
+  <li><b>Low (neutropenia):</b> severe/overwhelming infection, bone marrow damage (chemotherapy, radiation), and certain drugs → increases infection susceptibility.</li></ul></div>
+<div class="hint"><b>الكريات البيض والعدلات:</b> <b>الكريات البيض (WBCs)</b> تكافح العدوى؛ و<b>التعداد التفريقي</b> يقسّمها لعدلات ولمفاويات ووحيدات وحمضات وأسسات. والزيادة الكلّية = <b>كثرة الكريات البيض (leukocytosis)</b>؛ والنقص = <b>قلّة الكريات البيض (leukopenia)</b>. <b>العدلات (Neutrophils)</b> (الأكثر عدداً، أول مستجيب للعدوى الجرثومية): <b>مرتفعة (neutrophilia):</b> عدوى جرثومية حادّة، التهاب، شدّة جسدية/نفسية، أذيّة نسيجية، وبعض اللوكيميات. <b>منخفضة (neutropenia):</b> عدوى شديدة/طاغية، أذى نقي العظم (كيماوي، إشعاع)، وبعض الأدوية ← تزيد قابلية العدوى.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c0_2">
+<div class="topic">Lymphocytes &amp; monocytes</div>
+<div class="prompt">What causes high or low lymphocytes and monocytes?</div>
+<button class="reveal" onclick="revealCard('c0_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_2">
+<div class="en"><b>Lymphocytes</b> (viral immunity, antibody production):
+  <ul><li><b>High (lymphocytosis):</b> viral infections (HIV, viral hepatitis, EBV, herpes, rubella, chickenpox, CMV), certain bacterial infections (pertussis/whooping cough, TB), toxoplasmosis, lymphocytic leukemia/lymphoma, and acute stress.</li>
+  <li><b>Low (lymphopenia):</b> autoimmune disorders (lupus, RA), bone-marrow damage (chemo/radiation), corticosteroids, and chronic inflammatory disorders.</li></ul>
+  <b>Monocytes</b> (one low count is usually not significant; repeated low counts suggest bone-marrow damage/failure or hairy cell leukemia):
+  <ul><li><b>High (monocytosis):</b> chronic infections (TB, fungal), bacterial endocarditis, collagen-vascular diseases (lupus, scleroderma, RA, vasculitis), and monocytic/myelomonocytic leukemia.</li></ul></div>
+<div class="hint"><b>اللمفاويات والوحيدات:</b> <b>اللمفاويات (Lymphocytes)</b> (مناعة فيروسية، إنتاج أضداد): <b>مرتفعة (lymphocytosis):</b> عداوى فيروسية (HIV، التهاب كبد فيروسي، EBV، هربس، حصبة ألمانية، جدري ماء، CMV)، بعض العداوى الجرثومية (الشاهوق، السلّ)، داء المقوّسات، لوكيميا/لمفوما لمفاوية، وشدّة حادّة. <b>منخفضة (lymphopenia):</b> اضطرابات مناعية ذاتية (ذئبة، رثياني)، أذى نقي العظم (كيماوي/إشعاع)، كورتيكوستيرويدات، واضطرابات التهابية مزمنة. <b>الوحيدات (Monocytes)</b> (نقص واحد عادةً غير مهمّ؛ والنقص المتكرّر يوحي بأذى/فشل نقي العظم أو ابيضاض مشعر الخلايا): <b>مرتفعة (monocytosis):</b> عداوى مزمنة (سلّ، فطرية)، التهاب شغاف جرثومي، أمراض الكولاجين الوعائية (ذئبة، تصلّب جلدي، رثياني، التهاب أوعية)، ولوكيميا وحيدية/نقوية وحيدية.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c0_3">
+<div class="topic">Eosinophils &amp; basophils</div>
+<div class="prompt">What causes high eosinophils and basophils?</div>
+<button class="reveal" onclick="revealCard('c0_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_3">
+<div class="en">Both are <b>normally low</b> in the blood, so an occasional low count is usually not medically significant.<br>
+  <b>Eosinophils</b> — <b>high (eosinophilia):</b> asthma and allergies (e.g., hay fever), <b>parasitic infections</b>, drug reactions, inflammatory disorders (celiac disease, inflammatory bowel disease), some cancers/leukemias/lymphomas, and Addison's disease.<br>
+  <b>Basophils</b> — <b>high (basophilia):</b> rare allergic reactions (hives, food allergy), inflammation (rheumatoid arthritis, ulcerative colitis), some leukemias, and uremia.<br>
+  Recognizing an eosinophilia can point the dentist toward an allergic or parasitic cause of oral/systemic findings.</div>
+<div class="hint"><b>الحمضات والأسسات:</b> كلاهما <b>منخفض طبيعياً</b> في الدم، فالنقص العرضي عادةً غير مهمّ طبياً. <b>الحمضات (Eosinophils)</b> — <b>مرتفعة (eosinophilia):</b> الربو والتحسّس (حمّى القشّ)، <b>العداوى الطفيلية</b>، تفاعلات دوائية، اضطرابات التهابية (داء بطني، داء أمعاء التهابي)، بعض السرطانات/اللوكيميات/اللمفومات، وداء أديسون. <b>الأسسات (Basophils)</b> — <b>مرتفعة (basophilia):</b> تفاعلات تحسّسية نادرة (شرى، تحسّس طعام)، التهاب (رثياني، تقرّحي قولوني)، بعض اللوكيميات، والتبوّل الدموي (uremia). والتعرّف على فرط الحمضات قد يوجّه الطبيب لسبب تحسّسي أو طفيلي لموجودات فموية/جهازية.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec1">Lec 6 · RBC &amp; Platelets ⭐</h2>
+<div class="card" id="c1_0">
+<div class="topic">Red blood cell count — anemia vs polycythemia</div>
+<div class="prompt">What do a low and a high red blood cell count indicate?</div>
+<button class="reveal" onclick="revealCard('c1_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c1_0">
+<div class="en">The <b>RBC count</b> reflects oxygen-carrying capacity.<br>
+  <b>Low RBC = anemia.</b> Causes: acute or chronic bleeding, RBC destruction (e.g., hemolytic anemia), and nutritional deficiency (iron, vitamin B12, folate).<br>
+  <b>High RBC = polycythemia.</b> Causes: dehydration (hemoconcentration), lung (pulmonary) disease, and a kidney or other tumor producing excess <b>erythropoietin</b>.<br>
+  Related indices: <b>hemoglobin</b> (oxygen-carrying protein), <b>hematocrit</b> (% of blood volume that is RBCs), and <b>MCV</b> (mean corpuscular volume — average RBC size), which classifies anemia as microcytic, normocytic, or macrocytic.</div>
+<div class="hint"><b>تعداد الكريات الحمر — فقر الدم مقابل كثرة الحمر:</b> <b>تعداد الكريات الحمر (RBC)</b> يعكس القدرة على حمل الأكسجين. <b>منخفض = فقر دم (anemia).</b> الأسباب: نزف حادّ أو مزمن، تخريب الكريات (فقر دم انحلالي)، وعوز غذائي (حديد، B12، فولات). <b>مرتفع = كثرة الحمر (polycythemia).</b> الأسباب: تجفاف (تركيز دموي)، مرض رئوي، وورم كلوي أو غيره يُنتج <b>إريثروبويتين</b> زائداً. المؤشّرات المرتبطة: <b>الهيموغلوبين</b> (بروتين حمل الأكسجين)، <b>الهيماتوكريت</b> (نسبة حجم الكريات الحمر)، و<b>MCV</b> (متوسّط حجم الكرية — حجم الكرية الوسطي)، الذي يصنّف فقر الدم لصغير أو سويّ أو كبير الكريات.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c1_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c1_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c1_1">
+<div class="topic">Platelets &amp; platelet indices</div>
+<div class="prompt">What do high and low platelet counts indicate, and what is the MPV?</div>
+<button class="reveal" onclick="revealCard('c1_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c1_1">
+<div class="en"><b>Platelets (thrombocytes)</b> are essential for clotting.<br>
+  <b>Low platelets (thrombocytopenia):</b> platelet autoantibodies, leukemia/lymphoma, bone-marrow problems → <b>bleeding risk</b> (critical before extractions/surgery).<br>
+  <b>High platelets (thrombocytosis):</b> the bone marrow producing and releasing platelets rapidly, or a condition affecting platelets.<br>
+  <b>MPV (mean platelet volume):</b> the average size of platelets — <b>younger platelets are larger than older ones</b>, so a high MPV may indicate the marrow is producing and releasing platelets rapidly into the blood. A low MPV may indicate a condition affecting platelet production.</div>
+<div class="hint"><b>الصفيحات ومؤشّراتها:</b> <b>الصفيحات (Platelets)</b> أساسية للتخثّر. <b>منخفضة (thrombocytopenia):</b> أضداد ذاتية للصفيحات، لوكيميا/لمفوما، مشاكل نقي العظم ← <b>خطر نزف</b> (حرج قبل القلع/الجراحة). <b>مرتفعة (thrombocytosis):</b> إنتاج وإطلاق النقي للصفيحات بسرعة، أو حالة تؤثّر في الصفيحات. <b>MPV (متوسّط حجم الصفيحة):</b> الحجم الوسطي للصفيحات — <b>الصفيحات الأحدث أكبر من الأقدم</b>، فارتفاع MPV قد يدلّ على أن النقي يُنتج ويُطلق الصفيحات بسرعة للدم. وانخفاضه قد يدلّ على حالة تؤثّر في إنتاج الصفيحات.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c1_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c1_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec2">Lec 6 · Iron Deficiency Anemia ⭐</h2>
+<div class="card" id="c2_0">
+<div class="topic">Iron deficiency anemia — causes</div>
+<div class="prompt">Why is iron deficiency anemia so common, and what are its main causes?</div>
+<button class="reveal" onclick="revealCard('c2_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c2_0">
+<div class="en">Iron deficiency anemia is a <b>very common</b> cause of anemia because iron is a major component of <b>hemoglobin</b> and essential for its function. <b>Chronic blood loss</b> is the main cause (it depletes iron stores):
+  <ul><li><b>Young women</b> — low-grade iron deficiency from monthly menstrual blood loss (usually without major symptoms).</li>
+  <li><b>Recurring/small ongoing bleeding</b> — e.g., colon cancer or stomach ulcers; ulcer bleeding may be induced by <b>aspirin/ibuprofen</b>, and slow chronic oozing gradually causes anemia.</li>
+  <li><b>Infants and young children</b> — most often a <b>diet lacking iron</b>.</li></ul>
+  It presents as <b>microcytic hypochromic anemia</b> (low MCV + low hemoglobin).</div>
+<div class="hint"><b>فقر الدم بعوز الحديد — الأسباب:</b> فقر الدم بعوز الحديد سبب <b>شائع جداً</b> لأن الحديد مكوّن رئيس لـ<b>الهيموغلوبين</b> وأساسي لوظيفته. و<b>فقد الدم المزمن</b> السبب الرئيس (يستنزف مخازن الحديد): <b>الشابّات</b> — عوز خفيف من فقد الدم الطمثي الشهري (عادةً بلا أعراض كبيرة). <b>نزف متكرّر/صغير مستمرّ</b> — كسرطان القولون أو قرحة المعدة؛ ونزف القرحة قد يُحرّضه <b>الأسبرين/الإيبوبروفين</b>، والنزّ المزمن البطيء يسبّب فقر دم تدريجياً. <b>الرضّع والأطفال</b> — غالباً <b>حمية تفتقر للحديد</b>. ويتظاهر كـ<b>فقر دم صغير الكريات ناقص الصباغ</b> (MCV منخفض + هيموغلوبين منخفض).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c2_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c2_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c2_1">
+<div class="topic">Iron deficiency anemia — investigations</div>
+<div class="prompt">Which laboratory tests are used to investigate iron deficiency anemia?</div>
+<button class="reveal" onclick="revealCard('c2_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c2_1">
+<div class="en"><ol>
+  <li><b>RBC size and color (blood film):</b> in iron deficiency, RBCs are <b>smaller and paler</b> than normal (<b>microcytic, hypochromic</b>).</li>
+  <li><b>Ferritin:</b> the iron-storage protein; a <b>low ferritin</b> indicates low stored iron (the earliest and most specific marker).</li>
+  <li><b>Total iron binding capacity (TIBC):</b> measures how much iron the blood can carry (iron travels bound to <b>transferrin</b>); <b>TIBC ~240–450 mcg/dL</b> (raised in iron deficiency).</li>
+  <li><b>Serum iron:</b> normal <b>~60–170 mcg/dL</b> (low in iron deficiency).</li>
+  </ol></div>
+<div class="hint"><b>فقر الدم بعوز الحديد — الاستقصاءات:</b> (١) <b>حجم ولون الكرية (فيلم الدم):</b> في عوز الحديد الكريات <b>أصغر وأشحب</b> من الطبيعي (<b>صغيرة، ناقصة الصباغ</b>). (٢) <b>الفيريتين (Ferritin):</b> بروتين خزن الحديد؛ و<b>انخفاضه</b> يدلّ على نقص الحديد المخزون (أبكر وأنوَع علامة). (٣) <b>السعة الكلّية لربط الحديد (TIBC):</b> تقيس كم يستطيع الدم حمل الحديد (يسير الحديد مرتبطاً بـ<b>الترانسفيرين</b>)؛ <b>TIBC ~240–450 mcg/dL</b> (ترتفع في العوز). (٤) <b>حديد المصل:</b> الطبيعي <b>~60–170 mcg/dL</b> (منخفض في العوز).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c2_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c2_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec3">Lec 6 · Pernicious Anemia ⭐</h2>
+<div class="card" id="c3_0">
+<div class="topic">Pernicious anemia — mechanism &amp; causes</div>
+<div class="prompt">What is pernicious anemia, and what causes it?</div>
+<button class="reveal" onclick="revealCard('c3_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c3_0">
+<div class="en"><b>Pernicious anemia</b> is a condition where the body can't make enough healthy RBCs because it lacks <b>vitamin B12</b>. Sufferers can't absorb enough B12 due to a lack of <b>intrinsic factor</b> (a protein made in the stomach). It typically causes a <b>macrocytic anemia</b> (large cell volume). Vitamin B12, with <b>folate</b>, is involved in making the <b>heme</b> molecule of hemoglobin — so folate deficiency also causes anemia.<br>
+  <b>Causes:</b> (1) lack of <b>intrinsic factor</b>; (2) small-intestine bacteria interfering with absorption; (3) diseases interfering with B12 absorption; (4) certain medicines; (5) surgical removal of part of the small intestine; (6) tapeworm infection; (7) strict vegetarians without supplements; (8) low intake of green leafy vegetables; (9) long-term alcoholism.</div>
+<div class="hint"><b>فقر الدم الوبيل — الآلية والأسباب:</b> <b>فقر الدم الوبيل (Pernicious)</b> حالة يعجز فيها الجسم عن صنع كريات حمر سليمة كافية لنقص <b>فيتامين B12</b>. والمصابون لا يمتصّون B12 كفايةً لنقص <b>العامل الداخلي (intrinsic factor)</b> (بروتين تصنعه المعدة). ويسبّب عادةً <b>فقر دم كبير الكريات (macrocytic)</b>. وفيتامين B12 مع <b>الفولات</b> يشاركان في صنع جزيء <b>الهيم (heme)</b> في الهيموغلوبين — فعوز الفولات يسبّب فقر دم أيضاً. <b>الأسباب:</b> (١) نقص <b>العامل الداخلي</b>؛ (٢) جراثيم الأمعاء الدقيقة تعيق الامتصاص؛ (٣) أمراض تعيق امتصاص B12؛ (٤) أدوية معيّنة؛ (٥) استئصال جزء من الأمعاء الدقيقة؛ (٦) عدوى الدودة الشريطية؛ (٧) النباتيون الصارمون بلا مكمّلات؛ (٨) قلّة الخضار الورقية؛ (٩) إدمان الكحول الطويل.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c3_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c3_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c3_1">
+<div class="topic">Pernicious anemia — signs, symptoms &amp; treatment</div>
+<div class="prompt">What are the signs, symptoms, and treatment of pernicious anemia?</div>
+<button class="reveal" onclick="revealCard('c3_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c3_1">
+<div class="en">Beyond general anemia symptoms (fatigue, dizziness), B12 deficiency causes serious features:
+  <ul><li><b>Neurological:</b> nerve damage, confusion, dementia, depression, memory loss.</li>
+  <li><b>Digestive:</b> nausea/vomiting, heartburn, bloating and gas, constipation or diarrhea, loss of appetite, weight loss, enlarged liver, and a <b>smooth, beefy-red tongue</b> (a classic oral sign).</li>
+  <li><b>Infants:</b> poor reflexes or unusual movements (e.g., face tremors).</li></ul>
+  <b>Treatment:</b> replace the missing <b>vitamin B12</b>; patients may need <b>lifelong treatment</b>. The smooth beefy-red tongue and neurological signs are cues the dentist may notice first.</div>
+<div class="hint"><b>فقر الدم الوبيل — العلامات والأعراض والعلاج:</b> إضافةً لأعراض فقر الدم العامّة (تعب، دوار)، يسبّب عوز B12 ملامح خطيرة: <b>عصبية:</b> أذى عصبي، تخليط، خرف، اكتئاب، فقد ذاكرة. <b>هضمية:</b> غثيان/قيء، حرقة، انتفاخ وغازات، إمساك أو إسهال، فقد شهية، نقص وزن، ضخامة كبد، و<b>لسان أملس أحمر لحمي</b> (علامة فموية كلاسيكية). <b>الرضّع:</b> منعكسات ضعيفة أو حركات غريبة (رجفان الوجه). <b>العلاج:</b> تعويض <b>فيتامين B12</b> المفقود؛ وقد يحتاج المرضى <b>علاجاً مدى الحياة</b>. واللسان الأملس الأحمر اللحمي والعلامات العصبية مفاتيح قد يلاحظها الطبيب أولاً.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c3_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c3_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec4">Lec 6 · Aplastic Anemia</h2>
+<div class="card" id="c4_0">
+<div class="topic">Aplastic anemia — mechanism &amp; causes</div>
+<div class="prompt">What is aplastic anemia, and what causes it?</div>
+<button class="reveal" onclick="revealCard('c4_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c4_0">
+<div class="en"><b>Aplastic anemia</b> is a blood disorder in which the <b>bone marrow doesn't make enough new blood cells</b>, leading to arrhythmias, an enlarged heart, heart failure, infections, and bleeding. It is rare but serious, can develop suddenly or slowly, and worsens with time unless the cause is found and treated. It results from <b>damage to the bone marrow's stem cells</b>; in more than half of cases the cause is <b>unknown</b>.<br>
+  <b>Acquired causes:</b> toxins (arsenic, benzene), radiation and chemotherapy, medicines (chloramphenicol), infections (hepatitis, EBV, CMV, parvovirus B19, HIV), and autoimmune disorders (lupus, RA).<br>
+  <b>Inherited causes:</b> Fanconi anemia, Shwachman-Diamond syndrome, dyskeratosis congenita.</div>
+<div class="hint"><b>فقر الدم اللاتنسّجي — الآلية والأسباب:</b> <b>فقر الدم اللاتنسّجي (Aplastic)</b> اضطراب دموي <b>لا يصنع فيه نقي العظم خلايا دموية جديدة كافية</b>، مؤدّياً لاضطراب نظم، ضخامة قلب، فشل قلب، عداوى، ونزف. وهو نادر لكن خطير، يظهر فجأةً أو ببطء، ويسوء مع الوقت ما لم يُكتشف السبب ويُعالَج. وينتج من <b>أذى الخلايا الجذعية لنقي العظم</b>؛ وفي أكثر من النصف السبب <b>مجهول</b>. <b>الأسباب المكتسبة:</b> سموم (زرنيخ، بنزين)، إشعاع وكيماوي، أدوية (كلورامفينيكول)، عداوى (التهاب كبد، EBV، CMV، بارفو B19، HIV)، ومناعية ذاتية (ذئبة، رثياني). <b>الأسباب الوراثية:</b> فقر دم فانكوني، متلازمة شواكمان-دياموند، عسر التقرّن الخلقي.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c4_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c4_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c4_1">
+<div class="topic">Aplastic anemia — symptoms &amp; treatment</div>
+<div class="prompt">What are the symptoms and treatment of aplastic anemia?</div>
+<button class="reveal" onclick="revealCard('c4_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c4_1">
+<div class="en"><b>Symptoms</b> (from the deficiency of all three cell lines): fatigue, shortness of breath, dizziness, headache, coldness in hands/feet, <b>pale skin, gums, and nail beds</b>, and chest pain. Low WBCs → infections; low platelets → bleeding.<br>
+  <b>Treatment:</b> <b>blood transfusions</b>, <b>blood and marrow stem cell transplants</b>, and medication — to prevent/limit complications, relieve symptoms, and improve quality of life. In some cases a <b>cure</b> is possible: a stem cell transplant may cure the disorder, and removing a known cause (e.g., a toxin exposure) may also cure it. The pale gums and bleeding tendency are directly relevant to safe dental care.</div>
+<div class="hint"><b>فقر الدم اللاتنسّجي — الأعراض والعلاج:</b> <b>الأعراض</b> (من نقص السلالات الثلاث): تعب، ضيق نفس، دوار، صداع، برودة اليدين/القدمين، <b>شحوب الجلد واللثة وأظافر الأصابع</b>، وألم صدري. الكريات البيض المنخفضة ← عداوى؛ والصفيحات المنخفضة ← نزف. <b>العلاج:</b> <b>نقل دم</b>، <b>زرع خلايا جذعية للدم والنقي</b>، وأدوية — لمنع/تحديد المضاعفات وتخفيف الأعراض وتحسين جودة الحياة. وفي بعض الحالات يمكن <b>الشفاء</b>: قد يشفي زرع الخلايا الجذعية الاضطراب، وإزالة سبب معروف (تعرّض لسمّ) قد تشفيه. وشحوب اللثة وميل النزف مهمّان مباشرةً للرعاية السنّية الآمنة.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c4_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c4_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec5">Lec 6 · Hemolytic Anemia ⭐</h2>
+<div class="card" id="c5_0">
+<div class="topic">Hemolytic anemia — definition &amp; types</div>
+<div class="prompt">What is hemolytic anemia, and what are its inherited and acquired types?</div>
+<button class="reveal" onclick="revealCard('c5_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c5_0">
+<div class="en"><b>Hemolytic anemia</b> is a condition in which RBCs are <b>destroyed and removed from the bloodstream before their normal lifespan is up</b>, leading to fatigue, pain, arrhythmias, an enlarged heart, and heart failure.<br>
+  <b>Inherited types:</b> <b>sickle cell anemia, thalassemia, hereditary spherocytosis, glucose-6-phosphate dehydrogenase (G6PD) deficiency, pyruvate kinase deficiency</b>.<br>
+  <b>Acquired types:</b> <b>autoimmune hemolytic anemia, drug-induced hemolytic anemia, mechanical hemolytic anemia</b>, and certain infections/substances that damage RBCs.</div>
+<div class="hint"><b>فقر الدم الانحلالي — التعريف والأنواع:</b> <b>فقر الدم الانحلالي (Hemolytic)</b> حالة تُخرَّب فيها الكريات الحمر و<b>تُزال من الدوران قبل انتهاء عمرها الطبيعي</b>، مؤدّيةً لتعب وألم واضطراب نظم وضخامة قلب وفشل قلب. <b>الأنواع الوراثية:</b> <b>فقر الدم المنجلي، الثلاسيميا، كثرة الكريات الكروية الوراثية، عوز G6PD، عوز بيروفات كيناز</b>. <b>الأنواع المكتسبة:</b> <b>فقر دم انحلالي مناعي ذاتي، محرّض بالأدوية، ميكانيكي</b>، وبعض العداوى/المواد التي تُتلف الكريات.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c5_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c5_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c5_1">
+<div class="topic">Hemolytic anemia — inherited vs acquired causes</div>
+<div class="prompt">How do the causes differ between inherited and acquired hemolytic anemia?</div>
+<button class="reveal" onclick="revealCard('c5_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c5_1">
+<div class="en">The immediate cause is the <b>early destruction of RBCs</b>.<br>
+  <b>Inherited hemolytic anemia:</b> due to affected genes — the body makes <b>abnormal RBCs</b>. The problem may involve the <b>hemoglobin</b>, the <b>cell membrane</b>, or the <b>enzymes</b> that maintain healthy RBCs.<br>
+  <b>Acquired hemolytic anemia:</b> the body makes <b>normal RBCs</b>, but a disease, condition, or factor destroys them too early — examples include <b>immune disorders, infections, and reactions to medicines or blood transfusions</b>.<br>
+  Distinguishing the two guides both treatment and genetic counseling.</div>
+<div class="hint"><b>فقر الدم الانحلالي — الأسباب الوراثية مقابل المكتسبة:</b> السبب المباشر <b>التخريب المبكّر للكريات الحمر</b>. <b>الوراثي:</b> بسبب جينات متأثّرة — يصنع الجسم <b>كريات شاذّة</b>. وقد تكون المشكلة في <b>الهيموغلوبين</b> أو <b>غشاء الخلية</b> أو <b>الإنزيمات</b> التي تحفظ الكريات سليمة. <b>المكتسب:</b> يصنع الجسم <b>كريات طبيعية</b>، لكن مرضاً أو حالةً أو عاملاً يخرّبها مبكّراً — كـ<b>الاضطرابات المناعية والعداوى وتفاعلات الأدوية أو نقل الدم</b>. والتمييز بينهما يوجّه العلاج والمشورة الوراثية.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c5_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c5_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec6">Lec 6 · Thalassaemia &amp; Sickle Cell ⭐</h2>
+<div class="card" id="c6_0">
+<div class="topic">Thalassaemia — types &amp; mechanism</div>
+<div class="prompt">What is thalassaemia, and what are its major types?</div>
+<button class="reveal" onclick="revealCard('c6_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c6_0">
+<div class="en"><b>Thalassaemias</b> are <b>inherited</b> blood disorders that make the body produce <b>fewer healthy RBCs and less hemoglobin</b>. Hemoglobin has two protein chains — <b>alpha globin and beta globin</b>; if the body doesn't make enough of these chains, RBCs don't form properly and can't carry enough oxygen. Genes control chain production; when these genes are missing/altered, thalassaemia occurs.<br>
+  <b>Two major types:</b> <b>alpha-</b> and <b>beta-thalassaemia</b>. The most severe alpha form is <b>alpha thalassaemia major (hydrops fetalis)</b>; the severe beta form is <b>thalassaemia major (Cooley's anemia)</b>. <b>Carriers</b> (abnormal gene from one parent) often have only mild anemia but can pass it on.</div>
+<div class="hint"><b>الثلاسيميا — الأنواع والآلية:</b> <b>الثلاسيميات</b> اضطرابات دموية <b>وراثية</b> تجعل الجسم يُنتج <b>كريات حمر سليمة أقلّ وهيموغلوبيناً أقلّ</b>. وللهيموغلوبين سلسلتا بروتين — <b>ألفا غلوبين وبيتا غلوبين</b>؛ فإن لم يصنع الجسم كفايةً منهما لا تتشكّل الكريات جيّداً ولا تحمل أكسجيناً كافياً. والجينات تتحكّم بإنتاج السلاسل؛ وعند فقدها/تغيّرها تحدث الثلاسيميا. <b>نوعان رئيسان:</b> <b>ألفا</b> و<b>بيتا ثلاسيميا</b>. وأشدّ أشكال ألفا <b>ألفا ثلاسيميا كبرى (hydrops fetalis)</b>؛ وشكل بيتا الشديد <b>ثلاسيميا كبرى (فقر دم كولي)</b>. و<b>الحاملون</b> (جين شاذّ من أحد الوالدين) غالباً بفقر دم خفيف فقط لكن ينقلونه.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c6_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c6_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c6_1">
+<div class="topic">Thalassaemia severity &amp; sickle cell anemia</div>
+<div class="prompt">How does thalassaemia severity vary, and what is sickle cell anemia?</div>
+<button class="reveal" onclick="revealCard('c6_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c6_1">
+<div class="en"><b>Thalassaemia severity:</b> alpha or beta trait → <b>mild anemia</b>; beta thalassaemia <b>intermedia</b> → mild-to-moderate anemia with slowed growth, delayed puberty, bone problems, and an enlarged spleen; beta thalassaemia <b>major</b> → severe anemia in the first two years of life with pale/listless appearance, poor appetite, dark urine, slowed growth, jaundice, enlarged spleen/liver/heart, and bone problems. <b>Treatment</b> depends on severity: carriers need little/none; moderate–severe forms use blood transfusions, iron chelation, and folic acid.<br>
+  <b>Sickle cell anemia:</b> an inherited hemolytic anemia; treatment has <b>no widely-available cure</b> — goals are to relieve pain, prevent infections/eye damage/strokes, and control complications; a <b>bone marrow transplant</b> may cure a small number of cases.</div>
+<div class="hint"><b>شدّة الثلاسيميا وفقر الدم المنجلي:</b> <b>شدّة الثلاسيميا:</b> سمة ألفا أو بيتا → <b>فقر دم خفيف</b>؛ بيتا <b>متوسّطة (intermedia)</b> → فقر دم خفيف-متوسّط مع بطء نموّ وتأخّر بلوغ ومشاكل عظمية وضخامة طحال؛ بيتا <b>كبرى (major)</b> → فقر دم شديد في أول سنتين مع مظهر شاحب خامل وضعف شهية وبول داكن وبطء نموّ ويرقان وضخامة طحال/كبد/قلب ومشاكل عظمية. و<b>العلاج</b> حسب الشدّة: الحاملون قليل/لا شيء؛ والأشكال المتوسّطة-الشديدة تستخدم نقل الدم وخلب الحديد وحمض الفوليك. <b>فقر الدم المنجلي:</b> فقر دم انحلالي وراثي؛ وعلاجه <b>بلا شفاء متاح واسعاً</b> — الأهداف تخفيف الألم ومنع العداوى/أذى العين/السكتات وضبط المضاعفات؛ وقد يشفي <b>زرع نقي العظم</b> عدداً قليلاً من الحالات.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c6_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c6_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec7">Lec 7 · Hemostasis Tests — Bleeding &amp; Clotting ⭐</h2>
+<div class="card" id="c7_0">
+<div class="topic">Bleeding time</div>
+<div class="prompt">What is bleeding time, what does it assess, and what prolongs it?</div>
+<button class="reveal" onclick="revealCard('c7_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c7_0">
+<div class="en"><b>Bleeding time</b> assesses <b>platelet function</b> — by making a small standardized cut and timing how long bleeding takes to stop. It is affected by <b>platelet function, certain vascular disorders, and von Willebrand disease — NOT by coagulation factors such as in haemophilia</b> (an important distinction).<br>
+  <b>Prolonged bleeding time:</b> thrombocytopenia, disseminated intravascular coagulation (DIC), Glanzmann's thrombasthenia, Bernard-Soulier disease, and hypofibrinogenemia. <b>Aspirin</b> and other cyclooxygenase inhibitors affect it, and <b>warfarin and heparin</b> also increase it — important to check before extractions.</div>
+<div class="hint"><b>زمن النزف (Bleeding time):</b> يقيّم <b>وظيفة الصفيحات</b> — بإحداث جرح صغير معياري وتوقيت زمن توقّف النزف. ويتأثّر بـ<b>وظيفة الصفيحات وبعض الاضطرابات الوعائية وداء فون ويلبراند — لا بعوامل التخثّر كالناعور (haemophilia)</b> (تمييز مهمّ). <b>يطول زمن النزف في:</b> قلّة الصفيحات، التخثّر المنتشر داخل الأوعية (DIC)، وهن الصفيحات لغلانزمان، داء برنارد-سولييه، ونقص الفيبرينوجين. و<b>الأسبرين</b> ومثبّطات الأكسدة الحلقية تؤثّر فيه، و<b>الوارفارين والهيبارين</b> يطيلانه أيضاً — مهمّ فحصه قبل القلع.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c7_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c7_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c7_1">
+<div class="topic">Clotting time &amp; prothrombin time (PT)</div>
+<div class="prompt">What are clotting time and prothrombin time, and what do they detect?</div>
+<button class="reveal" onclick="revealCard('c7_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c7_1">
+<div class="en"><b>Clotting time</b> is the time for a blood sample to coagulate in vitro under standard conditions (commonly the <b>capillary tube method</b>); it is affected by calcium ion levels and many diseases. <b>Normal value: 8–15 minutes.</b><br>
+  <b>Prothrombin time (PT):</b> used to detect/diagnose a bleeding or excessive-clotting disorder — used when a patient takes <b>warfarin</b>, or has unexplained/prolonged bleeding or inappropriate clotting. A <b>prolonged PT</b> may indicate a <b>decrease in vitamin K</b>, a defect in <b>factor VII</b>, or chronic low-grade DIC. PT primarily reflects the <b>extrinsic pathway</b>.</div>
+<div class="hint"><b>زمن التخثّر وزمن البروثرومبين (PT):</b> <b>زمن التخثّر (Clotting time):</b> زمن تخثّر عيّنة دم خارج الجسم بشروط معيارية (شائعاً <b>طريقة الأنبوب الشعري</b>)؛ يتأثّر بمستوى أيون الكالسيوم وأمراض كثيرة. <b>القيمة الطبيعية: 8–15 دقيقة.</b> <b>زمن البروثرومبين (PT):</b> يُستخدم لكشف/تشخيص اضطراب نزف أو تخثّر زائد — يُستخدم حين يأخذ المريض <b>الوارفارين</b>، أو عند نزف غير مفسَّر/مطوّل أو تخثّر غير مناسب. و<b>طول PT</b> قد يدلّ على <b>نقص فيتامين K</b>، أو خلل في <b>العامل VII</b>، أو DIC مزمن خفيف. ويعكس PT أساساً <b>المسار الخارجي (extrinsic)</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c7_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c7_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c7_2">
+<div class="topic">Partial thromboplastin time (APTT)</div>
+<div class="prompt">What is the APTT, its normal range, and what does a prolonged APTT indicate?</div>
+<button class="reveal" onclick="revealCard('c7_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c7_2">
+<div class="en">The <b>partial thromboplastin time (PTT)</b>, or <b>activated PTT (APTT)</b>, characterizes blood coagulation via the <b>intrinsic pathway</b>. <b>Typical reference range: 30–50 seconds.</b><br>
+  A <b>prolonged APTT</b> may indicate:
+  <ul><li>use of <b>heparin</b>;</li>
+  <li><b>antiphospholipid antibody</b> (especially lupus anticoagulant);</li>
+  <li><b>coagulation factor deficiency — e.g., haemophilia (very important)</b>;</li>
+  <li>sepsis (coagulation factor consumption);</li>
+  <li>antibodies against coagulation factors (factor inhibitors);</li>
+  <li>deficiency of factors <b>VIII, IX, XI, and XII</b>.</li></ul>
+  Together, PT (extrinsic) and APTT (intrinsic) localize where a coagulation defect lies.</div>
+<div class="hint"><b>زمن الثرومبوبلاستين الجزئي (APTT):</b> <b>زمن الثرومبوبلاستين الجزئي (PTT)</b> أو <b>المفعّل (APTT)</b> يميّز التخثّر عبر <b>المسار الداخلي (intrinsic)</b>. <b>المجال المرجعي النموذجي: 30–50 ثانية.</b> و<b>طول APTT</b> قد يدلّ على: استخدام <b>الهيبارين</b>؛ <b>ضدّ فوسفوليبيدي</b> (خاصةً مضادّ تخثّر الذئبة)؛ <b>عوز عامل تخثّر — كالناعور (مهمّ جداً)</b>؛ إنتان (استهلاك عوامل التخثّر)؛ أضداد ضدّ عوامل التخثّر (مثبّطات العوامل)؛ وعوز العوامل <b>VIII وIX وXI وXII</b>. ومعاً، PT (خارجي) وAPTT (داخلي) يوضّعان أين يكمن خلل التخثّر.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c7_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c7_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec8">Lec 7 · ESR &amp; INR ⭐</h2>
+<div class="card" id="c8_0">
+<div class="topic">Erythrocyte sedimentation rate (ESR) — what it measures</div>
+<div class="prompt">What is the ESR, and what does a raised ESR indicate?</div>
+<button class="reveal" onclick="revealCard('c8_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c8_0">
+<div class="en">The <b>erythrocyte sedimentation rate (ESR)</b> measures how quickly RBCs settle at the bottom of a tube of blood. Normally they settle slowly; a <b>faster-than-normal rate indicates inflammation</b> (part of the immune response to infection or injury, or a sign of chronic/immune disease). Other names: SED rate, Westergren sedimentation rate.<br>
+  <b>A raised ESR</b> (to the dentist) may indicate: <b>infection, rheumatoid arthritis, rheumatic fever, vascular disease, inflammatory bowel disease, heart disease, kidney disease, and certain cancers</b>. It helps evaluate symptoms like headaches, fever, weight loss, joint stiffness, neck/shoulder pain, loss of appetite, and anemia, and can monitor an existing condition.</div>
+<div class="hint"><b>سرعة تثفّل الكريات الحمر (ESR) — ما تقيسه:</b> <b>سرعة التثفّل (ESR)</b> تقيس مدى سرعة استقرار الكريات الحمر في قعر أنبوب دم. وطبيعياً تستقرّ ببطء؛ و<b>المعدّل الأسرع من الطبيعي يدلّ على التهاب</b> (جزء من الاستجابة المناعية لعدوى أو إصابة، أو علامة مرض مزمن/مناعي). أسماء أخرى: SED rate، Westergren. <b>ارتفاع ESR</b> (للطبيب) قد يدلّ على: <b>عدوى، رثياني، حمّى رثوية، مرض وعائي، داء أمعاء التهابي، مرض قلبي، مرض كلوي، وبعض السرطانات</b>. ويساعد في تقييم أعراض كالصداع والحمّى ونقص الوزن وتيبّس المفاصل وألم العنق/الكتف وفقد الشهية وفقر الدم، ويمكنه مراقبة حالة قائمة.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c8_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c8_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c8_1">
+<div class="topic">ESR — low values, limitations &amp; modifiers</div>
+<div class="prompt">What does a low ESR indicate, and what are its limitations and modifiers?</div>
+<button class="reveal" onclick="revealCard('c8_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c8_1">
+<div class="en"><b>A slow (low) ESR</b> may indicate a blood disorder: <b>polycythemia, sickle cell anemia, and leukocytosis</b> (an abnormal increase in WBCs).<br>
+  <b>Limitations/modifiers:</b> an abnormal result doesn't necessarily mean a treatable condition. A <b>moderate ESR</b> may reflect <b>pregnancy, menstruation, or anemia</b> rather than inflammatory disease. Certain medicines/supplements affect results — <b>oral contraceptives, aspirin, cortisone, and vitamin A</b>.<br>
+  <span class="k">Note: an ESR does NOT specifically diagnose any disease — it only indicates whether inflammation is present.</span></div>
+<div class="hint"><b>ESR — القيم المنخفضة والحدود والمعدّلات:</b> <b>ESR البطيء (المنخفض)</b> قد يدلّ على اضطراب دموي: <b>كثرة الحمر، فقر الدم المنجلي، وكثرة الكريات البيض (leukocytosis)</b>. <b>الحدود/المعدّلات:</b> النتيجة الشاذّة لا تعني بالضرورة حالةً تحتاج علاجاً. و<b>ESR المتوسّط</b> قد يعكس <b>الحمل أو الطمث أو فقر الدم</b> لا مرضاً التهابياً. وبعض الأدوية/المكمّلات تؤثّر في النتائج — <b>موانع الحمل الفموية، الأسبرين، الكورتيزون، وفيتامين A</b>. <b>ملاحظة: ESR لا يشخّص مرضاً بعينه — بل يدلّ فقط على وجود التهاب من عدمه.</b></div>
+<div class="btns">
+<button class="gotit" onclick="rate('c8_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c8_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c8_2">
+<div class="topic">International Normalised Ratio (INR)</div>
+<div class="prompt">What is the INR, and what are the common reasons for the test?</div>
+<button class="reveal" onclick="revealCard('c8_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c8_2">
+<div class="en">The <b>INR (International Normalised Ratio)</b>, also referred to as the standardized <b>prothrombin time (PT)</b>, measures how long it takes for blood to clot. It is primarily used to diagnose unusual bleeding or clots and to <b>monitor patients treated with warfarin</b> (an anti-clotting treatment).<br>
+  <b>Common reasons for an INR test:</b>
+  <ul><li><b>monitoring warfarin therapy</b> (the main use);</li>
+  <li>in relation to <b>liver function</b> (liver dysfunction reduces production of clotting factors);</li>
+  <li><b>deep vein thrombosis (DVT)</b> — a clot in a deep vein (commonly the leg);</li>
+  <li><b>pulmonary embolism (PE)</b>, <b>atrial fibrillation (AF)</b>, and some heart conditions.</li></ul>
+  A high INR means blood is clotting too slowly (higher bleeding risk) — critical to check before oral surgery.</div>
+<div class="hint"><b>النسبة المعيارية الدولية (INR):</b> <b>INR</b> (النسبة المعيارية الدولية)، ويُشار إليها بـ<b>زمن البروثرومبين (PT)</b> المعياري، تقيس زمن تخثّر الدم. وتُستخدم أساساً لتشخيص نزف أو تخثّر غير معتاد و<b>مراقبة مرضى الوارفارين</b> (علاج مضادّ للتخثّر). <b>الأسباب الشائعة للفحص:</b> <b>مراقبة علاج الوارفارين</b> (الاستخدام الرئيس)؛ فيما يتعلّق بـ<b>وظيفة الكبد</b> (خلل الكبد يقلّل إنتاج عوامل التخثّر)؛ <b>الخثار الوريدي العميق (DVT)</b> — خثرة في وريد عميق (غالباً الساق)؛ <b>الصمّة الرئوية (PE)</b>، <b>الرجفان الأذيني (AF)</b>، وبعض حالات القلب. وارتفاع INR يعني تخثّراً أبطأ (خطر نزف أعلى) — حرج فحصه قبل الجراحة الفموية.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c8_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c8_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec9">Lec 7 · INR Interpretation</h2>
+<div class="card" id="c9_0">
+<div class="topic">INR values — normal, low &amp; high</div>
+<div class="prompt">How is the INR interpreted, and what do low and high values mean for the dental patient?</div>
+<button class="reveal" onclick="revealCard('c9_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c9_0">
+<div class="en">The INR compares the patient's prothrombin time to that of a normal blood sample. <b>A result of 1.0, up to 1.5, is normal.</b><br>
+  <ul><li><b>Low INR</b> — the blood is "not thin enough" / coagulates too easily → the patient is at risk of developing a <b>blood clot</b>.</li>
+  <li><b>High INR</b> — the blood coagulates too slowly → the patient is at risk of <b>bleeding</b>.</li></ul>
+  For dental care, a patient on warfarin usually has a therapeutic target INR (often ~2–3). Before extractions or surgery, the dentist should check the current INR: a value within the therapeutic range is generally acceptable for simple procedures, while a high INR signals increased bleeding risk requiring medical consultation.</div>
+<div class="hint"><b>قيم INR — الطبيعي والمنخفض والمرتفع:</b> يقارن INR زمن بروثرومبين المريض بعيّنة دم طبيعية. <b>والنتيجة 1.0 حتى 1.5 طبيعية.</b> <b>INR منخفض</b> — الدم «غير مميّع كفايةً»/يتخثّر بسهولة ← خطر تكوّن <b>خثرة</b>. <b>INR مرتفع</b> — الدم يتخثّر ببطء ← خطر <b>نزف</b>. وللرعاية السنّية، مريض الوارفارين عادةً له INR هدف علاجي (غالباً ~2–3). وقبل القلع أو الجراحة يجب فحص INR الحالي: القيمة ضمن المجال العلاجي مقبولة عموماً للإجراءات البسيطة، بينما INR المرتفع يشير لخطر نزف متزايد يتطلّب استشارةً طبية.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c9_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c9_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec10">Lec 8 · Biopsy ⭐</h2>
+<div class="card" id="c10_0">
+<div class="topic">Biopsy — definition &amp; types</div>
+<div class="prompt">What is a biopsy, and what are its main types?</div>
+<button class="reveal" onclick="revealCard('c10_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c10_0">
+<div class="en">A <b>biopsy</b> is a way of diagnosing disease: the dentist removes a sample of tissue or cells to be examined by a <b>pathologist</b> (a specialist trained to examine tissue under a microscope for signs and extent of disease), usually from a living subject.<br>
+  <b>Types:</b> (1) <b>excisional</b>; (2) <b>incisional</b>; (3) <b>FNA</b> (fine needle aspiration); (4) <b>thick (core) needle biopsy</b>; (5) <b>exfoliative cytology</b>; (6) <b>frozen section</b>; (7) <b>oral brush biopsy</b>.<br>
+  <b>Excisional vs incisional:</b> an <b>excisional</b> biopsy removes the <b>whole lump or targeted area</b> surgically (for small lesions); an <b>incisional</b> biopsy takes only a <b>sample</b> of a larger lesion for diagnosis before definitive treatment.</div>
+<div class="hint"><b>الخزعة — التعريف والأنواع:</b> <b>الخزعة (Biopsy)</b> وسيلة لتشخيص المرض: يأخذ الطبيب عيّنة نسيج أو خلايا ليفحصها <b>اختصاصي علم الأمراض (pathologist)</b> (مدرَّب على فحص النسيج مجهرياً لعلامات المرض ومداه)، عادةً من كائن حيّ. <b>الأنواع:</b> (١) <b>استئصالية (excisional)</b>؛ (٢) <b>شقّية (incisional)</b>؛ (٣) <b>FNA</b> (رشف بإبرة رفيعة)؛ (٤) <b>خزعة إبرة سميكة (core)</b>؛ (٥) <b>خلوية تقشّرية (exfoliative cytology)</b>؛ (٦) <b>مقطع مجمّد (frozen section)</b>؛ (٧) <b>خزعة فرشاة فموية</b>. <b>الاستئصالية مقابل الشقّية:</b> <b>الاستئصالية</b> تزيل <b>الكتلة كاملةً أو المنطقة المستهدفة</b> جراحياً (للآفات الصغيرة)؛ و<b>الشقّية</b> تأخذ <b>عيّنةً</b> فقط من آفة أكبر للتشخيص قبل العلاج النهائي.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c10_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c10_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c10_1">
+<div class="topic">Cytology &amp; fine needle aspiration (FNA)</div>
+<div class="prompt">What is cytology, and what are the uses and limitations of FNA?</div>
+<button class="reveal" onclick="revealCard('c10_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c10_1">
+<div class="en"><b>Cytology</b> is the study of the microscopic appearance of <b>cells</b>, especially to diagnose abnormalities and malignancies.<br>
+  <b>Fine needle aspiration (FNA)</b> (sometimes classed as cytology, sometimes as biopsy): a long thin needle is inserted into the suspicious area, and a <b>syringe draws out fluid and cells</b> that are smeared on a slide. It is <b>rapid and usually effective</b> at distinguishing malignant from benign neoplasms (though not completely conclusive). Its <b>small needle avoids damage to vital structures</b> and it is valuable when incisional biopsy is <b>contraindicated</b> — e.g., pleomorphic adenoma or other malignant lesions of the <b>parotid gland</b>. <b>Disadvantages:</b> requires experience, the small specimen may be unrepresentative, and a definitive diagnosis is not always possible.</div>
+<div class="hint"><b>الخلوية والرشف بالإبرة الرفيعة (FNA):</b> <b>الخلوية (Cytology)</b> دراسة المظهر المجهري لـ<b>الخلايا</b>، خاصةً لتشخيص الشذوذات والخباثات. <b>الرشف بالإبرة الرفيعة (FNA)</b> (يُصنَّف أحياناً خلوية وأحياناً خزعة): تُدخَل إبرة رفيعة طويلة في المنطقة المشبوهة، و<b>تسحب المحقنة سائلاً وخلايا</b> تُلطَّخ على شريحة. وهو <b>سريع وفعّال عادةً</b> في تمييز الخبيث من السليم (وإن لم يكن قاطعاً تماماً). و<b>إبرته الصغيرة تتجنّب أذى البنى الحيوية</b> وهو قيّم حين تكون الخزعة الشقّية <b>ممنوعة</b> — كالورم الغدّي متعدّد الأشكال أو آفات خبيثة أخرى في <b>الغدّة النكفية</b>. <b>العيوب:</b> يحتاج خبرة، والعيّنة الصغيرة قد تكون غير ممثّلة، والتشخيص القاطع ليس دائماً ممكناً.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c10_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c10_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c10_2">
+<div class="topic">Core needle biopsy vs FNA</div>
+<div class="prompt">How does core needle biopsy compare with FNA?</div>
+<button class="reveal" onclick="revealCard('c10_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c10_2">
+<div class="en">A <b>core needle biopsy</b> uses a <b>larger needle with a cutting tip</b> to draw a <b>column of tissue</b> out of a suspicious area.<br>
+  <b>Advantages over FNA:</b> the samples are <b>larger</b> and <b>preserve the tissue architecture</b>, giving a <b>more definitive diagnosis</b> than FNA.<br>
+  <b>Disadvantages:</b> an <b>increased risk of seeding</b> the neoplasm into surrounding tissue, and a greater <b>risk of damaging vital structures</b> (because of the larger needle). It is used when an incisional biopsy is needed but a larger sample than FNA is required. The choice between FNA and core biopsy balances diagnostic yield against the risk to nearby structures.</div>
+<div class="hint"><b>خزعة الإبرة السميكة مقابل FNA:</b> <b>خزعة الإبرة السميكة (Core)</b> تستخدم <b>إبرةً أكبر بطرف قاطع</b> لسحب <b>عمود نسيج</b> من المنطقة المشبوهة. <b>المزايا على FNA:</b> العيّنات <b>أكبر</b> و<b>تحفظ بنية النسيج</b>، مُعطيةً <b>تشخيصاً أقطع</b> من FNA. <b>العيوب:</b> <b>خطر أكبر لبذر</b> الورم في النسيج المحيط، وخطر أكبر لـ<b>أذى البنى الحيوية</b> (بسبب الإبرة الأكبر). ويُستخدم حين تلزم خزعة شقّية لكن بعيّنة أكبر من FNA. والاختيار بين FNA والسميكة يوازن العائد التشخيصي مقابل الخطر على البنى المجاورة.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c10_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c10_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec11">Lec 8 · Cytology, Frozen Section &amp; Imaging</h2>
+<div class="card" id="c11_0">
+<div class="topic">Exfoliative cytology, frozen section &amp; oral brush biopsy</div>
+<div class="prompt">What are exfoliative cytology, frozen section, and oral brush biopsy?</div>
+<button class="reveal" onclick="revealCard('c11_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c11_0">
+<div class="en"><b>Exfoliative cytology:</b> the examination of <b>cells scraped from the surface</b> of a lesion (a simple, non-invasive screening technique for surface mucosal lesions).<br>
+  <b>Frozen section:</b> allows a stained slide to be examined within <b>~10 minutes</b> of taking the sample. Its <b>main advantage is speed</b> — a diagnosis can be established <b>during surgery</b>, so the surgeon can decide the extent of resection while the patient is still under anesthesia.<br>
+  <b>Oral brush biopsy:</b> a brush collects a <b>transepithelial specimen</b> (cells from all layers of the epithelium) from a suspicious oral lesion — a minimally invasive way to sample lesions that might not otherwise be biopsied.</div>
+<div class="hint"><b>الخلوية التقشّرية والمقطع المجمّد وخزعة الفرشاة:</b> <b>الخلوية التقشّرية (Exfoliative cytology):</b> فحص <b>خلايا مكشوطة من سطح</b> الآفة (تقنية مسح بسيطة غير باضعة للآفات المخاطية السطحية). <b>المقطع المجمّد (Frozen section):</b> يتيح فحص شريحة مصبوغة خلال <b>~10 دقائق</b> من أخذ العيّنة. و<b>ميزته الرئيسة السرعة</b> — يمكن وضع تشخيص <b>أثناء الجراحة</b>، فيقرّر الجرّاح مدى الاستئصال والمريض ما زال مخدَّراً. <b>خزعة الفرشاة الفموية:</b> فرشاة تجمع <b>عيّنة عبر ظهارية</b> (خلايا من كل طبقات الظهارة) من آفة فموية مشبوهة — وسيلة قليلة الباضعة لأخذ عيّنة من آفات قد لا تُخزَع بغير ذلك.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c11_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c11_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c11_1">
+<div class="topic">Imaging methods in oral medicine</div>
+<div class="prompt">Which imaging methods are used in oral medicine, and what is each best for?</div>
+<button class="reveal" onclick="revealCard('c11_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c11_1">
+<div class="en"><ul>
+  <li><b>Conventional radiography</b> (bitewing, periapical) — teeth and bone.</li>
+  <li><b>Computed tomography (CT):</b> dense bone is white, soft tissue mid-gray, fat dark gray, air black; <b>dental fillings may cause artifact</b>.</li>
+  <li><b>Magnetic resonance imaging (MRI):</b> best for <b>soft tissue, salivary glands, and the TMJ</b>.</li>
+  <li><b>Diagnostic ultrasound:</b> for <b>soft-tissue lumps and salivary glands</b>.</li>
+  <li><b>Radioisotope imaging (nuclear scanning):</b> very small quantities of radioactive isotopes image parts of the body — used in <b>salivary gland scanning (e.g., Sjögren's)</b> or bone scanning.</li>
+  <li><b>Molecular-biological tests:</b> chromosome studies, comparative genomic hybridization, DNA microarrays, FISH, PCR, gene mapping.</li></ul></div>
+<div class="hint"><b>طرق التصوير في طب الفم:</b> <b>التصوير الشعاعي التقليدي</b> (bitewing، periapical) — الأسنان والعظم. <b>التصوير المقطعي المحوسب (CT):</b> العظم الكثيف أبيض، النسيج الرخو رمادي متوسّط، الدهن رمادي داكن، الهواء أسود؛ و<b>الحشوات السنّية قد تسبّب أثراً (artifact)</b>. <b>الرنين المغناطيسي (MRI):</b> الأفضل لـ<b>النسيج الرخو والغدد اللعابية والمفصل الفكي الصدغي</b>. <b>الأمواج فوق الصوتية:</b> للـ<b>كتل النسيج الرخو والغدد اللعابية</b>. <b>التصوير بالنظائر المشعّة (المسح النووي):</b> كمّيات صغيرة جداً من نظائر مشعّة تصوّر أجزاء الجسم — تُستخدم في <b>مسح الغدد اللعابية (كشوغرن)</b> أو مسح العظم. <b>الاختبارات الجزيئية-الحيوية:</b> دراسات الصبغيات، التهجين الجيني المقارن، مصفوفات DNA الدقيقة، FISH، PCR، خرائط الجينات.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c11_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c11_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c11_2">
+<div class="topic">Culture &amp; sensitivity testing</div>
+<div class="prompt">What is culture and sensitivity testing, and how are candida and viruses identified?</div>
+<button class="reveal" onclick="revealCard('c11_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c11_2">
+<div class="en"><b>Culture and sensitivity</b> is used for any infection (from an upper respiratory infection to a jaw abscess) — it is critical to know <b>which antibiotics will be effective</b> against the causative pathogen. This requires: (1) identifying the <b>species and strain</b> of bacteria; and (2) determining the drugs most effective at inhibiting growth via the <b>antibiotic sensitivity test</b> (e.g., on pus from a salivary gland).<br>
+  <b>Fungi:</b> a <b>direct smear</b> stained by periodic acid-Schiff or Gram stain; typical <b>hyphae</b> indicate Candida proliferation. <b>Candida albicans</b> is collected by a sterile swab rubbed vigorously over the mucosa (e.g., palate beneath a denture), cultured on <b>Sabouraud dextrose agar</b>, incubated 48–72 h at 37°C; colonies are medium-sized, moist, creamy, whitish-cottony with a yeasty odor.<br>
+  <b>Viruses:</b> a virology lab uses fluid from a <b>fresh vesicle</b> or the <b>antibody titer</b> in the patient's serum.</div>
+<div class="hint"><b>الزرع والحساسية:</b> <b>الزرع والحساسية</b> يُستخدم لأي عدوى (من عدوى تنفّسية علوية إلى خرّاج فكّي) — ومن الحرج معرفة <b>أي المضادّات ستكون فعّالة</b> ضدّ الممرض المسبّب. ويتطلّب: (١) تحديد <b>نوع وسلالة</b> الجرثوم؛ (٢) تحديد الأدوية الأكثر فعالية بكبح النموّ عبر <b>اختبار الحساسية للمضادّات</b> (كعلى قيح من غدّة لعابية). <b>الفطريات:</b> <b>لطاخة مباشرة</b> مصبوغة بـPAS أو صبغة غرام؛ و<b>الخيوط الفطرية (hyphae)</b> النموذجية تدلّ على تكاثر المبيضّات. و<b>المبيضّة البيضاء</b> تُجمع بمسحة معقّمة تُفرَك بقوّة على المخاطية (كالحنك تحت طقم)، وتُزرَع على <b>آغار سابورو دكستروز</b>، وتُحضَن 48–72س بـ37°م؛ والمستعمرات متوسّطة رطبة كريمية بيضاء قطنية برائحة خميرية. <b>الفيروسات:</b> يستخدم مختبر الفيروسات سائلاً من <b>حويصلة طازجة</b> أو <b>عيار الأضداد</b> في مصل المريض.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c11_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c11_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec12">Lec 6 · Interpreting the CBC as a Whole (Integrated) ⭐</h2>
+<div class="card" id="c12_0">
+<div class="topic">Reading a full CBC systematically</div>
+<div class="prompt">How does the dentist read a complete blood count systematically to build a clinical picture?</div>
+<button class="reveal" onclick="revealCard('c12_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c12_0">
+<div class="en">A CBC is read as three linked stories rather than a list of numbers, and each line changes what is safe to do in the dental chair. Start with the <b>white cell line</b>: a high total (leukocytosis) with a neutrophil predominance points to acute bacterial infection, while a lymphocyte predominance suggests a viral cause; a very high or bizarre count raises the possibility of leukaemia, and a low count (leukopenia/neutropenia) — from chemotherapy, radiation, or marrow failure — flags a patient who cannot mount a normal response to infection and needs antibiotic cover and meticulous asepsis. Move to the <b>red cell line</b>: a low RBC, haemoglobin, and haematocrit define anaemia, and the <b>MCV</b> immediately narrows the cause — a low MCV (microcytic) points to iron deficiency, a high MCV (macrocytic) to B12 or folate deficiency, and a normal MCV to acute blood loss or haemolysis; anaemia matters because it impairs oxygen delivery, healing, and tolerance of sedation. Finally read the <b>platelet line</b>: a low count (thrombocytopenia) is the single most important pre-surgical number because it predicts bleeding, while the MPV hints at whether the marrow is compensating by releasing large young platelets. Two safety notes frame the whole reading: a recent blood transfusion distorts the CBC, and paediatric reference ranges differ from adult ones, so the age-specific values supplied by the laboratory must be used. Read this way, the CBC tells the dentist in one glance whether infection, anaemia, or a bleeding tendency needs to be managed before any invasive procedure.</div>
+<div class="hint">يُقرأ الـCBC كثلاث قصص مترابطة لا كقائمة أرقام، وكل سطر يغيّر ما هو آمن في كرسي الأسنان. ابدأ بـ<b>سلسلة الكريات البيض</b>: ارتفاع كلّي (leukocytosis) بسيادة العدلات يشير لعدوى جرثومية حادّة، وسيادة اللمفاويات توحي بسبب فيروسي؛ والتعداد العالي جداً أو الشاذّ يرفع احتمال اللوكيميا، والمنخفض (قلّة العدلات) — من الكيماوي أو الإشعاع أو فشل النقي — ينذر بمريض لا يستطيع استجابة طبيعية للعدوى ويحتاج تغطية صادّة ولاعقامة دقيقة. ثم <b>سلسلة الكريات الحمر</b>: انخفاض RBC والهيموغلوبين والهيماتوكريت يُعرّف فقر الدم، والـ<b>MCV</b> يضيّق السبب فوراً — MCV منخفض (صغير الكريات) يشير لعوز الحديد، ومرتفع (كبير الكريات) لعوز B12 أو الفولات، وطبيعي لفقد دم حادّ أو انحلال؛ وفقر الدم مهمّ لأنه يضعف إيصال الأكسجين والالتئام وتحمّل التهدئة. وأخيراً <b>سلسلة الصفيحات</b>: الانخفاض (قلّة الصفيحات) أهمّ رقم قبل الجراحة لأنه يتنبّأ بالنزف، والـMPV يلمّح لما إذا كان النقي يعوّض بإطلاق صفيحات فتيّة كبيرة. وملاحظتا أمان تؤطّران القراءة: النقل الدموي الحديث يشوّه الـCBC، والمجالات المرجعية للأطفال تختلف عن البالغين، فتُستخدم القيم حسب العمر. وبهذه القراءة يخبر الـCBC الطبيب بنظرة واحدة إن كانت عدوى أو فقر دم أو ميل نزفي يحتاج تدبيراً قبل أي إجراء باضع.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c12_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c12_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c12_1">
+<div class="topic">Classifying anaemia by MCV — a practical map</div>
+<div class="prompt">How does mean corpuscular volume (MCV) map the five anaemias into a practical diagnostic scheme?</div>
+<button class="reveal" onclick="revealCard('c12_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c12_1">
+<div class="en">The five anaemias the dentist must know fall into a simple map once they are sorted by <b>mean corpuscular volume (MCV)</b>, the average red-cell size, because size reflects the underlying mechanism. <b>Microcytic (low MCV) anaemia</b> means small pale cells and points to <b>iron deficiency anaemia</b>, confirmed by a low ferritin, low serum iron (~60–170 mcg/dL), and a raised total iron binding capacity (TIBC ~240–450 mcg/dL); thalassaemia is also microcytic, but it is inherited and shows a normal iron profile, which separates it from iron deficiency. <b>Macrocytic (high MCV) anaemia</b> means large cells and points to <b>pernicious anaemia</b> from vitamin B12 deficiency — caused by lack of intrinsic factor and revealed clinically by a smooth beefy-red tongue and neurological signs — or to folate deficiency, since both vitamins build the haem molecule. <b>Normocytic (normal MCV) anaemia</b> means normal-sized cells and points either to <b>aplastic anaemia</b>, where the marrow simply fails to make enough of all cell lines, or to <b>haemolytic anaemia</b>, where normal or abnormal cells are destroyed before their time — inherited forms (sickle cell, thalassaemia, hereditary spherocytosis, G6PD and pyruvate kinase deficiency) make abnormal cells, while acquired forms (autoimmune, drug-induced, mechanical, infective) destroy normal ones. This MCV-based scheme turns a confusing list of anaemias into three branches — small, large, and normal — each with a short differential the dentist can reason through, and each with implications for healing, anaesthesia, and the oral signs (pallor of the mucosa and gums, the beefy-red tongue of B12 deficiency) that may first bring the patient to the dental chair.</div>
+<div class="hint">تقع أنواع فقر الدم الخمسة في خريطة بسيطة حالما تُرتّب حسب <b>متوسّط حجم الكرية (MCV)</b>، لأن الحجم يعكس الآلية. <b>فقر الدم صغير الكريات (MCV منخفض)</b> يعني خلايا صغيرة شاحبة ويشير لـ<b>عوز الحديد</b>، يؤكّده فيريتين منخفض وحديد مصل منخفض (~60–170) وTIBC مرتفع (~240–450)؛ والثلاسيميا أيضاً صغيرة الكريات لكنها وراثية بملمح حديد طبيعي، ممّا يفصلها عن عوز الحديد. <b>كبير الكريات (MCV مرتفع)</b> يشير لـ<b>فقر الدم الوبيل</b> من عوز B12 — بسبب نقص العامل الداخلي ويظهر باللسان الأحمر اللحمي والعلامات العصبية — أو عوز الفولات، إذ يبني الفيتامينان جزيء الهيم. <b>سويّ الكريات (MCV طبيعي)</b> يشير لـ<b>اللاتنسّجي</b> (فشل النقي في إنتاج كل السلالات) أو الـ<b>انحلالي</b> (تخريب الكريات مبكّراً) — الوراثي (منجلي، ثلاسيميا، كروية، G6PD، بيروفات كيناز) يصنع خلايا شاذّة، والمكتسب (مناعي، دوائي، ميكانيكي، عدوائي) يخرّب الطبيعية. وهذه الخريطة تحوّل قائمة مربكة إلى ثلاثة فروع — صغير وكبير وطبيعي — لكل໻ تشخيص تفريقي قصير، ولكل໻ أثر في الالتئام والتخدير والعلامات الفموية (شحوب المخاطية واللثة، واللسان الأحمر اللحمي) التي قد تجلب المريض للطبيب أولاً.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c12_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c12_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec13">Lec 7–8 · Bleeding Work-up &amp; Biopsy Choice (Integrated) ⭐</h2>
+<div class="card" id="c13_0">
+<div class="topic">The bleeding patient — which test tells you what</div>
+<div class="prompt">How do the hemostasis tests fit together to localise the cause of abnormal bleeding before dental surgery?</div>
+<button class="reveal" onclick="revealCard('c13_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c13_0">
+<div class="en">When a patient reports abnormal bleeding, the hemostasis tests are chosen to localise the defect to one of three compartments: platelets, the coagulation cascade, or drug effect. <b>Bleeding time</b> tests the <b>platelet-and-vessel</b> side: it is prolonged in thrombocytopenia, von Willebrand disease, vascular disorders, and by aspirin, but is <b>not</b> affected by coagulation-factor deficiencies such as haemophilia — so a long bleeding time with a normal clotting profile points to a platelet or vessel problem. The <b>platelet count</b> from the CBC confirms whether numbers (rather than function) are the issue. The coagulation cascade is then split into two arms. <b>Prothrombin time (PT)</b> tests the <b>extrinsic pathway</b> and is prolonged by vitamin K deficiency, factor VII defect, warfarin, or DIC. <b>Activated partial thromboplastin time (APTT, 30–50 s)</b> tests the <b>intrinsic pathway</b> and is prolonged by heparin, lupus anticoagulant, and deficiency of factors VIII, IX, XI, or XII — which is why haemophilia prolongs the APTT but not the bleeding time. <b>Clotting time (8–15 min)</b> is a cruder global measure. Finally, the <b>INR</b> standardises the PT specifically to monitor warfarin: normal is 1.0–1.5, a high INR means slow clotting and bleeding risk, and a low INR means clotting too readily and thrombosis risk. Read together, these tests let the dentist say whether a bleeding tendency is due to too few or poorly-functioning platelets, a specific factor deficiency, or an anticoagulant drug — and therefore whether it is safe to proceed, or whether medical liaison and INR checking are needed first.</div>
+<div class="hint">حين يشكو المريض نزفاً غير طبيعي، تُختار اختبارات الإرقاء لتوضيع الخلل في أحد ثلاثة: الصفيحات، أو سلسلة التخثّر، أو أثر دوائي. <b>زمن النزف</b> يختبر جانب <b>الصفيحات والأوعية</b>: يطول في قلّة الصفيحات وداء فون ويلبراند والاضطرابات الوعائية وبالأسبرين، لكنه <b>لا</b> يتأثّر بعوز عوامل التخثّر كالناعور — فزمن نزف طويل مع ملمح تخثّر طبيعي يشير لمشكلة صفيحات أو أوعية. و<b>تعداد الصفيحات</b> من الـCBC يؤكّد إن كان العدد (لا الوظيفة) هو المشكلة. ثم تُقسم السلسلة لذراعين. <b>زمن البروثرومبين (PT)</b> يختبر <b>المسار الخارجي</b> ويطول بعوز فيتامين K أو خلل العامل VII أو الوارفارين أو DIC. و<b>APTT (30–50ث)</b> يختبر <b>المسار الداخلي</b> ويطول بالهيبارين ومضادّ تخثّر الذئبة وعوز العوامل VIII، IX، XI، XII — ولهذا يطيل الناعور APTT لا زمن النزف. و<b>زمن التخثّر (8–15د)</b> مقياس إجمالي أخشن. وأخيراً <b>INR</b> يعيّر PT خصيصاً لمراقبة الوارفارين: الطبيعي 1.0–1.5، والمرتفع يعني تخثّراً بطيئاً وخطر نزف، والمنخفض تخثّراً سهلاً وخطر خثار. ومعاً، تدع هذه الاختبارات الطبيب يحدّد إن كان الميل النزفي من قلّة/ضعف الصفيحات، أم عوز عامل محدّد، أم دواء مضادّ للتخثّر — وبالتالي إن كان المضيّ آمناً أم يلزم التنسيق الطبي وفحص INR أولاً.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c13_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c13_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c13_1">
+<div class="topic">Choosing a biopsy or investigation technique</div>
+<div class="prompt">How does the clinician choose among the biopsy and laboratory techniques for an oral lesion?</div>
+<button class="reveal" onclick="revealCard('c13_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c13_1">
+<div class="en">Choosing how to sample or investigate an oral lesion balances how much tissue is needed, how much risk the site allows, and how fast an answer is required. For a <b>small, well-defined lesion</b>, an <b>excisional biopsy</b> is ideal because it both diagnoses and treats by removing the whole lump. For a <b>large or diffuse lesion</b> where removing everything would be mutilating, an <b>incisional biopsy</b> takes a representative sample first, so the definitive surgery can be planned on a firm diagnosis. When the lesion lies in or near structures that must not be damaged — classically the <b>parotid gland</b>, where incisional biopsy is contraindicated because of the facial nerve and the risk of seeding a pleomorphic adenoma — <b>fine needle aspiration (FNA)</b> is preferred: its small needle avoids vital structures and rapidly separates malignant from benign, at the cost of a small, sometimes unrepresentative sample. A <b>core needle biopsy</b> is the middle ground, giving a larger architecture-preserving sample and a more definitive diagnosis than FNA, but with more seeding and structural risk. For surface lesions, <b>exfoliative cytology</b> or an <b>oral brush biopsy</b> offer minimally invasive screening, while a <b>frozen section</b> is chosen when an answer is needed within about ten minutes — during surgery — to guide the extent of resection. Beyond tissue sampling, <b>imaging</b> is matched to the question (CT for bone, MRI for soft tissue, salivary glands and TMJ, ultrasound for soft-tissue lumps, radioisotope scanning for salivary or bone activity), and <b>culture and sensitivity</b> is used for infection to identify the organism and the effective antibiotic — Candida grown on Sabouraud dextrose agar, viruses identified from a fresh vesicle or antibody titre. The unifying logic is to pick the least invasive technique that will still answer the specific clinical question safely.</div>
+<div class="hint">اختيار طريقة أخذ العيّنة أو الاستقصاء يوازن كمية النسيج اللازم، والخطر الذي يسمح به الموقع، وسرعة الجواب المطلوبة. للآفة <b>الصغيرة المحدّدة</b>، الـ<b>خزعة الاستئصالية</b> مثالية لأنها تشخّص وتعالج بإزالة الكتلة كلّها. وللآفة <b>الكبيرة أو المنتشرة</b> حيث يكون استئصال الكل مشوّهاً، تأخذ الـ<b>شقّية</b> عيّنة ممثّلة أولاً، فيُخطّط للجراحة النهائية على تشخيص راسخ. وحين تقع الآفة قرب بنى يجب ألا تُتلف — كالـ<b>غدّة النكفية</b> حيث تُمنع الشقّية بسبب العصب الوجهي وخطر بذر الورم الغدّي متعدّد الأشكال — يُفضّل الـ<b>FNA</b>: إبرته الصغيرة تتجنّب البنى الحيوية وتفرق بسرعة بين الخبيث والسليم، على حساب عيّنة صغيرة قد لا تمثّل. والـ<b>خزعة السميكة</b> حلّ وسط، تعطي عيّنة أكبر تحفظ البنية وتشخيصاً أقطع من FNA، لكن بخطر بذر وأذى أكبر. وللآفات السطحية، الـ<b>خلوية التقشّرية</b> أو <b>خزعة الفرشاة</b> مسح قليل الباضعية، والـ<b>مقطع المجمّد</b> يُختار حين يلزم جواب خلال ~10 دقائق أثناء الجراحة لتوجيه مدى الاستئصال. وخارج أخذ العيّنة، يُطابق الـ<b>تصوير</b> مع السؤال (CT للعظم، MRI للنسيج الرخو والغدد والمفصل، الأمواج فوق الصوتية للكتل، النظائر للنشاط اللعابي/العظمي)، ويُستخدم الـ<b>زرع والحساسية</b> للعدوى لتحديد العامل والمضادّ الفعّال — المبيضّات على آغار سابورو، والفيروسات من حويصلة طازجة أو عيار الأضداد. والمنطق الجامع اختيار أقلّ التقنيات باضعيةً التي تجيب السؤال السريري بأمان.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c13_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c13_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec14">Lec 6–8 · Lab Values &amp; Dental Relevance</h2>
+<div class="card" id="c14_0">
+<div class="topic">Key normal laboratory values to remember</div>
+<div class="prompt">What are the key normal reference values from this chapter that the dentist should memorise?</div>
+<button class="reveal" onclick="revealCard('c14_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c14_0">
+<div class="en">A handful of reference values anchor the whole laboratory-investigations chapter, and knowing them lets the dentist interpret a report at a glance. For <b>iron studies</b> in suspected iron deficiency: <b>serum iron 60–170 mcg/dL</b> and <b>total iron binding capacity (TIBC) 240–450 mcg/dL</b>, with ferritin low when stores are depleted. For <b>hemostasis</b>: <b>clotting time 8–15 minutes</b>, and <b>activated partial thromboplastin time (APTT) 30–50 seconds</b> — the APTT reflecting the intrinsic pathway and haemophilia, the PT reflecting the extrinsic pathway, vitamin K, and factor VII. For anticoagulation monitoring: a normal <b>INR of 1.0 up to 1.5</b>, with warfarin patients usually kept in a higher therapeutic band; a high INR means bleeding risk and a low INR means clotting risk. For <b>microbiology</b>: Candida is cultured on <b>Sabouraud dextrose agar, incubated 48–72 hours at 37°C</b>. And two interpretive rules sit alongside the numbers: the <b>ESR is non-specific</b> — raised in inflammation, infection, and many chronic diseases, lowered in polycythaemia and sickle cell — so it never diagnoses a disease by itself; and CBC reference ranges are <b>age-dependent</b>, with paediatric values differing from adult ones and recent transfusion distorting the result. Committing these few figures to memory turns an intimidating lab report into a quick, safe screen before treatment.</div>
+<div class="hint">حفنة من القيم المرجعية تُرسي فصل الاستقصاءات كلّه، ومعرفتها تتيح تفسير التقرير بنظرة. لـ<b>دراسات الحديد</b> في عوز الحديد: <b>حديد المصل 60–170 mcg/dL</b> و<b>TIBC 240–450 mcg/dL</b>، مع فيريتين منخفض عند نضوب المخازن. ولـ<b>الإرقاء</b>: <b>زمن التخثّر 8–15 دقيقة</b>، و<b>APTT 30–50 ثانية</b> — APTT يعكس المسار الداخلي والناعور، وPT يعكس الخارجي وفيتامين K والعامل VII. ولمراقبة التمييع: <b>INR طبيعي 1.0 حتى 1.5</b>، ومرضى الوارفارين عادةً في نطاق علاجي أعلى؛ والمرتفع خطر نزف والمنخفض خطر خثار. ولـ<b>الأحياء الدقيقة</b>: تُزرع المبيضّات على <b>آغار سابورو دكستروز، تُحضن 48–72 ساعة بـ 37°م</b>. وقاعدتا تفسير ترافقان الأرقام: <b>ESR غير نوعي</b> — يرتفع في الالتهاب والعدوى وأمراض مزمنة كثيرة، وينخفض في كثرة الحمر والمنجلي — فلا يشخّص مرضاً وحده؛ ومجالات الـCBC <b>تعتمد على العمر</b>، وقيم الأطفال تختلف، والنقل الحديث يشوّه النتيجة. وحفظ هذه الأرقام يحوّل التقرير المخبري المخيف لمسح سريع آمن قبل العلاج.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c14_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c14_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c14_1">
+<div class="topic">Why lab investigations matter before dental treatment</div>
+<div class="prompt">Why must the dentist understand these laboratory investigations before treating a patient?</div>
+<button class="reveal" onclick="revealCard('c14_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c14_1">
+<div class="en">Laboratory investigations matter to the dentist because the mouth is treated on a living, sometimes medically compromised body, and the common invasive procedures — extractions, periodontal surgery, biopsies, implant placement — all stress the systems these tests measure. Three risks dominate. First, <b>bleeding</b>: a low platelet count, a prolonged bleeding time, a deranged PT or APTT, or a high INR in a warfarin patient all predict that a routine extraction could turn into uncontrolled haemorrhage, so these values are checked and, if abnormal, the procedure is modified or medical advice is sought first. Second, <b>infection and healing</b>: anaemia impairs oxygen delivery and wound healing, a low or dysfunctional white-cell count leaves the patient unable to contain infection and needing antibiotic cover and strict asepsis, and a raised ESR or abnormal differential may be the first hint of an undiagnosed systemic illness. Third, <b>diagnosis of the lesion itself</b>: when an oral lesion could be malignant, the correct biopsy or cytology technique — excisional, incisional, FNA, core, brush, or frozen section — together with the right imaging and culture, establishes the diagnosis on which all treatment depends, and choosing wrongly can miss a cancer or damage a vital structure. Understanding these investigations therefore lets the dentist do three things safely: predict and prevent complications, recognise systemic disease behind an oral sign, and reach a firm diagnosis before committing to treatment — which is the whole purpose of laboratory work-up in oral medicine.</div>
+<div class="hint">تهمّ الاستقصاءات المخبرية الطبيب لأن الفم يُعالَج على جسم حيّ قد يكون منقوصاً طبياً، والإجراءات الباضعة الشائعة — قلع، جراحة حول سنية، خزعات، زرعات — كلّها تُجهد الأجهزة التي تقيسها هذه الاختبارات. ثلاثة مخاطر تسود. أولاً <b>النزف</b>: صفيحات منخفضة، زمن نزف مطوّل، PT أو APTT مضطرب، أو INR مرتفع في مريض وارفارين — كلّها تتنبّأ بأن قلعاً روتينياً قد يصير نزفاً غير مضبوط، فتُفحص وإن شذّت يُعدّل الإجراء أو يُطلب رأي طبي أولاً. ثانياً <b>العدوى والالتئام</b>: فقر الدم يضعف إيصال الأكسجين والالتئام، والكريات البيض المنخفضة/المختلّة تترك المريض عاجزاً عن احتواء العدوى ويحتاج تغطية صادّة ولاعقامة صارمة، وارتفاع ESR أو خلل التعداد قد يكون أول لمحة لمرض جهازي غير مشخّص. ثالثاً <b>تشخيص الآفة نفسها</b>: حين تحتمل آفة فموية الخباثة، تقنية الخزعة/الخلوية الصحيحة — استئصالية، شقّية، FNA، سميكة، فرشاة، أو مقطع مجمّد — مع التصوير والزرع المناسبين، تُرسي التشخيص الذي يعتمد عليه العلاج، والخطأ في الاختيار قد يفوّت سرطاناً أو يُتلف بنية حيوية. ففهم هذه الاستقصاءات يتيح ثلاثاً بأمان: توقّع المضاعفات ومنعها، وتمييز المرض الجهازي خلف العلامة الفموية، وبلوغ تشخيص راسخ قبل الالتزام بالعلاج — وهذا كلّ غرض الاستقصاء المخبري في طب الفم.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c14_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c14_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c14_2">
+<div class="topic">Oral signs that should trigger a laboratory work-up</div>
+<div class="prompt">Which oral and general signs should prompt the dentist to order laboratory investigations?</div>
+<button class="reveal" onclick="revealCard('c14_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c14_2">
+<div class="en">Certain oral and general findings are signals that a laboratory work-up is needed before or instead of routine dental treatment, because they hint at a systemic disorder that the tests in this chapter are designed to detect. <b>Pallor</b> of the oral mucosa, gums, and nail beds suggests <b>anaemia</b> and calls for a CBC with indices to find its type and cause. A <b>smooth, beefy-red tongue</b> with fatigue or neurological complaints points to <b>vitamin B12 deficiency (pernicious anaemia)</b>, confirmed by a macrocytic picture. <b>Spontaneous gingival bleeding, petechiae, ecchymoses, or prolonged bleeding after minor procedures</b> point to a platelet or coagulation problem and call for a platelet count, bleeding time, PT, APTT, and — in a warfarin patient — an INR before any extraction. <b>Recurrent or unusual oral infections, poor healing, or oral candidiasis</b> (especially beneath a denture) suggest immunosuppression, diabetes, or a low white-cell count, and warrant a CBC and culture on Sabouraud agar. Any <b>persistent ulcer or lump, a red or white patch that will not resolve, or a firm neck node</b> demands a biopsy or cytology to exclude malignancy, supported by appropriate imaging. And non-specific <b>constitutional signs</b> — fever, weight loss, night sweats — with a raised ESR justify further systemic investigation. The common thread is that the mouth frequently shows the first sign of blood, immune, or malignant disease, and the dentist who recognises these cues orders the right test rather than proceeding blindly — protecting the patient and sometimes making the first diagnosis of a serious illness.</div>
+<div class="hint">بعض الموجودات الفموية والعامّة إشارات تستدعي استقصاءً مخبرياً قبل العلاج الروتيني أو بدلاً منه، لأنها تلمّح لاضطراب جهازي تُصمّم اختبارات هذا الفصل لكشفه. <b>شحوب</b> المخاطية واللثة وأظافر الأصابع يوحي بـ<b>فقر الدم</b> ويستدعي CBC بالمؤشّرات لمعرفة نوعه وسببه. و<b>لسان أملس أحمر لحمي</b> مع تعب أو شكاوى عصبية يشير لـ<b>عوز فيتامين B12 (الوبيل)</b>، يؤكّده ملمح كبير الكريات. و<b>نزف لثوي عفوي، فرفريات، كدمات، أو نزف مطوّل بعد إجراءات بسيطة</b> يشير لمشكلة صفيحات أو تخثّر ويستدعي تعداد صفيحات وزمن نزف وPT وAPTT — وفي مريض الوارفارين INR — قبل أي قلع. و<b>عداوى فموية متكرّرة أو غير معتادة، التئام رديء، أو داء مبيضّات</b> (خاصةً تحت طقم) توحي بتثبيط مناعي أو سكّري أو نقص كريات بيض، وتستدعي CBC وزرعاً على آغار سابورو. وأيّ <b>قرحة أو كتلة مستمرّة، بقعة حمراء أو بيضاء لا تزول، أو عقدة عنق صلبة</b> تستدعي خزعة أو خلوية لاستبعاد الخباثة، مع تصوير مناسب. وال<b>علامات الدستورية</b> غير النوعية — حمّى، نقص وزن، تعرّق ليلي — مع ESR مرتفع تبرّر استقصاءاً جهازياً أوسع. والخيط الجامع أن الفم يُظهر غالباً أول علامة لمرض دموي أو مناعي أو خبيث، والطبيب الذي يتعرّف على هذه الإشارات يطلب الاختبار الصحيح لا المضيّ أعمى — حامياً المريض وربّما واضعاً أول تشخيص لمرض خطير.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c14_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c14_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c14_3">
+<div class="topic">Summary — the laboratory investigations chapter at a glance</div>
+<div class="prompt">Can you summarise the whole laboratory-investigations chapter as a single connected overview?</div>
+<button class="reveal" onclick="revealCard('c14_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c14_3">
+<div class="en">This chapter equips the dentist to order and interpret the laboratory tests that make oral treatment safe and diagnosis accurate, and it hangs together as one connected story. It opens with the <b>complete blood count (CBC)</b>, the workhorse test measuring the three cell lines: the <b>white cells</b> and their differential (neutrophils for acute bacterial infection, lymphocytes for viral, and the rest) reveal infection, immune suppression, or leukaemia; the <b>red cells</b> with haemoglobin and MCV reveal anaemia and its type; and the <b>platelets</b> with MPV reveal bleeding risk. From the red-cell abnormalities the chapter builds a systematic account of the <b>five anaemias</b> — iron deficiency (microcytic, low ferritin, low serum iron, high TIBC), pernicious (macrocytic, B12 deficiency, beefy-red tongue), aplastic (marrow failure), haemolytic (early red-cell destruction, inherited or acquired), and the inherited haemoglobinopathies thalassaemia and sickle cell. It then turns to <b>hemostasis</b>: bleeding time for platelet function, clotting time, PT for the extrinsic pathway (vitamin K, factor VII, warfarin), and APTT for the intrinsic pathway (heparin, haemophilia, factors VIII–XII), with the <b>INR</b> standardising the PT to monitor warfarin (normal 1.0–1.5). The <b>ESR</b> is added as a non-specific marker of inflammation. Finally the chapter covers <b>tissue diagnosis</b> — the biopsy techniques (excisional, incisional, FNA, core, exfoliative cytology, frozen section, oral brush), the imaging modalities (CT, MRI, ultrasound, radioisotope), and culture and sensitivity for infection. Read as a whole, it is a toolkit for answering three questions before treatment: can this patient bleed, can they fight infection and heal, and what exactly is this lesion — which is precisely what a safe, thinking clinician must know.</div>
+<div class="hint">يُعدّ هذا الفصل الطبيب لطلب وتفسير الاختبارات المخبرية التي تجعل العلاج الفموي آمناً والتشخيص دقيقاً، ويترابط كقصّة واحدة. يبدأ بـ<b>تعداد الدم الكامل (CBC)</b>، الاختبار الأساس للسلالات الثلاث: ال<b>كريات البيض</b> وتعدادها التفريقي (العدلات للعدوى الجرثومية الحادّة، واللمفاويات للفيروسية) تكشف العدوى أو التثبيط المناعي أو اللوكيميا؛ وال<b>كريات الحمر</b> مع الهيموغلوبين وMCV تكشف فقر الدم ونوعه؛ وال<b>صفيحات</b> مع MPV تكشف خطر النزف. ومن شذوذات الكريات الحمر يبني حساباً منهجياً لـ<b>أنواع فقر الدم الخمسة</b> — عوز الحديد (صغير الكريات، فيريتين منخفض، حديد منخفض، TIBC مرتفع)، الوبيل (كبير الكريات، عوز B12، لسان أحمر لحمي)، اللاتنسّجي (فشل النقي)، الانحلالي (تخريب مبكّر، وراثي أو مكتسب)، واعتلالات الخضاب الوراثية الثلاسيميا والمنجلي. ثم ينتقل لـ<b>الإرقاء</b>: زمن النزف لوظيفة الصفيحات، زمن التخثّر، PT للمسار الخارجي (فيتامين K، العامل VII، الوارفارين)، وAPTT للمسار الداخلي (الهيبارين، الناعور، العوامل VIII–XII)، مع <b>INR</b> يعيّر PT لمراقبة الوارفارين (طبيعي 1.0–1.5). ويُضاف <b>ESR</b> كمؤشّر التهاب غير نوعي. وأخيراً يغطّي <b>التشخيص النسيجي</b> — تقنيات الخزعة (استئصالية، شقّية، FNA، سميكة، خلوية تقشّرية، مقطع مجمّد، فرشاة)، والتصوير (CT، MRI، أمواج فوق صوتية، نظائر)، والزرع والحساسية للعدوى. وككلّ، هو عدّة للإجابة عن ثلاثة أسئلة قبل العلاج: هل ينزف هذا المريض، هل يقاوم العدوى ويلتئم، وما هذه الآفة بالضبط — وهذا ما يجب أن يعرفه طبيب آمن مفكّر.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c14_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c14_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+
+<div class="mcq-wrap">
+<h2 class="mcq-title">📝 اختبار MCQ · اختبر نفسك (20 سؤالاً)</h2>
+<div class="mcq-note">اختر إجابةً لكل سؤال. سيظهر الصحيح بالأخضر والخطأ بالأحمر مع شرح موجز. النتيجة تُحسب تلقائياً في الأعلى.</div>
+<div class="mcq-scorebar">النتيجة · Score: <b id="mcqScore">0 / 20</b> &nbsp;·&nbsp; <button class="mcq-reset" onclick="mcqReset()">🔄 إعادة الاختبار</button></div>
+<div class="mcq-q" id="mcq0">
+<div class="mcq-stem"><span class="mcq-num">1</span> The complete blood count (CBC) measures all of the following EXCEPT:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="0" data-o="0" onclick="pick(0,0)"><b>A.</b> White blood cells</button>
+<button class="mcq-opt" data-q="0" data-o="1" onclick="pick(0,1)"><b>B.</b> Red blood cells</button>
+<button class="mcq-opt" data-q="0" data-o="2" onclick="pick(0,2)"><b>C.</b> Platelets</button>
+<button class="mcq-opt" data-q="0" data-o="3" onclick="pick(0,3)"><b>D.</b> Serum glucose</button></div>
+<div class="mcq-exp" id="exp0"></div>
+</div>
+<div class="mcq-q" id="mcq1">
+<div class="mcq-stem"><span class="mcq-num">2</span> An increase in the total white blood cell count is called:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="1" data-o="0" onclick="pick(1,0)"><b>A.</b> Leukopenia</button>
+<button class="mcq-opt" data-q="1" data-o="1" onclick="pick(1,1)"><b>B.</b> Leukocytosis</button>
+<button class="mcq-opt" data-q="1" data-o="2" onclick="pick(1,2)"><b>C.</b> Thrombocytosis</button>
+<button class="mcq-opt" data-q="1" data-o="3" onclick="pick(1,3)"><b>D.</b> Polycythemia</button></div>
+<div class="mcq-exp" id="exp1"></div>
+</div>
+<div class="mcq-q" id="mcq2">
+<div class="mcq-stem"><span class="mcq-num">3</span> Which white cell is the first responder to acute bacterial infection?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="2" data-o="0" onclick="pick(2,0)"><b>A.</b> Lymphocyte</button>
+<button class="mcq-opt" data-q="2" data-o="1" onclick="pick(2,1)"><b>B.</b> Neutrophil</button>
+<button class="mcq-opt" data-q="2" data-o="2" onclick="pick(2,2)"><b>C.</b> Eosinophil</button>
+<button class="mcq-opt" data-q="2" data-o="3" onclick="pick(2,3)"><b>D.</b> Basophil</button></div>
+<div class="mcq-exp" id="exp2"></div>
+</div>
+<div class="mcq-q" id="mcq3">
+<div class="mcq-stem"><span class="mcq-num">4</span> A high eosinophil count is classically associated with:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="3" data-o="0" onclick="pick(3,0)"><b>A.</b> Bacterial pneumonia</button>
+<button class="mcq-opt" data-q="3" data-o="1" onclick="pick(3,1)"><b>B.</b> Allergies and parasitic infections</button>
+<button class="mcq-opt" data-q="3" data-o="2" onclick="pick(3,2)"><b>C.</b> Dehydration</button>
+<button class="mcq-opt" data-q="3" data-o="3" onclick="pick(3,3)"><b>D.</b> Vitamin K deficiency</button></div>
+<div class="mcq-exp" id="exp3"></div>
+</div>
+<div class="mcq-q" id="mcq4">
+<div class="mcq-stem"><span class="mcq-num">5</span> A low red blood cell count is known as:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="4" data-o="0" onclick="pick(4,0)"><b>A.</b> Polycythemia</button>
+<button class="mcq-opt" data-q="4" data-o="1" onclick="pick(4,1)"><b>B.</b> Anemia</button>
+<button class="mcq-opt" data-q="4" data-o="2" onclick="pick(4,2)"><b>C.</b> Leukocytosis</button>
+<button class="mcq-opt" data-q="4" data-o="3" onclick="pick(4,3)"><b>D.</b> Thrombocytosis</button></div>
+<div class="mcq-exp" id="exp4"></div>
+</div>
+<div class="mcq-q" id="mcq5">
+<div class="mcq-stem"><span class="mcq-num">6</span> A low platelet count (thrombocytopenia) is most concerning to the dentist because of:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="5" data-o="0" onclick="pick(5,0)"><b>A.</b> Infection risk</button>
+<button class="mcq-opt" data-q="5" data-o="1" onclick="pick(5,1)"><b>B.</b> Bleeding risk</button>
+<button class="mcq-opt" data-q="5" data-o="2" onclick="pick(5,2)"><b>C.</b> Poor healing only</button>
+<button class="mcq-opt" data-q="5" data-o="3" onclick="pick(5,3)"><b>D.</b> Allergy</button></div>
+<div class="mcq-exp" id="exp5"></div>
+</div>
+<div class="mcq-q" id="mcq6">
+<div class="mcq-stem"><span class="mcq-num">7</span> Iron deficiency anemia classically presents as which type of anemia?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="6" data-o="0" onclick="pick(6,0)"><b>A.</b> Macrocytic</button>
+<button class="mcq-opt" data-q="6" data-o="1" onclick="pick(6,1)"><b>B.</b> Microcytic hypochromic</button>
+<button class="mcq-opt" data-q="6" data-o="2" onclick="pick(6,2)"><b>C.</b> Normocytic</button>
+<button class="mcq-opt" data-q="6" data-o="3" onclick="pick(6,3)"><b>D.</b> Hemolytic</button></div>
+<div class="mcq-exp" id="exp6"></div>
+</div>
+<div class="mcq-q" id="mcq7">
+<div class="mcq-stem"><span class="mcq-num">8</span> Which storage protein, when low, is the earliest indicator of low iron stores?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="7" data-o="0" onclick="pick(7,0)"><b>A.</b> Transferrin</button>
+<button class="mcq-opt" data-q="7" data-o="1" onclick="pick(7,1)"><b>B.</b> Ferritin</button>
+<button class="mcq-opt" data-q="7" data-o="2" onclick="pick(7,2)"><b>C.</b> Albumin</button>
+<button class="mcq-opt" data-q="7" data-o="3" onclick="pick(7,3)"><b>D.</b> Hemoglobin</button></div>
+<div class="mcq-exp" id="exp7"></div>
+</div>
+<div class="mcq-q" id="mcq8">
+<div class="mcq-stem"><span class="mcq-num">9</span> Pernicious anemia is caused by deficiency of:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="8" data-o="0" onclick="pick(8,0)"><b>A.</b> Iron</button>
+<button class="mcq-opt" data-q="8" data-o="1" onclick="pick(8,1)"><b>B.</b> Vitamin B12 (due to lack of intrinsic factor)</button>
+<button class="mcq-opt" data-q="8" data-o="2" onclick="pick(8,2)"><b>C.</b> Folate only</button>
+<button class="mcq-opt" data-q="8" data-o="3" onclick="pick(8,3)"><b>D.</b> Vitamin C</button></div>
+<div class="mcq-exp" id="exp8"></div>
+</div>
+<div class="mcq-q" id="mcq9">
+<div class="mcq-stem"><span class="mcq-num">10</span> A smooth, beefy-red tongue is a classic oral sign of:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="9" data-o="0" onclick="pick(9,0)"><b>A.</b> Iron deficiency only</button>
+<button class="mcq-opt" data-q="9" data-o="1" onclick="pick(9,1)"><b>B.</b> Vitamin B12 deficiency (pernicious anemia)</button>
+<button class="mcq-opt" data-q="9" data-o="2" onclick="pick(9,2)"><b>C.</b> Aplastic anemia</button>
+<button class="mcq-opt" data-q="9" data-o="3" onclick="pick(9,3)"><b>D.</b> Thalassaemia</button></div>
+<div class="mcq-exp" id="exp9"></div>
+</div>
+<div class="mcq-q" id="mcq10">
+<div class="mcq-stem"><span class="mcq-num">11</span> In aplastic anemia, the fundamental problem is that the bone marrow:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="10" data-o="0" onclick="pick(10,0)"><b>A.</b> Produces too many cells</button>
+<button class="mcq-opt" data-q="10" data-o="1" onclick="pick(10,1)"><b>B.</b> Doesn&#x27;t make enough new blood cells</button>
+<button class="mcq-opt" data-q="10" data-o="2" onclick="pick(10,2)"><b>C.</b> Makes abnormal hemoglobin</button>
+<button class="mcq-opt" data-q="10" data-o="3" onclick="pick(10,3)"><b>D.</b> Destroys RBCs early</button></div>
+<div class="mcq-exp" id="exp10"></div>
+</div>
+<div class="mcq-q" id="mcq11">
+<div class="mcq-stem"><span class="mcq-num">12</span> Which of the following is an INHERITED hemolytic anemia?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="11" data-o="0" onclick="pick(11,0)"><b>A.</b> Autoimmune hemolytic anemia</button>
+<button class="mcq-opt" data-q="11" data-o="1" onclick="pick(11,1)"><b>B.</b> Drug-induced hemolytic anemia</button>
+<button class="mcq-opt" data-q="11" data-o="2" onclick="pick(11,2)"><b>C.</b> Sickle cell anemia</button>
+<button class="mcq-opt" data-q="11" data-o="3" onclick="pick(11,3)"><b>D.</b> Mechanical hemolytic anemia</button></div>
+<div class="mcq-exp" id="exp11"></div>
+</div>
+<div class="mcq-q" id="mcq12">
+<div class="mcq-stem"><span class="mcq-num">13</span> The severe form of beta thalassaemia is also known as:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="12" data-o="0" onclick="pick(12,0)"><b>A.</b> Hydrops fetalis</button>
+<button class="mcq-opt" data-q="12" data-o="1" onclick="pick(12,1)"><b>B.</b> Cooley&#x27;s anemia</button>
+<button class="mcq-opt" data-q="12" data-o="2" onclick="pick(12,2)"><b>C.</b> Fanconi anemia</button>
+<button class="mcq-opt" data-q="12" data-o="3" onclick="pick(12,3)"><b>D.</b> Addison disease</button></div>
+<div class="mcq-exp" id="exp12"></div>
+</div>
+<div class="mcq-q" id="mcq13">
+<div class="mcq-stem"><span class="mcq-num">14</span> Bleeding time assesses platelet function and is NOT affected by:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="13" data-o="0" onclick="pick(13,0)"><b>A.</b> Von Willebrand disease</button>
+<button class="mcq-opt" data-q="13" data-o="1" onclick="pick(13,1)"><b>B.</b> Aspirin</button>
+<button class="mcq-opt" data-q="13" data-o="2" onclick="pick(13,2)"><b>C.</b> Haemophilia (coagulation factor deficiency)</button>
+<button class="mcq-opt" data-q="13" data-o="3" onclick="pick(13,3)"><b>D.</b> Thrombocytopenia</button></div>
+<div class="mcq-exp" id="exp13"></div>
+</div>
+<div class="mcq-q" id="mcq14">
+<div class="mcq-stem"><span class="mcq-num">15</span> A prolonged APTT (30–50 s reference) may indicate haemophilia because it reflects the:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="14" data-o="0" onclick="pick(14,0)"><b>A.</b> Extrinsic pathway</button>
+<button class="mcq-opt" data-q="14" data-o="1" onclick="pick(14,1)"><b>B.</b> Intrinsic pathway</button>
+<button class="mcq-opt" data-q="14" data-o="2" onclick="pick(14,2)"><b>C.</b> Platelet count</button>
+<button class="mcq-opt" data-q="14" data-o="3" onclick="pick(14,3)"><b>D.</b> Fibrinolysis</button></div>
+<div class="mcq-exp" id="exp14"></div>
+</div>
+<div class="mcq-q" id="mcq15">
+<div class="mcq-stem"><span class="mcq-num">16</span> A prolonged prothrombin time (PT) may indicate a deficiency of:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="15" data-o="0" onclick="pick(15,0)"><b>A.</b> Factor VIII</button>
+<button class="mcq-opt" data-q="15" data-o="1" onclick="pick(15,1)"><b>B.</b> Vitamin K or factor VII</button>
+<button class="mcq-opt" data-q="15" data-o="2" onclick="pick(15,2)"><b>C.</b> Platelets</button>
+<button class="mcq-opt" data-q="15" data-o="3" onclick="pick(15,3)"><b>D.</b> Von Willebrand factor</button></div>
+<div class="mcq-exp" id="exp15"></div>
+</div>
+<div class="mcq-q" id="mcq16">
+<div class="mcq-stem"><span class="mcq-num">17</span> A raised erythrocyte sedimentation rate (ESR) is a NON-specific indicator of:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="16" data-o="0" onclick="pick(16,0)"><b>A.</b> Dehydration</button>
+<button class="mcq-opt" data-q="16" data-o="1" onclick="pick(16,1)"><b>B.</b> Inflammation</button>
+<button class="mcq-opt" data-q="16" data-o="2" onclick="pick(16,2)"><b>C.</b> Iron level</button>
+<button class="mcq-opt" data-q="16" data-o="3" onclick="pick(16,3)"><b>D.</b> Blood glucose</button></div>
+<div class="mcq-exp" id="exp16"></div>
+</div>
+<div class="mcq-q" id="mcq17">
+<div class="mcq-stem"><span class="mcq-num">18</span> An INR result within which range is considered normal?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="17" data-o="0" onclick="pick(17,0)"><b>A.</b> 1.0 up to 1.5</button>
+<button class="mcq-opt" data-q="17" data-o="1" onclick="pick(17,1)"><b>B.</b> 2.0 to 3.0</button>
+<button class="mcq-opt" data-q="17" data-o="2" onclick="pick(17,2)"><b>C.</b> 3.5 to 4.5</button>
+<button class="mcq-opt" data-q="17" data-o="3" onclick="pick(17,3)"><b>D.</b> Below 0.5</button></div>
+<div class="mcq-exp" id="exp17"></div>
+</div>
+<div class="mcq-q" id="mcq18">
+<div class="mcq-stem"><span class="mcq-num">19</span> An excisional biopsy is defined as one that:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="18" data-o="0" onclick="pick(18,0)"><b>A.</b> Takes a small sample of a large lesion</button>
+<button class="mcq-opt" data-q="18" data-o="1" onclick="pick(18,1)"><b>B.</b> Surgically removes the whole lump or targeted area</button>
+<button class="mcq-opt" data-q="18" data-o="2" onclick="pick(18,2)"><b>C.</b> Uses a fine needle only</button>
+<button class="mcq-opt" data-q="18" data-o="3" onclick="pick(18,3)"><b>D.</b> Scrapes surface cells</button></div>
+<div class="mcq-exp" id="exp18"></div>
+</div>
+<div class="mcq-q" id="mcq19">
+<div class="mcq-stem"><span class="mcq-num">20</span> Fine needle aspiration (FNA) is especially valuable when incisional biopsy is contraindicated, such as in a:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="19" data-o="0" onclick="pick(19,0)"><b>A.</b> Small lip ulcer</button>
+<button class="mcq-opt" data-q="19" data-o="1" onclick="pick(19,1)"><b>B.</b> Parotid gland pleomorphic adenoma</button>
+<button class="mcq-opt" data-q="19" data-o="2" onclick="pick(19,2)"><b>C.</b> Fissured tongue</button>
+<button class="mcq-opt" data-q="19" data-o="3" onclick="pick(19,3)"><b>D.</b> Gingival recession</button></div>
+<div class="mcq-exp" id="exp19"></div>
+</div>
+<div class="mcq-final" id="mcqFinal"></div>
+</div>
+
+<div class="foot">
+✅ غطّى هذا الملف مادة اليوم الثالث عشر — طب الفم (Oral Medicine) ص 74–146، الاستقصاءات المخبرية: تعداد الدم الكامل (CBC) وتفسير الكريات البيض (العدلات، اللمفاويات، الوحيدات، الحمضات، الأسسات)، الكريات الحمر والصفيحات؛ أنواع فقر الدم (عوز الحديد صغير الكريات ناقص الصباغ، الوبيل بعوز B12 واللسان الأحمر اللحمي، اللاتنسّجي، الانحلالي الوراثي/المكتسب، الثلاسيميا ألفا/بيتا، المنجلي)؛ اختبارات الإرقاء (زمن النزف للصفيحات، زمن التخثّر 8–15 دقيقة، PT للمسار الخارجي وفيتامين K والعامل VII، APTT للمسار الداخلي والناعور والعوامل VIII/IX/XI/XII)؛ ESR (مؤشّر التهاب غير نوعي) وINR (طبيعي 1.0–1.5، مراقبة الوارفارين)؛ والخزعة (الاستئصالية، الشقّية، FNA، الإبرة السميكة، الخلوية التقشّرية، المقطع المجمّد، خزعة الفرشاة)، التصوير (CT/MRI/US/النظائر)، والزرع والحساسية (المبيضّات على آغار سابورو). 🩺 هذا اليوم الثاني من مادة طب الفم. وفي نهاية الملف اختبار MCQ لتقييم نفسك.<br><br>
+احفظ الملف باسم <b>oral-medicine-day13.html</b>. للتفاعل الكامل افتحه في Safari.
+</div>
+
+<script>
+let mastered={};
+function revealCard(id){document.getElementById('ans_'+id).classList.add('show');}
+function rate(id,ok){mastered[id]=ok;upd();}
+function upd(){
+  let done=Object.values(mastered).filter(v=>v===1).length;
+  document.getElementById('scoreTxt').textContent=done+' / 37';
+  document.getElementById('progBar').style.width=(done/37*100)+'%';
+}
+function revealAll(){document.querySelectorAll('.answer').forEach(a=>a.classList.add('show'));}
+function hideAll(){document.querySelectorAll('.answer').forEach(a=>a.classList.remove('show'));}
+function resetAll(){mastered={};hideAll();upd();}
+upd();
+
+const MCQ=[{"q": "The complete blood count (CBC) measures all of the following EXCEPT:", "opts": ["White blood cells", "Red blood cells", "Platelets", "Serum glucose"], "correct": 3, "exp": "The CBC measures WBCs, RBCs, and platelets — not glucose. الـCBC يقيس الكريات البيض والحمر والصفيحات، لا الغلوكوز."}, {"q": "An increase in the total white blood cell count is called:", "opts": ["Leukopenia", "Leukocytosis", "Thrombocytosis", "Polycythemia"], "correct": 1, "exp": "High WBC = leukocytosis; low = leukopenia. ارتفاع الكريات البيض = leukocytosis؛ والنقص = leukopenia."}, {"q": "Which white cell is the first responder to acute bacterial infection?", "opts": ["Lymphocyte", "Neutrophil", "Eosinophil", "Basophil"], "correct": 1, "exp": "Neutrophils rise first in acute bacterial infection. العدلات ترتفع أولاً في العدوى الجرثومية الحادّة."}, {"q": "A high eosinophil count is classically associated with:", "opts": ["Bacterial pneumonia", "Allergies and parasitic infections", "Dehydration", "Vitamin K deficiency"], "correct": 1, "exp": "Eosinophilia → allergies, asthma, parasitic infections. فرط الحمضات → تحسّس وربو وعداوى طفيلية."}, {"q": "A low red blood cell count is known as:", "opts": ["Polycythemia", "Anemia", "Leukocytosis", "Thrombocytosis"], "correct": 1, "exp": "Low RBC = anemia; high RBC = polycythemia. نقص الكريات الحمر = فقر دم؛ وارتفاعها = كثرة الحمر."}, {"q": "A low platelet count (thrombocytopenia) is most concerning to the dentist because of:", "opts": ["Infection risk", "Bleeding risk", "Poor healing only", "Allergy"], "correct": 1, "exp": "Low platelets → bleeding risk, critical before surgery. الصفيحات المنخفضة → خطر نزف، حرج قبل الجراحة."}, {"q": "Iron deficiency anemia classically presents as which type of anemia?", "opts": ["Macrocytic", "Microcytic hypochromic", "Normocytic", "Hemolytic"], "correct": 1, "exp": "Iron deficiency → microcytic hypochromic (small, pale RBCs). عوز الحديد → صغير الكريات ناقص الصباغ."}, {"q": "Which storage protein, when low, is the earliest indicator of low iron stores?", "opts": ["Transferrin", "Ferritin", "Albumin", "Hemoglobin"], "correct": 1, "exp": "Low ferritin indicates low stored iron. انخفاض الفيريتين يدلّ على نقص الحديد المخزون."}, {"q": "Pernicious anemia is caused by deficiency of:", "opts": ["Iron", "Vitamin B12 (due to lack of intrinsic factor)", "Folate only", "Vitamin C"], "correct": 1, "exp": "Pernicious anemia = B12 deficiency from lack of intrinsic factor → macrocytic. الوبيل = عوز B12 لنقص العامل الداخلي → كبير الكريات."}, {"q": "A smooth, beefy-red tongue is a classic oral sign of:", "opts": ["Iron deficiency only", "Vitamin B12 deficiency (pernicious anemia)", "Aplastic anemia", "Thalassaemia"], "correct": 1, "exp": "Beefy-red smooth tongue → B12 deficiency. اللسان الأحمر اللحمي الأملس → عوز B12."}, {"q": "In aplastic anemia, the fundamental problem is that the bone marrow:", "opts": ["Produces too many cells", "Doesn't make enough new blood cells", "Makes abnormal hemoglobin", "Destroys RBCs early"], "correct": 1, "exp": "Aplastic anemia = marrow failure to produce enough cells. اللاتنسّجي = فشل النقي في إنتاج خلايا كافية."}, {"q": "Which of the following is an INHERITED hemolytic anemia?", "opts": ["Autoimmune hemolytic anemia", "Drug-induced hemolytic anemia", "Sickle cell anemia", "Mechanical hemolytic anemia"], "correct": 2, "exp": "Sickle cell, thalassemia, spherocytosis, G6PD are inherited. المنجلي والثلاسيميا والكروية وG6PD وراثية."}, {"q": "The severe form of beta thalassaemia is also known as:", "opts": ["Hydrops fetalis", "Cooley's anemia", "Fanconi anemia", "Addison disease"], "correct": 1, "exp": "Beta thalassaemia major = Cooley's anemia; severe alpha = hydrops fetalis. بيتا الكبرى = فقر دم كولي."}, {"q": "Bleeding time assesses platelet function and is NOT affected by:", "opts": ["Von Willebrand disease", "Aspirin", "Haemophilia (coagulation factor deficiency)", "Thrombocytopenia"], "correct": 2, "exp": "Bleeding time reflects platelets/vessels, not coagulation factors like haemophilia. زمن النزف لا يتأثّر بالناعور."}, {"q": "A prolonged APTT (30–50 s reference) may indicate haemophilia because it reflects the:", "opts": ["Extrinsic pathway", "Intrinsic pathway", "Platelet count", "Fibrinolysis"], "correct": 1, "exp": "APTT reflects the intrinsic pathway (factors VIII, IX, XI, XII). APTT يعكس المسار الداخلي (العوامل VIII, IX, XI, XII)."}, {"q": "A prolonged prothrombin time (PT) may indicate a deficiency of:", "opts": ["Factor VIII", "Vitamin K or factor VII", "Platelets", "Von Willebrand factor"], "correct": 1, "exp": "Prolonged PT → vitamin K decrease or factor VII defect (extrinsic). طول PT → نقص فيتامين K أو خلل العامل VII."}, {"q": "A raised erythrocyte sedimentation rate (ESR) is a NON-specific indicator of:", "opts": ["Dehydration", "Inflammation", "Iron level", "Blood glucose"], "correct": 1, "exp": "A raised ESR indicates inflammation but is non-specific. ارتفاع ESR يدلّ على التهاب لكنه غير نوعي."}, {"q": "An INR result within which range is considered normal?", "opts": ["1.0 up to 1.5", "2.0 to 3.0", "3.5 to 4.5", "Below 0.5"], "correct": 0, "exp": "Normal INR is 1.0 up to 1.5; a high INR = bleeding risk. INR الطبيعي 1.0 حتى 1.5؛ والمرتفع = خطر نزف."}, {"q": "An excisional biopsy is defined as one that:", "opts": ["Takes a small sample of a large lesion", "Surgically removes the whole lump or targeted area", "Uses a fine needle only", "Scrapes surface cells"], "correct": 1, "exp": "Excisional removes the whole lesion; incisional samples part of it. الاستئصالية تزيل الآفة كاملةً؛ والشقّية تأخذ جزءاً."}, {"q": "Fine needle aspiration (FNA) is especially valuable when incisional biopsy is contraindicated, such as in a:", "opts": ["Small lip ulcer", "Parotid gland pleomorphic adenoma", "Fissured tongue", "Gingival recession"], "correct": 1, "exp": "FNA avoids seeding/damage in parotid lesions where incisional biopsy is contraindicated. FNA يُستخدم في آفات النكفية حيث تُمنع الخزعة الشقّية."}];
+const mcqTotal=20;
+let mcqAnswered={};
+function pick(qi,oi){
+  if(mcqAnswered[qi]!==undefined) return;
+  mcqAnswered[qi]=oi;
+  const correct=MCQ[qi].correct;
+  const opts=document.querySelectorAll('#mcq'+qi+' .mcq-opt');
+  opts.forEach(b=>{
+    b.classList.add('locked');
+    const o=parseInt(b.getAttribute('data-o'));
+    if(o===correct) b.classList.add('correct');
+    if(o===oi && oi!==correct) b.classList.add('wrong');
+  });
+  const exp=document.getElementById('exp'+qi);
+  const ok=(oi===correct);
+  exp.innerHTML=(ok?'✅ <b>إجابة صحيحة</b> — ':'❌ <b>إجابة خاطئة</b> — الصحيح: <b>'+String.fromCharCode(65+correct)+'</b> — ')+MCQ[qi].exp;
+  exp.classList.add('show');
+  mcqScore();
+}
+function mcqScore(){
+  let s=0;
+  for(const k in mcqAnswered){ if(mcqAnswered[k]===MCQ[k].correct) s++; }
+  document.getElementById('mcqScore').textContent=s+' / '+mcqTotal;
+  if(Object.keys(mcqAnswered).length===mcqTotal){
+    const f=document.getElementById('mcqFinal');
+    const pct=Math.round(s/mcqTotal*100);
+    let msg,bg;
+    if(pct>=80){msg='🎉 ممتاز! '+s+'/'+mcqTotal+' ('+pct+'%) — إتقان قوي.';bg='#c9f2cd';}
+    else if(pct>=60){msg='👍 جيّد: '+s+'/'+mcqTotal+' ('+pct+'%) — راجع البطاقات المعلّمة بـ⭐.';bg='#fff3c4';}
+    else{msg='📚 '+s+'/'+mcqTotal+' ('+pct+'%) — أعد قراءة الملف ثم أعد الاختبار.';bg='#f8cfcf';}
+    f.textContent=msg;f.style.background=bg;f.classList.add('show');
+  }
+}
+function mcqReset(){
+  mcqAnswered={};
+  document.querySelectorAll('.mcq-opt').forEach(b=>b.classList.remove('correct','wrong','locked'));
+  document.querySelectorAll('.mcq-exp').forEach(e=>{e.classList.remove('show');e.innerHTML='';});
+  document.getElementById('mcqScore').textContent='0 / '+mcqTotal;
+  document.getElementById('mcqFinal').classList.remove('show');
+  document.getElementById('mcq0').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
