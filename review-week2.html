@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Review — Day 14</title>
+<style>
+:root{color-scheme:light;}
+*{box-sizing:border-box;}
+html,body{background:#fff !important;color:#000 !important;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Tahoma,Arial,sans-serif;line-height:1.7;max-width:900px;margin:0 auto;padding:0 16px 60px;background:#fff;color:#000;}
+h1{font-size:23px;text-align:center;margin:18px 0 6px;}
+.subtitle{color:#444;font-size:14px;margin:0 0 14px;text-align:center;}
+.topbar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:2px solid #c92a2a;padding:8px 0;margin-bottom:10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;font-size:13px;}
+.topbar b{font-size:15px;}
+.ctrlbtn{background:#c92a2a;color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:12.5px;cursor:pointer;font-family:inherit;}
+.progress{background:#eee;border-radius:8px;height:10px;flex:1;min-width:120px;overflow:hidden;border:1px solid #999;}
+.progress>span{display:block;height:100%;background:#c92a2a;width:0%;}
+.toc{background:#fdf2f2;border:1px solid #f0c0c0;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:13.5px;}
+.toc a{display:block;color:#0645ad;text-decoration:none;padding:2px 0;}
+.sec{background:#c92a2a;color:#fff;padding:9px 13px;border-radius:8px;font-size:18px;margin:26px 0 12px;}
+.card{border:1.5px solid #e0a0a0;border-radius:12px;padding:15px 17px;margin:14px 0;background:#fff;}
+.topic{font-weight:700;font-size:16px;margin-bottom:6px;}
+.prompt{font-size:15.5px;margin-bottom:10px;}
+.reveal{background:#c92a2a;color:#fff;border:none;border-radius:7px;padding:8px 14px;font-size:14px;cursor:pointer;font-family:inherit;}
+.answer{display:none;margin-top:12px;}
+.answer.show{display:block;}
+.en{font-size:14.5px;line-height:1.65;margin-bottom:10px;}
+.k{background:#ffd400;color:#b00;font-weight:700;padding:1px 4px;border-radius:3px;}
+.hint{background:#fff8d6;border-inline-start:4px solid #c92a2a;border-radius:6px;padding:10px 13px;font-size:14px;line-height:1.75;direction:rtl;text-align:right;}
+.hint b{color:#b00;}
+.en b{color:#000;}
+.btns{margin-top:10px;display:flex;gap:8px;}
+.btns button{border:1.5px solid #c92a2a;background:#fff;border-radius:6px;padding:5px 12px;font-size:13px;cursor:pointer;font-family:inherit;}
+.btns .rev{border-color:#b00;color:#b00;}
+.btns .gotit{border-color:#1a8f2a;color:#1a8f2a;}
+.foot{margin-top:30px;border-top:2px solid #c92a2a;padding-top:14px;font-size:14px;color:#333;}
+.note{background:#ffd400;color:#000;border:1px solid #c92a2a;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:15px;}
+.mcq-wrap{margin-top:40px;border-top:3px double #c92a2a;padding-top:20px;}
+.mcq-title{background:#c92a2a;color:#fff;padding:10px 14px;border-radius:8px;font-size:19px;}
+.mcq-note{font-size:13px;color:#444;margin:10px 0 6px;}
+.mcq-scorebar{position:sticky;top:56px;z-index:40;background:#fff8d6;border:2px solid #c92a2a;border-radius:8px;padding:8px 12px;font-size:15px;margin:10px 0 18px;}
+.mcq-reset{background:#c92a2a;color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:13px;cursor:pointer;font-family:inherit;}
+.mcq-q{border:1.5px solid #e0a0a0;border-radius:10px;padding:14px 16px;margin:14px 0;background:#fff;}
+.mcq-stem{font-weight:600;font-size:15.5px;margin-bottom:10px;line-height:1.55;}
+.mcq-num{display:inline-block;min-width:26px;height:26px;line-height:26px;text-align:center;background:#c92a2a;color:#fff;border-radius:50%;font-size:13px;margin-inline-end:6px;}
+.mcq-opts{display:flex;flex-direction:column;gap:7px;}
+.mcq-opt{text-align:start;background:#f4f4f4;border:1.5px solid #ccc;border-radius:7px;padding:9px 12px;font-size:14.5px;cursor:pointer;transition:.12s;color:#000;font-family:inherit;}
+.mcq-opt:hover{background:#eaeaea;}
+.mcq-opt.correct{background:#c9f2cd;border-color:#1a8f2a;font-weight:600;}
+.mcq-opt.wrong{background:#f8cfcf;border-color:#c02020;}
+.mcq-opt.locked{cursor:default;opacity:.92;}
+.mcq-exp{display:none;margin-top:10px;padding:10px 12px;background:#fff8d6;border-inline-start:4px solid #c92a2a;border-radius:6px;font-size:13.5px;line-height:1.6;direction:rtl;text-align:right;}
+.mcq-exp.show{display:block;}
+.mcq-exp b{color:#b00;}
+.mcq-final{margin-top:18px;padding:14px;border-radius:10px;font-size:17px;font-weight:700;text-align:center;display:none;}
+.mcq-final.show{display:block;}
+</style>
+</head>
+<body>
+<h1>📝 Weekly Review — Day 14 🔴</h1>
+<p class="subtitle">Consolidation &amp; active-recall review of this week: Crowns &amp; Bridges (Day 11) + Oral Medicine — Diagnosis &amp; Examination (Day 12) + Laboratory Investigations (Day 13) · 12 recall cards + comprehensive 30-question MCQ · يوم مراجعة وتثبيت</p>
+
+<div class="topbar">
+<b>التقدّم:</b>
+<span id="scoreTxt">0 / 12</span>
+<div class="progress"><span id="progBar"></span></div>
+<button class="ctrlbtn" onclick="revealAll()">اكشف الكل</button>
+<button class="ctrlbtn" onclick="hideAll()">أخفِ الكل</button>
+<button class="ctrlbtn" onclick="resetAll()">إعادة</button>
+</div>
+
+<div class="note">🔴 هذا يوم مراجعة: اقرأ كل سؤال وحاول استرجاع الإجابة كاملةً <b>قبل</b> الكشف. ما لم تستطع استرجاعه = ركّز عليه. ثم أجب على اختبار الـ30 سؤالاً في النهاية بلا رجوع للبطاقات.</div>
+
+<div class="toc"><b>المحتويات:</b>
+<a href="#sec0">Review · Crowns &amp; Bridges (Day 11) ⭐</a>
+<a href="#sec1">Review · Oral Medicine — Diagnosis &amp; Examination (Day 12) ⭐</a>
+<a href="#sec2">Review · Oral Medicine — Laboratory Investigations (Day 13) ⭐</a>
+</div>
+
+<h2 class="sec" id="sec0">Review · Crowns &amp; Bridges (Day 11) ⭐</h2>
+<div class="card" id="c0_0">
+<div class="topic">Color science — the three dimensions &amp; value</div>
+<div class="prompt">What are the three dimensions of color, and which is most important in shade selection?</div>
+<button class="reveal" onclick="revealCard('c0_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_0">
+<div class="en">The three dimensions are <b>hue</b> (the color itself), <b>chroma</b> (intensity/saturation), and <b>value</b> (lightness/darkness). <span class="k">Value is the most important</span> — it is detected even by untrained observers and at any viewing distance, whereas hue and chroma blur with distance.<br>
+  <b>Best light for matching:</b> natural <b>mid-day daylight</b> (full spectrum); incandescent = too yellow, fluorescent = too blue.</div>
+<div class="hint">الأبعاد الثلاثة: <b>الصبغة (Hue)</b> (اللون نفسه)، <b>التشبّع (Chroma)</b> (الشدّة/الكثافة)، <b>القيمة (Value)</b> (الفتحة/الغمقة). <b>والقيمة الأهمّ</b> — تُكتشف حتى من غير المدرّبين وعلى أي مسافة، بينما تصعب الصبغة والتشبّع بالبعد. <b>أفضل ضوء للمطابقة:</b> ضوء النهار الطبيعي عند <b>الظهيرة</b> (طيف كامل)؛ المتوهّج أصفر جداً، والفلوري أزرق جداً.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c0_1">
+<div class="topic">Metamerism &amp; the Vita shade guides</div>
+<div class="prompt">What is metamerism, and how do the Vita Classic and Vita 3D-Master guides work?</div>
+<button class="reveal" onclick="revealCard('c0_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_1">
+<div class="en"><b>Metamerism:</b> two objects match under one light source but not under another → evaluate shade under <b>multiple light sources</b>.<br>
+  <b>Vita Classic:</b> letter groups A (red-yellow), B (yellow), C (grey), D (red-yellow-grey); sequence = <b>hue → chroma → value</b>.<br>
+  <b>Vita 3D-Master:</b> <b>value first</b> (5 levels), then chroma, then hue — more precise.<br>
+  <b>Instrumental:</b> the <b>spectrophotometer</b> is more accurate than the colorimeter.</div>
+<div class="hint"><b>Metamerism:</b> جسمان يتطابقان تحت ضوء دون آخر → قيّم اللون تحت <b>مصادر ضوء متعدّدة</b>. <b>Vita Classic:</b> مجموعات حرفية A (أحمر-أصفر)، B (أصفر)، C (رمادي)، D (أحمر-أصفر-رمادي)؛ التسلسل = <b>صبغة → تشبّع → قيمة</b>. <b>Vita 3D-Master:</b> <b>القيمة أولاً</b> (5 مستويات) ثم التشبّع ثم الصبغة — أدقّ. <b>الآلي:</b> <b>المطياف (spectrophotometer)</b> أدقّ من المقياس اللوني.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c0_2">
+<div class="topic">All-ceramic fabrication systems</div>
+<div class="prompt">What are the five all-ceramic fabrication techniques?</div>
+<button class="reveal" onclick="revealCard('c0_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_2">
+<div class="en"><b>(1) Sintering</b> (powder-slurry) — layered, esthetic → veneers/anterior. <b>(2) Slip-casting</b> (infiltrated) — porous core infiltrated with <b>lanthanum glass</b>, high strength. <b>(3) Hot-pressing</b> (pressable) — lost-wax; 1st gen leucite, <b>2nd gen lithium disilicate (IPS Empress)</b>. <b>(4) Castable.</b> <b>(5) Machinable (CAD/CAM)</b> — optical scan + milled blocks.<br>
+  <b>Transformation toughening (zirconia = "ceramic steel"):</b> ZrO₂ grains transform under crack stress, squeezing the crack shut.</div>
+<div class="hint"><b>(1) التلبيد (Sintering)</b> — طبقي جمالي → قشور/أمامي. <b>(2) السباكة بالملاط</b> — نواة مسامية مُشرَّبة بـ<b>زجاج اللانثانم</b>، قوّة عالية. <b>(3) الكبس الحراري</b> — شمع مفقود؛ جيل أول لوسايت، <b>ثانٍ ثنائي سيليكات الليثيوم (IPS Empress)</b>. <b>(4) القابل للصبّ.</b> <b>(5) القابل للفرز (CAD/CAM)</b> — مسح بصري + كتل مفروزة. <b>التقوية بالتحوّل (الزركونيا = «الفولاذ الخزفي»):</b> حبيبات ZrO₂ تتحوّل تحت إجهاد الشقّ فتُطبقه.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c0_3">
+<div class="topic">Failure in crowns &amp; bridges</div>
+<div class="prompt">What are the categories of bridge failure, and the most common biological cause?</div>
+<button class="reveal" onclick="revealCard('c0_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_3">
+<div class="en">Four categories: <b>biological, mechanical, esthetic, maintenance</b>.<br>
+  <b>Caries is the most common biological cause</b> (hard to detect under full coverage). Pulpal injury → verify with <b>thermal test (full crown)</b> or electrical (partial). Periodontal failure often from <b>over-contouring</b>.<br>
+  <b>Mechanical:</b> fixed-fixed bridges commonly fail by <b>one retainer loosening</b> while the other stays cemented.<br>
+  <b>Design:</b> under-prescribed (too few abutments) vs over-prescribed.</div>
+<div class="hint">أربع فئات: <b>حيوي، ميكانيكي، جمالي، صيانة</b>. <b>التسوّس أشيع سبب حيوي</b> (صعب الكشف تحت التغطية الكاملة). أذيّة اللب → تحقّق بـ<b>اختبار حراري (تاج كامل)</b> أو كهربائي (جزئي). والفشل حول السني غالباً من <b>الكنتور الزائد</b>. <b>الميكانيكي:</b> جسور fixed-fixed تفشل غالباً بـ<b>ارتخاء حاصرة</b> وبقاء الأخرى مثبّتة. <b>التصميم:</b> ناقص الوصف (دعامات قليلة) مقابل زائد الوصف.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec1">Review · Oral Medicine — Diagnosis &amp; Examination (Day 12) ⭐</h2>
+<div class="card" id="c1_0">
+<div class="topic">History taking &amp; question types</div>
+<div class="prompt">What are the question types in history taking, and the framework for analyzing pain?</div>
+<button class="reveal" onclick="revealCard('c1_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c1_0">
+<div class="en"><b>Question types:</b> <b>open</b> (gold standard — don't suggest an answer), questions with options (to pin down), and <b>leading</b> (best avoided).<br>
+  <b>Pain analysis (SOCRATES):</b> Site, Onset, Character, Radiation, Associations, Time course, Exacerbating/relieving factors, Severity.<br>
+  <b>Sex predilection:</b> SCC & melanoma → males; pemphigoid, epulis, mucocele → females.</div>
+<div class="hint"><b>أنواع الأسئلة:</b> <b>مفتوحة</b> (المعيار الذهبي — لا توحي بإجابة)، ذات خيارات (للتحديد)، و<b>موجِّهة</b> (الأفضل تجنّبها). <b>تحليل الألم (SOCRATES):</b> الموقع، البدء، الطابع، الانتشار، المصاحبات، المسار الزمني، عوامل التفاقم/التخفيف، الشدّة. <b>الميل الجنسي:</b> SCC والميلانوما → ذكور؛ الفقعان والورم اللثوي والقيلة المخاطية → إناث.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c1_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c1_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c1_1">
+<div class="topic">Skin &amp; facial signs</div>
+<div class="prompt">What do pale skin, jaundice, and moon facies indicate?</div>
+<button class="reveal" onclick="revealCard('c1_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c1_1">
+<div class="en"><b>Pale skin/mucosa</b> → anemia. <b>Yellow skin/sclera (jaundice)</b> → high bilirubin (liver disease). <b>Petechiae/ecchymoses</b> → bleeding disorder. <b>Grey metallic skin + uremic frost</b> → kidney failure. <b>Vitiligo</b> → loss of melanocytes.<br>
+  <b>Moon facies</b> → obesity or <b>Cushing's syndrome</b> (excess cortisol).</div>
+<div class="hint"><b>شحوب الجلد/المخاطية</b> → فقر دم. <b>اصفرار الجلد/الصلبة (يرقان)</b> → بيليروبين مرتفع (مرض كبدي). <b>فرفريات/كدمات</b> → اضطراب نزف. <b>جلد رمادي معدني + صقيع بولي</b> → فشل كلوي. <b>بهاق</b> → فقد الميلانوسايت. <b>الوجه القمري</b> → بدانة أو <b>متلازمة كوشينغ</b> (فرط كورتيزول).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c1_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c1_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c1_2">
+<div class="topic">Lymph node examination</div>
+<div class="prompt">What do node consistency and tenderness indicate, and what are the key sites?</div>
+<button class="reveal" onclick="revealCard('c1_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c1_2">
+<div class="en"><b>Consistency:</b> soft = insignificant; <b>rubbery = lymphoma</b>; <b>hard = malignancy</b>. <b>Tenderness:</b> tender = infection; non-tender = malignancy.<br>
+  <b>Significant sites:</b> supraclavicular = most significant; <b>left supraclavicular (Virchow's) = abdominal</b>; right = intrathoracic.<br>
+  <b>Drainage:</b> submental → teeth/intraoral; submandibular → floor of mouth/tongue.</div>
+<div class="hint"><b>القوام:</b> طريّة = غير مهمّ؛ <b>مطّاطية = لمفوما</b>؛ <b>صلبة = خباثة</b>. <b>المضض:</b> مؤلمة = عدوى؛ غير مؤلمة = خباثة. <b>المواقع المهمّة:</b> فوق الترقوية = الأهمّ؛ <b>اليسرى (Virchow) = بطنية</b>؛ اليمنى = داخل صدرية. <b>التصريف:</b> تحت الذقنية → الأسنان/جوف الفم؛ تحت الفكّية → أرض الفم/اللسان.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c1_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c1_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c1_3">
+<div class="topic">Lymphadenopathy &amp; normal variants</div>
+<div class="prompt">What is generalized lymphadenopathy, and which normal structures may be mistaken for lesions?</div>
+<button class="reveal" onclick="revealCard('c1_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c1_3">
+<div class="en"><b>Generalized lymphadenopathy</b> = enlargement of >2 non-contiguous groups. Causes: infections (EBV, HIV), malignancy (leukemia — 2/3 of ALL), storage diseases (Niemann-Pick, Gaucher), drugs (<b>phenytoin</b>).<br>
+  <b>Normal structures/variants:</b> Stensen's duct (opposite maxillary molars), circumvallate papillae, fissured tongue (2–5%), geographic tongue (1–3%), Fordyce granules.</div>
+<div class="hint"><b>اعتلال العقد المعمّم</b> = تضخّم أكثر من مجموعتين غير متجاورتين. الأسباب: عداوى (EBV، HIV)، خباثة (لوكيميا — 2/3 من ALL)، أمراض اختزان (نيمان-بيك، غوشيه)، أدوية (<b>الفينيتوين</b>). <b>البنى/المتغيّرات الطبيعية:</b> قناة ستنسن (مقابل الأرحاء العلوية)، الحليمات الكأسية، اللسان المشقّق (2–5%)، اللسان الجغرافي (1–3%)، حبيبات فوردايس.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c1_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c1_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec2">Review · Oral Medicine — Laboratory Investigations (Day 13) ⭐</h2>
+<div class="card" id="c2_0">
+<div class="topic">Complete blood count (CBC)</div>
+<div class="prompt">What does the CBC measure, and what do neutrophils vs lymphocytes indicate?</div>
+<button class="reveal" onclick="revealCard('c2_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c2_0">
+<div class="en"><b>CBC</b> measures WBCs, RBCs, and platelets. High WBC = leukocytosis; low = leukopenia.<br>
+  <b>Neutrophils</b> ↑ → acute <b>bacterial</b> infection. <b>Lymphocytes</b> ↑ → <b>viral</b> (EBV, HIV, herpes). <b>Eosinophils</b> ↑ → allergies/parasites.<br>
+  <b>RBC</b> low = anemia, high = polycythemia. <b>Platelets</b> low (thrombocytopenia) = <b>bleeding risk</b>. Recent transfusion distorts CBC; pediatric ranges differ.</div>
+<div class="hint"><b>CBC</b> يقيس الكريات البيض والحمر والصفيحات. ارتفاع الكريات البيض = leukocytosis؛ نقص = leukopenia. <b>العدلات</b> ↑ → عدوى <b>جرثومية</b> حادّة. <b>اللمفاويات</b> ↑ → <b>فيروسية</b> (EBV، HIV، هربس). <b>الحمضات</b> ↑ → تحسّس/طفيليات. <b>الكريات الحمر</b> منخفضة = فقر دم، مرتفعة = كثرة الحمر. <b>الصفيحات</b> المنخفضة = <b>خطر نزف</b>. النقل الحديث يشوّه الـCBC؛ ومجالات الأطفال تختلف.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c2_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c2_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c2_1">
+<div class="topic">Classifying anemia by MCV</div>
+<div class="prompt">How are the five anemias classified by MCV?</div>
+<button class="reveal" onclick="revealCard('c2_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c2_1">
+<div class="en"><b>Microcytic (low MCV):</b> <b>iron deficiency</b> (low ferritin, low serum iron 60–170, high TIBC 240–450); thalassemia.<br>
+  <b>Macrocytic (high MCV):</b> <b>pernicious anemia</b> (B12 deficiency, lack of intrinsic factor, <b>beefy-red tongue</b>); folate deficiency.<br>
+  <b>Normocytic:</b> <b>aplastic</b> (marrow failure), <b>hemolytic</b> (early destruction — inherited: sickle cell, thalassemia, G6PD; acquired: autoimmune, drug-induced).</div>
+<div class="hint"><b>صغير الكريات (MCV منخفض):</b> <b>عوز الحديد</b> (فيريتين منخفض، حديد مصل 60–170 منخفض، TIBC 240–450 مرتفع)؛ الثلاسيميا. <b>كبير الكريات (MCV مرتفع):</b> <b>الوبيل</b> (عوز B12، نقص العامل الداخلي، <b>لسان أحمر لحمي</b>)؛ عوز الفولات. <b>سويّ الكريات:</b> <b>اللاتنسّجي</b> (فشل النقي)، <b>الانحلالي</b> (تخريب مبكّر — وراثي: منجلي، ثلاسيميا، G6PD؛ مكتسب: مناعي، دوائي).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c2_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c2_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c2_2">
+<div class="topic">Hemostasis tests</div>
+<div class="prompt">What does each of bleeding time, PT, and APTT measure?</div>
+<button class="reveal" onclick="revealCard('c2_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c2_2">
+<div class="en"><b>Bleeding time:</b> platelet function — NOT affected by haemophilia. <b>Clotting time:</b> 8–15 min.<br>
+  <b>PT:</b> <b>extrinsic pathway</b> — prolonged by vitamin K deficiency, factor VII defect, warfarin.<br>
+  <b>APTT (30–50 s):</b> <b>intrinsic pathway</b> — prolonged by heparin, <b>haemophilia</b>, factors VIII/IX/XI/XII.<br>
+  <b>INR:</b> normal <b>1.0–1.5</b>; monitors warfarin; high INR = bleeding risk.</div>
+<div class="hint"><b>زمن النزف:</b> وظيفة الصفيحات — لا يتأثّر بالناعور. <b>زمن التخثّر:</b> 8–15 دقيقة. <b>PT:</b> <b>المسار الخارجي</b> — يطول بعوز فيتامين K وخلل العامل VII والوارفارين. <b>APTT (30–50ث):</b> <b>المسار الداخلي</b> — يطول بالهيبارين و<b>الناعور</b> والعوامل VIII/IX/XI/XII. <b>INR:</b> طبيعي <b>1.0–1.5</b>؛ يراقب الوارفارين؛ والمرتفع = خطر نزف.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c2_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c2_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c2_3">
+<div class="topic">Biopsy &amp; other investigations</div>
+<div class="prompt">What are the main biopsy types and when is each used?</div>
+<button class="reveal" onclick="revealCard('c2_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c2_3">
+<div class="en"><b>Excisional:</b> removes whole lesion (small lesions). <b>Incisional:</b> samples part of a large lesion. <b>FNA:</b> valuable when incisional is contraindicated — e.g., <b>parotid</b> pleomorphic adenoma. <b>Core:</b> larger sample, preserves architecture. <b>Frozen section:</b> answer in <b>~10 min</b> (during surgery). <b>Exfoliative cytology / oral brush:</b> surface screening.<br>
+  <b>ESR:</b> non-specific inflammation marker. <b>Candida:</b> cultured on Sabouraud dextrose agar.</div>
+<div class="hint"><b>الاستئصالية:</b> تزيل الآفة كاملةً (الصغيرة). <b>الشقّية:</b> عيّنة من آفة كبيرة. <b>FNA:</b> قيّم حين تُمنع الشقّية — كـ<b>النكفية</b> (ورم غدّي متعدّد الأشكال). <b>السميكة:</b> عيّنة أكبر تحفظ البنية. <b>المقطع المجمّد:</b> جواب خلال <b>~10 دقائق</b> (أثناء الجراحة). <b>الخلوية التقشّرية/الفرشاة:</b> مسح سطحي. <b>ESR:</b> مؤشّر التهاب غير نوعي. <b>المبيضّات:</b> تُزرَع على آغار سابورو دكستروز.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c2_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c2_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+
+<div class="mcq-wrap">
+<h2 class="mcq-title">📝 اختبار المراجعة الشامل · 30 سؤالاً (المواد الثلاث)</h2>
+<div class="mcq-note">أسئلة مختلطة من التيجان والجسور وطب الفم. أجب دون رجوع للبطاقات لتقييم حقيقي. الصحيح بالأخضر والخطأ بالأحمر مع شرح.</div>
+<div class="mcq-scorebar">النتيجة · Score: <b id="mcqScore">0 / 30</b> &nbsp;·&nbsp; <button class="mcq-reset" onclick="mcqReset()">🔄 إعادة الاختبار</button></div>
+<div class="mcq-q" id="mcq0">
+<div class="mcq-stem"><span class="mcq-num">1</span> Which dimension of color is the MOST important in shade selection?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="0" data-o="0" onclick="pick(0,0)"><b>A.</b> Hue</button>
+<button class="mcq-opt" data-q="0" data-o="1" onclick="pick(0,1)"><b>B.</b> Chroma</button>
+<button class="mcq-opt" data-q="0" data-o="2" onclick="pick(0,2)"><b>C.</b> Value</button>
+<button class="mcq-opt" data-q="0" data-o="3" onclick="pick(0,3)"><b>D.</b> Translucency</button></div>
+<div class="mcq-exp" id="exp0"></div>
+</div>
+<div class="mcq-q" id="mcq1">
+<div class="mcq-stem"><span class="mcq-num">2</span> The best light source for shade matching is:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="1" data-o="0" onclick="pick(1,0)"><b>A.</b> Incandescent</button>
+<button class="mcq-opt" data-q="1" data-o="1" onclick="pick(1,1)"><b>B.</b> Fluorescent</button>
+<button class="mcq-opt" data-q="1" data-o="2" onclick="pick(1,2)"><b>C.</b> Natural mid-day daylight</button>
+<button class="mcq-opt" data-q="1" data-o="3" onclick="pick(1,3)"><b>D.</b> Dental chair light</button></div>
+<div class="mcq-exp" id="exp1"></div>
+</div>
+<div class="mcq-q" id="mcq2">
+<div class="mcq-stem"><span class="mcq-num">3</span> Two objects matching under one light but not another describes:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="2" data-o="0" onclick="pick(2,0)"><b>A.</b> Opalescence</button>
+<button class="mcq-opt" data-q="2" data-o="1" onclick="pick(2,1)"><b>B.</b> Metamerism</button>
+<button class="mcq-opt" data-q="2" data-o="2" onclick="pick(2,2)"><b>C.</b> Fluorescence</button>
+<button class="mcq-opt" data-q="2" data-o="3" onclick="pick(2,3)"><b>D.</b> Translucency</button></div>
+<div class="mcq-exp" id="exp2"></div>
+</div>
+<div class="mcq-q" id="mcq3">
+<div class="mcq-stem"><span class="mcq-num">4</span> In the Vita 3D-Master guide, the FIRST dimension determined is:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="3" data-o="0" onclick="pick(3,0)"><b>A.</b> Hue</button>
+<button class="mcq-opt" data-q="3" data-o="1" onclick="pick(3,1)"><b>B.</b> Chroma</button>
+<button class="mcq-opt" data-q="3" data-o="2" onclick="pick(3,2)"><b>C.</b> Value</button>
+<button class="mcq-opt" data-q="3" data-o="3" onclick="pick(3,3)"><b>D.</b> Translucency</button></div>
+<div class="mcq-exp" id="exp3"></div>
+</div>
+<div class="mcq-q" id="mcq4">
+<div class="mcq-stem"><span class="mcq-num">5</span> Second-generation hot-pressed ceramics are based on:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="4" data-o="0" onclick="pick(4,0)"><b>A.</b> Leucite</button>
+<button class="mcq-opt" data-q="4" data-o="1" onclick="pick(4,1)"><b>B.</b> Lithium disilicate</button>
+<button class="mcq-opt" data-q="4" data-o="2" onclick="pick(4,2)"><b>C.</b> Alumina</button>
+<button class="mcq-opt" data-q="4" data-o="3" onclick="pick(4,3)"><b>D.</b> Feldspar</button></div>
+<div class="mcq-exp" id="exp4"></div>
+</div>
+<div class="mcq-q" id="mcq5">
+<div class="mcq-stem"><span class="mcq-num">6</span> Transformation-toughening zirconia is nicknamed:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="5" data-o="0" onclick="pick(5,0)"><b>A.</b> Ceramic glass</button>
+<button class="mcq-opt" data-q="5" data-o="1" onclick="pick(5,1)"><b>B.</b> Ceramic steel</button>
+<button class="mcq-opt" data-q="5" data-o="2" onclick="pick(5,2)"><b>C.</b> Ceramic gold</button>
+<button class="mcq-opt" data-q="5" data-o="3" onclick="pick(5,3)"><b>D.</b> Ceramic bone</button></div>
+<div class="mcq-exp" id="exp5"></div>
+</div>
+<div class="mcq-q" id="mcq6">
+<div class="mcq-stem"><span class="mcq-num">7</span> The MOST common biological cause of fixed-restoration failure is:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="6" data-o="0" onclick="pick(6,0)"><b>A.</b> Pulpal injury</button>
+<button class="mcq-opt" data-q="6" data-o="1" onclick="pick(6,1)"><b>B.</b> Caries</button>
+<button class="mcq-opt" data-q="6" data-o="2" onclick="pick(6,2)"><b>C.</b> Periodontal breakdown</button>
+<button class="mcq-opt" data-q="6" data-o="3" onclick="pick(6,3)"><b>D.</b> Porcelain fracture</button></div>
+<div class="mcq-exp" id="exp6"></div>
+</div>
+<div class="mcq-q" id="mcq7">
+<div class="mcq-stem"><span class="mcq-num">8</span> A fixed-fixed bridge commonly fails by:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="7" data-o="0" onclick="pick(7,0)"><b>A.</b> Both retainers loosening at once</button>
+<button class="mcq-opt" data-q="7" data-o="1" onclick="pick(7,1)"><b>B.</b> One retainer loosening while the other stays cemented</button>
+<button class="mcq-opt" data-q="7" data-o="2" onclick="pick(7,2)"><b>C.</b> Pontic dissolving</button>
+<button class="mcq-opt" data-q="7" data-o="3" onclick="pick(7,3)"><b>D.</b> Connector melting</button></div>
+<div class="mcq-exp" id="exp7"></div>
+</div>
+<div class="mcq-q" id="mcq8">
+<div class="mcq-stem"><span class="mcq-num">9</span> To verify pulp vitality under a full metal crown, use a:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="8" data-o="0" onclick="pick(8,0)"><b>A.</b> Electric pulp test</button>
+<button class="mcq-opt" data-q="8" data-o="1" onclick="pick(8,1)"><b>B.</b> Thermal test</button>
+<button class="mcq-opt" data-q="8" data-o="2" onclick="pick(8,2)"><b>C.</b> Percussion test</button>
+<button class="mcq-opt" data-q="8" data-o="3" onclick="pick(8,3)"><b>D.</b> No test</button></div>
+<div class="mcq-exp" id="exp8"></div>
+</div>
+<div class="mcq-q" id="mcq9">
+<div class="mcq-stem"><span class="mcq-num">10</span> An over-contoured crown most typically causes:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="9" data-o="0" onclick="pick(9,0)"><b>A.</b> Better hygiene</button>
+<button class="mcq-opt" data-q="9" data-o="1" onclick="pick(9,1)"><b>B.</b> Periodontal problems (plaque, under-stimulation)</button>
+<button class="mcq-opt" data-q="9" data-o="2" onclick="pick(9,2)"><b>C.</b> Increased translucency</button>
+<button class="mcq-opt" data-q="9" data-o="3" onclick="pick(9,3)"><b>D.</b> Pulp death</button></div>
+<div class="mcq-exp" id="exp9"></div>
+</div>
+<div class="mcq-q" id="mcq10">
+<div class="mcq-stem"><span class="mcq-num">11</span> The gold-standard question type in history taking is:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="10" data-o="0" onclick="pick(10,0)"><b>A.</b> Leading questions</button>
+<button class="mcq-opt" data-q="10" data-o="1" onclick="pick(10,1)"><b>B.</b> Open questions</button>
+<button class="mcq-opt" data-q="10" data-o="2" onclick="pick(10,2)"><b>C.</b> Closed yes/no questions</button>
+<button class="mcq-opt" data-q="10" data-o="3" onclick="pick(10,3)"><b>D.</b> Questions with options</button></div>
+<div class="mcq-exp" id="exp10"></div>
+</div>
+<div class="mcq-q" id="mcq11">
+<div class="mcq-stem"><span class="mcq-num">12</span> Squamous cell carcinoma of the oral cavity is more common in:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="11" data-o="0" onclick="pick(11,0)"><b>A.</b> Females</button>
+<button class="mcq-opt" data-q="11" data-o="1" onclick="pick(11,1)"><b>B.</b> Males</button>
+<button class="mcq-opt" data-q="11" data-o="2" onclick="pick(11,2)"><b>C.</b> Children</button>
+<button class="mcq-opt" data-q="11" data-o="3" onclick="pick(11,3)"><b>D.</b> Neonates</button></div>
+<div class="mcq-exp" id="exp11"></div>
+</div>
+<div class="mcq-q" id="mcq12">
+<div class="mcq-stem"><span class="mcq-num">13</span> Moon facies is most associated with:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="12" data-o="0" onclick="pick(12,0)"><b>A.</b> Addison disease</button>
+<button class="mcq-opt" data-q="12" data-o="1" onclick="pick(12,1)"><b>B.</b> Cushing&#x27;s syndrome (excess cortisol)</button>
+<button class="mcq-opt" data-q="12" data-o="2" onclick="pick(12,2)"><b>C.</b> Hyperthyroidism</button>
+<button class="mcq-opt" data-q="12" data-o="3" onclick="pick(12,3)"><b>D.</b> Diabetes insipidus</button></div>
+<div class="mcq-exp" id="exp12"></div>
+</div>
+<div class="mcq-q" id="mcq13">
+<div class="mcq-stem"><span class="mcq-num">14</span> A lymph node with a rubbery consistency is classically:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="13" data-o="0" onclick="pick(13,0)"><b>A.</b> Normal</button>
+<button class="mcq-opt" data-q="13" data-o="1" onclick="pick(13,1)"><b>B.</b> Lymphoma</button>
+<button class="mcq-opt" data-q="13" data-o="2" onclick="pick(13,2)"><b>C.</b> Acute infection</button>
+<button class="mcq-opt" data-q="13" data-o="3" onclick="pick(13,3)"><b>D.</b> A salivary gland</button></div>
+<div class="mcq-exp" id="exp13"></div>
+</div>
+<div class="mcq-q" id="mcq14">
+<div class="mcq-stem"><span class="mcq-num">15</span> A tender lymph node classically indicates:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="14" data-o="0" onclick="pick(14,0)"><b>A.</b> Malignancy</button>
+<button class="mcq-opt" data-q="14" data-o="1" onclick="pick(14,1)"><b>B.</b> Infection</button>
+<button class="mcq-opt" data-q="14" data-o="2" onclick="pick(14,2)"><b>C.</b> Lymphoma</button>
+<button class="mcq-opt" data-q="14" data-o="3" onclick="pick(14,3)"><b>D.</b> Normal finding</button></div>
+<div class="mcq-exp" id="exp14"></div>
+</div>
+<div class="mcq-q" id="mcq15">
+<div class="mcq-stem"><span class="mcq-num">16</span> Virchow&#x27;s node (left supraclavicular) is a classic sign of a(n):</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="15" data-o="0" onclick="pick(15,0)"><b>A.</b> Intrathoracic process</button>
+<button class="mcq-opt" data-q="15" data-o="1" onclick="pick(15,1)"><b>B.</b> Abdominal process</button>
+<button class="mcq-opt" data-q="15" data-o="2" onclick="pick(15,2)"><b>C.</b> Dental infection</button>
+<button class="mcq-opt" data-q="15" data-o="3" onclick="pick(15,3)"><b>D.</b> Scalp infection</button></div>
+<div class="mcq-exp" id="exp15"></div>
+</div>
+<div class="mcq-q" id="mcq16">
+<div class="mcq-stem"><span class="mcq-num">17</span> Submental lymph nodes drain the:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="16" data-o="0" onclick="pick(16,0)"><b>A.</b> Back of scalp</button>
+<button class="mcq-opt" data-q="16" data-o="1" onclick="pick(16,1)"><b>B.</b> Teeth and intraoral cavity</button>
+<button class="mcq-opt" data-q="16" data-o="2" onclick="pick(16,2)"><b>C.</b> Thyroid</button>
+<button class="mcq-opt" data-q="16" data-o="3" onclick="pick(16,3)"><b>D.</b> External ear</button></div>
+<div class="mcq-exp" id="exp16"></div>
+</div>
+<div class="mcq-q" id="mcq17">
+<div class="mcq-stem"><span class="mcq-num">18</span> Stensen&#x27;s (parotid) duct opens opposite the:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="17" data-o="0" onclick="pick(17,0)"><b>A.</b> Mandibular incisors</button>
+<button class="mcq-opt" data-q="17" data-o="1" onclick="pick(17,1)"><b>B.</b> Maxillary molars</button>
+<button class="mcq-opt" data-q="17" data-o="2" onclick="pick(17,2)"><b>C.</b> Soft palate</button>
+<button class="mcq-opt" data-q="17" data-o="3" onclick="pick(17,3)"><b>D.</b> Floor of mouth</button></div>
+<div class="mcq-exp" id="exp17"></div>
+</div>
+<div class="mcq-q" id="mcq18">
+<div class="mcq-stem"><span class="mcq-num">19</span> Generalized lymphadenopathy is defined as enlargement of:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="18" data-o="0" onclick="pick(18,0)"><b>A.</b> A single node</button>
+<button class="mcq-opt" data-q="18" data-o="1" onclick="pick(18,1)"><b>B.</b> More than 2 non-contiguous groups</button>
+<button class="mcq-opt" data-q="18" data-o="2" onclick="pick(18,2)"><b>C.</b> Only cervical nodes</button>
+<button class="mcq-opt" data-q="18" data-o="3" onclick="pick(18,3)"><b>D.</b> Only inguinal nodes</button></div>
+<div class="mcq-exp" id="exp18"></div>
+</div>
+<div class="mcq-q" id="mcq19">
+<div class="mcq-stem"><span class="mcq-num">20</span> Which drug classically causes lymphadenopathy with rash and fever?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="19" data-o="0" onclick="pick(19,0)"><b>A.</b> Amoxicillin</button>
+<button class="mcq-opt" data-q="19" data-o="1" onclick="pick(19,1)"><b>B.</b> Phenytoin</button>
+<button class="mcq-opt" data-q="19" data-o="2" onclick="pick(19,2)"><b>C.</b> Paracetamol</button>
+<button class="mcq-opt" data-q="19" data-o="3" onclick="pick(19,3)"><b>D.</b> Metformin</button></div>
+<div class="mcq-exp" id="exp19"></div>
+</div>
+<div class="mcq-q" id="mcq20">
+<div class="mcq-stem"><span class="mcq-num">21</span> A high neutrophil count classically indicates:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="20" data-o="0" onclick="pick(20,0)"><b>A.</b> Viral infection</button>
+<button class="mcq-opt" data-q="20" data-o="1" onclick="pick(20,1)"><b>B.</b> Acute bacterial infection</button>
+<button class="mcq-opt" data-q="20" data-o="2" onclick="pick(20,2)"><b>C.</b> Allergy</button>
+<button class="mcq-opt" data-q="20" data-o="3" onclick="pick(20,3)"><b>D.</b> Anemia</button></div>
+<div class="mcq-exp" id="exp20"></div>
+</div>
+<div class="mcq-q" id="mcq21">
+<div class="mcq-stem"><span class="mcq-num">22</span> Iron deficiency anemia is classically:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="21" data-o="0" onclick="pick(21,0)"><b>A.</b> Macrocytic</button>
+<button class="mcq-opt" data-q="21" data-o="1" onclick="pick(21,1)"><b>B.</b> Microcytic hypochromic</button>
+<button class="mcq-opt" data-q="21" data-o="2" onclick="pick(21,2)"><b>C.</b> Normocytic</button>
+<button class="mcq-opt" data-q="21" data-o="3" onclick="pick(21,3)"><b>D.</b> Hemolytic</button></div>
+<div class="mcq-exp" id="exp21"></div>
+</div>
+<div class="mcq-q" id="mcq22">
+<div class="mcq-stem"><span class="mcq-num">23</span> A smooth, beefy-red tongue is a classic sign of:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="22" data-o="0" onclick="pick(22,0)"><b>A.</b> Iron deficiency</button>
+<button class="mcq-opt" data-q="22" data-o="1" onclick="pick(22,1)"><b>B.</b> Vitamin B12 deficiency (pernicious anemia)</button>
+<button class="mcq-opt" data-q="22" data-o="2" onclick="pick(22,2)"><b>C.</b> Aplastic anemia</button>
+<button class="mcq-opt" data-q="22" data-o="3" onclick="pick(22,3)"><b>D.</b> Sickle cell</button></div>
+<div class="mcq-exp" id="exp22"></div>
+</div>
+<div class="mcq-q" id="mcq23">
+<div class="mcq-stem"><span class="mcq-num">24</span> Which is an INHERITED hemolytic anemia?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="23" data-o="0" onclick="pick(23,0)"><b>A.</b> Autoimmune hemolytic anemia</button>
+<button class="mcq-opt" data-q="23" data-o="1" onclick="pick(23,1)"><b>B.</b> Sickle cell anemia</button>
+<button class="mcq-opt" data-q="23" data-o="2" onclick="pick(23,2)"><b>C.</b> Drug-induced hemolytic anemia</button>
+<button class="mcq-opt" data-q="23" data-o="3" onclick="pick(23,3)"><b>D.</b> Mechanical hemolytic anemia</button></div>
+<div class="mcq-exp" id="exp23"></div>
+</div>
+<div class="mcq-q" id="mcq24">
+<div class="mcq-stem"><span class="mcq-num">25</span> The severe form of beta thalassaemia is known as:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="24" data-o="0" onclick="pick(24,0)"><b>A.</b> Hydrops fetalis</button>
+<button class="mcq-opt" data-q="24" data-o="1" onclick="pick(24,1)"><b>B.</b> Cooley&#x27;s anemia</button>
+<button class="mcq-opt" data-q="24" data-o="2" onclick="pick(24,2)"><b>C.</b> Fanconi anemia</button>
+<button class="mcq-opt" data-q="24" data-o="3" onclick="pick(24,3)"><b>D.</b> Addison disease</button></div>
+<div class="mcq-exp" id="exp24"></div>
+</div>
+<div class="mcq-q" id="mcq25">
+<div class="mcq-stem"><span class="mcq-num">26</span> A prolonged APTT (haemophilia) reflects the:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="25" data-o="0" onclick="pick(25,0)"><b>A.</b> Extrinsic pathway</button>
+<button class="mcq-opt" data-q="25" data-o="1" onclick="pick(25,1)"><b>B.</b> Intrinsic pathway</button>
+<button class="mcq-opt" data-q="25" data-o="2" onclick="pick(25,2)"><b>C.</b> Platelet count</button>
+<button class="mcq-opt" data-q="25" data-o="3" onclick="pick(25,3)"><b>D.</b> Fibrinolysis</button></div>
+<div class="mcq-exp" id="exp25"></div>
+</div>
+<div class="mcq-q" id="mcq26">
+<div class="mcq-stem"><span class="mcq-num">27</span> Bleeding time assesses platelet function and is NOT affected by:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="26" data-o="0" onclick="pick(26,0)"><b>A.</b> Von Willebrand disease</button>
+<button class="mcq-opt" data-q="26" data-o="1" onclick="pick(26,1)"><b>B.</b> Aspirin</button>
+<button class="mcq-opt" data-q="26" data-o="2" onclick="pick(26,2)"><b>C.</b> Haemophilia</button>
+<button class="mcq-opt" data-q="26" data-o="3" onclick="pick(26,3)"><b>D.</b> Thrombocytopenia</button></div>
+<div class="mcq-exp" id="exp26"></div>
+</div>
+<div class="mcq-q" id="mcq27">
+<div class="mcq-stem"><span class="mcq-num">28</span> A normal INR is:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="27" data-o="0" onclick="pick(27,0)"><b>A.</b> 1.0 up to 1.5</button>
+<button class="mcq-opt" data-q="27" data-o="1" onclick="pick(27,1)"><b>B.</b> 2.0 to 3.0</button>
+<button class="mcq-opt" data-q="27" data-o="2" onclick="pick(27,2)"><b>C.</b> 3.5 to 4.5</button>
+<button class="mcq-opt" data-q="27" data-o="3" onclick="pick(27,3)"><b>D.</b> Below 0.5</button></div>
+<div class="mcq-exp" id="exp27"></div>
+</div>
+<div class="mcq-q" id="mcq28">
+<div class="mcq-stem"><span class="mcq-num">29</span> A raised ESR is a NON-specific indicator of:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="28" data-o="0" onclick="pick(28,0)"><b>A.</b> Dehydration</button>
+<button class="mcq-opt" data-q="28" data-o="1" onclick="pick(28,1)"><b>B.</b> Inflammation</button>
+<button class="mcq-opt" data-q="28" data-o="2" onclick="pick(28,2)"><b>C.</b> Iron level</button>
+<button class="mcq-opt" data-q="28" data-o="3" onclick="pick(28,3)"><b>D.</b> Blood glucose</button></div>
+<div class="mcq-exp" id="exp28"></div>
+</div>
+<div class="mcq-q" id="mcq29">
+<div class="mcq-stem"><span class="mcq-num">30</span> FNA is especially valuable when incisional biopsy is contraindicated, such as in a:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="29" data-o="0" onclick="pick(29,0)"><b>A.</b> Lip ulcer</button>
+<button class="mcq-opt" data-q="29" data-o="1" onclick="pick(29,1)"><b>B.</b> Parotid gland tumor</button>
+<button class="mcq-opt" data-q="29" data-o="2" onclick="pick(29,2)"><b>C.</b> Fissured tongue</button>
+<button class="mcq-opt" data-q="29" data-o="3" onclick="pick(29,3)"><b>D.</b> Gingival recession</button></div>
+<div class="mcq-exp" id="exp29"></div>
+</div>
+<div class="mcq-final" id="mcqFinal"></div>
+</div>
+
+<div class="foot">
+✅ هذا ملف مراجعة اليوم الرابع عشر — يوم تثبيت لمواد الأسبوع: <b>التيجان والجسور (اليوم ١١)</b> علم اللون وأنظمة الخزف الكامل وفشل التيجان؛ <b>طب الفم — التشخيص والفحص (اليوم ١٢)</b> أخذ القصّة والفحص وعلامات الجلد وفحص العقد اللمفية؛ <b>طب الفم — الاستقصاءات المخبرية (اليوم ١٣)</b> تعداد الدم وأنواع فقر الدم واختبارات الإرقاء والخزعة. 🔴 راجع البطاقات التي لم تستطع استرجاعها، ثم أعد اختبار الـ30 سؤالاً بعد يوم وبعد ٣ أيام (التكرار المتباعد).<br><br>
+احفظ الملف باسم <b>review-week2.html</b>. للتفاعل الكامل افتحه في Safari.
+</div>
+
+<script>
+let mastered={};
+function revealCard(id){document.getElementById('ans_'+id).classList.add('show');}
+function rate(id,ok){mastered[id]=ok;upd();}
+function upd(){
+  let done=Object.values(mastered).filter(v=>v===1).length;
+  document.getElementById('scoreTxt').textContent=done+' / 12';
+  document.getElementById('progBar').style.width=(done/12*100)+'%';
+}
+function revealAll(){document.querySelectorAll('.answer').forEach(a=>a.classList.add('show'));}
+function hideAll(){document.querySelectorAll('.answer').forEach(a=>a.classList.remove('show'));}
+function resetAll(){mastered={};hideAll();upd();}
+upd();
+
+const MCQ=[{"q": "Which dimension of color is the MOST important in shade selection?", "opts": ["Hue", "Chroma", "Value", "Translucency"], "correct": 2, "exp": "Value (lightness/darkness) is detected at any distance. القيمة الأهمّ — تُكتشف على أي مسافة."}, {"q": "The best light source for shade matching is:", "opts": ["Incandescent", "Fluorescent", "Natural mid-day daylight", "Dental chair light"], "correct": 2, "exp": "Natural mid-day daylight gives the full spectrum. ضوء نهار الظهيرة يعطي الطيف الكامل."}, {"q": "Two objects matching under one light but not another describes:", "opts": ["Opalescence", "Metamerism", "Fluorescence", "Translucency"], "correct": 1, "exp": "Metamerism → evaluate under multiple lights. Metamerism → قيّم تحت مصادر متعدّدة."}, {"q": "In the Vita 3D-Master guide, the FIRST dimension determined is:", "opts": ["Hue", "Chroma", "Value", "Translucency"], "correct": 2, "exp": "3D-Master starts with value. يبدأ 3D-Master بالقيمة."}, {"q": "Second-generation hot-pressed ceramics are based on:", "opts": ["Leucite", "Lithium disilicate", "Alumina", "Feldspar"], "correct": 1, "exp": "2nd gen = lithium disilicate (IPS Empress). الجيل الثاني ثنائي سيليكات الليثيوم."}, {"q": "Transformation-toughening zirconia is nicknamed:", "opts": ["Ceramic glass", "Ceramic steel", "Ceramic gold", "Ceramic bone"], "correct": 1, "exp": "Zirconia = 'ceramic steel' — grains transform to close cracks. الزركونيا = «الفولاذ الخزفي»."}, {"q": "The MOST common biological cause of fixed-restoration failure is:", "opts": ["Pulpal injury", "Caries", "Periodontal breakdown", "Porcelain fracture"], "correct": 1, "exp": "Caries is most common, hard to detect under full coverage. التسوّس الأشيع."}, {"q": "A fixed-fixed bridge commonly fails by:", "opts": ["Both retainers loosening at once", "One retainer loosening while the other stays cemented", "Pontic dissolving", "Connector melting"], "correct": 1, "exp": "Leverage loosens one retainer. الرافعة تُرخي حاصرةً واحدة."}, {"q": "To verify pulp vitality under a full metal crown, use a:", "opts": ["Electric pulp test", "Thermal test", "Percussion test", "No test"], "correct": 1, "exp": "Full crown → thermal test. تاج كامل → اختبار حراري."}, {"q": "An over-contoured crown most typically causes:", "opts": ["Better hygiene", "Periodontal problems (plaque, under-stimulation)", "Increased translucency", "Pulp death"], "correct": 1, "exp": "Over-contour → plaque/under-stimulation → periodontal problems. الكنتور الزائد → مشاكل لثوية."}, {"q": "The gold-standard question type in history taking is:", "opts": ["Leading questions", "Open questions", "Closed yes/no questions", "Questions with options"], "correct": 1, "exp": "Open questions don't suggest an answer. الأسئلة المفتوحة لا توحي بإجابة."}, {"q": "Squamous cell carcinoma of the oral cavity is more common in:", "opts": ["Females", "Males", "Children", "Neonates"], "correct": 1, "exp": "SCC and melanoma → males. SCC والميلانوما → ذكور."}, {"q": "Moon facies is most associated with:", "opts": ["Addison disease", "Cushing's syndrome (excess cortisol)", "Hyperthyroidism", "Diabetes insipidus"], "correct": 1, "exp": "Moon facies → Cushing's (cortisol excess). الوجه القمري → كوشينغ."}, {"q": "A lymph node with a rubbery consistency is classically:", "opts": ["Normal", "Lymphoma", "Acute infection", "A salivary gland"], "correct": 1, "exp": "Rubbery = lymphoma; hard = malignancy. مطّاطية = لمفوما."}, {"q": "A tender lymph node classically indicates:", "opts": ["Malignancy", "Infection", "Lymphoma", "Normal finding"], "correct": 1, "exp": "Tender = infection; non-tender = malignancy. مؤلمة = عدوى."}, {"q": "Virchow's node (left supraclavicular) is a classic sign of a(n):", "opts": ["Intrathoracic process", "Abdominal process", "Dental infection", "Scalp infection"], "correct": 1, "exp": "Left supraclavicular → abdominal. اليسرى → بطنية."}, {"q": "Submental lymph nodes drain the:", "opts": ["Back of scalp", "Teeth and intraoral cavity", "Thyroid", "External ear"], "correct": 1, "exp": "Submental → teeth/intraoral. تحت الذقنية → الأسنان/جوف الفم."}, {"q": "Stensen's (parotid) duct opens opposite the:", "opts": ["Mandibular incisors", "Maxillary molars", "Soft palate", "Floor of mouth"], "correct": 1, "exp": "Stensen's opens opposite maxillary molars. ستنسن تفتح مقابل الأرحاء العلوية."}, {"q": "Generalized lymphadenopathy is defined as enlargement of:", "opts": ["A single node", "More than 2 non-contiguous groups", "Only cervical nodes", "Only inguinal nodes"], "correct": 1, "exp": ">2 non-contiguous groups. أكثر من مجموعتين غير متجاورتين."}, {"q": "Which drug classically causes lymphadenopathy with rash and fever?", "opts": ["Amoxicillin", "Phenytoin", "Paracetamol", "Metformin"], "correct": 1, "exp": "Phenytoin. الفينيتوين."}, {"q": "A high neutrophil count classically indicates:", "opts": ["Viral infection", "Acute bacterial infection", "Allergy", "Anemia"], "correct": 1, "exp": "Neutrophils rise in acute bacterial infection. العدلات ترتفع في العدوى الجرثومية الحادّة."}, {"q": "Iron deficiency anemia is classically:", "opts": ["Macrocytic", "Microcytic hypochromic", "Normocytic", "Hemolytic"], "correct": 1, "exp": "Iron deficiency → microcytic hypochromic. عوز الحديد → صغير الكريات ناقص الصباغ."}, {"q": "A smooth, beefy-red tongue is a classic sign of:", "opts": ["Iron deficiency", "Vitamin B12 deficiency (pernicious anemia)", "Aplastic anemia", "Sickle cell"], "correct": 1, "exp": "Beefy-red tongue → B12 deficiency. اللسان الأحمر اللحمي → عوز B12."}, {"q": "Which is an INHERITED hemolytic anemia?", "opts": ["Autoimmune hemolytic anemia", "Sickle cell anemia", "Drug-induced hemolytic anemia", "Mechanical hemolytic anemia"], "correct": 1, "exp": "Sickle cell, thalassemia, G6PD are inherited. المنجلي والثلاسيميا وG6PD وراثية."}, {"q": "The severe form of beta thalassaemia is known as:", "opts": ["Hydrops fetalis", "Cooley's anemia", "Fanconi anemia", "Addison disease"], "correct": 1, "exp": "Beta thalassaemia major = Cooley's anemia. بيتا الكبرى = فقر دم كولي."}, {"q": "A prolonged APTT (haemophilia) reflects the:", "opts": ["Extrinsic pathway", "Intrinsic pathway", "Platelet count", "Fibrinolysis"], "correct": 1, "exp": "APTT = intrinsic pathway (factors VIII/IX/XI/XII). APTT = المسار الداخلي."}, {"q": "Bleeding time assesses platelet function and is NOT affected by:", "opts": ["Von Willebrand disease", "Aspirin", "Haemophilia", "Thrombocytopenia"], "correct": 2, "exp": "Bleeding time is not affected by haemophilia. زمن النزف لا يتأثّر بالناعور."}, {"q": "A normal INR is:", "opts": ["1.0 up to 1.5", "2.0 to 3.0", "3.5 to 4.5", "Below 0.5"], "correct": 0, "exp": "Normal INR = 1.0 up to 1.5. INR الطبيعي 1.0 حتى 1.5."}, {"q": "A raised ESR is a NON-specific indicator of:", "opts": ["Dehydration", "Inflammation", "Iron level", "Blood glucose"], "correct": 1, "exp": "Raised ESR = inflammation (non-specific). ارتفاع ESR = التهاب (غير نوعي)."}, {"q": "FNA is especially valuable when incisional biopsy is contraindicated, such as in a:", "opts": ["Lip ulcer", "Parotid gland tumor", "Fissured tongue", "Gingival recession"], "correct": 1, "exp": "FNA avoids seeding/damage in parotid lesions. FNA في آفات النكفية."}];
+const mcqTotal=30;
+let mcqAnswered={};
+function pick(qi,oi){
+  if(mcqAnswered[qi]!==undefined) return;
+  mcqAnswered[qi]=oi;
+  const correct=MCQ[qi].correct;
+  const opts=document.querySelectorAll('#mcq'+qi+' .mcq-opt');
+  opts.forEach(b=>{
+    b.classList.add('locked');
+    const o=parseInt(b.getAttribute('data-o'));
+    if(o===correct) b.classList.add('correct');
+    if(o===oi && oi!==correct) b.classList.add('wrong');
+  });
+  const exp=document.getElementById('exp'+qi);
+  const ok=(oi===correct);
+  exp.innerHTML=(ok?'✅ <b>إجابة صحيحة</b> — ':'❌ <b>إجابة خاطئة</b> — الصحيح: <b>'+String.fromCharCode(65+correct)+'</b> — ')+MCQ[qi].exp;
+  exp.classList.add('show');
+  mcqScore();
+}
+function mcqScore(){
+  let s=0;
+  for(const k in mcqAnswered){ if(mcqAnswered[k]===MCQ[k].correct) s++; }
+  document.getElementById('mcqScore').textContent=s+' / '+mcqTotal;
+  if(Object.keys(mcqAnswered).length===mcqTotal){
+    const f=document.getElementById('mcqFinal');
+    const pct=Math.round(s/mcqTotal*100);
+    let msg,bg;
+    if(pct>=80){msg='🎉 ممتاز! '+s+'/'+mcqTotal+' ('+pct+'%) — إتقان قوي، أنت جاهز.';bg='#c9f2cd';}
+    else if(pct>=60){msg='👍 جيّد: '+s+'/'+mcqTotal+' ('+pct+'%) — راجع البطاقات المعلّمة بـ⭐.';bg='#fff3c4';}
+    else{msg='📚 '+s+'/'+mcqTotal+' ('+pct+'%) — أعد قراءة ملفات الأيام 11–13 ثم أعد الاختبار.';bg='#f8cfcf';}
+    f.textContent=msg;f.style.background=bg;f.classList.add('show');
+  }
+}
+function mcqReset(){
+  mcqAnswered={};
+  document.querySelectorAll('.mcq-opt').forEach(b=>b.classList.remove('correct','wrong','locked'));
+  document.querySelectorAll('.mcq-exp').forEach(e=>{e.classList.remove('show');e.innerHTML='';});
+  document.getElementById('mcqScore').textContent='0 / '+mcqTotal;
+  document.getElementById('mcqFinal').classList.remove('show');
+  document.getElementById('mcq0').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
