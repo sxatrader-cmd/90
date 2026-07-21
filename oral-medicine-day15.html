@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oral Medicine — Day 15 — Complete</title>
+<style>
+:root{color-scheme:light;}
+*{box-sizing:border-box;}
+html,body{background:#fff !important;color:#000 !important;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Tahoma,Arial,sans-serif;line-height:1.7;max-width:900px;margin:0 auto;padding:0 16px 60px;background:#fff;color:#000;}
+h1{font-size:23px;text-align:center;margin:18px 0 6px;}
+.subtitle{color:#444;font-size:14px;margin:0 0 14px;text-align:center;}
+.topbar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:2px solid #000;padding:8px 0;margin-bottom:10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;font-size:13px;}
+.topbar b{font-size:15px;}
+.ctrlbtn{background:#000;color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:12.5px;cursor:pointer;font-family:inherit;}
+.progress{background:#eee;border-radius:8px;height:10px;flex:1;min-width:120px;overflow:hidden;border:1px solid #999;}
+.progress>span{display:block;height:100%;background:#1a8f2a;width:0%;}
+.toc{background:#f7f7f7;border:1px solid #ccc;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:13.5px;}
+.toc a{display:block;color:#0645ad;text-decoration:none;padding:2px 0;}
+.sec{background:#000;color:#fff;padding:9px 13px;border-radius:8px;font-size:18px;margin:26px 0 12px;}
+.card{border:1.5px solid #999;border-radius:12px;padding:15px 17px;margin:14px 0;background:#fff;}
+.topic{font-weight:700;font-size:16px;margin-bottom:6px;}
+.prompt{font-size:15.5px;margin-bottom:10px;}
+.reveal{background:#000;color:#fff;border:none;border-radius:7px;padding:8px 14px;font-size:14px;cursor:pointer;font-family:inherit;}
+.answer{display:none;margin-top:12px;}
+.answer.show{display:block;}
+.en{font-size:14.5px;line-height:1.65;margin-bottom:10px;}
+.k{background:#ffd400;color:#b00;font-weight:700;padding:1px 4px;border-radius:3px;}
+.hint{background:#fff8d6;border-inline-start:4px solid #000;border-radius:6px;padding:10px 13px;font-size:14px;line-height:1.75;direction:rtl;text-align:right;}
+.hint b{color:#b00;}
+.en b{color:#000;}
+.btns{margin-top:10px;display:flex;gap:8px;}
+.btns button{border:1.5px solid #000;background:#fff;border-radius:6px;padding:5px 12px;font-size:13px;cursor:pointer;font-family:inherit;}
+.btns .rev{border-color:#b00;color:#b00;}
+.btns .gotit{border-color:#1a8f2a;color:#1a8f2a;}
+.foot{margin-top:30px;border-top:2px solid #000;padding-top:14px;font-size:14px;color:#333;}
+.note{background:#ffd400;color:#000;border:1px solid #000;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:15px;}
+.mcq-wrap{margin-top:40px;border-top:3px double #000;padding-top:20px;}
+.mcq-title{background:#000;color:#fff;padding:10px 14px;border-radius:8px;font-size:19px;}
+.mcq-note{font-size:13px;color:#444;margin:10px 0 6px;}
+.mcq-scorebar{position:sticky;top:56px;z-index:40;background:#fff8d6;border:2px solid #000;border-radius:8px;padding:8px 12px;font-size:15px;margin:10px 0 18px;}
+.mcq-reset{background:#000;color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:13px;cursor:pointer;font-family:inherit;}
+.mcq-q{border:1.5px solid #999;border-radius:10px;padding:14px 16px;margin:14px 0;background:#fff;}
+.mcq-stem{font-weight:600;font-size:15.5px;margin-bottom:10px;line-height:1.55;}
+.mcq-num{display:inline-block;min-width:26px;height:26px;line-height:26px;text-align:center;background:#000;color:#fff;border-radius:50%;font-size:13px;margin-inline-end:6px;}
+.mcq-opts{display:flex;flex-direction:column;gap:7px;}
+.mcq-opt{text-align:start;background:#f4f4f4;border:1.5px solid #ccc;border-radius:7px;padding:9px 12px;font-size:14.5px;cursor:pointer;transition:.12s;color:#000;font-family:inherit;}
+.mcq-opt:hover{background:#eaeaea;}
+.mcq-opt.correct{background:#c9f2cd;border-color:#1a8f2a;font-weight:600;}
+.mcq-opt.wrong{background:#f8cfcf;border-color:#c02020;}
+.mcq-opt.locked{cursor:default;opacity:.92;}
+.mcq-exp{display:none;margin-top:10px;padding:10px 12px;background:#fff8d6;border-inline-start:4px solid #000;border-radius:6px;font-size:13.5px;line-height:1.6;direction:rtl;text-align:right;}
+.mcq-exp.show{display:block;}
+.mcq-exp b{color:#b00;}
+.mcq-final{margin-top:18px;padding:14px;border-radius:10px;font-size:17px;font-weight:700;text-align:center;display:none;}
+.mcq-final.show{display:block;}
+</style>
+</head>
+<body>
+<h1>Oral Medicine — Day 15 — Complete 🩺</h1>
+<p class="subtitle">طب الفم ص ١٤٧–٢١٩ · القرحات والآفات الحويصلية الفقاعية: مصطلحات الآفات → HSV (التهاب اللثة والفم الأوّلي، الهربس الناكس) → VZV (جدري الماء، الحزام الناري، الألم التالي للهربس) → CMV وكوكساكي (الذباح الحلئي، اليد والقدم والفم) → الحمامى عديدة الأشكال وSJS/TEN → القرحات القلاعية الناكسة (RAS) وداء بهجت · 39 بطاقة + اختبار MCQ · English + شرح عربي وافٍ</p>
+
+<div class="topbar">
+<b>التقدّم:</b>
+<span id="scoreTxt">0 / 39</span>
+<div class="progress"><span id="progBar"></span></div>
+<button class="ctrlbtn" onclick="revealAll()">اكشف الكل</button>
+<button class="ctrlbtn" onclick="hideAll()">أخفِ الكل</button>
+<button class="ctrlbtn" onclick="resetAll()">إعادة</button>
+</div>
+
+<div class="note">📌 طريقة الاستعمال: اقرأ السؤال، استرجع الإجابة بصوتك، ثم اكشفها وقيّم نفسك. البطاقات المعلّمة بـ⭐ عالية العائد. وفي نهاية الملف اختبار MCQ.</div>
+
+<div class="toc"><b>المحتويات:</b>
+<a href="#sec0">Lec 1 · Lesion Terminology ⭐</a>
+<a href="#sec1">Lec 1 · Herpes Simplex Virus (HSV) ⭐</a>
+<a href="#sec2">Lec 1 · Varicella-Zoster Virus (VZV) ⭐</a>
+<a href="#sec3">Lec 1 · Cytomegalovirus (CMV)</a>
+<a href="#sec4">Lec 1 · Coxsackievirus ⭐</a>
+<a href="#sec5">Lec 1 · Erythema Multiforme (EM) ⭐</a>
+<a href="#sec6">Lec 1 · NUG &amp; NUP</a>
+<a href="#sec7">Lec 3 · Recurrent Aphthous Stomatitis (RAS) ⭐</a>
+<a href="#sec8">Lec 3 · Behçet Disease</a>
+<a href="#sec9">Lec 4 · Pemphigus Vulgaris ⭐</a>
+<a href="#sec10">Lec 4 · Mucous Membrane Pemphigoid ⭐</a>
+<a href="#sec11">Lec 1–4 · Ulcer Differential Diagnosis (Integrated) ⭐</a>
+<a href="#sec12">Lec 1–4 · Synthesis &amp; Dental Relevance</a>
+</div>
+
+<h2 class="sec" id="sec0">Lec 1 · Lesion Terminology ⭐</h2>
+<div class="card" id="c0_0">
+<div class="topic">Elevated lesions — papules, plaques, nodules, vesicles, bullae</div>
+<div class="prompt">Define papules, plaques, nodules, vesicles, and bullae.</div>
+<button class="reveal" onclick="revealCard('c0_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_0">
+<div class="en"><ul>
+  <li><b>Papules:</b> solid raised lesions <b>&lt; 1 cm</b>, with a dome-shaped structure (e.g., the yellow-white papules of <b>pseudomembranous candidiasis</b>).</li>
+  <li><b>Plaques:</b> raised lesions <b>&gt; 1 cm</b> — essentially large papules.</li>
+  <li><b>Nodules:</b> solid raised lesions with deeper involvement (e.g., the <b>irritation fibroma</b>).</li>
+  <li><b>Vesicles:</b> small blisters containing <b>clear fluid, &lt; 1 cm</b>.</li>
+  <li><b>Bullae:</b> elevated blisters containing <b>clear fluid, &gt; 1 cm</b>.</li></ul></div>
+<div class="hint"><ul>
+  <li><b>الحطاطات (Papules):</b> آفات صلبة مرتفعة <b>&lt; 1سم</b>، بشكل قبّي (كالحطاطات البيضاء الصفراء في <b>داء المبيضّات الغشائي الكاذب</b>).</li>
+  <li><b>اللويحات (Plaques):</b> آفات مرتفعة <b>&gt; 1سم</b> — أساساً حطاطات كبيرة.</li>
+  <li><b>العقيدات (Nodules):</b> آفات صلبة مرتفعة بإصابة أعمق (كـ<b>الورم الليفي التهيّجي</b>).</li>
+  <li><b>الحويصلات (Vesicles):</b> فقاعات صغيرة بسائل <b>صافٍ، &lt; 1سم</b>.</li>
+  <li><b>الفقاعات (Bullae):</b> فقاعات مرتفعة بسائل <b>صافٍ، &gt; 1سم</b>.</li></ul></div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c0_1">
+<div class="topic">Erosions, pustules &amp; ulcers</div>
+<div class="prompt">How do erosions, pustules, and ulcers differ?</div>
+<button class="reveal" onclick="revealCard('c0_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_1">
+<div class="en"><ul>
+  <li><b>Erosions:</b> <b>red</b> lesions often caused by rupture of vesicles/bullae, or trauma; may also result from thinning or atrophy of the epithelium in inflammatory diseases such as <b>lichen planus</b>. <span class="k">Erosions should not be mistaken for ulcers</span> (which are covered with fibrin and are yellow), although erosions may develop into ulcers.</li>
+  <li><b>Pustules:</b> blisters containing <b>purulent material</b> — appear yellow.</li>
+  <li><b>Ulcers:</b> well-circumscribed, sometimes depressed lesions with an <b>epithelial defect covered by a fibrin clot</b>, giving a <b>yellow-white</b> appearance (e.g., aphthous).</li></ul></div>
+<div class="hint"><ul>
+  <li><b>التآكلات (Erosions):</b> آفات <b>حمراء</b> غالباً من تمزّق الحويصلات/الفقاعات أو الرضّ؛ وقد تنتج من ترقّق أو ضمور الظهارة في أمراض التهابية كـ<b>الحزاز المسطّح</b>. <b>ولا يجب خلط التآكلات بالقرحات</b> (المغطّاة بالفيبرين والصفراء)، وإن كانت التآكلات قد تتطوّر لقرحات.</li>
+  <li><b>البثرات (Pustules):</b> فقاعات بمادّة <b>قيحية</b> — تبدو صفراء.</li>
+  <li><b>القرحات (Ulcers):</b> آفات محدّدة، أحياناً منخفضة، بـ<b>عيب ظهاري مغطّى بخثرة فيبرين</b>، مُعطيةً مظهراً <b>أصفر-أبيض</b> (كالقلاعية).</li></ul></div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c0_2">
+<div class="topic">Purpura — petechiae, purpura, ecchymoses</div>
+<div class="prompt">What is purpura, and how is it classified by size?</div>
+<button class="reveal" onclick="revealCard('c0_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_2">
+<div class="en"><b>Purpura:</b> reddish to purple discolorations caused by <b>blood leaking from vessels into the connective tissue</b>. A key diagnostic feature: <span class="k">these lesions do NOT blanch when pressure is applied</span> (unlike inflammatory redness).<br>
+  <b>Classified by size:</b>
+  <ul><li><b>Petechiae:</b> &lt; 0.3 cm.</li>
+  <li><b>Purpura:</b> 0.4–0.9 cm.</li>
+  <li><b>Ecchymoses:</b> &gt; 1 cm.</li></ul>
+  Purpura may indicate a bleeding disorder, platelet problem, or vascular fragility.</div>
+<div class="hint"><b>الفرفرية (Purpura):</b> تلوّنات حمراء إلى أرجوانية من <b>تسرّب الدم من الأوعية للنسيج الضامّ</b>. وميزة تشخيصية مفتاحية: <b>هذه الآفات لا تشحب عند الضغط</b> (بخلاف الاحمرار الالتهابي). <b>تُصنَّف حسب الحجم:</b> <b>الفرفريات (Petechiae):</b> &lt; 0.3سم. <b>الفرفرية (Purpura):</b> 0.4–0.9سم. <b>الكدمات (Ecchymoses):</b> &gt; 1سم. وقد تدلّ الفرفرية على اضطراب نزف أو مشكلة صفيحات أو هشاشة وعائية.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c0_3">
+<div class="topic">Classification of ulcerative/vesiculobullous lesions</div>
+<div class="prompt">How are ulcerative, vesicular, and bullous lesions classified by clinical presentation?</div>
+<button class="reveal" onclick="revealCard('c0_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_3">
+<div class="en">These lesions are classified into <b>four clinical patterns</b>:
+  <ol><li><b>The patient with acute multiple ulcers</b> — viral/bacterial stomatitis, allergic and hypersensitivity reactions (esp. erythema multiforme and contact allergic stomatitis), and medication-caused lesions (e.g., cancer chemotherapy).</li>
+  <li><b>The patient with chronic multiple ulcers.</b></li>
+  <li><b>The patient with recurring oral ulcers.</b></li>
+  <li><b>The patient with single ulcers.</b></li></ol>
+  <b>Acute multiple ulcer causes include:</b> HSV, varicella-zoster, CMV, coxsackievirus, necrotizing ulcerative gingivitis/periodontitis, erythema multiforme, Stevens-Johnson syndrome/toxic epidermal necrolysis, and plasma cell stomatitis.</div>
+<div class="hint">تُصنَّف هذه الآفات لـ<b>أربعة أنماط سريرية</b>: (١) <b>مريض القرحات المتعدّدة الحادّة</b> — التهاب فم فيروسي/جرثومي، تفاعلات تحسّسية وفرط حساسية (خاصةً حمامى عديدة الأشكال والتهاب فم تماسي تحسّسي)، وآفات دوائية (كالكيماوي). (٢) <b>مريض القرحات المتعدّدة المزمنة.</b> (٣) <b>مريض القرحات الفموية الناكسة.</b> (٤) <b>مريض القرحة المفردة.</b> <b>أسباب القرحات المتعدّدة الحادّة:</b> HSV، الحماق النطاقي، CMV، فيروس كوكساكي، التهاب اللثة/حول السنّ التقرّحي المنخّر، حمامى عديدة الأشكال، متلازمة ستيفنز-جونسون/انحلال البشرة السمّي، والتهاب الفم البلازمي.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec1">Lec 1 · Herpes Simplex Virus (HSV) ⭐</h2>
+<div class="card" id="c1_0">
+<div class="topic">HSV — etiology, latency &amp; sites</div>
+<div class="prompt">How does HSV establish primary and recurrent infection, and where?</div>
+<button class="reveal" onclick="revealCard('c1_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c1_0">
+<div class="en"><b>Primary infection</b> occurs on initial contact — by inoculation of mucosa, skin, and eye with infected secretions. The virus travels along <b>sensory nerve axons</b> and establishes chronic <b>latent infection in the sensory ganglion (trigeminal ganglion)</b>. <b>Extraneuronal latency</b> (HSV in epithelium) may play a role in recurrent lip lesions.<br>
+  <b>Recurrent HSV:</b> the virus reactivates at latent sites and travels <b>centripetally</b> to mucosa/skin, where it is directly cytopathic → localized vesicles or ulcers.<br>
+  <b>Sites:</b> oral & genital mucosa, and the eye. <b>Above the waist → HSV-1; below → HSV-2</b> (though overlap occurs). <b>HSV keratitis</b> (cornea) is a major cause of blindness; <b>herpetic whitlow</b> = finger infection (an occupational hazard before gloves).</div>
+<div class="hint"><b>العدوى الأوّلية</b> تحدث عند التماس الأول — بتلقيح المخاطية والجلد والعين بإفرازات معدية. ويسير الفيروس على <b>محاور الأعصاب الحسّية</b> ويؤسّس <b>عدوى كامنة مزمنة في العقدة الحسّية (عقدة مثلّث التوائم)</b>. و<b>الكمون خارج العصبوني</b> (HSV في الظهارة) قد يشارك في آفات الشفة الناكسة. <b>HSV الناكس:</b> ينشّط الفيروس في مواقع الكمون ويسير <b>نحو المركز</b> للمخاطية/الجلد، حيث يكون مُمرِضاً خلوياً مباشرةً → حويصلات أو قرحات موضعية. <b>المواقع:</b> المخاطية الفموية والتناسلية والعين. <b>فوق الخصر → HSV-1؛ تحته → HSV-2</b> (مع تداخل). <b>التهاب القرنية بالـHSV</b> سبب رئيس للعمى؛ و<b>الداحس الهربسي</b> = عدوى الإصبع (خطر مهني قبل القفّازات).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c1_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c1_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c1_1">
+<div class="topic">Primary herpetic gingivostomatitis</div>
+<div class="prompt">What are the clinical manifestations and oral findings of primary herpetic gingivostomatitis?</div>
+<button class="reveal" onclick="revealCard('c1_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c1_1">
+<div class="en"><b>Most primary HSV-1 infections are subclinical</b>, generally in children, teenagers, and young adults.<br>
+  <b>Prodrome:</b> a 1–3-day viral prodrome of <b>fever, loss of appetite, malaise, myalgia</b>, sometimes headache and nausea. Oral pain → poor intake; patients may need <b>hospitalization for hydration</b>. It is <b>self-limiting</b>, resolving in <b>10–14 days</b>.<br>
+  <b>Oral findings:</b> erythema and clusters of vesicles/ulcers on <b>both keratinized</b> (hard palate, attached gingiva, dorsum of tongue) <b>and non-keratinized</b> mucosa. Vesicles rapidly break into ulcers (1–5 mm) that <b>coalesce with scalloped borders</b> and marked surrounding erythema. The gingiva is erythematous, the mouth extremely painful; pharyngitis causes swallowing difficulty.</div>
+<div class="hint"><b>معظم عداوى HSV-1 الأوّلية تحت سريرية</b>، عادةً في الأطفال والمراهقين والشباب. <b>البادرة:</b> بادرة فيروسية 1–3 أيام من <b>حمّى وفقد شهية وتوعّك وألم عضلي</b>، وأحياناً صداع وغثيان. والألم الفموي → ضعف تناول؛ وقد يحتاج المرضى <b>إدخالاً للإماهة</b>. وهو <b>محدود ذاتياً</b>، يزول في <b>10–14 يوماً</b>. <b>الموجودات الفموية:</b> حمامى وعناقيد حويصلات/قرحات على <b>المخاطية المتقرّنة</b> (الحنك الصلب، اللثة الملتصقة، ظهر اللسان) <b>وغير المتقرّنة</b>. وتنكسر الحويصلات سريعاً لقرحات (1–5مم) <b>تتلاحم بحواف مسنّنة</b> وحمامى محيطة واضحة. واللثة محمرّة، والفم مؤلم جداً؛ والتهاب البلعوم يسبّب صعوبة بلع.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c1_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c1_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c1_2">
+<div class="topic">Recrudescent (recurrent) oral HSV</div>
+<div class="prompt">What is recrudescent HSV, and what triggers it?</div>
+<button class="reveal" onclick="revealCard('c1_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c1_2">
+<div class="en"><b>Reactivation of HSV</b> may cause <b>asymptomatic shedding</b> in saliva/secretions — an important transmission risk — and may also cause ulcers. Asymptomatic shedding occurs in <b>8–10% of patients following dental treatment</b>.<br>
+  The term <b>recrudescent HSV</b> refers to the actual ulcerations caused by reactivated virus. <b>Triggers:</b> fever, ultraviolet radiation, trauma, stress, and menstruation.<br>
+  <b>Recurrent herpes labialis (RHL):</b> recrudescent HSV on the lips — occurs in <b>20–40%</b> of young adults; a prodrome of <b>itching, tingling, or burning</b> ~50% of the time, then papules → vesicles → ulcers → crusting → resolution. Pain is generally present only in the first two days.</div>
+<div class="hint"><b>إعادة تنشيط HSV</b> قد تسبّب <b>طرحاً لا عرضياً</b> في اللعاب/الإفرازات — خطر انتقال مهمّ — وقد تسبّب قرحات. والطرح اللاعرضي يحدث في <b>8–10% من المرضى بعد العلاج السنّي</b>. ومصطلح <b>HSV الناكس (recrudescent)</b> يشير للتقرّحات الفعلية من الفيروس المُعاد تنشيطه. <b>المحرّضات:</b> الحمّى، الأشعّة فوق البنفسجية، الرضّ، الشدّة، والطمث. <b>الهربس الشفوي الناكس (RHL):</b> HSV ناكس على الشفة — يحدث في <b>20–40%</b> من الشباب؛ بادرة <b>حكّة أو نخز أو حرقة</b> ~50% من الوقت، ثم حطاطات → حويصلات → قرحات → تقشّر → زوال. والألم عادةً في أول يومين فقط.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c1_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c1_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c1_3">
+<div class="topic">HSV — diagnosis &amp; management</div>
+<div class="prompt">How is HSV infection diagnosed and managed?</div>
+<button class="reveal" onclick="revealCard('c1_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c1_3">
+<div class="en"><b>Diagnosis:</b> usually clinical; can be confirmed by <b>viral culture</b>, <b>PCR</b> (most sensitive), direct fluorescent antibody, or cytology (Tzanck smear showing multinucleated giant cells). Antibody titers help confirm a primary infection.<br>
+  <b>Management:</b>
+  <ul><li><b>Primary gingivostomatitis:</b> supportive — hydration, nutrition, analgesics, antipyretics; <b>antivirals (acyclovir)</b> if started early or in immunocompromised patients.</li>
+  <li><b>Recurrent herpes labialis:</b> topical or systemic antivirals, most effective in the <b>prodromal stage</b>; sunscreen prevents UV-triggered RHL.</li>
+  <li>In immunocompromised patients, HSV can be severe/persistent and requires systemic antivirals.</li></ul></div>
+<div class="hint"><b>التشخيص:</b> سريري عادةً؛ ويُؤكَّد بـ<b>الزرع الفيروسي</b>، <b>PCR</b> (الأحسّ)، الأضداد المتألّقة المباشرة، أو الخلوية (لطاخة تزانك بخلايا عرطلة متعدّدة النوى). وعيارات الأضداد تساعد بتأكيد العدوى الأوّلية. <b>التدبير:</b> <b>التهاب اللثة والفم الأوّلي:</b> داعم — إماهة، تغذية، مسكّنات، خافضات حرارة؛ و<b>مضادّات الفيروسات (أسيكلوفير)</b> إن بُدئت مبكّراً أو في المثبَّطين مناعياً. <b>الهربس الشفوي الناكس:</b> مضادّات فيروسات موضعية أو جهازية، الأكثر فعالية في <b>الطور البادري</b>؛ وواقي الشمس يمنع RHL المُحرَّض بالأشعّة. وفي المثبَّطين مناعياً قد يكون HSV شديداً/مستمرّاً ويتطلّب مضادّات جهازية.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c1_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c1_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec2">Lec 1 · Varicella-Zoster Virus (VZV) ⭐</h2>
+<div class="card" id="c2_0">
+<div class="topic">VZV — etiology &amp; pathogenesis</div>
+<div class="prompt">How does VZV cause primary and reactivation disease?</div>
+<button class="reveal" onclick="revealCard('c2_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c2_0">
+<div class="en"><b>Primary infection</b> with varicella-zoster virus (VZV, an α-herpesvirus) causes <b>varicella (chickenpox)</b>. The virus then becomes latent, usually in the <b>dorsal root ganglia or cranial nerve ganglia</b>. <b>Reactivation</b> produces <b>herpes zoster infection (HZI)</b>, commonly called <b>shingles</b>.<br>
+  The incidence of HZI <b>increases with age and immunosuppression</b> — rising to 10 per 1000 in those over 75. It is common in the elderly, cancer chemotherapy patients, those on chronic immunosuppression, and AIDS patients. Like HSV, VZV is cytopathic to epithelial cells → blisters and ulcers. Transmission is usually <b>respiratory</b>, incubation <b>2–3 weeks</b>. <b>Postherpetic neuralgia</b> is a morbid neuropathic sequela.</div>
+<div class="hint"><b>العدوى الأوّلية</b> بفيروس الحماق النطاقي (VZV، فيروس هربسي ألفا) تسبّب <b>الحماق (جدري الماء)</b>. ثم يصير الفيروس كامناً، عادةً في <b>عقد الجذر الظهري أو عقد الأعصاب القحفية</b>. و<b>إعادة التنشيط</b> تُنتج <b>عدوى الهربس النطاقي (HZI)</b>، المسمّاة <b>الحزام الناري (shingles)</b>. وحدوث HZI <b>يزداد بالعمر والتثبيط المناعي</b> — يصل 10/1000 فوق 75. وشائع في المسنّين ومرضى الكيماوي والمثبَّطين مناعياً ومرضى الإيدز. وكالـHSV، الـVZV مُمرِض خلوي للظهارة → فقاعات وقرحات. والانتقال عادةً <b>تنفّسي</b>، والحضانة <b>2–3 أسابيع</b>. و<b>الألم العصبي التالي للهربس</b> تلوٍ عصبي مَرَضي.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c2_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c2_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c2_1">
+<div class="topic">Varicella (chickenpox) — clinical findings</div>
+<div class="prompt">What are the clinical findings and complications of primary varicella?</div>
+<button class="reveal" onclick="revealCard('c2_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c2_1">
+<div class="en">Primary VZV generally occurs in the <b>first two decades of life</b>. It begins with <b>low-grade fever, malaise</b>, and an intensely <b>pruritic maculopapular rash</b>, followed by vesicles described as <b>"dewdrop-like."</b> The vesicles turn cloudy and pustular, burst, and scab, with crusts falling off after <b>1–2 weeks</b>. <b>Lesions begin on the trunk and face and spread centrifugally.</b><br>
+  <b>Complications:</b> CNS involvement → cerebellar ataxia and encephalitis; also pneumonia, myocarditis, and hepatitis. <b>Immunocompromised hosts</b> have more severe, prolonged disease with lung/CNS/liver involvement and higher mortality. Secondary bacterial infection by gram-positive cocci can cause severe sepsis.</div>
+<div class="hint">يحدث VZV الأوّلي عادةً في <b>العقدين الأولين من العمر</b>. ويبدأ بـ<b>حمّى خفيفة وتوعّك</b> و<b>طفح بقعي حطاطي شديد الحكّة</b>، يتبعه حويصلات توصف بـ<b>«شبيهة قطرة الندى»</b>. وتصير الحويصلات عكرة بثرية، تنفجر وتتقشّر، وتسقط القشور بعد <b>1–2 أسبوع</b>. و<b>تبدأ الآفات على الجذع والوجه وتنتشر نحو الأطراف (طرد مركزي)</b>. <b>المضاعفات:</b> إصابة الجهاز العصبي المركزي → ترنّح مخيخي والتهاب دماغ؛ وأيضاً ذات رئة والتهاب عضلة قلب والتهاب كبد. و<b>المثبَّطون مناعياً</b> بمرض أشدّ ومطوّل بإصابة رئة/عصب مركزي/كبد ووفيات أعلى. والعدوى الجرثومية الثانوية بمكوّرات إيجابية الغرام قد تسبّب إنتاناً شديداً.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c2_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c2_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c2_2">
+<div class="topic">Herpes zoster (shingles) — clinical pattern</div>
+<div class="prompt">What is the clinical pattern of herpes zoster (shingles)?</div>
+<button class="reveal" onclick="revealCard('c2_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c2_2">
+<div class="en">HZI (shingles) occurs in adults and starts with a prodrome of <b>deep, aching, or burning pain</b>, usually with little/no fever or lymphadenopathy. Within <b>2–4 days</b>, crops of vesicles appear in a <b>dermatomal ("zosteriform") pattern</b> — the <b>unilateral, linear, clustered</b> distribution of vesicles/ulcers/scabs in a dermatome supplied by one nerve.<br>
+  <b>Thoracic/lumbar dermatomes</b> are most frequently involved, followed by the craniofacial area. Lesions heal in <b>2–4 weeks</b>, often with scarring and hypopigmentation. <b>Zoster sine herpete:</b> HZI without dermatomal lesions (challenging diagnosis; often presents with facial palsy). VZV has been detected in up to <b>20% of Bell palsy</b> patients. <b>Acute retinal necrosis</b> is a serious occasional effect.</div>
+<div class="hint">يحدث HZI (الحزام الناري) في البالغين ويبدأ ببادرة <b>ألم عميق موجع أو حارق</b>، عادةً بقليل/لا حمّى أو اعتلال عقد. وخلال <b>2–4 أيام</b>، تظهر دفعات حويصلات بـ<b>نمط جلدي («زوستيري»)</b> — التوزّع <b>أحادي الجانب، الخطّي، العنقودي</b> للحويصلات/القرحات/القشور في قطاع جلدي يغذّيه عصب واحد. و<b>القطاعات الصدرية/القطنية</b> الأكثر إصابةً، تليها المنطقة القحفية الوجهية. وتلتئم الآفات في <b>2–4 أسابيع</b>، غالباً بتندّب ونقص تصبّغ. <b>الزوستر دون طفح (sine herpete):</b> HZI بلا آفات جلدية (تشخيص صعب؛ غالباً بشلل وجهي). وكُشف VZV في حتى <b>20% من مرضى شلل بل</b>. و<b>التنخّر الشبكي الحادّ</b> أثر خطير عرضي.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c2_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c2_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c2_3">
+<div class="topic">Postherpetic neuralgia &amp; orofacial zoster</div>
+<div class="prompt">What is postherpetic neuralgia, and how does zoster affect the orofacial region?</div>
+<button class="reveal" onclick="revealCard('c2_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c2_3">
+<div class="en"><b>Postherpetic neuralgia (PHN)</b> is one of the most important complications of HZI, defined as <b>pain remaining for 120 days after the onset</b> of the acute rash. In patients <b>older than 50, up to 70%</b> develop PHN and up to 50% have debilitating pain — sharp, stabbing, burning, or gnawing — lasting more than a month; some suffer for years.<br>
+  <b>Predisposing factors:</b> older age, prodromal pain, and more severe acute disease.<br>
+  <b>Orofacial zoster:</b> involvement of the <b>trigeminal nerve divisions</b> produces unilateral facial/oral lesions stopping at the midline. Immunocompromised patients experience more severe VZV. Treatment: <b>systemic antivirals (acyclovir/valacyclovir/famciclovir)</b> started early, plus pain management.</div>
+<div class="hint"><b>الألم العصبي التالي للهربس (PHN)</b> من أهمّ مضاعفات HZI، ويُعرَّف بـ<b>ألم يبقى 120 يوماً بعد بدء</b> الطفح الحادّ. وفي المرضى <b>فوق 50، حتى 70%</b> يصابون بـPHN وحتى 50% بألم مُوهِن — حادّ، طاعن، حارق، أو قارض — يدوم أكثر من شهر؛ وبعضهم يعاني سنين. <b>العوامل المؤهّبة:</b> العمر الأكبر، الألم البادري، والمرض الحادّ الأشدّ. <b>الزوستر الوجهي الفموي:</b> إصابة <b>فروع مثلّث التوائم</b> تُنتج آفات وجهية/فموية أحادية الجانب تقف عند الخطّ المتوسّط. والمثبَّطون مناعياً بمرض أشدّ. العلاج: <b>مضادّات فيروسات جهازية (أسيكلوفير/فالاسيكلوفير/فامسيكلوفير)</b> مبكّراً، مع تدبير الألم.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c2_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c2_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec3">Lec 1 · Cytomegalovirus (CMV)</h2>
+<div class="card" id="c3_0">
+<div class="topic">CMV — etiology &amp; primary infection</div>
+<div class="prompt">How does CMV establish infection, and how does primary infection present?</div>
+<button class="reveal" onclick="revealCard('c3_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c3_0">
+<div class="en">Once exposed to <b>CMV</b>, the virus establishes <b>latency within connective tissue and endothelial cells</b>. CMV within endothelial cells may contribute to <b>vascular inflammation</b>. In organ transplant recipients, CMV in the donor organ leads to CMV infection in the recipient.<br>
+  <b>Primary CMV infection</b> presents similarly to other viral infections — with <b>fever, malaise</b>, and lymphadenopathy (a mononucleosis-like picture). There is growing evidence that CMV infection is associated with <b>Guillain-Barré syndrome</b>.</div>
+<div class="hint">عند التعرّض لـ<b>CMV</b>، يؤسّس الفيروس <b>كموناً في النسيج الضامّ والخلايا البطانية</b>. وCMV داخل الخلايا البطانية قد يسهم في <b>التهاب وعائي</b>. وفي متلقّي الأعضاء، CMV في العضو المتبرَّع يؤدّي لعدوى CMV في المتلقّي. <b>عدوى CMV الأوّلية</b> تتظاهر كالعداوى الفيروسية الأخرى — بـ<b>حمّى وتوعّك</b> واعتلال عقد (صورة شبيهة بعدد الوحيدات). وثمّة دليل متنامٍ على ارتباط عدوى CMV بـ<b>متلازمة غيلان-باريه</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c3_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c3_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c3_1">
+<div class="topic">CMV in the immunocompromised &amp; oral findings</div>
+<div class="prompt">How does CMV affect immunocompromised patients, including the mouth?</div>
+<button class="reveal" onclick="revealCard('c3_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c3_1">
+<div class="en">In immunocompromised patients, CMV tends to involve:
+  <ul><li>the <b>eye</b> — CMV retinitis (may cause <b>blindness</b> if untreated);</li>
+  <li>the <b>GI tract</b> — CMV enteritis;</li>
+  <li><b>mucocutaneous</b> surfaces.</li></ul>
+  <b>Oral CMV</b> in the immunocompromised patient tends to present as a <b>solitary ulcer</b> — classically described on a background of <b>hairy leukoplakia in a patient with AIDS</b>. CMV and VZV can be associated with mucosal exfoliation.<br>
+  <b>Treatment:</b> <b>ganciclovir</b> 5 mg/kg IV twice daily; a CMV vaccine is under development.</div>
+<div class="hint">في المثبَّطين مناعياً، يميل CMV لإصابة: <b>العين</b> — التهاب الشبكية بالـCMV (قد يسبّب <b>عمى</b> إن تُرك)؛ <b>السبيل الهضمي</b> — التهاب الأمعاء بالـCMV؛ و<b>الأسطح المخاطية الجلدية</b>. و<b>CMV الفموي</b> في المثبَّط مناعياً يميل للتظاهر كـ<b>قرحة مفردة</b> — توصف كلاسيكياً على خلفية <b>طلاوة مشعّرة في مريض إيدز</b>. وCMV وVZV قد يرتبطان بتوسّف مخاطي. <b>العلاج:</b> <b>غانسيكلوفير</b> 5مغ/كغ وريدياً مرّتين يومياً؛ ولقاح CMV قيد التطوير.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c3_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c3_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec4">Lec 1 · Coxsackievirus ⭐</h2>
+<div class="card" id="c4_0">
+<div class="topic">Coxsackievirus — three disease entities</div>
+<div class="prompt">What is coxsackievirus, and what three diseases does it cause?</div>
+<button class="reveal" onclick="revealCard('c4_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c4_0">
+<div class="en"><b>Coxsackievirus (CV)</b> is an <b>RNA virus</b> with several serotypes. Coxsackievirus infections lead to <b>three disease entities</b>:
+  <ol><li><b>Herpangina</b></li>
+  <li><b>Hand-foot-and-mouth disease (HFM)</b></li>
+  <li><b>Acute lymphonodular pharyngitis</b></li></ol>
+  These are typically diseases of <b>children</b>, are usually <b>self-limiting</b>, and often occur in <b>epidemics</b> in the summer/autumn.</div>
+<div class="hint"><b>فيروس كوكساكي (CV)</b> فيروس <b>RNA</b> بعدّة أنماط مصلية. وعداوى كوكساكي تؤدّي لـ<b>ثلاثة كيانات مرضية</b>: (١) <b>الذباح الحلئي (Herpangina)</b>؛ (٢) <b>داء اليد والقدم والفم (HFM)</b>؛ (٣) <b>التهاب البلعوم العقدي اللمفي الحادّ</b>. وهذه عادةً أمراض <b>الأطفال</b>، <b>محدودة ذاتياً</b> غالباً، وتحدث غالباً في <b>أوبئة</b> صيفاً/خريفاً.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c4_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c4_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c4_1">
+<div class="topic">Herpangina &amp; hand-foot-and-mouth disease</div>
+<div class="prompt">How do herpangina and hand-foot-and-mouth disease present?</div>
+<button class="reveal" onclick="revealCard('c4_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c4_1">
+<div class="en"><b>Herpangina:</b> caused by coxsackievirus; presents with acute-onset fever, sore throat, and <b>dysphagia</b>. Small vesicles form on the <b>soft palate, tonsils, and oropharynx (the posterior mouth)</b>, rupturing to shallow ulcers — helping distinguish it from primary HSV (which favors the anterior mouth and gingiva).<br>
+  <b>Hand-foot-and-mouth disease (HFM):</b> presents with oral vesicles/ulcers plus a <b>skin rash</b>. <b>Nearly 100% of patients have a skin rash</b>, especially on the <b>hands and feet</b> (and sometimes buttocks). Oral lesions are similar to herpangina. Both are self-limiting, managed supportively.</div>
+<div class="hint"><b>الذباح الحلئي (Herpangina):</b> يسبّبه كوكساكي؛ يتظاهر ببدء حادّ للحمّى والتهاب الحلق و<b>عسر البلع</b>. وتتشكّل حويصلات صغيرة على <b>الحنك الرخو واللوزتين والبلعوم الفموي (مؤخّرة الفم)</b>، تتمزّق لقرحات سطحية — ما يساعد بتمييزه عن HSV الأوّلي (الذي يفضّل مقدّمة الفم واللثة). <b>داء اليد والقدم والفم (HFM):</b> يتظاهر بحويصلات/قرحات فموية مع <b>طفح جلدي</b>. و<b>قرابة 100% من المرضى لديهم طفح جلدي</b>، خاصةً على <b>اليدين والقدمين</b> (وأحياناً الأليتين). والآفات الفموية شبيهة بالذباح الحلئي. وكلاهما محدود ذاتياً، يُدبَّر داعماً.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c4_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c4_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec5">Lec 1 · Erythema Multiforme (EM) ⭐</h2>
+<div class="card" id="c5_0">
+<div class="topic">Erythema multiforme — definition &amp; etiology</div>
+<div class="prompt">What is erythema multiforme, and what causes it?</div>
+<button class="reveal" onclick="revealCard('c5_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c5_0">
+<div class="en"><b>Erythema multiforme (EM)</b> is an <b>acute, self-limited, inflammatory mucocutaneous disease</b> manifesting on the skin and often the oral mucosa (other mucosae, e.g., genitalia, may be involved). It represents a <b>hypersensitivity reaction</b> to infectious agents or medications.<br>
+  <b>Classification:</b> <b>EM minor</b> = &lt;10% skin involvement, minimal/no mucous membrane involvement; <b>EM major</b> = more extensive skin involvement with oral and other mucosae affected. A subset affects the oral mucosa only.<br>
+  <b>Etiology:</b> the most common inciting factor is <b>infection, particularly HSV</b>. Drug reactions (NSAIDs, anticonvulsants) play a smaller role. <b>Recurrent EM is associated with HSV in 65–70%</b> of cases; HSV gene products are found in 71–81% of recurrent EM (27% in non-recurrent).</div>
+<div class="hint"><b>الحمامى عديدة الأشكال (EM)</b> مرض <b>جلدي مخاطي التهابي حادّ محدود ذاتياً</b> يتظاهر على الجلد وغالباً المخاطية الفموية (وقد تُصاب مخاطيات أخرى كالتناسلية). ويمثّل <b>تفاعل فرط حساسية</b> لعوامل معدية أو أدوية. <b>التصنيف:</b> <b>EM صغرى</b> = إصابة جلد &lt;10%، إصابة غشاء مخاطي قليلة/معدومة؛ <b>EM كبرى</b> = إصابة جلد أوسع مع إصابة الفم ومخاطيات أخرى. وثمّة نمط يصيب المخاطية الفموية فقط. <b>السبب:</b> العامل المحرّض الأشيع <b>عدوى، خاصةً HSV</b>. والتفاعلات الدوائية (مضادّات الالتهاب اللاستيرويدية، مضادّات الاختلاج) دور أصغر. و<b>EM الناكسة ترتبط بـHSV في 65–70%</b>؛ ومنتجات جينات HSV تُوجَد في 71–81% من EM الناكسة (27% في غير الناكسة).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c5_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c5_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c5_1">
+<div class="topic">EM — the target lesion &amp; clinical findings</div>
+<div class="prompt">What is the pathognomonic skin lesion of EM, and its clinical features?</div>
+<button class="reveal" onclick="revealCard('c5_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c5_1">
+<div class="en">EM affects ages <b>20–40</b> (20% in children). Recurrent EM averages <b>6 episodes/year</b>. There may be a <b>prodrome</b> of fever, malaise, headache, sore throat, rhinorrhea, and cough (viral-like, since infection triggers EM).<br>
+  <b>Skin lesions</b> appear rapidly over days, beginning as red macules that become papular, <b>starting in the hands and moving centripetally toward the trunk in a symmetric distribution</b> (upper extremities, face, neck). The lesions take several forms — hence "multiforme." <span class="k">The classic "target" or "iris" lesion is pathognomonic of EM</span>; variants are "atypical targets." The skin may itch and feel burnt.</div>
+<div class="hint">تصيب EM الأعمار <b>20–40</b> (20% أطفال). وEM الناكسة تُعدّل <b>6 نوبات/سنة</b>. وقد توجد <b>بادرة</b> من حمّى وتوعّك وصداع والتهاب حلق وسيلان أنف وسعال (شبيهة بالفيروسية، إذ تحرّض العدوى EM). <b>الآفات الجلدية</b> تظهر سريعاً خلال أيام، تبدأ بقعاً حمراء تصير حطاطية، <b>تبدأ في اليدين وتتحرّك نحو المركز للجذع بتوزّع متناظر</b> (الأطراف العلوية، الوجه، العنق). وتأخذ الآفات أشكالاً عدّة — ومن هنا «عديدة الأشكال». <b>وآفة «الهدف» أو «القزحية» الكلاسيكية مُمْرَضة نوعية لـEM</b>؛ والمتغيّرات «أهداف لا نمطية». وقد يحكّ الجلد ويُحَسّ محروقاً.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c5_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c5_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c5_2">
+<div class="topic">EM — oral findings &amp; management</div>
+<div class="prompt">What are the oral findings and management of EM?</div>
+<button class="reveal" onclick="revealCard('c5_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c5_2">
+<div class="en"><b>Oral findings</b> range from mild erythema and erosion to <b>large painful ulcerations</b> causing difficulty eating, drinking, and swallowing; patients with severe EM may <b>drool blood-tinged saliva</b>. <b>Extensive lip involvement with inflammation, ulceration, and crusting is common.</b> Oral lesions occur in 23–70% of recurrent EM; most affected sites: <b>lips (36%), buccal mucosa (31%), tongue (22%)</b>.<br>
+  <b>Management:</b> mild oral EM → analgesics + supportive care (self-limiting, resolves in weeks). More severe → <b>systemic corticosteroids</b> (topical steroids also help). HSV-associated EM → <b>antivirals</b>; acyclovir at the first sign of recurrent EM controls disease in ~half of patients. Other options: dapsone, hydroxychloroquine.</div>
+<div class="hint"><b>الموجودات الفموية</b> تتراوح من حمامى وتآكل خفيف إلى <b>تقرّحات كبيرة مؤلمة</b> تسبّب صعوبة أكل وشرب وبلع؛ ومرضى EM الشديدة قد <b>يسيل لعابهم مشوباً بالدم</b>. و<b>إصابة الشفة الواسعة بالتهاب وتقرّح وتقشّر شائعة</b>. والآفات الفموية في 23–70% من EM الناكسة؛ أكثر المواقع: <b>الشفتان (36%)، المخاطية الشدقية (31%)، اللسان (22%)</b>. <b>التدبير:</b> EM الفموية الخفيفة → مسكّنات + رعاية داعمة (محدودة ذاتياً، تزول بأسابيع). والأشدّ → <b>كورتيكوستيرويدات جهازية</b> (والموضعية تساعد). وEM المرتبطة بـHSV → <b>مضادّات فيروسات</b>؛ والأسيكلوفير عند أول علامة لـEM الناكسة يضبط المرض في ~نصف المرضى. وخيارات أخرى: دابسون، هيدروكسي كلوروكين.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c5_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c5_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c5_3">
+<div class="topic">Stevens-Johnson syndrome &amp; toxic epidermal necrolysis</div>
+<div class="prompt">What are SJS and TEN, and how do they relate to EM?</div>
+<button class="reveal" onclick="revealCard('c5_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c5_3">
+<div class="en">Historically, fulminant forms of EM were labeled <b>Stevens-Johnson syndrome (SJS)</b> and <b>toxic epidermal necrolysis (TEN / Lyell disease)</b>. They are now often regarded as a severe drug-induced spectrum distinct from HSV-associated EM.<br>
+  <b>SJS/TEN</b> are severe, potentially <b>life-threatening</b> mucocutaneous reactions, most often triggered by <b>medications</b>, with extensive epidermal detachment and mucosal (oral, ocular, genital) involvement. The distinction is by <b>body surface area detachment</b>: SJS &lt;10%, TEN &gt;30% (overlap in between). Management requires <b>withdrawal of the causative drug</b>, supportive care (often in a burn unit), fluid/electrolyte management, and specialist care because of high morbidity and mortality.</div>
+<div class="hint">تاريخياً، الأشكال الصاعقة من EM سُمّيت <b>متلازمة ستيفنز-جونسون (SJS)</b> و<b>انحلال البشرة السمّي (TEN / داء لايل)</b>. وتُعَدّ الآن غالباً طيفاً شديداً مُحرَّضاً بالأدوية متمايزاً عن EM المرتبطة بـHSV. <b>SJS/TEN</b> تفاعلات جلدية مخاطية شديدة قد تكون <b>مهدّدة للحياة</b>، غالباً بمُحرِّض <b>دوائي</b>، بانفصال بشرة واسع وإصابة مخاطية (فموية، عينية، تناسلية). والتمييز بـ<b>نسبة مساحة السطح المنفصلة</b>: SJS &lt;10%، TEN &gt;30% (تداخل بينهما). ويتطلّب التدبير <b>إيقاف الدواء المسبّب</b>، رعايةً داعمة (غالباً في وحدة حروق)، تدبير سوائل/شوارد، ورعايةً اختصاصية لارتفاع المراضة والوفيات.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c5_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c5_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec6">Lec 1 · NUG &amp; NUP</h2>
+<div class="card" id="c6_0">
+<div class="topic">Necrotizing ulcerative gingivitis/periodontitis (NUG/NUP)</div>
+<div class="prompt">What are NUG and NUP, and how are they managed?</div>
+<button class="reveal" onclick="revealCard('c6_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c6_0">
+<div class="en"><b>NUG/NUP</b> are acute painful ulcerative conditions of the gingiva/periodontium associated with <b>fusospirochetal (gram-negative anaerobic) bacteria</b>, often in the setting of stress, smoking, poor hygiene, or immunosuppression. NUP with osteonecrosis can occur in AIDS patients.<br>
+  <b>Management:</b> <b>gentle debridement</b> to remove debris/plaque (best with topical anesthesia in the first visits); <b>chlorhexidine mouthrinse</b> led to resolution in &gt;90% of cases. Extensive disease/systemic symptoms → antibiotics active against gram-negative anaerobes (<b>β-lactams; metronidazole</b> is also effective). After the acute phase → scaling and root planing; periodontal surgery may be needed. Consider testing for <b>HIV or blood dyscrasia</b>. <b>Noma</b> needs aggressive treatment: nutrition, antibiotics, debridement.</div>
+<div class="hint"><b>NUG/NUP</b> حالات تقرّحية مؤلمة حادّة للثة/حول السنّ مرتبطة بـ<b>جراثيم مغزلية لولبية (لاهوائية سلبية الغرام)</b>، غالباً مع شدّة أو تدخين أو نظافة سيّئة أو تثبيط مناعي. وNUP مع تنخّر عظمي قد يحدث في مرضى الإيدز. <b>التدبير:</b> <b>تنضير لطيف</b> لإزالة الحطام/اللويحة (الأفضل بتخدير موضعي في الزيارات الأولى)؛ و<b>مضمضة كلورهيكسيدين</b> أدّت لشفاء &gt;90% من الحالات. والمرض الواسع/الأعراض الجهازية → صادّات فعّالة ضدّ اللاهوائيات سلبية الغرام (<b>بيتالاكتام؛ ومترونيدازول</b> فعّال أيضاً). وبعد الطور الحادّ → تقليح وتسوية جذور؛ وقد تلزم جراحة حول سنّية. وفكّر بفحص <b>HIV أو خلل الدم</b>. و<b>النوما (noma)</b> يحتاج علاجاً قوياً: تغذية، صادّات، تنضير.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c6_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c6_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec7">Lec 3 · Recurrent Aphthous Stomatitis (RAS) ⭐</h2>
+<div class="card" id="c7_0">
+<div class="topic">RAS — definition, epidemiology &amp; etiology</div>
+<div class="prompt">What is recurrent aphthous stomatitis, and what factors are linked to it?</div>
+<button class="reveal" onclick="revealCard('c7_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c7_0">
+<div class="en"><b>RAS</b> is a common disorder of <b>recurring ulcers confined to the oral mucosa</b> in patients with no other signs of systemic disease. It is a <b>diagnosis of exclusion</b> — hematologic deficiencies, immune disorders, and connective tissue diseases may cause aphthous-like ulcers. RAS affects ~<b>20%</b> of the general population (5–50% in specific groups).<br>
+  <span class="k">RAS is NOT caused by HSV</span> (a common misconception — it is not "herpes"). <b>Factors linked to RAS:</b> genetic factors (HLA associations), hematologic/immunologic abnormalities, and local factors (trauma, smoking). <b>Hematologic deficiency of iron, folate, or B12</b> is etiologic in 5–10%. Notably, RAS is <b>less common in smokers</b> (nicotine metabolites shift cytokines toward anti-inflammatory), and may worsen on stopping smoking. Other triggers: anxiety/stress, trauma, menstruation, URIs, food allergy.</div>
+<div class="hint"><b>RAS</b> اضطراب شائع من <b>قرحات ناكسة محصورة بالمخاطية الفموية</b> في مرضى بلا علامات مرض جهازي أخرى. وهو <b>تشخيص بالاستبعاد</b> — فالعوز الدموي والاضطرابات المناعية وأمراض النسيج الضامّ قد تسبّب قرحات شبيهة بالقلاعية. ويصيب RAS ~<b>20%</b> من الناس (5–50% في مجموعات معيّنة). <b>وRAS لا يسبّبه HSV</b> (مفهوم خاطئ شائع — ليس «هربس»). <b>العوامل المرتبطة:</b> عوامل وراثية (ارتباطات HLA)، شذوذات دموية/مناعية، وعوامل موضعية (رضّ، تدخين). و<b>العوز الدموي للحديد أو الفولات أو B12</b> مسبّب في 5–10%. ولافتٌ أن RAS <b>أقلّ في المدخّنين</b> (مستقلبات النيكوتين تُزيح السيتوكينات نحو المضادّ للالتهاب)، وقد يسوء عند ترك التدخين. ومحرّضات أخرى: قلق/شدّة، رضّ، طمث، عداوى تنفّسية علوية، تحسّس طعام.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c7_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c7_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c7_1">
+<div class="topic">RAS — oral findings &amp; distinguishing feature</div>
+<div class="prompt">What are the oral findings of RAS, and how is it distinguished from vesicular diseases?</div>
+<button class="reveal" onclick="revealCard('c7_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c7_1">
+<div class="en">The first episodes usually begin in the <b>second decade</b>. Lesions are confined to the oral mucosa, beginning with a <b>prodromal burning</b> 2–48 hours before the ulcer, with localized erythema. Within hours a small white papule forms, ulcerates, and enlarges over 48–72 hours.<br>
+  Individual lesions are <b>round, symmetric, and shallow</b> (similar to viral ulcers), but <span class="k">no tissue tags are present from ruptured vesicles</span> — this helps distinguish RAS from diseases that start as vesicles (<b>pemphigus, pemphigoid</b>). The <b>buccal and labial mucosae</b> are most commonly involved; lesions <b>rarely occur on heavily keratinized palatal mucosa or gingiva</b> (unlike intraoral HSV, which favors keratinized mucosa).</div>
+<div class="hint">تبدأ النوبات الأولى عادةً في <b>العقد الثاني</b>. والآفات محصورة بالمخاطية الفموية، تبدأ بـ<b>حرقة بادرية</b> 2–48 ساعة قبل القرحة، مع حمامى موضعية. وخلال ساعات تتشكّل حطاطة بيضاء صغيرة، تتقرّح وتكبر خلال 48–72 ساعة. والآفات <b>مستديرة، متناظرة، سطحية</b> (شبيهة بالقرحات الفيروسية)، لكن <b>لا توجد زوائد نسيجية من حويصلات متمزّقة</b> — ما يميّز RAS عن الأمراض التي تبدأ حويصلات (<b>الفقاع، الفقعان</b>). و<b>المخاطية الشدقية والشفوية</b> الأكثر إصابةً؛ والآفات <b>نادراً على المخاطية الحنكية شديدة التقرّن أو اللثة</b> (بخلاف HSV الفموي الذي يفضّل المخاطية المتقرّنة).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c7_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c7_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c7_2">
+<div class="topic">RAS — three clinical types</div>
+<div class="prompt">What are the three clinical classifications of RAS?</div>
+<button class="reveal" onclick="revealCard('c7_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c7_2">
+<div class="en"><ol>
+  <li><b>Minor aphthous ulcers</b> (most common, ~80%): <b>0.3–1.0 cm</b>, shallow, round; heal <b>within 10–14 days without scarring</b>; on non-keratinized mucosa (buccal/labial mucosa, floor of mouth).</li>
+  <li><b>Major aphthous ulcers</b> (Sutton disease): <b>&gt;1 cm</b>, deep, may last <b>weeks to months</b>, and <b>heal with scarring</b>; can occur on any site including keratinized mucosa.</li>
+  <li><b>Herpetiform ulcers:</b> <b>multiple (10–100) tiny 1–3 mm</b> ulcers that may coalesce; despite the name they are <b>not caused by herpes</b>; heal within 10–14 days.</li></ol>
+  Distinguishing type guides prognosis and treatment intensity.</div>
+<div class="hint"><ol>
+  <li><b>القرحات القلاعية الصغرى</b> (الأشيع، ~80%): <b>0.3–1.0سم</b>، سطحية مستديرة؛ تلتئم <b>خلال 10–14 يوماً دون تندّب</b>؛ على المخاطية غير المتقرّنة (الشدقية/الشفوية، أرض الفم).</li>
+  <li><b>القرحات القلاعية الكبرى</b> (داء ساتون): <b>&gt;1سم</b>، عميقة، قد تدوم <b>أسابيع لأشهر</b>، و<b>تلتئم بتندّب</b>؛ على أي موقع بما فيه المخاطية المتقرّنة.</li>
+  <li><b>القرحات الحلئية الشكل (Herpetiform):</b> <b>متعدّدة (10–100) دقيقة 1–3مم</b> قد تتلاحم؛ ورغم الاسم <b>لا يسبّبها الهربس</b>؛ تلتئم خلال 10–14 يوماً.</li></ol>
+  وتمييز النوع يوجّه الإنذار وشدّة العلاج.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c7_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c7_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c7_3">
+<div class="topic">RAS — management</div>
+<div class="prompt">How is RAS managed?</div>
+<button class="reveal" onclick="revealCard('c7_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c7_3">
+<div class="en">Management depends on severity and frequency:
+  <ul><li><b>First step:</b> rule out and correct any underlying <b>hematologic deficiency (iron, folate, B12)</b> and identify triggers.</li>
+  <li><b>Topical corticosteroids</b> are the mainstay (e.g., triamcinolone in orabase, fluocinonide, clobetasol) — most effective applied at the prodrome.</li>
+  <li><b>Topical analgesics/coating agents</b> and antimicrobial (chlorhexidine) rinses for symptom relief.</li>
+  <li><b>Severe/major RAS:</b> may need <b>systemic corticosteroids</b> or immunomodulators; intralesional steroids for major ulcers.</li></ul>
+  Reassure the patient that RAS is not herpes and not contagious.</div>
+<div class="hint">يعتمد التدبير على الشدّة والتواتر: <b>الخطوة الأولى:</b> استبعد وصحّح أي <b>عوز دموي كامن (حديد، فولات، B12)</b> وحدّد المحرّضات. <b>الكورتيكوستيرويدات الموضعية</b> الدعامة (كتريامسينولون في أوراباز، فلوسينونيد، كلوبيتازول) — الأكثر فعالية عند البادرة. <b>المسكّنات/المواد المغطّية الموضعية</b> ومضامض مضادّة للجراثيم (كلورهيكسيدين) لتخفيف الأعراض. <b>RAS الشديدة/الكبرى:</b> قد تحتاج <b>كورتيكوستيرويدات جهازية</b> أو مُعدّلات مناعة؛ وستيرويدات داخل الآفة للقرحات الكبرى. وطَمئِن المريض أن RAS ليس هربساً وغير معدٍ.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c7_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c7_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec8">Lec 3 · Behçet Disease</h2>
+<div class="card" id="c8_0">
+<div class="topic">Behçet disease</div>
+<div class="prompt">What is Behçet disease, and what is its classic triad?</div>
+<button class="reveal" onclick="revealCard('c8_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c8_0">
+<div class="en"><b>Behçet disease (Behçet syndrome)</b> is a chronic, relapsing <b>multisystem inflammatory disorder</b> (a vasculitis) that must be included in the differential of recurring oral ulcers. It is more common along the historic "Silk Road" populations.<br>
+  <b>Classic triad:</b> <b>(1) recurrent oral ulcers</b> (aphthous-like, often the first and most consistent feature), <b>(2) genital ulcers</b>, and <b>(3) ocular inflammation</b> (uveitis, which can threaten vision). Other features: skin lesions, arthritis, and CNS/vascular involvement. A characteristic finding is <b>pathergy</b> (an exaggerated skin ulcer response to minor trauma such as a needle prick). Management uses <b>topical and systemic corticosteroids and immunosuppressants</b>; ocular and neurologic involvement require specialist care.</div>
+<div class="hint"><b>داء بهجت (متلازمة بهجت)</b> اضطراب التهابي <b>متعدّد الأجهزة</b> مزمن ناكس (التهاب أوعية) يجب إدراجه في تشخيص القرحات الفموية الناكسة. وأشيع في شعوب «طريق الحرير» التاريخي. <b>الثالوث الكلاسيكي:</b> <b>(1) قرحات فموية ناكسة</b> (شبيهة بالقلاعية، غالباً الملمح الأول والأثبت)، <b>(2) قرحات تناسلية</b>، و<b>(3) التهاب عيني</b> (التهاب عنبية قد يهدّد البصر). وملامح أخرى: آفات جلدية، التهاب مفاصل، وإصابة عصبية مركزية/وعائية. وموجود مميّز هو <b>الاختباري (pathergy)</b> (استجابة قرحة جلدية مبالَغة لرضّ بسيط كوخز إبرة). ويستخدم التدبير <b>كورتيكوستيرويدات موضعية وجهازية ومثبّطات مناعة</b>؛ والإصابة العينية والعصبية تحتاج رعايةً اختصاصية.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c8_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c8_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec9">Lec 4 · Pemphigus Vulgaris ⭐</h2>
+<div class="card" id="c9_0">
+<div class="topic">Pemphigus — definition &amp; mechanism</div>
+<div class="prompt">What is pemphigus, and what is the mechanism of pemphigus vulgaris?</div>
+<button class="reveal" onclick="revealCard('c9_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c9_0">
+<div class="en"><b>Pemphigus</b> is a group of <b>autoimmune, potentially life-threatening</b> diseases causing blisters and erosions of skin and mucous membranes, characterized by <b>intraepithelial acantholysis</b>. The predisposition is genetically determined; the trigger is unknown.<br>
+  <b>Desmoglein 1 (DSG1)</b> is primarily in the <b>skin</b>; <b>desmoglein 3 (DSG3)</b> is chiefly in <b>mucosal epithelium</b>.<br>
+  <b>Pemphigus vulgaris (PV)</b> — the most common form (&gt;80% of cases): <b>IgG autoantibodies bind DSG3</b> (a desmosomal adhesion glycoprotein) → loss of cell-to-cell adhesion → <b>intraepithelial blisters</b>. Mucosa-only PV has antibodies mainly against DSG3; skin+mucosa PV has antibodies against both DSG3 and DSG1.</div>
+<div class="hint"><b>الفقاع (Pemphigus)</b> مجموعة أمراض <b>مناعية ذاتية قد تهدّد الحياة</b> تسبّب فقاعات وتآكلات في الجلد والأغشية المخاطية، تتميّز بـ<b>انحلال الشوك داخل الظهارة (acantholysis)</b>. والاستعداد وراثي؛ والمحرّض مجهول. <b>الديسموغلين 1 (DSG1)</b> أساساً في <b>الجلد</b>؛ و<b>الديسموغلين 3 (DSG3)</b> غالباً في <b>الظهارة المخاطية</b>. <b>الفقاع الشائع (PV)</b> — الأشيع (&gt;80%): <b>أضداد ذاتية IgG ترتبط بـDSG3</b> (بروتين التصاق ديسموزومي) → فقد الالتصاق بين الخلايا → <b>فقاعات داخل ظهارية</b>. وPV المخاطي فقط بأضداد أساساً ضدّ DSG3؛ والجلدي+المخاطي ضدّ DSG3 وDSG1 معاً.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c9_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c9_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c9_1">
+<div class="topic">Pemphigus vulgaris — Nikolsky sign &amp; course</div>
+<div class="prompt">What is the Nikolsky sign, and why is PV dangerous?</div>
+<button class="reveal" onclick="revealCard('c9_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c9_1">
+<div class="en"><span class="k">Nikolsky sign</span>: pressure on an apparently normal area produces a new lesion (or an intact bulla enlarges when pressed), because the upper epithelium pulls away from the basal layer — a characteristic (not exclusive) sign of PV.<br>
+  Any mucosal/skin surface may be involved; in severe cases conjunctival, pharyngeal, and laryngeal mucosae plus extensive skin. Oral lesions may have <b>esophageal involvement</b>.<br>
+  <b>PV is dangerous:</b> death occurs most often in <b>elderly patients</b> and those on high-dose corticosteroids who develop infections and <b>bacterial septicemia (notably Staphylococcus aureus)</b>. Before corticosteroids, PV was frequently fatal.</div>
+<div class="hint"><b>علامة نيكولسكي (Nikolsky):</b> الضغط على منطقة تبدو طبيعية يُنتج آفةً جديدة (أو تكبر فقاعة سليمة عند ضغطها)، لأن الظهارة العلوية تنفصل عن الطبقة القاعدية — علامة مميّزة (لا حصرية) لـPV. وأي سطح مخاطي/جلدي قد يُصاب؛ وفي الشديد الملتحمة والبلعوم والحنجرة مع جلد واسع. والآفات الفموية قد يرافقها <b>إصابة مريئية</b>. <b>وPV خطير:</b> الوفاة أكثر في <b>المسنّين</b> ومن على جرعات ستيرويد عالية يصابون بعداوى و<b>إنتان دم جرثومي (خاصةً المكوّرة العنقودية الذهبية)</b>. وقبل الكورتيكوستيرويدات كان PV مميتاً كثيراً.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c9_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c9_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c9_2">
+<div class="topic">Pemphigus vulgaris — oral findings</div>
+<div class="prompt">What are the oral findings of pemphigus vulgaris, and why is it often misdiagnosed?</div>
+<button class="reveal" onclick="revealCard('c9_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c9_2">
+<div class="en"><b>80–90%</b> of PV patients develop oral lesions during the disease, and in <b>60% the oral lesions are the FIRST sign</b>. Lesions may begin as a classic bulla on a non-inflamed base, but more often the clinician sees <b>shallow irregular erosions and ulcers</b> because the bullae rupture rapidly. A thin epithelial layer peels away leaving a <b>denuded base</b>; edges extend peripherally over weeks.<br>
+  Most commonly start on the <b>buccal mucosa</b> (areas of trauma along the occlusal plane); palate and gingiva are also common. <span class="k">Oral lesions are often present for months before skin lesions</span>, so PV is frequently <b>misdiagnosed as HSV or candidiasis</b> — the average time to diagnosis exceeds 5 months, and coexisting candidiasis may mask the picture.</div>
+<div class="hint"><b>80–90%</b> من مرضى PV يطوّرون آفات فموية خلال المرض، وفي <b>60% تكون الآفات الفموية العلامة الأولى</b>. وقد تبدأ الآفات فقاعةً كلاسيكية على قاعدة غير ملتهبة، لكن غالباً يرى الطبيب <b>تآكلات وقرحات سطحية غير منتظمة</b> لأن الفقاعات تتمزّق سريعاً. وتنقشر طبقة ظهارية رقيقة تاركةً <b>قاعدة عارية</b>؛ وتمتدّ الحواف محيطياً خلال أسابيع. وتبدأ غالباً على <b>المخاطية الشدقية</b> (مناطق الرضّ على المستوى الإطباقي)؛ والحنك واللثة شائعان أيضاً. <b>والآفات الفموية غالباً موجودة أشهراً قبل الجلدية</b>، فيُشخَّص PV خطأً كـ<b>HSV أو داء مبيضّات</b> — ومتوسّط زمن التشخيص يتجاوز 5 أشهر، وقد يُخفي داء المبيضّات المرافق الصورة.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c9_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c9_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c9_3">
+<div class="topic">Pemphigus vulgaris — diagnosis &amp; treatment</div>
+<div class="prompt">How is PV diagnosed and treated?</div>
+<button class="reveal" onclick="revealCard('c9_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c9_3">
+<div class="en"><b>Diagnosis:</b> by <b>biopsy</b> (best on intact vesicles/bullae or perilesional tissue) showing <b>intraepithelial suprabasilar clefting with acantholysis</b> (Tzanck cells). <b>Direct immunofluorescence (DIF)</b> shows IgG (and C3) in a <b>"fishnet"/intercellular</b> pattern; <b>indirect immunofluorescence</b> detects circulating anti-DSG antibodies (titers track disease activity).<br>
+  <b>Treatment:</b> <b>systemic corticosteroids</b> are the mainstay, combined with <b>steroid-sparing immunosuppressants</b> (azathioprine, mycophenolate, cyclophosphamide); <b>rituximab</b> (anti-CD20) is increasingly first-line for refractory/severe disease. Careful management of secondary infection is essential.</div>
+<div class="hint"><b>التشخيص:</b> بـ<b>الخزعة</b> (الأفضل على حويصلات/فقاعات سليمة أو نسيج حول الآفة) مُظهِرةً <b>انفلاقاً فوق قاعدي داخل ظهاري مع انحلال شوك</b> (خلايا تزانك). و<b>التألّق المناعي المباشر (DIF)</b> يُظهِر IgG (وC3) بنمط <b>«شبكة صيد»/بين خلوي</b>؛ و<b>غير المباشر</b> يكشف أضداد anti-DSG الدائرة (عياراتها تتابع نشاط المرض). <b>العلاج:</b> <b>كورتيكوستيرويدات جهازية</b> الدعامة، مع <b>مثبّطات مناعة موفّرة للستيرويد</b> (آزاثيوبرين، ميكوفينولات، سيكلوفوسفاميد)؛ و<b>ريتوكسيماب</b> (ضدّ CD20) متزايد كخطّ أول للمرض المعنّد/الشديد. وتدبير العدوى الثانوية بعناية أساسي.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c9_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c9_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec10">Lec 4 · Mucous Membrane Pemphigoid ⭐</h2>
+<div class="card" id="c10_0">
+<div class="topic">Mucous membrane pemphigoid (cicatricial pemphigoid)</div>
+<div class="prompt">What is mucous membrane pemphigoid, and how does it differ from pemphigus?</div>
+<button class="reveal" onclick="revealCard('c10_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c10_0">
+<div class="en"><b>Mucous membrane pemphigoid (MMP / cicatricial pemphigoid)</b> is a chronic autoimmune <b>subepithelial (subepidermal) blistering disease</b> — autoantibodies target components of the <b>basement membrane zone</b> (e.g., BP180/BP230), so the split is <b>below the epithelium</b> (deeper than pemphigus, which is intraepithelial).<br>
+  Because the blister roof is full-thickness epithelium, bullae are <b>more robust</b> than in PV. On the gingiva it produces <b>desquamative gingivitis</b> (erythema, sloughing). A hallmark is <b>scarring</b>, especially of the <b>conjunctiva</b> (symblepharon → potential blindness) — hence "cicatricial." <b>DIF</b> shows a <b>linear</b> band of IgG/C3 at the basement membrane (vs the fishnet pattern of pemphigus). Treatment: topical/systemic corticosteroids, dapsone, and immunosuppressants; ocular involvement needs ophthalmology.</div>
+<div class="hint"><b>الفقعان الغشائي المخاطي (MMP / الفقعان الندبي)</b> مرض فقاعي <b>تحت ظهاري</b> مناعي ذاتي مزمن — الأضداد تستهدف مكوّنات <b>منطقة الغشاء القاعدي</b> (كـBP180/BP230)، فالانفلاق <b>تحت الظهارة</b> (أعمق من الفقاع الذي هو داخل ظهاري). ولأن سقف الفقاعة ظهارة كاملة السماكة، فالفقاعات <b>أمتن</b> من PV. وعلى اللثة يُنتج <b>التهاب لثة توسّفي</b> (حمامى، توسّف). وسمته <b>التندّب</b>، خاصةً في <b>الملتحمة</b> (التصاق الجفن → عمى محتمل) — ومن هنا «الندبي». و<b>DIF</b> يُظهِر شريطاً <b>خطّياً</b> من IgG/C3 عند الغشاء القاعدي (مقابل نمط شبكة الصيد في الفقاع). العلاج: كورتيكوستيرويدات موضعية/جهازية، دابسون، ومثبّطات مناعة؛ والإصابة العينية تحتاج طبّ عيون.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c10_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c10_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec11">Lec 1–4 · Ulcer Differential Diagnosis (Integrated) ⭐</h2>
+<div class="card" id="c11_0">
+<div class="topic">The four-pattern approach to oral ulcers</div>
+<div class="prompt">How does the four-pattern classification organise the differential diagnosis of oral ulcers?</div>
+<button class="reveal" onclick="revealCard('c11_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c11_0">
+<div class="en">The whole chapter is built on a single clinical logic: sort a patient with oral ulcers by <b>temporal pattern and number</b>, because that pattern points to the likely cause faster than the appearance of any single ulcer. <b>Acute multiple ulcers</b> that arise together and resolve suggest an acute insult — most often a <b>viral infection</b> (primary HSV gingivostomatitis on keratinised mucosa; varicella; coxsackievirus herpangina on the soft palate and hand-foot-and-mouth disease with a limb rash), an acute <b>hypersensitivity reaction</b> (erythema multiforme with its pathognomonic target lesion, triggered most often by HSV), or a drug/chemotherapy effect. <b>Chronic multiple ulcers</b> that persist and progress raise the <b>autoimmune vesiculobullous diseases</b> — pemphigus vulgaris (intraepithelial, DSG3, positive Nikolsky sign, fishnet DIF) and mucous membrane pemphigoid (subepithelial, basement-membrane antibodies, linear DIF, scarring conjunctiva). <b>Recurring ulcers</b> that come and go over years point to <b>recurrent aphthous stomatitis</b> (minor, major, or herpetiform — not caused by HSV), recrudescent intraoral HSV, recurrent EM, or Behçet disease when genital and ocular lesions accompany them. <b>Single ulcers</b> that are chronic and non-healing carry the most weight because they must exclude <b>squamous cell carcinoma</b>, a deep fungal infection, or a solitary CMV ulcer in the immunocompromised. Reading the pattern first turns a bewildering list of ulcerative diseases into four manageable branches, each with a short differential the clinician can work through, and each dictating whether to reassure, treat empirically, or biopsy.</div>
+<div class="hint">يُبنى الفصل كلّه على منطق سريري واحد: صنّف مريض القرحات الفموية حسب <b>النمط الزمني والعدد</b>، لأن النمط يشير للسبب المحتمل أسرع من مظهر أي قرحة مفردة. <b>القرحات المتعدّدة الحادّة</b> التي تظهر معاً وتزول توحي بإهانة حادّة — غالباً <b>عدوى فيروسية</b> (HSV الأوّلي على المخاطية المتقرّنة؛ الحماق؛ كوكساكي الذباح الحلئي على الحنك الرخو وداء اليد والقدم والفم بطفح الأطراف)، أو <b>تفاعل فرط حساسية</b> حادّ (الحمامى عديدة الأشكال بآفة الهدف المُمْرَضة، المُحرّضة غالباً بـHSV)، أو أثر دوائي/كيماوي. <b>القرحات المتعدّدة المزمنة</b> التي تستمرّ وتتقدّم ترفع <b>الأمراض الفقاعية المناعية الذاتية</b> — الفقاع الشائع (داخل ظهاري، DSG3، نيكولسكي إيجابي، DIF شبكي) والفقعان الغشائي (تحت ظهاري، أضداد الغشاء القاعدي، DIF خطّي، تندّب الملتحمة). <b>القرحات الناكسة</b> التي تأتي وتذهب سنين تشير لـ<b>القرحات القلاعية الناكسة</b> (صغرى، كبرى، أو حلئية الشكل — لا يسبّبها HSV)، HSV الفموي الناكس، EM الناكسة، أو داء بهجت حين ترافقها آفات تناسلية وعينية. <b>القرحات المفردة</b> المزمنة غير الملتئمة أثقل وزناً لأنها يجب أن تستبعد <b>السرطانة حرشفية الخلايا</b>، أو عدوى فطرية عميقة، أو قرحة CMV مفردة في المثبَّط مناعياً. وقراءة النمط أولاً تحوّل قائمة مربكة إلى أربعة فروع، وكلّ يملي إن كان يطمئن أو يعالج تجريبياً أو يخزع.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c11_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c11_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c11_1">
+<div class="topic">Distinguishing HSV from RAS — a high-yield comparison</div>
+<div class="prompt">How does the clinician distinguish intraoral herpes from recurrent aphthous stomatitis, and why does it matter?</div>
+<button class="reveal" onclick="revealCard('c11_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c11_1">
+<div class="en">Distinguishing recurrent intraoral HSV from recurrent aphthous stomatitis (RAS) is one of the most frequently tested and clinically useful discriminations in oral medicine, because the two are constantly confused — many clinicians still wrongly call RAS “herpes” — yet decades of research confirm that <b>RAS is not caused by HSV</b>. The most reliable distinguishing feature is <b>location relative to keratinisation</b>: recrudescent intraoral HSV occurs on <b>keratinised, bound-down mucosa</b> (hard palate, attached gingiva, dorsum of tongue) because that is where the trigeminal nerve delivers reactivated virus, whereas RAS characteristically spares heavily keratinised palate and gingiva and instead favours the <b>movable, non-keratinised buccal and labial mucosa and floor of mouth</b>. A second feature is the <b>starting lesion</b>: HSV begins as a <b>cluster of vesicles</b> that break down and coalesce, leaving tissue tags at the margins, whereas RAS begins as a flat area of erythema and a papule that ulcerates directly, <b>without any preceding vesicle and therefore without tissue tags</b> — the same absence of tags that separates RAS from pemphigus and pemphigoid. Age and systemic features help too: primary HSV is an acute febrile illness of children with widespread ulcers and gingivitis, while RAS is a recurring problem of otherwise-well patients beginning in the second decade. The distinction matters because HSV may respond to <b>antivirals</b> (most effective in the prodrome) and carries a transmission and, in the immunocompromised, a dissemination risk, whereas RAS is managed with <b>topical corticosteroids</b> and a search for haematologic deficiency — so mislabelling one as the other leads to the wrong treatment and false reassurance.</div>
+<div class="hint">تمييز HSV الفموي الناكس عن القرحات القلاعية الناكسة (RAS) من أكثر التمييزات فائدةً وامتحاناً في طب الفم، لأن الاثنين يُخلطان دائماً — فكثيرون ما زالوا يسمّون RAS خطأً «هربس» — مع أن الأبحاث تؤكّد أن <b>RAS لا يسبّبه HSV</b>. وأوثق مميّز هو <b>الموقع نسبةً للتقرّن</b>: HSV الفموي الناكس يحدث على <b>المخاطية المتقرّنة الملتصقة</b> (الحنك الصلب، اللثة الملتصقة، ظهر اللسان)، بينما RAS يجنّب الحنك واللثة شديدي التقرّن ويفضّل <b>المخاطية الشدقية والشفوية المتحرّكة غير المتقرّنة وأرض الفم</b>. والمميّز الثاني <b>الآفة البادئة</b>: HSV يبدأ <b>عنقود حويصلات</b> تتفكّك وتتلاحم تاركةً زوائد نسيجية، بينما RAS يبدأ حمامى مسطّحة وحطاطة تتقرّح مباشرةً، <b>دون حويصلة سابقة وبالتالي دون زوائد نسيجية</b> — وهو غياب الزوائد نفسه الذي يفصل RAS عن الفقاع والفقعان. والعمر والملامح الجهازية تساعد: HSV الأوّلي مرض حمّى حادّ للأطفال بقرحات واسعة والتهاب لثة، بينما RAS مشكلة ناكسة في مرضى أصحّاء تبدأ في العقد الثاني. ويهمّ التمييز لأن HSV قد يستجيب لـ<b>مضادّات الفيروسات</b> (الأفضل في البادرة) ويحمل خطر انتقال وانتشار في المثبَّط، بينما RAS يُدبّر بـ<b>الكورتيكوستيرويدات الموضعية</b> والبحث عن عوز دموي — فخلط أحدهما بالآخر يؤدّي لعلاج خاطئ وطمأنة كاذبة.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c11_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c11_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec12">Lec 1–4 · Synthesis &amp; Dental Relevance</h2>
+<div class="card" id="c12_0">
+<div class="topic">Comparing the herpesvirus infections</div>
+<div class="prompt">How do the herpesvirus and coxsackievirus infections compare, and what unifies their behaviour?</div>
+<button class="reveal" onclick="revealCard('c12_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c12_0">
+<div class="en">The viral causes of acute multiple ulcers share a common biology but differ in ways worth holding together. The <b>human herpesviruses</b> all establish <b>lifelong latency</b> after primary infection and can reactivate, which is their defining trait. <b>HSV-1</b> (above the waist) causes primary herpetic gingivostomatitis in children and hides in the <b>trigeminal ganglion</b>, reactivating as recurrent herpes labialis or recrudescent intraoral herpes on keratinised mucosa, triggered by fever, UV, trauma, stress, or menstruation. <b>Varicella-zoster virus</b> causes chickenpox as its primary infection, hides in the <b>dorsal root and cranial nerve ganglia</b>, and reactivates as herpes zoster in a <b>unilateral dermatomal</b> pattern, with postherpetic neuralgia as its feared sequela and rising incidence in the elderly and immunocompromised. <b>Cytomegalovirus</b> is usually mild in the immunocompetent but in the immunocompromised causes retinitis, enteritis, and a <b>solitary oral ulcer</b>. <b>Coxsackievirus</b>, by contrast, is an <b>RNA virus that does not establish latency</b>; it causes the self-limiting childhood entities herpangina (soft-palate vesicles) and hand-foot-and-mouth disease (oral lesions plus a limb rash). The unifying clinical lesson is that most of these are self-limiting in healthy patients and managed supportively, but all become more severe, prolonged, or disseminated in the immunocompromised — where systemic antivirals (aciclovir family for HSV/VZV, ganciclovir for CMV) become important, and where acyclovir-resistant HSV may require foscarnet or cidofovir.</div>
+<div class="hint">الأسباب الفيروسية للقرحات المتعدّدة الحادّة تتشارك بيولوجيا واحدة لكن تختلف بما يستحقّ ربطه. <b>الفيروسات الهربسية البشرية</b> جميعها تؤسّس <b>كموناً مدى الحياة</b> بعد العدوى الأوّلية ويمكن أن تُعاد تنشيطها. <b>HSV-1</b> (فوق الخصر) يسبّب التهاب اللثة والفم الأوّلي في الأطفال ويكمن في <b>عقدة مثلّث التوائم</b>، ويُعاد تنشيطه كهربس شفوي ناكس أو فموي على المخاطية المتقرّنة، مُحرّضاً بالحمّى والأشعّة والرضّ والشدّة والطمث. <b>فيروس الحماق النطاقي</b> يسبّب جدري الماء أوّلياً، ويكمن في <b>عقد الجذر الظهري والأعصاب القحفية</b>، ويُعاد تنشيطه كزوستر بنمط <b>جلدي أحادي الجانب</b>، مع الألم التالي للهربس تلوياً مخوفاً وازدياداً في المسنّين والمثبَّطين. <b>CMV</b> خفيف عادةً في المناعي السليم لكنه في المثبَّط يسبّب التهاب شبكية وأمعاء و<b>قرحة فموية مفردة</b>. أمّا <b>كوكساكي</b> ففيروس <b>RNA لا يؤسّس كموناً</b>؛ يسبّب الذباح الحلئي (حويصلات الحنك الرخو) وداء اليد والقدم والفم. والدرس الجامع أن معظمها محدود ذاتياً في الأصحّاء ويُدبّر داعماً، لكنّها تصير أشدّ أو منتشرة في المثبَّط — حيث تصير مضادّات الفيروسات الجهازية (عائلة الأسيكلوفير لـHSV/VZV، غانسيكلوفير لـCMV) مهمّة.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c12_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c12_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c12_1">
+<div class="topic">Comparing pemphigus and pemphigoid</div>
+<div class="prompt">How are pemphigus vulgaris and mucous membrane pemphigoid distinguished, and why does the distinction matter?</div>
+<button class="reveal" onclick="revealCard('c12_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c12_1">
+<div class="en">Pemphigus vulgaris and mucous membrane pemphigoid are the two autoimmune blistering diseases behind chronic multiple oral ulcers, and they are separated by the <b>depth of the split</b> in the epithelium, which explains almost every difference between them. In <b>pemphigus vulgaris</b> the autoantibodies (IgG) target <b>desmoglein 3</b>, the adhesion molecule between epithelial cells, so the split is <b>intraepithelial (acantholytic)</b>; the blister roof is only the upper epithelium, so bullae are fragile and rupture almost immediately, leaving shallow irregular erosions, and gentle pressure extends the lesion — the <b>Nikolsky sign</b>. Direct immunofluorescence shows IgG in a <b>fishnet, intercellular</b> pattern. In <b>mucous membrane pemphigoid</b> the antibodies target the <b>basement membrane zone</b>, so the split is <b>subepithelial</b>; the blister roof is full-thickness epithelium, making bullae more robust, and the hallmark is <b>scarring</b> — especially conjunctival scarring that can cause blindness — with a <b>linear</b> band of IgG/C3 on direct immunofluorescence and a clinical picture of desquamative gingivitis. The distinction matters clinically for three reasons: pemphigus is the more immediately <b>life-threatening</b> (historically fatal, still dangerous through infection and sepsis on high-dose steroids), pemphigoid threatens <b>vision</b> through scarring and demands ophthalmologic involvement, and both are routinely <b>misdiagnosed as HSV or candidiasis</b> for months — so recognising a chronic, non-healing, blistering oral ulcer as possibly autoimmune, and confirming it with biopsy and immunofluorescence, is what gets the patient the immunosuppressive treatment they need before serious complications develop.</div>
+<div class="hint">الفقاع الشائع والفقعان الغشائي المخاطي هما المرضان الفقاعيان المناعيان خلف القرحات الفموية المتعدّدة المزمنة، ويفصلهما <b>عمق الانفلاق</b> في الظهارة، ممّا يفسّر كلّ فروقاتهما تقريباً. في <b>الفقاع الشائع</b> تستهدف الأضداد (IgG) <b>الديسموغلين 3</b>، جزيء الالتصاق بين الخلايا الظهارية، فالانفلاق <b>داخل ظهاري (انحلال شوك)</b>؛ وسقف الفقاعة الظهارة العلوية فقط، فالفقاعات هشّة تتمزّق فوراً تاركةً تآكلات سطحية غير منتظمة، والضغط اللطيف يمدّد الآفة — <b>علامة نيكولسكي</b>. والتألّق المناعي المباشر يُظهِر IgG بنمط <b>شبكة صيد بين خلوي</b>. وفي <b>الفقعان الغشائي</b> تستهدف الأضداد <b>منطقة الغشاء القاعدي</b>، فالانفلاق <b>تحت ظهاري</b>؛ وسقف الفقاعة ظهارة كاملة السماكة، فالفقاعات أمتن، وسمته <b>التندّب</b> — خاصةً تندّب الملتحمة الذي قد يسبّب العمى — مع شريط <b>خطّي</b> من IgG/C3 وصورة التهاب لثة توسّفي. ويهمّ التمييز لثلاث: الفقاع أكثر <b>تهديداً للحياة</b>، والفقعان يهدّد <b>البصر</b> بالتندّب، وكلاهما يُشخّص خطأً <b>كـHSV أو داء مبيضّات</b> أشهراً — فالتعرّف على قرحة فموية مزمنة لا تلتئم كاحتمال مناعي، وتأكيدها بالخزعة والتألّق المناعي، هو ما يوصِل المريض للعلاج المثبّط قبل المضاعفات.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c12_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c12_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c12_2">
+<div class="topic">The single chronic ulcer — never miss a cancer</div>
+<div class="prompt">Why is the patient with a single chronic ulcer the most important category, and how is it approached?</div>
+<button class="reveal" onclick="revealCard('c12_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c12_2">
+<div class="en">Of the four ulcer patterns, the <b>patient with a single chronic ulcer</b> carries the greatest clinical weight, because while multiple and recurring ulcers are usually benign and self-limiting, a solitary ulcer that <b>does not heal</b> must be treated as <b>squamous cell carcinoma (SCC) until proven otherwise</b>. The rule of thumb is that any oral ulcer persisting <b>more than two to three weeks</b> without an obvious cause requires investigation and, in most cases, <b>biopsy</b>. The differential for a single chronic ulcer includes <b>traumatic ulcer</b> (which should heal within about two weeks once the cause — a sharp tooth, denture, or cheek-biting habit — is removed; failure to heal after removing the cause is itself a red flag), <b>SCC</b> (classically an indurated, rolled-margin, non-tender ulcer, often on the lateral tongue or floor of mouth in a patient with tobacco and alcohol exposure), a <b>deep fungal infection</b>, a <b>chancre of primary syphilis</b>, and in the immunocompromised a <b>solitary CMV or HSV ulcer</b>. The approach is systematic: take a history for trauma and risk factors, remove any obvious cause and review in two weeks, palpate the ulcer and regional lymph nodes for the induration and hard, fixed, non-tender nodes that suggest malignancy, and biopsy anything that does not resolve. The cost of mislabelling an early SCC as a simple traumatic ulcer is measured in survival, which is exactly why this single-ulcer category is the one where the clinician must be least willing to reassure and most willing to biopsy.</div>
+<div class="hint">من الأنماط الأربعة، <b>مريض القرحة المفردة المزمنة</b> أثقلها وزناً، لأنّه بينما القرحات المتعدّدة والناكسة سليمة ومحدودة ذاتياً غالباً، فالقرحة المفردة التي <b>لا تلتئم</b> يجب أن تُعامَل كـ<b>سرطانة حرشفية الخلايا (SCC) حتّى يُثبَت العكس</b>. والقاعدة أن أي قرحة تستمرّ <b>أكثر من أسبوعين إلى ثلاثة</b> دون سبب واضح تتطلّب استقصاءً وغالباً <b>خزعة</b>. والتشخيص التفريقي يشمل <b>القرحة الرضّية</b> (يجب أن تلتئم خلال نحو أسبوعين بعد إزالة السبب — سنّ حادّ، طقم، أو عادة عضّ الخدّ؛ وفشل الالتئام بعد إزالة السبب علامة منذرة)، <b>SCC</b> (كلاسيكياً قرحة متصلّبة مدوّرة الحواف غير مؤلمة، غالباً على جانب اللسان أو أرض الفم في مريض مدخّن ومتعاطٍ للكحول)، <b>عدوى فطرية عميقة</b>، <b>قرحة الزهري الأوّلي</b>، وفي المثبَّط <b>قرحة CMV أو HSV مفردة</b>. والمقاربة منهجية: خذ قصّة للرضّ وعوامل الخطر، أزِل أي سبب واضح وراجِع بعد أسبوعين، واجسّ القرحة والعقد الإقليمية للتصلّب والعقد الصلبة الثابتة غير المؤلمة التي توحي بالخباثة، واخزع ما لا يزول. وثمن خلط SCC مبكّر بقرحة رضّية بسيطة يُقاس بالبقاء، ولهذا فئة القرحة المفردة هي التي يجب أن يكون الطبيب فيها أقلّ استعداداً للطمأنة وأكثر استعداداً للخزعة.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c12_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c12_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c12_3">
+<div class="topic">Vesiculobullous diseases and the dental visit</div>
+<div class="prompt">Why does the dentist so often make the first diagnosis of these vesiculobullous and ulcerative diseases, and what is the practical responsibility?</div>
+<button class="reveal" onclick="revealCard('c12_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c12_3">
+<div class="en">A striking feature running through this whole chapter is that the <b>mouth is frequently the first — and sometimes the only — site</b> where these diseases declare themselves, which places the dentist in the position of first diagnostician for conditions that are far more than local nuisances. Pemphigus vulgaris shows its oral lesions first in <b>about 60% of patients</b>, often months before any skin blistering; mucous membrane pemphigoid may present only as desquamative gingivitis; erythema multiforme may involve the oral mucosa without skin targets; and primary herpetic gingivostomatitis, herpangina, and hand-foot-and-mouth disease all announce systemic viral illness through the mouth. Because these oral presentations are non-specific and are <b>routinely mistaken for commoner problems</b> — pemphigus and pemphigoid misread as recurrent herpes or candidiasis for an average of over five months — the practical responsibility is threefold. First, the dentist must resist pattern-matching every ulcer to aphthae or herpes and instead apply the <b>four-pattern framework</b> (acute multiple, chronic multiple, recurring, single) to generate a real differential. Second, the dentist must know which findings demand escalation: a chronic non-healing single ulcer needs biopsy to exclude carcinoma; chronic multiple blistering ulcers with a positive Nikolsky sign or desquamative gingivitis need biopsy with <b>immunofluorescence</b> for pemphigus or pemphigoid; and conjunctival or ocular symptoms in pemphigoid or Behçet need urgent ophthalmology to protect sight. Third, the dentist must recognise the <b>immunocompromised patient</b>, in whom ordinary viral ulcers become severe, disseminated, or life-threatening and require systemic antivirals. Handled well, the dental visit becomes the point at which a serious autoimmune, infectious, or malignant disease is caught early — which is the deeper reason this material matters beyond passing an exam.</div>
+<div class="hint">من ألفت ما في هذا الفصل أن <b>الفم غالباً أوّل — وأحياناً الوحيد — موضع</b> تظهر فيه هذه الأمراض، ممّا يضع الطبيب في موقع المشخّص الأوّل لحالات أبعد من كونها محض إزعاج موضعي. الفقاع الشائع تظهر آفاته الفموية أولاً في <b>نحو 60% من المرضى</b>، غالباً قبل أي تفقّع جلدي بأشهر؛ والفقعان الغشائي قد يتظاهر فقط كالتهاب لثة توسّفي؛ والحمامى عديدة الأشكال قد تصيب المخاطية الفموية دون أهداف جلدية؛ والتهاب اللثة والفم الهربسي الأوّلي والذباح الحلئي وداء اليد والقدم والفم تُعلِن جميعاً مرضاً فيروسياً جهازياً عبر الفم. ولأن هذه التظاهرات غير نوعية و<b>تُخلط روتينياً بمشاكل أشيع</b> — الفقاع والفقعان يُقرأان خطأً كهربس ناكس أو داء مبيضّات لمدّة تتجاوز خمسة أشهر وسطياً — فالمسؤولية العملية ثلاثية. أولاً، على الطبيب ألا يطابق كلّ قرحة بالقلاعية أو الهربس بل يطبّق <b>إطار الأنماط الأربعة</b> (متعدّدة حادّة، متعدّدة مزمنة، ناكسة، مفردة) ليولّد تشخيصاً تفريقياً حقيقياً. ثانياً، عليه أن يعرف أيّ الموجودات تستدعي التصعيد: قرحة مفردة مزمنة لا تلتئم تحتاج خزعة لاستبعاد السرطانة؛ وقرحات تفقّعية متعدّدة مزمنة مع نيكولسكي إيجابي أو التهاب لثة توسّفي تحتاج خزعة مع <b>تألّق مناعي</b>؛ وأعراض عينية في الفقعان أو بهجت تحتاج طبّ عيون عاجلاً لحماية البصر. ثالثاً، عليه أن يتعرّف على <b>المريض المثبَّط مناعياً</b>، الذي تصير فيه القرحات الفيروسية العادية شديدة أو منتشرة أو مهدّدة للحياة وتحتاج مضادّات فيروسات جهازية. وإذا أُحسِنت، تصير زيارة الأسنان النقطة التي يُلتقط عندها مرض مناعي أو عدوائي أو خبيث خطير مبكّراً — وهذا السبب الأعمق لأهمّية هذه المادة أبعد من اجتياز امتحان.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c12_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c12_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c12_4">
+<div class="topic">Summary — oral ulceration and vesiculobullous lesions at a glance</div>
+<div class="prompt">Can you summarise the whole chapter on oral ulceration and vesiculobullous lesions as one connected overview?</div>
+<button class="reveal" onclick="revealCard('c12_4')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c12_4">
+<div class="en">This chapter equips the clinician to diagnose the ulcerative, vesicular, and bullous diseases of the oral mucosa, and it hangs together as one connected story. It opens with a <b>vocabulary of lesions</b> — papules, plaques and nodules; vesicles (&lt;1 cm) and bullae (&gt;1 cm) of clear fluid; pustules of pus; erosions (red, from ruptured blisters) versus ulcers (yellow, fibrin-covered); and purpura (petechiae, purpura, ecchymoses) that does not blanch — because naming the lesion correctly is the first diagnostic step. It then organises every disease by a <b>four-pattern clinical framework</b>: acute multiple, chronic multiple, recurring, and single ulcers. <b>Acute multiple ulcers</b> are dominated by the <b>viral infections</b> — the latent, reactivating herpesviruses (HSV in the trigeminal ganglion causing primary gingivostomatitis and recurrent herpes; VZV causing chickenpox then dermatomal shingles with postherpetic neuralgia; CMV causing a solitary ulcer in the immunocompromised) and the non-latent coxsackievirus (herpangina, hand-foot-and-mouth) — plus the hypersensitivity reaction <b>erythema multiforme</b> with its pathognomonic target lesion and HSV association, and its severe SJS/TEN spectrum, and NUG/NUP. <b>Recurring ulcers</b> centre on <b>recurrent aphthous stomatitis</b> (minor, major, herpetiform — not caused by HSV, a diagnosis of exclusion) and Behçet disease with its oral-genital-ocular triad. <b>Chronic multiple ulcers</b> are the autoimmune vesiculobullous diseases — <b>pemphigus vulgaris</b> (intraepithelial, anti-DSG3, Nikolsky sign, fishnet DIF, potentially fatal) and <b>mucous membrane pemphigoid</b> (subepithelial, basement-membrane antibodies, linear DIF, scarring). And the <b>single chronic ulcer</b> must always exclude squamous cell carcinoma. Read whole, the chapter is a diagnostic engine: name the lesion, place the patient in one of four patterns, work the short differential, and decide whether to reassure, treat, or biopsy — with the mouth often being where these systemic diseases are first caught.</div>
+<div class="hint">يُعدّ هذا الفصل الطبيب لتشخيص الأمراض التقرّحية والحويصلية والفقاعية للمخاطية الفموية، ويترابط كقصّة واحدة. يبدأ بـ<b>مفردات الآفات</b> — الحطاطات واللويحات والعقيدات؛ الحويصلات (&lt;1سم) والفقاعات (&gt;1سم) ذات السائل الصافي؛ البثرات؛ التآكلات (حمراء) مقابل القرحات (صفراء)؛ والفرفرية التي لا تشحب — لأن تسمية الآفة صحيحاً أول خطوة. ثم ينظّم كلّ مرض بـ<b>إطار الأنماط الأربعة</b>: متعدّدة حادّة، متعدّدة مزمنة، ناكسة، ومفردة. <b>المتعدّدة الحادّة</b> تسودها <b>العداوى الفيروسية</b> — الفيروسات الهربسية الكامنة المُعاد تنشيطها (HSV في عقدة مثلّث التوائم؛ VZV يسبّب جدري الماء ثم الزوستر الجلدي مع الألم التالي؛ CMV يسبّب قرحة مفردة في المثبَّط) وكوكساكي غير الكامن (الذباح الحلئي، اليد والقدم والفم) — مع <b>الحمامى عديدة الأشكال</b> بآفة الهدف وارتباطها بـHSV، وطيفها الشديد SJS/TEN، وNUG/NUP. <b>الناكسة</b> تتمركز على <b>القرحات القلاعية الناكسة</b> (صغرى، كبرى، حلئية — لا يسبّبها HSV، تشخيص بالاستبعاد) وداء بهجت بثالوثه الفموي-التناسلي-العيني. <b>المتعدّدة المزمنة</b> هي الأمراض الفقاعية المناعية — <b>الفقاع الشائع</b> (داخل ظهاري، ضدّ DSG3، نيكولسكي، DIF شبكي، قد يكون مميتاً) و<b>الفقعان الغشائي</b> (تحت ظهاري، أضداد الغشاء القاعدي، DIF خطّي، تندّب). وال<b>قرحة المفردة المزمنة</b> يجب أن تستبعد دائماً السرطانة حرشفية الخلايا. وككلّ، الفصل محرّك تشخيصي: سمّ الآفة، ضع المريض في أحد الأنماط الأربعة، اعمل التشخيص التفريقي القصير، وقرّر إن كنت تطمئن أو تعالج أو تخزع — والفم غالباً حيث تُلتقط هذه الأمراض الجهازية أولاً.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c12_4',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c12_4',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c12_5">
+<div class="topic">High-yield exam pearls — ulcers &amp; vesiculobullous lesions</div>
+<div class="prompt">What are the highest-yield exam pearls from this chapter to memorise?</div>
+<button class="reveal" onclick="revealCard('c12_5')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c12_5">
+<div class="en">A compact set of pearls captures the most testable points of this chapter. On <b>terminology</b>: vesicle &lt;1 cm and bulla &gt;1 cm (clear fluid); erosion is red while ulcer is yellow/fibrin-covered; purpura does not blanch and is sized as petechiae (&lt;0.3 cm), purpura (0.4–0.9 cm), ecchymoses (&gt;1 cm). On <b>HSV</b>: latency in the trigeminal ganglion, primary gingivostomatitis resolves in 10–14 days, recurrent herpes labialis in 20–40% of adults, PCR is the most sensitive test, and intraoral recurrence favours <b>keratinised</b> mucosa. On <b>VZV</b>: chickenpox then dermatomal shingles, and postherpetic neuralgia is pain persisting <b>120 days</b> after rash onset. On <b>coxsackievirus</b>: herpangina (soft palate) and hand-foot-and-mouth (oral + limb rash). On <b>erythema multiforme</b>: the <b>target lesion is pathognomonic</b>, HSV triggers 65–70% of recurrent cases, and severe forms are SJS/TEN. On <b>RAS</b>: it is <b>NOT herpes</b>, spares keratinised mucosa, has no tissue tags, and comes in minor (heal without scarring), major (heal with scarring), and herpetiform types; Behçet adds the oral-genital-ocular triad. On <b>pemphigus vulgaris</b>: intraepithelial, anti-DSG3, positive Nikolsky sign, fishnet DIF, oral lesions first in 60%. On <b>mucous membrane pemphigoid</b>: subepithelial, linear DIF, scarring conjunctiva, desquamative gingivitis. And the overriding safety pearl: a <b>single ulcer persisting beyond 2–3 weeks must be biopsied to exclude squamous cell carcinoma</b>.</div>
+<div class="hint">مجموعة موجزة من اللآلئ تلتقط أكثر نقاط الفصل قابليةً للامتحان. في <b>المصطلحات</b>: حويصلة &lt;1سم وفقاعة &gt;1سم (سائل صافٍ)؛ التآكل أحمر والقرحة صفراء/مغطّاة بفيبرين؛ والفرفرية لا تشحب، وحجمها فرفريات (&lt;0.3سم)، فرفرية (0.4–0.9)، كدمات (&gt;1سم). في <b>HSV</b>: الكمون في عقدة مثلّث التوائم، والتهاب اللثة والفم الأوّلي يزول في 10–14 يوماً، والهربس الشفوي الناكس في 20–40%، وPCR الأحسّ، والنكس الفموي يفضّل المخاطية <b>المتقرّنة</b>. في <b>VZV</b>: جدري الماء ثم الزوستر الجلدي، والألم التالي للهربس ألم يبقى <b>120 يوماً</b> بعد الطفح. في <b>كوكساكي</b>: الذباح الحلئي (الحنك الرخو) واليد والقدم والفم (فموي + طفح أطراف). في <b>الحمامى عديدة الأشكال</b>: <b>آفة الهدف مُمْرَضة</b>، وHSV يحرّض 65–70% من الناكسة، والأشكال الشديدة SJS/TEN. في <b>RAS</b>: <b>ليس هربساً</b>، يجنّب المخاطية المتقرّنة، بلا زوائد نسيجية، وأنواعه صغرى (دون تندّب)، كبرى (بتندّب)، حلئية؛ وبهجت يضيف الثالوث الفموي-التناسلي-العيني. في <b>الفقاع الشائع</b>: داخل ظهاري، ضدّ DSG3، نيكولسكي إيجابي، DIF شبكي، الآفات الفموية أولاً في 60%. في <b>الفقعان الغشائي</b>: تحت ظهاري، DIF خطّي، تندّب الملتحمة، التهاب لثة توسّفي. واللؤلؤة الأمانية العليا: <b>قرحة مفردة تتجاوز 2–3 أسابيع يجب خزعها لاستبعاد السرطانة حرشفية الخلايا</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c12_5',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c12_5',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+
+<div class="mcq-wrap">
+<h2 class="mcq-title">📝 اختبار MCQ · اختبر نفسك (20 سؤالاً)</h2>
+<div class="mcq-note">اختر إجابةً لكل سؤال. سيظهر الصحيح بالأخضر والخطأ بالأحمر مع شرح موجز. النتيجة تُحسب تلقائياً في الأعلى.</div>
+<div class="mcq-scorebar">النتيجة · Score: <b id="mcqScore">0 / 20</b> &nbsp;·&nbsp; <button class="mcq-reset" onclick="mcqReset()">🔄 إعادة الاختبار</button></div>
+<div class="mcq-q" id="mcq0">
+<div class="mcq-stem"><span class="mcq-num">1</span> A blister containing clear fluid greater than 1 cm in diameter is called a:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="0" data-o="0" onclick="pick(0,0)"><b>A.</b> Vesicle</button>
+<button class="mcq-opt" data-q="0" data-o="1" onclick="pick(0,1)"><b>B.</b> Bulla</button>
+<button class="mcq-opt" data-q="0" data-o="2" onclick="pick(0,2)"><b>C.</b> Pustule</button>
+<button class="mcq-opt" data-q="0" data-o="3" onclick="pick(0,3)"><b>D.</b> Papule</button></div>
+<div class="mcq-exp" id="exp0"></div>
+</div>
+<div class="mcq-q" id="mcq1">
+<div class="mcq-stem"><span class="mcq-num">2</span> A red lesion caused by rupture of a vesicle, NOT covered by fibrin, is an:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="1" data-o="0" onclick="pick(1,0)"><b>A.</b> Ulcer</button>
+<button class="mcq-opt" data-q="1" data-o="1" onclick="pick(1,1)"><b>B.</b> Erosion</button>
+<button class="mcq-opt" data-q="1" data-o="2" onclick="pick(1,2)"><b>C.</b> Pustule</button>
+<button class="mcq-opt" data-q="1" data-o="3" onclick="pick(1,3)"><b>D.</b> Plaque</button></div>
+<div class="mcq-exp" id="exp1"></div>
+</div>
+<div class="mcq-q" id="mcq2">
+<div class="mcq-stem"><span class="mcq-num">3</span> Purpura is classified by size. A lesion less than 0.3 cm is a:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="2" data-o="0" onclick="pick(2,0)"><b>A.</b> Petechia</button>
+<button class="mcq-opt" data-q="2" data-o="1" onclick="pick(2,1)"><b>B.</b> Purpura</button>
+<button class="mcq-opt" data-q="2" data-o="2" onclick="pick(2,2)"><b>C.</b> Ecchymosis</button>
+<button class="mcq-opt" data-q="2" data-o="3" onclick="pick(2,3)"><b>D.</b> Bulla</button></div>
+<div class="mcq-exp" id="exp2"></div>
+</div>
+<div class="mcq-q" id="mcq3">
+<div class="mcq-stem"><span class="mcq-num">4</span> A key feature distinguishing purpura from inflammatory redness is that purpura:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="3" data-o="0" onclick="pick(3,0)"><b>A.</b> Blanches on pressure</button>
+<button class="mcq-opt" data-q="3" data-o="1" onclick="pick(3,1)"><b>B.</b> Does NOT blanch on pressure</button>
+<button class="mcq-opt" data-q="3" data-o="2" onclick="pick(3,2)"><b>C.</b> Is always painful</button>
+<button class="mcq-opt" data-q="3" data-o="3" onclick="pick(3,3)"><b>D.</b> Is always raised</button></div>
+<div class="mcq-exp" id="exp3"></div>
+</div>
+<div class="mcq-q" id="mcq4">
+<div class="mcq-stem"><span class="mcq-num">5</span> HSV establishes latency in the:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="4" data-o="0" onclick="pick(4,0)"><b>A.</b> Bone marrow</button>
+<button class="mcq-opt" data-q="4" data-o="1" onclick="pick(4,1)"><b>B.</b> Sensory (trigeminal) ganglion</button>
+<button class="mcq-opt" data-q="4" data-o="2" onclick="pick(4,2)"><b>C.</b> Salivary glands</button>
+<button class="mcq-opt" data-q="4" data-o="3" onclick="pick(4,3)"><b>D.</b> Lymph nodes</button></div>
+<div class="mcq-exp" id="exp4"></div>
+</div>
+<div class="mcq-q" id="mcq5">
+<div class="mcq-stem"><span class="mcq-num">6</span> Primary herpetic gingivostomatitis is typically self-limiting, resolving within:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="5" data-o="0" onclick="pick(5,0)"><b>A.</b> 2–3 days</button>
+<button class="mcq-opt" data-q="5" data-o="1" onclick="pick(5,1)"><b>B.</b> 10–14 days</button>
+<button class="mcq-opt" data-q="5" data-o="2" onclick="pick(5,2)"><b>C.</b> 6 weeks</button>
+<button class="mcq-opt" data-q="5" data-o="3" onclick="pick(5,3)"><b>D.</b> 3 months</button></div>
+<div class="mcq-exp" id="exp5"></div>
+</div>
+<div class="mcq-q" id="mcq6">
+<div class="mcq-stem"><span class="mcq-num">7</span> Recurrent herpes labialis reactivation is triggered by all EXCEPT:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="6" data-o="0" onclick="pick(6,0)"><b>A.</b> UV radiation</button>
+<button class="mcq-opt" data-q="6" data-o="1" onclick="pick(6,1)"><b>B.</b> Fever/stress</button>
+<button class="mcq-opt" data-q="6" data-o="2" onclick="pick(6,2)"><b>C.</b> Improved oral hygiene</button>
+<button class="mcq-opt" data-q="6" data-o="3" onclick="pick(6,3)"><b>D.</b> Trauma/menstruation</button></div>
+<div class="mcq-exp" id="exp6"></div>
+</div>
+<div class="mcq-q" id="mcq7">
+<div class="mcq-stem"><span class="mcq-num">8</span> The most sensitive laboratory test to detect HSV from a swab is:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="7" data-o="0" onclick="pick(7,0)"><b>A.</b> Gram stain</button>
+<button class="mcq-opt" data-q="7" data-o="1" onclick="pick(7,1)"><b>B.</b> PCR</button>
+<button class="mcq-opt" data-q="7" data-o="2" onclick="pick(7,2)"><b>C.</b> ESR</button>
+<button class="mcq-opt" data-q="7" data-o="3" onclick="pick(7,3)"><b>D.</b> Blood glucose</button></div>
+<div class="mcq-exp" id="exp7"></div>
+</div>
+<div class="mcq-q" id="mcq8">
+<div class="mcq-stem"><span class="mcq-num">9</span> Reactivation of latent varicella-zoster virus produces:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="8" data-o="0" onclick="pick(8,0)"><b>A.</b> Chickenpox</button>
+<button class="mcq-opt" data-q="8" data-o="1" onclick="pick(8,1)"><b>B.</b> Herpes zoster (shingles)</button>
+<button class="mcq-opt" data-q="8" data-o="2" onclick="pick(8,2)"><b>C.</b> Herpangina</button>
+<button class="mcq-opt" data-q="8" data-o="3" onclick="pick(8,3)"><b>D.</b> Measles</button></div>
+<div class="mcq-exp" id="exp8"></div>
+</div>
+<div class="mcq-q" id="mcq9">
+<div class="mcq-stem"><span class="mcq-num">10</span> The vesicles of herpes zoster classically appear in a distribution that is:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="9" data-o="0" onclick="pick(9,0)"><b>A.</b> Bilateral and scattered</button>
+<button class="mcq-opt" data-q="9" data-o="1" onclick="pick(9,1)"><b>B.</b> Unilateral, linear, and dermatomal</button>
+<button class="mcq-opt" data-q="9" data-o="2" onclick="pick(9,2)"><b>C.</b> Only on the palms</button>
+<button class="mcq-opt" data-q="9" data-o="3" onclick="pick(9,3)"><b>D.</b> Only on the gingiva</button></div>
+<div class="mcq-exp" id="exp9"></div>
+</div>
+<div class="mcq-q" id="mcq10">
+<div class="mcq-stem"><span class="mcq-num">11</span> Postherpetic neuralgia is defined as pain remaining after the onset of rash for at least:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="10" data-o="0" onclick="pick(10,0)"><b>A.</b> 7 days</button>
+<button class="mcq-opt" data-q="10" data-o="1" onclick="pick(10,1)"><b>B.</b> 30 days</button>
+<button class="mcq-opt" data-q="10" data-o="2" onclick="pick(10,2)"><b>C.</b> 120 days</button>
+<button class="mcq-opt" data-q="10" data-o="3" onclick="pick(10,3)"><b>D.</b> 1 year</button></div>
+<div class="mcq-exp" id="exp10"></div>
+</div>
+<div class="mcq-q" id="mcq11">
+<div class="mcq-stem"><span class="mcq-num">12</span> In an immunocompromised (AIDS) patient, oral CMV classically presents as a:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="11" data-o="0" onclick="pick(11,0)"><b>A.</b> Multiple vesicles</button>
+<button class="mcq-opt" data-q="11" data-o="1" onclick="pick(11,1)"><b>B.</b> Solitary ulcer</button>
+<button class="mcq-opt" data-q="11" data-o="2" onclick="pick(11,2)"><b>C.</b> White plaque</button>
+<button class="mcq-opt" data-q="11" data-o="3" onclick="pick(11,3)"><b>D.</b> Target lesion</button></div>
+<div class="mcq-exp" id="exp11"></div>
+</div>
+<div class="mcq-q" id="mcq12">
+<div class="mcq-stem"><span class="mcq-num">13</span> Which viral infection causes vesicles on the soft palate/oropharynx plus a rash on the hands and feet?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="12" data-o="0" onclick="pick(12,0)"><b>A.</b> Primary HSV</button>
+<button class="mcq-opt" data-q="12" data-o="1" onclick="pick(12,1)"><b>B.</b> Hand-foot-and-mouth disease (coxsackievirus)</button>
+<button class="mcq-opt" data-q="12" data-o="2" onclick="pick(12,2)"><b>C.</b> CMV</button>
+<button class="mcq-opt" data-q="12" data-o="3" onclick="pick(12,3)"><b>D.</b> Herpes zoster</button></div>
+<div class="mcq-exp" id="exp12"></div>
+</div>
+<div class="mcq-q" id="mcq13">
+<div class="mcq-stem"><span class="mcq-num">14</span> The pathognomonic skin lesion of erythema multiforme is the:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="13" data-o="0" onclick="pick(13,0)"><b>A.</b> Dewdrop vesicle</button>
+<button class="mcq-opt" data-q="13" data-o="1" onclick="pick(13,1)"><b>B.</b> Target (iris) lesion</button>
+<button class="mcq-opt" data-q="13" data-o="2" onclick="pick(13,2)"><b>C.</b> Wickham striae</button>
+<button class="mcq-opt" data-q="13" data-o="3" onclick="pick(13,3)"><b>D.</b> Café-au-lait macule</button></div>
+<div class="mcq-exp" id="exp13"></div>
+</div>
+<div class="mcq-q" id="mcq14">
+<div class="mcq-stem"><span class="mcq-num">15</span> Recurrent erythema multiforme is most commonly associated with:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="14" data-o="0" onclick="pick(14,0)"><b>A.</b> HSV infection</button>
+<button class="mcq-opt" data-q="14" data-o="1" onclick="pick(14,1)"><b>B.</b> Diabetes</button>
+<button class="mcq-opt" data-q="14" data-o="2" onclick="pick(14,2)"><b>C.</b> Iron deficiency</button>
+<button class="mcq-opt" data-q="14" data-o="3" onclick="pick(14,3)"><b>D.</b> Smoking</button></div>
+<div class="mcq-exp" id="exp14"></div>
+</div>
+<div class="mcq-q" id="mcq15">
+<div class="mcq-stem"><span class="mcq-num">16</span> Severe fulminant forms of EM historically labeled with extensive epidermal detachment are:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="15" data-o="0" onclick="pick(15,0)"><b>A.</b> RAS and Behçet</button>
+<button class="mcq-opt" data-q="15" data-o="1" onclick="pick(15,1)"><b>B.</b> SJS and TEN</button>
+<button class="mcq-opt" data-q="15" data-o="2" onclick="pick(15,2)"><b>C.</b> NUG and NUP</button>
+<button class="mcq-opt" data-q="15" data-o="3" onclick="pick(15,3)"><b>D.</b> Herpangina</button></div>
+<div class="mcq-exp" id="exp15"></div>
+</div>
+<div class="mcq-q" id="mcq16">
+<div class="mcq-stem"><span class="mcq-num">17</span> Recurrent aphthous stomatitis (RAS) is:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="16" data-o="0" onclick="pick(16,0)"><b>A.</b> Caused by HSV</button>
+<button class="mcq-opt" data-q="16" data-o="1" onclick="pick(16,1)"><b>B.</b> NOT caused by HSV</button>
+<button class="mcq-opt" data-q="16" data-o="2" onclick="pick(16,2)"><b>C.</b> A bacterial infection</button>
+<button class="mcq-opt" data-q="16" data-o="3" onclick="pick(16,3)"><b>D.</b> A fungal infection</button></div>
+<div class="mcq-exp" id="exp16"></div>
+</div>
+<div class="mcq-q" id="mcq17">
+<div class="mcq-stem"><span class="mcq-num">18</span> Which feature helps distinguish RAS from vesicular diseases like pemphigus?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="17" data-o="0" onclick="pick(17,0)"><b>A.</b> Round shallow shape</button>
+<button class="mcq-opt" data-q="17" data-o="1" onclick="pick(17,1)"><b>B.</b> Absence of tissue tags from ruptured vesicles</button>
+<button class="mcq-opt" data-q="17" data-o="2" onclick="pick(17,2)"><b>C.</b> Yellow color</button>
+<button class="mcq-opt" data-q="17" data-o="3" onclick="pick(17,3)"><b>D.</b> Painful nature</button></div>
+<div class="mcq-exp" id="exp17"></div>
+</div>
+<div class="mcq-q" id="mcq18">
+<div class="mcq-stem"><span class="mcq-num">19</span> Major aphthous ulcers differ from minor ones in that they:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="18" data-o="0" onclick="pick(18,0)"><b>A.</b> Are smaller</button>
+<button class="mcq-opt" data-q="18" data-o="1" onclick="pick(18,1)"><b>B.</b> Heal with scarring and last weeks-months</button>
+<button class="mcq-opt" data-q="18" data-o="2" onclick="pick(18,2)"><b>C.</b> Never recur</button>
+<button class="mcq-opt" data-q="18" data-o="3" onclick="pick(18,3)"><b>D.</b> Only occur in children</button></div>
+<div class="mcq-exp" id="exp18"></div>
+</div>
+<div class="mcq-q" id="mcq19">
+<div class="mcq-stem"><span class="mcq-num">20</span> The classic triad of Behçet disease includes oral ulcers, ocular inflammation, and:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="19" data-o="0" onclick="pick(19,0)"><b>A.</b> Genital ulcers</button>
+<button class="mcq-opt" data-q="19" data-o="1" onclick="pick(19,1)"><b>B.</b> Hair loss</button>
+<button class="mcq-opt" data-q="19" data-o="2" onclick="pick(19,2)"><b>C.</b> Nail dystrophy</button>
+<button class="mcq-opt" data-q="19" data-o="3" onclick="pick(19,3)"><b>D.</b> Hearing loss</button></div>
+<div class="mcq-exp" id="exp19"></div>
+</div>
+<div class="mcq-final" id="mcqFinal"></div>
+</div>
+
+<div class="foot">
+✅ غطّى هذا الملف مادة اليوم الخامس عشر — طب الفم (Oral Medicine) ص 147–219، القرحات والآفات الحويصلية الفقاعية: مصطلحات الآفات (الحطاطات، اللويحات، الحويصلات، الفقاعات، التآكلات، القرحات، الفرفرية)؛ العداوى الفيروسية (HSV والكمون في عقدة مثلّث التوائم والتهاب اللثة والفم الأوّلي والهربس الشفوي الناكس؛ VZV وجدري الماء والحزام الناري والألم العصبي التالي للهربس؛ CMV؛ وكوكساكي مع الذباح الحلئي وداء اليد والقدم والفم)؛ الحمامى عديدة الأشكال وآفة الهدف وSJS/TEN؛ NUG/NUP؛ والقرحات القلاعية الناكسة (RAS) بأنواعها الثلاثة وداء بهجت. 🩺 هذا اليوم الثالث من مادة طب الفم. وفي نهاية الملف اختبار MCQ لتقييم نفسك.<br><br>
+احفظ الملف باسم <b>oral-medicine-day15.html</b>. للتفاعل الكامل افتحه في Safari.
+</div>
+
+<script>
+let mastered={};
+function revealCard(id){document.getElementById('ans_'+id).classList.add('show');}
+function rate(id,ok){mastered[id]=ok;upd();}
+function upd(){
+  let done=Object.values(mastered).filter(v=>v===1).length;
+  document.getElementById('scoreTxt').textContent=done+' / 39';
+  document.getElementById('progBar').style.width=(done/39*100)+'%';
+}
+function revealAll(){document.querySelectorAll('.answer').forEach(a=>a.classList.add('show'));}
+function hideAll(){document.querySelectorAll('.answer').forEach(a=>a.classList.remove('show'));}
+function resetAll(){mastered={};hideAll();upd();}
+upd();
+
+const MCQ=[{"q": "A blister containing clear fluid greater than 1 cm in diameter is called a:", "opts": ["Vesicle", "Bulla", "Pustule", "Papule"], "correct": 1, "exp": "Bulla >1 cm; vesicle <1 cm; both contain clear fluid. الفقاعة >1سم؛ والحويصلة <1سم."}, {"q": "A red lesion caused by rupture of a vesicle, NOT covered by fibrin, is an:", "opts": ["Ulcer", "Erosion", "Pustule", "Plaque"], "correct": 1, "exp": "Erosion = red; ulcer = yellow fibrin-covered defect. التآكل أحمر؛ والقرحة مغطّاة بفيبرين أصفر."}, {"q": "Purpura is classified by size. A lesion less than 0.3 cm is a:", "opts": ["Petechia", "Purpura", "Ecchymosis", "Bulla"], "correct": 0, "exp": "Petechiae <0.3 cm; purpura 0.4–0.9; ecchymoses >1 cm. الفرفريات <0.3سم."}, {"q": "A key feature distinguishing purpura from inflammatory redness is that purpura:", "opts": ["Blanches on pressure", "Does NOT blanch on pressure", "Is always painful", "Is always raised"], "correct": 1, "exp": "Purpura does not blanch (blood is outside vessels). الفرفرية لا تشحب بالضغط."}, {"q": "HSV establishes latency in the:", "opts": ["Bone marrow", "Sensory (trigeminal) ganglion", "Salivary glands", "Lymph nodes"], "correct": 1, "exp": "HSV is latent in the trigeminal sensory ganglion. HSV كامن في عقدة مثلّث التوائم."}, {"q": "Primary herpetic gingivostomatitis is typically self-limiting, resolving within:", "opts": ["2–3 days", "10–14 days", "6 weeks", "3 months"], "correct": 1, "exp": "Self-limiting, resolves in 10–14 days. محدود ذاتياً، يزول في 10–14 يوماً."}, {"q": "Recurrent herpes labialis reactivation is triggered by all EXCEPT:", "opts": ["UV radiation", "Fever/stress", "Improved oral hygiene", "Trauma/menstruation"], "correct": 2, "exp": "Triggers: fever, UV, trauma, stress, menstruation. المحرّضات: حمّى، أشعّة، رضّ، شدّة، طمث."}, {"q": "The most sensitive laboratory test to detect HSV from a swab is:", "opts": ["Gram stain", "PCR", "ESR", "Blood glucose"], "correct": 1, "exp": "PCR detects HSV 3–4× more often than culture. PCR يكشف HSV أكثر بـ3–4 مرّات من الزرع."}, {"q": "Reactivation of latent varicella-zoster virus produces:", "opts": ["Chickenpox", "Herpes zoster (shingles)", "Herpangina", "Measles"], "correct": 1, "exp": "Primary VZV = chickenpox; reactivation = shingles. VZV الأوّلي = جدري الماء؛ والتنشيط = الحزام الناري."}, {"q": "The vesicles of herpes zoster classically appear in a distribution that is:", "opts": ["Bilateral and scattered", "Unilateral, linear, and dermatomal", "Only on the palms", "Only on the gingiva"], "correct": 1, "exp": "Zoster = unilateral dermatomal ('zosteriform') pattern. الزوستر = نمط جلدي أحادي الجانب."}, {"q": "Postherpetic neuralgia is defined as pain remaining after the onset of rash for at least:", "opts": ["7 days", "30 days", "120 days", "1 year"], "correct": 2, "exp": "PHN = pain remaining 120 days after rash onset. PHN = ألم يبقى 120 يوماً بعد الطفح."}, {"q": "In an immunocompromised (AIDS) patient, oral CMV classically presents as a:", "opts": ["Multiple vesicles", "Solitary ulcer", "White plaque", "Target lesion"], "correct": 1, "exp": "Oral CMV → solitary ulcer, often with hairy leukoplakia. CMV الفموي → قرحة مفردة."}, {"q": "Which viral infection causes vesicles on the soft palate/oropharynx plus a rash on the hands and feet?", "opts": ["Primary HSV", "Hand-foot-and-mouth disease (coxsackievirus)", "CMV", "Herpes zoster"], "correct": 1, "exp": "HFM disease (coxsackie): oral lesions + hand/foot rash. HFM (كوكساكي): آفات فموية + طفح اليد/القدم."}, {"q": "The pathognomonic skin lesion of erythema multiforme is the:", "opts": ["Dewdrop vesicle", "Target (iris) lesion", "Wickham striae", "Café-au-lait macule"], "correct": 1, "exp": "The target/iris lesion is pathognomonic of EM. آفة الهدف/القزحية مُمْرَضة نوعية لـEM."}, {"q": "Recurrent erythema multiforme is most commonly associated with:", "opts": ["HSV infection", "Diabetes", "Iron deficiency", "Smoking"], "correct": 0, "exp": "Recurrent EM linked to HSV in 65–70%. EM الناكسة مرتبطة بـHSV في 65–70%."}, {"q": "Severe fulminant forms of EM historically labeled with extensive epidermal detachment are:", "opts": ["RAS and Behçet", "SJS and TEN", "NUG and NUP", "Herpangina"], "correct": 1, "exp": "SJS/TEN = severe drug-induced spectrum. SJS/TEN = طيف شديد مُحرَّض بالأدوية."}, {"q": "Recurrent aphthous stomatitis (RAS) is:", "opts": ["Caused by HSV", "NOT caused by HSV", "A bacterial infection", "A fungal infection"], "correct": 1, "exp": "RAS is NOT caused by HSV — a common misconception. RAS لا يسبّبه HSV."}, {"q": "Which feature helps distinguish RAS from vesicular diseases like pemphigus?", "opts": ["Round shallow shape", "Absence of tissue tags from ruptured vesicles", "Yellow color", "Painful nature"], "correct": 1, "exp": "RAS has no tissue tags (doesn't start as a vesicle). RAS بلا زوائد نسيجية."}, {"q": "Major aphthous ulcers differ from minor ones in that they:", "opts": ["Are smaller", "Heal with scarring and last weeks-months", "Never recur", "Only occur in children"], "correct": 1, "exp": "Major RAS: >1 cm, deep, heal with scarring. القلاعية الكبرى: >1سم، تلتئم بتندّب."}, {"q": "The classic triad of Behçet disease includes oral ulcers, ocular inflammation, and:", "opts": ["Genital ulcers", "Hair loss", "Nail dystrophy", "Hearing loss"], "correct": 0, "exp": "Behçet triad: oral + genital ulcers + uveitis. ثالوث بهجت: قرحات فموية + تناسلية + التهاب عنبية."}];
+const mcqTotal=20;
+let mcqAnswered={};
+function pick(qi,oi){
+  if(mcqAnswered[qi]!==undefined) return;
+  mcqAnswered[qi]=oi;
+  const correct=MCQ[qi].correct;
+  const opts=document.querySelectorAll('#mcq'+qi+' .mcq-opt');
+  opts.forEach(b=>{
+    b.classList.add('locked');
+    const o=parseInt(b.getAttribute('data-o'));
+    if(o===correct) b.classList.add('correct');
+    if(o===oi && oi!==correct) b.classList.add('wrong');
+  });
+  const exp=document.getElementById('exp'+qi);
+  const ok=(oi===correct);
+  exp.innerHTML=(ok?'✅ <b>إجابة صحيحة</b> — ':'❌ <b>إجابة خاطئة</b> — الصحيح: <b>'+String.fromCharCode(65+correct)+'</b> — ')+MCQ[qi].exp;
+  exp.classList.add('show');
+  mcqScore();
+}
+function mcqScore(){
+  let s=0;
+  for(const k in mcqAnswered){ if(mcqAnswered[k]===MCQ[k].correct) s++; }
+  document.getElementById('mcqScore').textContent=s+' / '+mcqTotal;
+  if(Object.keys(mcqAnswered).length===mcqTotal){
+    const f=document.getElementById('mcqFinal');
+    const pct=Math.round(s/mcqTotal*100);
+    let msg,bg;
+    if(pct>=80){msg='🎉 ممتاز! '+s+'/'+mcqTotal+' ('+pct+'%) — إتقان قوي.';bg='#c9f2cd';}
+    else if(pct>=60){msg='👍 جيّد: '+s+'/'+mcqTotal+' ('+pct+'%) — راجع البطاقات المعلّمة بـ⭐.';bg='#fff3c4';}
+    else{msg='📚 '+s+'/'+mcqTotal+' ('+pct+'%) — أعد قراءة الملف ثم أعد الاختبار.';bg='#f8cfcf';}
+    f.textContent=msg;f.style.background=bg;f.classList.add('show');
+  }
+}
+function mcqReset(){
+  mcqAnswered={};
+  document.querySelectorAll('.mcq-opt').forEach(b=>b.classList.remove('correct','wrong','locked'));
+  document.querySelectorAll('.mcq-exp').forEach(e=>{e.classList.remove('show');e.innerHTML='';});
+  document.getElementById('mcqScore').textContent='0 / '+mcqTotal;
+  document.getElementById('mcqFinal').classList.remove('show');
+  document.getElementById('mcq0').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
