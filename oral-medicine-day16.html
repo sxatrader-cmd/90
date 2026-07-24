@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oral Medicine — Day 16 — Complete</title>
+<style>
+:root{color-scheme:light;}
+*{box-sizing:border-box;}
+html,body{background:#fff !important;color:#000 !important;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Tahoma,Arial,sans-serif;line-height:1.7;max-width:900px;margin:0 auto;padding:0 16px 60px;background:#fff;color:#000;}
+h1{font-size:23px;text-align:center;margin:18px 0 6px;}
+.subtitle{color:#444;font-size:14px;margin:0 0 14px;text-align:center;}
+.topbar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:2px solid #000;padding:8px 0;margin-bottom:10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;font-size:13px;}
+.topbar b{font-size:15px;}
+.ctrlbtn{background:#000;color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:12.5px;cursor:pointer;font-family:inherit;}
+.progress{background:#eee;border-radius:8px;height:10px;flex:1;min-width:120px;overflow:hidden;border:1px solid #999;}
+.progress>span{display:block;height:100%;background:#1a8f2a;width:0%;}
+.toc{background:#f7f7f7;border:1px solid #ccc;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:13.5px;}
+.toc a{display:block;color:#0645ad;text-decoration:none;padding:2px 0;}
+.sec{background:#000;color:#fff;padding:9px 13px;border-radius:8px;font-size:18px;margin:26px 0 12px;}
+.card{border:1.5px solid #999;border-radius:12px;padding:15px 17px;margin:14px 0;background:#fff;}
+.topic{font-weight:700;font-size:16px;margin-bottom:6px;}
+.prompt{font-size:15.5px;margin-bottom:10px;}
+.reveal{background:#000;color:#fff;border:none;border-radius:7px;padding:8px 14px;font-size:14px;cursor:pointer;font-family:inherit;}
+.answer{display:none;margin-top:12px;}
+.answer.show{display:block;}
+.en{font-size:14.5px;line-height:1.65;margin-bottom:10px;}
+.k{background:#ffd400;color:#b00;font-weight:700;padding:1px 4px;border-radius:3px;}
+.hint{background:#fff8d6;border-inline-start:4px solid #000;border-radius:6px;padding:10px 13px;font-size:14px;line-height:1.75;direction:rtl;text-align:right;}
+.hint b{color:#b00;}
+.en b{color:#000;}
+.btns{margin-top:10px;display:flex;gap:8px;}
+.btns button{border:1.5px solid #000;background:#fff;border-radius:6px;padding:5px 12px;font-size:13px;cursor:pointer;font-family:inherit;}
+.btns .rev{border-color:#b00;color:#b00;}
+.btns .gotit{border-color:#1a8f2a;color:#1a8f2a;}
+.foot{margin-top:30px;border-top:2px solid #000;padding-top:14px;font-size:14px;color:#333;}
+.note{background:#ffd400;color:#000;border:1px solid #000;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:15px;}
+.mcq-wrap{margin-top:40px;border-top:3px double #000;padding-top:20px;}
+.mcq-title{background:#000;color:#fff;padding:10px 14px;border-radius:8px;font-size:19px;}
+.mcq-note{font-size:13px;color:#444;margin:10px 0 6px;}
+.mcq-scorebar{position:sticky;top:56px;z-index:40;background:#fff8d6;border:2px solid #000;border-radius:8px;padding:8px 12px;font-size:15px;margin:10px 0 18px;}
+.mcq-reset{background:#000;color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:13px;cursor:pointer;font-family:inherit;}
+.mcq-q{border:1.5px solid #999;border-radius:10px;padding:14px 16px;margin:14px 0;background:#fff;}
+.mcq-stem{font-weight:600;font-size:15.5px;margin-bottom:10px;line-height:1.55;}
+.mcq-num{display:inline-block;min-width:26px;height:26px;line-height:26px;text-align:center;background:#000;color:#fff;border-radius:50%;font-size:13px;margin-inline-end:6px;}
+.mcq-opts{display:flex;flex-direction:column;gap:7px;}
+.mcq-opt{text-align:start;background:#f4f4f4;border:1.5px solid #ccc;border-radius:7px;padding:9px 12px;font-size:14.5px;cursor:pointer;transition:.12s;color:#000;font-family:inherit;}
+.mcq-opt:hover{background:#eaeaea;}
+.mcq-opt.correct{background:#c9f2cd;border-color:#1a8f2a;font-weight:600;}
+.mcq-opt.wrong{background:#f8cfcf;border-color:#c02020;}
+.mcq-opt.locked{cursor:default;opacity:.92;}
+.mcq-exp{display:none;margin-top:10px;padding:10px 12px;background:#fff8d6;border-inline-start:4px solid #000;border-radius:6px;font-size:13.5px;line-height:1.6;direction:rtl;text-align:right;}
+.mcq-exp.show{display:block;}
+.mcq-exp b{color:#b00;}
+.mcq-final{margin-top:18px;padding:14px;border-radius:10px;font-size:17px;font-weight:700;text-align:center;display:none;}
+.mcq-final.show{display:block;}
+</style>
+</head>
+<body>
+<h1>Oral Medicine — Day 16 — Complete 🩺</h1>
+<p class="subtitle">طب الفم ص ٢٢٠–٢٩٢ · الآفات الحمراء والبيضاء والاضطرابات المحتملة الخباثة: تدبير داء المبيضّات والطلاوة المشعّرة → الطلاوة والحُمامَة (التعريف، الأنواع، التحوّل الخبيث) → الطلاوة الثؤلولية التكاثرية والتشخيص وتسرطن الحقل → التليّف تحت المخاطي الفموي → الحزاز المسطّح الفموي وخطوط ويكهام · 32 بطاقة + اختبار MCQ · English + شرح عربي وافٍ</p>
+
+<div class="topbar">
+<b>التقدّم:</b>
+<span id="scoreTxt">0 / 32</span>
+<div class="progress"><span id="progBar"></span></div>
+<button class="ctrlbtn" onclick="revealAll()">اكشف الكل</button>
+<button class="ctrlbtn" onclick="hideAll()">أخفِ الكل</button>
+<button class="ctrlbtn" onclick="resetAll()">إعادة</button>
+</div>
+
+<div class="note">📌 طريقة الاستعمال: اقرأ السؤال، استرجع الإجابة بصوتك، ثم اكشفها وقيّم نفسك. البطاقات المعلّمة بـ⭐ عالية العائد. وفي نهاية الملف اختبار MCQ.</div>
+
+<div class="toc"><b>المحتويات:</b>
+<a href="#sec0">Lec 1 · Candidiasis Management &amp; OHL ⭐</a>
+<a href="#sec1">Lec 2 · Leukoplakia &amp; Erythroplakia ⭐</a>
+<a href="#sec2">Lec 2 · PVL, Diagnosis &amp; Management of PMD ⭐</a>
+<a href="#sec3">Lec 2 · Oral Submucous Fibrosis (OSMF) ⭐</a>
+<a href="#sec4">Lec 3 · Lichen Planus &amp; Lichenoid Reactions ⭐</a>
+<a href="#sec5">Lec 3 · OLP Diagnosis &amp; Management ⭐</a>
+<a href="#sec6">Lec 1–3 · Red &amp; White Lesions (Integrated) ⭐</a>
+</div>
+
+<h2 class="sec" id="sec0">Lec 1 · Candidiasis Management &amp; OHL ⭐</h2>
+<div class="card" id="c0_0">
+<div class="topic">Candida — normal commensal vs infection</div>
+<div class="prompt">When does Candida become an infection, and how is it investigated?</div>
+<button class="reveal" onclick="revealCard('c0_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_0">
+<div class="en"><b>Candida</b> is found in <b>60% of people</b> as a normal commensal, in numbers up to <b>500 cfu/mL</b>. An increase to <b>over 1000 cfu/mL</b> may be seen in candidal infections. In chronic plaque-type and nodular candidiasis, cultivation must be supplemented by <b>biopsy</b> to assess <b>epithelial dysplasia</b> and detect candidal organisms in the tissue.<br>
+  <b>Routine tests</b> for suspected oral candidiasis include a smear (for hyphae) and culture; the swab is cultured on <b>Sabouraud dextrose agar</b>. Identifying predisposing factors (denture, dry mouth, immunosuppression, diabetes, antibiotics, steroids) is essential.</div>
+<div class="hint"><b>المبيضّات (Candida)</b> تُوجَد في <b>60% من الناس</b> كمتعايش طبيعي، بأعداد حتى <b>500 cfu/mL</b>. والزيادة <b>فوق 1000 cfu/mL</b> قد تُرى في العداوى المبيضّية. وفي داء المبيضّات المزمن اللويحي والعقدي، يجب دعم الزرع بـ<b>خزعة</b> لتقييم <b>خلل التنسّج الظهاري</b> وكشف المبيضّات في النسيج. <b>الفحوص الروتينية</b> لداء المبيضّات الفموي المشتبه تشمل لطاخة (للخيوط) وزرعاً؛ وتُزرَع المسحة على <b>آغار سابورو دكستروز</b>. وتحديد العوامل المؤهّبة (طقم، جفاف فم، تثبيط مناعي، سكّري، صادّات، ستيرويدات) أساسي.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c0_1">
+<div class="topic">Candidiasis — management principles</div>
+<div class="prompt">What are the management principles for oral candidiasis?</div>
+<button class="reveal" onclick="revealCard('c0_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_1">
+<div class="en"><span class="k">Elimination or reduction of predisposing factors should always be the first goal.</span> In <b>smokers</b>, cessation may result in disappearance of the infection <b>even without antifungal treatment</b>.<br>
+  <b>Topical antifungals</b> (first-line for primary candidiasis, well tolerated): <b>nystatin and amphotericin B</b>.<br>
+  <b>Angular cheilitis:</b> often infected by <b>both S. aureus and candidal strains</b>; topical <b>miconazole</b> is the treatment of choice (it has a <b>biostatic effect on S. aureus and a fungistatic effect</b>). <b>Chlorhexidine</b> may also be used.<br>
+  <b>Systemic azoles</b> (e.g., fluconazole) are used for <b>deeply seated primary candidiasis</b>, such as chronic hyperplastic candidiasis.</div>
+<div class="hint"><b>إزالة أو تقليل العوامل المؤهّبة يجب أن يكون الهدف الأول دائماً.</b> وفي <b>المدخّنين</b>، قد يؤدّي الإقلاع لاختفاء العدوى <b>حتى دون علاج مضادّ للفطور</b>. <b>مضادّات الفطور الموضعية</b> (الخطّ الأول لداء المبيضّات الأوّلي، جيّدة التحمّل): <b>نيستاتين وأمفوتيريسين B</b>. <b>التهاب الشفة الزاوي:</b> غالباً مُصاب بـ<b>المكوّرة العنقودية الذهبية والمبيضّات معاً</b>؛ و<b>ميكونازول</b> الموضعي علاج الاختيار (له <b>تأثير موقف للجراثيم على S. aureus وموقف للفطور</b>). و<b>الكلورهيكسيدين</b> قد يُستخدم أيضاً. <b>الآزولات الجهازية</b> (كفلوكونازول) للـ<b>داء المبيضّات الأوّلي العميق</b>، كالمزمن مفرط التنسّج.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c0_2">
+<div class="topic">Oral hairy leukoplakia (OHL) — etiology</div>
+<div class="prompt">What is oral hairy leukoplakia, and what causes it?</div>
+<button class="reveal" onclick="revealCard('c0_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_2">
+<div class="en"><b>Oral hairy leukoplakia (OHL)</b> is the <b>second most common HIV-associated oral mucosal lesion</b>. It is used as a <b>marker of disease activity</b> since it is associated with <b>low CD4+ T-lymphocyte counts</b>.<br>
+  It is <b>strongly associated with Epstein-Barr virus (EBV)</b>. It is <b>not pathognomonic for HIV</b> — other immunodeficiency states (immunosuppressive agents, cancer chemotherapy) are also associated. In AIDS, prevalence may be as high as <b>80%</b>; in children it is lower (2%). It is more frequent in men. A correlation with <b>smoking</b> has also been observed. <b>Antiviral medication that prevents EBV replication is curative.</b></div>
+<div class="hint"><b>الطلاوة المشعّرة الفموية (OHL)</b> هي <b>ثاني أشيع آفة مخاطية فموية مرتبطة بالإيدز</b>. وتُستخدم <b>مؤشّراً لنشاط المرض</b> لارتباطها بـ<b>انخفاض تعداد اللمفاويات CD4+</b>. وترتبط <b>بقوّة بفيروس إبشتاين-بار (EBV)</b>. وهي <b>ليست مُمْرَضة نوعية للإيدز</b> — فحالات نقص المناعة الأخرى (مثبّطات المناعة، الكيماوي) مرتبطة أيضاً. وفي الإيدز قد تصل النسبة <b>80%</b>؛ وفي الأطفال أقلّ (2%). وأكثر في الرجال. ولُوحظ ارتباط بـ<b>التدخين</b>. و<b>الدواء المضادّ للفيروسات الذي يمنع تضاعف EBV شافٍ.</b></div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c0_3">
+<div class="topic">OHL — clinical findings, diagnosis &amp; management</div>
+<div class="prompt">What are the clinical findings, diagnosis, and management of OHL?</div>
+<button class="reveal" onclick="revealCard('c0_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c0_3">
+<div class="en"><b>Clinical findings:</b> frequently on the <b>lateral borders of the tongue</b> (may also be on the dorsum and buccal mucosa), appearing as white <b>vertical keratotic corrugations</b>. It is usually <b>asymptomatic</b> (symptoms may appear if superinfected with candida). Always consider OHL when the border of the tongue has white lesions, especially in immunocompromised patients.<br>
+  <b>Diagnosis:</b> usually clinical; can be confirmed by histopathology and <b>detection of EBV</b>.<br>
+  <b>Management:</b> can be treated with antivirals but this is <b>often not indicated</b> (no adverse symptoms). May show <b>spontaneous regression</b>. <span class="k">OHL is NOT related to increased risk of malignant transformation.</span> <b>Antiretroviral therapy (ART)</b> has reduced OHL to a few percent in HIV-infected patients.</div>
+<div class="hint"><b>الموجودات السريرية:</b> غالباً على <b>الحواف الجانبية للسان</b> (وقد تكون على الظهر والمخاطية الشدقية)، تظهر كـ<b>تخدّدات تقرّنية عمودية</b> بيضاء. وعادةً <b>لا عرضية</b> (قد تظهر أعراض إن أُصيبت ثانوياً بالمبيضّات). واعتبر OHL دائماً عند وجود آفات بيضاء على حافّة اللسان، خاصةً في المثبَّطين مناعياً. <b>التشخيص:</b> سريري عادةً؛ ويُؤكَّد بالنسيج المرضي و<b>كشف EBV</b>. <b>التدبير:</b> يمكن علاجه بمضادّات الفيروسات لكن <b>غالباً غير مُستطَبّ</b> (لا أعراض مزعجة). وقد يُظهِر <b>تراجعاً عفوياً</b>. <b>وOHL لا يرتبط بزيادة خطر التحوّل الخبيث.</b> و<b>المعالجة المضادّة للفيروسات القهقرية (ART)</b> قلّلت OHL لنسبة ضئيلة في مصابي HIV.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c0_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c0_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec1">Lec 2 · Leukoplakia &amp; Erythroplakia ⭐</h2>
+<div class="card" id="c1_0">
+<div class="topic">Oral potentially malignant disorders (PMD)</div>
+<div class="prompt">What are oral potentially malignant disorders, and what is the genetic basis?</div>
+<button class="reveal" onclick="revealCard('c1_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c1_0">
+<div class="en"><b>Oral potentially malignant disorders (PMD)</b> include <b>leukoplakia and erythroplakia</b>. Their development into malignant lesions involves <b>different genetic events</b>, supported by differently expressed markers of genetic defects.<br>
+  <b>Mechanism:</b> activation of <b>oncogenes</b> plus deletion/injury to <b>suppressor genes and DNA-repair genes</b> contribute to defective functioning of the genome governing cell division. After a series of mutations, <b>malignant transformation may occur</b>. For example, carcinogens such as tobacco induce hyperkeratinization (tobacco-associated leukoplakia), which is <b>reversible on cessation</b>, but at some stage mutations lead to unrestrained proliferation.</div>
+<div class="hint"><b>الاضطرابات الفموية المحتملة الخباثة (PMD)</b> تشمل <b>الطلاوة (leukoplakia) والحُمامَة (erythroplakia)</b>. وتطوّرها لآفات خبيثة يتضمّن <b>أحداثاً جينية مختلفة</b>، تدعمه علامات متباينة التعبير للعيوب الجينية. <b>الآلية:</b> تفعيل <b>الجينات الورمية</b> مع حذف/أذى <b>الجينات الكابتة وجينات إصلاح DNA</b> يسهم في خلل وظيفة الجينوم الحاكم لانقسام الخلية. وبعد سلسلة طفرات، <b>قد يحدث تحوّل خبيث</b>. مثلاً، مسرطنات كالتبغ تحرّض فرط التقرّن (طلاوة مرتبطة بالتبغ)، وهي <b>عكوسة عند الإقلاع</b>، لكن في مرحلة ما تؤدّي الطفرات لتكاثر جامح.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c1_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c1_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c1_1">
+<div class="topic">Oral leukoplakia — definition &amp; epidemiology</div>
+<div class="prompt">How is oral leukoplakia defined, and what are its epidemiology and types?</div>
+<button class="reveal" onclick="revealCard('c1_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c1_1">
+<div class="en"><b>Leukoplakia</b> is defined as a <b>white plaque of questionable risk for malignant transformation</b>, having excluded other known white lesions that carry no increased cancer risk — thus a <b>diagnosis of exclusion</b>. By definition it is <b>idiopathic</b>; the exception is that <b>smoking</b> is a recognized etiologic/exacerbating factor, and smoker's keratosis may regress when the irritant is removed.<br>
+  <b>Prevalence:</b> 1.5–2.6% globally. Most seen <b>beyond age 50</b>, rare below 30; more common in <b>men</b>.<br>
+  <b>Types:</b> <b>homogeneous</b> (white, well-demarcated, identical pattern throughout) and <b>non-homogeneous</b> (combined white and red areas — also called <b>erythroleukoplakia</b> or speckled leukoplakia).</div>
+<div class="hint"><b>الطلاوة (Leukoplakia)</b> تُعرَّف بأنها <b>لويحة بيضاء ذات خطر مشكوك للتحوّل الخبيث</b>، بعد استبعاد الآفات البيضاء المعروفة الأخرى التي لا تحمل خطر سرطان — فهي <b>تشخيص بالاستبعاد</b>. وبالتعريف <b>مجهولة السبب</b>؛ والاستثناء أن <b>التدخين</b> عامل مسبّب/مفاقم معترَف به، وتقرّن المدخّن قد يتراجع عند إزالة المهيّج. <b>الانتشار:</b> 1.5–2.6% عالمياً. ومعظمها <b>فوق 50</b>، ونادرة تحت 30؛ وأكثر في <b>الرجال</b>. <b>الأنواع:</b> <b>متجانسة</b> (بيضاء، محدّدة جيّداً، نمط متطابق كاملاً) و<b>غير متجانسة</b> (مناطق بيضاء وحمراء مختلطة — تُسمّى أيضاً <b>حُمامَة طلاوية</b> أو طلاوة مرقّطة).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c1_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c1_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c1_2">
+<div class="topic">Oral erythroplakia</div>
+<div class="prompt">What is oral erythroplakia, and why is it clinically important?</div>
+<button class="reveal" onclick="revealCard('c1_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c1_2">
+<div class="en"><b>Erythroplakia</b> is a <b>fiery red patch</b> that cannot be characterized clinically or pathologically as any other definable disease — a <b>red lesion that excludes other known pathologies</b>. It is usually <b>asymptomatic</b> (some patients experience burning with food). A special form relates to <b>reverse smoking of chutta</b> (predominantly in India).<br>
+  <b>Prevalence:</b> much less common than leukoplakia (0.02–0.1%); gender distribution equal.<br>
+  <span class="k">Key point: leukoplakia is very common and can sometimes transform into cancer, whereas erythroplakia is uncommon but frequently represents a precursor to cancer</span> — so a red patch is far more ominous than a white one.</div>
+<div class="hint"><b>الحُمامَة (Erythroplakia)</b> <b>بقعة حمراء ملتهبة</b> لا يمكن وصفها سريرياً أو مرضياً كأي مرض آخر محدّد — <b>آفة حمراء تستبعد الأمراض المعروفة الأخرى</b>. وعادةً <b>لا عرضية</b> (بعض المرضى يشعرون بحرقة مع الطعام). وشكل خاصّ يرتبط بـ<b>تدخين الشوتا المعكوس</b> (غالباً في الهند). <b>الانتشار:</b> أقلّ بكثير من الطلاوة (0.02–0.1%)؛ والتوزّع الجنسي متساوٍ. <b>نقطة مفتاحية: الطلاوة شائعة جداً وقد تتحوّل أحياناً لسرطان، بينما الحُمامَة غير شائعة لكنها غالباً سليفة للسرطان</b> — فالبقعة الحمراء أنذر بكثير من البيضاء.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c1_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c1_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c1_3">
+<div class="topic">Leukoplakia — high-risk sites &amp; malignant transformation</div>
+<div class="prompt">Which sites are high-risk, and what is the malignant transformation rate?</div>
+<button class="reveal" onclick="revealCard('c1_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c1_3">
+<div class="en"><b>High-risk sites</b> for malignant transformation: the <b>floor of the mouth and lateral borders of the tongue</b> (these also show a higher frequency of <b>loss of heterozygosity</b>). Non-smokers have a higher percentage of leukoplakias at the tongue border than smokers.<br>
+  However, the high-/low-risk site distinction has been questioned, leaving <b>lesion size</b> and the <b>homogeneous/non-homogeneous pattern</b> as key for prognosis.<br>
+  <b>Malignant transformation:</b> up to <b>20% over 30 years</b>. <b>Homogeneous</b> leukoplakias carry a <b>decreased</b> risk compared with non-homogeneous. <b>Hairy leukoplakia is NOT a true leukoplakia</b> (etiology/agent EBV known; malignant risk almost nonexistent).</div>
+<div class="hint"><b>المواقع عالية الخطورة</b> للتحوّل الخبيث: <b>أرض الفم والحواف الجانبية للسان</b> (تُظهِر أيضاً تواتراً أعلى لـ<b>فقد اللاتزاوج (loss of heterozygosity)</b>). وغير المدخّنين لديهم نسبة أعلى من الطلاوة على حافّة اللسان من المدخّنين. لكن تمييز المواقع عالية/منخفضة الخطورة مشكوك، مُبقياً <b>حجم الآفة</b> و<b>النمط المتجانس/غير المتجانس</b> مفاتيح للإنذار. <b>التحوّل الخبيث:</b> حتى <b>20% خلال 30 سنة</b>. والطلاوة <b>المتجانسة</b> خطرها <b>أقلّ</b> من غير المتجانسة. و<b>الطلاوة المشعّرة ليست طلاوة حقيقية</b> (السبب/العامل EBV معروف؛ والخطر الخبيث شبه معدوم).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c1_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c1_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec2">Lec 2 · PVL, Diagnosis &amp; Management of PMD ⭐</h2>
+<div class="card" id="c2_0">
+<div class="topic">Proliferative verrucous leukoplakia (PVL)</div>
+<div class="prompt">What is proliferative verrucous leukoplakia, and why is it dangerous?</div>
+<button class="reveal" onclick="revealCard('c2_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c2_0">
+<div class="en"><b>Verrucous/verruciform leukoplakias</b> are leukoplakias whose white component is dominated by <b>papillary projections</b> (similar to oral papillomas). Those with a more aggressive proliferation pattern and high recurrence rate are designated <b>proliferative verrucous leukoplakia (PVL)</b>.<br>
+  <b>PVL is dangerous:</b> diagnosis usually cannot be established at a single consultation — histologically the lesion may appear <b>benign</b>, but clinically it <b>behaves as a malignancy</b>, with gradually spreading leukoplakia (often gingivally). Seen mostly in <b>older women</b>, with the <b>lower gingiva</b> a predilection site. <span class="k">The malignant potential is very high</span> — verrucous carcinoma or SCC may already be present at first examination. A viral etiology is suspected.</div>
+<div class="hint"><b>الطلاوات الثؤلولية (Verrucous)</b> طلاوات مكوّنها الأبيض تسوده <b>نتوءات حليمية</b> (شبيهة بالأورام الحليمية الفموية). وتلك ذات نمط التكاثر الأعدوانى ومعدّل النكس العالي تُسمّى <b>الطلاوة الثؤلولية التكاثرية (PVL)</b>. <b>وPVL خطيرة:</b> لا يمكن عادةً وضع التشخيص في زيارة واحدة — فنسيجياً قد تبدو الآفة <b>سليمة</b>، لكنها سريرياً <b>تتصرّف كخباثة</b>، بطلاوة منتشرة تدريجياً (غالباً لثوياً). وتُرى غالباً في <b>النساء الأكبر سناً</b>، واللثة <b>السفلية</b> موقع مفضّل. <b>والإمكان الخبيث عالٍ جداً</b> — قد تكون السرطانة الثؤلولية أو SCC موجودةً في الفحص الأول. ويُشتبَه سبب فيروسي.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c2_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c2_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c2_1">
+<div class="topic">Diagnosis of leukoplakia &amp; erythroplakia</div>
+<div class="prompt">What is the diagnostic procedure for leukoplakia and erythroplakia?</div>
+<button class="reveal" onclick="revealCard('c2_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c2_1">
+<div class="en">The diagnostic procedure for leukoplakia and erythroplakia is <b>identical</b>. The <b>provisional diagnosis</b> is based on clinical observation of a white or red patch not explained by a definable cause (e.g., trauma). If trauma is suspected, the cause (a sharp tooth or restoration) should be <b>eliminated</b>.<br>
+  <span class="k">If healing does not occur in two weeks, a tissue biopsy is essential to rule out malignancy.</span><br>
+  <b>The sinister nature of erythroplakia:</b> 91% of histologically assessed erythroplakias showed <b>invasive carcinoma or carcinoma in situ</b>, and 9% moderate-to-severe dysplasia. <b>All erythroplakias should be considered sinister.</b> Any red mucosal lesion without apparent cause, not regressing after removing the cause or two weeks of treatment, should be <b>considered cancer until histologically proven otherwise</b>.</div>
+<div class="hint">إجراء تشخيص الطلاوة والحُمامَة <b>متطابق</b>. و<b>التشخيص المبدئي</b> يعتمد على ملاحظة سريرية لبقعة بيضاء أو حمراء لا يفسّرها سبب محدّد (كالرضّ). وإن اشتُبه الرضّ، يجب <b>إزالة</b> السبب (سنّ حادّ أو ترميم). <b>وإن لم يحدث الالتئام في أسبوعين، فالخزعة النسيجية أساسية لاستبعاد الخباثة.</b> <b>طبيعة الحُمامَة المنذرة:</b> 91% من الحُمامَات المُقيَّمة نسيجياً أظهرت <b>سرطانة غازية أو سرطانة لابدة (in situ)</b>، و9% خلل تنسّج متوسّط-شديد. <b>وكل الحُمامَات يجب اعتبارها منذرة.</b> وأي آفة مخاطية حمراء بلا سبب ظاهر، لا تتراجع بعد إزالة السبب أو أسبوعي علاج، يجب <b>اعتبارها سرطاناً حتى يُثبَت العكس نسيجياً</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c2_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c2_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c2_2">
+<div class="topic">Pathology — dysplasia &amp; carcinoma in situ</div>
+<div class="prompt">What is epithelial dysplasia and carcinoma in situ, and where is dysplasia most frequent?</div>
+<button class="reveal" onclick="revealCard('c2_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c2_2">
+<div class="en"><b>Epithelial dysplasia</b> is defined as a <b>precancerous lesion of stratified squamous epithelium characterized by cellular atypia and loss of normal maturation</b>. <b>Carcinoma in situ</b> is a lesion in which the <b>full thickness</b> of squamous epithelium shows the cellular features of carcinoma <b>without stromal invasion</b>.<br>
+  <b>Dysplasia</b> may be found in homogeneous leukoplakias but is <b>much more frequent in non-homogeneous leukoplakias and in erythroplakias</b>. The prevalence of dysplasia in oral leukoplakias varies from <b>1–30%</b> (due to lifestyle factors and subjectivity in histopathologic evaluation). <b>Alcohol and smoking</b> are well-established risk factors for oral SCC, so patients should be encouraged to discontinue these habits.</div>
+<div class="hint"><b>خلل التنسّج الظهاري (Dysplasia)</b> يُعرَّف بأنه <b>آفة سابقة للتسرطن في الظهارة الحرشفية المطبّقة، تتميّز بشذوذ خلوي وفقد النضج الطبيعي</b>. و<b>السرطانة اللابدة (Carcinoma in situ)</b> آفة تُظهِر فيها <b>كامل سماكة</b> الظهارة الحرشفية ملامح السرطانة الخلوية <b>دون غزو للسدى</b>. و<b>خلل التنسّج</b> قد يوجد في الطلاوات المتجانسة لكنه <b>أكثر بكثير في غير المتجانسة وفي الحُمامَات</b>. وانتشار خلل التنسّج في الطلاوات الفموية يتراوح <b>1–30%</b> (لعوامل نمط الحياة وذاتية التقييم النسيجي). و<b>الكحول والتدخين</b> عوامل خطر راسخة لـSCC الفموي، فيجب تشجيع المرضى على ترك هذه العادات.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c2_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c2_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c2_3">
+<div class="topic">Management, field cancerization &amp; follow-up</div>
+<div class="prompt">How are leukoplakia and erythroplakia managed, and what is field cancerization?</div>
+<button class="reveal" onclick="revealCard('c2_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c2_3">
+<div class="en"><b>Management:</b> <b>cold-knife surgical excision</b> and <b>laser surgery</b> are widely used to eradicate lesions but <b>will not prevent all premalignant lesions from malignant development</b> — SCCs are almost equally prevalent in patients with and without surgery.<br>
+  <b>Field cancerization:</b> this explains why — genetic defects exist even in clinically normal mucosa surrounding the removed lesion; <b>simultaneous genetic instabilities in the epithelium of several extra-lesional sites may lead to SCC</b>. Still, in the absence of evidence-based strategies, <b>surgery remains the treatment of choice</b>.<br>
+  <b>Follow-up:</b> reexamine every <b>3 months for the first year</b> (regardless of excision); if no relapse/change, extend to <b>every 6 months</b>. New biopsies if new features emerge. After <b>5 years</b> of no relapse, self-examination may be reasonable. Lesions <b>≤200 mm²</b> have a better prognosis.</div>
+<div class="hint"><b>التدبير:</b> <b>الاستئصال الجراحي بالمشرط البارد</b> و<b>جراحة الليزر</b> تُستخدمان لاستئصال الآفات لكن <b>لن تمنعا كل الآفات سابقة التسرطن من التطوّر الخبيث</b> — فـSCC شبه متساوٍ في المرضى بجراحة وبدونها. <b>تسرطن الحقل (Field cancerization):</b> يفسّر السبب — فالعيوب الجينية موجودة حتى في المخاطية الطبيعية سريرياً حول الآفة المُزالة؛ و<b>عدم الاستقرار الجيني المتزامن في ظهارة عدّة مواقع خارج الآفة قد يؤدّي لـSCC</b>. ومع ذلك، بغياب استراتيجيات مبنية على الأدلّة، <b>تبقى الجراحة علاج الاختيار</b>. <b>المتابعة:</b> أعِد الفحص كل <b>3 أشهر في السنة الأولى</b> (بغضّ النظر عن الاستئصال)؛ وإن لا نكس/تغيّر، مدّد لـ<b>كل 6 أشهر</b>. وخزعات جديدة إن ظهرت ملامح جديدة. وبعد <b>5 سنوات</b> بلا نكس، الفحص الذاتي قد يكون معقولاً. والآفات <b>≤200 مم²</b> إنذارها أفضل.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c2_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c2_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec3">Lec 2 · Oral Submucous Fibrosis (OSMF) ⭐</h2>
+<div class="card" id="c3_0">
+<div class="topic">OSMF — definition &amp; etiology</div>
+<div class="prompt">What is oral submucous fibrosis, and what causes it?</div>
+<button class="reveal" onclick="revealCard('c3_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c3_0">
+<div class="en"><b>Oral submucous fibrosis (OSMF)</b> is a <b>chronic disease affecting the oral mucosa, the pharynx, and the upper two-thirds of the esophagus</b>.<br>
+  <b>Etiology:</b> <span class="k">areca nut</span> is the cause. Areca-nut-derived products are used by several hundred million individuals across Asia, and there is a clear <b>dose dependence</b> between the areca quid chewing habit and development of the disorder. Areca nuts contain alkaloids, and <b>arecoline</b> is the primary etiologic factor — it modulates <b>matrix metalloproteinases, lysyl oxidases, and collagenases</b>, all affecting collagen metabolism and leading to <b>increased fibrosis</b>. During fibrosis, water-retaining <b>proteoglycans decrease</b> in favour of increased <b>collagen type I</b> production.</div>
+<div class="hint"><b>التليّف تحت المخاطي الفموي (OSMF)</b> مرض <b>مزمن يصيب المخاطية الفموية والبلعوم والثلثين العلويين من المريء</b>. <b>السبب:</b> <b>جوز الأريكا (التنبول)</b>. ومنتجاته يستخدمها مئات الملايين عبر آسيا، وثمّة <b>اعتماد واضح على الجرعة</b> بين عادة مضغ الأريكا وتطوّر الاضطراب. وجوز الأريكا يحتوي قلويدات، و<b>الأريكولين</b> العامل المسبّب الأوّلي — فهو يعدّل <b>الميتالوبروتينازات المطرقية، وأوكسيدازات الليسيل، والكولاجينازات</b>، وكلها تؤثّر باستقلاب الكولاجين مؤدّيةً لـ<b>زيادة التليّف</b>. وخلال التليّف، تنقص <b>البروتيوغليكانات</b> الحابسة للماء لصالح زيادة إنتاج <b>الكولاجين نمط I</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c3_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c3_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c3_1">
+<div class="topic">OSMF — genetic factors &amp; epidemiology</div>
+<div class="prompt">What genetic factors and epidemiology characterize OSMF?</div>
+<button class="reveal" onclick="revealCard('c3_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c3_1">
+<div class="en"><b>Genetic predisposition</b> is of importance. <b>Polymorphism of the gene coding for tumor necrosis factor α (TNF-α)</b> promotes development of the disorder — <b>fibroblasts are stimulated by TNF-α</b>, participating in fibrosis. Abnormalities of <b>transforming growth factor β</b> and <b>interferon-γ</b> may lead to increased production and decreased degradation of collagen.<br>
+  <b>Sites:</b> oral complications most commonly on the <b>lips, buccal mucosa, retromolar area, and soft palate</b>.<br>
+  <b>Epidemiology:</b> widespread in <b>India, Pakistan, Bangladesh, Sri Lanka</b> and immigrants from these regions. Global incidence ~<b>2.5 million</b> individuals. Prevalence in Indian populations: <b>5% women, 2% men</b>. Individuals <b>under 20 years</b> seem more commonly affected — reflected in advertising of areca products aimed at younger age groups.</div>
+<div class="hint"><b>الاستعداد الوراثي</b> مهمّ. و<b>تعدّد أشكال الجين المُرمِّز لعامل نخر الورم ألفا (TNF-α)</b> يعزّز تطوّر الاضطراب — فـ<b>الأرومات الليفية تُحفَّز بالـTNF-α</b>، مشاركةً في التليّف. وشذوذات <b>عامل النمو المحوّل بيتا</b> و<b>الإنترفيرون غاما</b> قد تؤدّي لزيادة إنتاج ونقص تحلّل الكولاجين. <b>المواقع:</b> المضاعفات الفموية غالباً على <b>الشفتين والمخاطية الشدقية ومنطقة خلف الأرحاء والحنك الرخو</b>. <b>الوبائيات:</b> منتشر في <b>الهند وباكستان وبنغلاديش وسريلانكا</b> والمهاجرين منها. والحدوث العالمي ~<b>2.5 مليون</b> فرد. والانتشار في السكّان الهنود: <b>5% نساء، 2% رجال</b>. والأفراد <b>تحت 20 سنة</b> يبدون أكثر إصابةً — ما يعكسه إعلان منتجات الأريكا الموجّه للفئات الأصغر.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c3_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c3_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c3_2">
+<div class="topic">OSMF — clinical findings &amp; diagnosis</div>
+<div class="prompt">What are the clinical findings and diagnostic criteria of OSMF?</div>
+<button class="reveal" onclick="revealCard('c3_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c3_2">
+<div class="en"><b>Clinical findings:</b>
+  <ul><li><b>First signs:</b> erythematous lesions, sometimes with petechiae, pigmentations, and vesicles.</li>
+  <li>Followed by a <b>paler mucosa (white marbling)</b>.</li>
+  <li>Most prominent: <b>fibrotic bands beneath an atrophic epithelium</b>.</li>
+  <li>Increased fibrosis eventually interferes with <b>speech, tongue mobility, and mouth opening (trismus)</b>.</li>
+  <li>The atrophic epithelium causes inability to eat hot and spicy food.</li></ul>
+  <b>Diagnosis:</b> based on clinical characteristics plus the patient's report of a <b>betel chewing habit</b>. International consensus requires at least one of: <b>palpable fibrous bands</b>; <b>mucosa feels tough and leathery</b>; <b>blanching of mucosa</b> with histopathology consistent with OSMF (atrophic epithelium with loss of rete ridges and juxta-epithelial hyalinization of the lamina propria).</div>
+<div class="hint"><b>الموجودات السريرية:</b> <b>العلامات الأولى:</b> آفات حمامية، أحياناً مع فرفريات وتصبّغات وحويصلات. يتبعها <b>مخاطية أشحب (تعرّق رخامي أبيض)</b>. والأبرز: <b>حزم ليفية تحت ظهارة ضامرة</b>. وزيادة التليّف تتداخل مع <b>الكلام وحركة اللسان وفتح الفم (الضزز)</b>. والظهارة الضامرة تسبّب عجزاً عن أكل الطعام الحارّ والمتبّل. <b>التشخيص:</b> يعتمد على الملامح السريرية مع إفادة المريض بعادة <b>مضغ التنبول</b>. والإجماع الدولي يتطلّب واحداً على الأقل من: <b>حزم ليفية مجسوسة</b>؛ <b>المخاطية قاسية جلدية الملمس</b>؛ <b>شحوب المخاطية</b> مع نسيج مرضي متوافق مع OSMF (ظهارة ضامرة بفقد النتوءات الشبكية وتزجّج مجاور للظهارة في الصفيحة المخصوصة).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c3_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c3_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c3_3">
+<div class="topic">OSMF — management &amp; malignant transformation</div>
+<div class="prompt">How is OSMF managed, and what is its malignant potential?</div>
+<button class="reveal" onclick="revealCard('c3_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c3_3">
+<div class="en"><b>Management:</b> products derived from areca nuts are <b>carcinogenic regardless of concomitant tobacco use</b>. Treatment should therefore focus on <b>cessation of the chewing habit</b>. If successfully implemented, <b>early lesions have a good prognosis and may regress</b>.<br>
+  Several strategies have been tried: topical and systemic <b>steroids</b>, <b>hyaluronic acid</b>, <b>interferon-γ</b>, vitamin/nutrient supplements, <b>repeated dilatation</b> with physical devices, and <b>surgery</b>. <span class="k">None has reached general acceptance, and long-term results are uncertain.</span><br>
+  <b>Malignant transformation:</b> <b>0.7–1.3% per annum</b>, with incidence over 10 years at approximately <b>8%</b>. Epithelial dysplasia in OSMF tissues varies from <b>7–25%</b> depending on the study population.</div>
+<div class="hint"><b>التدبير:</b> منتجات جوز الأريكا <b>مسرطنة بغضّ النظر عن استخدام التبغ المرافق</b>. فيجب أن يركّز العلاج على <b>إيقاف عادة المضغ</b>. وإن نُفّذ بنجاح، فـ<b>الآفات المبكّرة إنذارها جيّد وقد تتراجع</b>. وجُرّبت استراتيجيات عدّة: <b>ستيرويدات</b> موضعية وجهازية، <b>حمض الهيالورونيك</b>، <b>الإنترفيرون غاما</b>، مكمّلات فيتامينات ومغذّيات، <b>توسيع متكرّر</b> بأجهزة فيزيائية، و<b>الجراحة</b>. <b>ولم يبلغ أيٌّ منها قبولاً عاماً، والنتائج بعيدة المدى غير مؤكّدة.</b> <b>التحوّل الخبيث:</b> <b>0.7–1.3% سنوياً</b>، والحدوث خلال 10 سنوات ~<b>8%</b>. وخلل التنسّج الظهاري في أنسجة OSMF يتراوح <b>7–25%</b> حسب مجتمع الدراسة.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c3_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c3_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec4">Lec 3 · Lichen Planus &amp; Lichenoid Reactions ⭐</h2>
+<div class="card" id="c4_0">
+<div class="topic">Lichen planus — the family of lichenoid lesions</div>
+<div class="prompt">What is the lichen planus family, and which disorders does it include?</div>
+<button class="reveal" onclick="revealCard('c4_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c4_0">
+<div class="en"><b>Lichen planus</b> is a <b>family of lesions with different etiologies but a common clinical and histologic appearance</b>. Neither clinical nor histopathologic features enable discrimination <b>between</b> the different lichenoid reactions, but they do distinguish them from other conditions of the oral mucosa.<br>
+  <b>Sites:</b> skin and mucous membranes are most commonly involved; besides oral mucosa, other mucous membranes (genitals in women, esophagus, rectal area) as well as <b>scalp and nails</b> can be affected.<br>
+  <b>The group includes:</b> <b>oral lichen planus (OLP)</b>; <b>oral lichenoid contact reactions (OLCRs)</b>; <b>oral lichenoid drug eruptions</b>; and <b>oral lichenoid reactions of graft-versus-host disease (GVHD)</b>. OLCRs represent a <b>delayed hypersensitivity reaction</b> to constituents derived from dental materials or to flavouring agents in foods and other ingested substances.</div>
+<div class="hint"><b>الحزاز المسطّح (Lichen planus)</b> <b>عائلة آفات بأسباب مختلفة لكن بمظهر سريري ونسيجي مشترك</b>. ولا الملامح السريرية ولا النسيجية تمكّن من التمييز <b>بين</b> التفاعلات الحزازية المختلفة، لكنها تميّزها عن حالات المخاطية الفموية الأخرى. <b>المواقع:</b> الجلد والأغشية المخاطية الأكثر إصابةً؛ وإلى جانب المخاطية الفموية، قد تُصاب أغشية أخرى (التناسلية في النساء، المريء، المنطقة الشرجية) وكذلك <b>فروة الرأس والأظافر</b>. <b>وتشمل المجموعة:</b> <b>الحزاز المسطّح الفموي (OLP)</b>؛ <b>التفاعلات الحزازية التماسية الفموية (OLCRs)</b>؛ <b>الاندفاعات الحزازية الدوائية</b>؛ و<b>التفاعلات الحزازية لداء الطعم حيال الثوي (GVHD)</b>. وOLCRs تمثّل <b>تفاعل فرط حساسية مؤجّلاً</b> لمكوّنات من المواد السنّية أو لعوامل نكهة في الأطعمة والمواد المبتلعة.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c4_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c4_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c4_1">
+<div class="topic">OLP — immunopathogenesis</div>
+<div class="prompt">What is the immune mechanism behind oral lichen planus?</div>
+<button class="reveal" onclick="revealCard('c4_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c4_1">
+<div class="en">The <b>etiology of OLP is not known</b>, but it is evident that the <b>immune system has a primary role</b>. This is supported by the histopathologic characteristics:
+  <ul><li>a <b>subepithelial band-formed infiltrate</b> dominated by <b>T lymphocytes and macrophages</b>;</li>
+  <li>degeneration of basal cells known as <b>liquefaction degeneration</b>.</li></ul>
+  <b>Cytotoxic CD8+ T lymphocytes</b> are responsible for <b>apoptosis of keratinocytes in the basal cell layer</b>, and are a major component of the subepithelial inflammatory infiltrate in the lamina propria. These features express the <b>cell-mediated arm of the immune system</b> acting through T-lymphocyte cytotoxicity directed against antigens expressed by the basal cell layer.<br>
+  No single etiologic factor can be identified; <b>stress</b> may be important (patients often report negative social events months before onset), making OLP a <b>multifactorial process</b>.</div>
+<div class="hint"><b>سبب OLP غير معروف</b>، لكن من الواضح أن <b>الجهاز المناعي له دور أوّلي</b>. وتدعم ذلك الملامح النسيجية المرضية: <b>ارتشاح تحت ظهاري شريطي الشكل</b> تسوده <b>اللمفاويات التائية والبلاعم</b>؛ وتنكّس الخلايا القاعدية المعروف بـ<b>التنكّس التميّعي (liquefaction degeneration)</b>. و<b>اللمفاويات التائية السامّة CD8+</b> مسؤولة عن <b>موت الخلايا المقرنة المبرمج في الطبقة القاعدية</b>، وهي مكوّن رئيس للارتشاح الالتهابي تحت الظهاري في الصفيحة المخصوصة. وتعبّر هذه الملامح عن <b>الذراع الخلوي للجهاز المناعي</b> عاملاً عبر سمّية اللمفاويات التائية الموجّهة ضدّ مستضدّات تعبّر عنها الطبقة القاعدية. ولا يمكن تحديد عامل مسبّب واحد؛ و<b>الشدّة النفسية</b> قد تكون مهمّة (يُفيد المرضى غالباً بأحداث اجتماعية سلبية قبل أشهر من البدء)، ما يجعل OLP <b>عملية متعدّدة العوامل</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c4_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c4_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c4_2">
+<div class="topic">OLP — associations &amp; epidemiology</div>
+<div class="prompt">What systemic associations and epidemiology characterize OLP?</div>
+<button class="reveal" onclick="revealCard('c4_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c4_2">
+<div class="en"><b>Associations:</b> in recent years an association between OLP and <b>hepatitis C virus (HCV)</b> has been described in small proportions, possibly <b>geographically based</b>. OLP prevalence is also <b>enhanced in those with thyroid diseases</b>.<br>
+  <b>Epidemiology:</b>
+  <ul><li>Prevalence varies from <b>0.5–2.2%</b>.</li>
+  <li>Among referred patients, <b>women</b> outnumber men.</li>
+  <li>Usually occurs in people <b>older than 40</b>, with a <b>mean age of onset of 53 years</b>.</li>
+  <li><b>Very rarely encountered in children.</b></li>
+  <li>Does <b>not</b> seem to have a hereditary predisposition.</li></ul></div>
+<div class="hint"><b>الارتباطات:</b> في السنوات الأخيرة وُصف ارتباط بين OLP و<b>فيروس التهاب الكبد C (HCV)</b> بنسب صغيرة، ربما <b>على أساس جغرافي</b>. وانتشار OLP <b>يزداد أيضاً في مرضى أمراض الغدّة الدرقية</b>. <b>الوبائيات:</b> الانتشار يتراوح <b>0.5–2.2%</b>. وبين المرضى المُحالين، <b>النساء</b> أكثر من الرجال. ويحدث عادةً في من هم <b>فوق 40</b>، بـ<b>متوسّط عمر بدء 53 سنة</b>. و<b>نادر جداً في الأطفال</b>. و<b>لا</b> يبدو له استعداد وراثي.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c4_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c4_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c4_3">
+<div class="topic">OLP — six clinical types &amp; Wickham&#x27;s striae</div>
+<div class="prompt">What are the clinical types of OLP, and what is the hallmark finding?</div>
+<button class="reveal" onclick="revealCard('c4_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c4_3">
+<div class="en">OLP may contain both red and white elements. The <b>six clinical types</b> are: <b>reticular, papular, plaque-like, bullous, erythematous (atrophic), and ulcerative</b>.<br>
+  <span class="k">Hyperkeratotic white striations — Wickham's striae — are the hallmark of the condition.</span> Typically OLP is <b>bilateral (symmetric)</b> and can appear white and/or red depending on disease activity.<br>
+  The different manifestations relate to the <b>magnitude of subepithelial inflammation</b>: mild inflammation provokes the epithelium to produce <b>hyperkeratosis</b>, whereas more intense inflammation leads to <b>partial or complete deterioration of the epithelium</b>.
+  <ul><li><b>Reticular, papular, plaque-like:</b> typically <b>asymptomatic</b> (may feel rough).</li>
+  <li><b>Bullous:</b> very unusual; bullous structures surrounded by a reticular network.</li>
+  <li><b>Erythematous (atrophic):</b> homogeneous red area; on buccal mucosa or palate, <b>striae are frequently seen at the periphery</b>.</li>
+  <li><b>Ulcerative:</b> the <b>most disabling</b> form — fibrin-coated ulcers surrounded by an erythematous zone with white striae peripherally.</li></ul>
+  <b>OLP confined to the gingiva</b> may be entirely erythematous with no reticular/papular elements — <b>this type must be confirmed by biopsy</b>.</div>
+<div class="hint">قد يحتوي OLP عناصر حمراء وبيضاء معاً. و<b>الأنواع السريرية الستّة</b>: <b>شبكي، حطاطي، لويحي، فقاعي، حمامي (ضامر)، وتقرّحي</b>. <b>والتخطّطات البيضاء مفرطة التقرّن — خطوط ويكهام (Wickham's striae) — هي سمة الحالة المميّزة.</b> وعادةً OLP <b>ثنائي الجانب (متناظر)</b> وقد يبدو أبيض و/أو أحمر حسب نشاط المرض. والتظاهرات المختلفة ترتبط بـ<b>مقدار الالتهاب تحت الظهاري</b>: فالالتهاب الخفيف يحرّض الظهارة لإنتاج <b>فرط تقرّن</b>، بينما الأشدّ يؤدّي لـ<b>تدهور جزئي أو كامل للظهارة</b>. <b>الشبكي والحطاطي واللويحي:</b> عادةً <b>لا عرضية</b> (قد يُحَسّ خشونة). <b>الفقاعي:</b> نادر جداً؛ بنى فقاعية محاطة بشبكة شبكية. <b>الحمامي (الضامر):</b> منطقة حمراء متجانسة؛ وعلى المخاطية الشدقية أو الحنك، <b>تُرى الخطوط غالباً في المحيط</b>. <b>التقرّحي:</b> <b>الأكثر إعاقةً</b> — قرحات مغطّاة بالفيبرين محاطة بمنطقة حمامية مع خطوط بيضاء محيطياً. و<b>OLP المحصور باللثة</b> قد يكون حمامياً كاملاً بلا عناصر شبكية/حطاطية — <b>وهذا النوع يجب تأكيده بالخزعة</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c4_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c4_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec5">Lec 3 · OLP Diagnosis &amp; Management ⭐</h2>
+<div class="card" id="c5_0">
+<div class="topic">OLP — diagnosis &amp; the biopsy</div>
+<div class="prompt">How is OLP diagnosed, and what are the practical rules for biopsy?</div>
+<button class="reveal" onclick="revealCard('c5_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c5_0">
+<div class="en"><b>Diagnosis:</b> the presence of <b>bilateral (symmetric) reticular lesions with Wickham's striae</b> allows a correct clinical diagnosis. However, <b>a biopsy is usually required for an accurate diagnosis</b>, particularly to exclude dysplasia and malignancy.<br>
+  <b>Practical rules:</b>
+  <ul><li>The biopsy should be taken <b>as far as possible from the gingival pocket</b>, since inflammation from periodontal disease may confuse the histopathologic interpretation.</li>
+  <li>Gingival OLP that is entirely erythematous (<b>desquamative gingivitis</b>) is a <b>differential diagnostic problem</b> — it must be distinguished from mucous membrane pemphigoid and pemphigus vulgaris.</li>
+  <li><span class="k">A biopsy for routine histology AND direct immunofluorescence are required for accurate differential diagnosis</span> in these gingival cases.</li></ul>
+  <b>Lichenoid drug eruptions:</b> reactions to <b>NSAIDs</b> may be difficult to distinguish from OLP; <b>withdrawal of the drug</b> is the most reliable way to diagnose a lichenoid drug reaction.</div>
+<div class="hint"><b>التشخيص:</b> وجود <b>آفات شبكية ثنائية الجانب (متناظرة) مع خطوط ويكهام</b> يسمح بتشخيص سريري صحيح. لكن <b>الخزعة مطلوبة عادةً لتشخيص دقيق</b>، خاصةً لاستبعاد خلل التنسّج والخباثة. <b>القواعد العملية:</b> يجب أخذ الخزعة <b>بعيداً قدر الإمكان عن الجيب اللثوي</b>، لأن الالتهاب من مرض حول السنّ قد يربك التفسير النسيجي. وOLP اللثوي الحمامي كاملاً (<b>التهاب لثة توسّفي</b>) <b>مشكلة تشخيص تفريقي</b> — يجب تمييزه عن الفقعان الغشائي والفقاع الشائع. <b>وخزعة للنسيج الروتيني والتألّق المناعي المباشر مطلوبتان معاً لتشخيص تفريقي دقيق</b> في هذه الحالات اللثوية. <b>الاندفاعات الحزازية الدوائية:</b> التفاعلات لـ<b>مضادّات الالتهاب اللاستيرويدية (NSAIDs)</b> قد يصعب تمييزها عن OLP؛ و<b>سحب الدواء</b> أوثق طريقة لتشخيص التفاعل الحزازي الدوائي.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c5_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c5_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c5_1">
+<div class="topic">OLP — management goals &amp; topical steroids</div>
+<div class="prompt">What are the management goals for OLP, and what is the treatment of choice?</div>
+<button class="reveal" onclick="revealCard('c5_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c5_1">
+<div class="en"><b>Management goals</b> include <b>reducing or eliminating symptoms</b> — extremely important in symptomatic OLP patients — since asymptomatic reticular lesions generally need no active treatment.<br>
+  Several topical drugs have been suggested, including <b>steroids, retinoids, and ultraviolet phototherapy</b>. Among these, <span class="k">topical steroids are widely used and accepted as the primary treatment of choice</span> — very potent steroids (e.g., clobetasol) for severe lesions and intermediate steroids for milder disease.<br>
+  <b>Vehicles:</b> <b>adhesive pastes</b> consisting of pectin, gelatin, and carboxymethyl cellulose containing topical steroids adhere well to mucosa. <b>Ointments</b> can also be effective, but as they are hydrophobic they require <b>drying of the mucosa</b> before application.<br>
+  <b>Tacrolimus</b> should only be used by experts when symptomatic OLP lesions are <b>recalcitrant to topical steroids</b>.</div>
+<div class="hint"><b>أهداف التدبير</b> تشمل <b>تقليل أو إزالة الأعراض</b> — وهو بالغ الأهمية في مرضى OLP العرضيين — إذ إن الآفات الشبكية اللاعرضية عموماً لا تحتاج علاجاً فعّالاً. واقتُرحت أدوية موضعية عدّة، منها <b>الستيرويدات والريتينوئيدات والمعالجة الضوئية فوق البنفسجية</b>. ومن بينها، <b>الستيرويدات الموضعية تُستخدم وتُقبل على نطاق واسع كعلاج الاختيار الأوّلي</b> — ستيرويدات شديدة القوّة (كالكلوبيتازول) للآفات الشديدة، ومتوسّطة للمرض الأخفّ. <b>النواقل (Vehicles):</b> <b>المعاجين اللاصقة</b> المكوّنة من البكتين والجيلاتين وكربوكسي ميثيل السيلولوز الحاوية ستيرويدات موضعية تلتصق جيّداً بالمخاطية. و<b>المراهم</b> قد تكون فعّالة أيضاً، لكن لكونها كارهة للماء تتطلّب <b>تجفيف المخاطية</b> قبل التطبيق. و<b>التاكروليمس</b> يجب أن يستخدمه الخبراء فقط حين تكون آفات OLP العرضية <b>معنّدة على الستيرويدات الموضعية</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c5_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c5_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c5_2">
+<div class="topic">OLP — candidiasis and steroid therapy</div>
+<div class="prompt">Why does candidiasis matter when treating OLP with steroids?</div>
+<button class="reveal" onclick="revealCard('c5_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c5_2">
+<div class="en">There is an important interaction between OLP treatment and fungal infection:
+  <ul><li>When <b>potent topical steroids are used, a fungal infection may emerge</b>, and <b>parallel antifungal treatment</b> is needed.</li>
+  <li><span class="k">Since about half of OLP lesions exhibit candidal infection, antifungal treatment may be used BEFORE treatment with steroids.</span></li>
+  <li>Where patients develop candidiasis regardless, alternative topical therapy may be substituted.</li></ul>
+  This is a practical, high-yield point: candidal superinfection both <b>mimics and complicates</b> OLP — it can make a reticular lesion symptomatic and can confuse the clinical picture, so the clinician should think about candida both before and during steroid therapy.</div>
+<div class="hint">ثمّة تفاعل مهمّ بين علاج OLP والعدوى الفطرية: حين تُستخدم <b>ستيرويدات موضعية قوية، قد تظهر عدوى فطرية</b>، ويلزم <b>علاج مضادّ للفطور بالتوازي</b>. و<b>بما أن نحو نصف آفات OLP تُظهِر عدوى مبيضّية، فقد يُستخدم العلاج المضادّ للفطور قبل العلاج بالستيرويدات</b>. وحين يصاب المرضى بداء المبيضّات رغم ذلك، قد يُستبدَل علاج موضعي بديل. وهذه نقطة عملية عالية الأهمية: فالعدوى المبيضّية الثانوية <b>تحاكي وتُعقّد</b> OLP — إذ قد تجعل آفة شبكية عرضية وتربك الصورة السريرية، فعلى الطبيب أن يفكّر بالمبيضّات قبل العلاج الستيرويدي وأثناءه.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c5_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c5_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<h2 class="sec" id="sec6">Lec 1–3 · Red &amp; White Lesions (Integrated) ⭐</h2>
+<div class="card" id="c6_0">
+<div class="topic">Why white lesions turn white and red lesions turn red</div>
+<div class="prompt">What is the underlying tissue basis that makes an oral lesion appear white or red, and why does the colour matter clinically?</div>
+<button class="reveal" onclick="revealCard('c6_0')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c6_0">
+<div class="en">Understanding why a lesion is white or red turns colour from a description into a diagnostic clue. An oral lesion appears <b>white</b> when something increases the thickness or opacity of the surface so that the underlying vascular connective tissue is masked — most often <b>hyperkeratosis</b> (a thickened keratin layer, as in leukoplakia, smoker’s keratosis, and the plaque-like form of lichen planus), or acanthosis, or a surface coating of fungal hyphae and debris as in pseudomembranous candidiasis, or the corrugated keratotic surface of oral hairy leukoplakia. A lesion appears <b>red</b> when the opposite occurs: the epithelium becomes <b>atrophic or thin</b>, so the vasculature of the lamina propria shows through more readily, and/or the tissue is <b>inflamed with increased vascularity</b>. This is why erythroplakia, erythematous (atrophic) lichen planus, and erythematous candidiasis all look red. The clinical importance of this simple mechanism is considerable. <b>A red lesion generally implies a thinner, more atrophic, more actively disturbed epithelium than a white one</b>, which is precisely why <b>erythroplakia carries a far higher risk of harbouring dysplasia or carcinoma than leukoplakia</b> — 91% of erythroplakias show invasive carcinoma or carcinoma in situ. It is also why <b>non-homogeneous (speckled) leukoplakia, which combines white and red, is more dangerous than homogeneous leukoplakia</b>: the red component signals the atrophic, disturbed epithelium where dysplasia is concentrated. So when a clinician sees red mixed into a white patch, the correct response is not reassurance but a lower threshold for biopsy.</div>
+<div class="hint">فهم سبب بياض الآفة أو حمرتها يحوّل اللون من وصف إلى دليل تشخيصي. تبدو الآفة الفموية <b>بيضاء</b> حين يزيد شيءٌ سماكة السطح أو عتامته فيُحجب النسيج الضامّ الوعائي تحته — غالباً <b>فرط التقرّن</b> (طبقة كيراتين متسمّكة، كما في الطلاوة وتقرّن المدخّن والشكل اللويحي من الحزاز المسطّح)، أو فرط التشوّك، أو طبقة سطحية من خيوط فطرية وحطام كما في داء المبيضّات الغشائي الكاذب، أو السطح التقرّني المخدّد للطلاوة المشعّرة. وتبدو <b>حمراء</b> حين يحدث العكس: فتصير الظهارة <b>ضامرة أو رقيقة</b>، فتظهر أوعية الصفيحة المخصوصة أكثر، و/أو يلتهب النسيج <b>بزيادة التوعية</b>. ولهذا تبدو الحُمامَة والحزاز الحمامي (الضامر) وداء المبيضّات الحمامي حمراء جميعاً. وأهمّية هذه الآلية البسيطة كبيرة: <b>فالآفة الحمراء تعني عموماً ظهارة أرقّ وأضمر وأكثر اضطراباً من البيضاء</b>، وهو بالضبط سبب أن <b>الحُمامَة تحمل خطراً أعلى بكثير لإيواء خلل تنسّج أو سرطانة من الطلاوة</b> — فـ٩١% من الحُمامَات تُظهِر سرطانة غازية أو لابدة. ولهذا أيضاً <b>الطلاوة غير المتجانسة (المرقّطة)، التي تجمع الأبيض والأحمر، أخطر من المتجانسة</b>: فالمكوّن الأحمر يُشير للظهارة الضامرة المضطربة حيث يتركّز خلل التنسّج. فحين يرى الطبيب حمرةً مختلطة ببقعة بيضاء، فالاستجابة الصحيحة ليست الطمأنة بل عتبة أدنى للخزعة.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c6_0',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c6_0',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c6_1">
+<div class="topic">Which white lesions are premalignant and which are not</div>
+<div class="prompt">How does the clinician sort the white lesions of this chapter into premalignant and non-premalignant, and why is that distinction the practical core of the topic?</div>
+<button class="reveal" onclick="revealCard('c6_1')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c6_1">
+<div class="en">The practical core of this chapter is a sorting task: several lesions look white, but they carry <b>completely different levels of risk</b>, and confusing them means either alarming a patient unnecessarily or missing a cancer. On the <b>premalignant</b> side sit the true <b>oral potentially malignant disorders</b>. <b>Leukoplakia</b> is the prototype — idiopathic by definition, a diagnosis of exclusion, with malignant transformation up to <b>20% over 30 years</b>, higher when non-homogeneous, larger than 200 mm², or on the floor of mouth or lateral tongue. <b>Erythroplakia</b> is far more ominous still. <b>Proliferative verrucous leukoplakia</b> is the most aggressive — histologically it may look benign while clinically behaving as a malignancy, with verrucous carcinoma or SCC sometimes present at first examination. <b>Oral submucous fibrosis</b> transforms at 0.7–1.3% per annum. <b>Oral lichen planus</b> occupies a debated middle ground and is followed up for the same reason. On the <b>non-premalignant</b> side sit lesions with a <b>known cause</b>: <b>oral hairy leukoplakia</b> is explicitly excluded from being a true leukoplakia because its aetiology and agent (EBV) are known and its malignant risk is almost nonexistent; <b>pseudomembranous candidiasis</b> wipes off and is an infection; and a <b>frictional keratosis or smoker’s keratosis</b> regresses once the irritant is removed. This sorting explains the single most useful rule in the chapter: <b>if a white or red patch has an identifiable cause, remove the cause and review in two weeks — and if it has no identifiable cause, or fails to resolve, biopsy it.</b> Everything else in the management of these lesions follows from that one decision point.</div>
+<div class="hint">جوهر هذا الفصل العملي مهمّة فرز: فآفات عدّة تبدو بيضاء، لكنّها تحمل <b>مستويات خطر مختلفة تماماً</b>، وخلطها يعني إمّا إفزاع مريض بلا داعٍ أو تفويت سرطان. ففي جانب <b>محتملات الخباثة</b> تقع <b>الاضطرابات الفموية المحتملة الخباثة</b> الحقيقية. فـ<b>الطلاوة</b> النموذج — مجهولة السبب بالتعريف، تشخيص بالاستبعاد، بتحوّل خبيث حتّى <b>٢٠% خلال ٣٠ سنة</b>، وأعلى حين تكون غير متجانسة أو أكبر من ٢٠٠ مم² أو على أرض الفم والحافّة الجانبية للسان. و<b>الحُمامَة</b> أنذر بكثير. و<b>الطلاوة الثؤلولية التكاثرية</b> الأعدوانية — فقد تبدو نسيجياً سليمة بينما تتصرّف سريرياً كخباثة، وقد توجد السرطانة الثؤلولية أو SCC في الفحص الأول. و<b>التليّف تحت المخاطي</b> يتحوّل بـ٠.٧–١.٣% سنوياً. و<b>الحزاز المسطّح الفموي</b> يحتلّ أرضاً وسطى متنازعاً عليها ويُتابَع للسبب نفسه. وفي جانب <b>غير محتملات الخباثة</b> تقع آفات ذات <b>سبب معروف</b>: فـ<b>الطلاوة المشعّرة</b> مستبعدة صراحةً من كونها طلاوةً حقيقية لأن سببها وعاملها (EBV) معروفان وخطرها الخبيث شبه معدوم؛ و<b>داء المبيضّات الغشائي الكاذب</b> يُمسَح وهو عدوى؛ و<b>تقرّن الاحتكاك أو تقرّن المدخّن</b> يتراجع بإزالة المهيّج. وهذا الفرز يفسّر أنفع قاعدة في الفصل: <b>إن كان للبقعة البيضاء أو الحمراء سبب مُحدَّد، فأزِل السبب وراجِع بعد أسبوعين — وإن لم يكن لها سبب، أو لم تزُل، فاخزعها.</b> وكلّ ما عدا ذلك في تدبير هذه الآفات يتبع من تلك النقطة.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c6_1',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c6_1',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c6_2">
+<div class="topic">Lichen planus versus leukoplakia — a practical comparison</div>
+<div class="prompt">How does the clinician distinguish oral lichen planus from leukoplakia, and why do they need different management?</div>
+<button class="reveal" onclick="revealCard('c6_2')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c6_2">
+<div class="en">Oral lichen planus and leukoplakia both produce white patches, yet they are fundamentally different diseases requiring different management, and telling them apart is a core clinical skill. <b>Oral lichen planus</b> is an <b>immunopathologic disease</b> — cytotoxic CD8+ T lymphocytes attack antigens expressed by the basal cell layer, producing a subepithelial band-formed infiltrate and liquefaction degeneration of basal cells. Clinically this yields a characteristically <b>bilateral and symmetric</b> distribution with <b>Wickham’s striae</b> as its hallmark, and the lesion may fluctuate over years between reticular, papular, plaque-like, erythematous, and ulcerative forms according to the intensity of the underlying inflammation. It typically affects <b>women over 40</b>, mean onset 53, and is associated with hepatitis C in some regions and with thyroid disease. <b>Leukoplakia</b>, by contrast, is not an inflammatory disease at all — it is a <b>diagnosis of exclusion</b>, idiopathic except for smoking, characteristically <b>unilateral or localised</b> rather than symmetric, without striae, and defined precisely by its <b>questionable risk of malignant transformation</b>. Management diverges accordingly: symptomatic lichen planus is treated <b>medically</b> with topical corticosteroids as the treatment of choice (with attention to candidal superinfection, present in about half of lesions, before and during steroid therapy), whereas leukoplakia is managed by <b>removing risk habits, surgical excision, and structured follow-up</b> every three months in the first year, since the concern is not symptoms but cancer. Two overlaps demand care: <b>gingival lichen planus</b> may be purely erythematous with no striae and must be biopsied with immunofluorescence to exclude pemphigoid and pemphigus, and <b>lichenoid drug reactions</b> to NSAIDs mimic lichen planus closely — withdrawal of the drug being the most reliable diagnostic test.</div>
+<div class="hint">الحزاز المسطّح الفموي والطلاوة كلاهما يُنتج بقعاً بيضاء، لكنّهما مرضان مختلفان جذرياً يتطلّبان تدبيراً مختلفاً، وتمييزهما مهارة سريرية جوهرية. فـ<b>الحزاز المسطّح الفموي</b> مرض <b>مناعي مرضي</b> — فاللمفاويات السامّة CD8+ تهاجم مستضدّات تعبّر عنها الطبقة القاعدية، مُنتجةً ارتشاحاً شريطياً تحت ظهاري وتنكّساً تميّعياً للخلايا القاعدية. وسريرياً يُعطي توزّعاً <b>ثنائي الجانب متناظراً</b> مع <b>خطوط ويكهام</b> سمةً مميّزة، وقد تتقلّب الآفة سنين بين الأشكال الشبكي والحطاطي واللويحي والحمامي والتقرّحي حسب شدّة الالتهاب. ويصيب عادةً <b>النساء فوق ٤٠</b>، بمتوسّط بدء ٥٣، ويرتبط بالتهاب الكبد C في بعض المناطق وبأمراض الدرقية. أمّا <b>الطلاوة</b> فليست مرضاً التهابياً أصلاً — بل <b>تشخيص بالاستبعاد</b>، مجهولة السبب إلا التدخين، <b>أحادية الجانب أو موضعية</b> لا متناظرة، بلا خطوط، ومُعرَّفة بدقّة بـ<b>خطرها المشكوك للتحوّل الخبيث</b>. والتدبير يتباعد تبعاً لذلك: فالحزاز العرضي يُعالَج <b>دوائياً</b> بالكورتيكوستيرويدات الموضعية علاجاً للاختيار (مع الانتباه للعدوى المبيضّية الموجودة في نحو نصف الآفات، قبل العلاج الستيرويدي وأثناءه)، بينما تُدبَّر الطلاوة بـ<b>إزالة العادات الخطرة والاستئصال الجراحي والمتابعة المنظّمة</b> كلّ ثلاثة أشهر في السنة الأولى، إذ إن الهمّ ليس الأعراض بل السرطان. وثمّة تداخلان يستدعيان الحذر: <b>الحزاز اللثوي</b> قد يكون حمامياً بحتاً بلا خطوط ويجب خزعه مع التألّق المناعي لاستبعاد الفقعان والفقاع، و<b>التفاعلات الحزازية الدوائية</b> لـNSAIDs تحاكي الحزاز بشدّة — وسحب الدواء أوثق اختبار تشخيصي.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c6_2',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c6_2',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c6_3">
+<div class="topic">The habits behind the lesions — tobacco, alcohol and areca nut</div>
+<div class="prompt">How do tobacco, alcohol and areca nut produce the disorders in this chapter, and what does that mean for patient counselling?</div>
+<button class="reveal" onclick="revealCard('c6_3')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c6_3">
+<div class="en">Almost every disorder in this chapter traces back to a <b>habit</b>, which makes counselling the single most powerful intervention the dentist can offer. <b>Tobacco</b> acts as a carcinogen that first induces <b>hyperkeratinisation</b>, producing tobacco-associated leukoplakia and smoker’s keratosis; crucially this early change is <b>reversible on cessation</b>, but with continued exposure mutations accumulate in oncogenes, tumour suppressor genes, and DNA repair genes until proliferation becomes unrestrained. Smoking also predisposes to candidiasis — and notably, in smokers, <b>cessation alone may clear a candidal infection even without antifungal treatment</b>. A special form of erythroplakia arises from <b>reverse smoking of chutta</b>, practised predominantly in India. <b>Alcohol</b> combines with smoking as a well-established risk factor for oral squamous cell carcinoma, and the two together are why patients with leukoplakia or erythroplakia must be actively counselled to stop. <b>Areca nut</b> is the cause of oral submucous fibrosis through its alkaloid <b>arecoline</b>, which modulates matrix metalloproteinases, lysyl oxidases, and collagenases to drive collagen accumulation and fibrosis — and the relationship is <b>dose dependent</b>. Critically, areca-derived products are <b>carcinogenic regardless of whether tobacco is used with them</b>, so “I only chew, I don’t smoke” offers no protection. The counselling message is therefore concrete and hopeful rather than merely admonitory: stopping the habit can make early lesions <b>regress</b> — smoker’s keratosis may disappear, early submucous fibrosis has a good prognosis if chewing stops, and candidal infection may clear — while continuing the habit drives a transformation risk that surgery alone cannot eliminate, because field cancerization leaves genetically unstable mucosa behind even after excision.</div>
+<div class="hint">تكاد كلّ اضطرابات هذا الفصل تعود لـ<b>عادة</b>، ممّا يجعل الإرشاد أقوى تدخّل يملكه طبيب الأسنان. فـ<b>التبغ</b> يعمل مسرطِناً يحرّض أوّلاً <b>فرط التقرّن</b>، مُنتجاً طلاوة مرتبطة بالتبغ وتقرّن المدخّن؛ والمهمّ أن هذا التغيّر المبكّر <b>عكوس عند الإقلاع</b>، لكن مع استمرار التعرّض تتراكم الطفرات في الجينات الورمية والكابتة وجينات الإصلاح حتّى يصير التكاثر جامحاً. والتدخين يؤهّب أيضاً لداء المبيضّات — ولافتٌ أن <b>الإقلاع وحده قد يُنهي العدوى المبيضّية حتّى دون علاج مضادّ للفطور</b>. وشكل خاصّ من الحُمامَة ينشأ من <b>تدخين الشوتا المعكوس</b> الممارَس غالباً في الهند. و<b>الكحول</b> يجتمع مع التدخين كعامل خطر راسخ للسرطانة حرشفية الخلايا الفموية، وهما معاً سبب وجوب إرشاد مرضى الطلاوة والحُمامَة للإقلاع فعلياً. و<b>جوز الأريكا</b> سبب التليّف تحت المخاطي عبر قلويده <b>الأريكولين</b>، الذي يعدّل الميتالوبروتينازات وأوكسيدازات الليسيل والكولاجينازات لدفع تراكم الكولاجين والتليّف — والعلاقة <b>معتمدة على الجرعة</b>. والأهمّ أن منتجات الأريكا <b>مسرطِنة بغضّ النظر عن استخدام التبغ معها</b>، فقول «أنا أمضغ فقط ولا أدخّن» لا يوفّر حماية. فرسالة الإرشاد إذاً محدّدة ومبشّرة لا وعظية فحسب: فإيقاف العادة قد يجعل الآفات المبكّرة <b>تتراجع</b> — فتقرّن المدخّن قد يختفي، والتليّف المبكّر إنذاره جيّد إن توقّف المضغ، والعدوى المبيضّية قد تزول — بينما الاستمرار يدفع خطر تحوّل لا تستطيع الجراحة وحدها إزالته، لأن تسرطن الحقل يترك مخاطية غير مستقرّة جينياً حتّى بعد الاستئصال.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c6_3',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c6_3',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c6_4">
+<div class="topic">Candidiasis — the great mimic and complicator</div>
+<div class="prompt">Why does candidiasis appear throughout this chapter, and how does it both mimic and complicate the other lesions?</div>
+<button class="reveal" onclick="revealCard('c6_4')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c6_4">
+<div class="en">Candida threads through this entire chapter for a reason: it is simultaneously a <b>disease in its own right, a mimic of other lesions, and a complicator of their diagnosis and treatment</b>. As a <b>disease</b>, it must be distinguished from mere commensal carriage — Candida is present in 60% of healthy people at up to 500 cfu/mL, and only counts above roughly 1000 cfu/mL suggest infection, which is why interpreting a positive swab requires clinical correlation rather than automatic treatment. As a <b>mimic</b>, its pseudomembranous form produces white papules and plaques that can be confused with leukoplakia — though the practical bedside distinction is that pseudomembranous candidiasis <b>wipes off</b> to leave an erythematous base, whereas true leukoplakia does not — while its erythematous form produces red patches that enter the differential of erythroplakia and atrophic lichen planus. As a <b>complicator</b>, it appears repeatedly: <b>oral hairy leukoplakia</b> is usually asymptomatic but becomes symptomatic when superinfected with candidal strains; <b>chronic hyperplastic candidiasis</b> requires biopsy precisely because it can harbour epithelial dysplasia, blurring the line between infection and premalignancy; and <b>about half of oral lichen planus lesions carry candidal infection</b>, which is why antifungal treatment may be given <b>before</b> starting topical steroids, and why a fungal infection may emerge <b>during</b> potent steroid therapy and require parallel treatment. The unifying practical lessons are therefore three: always look for and remove the <b>predisposing factor</b> first (including smoking, where cessation alone may clear the infection), remember that <b>white does not mean premalignant</b> until candidiasis and other known causes have been excluded, and treat candida proactively when using steroids on the oral mucosa.</div>
+<div class="hint">تتخلّل المبيضّات هذا الفصل كلّه لسبب: فهي في آن واحد <b>مرض قائم بذاته، ومُحاكٍ لآفات أخرى، ومُعقّد لتشخيصها وعلاجها</b>. فكـ<b>مرض</b>، يجب تمييزها عن مجرّد الحمل المتعايش — فالمبيضّات موجودة في ٦٠% من الأصحّاء حتّى ٥٠٠ cfu/mL، وفقط الأعداد فوق نحو ١٠٠٠ توحي بعدوى، ولهذا يتطلّب تفسير المسحة الإيجابية ربطاً سريرياً لا علاجاً تلقائياً. وكـ<b>مُحاكٍ</b>، يُنتج شكلها الغشائي الكاذب حطاطات ولويحات بيضاء قد تُخلط بالطلاوة — والتمييز العملي أن داء المبيضّات الغشائي الكاذب <b>يُمسَح</b> تاركاً قاعدة حمامية، بينما الطلاوة الحقيقية لا تُمسَح — بينما يُنتج شكلها الحمامي بقعاً حمراء تدخل في تشخيص الحُمامَة والحزاز الضامر. وكـ<b>مُعقّد</b>، تظهر تكراراً: فـ<b>الطلاوة المشعّرة</b> لا عرضية عادةً لكنّها تصير عرضية حين تُصاب ثانوياً بالمبيضّات؛ و<b>داء المبيضّات المزمن مفرط التنسّج</b> يتطلّب خزعة لأنّه قد يؤوي خلل تنسّج ظهاريّاً، مُموّهاً الحدّ بين العدوى وما قبل الخباثة؛ و<b>نحو نصف آفات الحزاز المسطّح الفموي تحمل عدوى مبيضّية</b>، ولهذا قد يُعطى العلاج المضادّ للفطور <b>قبل</b> بدء الستيرويدات الموضعية، ولهذا قد تظهر عدوى فطرية <b>أثناء</b> العلاج الستيرويدي القوي وتتطلّب علاجاً موازياً. والدروس العملية ثلاثة: ابحث دائماً عن <b>العامل المؤهّب</b> وأزِله أوّلاً (بما فيه التدخين، حيث قد يُنهي الإقلاع وحده العدوى)، وتذكّر أن <b>الأبيض لا يعني محتمل الخباثة</b> حتّى يُستبعد داء المبيضّات والأسباب المعروفة الأخرى، وعالِج المبيضّات استباقاً عند استخدام الستيرويدات على المخاطية الفموية.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c6_4',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c6_4',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c6_5">
+<div class="topic">Summary — red and white lesions at a glance</div>
+<div class="prompt">Can you summarise this whole chapter on red and white lesions as one connected overview?</div>
+<button class="reveal" onclick="revealCard('c6_5')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c6_5">
+<div class="en">This chapter moves from infection to premalignancy to immune disease, and it coheres around a single question: <b>does this white or red patch carry a risk of cancer?</b> It opens by finishing <b>candidiasis</b> — distinguishing commensal carriage (60% of people, up to 500 cfu/mL) from infection (over 1000 cfu/mL), insisting that <b>elimination of predisposing factors is always the first treatment goal</b>, using topical nystatin and amphotericin for primary disease, miconazole for angular cheilitis co-infected with S. aureus, and systemic azoles for deep-seated disease such as chronic hyperplastic candidiasis. It then covers <b>oral hairy leukoplakia</b> — EBV-driven, the second most common HIV-associated oral lesion, a marker of low CD4 counts, appearing as vertical keratotic corrugations on the lateral tongue, and explicitly <b>not premalignant</b>. The heart of the chapter is the <b>oral potentially malignant disorders</b>: <b>leukoplakia</b> (a white plaque of questionable risk, a diagnosis of exclusion, idiopathic except for smoking, 1.5–2.6% prevalence, homogeneous versus non-homogeneous, transformation up to 20% over 30 years); <b>erythroplakia</b> (uncommon but frequently a cancer precursor, with 91% showing invasive carcinoma or carcinoma in situ — all erythroplakias are sinister); and <b>proliferative verrucous leukoplakia</b> (benign-looking histology, malignant behaviour, older women, lower gingiva). It sets out the shared diagnostic pathway — remove any identifiable cause, and <b>if healing does not occur in two weeks, biopsy</b> — defines dysplasia and carcinoma in situ, explains <b>field cancerization</b> as the reason surgery does not eliminate risk, and prescribes follow-up every three months in the first year. It then covers <b>oral submucous fibrosis</b> (areca nut and arecoline, TNF-α, fibrotic bands, trismus, 0.7–1.3% transformation per annum) and closes with <b>oral lichen planus</b> (CD8+ T-cell mediated, Wickham’s striae, six clinical forms, topical steroids as treatment of choice, with candida in half the lesions).</div>
+<div class="hint">ينتقل هذا الفصل من العدوى إلى ما قبل الخباثة إلى المرض المناعي، ويتماسك حول سؤال واحد: <b>هل تحمل هذه البقعة البيضاء أو الحمراء خطر سرطان؟</b> يبدأ بإنهاء <b>داء المبيضّات</b> — مميّزاً الحمل المتعايش (٦٠% من الناس، حتّى ٥٠٠ cfu/mL) عن العدوى (فوق ١٠٠٠)، مؤكّداً أن <b>إزالة العوامل المؤهّبة هي هدف العلاج الأوّل دائماً</b>، مستخدماً النيستاتين والأمفوتيريسين للمرض الأوّلي، والميكونازول لالتهاب الشفة الزاوي، والآزولات الجهازية للمرض العميق. ثم يغطّي <b>الطلاوة المشعّرة</b> — مدفوعة بـEBV، ثاني أشيع آفة فموية مرتبطة بالإيدز، مؤشّراً لانخفاض CD4، تظهر كتخدّدات تقرّنية عمودية على جانب اللسان، و<b>ليست محتملة الخباثة</b> صراحةً. وقلب الفصل <b>الاضطرابات الفموية المحتملة الخباثة</b>: <b>الطلاوة</b> (لويحة بيضاء ذات خطر مشكوك، تشخيص بالاستبعاد، مجهولة السبب إلا التدخين، انتشار ١.٥–٢.٦%، متجانسة مقابل غير متجانسة، تحوّل حتّى ٢٠% خلال ٣٠ سنة)؛ <b>الحُمامَة</b> (غير شائعة لكنّها غالباً سليفة للسرطان، و٩١% تُظهِر سرطانة غازية أو لابدة — وكلّ الحُمامَات منذرة)؛ و<b>الطلاوة الثؤلولية التكاثرية</b> (نسيج يبدو سليماً، سلوك خبيث، نساء أكبر سنّاً، اللثة السفلية). ويضع المسار التشخيصي المشترك — أزِل أي سبب مُحدَّد، و<b>إن لم يحدث الالتئام في أسبوعين فاخزع</b> — ويعرّف خلل التنسّج والسرطانة اللابدة، ويفسّر <b>تسرطن الحقل</b> سبباً لعدم إزالة الجراحة للخطر، ويفرض متابعة كلّ ثلاثة أشهر في السنة الأولى. ثم يغطّي <b>التليّف تحت المخاطي الفموي</b> (جوز الأريكا والأريكولين، TNF-α، الحزم الليفية، الضزز، ٢٠.٧–١.٣% سنوياً) ويختم بـ<b>الحزاز المسطّح الفموي</b> (وساطة الخلايا التائية CD8+، خطوط ويكهام، الأشكال الستّة، الستيرويدات الموضعية علاج الاختيار، مع المبيضّات في نصف الآفات).</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c6_5',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c6_5',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c6_6">
+<div class="topic">High-yield exam pearls — red &amp; white lesions</div>
+<div class="prompt">What are the highest-yield exam pearls from this chapter?</div>
+<button class="reveal" onclick="revealCard('c6_6')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c6_6">
+<div class="en">A compact set of pearls captures the most testable points. On <b>candidiasis</b>: commensal in 60% up to 500 cfu/mL, infection over 1000 cfu/mL; <b>eliminate predisposing factors first</b>; nystatin/amphotericin topically; <b>miconazole for angular cheilitis</b> (biostatic on S. aureus, fungistatic); systemic azoles for chronic hyperplastic candidiasis. On <b>oral hairy leukoplakia</b>: <b>EBV</b>, second most common HIV-associated oral lesion, marker of low CD4, vertical corrugations on the <b>lateral tongue</b>, up to 80% in AIDS, and <b>NOT premalignant</b>; ART has greatly reduced it. On <b>leukoplakia</b>: white plaque of <b>questionable risk</b>, a <b>diagnosis of exclusion</b>, idiopathic except smoking, prevalence 1.5–2.6%, mostly over age 50, more in men, homogeneous versus non-homogeneous (erythroleukoplakia/speckled), transformation <b>up to 20% over 30 years</b>, high-risk sites <b>floor of mouth and lateral tongue</b>, better prognosis if <b>≤200 mm²</b>. On <b>erythroplakia</b>: prevalence <b>0.02–0.1%</b>, equal gender, reverse chutta smoking in India, and <b>91% show invasive carcinoma or CIS — all erythroplakias are sinister</b>. On <b>diagnosis</b>: identical for both; <b>no healing in two weeks → biopsy</b>. On <b>pathology</b>: dysplasia = cellular atypia plus loss of maturation; CIS = full thickness without stromal invasion; dysplasia in 1–30% of leukoplakias. On <b>management</b>: surgery remains treatment of choice but does not eliminate risk because of <b>field cancerization</b>; follow up every <b>3 months</b> in year one, then 6 months, self-examination after 5 clear years. On <b>OSMF</b>: <b>areca nut/arecoline</b>, TNF-α polymorphism, fibrotic bands and trismus, India/Pakistan/Bangladesh/Sri Lanka, <b>0.7–1.3% per annum</b>. On <b>OLP</b>: <b>CD8+ cytotoxic T cells</b>, liquefaction degeneration, <b>Wickham’s striae</b>, bilateral and symmetric, six forms, mean onset 53, associated with HCV and thyroid disease, <b>topical steroids are treatment of choice</b>, and <b>half the lesions carry candida</b>.</div>
+<div class="hint">مجموعة موجزة تلتقط أكثر النقاط قابليةً للامتحان. في <b>داء المبيضّات</b>: متعايش في ٦٠% حتّى ٥٠٠ cfu/mL، والعدوى فوق ١٠٠٠؛ <b>أزِل العوامل المؤهّبة أوّلاً</b>؛ نيستاتين/أمفوتيريسين موضعياً؛ <b>ميكونازول لالتهاب الشفة الزاوي</b>؛ وآزولات جهازية للمزمن مفرط التنسّج. في <b>الطلاوة المشعّرة</b>: <b>EBV</b>، ثاني أشيع آفة مرتبطة بالإيدز، مؤشّر انخفاض CD4، تخدّدات عمودية على <b>جانب اللسان</b>، حتّى ٨٠% في الإيدز، و<b>ليست محتملة الخباثة</b>. في <b>الطلاوة</b>: لويحة بيضاء ذات <b>خطر مشكوك</b>، <b>تشخيص بالاستبعاد</b>، مجهولة السبب إلا التدخين، انتشار ١.٥–٢.٦%، معظمها فوق ٥٠، أكثر في الرجال، متجانسة مقابل غير متجانسة، تحوّل <b>حتّى ٢٠% خلال ٣٠ سنة</b>، والمواقع عالية الخطورة <b>أرض الفم وجانب اللسان</b>، وإنذار أفضل إن كانت <b>≤٢٠٠ مم²</b>. في <b>الحُمامَة</b>: انتشار <b>٠.٠٢–٠.١%</b>، جنسان متساويان، تدخين الشوتا المعكوس، و<b>٩١% تُظهِر سرطانة غازية أو لابدة — وكلّها منذرة</b>. في <b>التشخيص</b>: متطابق لكليهما؛ <b>لا التئام في أسبوعين ← خزعة</b>. في <b>النسيج المرضي</b>: خلل التنسّج = شذوذ خلوي مع فقد النضج؛ والسرطانة اللابدة = كامل السماكة دون غزو السدى؛ وخلل التنسّج في ١–٣٠%. في <b>التدبير</b>: الجراحة تبقى علاج الاختيار لكنّها لا تزيل الخطر بسبب <b>تسرطن الحقل</b>؛ والمتابعة كلّ <b>٣ أشهر</b> في السنة الأولى. في <b>OSMF</b>: <b>جوز الأريكا/الأريكولين</b>، تعدّد أشكال TNF-α، حزم ليفية وضزز، <b>٠.٧–١.٣% سنوياً</b>. في <b>OLP</b>: <b>خلايا تائية سامّة CD8+</b>، تنكّس تميّعي، <b>خطوط ويكهام</b>، ثنائي الجانب متناظر، ستّة أشكال، متوسّط البدء ٥٣، مرتبط بـHCV وأمراض الدرقية، <b>والستيرويدات الموضعية علاج الاختيار</b>، و<b>نصف الآفات تحمل مبيضّات</b>.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c6_6',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c6_6',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c6_7">
+<div class="topic">From premalignant lesion to carcinoma — the transformation pathway</div>
+<div class="prompt">What is the step-by-step pathway from a normal mucosa to oral squamous cell carcinoma, and where can the clinician intervene?</div>
+<button class="reveal" onclick="revealCard('c6_7')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c6_7">
+<div class="en">Tying this chapter together is a single pathway that runs from healthy mucosa to invasive cancer, and understanding each step shows the clinician exactly where intervention is possible. It begins with <b>carcinogen exposure</b> — tobacco, alcohol, or areca nut — acting on the oral epithelium. The earliest response is <b>reactive and reversible</b>: tobacco induces hyperkeratinisation producing smoker’s keratosis, which <b>regresses when the irritant is removed</b>. This is the first and best point of intervention, and it costs nothing but counselling. With continued exposure, <b>genetic damage accumulates</b>: oncogenes are activated while tumour suppressor genes and DNA repair genes are deleted or injured, and high-risk sites such as the floor of mouth and lateral tongue show increased <b>loss of heterozygosity</b>. The lesion now becomes a true <b>potentially malignant disorder</b> — clinically a leukoplakia or, more ominously, an erythroplakia; here the second intervention point is <b>biopsy</b>, which is the only way to know what is actually happening in the epithelium. Histologically the tissue passes through <b>epithelial dysplasia</b> — cellular atypia with loss of normal maturation, graded by severity — then <b>carcinoma in situ</b>, where the full thickness of the epithelium shows carcinomatous features but the basement membrane is still intact and there is <b>no stromal invasion</b>. This is the last stage at which the disease is entirely local and curable by excision. The final step is <b>invasion through the basement membrane into the stroma</b>, at which point it is <b>squamous cell carcinoma</b> with access to lymphatics and the potential to metastasise. The sobering caveat is <b>field cancerization</b>: because genetic instability exists simultaneously across clinically normal-looking mucosa, excising one lesion does not remove the risk — which is precisely why structured <b>lifelong follow-up</b> and habit cessation, not surgery alone, define good management.</div>
+<div class="hint">يربط هذا الفصل مسارٌ واحد يمتدّ من المخاطية السليمة إلى السرطان الغازي، وفهم كلّ خطوة يُري الطبيب أين يمكن التدخّل تماماً. يبدأ بـ<b>التعرّض للمسرطِن</b> — تبغ أو كحول أو جوز أريكا — مؤثّراً في الظهارة الفموية. وأولى الاستجابات <b>ارتكاسية وعكوسة</b>: فالتبغ يحرّض فرط التقرّن مُنتجاً تقرّن المدخّن، الذي <b>يتراجع عند إزالة المهيّج</b>. وهذه أولى وأفضل نقاط التدخّل، ولا تكلّف سوى الإرشاد. ومع استمرار التعرّض <b>يتراكم الأذى الجيني</b>: فتُفعّل الجينات الورمية بينما تُحذف أو تُؤذى الجينات الكابتة وجينات إصلاح DNA، وتُظهِر المواقع عالية الخطورة كأرض الفم وجانب اللسان زيادة <b>فقد اللاتزاوج</b>. والآفة الآن تصير <b>اضطراباً محتمل الخباثة</b> حقيقياً — سريرياً طلاوة أو، أنذر، حُمامَة؛ وهنا نقطة التدخّل الثانية <b>الخزعة</b>، إذ هي السبيل الوحيد لمعرفة ما يجري فعلاً في الظهارة. ونسيجياً يمرّ النسيج بـ<b>خلل التنسّج الظهاري</b> — شذوذ خلوي مع فقد النضج الطبيعي، مُدرَّجاً حسب الشدّة — ثم <b>السرطانة اللابدة</b>، حيث تُظهِر كامل سماكة الظهارة ملامح سرطانية لكن الغشاء القاعدي سليم ولا <b>غزو للسدى</b>. وهذه آخر مرحلة يكون فيها المرض موضعياً بالكامل وقابلاً للشفاء بالاستئصال. والخطوة الأخيرة <b>الغزو عبر الغشاء القاعدي إلى السدى</b>، وعندها تصير <b>سرطانة حرشفية الخلايا</b> ذات منفذ للمفاويات وإمكان للنقيلة. والتحفّظ المُقلق هو <b>تسرطن الحقل</b>: فلأن عدم الاستقرار الجيني موجود متزامناً عبر مخاطية تبدو طبيعية سريرياً، فإن استئصال آفة واحدة لا يزيل الخطر — ولهذا فإن <b>المتابعة المنظّمة</b> وإيقاف العادات، لا الجراحة وحدها، هما ما يُعرّف التدبير الجيّد.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c6_7',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c6_7',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+<div class="card" id="c6_8">
+<div class="topic">Red &amp; white lesions and the dental visit</div>
+<div class="prompt">What is the dentist’s practical responsibility when a white or red patch is found during a routine examination?</div>
+<button class="reveal" onclick="revealCard('c6_8')">🔍 اكشف الإجابة</button>
+<div class="answer" id="ans_c6_8">
+<div class="en">The reason this chapter matters in daily practice is that <b>oral potentially malignant disorders are usually asymptomatic</b> — leukoplakia causes no pain, erythroplakia is typically painless, and oral hairy leukoplakia produces no symptoms at all. Patients therefore do not present complaining of them; they are <b>found incidentally by a dentist performing a systematic soft-tissue examination</b>. This makes routine mucosal screening, not patient complaint, the mechanism by which early oral cancer is caught, and it places a clear responsibility on the clinician. The practical protocol is straightforward. <b>First, examine systematically</b> — including the high-risk floor of mouth and the lateral and ventral surfaces of the tongue, which are easy to overlook and precisely where transformation risk is highest. <b>Second, characterise what you see</b>: is it white, red, or mixed; homogeneous or speckled; wipeable or adherent; unilateral or bilateral and symmetric with striae. <b>Third, look for a cause</b> — a sharp cusp, a rough restoration, a denture flange, a cheek-biting habit — and if one is found, remove it and <b>review in two weeks</b>. <b>Fourth, biopsy</b> anything that has no identifiable cause or that fails to resolve, remembering that all erythroplakias are sinister and that the threshold should be lower still for a red or speckled lesion, for a lesion on the floor of mouth or lateral tongue, and for a patient who smokes, drinks, or chews areca. <b>Fifth, counsel on habits</b>, since cessation can make early lesions regress and is the only intervention that addresses field cancerization. And <b>sixth, arrange follow-up</b> — every three months in the first year. Done consistently, this turns an ordinary check-up into effective cancer screening.</div>
+<div class="hint">سبب أهمّية هذا الفصل في الممارسة اليومية أن <b>الاضطرابات الفموية المحتملة الخباثة لا عرضية غالباً</b> — فالطلاوة لا تسبّب ألماً، والحُمامَة عادةً غير مؤلمة، والطلاوة المشعّرة لا تُنتج أعراضاً أصلاً. فالمرضى إذاً لا يراجعون شاكين منها؛ بل <b>يكتشفها عرضاً طبيب أسنان يُجري فحصاً منهجياً للأنسجة الرخوة</b>. وهذا يجعل مسح المخاطية الروتيني، لا شكوى المريض، الآلية التي يُلتقط بها سرطان الفم مبكّراً، ويضع مسؤولية واضحة على الطبيب. والبروتوكول العملي مباشر. <b>أوّلاً، افحص منهجياً</b> — بما فيه أرض الفم عالي الخطورة والسطحين الجانبي والبطني للسان، وهي سهلة الإغفال وفيها بالضبط أعلى خطر تحوّل. <b>ثانياً، صف ما تراه</b>: أبيض أم أحمر أم مختلط؛ متجانس أم مرقّط؛ يُمسَح أم ملتصق؛ أحادي الجانب أم ثنائي متناظر مع خطوط. <b>ثالثاً، ابحث عن سبب</b> — حدبة حادّة، ترميم خشن، حافّة طقم، عادة عضّ الخدّ — وإن وُجِد، فأزِله و<b>راجِع بعد أسبوعين</b>. <b>رابعاً، اخزع</b> كلّ ما لا سبب مُحدَّداً له أو ما لا يزول، متذكّراً أن كلّ الحُمامَات منذرة وأن العتبة يجب أن تكون أدنى للآفة الحمراء أو المرقّطة، وللآفة على أرض الفم أو جانب اللسان، ولمريض يدخّن أو يشرب أو يمضغ الأريكا. <b>خامساً، أرشِد عن العادات</b>، إذ إن الإقلاع قد يجعل الآفات المبكّرة تتراجع، وهو التدخّل الوحيد الذي يعالج تسرطن الحقل. <b>وسادساً، رتّب المتابعة</b> — كلّ ثلاثة أشهر في السنة الأولى. ومتى طُبّق باطّراد، حوّل فحصاً روتينياً إلى مسح فعّال للسرطان.</div>
+<div class="btns">
+<button class="gotit" onclick="rate('c6_8',1)">✅ حفظتها</button>
+<button class="rev" onclick="rate('c6_8',0)">🔁 أعدها</button>
+</div>
+</div>
+</div>
+
+<div class="mcq-wrap">
+<h2 class="mcq-title">📝 اختبار MCQ · اختبر نفسك (20 سؤالاً)</h2>
+<div class="mcq-note">اختر إجابةً لكل سؤال. سيظهر الصحيح بالأخضر والخطأ بالأحمر مع شرح موجز. النتيجة تُحسب تلقائياً في الأعلى.</div>
+<div class="mcq-scorebar">النتيجة · Score: <b id="mcqScore">0 / 20</b> &nbsp;·&nbsp; <button class="mcq-reset" onclick="mcqReset()">🔄 إعادة الاختبار</button></div>
+<div class="mcq-q" id="mcq0">
+<div class="mcq-stem"><span class="mcq-num">1</span> Candida is found as a normal commensal in approximately what percentage of people?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="0" data-o="0" onclick="pick(0,0)"><b>A.</b> 10%</button>
+<button class="mcq-opt" data-q="0" data-o="1" onclick="pick(0,1)"><b>B.</b> 30%</button>
+<button class="mcq-opt" data-q="0" data-o="2" onclick="pick(0,2)"><b>C.</b> 60%</button>
+<button class="mcq-opt" data-q="0" data-o="3" onclick="pick(0,3)"><b>D.</b> 95%</button></div>
+<div class="mcq-exp" id="exp0"></div>
+</div>
+<div class="mcq-q" id="mcq1">
+<div class="mcq-stem"><span class="mcq-num">2</span> The FIRST goal in treating oral candidiasis should always be:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="1" data-o="0" onclick="pick(1,0)"><b>A.</b> Systemic azoles</button>
+<button class="mcq-opt" data-q="1" data-o="1" onclick="pick(1,1)"><b>B.</b> Elimination/reduction of predisposing factors</button>
+<button class="mcq-opt" data-q="1" data-o="2" onclick="pick(1,2)"><b>C.</b> Surgical excision</button>
+<button class="mcq-opt" data-q="1" data-o="3" onclick="pick(1,3)"><b>D.</b> Chlorhexidine only</button></div>
+<div class="mcq-exp" id="exp1"></div>
+</div>
+<div class="mcq-q" id="mcq2">
+<div class="mcq-stem"><span class="mcq-num">3</span> Topical treatment of choice for angular cheilitis (often infected by both S. aureus and Candida) is:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="2" data-o="0" onclick="pick(2,0)"><b>A.</b> Nystatin</button>
+<button class="mcq-opt" data-q="2" data-o="1" onclick="pick(2,1)"><b>B.</b> Miconazole</button>
+<button class="mcq-opt" data-q="2" data-o="2" onclick="pick(2,2)"><b>C.</b> Acyclovir</button>
+<button class="mcq-opt" data-q="2" data-o="3" onclick="pick(2,3)"><b>D.</b> Metronidazole</button></div>
+<div class="mcq-exp" id="exp2"></div>
+</div>
+<div class="mcq-q" id="mcq3">
+<div class="mcq-stem"><span class="mcq-num">4</span> Oral hairy leukoplakia is strongly associated with which virus?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="3" data-o="0" onclick="pick(3,0)"><b>A.</b> HSV</button>
+<button class="mcq-opt" data-q="3" data-o="1" onclick="pick(3,1)"><b>B.</b> HPV</button>
+<button class="mcq-opt" data-q="3" data-o="2" onclick="pick(3,2)"><b>C.</b> Epstein-Barr virus (EBV)</button>
+<button class="mcq-opt" data-q="3" data-o="3" onclick="pick(3,3)"><b>D.</b> CMV</button></div>
+<div class="mcq-exp" id="exp3"></div>
+</div>
+<div class="mcq-q" id="mcq4">
+<div class="mcq-stem"><span class="mcq-num">5</span> Regarding malignant potential, oral hairy leukoplakia is:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="4" data-o="0" onclick="pick(4,0)"><b>A.</b> Highly premalignant</button>
+<button class="mcq-opt" data-q="4" data-o="1" onclick="pick(4,1)"><b>B.</b> NOT related to increased malignant transformation</button>
+<button class="mcq-opt" data-q="4" data-o="2" onclick="pick(4,2)"><b>C.</b> Always becomes SCC</button>
+<button class="mcq-opt" data-q="4" data-o="3" onclick="pick(4,3)"><b>D.</b> Premalignant only in men</button></div>
+<div class="mcq-exp" id="exp4"></div>
+</div>
+<div class="mcq-q" id="mcq5">
+<div class="mcq-stem"><span class="mcq-num">6</span> Oral leukoplakia is best described as:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="5" data-o="0" onclick="pick(5,0)"><b>A.</b> A definitive cancer</button>
+<button class="mcq-opt" data-q="5" data-o="1" onclick="pick(5,1)"><b>B.</b> A white plaque of questionable risk — a diagnosis of exclusion</button>
+<button class="mcq-opt" data-q="5" data-o="2" onclick="pick(5,2)"><b>C.</b> A fungal infection</button>
+<button class="mcq-opt" data-q="5" data-o="3" onclick="pick(5,3)"><b>D.</b> A viral lesion</button></div>
+<div class="mcq-exp" id="exp5"></div>
+</div>
+<div class="mcq-q" id="mcq6">
+<div class="mcq-stem"><span class="mcq-num">7</span> Non-homogeneous leukoplakia with combined white and red areas is also called:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="6" data-o="0" onclick="pick(6,0)"><b>A.</b> Erythroleukoplakia (speckled leukoplakia)</button>
+<button class="mcq-opt" data-q="6" data-o="1" onclick="pick(6,1)"><b>B.</b> Hairy leukoplakia</button>
+<button class="mcq-opt" data-q="6" data-o="2" onclick="pick(6,2)"><b>C.</b> Lichen planus</button>
+<button class="mcq-opt" data-q="6" data-o="3" onclick="pick(6,3)"><b>D.</b> Candidiasis</button></div>
+<div class="mcq-exp" id="exp6"></div>
+</div>
+<div class="mcq-q" id="mcq7">
+<div class="mcq-stem"><span class="mcq-num">8</span> Compared with leukoplakia, erythroplakia is:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="7" data-o="0" onclick="pick(7,0)"><b>A.</b> More common but less dangerous</button>
+<button class="mcq-opt" data-q="7" data-o="1" onclick="pick(7,1)"><b>B.</b> Less common but frequently a precursor to cancer</button>
+<button class="mcq-opt" data-q="7" data-o="2" onclick="pick(7,2)"><b>C.</b> Equally common and benign</button>
+<button class="mcq-opt" data-q="7" data-o="3" onclick="pick(7,3)"><b>D.</b> Never premalignant</button></div>
+<div class="mcq-exp" id="exp7"></div>
+</div>
+<div class="mcq-q" id="mcq8">
+<div class="mcq-stem"><span class="mcq-num">9</span> What percentage of histologically assessed erythroplakias showed invasive carcinoma or carcinoma in situ?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="8" data-o="0" onclick="pick(8,0)"><b>A.</b> 25%</button>
+<button class="mcq-opt" data-q="8" data-o="1" onclick="pick(8,1)"><b>B.</b> 50%</button>
+<button class="mcq-opt" data-q="8" data-o="2" onclick="pick(8,2)"><b>C.</b> 75%</button>
+<button class="mcq-opt" data-q="8" data-o="3" onclick="pick(8,3)"><b>D.</b> 91%</button></div>
+<div class="mcq-exp" id="exp8"></div>
+</div>
+<div class="mcq-q" id="mcq9">
+<div class="mcq-stem"><span class="mcq-num">10</span> High-risk sites for malignant transformation of leukoplakia are:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="9" data-o="0" onclick="pick(9,0)"><b>A.</b> Hard palate and gingiva</button>
+<button class="mcq-opt" data-q="9" data-o="1" onclick="pick(9,1)"><b>B.</b> Floor of mouth and lateral border of tongue</button>
+<button class="mcq-opt" data-q="9" data-o="2" onclick="pick(9,2)"><b>C.</b> Upper lip only</button>
+<button class="mcq-opt" data-q="9" data-o="3" onclick="pick(9,3)"><b>D.</b> Dorsum of tongue only</button></div>
+<div class="mcq-exp" id="exp9"></div>
+</div>
+<div class="mcq-q" id="mcq10">
+<div class="mcq-stem"><span class="mcq-num">11</span> If a suspected traumatic white/red lesion does not heal, a biopsy is essential after:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="10" data-o="0" onclick="pick(10,0)"><b>A.</b> 2 days</button>
+<button class="mcq-opt" data-q="10" data-o="1" onclick="pick(10,1)"><b>B.</b> 2 weeks</button>
+<button class="mcq-opt" data-q="10" data-o="2" onclick="pick(10,2)"><b>C.</b> 3 months</button>
+<button class="mcq-opt" data-q="10" data-o="3" onclick="pick(10,3)"><b>D.</b> 1 year</button></div>
+<div class="mcq-exp" id="exp10"></div>
+</div>
+<div class="mcq-q" id="mcq11">
+<div class="mcq-stem"><span class="mcq-num">12</span> Carcinoma in situ is defined as:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="11" data-o="0" onclick="pick(11,0)"><b>A.</b> Invasion into muscle</button>
+<button class="mcq-opt" data-q="11" data-o="1" onclick="pick(11,1)"><b>B.</b> Full-thickness epithelial carcinoma features WITHOUT stromal invasion</button>
+<button class="mcq-opt" data-q="11" data-o="2" onclick="pick(11,2)"><b>C.</b> Only basal layer atypia</button>
+<button class="mcq-opt" data-q="11" data-o="3" onclick="pick(11,3)"><b>D.</b> A benign hyperplasia</button></div>
+<div class="mcq-exp" id="exp11"></div>
+</div>
+<div class="mcq-q" id="mcq12">
+<div class="mcq-stem"><span class="mcq-num">13</span> The concept explaining why SCC occurs equally in operated and non-operated leukoplakia patients is:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="12" data-o="0" onclick="pick(12,0)"><b>A.</b> Field cancerization</button>
+<button class="mcq-opt" data-q="12" data-o="1" onclick="pick(12,1)"><b>B.</b> Nikolsky sign</button>
+<button class="mcq-opt" data-q="12" data-o="2" onclick="pick(12,2)"><b>C.</b> Koebner phenomenon</button>
+<button class="mcq-opt" data-q="12" data-o="3" onclick="pick(12,3)"><b>D.</b> Pathergy</button></div>
+<div class="mcq-exp" id="exp12"></div>
+</div>
+<div class="mcq-q" id="mcq13">
+<div class="mcq-stem"><span class="mcq-num">14</span> Recommended follow-up of a premalignant site in the FIRST year is every:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="13" data-o="0" onclick="pick(13,0)"><b>A.</b> Month</button>
+<button class="mcq-opt" data-q="13" data-o="1" onclick="pick(13,1)"><b>B.</b> 3 months</button>
+<button class="mcq-opt" data-q="13" data-o="2" onclick="pick(13,2)"><b>C.</b> 6 months</button>
+<button class="mcq-opt" data-q="13" data-o="3" onclick="pick(13,3)"><b>D.</b> 2 years</button></div>
+<div class="mcq-exp" id="exp13"></div>
+</div>
+<div class="mcq-q" id="mcq14">
+<div class="mcq-stem"><span class="mcq-num">15</span> The primary etiologic agent in oral submucous fibrosis is:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="14" data-o="0" onclick="pick(14,0)"><b>A.</b> Alcohol</button>
+<button class="mcq-opt" data-q="14" data-o="1" onclick="pick(14,1)"><b>B.</b> Areca nut (arecoline)</button>
+<button class="mcq-opt" data-q="14" data-o="2" onclick="pick(14,2)"><b>C.</b> Epstein-Barr virus</button>
+<button class="mcq-opt" data-q="14" data-o="3" onclick="pick(14,3)"><b>D.</b> Candida</button></div>
+<div class="mcq-exp" id="exp14"></div>
+</div>
+<div class="mcq-q" id="mcq15">
+<div class="mcq-stem"><span class="mcq-num">16</span> Malignant transformation rate of oral submucous fibrosis is approximately:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="15" data-o="0" onclick="pick(15,0)"><b>A.</b> 0.7–1.3% per annum</button>
+<button class="mcq-opt" data-q="15" data-o="1" onclick="pick(15,1)"><b>B.</b> 20% per annum</button>
+<button class="mcq-opt" data-q="15" data-o="2" onclick="pick(15,2)"><b>C.</b> 0.001% per annum</button>
+<button class="mcq-opt" data-q="15" data-o="3" onclick="pick(15,3)"><b>D.</b> 50% per annum</button></div>
+<div class="mcq-exp" id="exp15"></div>
+</div>
+<div class="mcq-q" id="mcq16">
+<div class="mcq-stem"><span class="mcq-num">17</span> A prominent clinical feature of oral submucous fibrosis is:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="16" data-o="0" onclick="pick(16,0)"><b>A.</b> Target lesions</button>
+<button class="mcq-opt" data-q="16" data-o="1" onclick="pick(16,1)"><b>B.</b> Fibrotic bands with trismus and marble-like mucosa</button>
+<button class="mcq-opt" data-q="16" data-o="2" onclick="pick(16,2)"><b>C.</b> Dermatomal vesicles</button>
+<button class="mcq-opt" data-q="16" data-o="3" onclick="pick(16,3)"><b>D.</b> Fishnet immunofluorescence</button></div>
+<div class="mcq-exp" id="exp16"></div>
+</div>
+<div class="mcq-q" id="mcq17">
+<div class="mcq-stem"><span class="mcq-num">18</span> The hallmark clinical finding of oral lichen planus is:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="17" data-o="0" onclick="pick(17,0)"><b>A.</b> Wickham&#x27;s striae</button>
+<button class="mcq-opt" data-q="17" data-o="1" onclick="pick(17,1)"><b>B.</b> Nikolsky sign</button>
+<button class="mcq-opt" data-q="17" data-o="2" onclick="pick(17,2)"><b>C.</b> Target lesion</button>
+<button class="mcq-opt" data-q="17" data-o="3" onclick="pick(17,3)"><b>D.</b> Dewdrop vesicles</button></div>
+<div class="mcq-exp" id="exp17"></div>
+</div>
+<div class="mcq-q" id="mcq18">
+<div class="mcq-stem"><span class="mcq-num">19</span> Which cells are responsible for apoptosis of basal keratinocytes in OLP?</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="18" data-o="0" onclick="pick(18,0)"><b>A.</b> B lymphocytes</button>
+<button class="mcq-opt" data-q="18" data-o="1" onclick="pick(18,1)"><b>B.</b> Cytotoxic CD8+ T lymphocytes</button>
+<button class="mcq-opt" data-q="18" data-o="2" onclick="pick(18,2)"><b>C.</b> Neutrophils</button>
+<button class="mcq-opt" data-q="18" data-o="3" onclick="pick(18,3)"><b>D.</b> Mast cells</button></div>
+<div class="mcq-exp" id="exp18"></div>
+</div>
+<div class="mcq-q" id="mcq19">
+<div class="mcq-stem"><span class="mcq-num">20</span> Before treating OLP with potent topical steroids, it is often advisable to:</div>
+<div class="mcq-opts"><button class="mcq-opt" data-q="19" data-o="0" onclick="pick(19,0)"><b>A.</b> Give systemic antibiotics</button>
+<button class="mcq-opt" data-q="19" data-o="1" onclick="pick(19,1)"><b>B.</b> Consider antifungal treatment (half of OLP lesions have candida)</button>
+<button class="mcq-opt" data-q="19" data-o="2" onclick="pick(19,2)"><b>C.</b> Perform surgery</button>
+<button class="mcq-opt" data-q="19" data-o="3" onclick="pick(19,3)"><b>D.</b> Stop all oral hygiene</button></div>
+<div class="mcq-exp" id="exp19"></div>
+</div>
+<div class="mcq-final" id="mcqFinal"></div>
+</div>
+
+<div class="foot">
+✅ غطّى هذا الملف مادة اليوم السادس عشر — طب الفم (Oral Medicine) ص 220–292، الآفات الحمراء والبيضاء والاضطرابات الفموية المحتملة الخباثة: تدبير داء المبيضّات (إزالة العوامل المؤهّبة، النيستاتين والأمفوتيريسين، الميكونازول لالتهاب الشفة الزاوي، الآزولات الجهازية)؛ الطلاوة المشعّرة الفموية (EBV، مؤشّر الإيدز، غير محتملة الخباثة)؛ الاضطرابات المحتملة الخباثة (الأساس الجيني، الطلاوة كتشخيص بالاستبعاد، الحُمامَة الأنذر، المواقع عالية الخطورة، التحوّل حتى 20% خلال 30 سنة)؛ الطلاوة الثؤلولية التكاثرية؛ التشخيص وخلل التنسّج والسرطانة اللابدة وتسرطن الحقل والمتابعة؛ التليّف تحت المخاطي الفموي (الأريكولين، TNF-α، الحزم الليفية، 0.7–1.3% سنوياً)؛ والحزاز المسطّح الفموي (اللمفاويات CD8+، خطوط ويكهام، الأنواع الستّة، الستيرويدات الموضعية والمبيضّات). 🩺 هذا اليوم الرابع من مادة طب الفم. وفي نهاية الملف اختبار MCQ لتقييم نفسك.<br><br>
+احفظ الملف باسم <b>oral-medicine-day16.html</b>. للتفاعل الكامل افتحه في Safari.
+</div>
+
+<script>
+let mastered={};
+function revealCard(id){document.getElementById('ans_'+id).classList.add('show');}
+function rate(id,ok){mastered[id]=ok;upd();}
+function upd(){
+  let done=Object.values(mastered).filter(v=>v===1).length;
+  document.getElementById('scoreTxt').textContent=done+' / 32';
+  document.getElementById('progBar').style.width=(done/32*100)+'%';
+}
+function revealAll(){document.querySelectorAll('.answer').forEach(a=>a.classList.add('show'));}
+function hideAll(){document.querySelectorAll('.answer').forEach(a=>a.classList.remove('show'));}
+function resetAll(){mastered={};hideAll();upd();}
+upd();
+
+const MCQ=[{"q": "Candida is found as a normal commensal in approximately what percentage of people?", "opts": ["10%", "30%", "60%", "95%"], "correct": 2, "exp": "60% carry Candida as commensal, up to 500 cfu/mL. 60% يحملون المبيضّات كمتعايش."}, {"q": "The FIRST goal in treating oral candidiasis should always be:", "opts": ["Systemic azoles", "Elimination/reduction of predisposing factors", "Surgical excision", "Chlorhexidine only"], "correct": 1, "exp": "Eliminate predisposing factors first. إزالة العوامل المؤهّبة أولاً."}, {"q": "Topical treatment of choice for angular cheilitis (often infected by both S. aureus and Candida) is:", "opts": ["Nystatin", "Miconazole", "Acyclovir", "Metronidazole"], "correct": 1, "exp": "Miconazole: biostatic on S. aureus + fungistatic. ميكونازول: موقف للجراثيم والفطور."}, {"q": "Oral hairy leukoplakia is strongly associated with which virus?", "opts": ["HSV", "HPV", "Epstein-Barr virus (EBV)", "CMV"], "correct": 2, "exp": "OHL is strongly associated with EBV. OHL يرتبط بقوّة بـEBV."}, {"q": "Regarding malignant potential, oral hairy leukoplakia is:", "opts": ["Highly premalignant", "NOT related to increased malignant transformation", "Always becomes SCC", "Premalignant only in men"], "correct": 1, "exp": "OHL is NOT related to increased malignant risk. OHL لا يرتبط بزيادة الخطر الخبيث."}, {"q": "Oral leukoplakia is best described as:", "opts": ["A definitive cancer", "A white plaque of questionable risk — a diagnosis of exclusion", "A fungal infection", "A viral lesion"], "correct": 1, "exp": "Leukoplakia = diagnosis of exclusion. الطلاوة = تشخيص بالاستبعاد."}, {"q": "Non-homogeneous leukoplakia with combined white and red areas is also called:", "opts": ["Erythroleukoplakia (speckled leukoplakia)", "Hairy leukoplakia", "Lichen planus", "Candidiasis"], "correct": 0, "exp": "Non-homogeneous = erythroleukoplakia/speckled. غير المتجانسة = حُمامَة طلاوية/مرقّطة."}, {"q": "Compared with leukoplakia, erythroplakia is:", "opts": ["More common but less dangerous", "Less common but frequently a precursor to cancer", "Equally common and benign", "Never premalignant"], "correct": 1, "exp": "Erythroplakia is uncommon but frequently precancerous. الحُمامَة نادرة لكنها غالباً سليفة للسرطان."}, {"q": "What percentage of histologically assessed erythroplakias showed invasive carcinoma or carcinoma in situ?", "opts": ["25%", "50%", "75%", "91%"], "correct": 3, "exp": "91% showed invasive carcinoma or CIS. 91% أظهرت سرطانة غازية أو لابدة."}, {"q": "High-risk sites for malignant transformation of leukoplakia are:", "opts": ["Hard palate and gingiva", "Floor of mouth and lateral border of tongue", "Upper lip only", "Dorsum of tongue only"], "correct": 1, "exp": "Floor of mouth + lateral tongue = high-risk. أرض الفم والحافّة الجانبية للسان."}, {"q": "If a suspected traumatic white/red lesion does not heal, a biopsy is essential after:", "opts": ["2 days", "2 weeks", "3 months", "1 year"], "correct": 1, "exp": "No healing in 2 weeks → biopsy essential. لا التئام في أسبوعين → خزعة أساسية."}, {"q": "Carcinoma in situ is defined as:", "opts": ["Invasion into muscle", "Full-thickness epithelial carcinoma features WITHOUT stromal invasion", "Only basal layer atypia", "A benign hyperplasia"], "correct": 1, "exp": "CIS = full thickness, no stromal invasion. سرطانة لابدة = كامل السماكة دون غزو السدى."}, {"q": "The concept explaining why SCC occurs equally in operated and non-operated leukoplakia patients is:", "opts": ["Field cancerization", "Nikolsky sign", "Koebner phenomenon", "Pathergy"], "correct": 0, "exp": "Field cancerization: genetic instability in surrounding mucosa. تسرطن الحقل."}, {"q": "Recommended follow-up of a premalignant site in the FIRST year is every:", "opts": ["Month", "3 months", "6 months", "2 years"], "correct": 1, "exp": "Every 3 months for the first year. كل 3 أشهر في السنة الأولى."}, {"q": "The primary etiologic agent in oral submucous fibrosis is:", "opts": ["Alcohol", "Areca nut (arecoline)", "Epstein-Barr virus", "Candida"], "correct": 1, "exp": "Areca nut; arecoline is the primary factor. جوز الأريكا؛ والأريكولين العامل الأوّلي."}, {"q": "Malignant transformation rate of oral submucous fibrosis is approximately:", "opts": ["0.7–1.3% per annum", "20% per annum", "0.001% per annum", "50% per annum"], "correct": 0, "exp": "0.7–1.3% per annum; ~8% over 10 years. 0.7–1.3% سنوياً."}, {"q": "A prominent clinical feature of oral submucous fibrosis is:", "opts": ["Target lesions", "Fibrotic bands with trismus and marble-like mucosa", "Dermatomal vesicles", "Fishnet immunofluorescence"], "correct": 1, "exp": "Fibrotic bands, trismus, white marbling. حزم ليفية وضزز وتعرّق رخامي."}, {"q": "The hallmark clinical finding of oral lichen planus is:", "opts": ["Wickham's striae", "Nikolsky sign", "Target lesion", "Dewdrop vesicles"], "correct": 0, "exp": "Wickham's striae are the hallmark of OLP. خطوط ويكهام سمة OLP المميّزة."}, {"q": "Which cells are responsible for apoptosis of basal keratinocytes in OLP?", "opts": ["B lymphocytes", "Cytotoxic CD8+ T lymphocytes", "Neutrophils", "Mast cells"], "correct": 1, "exp": "Cytotoxic CD8+ T lymphocytes cause basal cell apoptosis. اللمفاويات CD8+ السامّة."}, {"q": "Before treating OLP with potent topical steroids, it is often advisable to:", "opts": ["Give systemic antibiotics", "Consider antifungal treatment (half of OLP lesions have candida)", "Perform surgery", "Stop all oral hygiene"], "correct": 1, "exp": "~50% of OLP lesions have candidal infection. ~نصف آفات OLP بعدوى مبيضّية."}];
+const mcqTotal=20;
+let mcqAnswered={};
+function pick(qi,oi){
+  if(mcqAnswered[qi]!==undefined) return;
+  mcqAnswered[qi]=oi;
+  const correct=MCQ[qi].correct;
+  const opts=document.querySelectorAll('#mcq'+qi+' .mcq-opt');
+  opts.forEach(b=>{
+    b.classList.add('locked');
+    const o=parseInt(b.getAttribute('data-o'));
+    if(o===correct) b.classList.add('correct');
+    if(o===oi && oi!==correct) b.classList.add('wrong');
+  });
+  const exp=document.getElementById('exp'+qi);
+  const ok=(oi===correct);
+  exp.innerHTML=(ok?'✅ <b>إجابة صحيحة</b> — ':'❌ <b>إجابة خاطئة</b> — الصحيح: <b>'+String.fromCharCode(65+correct)+'</b> — ')+MCQ[qi].exp;
+  exp.classList.add('show');
+  mcqScore();
+}
+function mcqScore(){
+  let s=0;
+  for(const k in mcqAnswered){ if(mcqAnswered[k]===MCQ[k].correct) s++; }
+  document.getElementById('mcqScore').textContent=s+' / '+mcqTotal;
+  if(Object.keys(mcqAnswered).length===mcqTotal){
+    const f=document.getElementById('mcqFinal');
+    const pct=Math.round(s/mcqTotal*100);
+    let msg,bg;
+    if(pct>=80){msg='🎉 ممتاز! '+s+'/'+mcqTotal+' ('+pct+'%) — إتقان قوي.';bg='#c9f2cd';}
+    else if(pct>=60){msg='👍 جيّد: '+s+'/'+mcqTotal+' ('+pct+'%) — راجع البطاقات المعلّمة بـ⭐.';bg='#fff3c4';}
+    else{msg='📚 '+s+'/'+mcqTotal+' ('+pct+'%) — أعد قراءة الملف ثم أعد الاختبار.';bg='#f8cfcf';}
+    f.textContent=msg;f.style.background=bg;f.classList.add('show');
+  }
+}
+function mcqReset(){
+  mcqAnswered={};
+  document.querySelectorAll('.mcq-opt').forEach(b=>b.classList.remove('correct','wrong','locked'));
+  document.querySelectorAll('.mcq-exp').forEach(e=>{e.classList.remove('show');e.innerHTML='';});
+  document.getElementById('mcqScore').textContent='0 / '+mcqTotal;
+  document.getElementById('mcqFinal').classList.remove('show');
+  document.getElementById('mcq0').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
