@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Day 18 — Oral Medicine: Metal/Drug Pigmentation &amp; Neuromuscular Disorders (pp. 365–394)</title>
+<style>
+  :root { color-scheme: light only; }
+  * { box-sizing: border-box; -webkit-text-size-adjust: 100%; }
+  html, body { background:#ffffff !important; color:#000000 !important; margin:0; padding:0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    line-height: 1.65; max-width: 920px; margin: 0 auto; padding: 20px 16px 90px; font-size: 17px;
+  }
+  @media (prefers-color-scheme: dark) { html, body { background:#ffffff !important; color:#000000 !important; } }
+
+  header.hero { background:#000; color:#fff; padding:26px 22px; border-radius:14px; margin-bottom:22px; text-align:center; }
+  header.hero h1 { margin:0 0 6px; font-size:23px; letter-spacing:.3px; }
+  header.hero .sub { font-size:15px; opacity:.92; }
+
+  h2.part { background:#000; color:#fff; padding:12px 16px; border-radius:10px; margin:42px 0 18px; font-size:20px; }
+  h3.topic { border-bottom:3px solid #000; padding-bottom:6px; margin:30px 0 14px; font-size:19px; color:#000; }
+
+  .roadmap { background:#f4f4f4; border:1px solid #ddd; border-radius:10px; padding:16px 18px; margin-bottom:22px; font-size:16px; }
+  .roadmap ul { margin:8px 0; padding-inline-start:22px; }
+  .roadmap li { margin:5px 0; }
+
+  .card { border:2px solid #000; border-radius:12px; margin:16px 0; overflow:hidden; background:#fff; }
+  .card .q { padding:14px 16px; cursor:pointer; font-weight:700; font-size:17px; display:flex; justify-content:space-between; align-items:center; gap:12px; background:#fafafa; color:#000; user-select:none; }
+  .card .q:hover { background:#eee; }
+  .card .q .tag { font-size:12px; font-weight:700; letter-spacing:.5px; border:1.5px solid #000; border-radius:20px; padding:2px 10px; white-space:nowrap; }
+  .card .q .chev { font-size:14px; font-weight:700; }
+  .card .a { display:none; padding:6px 18px 18px; font-size:16.5px; border-top:1px dashed #bbb; }
+  .card.open .a { display:block; }
+  .card .a p { margin:12px 0; }
+  .card .a ul, .card .a ol { margin:10px 0; padding-inline-start:22px; }
+  .card .a li { margin:6px 0; }
+  .sub-h { font-weight:800; display:block; margin:14px 0 4px; color:#000; }
+
+  .crit { background:#fff3b0; color:#c8000c; font-weight:800; padding:1px 6px; border-radius:5px; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
+  .critbox { background:#fff3b0; border:2px solid #c8000c; border-radius:10px; color:#000; padding:12px 16px; margin:14px 0; }
+  .critbox b { color:#c8000c; }
+  .critbox .lbl { display:block; color:#c8000c; font-weight:800; margin-bottom:6px; }
+
+  .recap { background:#eef6ff; border:2px solid #0b5cad; border-radius:10px; padding:12px 16px; margin:18px 0; }
+  .recap .lbl { display:block; color:#0b5cad; font-weight:800; margin-bottom:6px; }
+  .recap ul { margin:6px 0; padding-inline-start:22px; }
+
+  table.dx { width:100%; border-collapse:collapse; margin:14px 0; font-size:15.5px; }
+  table.dx th, table.dx td { border:1.5px solid #000; padding:8px 10px; text-align:left; vertical-align:top; }
+  table.dx th { background:#000; color:#fff; }
+
+  .gloss { border:2px solid #000; border-radius:12px; padding:8px 4px; }
+  .gloss dl { margin:0; }
+  .gloss dt { font-weight:800; padding:10px 14px 0; }
+  .gloss dd { margin:2px 14px 10px; border-bottom:1px dashed #ccc; padding-bottom:10px; }
+
+  .mcq { border:2px solid #000; border-radius:12px; padding:14px 16px; margin:16px 0; background:#fff; }
+  .mcq .stem { font-weight:700; margin-bottom:10px; }
+  .mcq .num { display:inline-block; background:#000; color:#fff; border-radius:6px; padding:1px 8px; margin-inline-end:8px; }
+  .opt { display:block; width:100%; text-align:left; border:1.5px solid #999; border-radius:8px; padding:9px 12px; margin:7px 0; background:#fff; color:#000; cursor:pointer; font-size:15.5px; font-family:inherit; }
+  .opt:hover { background:#f4f4f4; }
+  .opt.correct { background:#d8f5dd; border-color:#127a2b; font-weight:700; }
+  .opt.wrong { background:#fbdcdc; border-color:#b00020; }
+  .explain { display:none; margin-top:10px; padding:10px 12px; border-radius:8px; background:#fff3b0; border:1.5px solid #c8000c; font-size:15.5px; }
+  .mcq.answered .explain { display:block; }
+
+  .toolbar { display:flex; gap:10px; flex-wrap:wrap; margin:18px 0; }
+  .toolbar button { border:2px solid #000; background:#fff; color:#000; font-weight:700; border-radius:10px; padding:9px 16px; cursor:pointer; font-size:15px; font-family:inherit; }
+  .toolbar button:hover { background:#000; color:#fff; }
+  .score { font-weight:800; margin-top:14px; font-size:18px; }
+
+  .ar-summary { direction:rtl; text-align:right; background:#f4f4f4; border:2px solid #000; border-radius:12px; padding:16px 18px; margin-top:40px; font-size:16px; line-height:1.9; }
+  .ar-summary h3 { margin:0 0 10px; font-size:18px; }
+  .ar-summary ul { margin:8px 0; padding-inline-start:22px; }
+  .ar-summary li { margin:6px 0; }
+  footer { margin-top:30px; border-top:2px solid #000; padding-top:16px; text-align:center; font-size:14px; color:#333; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>Day 18 — Metal/Drug Pigmentation &amp; Neuromuscular Disorders</h1>
+  <div class="sub">Oral Medicine · pp. 365–394 · Pigmentation tail → Stroke, MS, Alzheimer's, Parkinson's, Bell's palsy, Myasthenia, Epilepsy</div>
+</header>
+
+<div class="toolbar">
+  <button onclick="openAll()">Reveal all answers</button>
+  <button onclick="closeAll()">Hide all answers</button>
+</div>
+
+<div class="roadmap">
+  <b>Today's roadmap:</b>
+  <ul>
+    <li><b>Part 1 — Pigmentation (tail):</b> medicinal metal-induced (gold, silver, bismuth), heavy metals, drug-induced (minocycline), hairy tongue.</li>
+    <li><b>Part 2 — Neuromuscular overview + Cerebrovascular disease:</b> stroke/CVA, TIA, RIND, ischemic syndromes, oral considerations, cavernous sinus thrombosis.</li>
+    <li><b>Part 3 — MS, Alzheimer's, Parkinson's.</b></li>
+    <li><b>Part 4 — Bell's palsy &amp; Myasthenia gravis.</b></li>
+    <li><b>Part 5 — Seizure disorders &amp; Epilepsy:</b> classification, grand mal vs petit mal, AEDs, oral considerations.</li>
+    <li><b>Synthesis tables + glossary + 20 MCQs.</b></li>
+  </ul>
+</div>
+
+<!-- ================= PART 1 ================= -->
+<h2 class="part">Part 1 · Metal / Drug Pigmentation &amp; Hairy Tongue</h2>
+
+<h3 class="topic">Medicinal metal-induced pigmentation</h3>
+<div class="card">
+  <div class="q"><span>Gold, silver, and bismuth: what pigmentation do they cause?</span><span class="tag">METALS</span></div>
+  <div class="a">
+    <p>Various metallic compounds were historically used to treat systemic disease. Gold therapy is now less used since methotrexate for rheumatoid arthritis; colloidal silver persists in "complementary/alternative" medicine.</p>
+    <div class="critbox">
+      <span class="lbl">Two named discolorations</span>
+      <b>Silver → argyria:</b> generalized <b>blue-gray</b> discoloration. <b>Gold → chrysiasis:</b> <b>blue-gray or purple</b>. <span class="crit">Both may be persistent or permanent even after stopping the substance.</span>
+    </div>
+    <ul>
+      <li>Systemic gold therapy can also cause <b>oral lichenoid eruptions.</b></li>
+      <li><b>Silver nitrate</b> (used to cauterize recurrent aphthous stomatitis) and <b>zinc oxide</b> (in sunblock) can cause focal mucocutaneous pigmentation; zinc-oxide sunblock on chapped lips may cause hyperpigmentation.</li>
+      <li>Medicinal silver pigment appears as brown/black particulate matter dispersed in the connective tissue.</li>
+    </ul>
+    <span class="sub-h">Bismuth black tongue:</span>
+    <p>Generalized black tongue can result from chewing <b>bismuth subsalicylate</b> antacid tablets — due to deposition of actual pigment (<span class="crit">bismuth sulfide</span>) without lingual changes. <span class="crit">Unlike black hairy tongue</span> (elongated filiform papillae + hyperkeratosis + bacterial colonization). Treatment: stop the antacid and clean the tongue (curative). Note: bismuth subsalicylate can also cause typical black hairy tongue.</p>
+  </div>
+</div>
+
+<h3 class="topic">Heavy metal pigmentation</h3>
+<div class="card">
+  <div class="q"><span>What causes heavy-metal oral pigmentation?</span><span class="tag">HEAVY METALS</span></div>
+  <div class="a">
+    <p>Diffuse oral pigmentation may follow <b>ingestion of heavy metals.</b> It remains an occupational/health hazard for people working in certain industrial plants and those living in/around such facilities.</p>
+    <p>Common environmental sources include <b>paints, old plumbing, and seafood.</b></p>
+  </div>
+</div>
+
+<h3 class="topic">Drug-induced pigmentation (minocycline &amp; others)</h3>
+<div class="card">
+  <div class="q"><span>Minocycline pigmentation: teeth, bone, and soft tissue effects?</span><span class="tag">MINOCYCLINE</span></div>
+  <div class="a">
+    <p><b>Minocycline</b> (a tetracycline derivative used for acne) is a relatively common cause of drug-induced, <span class="crit">non-melanin</span> oral pigmentation.</p>
+    <ul>
+      <li>Like tetracycline, it can pigment developing teeth, but most patients take it in early adulthood.</li>
+      <li>Chronic use → metabolites incorporated into normal <b>bone</b>: teeth may look normal but surrounding bone may appear <b>green, blue, or black</b>, making the palatal/alveolar mucosa look diffusely discolored. Roots appear green; developing roots tend to be black.</li>
+      <li>It can also pigment oral soft tissues, skin, and nails — gray, brown, or black, often patchy or diffuse.</li>
+    </ul>
+    <span class="sub-h">Pathology &amp; course:</span>
+    <p>Biopsy may show basilar melanosis, but more commonly <b>fine brown/golden particle aggregates</b> in the submucosa, often intracellular within macrophages — likely a precipitated <span class="crit">drug metabolite, not true melanin.</span> Mucosal discoloration usually subsides within months after stopping; <b>bone pigment may persist indefinitely.</b> Severe cutaneous cases respond to <b>Alexandrite 755-nm laser.</b></p>
+    <p><b>Other drugs:</b> <b>methacycline</b> (older tetracycline derivative) and <b>imatinib</b> (a tyrosine kinase inhibitor for chronic myeloid leukemia) can also induce mucosal pigmentation.</p>
+  </div>
+</div>
+
+<h3 class="topic">Hairy tongue</h3>
+<div class="card">
+  <div class="q"><span>Hairy tongue: cause, appearance, and treatment?</span><span class="tag">HAIRY TONGUE</span></div>
+  <div class="a">
+    <p>A relatively common condition of <b>unknown etiology</b>; a change in oral flora with chronic antibiotic therapy may contribute. It involves the <b>dorsal tongue, especially the middle and posterior third</b>; children are rarely affected.</p>
+    <ul>
+      <li><span class="crit">Filiform papillae are elongated (like fine hairs)</span> and become pigmented by colonizing chromogenic bacteria → white, green, brown, or black.</li>
+      <li>Foods/drinks/confectionaries contribute; smoking tobacco or crack cocaine is associated with black hairy tongue.</li>
+      <li>Drug associations: tetracycline, linezolid, olanzapine, bismuth, erlotinib, and psychotropics.</li>
+      <li>Microscopy: markedly elongated, hyperplastic filiform papillae with hyperkeratosis + prominent superficial microbial colonization; no other epithelial/connective-tissue pathology.</li>
+    </ul>
+    <p><b>Treatment:</b> brush the tongue or use a tongue scraper, and limit color-forming foods/drinks until it resolves. Because the cause is often undetermined, it may recur.</p>
+  </div>
+</div>
+
+<!-- ================= PART 2 ================= -->
+<h2 class="part">Part 2 · Neuromuscular Overview &amp; Cerebrovascular Disease</h2>
+
+<div class="card">
+  <div class="q"><span>What are neuromuscular disorders, and how are they classified here?</span><span class="tag">OVERVIEW</span></div>
+  <div class="a">
+    <p><b>Neuromuscular disorders</b> affect both nerve and muscle tissue, weakening the body's voluntary muscles through interrupted communication between the nervous system and muscles. They can usually be managed to improve quality/length of life but are <b>incurable.</b></p>
+    <p>Symptoms: muscle weakness, rigidity, loss of muscular control, numbness, tingling, twitching, spasms, and muscle/limb pain.</p>
+    <div class="recap">
+      <span class="lbl">Classification covered today</span>
+      Cerebrovascular disease · Multiple sclerosis · Alzheimer's disease · Seizure disorders · Parkinson's disease · Myasthenia gravis (plus Bell's palsy).
+    </div>
+  </div>
+</div>
+
+<h3 class="topic">Cerebrovascular disease (stroke / CVA)</h3>
+<div class="card">
+  <div class="q"><span>Define stroke/CVA, TIA, and RIND. What time thresholds separate them?</span><span class="tag">DEFINITIONS</span></div>
+  <div class="a">
+    <p><b>Cerebrovascular disease</b> = all disorders that damage the blood vessels supplying the brain, impairing cerebral circulation and producing neurologic damage.</p>
+    <ul>
+      <li><b>Stroke / CVA:</b> a sudden impairment in cerebral circulation causing death or a <span class="crit">focal neurologic deficit lasting more than 24 hours.</span> Complete cessation of flow can cause irreversible infarct within <b>3–4 minutes.</b></li>
+      <li><b>TIA (transient ischemic attack):</b> a "mini-stroke" — reversible, acute, short-duration focal deficit from transient (reversible <span class="crit">within 24 hours</span>) localized cerebral ischemia.</li>
+      <li><b>RIND (reversible ischemic neurologic defect):</b> reversible focal deficit from transient ischemia, but deficits <span class="crit">last more than 24 hours.</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <div class="q"><span>Types of CVA by cause, and the three ischemic stroke syndromes?</span><span class="tag">TYPES</span></div>
+  <div class="a">
+    <span class="sub-h">By cause:</span>
+    <ul>
+      <li><span class="crit">Atherosclerosis (85%)</span> → ischemia/infarction from thromboembolic events and vessel occlusion.</li>
+      <li><span class="crit">Cerebral hemorrhage (15%)</span> → hemorrhagic infarction, most often from hypertension, trauma, substance abuse, or aneurysmal rupture.</li>
+    </ul>
+    <span class="sub-h">Three ischemic stroke syndromes:</span>
+    <ul>
+      <li><b>Small vessel (lacunar):</b> obstruction of small (&lt; 5 mm) penetrating arterioles. Age + uncontrolled hypertension are the greatest predisposers. Unilateral motor/sensory deficit without visual-field/consciousness/language change; prognosis fair-to-good, resolving over 4–6 weeks.</li>
+      <li><b>Large vessel (cerebral infarction):</b> extensive downstream ischemia, usually a thromboembolic event along the internal carotid/cerebral arteries; emboli often from the heart (after MI or in atrial fibrillation). Hypertension is key (esp. at the carotid bifurcation). High-level brain functions affected; <b>prognosis poor.</b></li>
+      <li><b>Brainstem infarction:</b> occlusion of vessels supplying the brainstem; deficits range from motor/sensory loss to death if respiratory centers are affected.</li>
+    </ul>
+    <div class="critbox">
+      <span class="lbl">Prognostic fact</span>
+      About <b>30%</b> of people with a history of TIA have a completed stroke within 5 years.
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="q"><span>Clinical manifestations, diagnosis, and treatment of stroke?</span><span class="tag">DX &amp; RX</span></div>
+  <div class="a">
+    <p><b>Clinical:</b> varies with size/location — sensory and motor deficits, extraocular/eye-movement changes (paresis), visual defects, sudden headache, altered mental status, dizziness, nausea, seizures, impaired speech/hearing, and neurocognitive deficits (memory, reasoning, concentration).</p>
+    <span class="sub-h">Diagnosis:</span>
+    <ul>
+      <li><span class="crit">Non-contrast CT is the first-line imaging</span> — intracranial hemorrhage must be excluded before thrombolysis. MRI gives greater anatomic detail/sensitivity for early infarction.</li>
+      <li>Labs: CBC, metabolic panel, urinalysis, coagulation profile; when indicated blood culture, echocardiography, lumbar puncture; plus electrolytes, thyroid, glucose, cholesterol, CRP.</li>
+    </ul>
+    <span class="sub-h">Treatment:</span>
+    <ul>
+      <li>Timeliness is critical. TIAs/RIND: reduce hypertension (lifestyle + medical therapy) and antiplatelet/anticoagulant drugs.</li>
+      <li>Acute stroke: reduce bleeding/thromboembolic occlusion, reduce edema/neurotoxicity, surgery (revascularization, hemorrhage control).</li>
+      <li>Once hemorrhage excluded: <span class="crit">IV tissue plasminogen activator (t-PA)</span> improves reperfusion and reduces disability.</li>
+      <li>After a completed stroke: prevent further damage (risk-factor reduction) + rehabilitation (speech, physical therapy). Intracranial hemorrhage = medical emergency (airway, ICU).</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <div class="q"><span>Oral health considerations after stroke (bleeding, anesthesia, timing)?</span><span class="tag">DENTAL</span></div>
+  <div class="a">
+    <p>Post-stroke oral problems: masticatory/facial muscle paralysis, impaired touch/taste, diminished gag reflex, dysphagia → poor intake, poor nutrition, weight loss, choking. Reduced dexterity worsens oral hygiene → higher caries/periodontal risk.</p>
+    <div class="critbox">
+      <span class="lbl">Key management points</span>
+      <ul>
+        <li>Risk of a <b>second stroke is highest in the first 90 days</b> — optimal monitoring before invasive treatment.</li>
+        <li>Antiplatelets/anticoagulants are common: aspirin, LMW heparin, less commonly warfarin. At therapeutic doses (<b>warfarin INR ≤ 3.5</b>) they rarely need modification for routine/minor oral surgery.</li>
+        <li>Obtain coagulation values (PT, INR, APTT, bleeding time) before invasive work.</li>
+        <li><b>NSAIDs</b> may increase bleeding risk and reduce aspirin's protective effect.</li>
+        <li><span class="crit">Epinephrine-containing local anesthetics are NOT contraindicated</span> but use judiciously (cardiovascular guidelines); do NOT use epinephrine-containing retraction cord. Monitor BP each visit.</li>
+        <li><b>Xerostomia</b> is a common medication side effect → higher caries rate.</li>
+      </ul>
+    </div>
+    <p>Weigh bleeding risk against thrombosis risk — stopping antiplatelets/warfarin may precipitate a thrombotic event (DVT, stroke).</p>
+  </div>
+</div>
+
+<h3 class="topic">Cavernous sinus thrombosis</h3>
+<div class="card">
+  <div class="q"><span>Cavernous sinus thrombosis: source, signs, pathogen, and treatment?</span><span class="tag">CST</span></div>
+  <div class="a">
+    <p>A rare but severe (possibly fatal) complication, usually secondary to <b>dental, nasal, or ocular infections.</b> Maxillary dental infections can spread to the cavernous sinus via emissary veins; venous propagation runs facial vein → ophthalmic vein → cavernous sinus.</p>
+    <span class="sub-h">Signs/symptoms:</span>
+    <p>Severe headache with tearing, periorbital swelling/redness, drooping eyelids, inability to move the eye, high fever, facial pain/numbness, vision loss/double vision, altered mental status. <b>Classic acute signs:</b> exophthalmos, periorbital edema, retinal vein thrombosis, and involvement of the ophthalmic division of the trigeminal nerve plus trochlear/abducent nerves → ptosis, dilated pupils, lost corneal reflexes.</p>
+    <div class="critbox">
+      <span class="lbl">Pathogen &amp; treatment</span>
+      <span class="crit">Staphylococcus aureus is the most common pathogen (~70%).</span> Immediate antibiotics + remove the infection source. Empiric: <b>vancomycin + a 3rd-generation cephalosporin (ceftriaxone)</b>; add <b>IV metronidazole</b> if dental/sinus infection is suspected; antifungals only for confirmed invasive fungal infection. High-dose IV antibiotics for ≥ 2 weeks beyond clinical resolution.
+    </div>
+  </div>
+</div>
+
+<!-- ================= PART 3 ================= -->
+<h2 class="part">Part 3 · Multiple Sclerosis, Alzheimer's &amp; Parkinson's</h2>
+
+<h3 class="topic">Multiple sclerosis (MS)</h3>
+<div class="card">
+  <div class="q"><span>MS: pathology, etiology, and hallmark signs?</span><span class="tag">MS</span></div>
+  <div class="a">
+    <p>Chronic neurologic disease of multiple areas of CNS <b>white-matter inflammation, demyelination, and gliosis (scarring).</b> Loss of myelin slows/blocks impulse propagation. <span class="crit">More frequent in women; average onset in the 4th decade</span>; presents as recurrent attacks.</p>
+    <span class="sub-h">Etiology:</span>
+    <ul>
+      <li><b>Autoimmune</b> basis (activated T cells + autoantibodies to glycoproteins in lesions).</li>
+      <li>Environmental/infectious triggers: <b>Epstein–Barr virus and HHV-6</b> most implicated; also measles, mumps, rubella, parainfluenza. Genetic influence too.</li>
+    </ul>
+    <span class="sub-h">Signs (site-dependent — optic chiasm, brainstem, cerebellum, spinal cord):</span>
+    <ul>
+      <li>&gt; 60% have visual disturbance from CN II demyelination; vision loss over days with partial recovery within a month. Also color blindness, diplopia (CN III, IV, VI).</li>
+      <li><b>Uhthoff's sign:</b> rapid vision loss after body-temperature rise (e.g., exercise).</li>
+      <li><b>Lhermitte's symptom:</b> electric-shock sensations on neck flexion radiating down the back/legs.</li>
+      <li>Weakness/paresthesia with increased deep tendon reflexes; bladder dysfunction, ataxia, vertigo, incoordination; chronic exacerbations and remissions.</li>
+    </ul>
+    <span class="sub-h">Diagnosis &amp; treatment:</span>
+    <p>Mainly clinical; no definitive lab test, but <span class="crit">MRI shows demyelinating plaques in &gt; 90–95%</span> (hyperintense). Evoked potentials abnormal in up to 90%; CSF shows increased total protein and mononuclear WBCs. Treatment: high-dose IV corticosteroids (IV methylprednisolone) for attacks; long-term immunosuppressants (azathioprine, methotrexate for chronic progressive); interferon-β agents reduce attacks/lesions.</p>
+    <div class="recap">
+      <span class="lbl">Oral considerations</span>
+      <b>Trigeminal neuralgia may be an initial manifestation of MS in up to 3%</b> (may lack trigger zones, continuous lower-intensity pain). Also V2/V3 neuropathy, mental-nerve numbness of lip/chin, <b>myokymia</b> (flickering facial contractions), facial weakness, and scanning dysarthria. Avoid elective dental treatment during acute exacerbations.
+    </div>
+  </div>
+</div>
+
+<h3 class="topic">Alzheimer's disease (AD)</h3>
+<div class="card">
+  <div class="q"><span>Alzheimer's: stages, diagnosis, and treatment?</span><span class="tag">ALZHEIMER'S</span></div>
+  <div class="a">
+    <p><b>Dementia</b> = acquired deterioration in cognitive abilities impairing daily function; memory is the most common ability lost. Familial AD is autosomal dominant, onset typically before 65.</p>
+    <span class="sub-h">Three stages (a continuum):</span>
+    <ul>
+      <li><b>Preclinical AD</b> — before cognitive changes (research use).</li>
+      <li><b>Cognitive impairment due to AD</b> — mild noticeable memory changes not yet interfering with daily life.</li>
+      <li><b>Dementia due to AD</b> — changes in ≥ 2 cognitive/behavioral domains interfering with everyday function.</li>
+    </ul>
+    <p>Initial sign is retrograde amnesia (declining episodic memory). End-stage: rigid, mute, incontinent, bedridden, possible generalized seizures; death often from malnutrition, heart disease, pulmonary emboli, or secondary infection.</p>
+    <span class="sub-h">Diagnosis:</span>
+    <p>Preclinical uses biomarkers (Aβ deposition; downstream neurodegeneration — <span class="crit">elevated CSF tau + brain atrophy on MRI</span>). Clinical diagnosis: history + exam showing progressive cognitive decline absent other causes. "Possible AD" = meets dementia criteria but has another contributing illness (hypothyroidism, cerebrovascular disease, vitamin deficiency, depression). EEG: generalized slowing. MRI/CT: dilated lateral ventricles, widened cortical sulci (esp. temporal).</p>
+    <span class="sub-h">Treatment (no cure — slows progression):</span>
+    <ul>
+      <li><b>Cholinesterase inhibitors</b> — standard of care for mild-to-moderate AD.</li>
+      <li><b>Memantine</b> (NMDA-receptor antagonist) — moderate-to-severe AD; better combined with cholinesterase inhibitors.</li>
+      <li>SSRIs for depression; antipsychotics for aggression/psychosis (later stages).</li>
+    </ul>
+    <div class="recap">
+      <span class="lbl">Oral considerations</span>
+      Higher risk of coronal/root caries, periodontal infection, TMJ problems, orofacial pain. <b>Complete restorative care early</b> (cooperation declines with cognition); aggressive prevention + 3-month recall. Cholinesterase inhibitors → <b>sialorrhea</b>; antidepressants/antipsychotics → <b>xerostomia.</b>
+    </div>
+  </div>
+</div>
+
+<h3 class="topic">Parkinsonism</h3>
+<div class="card">
+  <div class="q"><span>Parkinsonism: cardinal features, oral signs, and drugs?</span><span class="tag">PARKINSON</span></div>
+  <div class="a">
+    <p>A neurodegenerative disorder characterized by <span class="crit">rigidity, tremor, bradykinesia, and impaired postural reflexes (postural instability).</span> The most common form is Parkinson's disease (paralysis agitans); also postencephalitic and post-traumatic forms.</p>
+    <span class="sub-h">Head &amp; neck / oral signs:</span>
+    <ul>
+      <li>Typical <b>mask-like facial appearance</b> with infrequent blinking and lack of expression (from bradykinesia).</li>
+      <li>Muscle rigidity → swallowing difficulty and saliva <b>drooling</b>; speech affected; mandibular tremor → chewing difficulty (esp. with removable appliances).</li>
+      <li>Purposeless chewing, grinding, sucking movements complicate dental treatment.</li>
+    </ul>
+    <span class="sub-h">Treatment:</span>
+    <ul>
+      <li>Often not required early. Mild symptoms → <b>amantadine.</b></li>
+      <li>Anticholinergics help tremor/rigidity more than bradykinesia (many side effects).</li>
+      <li><b>Levodopa</b> (dopamine precursor crossing the blood-brain barrier) improves all major features.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ================= PART 4 ================= -->
+<h2 class="part">Part 4 · Bell's Palsy &amp; Myasthenia Gravis</h2>
+
+<h3 class="topic">Bell's palsy</h3>
+<div class="card">
+  <div class="q"><span>Bell's palsy: nature, cause, features, and treatment?</span><span class="tag">BELL'S PALSY</span></div>
+  <div class="a">
+    <p><b>Bell's palsy</b> = a <span class="crit">unilateral paresis of the facial nerve (CN VII)</span>, attributed to an inflammatory reaction of the nerve. A relationship exists with isolation of <b>herpes simplex virus 1</b> from nerve tissue.</p>
+    <span class="sub-h">Presentation:</span>
+    <ul>
+      <li>Begins with slight pain around one ear, then abrupt paralysis of that side of the face.</li>
+      <li>The eye on the affected side <b>stays open</b>, the corner of the mouth drops, drooling occurs.</li>
+      <li>Masseter weakness → food retained in buccal/labial folds; forehead creases flattened.</li>
+      <li>Impaired blinking → corneal ulceration risk.</li>
+    </ul>
+    <span class="sub-h">Symptoms:</span>
+    <p>Rapid onset (hours–days) of mild weakness to total unilateral facial paralysis, facial droop, drooling, jaw/ear pain on the affected side, hyperacusis, headache, decreased taste, altered tears/saliva. Linked viruses: HSV, VZV (chickenpox/shingles), EBV, CMV, adenovirus, rubella, mumps, influenza B.</p>
+    <span class="sub-h">Diagnosis &amp; treatment:</span>
+    <ul>
+      <li><span class="crit">No specific test</span> — clinical (ask to close eyes, lift brow, show teeth, frown). Rule out stroke, infection, Lyme disease, tumor. EMG confirms/grades nerve damage; MRI/CT to exclude a mass/fracture.</li>
+      <li><b>Corticosteroids</b> (prednisone) — best if started within several days of onset. <b>Antivirals</b> alone show no benefit vs placebo; valacyclovir may be added to prednisone in severe cases. Physical therapy prevents contractures. Decompression surgery is no longer recommended.</li>
+    </ul>
+  </div>
+</div>
+
+<h3 class="topic">Myasthenia gravis</h3>
+<div class="card">
+  <div class="q"><span>Myasthenia gravis: mechanism, signs, treatment, and dental cautions?</span><span class="tag">MYASTHENIA</span></div>
+  <div class="a">
+    <p>Disease of <b>progressive muscular weakness on exertion</b>, from a disorder at the neuromuscular junction. <span class="crit">Autoimmune: autoantibodies destroy acetylcholine receptor sites</span>, preventing nerve-impulse transmission to muscle.</p>
+    <ul>
+      <li>Initial signs often in cranial-nerve-innervated areas (frequently eye muscles): <b>ptosis, diplopia</b>, difficulty chewing/swallowing, respiratory difficulty, limb weakness.</li>
+      <li>Oral/facial: facial muscles of expression involved; tongue edema; <span class="crit">easy fatigability</span> — cannot finish chewing a food bolus.</li>
+    </ul>
+    <span class="sub-h">Treatment:</span>
+    <p>Anticholinesterases (<b>neostigmine, pyridostigmine</b>), thymectomy, long-term corticosteroids/immunosuppressants.</p>
+    <div class="critbox">
+      <span class="lbl">Dental management</span>
+      A <b>respiratory crisis</b> may develop from the disease or overmedication — treat in a hospital with intubation available; keep the airway clear (aspiration risk), use suction + rubber dam. <span class="crit">Avoid drugs affecting the neuromuscular junction:</span> narcotics, tranquilizers, barbiturates; and antibiotics like tetracycline, streptomycin, sulfonamides, clindamycin.
+    </div>
+  </div>
+</div>
+
+<!-- ================= PART 5 ================= -->
+<h2 class="part">Part 5 · Seizure Disorders &amp; Epilepsy</h2>
+
+<div class="card">
+  <div class="q"><span>Define seizure and epilepsy; what are the three major seizure categories?</span><span class="tag">CLASSIFICATION</span></div>
+  <div class="a">
+    <p>A <b>seizure</b> = a paroxysmal event from abnormal, excessive, hypersynchronous discharges of CNS neurons. <b>Epilepsy</b> = a group of disorders with <b>recurrent</b> seizure activity.</p>
+    <span class="sub-h">Three major categories:</span>
+    <ul>
+      <li><b>Focal (partial):</b> originates within networks limited to one hemisphere. <b>Simple partial</b> seizures (discrete cortical locus, e.g., motor cortex) generally have <b>no impaired consciousness</b> — clonic activity (rapid jerks) ± somatosensory, visual, auditory, olfactory, gustatory phenomena.</li>
+      <li><b>Generalized:</b> arise from both hemispheres simultaneously (abnormal neuronal excitability). Includes absence, tonic-clonic, atypical absence, atonic, myoclonic.</li>
+      <li><b>Unknown:</b> cannot be classified as focal or generalized.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <div class="q"><span>Grand mal vs. petit mal — distinguish them.</span><span class="tag">GRAND vs PETIT</span></div>
+  <div class="a">
+    <div class="critbox">
+      <span class="lbl">Tonic-clonic (grand mal)</span>
+      <span class="crit">Most common type — ~90% of epileptics experience it</span> alone or combined. Begins with an <b>aura</b> (epigastric discomfort, an emotion, or a hallucination of hearing/vision/smell), then unconsciousness ± a cry, then <b>tonic</b> muscle spasm (~30 s, apnea → cyanosis), followed by a <b>clonic</b> phase (convulsive jerks, incontinence, tongue biting).
+    </div>
+    <div class="critbox">
+      <span class="lbl">Absence (petit mal)</span>
+      Second most common; <b>sudden brief lapses of consciousness WITHOUT loss of body tone</b>, few/no clonic-tonic movements, <b>no aura</b>. Present almost exclusively in <b>children</b> and frequently disappear during the second decade.
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="q"><span>Etiology of seizures by age, and diagnostic work-up?</span><span class="tag">ETIOLOGY / DX</span></div>
+  <div class="a">
+    <span class="sub-h">Etiology varies by age:</span>
+    <ul>
+      <li><b>Late infancy / early childhood:</b> febrile seizures (no CNS infection) — 3 months to 5 years, peak 18–24 months.</li>
+      <li><b>Adults (isolated non-recurrent):</b> metabolic disturbances, toxins, drug effects, hypotension, hypoglycemia, hyponatremia, uremia, hepatic encephalopathy, overdose, withdrawal.</li>
+      <li><b>Older adults:</b> <span class="crit">cerebrovascular disease accounts for ~50% of new epilepsy in patients &gt; 65.</span></li>
+      <li>More frequent with neurologic disabilities (cerebral palsy, autism).</li>
+    </ul>
+    <span class="sub-h">Diagnosis:</span>
+    <ul>
+      <li>History &amp; physical (often clinical) + full neurologic exam (cranial nerves).</li>
+      <li>Blood: CBC, Mg, calcium, glucose (metabolic causes); toxin screen; lumbar puncture (infection).</li>
+      <li>Brain imaging (MRI/CT) for structural pathology.</li>
+      <li><b>EEG</b> to classify the seizure and guide anticonvulsant choice.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <div class="q"><span>Antiepileptic drugs (AEDs) and their key adverse effects?</span><span class="tag">AEDs</span></div>
+  <div class="a">
+    <ul>
+      <li><b>Phenytoin:</b> long half-life; <span class="crit">gingival overgrowth</span>, hirsutism, coarsening of facial features.</li>
+      <li><b>Carbamazepine:</b> hepatotoxicity, leukopenia, aplastic anemia.</li>
+      <li><b>Lamotrigine:</b> skin rash.</li>
+      <li><b>Valproic acid:</b> for generalized tonic-clonic; bone-marrow suppression and hepatotoxicity (<span class="crit">avoid aspirin/NSAIDs with valproic acid</span>).</li>
+      <li>Others: topiramate, gabapentin, oxcarbazepine.</li>
+    </ul>
+    <span class="sub-h">Stopping therapy — best chance of remaining seizure-free:</span>
+    <ol>
+      <li>Complete control for 1–5 years;</li>
+      <li>Single seizure type;</li>
+      <li>Normal neurologic exam (incl. intelligence);</li>
+      <li>Normal EEG.</li>
+    </ol>
+    <p>Refractory epilepsy options: surgery (limited hippocampus/amygdala removal, temporal lobectomy, hemispherectomy), <b>vagus nerve stimulation</b>, deep brain stimulation, responsive neurostimulation, and investigational gene therapy.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="q"><span>Oral health considerations in epilepsy?</span><span class="tag">DENTAL</span></div>
+  <div class="a">
+    <ul>
+      <li>Refer uncontrolled patients to a hospital.</li>
+      <li>Patients with an implanted <b>vagus nerve stimulator do NOT require antibiotic prophylaxis.</b></li>
+      <li>Avoid any triggers of seizure activity.</li>
+      <li><span class="crit">Prefer fixed prosthesis over removable</span> (aspiration risk during a seizure).</li>
+      <li>Patients on AEDs need lab evaluation before treatment; avoid aspirin/NSAIDs with valproic acid.</li>
+      <li>Findings: gingival overgrowth, intraoral lesions, lip enlargement, and <b>xerostomia</b> (→ more caries and candidiasis). Use topical fluoride and antifungals as needed; also stomatitis, glossitis, oral ulceration.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ================= SYNTHESIS ================= -->
+<h2 class="part">Synthesis · Comparison Tables</h2>
+
+<h3 class="topic">CVA / TIA / RIND at a glance</h3>
+<table class="dx">
+  <tr><th>Entity</th><th>Duration of deficit</th><th>Reversible?</th><th>Note</th></tr>
+  <tr><td>Stroke / CVA</td><td>&gt; 24 h (or death)</td><td>No (infarct)</td><td>Irreversible infarct in 3–4 min of no flow</td></tr>
+  <tr><td>TIA</td><td>Minutes to &lt; 24 h</td><td>Yes</td><td>~30% → completed stroke within 5 years</td></tr>
+  <tr><td>RIND</td><td>&gt; 24 h</td><td>Yes (eventually)</td><td>Reversible but prolonged</td></tr>
+</table>
+
+<h3 class="topic">Seizure types quick reference</h3>
+<table class="dx">
+  <tr><th>Type</th><th>Consciousness</th><th>Aura</th><th>Key feature</th></tr>
+  <tr><td>Simple partial (focal)</td><td>Preserved</td><td>—</td><td>Clonic jerks ± sensory phenomena</td></tr>
+  <tr><td>Tonic-clonic (grand mal)</td><td>Lost</td><td>Yes</td><td>Most common (~90%); tonic→clonic, tongue biting, incontinence</td></tr>
+  <tr><td>Absence (petit mal)</td><td>Brief lapse</td><td>No</td><td>Children; no loss of body tone</td></tr>
+</table>
+
+<h3 class="topic">Metal / drug pigmentation quick reference</h3>
+<table class="dx">
+  <tr><th>Agent</th><th>Name / color</th><th>Pigment</th></tr>
+  <tr><td>Silver</td><td>Argyria — blue-gray</td><td>Silver particulate (not melanin)</td></tr>
+  <tr><td>Gold</td><td>Chrysiasis — blue-gray/purple</td><td>Gold (not melanin)</td></tr>
+  <tr><td>Bismuth subsalicylate</td><td>Black tongue</td><td>Bismuth sulfide</td></tr>
+  <tr><td>Minocycline</td><td>Green/blue/black bone; gray-brown-black soft tissue</td><td>Drug metabolite (not melanin)</td></tr>
+</table>
+
+<div class="recap">
+  <span class="lbl">High-Yield Recap</span>
+  <ul>
+    <li>Silver → argyria (blue-gray); gold → chrysiasis (blue-gray/purple); both may be permanent.</li>
+    <li>Bismuth black tongue = bismuth sulfide, no papillary change (differs from black hairy tongue).</li>
+    <li>Minocycline pigment is a drug metabolite, not melanin; bone pigment may be permanent.</li>
+    <li>Stroke: 85% atherosclerotic, 15% hemorrhagic; non-contrast CT first; t-PA after excluding hemorrhage.</li>
+    <li>Second-stroke risk highest in the first 90 days; warfarin INR ≤ 3.5 rarely needs modification for minor oral surgery.</li>
+    <li>Cavernous sinus thrombosis: S. aureus ~70%; vancomycin + ceftriaxone (+ metronidazole for dental/sinus source).</li>
+    <li>MS: women, 4th decade; EBV/HHV-6; MRI plaques; Uhthoff's &amp; Lhermitte's signs; TGN may be the first sign in up to 3%.</li>
+    <li>Alzheimer's: cholinesterase inhibitors (→ sialorrhea) + memantine; restore oral health early.</li>
+    <li>Parkinson's: rigidity/tremor/bradykinesia/postural instability; mask-like face; levodopa.</li>
+    <li>Bell's palsy: unilateral CN VII, HSV-1 link, eye stays open; steroids early.</li>
+    <li>Myasthenia gravis: anti-ACh-receptor antibodies; ptosis/diplopia; avoid NMJ-affecting drugs.</li>
+    <li>Grand mal ~90% (aura + tonic-clonic); petit mal in children (no aura, no tone loss).</li>
+    <li>Phenytoin → gingival overgrowth; valproic acid → avoid aspirin/NSAIDs; VNS patients need no antibiotic prophylaxis; prefer fixed prostheses.</li>
+  </ul>
+</div>
+
+<!-- ================= GLOSSARY ================= -->
+<h2 class="part">Glossary · Key Terms</h2>
+<div class="gloss">
+<dl>
+  <dt>Argyria</dt><dd>Generalized blue-gray discoloration from silver deposition; may be permanent.</dd>
+  <dt>Chrysiasis</dt><dd>Blue-gray or purple pigmentation from gold; may be permanent.</dd>
+  <dt>Black hairy tongue</dt><dd>Elongated hyperkeratotic filiform papillae colonized by chromogenic bacteria — distinct from bismuth black tongue.</dd>
+  <dt>TIA</dt><dd>Transient ischemic attack — reversible focal deficit lasting &lt; 24 h; ~30% progress to stroke in 5 years.</dd>
+  <dt>RIND</dt><dd>Reversible ischemic neurologic defect — reversible but deficits last &gt; 24 h.</dd>
+  <dt>t-PA</dt><dd>Tissue plasminogen activator; IV thrombolytic given after excluding intracranial hemorrhage.</dd>
+  <dt>Uhthoff's sign</dt><dd>MS — rapid vision loss when body temperature rises (e.g., exercise).</dd>
+  <dt>Lhermitte's symptom</dt><dd>MS — electric-shock sensation on neck flexion radiating down the back/legs.</dd>
+  <dt>Myokymia</dt><dd>Rapid flickering facial muscle contractions from facial-nerve MS lesions.</dd>
+  <dt>Bradykinesia</dt><dd>Slowness of movement; a cardinal Parkinson feature (mask-like face).</dd>
+  <dt>Aura</dt><dd>Warning sensation preceding a tonic-clonic seizure (absent in petit mal).</dd>
+  <dt>Status of AEDs</dt><dd>Phenytoin → gingival overgrowth; carbamazepine → marrow effects; valproic acid → avoid aspirin/NSAIDs.</dd>
+</dl>
+</div>
+
+<!-- ================= MCQ ================= -->
+<h2 class="part">MCQ · 20 Questions</h2>
+<div class="mcq-wrap" id="mcqWrap">
+
+<div class="mcq" data-correct="1">
+  <div class="stem"><span class="num">1</span>Generalized blue-gray discoloration from silver deposition is called:</div>
+  <button class="opt">A. Chrysiasis</button>
+  <button class="opt">B. Argyria</button>
+  <button class="opt">C. Melasma</button>
+  <button class="opt">D. Ochronosis</button>
+  <div class="explain">Answer: <b>B</b>. Silver → argyria (blue-gray); gold → chrysiasis (blue-gray/purple). Both may be permanent.</div>
+</div>
+
+<div class="mcq" data-correct="2">
+  <div class="stem"><span class="num">2</span>Black tongue from chewing bismuth subsalicylate is caused by deposition of:</div>
+  <button class="opt">A. Melanin</button>
+  <button class="opt">B. Hemosiderin</button>
+  <button class="opt">C. Bismuth sulfide</button>
+  <button class="opt">D. Silver particles</button>
+  <div class="explain">Answer: <b>C</b>. Bismuth sulfide, without papillary change — unlike black hairy tongue.</div>
+</div>
+
+<div class="mcq" data-correct="3">
+  <div class="stem"><span class="num">3</span>Minocycline-induced oral pigmentation is best described as:</div>
+  <button class="opt">A. True melanin in the basal layer</button>
+  <button class="opt">B. Hemosiderin deposition</button>
+  <button class="opt">C. Physiologic pigmentation</button>
+  <button class="opt">D. A precipitated drug metabolite (not true melanin)</button>
+  <div class="explain">Answer: <b>D</b>. Fine brown/golden particles in submucosal macrophages; bone pigment may be permanent.</div>
+</div>
+
+<div class="mcq" data-correct="0">
+  <div class="stem"><span class="num">4</span>Hairy tongue most characteristically involves the:</div>
+  <button class="opt">A. Middle and posterior third of the dorsal tongue</button>
+  <button class="opt">B. Ventral tongue</button>
+  <button class="opt">C. Floor of the mouth</button>
+  <button class="opt">D. Soft palate</button>
+  <div class="explain">Answer: <b>A</b>. Elongated filiform papillae colonized by chromogenic bacteria; treat by brushing/scraping.</div>
+</div>
+
+<div class="mcq" data-correct="1">
+  <div class="stem"><span class="num">5</span>A focal neurologic deficit that fully reverses within 24 hours defines a:</div>
+  <button class="opt">A. Completed stroke</button>
+  <button class="opt">B. Transient ischemic attack (TIA)</button>
+  <button class="opt">C. RIND</button>
+  <button class="opt">D. Lacunar infarct</button>
+  <div class="explain">Answer: <b>B</b>. TIA reverses within 24 h; RIND is reversible but lasts &gt; 24 h; stroke &gt; 24 h and not reversible.</div>
+</div>
+
+<div class="mcq" data-correct="0">
+  <div class="stem"><span class="num">6</span>What proportion of strokes are due to atherosclerosis (ischemic)?</div>
+  <button class="opt">A. 85%</button>
+  <button class="opt">B. 50%</button>
+  <button class="opt">C. 15%</button>
+  <button class="opt">D. 100%</button>
+  <div class="explain">Answer: <b>A</b>. ~85% ischemic/atherosclerotic; ~15% hemorrhagic.</div>
+</div>
+
+<div class="mcq" data-correct="2">
+  <div class="stem"><span class="num">7</span>The first-line imaging in acute stroke is:</div>
+  <button class="opt">A. MRI with contrast</button>
+  <button class="opt">B. Cerebral angiography</button>
+  <button class="opt">C. Non-contrast CT</button>
+  <button class="opt">D. PET scan</button>
+  <div class="explain">Answer: <b>C</b>. Non-contrast CT first to exclude hemorrhage before thrombolysis (t-PA).</div>
+</div>
+
+<div class="mcq" data-correct="3">
+  <div class="stem"><span class="num">8</span>The risk of a second stroke is highest during the:</div>
+  <button class="opt">A. First 24 hours only</button>
+  <button class="opt">B. Second year</button>
+  <button class="opt">C. After 6 months</button>
+  <button class="opt">D. First 90 days</button>
+  <div class="explain">Answer: <b>D</b>. Highest in the first 90 days — optimal monitoring before invasive dental care.</div>
+</div>
+
+<div class="mcq" data-correct="1">
+  <div class="stem"><span class="num">9</span>The most common pathogen in cavernous sinus thrombosis is:</div>
+  <button class="opt">A. Streptococcus viridans</button>
+  <button class="opt">B. Staphylococcus aureus</button>
+  <button class="opt">C. Aspergillus fumigatus</button>
+  <button class="opt">D. Escherichia coli</button>
+  <div class="explain">Answer: <b>B</b>. S. aureus (~70%). Empiric: vancomycin + ceftriaxone (+ metronidazole for dental/sinus source).</div>
+</div>
+
+<div class="mcq" data-correct="0">
+  <div class="stem"><span class="num">10</span>Which two infectious agents are most implicated in multiple sclerosis?</div>
+  <button class="opt">A. Epstein–Barr virus and HHV-6</button>
+  <button class="opt">B. HIV and hepatitis C</button>
+  <button class="opt">C. HPV and HSV-2</button>
+  <button class="opt">D. Mumps and measles only</button>
+  <div class="explain">Answer: <b>A</b>. EBV and HHV-6 are most implicated; MS is an autoimmune demyelinating CNS disease.</div>
+</div>
+
+<div class="mcq" data-correct="2">
+  <div class="stem"><span class="num">11</span>Electric-shock sensations on neck flexion radiating down the back in MS is called:</div>
+  <button class="opt">A. Uhthoff's sign</button>
+  <button class="opt">B. Crowe's sign</button>
+  <button class="opt">C. Lhermitte's symptom</button>
+  <button class="opt">D. Chvostek's sign</button>
+  <div class="explain">Answer: <b>C</b>. Lhermitte's symptom. Uhthoff's = vision loss with raised body temperature.</div>
+</div>
+
+<div class="mcq" data-correct="1">
+  <div class="stem"><span class="num">12</span>Trigeminal neuralgia may be the initial manifestation of MS in up to:</div>
+  <button class="opt">A. 30%</button>
+  <button class="opt">B. 3%</button>
+  <button class="opt">C. 60%</button>
+  <button class="opt">D. 90%</button>
+  <div class="explain">Answer: <b>B</b>. Up to 3%, and it may lack trigger zones with continuous lower-intensity pain.</div>
+</div>
+
+<div class="mcq" data-correct="0">
+  <div class="stem"><span class="num">13</span>Which drug is the standard of care for mild-to-moderate Alzheimer's disease?</div>
+  <button class="opt">A. Cholinesterase inhibitors</button>
+  <button class="opt">B. Levodopa</button>
+  <button class="opt">C. Phenytoin</button>
+  <button class="opt">D. Neostigmine</button>
+  <div class="explain">Answer: <b>A</b>. Cholinesterase inhibitors (may cause sialorrhea); memantine is added for moderate-to-severe AD.</div>
+</div>
+
+<div class="mcq" data-correct="3">
+  <div class="stem"><span class="num">14</span>Which is NOT one of the four cardinal features of parkinsonism?</div>
+  <button class="opt">A. Rigidity</button>
+  <button class="opt">B. Tremor</button>
+  <button class="opt">C. Bradykinesia</button>
+  <button class="opt">D. Hyperreflexia</button>
+  <div class="explain">Answer: <b>D</b>. The cardinal four are rigidity, tremor, bradykinesia, and postural instability. Levodopa improves all major features.</div>
+</div>
+
+<div class="mcq" data-correct="2">
+  <div class="stem"><span class="num">15</span>In Bell's palsy, which virus is most linked to the condition?</div>
+  <button class="opt">A. Cytomegalovirus</button>
+  <button class="opt">B. Rubella</button>
+  <button class="opt">C. Herpes simplex virus 1</button>
+  <button class="opt">D. Adenovirus</button>
+  <div class="explain">Answer: <b>C</b>. HSV-1 is most linked. It is a unilateral CN VII paresis; the eye stays open; steroids work best started early.</div>
+</div>
+
+<div class="mcq" data-correct="1">
+  <div class="stem"><span class="num">16</span>Myasthenia gravis is caused by autoantibodies against:</div>
+  <button class="opt">A. Voltage-gated sodium channels</button>
+  <button class="opt">B. Acetylcholine receptors at the neuromuscular junction</button>
+  <button class="opt">C. Myelin glycoproteins</button>
+  <button class="opt">D. Dopamine receptors</button>
+  <div class="explain">Answer: <b>B</b>. Anti-ACh-receptor antibodies cause fatigable weakness; treat with anticholinesterases, thymectomy, immunosuppression.</div>
+</div>
+
+<div class="mcq" data-correct="0">
+  <div class="stem"><span class="num">17</span>The MOST common type of generalized seizure (~90% of epileptics) is:</div>
+  <button class="opt">A. Tonic-clonic (grand mal)</button>
+  <button class="opt">B. Absence (petit mal)</button>
+  <button class="opt">C. Atonic</button>
+  <button class="opt">D. Myoclonic</button>
+  <div class="explain">Answer: <b>A</b>. Grand mal — begins with an aura, then tonic then clonic phases, with tongue biting and incontinence.</div>
+</div>
+
+<div class="mcq" data-correct="3">
+  <div class="stem"><span class="num">18</span>Absence (petit mal) seizures are characterized by:</div>
+  <button class="opt">A. A prominent aura</button>
+  <button class="opt">B. Loss of body tone with falling</button>
+  <button class="opt">C. Tongue biting and incontinence</button>
+  <button class="opt">D. Brief lapses of consciousness without loss of body tone, mainly in children</button>
+  <div class="explain">Answer: <b>D</b>. No aura, no tone loss; almost exclusively in children, often resolving in the second decade.</div>
+</div>
+
+<div class="mcq" data-correct="2">
+  <div class="stem"><span class="num">19</span>Which antiepileptic drug is classically associated with gingival overgrowth?</div>
+  <button class="opt">A. Valproic acid</button>
+  <button class="opt">B. Lamotrigine</button>
+  <button class="opt">C. Phenytoin</button>
+  <button class="opt">D. Carbamazepine</button>
+  <div class="explain">Answer: <b>C</b>. Phenytoin → gingival overgrowth, hirsutism, coarse facial features.</div>
+</div>
+
+<div class="mcq" data-correct="1">
+  <div class="stem"><span class="num">20</span>Regarding dental care in epilepsy, which statement is TRUE?</div>
+  <button class="opt">A. Removable prostheses are preferred over fixed</button>
+  <button class="opt">B. Patients with a vagus nerve stimulator do NOT need antibiotic prophylaxis</button>
+  <button class="opt">C. Aspirin is preferred over acetaminophen with valproic acid</button>
+  <button class="opt">D. Uncontrolled patients can be treated in a standard clinic</button>
+  <div class="explain">Answer: <b>B</b>. VNS patients need no prophylaxis. Prefer fixed prostheses (aspiration risk), avoid aspirin/NSAIDs with valproic acid, and refer uncontrolled patients to a hospital.</div>
+</div>
+
+</div>
+
+<div class="toolbar">
+  <button onclick="resetMCQ()">Reset MCQ</button>
+</div>
+<div class="score" id="score"></div>
+
+<!-- ================= ARABIC SUMMARY (bottom only) ================= -->
+<div class="ar-summary">
+  <h3>خلاصة بسيطة بالعربي</h3>
+  <p>اليوم يغطّي جزئين: <b>نهاية التصبّغات</b> ثم <b>الاضطرابات العصبية–العضلية</b>. أهم النقاط:</p>
+  <ul>
+    <li><b>الفضة → argyria</b> (أزرق-رمادي) و<b>الذهب → chrysiasis</b> (أزرق-رمادي/بنفسجي)، وقد يكونان دائمين. <b>البزموت</b> يسبّب لساناً أسود (bismuth sulfide) بدون تغيّر الحليمات.</li>
+    <li><b>Minocycline</b> يسبّب تصبّغاً من مستقلَب الدواء (ليس ميلانيناً)، وقد يبقى تصبّغ العظم دائماً. <b>اللسان الأشعر</b>: إطالة الحليمات الخيطية + بكتيريا ملوّنة.</li>
+    <li><b>السكتة (CVA)</b>: ٨٥٪ تصلّب شرايين و١٥٪ نزف؛ CT بدون صبغة أولاً؛ t-PA بعد استبعاد النزف. أعلى خطر لسكتة ثانية أول ٩٠ يوم. <b>خثار الجيب الكهفي</b>: أشيع جرثومة S. aureus.</li>
+    <li><b>MS</b>: نساء/العقد الرابع، EBV و HHV-6، لويحات بالـMRI، علامتا Uhthoff وLhermitte، وقد يكون ألم العصب مثلث التوائم أول علامة.</li>
+    <li><b>الزهايمر</b>: مثبّطات الكولين إستراز + ميمانتين، وأكمل العلاج السنّي مبكراً. <b>باركنسون</b>: تصلّب/رعاش/بطء حركة/عدم اتزان، ووجه قناعي، وليفودوبا.</li>
+    <li><b>شلل بيل</b>: شلل نصفي للعصب الوجهي (CN VII)، مرتبط بـHSV-1، العين تبقى مفتوحة، والستيرويد مبكراً. <b>الوهن العضلي الوبيل</b>: أضداد لمستقبلات الأستيل كولين، تعب سريع، وتجنّب أدوية الوصل العصبي–العضلي.</li>
+    <li><b>الصرع</b>: grand mal (~٩٠٪ مع هالة) و petit mal (أطفال، بلا هالة/بلا فقد توتر). <b>Phenytoin</b> يسبّب تضخّم لثة، وتجنّب الأسبرين مع valproic acid، ومرضى VNS بلا صادّ وقائي، وتفضيل التركيبات الثابتة.</li>
+  </ul>
+  <p>بقية الملف (البطاقات، الجداول، الأسئلة) كلها بالإنكليزي للمذاكرة والامتحان.</p>
+</div>
+
+<footer>
+  Day 18 of the 70-day plan · Oral Medicine — Metal/Drug Pigmentation &amp; Neuromuscular Disorders (pp. 365–394)<br>
+  Source: Oral Medicine equivalency curriculum — University of Baghdad
+</footer>
+
+<script>
+  document.querySelectorAll('.card .q').forEach(function(q){
+    var card = q.closest('.card');
+    var c = document.createElement('span');
+    c.className = 'chev'; c.textContent = '▸';
+    q.appendChild(c);
+    q.addEventListener('click', function(){
+      card.classList.toggle('open');
+      c.textContent = card.classList.contains('open') ? '▾' : '▸';
+    });
+  });
+  function openAll(){ document.querySelectorAll('.card').forEach(function(c){ c.classList.add('open'); var ch=c.querySelector('.chev'); if(ch) ch.textContent='▾'; }); }
+  function closeAll(){ document.querySelectorAll('.card').forEach(function(c){ c.classList.remove('open'); var ch=c.querySelector('.chev'); if(ch) ch.textContent='▸'; }); }
+
+  var answered = 0, correctCount = 0, total = document.querySelectorAll('.mcq').length;
+  document.querySelectorAll('.mcq').forEach(function(mcq){
+    var correct = parseInt(mcq.getAttribute('data-correct'), 10);
+    var opts = mcq.querySelectorAll('.opt');
+    opts.forEach(function(opt, idx){
+      opt.addEventListener('click', function(){
+        if (mcq.classList.contains('answered')) return;
+        mcq.classList.add('answered');
+        answered++;
+        if (idx === correct){ opt.classList.add('correct'); correctCount++; }
+        else { opt.classList.add('wrong'); opts[correct].classList.add('correct'); }
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    document.getElementById('score').textContent = 'Score: ' + correctCount + ' / ' + total + '  (answered ' + answered + ')';
+  }
+  function resetMCQ(){
+    answered = 0; correctCount = 0;
+    document.querySelectorAll('.mcq').forEach(function(mcq){
+      mcq.classList.remove('answered');
+      mcq.querySelectorAll('.opt').forEach(function(o){ o.classList.remove('correct','wrong'); });
+    });
+    document.getElementById('score').textContent = '';
+  }
+</script>
+
+</body>
+</html>

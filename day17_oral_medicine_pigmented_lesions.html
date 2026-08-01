@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Day 17 — Oral Medicine: Pigmented Lesions of the Oral Mucosa (pp. 293–364)</title>
+<style>
+  :root { color-scheme: light only; }
+  * { box-sizing: border-box; -webkit-text-size-adjust: 100%; }
+  html, body { background:#ffffff !important; color:#000000 !important; margin:0; padding:0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    line-height: 1.65; max-width: 920px; margin: 0 auto; padding: 20px 16px 90px; font-size: 17px;
+  }
+  @media (prefers-color-scheme: dark) { html, body { background:#ffffff !important; color:#000000 !important; } }
+
+  header.hero { background:#000; color:#fff; padding:26px 22px; border-radius:14px; margin-bottom:22px; text-align:center; }
+  header.hero h1 { margin:0 0 6px; font-size:24px; letter-spacing:.3px; }
+  header.hero .sub { font-size:15px; opacity:.92; }
+
+  h2.part { background:#000; color:#fff; padding:12px 16px; border-radius:10px; margin:42px 0 18px; font-size:20px; }
+  h3.topic { border-bottom:3px solid #000; padding-bottom:6px; margin:30px 0 14px; font-size:19px; color:#000; }
+
+  .roadmap { background:#f4f4f4; border:1px solid #ddd; border-radius:10px; padding:16px 18px; margin-bottom:22px; font-size:16px; }
+  .roadmap ul { margin:8px 0; padding-inline-start:22px; }
+  .roadmap li { margin:5px 0; }
+
+  .card { border:2px solid #000; border-radius:12px; margin:16px 0; overflow:hidden; background:#fff; }
+  .card .q { padding:14px 16px; cursor:pointer; font-weight:700; font-size:17px; display:flex; justify-content:space-between; align-items:center; gap:12px; background:#fafafa; color:#000; user-select:none; }
+  .card .q:hover { background:#eee; }
+  .card .q .tag { font-size:12px; font-weight:700; letter-spacing:.5px; border:1.5px solid #000; border-radius:20px; padding:2px 10px; white-space:nowrap; }
+  .card .q .chev { font-size:14px; font-weight:700; }
+  .card .a { display:none; padding:6px 18px 18px; font-size:16.5px; border-top:1px dashed #bbb; }
+  .card.open .a { display:block; }
+  .card .a p { margin:12px 0; }
+  .card .a ul, .card .a ol { margin:10px 0; padding-inline-start:22px; }
+  .card .a li { margin:6px 0; }
+  .sub-h { font-weight:800; display:block; margin:14px 0 4px; color:#000; }
+
+  .crit { background:#fff3b0; color:#c8000c; font-weight:800; padding:1px 6px; border-radius:5px; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
+  .critbox { background:#fff3b0; border:2px solid #c8000c; border-radius:10px; color:#000; padding:12px 16px; margin:14px 0; }
+  .critbox b { color:#c8000c; }
+  .critbox .lbl { display:block; color:#c8000c; font-weight:800; margin-bottom:6px; }
+
+  .recap { background:#eef6ff; border:2px solid #0b5cad; border-radius:10px; padding:12px 16px; margin:18px 0; }
+  .recap .lbl { display:block; color:#0b5cad; font-weight:800; margin-bottom:6px; }
+  .recap ul { margin:6px 0; padding-inline-start:22px; }
+
+  table.dx { width:100%; border-collapse:collapse; margin:14px 0; font-size:15.5px; }
+  table.dx th, table.dx td { border:1.5px solid #000; padding:8px 10px; text-align:left; vertical-align:top; }
+  table.dx th { background:#000; color:#fff; }
+
+  .gloss { border:2px solid #000; border-radius:12px; padding:8px 4px; }
+  .gloss dl { margin:0; }
+  .gloss dt { font-weight:800; padding:10px 14px 0; }
+  .gloss dd { margin:2px 14px 10px; border-bottom:1px dashed #ccc; padding-bottom:10px; }
+
+  .mcq { border:2px solid #000; border-radius:12px; padding:14px 16px; margin:16px 0; background:#fff; }
+  .mcq .stem { font-weight:700; margin-bottom:10px; }
+  .mcq .num { display:inline-block; background:#000; color:#fff; border-radius:6px; padding:1px 8px; margin-inline-end:8px; }
+  .opt { display:block; width:100%; text-align:left; border:1.5px solid #999; border-radius:8px; padding:9px 12px; margin:7px 0; background:#fff; color:#000; cursor:pointer; font-size:15.5px; font-family:inherit; }
+  .opt:hover { background:#f4f4f4; }
+  .opt.correct { background:#d8f5dd; border-color:#127a2b; font-weight:700; }
+  .opt.wrong { background:#fbdcdc; border-color:#b00020; }
+  .explain { display:none; margin-top:10px; padding:10px 12px; border-radius:8px; background:#fff3b0; border:1.5px solid #c8000c; font-size:15.5px; }
+  .mcq.answered .explain { display:block; }
+
+  .toolbar { display:flex; gap:10px; flex-wrap:wrap; margin:18px 0; }
+  .toolbar button { border:2px solid #000; background:#fff; color:#000; font-weight:700; border-radius:10px; padding:9px 16px; cursor:pointer; font-size:15px; font-family:inherit; }
+  .toolbar button:hover { background:#000; color:#fff; }
+  .score { font-weight:800; margin-top:14px; font-size:18px; }
+
+  /* Arabic summary at the very bottom */
+  .ar-summary { direction:rtl; text-align:right; background:#f4f4f4; border:2px solid #000; border-radius:12px; padding:16px 18px; margin-top:40px; font-size:16px; line-height:1.9; }
+  .ar-summary h3 { margin:0 0 10px; font-size:18px; }
+  .ar-summary ul { margin:8px 0; padding-inline-start:22px; }
+  .ar-summary li { margin:6px 0; }
+  footer { margin-top:30px; border-top:2px solid #000; padding-top:16px; text-align:center; font-size:14px; color:#333; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>Day 17 — Pigmented Lesions of the Oral Mucosa</h1>
+  <div class="sub">Oral Medicine · Lectures 1 &amp; 2 · pp. 293–364 · Malignant Melanoma → Exogenous Tattoos</div>
+</header>
+
+<div class="toolbar">
+  <button onclick="openAll()">Reveal all answers</button>
+  <button onclick="closeAll()">Hide all answers</button>
+</div>
+
+<div class="roadmap">
+  <b>Today's roadmap:</b>
+  <ul>
+    <li><b>Foundations:</b> melanin biology, synthesis vs. proliferation, melanin incontinence, diagnostic approach.</li>
+    <li><b>Part 1 — Malignant Melanoma:</b> subtypes, growth phases, prognosis, oral/mucosal melanoma.</li>
+    <li><b>Part 2 — Multifocal/Diffuse:</b> physiologic, drug-induced, smoker's, postinflammatory, melasma.</li>
+    <li><b>Part 3 — Systemic/Genetic disease:</b> Addison, Cushing, Graves', PBC, B12, Peutz–Jeghers, café au lait, HIV, melanosis treatment, vitiligo.</li>
+    <li><b>Part 4 — Hemoglobin &amp; iron:</b> ecchymosis, purpura/petechiae, hemochromatosis.</li>
+    <li><b>Part 5 — Exogenous:</b> amalgam, graphite, ornamental tattoos.</li>
+    <li><b>Synthesis tables + glossary + 20 MCQs.</b></li>
+  </ul>
+</div>
+
+<!-- ============================ FOUNDATIONS ============================ -->
+<h2 class="part">Foundations · How to Think About Oral Pigmentation</h2>
+
+<div class="card">
+  <div class="q"><span>Melanin biology: where is melanin made and how does it reach keratinocytes?</span><span class="tag">BASICS</span></div>
+  <div class="a">
+    <p>Melanin is the brown–black pigment responsible for most oral pigmented lesions. It is produced inside organelles called <b>melanosomes</b> within dendritic cells called <b>melanocytes</b>, which sit in the <span class="crit">basal cell layer</span> of the epithelium (roughly one melanocyte per 5–10 basal keratinocytes).</p>
+    <p>Pigment-loaded melanosomes travel along the dendritic processes and are transferred to neighboring <b>keratinocytes</b> — the melanocyte "feeds" pigment to its neighbors. This functional unit is the <b>epidermal melanin unit</b>.</p>
+    <p><b>Why it matters:</b> most forms of oral hyperpigmentation (physiologic, drug-induced, addisonian, melasma…) share the mechanism of <span class="crit">increased basilar melanin synthesis WITHOUT an increase in the number of melanocytes</span>. Memorize that phrase — it repeats across almost every entity below.</p>
+    <p>Melanocyte numbers are similar across ethnic groups; skin-color differences reflect melanosome size, activity, and distribution — not melanocyte count.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="q"><span>Increased melanin synthesis vs. melanocytic proliferation — why does the distinction matter?</span><span class="tag">CONCEPT</span></div>
+  <div class="a">
+    <p>This single distinction classifies almost every pigmented lesion:</p>
+    <ul>
+      <li><b>Increased synthesis:</b> normal melanocyte number, more pigment produced. Examples: ephelis, melanotic macule, physiologic, drug-induced, smoker's, melasma, Addison's. Microscopy: basilar hyperpigmentation, no increase in melanocyte count.</li>
+      <li><b>Proliferation:</b> an actual increase in the number of melanocytes/nevus cells. Examples: melanocytic nevus (benign) and malignant melanoma (malignant).</li>
+    </ul>
+    <div class="critbox">
+      <span class="lbl">Practical rule</span>
+      Synthesis-based lesions are usually benign and may fade once the trigger is removed. Proliferation-based lesions require histologic evaluation because melanoma belongs here. <span class="crit">Any new, changing, or unexplained focal pigmented lesion → biopsy.</span>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="q"><span>What is "melanin incontinence"?</span><span class="tag">TERM</span></div>
+  <div class="a">
+    <p><b>Melanin incontinence</b> = leakage of melanin granules from the basal layer down into the connective tissue, where they are engulfed by macrophages called <b>melanophages</b>. Microscopically it appears as free melanin in the lamina propria.</p>
+    <p>It is prominent in: drug-induced pigmentation, postinflammatory hyperpigmentation, pigmented lichen planus, and addisonian pigmentation. It signals that pigment has "dropped" out of its normal location and usually accompanies basilar hyperpigmentation.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="q"><span>Practical diagnostic approach to any oral pigmented lesion?</span><span class="tag">APPROACH</span></div>
+  <div class="a">
+    <ol>
+      <li><b>Focal or diffuse/multifocal?</b> A solitary focal lesion raises concern for melanoma → low threshold to biopsy. Diffuse points toward systemic/drug/racial causes.</li>
+      <li><b>Endogenous (melanin/blood) or exogenous (metal/graphite/ink)?</b> Amalgam and graphite are gray–black, often near an obvious source.</li>
+      <li><b>Present since childhood or new?</b> New diffuse pigmentation appearing <span class="crit">de novo in an adult</span> is a red flag for a pathologic cause (not physiologic).</li>
+      <li><b>Drug &amp; systemic history:</b> antimalarials, phenothiazines, contraceptives; symptoms of Addison/Cushing/thyroid disease; smoking/alcohol.</li>
+      <li><b>General exam:</b> cutaneous bronzing, jaundice, perioral macules, axillary freckling, iris nodules.</li>
+      <li><b>When is biopsy mandatory?</b> Persistent solitary lesion, sudden appearance, change in color/size, ulceration, or no clear explanation.</li>
+    </ol>
+    <div class="recap">
+      <span class="lbl">Golden principle</span>
+      The differential for a focal pigmented lesion always includes: melanotic macule, nevus, amalgam tattoo, melanoma. When in doubt, biopsy decides.
+    </div>
+  </div>
+</div>
+
+<!-- ============================ PART 1 ============================ -->
+<h2 class="part">Part 1 · Malignant Melanoma (continued)</h2>
+
+<h3 class="topic">Clinicopathologic subtypes &amp; growth phases</h3>
+
+<div class="card">
+  <div class="q"><span>What are the four main clinicopathologic subtypes of melanoma?</span><span class="tag">SUBTYPES</span></div>
+  <div class="a">
+    <ul>
+      <li><b>Superficial spreading melanoma</b> — most common cutaneous type; spreads horizontally first.</li>
+      <li><b>Lentigo maligna melanoma</b> — chronically sun-exposed areas in older patients.</li>
+      <li><b>Acral lentiginous melanoma</b> — palms, soles, subungual; the most common type in dark-skinned and Asian individuals.</li>
+      <li><b>Nodular melanoma</b> — the only one that begins directly in the vertical growth phase, hence the most aggressive.</li>
+    </ul>
+    <p>In the first three, growth begins as a <b>radial growth phase</b> (lateral, superficial spread) and may later convert to a vertical phase.</p>
+    <div class="recap">
+      <span class="lbl">Link to the mouth</span>
+      Oral melanoma is not precisely classified into these four cutaneous subtypes, but understanding growth phases (superficial vs. vertical) is what governs prognosis at every site.
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="q"><span>Explain radial vs. vertical growth phase and their prognostic meaning.</span><span class="tag">GROWTH</span></div>
+  <div class="a">
+    <p><b>Radial growth phase:</b> tumor cells spread laterally and superficially within the epithelium and superficial connective tissue. Good prognosis if detected and treated before nodules appear.</p>
+    <p><b>Vertical growth phase:</b> deep invasion into connective tissue. Clinically heralded by <span class="crit">the development of nodularity in a previously macular (flat) lesion — a classic warning sign.</span></p>
+    <p>Core idea: depth (the vertical phase) is the gateway to vascular/lymphatic spread, so depth directly drives survival (see Breslow, next card).</p>
+  </div>
+</div>
+
+<h3 class="topic">Prognosis of melanoma</h3>
+
+<div class="card">
+  <div class="q"><span>Which criteria determine melanoma prognosis, and what factors predict a poor outcome?</span><span class="tag">PROGNOSIS</span></div>
+  <div class="a">
+    <ul>
+      <li><b>Breslow's tumor thickness</b> — depth in mm; the strongest, most precise criterion.</li>
+      <li><b>Clark's level of invasion</b> — anatomic level of invasion (I–V); classic but less precise than Breslow.</li>
+    </ul>
+    <span class="sub-h">Poor-prognosis factors (memorize):</span>
+    <ul>
+      <li>Surface ulceration.</li>
+      <li>Vascular or lymphatic invasion.</li>
+      <li>Neurotropism.</li>
+      <li>High mitotic index.</li>
+      <li>Absence of tumor-infiltrating lymphocytes.</li>
+      <li>Clinical: site, age &gt; 60, male sex, and regional/distant metastasis.</li>
+    </ul>
+    <div class="critbox">
+      <span class="lbl">Critical number</span>
+      Five-year survival for <b>metastatic</b> melanoma is <b>less than 15%</b>.
+    </div>
+  </div>
+</div>
+
+<h3 class="topic">Oral (mucosal) malignant melanoma</h3>
+
+<div class="card">
+  <div class="q"><span>Epidemiology of primary oral/mucosal melanoma?</span><span class="tag">EPIDEMIOLOGY</span></div>
+  <div class="a">
+    <p>Primary mucosal melanomas make up <span class="crit">less than 1% of all melanomas</span>. Most develop in the head and neck, mainly the sinonasal tract and oral cavity.</p>
+    <ul>
+      <li>Higher prevalence among black-skinned and Japanese people.</li>
+      <li>More frequent in males than females.</li>
+      <li><span class="crit">The etiology of oral melanoma is unknown</span> — unlike the cutaneous variant with clear UV risk factors.</li>
+      <li>Can arise at any age but most present over 50.</li>
+      <li><span class="crit">The palate is the single most common site</span>, followed by the maxillary gingiva / alveolar crest.</li>
+    </ul>
+    <p><b>Why it is diagnosed late:</b> often asymptomatic early, sits in areas the patient cannot inspect, and may be amelanotic — delaying detection until the vertical phase.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="q"><span>Describe the clinical appearance of oral melanoma (including amelanosis).</span><span class="tag">CLINICAL</span></div>
+  <div class="a">
+    <p>No distinctive single appearance. It may be macular, plaque-like, or mass-forming; well-circumscribed or irregular; brown, blue, or black; focal or diffuse.</p>
+    <div class="critbox">
+      <span class="lbl">Beware</span>
+      Up to <b>one-third</b> of oral melanomas show little or no pigmentation (<b>amelanosis</b>) — some tumors mix melanotic and amelanotic areas. Some also present as multifocal pigmentation.
+    </div>
+    <span class="sub-h">Advanced local signs:</span>
+    <ul>
+      <li>Ulceration, pain.</li>
+      <li>Tooth mobility or spontaneous exfoliation.</li>
+      <li>Root resorption, bone loss.</li>
+      <li>Paresthesia/anesthesia.</li>
+      <li>Yet some tumors remain completely asymptomatic.</li>
+    </ul>
+    <p>Broad differential: melanocytic nevus, oral melanotic macule, amalgam tattoo, vascular lesions, other soft-tissue neoplasms. <span class="crit">Therefore, biopsy of any persistent solitary pigmented lesion is always warranted.</span></p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="q"><span>Prognosis of oral mucosal melanoma specifically?</span><span class="tag">PROGNOSIS</span></div>
+  <div class="a">
+    <p>Very poor — worse than cutaneous, due to late diagnosis, the rich vascular/lymphatic mucosa, and difficulty achieving wide surgical margins in the mouth.</p>
+    <ul>
+      <li>Five-year survival 15–40%.</li>
+      <li><span class="crit">The palate shows the worst prognosis</span> of intraoral sites.</li>
+      <li>Regional lymphatic metastases are frequent.</li>
+      <li>Fewer than 10% of patients with distant metastases survive 5 years.</li>
+      <li><span class="crit">10-year survival = 0%.</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <div class="q"><span>Diagnosis &amp; management of oral melanoma?</span><span class="tag">MANAGEMENT</span></div>
+  <div class="a">
+    <p><b>Diagnosis:</b> the main clinical/microscopic challenge is deciding whether the lesion is a <b>primary</b> neoplasm or a <b>metastasis</b> from a distant site (lung, skin…). Biopsy and full work-up are done.</p>
+    <p><b>Management:</b></p>
+    <ul>
+      <li>For primary tumors: <b>ablative surgery with wide margins</b> is the treatment of choice.</li>
+      <li>Adjuvant radiation may be needed, though its benefit in mucosal melanoma remains unclear.</li>
+      <li>CT / MRI to explore regional lymph-node metastases.</li>
+      <li>Chemo/immunotherapy for metastases or palliation. <b>Interferon-α-2B</b> is approved as adjuvant for primary cutaneous melanoma &gt; 4 mm thick.</li>
+    </ul>
+    <div class="recap">
+      <span class="lbl">Interesting paradox</span>
+      Onset of <b>autoimmunity</b> after immunotherapy (e.g., appearance of <b>vitiligo</b> and autoantibodies) is associated with statistically significant improvement in overall survival in cutaneous melanoma — the immune "attack" on melanocytes signals a good response.
+    </div>
+  </div>
+</div>
+
+<!-- ============================ PART 2 ============================ -->
+<h2 class="part">Part 2 · Multifocal / Diffuse Pigmentation</h2>
+
+<h3 class="topic">Physiologic (racial) pigmentation</h3>
+<div class="card">
+  <div class="q"><span>What is physiologic pigmentation and when should it worry you?</span><span class="tag">PHYSIOLOGIC</span></div>
+  <div class="a">
+    <p><span class="crit">Physiologic pigmentation is the most common multifocal/diffuse oral pigmentation.</span> Dark-complexioned individuals (blacks, Asians, Latinos) show patchy-to-generalized hyperpigmentation, often on the gingiva but sometimes on other surfaces.</p>
+    <div class="critbox">
+      <span class="lbl">Red flag</span>
+      Pigment is usually first seen in childhood and <b>does not develop de novo in the adult</b>. Sudden or gradual onset of diffuse pigmentation in adulthood — even in darker-skinned patients — should prompt a search for a pathologic cause.
+    </div>
+    <p><b>Differential:</b> idiopathic, drug-induced, or smoking-induced melanosis, plus endocrinopathic/systemic disease. History and lab tests are needed.</p>
+    <p><b>Microscopy:</b> increased melanin in the basal cell layer, no increase in melanocyte number.</p>
+    <p><b>Treatment (cosmetic, if desired):</b> gingivectomy, laser, cryosurgery — but <span class="crit">re-pigmentation may eventually recur</span> with all modalities, for unclear reasons.</p>
+  </div>
+</div>
+
+<h3 class="topic">Drug-induced melanosis</h3>
+<div class="card">
+  <div class="q"><span>Which drug classes cause melanosis, and what are its features?</span><span class="tag">DRUGS</span></div>
+  <div class="a">
+    <p>Drugs cause pigmentation either by soft-tissue deposition of drug metabolites/complexes, or by deposition associated with lipofuscin/iron.</p>
+    <div class="critbox">
+      <span class="lbl">Chief drugs</span>
+      <b>Antimalarials</b> (chloroquine, hydroxychloroquine, quinacrine) — used for autoimmune disease · <b>Phenothiazines</b> (chlorpromazine) · <b>Oral contraceptives</b> · <b>Cytotoxics</b> (cyclophosphamide, busulfan).
+    </div>
+    <ul>
+      <li><span class="crit">10–20% of all acquired melanocytic pigmentation may be drug-induced.</span></li>
+      <li>Intraorally: diffuse but often localized to one surface (frequently the hard palate), or multifocal. Lesions are flat, no nodularity/swelling.</li>
+      <li>Some drugs cause a specific pattern. Sun exposure may worsen cutaneous drug-induced pigmentation.</li>
+    </ul>
+    <span class="sub-h">Pathology:</span>
+    <p>Basilar hyperpigmentation and melanin incontinence, without an increase in melanocyte number. Mechanisms are uncertain: drugs/metabolites may stimulate melanogenesis; alternatively chloroquine and chlorpromazine physically bind melanin, and this complexation within melanocytes may contribute to adverse effects.</p>
+    <span class="sub-h">Diagnosis &amp; course:</span>
+    <p>If onset can be chronologically tied to the drug (weeks–months), no intervention is needed. It usually fades within a few months after stopping the drug, <span class="crit">but hormone-therapy pigmentation may persist longer despite discontinuation.</span> Labs may be needed to rule out an endocrinopathy.</p>
+  </div>
+</div>
+
+<h3 class="topic">Smoker's melanosis (&amp; alcohol, submucous fibrosis)</h3>
+<div class="card">
+  <div class="q"><span>Key facts about smoker's melanosis? Is it premalignant?</span><span class="tag">SMOKING</span></div>
+  <div class="a">
+    <ul>
+      <li>Diffuse melanosis seen in some smokers: anterior vestibular maxillary/mandibular gingivae, buccal mucosa, lateral tongue, palate, floor of mouth.</li>
+      <li>Most smokers (even heavy) do NOT show it; it occurs only in certain individuals whose melanin synthesis is stimulated by tobacco smoke products.</li>
+      <li>In dark-skinned individuals with baseline physiologic pigmentation, smoking increases it further.</li>
+      <li>Areas are brown, flat, irregular, sometimes geographic/map-like.</li>
+      <li>Mechanism unknown; likely chemical compounds in cigarettes (rather than the tobacco itself) or the heat of smoke. Smokeless tobacco (snuff) is NOT associated with increased melanosis.</li>
+      <li>Passive smoking in children can increase gingival pigmentation. It rises prominently in the first year of smoking and may fade with reduction.</li>
+    </ul>
+    <div class="critbox">
+      <span class="lbl">Exam point</span>
+      <b>Smoker's melanosis is NOT a preneoplastic condition.</b> By contrast, <b>oral submucous fibrosis</b> (from habitual areca/betel-nut chewing, common in East Asia) <span class="crit">IS preneoplastic</span> and shows melanosis plus characteristic soft-tissue fibrosis.
+    </div>
+    <p><b>Alcohol:</b> also associated with increased oral pigmentation, especially posteriorly (soft palate), and possibly a higher risk of upper aerodigestive tract cancers.</p>
+  </div>
+</div>
+
+<h3 class="topic">Postinflammatory (inflammatory) hyperpigmentation</h3>
+<div class="card">
+  <div class="q"><span>What is postinflammatory hyperpigmentation? Link to lichen planus?</span><span class="tag">POST-INFLAM</span></div>
+  <div class="a">
+    <p>A well-recognized phenomenon, more common in dark-complexioned individuals, as focal or diffuse pigmentation in areas of previous injury/inflammation. The acne-prone face is a common cutaneous site; in the mouth it is unusual but possible.</p>
+    <ul>
+      <li>Rarely, mucosa overlying a non-melanocytic malignancy may become pigmented.</li>
+      <li><b>Lichen planus:</b> associated pigmentation described across races including Caucasians. Microscopy adds <span class="crit">basilar hyperpigmentation and melanin incontinence</span> to the lichenoid features; pigmentation usually subsides as the lesion resolves. Whether it is "postinflammatory" or "inflammatory" remains debated.</li>
+      <li>Spontaneous post-surgical healing pigmentation of palatal donor sites for free gingival grafts has also been reported.</li>
+    </ul>
+  </div>
+</div>
+
+<h3 class="topic">Melasma (Chloasma)</h3>
+<div class="card">
+  <div class="q"><span>Melasma: distribution, triggers, and treatment?</span><span class="tag">MELASMA</span></div>
+  <div class="a">
+    <p>A common acquired symmetric melanosis of sun-exposed skin, frequently the face (forehead, cheeks, upper lip, chin). Distinct female predilection, mostly darker-skinned individuals. Unlike other diffuse melanoses, it <span class="crit">evolves rapidly over a few weeks.</span></p>
+    <div class="critbox">
+      <span class="lbl">Key triggers</span>
+      Sun exposure + hormonal factors (<b>pregnancy and contraceptive hormones</b>). <span class="crit">It is the combination of estrogen AND progesterone that induces the pigment</span>; estrogen alone does not. Pregnancy and contraceptives may also cause oral mucosal melanosis.
+    </div>
+    <ul>
+      <li>Idiopathic cases: significantly elevated LH in both sexes, with decreased estradiol (women) / testosterone (men).</li>
+      <li>Recent research: the hormonal association is weaker than once believed. Thyroid abnormalities (incl. hypothyroidism) may contribute to pregnancy- and non-pregnancy-associated melasma.</li>
+      <li>Biopsy: basilar melanosis without increased melanocyte number (present ones may be larger). May resolve after parturition or stopping hormones.</li>
+    </ul>
+    <div class="recap">
+      <span class="lbl">Treatment — the triple combination</span>
+      Topical: <b>4% hydroquinone + 0.05% tretinoin + 0.01% fluocinolone acetonide</b> + photoprotection (SPF 30). Note this is the same triple-combination concept used for melanosis generally.
+    </div>
+  </div>
+</div>
+
+<!-- ============================ PART 3 ============================ -->
+<h2 class="part">Part 3 · Melanosis with Systemic / Genetic Disease (Lecture 2)</h2>
+
+<h3 class="topic">Addison's disease (hypoadrenocorticism)</h3>
+<div class="card">
+  <div class="q"><span>Explain the ACTH/α-MSH mechanism of pigmentation in Addison's disease.</span><span class="tag">ADDISON</span></div>
+  <div class="a">
+    <p>A potentially life-threatening, under-diagnosed disease. In adults the most common cause is autoimmune — circulating autoantibodies to <span class="crit">21-hydroxylase</span>. Other causes: infection, neoplasia, trauma, drugs, iatrogenic, rarely genetic. The end result is always decreased endogenous corticosteroid.</p>
+    <span class="sub-h">Mechanism (high-yield):</span>
+    <ol>
+      <li>Low steroid → compensatory <b>ACTH</b> secretion from the anterior pituitary.</li>
+      <li>Persistent low steroid → loss of feedback inhibition → sustained ACTH.</li>
+      <li>Serum <b>α-MSH</b> rises concurrently.</li>
+    </ol>
+    <div class="critbox">
+      <span class="lbl">Molecular key</span>
+      The precursor gene <b>proopiomelanocortin (POMC)</b> contains both ACTH and α-MSH sequences. During processing they are cleaved independently, but <span class="crit">the first 13 amino acids of ACTH are identical to α-MSH.</span> Both stimulate melanocytes → hyperpigmentation.
+    </div>
+    <span class="sub-h">Clinical:</span>
+    <ul>
+      <li>Weakness, vague fatigue, depression — and mucocutaneous hyperpigmentation may be the first sign.</li>
+      <li>Generalized cutaneous bronzing + diffuse patchy oral melanosis are hallmarks. Any oral surface may be affected; oral melanosis may be the first manifestation.</li>
+      <li>Diffuse pigmentation is associated more with chronic than acute-onset disease.</li>
+    </ul>
+    <span class="sub-h">Diagnosis:</span>
+    <ul>
+      <li>Requires clinicopathologic correlation; suspect it when oral melanosis accompanies cutaneous bronzing.</li>
+      <li>Oral biopsy: increased basal melanin + melanin incontinence. Differentiate from physiologic and drug-induced.</li>
+      <li><span class="crit">Serum cortisol &lt; 100 nmol/L at 9:00 a.m. is diagnostic of deficiency</span>, with <b>hyponatremia + hyperkalemia.</b></li>
+    </ul>
+    <p><b>Treatment:</b> exogenous steroid replacement (gluco- + mineralocorticoids); evidence supports adding adrenal androgens (DHEA) for quality of life. Pigmentation resolves with therapy.</p>
+  </div>
+</div>
+
+<h3 class="topic">Cushing's syndrome / disease</h3>
+<div class="card">
+  <div class="q"><span>Cushing's: causes, who gets pigmentation, and diagnostic tests?</span><span class="tag">CUSHING</span></div>
+  <div class="a">
+    <p>Results from prolonged exposure to high concentrations of endogenous or exogenous corticosteroids. <b>Most cases are iatrogenic</b> (poorly monitored topical/systemic steroids).</p>
+    <span class="sub-h">Endogenous causes:</span>
+    <ul>
+      <li>Activating pituitary tumor → <b>Cushing's disease.</b></li>
+      <li>Primary activating adrenal pathology (hyperadrenocorticism).</li>
+      <li>Ectopic secretion of corticosteroids/ACTH/CRH by neoplasms (e.g., small cell lung carcinoma).</li>
+      <li>Activating germline mutations in the ACTH receptor (recently described).</li>
+    </ul>
+    <span class="sub-h">Clinical:</span>
+    <ul>
+      <li>More prevalent in females overall; pre-pubertal onset more common in boys.</li>
+      <li>Weight gain and "moon facies." <span class="crit">Pigmentation appears only in the subset with increased ACTH secretion</span> (usually a primary pituitary neoplasm); its pattern is identical to adrenal insufficiency (same ACTH/α-MSH mechanism).</li>
+    </ul>
+    <div class="critbox">
+      <span class="lbl">The three main diagnostic tests</span>
+      <b>Low-dose dexamethasone suppression test</b> · <b>Midnight plasma cortisol</b> · <b>24-hour urinary free cortisol.</b> Pigmentation often resolves after treating the source. <b>Pasireotide</b> (a somatostatin analog) is approved for treatment.
+    </div>
+  </div>
+</div>
+
+<h3 class="topic">Hyperthyroidism (Graves') &amp; Primary Biliary Cirrhosis</h3>
+<div class="card">
+  <div class="q"><span>Pigmentation in Graves' disease?</span><span class="tag">GRAVES</span></div>
+  <div class="a">
+    <p>Melanosis is a common consequence of hyperthyroidism (Graves'), especially in dark-skinned individuals.</p>
+    <div class="critbox">
+      <span class="lbl">Number</span>
+      <span class="crit">At least 40% of black patients with thyrotoxicosis</span> may present with mucocutaneous hyperpigmentation; it is <b>very rare in Caucasians.</b> Pigmentation resolves after treating the thyroid abnormality.
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="q"><span>Primary biliary cirrhosis: pigmentation, antibody, and jaundice DDx?</span><span class="tag">PBC</span></div>
+  <div class="a">
+    <p>Develops mainly in <b>middle-aged women</b>, from damage to small intrahepatic bile ducts. Diffuse mucocutaneous hyperpigmentation may be an early manifestation, affecting up to <span class="crit">47%</span> of patients. Unknown etiology, thought autoimmune given <span class="crit">antimitochondrial antibodies.</span></p>
+    <p>It may also cause generalized non-melanocytic discoloration. Jaundice is usually end-stage, caused by excess serum bilirubin (a hemoglobin breakdown product) → yellowing of skin, eyes, mucous membranes. Other jaundice causes: cirrhosis, hepatitis, neoplasia, gallstones, congenital disorders, infection.</p>
+    <div class="critbox">
+      <span class="lbl">DDx of apparent yellowing</span>
+      <b>Carotenemia</b> (excess β-carotene) and <b>lycopenemia</b> (excess lycopene from tomatoes/vegetables). <span class="crit">Key difference: neither affects the oral mucosal tissues</span> (true jaundice does).
+    </div>
+    <p><b>Survival:</b> normal in stage 1–2; ~10–15 years in advanced stages.</p>
+  </div>
+</div>
+
+<h3 class="topic">Vitamin B12 (Cobalamin) deficiency</h3>
+<div class="card">
+  <div class="q"><span>Oral/systemic manifestations of B12 deficiency &amp; its pigmentation?</span><span class="tag">B12</span></div>
+  <div class="a">
+    <p>B12 deficiency causes systemic features: <b>megaloblastic anemia</b>, neurologic signs, and cutaneous/oral manifestations including generalized burning, erythema, and mucosal atrophy.</p>
+    <p>Diffuse mucocutaneous hyperpigmentation is a <b>rare, poorly recognized</b> complication, and it is <span class="crit">suggestive of Addison's disease</span> — an important differentiator. It resolves once B12 levels are restored.</p>
+    <div class="recap">
+      <span class="lbl">Link</span>
+      "Addison-like diffuse pigmentation + megaloblastic anemia + neurologic symptoms" → think B12 deficiency, not adrenal disease.
+    </div>
+  </div>
+</div>
+
+<h3 class="topic">Peutz–Jeghers syndrome</h3>
+<div class="card">
+  <div class="q"><span>Peutz–Jeghers: gene, features, and clinical picture?</span><span class="tag">PJS</span></div>
+  <div class="a">
+    <p>An <b>autosomal dominant</b> disease associated with mutations in the <span class="crit">STK11/LKB1</span> tumor-suppressor gene.</p>
+    <span class="sub-h">Characteristic triad:</span>
+    <ul>
+      <li><b>Intestinal polyposis</b> — hamartomatous.</li>
+      <li><b>Cancer susceptibility.</b></li>
+      <li><b>Multiple small pigmented macules</b> of lips, perioral skin, hands, feet.</li>
+    </ul>
+    <ul>
+      <li>Macules resemble ephelides, usually &lt; 0.5 cm, but their intensity is <span class="crit">NOT influenced by sun exposure</span> (a golden differentiator from true freckles).</li>
+      <li>Similar lesions may appear on the anterior tongue, buccal and labial mucosae.</li>
+      <li>Lip/perioral pigmentation is highly distinctive but <b>not pathognomonic.</b></li>
+      <li>Histology: increased basilar melanin without increased melanocyte number.</li>
+      <li>Management: surveillance and treatment of hamartomatous polyps.</li>
+    </ul>
+  </div>
+</div>
+
+<h3 class="topic">Café au lait pigmentation</h3>
+<div class="card">
+  <div class="q"><span>Café au lait spots: what do multiple spots indicate? Histology?</span><span class="tag">CAFÉ AU LAIT</span></div>
+  <div class="a">
+    <p>Solitary idiopathic café au lait spots occur in the general population, but <span class="crit">multiple spots often indicate an underlying genetic disorder</span>: <b>Neurofibromatosis type I</b>, <b>McCune–Albright syndrome</b>, and <b>Noonan's syndrome.</b></p>
+    <ul>
+      <li>Appearance: tan/brown irregular macules of variable size anywhere on skin; rare similar oral macules.</li>
+      <li><b>NF1:</b> autosomal dominant, mutation/deletion of the <b>NF1 gene on chromosome 17</b>, with multiple neurofibromas. Size/number/age-at-onset of the spots is diagnostically important.</li>
+      <li>Highly characteristic NF1 signs: axillary/inguinal freckling (<b>Crowe's sign</b>) and iris pigmented lesions (<b>Lisch nodules</b>).</li>
+    </ul>
+    <div class="critbox">
+      <span class="lbl">Fine microscopic point (examiners love it)</span>
+      Compared with adjacent skin, genetic café au lait spots show basilar melanosis without increased melanocyte number, but the melanocytes contain <b>giant melanosomes (macromelanosomes)</b> visible under light microscopy. Compared with similar lesions in normal patients, genetic spots <span class="crit">do show increased melanocyte numbers.</span>
+    </div>
+  </div>
+</div>
+
+<h3 class="topic">HIV/AIDS-associated melanosis</h3>
+<div class="card">
+  <div class="q"><span>Causes and features of HIV/AIDS-associated melanosis?</span><span class="tag">HIV/AIDS</span></div>
+  <div class="a">
+    <p>Diffuse or multifocal pigmentation is frequently described in HIV-seropositive patients. Possible causes:</p>
+    <ul>
+      <li>Drugs (antifungal, antiretroviral).</li>
+      <li>Adrenocortical destruction by virulent infectious organisms.</li>
+      <li>In some patients (even newly diagnosed) with no adrenal disease or drug intake, the cause is undetermined; studies suggest melanosis may be a genuine, potentially late-stage clinical manifestation of HIV/AIDS.</li>
+    </ul>
+    <ul>
+      <li>Significant correlation between pigment and low <span class="crit">CD4 count (&lt; 200 cells/μL).</span></li>
+      <li>Immune dysregulation increases α-MSH secretion from the anterior pituitary → more melanin synthesis.</li>
+      <li>History of progressive hyperpigmentation of skin, nails, mucous membranes; <span class="crit">buccal mucosa is the most frequently affected site</span>, but gingiva, palate, tongue may be involved.</li>
+    </ul>
+  </div>
+</div>
+
+<h3 class="topic">Treatment of mucocutaneous melanosis &amp; exogenous ochronosis</h3>
+<div class="card">
+  <div class="q"><span>General treatment principles for melanosis, and what is exogenous ochronosis?</span><span class="tag">TREATMENT</span></div>
+  <div class="a">
+    <p><b>General principle:</b> focally pigmented lesions warrant removal for diagnostic and therapeutic purposes. For multifocal/diffuse pigmentation (except neoplasia), surgery is less of an option. Drug-induced and exogenously stimulated pigmentation may subside after withdrawing the agent, or may be persistent/permanent — causing social and psychological stress.</p>
+    <span class="sub-h">Options for gingival pigmentation:</span>
+    <ul>
+      <li>Different-thickness flaps, gingivectomy, cryotherapy, electrosurgery, bur abrasion, scalpel scraping.</li>
+      <li><b>Laser therapy</b> is effective, but benefits may be temporary with partial recurrence in <span class="crit">≥ 20%.</span></li>
+    </ul>
+    <span class="sub-h">First-line pharmacologic:</span>
+    <p>Topical bleaching creams. Single agents (azelaic acid or hydroquinone) are used, but dual/triple combination is more commonly recommended: <span class="crit">4% hydroquinone + retinoic acid 0.05% + fluocinolone acetonide 0.01%</span>, effective in &gt; 90%.</p>
+    <div class="critbox">
+      <span class="lbl">Exogenous ochronosis (a bleaching complication)</span>
+      Intense cutaneous hyperpigmentation (± atrophic striae, coarsening, coalesced black papules), more common in black women after <b>long-term bleaching therapy.</b> Due to accumulation of a yellow-brown pigment (<span class="crit">NOT melanin</span>) in the dermis where the cream was applied (often the face); may be permanent. Effective treatment: <b>Q-switched Nd:YAG laser.</b> Novel tyrosinase inhibitors remain experimental.
+    </div>
+  </div>
+</div>
+
+<h3 class="topic">Depigmentation — Vitiligo</h3>
+<div class="card">
+  <div class="q"><span>Vitiligo: pathogenesis, clinical types, oral involvement, and management?</span><span class="tag">VITILIGO</span></div>
+  <div class="a">
+    <p>A relatively common acquired <b>autoimmune</b> disease of hypomelanosis via melanocyte destruction. Affects <span class="crit">0.5–2% of the world population with no gender or racial preference.</span></p>
+    <p><b>Multifactorial pathogenesis</b> (genetic + environmental): autoimmunity, cytotoxicity, genetics, metabolic/oxidative stress. A vitiligo-susceptibility SNP is also linked to other autoimmune diseases: <b>type 1 diabetes, SLE, rheumatoid arthritis.</b></p>
+    <span class="sub-h">Modern classification:</span>
+    <ul>
+      <li><b>Nonsegmental</b>: multiple achromic patches, remitting-relapsing.</li>
+      <li><b>Segmental</b>: dermatomeric distribution, rapid onset, usually not progressive.</li>
+      <li>Unclassified/undetermined.</li>
+    </ul>
+    <ul>
+      <li>Onset at any age, most often the 2nd–3rd decade; more apparent in darker skin but occurs in all races.</li>
+      <li>May arise during immunotherapy for melanoma and may then indicate a better prognosis.</li>
+      <li><span class="crit">Vitiligo rarely affects intraoral mucosa</span>, but hypomelanosis of the lips (inner/outer) and perioral skin is seen in up to 20%.</li>
+      <li>Microscopy: melanocyte destruction by antigen-specific T cells, complete loss of basal melanin; <b>Fontana-Masson</b> stain confirms absence.</li>
+    </ul>
+    <span class="sub-h">Management (aim: repigmentation):</span>
+    <ul>
+      <li>Topical corticosteroids, topical calcineurin inhibitors, narrow-band UVB, PUVA.</li>
+      <li><b>Labial vitiligo is more resistant</b>: lips lack hair follicles, so there is no melanocyte reservoir to stimulate.</li>
+      <li>Hence surgery may be the only option: autologous epithelial grafts, <span class="crit">split-thickness skin grafts (highest repigmentation success)</span>, punch grafting, micropigmentation.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============================ PART 4 ============================ -->
+<h2 class="part">Part 4 · Hemoglobin &amp; Iron-associated Pigmentation</h2>
+
+<div class="card">
+  <div class="q"><span>Big picture: how do blood/iron pigments differ from melanin lesions?</span><span class="tag">OVERVIEW</span></div>
+  <div class="a">
+    <p>Until now most lesions were melanin-based. Here the pigment comes from <b>hemoglobin and iron</b>. When blood extravasates, hemoglobin degrades to <span class="crit">hemosiderin</span> — an iron-rich brown pigment — so the lesion is red first, then brown within a few days. This time-dependent color evolution (red → brown) is the key that distinguishes these from the stable color of melanocytic lesions.</p>
+  </div>
+</div>
+
+<h3 class="topic">Ecchymosis</h3>
+<div class="card">
+  <div class="q"><span>Ecchymosis: evolution, DDx, and systemic associations?</span><span class="tag">ECCHYMOSIS</span></div>
+  <div class="a">
+    <p>Traumatic ecchymosis is common on lips and face but uncommon within the oral mucosa, except with blunt-force trauma or intubation.</p>
+    <ul>
+      <li>Immediately: erythrocyte extravasation appears as a bright red macule, or a swelling if a hematoma forms.</li>
+      <li><span class="crit">Turns brown within a few days after hemoglobin degrades to hemosiderin.</span></li>
+      <li>If the patient recalls trauma: observe for two weeks; it should resolve (a useful time test).</li>
+      <li>Anticoagulant patients may show oral ecchymosis (esp. buccal mucosa/tongue traumatized while chewing).</li>
+      <li>Also seen in liver cirrhosis, leukemia, and end-stage renal disease on dialysis.</li>
+    </ul>
+    <div class="critbox">
+      <span class="lbl">When to test coagulation</span>
+      For <b>spontaneous</b> ecchymoses (no trauma): obtain <b>bleeding time, PT, PTT, INR</b> to explore coagulation defects.
+    </div>
+  </div>
+</div>
+
+<h3 class="topic">Purpura / Petechiae</h3>
+<div class="card">
+  <div class="q"><span>Distinguish purpura from petechiae; where do oral ones appear?</span><span class="tag">PURPURA</span></div>
+  <div class="a">
+    <p>Capillary hemorrhages appear red initially and turn brown in a few days once extravasated cells lyse and degrade to hemosiderin — same logic as ecchymosis but smaller.</p>
+    <div class="critbox">
+      <span class="lbl">The distinction (size only — essentially semantic)</span>
+      <b>Petechiae</b>: pinpoint or slightly larger. <b>Purpura</b>: multiple small <span class="crit">2–4 mm</span> collections of extravasated blood.
+    </div>
+    <ul>
+      <li>Causes: trauma, viral, or systemic disease.</li>
+      <li>Petechiae from platelet deficiency/aggregation disorders are usually not limited to the mouth — they occur on skin too.</li>
+      <li><span class="crit">Viral disease is more commonly associated with oral than cutaneous petechiae</span>; the soft palate is the most common oral site.</li>
+      <li>If trauma is suspected: stop the offending activity and observe two weeks; failure to resolve suggests a hemorrhagic diathesis, persistent infection, or systemic disease, and labs are needed.</li>
+    </ul>
+  </div>
+</div>
+
+<h3 class="topic">Hemochromatosis</h3>
+<div class="card">
+  <div class="q"><span>Hemochromatosis: nature, complications, and oral manifestations?</span><span class="tag">HEMOCHROMATOSIS</span></div>
+  <div class="a">
+    <p>A chronic progressive disease of excessive iron deposition (usually hemosiderin) in liver and other organs. Forms: idiopathic, neonatal, transfusional, and heritable.</p>
+    <span class="sub-h">Systemic complications:</span>
+    <p>Liver cirrhosis, diabetes, anemia, heart failure, hypertension, and skin bronzing — cutaneous pigmentation in <span class="crit">over 90% of patients regardless of etiology.</span></p>
+    <span class="sub-h">Oral manifestations:</span>
+    <ul>
+      <li>Primary: <b>blue-gray to brown</b> pigmentation mainly of the <b>palate and gingiva.</b></li>
+      <li>Early on, pigmentation may be more from <b>basilar melanosis</b> than iron pigment.</li>
+      <li>Iron deposition in the adrenal cortex can cause hypoadrenocorticism and ACTH hypersecretion → addisonian-type changes (link back to Part 3!).</li>
+      <li>Later: pigmentation is usually from <b>hemosiderosis + melanosis.</b></li>
+    </ul>
+    <div class="critbox">
+      <span class="lbl">Easy diagnostic tool</span>
+      A <span class="crit">lower labial gland biopsy</span> is an easy, effective method: it shows increased basal-layer melanin plus <b>golden/brown hemosiderin</b> scattered through the submucosal and salivary gland tissues.
+    </div>
+  </div>
+</div>
+
+<!-- ============================ PART 5 ============================ -->
+<h2 class="part">Part 5 · Exogenous Pigmentation (Tattoos)</h2>
+
+<h3 class="topic">Amalgam tattoo</h3>
+<div class="card">
+  <div class="q"><span>Amalgam tattoo: cause, sites, histology, and when to biopsy?</span><span class="tag">AMALGAM</span></div>
+  <div class="a">
+    <p><span class="crit">Amalgam tattoo is the most common pigmented lesion of the oral mucosa.</span> By definition iatrogenic: accidental deposition of amalgam restorative material into submucosal tissue.</p>
+    <span class="sub-h">Clinical:</span>
+    <ul>
+      <li>Found in <b>1–3%</b> of the general population; small, asymptomatic, macular, bluish-gray or black.</li>
+      <li>Any surface, but most common: <b>gingiva, alveolar mucosa, buccal mucosa, floor of mouth.</b></li>
+      <li>Often near teeth with large amalgams or crowned teeth (that likely had amalgams), around apices of endodontically treated teeth with retrograde restorations or silver points, and around healed extraction sites.</li>
+      <li>Amalgam tattoo of head/neck skin can occur in dentists — an <b>occupational hazard</b> from failing to use facial protection.</li>
+    </ul>
+    <span class="sub-h">Microscopy:</span>
+    <p>Fine brown granular stippling of collagen fibers, with a <b>particular affinity for vessel walls and nerve fibers</b>, and little/no inflammation. Large aggregates may cause a foreign-body giant-cell granulomatous reaction, though a mild-to-moderate lymphocytic infiltrate is more common.</p>
+    <div class="critbox">
+      <span class="lbl">When to biopsy (a key decision point)</span>
+      Fine particles usually aren't radiographically visible; large ones may be. <b>Biopsy if:</b> no radiographic amalgam, the lesion is not near a restored tooth, or <span class="crit">the lesion appears suddenly.</span> Innocent, radiographically documented tattoos don't always need removal. DDx: melanotic macule, nevus, melanoma.
+    </div>
+    <p>Other restorative materials can also cause pigmentation; metal from most cast alloys can be detected in adjacent tissues. <b>Titanium</b> is associated with skin pigmentation around orthopedic implants, suggesting <b>dental implants</b> may be a potential source of exogenous oral pigmentation.</p>
+  </div>
+</div>
+
+<h3 class="topic">Graphite &amp; Ornamental tattoos</h3>
+<div class="card">
+  <div class="q"><span>Graphite tattoos and ornamental tattoos — key points?</span><span class="tag">GRAPHITE/ART</span></div>
+  <div class="a">
+    <p><b>Graphite tattoos:</b> an unusual source of focal exogenous pigmentation, most common on the <b>palate and gingiva</b>, representing traumatic implantation of graphite from a pencil. May be indistinguishable from amalgam tattoo (solitary gray/black macule).</p>
+    <ul>
+      <li>The injury often occurs in <b>childhood</b> and may not be recalled → <span class="crit">biopsy is often warranted.</span></li>
+      <li>Microscopically, particles resemble amalgam.</li>
+      <li>In cosmetic areas: removal + an autogenous connective tissue graft gives a highly esthetic outcome.</li>
+    </ul>
+    <p><b>Ornamental tattoos:</b> mucosal tattoos as lettering or artwork, increasingly common. Amateur inks are permanent, made of simple carbon particles from various sources (burnt wood/plastic/paper, India ink, pen ink, plant matter). <span class="crit">Q-switched laser therapy</span> has been used successfully for removal.</p>
+  </div>
+</div>
+
+<!-- ============================ SYNTHESIS ============================ -->
+<h2 class="part">Synthesis · Comparison Tables</h2>
+
+<h3 class="topic">Focal exogenous pigmentations vs. melanocytic</h3>
+<table class="dx">
+  <tr><th>Feature</th><th>Amalgam tattoo</th><th>Graphite tattoo</th><th>Melanotic macule / Melanoma</th></tr>
+  <tr><td>Source</td><td>Iatrogenic amalgam deposition</td><td>Traumatic graphite (pencil)</td><td>Melanin (melanocytes)</td></tr>
+  <tr><td>Common site</td><td>Gingiva, alveolar/buccal mucosa, floor of mouth</td><td>Palate and gingiva</td><td>Any site (melanoma: palate most common)</td></tr>
+  <tr><td>Radiograph</td><td>May be visible if particles large</td><td>Not visible</td><td>Not visible</td></tr>
+  <tr><td>Biopsy</td><td>If no radiographic amalgam / not near a tooth / sudden onset</td><td>Often warranted</td><td>Always for any persistent solitary lesion</td></tr>
+</table>
+
+<h3 class="topic">Systemic causes of diffuse melanosis — quick differentiators</h3>
+<table class="dx">
+  <tr><th>Condition</th><th>Key differentiator</th><th>Test / marker</th></tr>
+  <tr><td>Addison's</td><td>Cutaneous bronzing + oral melanosis + weakness/fatigue</td><td>9 a.m. cortisol &lt; 100 nmol/L; Na↓ K↑</td></tr>
+  <tr><td>Cushing's (ACTH↑)</td><td>Moon facies + weight gain; pigment when ACTH high</td><td>Dexamethasone suppression / midnight cortisol / 24h urinary cortisol</td></tr>
+  <tr><td>Graves'</td><td>Pigment esp. in black patients (≥40%)</td><td>Thyroid function tests</td></tr>
+  <tr><td>Primary biliary cirrhosis</td><td>Middle-aged women; early pigmentation</td><td>Antimitochondrial antibodies</td></tr>
+  <tr><td>B12 deficiency</td><td>Addison-like + megaloblastic anemia + neuro signs</td><td>Serum B12</td></tr>
+  <tr><td>Peutz–Jeghers</td><td>Perioral macules not affected by sun + polyps</td><td>STK11/LKB1</td></tr>
+  <tr><td>NF1 (café au lait)</td><td>Multiple spots + Crowe's sign + Lisch nodules</td><td>NF1 gene (chromosome 17)</td></tr>
+  <tr><td>HIV/AIDS</td><td>Pigment + low CD4</td><td>CD4 &lt; 200</td></tr>
+  <tr><td>Hemochromatosis</td><td>Blue-gray/brown palate &amp; gingiva + bronzing + diabetes</td><td>Lower labial gland biopsy (hemosiderin)</td></tr>
+</table>
+
+<div class="recap">
+  <span class="lbl">High-Yield Recap</span>
+  <ul>
+    <li>Most common oral pigmented lesion = <b>amalgam tattoo</b>; most common diffuse pigmentation = <b>physiologic.</b></li>
+    <li>Palate = most common site of oral melanoma <b>and</b> the worst prognosis; 10-year survival = 0%.</li>
+    <li>One-third of oral melanomas are <b>amelanotic</b> → never rely on color alone.</li>
+    <li>ACTH &amp; α-MSH share POMC; first 13 amino acids of ACTH = α-MSH → pigment in Addison's and ACTH-high Cushing's.</li>
+    <li>Peutz–Jeghers macules are <b>not affected by sun</b> (differentiates from freckles).</li>
+    <li>PBC → antimitochondrial antibodies; B12 deficiency → Addison-like pigmentation.</li>
+    <li>Hemosiderin (red→brown) for ecchymosis/petechiae; lower labial gland biopsy for hemochromatosis.</li>
+    <li>Vitiligo → Fontana-Masson confirms melanin absence; labial vitiligo is resistant (no hair follicles).</li>
+    <li>Triple bleaching combo: 4% hydroquinone + tretinoin 0.05% + fluocinolone 0.01%.</li>
+    <li>Ochronosis = bleaching complication (pigment is NOT melanin) → Q-switched Nd:YAG.</li>
+  </ul>
+</div>
+
+<!-- ============================ GLOSSARY ============================ -->
+<h2 class="part">Glossary · Key Terms</h2>
+<div class="gloss">
+<dl>
+  <dt>Melanocyte</dt><dd>Dendritic cell in the basal layer producing melanin within melanosomes and transferring it to keratinocytes.</dd>
+  <dt>Melanin incontinence</dt><dd>Leakage of melanin from the basal layer into connective tissue, engulfed by melanophages.</dd>
+  <dt>Radial vs. vertical growth phase</dt><dd>Superficial lateral spread (better prognosis) vs. deep vertical invasion (worse) in melanoma.</dd>
+  <dt>Breslow thickness / Clark level</dt><dd>Two melanoma prognostic criteria; Breslow (depth in mm) is the strongest.</dd>
+  <dt>Amelanosis</dt><dd>Absent or minimal pigment in a melanocytic lesion (occurs in one-third of oral melanomas).</dd>
+  <dt>α-MSH / ACTH / POMC</dt><dd>Hormones derived from the POMC precursor; elevated in Addison's and some Cushing's, driving pigmentation.</dd>
+  <dt>Antimitochondrial antibodies</dt><dd>Autoimmune marker of primary biliary cirrhosis (PBC).</dd>
+  <dt>Macromelanosomes</dt><dd>Giant melanosomes seen in genetic café au lait spots under light microscopy.</dd>
+  <dt>Hemosiderin</dt><dd>Iron-rich brown pigment from hemoglobin breakdown; cause of the brown color in ecchymosis and hemochromatosis.</dd>
+  <dt>Fontana-Masson stain</dt><dd>Histochemical stain for melanin; confirms its absence in vitiligo.</dd>
+  <dt>Exogenous ochronosis</dt><dd>Cutaneous hyperpigmentation (pigment NOT melanin) after prolonged bleaching; treated with Q-switched Nd:YAG laser.</dd>
+  <dt>Oral submucous fibrosis</dt><dd>Preneoplastic condition from areca-nut chewing, with pigmentation + fibrosis (contrast with non-preneoplastic smoker's melanosis).</dd>
+</dl>
+</div>
+
+<!-- ============================ MCQ ============================ -->
+<h2 class="part">MCQ · 20 Questions</h2>
+<div class="mcq-wrap" id="mcqWrap">
+
+<div class="mcq" data-correct="3">
+  <div class="stem"><span class="num">1</span>The single most common intraoral site for primary oral malignant melanoma is the:</div>
+  <button class="opt">A. Floor of the mouth</button>
+  <button class="opt">B. Buccal mucosa</button>
+  <button class="opt">C. Dorsum of tongue</button>
+  <button class="opt">D. Hard palate</button>
+  <div class="explain">Answer: <b>D</b>. The palate is the most common single site of oral melanoma and also carries the worst prognosis.</div>
+</div>
+
+<div class="mcq" data-correct="2">
+  <div class="stem"><span class="num">2</span>The 10-year survival rate of oral mucosal malignant melanoma is approximately:</div>
+  <button class="opt">A. 40%</button>
+  <button class="opt">B. 25%</button>
+  <button class="opt">C. 0%</button>
+  <button class="opt">D. 60%</button>
+  <div class="explain">Answer: <b>C</b>. 10-year survival = 0% (5-year survival 15–40%).</div>
+</div>
+
+<div class="mcq" data-correct="1">
+  <div class="stem"><span class="num">3</span>Up to one-third of oral melanomas may show little or no pigmentation. This is termed:</div>
+  <button class="opt">A. Melanin incontinence</button>
+  <button class="opt">B. Amelanosis</button>
+  <button class="opt">C. Ochronosis</button>
+  <button class="opt">D. Hemosiderosis</button>
+  <div class="explain">Answer: <b>B</b>. Amelanosis widens the differential and underscores the need for biopsy.</div>
+</div>
+
+<div class="mcq" data-correct="0">
+  <div class="stem"><span class="num">4</span>Which is the MOST common cause of multifocal/diffuse oral mucosal pigmentation?</div>
+  <button class="opt">A. Physiologic (racial) pigmentation</button>
+  <button class="opt">B. Addison's disease</button>
+  <button class="opt">C. Drug-induced melanosis</button>
+  <button class="opt">D. Peutz–Jeghers syndrome</button>
+  <div class="explain">Answer: <b>A</b>. Physiologic pigmentation is the most common; it appears in childhood, not de novo in adults.</div>
+</div>
+
+<div class="mcq" data-correct="3">
+  <div class="stem"><span class="num">5</span>The chief drugs implicated in drug-induced melanosis are the:</div>
+  <button class="opt">A. Beta-blockers</button>
+  <button class="opt">B. Statins</button>
+  <button class="opt">C. Penicillins</button>
+  <button class="opt">D. Antimalarials (chloroquine, hydroxychloroquine, quinacrine)</button>
+  <div class="explain">Answer: <b>D</b>. Antimalarials are chief, followed by phenothiazines, contraceptives, and cytotoxics.</div>
+</div>
+
+<div class="mcq" data-correct="2">
+  <div class="stem"><span class="num">6</span>Which statement about smoker's melanosis is TRUE?</div>
+  <button class="opt">A. It is a preneoplastic condition</button>
+  <button class="opt">B. It is caused by smokeless tobacco (snuff)</button>
+  <button class="opt">C. It is NOT a preneoplastic condition</button>
+  <button class="opt">D. It never occurs in dark-skinned individuals</button>
+  <div class="explain">Answer: <b>C</b>. Smoker's melanosis is not preneoplastic, unlike oral submucous fibrosis. Snuff is not associated with increased melanosis.</div>
+</div>
+
+<div class="mcq" data-correct="1">
+  <div class="stem"><span class="num">7</span>Melasma is MOST characteristically induced by:</div>
+  <button class="opt">A. Estrogen alone</button>
+  <button class="opt">B. Combination of estrogen and progesterone (+ sun exposure)</button>
+  <button class="opt">C. Progesterone alone</button>
+  <button class="opt">D. Testosterone excess</button>
+  <div class="explain">Answer: <b>B</b>. The estrogen + progesterone combination (with sun) induces it; estrogen alone does not.</div>
+</div>
+
+<div class="mcq" data-correct="3">
+  <div class="stem"><span class="num">8</span>In Addison's disease, the first 13 amino acids of ACTH are identical to:</div>
+  <button class="opt">A. Cortisol</button>
+  <button class="opt">B. TSH</button>
+  <button class="opt">C. Aldosterone</button>
+  <button class="opt">D. α-MSH</button>
+  <div class="explain">Answer: <b>D</b>. ACTH and α-MSH derive from POMC; the identity explains the hyperpigmentation.</div>
+</div>
+
+<div class="mcq" data-correct="0">
+  <div class="stem"><span class="num">9</span>A 9:00 a.m. serum cortisol level diagnostic of adrenal insufficiency is:</div>
+  <button class="opt">A. Less than 100 nmol/L</button>
+  <button class="opt">B. More than 500 nmol/L</button>
+  <button class="opt">C. More than 1000 nmol/L</button>
+  <button class="opt">D. Exactly 250 nmol/L</button>
+  <div class="explain">Answer: <b>A</b>. &lt; 100 nmol/L at 9 a.m. is diagnostic, with hyponatremia and hyperkalemia.</div>
+</div>
+
+<div class="mcq" data-correct="2">
+  <div class="stem"><span class="num">10</span>Which test is NOT one of the three main tests for Cushing's syndrome?</div>
+  <button class="opt">A. Low-dose dexamethasone suppression test</button>
+  <button class="opt">B. Midnight plasma cortisol</button>
+  <button class="opt">C. Serum antimitochondrial antibodies</button>
+  <button class="opt">D. 24-hour urinary free cortisol</button>
+  <div class="explain">Answer: <b>C</b>. Antimitochondrial antibodies belong to PBC, not Cushing's.</div>
+</div>
+
+<div class="mcq" data-correct="1">
+  <div class="stem"><span class="num">11</span>Primary biliary cirrhosis is characterized by the presence of:</div>
+  <button class="opt">A. Anti-21-hydroxylase antibodies</button>
+  <button class="opt">B. Antimitochondrial antibodies</button>
+  <button class="opt">C. Anti-NF1 antibodies</button>
+  <button class="opt">D. Anti-STK11 antibodies</button>
+  <div class="explain">Answer: <b>B</b>. PBC is autoimmune with antimitochondrial antibodies, mostly in middle-aged women.</div>
+</div>
+
+<div class="mcq" data-correct="3">
+  <div class="stem"><span class="num">12</span>Carotenemia and lycopenemia differ from true jaundice in that they:</div>
+  <button class="opt">A. Cause higher bilirubin</button>
+  <button class="opt">B. Affect the sclera more</button>
+  <button class="opt">C. Are always malignant</button>
+  <button class="opt">D. Do NOT affect the oral mucosal tissues</button>
+  <div class="explain">Answer: <b>D</b>. They spare the oral mucosal tissues, unlike true jaundice.</div>
+</div>
+
+<div class="mcq" data-correct="0">
+  <div class="stem"><span class="num">13</span>Peutz–Jeghers syndrome is associated with mutation of which gene?</div>
+  <button class="opt">A. STK11/LKB1</button>
+  <button class="opt">B. NF1</button>
+  <button class="opt">C. TP53</button>
+  <button class="opt">D. BRCA1</button>
+  <div class="explain">Answer: <b>A</b>. Autosomal dominant STK11/LKB1 mutation, with intestinal polyps and sun-independent macules.</div>
+</div>
+
+<div class="mcq" data-correct="2">
+  <div class="stem"><span class="num">14</span>Multiple café au lait spots most classically suggest:</div>
+  <button class="opt">A. Vitiligo</button>
+  <button class="opt">B. Hemochromatosis</button>
+  <button class="opt">C. Neurofibromatosis type I</button>
+  <button class="opt">D. Graves' disease</button>
+  <div class="explain">Answer: <b>C</b>. Multiple spots suggest NF1 (also McCune–Albright and Noonan). NF1 signs: Crowe's sign and Lisch nodules.</div>
+</div>
+
+<div class="mcq" data-correct="1">
+  <div class="stem"><span class="num">15</span>HIV/AIDS-associated melanosis correlates significantly with a CD4 count:</div>
+  <button class="opt">A. Above 1000 cells/μL</button>
+  <button class="opt">B. Below 200 cells/μL</button>
+  <button class="opt">C. Exactly 500 cells/μL</button>
+  <button class="opt">D. CD4 is irrelevant</button>
+  <div class="explain">Answer: <b>B</b>. Significant correlation with CD4 &lt; 200; buccal mucosa is the most affected site.</div>
+</div>
+
+<div class="mcq" data-correct="3">
+  <div class="stem"><span class="num">16</span>Exogenous ochronosis results from accumulation of:</div>
+  <button class="opt">A. Melanin in the basal layer</button>
+  <button class="opt">B. Hemosiderin in salivary glands</button>
+  <button class="opt">C. Amalgam particles on collagen</button>
+  <button class="opt">D. A yellow-brown pigment (NOT melanin) in the dermis</button>
+  <div class="explain">Answer: <b>D</b>. A yellow-brown, non-melanin pigment accumulates in the dermis after prolonged bleaching; treat with Q-switched Nd:YAG laser.</div>
+</div>
+
+<div class="mcq" data-correct="0">
+  <div class="stem"><span class="num">17</span>Which histochemical stain confirms the absence of melanin in vitiligo?</div>
+  <button class="opt">A. Fontana-Masson</button>
+  <button class="opt">B. Congo red</button>
+  <button class="opt">C. PAS</button>
+  <button class="opt">D. Prussian blue</button>
+  <div class="explain">Answer: <b>A</b>. Fontana-Masson confirms the absence of melanin in the basal layer.</div>
+</div>
+
+<div class="mcq" data-correct="2">
+  <div class="stem"><span class="num">18</span>In ecchymosis, the brown discoloration appearing within a few days is due to degradation of hemoglobin to:</div>
+  <button class="opt">A. Bilirubin</button>
+  <button class="opt">B. Melanin</button>
+  <button class="opt">C. Hemosiderin</button>
+  <button class="opt">D. Lipofuscin</button>
+  <div class="explain">Answer: <b>C</b>. Hemoglobin degrades to hemosiderin, producing the brown color.</div>
+</div>
+
+<div class="mcq" data-correct="1">
+  <div class="stem"><span class="num">19</span>The MOST common pigmented lesion of the oral mucosa is:</div>
+  <button class="opt">A. Melanotic macule</button>
+  <button class="opt">B. Amalgam tattoo</button>
+  <button class="opt">C. Melanocytic nevus</button>
+  <button class="opt">D. Graphite tattoo</button>
+  <div class="explain">Answer: <b>B</b>. Amalgam tattoo is the most common oral pigmented lesion — iatrogenic, gray-blue or black.</div>
+</div>
+
+<div class="mcq" data-correct="3">
+  <div class="stem"><span class="num">20</span>An easy, effective biopsy method to diagnose hemochromatosis is a biopsy of the:</div>
+  <button class="opt">A. Dorsal tongue</button>
+  <button class="opt">B. Hard palate mucosa</button>
+  <button class="opt">C. Gingiva</button>
+  <button class="opt">D. Lower labial salivary gland</button>
+  <div class="explain">Answer: <b>D</b>. A lower labial salivary gland biopsy shows increased basal melanin plus scattered golden/brown hemosiderin.</div>
+</div>
+
+</div>
+
+<div class="toolbar">
+  <button onclick="resetMCQ()">Reset MCQ</button>
+</div>
+<div class="score" id="score"></div>
+
+<!-- ============================ ARABIC SUMMARY (bottom only) ============================ -->
+<div class="ar-summary">
+  <h3>خلاصة بسيطة بالعربي</h3>
+  <p>موضوع اليوم هو <b>الآفات الصبغية للغشاء المخاطي الفموي</b>. أهم النقاط باختصار:</p>
+  <ul>
+    <li>أي آفة صبغية <b>بؤرية منفردة ومستمرة</b> تحتاج <b>خزعة</b> لاستبعاد الميلانوما.</li>
+    <li><b>الميلانوما الفموية</b>: الحنك أشيع موقع وأسوأ إنذار، وبقيا ١٠ سنوات = صفر٪، وثلثها بلا لون واضح (amelanotic).</li>
+    <li><b>التصبّغ المنتشر</b>: أشيع سبب فسيولوجي (منذ الطفولة)؛ الظهور المفاجئ عند البالغ علامة إنذار.</li>
+    <li><b>أسباب جهازية</b>: أديسون وكوشينغ (بآلية ACTH/α-MSH)، غريفز، تشمّع الصفراء الأولي (أضداد ميتوكوندريا)، عوز B12 (يشبه أديسون)، Peutz–Jeghers (بقع لا تتأثّر بالشمس)، café au lait/NF1، وHIV مع CD4 منخفض.</li>
+    <li><b>الدم والحديد</b>: كدمات وحبرات (تتحوّل للبني بسبب الهيموسيديرين)، وhemochromatosis (خزعة الغدة الشفوية السفلية).</li>
+    <li><b>خارجي</b>: وشم الأملغم أشيع آفة صبغية فموية، ثم الغرافيت والوشوم الزخرفية.</li>
+    <li>البهاق: مرض مناعي ذاتي، صبغة Fontana-Masson تؤكّد غياب الميلانين.</li>
+  </ul>
+  <p>بقية الملف (البطاقات، الجداول، الأسئلة) كلها بالإنكليزي للمذاكرة والامتحان.</p>
+</div>
+
+<footer>
+  Day 17 of the 70-day plan · Oral Medicine — Pigmented Lesions of the Oral Mucosa (pp. 293–364)<br>
+  Source: Oral Medicine equivalency curriculum — University of Baghdad
+</footer>
+
+<script>
+  document.querySelectorAll('.card .q').forEach(function(q){
+    var card = q.closest('.card');
+    var c = document.createElement('span');
+    c.className = 'chev'; c.textContent = '▸';
+    q.appendChild(c);
+    q.addEventListener('click', function(){
+      card.classList.toggle('open');
+      c.textContent = card.classList.contains('open') ? '▾' : '▸';
+    });
+  });
+  function openAll(){ document.querySelectorAll('.card').forEach(function(c){ c.classList.add('open'); var ch=c.querySelector('.chev'); if(ch) ch.textContent='▾'; }); }
+  function closeAll(){ document.querySelectorAll('.card').forEach(function(c){ c.classList.remove('open'); var ch=c.querySelector('.chev'); if(ch) ch.textContent='▸'; }); }
+
+  var answered = 0, correctCount = 0, total = document.querySelectorAll('.mcq').length;
+  document.querySelectorAll('.mcq').forEach(function(mcq){
+    var correct = parseInt(mcq.getAttribute('data-correct'), 10);
+    var opts = mcq.querySelectorAll('.opt');
+    opts.forEach(function(opt, idx){
+      opt.addEventListener('click', function(){
+        if (mcq.classList.contains('answered')) return;
+        mcq.classList.add('answered');
+        answered++;
+        if (idx === correct){ opt.classList.add('correct'); correctCount++; }
+        else { opt.classList.add('wrong'); opts[correct].classList.add('correct'); }
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    document.getElementById('score').textContent = 'Score: ' + correctCount + ' / ' + total + '  (answered ' + answered + ')';
+  }
+  function resetMCQ(){
+    answered = 0; correctCount = 0;
+    document.querySelectorAll('.mcq').forEach(function(mcq){
+      mcq.classList.remove('answered');
+      mcq.querySelectorAll('.opt').forEach(function(o){ o.classList.remove('correct','wrong'); });
+    });
+    document.getElementById('score').textContent = '';
+  }
+</script>
+
+</body>
+</html>
