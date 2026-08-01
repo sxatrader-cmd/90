@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Day 1 — Endodontics Exam (200 MCQs, timed)</title>
+<style>
+  :root { color-scheme: light only; }
+  * { box-sizing: border-box; -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+  html, body { background:#ffffff !important; color:#000000 !important; margin:0; padding:0; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; line-height:1.55; max-width:820px; margin:0 auto; padding:16px 14px 60px; font-size:17px; }
+  @media (prefers-color-scheme: dark) { html, body { background:#fff !important; color:#000 !important; } }
+
+  .hidden { display:none !important; }
+  h1 { font-size:22px; margin:0 0 8px; }
+
+  /* Start screen */
+  .start { border:2px solid #000; border-radius:14px; padding:22px; margin-top:20px; }
+  .start ul { padding-inline-start:20px; }
+  .start li { margin:8px 0; }
+  .btn { border:2px solid #000; background:#000; color:#fff; font-weight:800; border-radius:10px; padding:12px 22px; cursor:pointer; font-size:17px; font-family:inherit; }
+  .btn:hover { background:#fff; color:#000; }
+  .btn.secondary { background:#fff; color:#000; }
+  .btn.secondary:hover { background:#000; color:#fff; }
+
+  /* Exam header */
+  .examtop { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:10px; }
+  .progress-txt { font-weight:800; font-size:15px; }
+  .timer { font-weight:800; font-size:20px; min-width:64px; text-align:right; }
+  .timer.warn { color:#c8000c; }
+  .bar { height:8px; background:#eee; border:1px solid #ccc; border-radius:6px; overflow:hidden; margin-bottom:6px; }
+  .bar > div { height:100%; background:#000; width:100%; transition:width 1s linear; }
+  .tbar { height:8px; background:#eee; border:1px solid #ccc; border-radius:6px; overflow:hidden; margin-bottom:18px; }
+  .tbar > div { height:100%; background:#c8000c; width:100%; }
+
+  .stem { font-weight:700; font-size:18px; margin:6px 0 14px; }
+  .opt { display:block; width:100%; text-align:left; border:2px solid #999; border-radius:10px; padding:12px 14px; margin:9px 0; background:#fff; color:#000; cursor:pointer; font-size:16px; font-family:inherit; }
+  .opt { touch-action: manipulation; }
+  @media (hover: hover) and (pointer: fine) { .opt:hover { background:#f2f2f2; } }
+  .opt.sel { border-color:#000; background:#eaeaea; font-weight:700; }
+  .navrow { display:flex; justify-content:space-between; gap:10px; margin-top:16px; }
+
+  /* Results */
+  .scorebox { border:3px solid #000; border-radius:14px; padding:20px; text-align:center; margin:14px 0 20px; }
+  .scorebox .big { font-size:40px; font-weight:800; }
+  .scorebox .pct { font-size:20px; font-weight:700; }
+  .filterrow { display:flex; gap:8px; flex-wrap:wrap; margin:12px 0; }
+  .filterrow button { border:2px solid #000; background:#fff; color:#000; font-weight:700; border-radius:8px; padding:7px 12px; cursor:pointer; font-size:14px; font-family:inherit; }
+  .filterrow button.active { background:#000; color:#fff; }
+  .rev { border:2px solid #000; border-radius:10px; padding:12px 14px; margin:10px 0; }
+  .rev .qh { font-weight:700; margin-bottom:8px; }
+  .rev .ro { padding:7px 10px; border-radius:7px; margin:5px 0; border:1.5px solid #ccc; }
+  .rev .ro.correct { background:#d8f5dd; border-color:#127a2b; font-weight:700; }
+  .rev .ro.yourwrong { background:#fbdcdc; border-color:#b00020; }
+  .rev .tagline { font-size:13px; font-weight:700; margin-top:6px; }
+  .rev .tagline.ok { color:#127a2b; }
+  .rev .tagline.no { color:#b00020; }
+  .rev .tagline.skip { color:#a06000; }
+</style>
+</head>
+<body>
+
+<!-- ============ START SCREEN ============ -->
+<section id="startScreen">
+  <h1>Day 1 — Endodontics Exam</h1>
+  <div style="font-size:15px;">Source: Endodontics lectures (Dr. Raghad Al-Hashimi) · pp. 1–76 · Lectures 1–6</div>
+  <div class="start">
+    <b>Exam rules</b>
+    <ul>
+      <li><b>200 multiple-choice questions</b>, English only.</li>
+      <li><b>60-second timer per question.</b> When time runs out, the exam moves to the next question automatically and that question is marked unanswered.</li>
+      <li>One question at a time. Tap an option to answer — it advances to the next question.</li>
+      <li><b>Correct answers are hidden</b> until the final results screen, where you get your score plus a full review.</li>
+      <li>No going back once you leave a question.</li>
+    </ul>
+    <button class="btn" onclick="startExam()">Start exam</button>
+  </div>
+</section>
+
+<!-- ============ EXAM SCREEN ============ -->
+<section id="examScreen" class="hidden">
+  <div class="examtop">
+    <span class="progress-txt" id="progressTxt">Q 1 / 200</span>
+    <span class="timer" id="timer">60</span>
+  </div>
+  <div class="bar"><div id="progressBar"></div></div>
+  <div class="tbar"><div id="timerBar"></div></div>
+  <div class="stem" id="stem"></div>
+  <div id="options"></div>
+  <div class="navrow">
+    <span style="font-size:13px;color:#555;align-self:center;">Answered: <b id="answeredCount">0</b> / 200</span>
+    <button class="btn secondary" id="skipBtn" onclick="nextQuestion(true)">Skip →</button>
+  </div>
+</section>
+
+<!-- ============ RESULTS SCREEN ============ -->
+<section id="resultScreen" class="hidden">
+  <h1>Results</h1>
+  <div class="scorebox">
+    <div class="big" id="scoreBig">0 / 200</div>
+    <div class="pct" id="scorePct">0%</div>
+    <div id="scoreBreak" style="font-size:15px;margin-top:8px;"></div>
+  </div>
+  <div class="filterrow">
+    <button id="fAll" class="active" onclick="setFilter('all')">All 200</button>
+    <button id="fWrong" onclick="setFilter('wrong')">Wrong</button>
+    <button id="fSkip" onclick="setFilter('skip')">Unanswered</button>
+    <button class="btn secondary" style="margin-inline-start:auto;" onclick="location.reload()">Restart</button>
+  </div>
+  <div id="review"></div>
+</section>
+
+<script>
+/* ================= QUESTION BANK (200) ================= */
+/* Each: q = stem, o = [4 options], a = index of correct option */
+var QUESTIONS = [
+{q:"The Greek word 'Endo' means:",o:["Tooth","Inside","Root","Nerve"],a:1},
+{q:"The Greek word 'Odont' means:",o:["Inside","Bone","Tooth","Pulp"],a:2},
+{q:"Endodontics deals with the dental pulp and the:",o:["Gingiva","Peri-radicular tissue","Alveolar mucosa","Periodontal pocket"],a:1},
+{q:"Which is NOT a stated aim of endodontic therapy?",o:["Maintain vitality of the pulp","Restore a tooth with necrotic pulp","Extract every non-vital tooth","Retreat previously failed cases"],a:2},
+{q:"The primary objective of endodontic therapy is to create within the canal a:",o:["Permanent vacuum","Biologically acceptable environment for peri-radicular healing","Space for a post","Radiopaque mass"],a:1},
+{q:"This objective is achieved by eliminating bacteria and:",o:["Leaving the canal open","Sealing the canal/tooth against re-infection","Applying fluoride","Prescribing antibiotics"],a:1},
+{q:"Endodontics is described as an art as well as a:",o:["Business","Science","Craft","Hobby"],a:1},
+{q:"Which is within the scope of endodontics?",o:["Bracket bonding","Vital pulp therapy (pulp capping, pulpotomy)","Complete dentures","Scaling only"],a:1},
+{q:"Replantation of an avulsed tooth is within the scope of:",o:["Prosthodontics","Endodontics","Periodontics","Orthodontics"],a:1},
+{q:"A specific indication for root canal treatment is:",o:["A healthy vital asymptomatic pulp","An irreversibly damaged or necrotic pulp","Insufficient periodontal support","An unrestorable tooth"],a:1},
+{q:"Elective devitalization may be indicated to provide:",o:["Whitening","Post space prior to an overdenture","Gingival health","Occlusal correction"],a:1},
+{q:"A contraindication for root canal treatment is a tooth with:",o:["Restorable caries","Insufficient periodontal support","Apical periodontitis of pulpal origin","A single canal"],a:1},
+{q:"Success of endodontic therapy depends on:",o:["The number of visits","The quality of root canal treatment","The gutta-percha brand","The patient's age"],a:1},
+{q:"The dental pulp is a soft tissue of which origin?",o:["Ectodermal","Mesenchymal","Endodermal","Epithelial"],a:1},
+{q:"Odontoblasts are in direct contact with the:",o:["Enamel matrix","Dentin matrix","Cementum","Periodontal ligament"],a:1},
+{q:"The relationship between odontoblasts and dentin is the:",o:["Dentino-enamel junction","Pulp-dentine complex","Cemento-dentinal junction","Odontoblastic process"],a:1},
+{q:"The largest vascular components of the pulp are:",o:["Capillaries","Arterioles and venules","Lymphatics","Sinusoids"],a:1},
+{q:"The pulp is distinguished histologically into how many zones?",o:["Two","Three","Four","Five"],a:2},
+{q:"The most peripheral pulp zone is the:",o:["Cell-rich zone","Odontoblastic layer","Cell-free zone of Weil","Pulp core"],a:1},
+{q:"The cell-free zone of Weil is also called the:",o:["Odontoblastic layer","Sub-odontoblastic layer","Pulp core","Cell-rich zone"],a:1},
+{q:"Which zone contains fibroblasts and undifferentiated cells maintaining odontoblast numbers?",o:["Odontoblastic layer","Cell-free zone","Cell-rich zone","Pulp core"],a:2},
+{q:"The pulp core contains:",o:["Only odontoblasts","Large vessels and nerves","Enamel spindles","Sharpey's fibres"],a:1},
+{q:"Openings in the floor of the pulp chamber leading into root canals are the:",o:["Apical foramina","Canal orifices","Accessory canals","Lateral canals"],a:1},
+{q:"Which is NOT one of the four functions of the pulp?",o:["Formation of dentine","Nutrition of dentine","Innervation of the tooth","Formation of enamel"],a:3},
+{q:"The roof of the pulp chamber consists of dentin covering the chamber:",o:["Apically","Occlusally","Mesially","Lingually"],a:1},
+{q:"A Type 1 root canal configuration is designated:",o:["2-1-1","1-1-1","2-2-2","1-2-2"],a:1},
+{q:"Type 2 configuration (two canals joining to one foramen) is designated:",o:["1-1-1","2-1-1","2-2-2","1-2-2"],a:1},
+{q:"Type 3 configuration (two separate canals and foramina) is designated:",o:["1-1-1","2-1-1","2-2-2","1-2-2"],a:2},
+{q:"A single canal that bifurcates apically into two foramina is Type:",o:["1","2","3","4"],a:3},
+{q:"How many basic phases of endodontic treatment are described?",o:["Two","Three","Four","Five"],a:1},
+{q:"The phase in which the disease is determined and the plan developed is the:",o:["Preparatory","Diagnostic","Obliteration","Recall"],a:1},
+{q:"The obliteration phase seeks an adequate seal as close as possible to the:",o:["Dentino-enamel junction","Cemento-dentinal junction","Radiographic apex","Furcation"],a:1},
+{q:"The main source of injury to pulpal tissues is:",o:["Chemical irritants","Bacteria, usually from dental caries","Radiation","Trauma"],a:1},
+{q:"Anachoresis is microorganisms carried to inflamed tissue by the:",o:["Dentinal tubules","Bloodstream","Apical foramen","Carious cavity"],a:1},
+{q:"Bacteria most often recovered from infected vital pulps are:",o:["Actinomyces and Bacteroides","Streptococci, staphylococci, and diphtheroids","E. coli and Pseudomonas","Spirochetes only"],a:1},
+{q:"Excessive orthodontic forces are which type of pulpal irritant?",o:["Bacterial","Mechanical","Chemical","Radiation"],a:1},
+{q:"Irrigating solutions and phenol-based medicaments cause which type of periradicular irritation?",o:["Bacterial","Mechanical","Chemical","Radiation"],a:2},
+{q:"Pulp cells exposed to ionizing radiation may become:",o:["Hyperplastic","Necrotic","Only calcified","Only reversibly inflamed"],a:1},
+{q:"Reversible pulpitis is also known as:",o:["Pulp polyp","Pulpal hyperaemia","Pulp necrosis","Condensing osteitis"],a:1},
+{q:"In reversible pulpitis, pain:",o:["Is spontaneous and prolonged","Needs a stimulus and subsides on its removal","Lasts hours unprovoked","Is always well localized"],a:1},
+{q:"Pulpal pain is hard to localise because the pulp lacks:",o:["Blood vessels","Proprioceptive fibres","Odontoblasts","Lymphatics"],a:1},
+{q:"In acute pulpitis, HEAT stimulus:",o:["Decreases pain","Increases pain (blood vessel expansion)","Has no effect","Relieves pain permanently"],a:1},
+{q:"In acute pulpitis, COLD stimulus:",o:["Increases pain","Decreases pain (vessel contraction)","Causes necrosis","Has no effect"],a:1},
+{q:"In chronic pulpitis, thermal tests are:",o:["Highly diagnostic","Of little value","Contraindicated","Always positive"],a:1},
+{q:"Hyperplastic pulpitis is also known as a:",o:["Pulp stone","Pulp polyp","Periapical cyst","Granuloma"],a:1},
+{q:"Pulp necrosis occurs as the end result of:",o:["Reversible pulpitis","Irreversible pulpitis","Condensing osteitis","Internal resorption"],a:1},
+{q:"A pulp calcification of irregular dentine is called a:",o:["False denticle","True denticle","Pulp stone III","Reparative nodule"],a:1},
+{q:"A pulp calcification from ectopic calcification of pulp tissue is a:",o:["True denticle","False denticle","Secondary denticle","Primary denticle"],a:1},
+{q:"Tertiary dentine laid beneath injured tubules is called:",o:["Primary dentine","Reparative dentine","Mantle dentine","Circumpulpal dentine"],a:1},
+{q:"Internal resorption is initiated within the:",o:["Alveolar bone","Pulp cavity","Cementum","Enamel"],a:1},
+{q:"A clinical 'pink spot' suggests internal resorption due to:",o:["Staining","Dentinoclastic activity","Fluorosis","Amalgam tattoo"],a:1},
+{q:"After endodontic treatment, the tooth should be restored not more than:",o:["One week","One month","Six months","One year"],a:1},
+{q:"Untreated pulpal infection eventually leads to:",o:["Reversible pulpitis","Total pulp necrosis","Remineralization","Spontaneous healing"],a:1},
+{q:"Severity of periapical inflammation relates to microorganisms and the:",o:["Patient's age","Length of exposure to microorganisms","Tooth color","Number of roots"],a:1},
+{q:"Acute apical periodontitis is painful inflammation of the:",o:["Pulp","Periodontium","Enamel","Cementum"],a:1},
+{q:"A distinctive feature of acute apical periodontitis is:",o:["Painless swelling","Dull throbbing constant pain over a short period","No response to percussion","Apical radiopacity"],a:1},
+{q:"In acute apical periodontitis the tooth is typically:",o:["Not tender to biting","Tender to biting","Mobile and painless","Insensitive to all stimuli"],a:1},
+{q:"In acute apical periodontitis, cold may ___ and heat may ___ the pain.",o:["exacerbate; relieve","relieve; exacerbate","not affect; relieve","relieve; not affect"],a:1},
+{q:"Chronic apical periodontitis occurs as a result of:",o:["Reversible pulpitis","Pulp necrosis","Occlusal trauma only","Enamel caries"],a:1},
+{q:"Teeth with chronic apical periodontitis respond to pulp sensitivity tests:",o:["Strongly positive","Not at all","Only to heat","Only electrically"],a:1},
+{q:"Condensing osteitis is a variant of:",o:["Acute apical abscess","Chronic apical periodontitis","Reversible pulpitis","Internal resorption"],a:1},
+{q:"Radiographically, condensing osteitis appears as a:",o:["Radiolucent area","Concentric radio-opaque area around the root","Widened PDL only","Root resorption"],a:1},
+{q:"An acute apical abscess is a localized collection of pus at the:",o:["Cervical margin","Root apex","Furcation","Coronal pulp"],a:1},
+{q:"The most common cause of acute apical abscess is:",o:["Occlusal trauma","Bacteria from necrotic pulp tissue","Orthodontic movement","Chemical irritation"],a:1},
+{q:"In an acute apical abscess the tooth is usually:",o:["Vital, tender to cold","Non-vital, tender to palpation and percussion","Vital, non-tender","Non-vital, non-tender"],a:1},
+{q:"Initial treatment of an acute apical abscess involves:",o:["Immediate obturation","Removal of the cause and establishing drainage","Fluoride application","Occlusal build-up"],a:1},
+{q:"Chronic apical abscess is also known as:",o:["Condensing osteitis","Suppurative apical periodontitis","Acute apical periodontitis","Reversible pulpitis"],a:1},
+{q:"A chronic apical abscess characteristically discharges through a(n):",o:["Intact periosteum","Intraoral (or rarely extraoral) sinus","Enamel surface","Gingival col only"],a:1},
+{q:"Drainage of an acute apical abscess can be by opening the tooth or by:",o:["Analgesics","Incision into a related swelling","Fluoride varnish","Bite adjustment"],a:1},
+{q:"Access opening provides straight-line access to the:",o:["Cemento-enamel junction","Apical foramen","Furcation","Gingival margin"],a:1},
+{q:"Access cavities are cut so the pulpal roof and overlying dentin are:",o:["Left intact","Removed","Partially retained","Covered with base"],a:1},
+{q:"An objective of access opening is to conserve tooth structure to avoid:",o:["Better visualization","Weakening of remaining tooth structure","Straight-line access","Orifice location"],a:1},
+{q:"The outline form of the access cavity is affected by the size of the:",o:["Root apex","Pulp chamber","Alveolar bone","Enamel cap"],a:1},
+{q:"Access opening for young patients is ___ because the pulp chamber is ___.",o:["smaller; smaller","larger; larger","smaller; larger","larger; smaller"],a:1},
+{q:"Access objectives are confirmed when all orifices are visualized:",o:["Under a microscope","Without moving the mouth mirror","After obturation","With loupes only"],a:1},
+{q:"The access opening of the maxillary central incisor is:",o:["Oval","Triangular","Rectangular","Rhomboid"],a:1},
+{q:"The average tooth length of the maxillary central incisor is:",o:["21 mm","22.5 mm","26.5 mm","20 mm"],a:1},
+{q:"The maxillary lateral incisor has a ___ curvature at the apex.",o:["mesio-buccal","disto-palatal","disto-buccal","mesio-lingual"],a:1},
+{q:"The maxillary canine has the longest average length of:",o:["22.5 mm","24 mm","26.5 mm","21 mm"],a:2},
+{q:"Access entrance for all anterior teeth is through the:",o:["Labial surface","Lingual surface","Incisal edge","Proximal surface"],a:1},
+{q:"Mandibular incisors may have two canals located:",o:["Mesially and distally","Labially and lingually","Buccally and palatally","Coronally and apically"],a:1},
+{q:"Slight curvature of the lower incisor root apex is usually toward the ___ side.",o:["buccal","lingual","mesial","distal"],a:1},
+{q:"For the maxillary first premolar the access opening is ovoid and elongated:",o:["Mesiodistally","Buccopalatally","Occlusogingivally","Diagonally"],a:1},
+{q:"The maxillary first premolar has two canals in approximately:",o:["20%","40%","60%","80%"],a:3},
+{q:"The maxillary first premolar has a single canal in about:",o:["20%","40%","60%","80%"],a:0},
+{q:"The maxillary second premolar has two canals in approximately:",o:["20%","40%","60%","80%"],a:1},
+{q:"The maxillary second premolar has one canal in approximately:",o:["20%","40%","60%","80%"],a:2},
+{q:"In the mandibular first premolar, the most common configuration (Type I) occurs in about:",o:["6.5%","19.5%","73.5%","40%"],a:2},
+{q:"The largest canal of the maxillary first molar is the:",o:["Mesiobuccal","Distobuccal","Palatal","Mesiolingual"],a:2},
+{q:"A second mesiobuccal (MB2) canal in the maxillary first molar occurs in about:",o:["33%","50%","70%","20%"],a:2},
+{q:"The final access opening shape of the maxillary first molar is:",o:["Rectangular","Triangular","Oval","Rhomboid"],a:1},
+{q:"The mandibular first molar usually has two mesial canals and one:",o:["Palatal","Distal","Buccal","Lingual"],a:1},
+{q:"The possibility of two distal canals in the mandibular first molar is about:",o:["70%","50%","33%","20%"],a:2},
+{q:"The average tooth length of the maxillary first molar is:",o:["21 mm","20 mm","21.5 mm","22.5 mm"],a:0},
+{q:"The average tooth length of the maxillary second molar is:",o:["21 mm","20 mm","22.5 mm","26.5 mm"],a:1},
+{q:"Ninja access opening was developed mainly to:",o:["Increase taper","Preserve tooth structure (minimally invasive)","Speed obturation","Enlarge the foramen"],a:1},
+{q:"Minimally invasive endodontics improves the ___ of treated teeth.",o:["color","fracture resistance","eruption","sensitivity"],a:1},
+{q:"The first guideline for access preparation is to:",o:["Excavate caries","Study the preoperative radiograph","Place rubber dam","Extirpate the pulp"],a:1},
+{q:"Access opening burs are round burs with a shank of:",o:["13 mm","16 mm","10 mm","20 mm"],a:1},
+{q:"Access opening burs are ___ longer than standard burs.",o:["1 mm","3 mm","5 mm","10 mm"],a:1},
+{q:"For anterior teeth, initial enamel penetration uses round bur no. 4 at a ___ to the long axis.",o:["parallel angle","right angle","45-degree angle","30-degree angle"],a:1},
+{q:"Reaching the pulp chamber is recognized by:",o:["Increased resistance","A fall in resistance (the bur drops)","Bleeding stopping","Bur discoloration"],a:1},
+{q:"For premolars, access is through the occlusal surface at the center of the:",o:["Marginal ridge","Central groove","Oblique ridge","Buccal cusp"],a:1},
+{q:"Anterior pulp horns should be eliminated to prevent:",o:["Fracture","Discoloration from necrotic remnants","Overfilling","Perforation"],a:1},
+{q:"Dentinogenesis imperfecta shows a small pulp chamber with:",o:["Open apex","Root canal obstruction","Enlarged pulp","Loss of lamina dura"],a:1},
+{q:"Hyperparathyroidism is associated with a calcified pulp chamber and:",o:["Retarded eruption","Loss of lamina dura","Shell teeth","Big pulp chamber"],a:1},
+{q:"Shell teeth show a big pulp chamber with a:",o:["Long root","Short root","Calcified canal","Open apex only"],a:1},
+{q:"Perforation is most common when drilling continues after reaching the:",o:["Enamel","Pulp chamber","Cementum","Gingiva"],a:1},
+{q:"Perforation is more common in old patients due to:",o:["Large pulp","Pulp recession","Open apices","Thin enamel"],a:1},
+{q:"Cutting more apically leads to flattening of the ___ of the pulp chamber.",o:["roof","floor","walls","orifice"],a:1},
+{q:"Gouging is going ___ so the cavity wall doesn't continue with the canal wall.",o:["apically","laterally","coronally","occlusally"],a:1},
+{q:"A narrow access opening is identified by:",o:["Absence of bleeding","Severe bleeding","Radiopacity","Widened PDL"],a:1},
+{q:"In a narrow access, the floor dentin color may change to:",o:["Yellow","Dark blue","White","Green"],a:1},
+{q:"Over-extended access preparation weakens the:",o:["Dentin floor","Enamel walls","Cementum","Pulp horns"],a:1},
+{q:"The endodontic excavator is also used in ___ in surgical endodontics.",o:["obturation","curettage of periapical lesions","irrigation","measuring files"],a:1},
+{q:"The endodontic ruler is made of divisions of:",o:["1 mm","0.5 mm","0.25 mm","2 mm"],a:1},
+{q:"The barbed broach is inserted freely to what fraction of the canal to avoid fracture?",o:["1/3","1/2","2/3","Full length"],a:2},
+{q:"The barbed broach is used mainly for:",o:["Obturation","Vital pulp extirpation and debris removal","Irrigation","Length measurement"],a:1},
+{q:"A super-flexible material used for modern files is:",o:["Carbon steel","Nickel-titanium","Tungsten carbide","Chromium"],a:1},
+{q:"Reamers have approximately:",o:["0.5-1 flute/mm","1.5-2.25 flutes/mm","3-4 flutes/mm","5 flutes/mm"],a:0},
+{q:"K-files have approximately:",o:["0.5-1 flute/mm","1.5-2.25 flutes/mm","3-4 flutes/mm","0.25 flute/mm"],a:1},
+{q:"Which instrument is triangular in cross-section, sharp-edged, and active only in pulling?",o:["K-file","Reamer","Hedstrom file","K-flex file"],a:2},
+{q:"The Hedstrom file cannot be used in which movement?",o:["Pulling","Rotation","Push-pull","Filing"],a:1},
+{q:"A size 30 reamer means D0 equals:",o:["0.03 mm","0.3 mm","3 mm","0.7 mm"],a:1},
+{q:"The relationship is D16 = D0 + :",o:["0.16 mm","0.32 mm","0.5 mm","0.02 mm"],a:1},
+{q:"In the color coding, size 15 is:",o:["Yellow","White","Red","Blue"],a:1},
+{q:"In the color coding, size 25 is:",o:["Red","Blue","Yellow","Green"],a:0},
+{q:"The rubber dam prevents accidental swallowing or aspiration of:",o:["Restorative materials","Small endodontic instruments","Cotton rolls","Gutta-percha only"],a:1},
+{q:"The rubber dam prevents intracanal irrigants from entering the mouth because they are:",o:["Toxic only","Of unpleasant taste","Radiopaque","Colored"],a:1},
+{q:"The rubber dam helps maintain a dry field by eliminating:",o:["Bleeding","Salivary contamination","Debris","Irrigant"],a:1},
+{q:"The rubber dam eliminates soft tissue interference by retracting the:",o:["Lips only","Cheek and tongue","Gingiva","Floor of mouth"],a:1},
+{q:"Which rubber dam thickness is indicated generally all around the mouth?",o:["Thin-weight","Medium-weight","Heavy-weight","Extra-heavy"],a:1},
+{q:"Thin-weight rubber dam is indicated for lower anterior teeth and:",o:["Molars","Partially erupted posterior teeth","Bridges","Implants"],a:1},
+{q:"Heavy-weight rubber dam provides great adaptation and resists tearing but:",o:["Illuminates the field","Exerts much force on lips and cheek","Is transparent","Is disposable only"],a:1},
+{q:"A LIGHT-colored rubber dam provides:",o:["Sharp contrast","Better illumination of the field","Radiolucency","Retraction"],a:1},
+{q:"A DARK-colored rubber dam provides:",o:["Better illumination","Sharp contrast between tooth and background","Radiopacity","Retraction"],a:1},
+{q:"A purpose of the rubber dam frame is to provide lip and cheek retraction and:",o:["Radiopacity","Unobstructed access to the tooth","Sterility","Illumination"],a:1},
+{q:"The Young's frame (Type A) is U-shaped and made of:",o:["Radiolucent plastic","Metal","Nylon","Rubber"],a:1},
+{q:"A disadvantage of the metal Young's frame is that it may:",o:["Tear the dam","Interfere with the X-ray","Slip off","Absorb irrigant"],a:1},
+{q:"The Starvisi frame (Type B) is made of radiolucent plastic and nylon and is a substitute for:",o:["Nygard-Ostby frame","Young's frame","The clamp","The puncture"],a:1},
+{q:"Which frame can be left in the mouth while taking a radiograph without obstruction?",o:["Young's (Type A)","Starvisi (Type B)","Nygard-Ostby (Type C)","None"],a:2},
+{q:"Ivory clamp No. 9 is used for:",o:["Molars","Incisors and bicuspids","Cuspids only","Partially erupted molars"],a:1},
+{q:"Ivory clamp No. 26 is used for:",o:["Incisors","Bicuspids","Molars","Cuspids"],a:2},
+{q:"Ivory clamp No. 0 is used for incisors, cuspids, and:",o:["Molars","Multiple isolation","Bicuspids only","Partially erupted teeth"],a:1},
+{q:"Ivory clamp No. 14A is used for molars that are partially erupted, badly broken-down, or:",o:["Vital only","When other clamps fail","Anterior teeth","Single-rooted teeth"],a:1},
+{q:"Which rubber dam application method is easy and fast and does not require an assistant?",o:["Method 1 (clamp and dam together)","Method 2 (clamp then dam)","Method 3 (dam then clamp)","None"],a:0},
+{q:"A disadvantage of Method 1 (clamp and dam together) is that it does not permit:",o:["Fast placement","Direct visualization of the tooth during placement","Retraction","Isolation"],a:1},
+{q:"Working length is the distance from a coronal reference point to the point where canal preparation and obturation should:",o:["Begin","Terminate","Be irrigated","Be flared"],a:1},
+{q:"The apical end of the root canal (CDJ) is usually how far short of the radiographic apex?",o:["2-3 mm","0.5-1 mm","3-4 mm","At the apex"],a:1},
+{q:"The reference point for measurement should be stable, easily visualized, and:",o:["Radiopaque","Not changing during/between appointments","Colored","On the gingiva"],a:1},
+{q:"The anatomic apex is the tip of the root determined:",o:["Radiographically","Morphologically","Electronically","By palpation"],a:1},
+{q:"The apical constriction (minor apical diameter) is usually how far short of the apical foramen?",o:["2-3 mm","0.5-1 mm","3-4 mm","At the foramen"],a:1},
+{q:"The cemento-dentinal junction is located how far short of the anatomic apex?",o:["0.5-3 mm","4-5 mm","At the apex","6 mm"],a:0},
+{q:"Which is a consequence of an over-extended working length?",o:["Underfilling","Overfilling of the root canal","Incomplete cleaning","Persistent pulpal remnants"],a:1},
+{q:"Which is a consequence of working short of the actual working length?",o:["Overfilling","Incomplete apical seal","Perforation through apical constriction","Prolonged healing from overinstrumentation"],a:1},
+{q:"Over-extended working length increases the incidence of:",o:["Underfilling","Postoperative pain","Incomplete cleaning","Apical leakage from underfilling"],a:1},
+{q:"In the radiographic method, if the film shows the file 3 mm too long, you should:",o:["Add 2 mm","Subtract 4 mm","Subtract 2 mm","Add 4 mm"],a:1},
+{q:"If the film shows the file 3 mm too short, you should:",o:["Add 2 mm","Subtract 4 mm","Add 4 mm","Subtract 2 mm"],a:0},
+{q:"For measuring tooth length, which technique is more accurate?",o:["Bisecting technique","Parallel technique","Occlusal technique","Panoramic"],a:1},
+{q:"The SLOB rule stands for:",o:["Slow Lingual Occlusal Buccal","Same Lingual Opposite Buccal","Superior Lingual Overlap Buccal","Same Labial Opposite Buccal"],a:1},
+{q:"For superimposed canals, radiographs are taken at a horizontal angulation of about:",o:["5-10 degrees","20-40 degrees","50-60 degrees","70-90 degrees"],a:1},
+{q:"Electronic apex locators are used to locate the apical constriction, CDJ, or apical foramen, but NOT the:",o:["Apical constriction","Radiographic apex","Cemento-dentinal junction","Apical foramen"],a:1},
+{q:"Which is an application of radiographs in endodontics?",o:["Sterilizing instruments","Estimating and confirming the length of root canals","Irrigating the canal","Condensing gutta-percha"],a:1},
+{q:"The 'initial size' file is the first instrument that fits the working length with:",o:["No resistance","Slight resistance","Heavy binding","Loose fit"],a:1},
+{q:"The reference point in anterior teeth is usually the highest point on the:",o:["Cusp tip","Incisal edge","Cingulum","Marginal ridge"],a:1},
+{q:"The reference point in posterior teeth is usually the:",o:["Incisal edge","Tip of the cusp","Central groove","Marginal ridge"],a:1},
+{q:"The apical foramen is the main apical opening and may be located:",o:["Always at the anatomic apex","Away from the anatomic or radiographic apex","At the CEJ","In the furcation"],a:1},
+{q:"Consequences of a short working length include incomplete apical seal and:",o:["Overfilling","Apical leakage supporting bacteria","Perforation of the apex","Overinstrumentation"],a:1},
+{q:"The minor apical diameter widens apically toward the foramen to become the:",o:["Constriction","Major diameter","Reference point","Orifice"],a:1},
+{q:"The major biologic aim of endodontic therapy is to eliminate apical periodontitis by disinfection and:",o:["Bleaching","Sealing of the root canal system","Extraction","Crown placement"],a:1},
+{q:"Schilder described how many mechanical objectives of root canal preparation?",o:["Three","Four","Five","Six"],a:2},
+{q:"Schilder described how many biological objectives?",o:["Three","Four","Five","Six"],a:1},
+{q:"The first mechanical objective is that the preparation should develop a:",o:["Parallel-walled canal","Continuously tapering cone","Cylindrical shape","Reverse taper"],a:1},
+{q:"The mechanical objective of keeping the canal narrower apically and widest coronally creates the:",o:["Glide path","Resistance form to hold gutta-percha","Access outline","Reference point"],a:1},
+{q:"Doubling the file size apically increases the surface area of the foramen by:",o:["Two-fold","Four-fold","Three-fold","Ten-fold"],a:1},
+{q:"A biological objective of preparation is confinement of instrumentation:",o:["Beyond the apex","Within the root canals only","In the pulp chamber only","In the furcation"],a:1},
+{q:"A patency (glide-path) file is usually a size:",o:["#8 or #10","#10 or #15","#20 or #25","#30 or #35"],a:1},
+{q:"A precurved instrument is used for curved canals and applies only to which material?",o:["Nickel-titanium","Stainless steel","Chromium","Titanium alloy"],a:1},
+{q:"Nickel-titanium instruments cannot be precurved because they are:",o:["Brittle","Flexible","Too stiff","Corroded"],a:1},
+{q:"The most popular intracanal irrigation solution is:",o:["Chlorhexidine","Sodium hypochlorite (NaOCl) 2.5-5.25%","Hydrogen peroxide","Saline"],a:1},
+{q:"Instruments should be examined before each insertion for any sign of:",o:["Color","Fatigue, stress, or damage","Length","Taper"],a:1},
+{q:"During preparation, files should be used in sequential order and one should never:",o:["Irrigate","Skip an instrument size","Recapitulate","Precurve"],a:1},
+{q:"The standardized technique was developed by:",o:["Clem and Weine","Ingle","Roane and Sabala","Schilder"],a:1},
+{q:"The standardized technique is also called the:",o:["Step-back technique","Single-length technique","Crown-down technique","Balanced force technique"],a:1},
+{q:"In the watch-winding motion, the file is rotated gently clockwise and anticlockwise with:",o:["Heavy apical pressure","Minimal apical pressure","No pressure at all","Pulling only"],a:1},
+{q:"The final instrument that resembles the taper of the standardized preparation is the:",o:["Patency file","Master apical file (MAF)","Gates-Glidden drill","Spreader"],a:1},
+{q:"A disadvantage of the standardized technique in curved canals is increased incidence of:",o:["Better flaring","Ledging, zipping and perforation","Apical enlargement","Coronal flaring"],a:1},
+{q:"The step-back technique was introduced by:",o:["Ingle","Clem and Weine","Roane and Sabala","Schilder"],a:1},
+{q:"The step-back technique relies on stepwise ___ of working length for larger files.",o:["increase","reduction","doubling","tripling"],a:1},
+{q:"The step-back result is a preparation with small apical enlargement and marked:",o:["Cylindrical shape","Taper from apical to coronal","Reverse taper","Parallel walls"],a:1},
+{q:"A disadvantage of the step-back technique is:",o:["Poor coronal flaring","Difficulty irrigating the apical region","No apical stop","No taper"],a:1},
+{q:"Recapitulation with a smaller/previous file is done to:",o:["Enlarge the apex","Break up apical debris to be washed away","Skip a size","Set working length"],a:1},
+{q:"The step-down technique shapes which part of the canal first?",o:["Apical part","Coronal part (coronal preflaring)","Middle only","Foramen"],a:1},
+{q:"An objective of the step-down technique is to permit straight access to the apical region by eliminating:",o:["Apical debris","Coronal interference","The reference point","The glide path"],a:1},
+{q:"The step-down technique reduces extruded debris through the apical foramen during:",o:["Obturation","Instrumentation","Irrigation","Access"],a:1},
+{q:"Coronal flaring in step-down uses which rotary drills?",o:["Peeso reamers only","Gates-Glidden drills","Spreaders","Pluggers"],a:1},
+{q:"The balanced force technique was introduced by:",o:["Ingle","Clem and Weine","Roane and Sabala","Schilder"],a:2},
+{q:"The balanced force technique uses which file with a safe tip design?",o:["K-file","Hedstrom","Flex-R file","Reamer"],a:2},
+{q:"In balanced force, the cutting action is provided by the ___ rotation with apical pressure.",o:["clockwise","counterclockwise","push-pull","watch-winding"],a:1},
+{q:"The crown-down (pressure-less) technique shapes the canal moving from the:",o:["Apex toward the crown","Crown toward the apical portion","Middle outward","Foramen coronally"],a:1}
+];
+/* ================= ENGINE ================= */
+var idx = 0, answers = [], timer = null, timeLeft = 60, filter = 'all';
+
+function startExam(){
+  answers = QUESTIONS.map(function(){ return -1; }); // -1 = unanswered
+  idx = 0;
+  document.getElementById('startScreen').classList.add('hidden');
+  document.getElementById('examScreen').classList.remove('hidden');
+  renderQuestion();
+}
+
+function renderQuestion(){
+  if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+  window.scrollTo(0, 0);
+  var Q = QUESTIONS[idx];
+  document.getElementById('progressTxt').textContent = 'Q ' + (idx+1) + ' / ' + QUESTIONS.length;
+  document.getElementById('progressBar').style.width = (((idx)/QUESTIONS.length)*100) + '%';
+  document.getElementById('answeredCount').textContent = answers.filter(function(a){return a>=0;}).length;
+  document.getElementById('stem').textContent = (idx+1) + '. ' + Q.q;
+  var box = document.getElementById('options');
+  box.innerHTML = '';
+  Q.o.forEach(function(text, i){
+    var b = document.createElement('button');
+    b.className = 'opt' + (answers[idx]===i ? ' sel' : '');
+    b.textContent = String.fromCharCode(65+i) + '. ' + text;
+    b.onclick = function(){ selectOption(i); };
+    box.appendChild(b);
+  });
+  startTimer();
+}
+
+function startTimer(){
+  clearInterval(timer);
+  timeLeft = 60;
+  updateTimerUI();
+  timer = setInterval(function(){
+    timeLeft--;
+    updateTimerUI();
+    if (timeLeft <= 0){ clearInterval(timer); nextQuestion(true); }
+  }, 1000);
+}
+function updateTimerUI(){
+  var t = document.getElementById('timer');
+  t.textContent = timeLeft;
+  t.classList.toggle('warn', timeLeft <= 10);
+  document.getElementById('timerBar').style.width = ((timeLeft/60)*100) + '%';
+}
+
+function selectOption(i){
+  answers[idx] = i;
+  // brief visual selection, then advance
+  var opts = document.querySelectorAll('#options .opt');
+  opts.forEach(function(o){ o.classList.remove('sel'); });
+  if (opts[i]) opts[i].classList.add('sel');
+  clearInterval(timer);
+  setTimeout(function(){ nextQuestion(false); }, 180);
+}
+
+function nextQuestion(fromTimeoutOrSkip){
+  clearInterval(timer);
+  if (idx < QUESTIONS.length - 1){
+    idx++;
+    renderQuestion();
+  } else {
+    finishExam();
+  }
+}
+
+function finishExam(){
+  clearInterval(timer);
+  document.getElementById('examScreen').classList.add('hidden');
+  document.getElementById('resultScreen').classList.remove('hidden');
+  var correct = 0, wrong = 0, skipped = 0;
+  answers.forEach(function(a, i){
+    if (a === -1) skipped++;
+    else if (a === QUESTIONS[i].a) correct++;
+    else wrong++;
+  });
+  document.getElementById('scoreBig').textContent = correct + ' / ' + QUESTIONS.length;
+  document.getElementById('scorePct').textContent = Math.round((correct/QUESTIONS.length)*100) + '%';
+  document.getElementById('scoreBreak').textContent = 'Correct: ' + correct + '  ·  Wrong: ' + wrong + '  ·  Unanswered: ' + skipped;
+  renderReview();
+}
+
+function setFilter(f){
+  filter = f;
+  ['fAll','fWrong','fSkip'].forEach(function(id){ document.getElementById(id).classList.remove('active'); });
+  document.getElementById(f==='all'?'fAll':(f==='wrong'?'fWrong':'fSkip')).classList.add('active');
+  renderReview();
+}
+
+function renderReview(){
+  var box = document.getElementById('review');
+  box.innerHTML = '';
+  QUESTIONS.forEach(function(Q, i){
+    var a = answers[i];
+    var isCorrect = a === Q.a;
+    var isSkip = a === -1;
+    if (filter === 'wrong' && (isCorrect || isSkip)) return;
+    if (filter === 'skip' && !isSkip) return;
+    var card = document.createElement('div');
+    card.className = 'rev';
+    var h = document.createElement('div');
+    h.className = 'qh';
+    h.textContent = (i+1) + '. ' + Q.q;
+    card.appendChild(h);
+    Q.o.forEach(function(text, j){
+      var row = document.createElement('div');
+      row.className = 'ro';
+      var label = String.fromCharCode(65+j) + '. ' + text;
+      if (j === Q.a){ row.className += ' correct'; label += '  ✓'; }
+      if (j === a && a !== Q.a){ row.className += ' yourwrong'; label += '  ✗ (your answer)'; }
+      row.textContent = label;
+      card.appendChild(row);
+    });
+    var tag = document.createElement('div');
+    if (isSkip){ tag.className = 'tagline skip'; tag.textContent = 'Unanswered (timed out or skipped)'; }
+    else if (isCorrect){ tag.className = 'tagline ok'; tag.textContent = 'Correct'; }
+    else { tag.className = 'tagline no'; tag.textContent = 'Incorrect'; }
+    card.appendChild(tag);
+    box.appendChild(card);
+  });
+  if (!box.children.length){
+    box.innerHTML = '<div style="padding:20px;text-align:center;font-weight:700;">Nothing to show here.</div>';
+  }
+}
+</script>
+</body>
+</html>
