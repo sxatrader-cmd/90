@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Day 18 — Oral Medicine · Timed Study Review (300s per item)</title>
+<style>
+  :root { color-scheme: light only; }
+  * { box-sizing: border-box; -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+  html, body { background:#ffffff !important; color:#000000 !important; margin:0; padding:0; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; line-height:1.6; max-width:860px; margin:0 auto; padding:16px 14px 40px; font-size:17px; }
+  @media (prefers-color-scheme: dark) { html, body { background:#fff !important; color:#000 !important; } }
+
+  .hidden { display:none !important; }
+  h1 { font-size:22px; margin:0 0 8px; }
+
+  .start { border:2px solid #000; border-radius:14px; padding:22px; margin-top:20px; }
+  .start ul { padding-inline-start:20px; } .start li { margin:8px 0; }
+  .btn { border:2px solid #000; background:#000; color:#fff; font-weight:800; border-radius:10px; padding:12px 22px; cursor:pointer; font-size:17px; font-family:inherit; }
+  .btn:hover { background:#fff; color:#000; }
+  .btn.secondary { background:#fff; color:#000; }
+  .btn.secondary:hover { background:#000; color:#fff; }
+  .btn:disabled { opacity:.4; cursor:default; }
+  .btn:disabled:hover { background:#fff; color:#000; }
+
+  .examtop { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:10px; }
+  .progress-txt { font-weight:800; font-size:15px; }
+  .timer { font-weight:800; font-size:22px; min-width:78px; text-align:right; font-variant-numeric:tabular-nums; }
+  .timer.warn { color:#c8000c; }
+  .bar { height:8px; background:#eee; border:1px solid #ccc; border-radius:6px; overflow:hidden; margin-bottom:6px; }
+  .bar > div { height:100%; background:#000; width:0%; transition:width .3s linear; }
+  .tbar { height:10px; background:#eee; border:1px solid #ccc; border-radius:6px; overflow:hidden; margin-bottom:18px; }
+  .tbar > div { height:100%; background:#0b7285; width:100%; }
+
+  .item-title { background:#000; color:#fff; padding:12px 16px; border-radius:10px; font-size:19px; font-weight:800; margin:6px 0 14px; }
+  .content { font-size:17px; }
+  .content p { margin:12px 0; }
+  .content ul { margin:10px 0; padding-inline-start:22px; } .content li { margin:6px 0; }
+  .sub-h { font-weight:800; display:block; margin:14px 0 4px; }
+
+  .crit { background:#fff3b0; color:#c8000c; font-weight:800; padding:1px 6px; border-radius:5px; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
+  .critbox { background:#fff3b0; border:2px solid #c8000c; border-radius:10px; color:#000; padding:12px 16px; margin:14px 0; }
+  .critbox .lbl { display:block; color:#c8000c; font-weight:800; margin-bottom:6px; }
+
+  .navrow { display:flex; justify-content:space-between; gap:10px; margin-top:22px; flex-wrap:wrap; }
+  .navrow .btn { padding:11px 18px; font-size:16px; }
+
+  .ar { direction:rtl; text-align:right; }
+  .ar .item-title { text-align:right; }
+
+  .done { border:3px solid #000; border-radius:14px; padding:26px; text-align:center; margin-top:20px; }
+  .done .big { font-size:30px; font-weight:800; margin-bottom:8px; }
+</style>
+</head>
+<body>
+
+<!-- ============ START ============ -->
+<section id="startScreen">
+  <h1>Day 18 — Oral Medicine · Timed Study Review</h1>
+  <div style="font-size:15px;">Metal/drug pigmentation · hairy tongue · neuromuscular disorders · pp. 365–394</div>
+  <div class="start">
+    <b>How this works</b>
+    <ul>
+      <li>The material is shown <b>one item at a time</b>.</li>
+      <li>Each item stays on screen for <b>300 seconds (5:00)</b>, then the next item appears automatically.</li>
+      <li>You can move earlier with <b>Next ›</b>, review with <b>‹ Back</b>, or hit <b>Pause</b> to freeze the timer.</li>
+      <li>All information is in English; a short Arabic summary is the final item.</li>
+    </ul>
+    <button class="btn" onclick="startReview()">Start review</button>
+  </div>
+</section>
+
+<!-- ============ REVIEW ============ -->
+<section id="reviewScreen" class="hidden">
+  <div class="examtop">
+    <span class="progress-txt" id="progressTxt">Item 1 / 21</span>
+    <span class="timer" id="timer">5:00</span>
+  </div>
+  <div class="bar"><div id="progressBar"></div></div>
+  <div class="tbar"><div id="timerBar"></div></div>
+  <div id="stage"></div>
+  <div class="navrow">
+    <button class="btn secondary" id="backBtn" onclick="go(-1)">‹ Back</button>
+    <button class="btn secondary" id="pauseBtn" onclick="togglePause()">Pause</button>
+    <button class="btn" id="nextBtn" onclick="go(1)">Next ›</button>
+  </div>
+</section>
+
+<!-- ============ DONE ============ -->
+<section id="doneScreen" class="hidden">
+  <div class="done">
+    <div class="big">Review complete ✅</div>
+    <div>You went through all Day 18 items.</div>
+    <div style="margin-top:16px;"><button class="btn" onclick="location.reload()">Restart</button></div>
+  </div>
+</section>
+
+<script>
+var ITEMS = [
+{t:"1 · Medicinal Metal-Induced Pigmentation", h:
+ "<p>Various metallic compounds were historically used to treat systemic disease. Two named discolorations are high-yield:</p>"+
+ "<div class='critbox'><span class='lbl'>Remember</span><b>Silver → argyria</b>: generalized <b>blue-gray</b> discoloration. <b>Gold → chrysiasis</b>: <b>blue-gray or purple</b>. <span class='crit'>Both may be persistent or permanent even after stopping the substance.</span></div>"+
+ "<ul><li>Systemic gold therapy can also cause <b>oral lichenoid eruptions</b>.</li>"+
+ "<li><b>Silver nitrate</b> (used to cauterize aphthous ulcers) and <b>zinc oxide</b> (in sunblock) can cause focal mucocutaneous pigmentation.</li>"+
+ "<li><b>Bismuth black tongue</b>: from chewing <b>bismuth subsalicylate</b> antacid — deposition of <span class='crit'>bismuth sulfide</span> with NO papillary change (unlike black hairy tongue). Treatment: stop the antacid + clean the tongue.</li></ul>"},
+
+{t:"2 · Heavy Metal Pigmentation", h:
+ "<p>Diffuse oral pigmentation may follow <b>ingestion of heavy metals</b>.</p>"+
+ "<ul><li>It remains an occupational/health hazard for people working in certain industrial plants and those living near such facilities.</li>"+
+ "<li>Common environmental sources: <b>paints, old plumbing, and seafood.</b></li></ul>"},
+
+{t:"3 · Drug-Induced Pigmentation (Minocycline & others)", h:
+ "<p><b>Minocycline</b> (a tetracycline used for acne) is a relatively common cause of drug-induced, <span class='crit'>non-melanin</span> oral pigmentation.</p>"+
+ "<ul><li>Chronic use → metabolites incorporate into <b>bone</b>: teeth may look normal but surrounding bone appears <b>green, blue, or black</b>, so the palatal/alveolar mucosa looks diffusely discolored.</li>"+
+ "<li>Can also pigment soft tissues, skin, and nails — gray/brown/black.</li></ul>"+
+ "<div class='critbox'><span class='lbl'>Course</span>Mucosal discoloration usually fades within months after stopping the drug, but <b>bone pigment may persist indefinitely</b>. Severe skin cases respond to the <b>Alexandrite 755-nm laser</b>.</div>"+
+ "<p><b>Other drugs:</b> methacycline and <b>imatinib</b> (tyrosine kinase inhibitor for CML) can also induce mucosal pigmentation.</p>"},
+
+{t:"4 · Hairy Tongue", h:
+ "<p>A relatively common condition of <b>unknown etiology</b>; chronic antibiotic therapy may contribute by changing oral flora. It involves the <b>dorsal tongue, especially the middle and posterior third</b>; children are rarely affected.</p>"+
+ "<ul><li><span class='crit'>Filiform papillae are elongated (like hairs)</span> and become pigmented by chromogenic bacteria → white, green, brown, or black.</li>"+
+ "<li>Associations: smoking (tobacco/crack cocaine), and drugs such as tetracycline, linezolid, olanzapine, bismuth, erlotinib.</li>"+
+ "<li>Microscopy: markedly elongated hyperkeratotic filiform papillae + heavy surface microbial colonization.</li></ul>"+
+ "<p><b>Treatment:</b> brush/scrape the tongue and limit color-forming foods/drinks. May recur (cause often undetermined).</p>"},
+
+{t:"5 · Neuromuscular Disorders — Overview", h:
+ "<p><b>Neuromuscular disorders</b> affect both nerve and muscle tissue, weakening voluntary muscles by interrupting communication between the nervous system and muscles. They can usually be managed but are <b>incurable</b>.</p>"+
+ "<p>Symptoms: muscle weakness, rigidity, loss of muscular control, numbness, tingling, twitching, spasms, and muscle/limb pain.</p>"+
+ "<div class='critbox'><span class='lbl'>Covered today</span>Cerebrovascular disease · Cavernous sinus thrombosis · Multiple sclerosis · Alzheimer's · Parkinson's · Bell's palsy · Myasthenia gravis · Epilepsy.</div>"},
+
+{t:"6 · Cerebrovascular Disease (Stroke) — Definitions", h:
+ "<p><b>Cerebrovascular disease</b> = all disorders that damage the blood vessels supplying the brain, impairing cerebral circulation and causing neurologic damage.</p>"+
+ "<ul><li><b>Stroke / CVA:</b> sudden impairment of cerebral circulation causing death or a <span class='crit'>focal neurologic deficit lasting &gt; 24 hours</span>. Complete flow cessation can infarct in <b>3–4 minutes</b>.</li>"+
+ "<li><b>TIA:</b> a reversible, short-duration focal deficit from transient ischemia — reverses <span class='crit'>within 24 hours</span>.</li>"+
+ "<li><b>RIND:</b> reversible focal deficit, but deficits <span class='crit'>last more than 24 hours</span>.</li></ul>"},
+
+{t:"7 · Stroke — Types & Ischemic Syndromes", h:
+ "<span class='sub-h'>By cause:</span>"+
+ "<ul><li><span class='crit'>Atherosclerosis (85%)</span> → ischemia/infarction from thromboembolic events.</li>"+
+ "<li><span class='crit'>Cerebral hemorrhage (15%)</span> → most often hypertension, trauma, substance abuse, or aneurysm rupture.</li></ul>"+
+ "<span class='sub-h'>Three ischemic syndromes:</span>"+
+ "<ul><li><b>Small vessel (lacunar):</b> arterioles &lt; 5 mm; age + uncontrolled hypertension are key; unilateral motor/sensory deficit; resolves over 4–6 weeks.</li>"+
+ "<li><b>Large vessel (cerebral infarction):</b> thromboembolic, emboli often from the heart (post-MI, atrial fibrillation); <b>prognosis poor</b>.</li>"+
+ "<li><b>Brainstem infarction:</b> can be fatal if respiratory centers are affected.</li></ul>"+
+ "<div class='critbox'><span class='lbl'>Number</span>About <b>30%</b> of people with a history of TIA have a completed stroke within 5 years.</div>"},
+
+{t:"8 · Stroke — Clinical, Diagnosis & Treatment", h:
+ "<p><b>Clinical:</b> sensory/motor deficits, eye-movement changes, visual defects, sudden headache, altered mental status, dizziness, seizures, impaired speech/hearing, neurocognitive deficits.</p>"+
+ "<div class='critbox'><span class='lbl'>Diagnosis</span><span class='crit'>Non-contrast CT is first-line</span> — hemorrhage must be excluded before thrombolysis. MRI gives more detail for early infarction.</div>"+
+ "<span class='sub-h'>Treatment:</span>"+
+ "<ul><li>Timeliness is critical. TIA/RIND: control hypertension + antiplatelet/anticoagulant drugs.</li>"+
+ "<li>Once hemorrhage is excluded: <span class='crit'>IV tissue plasminogen activator (t-PA)</span> improves reperfusion and reduces disability.</li>"+
+ "<li>After a completed stroke: risk-factor reduction + rehabilitation (speech, physical therapy).</li></ul>"},
+
+{t:"9 · Stroke — Oral / Dental Considerations", h:
+ "<p>Post-stroke: masticatory/facial paralysis, impaired taste, reduced gag reflex, dysphagia, and poorer oral hygiene → higher caries/perio risk.</p>"+
+ "<div class='critbox'><span class='lbl'>Key points</span>"+
+ "<ul style='margin:6px 0;'><li>Second-stroke risk is <b>highest in the first 90 days</b> — monitor before invasive treatment.</li>"+
+ "<li>Antiplatelets/anticoagulants at therapeutic dose (<b>warfarin INR ≤ 3.5</b>) rarely need modification for minor oral surgery — get PT/INR/APTT first.</li>"+
+ "<li><span class='crit'>Epinephrine-containing LA is NOT contraindicated</span> but use judiciously; do NOT use epinephrine retraction cord.</li>"+
+ "<li><b>Xerostomia</b> from medications raises caries rate.</li></ul></div>"+
+ "<p>Weigh bleeding risk against thrombosis risk — stopping antithrombotics may trigger a clot (DVT, stroke).</p>"},
+
+{t:"10 · Cavernous Sinus Thrombosis", h:
+ "<p>A rare but severe (possibly fatal) complication, usually secondary to <b>dental, nasal, or ocular infections</b>. Maxillary infections spread via facial vein → ophthalmic vein → cavernous sinus.</p>"+
+ "<p><b>Classic acute signs:</b> exophthalmos, periorbital edema, retinal vein thrombosis, ptosis, dilated pupils, lost corneal reflexes, high fever, vision changes.</p>"+
+ "<div class='critbox'><span class='lbl'>Pathogen & treatment</span><span class='crit'>Staphylococcus aureus is most common (~70%)</span>. Immediate antibiotics + remove the source. Empiric: <b>vancomycin + ceftriaxone</b>; add <b>IV metronidazole</b> for a dental/sinus source.</div>"},
+
+{t:"11 · Multiple Sclerosis (MS)", h:
+ "<p>Chronic CNS <b>white-matter inflammation, demyelination, and gliosis</b>. <span class='crit'>More frequent in women; onset ~4th decade</span>; recurrent attacks.</p>"+
+ "<p><b>Etiology:</b> autoimmune; triggers — <b>Epstein–Barr virus and HHV-6</b> most implicated.</p>"+
+ "<ul><li><b>Uhthoff's sign:</b> vision loss when body temperature rises (e.g., exercise).</li>"+
+ "<li><b>Lhermitte's symptom:</b> electric-shock sensation on neck flexion radiating down the back/legs.</li>"+
+ "<li><span class='crit'>MRI shows demyelinating plaques in &gt; 90%.</span> Treatment: IV steroids for attacks; interferon-β long-term.</li></ul>"+
+ "<div class='critbox'><span class='lbl'>Oral</span><b>Trigeminal neuralgia may be the first sign of MS in up to 3%</b>; also facial myokymia, mental-nerve numbness. Avoid elective care during acute exacerbations.</div>"},
+
+{t:"12 · Alzheimer's Disease (AD)", h:
+ "<p><b>Dementia</b> = acquired cognitive deterioration impairing daily function; memory is the most common ability lost. Three stages: preclinical → cognitive impairment due to AD → dementia due to AD.</p>"+
+ "<p><b>Diagnosis:</b> biomarkers (Aβ, <span class='crit'>elevated CSF tau + brain atrophy on MRI</span>); clinical progressive decline absent other causes.</p>"+
+ "<span class='sub-h'>Treatment (no cure):</span>"+
+ "<ul><li><b>Cholinesterase inhibitors</b> — mild-to-moderate AD.</li>"+
+ "<li><b>Memantine</b> (NMDA antagonist) — moderate-to-severe.</li></ul>"+
+ "<div class='critbox'><span class='lbl'>Oral</span>Complete restorative care <b>early</b> (cooperation declines). Cholinesterase inhibitors → <b>sialorrhea</b>; antidepressants/antipsychotics → <b>xerostomia</b>.</div>"},
+
+{t:"13 · Parkinsonism", h:
+ "<p>Neurodegenerative disorder with <span class='crit'>rigidity, tremor, bradykinesia, and postural instability</span>. Most common form: Parkinson's disease.</p>"+
+ "<span class='sub-h'>Head & neck signs:</span>"+
+ "<ul><li><b>Mask-like face</b> with infrequent blinking (bradykinesia).</li>"+
+ "<li>Rigidity → swallowing difficulty and saliva <b>drooling</b>; mandibular tremor → chewing difficulty.</li></ul>"+
+ "<span class='sub-h'>Treatment:</span>"+
+ "<ul><li>Mild: <b>amantadine</b>; anticholinergics for tremor/rigidity.</li>"+
+ "<li><b>Levodopa</b> (dopamine precursor) improves all major features.</li></ul>"},
+
+{t:"14 · Bell's Palsy", h:
+ "<p><span class='crit'>Unilateral paresis of the facial nerve (CN VII)</span> from an inflammatory reaction; linked to <b>herpes simplex virus 1</b>.</p>"+
+ "<ul><li>Abrupt one-sided facial paralysis; the eye on the affected side <b>stays open</b>, the mouth corner drops, drooling occurs.</li>"+
+ "<li>Impaired blinking → corneal ulceration risk.</li></ul>"+
+ "<div class='critbox'><span class='lbl'>Diagnosis & treatment</span><span class='crit'>No specific test</span> — clinical (close eyes, lift brow, show teeth). Rule out stroke, Lyme, tumor. <b>Corticosteroids early</b> are best; antivirals alone show no benefit.</div>"},
+
+{t:"15 · Myasthenia Gravis", h:
+ "<p>Progressive muscular weakness on exertion from a neuromuscular-junction disorder. <span class='crit'>Autoimmune: autoantibodies destroy acetylcholine receptors</span>.</p>"+
+ "<ul><li>Early signs often in eye muscles: <b>ptosis, diplopia</b>; also chewing/swallowing/respiratory difficulty; <span class='crit'>easy fatigability</span>.</li>"+
+ "<li>Treatment: anticholinesterases (<b>neostigmine, pyridostigmine</b>), thymectomy, immunosuppression.</li></ul>"+
+ "<div class='critbox'><span class='lbl'>Dental caution</span>Risk of respiratory crisis — keep airway clear (suction + rubber dam). <span class='crit'>Avoid drugs affecting the NMJ</span>: narcotics, tranquilizers, barbiturates, and tetracycline/streptomycin/sulfonamides/clindamycin.</div>"},
+
+{t:"16 · Seizures & Epilepsy — Classification", h:
+ "<p>A <b>seizure</b> = abnormal, excessive, hypersynchronous CNS neuronal discharge. <b>Epilepsy</b> = recurrent seizure activity.</p>"+
+ "<span class='sub-h'>Three major categories:</span>"+
+ "<ul><li><b>Focal (partial):</b> networks limited to one hemisphere. <b>Simple partial</b> = no impaired consciousness, clonic jerks ± sensory phenomena.</li>"+
+ "<li><b>Generalized:</b> both hemispheres — absence, tonic-clonic, atonic, myoclonic.</li>"+
+ "<li><b>Unknown:</b> not classifiable.</li></ul>"},
+
+{t:"17 · Grand Mal vs Petit Mal", h:
+ "<div class='critbox'><span class='lbl'>Tonic-clonic (grand mal)</span><span class='crit'>Most common — ~90% of epileptics</span>. Begins with an <b>aura</b>, then unconsciousness, <b>tonic</b> spasm (~30 s, apnea → cyanosis), then a <b>clonic</b> phase (jerks, incontinence, tongue biting).</div>"+
+ "<div class='critbox'><span class='lbl'>Absence (petit mal)</span>Second most common; <b>brief lapses of consciousness WITHOUT loss of body tone</b>, <b>no aura</b>. Almost exclusively in <b>children</b>; often disappears in the second decade.</div>"},
+
+{t:"18 · Seizures — Etiology & Diagnosis", h:
+ "<span class='sub-h'>Etiology by age:</span>"+
+ "<ul><li><b>Late infancy/early childhood:</b> febrile seizures (3 months–5 years, peak 18–24 months).</li>"+
+ "<li><b>Adults:</b> metabolic/toxins/drugs, hypoglycemia, hyponatremia, uremia, withdrawal.</li>"+
+ "<li><b>Older adults:</b> <span class='crit'>cerebrovascular disease ~50% of new epilepsy in patients &gt; 65.</span></li></ul>"+
+ "<span class='sub-h'>Diagnosis:</span>"+
+ "<ul><li>History + neurologic exam; blood tests (glucose, Ca, Mg), toxin screen, lumbar puncture.</li>"+
+ "<li>Brain imaging (MRI/CT); <b>EEG</b> to classify and guide drug choice.</li></ul>"},
+
+{t:"19 · Antiepileptic Drugs (AEDs)", h:
+ "<ul><li><b>Phenytoin:</b> <span class='crit'>gingival overgrowth</span>, hirsutism, coarse facial features.</li>"+
+ "<li><b>Carbamazepine:</b> hepatotoxicity, leukopenia, aplastic anemia.</li>"+
+ "<li><b>Lamotrigine:</b> skin rash.</li>"+
+ "<li><b>Valproic acid:</b> marrow suppression, hepatotoxicity — <span class='crit'>avoid aspirin/NSAIDs</span>.</li></ul>"+
+ "<span class='sub-h'>Best chance of remaining seizure-free after stopping:</span>"+
+ "<ul><li>Control for 1–5 years, single seizure type, normal neurologic exam, normal EEG.</li></ul>"+
+ "<p>Refractory options: surgery, <b>vagus nerve stimulation</b>, deep brain / responsive neurostimulation.</p>"},
+
+{t:"20 · Epilepsy — Oral Considerations", h:
+ "<ul><li>Refer uncontrolled patients to a hospital.</li>"+
+ "<li>Patients with an implanted <b>vagus nerve stimulator do NOT require antibiotic prophylaxis</b>.</li>"+
+ "<li><span class='crit'>Prefer fixed prostheses over removable</span> (aspiration risk during a seizure).</li>"+
+ "<li>On AEDs → lab evaluation before treatment; avoid aspirin/NSAIDs with valproic acid.</li>"+
+ "<li>Findings: gingival overgrowth, lip enlargement, and <b>xerostomia</b> → more caries and candidiasis (use topical fluoride/antifungals).</li></ul>"},
+
+{t:"21 · خلاصة بسيطة بالعربي", ar:true, h:
+ "<p>اليوم يغطّي جزئين: <b>نهاية التصبّغات</b> ثم <b>الاضطرابات العصبية–العضلية</b>. أهم النقاط:</p>"+
+ "<ul><li><b>الفضة → argyria</b> (أزرق-رمادي) و<b>الذهب → chrysiasis</b>، وقد يكونان دائمين؛ و<b>البزموت</b> يسبّب لساناً أسود (bismuth sulfide) بدون تغيّر الحليمات.</li>"+
+ "<li><b>Minocycline</b> تصبّغ من مستقلَب الدواء (ليس ميلانيناً)، وتصبّغ العظم قد يبقى دائماً. <b>اللسان الأشعر</b>: إطالة الحليمات الخيطية + بكتيريا ملوّنة.</li>"+
+ "<li><b>السكتة (CVA)</b>: ٨٥٪ تصلّب شرايين و١٥٪ نزف؛ CT بدون صبغة أولاً؛ t-PA بعد استبعاد النزف؛ أعلى خطر لسكتة ثانية أول ٩٠ يوم. <b>خثار الجيب الكهفي</b>: أشيع جرثومة S. aureus.</li>"+
+ "<li><b>MS</b>: نساء/العقد الرابع، EBV وHHV-6، لويحات بالـMRI، علامتا Uhthoff وLhermitte. <b>الزهايمر</b>: مثبّطات الكولين إستراز + ميمانتين. <b>باركنسون</b>: تصلّب/رعاش/بطء حركة/عدم اتزان + ليفودوبا.</li>"+
+ "<li><b>شلل بيل</b>: العصب الوجهي أحادي، مرتبط بـHSV-1، والعين تبقى مفتوحة، والستيرويد مبكراً. <b>الوهن العضلي</b>: أضداد مستقبلات الأستيل كولين، وتجنّب أدوية الوصل العصبي–العضلي.</li>"+
+ "<li><b>الصرع</b>: grand mal (~٩٠٪ مع هالة) وpetit mal (أطفال، بلا هالة/بلا فقد توتر). <b>Phenytoin</b> يسبّب تضخّم لثة؛ وتجنّب الأسبرين مع valproic acid؛ ومرضى VNS بلا صادّ وقائي؛ وتفضيل التركيبات الثابتة.</li></ul>"}
+];
+
+var PER_ITEM = 300; // seconds
+var idx = 0, timeLeft = PER_ITEM, timer = null, paused = false;
+
+function startReview(){
+  idx = 0;
+  document.getElementById('startScreen').classList.add('hidden');
+  document.getElementById('reviewScreen').classList.remove('hidden');
+  render();
+}
+
+function render(){
+  if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+  window.scrollTo(0,0);
+  var it = ITEMS[idx];
+  document.getElementById('progressTxt').textContent = 'Item ' + (idx+1) + ' / ' + ITEMS.length;
+  document.getElementById('progressBar').style.width = (((idx+1)/ITEMS.length)*100) + '%';
+  var stage = document.getElementById('stage');
+  stage.className = it.ar ? 'ar' : '';
+  stage.innerHTML = '<div class="item-title">' + it.t + '</div><div class="content">' + it.h + '</div>';
+  document.getElementById('backBtn').disabled = (idx === 0);
+  document.getElementById('nextBtn').textContent = (idx === ITEMS.length-1) ? 'Finish ✓' : 'Next ›';
+  startTimer();
+}
+
+function startTimer(){
+  clearInterval(timer);
+  timeLeft = PER_ITEM;
+  paused = false;
+  document.getElementById('pauseBtn').textContent = 'Pause';
+  updateTimerUI();
+  timer = setInterval(tick, 1000);
+}
+function tick(){
+  if (paused) return;
+  timeLeft--;
+  updateTimerUI();
+  if (timeLeft <= 0){ clearInterval(timer); go(1); }
+}
+function updateTimerUI(){
+  var m = Math.floor(timeLeft/60), s = timeLeft%60;
+  var t = document.getElementById('timer');
+  t.textContent = m + ':' + (s<10?'0':'') + s;
+  t.classList.toggle('warn', timeLeft <= 30);
+  document.getElementById('timerBar').style.width = ((timeLeft/PER_ITEM)*100) + '%';
+}
+function togglePause(){
+  paused = !paused;
+  document.getElementById('pauseBtn').textContent = paused ? 'Resume' : 'Pause';
+}
+function go(dir){
+  clearInterval(timer);
+  var n = idx + dir;
+  if (n < 0) n = 0;
+  if (n >= ITEMS.length){ finish(); return; }
+  idx = n;
+  render();
+}
+function finish(){
+  clearInterval(timer);
+  document.getElementById('reviewScreen').classList.add('hidden');
+  document.getElementById('doneScreen').classList.remove('hidden');
+}
+</script>
+</body>
+</html>
