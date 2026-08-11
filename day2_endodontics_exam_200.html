@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Day 2 — Endodontics Exam (200 MCQs, timed)</title>
+<style>
+  :root { color-scheme: light only; }
+  * { box-sizing: border-box; -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+  html, body { background:#ffffff !important; color:#000000 !important; margin:0; padding:0; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; line-height:1.55; max-width:820px; margin:0 auto; padding:16px 14px 60px; font-size:17px; }
+  @media (prefers-color-scheme: dark) { html, body { background:#fff !important; color:#000 !important; } }
+
+  .hidden { display:none !important; }
+  h1 { font-size:22px; margin:0 0 8px; }
+
+  /* Start screen */
+  .start { border:2px solid #000; border-radius:14px; padding:22px; margin-top:20px; }
+  .start ul { padding-inline-start:20px; }
+  .start li { margin:8px 0; }
+  .btn { border:2px solid #000; background:#000; color:#fff; font-weight:800; border-radius:10px; padding:12px 22px; cursor:pointer; font-size:17px; font-family:inherit; }
+  .btn:hover { background:#fff; color:#000; }
+  .btn.secondary { background:#fff; color:#000; }
+  .btn.secondary:hover { background:#000; color:#fff; }
+
+  /* Exam header */
+  .examtop { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:10px; }
+  .progress-txt { font-weight:800; font-size:15px; }
+  .timer { font-weight:800; font-size:20px; min-width:64px; text-align:right; }
+  .timer.warn { color:#c8000c; }
+  .bar { height:8px; background:#eee; border:1px solid #ccc; border-radius:6px; overflow:hidden; margin-bottom:6px; }
+  .bar > div { height:100%; background:#000; width:100%; transition:width 1s linear; }
+  .tbar { height:8px; background:#eee; border:1px solid #ccc; border-radius:6px; overflow:hidden; margin-bottom:18px; }
+  .tbar > div { height:100%; background:#c8000c; width:100%; }
+
+  .stem { font-weight:700; font-size:18px; margin:6px 0 14px; }
+  .opt { display:block; width:100%; text-align:left; border:2px solid #999; border-radius:10px; padding:12px 14px; margin:9px 0; background:#fff; color:#000; cursor:pointer; font-size:16px; font-family:inherit; }
+  .opt { touch-action: manipulation; }
+  @media (hover: hover) and (pointer: fine) { .opt:hover { background:#f2f2f2; } }
+  .opt.sel { border-color:#000; background:#eaeaea; font-weight:700; }
+  .navrow { display:flex; justify-content:space-between; gap:10px; margin-top:16px; }
+
+  /* Results */
+  .scorebox { border:3px solid #000; border-radius:14px; padding:20px; text-align:center; margin:14px 0 20px; }
+  .scorebox .big { font-size:40px; font-weight:800; }
+  .scorebox .pct { font-size:20px; font-weight:700; }
+  .filterrow { display:flex; gap:8px; flex-wrap:wrap; margin:12px 0; }
+  .filterrow button { border:2px solid #000; background:#fff; color:#000; font-weight:700; border-radius:8px; padding:7px 12px; cursor:pointer; font-size:14px; font-family:inherit; }
+  .filterrow button.active { background:#000; color:#fff; }
+  .rev { border:2px solid #000; border-radius:10px; padding:12px 14px; margin:10px 0; }
+  .rev .qh { font-weight:700; margin-bottom:8px; }
+  .rev .ro { padding:7px 10px; border-radius:7px; margin:5px 0; border:1.5px solid #ccc; }
+  .rev .ro.correct { background:#d8f5dd; border-color:#127a2b; font-weight:700; }
+  .rev .ro.yourwrong { background:#fbdcdc; border-color:#b00020; }
+  .rev .tagline { font-size:13px; font-weight:700; margin-top:6px; }
+  .rev .tagline.ok { color:#127a2b; }
+  .rev .tagline.no { color:#b00020; }
+  .rev .tagline.skip { color:#a06000; }
+</style>
+</head>
+<body>
+
+<!-- ============ START SCREEN ============ -->
+<section id="startScreen">
+  <h1>Day 2 — Endodontics Exam</h1>
+  <div style="font-size:15px;">Source: Endodontics lectures (Dr. Raghad Al-Hashimi) · pp. 77–152 · Lectures 1–12</div>
+  <div class="start">
+    <b>Exam rules</b>
+    <ul>
+      <li><b>200 multiple-choice questions</b>, English only.</li>
+      <li><b>60-second timer per question.</b> When time runs out, the exam moves to the next question automatically and that question is marked unanswered.</li>
+      <li>One question at a time. Tap an option to answer — it advances to the next question.</li>
+      <li><b>Correct answers are hidden</b> until the final results screen, where you get your score plus a full review.</li>
+      <li>No going back once you leave a question.</li>
+    </ul>
+    <button class="btn" onclick="startExam()">Start exam</button>
+  </div>
+</section>
+
+<!-- ============ EXAM SCREEN ============ -->
+<section id="examScreen" class="hidden">
+  <div class="examtop">
+    <span class="progress-txt" id="progressTxt">Q 1 / 200</span>
+    <span class="timer" id="timer">60</span>
+  </div>
+  <div class="bar"><div id="progressBar"></div></div>
+  <div class="tbar"><div id="timerBar"></div></div>
+  <div class="stem" id="stem"></div>
+  <div id="options"></div>
+  <div class="navrow">
+    <span style="font-size:13px;color:#555;align-self:center;">Answered: <b id="answeredCount">0</b> / 200</span>
+    <button class="btn secondary" id="skipBtn" onclick="nextQuestion(true)">Skip →</button>
+  </div>
+</section>
+
+<!-- ============ RESULTS SCREEN ============ -->
+<section id="resultScreen" class="hidden">
+  <h1>Results</h1>
+  <div class="scorebox">
+    <div class="big" id="scoreBig">0 / 200</div>
+    <div class="pct" id="scorePct">0%</div>
+    <div id="scoreBreak" style="font-size:15px;margin-top:8px;"></div>
+  </div>
+  <div class="filterrow">
+    <button id="fAll" class="active" onclick="setFilter('all')">All 200</button>
+    <button id="fWrong" onclick="setFilter('wrong')">Wrong</button>
+    <button id="fSkip" onclick="setFilter('skip')">Unanswered</button>
+    <button class="btn secondary" style="margin-inline-start:auto;" onclick="location.reload()">Restart</button>
+  </div>
+  <div id="review"></div>
+</section>
+
+<script>
+/* ================= QUESTION BANK (200) ================= */
+/* Each: q = stem, o = [4 options], a = index of correct option */
+var QUESTIONS = [
+{q:"Which is NOT one of the four steps of the diagnostic procedure?",o:["Accept the patient","Recognize the problem","Determine the cause","Prescribe antibiotics immediately"],a:3},
+{q:"Which is a stated requirement of a good diagnostician?",o:["Speed above all","Knowledge, interest/curiosity, and patience","Reliance on a single test","Avoiding the medical history"],a:1},
+{q:"The normal blood pressure for a patient UNDER 60 years is:",o:["140/90 mmHg","120/80 mmHg","100/60 mmHg","160/95 mmHg"],a:1},
+{q:"The normal blood pressure limit for a patient OVER 60 years is:",o:["120/80 mmHg","140/90 mmHg","110/70 mmHg","150/100 mmHg"],a:1},
+{q:"The normal pulse rate is:",o:["40-60 beats/min","60-100 beats/min","100-120 beats/min","30-50 beats/min"],a:1},
+{q:"The normal respiration rate is:",o:["8-10 breaths/min","16-18 breaths/min","24-28 breaths/min","30-34 breaths/min"],a:1},
+{q:"The normal body temperature is:",o:["36 C","37 C","38 C","39 C"],a:1},
+{q:"Cold testing helps to:",o:["Measure blood pressure","Differentiate reversible from irreversible pulpitis and identify necrotic teeth","Detect caries","Assess mobility"],a:1},
+{q:"In a reversibly inflamed pulp, response to cold:",o:["Lingers for minutes","Subsides after removal of the stimulus","Is always absent","Causes swelling"],a:1},
+{q:"Teeth with calcified canals need ___ for the cold stimulus to reach the pulp.",o:["less time","more time","no time","electric current"],a:1},
+{q:"A hot stimulus is especially useful to locate a symptomatic tooth with:",o:["Reversible pulpitis","Necrotic pulp","Healthy pulp","Enamel caries"],a:1},
+{q:"The percussion test is used to determine whether the ___ has been affected.",o:["enamel","apical periodontium","gingiva","cementum"],a:1},
+{q:"The palpation test signals spread of inflammation from the PDL to the:",o:["Enamel","Periosteum overlying the bone","Pulp chamber","Dentin"],a:1},
+{q:"In mobility scoring, movement over 1 mm horizontally scores:",o:["1","2","3","0"],a:1},
+{q:"A vertically mobile tooth scores:",o:["1","2","3","4"],a:2},
+{q:"For the electric pulp test, the probe is placed on the:",o:["Incisal edge","Middle third of the labial surface","Gingival margin","Lingual cusp"],a:1},
+{q:"Which typically gives inconclusive electric pulp test readings?",o:["Single-rooted anterior teeth","Multirooted teeth","Newly restored teeth","Sound premolars"],a:1},
+{q:"A newly erupted tooth may give which electric pulp test result?",o:["Exaggerated positive","Negative response","Always accurate","Painful positive"],a:1},
+{q:"Selective anesthesia is most useful to distinguish whether pain is:",o:["Reversible or irreversible","Mandibular or maxillary in origin","Acute or chronic","Vital or non-vital"],a:1},
+{q:"A test cavity is used as a last resort and is cut:",o:["With local anesthesia","Without local anesthesia","After extraction","In enamel only"],a:1},
+{q:"In reversible pulpitis, the thermal response is described as:",o:["No response","Hypersensitive, quick response lasting seconds","Prolonged pain after removal","Delayed dull ache"],a:1},
+{q:"In irreversible pulpitis, the thermal response is:",o:["No response","Hypersensitive with prolonged response","Normal","Reduced only to heat"],a:1},
+{q:"In a necrotic pulp, the electric pulp test typically shows:",o:["Strong response","No response","Exaggerated response","Response only to cold"],a:1},
+{q:"In reversible pulpitis, the periapical radiograph shows:",o:["A large radiolucency","A normal periapex","Root resorption","A widened PDL apically"],a:1},
+{q:"In a necrotic pulp, percussion typically produces:",o:["No response ever","Mild to severe pain depending on periapical inflammation","Only cold sensitivity","Electric shock sensation"],a:1},
+{q:"Radiographs will NOT show early pulpitis because at that stage there is no:",o:["Enamel","Periodontal widening","Crown","Root"],a:1},
+{q:"The pain reaction threshold (PRT) is the point at which a person will:",o:["Lose consciousness","Feel the pain","Stop bleeding","Faint"],a:1},
+{q:"Which factor LOWERS the pain reaction threshold?",o:["Rest","Fear and anxiety","Good sleep","High pH"],a:1},
+{q:"To reduce fainting/angina from a rise in catecholamines, anesthesia should be given:",o:["Rapidly, sitting up","Slowly, in the supine position","Without a vasoconstrictor always","After exercise"],a:1},
+{q:"A-fibres in the pulp are responsible for:",o:["Dull aching pain","Sharp pain and dentine sensitivity","Temperature regulation","Vasodilation"],a:1},
+{q:"Intradental C-fibres are associated with:",o:["Sharp shooting pain","Dull pain from intense thermal stimulation and inflammation","Prepain sensation","No pain"],a:1},
+{q:"Which are ESTER local anesthetics?",o:["Lidocaine and articaine","Procaine and benzocaine","Mepivacaine and prilocaine","Bupivacaine and lidocaine"],a:1},
+{q:"Which are AMIDE local anesthetics?",o:["Procaine and benzocaine","Lidocaine, mepivacaine, prilocaine, articaine","Cocaine and tetracaine","Benzocaine only"],a:1},
+{q:"Local anesthetics are intrinsically:",o:["Vasoconstrictors","Vasodilators","Neutral to vessels","Anticoagulants"],a:1},
+{q:"A vasoconstrictor in a local anesthetic will:",o:["Increase absorption","Prolong the anesthetic effect and reduce toxicity","Shorten duration","Raise the tissue pH"],a:1},
+{q:"Injecting local anesthetic into an infected area results in:",o:["Faster onset","Delayed onset because low pH (5-6) inhibits action","No change","Permanent anesthesia"],a:1},
+{q:"Topical anesthetic is effective to a depth of about:",o:["1 mm","2-3 mm","6 mm","10 mm"],a:1},
+{q:"Topical benzocaine is used in concentrations up to:",o:["5%","20%","50%","2%"],a:1},
+{q:"The Gow-Gates block deposits anesthetic at the:",o:["Mandibular foramen","Lateral aspect of the neck of the mandibular condyle","Maxillary tuberosity","Infraorbital foramen"],a:1},
+{q:"The Gow-Gates technique is a nerve block of which division?",o:["V1","V2","V3","VII"],a:2},
+{q:"The Akinosi-Vazirani technique is used mainly when there is:",o:["Excess salivation","Limited mouth opening","Cardiac disease","A missing molar"],a:1},
+{q:"The posterior superior alveolar (PSA) block anesthetizes the:",o:["Anterior teeth","Maxillary molars and buccal soft tissues","Mandibular premolars","Palate only"],a:1},
+{q:"The anterior superior alveolar (ASA) block is aimed at the:",o:["Mandibular foramen","Infraorbital foramen","Mental foramen","Greater palatine foramen"],a:1},
+{q:"In the PDL (intraligamentary) injection, the volume placed per root is about:",o:["1.0 ml","0.2 ml","0.5 ml","2.0 ml"],a:1},
+{q:"Onset of the PDL injection is:",o:["Delayed","Immediate but with variable duration","After 10 minutes","Never reliable"],a:1},
+{q:"Intraosseous anesthesia requires:",o:["No preparation","A small perforation of the cortical plate with a bur","A full flap","Only topical gel"],a:1},
+{q:"Intrapulpal anesthesia has which onset?",o:["Delayed 5 min","Immediate","Variable","None"],a:1},
+{q:"The inferior alveolar nerve block deposits anesthetic near the:",o:["Condyle neck","Mandibular foramen","Maxillary tuberosity","Mental foramen"],a:1},
+{q:"The incisive nerve block provides anesthesia to the mandibular:",o:["Molars","Premolars and anterior teeth","Third molar","Palatal tissues"],a:1},
+{q:"Patients on tricyclic antidepressants or MAO inhibitors need physician consultation before LA with a:",o:["Topical gel","Vasoconstrictor","Amide only","Higher pH"],a:1},
+{q:"The preferred radiographic technique for endodontics is the:",o:["Bisecting technique","Paralleling technique","Occlusal technique","Panoramic technique"],a:1},
+{q:"A plastic film holder helps by:",o:["Increasing radiation","Standardizing the technique and preventing film movement","Magnifying the image","Removing the smear layer"],a:1},
+{q:"With the buccal object rule, when the cone is moved DISTALLY, the buccal canal appears:",o:["Distal to the lingual canal","Mesial to the lingual canal","Superimposed","Apical"],a:1},
+{q:"The buccal object (SLOB) rule states that the lingual object moves:",o:["Opposite to the cone","In the same direction as the cone","Never","Only vertically"],a:1},
+{q:"Which rubber dam frame does NOT interfere with radiographs?",o:["Metal frame","Radiolucent frame","Young's frame","Any metal U-frame"],a:1},
+{q:"Films held by the finger typically show maxillary molars with:",o:["Long buccal roots","Short buccal roots and a very long palatal root","No roots","Equal roots"],a:1},
+{q:"A direct digital system uses which sensor?",o:["Photostimulable phosphor plate","Charge-coupled device (CCD)","Silver halide film","Laser scanner"],a:1},
+{q:"A storage phosphor digital system uses a plate read by a(n):",o:["CCD cable","Extra-oral laser scanner","Video monitor","Printer"],a:1},
+{q:"Digital radiography reduces radiation exposure by:",o:["10-20%","50-90%","5%","100%"],a:1},
+{q:"A disadvantage of digital radiography is:",o:["No storage","High initial cost","No enhancement","Slow retrieval"],a:1},
+{q:"Which is information gained from an endodontic radiograph?",o:["Pulp vitality","Number, size, location, and direction of roots","Bacterial species","Pain threshold"],a:1},
+{q:"Metal rubber dam frames on a radiograph may:",o:["Improve clarity","Mask important structures","Reduce radiation","Enhance contrast"],a:1},
+{q:"Intracanal instruments are divided into how many groups?",o:["Four","Five","Six","Seven"],a:2},
+{q:"Barbed broaches and K-type and H-type instruments belong to Group:",o:["I (manually operated)","II (low-speed)","III (engine NiTi)","VI (ultrasonic)"],a:0},
+{q:"Gates-Glidden burs and Peeso reamers belong to Group:",o:["I","II (low-speed latch-type)","III","V"],a:1},
+{q:"Gates-Glidden and Peeso instruments should be used only in the:",o:["Apical curvature","Straight (coronal) portion of the canal","Furcation","Apical third"],a:1},
+{q:"The only instrument in Group IV (adapts three-dimensionally) is the:",o:["ProTaper","Self-adjusting file (SAF)","Hedstr\u00f6m file","K-flex"],a:1},
+{q:"The barbed broach is used mainly to:",o:["Cut dentin","Extirpate pulp and remove cotton/paper points","Prepare the apical third","Flare the canal"],a:1},
+{q:"A barbed broach:",o:["Machines dentin efficiently","Does not cut or machine dentin","Enlarges canals","Is engine-driven"],a:1},
+{q:"K-type instruments are made from stainless steel ground to a tapered ___ cross-section.",o:["round","square or triangular","S-shaped","rhomboid"],a:1},
+{q:"Compared with a reamer, a file has:",o:["Fewer flutes per length","More flutes per length","No flutes","A non-cutting shaft"],a:1},
+{q:"Which motion causes LESS canal transportation?",o:["Filing motion","Reaming motion","Push-pull","Brushing"],a:1},
+{q:"Transportation is the excessive loss of dentin from the ___ wall of a curved canal.",o:["inner","outer","coronal","lingual"],a:1},
+{q:"The K-flex file has which cross-section?",o:["Triangular","Rhomboid","Square","Round"],a:1},
+{q:"The Flex-O-File has a triangular cross-section and a ___ tip.",o:["cutting","non-cutting","threaded","rounded bulbous"],a:1},
+{q:"The Hedstr\u00f6m (H-type) file cuts only during a:",o:["Pushing stroke","Pulling stroke","Rotation","Reaming stroke"],a:1},
+{q:"Compared with K-type files, Hedstr\u00f6m files have a more:",o:["Negative rake angle","Positive rake angle with a cutting blade","Scraping angle","Blunt tip"],a:1},
+{q:"The nickel-titanium file is characterized by a non-cutting tip and the tendency to:",o:["Straighten the canal","Maintain the curvature of the root canal","Fracture easily under bending","Cut only on pushing"],a:1},
+{q:"Golden mediums correspond to sizes:",o:["10,20,30,40","12,17,22,27,32,37","15,25,35,45","8,10,15,20"],a:1},
+{q:"The Peeso reamer is used mostly for:",o:["Apical enlargement","Post space preparation","Irrigation","Obturation"],a:1},
+{q:"The risk of lateral cutting/perforation is LOWER with:",o:["Peeso drills","Gates-Glidden burs","Hedstr\u00f6m files","Barbed broaches"],a:1},
+{q:"The rake angle is 'positive' (cutting) when the angle to the surface is:",o:["Acute","Obtuse","Right","Zero"],a:1},
+{q:"The pitch of a file is the distance between a point on one leading edge and the:",o:["Tip","Corresponding point on the adjacent leading edge","Handle","Flute base"],a:1},
+{q:"The ProFile system was introduced in:",o:["1988","1994","2000","2008"],a:1},
+{q:"The cross-section of a ProFile instrument is:",o:["Triangular with sharp edges","U-shaped with radial lands and a parallel central core","S-shaped","Rhomboid"],a:1},
+{q:"The preferred rotational speed for ProFile is:",o:["150-200 rpm","275-325 rpm","400-500 rpm","600 rpm"],a:1},
+{q:"The ProFile helix angle is:",o:["10 degrees","20 degrees","45 degrees","60 degrees"],a:1},
+{q:"ProFile GT files come in four tapers:",o:["0.02, 0.04, 0.06, 0.08","0.06, 0.08, 0.10, 0.12","0.10, 0.12, 0.14, 0.16","0.04, 0.06, 0.08, 0.10"],a:1},
+{q:"The ProTaper Universal system is composed of six instruments:",o:["Six shaping files","Three shaping and three finishing files","Six finishing files","Three reamers and three broaches"],a:1},
+{q:"The cross-section of ProTaper instruments is:",o:["U-shaped","Convex triangular","Rhomboid","Square"],a:1},
+{q:"The ProTaper finishing files F1-F5 have tip diameters of:",o:["0.15, 0.2, 0.25, 0.3, 0.35","0.2, 0.25, 0.3, 0.4, 0.5","0.25, 0.3, 0.35, 0.4, 0.45","0.1, 0.2, 0.3, 0.4, 0.5"],a:1},
+{q:"ProTaper instruments are used at a speed of:",o:["150-200 rpm","250-300 rpm","350-400 rpm","500 rpm"],a:1},
+{q:"The RaCe system surface is finished by:",o:["Sandblasting","Electropolishing","Acid etching","Anodizing"],a:1},
+{q:"The name RaCe stands for reamer with:",o:["Radial cutting edges","Alternating cutting edges","Rounded cutting edges","Reverse cutting edges"],a:1},
+{q:"The Twisted File is manufactured through a thermal process using the ___ phase of NiTi.",o:["M-phase","R-phase","alpha-phase","beta-phase"],a:1},
+{q:"The Twisted File is available in which single tip size?",o:["#20","#25","#30","#15"],a:1},
+{q:"The WaveOne file is made with which technology to resist cyclic fatigue?",o:["Gold-wire","M-wire","Titanium-wire","Steel-wire"],a:1},
+{q:"The WaveOne primary file has an ISO tip size of:",o:["20","25","30","40"],a:1},
+{q:"The WaveOne small file has a tip ISO of 20 with a continuous taper of:",o:["4%","6%","8%","10%"],a:1},
+{q:"Miller's hypothesis (1894) stated that the causative agent of apical periodontitis is:",o:["Trauma","Bacteria","Chemical irritation","Occlusion"],a:1},
+{q:"How many different microbial species have been found in infected root canals?",o:["More than 100","More than 400","More than 50","More than 1000"],a:1},
+{q:"In the very initial phase of pulpal infection, which bacteria predominate?",o:["Obligate anaerobes","Facultative bacteria","Fungi","Spirochetes"],a:1},
+{q:"As oxygen decreases in the necrotic canal, the microbiota becomes predominantly:",o:["Facultative","Obligate anaerobes","Aerobic","Fungal"],a:1},
+{q:"Which is a source of nutrition for root canal bacteria?",o:["Enamel rods","Necrotic pulp tissue","Cementum","Alveolar bone"],a:1},
+{q:"Anachoresis is the entry of bacteria to the pulp through the:",o:["Carious cavity","Blood stream","Dentinal tubules","Apical foramen"],a:1},
+{q:"The ability of a microorganism to cause disease is termed:",o:["Virulence","Pathogenicity","Resistance","Anachoresis"],a:1},
+{q:"Virulence indicates the ___ of a microorganism.",o:["size","degree of pathogenicity","shape","oxygen need"],a:1},
+{q:"Microorganisms that cause disease only when host defenses are decreased are called:",o:["Primary pathogens","Opportunistic pathogens","Commensals","Saprophytes"],a:1},
+{q:"Lysozyme (a leukocytic factor) hydrolyzes the cell wall of which bacteria?",o:["Gram-negative","Gram-positive","Fungi","Viruses"],a:1},
+{q:"Biofilm infections account for an estimated ___ of bacterial infections.",o:["10-20%","65-80%","30-40%","90-100%"],a:1},
+{q:"In a biofilm, microcolonies occupy about ___ by volume.",o:["\u00b115%","\u00b185%","\u00b150%","\u00b15%"],a:0},
+{q:"In a biofilm, the extracellular polymeric matrix occupies about ___ by volume.",o:["\u00b115%","\u00b185%","\u00b150%","\u00b15%"],a:1},
+{q:"Alpha-hemolytic streptococci entering the bloodstream are normally killed within:",o:["1 hour","10 minutes","1 day","30 seconds"],a:1},
+{q:"Infective endocarditis from bacteremia is a risk in patients with:",o:["Healthy hearts","A history of rheumatic fever with cardiac murmur or mitral valve prolapse","Hypertension only","Diabetes only"],a:1},
+{q:"Clinically in endodontics, cellulitis is called a:",o:["Sinus tract","Flare-up","Granuloma","Cyst"],a:1},
+{q:"Which is one of the three reasons for culturing root canal contents?",o:["To measure pH","To determine the bacteriologic status of the canal","To choose a sealer","To set working length"],a:1},
+{q:"Camphorated monochlorophenol (CMCP) as a medicament does not last more than:",o:["1 day","3 days","7 days","1 month"],a:1},
+{q:"Tricresol formalin has antibacterial action lasting up to:",o:["3 days","7 days","1 day","1 month"],a:1},
+{q:"The first-line antibiotics of choice for most endodontic infections are the:",o:["Cephalosporins","Penicillins","Tetracyclines","Macrolides"],a:1},
+{q:"Which is a function of the root canal sealer?",o:["Replace gutta-percha entirely","Cement the core material to the canal wall","Sterilize the canal permanently","Widen the canal"],a:1},
+{q:"An ideal sealer should be soluble in:",o:["Tissue fluids","Common solvents","Water only","Saliva"],a:1},
+{q:"An ideal sealer should show ___ on setting.",o:["expansion","no shrinkage","cracking","staining"],a:1},
+{q:"Zinc oxide-eugenol sealers characteristically:",o:["Expand on setting","Shrink on setting and may stain","Never stain","Are insoluble when extruded"],a:1},
+{q:"Which ZOE sealer contains silver particles for radiopacity and stains tooth structure?",o:["Roth's sealer","Rickert sealer","Tubli-Seal","Procosol"],a:1},
+{q:"Roth's sealer is a modification of Rickert's sealer that is:",o:["Faster setting","Non-staining","Radiolucent","Resin-based"],a:1},
+{q:"An example of a glass ionomer root canal sealer is:",o:["AH Plus","Ketac-endo","Sealapex","Tubli-Seal"],a:1},
+{q:"AH-26 resin sealer releases ___ when setting.",o:["eugenol","formaldehyde","silver","fluoride"],a:1},
+{q:"AH Plus differs from AH-26 in that it:",o:["Releases more formaldehyde","Does not release formaldehyde and has ~4-hour working time","Sets instantly","Contains silver"],a:1},
+{q:"GuttaFlow consists of gutta-percha added to:",o:["AH Plus","RoekoSeal","Ketac-endo","Rickert sealer"],a:1},
+{q:"A bioceramic sealer is hydrophilic, meaning it:",o:["Repels water","Uses moisture within the canal to complete setting","Dissolves in saliva","Needs a dry canal to set"],a:1},
+{q:"Gutta-percha occurs naturally as:",o:["Polyethylene","1,4-polyisoprene","Polyvinyl chloride","Polyester"],a:1},
+{q:"The form of gutta-percha used for root fillings is the:",o:["Alpha (natural) form","Beta (processed) form","Amorphous form only","Gamma form"],a:1},
+{q:"The beta-to-alpha phase transition of gutta-percha occurs at around:",o:["37 C","46 C","64 C","100 C"],a:1},
+{q:"Gutta-percha cones soften at a temperature above:",o:["46 C","64 C","37 C","30 C"],a:1},
+{q:"Modern gutta-percha cones contain approximately what percentage of gutta-percha?",o:["60%","20%","90%","5%"],a:1},
+{q:"The major component (60-75%) of a gutta-percha cone is:",o:["Gutta-percha","Zinc oxide","Barium sulfate","Wax"],a:1},
+{q:"Gutta-percha cones are disinfected by dipping in NaOCl for:",o:["10 seconds","1 minute","5 minutes","30 minutes"],a:1},
+{q:"On cooling after heating, gutta-percha shrinks by approximately:",o:["1-2%","10%","20%","0.1%"],a:0},
+{q:"Gutta-percha cannot be used alone because it:",o:["Is radiolucent","Lacks the adherent properties to seal the canal","Is toxic","Dissolves in water"],a:1},
+{q:"Which is a DISADVANTAGE of gutta-percha?",o:["Radiopaque","No adherence to dentin","Inert","Compactable"],a:1},
+{q:"Mineral trioxide aggregate (MTA) was developed by:",o:["Schilder","Torabinejad","Ingle","Roane"],a:1},
+{q:"MTA is formulated from Portland cement combined with ___ for radiopacity.",o:["silver","bismuth oxide","barium sulfate","zinc oxide"],a:1},
+{q:"MTA will fail to set in a(n) ___ environment.",o:["alkaline","acidic","dry","moist"],a:1},
+{q:"MTA develops its compressive strength over a period of:",o:["24 hours","28 days","7 days","1 year"],a:1},
+{q:"Silver cones are no longer used because when contacting tissue fluids they:",o:["Expand","Corrode into cytotoxic products","Dissolve completely","Turn radiolucent"],a:1},
+{q:"Resilon is what type of root canal filling material?",o:["Ceramic","A thermoplastic synthetic polymer-based material","A metal alloy","Zinc oxide-eugenol"],a:1},
+{q:"Which is an objective of canal obturation?",o:["Widen the apical foramen","Prevent percolation of periapical exudates into the canal","Increase the taper","Sterilize the periapex"],a:1},
+{q:"Which is a criterion for root canal obturation?",o:["Wet canal","Asymptomatic tooth","Presence of a sinus tract","Positive culture"],a:1},
+{q:"A negative culture is one of the criteria for:",o:["Access opening","Root canal obturation","Post placement","Rubber dam application"],a:1},
+{q:"Warm lateral condensation depends on a heated ___ to soften the gutta-percha.",o:["plugger","spreader","file","bur"],a:1},
+{q:"In warm vertical compaction, the master cone should fit short of the corrected working length by:",o:["3-4 mm","0.5-2 mm","5 mm","0 mm"],a:1},
+{q:"In warm vertical technique, the canal should have a continuously tapering funnel keeping the apical foramen:",o:["As large as possible","As small as possible","Open","Blocked"],a:1},
+{q:"In the continuous wave (System B) technique, the heat source is set to:",o:["100 C","200 C","64 C","300 C"],a:1},
+{q:"In the continuous wave technique, the plugger is prefitted to within ___ of the canal length.",o:["1-2 mm","5-7 mm","10 mm","15 mm"],a:1},
+{q:"Thermoplastic injection technique is especially used to obturate:",o:["Straight simple canals","Irregularities such as internal resorption","Single-canal incisors","Immature apices only"],a:1},
+{q:"A common result of the thermoplastic injection technique is:",o:["Perfect apical seal always","Both overextension and underextension","No filling","Fracture"],a:1},
+{q:"Carrier-based gutta-percha (Thermafil) uses a central:",o:["Metal cone","Plastic core","Silver point","Glass fiber"],a:1},
+{q:"In the carrier-based technique, the carrier is disinfected with 5.25% NaOCl for:",o:["10 seconds","1 minute","5 minutes","30 seconds"],a:1},
+{q:"A disadvantage of the carrier-based technique is:",o:["Poor lateral canal filling","Extrusion of material beyond the apex","No adaptation","Requires no sealer"],a:1},
+{q:"A disadvantage of the solvent obturation technique is:",o:["No shrinkage","Shrinkage causing voids and tissue irritation","Excess rigidity","No adaptation"],a:1},
+{q:"Pastes containing ___ are toxic and no longer used.",o:["zinc oxide","paraformaldehyde","calcium hydroxide","bismuth"],a:1},
+{q:"Which material is commonly used as an apical barrier in apexification?",o:["Amalgam","Calcium hydroxide","Silver cone","Composite"],a:1},
+{q:"In pulp revascularization, bleeding is induced in the canal and the clot is covered with:",o:["Gutta-percha","MTA","Amalgam","Glass ionomer"],a:1},
+{q:"Apical barriers may be necessary in cases with:",o:["A mature apex","Immature apical development or external apical resorption","A single canal","Reversible pulpitis"],a:1},
+{q:"In Walton's classification, an acute apical abscess is which type of emergency?",o:["Pretreatment","Under treatment","Post-treatment","None"],a:0},
+{q:"A mid-treatment flare-up is classified as an emergency occurring:",o:["Before treatment","In patients under treatment","After treatment","Never"],a:1},
+{q:"Overinstrumentation and overextended obturation are classified as ___ emergencies.",o:["pretreatment","under-treatment","post-endodontic","developmental"],a:2},
+{q:"For symptomatic irreversible pulpitis with periapical extension, it is recommended to:",o:["Prescribe antibiotics","Reduce the occlusion","Extract immediately","Do nothing"],a:1},
+{q:"Antibiotics for the emergency management of irreversible pulpitis are:",o:["Always required","Not recommended","First-line","Curative"],a:1},
+{q:"A hallmark of acute apical periodontitis is:",o:["No sensitivity","Elevation of the tooth from its socket and percussion sensitivity","Painless swelling","Positive vitality"],a:1},
+{q:"In an acute periapical abscess, local anesthetic is:",o:["Recommended","Contraindicated","Mandatory","Curative"],a:1},
+{q:"One reason local anesthesia is contraindicated in an acute abscess is:",o:["It works too fast","Risk of spreading microorganisms","It lowers blood pressure","It is too expensive"],a:1},
+{q:"If pus is oozing from an acute periapical abscess, the tooth may be left open for:",o:["1 hour","1 day","1 week","1 month"],a:1},
+{q:"Cracked tooth syndrome is an incomplete fracture of a tooth with a ___ pulp.",o:["necrotic","vital","calcified","absent"],a:1},
+{q:"Cracked tooth syndrome is commonly seen in teeth with:",o:["No restorations","Large restorations","Sealants","Fluorosis"],a:1},
+{q:"The first treatment step in cracked tooth syndrome is to:",o:["Extract the tooth","Immediately reduce the occlusal contact","Place a post","Prescribe antibiotics"],a:1},
+{q:"Which is a risk factor for an intratreatment flare-up?",o:["Adequate debridement","Overinstrumentation and periapical extrusion of debris","No preoperative pain","Multiple visits"],a:1},
+{q:"Antibiotics in an acute periapical abscess are prescribed only if there are:",o:["Any symptoms","Systemic features such as fever","No symptoms","Radiographic changes"],a:1},
+{q:"If gutta-percha is extruded beyond the apex, management includes:",o:["Leaving it permanently","Retreatment with special kits (e.g., ProTaper retreatment, D-Race)","Extraction always","Bleaching"],a:1},
+{q:"Chemical mediators cause pain by lowering the pain threshold and increasing:",o:["Bone density","Vascular permeability producing edema","Enamel thickness","Salivation"],a:1},
+{q:"After endodontic treatment, dentin loses moisture of about:",o:["1%","9%","20%","50%"],a:1},
+{q:"When minimal coronal structure is lost, the ETT can be restored with:",o:["A full crown always","A direct resin composite restoration","An implant","Extraction"],a:1},
+{q:"A post placed in an ETT provides retention but does NOT:",o:["Hold the core","Strengthen the tooth against fracture","Aid the crown","Retain the restoration"],a:1},
+{q:"Which posts are the LEAST retentive?",o:["Threaded posts","Tapered posts","Parallel posts","Serrated posts"],a:1},
+{q:"Threaded posts are the most retentive but increase the risk of:",o:["Coronal leakage","Root fracture from stress concentration","Discoloration","Caries"],a:1},
+{q:"A post should be about ___ the length of the root, or leave 5 mm of apical gutta-percha.",o:["1/2","3/4","1/4","the full"],a:1},
+{q:"A ferrule should encase at least ___ of sound tooth structure.",o:["1 mm","2 to 3 mm","5 mm","10 mm"],a:1},
+{q:"A longer ferrule ___ fracture resistance.",o:["decreases","increases","does not affect","eliminates"],a:1},
+{q:"Fiber posts are advantageous because their modulus of elasticity is:",o:["Much higher than dentin","Closer to that of dentin than metal posts","Zero","Equal to enamel"],a:1},
+{q:"Gutta-percha is removed for post space using a:",o:["Barbed broach","Peeso drill","Spreader","Lentulo only"],a:1},
+{q:"Endocrowns combine which components in one unit?",o:["Only the crown","The post, the core, and the crown","Only the post","Two crowns"],a:1},
+{q:"Composite resins have a Young's modulus close to that of:",o:["Enamel","Dentin","Gold","Ceramic"],a:1},
+{q:"Lateral canals are found most commonly in the ___ regions of the root.",o:["cervical","apical and bifurcation","middle third only","coronal"],a:1},
+{q:"In the DDx of pulpal vs periodontal disease, a pulpal lesion is typically:",o:["Vital","Nonvital","Plaque-induced","Generalized"],a:1},
+{q:"A primary endodontic lesion draining through the gingival sulcus is treated by:",o:["Periodontal surgery only","Root canal treatment","Extraction","Antibiotics only"],a:1},
+{q:"Developmental grooves that cause localized periodontitis are found mostly on the ___ of the maxillary lateral incisor.",o:["buccal surface","palatal surface","incisal edge","distal surface"],a:1},
+{q:"Hemisection means removal of:",o:["One root of a maxillary molar without the crown","Half of a tooth (e.g., mesial root of a mandibular first molar)","The entire crown","The apex only"],a:1},
+{q:"Which is a PATIENT-related cause of tooth discoloration?",o:["Tetracycline","Pulp necrosis","Enamel hypoplasia","Amelogenesis imperfecta"],a:1},
+{q:"Which is a DRUG-related cause of tooth discoloration?",o:["Age","Tetracycline","Pulp necrosis","Intrapulpal hemorrhage"],a:1},
+{q:"Which is a systemic (tooth-related) cause of discoloration?",o:["Tetracycline","Erythroblastosis fetalis","Pulp necrosis","Age"],a:1}
+];
+/* ================= ENGINE ================= */
+var idx = 0, answers = [], timer = null, timeLeft = 60, filter = 'all';
+
+function startExam(){
+  answers = QUESTIONS.map(function(){ return -1; }); // -1 = unanswered
+  idx = 0;
+  document.getElementById('startScreen').classList.add('hidden');
+  document.getElementById('examScreen').classList.remove('hidden');
+  renderQuestion();
+}
+
+function renderQuestion(){
+  if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+  window.scrollTo(0, 0);
+  var Q = QUESTIONS[idx];
+  document.getElementById('progressTxt').textContent = 'Q ' + (idx+1) + ' / ' + QUESTIONS.length;
+  document.getElementById('progressBar').style.width = (((idx)/QUESTIONS.length)*100) + '%';
+  document.getElementById('answeredCount').textContent = answers.filter(function(a){return a>=0;}).length;
+  document.getElementById('stem').textContent = (idx+1) + '. ' + Q.q;
+  var box = document.getElementById('options');
+  box.innerHTML = '';
+  Q.o.forEach(function(text, i){
+    var b = document.createElement('button');
+    b.className = 'opt' + (answers[idx]===i ? ' sel' : '');
+    b.textContent = String.fromCharCode(65+i) + '. ' + text;
+    b.onclick = function(){ selectOption(i); };
+    box.appendChild(b);
+  });
+  startTimer();
+}
+
+function startTimer(){
+  clearInterval(timer);
+  timeLeft = 60;
+  updateTimerUI();
+  timer = setInterval(function(){
+    timeLeft--;
+    updateTimerUI();
+    if (timeLeft <= 0){ clearInterval(timer); nextQuestion(true); }
+  }, 1000);
+}
+function updateTimerUI(){
+  var t = document.getElementById('timer');
+  t.textContent = timeLeft;
+  t.classList.toggle('warn', timeLeft <= 10);
+  document.getElementById('timerBar').style.width = ((timeLeft/60)*100) + '%';
+}
+
+function selectOption(i){
+  answers[idx] = i;
+  // brief visual selection, then advance
+  var opts = document.querySelectorAll('#options .opt');
+  opts.forEach(function(o){ o.classList.remove('sel'); });
+  if (opts[i]) opts[i].classList.add('sel');
+  clearInterval(timer);
+  setTimeout(function(){ nextQuestion(false); }, 180);
+}
+
+function nextQuestion(fromTimeoutOrSkip){
+  clearInterval(timer);
+  if (idx < QUESTIONS.length - 1){
+    idx++;
+    renderQuestion();
+  } else {
+    finishExam();
+  }
+}
+
+function finishExam(){
+  clearInterval(timer);
+  document.getElementById('examScreen').classList.add('hidden');
+  document.getElementById('resultScreen').classList.remove('hidden');
+  var correct = 0, wrong = 0, skipped = 0;
+  answers.forEach(function(a, i){
+    if (a === -1) skipped++;
+    else if (a === QUESTIONS[i].a) correct++;
+    else wrong++;
+  });
+  document.getElementById('scoreBig').textContent = correct + ' / ' + QUESTIONS.length;
+  document.getElementById('scorePct').textContent = Math.round((correct/QUESTIONS.length)*100) + '%';
+  document.getElementById('scoreBreak').textContent = 'Correct: ' + correct + '  ·  Wrong: ' + wrong + '  ·  Unanswered: ' + skipped;
+  renderReview();
+}
+
+function setFilter(f){
+  filter = f;
+  ['fAll','fWrong','fSkip'].forEach(function(id){ document.getElementById(id).classList.remove('active'); });
+  document.getElementById(f==='all'?'fAll':(f==='wrong'?'fWrong':'fSkip')).classList.add('active');
+  renderReview();
+}
+
+function renderReview(){
+  var box = document.getElementById('review');
+  box.innerHTML = '';
+  QUESTIONS.forEach(function(Q, i){
+    var a = answers[i];
+    var isCorrect = a === Q.a;
+    var isSkip = a === -1;
+    if (filter === 'wrong' && (isCorrect || isSkip)) return;
+    if (filter === 'skip' && !isSkip) return;
+    var card = document.createElement('div');
+    card.className = 'rev';
+    var h = document.createElement('div');
+    h.className = 'qh';
+    h.textContent = (i+1) + '. ' + Q.q;
+    card.appendChild(h);
+    Q.o.forEach(function(text, j){
+      var row = document.createElement('div');
+      row.className = 'ro';
+      var label = String.fromCharCode(65+j) + '. ' + text;
+      if (j === Q.a){ row.className += ' correct'; label += '  ✓'; }
+      if (j === a && a !== Q.a){ row.className += ' yourwrong'; label += '  ✗ (your answer)'; }
+      row.textContent = label;
+      card.appendChild(row);
+    });
+    var tag = document.createElement('div');
+    if (isSkip){ tag.className = 'tagline skip'; tag.textContent = 'Unanswered (timed out or skipped)'; }
+    else if (isCorrect){ tag.className = 'tagline ok'; tag.textContent = 'Correct'; }
+    else { tag.className = 'tagline no'; tag.textContent = 'Incorrect'; }
+    card.appendChild(tag);
+    box.appendChild(card);
+  });
+  if (!box.children.length){
+    box.innerHTML = '<div style="padding:20px;text-align:center;font-weight:700;">Nothing to show here.</div>';
+  }
+}
+</script>
+</body>
+</html>
