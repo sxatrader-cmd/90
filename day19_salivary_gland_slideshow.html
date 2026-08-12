@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Day 19 — Salivary Gland Diseases · Locked Slideshow (300s/slide)</title>
+<style>
+  :root { color-scheme: light only; }
+  * { box-sizing: border-box; -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; user-select: none; }
+  html, body { background:#ffffff !important; color:#000000 !important; margin:0; padding:0; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; line-height:1.6; max-width:880px; margin:0 auto; padding:16px 14px 40px; font-size:17px; }
+  @media (prefers-color-scheme: dark) { html, body { background:#fff !important; color:#000 !important; } }
+
+  .hidden { display:none !important; }
+  h1 { font-size:22px; margin:0 0 8px; }
+
+  .start { border:2px solid #000; border-radius:14px; padding:22px; margin-top:20px; }
+  .start ul { padding-inline-start:20px; } .start li { margin:8px 0; }
+  .btn { border:2px solid #000; background:#000; color:#fff; font-weight:800; border-radius:10px; padding:14px 26px; cursor:pointer; font-size:18px; font-family:inherit; }
+  .btn:hover { background:#fff; color:#000; }
+
+  .topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:8px; }
+  .progress-txt { font-weight:800; font-size:15px; }
+  .timerwrap { text-align:right; }
+  .timer { font-weight:800; font-size:30px; line-height:1; font-variant-numeric:tabular-nums; }
+  .timer.warn { color:#c8000c; }
+  .timer .u { font-size:13px; font-weight:700; color:#555; margin-inline-start:4px; }
+  .mmss { font-size:12px; color:#777; font-weight:700; }
+  .bar { height:8px; background:#eee; border:1px solid #ccc; border-radius:6px; overflow:hidden; margin:6px 0; }
+  .bar > div { height:100%; background:#000; width:0%; }
+  .tbar { height:12px; background:#eee; border:1px solid #ccc; border-radius:6px; overflow:hidden; margin-bottom:18px; }
+  .tbar > div { height:100%; background:#0b7285; width:100%; }
+
+  .slide-title { background:#000; color:#fff; padding:12px 16px; border-radius:10px; font-size:20px; font-weight:800; margin:6px 0 14px; }
+  .content { font-size:17px; }
+  .content p { margin:11px 0; }
+  .content ul { margin:9px 0; padding-inline-start:22px; } .content li { margin:6px 0; }
+  .sub-h { font-weight:800; display:block; margin:13px 0 4px; }
+
+  .crit { background:#fff3b0; color:#c8000c; font-weight:800; padding:1px 6px; border-radius:5px; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
+  .critbox { background:#fff3b0; border:2px solid #c8000c; border-radius:10px; color:#000; padding:12px 16px; margin:13px 0; }
+  .critbox .lbl { display:block; color:#c8000c; font-weight:800; margin-bottom:6px; }
+
+  .locknote { text-align:center; font-size:13px; color:#888; font-weight:700; margin-top:24px; letter-spacing:.3px; }
+
+  .ar { direction:rtl; text-align:right; }
+  .ar .slide-title { text-align:right; }
+
+  .done { border:3px solid #000; border-radius:14px; padding:26px; text-align:center; margin-top:20px; }
+  .done .big { font-size:30px; font-weight:800; margin-bottom:8px; }
+</style>
+</head>
+<body>
+
+<section id="startScreen">
+  <h1>Day 19 — Salivary Gland Diseases</h1>
+  <div style="font-size:15px;">Oral Medicine · pp. 395–436 · locked timed slideshow</div>
+  <div class="start">
+    <b>How this works</b>
+    <ul>
+      <li>The material plays as a <b>locked slideshow</b>, one slide at a time.</li>
+      <li>Each slide stays for exactly <b>300 seconds</b>, shown as a <b>descending seconds counter</b>, then advances automatically.</li>
+      <li><b>No skipping, no going back, no pausing</b> — there are no controls once it starts.</li>
+      <li>All information is in English; a short Arabic summary is the final slide.</li>
+    </ul>
+    <button class="btn" onclick="startShow()">Start slideshow</button>
+  </div>
+</section>
+
+<section id="showScreen" class="hidden">
+  <div class="topbar">
+    <span class="progress-txt" id="progressTxt">Slide 1 / 23</span>
+    <div class="timerwrap">
+      <div class="timer" id="timer">300<span class="u">sec</span></div>
+      <div class="mmss" id="mmss">5:00</div>
+    </div>
+  </div>
+  <div class="bar"><div id="progressBar"></div></div>
+  <div class="tbar"><div id="timerBar"></div></div>
+  <div id="stage"></div>
+  <div class="locknote">— locked · auto-advances at 0 —</div>
+</section>
+
+<section id="doneScreen" class="hidden">
+  <div class="done">
+    <div class="big">Slideshow complete ✅</div>
+    <div>You have viewed all Day 19 slides.</div>
+    <div style="margin-top:16px;"><button class="btn" onclick="location.reload()">Restart</button></div>
+  </div>
+</section>
+
+<script>
+var SLIDES = [
+{t:"1 · Salivary Glands — Overview & Anatomy", h:
+ "<p><b>Major glands (3):</b> parotid, submandibular, sublingual. By dominant acinar cell type:</p>"+
+ "<ul><li><b>Parotid</b> → serous (watery, enzyme-rich).</li><li><b>Submandibular</b> → mixed (serous + mucous).</li><li><b>Sublingual & minor</b> → mucous (viscous, mucin-rich).</li></ul>"+
+ "<p><b>Minor glands:</b> 600–1000 (labial, buccal, lingual, palatal, retromolar).</p>"+
+ "<div class='critbox'><span class='lbl'>Ducts to memorize</span>Parotid → <b>Stensen's duct</b> (opens near the maxillary 1st/2nd molar). Submandibular → <b>Wharton's duct</b> (sublingual caruncle). Sublingual → <b>ducts of Rivinus</b> (8–20); the largest, the <b>duct of Bartholin</b>, joins Wharton's.</div>"+
+ "<p><b>Tongue minor glands:</b> glands of <b>Weber</b> (lateral border), <b>von Ebner</b> (around circumvallate papillae), <b>Blandin–Nuhn</b> (anterior ventral tongue).</p>"},
+
+{t:"2 · Saliva & Key Definitions", h:
+ "<p><b>Whole saliva</b> is <span class='crit'>hypotonic</span> relative to plasma: <span class='crit'>&gt; 99% water, &lt; 1% proteins and salts</span>, plus gingival crevicular fluid, microbes, debris, and mucus.</p>"+
+ "<div class='critbox'><span class='lbl'>Distinguish clearly</span><b>Xerostomia</b> = the <b>subjective</b> complaint of dry mouth. <b>Hyposalivation</b> = a <b>quantified</b> reduced flow rate. Either can occur without the other (e.g., xerostomia from a shift to more mucous saliva).</div>"+
+ "<p><b>Hypersalivation (ptyalism)</b> = increased saliva production and/or decreased oral clearance.</p>"+
+ "<p><b>Salivary gland dysfunction</b> = decreased flow or another quantifiable alteration in performance.</p>"},
+
+{t:"3 · Causes & Differential of Salivary Hypofunction", h:
+ "<span class='sub-h'>Causes:</span>"+
+ "<ul><li><b>Medications</b> — xerogenic drugs (antidepressants, anticholinergics, antihistamines, antihypertensives, sedatives, diuretics, bronchodilators). <span class='crit'>Over 400 drugs list dry mouth as a side effect.</span></li>"+
+ "<li>Other agents: caffeine, alcohol, smoking; head & neck <b>irradiation</b>.</li>"+
+ "<li>Systemic disease (diabetes mellitus); psychological (depression, anxiety); malnutrition (bulimia, dehydration).</li>"+
+ "<li><b>Autoimmune</b> — Sjögren's syndrome.</li></ul>"+
+ "<div class='critbox'><span class='lbl'>DDx buckets</span>Autoimmune (Sjögren's, GVHD) · Developmental (aplasia) · Iatrogenic (radiation, post-surgical, Botox) · Inflammatory (IgG4/Mikulicz's) · Infectious (CMV, HIV, hepatitis C, TB) · Neoplastic · Systemic (anorexia, diabetes, alcoholism, sarcoidosis).</div>"},
+
+{t:"4 · Symptoms & Clinical Examination", h:
+ "<span class='sub-h'>Symptoms of hypofunction:</span>"+
+ "<ul><li>Dryness of all mucosal surfaces, lips, throat; difficulty chewing, swallowing, speaking.</li>"+
+ "<li>Oral pain/burning, chronic sore throat, sensitivity to spicy/coarse foods → compromised nutrition.</li>"+
+ "<li>Need to sip liquids to swallow — correlates with measurable secretory decrease.</li></ul>"+
+ "<span class='sub-h'>Examination:</span>"+
+ "<ul><li>Signs of dryness: candidiasis, gland enlargement, viscous/scant secretions.</li>"+
+ "<li><span class='crit'>Cloudy exudate suggests bacterial infection → culture it.</span></li>"+
+ "<li>Always assess <b>facial nerve function</b> with parotid tumors.</li>"+
+ "<li><span class='crit'>Ulceration of overlying mucosa raises suspicion of malignancy.</span></li></ul>"+
+ "<p>A report of eye/nasal/skin/vaginal dryness with xerostomia may signal <b>Sjögren's syndrome</b>.</p>"},
+
+{t:"5 · The Parotid Gland & Signs of Malignancy", h:
+ "<p>The <b>largest</b> salivary gland, split into <b>superficial and deep lobes</b> by the facial nerve. <span class='crit'>Most benign parotid tumors sit in the superficial lobe → superficial parotidectomy.</span></p>"+
+ "<div class='critbox'><span class='lbl'>Red flag</span><b>Facial nerve paralysis usually indicates malignancy.</b> Other malignancy signs: hardness, fixation, tenderness, infiltration of structures, overlying skin ulceration, cranial nerve palsy.</div>"+
+ "<p><b>Bilateral parotid masses:</b> lymphadenopathy, Warthin's tumors, lymphoepithelial cysts, HIV-related nodes, Sjögren's.</p>"+
+ "<div class='critbox'><span class='lbl'>Golden rule of proportion</span>Neoplasms are most common in the parotid, but <span class='crit'>the smaller the gland, the greater the proportion that are malignant</span> — a parotid tumor is more likely benign than a minor-gland tumor.</div>"},
+
+{t:"6 · Imaging 1 — Plain Radiography & Sialography", h:
+ "<p><b>Plain radiography:</b> lateral oblique/AP for the parotid; an occlusal film shows radiopaque sialoliths and bony destruction from malignancy.</p>"+
+ "<p><b>Sialography:</b> retrograde contrast into <b>Stensen's or Wharton's</b> ducts. <span class='crit'>Sublingual ducts are too small to inject.</span> It gives the clearest view of ducts and is the method of choice for ductal stricture, obstruction, dilatation, ruptures, and locating sialoliths.</p>"+
+ "<div class='critbox'><span class='lbl'>Two contraindications</span><b>Active infection</b> (may rupture the gland / force bacteria along the ducts) and <b>allergy to contrast media</b>. The <b>iodine</b> can also interfere with thyroid function tests and thyroid-cancer nuclear evaluation.</div>"+
+ "<p>After the procedure: massage the gland / suck lemon drops to promote clearance of contrast.</p>"},
+
+{t:"7 · Imaging 2 — Ultrasound, Scintigraphy, CT", h:
+ "<span class='sub-h'>Ultrasound (US):</span>"+
+ "<ul><li>First-line, especially in <b>children and pregnant women</b>; for suspected sialolithiasis and abscesses.</li>"+
+ "<li>Distinguishes solid vs cystic, intra- vs extra-glandular; guides <b>FNAB</b>; can visualize radiolucent stones.</li></ul>"+
+ "<span class='sub-h'>Radionuclide (scintigraphy):</span>"+
+ "<p><b>Tc-99m pertechnetate</b> assesses gland <b>function</b> (uptake & excretion). <span class='crit'>Only the parotid, submandibular, and thyroid are visualized distinctly.</span></p>"+
+ "<span class='sub-h'>CT:</span>"+
+ "<p><span class='crit'>Method of choice for inflammatory disease</span> (abscess, calculi, duct dilatation) and when MRI is contraindicated; superior to plain films/US for sialolithiasis; distinguishes fluid-filled masses from abscess. Downsides: radiation, iodine contrast, dental-restoration scatter.</p>"},
+
+{t:"8 · Imaging 3 — MRI, CBCT · Biopsy & Serology", h:
+ "<span class='sub-h'>MRI:</span>"+
+ "<ul><li>Best for tumors, adjacent structures, and proximity to the <b>facial nerve</b>; <span class='crit'>no ionizing radiation, no contrast needed.</span></li>"+
+ "<li>Contraindicated: pacemakers/magnetic implants (<b>dental implants are non-magnetic → OK</b>), inability to stay still, claustrophobia; amalgam artifact can obscure calculi.</li></ul>"+
+ "<span class='sub-h'>CBCT:</span> high resolution at a lower dose than CT; 3D sialography.<br>"+
+ "<span class='sub-h'>Biopsy:</span> the <b>labial minor salivary glands</b> are most commonly biopsied (accessible; used when Sjögren's is suspected).<br>"+
+ "<div class='critbox'><span class='lbl'>Sjögren's serology</span>No single definitive test. Look for elevated ESR, anemia, leukopenia, and autoantibodies: <span class='crit'>elevated IgG, rheumatoid factor, ANA, and anti-SSA/Ro & anti-SSB/La.</span></div>"},
+
+{t:"9 · Developmental Disorders", h:
+ "<ul><li><b>Aplasia/agenesis:</b> complete absence — rare, may occur with other defects.</li>"+
+ "<li><b>Accessory ducts:</b> common, need no treatment.</li>"+
+ "<li><b>Aberrant (ectopic) glands:</b> salivary tissue at unusual sites (middle ear, neck, mandible); usually incidental.</li></ul>"+
+ "<div class='critbox'><span class='lbl'>Stafne bone defect</span>An asymptomatic depression on the <b>lingual surface of the mandible</b> with ectopic salivary tissue. <span class='crit'>NOT a true cyst — no epithelial lining.</span> Most common location: the <b>third-molar region, inferior to the mandibular canal.</b></div>"+
+ "<p><b>Diverticula:</b> pouches in major ducts → saliva pooling and recurrent sialadenitis; manage by milking the gland. <b>Darier's disease:</b> duct dilation with stricture and obstructive sialadenitis.</p>"},
+
+{t:"10 · Sialolithiasis — Etiology & Sites", h:
+ "<p><b>Sialoliths</b> are calcified organic masses within the ductal system of the major glands.</p>"+
+ "<span class='sub-h'>Etiologic factors:</span>"+
+ "<ul><li><b>Saliva retention:</b> ductal irregularities, inflammation, dehydration, anticholinergics/diuretics.</li>"+
+ "<li><b>Saliva composition:</b> calcium saturation, deficit of crystallization inhibitors (phytate); bacterial infection raises pH → calcium phosphate supersaturation.</li></ul>"+
+ "<div class='critbox'><span class='lbl'>Distribution</span><span class='crit'>Submandibular 80–90%</span> · parotid 5–15% · sublingual 2–5% · minor glands very rare.</div>"+
+ "<p><b>Why submandibular?</b> tortuous course of Wharton's duct, higher calcium/phosphate, dependent position with stasis, more mucoid secretion, and secretory inactivity between nervous stimulation.</p>"},
+
+{t:"11 · Sialolithiasis — Presentation, Diagnosis, Treatment", h:
+ "<p><b>Presentation:</b> <span class='crit'>acute colicky pain and intermittent swelling of the gland during meals</span> (the stone blocks flow → pooling; encapsulated gland has no room to expand → pain). Swelling subsides when stimulation stops.</p>"+
+ "<p><b>Complications:</b> acute sialadenitis, ductal stricture/dilatation, fistula and sinus tract, ulceration over the stone.</p>"+
+ "<div class='critbox'><span class='lbl'>Diagnosis</span>Plain film — an <b>occlusal radiograph at 90° to the floor of the mouth</b> for suspected submandibular stones. Beware mimics: phleboliths, calcified nodes, lingual-artery atherosclerosis. US is a noninvasive first-line and can show radiolucent stones.</div>"+
+ "<p><b>Treatment:</b> acute phase supportive (analgesics, hydration, antibiotics); <b>sialogogues</b> (gum, pilocarpine, cevimeline), massage/heat, milking the gland; deeper stones → sialendoscopy or surgery; <b>ESWL lithotripsy</b> for large stones.</p>"},
+
+{t:"12 · Mucoceles (Extravasation vs Retention)", h:
+ "<p>A <b>mucocele</b> is swelling from accumulated saliva at a traumatized/obstructed minor-gland duct.</p>"+
+ "<div class='critbox'><span class='lbl'>Two types</span><b>Extravasation:</b> from <b>trauma</b> to a duct → saliva pools in tissue; <span class='crit'>NO epithelial lining and no distinct border</span>; most common on the <b>lower lip</b>, in children and teenagers. <b>Retention:</b> from <b>ductal obstruction</b> (sialolith, scarring, tumor) → duct dilates; epithelial-lined.</div>"+
+ "<p><b>Clinical:</b> discrete, painless, smooth swellings; superficial lesions have a <span class='crit'>characteristic blue hue</span>; deeper ones look normal. They fluctuate in size, may drain and recur.</p>"+
+ "<p><b>Treatment:</b> remove the lesion with the feeder gland/duct; incomplete removal → recurrence. Alternatives: cryosurgery, laser, micromarsupialization, intralesional steroids.</p>"},
+
+{t:"13 · Ranula", h:
+ "<p>A <b>ranula</b> is a mucocele of the <b>floor of the mouth</b>, arising from the <b>sublingual gland</b> (trauma to ducts of Rivinus with extravasation, or ductal obstruction/aneurysm).</p>"+
+ "<p>Most common in the <b>second decade</b> and in <b>females</b>. The oral ranula stays confined to the sublingual space.</p>"+
+ "<p><b>Clinical:</b> painless, slow-growing, fluctuant, movable mass usually to one side of the frenulum; superficial ones have a bluish hue; large ones deviate the tongue.</p>"+
+ "<div class='critbox'><span class='lbl'>Treatment & recurrence</span>The most predictable cure is <b>removal of the sublingual gland</b>. Recurrence: <span class='crit'>67% with marsupialization, 58% with excision alone, 1% with sublingual gland excision.</span> Complications: recurrence, tongue sensory deficits, Wharton's duct damage.</div>"},
+
+{t:"14 · Necrotizing Sialometaplasia (NS)", h:
+ "<p>A <b>benign, self-limiting, reactive inflammatory</b> disorder of salivary tissue — likely a <b>local ischemic event</b>. Associated with smoking, trauma, denture wear, surgery, pregnancy, diabetes, sickle-cell, cocaine, bulimia. More common in <b>males &gt; 40</b>.</p>"+
+ "<div class='critbox'><span class='lbl'>Key danger</span><span class='crit'>NS can clinically and histologically resemble a malignancy</span> (especially mucoepidermoid and adenoid cystic carcinoma) — misdiagnosis has led to unnecessary radical surgery.</div>"+
+ "<p><b>Clinical:</b> painful, rapidly progressing swelling of the <b>hard palate</b> with central ulceration and peripheral erythema; 1–3 cm; often after an inciting event. <b>Rapid onset</b> is a distinguishing feature.</p>"+
+ "<p><b>Treatment:</b> self-limiting, resolves in <b>3–12 weeks</b>; supportive care + antiseptic mouthwash (0.12% chlorhexidine).</p>"},
+
+{t:"15 · Cheilitis Glandularis (CG)", h:
+ "<p>A chronic inflammatory disorder of the <b>minor salivary glands and ducts of the lip</b>: thick saliva is secreted from dilated ductal openings, with superficial ulceration, painless crusting, swelling, and induration.</p>"+
+ "<p><b>Etiology:</b> uncertain — proposed autosomal dominant; UV exposure implicated (fair-skinned, albino patients prone); poor hygiene, smoking, immunocompromise.</p>"+
+ "<p>Occurs mainly in <b>middle-aged & elderly men</b>; primarily the <b>lower lip</b>.</p>"+
+ "<div class='critbox'><span class='lbl'>Important association</span><span class='crit'>Relatively high incidence of squamous cell carcinoma of the lip</span> — some regard CG as a premalignant lesion.</div>"+
+ "<p><b>Treatment:</b> remove predisposing factors, lip balms/sunscreens; topical/intralesional/systemic steroids; refractory cases → cryosurgery, vermillionectomy, mucosal stripping.</p>"},
+
+{t:"16 · Radiation-Induced Salivary Pathology", h:
+ "<span class='sub-h'>External beam radiation:</span>"+
+ "<ul><li>Therapeutic head & neck doses exceed 65 Gy, but <span class='crit'>permanent salivary damage can develop after only 24–26 Gy.</span></li>"+
+ "<li>Mechanism: apoptosis + reactive oxygen species + impaired blood flow.</li>"+
+ "<li>Acute dryness within a week; <b>mucositis</b> (burning, erythema, ulceration) peaks at the end of therapy. By 6–7 weeks, gland function is nearly absent.</li></ul>"+
+ "<span class='sub-h'>Internal (radioactive iodine, I-131):</span>"+
+ "<ul><li>Used for papillary/follicular thyroid carcinoma; concentrated & secreted by salivary tissue → damage; injury is <b>irreversible</b>.</li>"+
+ "<li><span class='crit'>Aggressive salivary stimulation (sour candies) helps clear I-131 — but NOT within the first 24 hours</span> (may worsen side effects). Pilocarpine/cevimeline reduce transit time.</li></ul>"},
+
+{t:"17 · Allergic Sialadenitis & Mumps", h:
+ "<p><b>Allergic sialadenitis:</b> gland enlargement linked to drugs/allergens — ethambutol, heavy metals, iodine compounds, isoproterenol, phenobarbital, phenothiazine, sulfisoxazole.</p>"+
+ "<div class='critbox'><span class='lbl'>Mumps (epidemic parotitis)</span>Acute <b>RNA paramyxovirus</b>, spread by salivary droplets; children <b>4–6 years</b>; incubation 2–3 weeks; contagious ~15 days. <span class='crit'>95% involve the parotid only</span>; painful bilateral parotid swelling.</div>"+
+ "<p><b>Complications</b> (worse in adults): orchitis (1 in 5 males), oophoritis (1 in 20 females), viral meningitis, pancreatitis; rare: encephalitis (can be fatal), hearing loss (rarest).</p>"+
+ "<p><b>Treatment:</b> supportive only — <span class='crit'>no antibiotics or antivirals</span>; avoid fruit juices (stimulate painful salivation). <b>MMR vaccine</b> prevents it.</p>"},
+
+{t:"18 · Bacterial Sialadenitis", h:
+ "<p>Most often in patients with <b>reduced salivary flow</b>. <span class='crit'>Occurs more frequently in the parotid gland</span> — the submandibular is protected by antimicrobial <b>mucin</b>; Stensen's duct sits by the molars (heavy colonization).</p>"+
+ "<p><b>Risk factors:</b> dehydration, xerogenic drugs, ductal obstruction, irradiation, diabetes, Sjögren's; <b>retrograde parotitis after general anesthesia</b> (reduced flow + anticholinergics).</p>"+
+ "<p><b>Clinical:</b> sudden painful gland enlargement (≈20% bilateral), fever, trismus, dysphagia; ~75% show <b>purulent discharge</b> from the duct.</p>"+
+ "<div class='critbox'><span class='lbl'>Treatment</span>Cover <b>S. aureus</b> + oral aerobes/anaerobes. Up to <span class='crit'>75% are β-lactamase producers</span> → anti-staphylococcal penicillin, a β-lactamase-inhibitor combination, or a 1st-generation cephalosporin. Penicillin allergy → macrolide (azithromycin) + metronidazole. Improvement expected in 24–48 h.</div>"},
+
+{t:"19 · Systemic Conditions & Xerostomia Management", h:
+ "<span class='sub-h'>Systemic involvement:</span>"+
+ "<ul><li>Metabolic: diabetes, anorexia/bulimia, chronic alcoholism, dehydration.</li>"+
+ "<li><b>Mikulicz's disease (IgG4-related):</b> symmetrical lacrimal/parotid/submandibular enlargement with IgG4-positive plasmacyte infiltration.</li>"+
+ "<li><b>Sjögren's syndrome:</b> chronic autoimmune oral & ocular dryness with lymphocytic infiltration.</li>"+
+ "<li>Granulomatous: <b>TB</b> (Mycobacterium tuberculosis) and <b>sarcoidosis</b> (parotid in ~6%, noncaseating granulomas on minor-gland biopsy).</li></ul>"+
+ "<div class='critbox'><span class='lbl'>Xerostomia management</span><b>Prevention:</b> topical fluoride is critical; avoid cariogenic foods, alcohol, caffeine. <b>Symptomatic:</b> sip water, saliva substitutes, aloe/vitamin E. <b>Stimulation:</b> sugar-free gum, and systemic <b>pilocarpine/cevimeline</b> (parasympathomimetics).</div>"},
+
+{t:"20 · Sialorrhea (Hypersalivation)", h:
+ "<p><b>Sialorrhea</b> = excessive saliva or hypersalivation, from increased production or decreased clearance.</p>"+
+ "<span class='sub-h'>Causes:</span>"+
+ "<ul><li>Medications: pilocarpine, cevimeline, lithium, nitrazepam.</li>"+
+ "<li>Infant teething, secretory phase of menstruation, hyperhydration.</li>"+
+ "<li><span class='crit'>Heavy-metal poisoning (iron, lead, arsenic, mercury, thallium)</span> and organophosphate poisoning.</li>"+
+ "<li>Nausea, GERD, obstructive esophagitis; neurologic causes (CVA, neuromuscular disease); local irritation (aphthous ulcers, ill-fitting prosthesis).</li></ul>"+
+ "<div class='critbox'><span class='lbl'>Work-up & treatment</span>Most cases are a <b>clearance</b> issue; obtain a blood sample to evaluate for <b>heavy metals</b>. Three treatment types by cause: <b>physical therapy, medications, and surgery.</b></div>"},
+
+{t:"21 · Salivary Gland Tumors — Overview & Benign", h:
+ "<div class='critbox'><span class='lbl'>Distribution & benign/malignant ratio</span><span class='crit'>~80% arise in the parotid</span> (10–15% submandibular; rest sublingual/minor). About 80% of parotid and ~half of submandibular/minor tumors are benign, but <span class='crit'>&gt; 60% of sublingual tumors are malignant.</span></div>"+
+ "<ul><li><b>Pleomorphic adenoma</b> — the <b>most common</b> (mostly parotid); a 'mixed tumor' (epithelial + mesenchymal). Characteristic <b>microscopic projections beyond the capsule</b> → excise with margins.</li>"+
+ "<li><b>Warthin's tumor</b> (papillary cystadenoma lymphomatosum) — 2nd most common benign parotid; contains <b>oncocytes → takes up Tc-99m</b>; commonly bilateral.</li>"+
+ "<li><b>Oncocytoma</b> — &lt; 1%; almost exclusively parotid; 2nd most common bilateral tumor after Warthin's.</li></ul>"},
+
+{t:"22 · Malignant Tumors & Frey's Syndrome", h:
+ "<ul><li><b>Mucoepidermoid carcinoma</b> — <span class='crit'>most common malignant tumor of the parotid</span>; most common salivary malignancy in children.</li>"+
+ "<li><b>Adenoid cystic carcinoma</b> — <span class='crit'>most common malignant tumor of submandibular and minor glands</span>; notorious for <b>perineural spread</b>, late distant metastases, and local recurrence → low long-term survival; treat with radical excision.</li>"+
+ "<li><b>Acinic cell carcinoma</b> — ~1%; 90–95% parotid; 2nd most common salivary malignancy in children.</li>"+
+ "<li><b>Carcinoma ex pleomorphic adenoma</b> — 2–5%; arises within a preexisting pleomorphic adenoma (hence remove benign parotid tumors early).</li></ul>"+
+ "<div class='critbox'><span class='lbl'>Frey's syndrome (auriculotemporal)</span>The frequent complication after <b>parotidectomy</b>: gustatory sweating and flushing over the parotid area during meals, from <span class='crit'>aberrant regeneration of parasympathetic auriculotemporal fibres onto facial sweat glands</span>; appears 1–12 months post-surgery.</div>"},
+
+{t:"23 · خلاصة بسيطة بالعربي", ar:true, h:
+ "<p>موضوع اليوم: <b>أمراض الغدد اللعابية</b> (نهاية منهج طب الفم). أهم النقاط:</p>"+
+ "<ul><li>الغدد الكبرى: النكفية (مصلية، قناة Stensen)، تحت الفك (مختلطة، قناة Wharton)، تحت اللسان (مخاطية، قنوات Rivinus). اللعاب &gt;٩٩٪ ماء.</li>"+
+ "<li><b>Xerostomia</b> شكوى ذاتية بجفاف الفم، و<b>hyposalivation</b> نقص مقاس بالجريان — وقد ينفصلان. أكثر من ٤٠٠ دواء يسبّب جفاف الفم.</li>"+
+ "<li>التصوير: sialography (يمنع بالالتهاب النشط وحساسية اليود)، US أول خيار للأطفال/الحوامل، scintigraphy للوظيفة، CT للالتهاب، MRI للأورام (بدون إشعاع).</li>"+
+ "<li><b>الحصيات (sialolithiasis)</b>: ٨٠–٩٠٪ بالغدة تحت الفك؛ ألم وتورّم مع الأكل؛ صورة occlusal بزاوية ٩٠°.</li>"+
+ "<li><b>القيلة المخاطية</b> (بلا بطانة، الشفة السفلى) و<b>الضفدعية (ranula)</b> بأرضية الفم من الغدة تحت اللسان (العلاج: استئصال الغدة، النكس ١٪).</li>"+
+ "<li><b>Necrotizing sialometaplasia</b> يشبه الخباثة (الحنك، ذكور &gt;٤٠، يشفى ٣–١٢ أسبوع). <b>Cheilitis glandularis</b> خطر SCC بالشفة.</li>"+
+ "<li>الالتهابات: <b>النكاف (mumps)</b> فيروسي paramyxovirus (٩٥٪ نكفية، لقاح MMR)، و<b>الجرثومي</b> أشيع بالنكفية (S. aureus).</li>"+
+ "<li><b>الأورام</b>: ٨٠٪ بالنكفية ومعظمها حميد؛ الورم الحميد الأشيع <b>pleomorphic adenoma</b>؛ الخبيث الأشيع بالنكفية <b>mucoepidermoid</b> وبتحت الفك/الصغرى <b>adenoid cystic</b>. و<b>متلازمة Frey</b> بعد استئصال النكفية.</li></ul>"}
+];
+
+var PER_SLIDE = 300; // seconds (locked)
+var idx = 0, timeLeft = PER_SLIDE, timer = null;
+
+function startShow(){
+  idx = 0;
+  document.getElementById('startScreen').classList.add('hidden');
+  document.getElementById('showScreen').classList.remove('hidden');
+  render();
+}
+function render(){
+  var s = SLIDES[idx];
+  document.getElementById('progressTxt').textContent = 'Slide ' + (idx+1) + ' / ' + SLIDES.length;
+  document.getElementById('progressBar').style.width = (((idx+1)/SLIDES.length)*100) + '%';
+  var stage = document.getElementById('stage');
+  stage.className = s.ar ? 'ar' : '';
+  stage.innerHTML = '<div class="slide-title">' + s.t + '</div><div class="content">' + s.h + '</div>';
+  window.scrollTo(0,0);
+  startTimer();
+}
+function startTimer(){
+  clearInterval(timer);
+  timeLeft = PER_SLIDE;
+  updateTimerUI();
+  timer = setInterval(function(){
+    timeLeft--;
+    updateTimerUI();
+    if (timeLeft <= 0){ clearInterval(timer); advance(); }
+  }, 1000);
+}
+function updateTimerUI(){
+  var t = document.getElementById('timer');
+  t.innerHTML = timeLeft + '<span class="u">sec</span>';
+  t.classList.toggle('warn', timeLeft <= 30);
+  var m = Math.floor(timeLeft/60), s = timeLeft%60;
+  document.getElementById('mmss').textContent = m + ':' + (s<10?'0':'') + s;
+  document.getElementById('timerBar').style.width = ((timeLeft/PER_SLIDE)*100) + '%';
+}
+function advance(){
+  clearInterval(timer);
+  if (idx < SLIDES.length - 1){ idx++; render(); }
+  else { finish(); }
+}
+function finish(){
+  clearInterval(timer);
+  document.getElementById('showScreen').classList.add('hidden');
+  document.getElementById('doneScreen').classList.remove('hidden');
+}
+</script>
+</body>
+</html>
