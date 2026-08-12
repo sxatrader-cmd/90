@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Oral Medicine — Mastery Exam (answer until correct)</title>
+<style>
+  :root { color-scheme: light only; }
+  * { box-sizing: border-box; -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+  html, body { background:#ffffff !important; color:#000000 !important; margin:0; padding:0; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; line-height:1.55; max-width:820px; margin:0 auto; padding:16px 14px 60px; font-size:17px; }
+  @media (prefers-color-scheme: dark) { html, body { background:#fff !important; color:#000 !important; } }
+
+  .hidden { display:none !important; }
+  h1 { font-size:22px; margin:0 0 8px; }
+
+  .start { border:2px solid #000; border-radius:14px; padding:22px; margin-top:20px; }
+  .start ul { padding-inline-start:20px; } .start li { margin:8px 0; }
+  .btn { border:2px solid #000; background:#000; color:#fff; font-weight:800; border-radius:10px; padding:14px 26px; cursor:pointer; font-size:18px; font-family:inherit; }
+  .btn:hover { background:#fff; color:#000; }
+
+  .examtop { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:10px; }
+  .progress-txt { font-weight:800; font-size:15px; }
+  .timer { font-weight:800; font-size:24px; min-width:70px; text-align:right; font-variant-numeric:tabular-nums; }
+  .timer.warn { color:#c8000c; }
+  .bar { height:8px; background:#eee; border:1px solid #ccc; border-radius:6px; overflow:hidden; margin-bottom:6px; }
+  .bar > div { height:100%; background:#000; width:0%; }
+  .tbar { height:10px; background:#eee; border:1px solid #ccc; border-radius:6px; overflow:hidden; margin-bottom:18px; }
+  .tbar > div { height:100%; background:#c8000c; width:100%; }
+
+  .stem { font-weight:700; font-size:18px; margin:6px 0 14px; }
+  .opt { display:block; width:100%; text-align:left; border:2px solid #999; border-radius:10px; padding:12px 14px; margin:9px 0; background:#fff; color:#000; cursor:pointer; font-size:16px; font-family:inherit; }
+  @media (hover:hover) and (pointer:fine){ .opt:not(.correct):not(.wrong):hover { background:#f2f2f2; } }
+  .opt.correct { background:#d8f5dd; border-color:#127a2b; font-weight:800; color:#0b4f1c; }
+  .opt.wrong { background:#fbdcdc; border-color:#b00020; color:#7a0016; cursor:default; }
+  .opt:disabled { cursor:default; }
+
+  .hint { text-align:center; font-size:13px; color:#888; font-weight:700; margin-top:14px; }
+  .solvedline { font-size:13px; color:#555; margin-top:12px; }
+
+  .done { border:3px solid #000; border-radius:14px; padding:26px; text-align:center; margin-top:20px; }
+  .done .big { font-size:30px; font-weight:800; margin-bottom:8px; }
+</style>
+</head>
+<body>
+
+<section id="startScreen">
+  <h1>Oral Medicine — Mastery Exam</h1>
+  <div style="font-size:15px;">Answer-until-correct mode · 60 seconds per question</div>
+  <div class="start">
+    <b>How this works</b>
+    <ul>
+      <li>One question at a time, with a <b>60-second countdown</b>.</li>
+      <li>A <b>wrong answer turns red</b> and the <b>timer resets to 60</b> — you stay on the same question and try again.</li>
+      <li>A <b>correct answer turns green</b>, then it moves to the next question.</li>
+      <li><b>No new question appears until you choose the correct answer.</b></li>
+      <li>If the timer reaches 0, it simply resets and you keep trying.</li>
+    </ul>
+    <button class="btn" onclick="startExam()">Start</button>
+  </div>
+</section>
+
+<section id="examScreen" class="hidden">
+  <div class="examtop">
+    <span class="progress-txt" id="progressTxt">Q 1 / 0</span>
+    <span class="timer" id="timer">60</span>
+  </div>
+  <div class="bar"><div id="progressBar"></div></div>
+  <div class="tbar"><div id="timerBar"></div></div>
+  <div class="stem" id="stem"></div>
+  <div id="options"></div>
+  <div class="hint" id="hint">&nbsp;</div>
+  <div class="solvedline">Solved: <b id="solvedCount">0</b> / <span id="totalCount">0</span> &nbsp;·&nbsp; Wrong attempts: <b id="wrongCount">0</b></div>
+</section>
+
+<section id="doneScreen" class="hidden">
+  <div class="done">
+    <div class="big">All questions mastered ✅</div>
+    <div id="doneMsg"></div>
+    <div style="margin-top:16px;"><button class="btn" onclick="location.reload()">Restart</button></div>
+  </div>
+</section>
+
+<script>
+var QUESTIONS = [
+{q:"A lymph node with a rubbery consistency classically suggests:",o:["Simple infection","Lymphoma","A normal node","A salivary gland"],a:1},
+{q:"A hard, fixed, non-tender lymph node classically suggests:",o:["Acute infection","Malignancy or granulomatous disease","A reactive node","A normal finding"],a:1},
+{q:"Tender lymph nodes are classically associated with:",o:["Malignancy","Infection","Lymphoma","Normal aging"],a:1},
+{q:"Virchow's node (an enlarged LEFT supraclavicular node) classically signals a:",o:["Head infection","Abdominal process","Dental abscess","Skin lesion"],a:1},
+{q:"An enlarged RIGHT supraclavicular node classically indicates a(n):",o:["Abdominal process","Intrathoracic process","Oral infection","Ear infection"],a:1},
+{q:"The submental lymph nodes primarily drain the:",o:["Back of the head","Teeth and intra-oral cavity","Thyroid","Ear"],a:1},
+{q:"The anterior cervical chain (along the SCM) mainly drains the:",o:["Skin of the back of the head","Throat, tonsils, and thyroid","Floor of the mouth","External ear"],a:1},
+{q:"Posterior cervical nodes are frequently enlarged during:",o:["Dental caries","Upper respiratory infections such as mononucleosis","Bruxism","Xerostomia"],a:1},
+{q:"Malignant lymph nodes are typically described as:",o:["Soft, tender, mobile","Firm, non-tender, matted, and fixed","Small and rubbery","Fluctuant and warm"],a:1},
+{q:"A benign reactive node after past infection is usually:",o:["Hard and fixed","Non-tender, less than 1 cm, and rubbery","Matted","Rapidly enlarging"],a:1},
+{q:"Preauricular lymph nodes (in front of the tragus) drain the:",o:["Eye region","Floor of mouth","Tongue tip","Thyroid"],a:0},
+{q:"The correct lymph node palpation technique is to:",o:["Use the fingertips on one side","Use the finger pads and palpate both sides simultaneously","Use the thumb only","Press very hard on one node"],a:1},
+{q:"A flat, nonpalpable change in surface color less than ~1 cm is a:",o:["Papule","Macule","Nodule","Plaque"],a:1},
+{q:"A circumscribed solid elevation of skin less than ~1 cm is a:",o:["Macule","Papule","Vesicle","Patch"],a:1},
+{q:"A broad elevated plateau-like lesion greater than 1 cm is a:",o:["Papule","Macule","Plaque","Vesicle"],a:2},
+{q:"A small fluid-filled blister containing clear serous fluid (< ~1 cm) is a:",o:["Pustule","Vesicle","Bulla","Cyst"],a:1},
+{q:"A large blister equal to or greater than ~1 cm is a:",o:["Vesicle","Bulla","Papule","Wheal"],a:1},
+{q:"An ulcer differs from an erosion in that an ulcer shows:",o:["Incomplete epidermal loss","Complete loss of epidermis, often into the dermis","No tissue loss","Only color change"],a:1},
+{q:"A skin elevation containing purulent material (pus) is a:",o:["Vesicle","Pustule","Papule","Macule"],a:1},
+{q:"A wheal is characteristically:",o:["Permanent","Evanescent, disappearing within 24-48 hours","A deep nodule","Fluid-filled"],a:1},
+{q:"A nodule differs from a papule mainly by being:",o:["Flat","Centered deeper in the dermis/subcutis","Fluid-filled","Smaller"],a:1},
+{q:"Raised intracranial pressure classically causes a headache that is:",o:["Relieved when lying down","Worse when lying down and relieved when standing","Only during eating","Unrelated to position"],a:1},
+{q:"Which is a classic sign of raised intracranial pressure?",o:["Tachycardia","Papilloedema and bradycardia","Low blood pressure","Weight gain"],a:1},
+{q:"Which is classified as a neuropathic orofacial pain condition?",o:["Migraine","Trigeminal neuralgia","TMJ arthralgia","Pulpitis"],a:1},
+{q:"Pain from a normally non-painful stimulus is called:",o:["Dysesthesia","Allodynia","Anesthesia","Paresthesia"],a:1},
+{q:"Herpes zoster (shingles) is caused by reactivation of latent:",o:["Herpes simplex virus","Varicella-zoster virus","Cytomegalovirus","Epstein-Barr virus"],a:1},
+{q:"Herpes zoster is a disease of the:",o:["Motor cortex","Dorsal root ganglion","Neuromuscular junction","Salivary gland"],a:1},
+{q:"In trigeminal herpes zoster, which branch is affected in more than 80% of cases?",o:["Mandibular","Maxillary","Ophthalmic","Buccal"],a:2},
+{q:"Antiviral therapy for herpes zoster should be started within:",o:["72 hours of rash onset","2 weeks","1 month","24 hours only"],a:0},
+{q:"Post-herpetic neuralgia is defined as pain persisting after healing for longer than:",o:["1 week","1 month (some say 3-6 months)","1 year","2 years"],a:1},
+{q:"Which drug may reduce the incidence of post-herpetic neuralgia?",o:["Penicillin","Amitriptyline","Aspirin","Metronidazole"],a:1},
+{q:"Burning mouth syndrome is most probably which type of pain?",o:["Inflammatory","Neuropathic","Vascular","Muscular"],a:1},
+{q:"Burning mouth syndrome is most common in:",o:["Young men","Postmenopausal women","Children","Teenagers"],a:1},
+{q:"The primary site of burning in BMS is usually the:",o:["Floor of mouth","Anterior two-thirds of the tongue","Soft palate","Buccal mucosa"],a:1},
+{q:"An altered taste frequently accompanying BMS is described as a:",o:["Sweet taste","Spontaneous metallic taste","Sour taste","No change"],a:1},
+{q:"Which is a recognized cause of SECONDARY burning mouth syndrome?",o:["A neuropathic idiopathic origin","Vitamin B12, folate, or iron deficiency","Normal saliva","Healthy mucosa"],a:1},
+{q:"A commonly used topical treatment for BMS is:",o:["Topical clonazepam (sucked and spat out)","Topical antibiotics","Topical antifungal only","Topical steroids only"],a:0},
+{q:"Chronic temporomandibular disorder is defined as pain lasting more than:",o:["1 week","3 months","1 year","6 weeks"],a:1},
+{q:"A single click on opening plus a second click on closing (disk recaptured) is:",o:["Disc displacement without reduction","Disc displacement WITH reduction","Osteoarthritis","Ankylosis"],a:1},
+{q:"When the disc consistently does not reduce and the patient cannot fully open, this is:",o:["Disc displacement with reduction","Disc displacement WITHOUT reduction (closed lock)","Normal joint","Subluxation"],a:1},
+{q:"Crepitus (grating) in the TMJ is most associated with:",o:["Normal function","Osteoarthritis / articular surface disruption","Disc displacement with reduction","Muscle spasm"],a:1},
+{q:"The most common internal derangement of the TMJ is:",o:["Posterior disc displacement","Anterior displacement of the articular disc","Lateral dislocation","Condylar fracture"],a:1},
+{q:"Limited mouth opening in disc displacement without reduction is defined as opening less than:",o:["30 mm","40 mm","50 mm","20 mm"],a:1},
+{q:"During opening, deviation of the mandible toward the affected side suggests:",o:["Normal movement","Anterior articular disc displacement","Muscle hypertrophy","Tooth wear"],a:1},
+{q:"If pain is NOT affected by jaw movement, the clinician should:",o:["Confirm TMD","Suspect another source of orofacial pain","Ignore it","Diagnose bruxism"],a:1},
+{q:"Melanin is produced within melanosomes inside which cells?",o:["Keratinocytes","Melanocytes","Langerhans cells","Fibroblasts"],a:1},
+{q:"Melanocytes are located in which layer of the epithelium?",o:["Granular layer","Basal cell layer","Spinous layer","Cornified layer"],a:1},
+{q:"Most oral hyperpigmentation shares which mechanism?",o:["Increased melanocyte number","Increased basilar melanin synthesis without increased melanocytes","Loss of melanocytes","Iron deposition"],a:1},
+{q:"Leakage of melanin into connective tissue engulfed by macrophages is called:",o:["Melanosis","Melanin incontinence","Melanoma","Melanocytosis"],a:1},
+{q:"Which lesion involves a true PROLIFERATION of melanocytes?",o:["Melanotic macule","Malignant melanoma","Physiologic pigmentation","Amalgam tattoo"],a:1},
+{q:"The single most common intraoral site of primary oral melanoma is the:",o:["Floor of mouth","Buccal mucosa","Hard palate","Tongue"],a:2},
+{q:"The 10-year survival of oral mucosal melanoma is approximately:",o:["40%","25%","0%","60%"],a:2},
+{q:"Up to one-third of oral melanomas show little/no pigment, termed:",o:["Melanin incontinence","Amelanosis","Ochronosis","Hemosiderosis"],a:1},
+{q:"The strongest prognostic criterion for melanoma is:",o:["Clark level","Breslow thickness","Lesion color","Patient age"],a:1},
+{q:"The MOST common cause of multifocal/diffuse oral pigmentation is:",o:["Physiologic (racial)","Addison's disease","Drug-induced","Peutz-Jeghers"],a:0},
+{q:"The chief drugs causing drug-induced melanosis are the:",o:["Beta-blockers","Antimalarials","Penicillins","Statins"],a:1},
+{q:"Smoker's melanosis is:",o:["A preneoplastic condition","NOT a preneoplastic condition","Caused by snuff","Only in Caucasians"],a:1},
+{q:"Melasma is characteristically induced by:",o:["Estrogen alone","Estrogen + progesterone with sun exposure","Progesterone alone","Testosterone"],a:1},
+{q:"In Addison's disease, the first 13 amino acids of ACTH are identical to:",o:["Cortisol","TSH","Alpha-MSH","Aldosterone"],a:2},
+{q:"A 9 a.m. serum cortisol diagnostic of adrenal insufficiency is:",o:["< 100 nmol/L","> 500 nmol/L","> 1000 nmol/L","250 nmol/L"],a:0},
+{q:"Primary biliary cirrhosis is characterized by which antibody?",o:["Anti-21-hydroxylase","Antimitochondrial antibodies","Anti-SSA","Anti-NF1"],a:1},
+{q:"Peutz-Jeghers syndrome is associated with mutation of:",o:["STK11/LKB1","NF1","TP53","BRCA1"],a:0},
+{q:"Peutz-Jeghers perioral macules are distinguished from freckles because they are:",o:["Larger","NOT affected by sun exposure","Always malignant","Bluish"],a:1},
+{q:"Multiple cafe-au-lait spots most classically suggest:",o:["Vitiligo","Neurofibromatosis type I","Hemochromatosis","Graves' disease"],a:1},
+{q:"HIV-associated melanosis correlates with a CD4 count:",o:["Above 1000","Below 200","Exactly 500","Irrelevant"],a:1},
+{q:"Exogenous ochronosis results from accumulation of:",o:["Melanin","Hemosiderin","A yellow-brown non-melanin pigment after bleaching","Amalgam"],a:2},
+{q:"Absence of melanin in vitiligo is confirmed with which stain?",o:["Fontana-Masson","Congo red","PAS","Prussian blue"],a:0},
+{q:"The brown color of ecchymosis after a few days is due to:",o:["Bilirubin","Melanin","Hemosiderin","Lipofuscin"],a:2},
+{q:"The MOST common pigmented lesion of the oral mucosa is:",o:["Melanotic macule","Amalgam tattoo","Melanocytic nevus","Graphite tattoo"],a:1},
+{q:"An easy biopsy to diagnose hemochromatosis is of the:",o:["Dorsal tongue","Palate","Gingiva","Lower labial salivary gland"],a:3},
+{q:"Generalized blue-gray discoloration from silver deposition is called:",o:["Chrysiasis","Argyria","Melasma","Ochronosis"],a:1},
+{q:"Blue-gray or purple pigmentation from gold is called:",o:["Argyria","Chrysiasis","Melanosis","Melasma"],a:1},
+{q:"Black tongue from bismuth subsalicylate is due to deposition of:",o:["Melanin","Hemosiderin","Bismuth sulfide","Silver"],a:2},
+{q:"Minocycline oral pigmentation is best described as:",o:["True basal melanin","A precipitated drug metabolite (non-melanin)","Hemosiderin","Physiologic"],a:1},
+{q:"Hairy tongue most characteristically involves the:",o:["Ventral tongue","Middle and posterior third of the dorsal tongue","Floor of mouth","Soft palate"],a:1},
+{q:"A focal deficit fully reversing within 24 hours defines a:",o:["Completed stroke","Transient ischemic attack (TIA)","RIND","Lacunar infarct"],a:1},
+{q:"What proportion of strokes are ischemic (atherosclerotic)?",o:["85%","50%","15%","100%"],a:0},
+{q:"First-line imaging in acute stroke is:",o:["MRI with contrast","Non-contrast CT","Angiography","PET"],a:1},
+{q:"The risk of a second stroke is highest during the:",o:["First 24 hours","Second year","First 90 days","After 6 months"],a:2},
+{q:"The most common pathogen in cavernous sinus thrombosis is:",o:["Streptococcus viridans","Staphylococcus aureus","Aspergillus","E. coli"],a:1},
+{q:"Which two agents are most implicated in multiple sclerosis?",o:["EBV and HHV-6","HIV and HCV","HPV and HSV-2","Measles and mumps"],a:0},
+{q:"Electric-shock sensation on neck flexion in MS is called:",o:["Uhthoff's sign","Crowe's sign","Lhermitte's symptom","Chvostek's sign"],a:2},
+{q:"Trigeminal neuralgia may be the first sign of MS in up to:",o:["30%","3%","60%","90%"],a:1},
+{q:"The standard of care for mild-to-moderate Alzheimer's is:",o:["Cholinesterase inhibitors","Levodopa","Phenytoin","Neostigmine"],a:0},
+{q:"Which is NOT a cardinal feature of parkinsonism?",o:["Rigidity","Tremor","Bradykinesia","Hyperreflexia"],a:3},
+{q:"Bell's palsy is most linked to which virus?",o:["CMV","Rubella","Herpes simplex virus 1","Adenovirus"],a:2},
+{q:"Myasthenia gravis is caused by autoantibodies against:",o:["Sodium channels","Acetylcholine receptors","Myelin","Dopamine receptors"],a:1},
+{q:"The most common generalized seizure type (~90%) is:",o:["Tonic-clonic (grand mal)","Absence (petit mal)","Atonic","Myoclonic"],a:0},
+{q:"Absence (petit mal) seizures are characterized by:",o:["A prominent aura","Loss of body tone","Tongue biting","Brief lapses without loss of tone, in children"],a:3},
+{q:"Which antiepileptic is classically linked to gingival overgrowth?",o:["Valproic acid","Lamotrigine","Phenytoin","Carbamazepine"],a:2},
+{q:"Patients with a vagus nerve stimulator require:",o:["Antibiotic prophylaxis always","No antibiotic prophylaxis","Only removable prostheses","No dental care"],a:1},
+{q:"The parotid gland is composed primarily of which cell type?",o:["Mucous","Serous","Mixed","Squamous"],a:1},
+{q:"The parotid duct is also known as:",o:["Wharton's duct","Stensen's duct","Bartholin's duct","Rivinus duct"],a:1},
+{q:"The submandibular duct is also known as:",o:["Stensen's duct","Wharton's duct","Rivinus duct","Bartholin's duct"],a:1},
+{q:"The sublingual gland is drained mainly by the:",o:["Stensen's duct","Wharton's duct","Ducts of Rivinus","Nasolacrimal duct"],a:2},
+{q:"The minor glands surrounding the circumvallate papillae are the glands of:",o:["Weber","von Ebner","Blandin-Nuhn","Bartholin"],a:1},
+{q:"Whole saliva is composed of water at approximately:",o:["50%","75%","Greater than 99%","90%"],a:2},
+{q:"Xerostomia is best defined as:",o:["A measured low flow rate","The subjective complaint of dry mouth","Excess saliva","Gland swelling"],a:1},
+{q:"Hyposalivation refers to:",o:["Subjective dryness","A quantified reduced salivary flow rate","Excess saliva","A gland tumor"],a:1},
+{q:"Approximately how many drugs list dry mouth as a side effect?",o:["Over 50","Over 400","Over 1000","Over 10"],a:1},
+{q:"In parotid tumors, facial nerve paralysis usually indicates:",o:["A benign tumor","Malignancy","Infection only","Normal variation"],a:1},
+{q:"Most benign parotid tumors are located in the:",o:["Deep lobe","Superficial lobe","Isthmus","Accessory gland"],a:1},
+{q:"Regarding malignancy proportion by gland size:",o:["Larger glands have more malignancy","The smaller the gland, the greater the proportion malignant","All glands equal","Only parotid is malignant"],a:1},
+{q:"Which is a contraindication to sialography?",o:["Ductal stricture","Active infection","Sialolith","Dilatation"],a:1},
+{q:"Sialography cannot reliably inject which gland's ducts?",o:["Parotid","Submandibular","Sublingual","All major glands"],a:2},
+{q:"Radionuclide salivary imaging uses:",o:["Iodinated contrast","Tc-99m pertechnetate","Barium","Gadolinium"],a:1},
+{q:"The imaging method of choice for inflammatory salivary disease (abscess/calculi) is:",o:["MRI","CT","Plain film only","Scintigraphy"],a:1},
+{q:"A key advantage of MRI for salivary imaging is:",o:["Uses ionizing radiation","No ionizing radiation and no contrast needed","Requires iodine","Cheapest option"],a:1},
+{q:"Dental implants and MRI:",o:["Are contraindicated","Are not contraindicated (non-magnetic)","Cause burns","Prevent imaging"],a:1},
+{q:"The Stafne bone defect is:",o:["A true cyst","A depression of the lingual mandible with no epithelial lining","A malignancy","A duct stone"],a:1},
+{q:"Salivary stones occur most commonly in the:",o:["Parotid gland","Submandibular gland","Sublingual gland","Minor glands"],a:1},
+{q:"The submandibular gland's high stone rate is partly due to:",o:["Straight short duct","Tortuous Wharton's duct with higher calcium/phosphate","Serous secretion","Low mucin"],a:1},
+{q:"The classic presentation of sialolithiasis is:",o:["Painless swelling at night","Colicky pain and swelling during meals","Constant painless mass","Bilateral dryness"],a:1},
+{q:"The recommended plain film for a submandibular stone is a(n):",o:["Panoramic","Occlusal radiograph at 90 degrees","Cephalometric","Bitewing"],a:1},
+{q:"Extracorporeal shock wave lithotripsy (ESWL) is used to:",o:["Remove tumors","Fragment large sialoliths","Biopsy glands","Inject contrast"],a:1},
+{q:"An extravasation mucocele characteristically:",o:["Has an epithelial lining","Lacks an epithelial lining and follows trauma","Is caused by obstruction","Occurs on the palate"],a:1},
+{q:"The most common site of an extravasation mucocele is the:",o:["Palate","Lower lip","Dorsal tongue","Gingiva"],a:1},
+{q:"A ranula arises from which gland?",o:["Parotid","Submandibular","Sublingual","Minor palatal"],a:2},
+{q:"The treatment with the LOWEST ranula recurrence (about 1%) is:",o:["Marsupialization","Excision alone","Sublingual gland excision","Observation"],a:2},
+{q:"Necrotizing sialometaplasia most commonly affects the:",o:["Lower lip","Hard palate","Floor of mouth","Buccal mucosa"],a:1},
+{q:"Necrotizing sialometaplasia is important because it:",o:["Is always malignant","Can clinically resemble a malignancy","Never heals","Spreads to bone"],a:1},
+{q:"Necrotizing sialometaplasia typically resolves within:",o:["1-2 days","3-12 weeks","6 months","2 years"],a:1},
+{q:"Cheilitis glandularis carries an increased risk of:",o:["Melanoma","Squamous cell carcinoma of the lip","Adenoid cystic carcinoma","Lymphoma"],a:1},
+{q:"Permanent salivary gland damage from external radiation can occur after only:",o:["24-26 Gy","65 Gy","5 Gy","100 Gy"],a:0},
+{q:"Mumps is caused by a:",o:["DNA herpesvirus","RNA paramyxovirus","Bacterium","Fungus"],a:1},
+{q:"In mumps, which gland is involved in about 95% of cases?",o:["Submandibular","Sublingual","Parotid","Minor glands"],a:2},
+{q:"Mumps orchitis occurs in about:",o:["1 in 5 adult males","1 in 100 males","All males","1 in 50 males"],a:0},
+{q:"Mumps is prevented by which vaccine?",o:["BCG","MMR","Hepatitis B","DPT"],a:1},
+{q:"Bacterial sialadenitis occurs most frequently in the:",o:["Submandibular gland","Parotid gland","Sublingual gland","Minor glands"],a:1},
+{q:"The submandibular gland is relatively protected from bacterial infection by its:",o:["Serous saliva","High mucin content","Location","Small size"],a:1},
+{q:"The main bacterial pathogen in bacterial sialadenitis is:",o:["Streptococcus mutans","Staphylococcus aureus","E. coli","Pseudomonas"],a:1},
+{q:"Mikulicz's disease is now recognized as part of which spectrum?",o:["IgA nephropathy","IgG4-related disease","Lupus","Diabetes"],a:1},
+{q:"Sarcoidosis salivary biopsy classically shows:",o:["Caseating granulomas","Noncaseating granulomas","Amyloid","Melanin"],a:1},
+{q:"A critical preventive measure in salivary hypofunction is:",o:["Systemic steroids","Topical fluoride","Antibiotics","Antivirals"],a:1},
+{q:"Systemic sialogogues used to stimulate saliva include:",o:["Atropine","Pilocarpine and cevimeline","Antihistamines","Diuretics"],a:1},
+{q:"Sialorrhea work-up should include a blood test for:",o:["Glucose","Heavy metals","Cholesterol","Thyroid only"],a:1},
+{q:"What percentage of salivary gland tumors arise in the parotid?",o:["About 50%","About 80%","About 10%","About 30%"],a:1},
+{q:"More than 60% of tumors in which gland are malignant?",o:["Parotid","Submandibular","Sublingual","None"],a:2},
+{q:"The most common benign salivary gland tumor is:",o:["Warthin's tumor","Pleomorphic adenoma","Oncocytoma","Basal cell adenoma"],a:1},
+{q:"Warthin's tumor takes up technetium because it contains:",o:["Melanocytes","Oncocytes","Serous cells","Fat"],a:1},
+{q:"The most common malignant tumor of the parotid gland is:",o:["Adenoid cystic carcinoma","Mucoepidermoid carcinoma","Acinic cell carcinoma","Lymphoma"],a:1},
+{q:"The most common malignant tumor of the submandibular and minor glands is:",o:["Mucoepidermoid carcinoma","Adenoid cystic carcinoma","Acinic cell carcinoma","Pleomorphic adenoma"],a:1},
+{q:"Adenoid cystic carcinoma is notorious for:",o:["Rapid cure","Perineural spread and late metastases","No recurrence","Benign course"],a:1},
+{q:"Frey's syndrome is a complication of:",o:["Tooth extraction","Parotidectomy","Root canal","Orthodontics"],a:1},
+{q:"Frey's syndrome is characterized by:",o:["Dry eyes","Gustatory sweating and facial flushing during meals","Facial paralysis","Tongue numbness"],a:1},
+{q:"Primary herpetic gingivostomatitis is caused by:",o:["Coxsackievirus","Herpes simplex virus (usually HSV-1)","Varicella-zoster","Paramyxovirus"],a:1},
+{q:"After primary infection, HSV remains latent in the:",o:["Salivary gland","Trigeminal ganglion","Bone marrow","Lymph nodes"],a:1},
+{q:"Recurrent HSV on the lip is commonly called:",o:["Aphthous ulcer","Herpes labialis (cold sore)","Angular cheilitis","Erythema migrans"],a:1},
+{q:"Herpes zoster (shingles) is a reactivation of:",o:["HSV-1","Varicella-zoster virus","CMV","EBV"],a:1},
+{q:"Herpangina and hand-foot-and-mouth disease are caused by:",o:["HSV","Coxsackievirus","VZV","Paramyxovirus"],a:1},
+{q:"Recurrent aphthous stomatitis characteristically spares which surfaces?",o:["Movable non-keratinized mucosa","Keratinized mucosa (hard palate, attached gingiva)","Labial mucosa","Buccal mucosa"],a:1},
+{q:"Oral ulcers plus genital ulcers and ocular inflammation suggest:",o:["Pemphigus","Behcet disease","Lichen planus","Candidiasis"],a:1},
+{q:"Pemphigus vulgaris is an autoimmune disease with antibodies against:",o:["Basement membrane","Desmoglein (desmosomes)","Collagen","Melanocytes"],a:1},
+{q:"A positive Nikolsky sign is characteristic of:",o:["Aphthous ulcers","Pemphigus vulgaris","Geographic tongue","Leukoplakia"],a:1},
+{q:"The intraepithelial acantholytic cells in pemphigus are called:",o:["Civatte bodies","Tzanck cells","Koilocytes","Langhans cells"],a:1},
+{q:"Erythema multiforme is most classically triggered by:",o:["Trauma","HSV infection or drugs","Smoking","Iron deficiency"],a:1},
+{q:"Necrotizing ulcerative gingivitis (NUG) classically presents with:",o:["Painless white patches","Punched-out interdental papillae, pain, and fetor","Pigmentation","Vesicles"],a:1},
+{q:"Pseudomembranous candidiasis (thrush) is characterized by:",o:["Fixed white plaques that cannot be wiped off","White plaques that WIPE OFF leaving an erythematous base","Blue macules","Ulcers only"],a:1},
+{q:"The most common causative organism of oral candidiasis is:",o:["Candida albicans","Candida glabrata","Aspergillus","Mucor"],a:0},
+{q:"Angular cheilitis is often associated with:",o:["Candida (often with Staphylococcus)","HSV","VZV","Coxsackie"],a:0},
+{q:"Leukoplakia is best defined as:",o:["A wipeable white plaque","A white plaque that cannot be scraped off or diagnosed as another condition","A red patch","A pigmented lesion"],a:1},
+{q:"Compared with leukoplakia, erythroplakia has a:",o:["Lower malignant potential","Much higher malignant potential","No malignant potential","Identical potential"],a:1},
+{q:"Proliferative verrucous leukoplakia (PVL) is notable for being:",o:["Benign and self-limiting","Multifocal, persistent, and high-risk for malignant transformation","A candidal infection","A pigmented lesion"],a:1},
+{q:"Oral submucous fibrosis is strongly associated with:",o:["Tobacco smoking","Areca (betel) nut chewing","Alcohol only","Iron deficiency"],a:1},
+{q:"Oral submucous fibrosis is considered:",o:["Non-preneoplastic","A potentially malignant disorder","An infection","A pigmentation"],a:1},
+{q:"The classic reticular form of lichen planus shows:",o:["Wickham's striae","Nikolsky sign","Pseudomembrane","Pigmented macules"],a:0},
+{q:"The most symptomatic (painful) forms of oral lichen planus are the:",o:["Reticular and papular","Erosive and atrophic","Plaque only","Bullous only"],a:1},
+{q:"Oral lichen planus histology classically shows a ___ lymphocytic infiltrate.",o:["perivascular","band-like (lichenoid) subepithelial","granulomatous","neutrophilic"],a:1},
+{q:"A lichenoid reaction differs from lichen planus mainly by having:",o:["No inflammation","An identifiable cause (drug or restoration)","Malignant cells","Vesicles"],a:1},
+{q:"Oral hairy leukoplakia (on the lateral tongue) is associated with:",o:["Candida","Epstein-Barr virus in immunocompromised patients","HSV","Iron deficiency"],a:1},
+{q:"Nystatin and miconazole are used to treat:",o:["Lichen planus","Oral candidiasis","Pemphigus","Aphthous ulcers"],a:1}
+];
+var idx = 0, timeLeft = 60, timer = null, locked = false, solved = 0, wrong = 0;
+var PER = 60;
+
+function startExam(){
+  idx = 0; solved = 0; wrong = 0;
+  document.getElementById('startScreen').classList.add('hidden');
+  document.getElementById('examScreen').classList.remove('hidden');
+  document.getElementById('totalCount').textContent = QUESTIONS.length;
+  render();
+}
+
+function render(){
+  if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+  window.scrollTo(0,0);
+  locked = false;
+  var Q = QUESTIONS[idx];
+  document.getElementById('progressTxt').textContent = 'Q ' + (idx+1) + ' / ' + QUESTIONS.length;
+  document.getElementById('progressBar').style.width = ((idx/QUESTIONS.length)*100) + '%';
+  document.getElementById('stem').textContent = (idx+1) + '. ' + Q.q;
+  document.getElementById('hint').innerHTML = '&nbsp;';
+  document.getElementById('solvedCount').textContent = solved;
+  document.getElementById('wrongCount').textContent = wrong;
+  var box = document.getElementById('options');
+  box.innerHTML = '';
+  Q.o.forEach(function(text, i){
+    var b = document.createElement('button');
+    b.className = 'opt';
+    b.textContent = String.fromCharCode(65+i) + '. ' + text;
+    b.onclick = function(){ choose(i, b); };
+    box.appendChild(b);
+  });
+  startTimer();
+}
+
+function startTimer(){
+  clearInterval(timer);
+  timeLeft = PER;
+  updateTimerUI();
+  timer = setInterval(function(){
+    timeLeft--;
+    updateTimerUI();
+    if (timeLeft <= 0){ startTimer(); } // renew and keep trying (no advance)
+  }, 1000);
+}
+function updateTimerUI(){
+  var t = document.getElementById('timer');
+  t.textContent = timeLeft;
+  t.classList.toggle('warn', timeLeft <= 10);
+  document.getElementById('timerBar').style.width = ((timeLeft/PER)*100) + '%';
+}
+
+function choose(i, btn){
+  if (locked) return;
+  var Q = QUESTIONS[idx];
+  if (i === Q.a){
+    // correct -> green, then advance
+    locked = true;
+    clearInterval(timer);
+    btn.classList.add('correct');
+    document.querySelectorAll('#options .opt').forEach(function(o){ o.disabled = true; });
+    solved++;
+    document.getElementById('solvedCount').textContent = solved;
+    document.getElementById('hint').innerHTML = '<span style="color:#127a2b;">Correct ✓</span>';
+    setTimeout(next, 700);
+  } else {
+    // wrong -> red only, reset timer, stay on this question
+    if (btn.classList.contains('wrong')) return;
+    btn.classList.add('wrong');
+    btn.disabled = true;
+    wrong++;
+    document.getElementById('wrongCount').textContent = wrong;
+    document.getElementById('hint').innerHTML = '<span style="color:#b00020;">Try again</span>';
+    startTimer(); // renew the countdown
+  }
+}
+
+function next(){
+  if (idx < QUESTIONS.length - 1){ idx++; render(); }
+  else { finish(); }
+}
+function finish(){
+  clearInterval(timer);
+  document.getElementById('examScreen').classList.add('hidden');
+  document.getElementById('doneScreen').classList.remove('hidden');
+  document.getElementById('doneMsg').textContent = 'You solved all ' + QUESTIONS.length + ' questions with ' + wrong + ' wrong attempt(s) total.';
+}
+</script>
+</body>
+</html>
