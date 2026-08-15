@@ -1,0 +1,2254 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Orthodontics — Complete Curriculum MCQ Exam</title>
+<style>
+:root{ color-scheme: light only; }
+*{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html,body{
+  margin:0; padding:0;
+  background:#ffffff !important; color:#000000 !important;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  -webkit-text-size-adjust:100%;
+}
+#app{ max-width:820px; margin:0 auto; padding:0 16px 130px 16px; }
+
+#start{ padding:44px 6px; text-align:center; }
+#start h1{ font-size:27px; margin:0 0 8px 0; line-height:1.3; }
+#start h2{ font-size:16px; font-weight:normal; color:#444; margin:0 0 26px 0; }
+.rules{ text-align:left; border:2px solid #000; padding:16px 18px; margin:0 auto 26px auto; max-width:620px; background:#fafafa; }
+.rules li{ margin:7px 0; font-size:15px; line-height:1.5; }
+.arnote{ direction:rtl; text-align:right; font-size:15px; line-height:1.9; border-top:1px solid #ccc; margin-top:12px; padding-top:10px; }
+#startBtn,#restartBtn{ font-size:20px; font-weight:bold; padding:16px 46px; background:#000; color:#fff; border:none; border-radius:6px; cursor:pointer; }
+
+#bar{ position:fixed; top:0; left:0; right:0; z-index:50; background:#000; color:#fff;
+  padding:9px 14px; display:flex; justify-content:space-between; align-items:center; font-size:14px; font-weight:bold; }
+#score{ opacity:.85; font-size:13px; }
+#timer{ font-variant-numeric:tabular-nums; font-size:17px; }
+#timer.low{ color:#ffd400; }
+#timer.crit{ color:#ff6b6b; }
+#progress{ position:fixed; top:38px; left:0; height:4px; background:#000; z-index:50; width:0%; transition:width 1s linear; }
+
+#quiz{ padding-top:70px; }
+.tag{ display:inline-block; font-size:11px; letter-spacing:1.1px; text-transform:uppercase;
+  background:#000; color:#fff; padding:4px 9px; margin-bottom:12px; font-weight:bold; }
+.qtext{ font-size:19px; line-height:1.5; font-weight:bold; margin:0 0 18px 0; }
+.opt{ display:block; width:100%; text-align:left; font-size:16.5px; line-height:1.45;
+  padding:14px 16px; margin:0 0 10px 0; border:2px solid #333; background:#fff; color:#000;
+  border-radius:8px; cursor:pointer; font-family:inherit; }
+.opt:disabled{ cursor:default; }
+.opt .letter{ font-weight:bold; margin-right:8px; }
+.opt.wrong{ background:#ffe3e3; border-color:#c00000; color:#8a0000; text-decoration:line-through; }
+.opt.right{ background:#dff5e1; border-color:#0a7a2f; color:#0a4d1e; font-weight:bold; }
+.opt.missed{ background:#fff8d6; border-color:#b58900; }
+
+#feedback{ margin:16px 0 0 0; padding:12px 14px; border-left:6px solid #000; background:#f5f5f5; font-size:15.5px; line-height:1.55; display:none; }
+#feedback.ok{ border-left-color:#0a7a2f; background:#eefaf0; }
+#feedback.fail{ border-left-color:#c00000; background:#fff0f0; }
+#feedback b{ display:block; margin-bottom:4px; }
+
+#controls{ position:fixed; bottom:0; left:0; right:0; z-index:50; background:#fff;
+  border-top:2px solid #000; padding:12px 16px; display:flex; justify-content:space-between; align-items:center; }
+#nextBtn{ font-size:17px; font-weight:bold; padding:13px 28px; background:#000; color:#fff; border:none; border-radius:6px; cursor:pointer; }
+#nextBtn:disabled{ background:#d5d5d5; color:#777; cursor:not-allowed; }
+#hint{ font-size:12.5px; color:#777; text-align:right; max-width:54%; line-height:1.35; }
+
+#results{ padding:60px 6px; display:none; }
+#results h1{ font-size:26px; margin:0 0 18px 0; }
+.rbox{ border:2px solid #000; padding:16px 18px; margin-bottom:16px; }
+.rrow{ display:flex; justify-content:space-between; font-size:17px; padding:6px 0; border-bottom:1px solid #ddd; }
+.rrow:last-child{ border-bottom:none; }
+.rrow b{ font-variant-numeric:tabular-nums; }
+.big{ font-size:40px; font-weight:bold; text-align:center; margin:10px 0; }
+#missedList{ font-size:14.5px; line-height:1.6; }
+#missedList li{ margin:8px 0; }
+
+@media (max-width:520px){
+  .qtext{ font-size:17.5px; }
+  .opt{ font-size:15.5px; padding:12px 13px; }
+}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <div id="start">
+    <h1>Orthodontics &mdash; Complete Curriculum MCQ Exam</h1>
+    <h2>University of Baghdad &middot; Certificate Equivalency Revision<br>Covering the complete curriculum</h2>
+    <div class="rules">
+      <b>Exam rules &mdash; read before starting:</b>
+      <ul>
+        <li><b id="qcount">every question in the bank</b>, each with a strict <b>60-second</b> limit.</li>
+        <li><b>Full coverage:</b> every lecture and every topic in the curriculum is tested. Nothing is skipped or sampled.</li>
+        <li>You <b>cannot move to the next question</b> until you find the correct answer &mdash; or the 60 seconds run out.</li>
+        <li>A wrong choice is struck out in red and <b>the timer keeps running</b>. Keep trying.</li>
+        <li>If time expires, the correct answer is revealed and the question is scored as <b>failed</b>.</li>
+        <li>The answer options are reshuffled every run, so you cannot memorize letter positions.</li>
+        <li>Every question has a short explanation, and all failed questions are listed at the end for revision.</li>
+      </ul>
+      <div class="arnote">
+        <b>ملاحظة:</b> هذا الملف يغطي المنهج كامل بدون أي نقص &mdash; كل المحاضرات وكل المواضيع. كل سؤال ٦٠ ثانية فقط، ولا يمكن الانتقال للسؤال التالي إلا بعد إيجاد الجواب الصحيح أو انتهاء الوقت. الإجابة الخاطئة تُشطب باللون الأحمر والوقت يستمر.
+      </div>
+    </div>
+    <button id="startBtn">START EXAM</button>
+  </div>
+
+  <div id="bar" style="display:none">
+    <span id="score"></span>
+    <span id="timer">01:00</span>
+  </div>
+  <div id="progress" style="display:none"></div>
+
+  <div id="quiz"></div>
+  <div id="feedback"></div>
+
+  <div id="controls" style="display:none">
+    <button id="nextBtn" disabled>Next Question &rarr;</button>
+    <span id="hint">Locked until you answer correctly or the timer ends.</span>
+  </div>
+
+  <div id="results">
+    <h1>Exam Complete</h1>
+    <div class="rbox">
+      <div class="big" id="pct"></div>
+      <div class="rrow"><span>Correct on first attempt</span><b id="rFirst"></b></div>
+      <div class="rrow"><span>Correct after mistakes</span><b id="rLater"></b></div>
+      <div class="rrow"><span>Failed (time expired)</span><b id="rFail"></b></div>
+      <div class="rrow"><span>Total questions</span><b id="rTotal"></b></div>
+    </div>
+    <div class="rbox">
+      <b>Questions to revise:</b>
+      <ul id="missedList"></ul>
+    </div>
+    <div style="text-align:center"><button id="restartBtn">Restart Exam</button></div>
+  </div>
+
+</div>
+
+<script>
+var QUESTION_SECONDS = 60;
+var QS = [];
+function Q(topic, q, opts, ans, exp){ QS.push({t:topic, q:q, o:opts, a:ans, e:exp}); }
+
+/* ===== Q1–25 : Definitions, classification, terminology ===== */
+Q("Definitions","Jackson's Triad summarizes the aims of orthodontic treatment as:",
+["Functional efficiency, structural balance, esthetic harmony","Alignment, levelling, finishing","Prevention, interception, correction","Diagnosis, treatment planning, retention"],0,
+"Jackson's Triad = functional efficiency + structural balance + esthetic harmony.");
+
+Q("Definitions","According to research, an overjet greater than 3 mm carries:",
+["No increased risk of trauma","More than double the risk of traumatic injury","A 10% increase in caries risk","A reduced risk of incisor fracture"],1,
+"Overjet more than 3 mm has more than double the risk of traumatic injury to anterior teeth.");
+
+Q("Definitions","Regarding malocclusion and the temporomandibular joint, the lectures state:",
+["Malocclusion is the main cause of TMJ disease","There is no clear association between malocclusion and the TMJ","Class II always causes TMJ clicking","Orthodontics reliably cures TMJ disorders"],1,
+"There is no clear association between malocclusion and the TMJ; orthodontics can neither reliably cause nor cure TMD.");
+
+Q("Definitions","Ideal occlusion is best described as:",
+["The commonest occlusion in the population","A theoretical concept almost never found in nature","Any Class I molar relationship","Occlusion with minor irregularities of individual teeth"],1,
+"Ideal occlusion is a theoretical concept and is almost never found in nature; normal occlusion allows minor irregularities.");
+
+Q("Definitions","During 2 years of fixed appliance treatment, the amount of root resorption that is considered inevitable is about:",
+["0.1 mm","1 mm","3 mm","One third of the root"],1,
+"About 1 mm of root resorption over 2 years of fixed treatment is inevitable.");
+
+Q("Definitions","The normal range for both incisal overjet and overbite is:",
+["1-2 mm","2-4 mm","4-6 mm","5-7 mm"],1,
+"Normal overjet 2-4 mm horizontally; normal overbite 2-4 mm vertically (lower incisors contacting the middle third of the palatal surface).");
+
+Q("Definitions","Incomplete overbite means:",
+["The lower incisors are below the level of the upper incisal edges","The lower incisors are above the level of the upper incisal edges but contact nothing","There is contact with palatal mucosa","Overbite exceeds one half of the crown"],1,
+"Incomplete overbite: lower incisors lie above the upper incisal edge level but touch neither tooth nor mucosa. If below that level it is an anterior open bite.");
+
+Q("Definitions","Bi-traumatic deep bite is typically seen in:",
+["Class II division 1 with large overjet","Class II division 2 with minimal overjet","Class III with reverse overjet","Anterior open bite"],1,
+"In Class II div 2 with minimal overjet the retroclined upper incisors traumatize labial gingiva of lower incisors while lower incisors traumatize palatal mucosa.");
+
+Q("Definitions","A crossbite caused by a functional shift of the mandible should be:",
+["Left untreated until the permanent dentition","Treated early when recognized, as a true crossbite may result","Treated only with orthognathic surgery","Treated only after growth is complete"],1,
+"Functional (false) crossbite must be treated early, because if uncorrected a true crossbite may result by modification of growth.");
+
+Q("Definitions","In a FALSE unilateral posterior crossbite:",
+["There is dental arch asymmetry with no mandibular deviation","The patient deviates the mandible to one side to gain maximum intercuspation","Both sides are always involved","The maxilla is always wider than the mandible"],1,
+"False unilateral crossbite: narrow maxilla or wide mandible gives a cusp-to-cusp relation, so the patient deviates the mandible to one side.");
+
+Q("Definitions","Scissors bite (buccal non-occlusion) is characterized by:",
+["Mandibular dentition completely contained within the maxillary dentition","Maxillary dentition contained within the mandibular dentition","Edge-to-edge posterior contact","Absent overjet anteriorly"],0,
+"In scissors bite the mandibular dentition is completely contained within the maxillary dentition, with no occlusal surface contact.");
+
+Q("Definitions","A tooth positioned too far posteriorly but with a NORMAL long axis inclination is described as:",
+["Retroclined","Retruded","Rotated","Displaced"],1,
+"Retrusion = posterior position with normal inclination. Retroclination = the long axis is tipped. A tooth can be retrusive without being retroclined.");
+
+Q("Definitions","A rotation of more than 90 degrees must be treated by:",
+["Removable appliance with a couple force system","Fixed appliance only","Serial extraction","Interproximal reduction alone"],1,
+"Mild rotation (under 90 degrees) can be treated with a removable appliance; severe rotation (over 90 degrees) requires a fixed appliance only.");
+
+Q("Definitions","Midline shift of the FACE is most commonly caused by:",
+["Unilateral extraction","Congenital missing tooth","An abnormal skeletal factor such as unilateral mandibular hyperplasia","Crowding of the lower incisors"],2,
+"Facial midline shift is mostly skeletal (e.g. unilateral mandibular hyperplasia) or due to nasal deviation; dental midline shift follows extraction, missing teeth or impaction.");
+
+Q("Definitions","Infraocclusion of a tooth is commonly due to:",
+["Ankylosis or a deleterious habit","Excessive overjet","Tongue thrust only","Premature contact"],0,
+"Infraposition (infraocclusion) = tooth below the occlusal plane, commonly from ankylosis or a deleterious habit.");
+
+Q("Classification","Angle's classification is based on the anteroposterior relationship of:",
+["The canines","The incisors","The first permanent molars","The second deciduous molars"],2,
+"Angle (1899) based his classification on the first permanent molars, assuming the maxillary first molar is always in the correct position.");
+
+Q("Classification","If the first permanent molar is missing or has drifted, the classification of choice becomes:",
+["Skeletal classification","Canine classification","Incisor classification","Terminal plane classification"],1,
+"Shift to canine classification; only if the canine is also missing, impacted or severely malposed do we shift to incisor classification.");
+
+Q("Classification","In Class II division 2 incisor classification, the upper central incisors are retroclined to less than:",
+["93 degrees to the mandibular plane","105 degrees to the maxillary plane","109 degrees to the maxillary plane","135 degrees interincisal"],1,
+"Class II div 2: upper centrals retroclined, less than 105 degrees to the maxillary plane.");
+
+Q("Classification","In Class II division 2 TYPE B, the arrangement is:",
+["All four incisors tipped palatally, no crowding","Centrals tipped palatally, laterals tipped labially","All four incisors palatal with canines labially positioned","Centrals labial, laterals palatal"],1,
+"Type A = all four palatal, no crowding; Type B = centrals palatal, laterals labial; Type C = all four palatal with canines labial.");
+
+Q("Classification","A Class I incisor relationship is defined as the lower incisor edges occluding with or immediately below:",
+["The incisal edge of the upper incisors","The cingulum plateau of the upper central incisors","The gingival margin of the upper incisors","The palatal mucosa"],1,
+"Class I: lower incisor edges occlude with or lie immediately below the cingulum plateau (middle part of the palatal surface).");
+
+Q("Classification","A DISTAL step terminal plane relationship predisposes to which molar relationship?",
+["Class I","Class II","Class III","Class I or Class III"],1,
+"Distal step (lower terminal plane posterior to the upper) predisposes to Class II and is NOT self-correcting.");
+
+Q("Classification","The flush terminal plane usually leads to which permanent molar relationship?",
+["Class I or Class II","Class II only","Class III only","Class I or Class III"],0,
+"Flush terminal plane leads to Class I or Class II, depending on the mesial shift that follows.");
+
+Q("Classification","Which is the normal molar relationship in the PRIMARY dentition?",
+["Mesial step","Distal step","Flush terminal plane","Class I molar"],2,
+"Flush terminal plane is the normal primary dentition relationship, because the mandibular second molar is wider mesiodistally than the maxillary.");
+
+Q("Classification","In clinical practice, which classification is usually found MORE useful than Angle's?",
+["Skeletal classification","Incisor classification","Canine classification","Terminal plane classification"],1,
+"The incisor classification is usually more useful clinically, since much orthodontic treatment focuses on correcting incisor malrelationships.");
+
+Q("Classification","Angle's classification fails to identify all of the following EXCEPT:",
+["Overjet","Crowding and rotations","Sagittal first molar relationship","Buccolingual crossbite"],2,
+"Angle's classification only signifies the sagittal first molar relationship; it does not account for overjet, crossbite, overbite, crowding or rotations.");
+
+/* ===== Q26–50 : Andrews keys, growth and development ===== */
+Q("Andrews Keys","According to Andrews Key VI, no curve of Spee should be deeper than:",
+["0.5 mm","1.5 mm","2.5 mm","4 mm"],1,
+"No curve deeper than 1.5 mm is acceptable from the standpoint of occlusal stability.");
+
+Q("Andrews Keys","In Key IV (rotations), a rotated INCISOR:",
+["Occupies more space than normal","Occupies less space than normal","Occupies the same space","Cannot be derotated"],1,
+"A rotated incisor occupies LESS space than normal; a rotated molar or bicuspid occupies MORE space.");
+
+Q("Andrews Keys","In Key III, the lingual crown inclination of the lower posterior teeth:",
+["Is constant from canine to second molar","Progressively increases from canine to second molar","Progressively decreases posteriorly","Is zero"],1,
+"Lower posterior lingual crown inclination progressively increases from the canine through the second molar.");
+
+Q("Andrews Keys","Key II (crown angulation) states that the gingival portion of the long axis of each crown is:",
+["Mesial to the incisal portion","Distal to the incisal portion","Directly above the incisal portion","Buccal to the incisal portion"],1,
+"The gingival portion of the long axis of each crown is DISTAL to the incisal portion.");
+
+Q("Andrews Keys","The proposed SEVENTH key to normal occlusion is:",
+["Absence of habits","Correct crown diameter (proper tooth size)","Competent lips","Normal swallowing"],1,
+"Correct crown diameter (proper mesiodistal tooth size) has been proposed as the seventh key.");
+
+Q("Growth","Growth is defined as increase in size; development is defined as:",
+["Increase in weight","Increase in complexity","Increase in height","Increase in cell number"],1,
+"Growth = increase in size; development = increase in complexity.");
+
+Q("Growth","Most congenital malformations develop during which period?",
+["Period of the ovum (0-2 weeks)","Period of the embryo (2-8 weeks)","Period of the fetus (8-40 weeks)","The neonatal period"],1,
+"The embryonic period (2nd to 8th week) is the period of differentiation, and most congenital malformations develop then.");
+
+Q("Growth","Fertilization normally occurs in the:",
+["Uterine cavity","Ampulla of the uterine tube","Cervix","Ovary"],1,
+"Fertilization occurs in the ampulla of the uterine tube (oviduct).");
+
+Q("Growth","Cleft lip results from failure of fusion between:",
+["The two lateral palatine shelves","The medial nasal and maxillary processes","The mandibular arch and hyoid arch","The nasal septum and vomer"],1,
+"Failure of fusion of the medial nasal and maxillary processes (completing at the 7th week) causes cleft lip.");
+
+Q("Growth","The most critical period during palatal development is:",
+["Week 3 to week 5","End of the 6th week to beginning of the 9th week","Week 10 to week 12","The 2nd trimester"],1,
+"The palate develops from early in the 6th week to the 12th week, with the most critical period from the end of the 6th to the beginning of the 9th week.");
+
+Q("Growth","The primary palate (premaxilla) lies:",
+["Posterior to the incisive foramen","Anterior to the incisive foramen","Lateral to the palatine shelves","At the junction of hard and soft palate"],1,
+"The primary palate is the triangular part anterior to the incisive foramen, from the fused medial nasal prominences.");
+
+Q("Growth","The body (anterior two thirds) of the tongue develops from:",
+["First pharyngeal arch","Second pharyngeal arch","Third pharyngeal arch","Fourth pharyngeal arch"],0,
+"Body = 1st arch (via tuberculum impar and lateral lingual swellings); base = 3rd arch (hypobranchial eminence).");
+
+Q("Growth","The copula, derived from the second arch:",
+["Forms the tip of the tongue","Disappears without contributing to the tongue","Forms the foramen cecum","Becomes the terminal sulcus"],1,
+"The hypobranchial eminence overgrows the copula, which disappears without contributing to the tongue.");
+
+Q("Growth","In the viscerocranium, all bones form by intramembranous ossification EXCEPT:",
+["The maxilla","The zygomatic bone","The mandibular condyle and midline of the chin","The squamous temporal bone"],2,
+"The membranous viscerocranium forms by intramembranous ossification except the mandibular condyle and the midline of the chin.");
+
+Q("Growth","In the cartilaginous neurocranium, the first bone to be formed is the:",
+["Sphenoid","Ethmoid","Occipital","Vomer"],2,
+"The occipital bone forms first, followed by the body of the sphenoid, then the ethmoid.");
+
+Q("Growth","Meckel's cartilage serves as a precursor of mandibular mesenchyme during the:",
+["1st month in utero","2nd month in utero","4th month in utero","First month after birth"],1,
+"Meckel's cartilage acts during the 2nd month of intrauterine life; bone begins to develop lateral to it during the 7th week.");
+
+Q("Growth","The symphyseal suture of the mandible disappears at:",
+["Birth","6 months","2 years of age","6 years of age"],2,
+"The symphyseal suture disappears at 2 years of age.");
+
+Q("Growth","Which mandibular cartilage persists for a long time and contributes to vertical and antero-posterior growth?",
+["Coronoid cartilage","Angular cartilage","Condylar cartilage","Symphyseal cartilage"],2,
+"The condylar cartilage persists; the coronoid and angular cartilages disappear early and play no role in mandibular growth.");
+
+Q("Growth","At birth the head forms about one quarter of total body height; in the adult it forms about:",
+["One fifth","One sixth","One eighth","One tenth"],2,
+"Head = 1/4 of body height at birth and about 1/8 in the adult, so the body must grow faster than the head.");
+
+Q("Growth","By approximately what age has the cranium reached 90% of its final volume?",
+["3 years","7 years","10 years","14 years"],1,
+"By about 7 years of age the cranium has reached some 90% of its final volume.");
+
+Q("Growth","Compared with maxillary growth, mandibular growth continues for approximately:",
+["The same duration","1 year longer","2 years longer","4 years longer"],2,
+"Mandibular growth continues about 2 years longer than maxillary growth, which is important in treatment planning.");
+
+Q("Growth","Cartilaginous growth at the head of the mandibular condyle increases:",
+["Only the width of the mandible","The total length and height of the mandible","Only the gonial angle","The size of the maxillary sinus"],1,
+"Condylar cartilage growth increases the total length and height of the mandible.");
+
+Q("Growth","Which growth mechanism is considered MOST active in the skull and jaws after the first few years of life?",
+["Cartilaginous growth","Sutural growth","Periosteal and endosteal growth (surface remodeling)","Interstitial growth"],2,
+"After cartilaginous and sutural growth slow, periosteal/endosteal remodeling is the most active mechanism.");
+
+Q("Growth","Moss's functional matrix theory states that the cranial vault grows in response to:",
+["Sutural pressure","The growing brain","Condylar cartilage","Muscle attachment only"],1,
+"Moss: bones grow to accommodate a growing vital organ - the vault grows by stimulation of the growing brain.");
+
+Q("Growth","During palatal remodeling, the pattern that brings the palate downward is:",
+["Apposition superiorly (nasal) and resorption inferiorly (oral)","Resorption superiorly (nasal) and apposition inferiorly (oral)","Apposition on both surfaces","Resorption on both surfaces"],1,
+"Resorption on the nasal (superior) aspect and apposition on the oral (inferior) aspect brings the palate downward.");
+
+Q("Growth","The maxilla develops postnatally by:",
+["Endochondral ossification only","Intramembranous ossification only (sutural growth and surface remodeling)","Both endochondral and intramembranous equally","Cartilage replacement at the tuberosity"],1,
+"There is no cartilage replacement in the maxilla; growth is entirely by sutural growth and surface remodeling.");
+
+Q("Growth","In the mandibular ramus, antero-posterior growth occurs by:",
+["Apposition anteriorly and resorption posteriorly","Apposition on the posterior border and resorption on the anterior border","Apposition on both borders","Resorption on both borders"],1,
+"Apposition on the posterior border with slower resorption anteriorly moves the ramus backward and makes it thicker.");
+
+/* ===== Etiology, local factors, dentition development ===== */
+Q("Etiology","The three GENERAL factors affecting occlusal development are:",
+["Skeletal, muscle (soft tissue), dental","Caries, trauma, habits","Genetic, hormonal, nutritional","Crowding, spacing, rotation"],0,
+"General factors = skeletal, muscle/soft tissue and dental factors; they play a part in every occlusion.");
+
+Q("Etiology","An increased gonial angle typically results in:",
+["Decreased vertical facial dimension","Increased vertical facial dimension","Buccal crossbite","Class III skeletal pattern"],1,
+"In the vertical plane, an increased gonial angle increases the vertical dimension of the face, and vice versa.");
+
+Q("Etiology","If the LOWER jaw is wider than the upper in the transverse plane, the likely result is:",
+["Scissor bite","Buccal crossbite","Anterior open bite","Deep bite"],1,
+"Wider lower jaw gives buccal crossbite; a wider upper jaw gives scissor bite.");
+
+Q("Etiology","Alveolar bone position matches:",
+["Basal bone position","Tooth position","Cranial base position","Muscle attachment position"],1,
+"Alveolar bone supports the teeth and will therefore match tooth position rather than basal bone position.");
+
+Q("Etiology","Lips that are normally developed but cannot seal because of protruding maxillary incisors are called:",
+["Competent","Incompetent","Potentially competent","Hypotonic"],2,
+"Potentially competent lips: the seal is prevented by the malocclusion, not by the lips themselves.");
+
+Q("Etiology","A HIGH lower lip line typically produces:",
+["Proclination of upper incisors","Retroclination of upper incisors (Class II div 2)","Anterior open bite","Posterior crossbite"],1,
+"A high lip line is seen in Class II division 2 and causes retroclination of the upper incisors.");
+
+Q("Etiology","Which type of tongue thrust will NOT be modified by orthodontic treatment and will reproduce the original tooth position?",
+["Adaptive tongue thrust","Endogenous tongue thrust","Physiologic infantile thrust","Simple tongue thrust"],1,
+"The adaptive tongue changes if the teeth are moved; the endogenous tongue thrust does not, and reproduces the original position.");
+
+Q("Etiology","The neutral zone is the area where:",
+["Tongue force exceeds lip force","Lip and cheek forces balance tongue forces","There is no muscle activity","Teeth contact in centric relation"],1,
+"The neutral zone is where the forces of lips and cheeks on one side and the tongue on the other are balanced.");
+
+Q("Etiology","In excessive dentition size relative to arch size, the teeth most commonly displaced are:",
+["Central incisors and first molars","The last teeth in each group: laterals, second premolars, canines, third molars","Only the canines","Only the third molars"],1,
+"Overlapping, displacement and impaction affect the last tooth to erupt in each segment.");
+
+Q("Local factors","The most commonly seen supernumerary tooth is the:",
+["Distomolar","Paramolar","Mesiodens","Supplemental premolar"],2,
+"The mesiodens, usually conical, situated between the maxillary central incisors, is the commonest supernumerary.");
+
+Q("Local factors","Which supernumerary type most typically causes DELAYED OR FAILED ERUPTION of the upper central incisor?",
+["Supplemental","Conical","Tuberculate","Odontome"],2,
+"The tuberculate (barrel-shaped) supernumerary lies palatal to the central incisor and typically prevents its eruption.");
+
+Q("Local factors","A conical supernumerary that is high in the jaw, inverted and causing no effect should usually be:",
+["Removed immediately","Left in situ under periodic radiographic observation","Removed with the adjacent incisor","Treated with traction"],1,
+"If it will not interfere with planned movement it can be left under periodic radiographic observation, particularly if high and inverted.");
+
+Q("Local factors","Oligodontia is defined as congenital absence of:",
+["1 tooth","2-3 teeth","6 or more teeth","All teeth"],2,
+"Hypodontia = a few missing; oligodontia = 6 or more missing; anodontia = complete or partial absence of all teeth.");
+
+Q("Local factors","Generalized macrodontia is classically associated with:",
+["Pituitary dwarfism","Pituitary gigantism","Hypothyroidism","Ectodermal dysplasia"],1,
+"True generalized macrodontia is seen in pituitary gigantism; generalized microdontia in pituitary dwarfism.");
+
+Q("Local factors","Gemination differs from fusion in that gemination results in:",
+["A reduced number of teeth","A normal number of teeth","Two separate root canals","Cemental union only"],1,
+"Gemination = one germ splits, so tooth number is normal. Fusion = two germs unite, so tooth number is reduced.");
+
+Q("Local factors","Concrescence is the union of two teeth by:",
+["Enamel","Dentine","Cementum, after root formation is complete","Periodontal ligament"],2,
+"Concrescence is cemental union occurring after root formation has been completed.");
+
+Q("Local factors","In the blanch test, blanching in the interdental region indicates:",
+["A supernumerary tooth","Frenal fibers crossing the alveolar ridge","Ankylosis","Root resorption"],1,
+"Blanching on pulling the lip superiorly and anteriorly indicates frenal fibers crossing the ridge; confirm with an IOPA showing notching.");
+
+Q("Local factors","Premature loss of a deciduous tooth causes malocclusion mainly by:",
+["Creating new crowding","Localization of pre-existing crowding","Delaying all eruption","Causing ankylosis"],1,
+"The major effect of early loss is localization of pre-existing crowding; in an uncrowded mouth this does not occur.");
+
+Q("Local factors","Early loss of which deciduous tooth most markedly allows forward drift of the first permanent molar?",
+["Deciduous incisor","Deciduous canine","Deciduous first molar","Deciduous second molar"],3,
+"Loss of the second deciduous molar causes marked forward drift of the first permanent molar, especially before its eruption.");
+
+Q("Local factors","Unilateral loss of a deciduous canine in a crowded mouth requires:",
+["No action","A balancing extraction","A compensating extraction","Immediate fixed appliance"],1,
+"Unilateral deciduous canine loss causes a centreline shift, so it should be balanced in any patient with even mild crowding.");
+
+Q("Local factors","A difference of more than how many months between shedding of contralateral teeth is suspicious?",
+["2 months","4 months","6 months","12 months"],2,
+"More than 6 months difference between contralateral teeth should be regarded with suspicion and investigated.");
+
+Q("Local factors","Which is the ONLY tooth to erupt after root completion, explaining its frequent impaction?",
+["Upper lateral incisor","Upper canine","Lower second premolar","Upper third molar"],1,
+"The upper canine is the only tooth to erupt after root completion, plus it has the longest path of eruption and erupts last anteriorly.");
+
+Q("Local factors","Ankylosis is defined as union of the root to bone:",
+["With a thickened periodontal ligament","Without an intervening periodontal membrane","Through cementum only","Through the dental follicle"],1,
+"Ankylosis = union of root or part of a root directly to bone, without an intervening periodontal membrane.");
+
+Q("Local factors","Which of the following is a GENERALIZED cause of delayed eruption?",
+["Supernumerary tooth","Dilaceration","Cleidocranial dysostosis","Crowding"],2,
+"Generalized causes: hereditary gingival fibromatosis, Down syndrome, cleidocranial dysostosis, cleft lip and palate, rickets, hypothyroidism.");
+
+Q("Dentition","The dental papilla forms:",
+["Enamel and cementum","Dentin and pulp","Cementum and periodontal ligament","Alveolar bone"],1,
+"Dental papilla forms dentin and pulp; the dental sac forms cementum and periodontal ligament.");
+
+Q("Dentition","The stratum intermedium appears at which stage and has what function?",
+["Bud stage; forms enamel","Cap stage; forms dentin","Bell stage; provides nutrition to the inner enamel epithelium","Apposition; mineralizes matrix"],2,
+"The stratum intermedium appears in the bell stage between the IEE and stellate reticulum, providing nutrition to the IEE.");
+
+Q("Dentition","Mineralization of the permanent dentition begins:",
+["At the 14th week in utero","At the 4th month in utero","At birth, with the first permanent molar","At 3 years of age"],2,
+"Deciduous mineralization begins about the 14th week in utero (central incisors); permanent mineralization begins at birth with the first permanent molar.");
+
+Q("Dentition","After crown completion, posterior teeth take how long to reach the alveolar crest?",
+["6 months","1 year","2-5 years","8 years"],2,
+"2-5 years to reach the alveolar crest after crown completion, then 12-20 months to reach occlusion.");
+
+Q("Dentition","Root development is complete approximately how long after eruption?",
+["6 months","1 year","2-3 years","5 years"],2,
+"Root development is complete 2-3 years after eruption.");
+
+Q("Dentition","Hutchinson incisors and mulberry molars are both seen in:",
+["Rickets","Congenital syphilis","Amelogenesis imperfecta","Ectodermal dysplasia"],1,
+"Both are disturbances of morpho-differentiation seen in congenital syphilis.");
+
+Q("Dentition","Local enamel hypoplasia caused by periapical infection or trauma of the predecessor is known as:",
+["Turner tooth","Dens in dente","Peg lateral","Shell tooth"],0,
+"Turner tooth = local enamel hypoplasia from periapical infection or trauma.");
+
+Q("Dentition","Tetracycline staining of the teeth appears:",
+["Green or blue","Red to brownish","Brownish","White opaque"],2,
+"Tetracyclines cause brownish pigmentation; erythroblastosis fetalis green/blue; porphyria red to brownish.");
+
+Q("Dentition","Natal teeth are present at birth with an incidence of about:",
+["1 in 100","1 in 1000","1 in 30,000","1 in 100,000"],1,
+"Natal teeth 1:1000; neonatal teeth (erupting in the first month) 1:30,000. Almost always mandibular incisors.");
+
+Q("Dentition","Natal or neonatal teeth should be removed only if:",
+["They are always removed","They are supernumerary or mobile","The child is over 6 months","The parents request it"],1,
+"They should not be removed if normal; remove if supernumerary or mobile, or if causing difficulty to infant or mother.");
+
+Q("Occlusal Development","In the neonatal gum pads, the relationship at rest shows:",
+["Anterior open bite with contact only at the molar region","Full anterior contact","Edge-to-edge incisal relation","Deep bite"],0,
+"Gum pads show an anterior open bite at rest with contact only in the molar region, and a Class II pattern.");
+
+Q("Occlusal Development","The upper gum pad is described as:",
+["U-shaped","Horseshoe shaped","V-shaped","Square"],1,
+"The upper gum pad is horseshoe shaped; the lower gum pad is U-shaped.");
+
+Q("Occlusal Development","The groove between the canine and first molar region of the gum pad, used to judge inter-arch relationship, is the:",
+["Dental groove","Gingival groove","Lateral sulcus","Transverse groove"],2,
+"The lateral sulcus helps judge the inter-arch relationship; the mandibular lateral sulci lie posterior to the maxillary ones.");
+
+Q("Occlusal Development","Primate (anthropoid) spaces are located:",
+["Maxilla: between canine and first molar; Mandible: between lateral and canine","Maxilla: between lateral incisor and canine; Mandible: between canine and first molar","In both arches between the two molars","Only in the maxilla"],1,
+"Maxillary primate space: between the lateral incisor and canine. Mandibular: between the canine and first molar. Used for the early mesial shift.");
+
+Q("Occlusal Development","The leeway space of Nance in the MANDIBLE is:",
+["0.9 mm per segment, 1.8 mm per arch","1.7 mm per segment, 3.4 mm per arch","2.5 mm per segment, 5 mm per arch","0.5 mm per segment, 1 mm per arch"],1,
+"Mandible 1.7 mm per segment = 3.4 mm per arch; maxilla 0.9 mm per segment = 1.8 mm per arch.");
+
+Q("Occlusal Development","The EARLY mesial shift occurs by:",
+["Exfoliation of the second deciduous molar","The eruptive force of the first permanent molar closing the primate space","Extraction of the deciduous canine","Growth of the maxillary tuberosity"],1,
+"Early shift: the eruptive force of the first permanent molar closes the primate spaces in a spaced arch.");
+
+Q("Occlusal Development","The LATE mesial shift uses which space and is greater in which arch?",
+["Primate space; maxilla","Leeway space; mandible","Leeway space; maxilla","Primate space; mandible"],1,
+"Late mesial shift uses the leeway space after exfoliation of the second deciduous molar, and is greater in the mandible.");
+
+Q("Occlusal Development","Incisal liability is overcome partly by interdental physiologic spacing of approximately:",
+["4 mm maxillary and 3 mm mandibular","3 mm maxillary and 4 mm mandibular","2 mm in both arches","6 mm in both arches"],0,
+"4 mm in the maxillary arch and 3 mm in the mandibular arch of interdental physiologic spacing.");
+
+Q("Occlusal Development","The interincisal angle changes from the deciduous to the permanent dentition:",
+["From 123 to 150 degrees","From 150 to 123 degrees","From 135 to 109 degrees","It does not change"],1,
+"Primary teeth are upright (about 150 degrees); permanent teeth incline labially reducing it to about 123 degrees, increasing arch perimeter.");
+
+Q("Occlusal Development","The lull period (inter-transitional period) extends approximately from:",
+["6 to 8 years","8.5 to 10 years","10 to 12 years","12 to 14 years"],1,
+"The silent lull period extends from 8.5 to 10 years, with 6EDC21 present in each quadrant.");
+
+Q("Occlusal Development","The ugly duckling stage (Broadbent phenomenon) resolves when:",
+["The lateral incisors erupt","The canines erupt and impingement shifts incisally","The second molars erupt","A frenectomy is performed"],1,
+"With eruption of the canines the impingement shifts incisally, driving the incisor crowns medially and closing the diastema.");
+
+Q("Occlusal Development","The second permanent molars are guided into occlusion by the:",
+["Leeway mechanism","Cone-funnel mechanism","Primate mechanism","Wilson mechanism"],1,
+"They form palatally and are guided by the cone-funnel mechanism (upper palatal cusp into the lower occlusal fossa).");
+
+Q("Occlusal Development","The most common eruption sequence for the posterior teeth is:",
+["4-5-3 maxilla and 3-4-5 mandible","3-4-5 maxilla and 4-5-3 mandible","3-4-5 in both arches","4-5-3 in both arches"],0,
+"Most common: 4-5-3 in the maxilla and 3-4-5 in the mandible.");
+
+Q("Occlusal Development","At which dental age is there a delay of 2-3 years before any further teeth erupt?",
+["Dental age 6","Dental age 7","Dental age 8","Dental age 10"],2,
+"After eruption of the maxillary lateral incisor at dental age 8 there is a delay of 2-3 years.");
+
+Q("Occlusal Development","The features of the permanent dentition include a vertical overbite of approximately:",
+["One tenth of the lower incisor crown","One third of the lower incisor crown","One half of the lower incisor crown","Two thirds of the lower incisor crown"],1,
+"Normal overbite = about one third of the clinical crown height of the mandibular central incisors.");
+
+/* ===== Biology, biomechanics, appliances ===== */
+Q("Iatrogenic","What percentage of orthodontic patients experience pain?",
+["10-20%","30-50%","70-95%","100%"],2,
+"70-95% experience pain; it begins about 4 hours after force application, is worst on the second day and lasts about 7 days.");
+
+Q("Iatrogenic","Orthodontic pain is usually WORST on which day?",
+["The same day","The second day","The fifth day","The seventh day"],1,
+"Pain begins about 4 hours after placement and the worst pain occurs on the second day of treatment.");
+
+Q("Iatrogenic","If root resorption is seen on a progress radiograph, active treatment must be stopped for at least:",
+["2 weeks","1 month","3 months","1 year"],2,
+"Stop active treatment for at least 3 months; the reparative process begins 2 weeks after active treatment stops.");
+
+Q("Iatrogenic","Enamel decalcification during orthodontic treatment occurs in about what percentage of patients, most affecting which teeth?",
+["10%, lower molars","25%, lower incisors","50%, maxillary incisors","90%, canines"],2,
+"Decalcification occurs in about 50% of patients and most affects the maxillary incisors; lesions can develop within 4 weeks.");
+
+Q("Iatrogenic","If TMD signs and symptoms develop DURING orthodontic treatment, the correct action is:",
+["Remove the fixed appliances immediately","Discontinue all active forces without removing the appliances","Increase the force to finish faster","Ignore and continue"],1,
+"Discontinue all active forces without removing the fixed appliances, control the TMD conservatively, then re-evaluate.");
+
+Q("Accelerated OTM","Regarding drugs to accelerate tooth movement, the lecture concludes:",
+["Prostaglandin is the drug of choice","Vitamin D is safe and routine","No drug exists that can safely accelerate tooth movement","Bisphosphonates accelerate movement"],2,
+"All studied drugs have adverse effects; as of today no drug exists that can safely accelerate orthodontic tooth movement.");
+
+Q("Accelerated OTM","Micro-osteoperforation requires approximately how many perforations per interproximal area?",
+["1","3","6","10"],1,
+"3 perforations in each interproximal area are enough to generate regional acceleration of bone remodeling.");
+
+Q("Accelerated OTM","The main disadvantage of piezocision is:",
+["High cost","Risk of root damage as incisions are made blindly","Need for general anaesthesia","Poor patient acceptance"],1,
+"Piezocision is minimally invasive with better acceptance, but carries a risk of root damage because cuts are made blindly.");
+
+Q("Accelerated OTM","Vibration devices deliver high-frequency vibration of about:",
+["10 Hz for 5 minutes","30 Hz for about 20 minutes daily","100 Hz for 1 hour","300 Hz for 10 minutes"],1,
+"30 Hz for about 20 minutes per day; studies show treatment times reduced by up to 30-40%.");
+
+Q("Genetics","Which malocclusion is said to have the strongest genetic component with possible autosomal dominant inheritance and the Hapsburg pedigree as its classic example?",
+["Class II division 1","Class II division 2","Class III mandibular prognathism","Class I crowding"],2,
+"Class III with mandibular prognathism runs in families; the Hapsburg family is the classic pedigree.");
+
+Q("Genetics","Which statement about soft tissues in Class III is correct?",
+["They are the main aetiological factor","They do NOT play a part in the aetiology of Class III","They always cause the reverse overjet","They cause the maxillary retrusion"],1,
+"The lecture states explicitly that soft tissues do not play a part in the aetiology of Class III.");
+
+Q("Genetics","According to Butler field theory, maximum variability in the incisor field is seen in the:",
+["Central incisor","Lateral incisor","Canine","First premolar"],1,
+"In the incisor field the lateral incisor shows maximum variability - peg shape and congenital absence.");
+
+Q("Genetics","Malocclusion with a genetic cause, compared with an environmental cause, is generally:",
+["More responsive to treatment","Less responsive to treatment","Equally responsive","Always surgical"],1,
+"The greater the genetic component, the worse the prognosis for a successful orthodontic outcome.");
+
+Q("Genetics","Hypodontia and reduction in tooth size are:",
+["Unrelated","Controlled by the same or related gene loci","Always environmental","Only seen in ectodermal dysplasia"],1,
+"They are controlled by the same or related gene loci - hypodontia and hypoplasia of the maxillary laterals often occur together.");
+
+Q("Tooth Movement","The width of the periodontal ligament is approximately:",
+["0.05 mm","0.25 mm","1 mm","2 mm"],1,
+"The PDL is about 0.25 mm wide.");
+
+Q("Tooth Movement","Collagen turnover in the PDL compared with the gingiva is approximately:",
+["Half as fast","The same","Twice as high","Ten times as high"],2,
+"PDL collagen turnover is about twice as high as that of the gingiva, attributed to multidirectional forces.");
+
+Q("Tooth Movement","Pain from heavy force against a tooth is normally felt after:",
+["Less than 1 second","3 to 5 seconds","30 seconds","5 minutes"],1,
+"Pain is felt after 3-5 seconds of heavy force, once the tissue fluid is expressed and the PDL is crushed.");
+
+Q("Tooth Movement","Heavy sustained force leads to:",
+["Frontal resorption","Undermining resorption after hyalinization","Direct apposition","No bone response"],1,
+"Heavy force causes necrosis (hyalinization) and undermining resorption; light force allows painless frontal resorption.");
+
+Q("Tooth Movement","Which theory of tooth movement is the simplest and most widely accepted?",
+["Fluid dynamic theory (Bien)","Pressure-tension theory (Schwartz)","Piezoelectric theory","Functional matrix theory"],1,
+"Schwartz proposed the pressure-tension theory in 1932: resorption on the pressure side, deposition on the tension side.");
+
+Q("Tooth Movement","In the piezoelectric theory, bone CONCAVITY is associated with:",
+["Positive charge and resorption","Negative charge and deposition","No charge","Positive charge and deposition"],1,
+"Concavity = negative charge = bone deposition. Convexity = positive charge = bone resorption.");
+
+Q("Tooth Movement","The squeeze film effect belongs to which theory?",
+["Pressure-tension","Blood flow / fluid dynamic theory of Bien","Piezoelectric","Bone bending"],1,
+"Bien described the squeeze film effect when interstitial fluid is squeezed out toward the apex and cervical margins.");
+
+Q("Biomechanics","Which phase of tooth movement is longer when heavy forces are used?",
+["Initial phase","Lag phase","Post-lag phase","All phases equally"],1,
+"The lag phase is longer with high forces because a large hyalinized area is created and resorption is rearward.");
+
+Q("Biomechanics","The centre of resistance of a SINGLE-rooted tooth lies:",
+["At the apex","Between one third and one half of the root length apical to the alveolar crest","At the cementoenamel junction","At the bracket"],1,
+"For a single-rooted tooth the COR is on the long axis, between 1/3 and 1/2 of root length apical to the alveolar crest.");
+
+Q("Biomechanics","For a multi-rooted tooth the centre of resistance is:",
+["At the furcation exactly","1 or 2 mm apical to the furcation","At the mesial root apex","At the occlusal surface"],1,
+"For a multi-rooted tooth the COR lies between the roots, 1 or 2 mm apical to the furcation.");
+
+Q("Biomechanics","A couple consists of:",
+["One force through the COR","Two equal forces in the same direction","Two equal forces opposite in direction with parallel lines of action","A force plus a moment"],2,
+"A couple = two equal, opposite, parallel forces; the resultant is a pure moment.");
+
+Q("Biomechanics","In pure translation, the centre of rotation is:",
+["At the apex","At the bracket","At infinity","At the alveolar crest"],2,
+"Translation occurs when the line of action passes through the COR; the CORo is at infinity.");
+
+Q("Biomechanics","In CONTROLLED tipping the centre of rotation is located:",
+["Between the COR and the apex","At the root apex","At the incisal edge","At infinity"],1,
+"Controlled tipping: CORo at the root apex. Uncontrolled tipping: CORo between the COR and the apex.");
+
+Q("Biomechanics","Torque means:",
+["Mesial root movement","Distal root movement","Palatal or lingual root movement","Crown tipping labially"],2,
+"Torquing = palatal/lingual root movement; reverse torque = buccal/labial root movement; mesiodistal root movement = uprighting.");
+
+Q("Biomechanics","Which movement has the greatest tendency to relapse due to recoil of PDL fibers?",
+["Intrusion","Extrusion","Rotation","Bodily movement"],2,
+"Rotational movements have a great tendency to relapse due to the recoil action of the PDL fibers.");
+
+Q("Biomechanics","The optimum force for orthodontic tooth movement is approximately:",
+["5-10 g per square cm of root surface","20-25 g per square cm of root surface","100 g per square cm","400 g per square cm"],1,
+"Optimum force is around 20-25 g per square cm of root surface area; the rate is about 1 mm per month.");
+
+Q("Biomechanics","Clinical tooth movement occurs with a force duration of as little as:",
+["1 hour per day","6 hours per day","12 hours per day","24 hours per day"],1,
+"Tooth movement occurs with as little as 6 hours per day, but light CONTINUOUS force is preferable for optimal movement.");
+
+Q("Biomechanics","Which group of agents SUPPRESSES tooth movement?",
+["Prostaglandins and vitamin D3","Corticosteroids","NSAIDs, calcitonin and bisphosphonates","Parathyroid hormone"],2,
+"Suppressors: NSAIDs, calcitonin, bisphosphonates. Promoters: prostaglandins, vitamin D3, corticosteroids.");
+
+Q("Removable Appliances","Removable appliances are capable of which type of tooth movement?",
+["Bodily movement","Tipping","Torque","Root uprighting"],1,
+"ROA produce tipping movements, movement of blocks of teeth, and can influence eruption of opposing teeth.");
+
+Q("Removable Appliances","The Adams clasp on a fully erupted first permanent molar is normally fabricated in:",
+["0.5 mm wire","0.6 mm wire","0.7 mm hard stainless steel wire","0.9 mm wire"],2,
+"0.7 mm hard SS wire engaging about 1 mm of undercut; 0.6 mm is advisable for premolars, canines, incisors and deciduous molars.");
+
+Q("Removable Appliances","Ideal activation of an expansion screw in a removable appliance is:",
+["A quarter turn every 3-7 days","A quarter turn daily","A full turn weekly","Two turns daily"],0,
+"A quarter turn every 3-7 days; most screws produce 0.2-0.25 mm per quarter turn.");
+
+Q("Removable Appliances","An anterior bite plane should open the bite at the molars by no more than:",
+["1-2 mm","3-4 mm","5 mm","8 mm"],0,
+"The anterior bite plane should open the molars no more than 1-2 mm.");
+
+Q("Removable Appliances","A posterior bite plane (buccal capping) is prescribed when:",
+["The overbite must be reduced","Occlusal interferences must be eliminated but overbite reduction is undesirable","Expansion is required","Molars must be distalized"],1,
+"Buccal capping frees the occlusion for anterior tooth movement while avoiding overbite reduction.");
+
+Q("Removable Appliances","Recall interval for a patient wearing a removable appliance is usually:",
+["Every week","Every 2-3 weeks","Every 3 months","Every 6 months"],1,
+"The patient should be recalled every 2-3 weeks.");
+
+Q("Removable Appliances","Which of the following is described as the KEY WORD in removable appliance therapy?",
+["Anchorage","Patient compliance","Retention","Activation"],1,
+"The key word in ROA therapy is patient compliance.");
+
+Q("Fixed Appliances","Which appliance was the first introduction of brackets?",
+["E-arch","Ribbon arch","Edgewise","Begg"],1,
+"Angle's ribbon arch (about 1910) was the first introduction of brackets, but was too flexible for precise root positioning.");
+
+Q("Fixed Appliances","Second order bends are made in which plane and for what purpose?",
+["Horizontal; in-out position","Vertical; uprighting and paralleling roots","For torque","For rotation only"],1,
+"First order = horizontal (in/out); second order = vertical (tip, uprighting/paralleling roots); third order = torque.");
+
+Q("Fixed Appliances","A 22 slot bracket has dimensions:",
+["0.018 x 0.025 inch","0.022 x 0.028 inch","0.022 x 0.025 inch","0.018 x 0.028 inch"],1,
+"22 mil slot = 0.022 x 0.028 inch (width x depth); 18 mil slot = 0.018 x 0.025 inch.");
+
+Q("Fixed Appliances","In the initial stage of fixed appliance treatment, the preferred archwire is:",
+["Stainless steel rectangular","Nickel-titanium","Beta titanium rigid","Gold"],1,
+"Initial: flexible NiTi for alignment. Later: rigid stainless steel to fill the slot and control tooth position.");
+
+Q("Fixed Appliances","Acid etching before direct bonding uses phosphoric acid at what concentration and time?",
+["10% for 60 seconds","35-37% for 15-30 seconds","50% for 10 seconds","20% for 2 minutes"],1,
+"35-37% phosphoric acid for 15-30 seconds.");
+
+Q("Fixed Appliances","Which is an indication for BANDING rather than bonding?",
+["A tooth needing a bracket only","A molar receiving headgear force","An anterior tooth with good enamel","A tooth needing minor rotation"],1,
+"Bands are indicated for heavy intermittent forces (headgear), teeth needing buccal and lingual attachments, short clinical crowns and extensive restorations.");
+
+Q("Fixed Appliances","Severe root resorption (more than one third of root length) occurs in what percentage of orthodontically treated teeth?",
+["Less than 0.1%","1-5%","10-20%","Over 50%"],1,
+"External apical root resorption is almost universal but usually insignificant; severe resorption occurs in 1-5% of treated teeth.");
+
+Q("Fixed Appliances","The most important disadvantage of ceramic brackets is:",
+["High cost","Poor esthetics","Abrasion of the opposing teeth","Difficult ligation"],2,
+"Abrasion of teeth occluding against ceramic brackets is the most important disadvantage; avoid bracket contact with opposing teeth.");
+
+Q("Fixed Appliances","Typical duration of comprehensive fixed appliance treatment is:",
+["3-6 months","6-12 months","12-30 months","4-5 years"],2,
+"Usually 12-30 months depending on complexity; most orthodontists review every 4 weeks.");
+
+Q("Fixed Appliances","The three stages of comprehensive fixed appliance treatment are:",
+["Levelling, torquing, retention","Alignment and levelling, correction of molar relation and space closure, finishing","Banding, bonding, debonding","Expansion, retraction, settling"],1,
+"Stage 1 alignment and levelling; stage 2 molar correction and space closure; stage 3 finishing (settling).");
+
+/* ===== Anchorage, orthopedic, retention, diagnosis ===== */
+Q("Anchorage","In SIMPLE anchorage the root surface area of the anchorage unit should be at least:",
+["Equal to that of the teeth to be moved","Double that of the teeth to be moved","Half that of the teeth to be moved","Four times that of the teeth to be moved"],1,
+"In simple anchorage the anchor unit root surface area should be at least double that of the units to be moved.");
+
+Q("Anchorage","Arch expansion using a midline screw and closure of a median diastema are examples of:",
+["Simple anchorage","Stationary anchorage","Reciprocal anchorage","Extraoral anchorage"],2,
+"Reciprocal anchorage: two teeth or sets of teeth move to an equal extent in opposite directions.");
+
+Q("Anchorage","Compared with tipping, teeth being moved BODILY have anchorage potential that is:",
+["Lower","The same","Considerably greater","Unpredictable"],2,
+"Stationary anchorage - teeth displaced bodily - has considerably greater anchorage potential than tipping.");
+
+Q("Anchorage","Which factor increases anchorage demand?",
+["Moving fewer teeth","Moving teeth in segments","Moving teeth bodily rather than tipping","Periodontally compromised anchor teeth"],2,
+"Bodily movement requires more force. Moving fewer teeth and moving them in segments decreases the load on anchor teeth.");
+
+Q("Anchorage","Anchorage loss occurs more readily in patients with:",
+["Reduced vertical proportions","Increased vertical proportions","Deep overbite","Horizontal growth pattern"],1,
+"Anchorage loss and space closure occur more readily with increased vertical proportions, possibly from lower bite forces and less occlusal interference.");
+
+Q("Anchorage","The biggest disadvantage of extraoral anchorage is:",
+["Root resorption","Apparent lack of patient cooperation","Loss of vitality","Gingival recession"],1,
+"Extraoral anchorage produces almost no change in the anchorage units, but its biggest disadvantage is lack of patient cooperation.");
+
+Q("TADs","The compromise insertion point for a miniscrew that minimizes root damage while preventing soft tissue irritation is:",
+["The attached gingiva coronally","The mucogingival junction","The alveolar mucosa","The midpalatal suture only"],1,
+"A coronally placed screw risks root damage because of conical root shape; the mucogingival junction is the compromise.");
+
+Q("TADs","The recommended insertion angle of a miniscrew relative to the occlusal plane is about:",
+["90 degrees","45 degrees inclined apically","15 degrees","Parallel to the occlusal plane"],1,
+"Incline the path apically; 45 degrees to the occlusal plane is acceptable, avoiding roots and increasing cortical support.");
+
+Q("TADs","Miniscrew fracture is rare if the diameter is greater than:",
+["0.9 mm","1.2 mm","1.5 mm","2.5 mm"],2,
+"Fracture is rare if the diameter is greater than 1.5 mm, especially if the miniscrew is tapered.");
+
+Q("TADs","The reported failure rate of miniscrews is up to:",
+["5%","15%","40%","70%"],2,
+"Up to 40%, from miniscrew-related, patient-related and management-related factors; patients must be informed beforehand.");
+
+Q("TADs","Which region has NO critical anatomic structures apart from the incisive canal?",
+["Buccal alveolar bone","Paramedian palate","Midpalatal region, tuberosity and retromolar pad","Lingual alveolar bone"],2,
+"There are no critical structures in the midpalatal region, maxillary tuberosity and retromolar pad, except the incisive canal.");
+
+Q("Orthopedic","Orthopedic force differs from orthodontic force in magnitude, being generally:",
+["50-100 g","150-200 g","300-500 g per side","1500 g per side"],2,
+"Orthodontic force 50-100 g gives dental change; orthopedic force 300-500 g (over 400 g) per side gives skeletal change.");
+
+Q("Orthopedic","The optimum timing for extraoral force application is:",
+["Early morning","During school hours","Evening and night","Randomly through the day"],2,
+"Evening and night, because of increased release of growth hormone and other growth-promoting factors at that time.");
+
+Q("Orthopedic","Headgear force and duration for skeletal effect are:",
+["100-200 g for 4 hours","400-600 g per side for 12-14 hours daily","800 g for 6 hours","1200 g for 24 hours"],1,
+"400-600 g per side, 12-14 hours a day. Over 1000 g traumatizes the periodontium; under 300 g gives only dental change.");
+
+Q("Orthopedic","Headgear treatment is usually given at what ages?",
+["6-8 years in both sexes","8.5-10.5 years in females and 9.5-11.5 in males","12-14 years in both sexes","After growth completion"],1,
+"8.5 to 10.5 years in females and 9.5 to 11.5 years in males.");
+
+Q("Orthopedic","A CERVICAL pull headgear produces a force vector below the centre of resistance of the molars, causing:",
+["Intrusion of molars","Distalization plus extrusion of molars","Pure intrusion","No vertical effect"],1,
+"Cervical pull = distalization plus extrusion. Occipital (high pull) = intrusion of the molars.");
+
+Q("Orthopedic","The facemask is indicated for:",
+["Class II division 1 with prognathic maxilla","Mild to moderate skeletal Class III with maxillary deficiency and hypodivergent pattern","Anterior open bite in adults","Bilateral crossbite in adults"],1,
+"The protraction facemask is used for mild to moderate Class III with maxillary deficiency and a hypodivergent growth pattern.");
+
+Q("Orthopedic","The optimal time to intervene with a facemask is:",
+["At birth","At the initial eruption of the upper central incisors, before the pubertal growth spurt","After the pubertal growth spurt","In the permanent dentition"],1,
+"Orthopedic correction is more likely successful before the pubertal spurt, optimally at initial eruption of the upper central incisors.");
+
+Q("Orthopedic","The vertical pull chin cup is specifically indicated in patients with:",
+["Deep bite","Open bite","Crossbite","Crowding"],1,
+"Occipital pull chin cup for mild prognathism with decreased facial height; vertical pull chin cup for open bite.");
+
+Q("Functional","Randomized controlled trials show that changes from functional appliances are:",
+["Principally skeletal","Principally dentoalveolar with minor skeletal change","Entirely skeletal","Entirely due to growth"],1,
+"Changes are principally dentoalveolar; skeletal changes average only 1-2 mm, too small to replace surgery predictably.");
+
+Q("Functional","Early functional appliance treatment reduces the risk of incisal trauma by up to:",
+["10%","25%","40%","70%"],2,
+"Early treatment reduces the risk of incisal trauma by up to 40% and gives a transient improvement in self-esteem.");
+
+Q("Functional","Which functional appliance is the ONLY completely tissue-borne appliance?",
+["Activator","Bionator","Twin block","Frankel (function regulator)"],3,
+"The Frankel appliance is the only completely tissue-borne appliance, with buccal shields holding the cheeks away.");
+
+Q("Functional","Which functional appliance is FIXED and therefore removes some compliance factors?",
+["Activator","Herbst","Bionator","Twin block"],1,
+"The Herbst is a fixed tooth-borne functional appliance; disadvantages are increased breakages and higher cost.");
+
+Q("Functional","The twin block appliance is usually worn:",
+["At night only","Full time including while eating, for about 9-12 months","4 hours a day","Only during school"],1,
+"Full-time wear including eating; treatment duration about 9-12 months.");
+
+Q("Functional","In the twin block, acrylic should NOT touch the lower molars because:",
+["It causes ulceration","It allows the lower molars to erupt vertically when the upper block is trimmed","It breaks easily","It affects speech"],1,
+"Leaving the lower molars free allows vertical eruption when the maxillary block is trimmed in deep bite cases.");
+
+Q("Functional","In Class II division 2, the correct approach with a functional appliance is to:",
+["Treat it directly as division 2","Convert it to a Class II division 1 relationship first by proclining the upper incisors","Extract lower first premolars first","Use headgear only"],1,
+"Procline the retroclined upper incisors (pre-functional removable or sectional fixed appliance) to convert to div 1, then treat.");
+
+Q("Functional","The commonest reason for a functional appliance producing no effect is:",
+["Poor compliance","Unfavourable growth rotation","Appliance design fault","Wrong diagnosis"],0,
+"Poor compliance is the most common potential problem; compliance is better in younger patients and with fixed functionals.");
+
+Q("Retention","After tooth movement, the alveolar bone remodels within about:",
+["1 week","1 month","4-6 months","More than a year"],1,
+"Alveolar bone 1 month; principal fibres 3-4 months; gingival collagen 4-6 months; elastic fibres more than a year.");
+
+Q("Retention","Which fibres take MORE THAN A YEAR to remodel, making rotated teeth prone to relapse?",
+["Alveolar crest fibres","Principal PDL fibres","Elastic fibres in the dentogingival and interdental fibres","Oblique fibres"],2,
+"The elastic fibres around the neck of the tooth take more than a year, so rotated teeth are particularly prone to relapse.");
+
+Q("Retention","Which transverse change is the MOST unstable?",
+["Interpremolar width change","Intermolar width change","Intercanine width change","Arch length change"],2,
+"Intercanine width changes are the most unstable, then intermolar, then interpremolar.");
+
+Q("Retention","Ten years after retainers are stopped, up to what proportion of patients may need retreatment?",
+["10%","30%","50%","70%"],3,
+"Up to 70% may need retreatment 10 years after stopping retainers, and changes continue to worsen.");
+
+Q("Retention","Best evidence suggests that Hawley and clear plastic retainers need to be worn:",
+["Full time for life","At night only","12 hours daily","Only 3 months"],1,
+"Both need to be worn at night only, excluding cases with a high risk of relapse where a fixed retainer is indicated.");
+
+Q("Retention","Which retainer is better at preventing relapse in the LOWER arch?",
+["Hawley","Clear plastic retainer","Both equal","Neither"],1,
+"Both are equally successful in the upper arch, but clear plastic retainers are better in the lower arch.");
+
+Q("Retention","Which retainer allows more rapid vertical settling of the teeth?",
+["Clear plastic retainer","Hawley retainer","Bonded multistrand retainer","Canine-and-canine retainer"],1,
+"The Hawley allows more rapid settling due to the lack of complete occlusal coverage.");
+
+Q("Retention","Canine-and-canine bonded retainers are called fail-safe because:",
+["They never debond","If one attachment fails the patient immediately knows","They are made of NiTi","They cover all incisors"],1,
+"If one attachment fails the patient knows at once; the disadvantage is possible relapse of the unbonded incisors.");
+
+Q("Retention","Which bonded retainer type is NOT recommended because it fractures frequently?",
+["Multistrand twistflex","Flexible chain","NiTi CAD/CAM","Fibre-reinforced retainer"],3,
+"Fibre-reinforced retainers are not recommended as they tend to fracture more frequently due to lack of flexibility.");
+
+Q("Retention","Pericision reduces rotational relapse by up to:",
+["10%","30%","50%","80%"],1,
+"Circumferential supracrestal fiberotomy reduces rotational relapse by up to 30% and is most effective in the maxilla.");
+
+Q("Retention","The one situation where no retainer at all may be required is:",
+["After rotation correction","After correction of a labial crossbite maintained by the overbite","After expansion","After diastema closure"],1,
+"Correction of a labial crossbite held by the overbite is one of the few occasions when no retainers are required.");
+
+Q("Examination","The angle of facial convexity (glabella-subnasale-pogonion) has a mean value of:",
+["6 degrees","12 degrees plus or minus 4","20 degrees","27 degrees"],1,
+"Mean 12 degrees plus or minus 4; increased angle with convex profile suggests Class II, concave suggests Class III.");
+
+Q("Examination","On palpating A and B points, the maxilla should ideally lie anterior to the mandible by:",
+["0-1 mm","2-3 mm","5-6 mm","8 mm"],1,
+"Ideally the maxilla is 2-3 mm anterior to the mandible in centric occlusion.");
+
+Q("Examination","Clinically the mandibular plane angle is normal when the mandibular plane and Frankfort plane intersect:",
+["Anterior to the occiput","At the occiput","Posterior to the occiput","At the condyle"],1,
+"Normal = intersect at the occiput. Anterior = increased angle. Posterior = decreased angle.");
+
+Q("Examination","The normal nasolabial angle is:",
+["60-80 degrees","90-110 degrees","120-140 degrees","145-160 degrees"],1,
+"90-110 degrees; a high angle may indicate a retrusive lip, a low angle lip protrusion.");
+
+Q("Examination","In a normal smile, the gingival margins of the lateral incisors should be:",
+["Level with the centrals and canines","1 mm more incisally than the centrals and canines","1 mm more apically","2 mm more incisally"],1,
+"Centrals and canines approximately level, with the laterals 1 mm more incisally.");
+
+Q("Examination","Ricketts E-plane joins the soft tissue chin to the:",
+["Nasion","Tip of the nose","Upper lip","Glabella"],1,
+"Rickett E-plane joins soft tissue chin and nose tip; the lower lip should lie 2 mm plus or minus 2 mm posterior to it.");
+
+Q("Examination","Normal interincisal mouth opening is:",
+["30-35 mm","40-45 mm","53-58 mm","65-70 mm"],2,
+"Normal opening 53-58 mm; restricted opening is less than 40 mm; lateral movement less than 8 mm is restricted.");
+
+Q("Examination","Which cusps are the centric holding (supporting) cusps?",
+["Buccal cusps of maxillary and lingual cusps of mandibular posteriors","Palatal cusps of maxillary and buccal cusps of mandibular posteriors","All buccal cusps","All lingual cusps"],1,
+"Supporting/stamp cusps = maxillary palatal and mandibular buccal cusps; they occlude into fossae and marginal ridges.");
+
+Q("Examination","Centric relation is defined as:",
+["Maximum intercuspation","The most posterior position of the mandible relative to the maxilla at a given vertical dimension","The rest position","The position of maximum bite force"],1,
+"Centric relation is the most posterior (retruded) mandibular position; centric occlusion is maximum intercuspation.");
+
+Q("Examination","The curve of Wilson helps by:",
+["Aligning teeth parallel to the medial pterygoid and preventing food passing the occlusal table","Increasing overbite","Reducing arch length","Guiding eruption of the canine"],0,
+"The curve of Wilson aligns teeth parallel to the medial pterygoid for optimum resistance, and its elevated buccal cusps keep food on the occlusal table.");
+
+Q("Examination","If the curve of Spee were extended it would form a circle of about:",
+["1 inch diameter","4 inches diameter","10 inches diameter","20 inches diameter"],1,
+"About 4 inches in diameter; maxillary curve convex, mandibular concave.");
+
+/* ===== Cephalometry, records, planning, space analysis ===== */
+Q("Cephalometry","The cephalostat was developed by:",
+["Angle","Broadbent","Andrews","Tweed"],1,
+"B. Holly Broadbent developed the cephalostat after the First World War.");
+
+Q("Cephalometry","Magnification inevitable on a lateral cephalometric film is about:",
+["1-2%","7-8%","15%","25%"],1,
+"About 7-8% magnification is inevitable; include a scale and standardize magnification for the cephalostat.");
+
+Q("Cephalometry","The Frankfort plane joins:",
+["Sella and nasion","Porion and orbitale","Gonion and menton","ANS and PNS"],1,
+"Frankfort = porion to orbitale. Mandibular plane = gonion to menton. Maxillary plane = ANS to PNS.");
+
+Q("Cephalometry","A point and B point are unreliable long term because they lie on:",
+["Basal bone","Alveolar bone, so they change with tooth movement and growth","Cartilage","Soft tissue"],1,
+"Both A and B points are located on alveolar bone and are liable to change with tooth movement and growth.");
+
+Q("Cephalometry","An ANB angle of 1 degree indicates:",
+["Class I","Class II","Class III","Open bite"],2,
+"ANB less than 2 = Class III; 2-4 = Class I; more than 4 = Class II.");
+
+Q("Cephalometry","If SNA is increased, for every degree above 81 you should:",
+["Add 0.5 to ANB","Subtract 0.5 from ANB","Add 1 to ANB","Make no correction"],1,
+"If SNA is increased, subtract 0.5 from ANB per degree above 81; if reduced, add 0.5 per degree below 81 - provided maxillary plane to SN is 5-11 degrees.");
+
+Q("Cephalometry","The Wits analysis relates A and B points to the:",
+["Sella-nasion line","Frankfort plane","Functional occlusal plane","Mandibular plane"],2,
+"Perpendiculars from A and B to the functional occlusal plane give AO and BO; means 1 mm males, 0 mm females.");
+
+Q("Cephalometry","The main drawback of the Wits analysis is:",
+["High radiation","Difficulty locating the functional occlusal plane","It needs a hand-wrist film","It cannot be used in adults"],1,
+"The functional occlusal plane is hard to locate and slight angulation differences markedly affect AO and BO.");
+
+Q("Cephalometry","The mean maxillary-mandibular plane angle (MMPA) is:",
+["21 plus or minus 3 degrees","27 plus or minus 5 degrees","35 plus or minus 5 degrees","45 degrees"],1,
+"MMPA and FMPA both have a mean of 27 plus or minus 5 degrees.");
+
+Q("Cephalometry","The mean upper incisor to maxillary plane angle is:",
+["93 plus or minus 6 degrees","109 plus or minus 6 degrees","120 degrees","135 plus or minus 10 degrees"],1,
+"Upper incisor to maxillary plane 109 plus or minus 6; lower incisor to mandibular plane 93 plus or minus 6; interincisal 135 plus or minus 10.");
+
+Q("Cephalometry","An alternative method of calculating the ideal lower incisor to mandibular plane angle is:",
+["120 minus the MMPA","109 minus the MMPA","MMPA plus 30","135 minus the MMPA"],0,
+"Subtract the MMPA from 120. As the mandibular plane becomes steeper, the incisors tend to retrocline.");
+
+Q("Cephalometry","The lower anterior face height should be approximately what proportion of total anterior face height?",
+["35%","45%","55%","65%"],2,
+"LAFH is about 55% of TAFH; TPFH is about 65% of TAFH.");
+
+Q("Cephalometry","The Ballard conversion is used to:",
+["Predict growth","Tilt the incisors to normal angles to eliminate dentoalveolar compensation","Measure the airway","Assess skeletal maturity"],1,
+"Ballard conversion tilts the teeth to their normal angles so the residual overjet indicates the true skeletal relationship.");
+
+Q("Records","Which of the following is a SUPPLEMENTAL rather than essential diagnostic aid?",
+["Study models","Facial photographs","Hand-wrist radiograph and electromyography","Case history"],2,
+"Essential: history, clinical examination, study models, certain radiographs, photographs. Supplemental: hand-wrist films, EMG, endocrine tests, occlusograms.");
+
+Q("Records","Radiation exposure from an OPG is approximately:",
+["Higher than CBCT","Less than that of four periapical films","Equal to a full mouth survey","Higher than a lateral cephalogram"],1,
+"OPG radiation is low - less than that for four IOPAs; but it gives distortion, magnification and overlapping.");
+
+Q("Records","Radiopaque artifacts projected onto the opposite side of an OPG are called:",
+["Halation","Ghost shadows","Cervical burnout","Parallax"],1,
+"Ghosts are created when the beam passes through a dense object and projects its shadow on the opposite side.");
+
+Q("Records","In cervical vertebral maturation, stage 1 indicates how much pubertal growth remaining?",
+["5-10%","25-65%","80-95%","None"],2,
+"Stage 1 = 80-95% remaining; stage 6 = growth complete with no potential remaining.");
+
+Q("Records","The advantage of cervical vertebral maturation over hand-wrist radiographs is:",
+["Greater accuracy","No additional radiograph is needed as it uses the lateral cephalogram","It works in adults","It requires no training"],1,
+"CVMI can be assessed on the routinely taken lateral cephalogram, avoiding additional radiation, and is near the jaws.");
+
+Q("Records","Fusion of the phalangeal epiphyses completes during puberty at about:",
+["10-11 years in both sexes","15-16 years in females and 17-18 in males","13 years in both sexes","20 years in both sexes"],1,
+"Fusion completes at about 15-16 years in females and 17-18 years in males.");
+
+Q("Records","In model trimming, the buccal cuts are made at what angle to the base?",
+["30 degrees","45 degrees","60 degrees","90 degrees"],2,
+"Buccal cuts at the edge of the vestibule at 60 degrees; occluded models should have a sharp 90 degree angle between base and back.");
+
+Q("Records","CBCT is particularly indicated in orthodontics for:",
+["All routine cases","Accurate location of impacted teeth and assessment of adjacent root resorption","Simple Class I crowding","Retention planning"],1,
+"CBCT is indicated for impacted teeth and resorption, alveolar bone assessment, severe asymmetry, syndromes and complex surgical planning.");
+
+Q("Planning","In treatment planning, the position that is usually accepted and around which the rest is planned is:",
+["The upper labial segment","The lower labial segment","The upper molars","The lower molars"],1,
+"Traditionally planning is based around the lower labial segment, which lies in an area of relative stability.");
+
+Q("Planning","The secret to achieving a Class I incisor relationship is to:",
+["Achieve Class I molars","Get the canines into a Class I relationship","Extract four premolars","Use Class II elastics"],1,
+"Position the canines Class I; this indicates the space needed, the movement required and the anchorage demand.");
+
+Q("Planning","If teeth are extracted in the UPPER arch only, the molars will finish in:",
+["Class I","Class II","Class III","Edge to edge"],1,
+"Upper extractions only give Class II molars; lower extractions only give Class III molars. Class I molars are not always necessary.");
+
+Q("Planning","A competent child who consents to treatment cannot be overruled by a parent - this principle is called:",
+["Informed consent","Gillick competence","Duty of care","Parental override"],1,
+"Gillick competence. Patients 16 or older are presumed competent; if the parent wants treatment but the child does not, do not proceed.");
+
+Q("Planning","When estimating treatment time it is better to:",
+["Underestimate to encourage the patient","Slightly overestimate the duration","Give no estimate","Always say 12 months"],1,
+"Slightly overestimate; if treatment finishes early the patient is pleased, whereas overrunning causes loss of interest and poor compliance.");
+
+Q("Planning","The difference between preventive and interceptive orthodontics is:",
+["The appliance used","The timing of the services rendered","The age of the patient only","The cost"],1,
+"Preventive is undertaken when the occlusion is perfectly normal; interceptive when signs of a developing malocclusion are already evident.");
+
+Q("Planning","Which is a PREVENTIVE orthodontic procedure?",
+["Serial extraction","Correction of a developing crossbite","Advising a physiologic nipple for bottle feeding","Space regaining"],2,
+"Parent education including advice on physiologic nipples is preventive; serial extraction, crossbite correction and space regaining are interceptive.");
+
+Q("Space Analysis","In the Tanaka and Johnson analysis, the width of the UPPER canine and premolars per quadrant equals:",
+["Half the sum of the four lower incisors plus 10.5 mm","Half the sum of the four lower incisors plus 11 mm","Half the sum of the four upper incisors plus 11 mm","The sum of the lower incisors minus 10 mm"],1,
+"Upper = half the four lower incisors + 11 mm; Lower = half the four lower incisors + 10.5 mm. Lower incisors are used for both.");
+
+Q("Space Analysis","Moyers mixed dentition analysis uses probability charts at which level?",
+["50%","65%","75%","95%"],2,
+"Moyers uses the 75% probability level.");
+
+Q("Space Analysis","Mandibular incisors are used for prediction rather than maxillary incisors because:",
+["They are larger","They erupt early and show less variability in size","They are easier to measure","They are never crowded"],1,
+"Lower incisors erupt early in the mixed dentition; maxillary incisors show a lot of variability in size.");
+
+Q("Space Analysis","A space need of 3 mm per quadrant in the mixed dentition should be:",
+["Ignored","Treated with a lingual arch only","Referred to the orthodontist for space creation planning","Treated by serial extraction immediately"],2,
+"2 mm per quadrant can be managed with a lingual or palatal arch; 3 mm per quadrant should be referred.");
+
+Q("Space Analysis","Retracting all four incisors by 1 mm requires how much space?",
+["0.5 mm","1 mm","2 mm","4 mm"],2,
+"For every 1 mm of retraction of all four incisors, 2 mm of space is required (1 mm per quadrant).");
+
+Q("Space Analysis","Every 5 degrees of retroclination of proclined upper incisors:",
+["Reduces overjet by 0.5 mm and requires 1 mm of space","Reduces overjet by 2 mm and requires no space","Creates 1 mm of space","Has no space implication"],0,
+"5 degrees of retroclination reduces the overjet by 0.5 mm and requires 1 mm of space.");
+
+Q("Space Analysis","Every 1 mm of lateral arch expansion creates approximately:",
+["0.25 mm of space","0.5 mm of space","1 mm of space","2 mm of space"],1,
+"1 mm of lateral expansion creates about 0.5 mm of space within the arch.");
+
+Q("Space Analysis","The Bolton OVERALL ratio (12 mandibular to 12 maxillary teeth) is:",
+["77.2%","85%","91.3%","95%"],2,
+"Overall ratio 91.3%; anterior ratio 77.2%.");
+
+Q("Space Analysis","An anterior Bolton ratio GREATER than 77.2% means:",
+["Maxillary anterior excess, finishing Class III canine","Mandibular anterior excess, finishing Class II canine","No discrepancy","Crowding of the upper arch"],1,
+"Greater than 77.2% = mandibular anterior excess, so treatment ends with a Class II canine relationship.");
+
+Q("Space Analysis","A tooth material excess of 2.5 to 5 mm is usually managed by:",
+["Proximal stripping","Extraction of a second premolar","Extraction of a first premolar","Composite build-up"],1,
+"0-2.5 mm stripping; 2.5-5 mm extract second premolar; more than 5 mm extract first premolar.");
+
+Q("Space Analysis","Levelling an increased curve of Spee requires approximately:",
+["0.5 mm","1-2 mm","4 mm","6 mm"],1,
+"1 to 2 mm of space depending on the depth of the curve; flattening it also proclines the incisors labially.");
+
+Q("Serial Extraction","Who is known as the Father of serial extraction?",
+["Bunon","Kjellgren","Nance","Tweed"],2,
+"Bunon made the first reference (1743), Kjellgren coined the term (1929), Nance popularized it in the USA and is known as its father.");
+
+Q("Serial Extraction","Serial extraction is typically indicated when the arch size-tooth size deficiency is:",
+["2 mm per quadrant","3 mm per quadrant","5 mm or more per quadrant (10 mm per arch)","Any amount"],2,
+"Typically Class I with 5 mm or more deficiency per quadrant, normal eruption sequence and normal skeletal pattern.");
+
+Q("Serial Extraction","Primary first molars are extracted when root formation of the first premolar is:",
+["Just beginning","One half to two thirds complete","Fully complete","Not yet started"],1,
+"6-12 months before normal exfoliation, at one half to two thirds root formation of the first premolar, usually at 9-10 years.");
+
+Q("Serial Extraction","If primary teeth are extracted 1.5 years or more before normal exfoliation, eruption of the permanent successor will be:",
+["Accelerated","Delayed","Unaffected","Prevented completely"],1,
+"Extraction 1.5 years or more early delays eruption; extraction less than a year before exfoliation accelerates it.");
+
+Q("Serial Extraction","Which is a CONTRAINDICATION to serial extraction?",
+["Class I with severe crowding","Class II division 2 and Class III malocclusions","Normal eruption sequence","Arch length deficiency of 10 mm"],1,
+"Contraindications include mild to moderate crowding, Class II div 2 and Class III, spaced dentition, absent second premolars, open/deep bite and crossbite.");
+
+Q("Serial Extraction","Lip fullness in the mixed dentition as a criterion for extraction is:",
+["Highly reliable","Not a reliable criterion","The only criterion needed","Reliable in females only"],1,
+"Children normally have prominent lips which flatten with growth; extracting to obtain a straight profile may end with a concave one.");
+
+Q("Extraction","After space analysis, extractions are almost always required when the space need is:",
+["Less than 4 mm","4-9 mm","10 mm or more","Any crowding"],2,
+"Less than 4 mm rarely needs extraction; 4-9 mm either; 10 mm or more almost always requires extraction.");
+
+Q("Extraction","Removal of the equivalent tooth in the OPPOSING arch to maintain buccal occlusion is called:",
+["Balancing extraction","Compensating extraction","Enforced extraction","Serial extraction"],1,
+"Balancing = opposite side of the SAME arch (to preserve symmetry); compensating = opposing arch (to maintain occlusion).");
+
+Q("Extraction","The first premolar is the most commonly extracted tooth mainly because:",
+["It is the weakest tooth","It lies near the centre of the quadrant so its space serves anterior and posterior correction","It is always carious","It has one root"],1,
+"It is near the site of crowding whether anterior or buccal, least upsets molar occlusion, gives good canine to second premolar contact and leaves good posterior anchorage.");
+
+Q("Extraction","First premolars should be extracted no more than how long before starting active treatment?",
+["3 days","3 weeks","3 months","1 year"],1,
+"No more than three weeks before active treatment, to avoid mesial migration leaving insufficient space for retraction.");
+
+Q("Extraction","Second premolar extraction is preferred in which situation?",
+["Severe anterior crowding","Open bite cases, as it encourages deepening of the bite","Deep bite cases","High anchorage cases"],1,
+"Second premolars are preferred in mild crowding, to maintain the profile, and in open bite because they encourage bite deepening.");
+
+Q("Extraction","In lower incisor extraction, a major disadvantage is that:",
+["The bite opens","Four upper incisors cannot fit around three lower incisors","The molars become Class III","The canines are lost"],1,
+"Either increased overjet or upper incisor crowding must be accepted; also retroclination, deep bite and reduced intercanine width.");
+
+Q("Extraction","Extraction of first permanent molars is avoided partly because it:",
+["Opens the bite","Deepens the bite","Prevents molar eruption","Causes root resorption"],1,
+"It does not give adequate space for anterior crowding, deepens the bite, allows tipping of adjacent teeth, gives poor contact and affects mastication.");
+
+Q("Extraction","When crowding is confined to the premolar region and the first molar must be removed, the ideal timing is:",
+["After the third molar erupts","Before the second molar erupts","At age 6","After growth is complete"],1,
+"Remove before the second molar erupts so it moves forward into the first molar position; the LOWER must be removed earlier than the upper.");
+
+Q("Extraction","Extraction of the lower second molar to relieve third molar impaction is best when the third molar is:",
+["Tilted more than 45 degrees","Upright or tilted mesially not more than 30 degrees, just after root formation starts (12-14 years)","Fully formed","Horizontally impacted"],1,
+"Third molar upright or tilted mesially no more than 30 degrees, just after root formation has started at 12-14 years.");
+
+Q("Extraction","Third molars are conventionally extracted when the root is:",
+["Not formed","Two thirds formed","Fully formed","Resorbing"],1,
+"Conventional timing is when two thirds of the root is formed; delay makes removal harder and risks dilaceration and pericoronitis.");
+
+/* ===== Special groups, problems, treatment of classes, cleft, indices, habits ===== */
+Q("Medical","Antibiotic prophylaxis for infective endocarditis in orthodontics is recommended for:",
+["Routine archwire adjustment","Bracket placement","Band insertion and removal, interproximal reduction and TAD placement","All orthodontic visits"],2,
+"No significant bacteraemia from adjustment or bonding; prophylaxis is needed for procedures perforating mucosa or manipulating gingiva.");
+
+Q("Medical","In a patient with leukaemia diagnosed during orthodontic treatment, the correct action is:",
+["Continue as normal","Remove all appliances and use a removable retainer","Increase force to finish quickly","Extract all teeth"],1,
+"Remove appliances, use a removable retainer, and restart only after therapy is complete with a minimum two-year event-free survival.");
+
+Q("Medical","Cancer patients should generally begin orthodontic treatment:",
+["Immediately after diagnosis","During chemotherapy","At least 2 years after anticancer therapy","Never"],2,
+"At least 2 years after anticancer therapy; and at least two years after bone marrow transplantation.");
+
+Q("Medical","Haemophilia A is a deficiency of:",
+["Factor VIII","Factor IX","Von Willebrand factor","Platelets"],0,
+"Haemophilia A = factor VIII; Haemophilia B = factor IX.");
+
+Q("Medical","In thalassemia major the classic facial appearance is caused by:",
+["Mandibular hyperplasia","Maxillary bone marrow hyperplasia giving a chipmunk face","Condylar resorption","Cleft palate"],1,
+"Maxillary marrow undergoes hyperplasia more than the mandible, causing the distinctive chipmunk face and Class II pattern.");
+
+Q("Medical","In diabetic patients, appointments should be scheduled:",
+["Late afternoon","Early morning after a regular meal and usual medication","At any time","Only on weekends"],1,
+"Early morning appointments with the patient having eaten and taken medication; use light forces and watch for hypoglycaemia.");
+
+Q("Medical","Hypothyroid patients undergoing orthodontics have:",
+["Accelerated tooth movement","Increased risk of root resorption and delayed eruption","No dental effects","Rapid bone turnover"],1,
+"Hypothyroidism: low bone turnover, delayed eruption, open bite, macroglossia and increased risk of root resorption.");
+
+Q("Medical","The TMJ is involved in what percentage of diagnosed juvenile idiopathic arthritis cases?",
+["5%","20%","45%","90%"],2,
+"The TMJ is involved in 45% of cases; heavy Class II elastics should not be used in these patients.");
+
+Q("Medical","For autistic patients, the recommended appliance choice is:",
+["Fixed appliances always","Removable appliances, as small as possible and reinforced with wires","Lingual appliances","Clear aligners only"],1,
+"Removable appliances are recommended, with Tell-Show-Do and desensitization over several visits before treatment starts.");
+
+Q("Crowding","Tertiary crowding occurs at approximately what age?",
+["6-8 years","10-12 years","18-20 years","40 years"],2,
+"Tertiary crowding occurs between 18 and 20 years, primarily affecting the lower anterior teeth.");
+
+Q("Crowding","Regarding third molars and late lower incisor crowding, the evidence shows:",
+["They are the main cause","Only a weak association, so prophylactic removal cannot be justified","Removal always prevents crowding","They prevent crowding"],1,
+"Crowding occurs even in patients with congenitally absent third molars, so prophylactic removal to prevent crowding is not justified.");
+
+Q("Crowding","Derotation of POSTERIOR teeth:",
+["Requires space","Creates space","Has no effect on space","Always needs extraction"],1,
+"Rotated molars occupy more space, so derotating them creates space; derotating anterior teeth needs space.");
+
+Q("Crowding","Interproximal reduction can safely remove approximately how much per anterior tooth?",
+["0.1 mm","0.5 mm (0.25 mesial + 0.25 distal)","1.5 mm","3 mm"],1,
+"About 0.5 mm per anterior tooth; teeth must be reasonably aligned before enamel reduction begins.");
+
+Q("Crowding","Headgear distalization of molars typically produces:",
+["0.5 mm per side","2-3 mm per side (4-6 mm total)","8 mm per side","No space"],1,
+"2-3 mm per side. Distal movement of the LOWER first molar is very difficult; realistically only uprighting is achievable.");
+
+Q("Spacing","In a patient with a missing upper lateral incisor, space CLOSURE is favoured when:",
+["The canine is mesially inclined","The molar relationship is Class I","The malocclusion is Class II division 1 with a crowded arch","The patient accepts a prosthesis"],2,
+"Close space in Class II div 1, crowded arch, good canine form and colour, distally inclined canine, non-Class I molars.");
+
+Q("Spacing","Autotransplantation of a premolar into an incisor socket is most successful when root development is:",
+["Just beginning","Two thirds to three quarters complete","Fully complete","Resorbed"],1,
+"Root development 2/3 to 3/4 complete, with careful surgery and splinting for 7-10 days.");
+
+Q("Spacing","Median diastema intervention before canine eruption is only necessary if the diastema is greater than:",
+["1 mm","2 mm","3 mm","5 mm"],2,
+"Only if greater than 3 mm and there is lack of space for the laterals; care is needed to avoid root resorption against unerupted canines.");
+
+Q("Spacing","Surgical removal of the maxillary labial frenum should generally be:",
+["Done before orthodontic treatment","Delayed until after orthodontic treatment","Never performed","Done at age 5"],1,
+"Delay frenectomy until after treatment unless the tissue prevents space closure or becomes painful and traumatized.");
+
+Q("Deep Bite","A marked FORWARD growth rotation tends to result in:",
+["Increased overbite and reduced anterior facial proportions","Anterior open bite","Increased lower face height","Posterior crossbite"],0,
+"Forward rotation reduces anterior facial proportions and increases overbite; backward rotation increases face height and reduces overbite.");
+
+Q("Deep Bite","In deep bite, the cephalometric picture typically includes:",
+["Steep mandibular plane and short ramus","Low mandibular plane angle and longer ramus with increased posterior facial height","Obtuse gonial angle","Marked antegonial notch"],1,
+"Deep bite: planes almost parallel, low mandibular plane angle, longer ramus, near right-angle gonial angle, reduced anterior lower face height.");
+
+Q("Deep Bite","Stable correction of a deep bite requires above all:",
+["Molar extrusion only","Correction of the interincisal angle to create an occlusal stop","Extraction of four premolars","Long-term headgear"],1,
+"Without an effective occlusal stop the incisors erupt past each other again; simple retroclination of upper incisors is inappropriate.");
+
+Q("Deep Bite","Deep bite with a low MMPA is generally easier to manage with:",
+["Four premolar extractions","A non-extraction approach","Lower incisor extraction","Surgery"],1,
+"If teeth are extracted the incisors tend to upright as space closes, deepening the overbite again.");
+
+Q("Open Bite","In modern understanding, tongue thrust in most anterior open bite cases is:",
+["The primary aetiological factor","Adaptive behaviour","Always endogenous","Caused by macroglossia"],1,
+"In the vast majority of cases tongue thrust is adaptive; the tongue adapts after surgical or orthodontic correction.");
+
+Q("Open Bite","Approximately 1 mm of posterior supra-eruption opens the anterior bite by:",
+["0.5 mm","1 mm","2 mm","4 mm"],2,
+"About 1 mm of posterior supra-eruption opens the bite about 2 mm anteriorly, because the molars are closer to the hinge.");
+
+Q("Open Bite","The most predictable and stable correction of a severe long-face open bite in an ADULT is:",
+["Vertical elastics","High pull headgear","Surgical impaction of the maxilla posteriorly","Extraction of second molars"],2,
+"Surgical posterior maxillary impaction causes forward autorotation of the mandible and closes the open bite.");
+
+Q("Open Bite","Extrusion of the labial segment to close an anterior open bite is:",
+["The treatment of choice","Inherently unstable and not advised, unless related to a digit habit","Always stable","Only done in adults"],1,
+"The labial dentition is already at the limit of its eruptive potential, so further extrusion is inherently unstable.");
+
+Q("Open Bite","In anterior open bite, which elastics should be avoided?",
+["Short anterior vertical elastics","Class II and Class III elastics that extrude the molars","Cross elastics","No elastics are contraindicated"],1,
+"Class II and III elastics extrude molars and worsen the open bite; if traction is needed, elastics should be short and not run to the molars.");
+
+Q("Open Bite","Retention after open bite correction uses an appliance with:",
+["An anterior bite plane","Posterior occlusal stops (posterior bite plane)","No coverage","A labial bow only"],1,
+"Posterior occlusal stops oppose eruption of the posterior teeth; retention must continue until late teens or early twenties.");
+
+Q("Canines","In normal development, the maxillary canine should be palpable in the labial sulcus by:",
+["7 years","10 years","13 years","15 years"],1,
+"Palpate for unerupted canines in any child aged 10 years and older; a hollow or asymmetry warrants an OPG.");
+
+Q("Canines","Most PALATALLY displaced canines are associated with:",
+["Severe crowding","Sufficient space for eruption","Retained deciduous molars","Macrodontia"],1,
+"Crowding deflects canines buccally; most palatal displacements have sufficient space, suggesting a genetic aetiology.");
+
+Q("Canines","An OPG tends to show an ectopic canine:",
+["More displaced than it really is","More favourably positioned than it really is","In its exact position","Only if bilateral"],1,
+"The OPG shows the canine further from the midline and more vertical than reality, so it must be supplemented with an intra-oral view.");
+
+Q("Canines","CBCT studies show that lateral incisor root resorption from ectopic canines occurs in about:",
+["10% of cases","One third of cases","Two thirds of cases","All cases"],2,
+"Two thirds of upper lateral incisors associated with ectopic canines show resorption; more common in females, and intervention must be swift.");
+
+Q("Canines","When aligning an ectopic canine, permanent extractions should be:",
+["Done before exposure","Delayed until after exposure and successful traction","Never done","Done at the same visit as bonding"],1,
+"Delay permanent extractions until the canine has been exposed and traction successfully started.");
+
+Q("Canines","In transposition, acceptance is particularly indicated when the transposition is:",
+["Partial","Complete, with apices also transposed","In the mandible","Unilateral"],1,
+"Complete transposition is usually accepted; partial transposition can be aligned with fixed appliances.");
+
+Q("Class I","Which factor is the MAIN aetiological influence in Class I malocclusion?",
+["Skeletal factors","Soft tissue factors","Dental factors such as tooth-arch size discrepancy","Habits"],2,
+"In Class I the soft tissue environment is usually favourable; dental factors are the main influence.");
+
+Q("Class I","Most spontaneous improvement after extraction occurs within:",
+["1 month","The first 6 months","2 years","5 years"],1,
+"Most spontaneous alignment occurs in the first 6 months; if incomplete after 1 year, active appliances are needed.");
+
+Q("Class I","In bimaxillary proclination, management is difficult mainly because:",
+["The teeth are too large","Retroclination of the lower labial segment encroaches on tongue space, giving high relapse risk","There is always crowding","The skeletal pattern is Class III"],1,
+"Both arches need retroclination; lower retroclination encroaches on tongue space, so permanent retention is often advisable.");
+
+Q("Class II div 1","In Class II division 1, the lower lip most commonly:",
+["Lies in front of the upper incisors","Is drawn up behind the upper incisors, making the incisor relationship more severe","Has no effect","Retroclines the upper incisors"],1,
+"The lower lip trapped behind the upper incisors proclines them and retroclines the lowers, worsening the incisor relationship.");
+
+Q("Class II div 1","A determined digit-sucking habit narrows the upper arch because of:",
+["Direct pressure from the thumb","A lower tongue position plus negative pressure during sucking","Cheek muscle hypertrophy","Mouth breathing only"],1,
+"Narrowing is mediated by the tongue taking a lower position and the negative pressure generated during sucking.");
+
+Q("Class II div 1","For stability after overjet reduction it is advisable to achieve:",
+["Partial overjet reduction","Full reduction of the overjet and lip competence","An edge to edge relationship","A residual 2 mm overjet"],1,
+"If the overjet is not fully reduced the lower lip continues to function behind the upper incisors, causing relapse.");
+
+Q("Class II div 1","In a gummy smile with increased vertical proportions, retraction of the incisors will usually:",
+["Improve the gummy smile","Worsen it, so high pull headgear is preferred in milder cases","Have no effect","Require lower incisor extraction"],1,
+"Gummy smiles often worsen as incisors are retracted; milder cases are best managed with high-pull headgear.");
+
+Q("Class II div 2","In Class II division 2 the ideal target interincisal angle after treatment is approximately:",
+["109 degrees","120 degrees","135 degrees","150 degrees"],2,
+"Reduce the interincisal angle close to 135 degrees to create an effective occlusal stop.");
+
+Q("Class II div 2","When extraction is necessary in the lower arch in Class II division 2, the preferred tooth is often:",
+["Lower first premolar","Lower second premolar","Lower incisor","Lower first molar"],1,
+"Lower second premolars are often extracted so that space closes without lingual movement of the incisal edges.");
+
+Q("Class II div 2","In Class II division 2 with reduced vertical proportions, the headgear direction of pull usually indicated is:",
+["High pull","Cervical pull (below the occlusal plane)","Straight pull only","No headgear"],1,
+"Cervical pull is usually indicated because the vertical facial proportions are reduced.");
+
+Q("Class II div 2","Torquing the incisor apices in Class II division 2 carries which particular risk?",
+["Loss of vitality","Greater likelihood of root resorption","Ankylosis","Gingival hyperplasia"],1,
+"Torquing depends on sufficient cortical bone, strains anchorage and is more likely to cause root resorption than other movements.");
+
+Q("Class III","The two most influential skeletal factors in Class III are:",
+["Reduced maxillary length and retruded maxilla","Increased mandibular length and a more anteriorly placed glenoid fossa","Increased gonial angle and short ramus","Cranial base flexure and palatal cant"],1,
+"Increased mandibular length and a more anteriorly placed glenoid fossa are the most influential factors.");
+
+Q("Class III","In Class III, crowding is seen more commonly and to a greater degree in the:",
+["Lower arch","Upper arch","Both equally","Neither arch"],1,
+"The upper arch is narrow and the lower broad and often well aligned or spaced, so crowding is greater in the upper arch.");
+
+Q("Class III","Which movement REDUCES the overbite in Class III correction?",
+["Retroclination of lower incisors","Proclination of upper incisors and upper arch expansion","Molar intrusion","Chin cup at night"],1,
+"Proclination of the uppers reduces overbite, as does expansion; retroclination of the lowers increases the overbite.");
+
+Q("Class III","A mandibular displacement on closure in Class III means the prognosis for correction is:",
+["Worse","More favourable","Unchanged","Surgical only"],1,
+"If a displacement is present the prognosis for correcting the incisor relationship is more favourable.");
+
+Q("Class III","Combined orthodontic-surgical planning in Class III should be delayed until about:",
+["12 years in both sexes","15 years in girls and 16 years in boys","18 years in both sexes","25 years"],1,
+"Surgery must await diminished growth: about 15 years in girls and 16 in boys, when the patient can also decide for themselves.");
+
+Q("Orthognathic","The preferred technique for maxillary advancement is:",
+["Anterior segmental osteotomy","LeFort I downfracture and advancement","BSSO","Body ostectomy"],1,
+"LeFort I downfracture and advancement is preferred for maxillary retrognathism; extent is limited by the vascular pedicle and soft tissues.");
+
+Q("Orthognathic","The most preferred technique for mandibular advancement is:",
+["Inverted L osteotomy","Bilateral sagittal split osteotomy (BSSO)","C-osteotomy","Genioplasty"],1,
+"BSSO is the most preferred technique and is performed easily intraorally.");
+
+Q("Orthognathic","A normal-sized chin positioned posteriorly should be described as:",
+["Microgenia","Retrogenia","Macrogenia","Antegenia"],1,
+"Retrogenia = normal-sized chin placed posteriorly; microgenia = a chin that is small in all dimensions.");
+
+Q("Orthognathic","The great disadvantage of distraction osteogenesis is:",
+["It cannot lengthen bone","Precise movements are not possible","It requires no appliance","It cannot be used in children"],1,
+"Larger movements are possible at an earlier age, but the jaw cannot be positioned exactly as preplanned.");
+
+Q("Orthognathic","Impacted teeth in the line of an osteotomy cut should be extracted:",
+["At the time of surgery","6 months prior to surgery","After surgery","Never"],1,
+"Preferably 6 months before surgery.");
+
+Q("Orthognathic","With rigid fixation, postsurgical orthodontics usually begins at:",
+["3 days","2 to 4 weeks","3 months","6 months"],1,
+"Postsurgical orthodontics starts at 2-4 weeks with rigid fixation, once the surgeon is satisfied with initial healing.");
+
+Q("Cleft","The incidence of cleft lip and palate among Caucasians is approximately:",
+["1 in 200 live births","1 in 700 live births","1 in 2000 live births","1 in 10000 live births"],1,
+"CLP about 1 in 700; isolated cleft palate about 1 in 2000.");
+
+Q("Cleft","If both parents are affected by CLP, the risk to the first child is approximately:",
+["2%","4%","10%","60%"],3,
+"Both parents affected = 3 in 5 (60%). One parent = 2%. Unaffected parents with one affected child = 4%. One parent plus one affected child = 10%.");
+
+Q("Cleft","Isolated cleft palate is more common in females because:",
+["The female palate is smaller","Transposition of the palatal shelves occurs later in the female fetus","Females have more genetic mutations","Of hormonal effects"],1,
+"Later shelf transposition gives greater opportunity for an environmental insult, further hampered by facial widening.");
+
+Q("Cleft","Lip repair is usually performed at:",
+["Birth","3 to 6 months","9 to 12 months","4 years"],1,
+"Lip repair 3-6 months (classic rule of tens); palate repair 9-12 months.");
+
+Q("Cleft","Alveolar bone grafting is timed at:",
+["3-5 years","8-10 years, before eruption of the permanent canine when its root is two thirds formed","12-14 years","After growth completion"],1,
+"8-10 years, prior to canine eruption at about two thirds root formation; anterior maxillary width and length growth is essentially complete by 8 years.");
+
+Q("Cleft","The donor site usually used for alveolar bone grafting is:",
+["Mandibular symphysis","Iliac crest","Rib","Calvarium"],1,
+"Cancellous bone is usually harvested from the iliac crest.");
+
+Q("Cleft","Scar tissue in the tuberosity region after palate repair causes:",
+["Anterior open bite","Tethering of the maxilla to the sphenoid, giving a Class III skeletal pattern","Mandibular prognathism","Increased face height"],1,
+"Midline scar prevents transverse growth causing crossbites; tuberosity scarring prevents downward and forward growth giving Class III.");
+
+Q("Cleft","Velopharyngeal insufficiency surgery is generally performed at about:",
+["1 year","2 years","4 years, before the child starts school","10 years"],2,
+"Around age 4, before school; either re-repair of the soft palate or a pharyngoplasty.");
+
+Q("Digital","In Invisalign workflow, the preliminary online treatment plan reviewed by the doctor is called:",
+["SetUp","ClinCheck","OrthoCAD","Insignia"],1,
+"ClinCheck is in essence a draft treatment plan posted online for the doctor to review and customize.");
+
+Q("Digital","A common side effect of clear aligner therapy is:",
+["Anterior open bite","Posterior open bite","Deep bite","Crossbite"],1,
+"Posterior open bite is a common side effect; the therapy also depends heavily on patient compliance.");
+
+Q("Digital","If teeth are not tracking in the aligner, a possible cause is:",
+["Too much interproximal reduction","Movement staged in ClinCheck that is too fast to be biologically possible","Excessive attachment number","Too long a wear period"],1,
+"Causes include insufficient wear, insufficient IPR, insufficient crown height, wrong attachments, or biologically impossible staged movement.");
+
+Q("Indices","The MOCDO acronym in the IOTN dental health component stands for:",
+["Molar, Overjet, Crowding, Displacement, Occlusion","Missing teeth, Overjet, Crossbite, Displacement of contact points, Overbite","Midline, Open bite, Crowding, Deep bite, Overjet","Missing, Open bite, Crossbite, Diastema, Overjet"],1,
+"MOCDO ranks the worst feature: Missing teeth, Overjet, Crossbite, Displacement of contact points, Overbite.");
+
+Q("Indices","The IOTN aesthetic component consists of how many photographs?",
+["5","10","15","20"],1,
+"10 colour photographs graded 1 (most attractive) to 10 (least attractive); 8-10 indicates definite need.");
+
+Q("Indices","In the PAR index, which component carries the highest weighting?",
+["Overbite x2","Centrelines x4","Overjet x6","Buccal occlusion x1"],2,
+"Overjet x6, centrelines x4, overbite x2, anterior crowding and buccal occlusion x1.");
+
+Q("Indices","A PAR score reduction of more than what percentage indicates a high standard of treatment?",
+["30%","50%","70%","90%"],2,
+"More than 70% reduction indicates a high standard; less than 30% means worse or no better.");
+
+Q("Indices","Little irregularity index measures displacement of how many contact points?",
+["Three","Four","Five","Six"],2,
+"Five anatomic contact points from the mesial of the right lower canine to the mesial of the left lower canine.");
+
+Q("Indices","The ABO Cast-Radiograph Evaluation differs from PAR in that it:",
+["Uses pre- and post-treatment models","Uses only the final models and includes root parallelism","Requires a cephalogram","Scores facial aesthetics"],1,
+"CR-EVAL uses only final models plus a panoramic radiograph for root angulation; PAR uses both pre- and post-treatment models.");
+
+Q("Indices","In the root resorption index, resorption of more than one third of the original root length is grade:",
+["Grade 1","Grade 2","Grade 3","Grade 4"],3,
+"Grade 4 = extreme resorption of more than one third; grade 3 = 2 mm to one third; grade 2 = less than 2 mm.");
+
+Q("Crossbite","The general rule regarding crossbite aetiology is:",
+["The fewer teeth involved, the more skeletal the cause","The greater the number of teeth in crossbite, the greater the skeletal component","Number of teeth is irrelevant","All crossbites are dental"],1,
+"The greater the number of teeth in crossbite, the greater the skeletal component of the aetiology.");
+
+Q("Crossbite","A bilateral buccal crossbite is usually associated with:",
+["Class I","Class II skeletal discrepancy","Class III skeletal discrepancy","Crowding only"],2,
+"Bilateral buccal crossbite is usually Class III; bilateral lingual crossbite (scissors bite) is usually Class II.");
+
+Q("Crossbite","During anterior crossbite correction with a removable appliance, the appliance should incorporate:",
+["An anterior bite plane","A posterior bite plane to open the bite anteriorly","No bite plane","A labial bow only"],1,
+"A posterior bite plane opens the bite anteriorly; some overbite must be present to retain the corrected incisor position.");
+
+Q("Crossbite","Rapid maxillary expansion is activated by:",
+["A quarter turn weekly","One to two quarter turns (0.25-0.5 mm) daily","One full turn daily","Two turns weekly"],1,
+"RME: 1-2 quarter turns daily. Slow dental expansion: 1-2 quarter turns weekly.");
+
+Q("Crossbite","After rapid maxillary expansion, the appliance should be retained in place for:",
+["1 week","1 month","3 months","1 year"],2,
+"A 3-month period of retention with the appliance in place, then a removable retainer or transpalatal arch as insurance.");
+
+Q("Crossbite","Upper arch expansion is more likely to be STABLE if the teeth to be moved were initially:",
+["Buccally inclined","Palatally tilted","Upright with a narrow palate","Rotated"],1,
+"Expansion is more stable when the teeth were tilted palatally, as opposed to a truly narrow palate with normally inclined teeth.");
+
+Q("Crossbite","Which crossbite finding may be associated with a LOWER arch centreline shift toward the displacement side?",
+["Bilateral crossbite without displacement","Unilateral crossbite with displacement","Scissors bite","Anterior crossbite"],1,
+"Unilateral buccal crossbite WITH displacement may show a lower centreline shift; without displacement suggests skeletal asymmetry.");
+
+Q("Habits","Active intervention for a digit-sucking habit should NOT be undertaken if the child is:",
+["Younger than 3 years","Younger than 7 years","Older than 10 years","In the permanent dentition"],0,
+"No active intervention under 3 years regardless of severity; most children stop by 5 years, and appliances need a child of at least 7.");
+
+Q("Habits","The severity of a digit habit effect depends on frequency, duration and:",
+["Age of the child","Intensity of the force applied","Which hand is used","Diet"],1,
+"Frequency (times per day), duration (time spent) and intensity (force applied).");
+
+Q("Habits","After the sucking habit ceases, the habit-breaking appliance should be retained for about:",
+["1 week","1 month","3 months","1 year"],2,
+"Approximately 3 months, to ensure the habit has truly stopped.");
+
+Q("Habits","In Moyers classification, a COMPLEX tongue thrust is characterized by:",
+["Buccal teeth together","Buccal teeth apart during swallowing, leading to buccal crossbite","Absent swallowing reflex","Anterior open bite only"],1,
+"Complex = teeth apart; cheek pressure narrows the upper arch giving a usually unilateral buccal crossbite. Simple = teeth together.");
+
+Q("Habits","If both thumb sucking and tongue thrusting are present:",
+["Treat the tongue thrust first","Treat the thumb sucking first","Treat both simultaneously","Treat neither"],1,
+"Treat the thumb sucking first.");
+
+Q("Habits","In the mirror test for mouth breathing, fogging on the NASAL side of the mirror indicates:",
+["Mouth breathing","Nasal breathing","Nasal obstruction","Unilateral blockage"],1,
+"Fogging on the nasal side = nasal breathing; on the oral side = mouth breathing.");
+
+Q("Habits","In Massler butterfly (cotton) test, fluttering of the cotton downward is a sign of:",
+["Mouth breathing","Nasal breathing","Tongue thrust","Bruxism"],1,
+"If the cotton flutters down it indicates nasal breathing; the test can also detect unilateral nasal blockage.");
+
+Q("Habits","Adenoid facies is characterized by:",
+["Short wide face with deep bite","Long narrow face with underdeveloped paranasal area and small nostrils","Prognathic mandible","Macroglossia"],1,
+"Mouth breathing gives a long narrow face, increased face height, mandible rotated down and back, open bite and posterior crossbite.");
+
+Q("Habits","Lip sucking and lip biting almost always involve:",
+["The upper lip","The lower lip","Both lips equally","The tongue"],1,
+"In almost all instances the lower lip is involved, proclining the upper incisors and sometimes retroclining the lowers.");
+
+Q("Habits","Nail biting has been linked in the lectures to an increased risk of:",
+["Caries","Root resorption","Ankylosis","Open bite"],1,
+"Nail biting may predispose to an increased risk of root resorption; it also causes crowding, rotation and attrition of incisors.");
+
+/* ===== COVERAGE COMPLETION SET ===== */
+Q("Definitions","Which of the following is NOT one of the three areas in the scope of orthodontic treatment?",
+["Alteration in tooth position","Alteration in skeletal pattern","Alteration in soft tissue pattern","Alteration in salivary flow"],3,
+"The scope is: alteration in tooth position, skeletal pattern, and soft tissue pattern.");
+
+Q("Definitions","Regarding speech, crowding of the teeth:",
+["Always causes a lisp","Has little effect on normal speech","Prevents normal articulation","Causes hypernasality"],1,
+"Crowding has little effect on normal speech; open bite and large overjets affect incising food.");
+
+Q("Andrews Keys","In Key I, the mesiolingual cusp of the upper first molar seats in the:",
+["Buccal groove of the lower first molar","Central fossa of the lower first molar","Distal marginal ridge of the lower second molar","Mesial fossa of the lower second premolar"],1,
+"The mesiobuccal cusp falls in the groove between the mesial and middle cusps; the mesiolingual cusp seats in the central fossa.");
+
+Q("Andrews Keys","Andrews derived his six keys from a study of how many non-orthodontic normal models?",
+["30","60","120","250"],2,
+"Andrews (1972) studied 120 non-orthodontic normal casts, which became the basis of the straight-wire appliance.");
+
+Q("Growth","At the 3rd week the head is composed mainly of the prosencephalon, which forms the:",
+["Mandibular arch","Frontal prominence","Hyoid arch","Nasal septum"],1,
+"The prosencephalon forms the frontal prominence overhanging the developing oral groove.");
+
+Q("Growth","The furrow between the lateral nasal process and the maxillary process becomes the:",
+["Philtrum","Nasolacrimal duct","Foramen cecum","Incisive canal"],1,
+"It becomes the nasolacrimal duct; the philtrum is the fusion line of the two medial nasal processes.");
+
+Q("Growth","The transverse growth of the maxilla occurs mainly at which sutures?",
+["Fronto-maxillary and pterygo-palatine","Internasal, intermaxillary and interpalatine (sagittal sutures)","Temporo-zygomatic","Spheno-occipital synchondrosis"],1,
+"Transverse growth occurs by apposition at the sagittal sutures, plus surface remodeling in the premolar regions.");
+
+Q("Growth","The sutures connecting the maxilla to the cranial base are oriented so that they:",
+["Are perpendicular to each other","Are parallel to each other and direct growth downward and forward","Are randomly oriented","Restrict growth"],1,
+"Temporo-zygomatic, maxillo-zygomatic, pterygo-palatine and fronto-maxillary sutures are parallel and orient growth downward and forward.");
+
+Q("Growth","Increase in the transverse dimension of the mandible after the first year actually results from:",
+["Symphyseal cartilage growth","Vertical growth, because of the posterior divergence of the mandible","Condylar resorption","Alveolar apposition only"],1,
+"After the first year the symphyseal cartilage plays no role; transverse increase results from vertical growth and is most evident posteriorly.");
+
+Q("Etiology","Marked transverse discrepancies are more commonly associated with:",
+["Class I","Class II or Class III","Open bite only","Deep bite only"],1,
+"Marked transverse discrepancies are more common in Class II or III; milder ones are often seen in Class I.");
+
+Q("Etiology","Which of the following is an ADAPTIVE swallow with buccal teeth APART?",
+["Produces deep bite","Reduces pressures within the upper arch giving a narrow arch and buccal crossbite","Has no effect","Causes Class III"],1,
+"Teeth apart reduces muscle and air pressure in the upper arch, giving a narrow arch, buccal crossbite and incomplete overbite.");
+
+Q("Local factors","Which is a supernumerary located BUCCAL or LINGUAL adjacent to the molars?",
+["Mesiodens","Distomolar","Paramolar","Peridens"],2,
+"Paramolar = buccal or lingual adjacent to molars; distomolar = distal to the arch; peridens = buccal to the arch.");
+
+Q("Local factors","Which restoration error decreases arch length?",
+["Over-contoured proximal restoration","Under-contoured proximal restoration","Under-contoured occlusal restoration","Polished amalgam"],1,
+"Under-contoured proximal restorations decrease arch length; over-contoured ones intrude on the succedaneous tooth space.");
+
+Q("Dentition","The successional lamina that gives rise to permanent tooth germs starts from:",
+["The 2nd month in utero","The 5th month in utero","Birth","1 year of age"],1,
+"Deciduous initiation is at the 2nd month in utero; the successional lamina for permanent teeth starts from the 5th month.");
+
+Q("Dentition","Which stage of tooth development is affected in dentinogenesis imperfecta?",
+["Initiation","Morpho-differentiation","Apposition","Eruption"],2,
+"Dentinogenesis imperfecta is an apposition disturbance; dentine is grey-violet, enamel separates and roots are short.");
+
+Q("Dentition","Ghost teeth (odontodysplasia) show:",
+["Thick enamel and dentine","Enamel and dentine defective and very thin","Absent pulp","Fused roots"],1,
+"Odontodysplasia gives very thin defective enamel and dentine, hence the ghost-like radiographic appearance.");
+
+Q("Occlusal Development","The primary dentition is complete and in full function at about:",
+["18 months","2.5 years","4 years","6 years"],1,
+"Eruption begins at about 6 months and the dentition is complete and functional by about 2.5 years.");
+
+Q("Occlusal Development","A CLOSED (non-spaced) primary dentition indicates:",
+["Ideal development","That crowding may occur when the permanent teeth erupt","Macrodontia of permanent teeth","Class III tendency"],1,
+"Absence of spaces is an indication that crowding may occur when the larger permanent teeth erupt.");
+
+Q("Occlusal Development","Exfoliation of primary tooth roots is carried out by:",
+["Osteoclasts","Odontoclasts","Fibroblasts","Ameloblasts"],1,
+"Odontoclasts dissolve the primary roots; osteoclasts resorb alveolar bone.");
+
+Q("Occlusal Development","Which change is a reliable sign of disturbance in normal development of the dentition?",
+["A 2-month delay in eruption","A change in eruption SEQUENCE","Spacing in the primary dentition","Deep bite at age 3"],1,
+"A change in eruption sequence is a reliable sign of disturbance in normal development.");
+
+Q("Iatrogenic","Round-tripping of teeth with heavy uncontrolled force may cause:",
+["Ankylosis","Loss of pulp vitality","Increased overbite","Gingival hyperplasia"],1,
+"Round-tripping or heavy continuous forces may cause loss of pulp vitality as the apex may move outside the alveolar process.");
+
+Q("Iatrogenic","Which teeth are most prone to root resorption?",
+["Broad blunt roots","Thin, tapered and dilacerated roots such as the maxillary lateral incisor","Multi-rooted molars","Lower canines"],1,
+"Thin, tapered and dilacerated roots are most prone, and a history of trauma increases the risk.");
+
+Q("Iatrogenic","Recommended preventive fluoride rinse concentration during fixed appliance treatment is:",
+["0.002%","0.02% or 0.05% sodium fluoride","0.2% stannous fluoride","5% sodium fluoride"],1,
+"Daily rinsing with 0.02% or 0.05% sodium fluoride, plus fluoride varnish twice a year.");
+
+Q("Accelerated OTM","Therapeutic ultrasound is claimed to increase PDL blood flow and possibly:",
+["Increase root resorption","Decrease root resorption","Cause ankylosis","Slow tooth movement"],1,
+"Ultrasound increases blood flow in the PDL, increasing remodeling and possibly decreasing root resorption.");
+
+Q("Accelerated OTM","The main disadvantage of corticotomy is:",
+["Poor efficacy","High morbidity and low patient acceptance","No bone augmentation possible","It cannot be combined with grafting"],1,
+"Corticotomy is proven but invasive with high morbidity, post-op pain, swelling, infection risk and low patient acceptance.");
+
+Q("Genetics","The human genome consists of approximately how many base pairs and genes?",
+["3.2 million base pairs, 100,000 genes","3.2 billion base pairs, about 25,000 genes","32 billion base pairs, 46 genes","3.2 billion base pairs, 250,000 genes"],1,
+"About 3.2 billion base pairs and about 25,000 genes, which make up only 2% of the genome.");
+
+Q("Genetics","X-linked recessive genes express phenotypically in males as if dominant because males are:",
+["Homozygous","Heterozygous","Hemizygous","Mosaic"],2,
+"Males have only one X chromosome, so they are hemizygous.");
+
+Q("Genetics","A diagnosis of genetic malocclusion should NOT be made on the basis of:",
+["A pedigree study","A single case of recurrence in the family","Twin studies","Longitudinal studies"],1,
+"The anomaly should occur as a well-defined variation in family groups; a single recurrence is not enough.");
+
+Q("Tooth Movement","Which fibre group runs straight across the interdental septum between adjacent teeth?",
+["Circular","Dentogingival","Dentoperiosteal","Transseptal"],3,
+"Transseptal fibres run across the interdental septum, embedded in the cementum of adjacent teeth.");
+
+Q("Tooth Movement","Bite force during mastication against a resistant object may reach:",
+["1-2 kg","10 kg","50 kg","200 kg"],2,
+"Forces range from 1-2 kg for soft food to as much as 50 kg against a resistant object, lasting 1 second or less.");
+
+Q("Biomechanics","In the INITIAL phase of tooth movement, displacement is:",
+["Much greater with heavy force","Nearly the same for both light and heavy forces","Absent","Only seen after 2 weeks"],1,
+"The initial displacement within the socket and bone bending is nearly the same for light and heavy forces.");
+
+Q("Biomechanics","In ROTATION, the centre of rotation is situated at the:",
+["Apex","Bracket","Centre of resistance","Incisal edge"],2,
+"In pure rotation produced by a couple, the CORo is at the centre of resistance.");
+
+Q("Biomechanics","Uncontrolled tipping is a useful movement in which situation?",
+["Space closure in extraction cases","Class II div 2 and Class III where upright incisors need flaring","Intrusion of incisors","Molar distalization"],1,
+"Although generally undesirable, uncontrolled tipping is useful to flare excessively upright incisors in Class II div 2 and Class III.");
+
+Q("Removable Appliances","The Southend clasp gains retention from:",
+["Molar undercuts","The undercut beneath the contact point between two incisors","The palatal vault","Buccal frenum"],1,
+"The Southend clasp uses the undercut beneath the incisor contact point and is made in 0.7 mm hard SS wire.");
+
+Q("Removable Appliances","Frequent breakage of a removable appliance is commonly caused by:",
+["Over-activated springs","Clicking the appliance in and out and eating inappropriate foods","A thick baseplate","Too many clasps"],1,
+"Breakage usually results from part-time wear, a habit of clicking the appliance, or eating inappropriate foods.");
+
+Q("Fixed Appliances","Standard edgewise brackets have which built-in prescription?",
+["Roth values","MBT values","Zero tip and zero torque","Andrews values"],2,
+"Standard edgewise has zero tip and torque, requiring first, second and third order bends; Roth and MBT are pre-adjusted prescriptions.");
+
+Q("Fixed Appliances","Which instrument cuts and HOLDS the wire distal to the buccal tube?",
+["Howe pliers","Distal end cutter","Mathieu hemostat","Band seater"],1,
+"The distal end cutter cuts and retains the cut wire end so it is not lost in the mouth.");
+
+Q("Fixed Appliances","A disadvantage of indirect bonding is:",
+["Less accurate bracket position","More difficult removal of excess adhesive and risk of adhesive deficiencies under brackets","Longer chair time","It cannot be used with ceramic brackets"],1,
+"Indirect bonding gives accurate lab positioning and less chair time, but excess removal is harder and voids may occur.");
+
+Q("Anchorage","Which anchorage type is illustrated by the closure of a median diastema?",
+["Simple","Stationary","Reciprocal","Extraoral"],2,
+"Both teeth move an equal amount in opposite directions - reciprocal anchorage.");
+
+Q("Anchorage","Which arch is particularly susceptible to anchorage loss?",
+["Mandibular","Maxillary","Both equally","Neither"],1,
+"The maxillary arch is particularly susceptible, probably because of bone density factors.");
+
+Q("Anchorage","Type A anchorage means:",
+["The anchor unit consumes most of the space","About half the space is used by the anchor unit","The anchor unit should not move, or move minimally","No anchorage is required"],2,
+"Type A = maximum anchorage; Type B = moderate; Type C = minimum (the anchor unit consumes most of the space).");
+
+Q("TADs","For maxillary bone, the screw depth usually sufficient is about:",
+["3 mm","6 mm","10 mm","12 mm"],1,
+"About 6 mm of screw depth is usually enough in the maxilla and less in the mandible, always considering soft tissue depth.");
+
+Q("TADs","Which driving method is safer for placing a miniscrew?",
+["Engine driver at high speed","Hand driver, to feel the driving torque","Surgical mallet","Ultrasonic tip"],1,
+"A hand driver is safer because the operator can feel the resistance of the driving torque.");
+
+Q("TADs","Miniscrew placement on or near the buccal frenum is associated with:",
+["Root perforation","Soft tissue ulceration or coverage of the screw","Sinus perforation","Nerve damage"],1,
+"Placement on or near the buccal frenum is associated with ulceration or soft tissue coverage of the miniscrew.");
+
+Q("Orthopedic","Immediate tooth movement does not occur with orthopedic forces because:",
+["The force is too light","Hyalinized zones prevent frontal resorption and wear is intermittent","Teeth are ankylosed","The PDL is absent"],1,
+"Heavy forces create hyalinized zones preventing frontal resorption, and appliances are worn only 10-14 hours daily.");
+
+Q("Orthopedic","Chin cup force is usually increased over two months to:",
+["100-150 g per side","450-700 g per side","1000 g per side","2000 g per side"],1,
+"Start at 150-300 g and increase over two months to 450-700 g per side, worn 12-16 hours daily.");
+
+Q("Functional","In a Class II division 1 patient treated by a functional appliance alone, the correct approach at the end is to:",
+["Stop immediately","Slightly overcorrect and wear at night until the end of growth","Extract two premolars","Place headgear"],1,
+"Slightly overcorrect and continue night wear until growth ends.");
+
+Q("Functional","The Bionator was developed by Balter mainly to:",
+["Increase skeletal change","Drastically reduce the acrylic bulk and allow daytime wear","Replace the Herbst","Correct Class III"],1,
+"The Bionator reduces bulk to increase comfort and facilitate daytime wear.");
+
+Q("Functional","For a child with SEVERE mandibular deficiency, the chance of major improvement with a functional appliance is about:",
+["Over 80%","50%","20-30%","Zero"],2,
+"Treatment can be undertaken if all parties understand the chance of major improvement is only about 20-30%.");
+
+Q("Functional","Activator bite registration for an overjet up to 8 mm can be done in one step, keeping the vertical opening to a minimum of:",
+["1 mm","2-3 mm","5 mm","8 mm"],1,
+"A minimum vertical opening of 2-3 mm, maintaining the midline with equal advancement on both sides.");
+
+Q("Retention","Which is an indication for a bonded fixed retainer?",
+["Simple crowding case","Closure of a median diastema","Class I extraction case","After expansion of the lower arch only"],1,
+"Indications: diastema/spaced dentition closure, severely rotated teeth, significant lower labial segment movement, incompetent lips after overjet reduction, and periodontally compromised cases.");
+
+Q("Retention","The commonest problem seen with bonded retainers is:",
+["Complete loss","Localized relapse from partial debond","Caries under the wire","Fracture of the incisors"],1,
+"Partial debond causing localized relapse is the most common problem; some clinicians use dual retention as a backup.");
+
+Q("Retention","Which patients should be warned that some post-treatment change is a normal age change?",
+["Only Class II patients","Only adults","All patients, as growth and soft tissue changes cannot be prevented","No patients"],2,
+"The clinician cannot prevent long-term growth and soft tissue change; patients must be informed during consent.");
+
+Q("Examination","Which patient factor makes females psychologically different in orthodontic assessment?",
+["They grow later","They are generally more concerned about facial aesthetics and mature earlier","They tolerate pain less","They need more extractions"],1,
+"Girls mature earlier and are generally more concerned about facial aesthetics.");
+
+Q("Examination","In the rule of thirds, the lower third subdivides so that the upper lip occupies:",
+["The lower third","The upper third, with the lower lip in the lower two thirds","Half","Two thirds"],1,
+"Upper lip in the upper third and the lower lip in the lower two thirds of the lower facial third.");
+
+Q("Examination","Which is a feature of a normal smile?",
+["Wide buccal corridors","Upper incisal edges parallel to the lower lip (smile arc)","Upper incisors touching the lower lip","Gingival margins of laterals more apical"],1,
+"The smile arc runs parallel to the lower lip; the incisors are close to but not touching the lower lip; buccal corridors should be minimal.");
+
+Q("Examination","Which finding suggests an ENDOGENOUS tongue thrust?",
+["Only upper incisors proclined","Proclination of both upper and lower incisors, anterior open bite and an associated lisp","Deep bite","Class III"],1,
+"Endogenous cases show proclination of both arches, anterior open bite, an associated lisp and the tongue between the incisors at rest.");
+
+Q("Examination","Diabetic patients undergoing orthodontics are especially prone to:",
+["Root resorption","Intra-oral infections and periodontal problems","Ankylosis","Enamel fracture"],1,
+"Poorly controlled diabetics are prone to intra-oral infections and periodontal problems; treatment should be avoided until controlled.");
+
+Q("Records","Which is the ONLY three-dimensional record of the dentition?",
+["Panoramic radiograph","Lateral cephalogram","Study models","Extraoral photographs"],2,
+"Study models are the only 3D record, and are needed medicolegally and for space analysis.");
+
+Q("Records","After trimming, study models are dried for how long before glazing?",
+["2 hours","12 hours","48 hours or overnight in an orthodontic oven","1 week"],2,
+"Dry 48 hours (or overnight in an orthodontic oven), glaze for half an hour, polish, then dry a further 12 hours.");
+
+Q("Records","Which part of a study model must be preserved during trimming?",
+["The artistic portion","The anatomic portion","The heel cuts","The base"],1,
+"The anatomic portion (the impression of the dental arch and soft tissues) must be preserved; the artistic portion is trimmed.");
+
+Q("Records","Which radiographic view is taken at 70-75 degrees to allow vertical parallax with the OPG?",
+["Bitewing","Upper anterior occlusal","Lateral cephalogram","Periapical"],1,
+"The upper anterior occlusal at 70-75 degrees is used with the OPG for vertical parallax localization.");
+
+Q("Cephalometry","Porion is best identified as:",
+["The ear post shadow","The uppermost outermost point on the bony external auditory meatus","The condylar head centre","The mastoid tip"],1,
+"Do not trace the ear posts; the uppermost surface of the condylar head lies at the same level and can guide identification.");
+
+Q("Cephalometry","Which reference plane is unreliable for longitudinal comparison because it changes with growth and treatment?",
+["SN line","Frankfort plane","Maxillary plane","Functional occlusal plane"],3,
+"The functional occlusal plane changes orientation with growth and treatment, so it is not reliable for longitudinal comparison.");
+
+Q("Cephalometry","Which cephalometric finding might reveal a pituitary tumour?",
+["Enlarged sella turcica","Increased gonial angle","Short ramus","Wide airway"],0,
+"Examine the film before tracing; a pituitary tumour could increase the size of the sella turcica.");
+
+Q("Cephalometry","The Holdaway line, if extended in a well-proportioned face, should:",
+["Touch the glabella","Bisect the nose","Pass through porion","Touch the chin only"],1,
+"The Holdaway line runs from the soft tissue chin to the upper lip and should bisect the nose when extended.");
+
+Q("Planning","Which problems must be addressed BEFORE any orthodontic treatment?",
+["Developmental problems","Pathological problems such as caries and periodontal disease","Aesthetic concerns","Retention planning"],1,
+"Pathological problems must be treated first; developmental problems form the orthodontic problem list.");
+
+Q("Planning","Excessive expansion and proclination may:",
+["Improve stability","Perforate the buccal plate causing dehiscence and compromising periodontal health","Reduce treatment time","Prevent relapse"],1,
+"Excess expansion risks buccal plate perforation, dehiscence, instability and an unaesthetic protrusive result.");
+
+Q("Planning","Flattening of the profile by extraction and retroclination is particularly contraindicated in patients with:",
+["A small nose and prognathic mandible","An increased nasolabial angle, a large nose and a retrognathic mandible","Deep bite","Crowded lower arch"],1,
+"These patients risk an unattractive flattened profile; it is untrue that extraction automatically compromises facial aesthetics.");
+
+Q("Planning","Removal of soft tissue and bone covering an unerupted crown should allow:",
+["Only the tip to show","The greatest diameter of the crown to emerge easily","A 2 mm window","Nothing to be removed"],1,
+"The removal should allow the greatest crown diameter to emerge; the wound is dressed with cement for two weeks.");
+
+Q("Planning","Which is an example of preventive management of deeply locked first permanent molars?",
+["Extraction of the 6","Proximal stripping of the second deciduous molar","Headgear","Serial extraction"],1,
+"Re-approximation/proximal stripping of the mesial and distal surfaces of the second deciduous molar guides eruption.");
+
+Q("Space Analysis","In Carey's analysis the brass wire passes along the cingula when the anterior teeth are:",
+["Retroclined","Proclined","Upright","Rotated"],1,
+"The wire runs along the cingula if the anteriors are proclined and along the labial surfaces if they are retroclined.");
+
+Q("Space Analysis","Retention of second deciduous molars means additional space after exfoliation of approximately:",
+["1 mm per quadrant upper and 2 mm per quadrant lower","2 mm upper and 1 mm lower","3 mm in both","No additional space"],0,
+"About 1 mm per quadrant in the upper arch and 2 mm per quadrant in the lower arch.");
+
+Q("Space Analysis","A drawback of the Bolton analysis is that it:",
+["Requires radiographs","Was done on a specific population and ignores gender differences in canine widths","Cannot be used in Class I","Needs a cephalogram"],1,
+"Bolton studied a specific population and did not account for gender differences in maxillary canine widths.");
+
+Q("Serial Extraction","During serial extraction, extraction of primary CANINES is timed at:",
+["6-7 years","8-9 years, as the permanent laterals erupt","10-11 years","12 years"],1,
+"Primary canines are extracted at 8-9 years to allow eruption and alignment of the permanent incisors.");
+
+Q("Serial Extraction","Early enucleation of unerupted first premolars is best avoided because:",
+["It is painful","The erupting premolar brings alveolar bone with it, and enucleation can leave a persistent bone defect","It causes ankylosis","It delays canine eruption"],1,
+"Avoid enucleation when possible; early removal can leave a persistent bone defect.");
+
+Q("Crowding","Crowding is much more prevalent in modern populations than prehistoric ones mainly because of:",
+["Genetic drift","A less abrasive diet with reduced interproximal wear and urban lifestyle","Fluoride","Better nutrition of the jaws"],1,
+"A less abrasive diet reduces interproximal wear; the rural to urban change increases crowding after about two generations.");
+
+Q("Crowding","Lower intercanine width increases until about 12-13 years and then:",
+["Continues to increase","Diminishes gradually, most noticeably in the mid to late teens","Stays constant","Increases again at 20"],1,
+"Reduction in lower intercanine width contributes to tertiary (late) lower incisor crowding.");
+
+Q("Crowding","Removal of filling material during interproximal reduction is:",
+["Not permitted","Preferred over removal of sound enamel","Equivalent to enamel removal","Only for posterior teeth"],1,
+"Removal of filling material is preferred over sound enamel.");
+
+Q("Spacing","Generalized spacing is most often caused by:",
+["Habits","Hypodontia or small teeth in well-developed arches","Crossbite","Deep bite"],1,
+"Generalized spacing is uncommon and is usually due to hypodontia or small teeth in well-developed arches.");
+
+Q("Spacing","Space opened before bridgework should be retained with a partial denture for at least:",
+["1 week","1 month","3 to 6 months","2 years"],2,
+"Acid-etch bridges placed immediately after tooth movement have a greater failure rate, so retain for 3-6 months first.");
+
+Q("Spacing","Excluding third molars, the prevalence of hypodontia in Caucasians is approximately:",
+["0.5%","3.5-6.5%","15%","25%"],1,
+"3.5-6.5%; second premolars about 3% and upper lateral incisors about 2% are the commonest after third molars.");
+
+Q("Deep Bite","A traumatic deep bite most commonly damages:",
+["Buccal gingiva of the molars","Palatal mucosa behind the upper incisors and labial gingiva of the lower incisors","The tongue","The soft palate"],1,
+"Complete overbite onto soft tissue causes inflammation, bleeding and recession at these sites.");
+
+Q("Deep Bite","In adults, buccal segment extrusion to reduce a deep bite is prone to relapse because:",
+["The PDL is thicker","There is no compensatory condylar growth","Bone is softer","Elastics are weaker"],1,
+"In growing patients condylar growth compensates for posterior extrusion; adults lack this, so relapse is likely.");
+
+Q("Deep Bite","Pure upper incisor intrusion is a favourable option in patients with:",
+["An ageing appearance","A gummy smile","Reduced incisor show","Class III"],1,
+"Upper incisor display diminishes with age, so pure upper intrusion is favourable mainly in gummy smile patients.");
+
+Q("Open Bite","Which cephalometric feature is typical of skeletal open bite?",
+["Long ramus and increased posterior facial height","Short ramus, marked antigonial notch and obtuse gonial angle","Low mandibular plane angle","Reduced anterior face height"],1,
+"Open bite: steep mandibular plane, short ramus, marked antigonial notch, obtuse gonial angle, increased anterior lower face height.");
+
+Q("Open Bite","The main cause of POSTERIOR open bite is:",
+["Digit sucking","Large tongue size or ankylosed posterior teeth","Deep bite habit","Class II elastics"],1,
+"Posterior open bites are rare and caused mainly by a lateral tongue thrust from a large tongue, or by submerged/ankylosed teeth.");
+
+Q("Open Bite","Expansion in an anterior open bite case must be done carefully because:",
+["It is unstable","Molar extrusion worsens the anterior open bite","It causes crossbite","It reduces arch length"],1,
+"Any extrusion of the molars during expansion worsens the anterior open bite.");
+
+Q("Canines","Which factor makes alignment of an ectopic canine more difficult?",
+["A canine crown close to the midline","A canine positioned low in the alveolus","An upright canine","A palpable canine"],0,
+"The nearer the crown to the midline, the more difficult the alignment; highly positioned and horizontal canines also have a poorer prognosis.");
+
+Q("Canines","Surgical exposure of a BUCCALLY displaced canine preferably uses:",
+["A gingivectomy","A replaced or apically repositioned flap to ensure adequate attached gingiva","No flap","An envelope flap lingually"],1,
+"A replaced flap (preferably) or apically repositioned flap ensures an adequate width of attached gingiva.");
+
+Q("Canines","A main cause of failure after canine transplantation is:",
+["Excessive space","Replacement resorption from root surface damage during surgery","Too little splinting time","Delayed eruption"],1,
+"Failure causes: replacement resorption, ankylosis (promoted by rigid splinting) and inflammatory resorption after pulp death.");
+
+Q("Class I","A displaced tooth caused by a supernumerary tends to:",
+["Be stable after alignment","Relapse, so prolonged retention is required","Never need retention","Ankylose"],1,
+"Displacements due to supernumeraries tend to relapse and prolonged retention is required.");
+
+Q("Class I","In Class I, which teeth are most affected by crowding?",
+["Central incisors and first molars","The teeth that erupt last in a segment: upper laterals, canines, second premolars, third molars","Lower incisors only","Second molars only"],1,
+"Crowding affects the last teeth to erupt in each segment.");
+
+Q("Class I","Late lower incisor crowding is best described as:",
+["Purely due to third molars","Multifactorial and to some extent an age change","Always iatrogenic","A retention failure only"],1,
+"It is multifactorial - mandibular growth, soft tissue maturation, mesial migration, reduced intercanine width - and occurs in untreated patients too.");
+
+Q("Class I","Bimaxillary proclination in some racial groups must be considered when:",
+["Selecting brackets","Performing cephalometric analysis and treatment planning","Choosing archwires","Bonding technique"],1,
+"Racial variation must be borne in mind during assessment, including cephalometric analysis, and planning.");
+
+Q("Class II div 1","Class II division 1 incidence in a Caucasian population is approximately:",
+["3%","10%","15-20%","40%"],2,
+"Class II div 1 is 15-20%; Class II div 2 about 10%; Class III about 3%.");
+
+Q("Class II div 1","Treatment of Class II division 1 is generally best deferred until:",
+["The deciduous dentition","The early mixed dentition","The late mixed or early permanent dentition","Adulthood"],2,
+"Deferring allows a direct transition from functional to fixed appliance, extraction if needed, and greater soft tissue maturity.");
+
+Q("Class II div 1","Camouflage by proclination of the lower labial segment can be stable when the lower incisors were:",
+["Already proclined","Trapped lingually by an increased overbite or pushed lingually by a habit","Crowded","Rotated"],1,
+"Proclination is normally unstable, but is stable where the incisors were trapped lingually by the overbite or a habit.");
+
+Q("Class II div 1","Grossly incompetent lips habitually apart at rest may exacerbate:",
+["Root resorption","Pre-existing gingivitis through drying of the gingivae","Caries in molars","Deep bite"],1,
+"Drying of the gingivae in lip-apart posture exacerbates pre-existing gingivitis.");
+
+Q("Class II div 2","In Class II division 2, the upper lateral incisors may lie at an average inclination because:",
+["They are larger","Their shorter crown length lets them escape the action of the lower lip","They erupt later","They are rotated"],1,
+"The shorter crown of the lateral allows it to escape the high lower lip line that retroclines the centrals.");
+
+Q("Class II div 2","Crowding is exacerbated in Class II division 2 because retroclined centrals sit in:",
+["A wider arc","An arc of smaller circumference","A deeper palate","A shorter ramus"],1,
+"Retroclination positions the incisors on an arc of smaller circumference, typically crowding the laterals out mesiolabially.");
+
+Q("Class II div 2","Which occlusal feature indicates a more severe Class II skeletal pattern in division 2?",
+["Spacing of the upper arch","Lingual crossbite of the first and occasionally second premolars","Open bite","Class III molars"],1,
+"Lingual crossbite of the premolars is a feature of a more severe Class II skeletal pattern.");
+
+Q("Class II div 2","Stability is increased if at the end of treatment the lower incisor edge lies:",
+["Behind the upper incisor apex","0-2 mm anterior to the mid-point of the root axis of the upper incisors","On the palatal mucosa","5 mm anterior"],1,
+"Along with an interincisal angle near 135 degrees, this position provides an effective occlusal stop.");
+
+Q("Class III","Dentoalveolar compensation in Class III typically shows:",
+["Upper incisors retroclined and lower proclined","Upper incisors proclined and lower incisors retroclined","Both arches proclined","Both arches retroclined"],1,
+"Soft tissues tilt the incisors toward each other, so the incisor relationship is often less severe than the skeletal pattern.");
+
+Q("Class III","Bone-anchored maxillary protraction (BAMP) uses:",
+["Headgear to the molars","Screws or mini-plates in the posterior maxilla and anterior mandible with Class III elastics","A chin cup only","Rapid expansion only"],1,
+"BAMP uses skeletal anchorage in both jaws with Class III elastics; a facemask requires about 14 hours of daily wear.");
+
+Q("Class III","Early correction of an anterior crossbite in the mixed dentition has the advantage that:",
+["It avoids fixed appliances later","Further forward mandibular growth may be counterbalanced by dentoalveolar compensation","It prevents all relapse","It shortens retention"],1,
+"Further mandibular growth may be counterbalanced by dentoalveolar compensation.");
+
+Q("Orthognathic","Which technique is most commonly performed for maxillary prognathism requiring setback?",
+["LeFort I retraction","Anterior segmental osteotomy after premolar extraction","BSSO","Genioplasty"],1,
+"LeFort I retraction is difficult because of the pterygoid plates and tuberosity, so anterior segmental osteotomy is usual.");
+
+Q("Orthognathic","Inferior repositioning of the maxilla (short face) is:",
+["More stable than superior repositioning","Less stable and usually requires bone graft or hydroxyapatite blocks","Never performed","Done with BSSO"],1,
+"Inferior movement is less stable and usually needs interpositional graft material.");
+
+Q("Orthognathic","During presurgical orthodontics, arch levelling in Class II division 2 is often:",
+["Completed fully","Not completed, since molar extrusion is easier after surgery","Done with headgear","Avoided entirely"],1,
+"Extrusion of the molars is much more easily accomplished after surgery.");
+
+Q("Adult Orthodontics","The mean cut-off age used to define adult patients is:",
+["16 for both sexes","18 for females and 20-21 for males","21 for both","25 for both"],1,
+"Males often are still growing up to 20-21 years.");
+
+Q("Adult Orthodontics","In older adults in their 40s or 50s, the usual goal of orthodontics is:",
+["An ideal orthodontic result","To maintain what they have, as an adjunct to periodontal and restorative goals","Growth modification","Extraction of four premolars"],1,
+"Adjunctive treatment supports larger periodontal and restorative goals rather than an ideal orthodontic result.");
+
+Q("Adult Orthodontics","In periodontally compromised teeth, alveolar bone loss moves the centre of resistance:",
+["Coronally","Apically, so lighter forces are needed and tipping increases","To the furcation","No change"],1,
+"An apically displaced COR means the same force produces more tipping, so lighter forces are needed.");
+
+Q("Adult Orthodontics","Orthodontic treatment in a patient with ACTIVE periodontal disease:",
+["Is safe with light forces","Can rapidly increase bone loss and must be deferred until disease is treated and stable","Improves the periodontium","Requires only fixed retainers"],1,
+"Disease must be treated, stable and well maintained before starting orthodontic treatment.");
+
+Q("Medical","In haemophilia, which ligation and analgesia choices are preferred?",
+["Wire ligatures and NSAIDs","Elastomeric ligatures and acetaminophen","Wire ligatures and aspirin","Steel ligatures and ibuprofen"],1,
+"Self-ligating brackets or elastomeric ligatures are preferred, and acetaminophen is safer than NSAIDs.");
+
+Q("Medical","In thyroid disorders, which analgesics are NOT recommended?",
+["Paracetamol","NSAIDs and aspirin","Local anaesthesia","Codeine"],1,
+"A stress reduction protocol is used and NSAIDs and aspirin are not recommended; prescribe alternatives.");
+
+Q("Medical","Which oral lesions are usually detected first in HIV infection?",
+["Aphthous ulcers","Hairy leukoplakia and oral candidiasis","Lichen planus","Geographic tongue"],1,
+"The orthodontist can aid detection by recognizing hairy leukoplakia and oral candidiasis.");
+
+Q("Medical","For ADHD patients, appointments should be:",
+["Long and late in the day","Short, early in the morning, with frequent breaks and simple instructions","Monthly and lengthy","Under general anaesthesia"],1,
+"Avoid treatment plans requiring high compliance; use short early appointments with breaks and Tell-Show-Do.");
+
+Q("Cleft","Which feature is seen in a BILATERAL cleft of lip and alveolus?",
+["No displacement","The premaxilla may be rotated forwards","Only the lesser segment collapses","Widening of the anterior arch"],1,
+"In bilateral cases the premaxilla may be rotated forwards, with both lateral segments collapsed behind it.");
+
+Q("Cleft","Presurgical orthopaedics in the neonate currently has:",
+["Proven long-term benefit","Little substantive evidence of long-term benefit and remains controversial","Mandatory indication","No risk and clear benefit"],1,
+"There is little substantive evidence of long-term benefit for arch relationship or facial appearance.");
+
+Q("Cleft","Middle ear disease in cleft palate results from disruption of the muscles affecting:",
+["The tympanic membrane","Eustachian tube function","The cochlea","The mastoid"],1,
+"Otitis media is common; grommets may be placed by an ENT surgeon after audiology monitoring.");
+
+Q("Cleft","During pre-graft orthodontics, care must be taken NOT to:",
+["Expand the arch","Move teeth into the cleft site where there is no bone","Align the incisors","Use a quadhelix"],1,
+"Teeth adjacent to the cleft should be aligned only after the bone graft.");
+
+Q("Digital","A disadvantage of virtual study models is:",
+["They break easily","Lack of tactile input and questions surrounding accuracy","They cannot be shared","They need plaster"],1,
+"Advantages include storage and communication; disadvantages include lack of tactile input, cost and accuracy questions.");
+
+Q("Digital","For virtual models, the recommended impression material is:",
+["Alginate always","Polyvinyl siloxane (PVS) for greater accuracy and stability","Impression compound","Zinc oxide eugenol"],1,
+"Alginate is satisfactory only if poured without delay; PVS is preferred for producing virtual models.");
+
+Q("Digital","With custom brackets such as Insignia, correct tooth display on smile:",
+["Is achieved by slot angulation alone","Requires the bracket to be placed properly on the tooth relative to the lips","Is impossible","Depends on archwire only"],1,
+"It cannot be achieved just by adjusting slot angulation and prescription; bracket placement relative to the lips matters.");
+
+Q("Indices","Which index is used to assess treatment COMPLEXITY for the American Board of Orthodontics?",
+["IOTN","PAR","Discrepancy Index (DI)","ICON"],2,
+"The DI evaluates difficulty of cases from models and cephalograms for the ABO examination.");
+
+Q("Indices","In ICON, which component carries the highest weighting?",
+["Crossbite x5","IOTN aesthetic component x7","Anterior vertical relationship x4","Buccal segment AP x3"],1,
+"ICON: AC x7, crossbite x5, upper arch crowding/spacing x5, anterior vertical x4, buccal segment AP x3.");
+
+Q("Indices","In the adhesive remnant index, score 2 means:",
+["No adhesive left","Less than 50% left","More than 50% left","100% left"],2,
+"Score 0 none, 1 less than 50%, 2 more than 50%, 3 all adhesive remaining on the tooth.");
+
+Q("Crossbite","Tongue blade therapy for a developing anterior crossbite is used for:",
+["30 seconds twice daily","5-10 minutes, biting with the lower teeth as a fulcrum","1 hour daily","Only at night"],1,
+"The blade is placed behind the erupting tooth and bitten for 5-10 minutes, using the lower teeth as a fulcrum.");
+
+Q("Crossbite","The quad helix is capable of differential expansion because:",
+["It uses a screw","Activation at the anterior bridge expands the molars and the outer arm expands the premolar-canine region","It is fixed only","It has two helices"],1,
+"The quad helix allows differential expansion depending on the site of activation.");
+
+Q("Habits","Which appliance acts as a mechanical barrier between the teeth and the lips, tongue or thumb?",
+["Lip bumper","Oral (vestibular) screen","Quad helix","Transpalatal arch"],1,
+"The oral screen fits in the buccal/labial vestibule and is used mainly for oral habits.");
+
+Q("Habits","Which of the following is NOT one of the six etiological agents of bad habits listed?",
+["Anatomical","Mechanical interference","Pathological","Nutritional deficiency"],3,
+"The six are anatomical, mechanical interference, pathological, emotional, imitation and random behaviour.");
+
+Q("Habits","Bruxism management includes all of the following EXCEPT:",
+["Occlusal adjustment and splints","Psychotherapy and relaxation exercises","Muscle relaxants and sedatives","Immediate full mouth extraction"],3,
+"Management: eliminate the cause, occlusal adjustment and bite guards, psychotherapy, and drugs including muscle relaxants.");
+
+/* ================= ENGINE ================= */
+var FULL_COVERAGE = true;
+(function(){
+  var pool = [], idx = 0, remaining = QUESTION_SECONDS, tick = null;
+  var firstTry = 0, laterTry = 0, failed = 0, attempts = 0, resolved = false;
+  var missed = [];
+
+  var startScreen = document.getElementById('start');
+  var startBtn = document.getElementById('startBtn');
+  var bar = document.getElementById('bar');
+  var prog = document.getElementById('progress');
+  var scoreEl = document.getElementById('score');
+  var timerEl = document.getElementById('timer');
+  var quizEl = document.getElementById('quiz');
+  var fb = document.getElementById('feedback');
+  var controls = document.getElementById('controls');
+  var nextBtn = document.getElementById('nextBtn');
+  var hint = document.getElementById('hint');
+  var results = document.getElementById('results');
+  var restartBtn = document.getElementById('restartBtn');
+
+  var LETTERS = ['A','B','C','D','E'];
+
+  function fmt(s){ var m=Math.floor(s/60), r=s%60; return (m<10?'0':'')+m+':'+(r<10?'0':'')+r; }
+
+  function shuffle(arr){
+    var a = arr.slice();
+    for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; }
+    return a;
+  }
+
+  function buildPool(){
+    // FULL COVERAGE MODE: every question in the bank, in curriculum order.
+    // Only the answer options are shuffled, so the position of the correct
+    // answer changes on each run but no topic is ever skipped.
+    var picked = QS.slice(0);
+    pool = picked.map(function(item){
+      var order = shuffle([0,1,2,3].slice(0, item.o.length));
+      var opts = order.map(function(k){ return item.o[k]; });
+      var ans = order.indexOf(item.a);
+      return { t:item.t, q:item.q, o:opts, a:ans, e:item.e };
+    });
+  }
+
+  function paintTimer(){
+    timerEl.textContent = fmt(remaining);
+    timerEl.className = remaining <= 10 ? 'crit' : (remaining <= 20 ? 'low' : '');
+    prog.style.width = ((QUESTION_SECONDS - remaining)/QUESTION_SECONDS*100) + '%';
+  }
+
+  function paintScore(){
+    scoreEl.textContent = 'Q ' + (idx+1) + '/' + pool.length + '  •  ✔ ' + (firstTry+laterTry) + '  ✘ ' + failed;
+  }
+
+  function render(){
+    var it = pool[idx];
+    var html = '<span class="tag">' + it.t + '</span>' +
+               '<p class="qtext">' + (idx+1) + '. ' + it.q + '</p><div id="opts"></div>';
+    quizEl.innerHTML = html;
+    var box = document.getElementById('opts');
+    it.o.forEach(function(text, i){
+      var b = document.createElement('button');
+      b.className = 'opt';
+      b.innerHTML = '<span class="letter">' + LETTERS[i] + '.</span>' + text;
+      b.setAttribute('data-i', i);
+      b.addEventListener('click', function(){ choose(i, b); });
+      box.appendChild(b);
+    });
+    fb.style.display = 'none';
+    fb.className = '';
+    nextBtn.disabled = true;
+    hint.textContent = 'Locked until you answer correctly or the timer ends.';
+    paintScore();
+    window.scrollTo(0,0);
+  }
+
+  function lockAll(){
+    var btns = quizEl.querySelectorAll('.opt');
+    for(var i=0;i<btns.length;i++){ btns[i].disabled = true; }
+  }
+
+  function reveal(){
+    var it = pool[idx];
+    var btns = quizEl.querySelectorAll('.opt');
+    for(var i=0;i<btns.length;i++){
+      if(parseInt(btns[i].getAttribute('data-i'),10) === it.a){
+        btns[i].classList.add(resolvedCorrect ? 'right' : 'missed');
+      }
+    }
+  }
+
+  var resolvedCorrect = false;
+
+  function finishQuestion(correct){
+    resolved = true;
+    resolvedCorrect = correct;
+    clearInterval(tick);
+    lockAll();
+    reveal();
+    var it = pool[idx];
+    fb.style.display = 'block';
+    if(correct){
+      fb.className = 'ok';
+      fb.innerHTML = '<b>' + (attempts === 1 ? 'Correct — first attempt.' : 'Correct after ' + attempts + ' attempts.') + '</b>' + it.e;
+    } else {
+      fb.className = 'fail';
+      fb.innerHTML = '<b>Time expired. Correct answer: ' + LETTERS[it.a] + '.</b>' + it.e;
+      missed.push(it);
+    }
+    nextBtn.disabled = false;
+    hint.textContent = correct ? 'Unlocked. Move on when ready.' : 'Question failed — recorded for revision.';
+    paintScore();
+  }
+
+  function choose(i, btn){
+    if(resolved) return;
+    attempts++;
+    var it = pool[idx];
+    if(i === it.a){
+      btn.classList.add('right');
+      if(attempts === 1){ firstTry++; } else { laterTry++; }
+      finishQuestion(true);
+    } else {
+      btn.classList.add('wrong');
+      btn.disabled = true;
+      paintScore();
+    }
+  }
+
+  function timeout(){
+    failed++;
+    finishQuestion(false);
+  }
+
+  function newQuestion(){
+    remaining = QUESTION_SECONDS;
+    attempts = 0;
+    resolved = false;
+    resolvedCorrect = false;
+    render();
+    paintTimer();
+    if(tick) clearInterval(tick);
+    tick = setInterval(function(){
+      remaining--;
+      if(remaining <= 0){ paintTimer(); timeout(); return; }
+      paintTimer();
+    }, 1000);
+  }
+
+  function showResults(){
+    clearInterval(tick);
+    bar.style.display = 'none';
+    prog.style.display = 'none';
+    quizEl.innerHTML = '';
+    fb.style.display = 'none';
+    controls.style.display = 'none';
+    var total = pool.length;
+    var correct = firstTry + laterTry;
+    document.getElementById('pct').textContent = Math.round(correct/total*100) + '%';
+    document.getElementById('rFirst').textContent = firstTry;
+    document.getElementById('rLater').textContent = laterTry;
+    document.getElementById('rFail').textContent = failed;
+    document.getElementById('rTotal').textContent = total;
+    var ul = document.getElementById('missedList');
+    ul.innerHTML = '';
+    if(missed.length === 0){
+      ul.innerHTML = '<li>Nothing failed on time — well done.</li>';
+    } else {
+      missed.forEach(function(m){
+        var li = document.createElement('li');
+        li.innerHTML = '<b>' + m.t + ':</b> ' + m.q + '<br><i>' + m.e + '</i>';
+        ul.appendChild(li);
+      });
+    }
+    results.style.display = 'block';
+    window.scrollTo(0,0);
+  }
+
+  nextBtn.addEventListener('click', function(){
+    if(nextBtn.disabled) return;
+    if(idx < pool.length - 1){ idx++; newQuestion(); }
+    else { showResults(); }
+  });
+
+  function begin(){
+    idx = 0; firstTry = 0; laterTry = 0; failed = 0; missed = [];
+    buildPool();
+    startScreen.style.display = 'none';
+    results.style.display = 'none';
+    bar.style.display = 'flex';
+    prog.style.display = 'block';
+    controls.style.display = 'flex';
+    newQuestion();
+  }
+
+  var qc = document.getElementById('qcount');
+  if(qc){ qc.textContent = QS.length + ' questions'; }
+  startBtn.addEventListener('click', begin);
+  restartBtn.addEventListener('click', begin);
+})();
+</script>
+</body>
+</html>
