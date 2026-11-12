@@ -112,7 +112,7 @@ tr:nth-child(even) td{ background:#f7f7f7; }
     <div class="rulebox">
       <b>How this slideshow works &mdash; read before starting:</b>
       <ul>
-        <li>Each slide is displayed for <b>exactly 300 seconds (5 minutes)</b>.</li>
+        <li>Each slide is displayed for <b>exactly 120 seconds (2 minutes)</b>.</li>
         <li>The slide advances <b>automatically</b> when the timer reaches zero.</li>
         <li>There is <b>no Next button, no skip, no pause</b>. You cannot rush forward.</li>
         <li>The only control is <b>&larr; Previous</b>, which takes you back one slide to review.</li>
@@ -124,7 +124,7 @@ tr:nth-child(even) td{ background:#f7f7f7; }
 
   <div id="bar" style="display:none">
     <span id="counter"></span>
-    <span id="timer">05:00</span>
+    <span id="timer">02:00</span>
   </div>
   <div id="progress" style="display:none"></div>
 
@@ -138,7 +138,7 @@ tr:nth-child(even) td{ background:#f7f7f7; }
 </div>
 
 <script>
-const SLIDE_SECONDS = 300;
+const SLIDE_SECONDS = 120;
 const SLIDES = [];
 function S(sect,title,sub,body){ SLIDES.push({sect:sect,title:title,sub:sub,body:body}); }
 

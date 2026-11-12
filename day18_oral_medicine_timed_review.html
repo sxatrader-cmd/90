@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light only">
-<title>Day 18 — Oral Medicine · Timed Study Review (300s per item)</title>
+<title>Day 18 — Oral Medicine · Timed Study Review (120s per item)</title>
 <style>
   :root { color-scheme: light only; }
   * { box-sizing: border-box; -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
@@ -63,7 +63,7 @@
     <b>How this works</b>
     <ul>
       <li>The material is shown <b>one item at a time</b>.</li>
-      <li>Each item stays on screen for <b>300 seconds (5:00)</b>, then the next item appears automatically.</li>
+      <li>Each item stays on screen for <b>120 seconds (2:00)</b>, then the next item appears automatically.</li>
       <li>You can move earlier with <b>Next ›</b>, review with <b>‹ Back</b>, or hit <b>Pause</b> to freeze the timer.</li>
       <li>All information is in English; a short Arabic summary is the final item.</li>
     </ul>
@@ -75,7 +75,7 @@
 <section id="reviewScreen" class="hidden">
   <div class="examtop">
     <span class="progress-txt" id="progressTxt">Item 1 / 21</span>
-    <span class="timer" id="timer">5:00</span>
+    <span class="timer" id="timer">2:00</span>
   </div>
   <div class="bar"><div id="progressBar"></div></div>
   <div class="tbar"><div id="timerBar"></div></div>
@@ -250,7 +250,7 @@ var ITEMS = [
  "<li><b>الصرع</b>: grand mal (~٩٠٪ مع هالة) وpetit mal (أطفال، بلا هالة/بلا فقد توتر). <b>Phenytoin</b> يسبّب تضخّم لثة؛ وتجنّب الأسبرين مع valproic acid؛ ومرضى VNS بلا صادّ وقائي؛ وتفضيل التركيبات الثابتة.</li></ul>"}
 ];
 
-var PER_ITEM = 300; // seconds
+var PER_ITEM = 120; // seconds
 var idx = 0, timeLeft = PER_ITEM, timer = null, paused = false;
 
 function startReview(){
