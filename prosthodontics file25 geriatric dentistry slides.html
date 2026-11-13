@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Prosthodontics File 25 — Geriatric Dentistry</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Prosthodontics · 5th year</div>
+    <h1>Geriatric Dentistry</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of the geriatric-dentistry lectures by Lect. Dr. Mustafa Saadi Ali (PDF pages 608–619).</p>
+    <ul>
+      <li>Definitions of aging, genetic and environmental factors, and young / mid-old / oldest-old age groups</li>
+      <li>How geriatric practice differs (86% have at least one chronic disorder; polypharmacy; dementia)</li>
+      <li>Related systemic diseases, and age changes in saliva (25–30% acinar loss; xerostomia in about one fifth), mucosa, teeth, tongue and periodontium</li>
+      <li>Sharry classes (TOLBUDS, TOLAD, TOLN) and psychological disorders</li>
+      <li>Treatment options, tooth- versus implant-supported overdentures, and denture care with Tell–Show–Do</li>
+      <li>Total run time: <b>20 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 10</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Prosthodontics · File 25","t":"Geriatric dentistry","b":"<p>University of Baghdad, College of Dentistry — Prosthodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This 5th-year file covers PDF pages 608–619 (Lect. Dr. Mustafa Saadi Ali / د. مصطفى سعدي علي): geriatric dentistry — definitions and aging, how practice differs from general dentistry, related systemic diseases, age-related oral changes, prosthodontic management, Sharry’s mental-attitude classes, treatment options, and denture care (Tell–Show–Do).</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end.</p>"},{"k":"5th year · Geriatric dentistry","t":"Definitions, factors that influence aging, and age groups of the elderly","b":"<p><b>Geriatric dentistry</b> is the branch of dentistry that emphasizes dental care for the elderly population and focuses upon patients with chronic physiological, physical and/or psychological changes or morbid conditions or diseases. Oral health reflects overall wellbeing for the elderly population. <b>Growth</b> is the increase in size. <b>Development</b> is progress towards maturity. <b>Maturation</b> is the stabilization of the adult stage brought about by growth and development. <b>Aging</b> refers to the natural process of irreversible and inevitable changes that occur with time. It is also defined as the sum of all morphologic and functional alterations that occur in an organism and lead to functional impairment which declines the ability to survive stress.</p><p>Genetic factors influencing aging: mutation (several mutations reduce life span); species-specific life span; hybrid vigor (heterosis); sex (in humans and animals, the female lives longer); parental age (“like father, like son”); and premature-aging syndromes from single-gene changes, for example progeria, Cockayne’s syndrome, and Werner’s syndrome (rapid premature aging). Environmental factors: physical and chemical (pollution, radiations, working atmosphere); biological (nutrition, general health); pathogens and parasites (they influence the rate of human development, such as in low-income groups and tropical countries); and socioeconomic conditions (bad housing, stress).</p><p>It has always been difficult to differentiate whether tissue or organ changes are due to physiologic aging or pathology, because aging, systemic diseases, surgeries, medications, chemotherapy and radiotherapy can superimpose on one another, and there is no precise method for determining the rate or degree of aging.</p><p>Classification of the elderly according to age: people aged <b>65–74 years</b> are the new or young elderly, who tend to be relatively healthy and active; <b>75–84 years</b> are the old or mid-old, who vary from those being healthy and active to those managing an array of chronic diseases; people <b>85 years and older</b> are the oldest-old, who tend to be physically frailer.</p>"},{"k":"5th year · Geriatric dentistry","t":"Goals, how practice differs from general dentistry, and traits of a successful geriatric dentist","b":"<p>Goals: to maintain oral health of individuals; to maintain ideal health and function of the masticatory system by establishing adequate preventive measures; and, in diseased patients, treatment, management, and maintaining of oral and general health status. Objectives: to recognize and relieve difficulties of elderly people; and restoration and preservation of function for maintaining normal life.</p><p>Geriatric practice differs from traditional general practice in that: it is concerned with aging patients, <b>86% of whom have at least one chronic disorder</b> (those in nursing homes usually have many concurrent disorders); patients may have cognitive dysfunction such as dementia, which affects compliance and oral health; use of polypharmacy (regular use of at least five medications), and many medications cause xerostomia; many elderly have physical disabilities such as vision, hearing and taste disorders; it requires exceptional skill in history taking and patient management; and it challenges the dentist’s ability to design a treatment plan and differentiate normal aging from pathologic aging.</p><p>Treatment requires a high degree of skill because tissues, neural control and functional reserve are compromised, so there is little tolerance for unnecessary stress or iatrogenic disease. Personality traits listed: be agreeable (courtesy costs nothing; some successful dentists keep a card index of personal information so each patient feels specially important); be a good listener (if patients “think out loud” the dentist can assess likes, dislikes and prejudices and plan a presentation); avoid arguments (force never won a permanent victory, though one must sometimes fight for principles); criticize tactfully (compliment first, then offer constructive criticism); don’t be egotistic (wait for others to appreciate effective service); remember names and faces (addressing people by name nourishes self-esteem); and be interested in others (the “open sesame” to hearts and minds).</p>"},{"k":"5th year · Geriatric dentistry","t":"Systemic diseases related to dental care in the elderly","b":"<p>The dentist must understand normal and pathologic aging, oral implications of systemic disease, and drug-induced dental disease. (1) <b>Cardiovascular disease (CVD)</b> and periodontitis have an interrelationship because of common bacteria in their pathogenesis. Periodontal inflammation leads to bacteremia caused by common oral pathogens such as <i>Porphyromonas gingivalis</i>, which has been isolated from coronary and carotid atheroma. CVD and periodontitis are therefore interrelated and commonly seen in geriatric patients. (2) <b>Infective endocarditis</b> in the elderly is also associated with periodontitis. Bacteria such as viridans streptococci, normally found in the oral cavity, and plaque bacteria such as <i>Actinobacillus actinomycetemcomitans</i>, <i>Eikenella corrodens</i>, <i>Fusobacterium nucleatum</i> and <i>Bacteroides forsythus</i> have been isolated from blood samples of infective-endocarditis patients. (3) <b>Diabetes mellitus:</b> patients with Type 1 and Type 2 DM have distinguished dental manifestations such as loss of periodontal attachment, gingival and periodontal abscess, early loss of teeth, and impaired healing. (4) <b>Respiratory infections</b> are usually caused by oropharyngeal and periodontal microorganisms. The main cause of respiratory infections and bacterial pneumonia in adults is aspiration of oropharyngeal bacteria; inadequate oral hygiene results in dental plaque that serves as a reservoir for respiratory pathogens. (5) <b>Rheumatoid arthritis (RA)</b> is common in the elderly and causes destruction of hard and soft tissues as a result of inflammatory response; however, the interrelationship and association between RA and periodontitis has not been proved.</p>"},{"k":"5th year · Geriatric dentistry","t":"Aging of the salivary glands, xerostomia, and the oral mucosa","b":"<p>Functions of saliva listed: preparation and translocation of the food bolus; lubrication of oral mucosa; preservation of microbial balance; mechanical cleansing; antibacterial and antifungal activities; maintenance of oral pH; remineralization of the dentition; and mediation of taste activity. With aging there is a fairly linear loss (about <b>25–30%</b>) of acinar cells in the salivary glands, which are replaced by fatty or connective tissue. Earlier it was thought that salivary secretion is also reduced with age, but recent functional studies showed that, despite these morphometric changes, functional output and composition of saliva do not appear to be consistently altered in older individuals. The decrease in salivary production is more related to salivary-gland dysfunction and oral morbidities associated with systemic diseases and medications. Xerostomia is commonly linked to antidepressants, psycholeptics, inhaled medications such as salbutamol, and the slight degeneration of salivary-gland function with aging. Chronic dry mouth affects roughly <b>one fifth</b> of the elderly. There has been a link with diabetes, Alzheimer’s or Parkinson’s disease, and it can also arise from general dehydration. A dry mouth can be associated with caries, cracked lips, a fissured tongue and oral mucositis, and can heavily affect quality of life (taste, speaking, ingestion of food, and fitting of dentures). Meticulous oral hygiene, mouthwashes with chlorhexidine, and daily artificial salivary substitutes are important means to reduce complications of denture wearing in xerostomia. There is a significant relation between denture plaque and the presence of stomatitis.</p><p>The oral mucosa is the first line of defense; specialized mucosal sensory detectors warn of potentially harmful situations, and epithelial cells synthesize keratin and laminin which preserve structural integrity and restore wound healing. Keratin in masticatory mucosa protects against abrasive insults. Changes of oral mucosa with aging: thinning of epithelium, becoming less keratinized and more fragile; loss of collagen and elastin from fibers, which also weakens mucosa; increase in pathological process; loss of tongue papillae and taste buds; diminishing of minor salivary glands; lesions are more common and slower to heal; and an increase of inflammations, irritation and infections.</p>"},{"k":"5th year · Geriatric dentistry","t":"Aging of the teeth, tongue, taste, medications, and the periodontium","b":"<p>With aging the tooth wears down, with attrition and dental erosion most commonly seen. Enamel does not regenerate, so as it thins the underlying yellowish dentine can show through or become exposed; teeth may look more yellow and stain more easily. Dentine continues to be produced (secondary dentine); gradually the tubules obturate and lead to dentinal sclerosis. The pulp develops more fibers and fewer cells, leading to shrinkage. A reduced blood supply means an elderly patient’s pulp does not have the same capacity to heal itself. Calcification of the pulp with narrowing of the root canals increases, and can lead to decreased sensitivity to stimuli such as cold or sweet foods. Cementum is continually produced, but the rate slows with age, leaving a higher risk of root caries. Tooth loss is not a normal part of aging; it is usually a consequence of oral disease (caries and periodontal disease) or is often associated with systemic diseases.</p><p>The tongue seems to increase in size in the edentulous mouth, which may result from transfer of some masticatory and phonetic function to the tongue; an enlarged tongue has a negative effect on denture retention. Depapillation usually begins at the apex and lateral border; tongue fissuring is also common. Taste declines with aging; possible causes are a decline in number (density) of taste buds, a decline in their sensitivity, and a decline in neural processing or retrieval. Medications that interfere with taste or olfactory senses include antibiotics (ampicillin, azithromycin, ciprofloxacin, clarithromycin, metronidazole, ofloxacin, tetracycline), the antifungal griseofulvin, and anticonvulsants (carbamazepine, phenytoin).</p><p>The instance of periodontal disease increases with age, not because of the nature of the condition but as the patient’s cumulative oral history. The geriatric population can be more susceptible to pathogenic anaerobic bacteria infecting the periodontium. Thinning and decreased keratinization of the gingival epithelium are evident, and flattening of rete pegs with altered density occurs. Age increases the risk of periodontal disease but does not cause it. Most of the geriatric community have moderate levels of attachment loss (gum recession), with fewer having advanced stages. Bacterial plaque accumulation increases because of increased hard-tissue surface area from recession and because the exposed root surface favors plaque compared with enamel. Active periodontitis is a risk factor for certain systemic diseases, including cardiovascular disease, stroke and aspiration pneumonia.</p>"},{"k":"5th year · Geriatric dentistry","t":"Prosthodontic management: determinants, mental attitude (Sharry), and psychological disorders","b":"<p>Although complete-tooth-loss prevalence has declined over the last two decades, edentulism remains a major concern, especially among older adults; it is debilitating and irreversible, and is a multifactorial result of caries, periodontal disease and social factors. In many industrialized societies, more than 50% of the elderly are edentulous. Treatment and prognosis are influenced by systemic and local factors and previous denture experience. The most important determinants: <b>debilitating diseases</b> — people often totally neglect oral and prosthetic care, so prosthetic treatment should be postponed until general health is restored; for the chronically ill, maintenance of oral hygiene (to control caries and periodontal disease) is the most applicable option; <b>neurophysiological changes</b> — functional elements in the CNS degenerate, limiting the capacity for acquiring new muscle-activity patterns, so the elderly adapt more slowly to prosthetic treatment; <b>mental changes</b> — mental disorders may complicate the outcome, and patients may acquire unusual conceptions of what can be achieved; <b>oral physiological changes</b> — progressive atrophy of the masticatory, buccal and labial musculature is a sign of aging and is often accelerated in the denture wearer; atrophy of masticatory muscles may severely reduce chewing efficiency, which cannot be sufficiently improved through prosthetic treatment — instead advise an adequate diet that is easy to chew. The effect of prosthetic management is also determined by the patient’s degree of cooperation, financial resources, and the biological and technical quality of prosthetic materials.</p><p>A researcher stated that “fitting the personality of the aged patient is often more difficult than fitting the denture to the mouth.” Achievement depends on readiness and mental attitude to the denture, attitude and relation with the dentist, knowledge and ability to adapt, and the patient’s trait. <b>Sharry classification</b> of mental attitude towards prosthodontic treatment: <b>TOLBUDS</b> — patients who could tolerate a prosthesis backwards, upside down, or sideways; <b>TOLAD</b> — patients who could tolerate a prosthesis with some degree of adjustment; <b>TOLN</b> — patients who could tolerate nothing.</p><p>Psychological disorders generally seen: <b>anxiety</b> — a response to perceived danger (actual or anticipated); a major source is alteration of body integrity, and extensive oral changes (loss of teeth and replacement with a denture) can trigger it; <b>depression</b> — a response to loss (actual or threatened, real or fantasized); sadness and hopelessness after significant loss, and for some patients the teeth are so invested with meaning that their loss is experienced as catastrophic; <b>conversion hysteria</b> — people convert anxiety from emotional conflicts into somatic symptoms such as pain, muscle weakness or sensory disturbance, or they reproduce a symptom they had in the past; <b>body-image disturbance</b> — the mouth is the most emotionally charged area of the body, so any alteration is a body change to which the patient must adapt, and until they do, anxiety will be present.</p>"},{"k":"5th year · Geriatric dentistry","t":"Treatment options, overdenture support, implants, and denture care (Tell–Show–Do)","b":"<p>The main objective of prosthetic treatment and care is the maintenance of existing natural functional tooth contacts for life. Modalities range from relining or repairing existing dentures, to copying or transforming existing dentures, to constructing conventional complete dentures, implant-supported complete dentures, or metal-ceramic fixed prostheses. Patients’ demands are often based on previous experience, self-esteem and socioeconomic situation.</p><p>Treatment options: (1) removable complete dentures for the completely edentulous — retention and stability should be optimum, proper extension for maximum support, and occlusion precisely constructed for improved function and comfort; (2) removable partial dentures for the partially edentulous — essential design principles are proper support, minimal gingival coverage, use of rigid connectors, and simplicity; (3) overdentures have become more popular as a replacement for traditional complete dentures in individuals with insufficient tooth structure left to support either fixed or removable partial dentures. Principles of overdenture support: a <b>tooth-supported</b> overdenture prevents resorption of alveolar bone and maintains sensory feedback from natural roots, and the teeth provide stability (and retention) for the denture; an <b>implant-supported</b> overdenture arrests resorption of bone, and the implants provide retention for the denture. Caries and advancement of periodontal disease next to the abutment of a tooth-supported overdenture are the primary hazards, so if treatment with fixed or removable partial dentures is available, overdentures should not be considered. (4) Osseointegrated implants can and should be prescribed for elderly patients; osseointegration can be maintained as patients age despite physical and medical weakness. Three major purposes for implant therapy: so that the patient has an easier time chewing; in order to protect the remaining oral structure (teeth and bone) or an existing restoration; and to switch out certain key abutments.</p><p>Many edentulous elderly believe wrongly that once all teeth have been extracted they no longer need to be concerned about oral health. They should be taught proper home care of both dentures and the tissues on which they rest, and the need for continued professional care. Tissues can be prevented from harm by avoiding wearing the denture constantly; instruction to remove the denture on retiring for the night is essential. Cleaning and massaging the tissues under a denture at least once a day increases circulation and enhances tissue health. Immersion of the denture in cleansers is the recommended method that ensures safety against damage of the denture material; the patient should always brush and rinse the denture thoroughly before and after soaking. When teaching home care, whether to the elderly person or a caregiver, use a simple model: <b>Tell — Show — Do</b> (explain the procedure; demonstrate it; then the learner practices until the skill is mastered). The last step is the most important if the learner is to develop proficiency.</p>"},{"k":"اختبر نفسك","t":"Quiz: age groups, the 86% figure, and Sharry classes","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">In this lecture’s classification, people 85 years and older are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The new or young elderly (65–74), who tend to be relatively healthy and active</button><button type=\"button\" class=\"opt\" data-i=\"1\">The oldest-old, who tend to be physically frailer; 75–84 are the mid-old, and 65–74 are the young elderly</button><button type=\"button\" class=\"opt\" data-i=\"2\">Always free of chronic disease</button><button type=\"button\" class=\"opt\" data-i=\"3\">Classified only by Sharry as TOLN</button></div><div class=\"qexp\" hidden><p>65–74 المسنون الجدد/الشباب (نسبياً أصحاء ونشطون)؛ 75–84 المتوسطون؛ 85 فأكثر الأكبر سناً ويميلون للوهن. 86% من مرضى الشيخوخة عندهم اضطراب مزمن واحد على الأقل.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Sharry’s classes of mental attitude towards a prosthesis are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Only anxious, depressed and hysterical, with no tolerance labels</button><button type=\"button\" class=\"opt\" data-i=\"1\">TOLBUDS (tolerate a prosthesis backwards, upside down or sideways), TOLAD (tolerate with some adjustment), and TOLN (tolerate nothing)</button><button type=\"button\" class=\"opt\" data-i=\"2\">Only CID and IID</button><button type=\"button\" class=\"opt\" data-i=\"3\">Young-old, mid-old and oldest-old</button></div><div class=\"qexp\" hidden><p>TOLBUDS يتحملون بأي وضع؛ TOLAD ويه تعديل؛ TOLN ما يتحملون شيئاً. ملاءمة الشخصية غالباً أصعب من ملاءمة الطقم للفم.</p></div></div>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: saliva and xerostomia, overdenture hazards, and Tell–Show–Do","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">About salivary change with age, this lecture states that:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Salivary output always falls in exact proportion to the 25–30% acinar-cell loss, and artificial saliva is never used</button><button type=\"button\" class=\"opt\" data-i=\"1\">There is about 25–30% linear loss of acinar cells, but recent studies show output and composition are not consistently altered; decreased production is more related to disease and medications. Chronic dry mouth affects roughly one fifth of the elderly</button><button type=\"button\" class=\"opt\" data-i=\"2\">Xerostomia is never linked to antidepressants or salbutamol</button><button type=\"button\" class=\"opt\" data-i=\"3\">Denture plaque has no relation to stomatitis</button></div><div class=\"qexp\" hidden><p>ضياع أسيني 25–30%، بس الناتج الوظيفي ما يتغيّر بثبات حسب الدراسات الحديثة. النقص أكثر من الأمراض والأدوية. الجفاف المزمن يصيب حوالي خُمس المسنين. نظافة + كلورهيكسيدين + بدائل لعاب. في علاقة بين لويحة الطقم والتهاب الفم.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">When should a tooth-supported overdenture not be the first choice, and what home-care model is taught for dentures?</button><div class=\"flash-a\" hidden>Caries and advancing periodontal disease next to the abutment are the primary hazards of a tooth-supported overdenture, so if fixed or removable partial dentures are available, overdentures should not be considered. Teach denture and tissue care with Tell–Show–Do; remove the denture at night; clean and massage the tissues at least once a day; immerse the denture in cleanser, brushing and rinsing before and after soaking.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا الملف عن <b>طب أسنان المسنين</b>: التعاريف والشيخوخة، الفرق عن الممارسة العامة، الأمراض الجهازية المرتبطة، تغيّرات الفم مع العمر، التدبير التعويضي، تصنيف Sharry للموقف النفسي، خيارات العلاج، والعناية بالطقم (أخبر–أرِ–افعل).</p>","<p><b>طب أسنان المسنين</b> يهتم برعاية كبار السن ويه تغيّرات فسيولوجية أو جسدية أو نفسية مزمنة أو أمراض. صحة الفم تعكس العافية العامة. النمو زيادة بالحجم؛ التطور تقدم نحو النضج؛ النضج استقرار مرحلة البالغ. <b>الشيخوخة</b> تغيّرات طبيعية لا رجعة فيها وحتمية ويه الزمن، ومجموع التبدلات الشكلية والوظيفية اللي تؤدي لضعف وظيفي ويقلل القدرة على تحمّل الإجهاد.</p><p>عوامل وراثية: طفرات تقلل العمر؛ عمر نوعي لكل جنس؛ قوة الهجين؛ الجنس (الأنثى تعيش أطول)؛ عمر الوالدين؛ ومتلازمات شيخوخة مبكرة (بروجيريا، كوكاين، ويرنر). بيئية: تلوث وأشعة؛ تغذية وصحة عامة؛ ممرضات وطفيليات؛ وظروف اجتماعية اقتصادية.</p><p>صعب تفرّق الشيخوخة الفسيولوجية عن المرض لأن الأمراض والجراحة والأدوية والكيماوي والأشعة تتراكب، وما في طريقة دقيقة لقياس درجة الشيخوخة.</p><p>التصنيف العمري: <b>65–74</b> مسنون جدد أو شباب، غالباً بصحة ونشاط؛ <b>75–84</b> متوسطو الكبر، من الأصحاء إلى من يديرون أمراضاً مزمنة متعددة؛ <b>85 فأكثر</b> الأكبر سناً، ويميلون للوهن الجسدي.</p>","<p>الأهداف: الحفاظ على صحة الفم؛ الحفاظ على صحة ووظيفة جهاز المضغ بالوقاية؛ وفي المرضى علاج وإدامة الصحة الفموية والعامة. المقاصد: إدراك وتخفيف صعوبات المسنين، واستعادة الوظيفة للحياة الطبيعية.</p><p>تختلف الممارسة: تهتم بمسنين <b>86% منهم عندهم اضطراب مزمن واحد على الأقل</b> (ودور الرعاية غالباً أمراض متزامنة كثيرة)؛ قد في خلل إدراكي مثل الخرف يؤثر على الالتزام؛ تعدد أدوية (خمسة على الأقل بانتظام) وكثير تسبب جفاف فم؛ إعاقات بصر وسمع وتذوق؛ مهارة استثنائية بالتاريخ والتدبير؛ وتحدّي التفريق بين الشيخوخة الطبيعية والمرضية.</p><p>النسيج والسيطرة العصبية والاحتياطي الوظيفي ضعيفون، فما يتحملون إجهاد زايد أو مرض من العلاج. السمات: كن موافقاً لطيفاً؛ مستمعاً جيداً؛ تجنّب الجدال؛ انتقد بلباقة (مدح أولاً ثم نقد بنّاء)؛ لا تكن مغروراً؛ تذكّر الأسماء والوجوه؛ واهتم بالآخرين.</p>","<p>لازم الطبيب يفهم الشيخوخة الطبيعية والمرضية، والأثر الفموي للمرض الجهازي، والمرض السني من الدواء. (1) <b>أمراض القلب والأوعية</b> والتهاب النسج حول السنية مترابطان بسبب جراثيم مشتركة؛ التهاب اللثة يسبب تجرثم دم (مثل Porphyromonas gingivalis المعزول من العصيدة التاجية والسباتية). (2) <b>التهاب الشغاف العدوائي</b> هم مرتبط بالتهاب النسج حول السنية (عقديات viridans وجراثيم اللويحة مثل A. actinomycetemcomitans وغيرها عُزلت من الدم). (3) <b>السكري</b> نوع 1 و 2: ضياع ارتباط لثوي، خراجات، فقد أسنان مبكر، وشفاء ضعيف. (4) <b>الخمج التنفسي</b> غالباً من جراثيم البلعوم الفموي واللثة؛ السبب الرئيسي لذات الرئة البكتيرية هو استنشاق هذه الجراثيم؛ اللويحة خزان لممرضات الجهاز التنفسي. (5) <b>التهاب المفاصل الروماتويدي</b> شائع ويدمر النسيج الصلب والرخو؛ بس الارتباط ويه التهاب النسج حول السنية <b>ما ثبت</b>.</p>","<p>وظائف اللعاب: تحضير ونقل لقمة الطعام؛ تزييت المخاطية؛ حفظ التوازن الجرثومي؛ تنظيف ميكانيكي؛ مضاد بكتيريا وفطريات؛ حفظ pH الفم؛ إعادة تمعدن الأسنان؛ وتوسّط التذوق. ويه العمر ضياع خطي تقريباً (<b>25–30%</b>) لخلايا أسيني الغدد اللعابية تُستبدل بشحم أو نسيج ضام. الدراسات الحديثة: رغم التغيّر الشكلي، الناتج الوظيفي وتركيب اللعاب ما يظهران متغيّرين بثبات عند كبار السن. نقص الإنتاج أكثر ارتباطاً بخلل الغدة والأمراض والأدوية. جفاف الفم شائع ويه مضادات الاكتئاب والمهدئات وأدوية الاستنشاق مثل سالبوتامول. الجفاف المزمن يصيب حوالي <b>خُمس</b> المسنين، ويرتبط بالسكري والزهايمر وباركنسون والجفاف العام. قد يرافقه نخر، تشقق شفاه، لسان متشقق، والتهاب مخاطية، ويضر التذوق والكلام والأكل وملاءمة الطقم. نظافة دقيقة، غسول كلورهيكسيدين، وبدائل لعاب يومية مهمة. في علاقة مهمة بين لويحة الطقم والتهاب الفم.</p><p>تغيّرات المخاطية: ترقق الظهارة وقلة التقرّن وزيادة الهشاشة؛ ضياع كولاجين وإلاستين يضعّفها؛ زيادة العملية المرضية؛ ضياع حليمات اللسان وبراعم التذوق؛ ضمور الغدد اللعابية الصغيرة؛ الآفات أكثر وأبطأ شفاء؛ وزيادة الالتهاب والتهيّج والخمج.</p>","<p>السن يتآكل (سحل وتآكل). المينا ما يتجدد، وكل ما ترق يظهر العاج الأصفر أو ينكشف، والسن يبان أصفر ويتصبّغ أسهل. العاج الثانوي يستمر؛ النبيبات تنسد وتصير تصلب عاجي. اللب أكثر ألياف وأقل خلايا وينكمش، وتروية أقل فالشفاء أضعف. تكلس اللب وتضيّق الأقنية يزيد ويقلل الحساسية للبرد والحلو. سرعة إنتاج الملاط تقل فيزيد خطر نخر الجذر. فقد الأسنان <b>مو جزء طبيعي من الشيخوخة</b>، بل نتيجة نخر أو مرض لثوي أو أمراض جهازية.</p><p>اللسان قد يكبر بالفم العديم الأسنان (انتقال بعض وظيفة المضغ والنطق)، والكبر يضر تثبيت الطقم. زوال الحليمات يبدأ من الذروة والحافة الجانبية؛ والتشقق شائع. التذوق يقل: قد من نقص عدد أو حساسية البراعم أو المعالجة العصبية. أدوية تؤثر على التذوق أو الشم: مضادات حيوية مذكورة، غريزيوفولفين، وكاربامازيبين وفينيتوين.</p><p>مرض النسج حول السنية يزيد ويه العمر كتاريخ تراكمي مو لأن العمر يسببه. العمر يزيد الخطر بس ما يسببه. أغلب المسنين ضياع ارتباط متوسط (انحسار)، والأقل مراحل متقدمة. اللويحة تزيد لأن مساحة السطح الصلب زادت بعد الانحسار وسطح الجذر أنسب للويحة من المينا. التهاب النسج النشط عامل خطر لأمراض جهازية (قلب، سكتة، وذات رئة استنشاقية).</p>","<p>فقد الأسنان الكامل ما زال مشكلة كبرى؛ بكثير من المجتمعات الصناعية أكثر من 50% من المسنين عديمو أسنان. المحددات الأهم: <b>الأمراض المُقعِدة</b> — أجّل التعويض حتى ترجع الصحة العامة؛ للمزمنين النظافة هي الخيار الأنسب؛ <b>تغيّرات عصبية فسيولوجية</b> — القدرة على اكتساب أنماط عضلية جديدة محدودة، فالتكيّف أبطأ؛ <b>تغيّرات عقلية</b> قد تعقّد النتيجة؛ <b>تغيّرات فموية فسيولوجية</b> — ضمور عضلات المضغ والخد والشفاه يتسارع عند لابس الطقم، وكفاءة المضغ قد ما تتحسن كفاية بالتعويض — انصح بنظام سهل المضغ. هم: تعاون المريض، الموارد المالية، وجودة المواد.</p><p>«ملاءمة شخصية المريض المسن غالباً أصعب من ملاءمة الطقم للفم.» تصنيف <b>Sharry</b>: <b>TOLBUDS</b> يتحملون التعويض مقلوب أو بالعكس أو على جنبه؛ <b>TOLAD</b> يتحملون ويه درجة من التعديل؛ <b>TOLN</b> ما يتحملون شيئاً.</p><p>الاضطرابات: قلق من تهديد سلامة الجسم (فقد الأسنان والطقم يطلقه)؛ اكتئاب استجابة للفقدان وقد يكون فقد الأسنان كارثياً لبعضهم؛ هستيريا تحويلية (القلق يتحوّل لأعراض جسدية)؛ واضطراب صورة الجسم — الفم أكثر منطقة مشحونة عاطفياً.</p>","<p>الهدف الرئيسي: الحفاظ على التماسات الوظيفية الطبيعية الموجودة مدى الحياة. الخيارات من إعادة تبطين أو إصلاح، إلى نسخ أو تحويل طقم موجود، إلى طقم كامل تقليدي، أو طقم مدعوم بزرعات، أو تعويض ثابت خزف-معدن.</p><p>(1) طقم كامل متحرك: تثبيت وثبات أمثل، امتداد صحيح لأقصى دعم، وإطباق دقيق. (2) جزئي متحرك: دعم صحيح، تغطية لثوية أدنى، وصلات صلبة، والبساطة. (3) الطقم الفوقي صار أشيع عند من ما يكفيهم بنية سنية لثابت أو جزئي. المدعم بالأسنان يمنع امتصاص العظم ويحافظ على الإحساس من الجذور ويعطي ثبات (وتثبيت)؛ المدعم بالزرعات يوقف امتصاص العظم والزرعات تعطي التثبيت. النخر وتقدم مرض اللثة بجانب الدعامة هما الخطران الأساسيان للطقم الفوقي على الأسنان — إذا الثابت أو الجزئي متاح، لا يُعتبر الفوقي أولاً. (4) الزرعات يمكن وينبغي أن تُوصف للمسنين؛ الاندماج يُحفَظ رغم الضعف. ثلاثة أهداف: مضغ أسهل؛ حماية البنى أو الترميم الموجود؛ وتبديل دعامات مفتاحية معينة.</p><p>كثير عديمي الأسنان يظنون غلط إن بعد القلع ما عاد يهمهم صحة الفم. علّمهم العناية بالطقم والنسيج، والمراجعة المستمرة. لا تلبس الطقم باستمرار؛ اخلعه عند النوم. نظّف ودلّك النسيج تحته مرة باليوم على الأقل. الغمر بالمنظفات هو الطريقة الموصى بها؛ فرّش واشطف قبل وبعد النقع. التعليم: <b>أخبر — أرِ — افعل</b>. الخطوة الأخيرة هي الأهم للإتقان.</p>","<p>المجموعات العمرية الثلاث، و86% ويه اضطراب مزمن، وتصنيف Sharry الثلاثي.</p>","<p>أسئلة ختامية + بطاقة + زر الدرجة: اللعاب والجفاف؛ مخاطر الطقم الفوقي على الأسنان ونموذج أخبر–أرِ–افعل. إذا غلطت ارجع للشرائح.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
