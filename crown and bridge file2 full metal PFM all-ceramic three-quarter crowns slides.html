@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Crown and Bridge File 2 — Full Metal, PFM, All-Ceramic and Three-Quarter Crowns</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Crown & Bridge · Dr. Alaa Lectures 4–7</div>
+    <h1>Full Metal, Porcelain-Fused-to-Metal, All-Ceramic and Three-Quarter Crowns</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lectures 4–7 by Dr. Alaa (PDF pages 25–54; pages 40 and 42 are almost empty).</p>
+    <ul>
+      <li>Full metal crown alloys, indications, 1.5 mm and 1 mm occlusal clearances, depth-orientation grooves, and the molar seating groove</li>
+      <li>PFM layer thicknesses (0.5 mm metal, 1 mm porcelain), two-plane labial reduction, the wing, and the acrylic-facing alternative</li>
+      <li>All-ceramic strengths and limits, a 1 mm shoulder all around, 1.5–2 mm incisal clearance, and the acrylic jacket crown</li>
+      <li>Three-quarter crowns: bur 171 proximal grooves, the occlusal offset, lower versus upper posteriors, and an anterior path parallel to the incisal two-thirds</li>
+      <li>Total run time: <b>40 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 20</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Crown & Bridge · File 2","t":"Full metal, porcelain-fused-to-metal, all-ceramic, acrylic-facing and three-quarter crowns","b":"<p>University of Baghdad, College of Dentistry — Crown and Bridge syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file covers PDF pages 25–54, Lectures 4–7 by Dr. Alaa (د. آلاء): the full metal crown, the porcelain-fused-to-metal crown (including a metal crown with an acrylic facing), the complete ceramic (porcelain jacket) crown and the acrylic jacket crown, and the partial veneer (three-quarter) crown. Pages 40 and 42 are almost empty.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Medical terms stay in English next to the Arabic. Preparation depths in this lecture are kept even when they differ from another lecture.</p>"},{"k":"Dr. Alaa · Lecture 4","t":"What a full metal crown is, the three alloy groups, and nine indications","b":"<p>A <b>full metal crown</b> is a full crown covering all axial surfaces of the tooth as well as the occlusal surface, and made of metal. It is one of the most commonly indicated crown restorations for posterior teeth. Because it is made of metal, it should be used when the patient does not mind the appearance of metal, or when esthetic is not a factor. It can be used as a single unit or as a retainer for a fixed partial denture, especially when we have a small abutment tooth with a long-span edentulous area, to overcome the occlusal forces and prevent bridge displacement. Since it is a full crown, it has better retention and resistance than restorations such as a 3/4 crown or a 7/8 crown, because all the axial walls are included as well as the occlusal surface.</p><p>Types of metal alloys used: (1) high-noble alloys (gold alloys); (2) low-noble alloys (silver–palladium and gold–palladium alloys); (3) non-noble alloys (nickel–chromium alloy). Indications: (1) a tooth with extensive destruction due to caries or trauma, to protect the remaining structure from fracture; (2) a tooth with a large amalgam restoration, to protect the remaining structure and the amalgam from fracture; (3) endodontically treated teeth; (4) when maximum retention and resistance are needed, as in a short crown; (5) recontouring of a tooth receiving a clasp for a removable partial denture; (6) as a bridge retainer; (7) correction of a minor inclination; (8) a patient with a high caries index; (9) correction of the occlusal plane.</p>"},{"k":"Dr. Alaa · Lecture 4","t":"Contraindications, advantages, disadvantages, depth-orientation grooves, and the recommended chamfer","b":"<p>Contraindications: (1) if a high esthetic need is demanded; (2) when less than maximum retention and resistance is necessary; (3) when a more conservative crown could be used, such as a 3/4 crown, as in a tooth with an intact buccal surface and a very short-span bridge; (4) when the caries index is low. Advantages: greater retention and strength; high resistance to deformation; modification of axial tooth contour is possible; more conservative than other types of full crown such as porcelain-fused-to-metal and all-ceramic crowns. Disadvantages: extensive tooth-structure removal compared with a partial crown such as a 3/4 crown; difficulty testing vitality, especially with an electrical pulp tester; may interfere with taste; display of metal.</p><p>Preparation steps: occlusal, buccal, lingual, then proximal surfaces. <b>Depth-orientation grooves (D.O.G.)</b> are grooves prepared in the surface of the tooth to act as a guide or reference for the amount of structure removed. Without them, under- and over-preparation is possible, and more time is spent on repeated checking. The finishing line recommended for a full metal crown is a <b>chamfer</b>; therefore a round-end tapered fissure bur is used. A knife-edge finishing line may also be used.</p>"},{"k":"Dr. Alaa · Lecture 4","t":"Occlusal reduction: 1.5 mm over functional cusps, 1 mm over non-functional cusps","b":"<p>The aim of occlusal surface preparation is to create <b>1.5 mm</b> occlusal clearance over the functional cusps and <b>1 mm</b> over the non-functional cusps. Planar (anatomical) occlusal reduction, following the geometric inclined planes, should be done to provide a restoration of uniform thickness, to preserve tooth structure (axial-wall length), and to improve the retention–resistance features of the preparation.</p><p>Sequence: (1) depth-orientation grooves are prepared in the occlusal surface with a fissure bur, following the inclines of the cusps. A D.O.G. is prepared in each cusp, extending from the cusp tip to the central groove (the deepest part of the occlusal surface). The depth of each groove corresponds to the diameter of the fissure bur used: a bur of <b>1.5 mm</b> diameter on the functional cusps, and a bur of <b>1 mm</b> diameter on the non-functional cusps. (2) Any tooth structure between the grooves is removed, following the normal contour of the cusps. (3) A wide bevel is placed on the functional cusps. (4) Occlusal clearance is then checked in centric and eccentric occlusal relations.</p>"},{"k":"Dr. Alaa · Lecture 4","t":"Buccal, lingual and proximal reduction, and a seating groove on the molar","b":"<p>Buccal surface: three D.O.G. of <b>1 mm</b> depth are prepared — one in the centre of the wall and one in each mesial and distal transitional line angle — parallel to the long axis of the tooth or to the proposed path of insertion. The bur is then moved mesially and distally, following the inclination of the surface, to remove islands of tooth between the grooves. The gingival extent of the preparation determines whether the margin stays supragingival (preferable) or must be extended subgingivally. A round-end tapered fissure bur is used during axial reduction to obtain a chamfer. Lingual preparation is the same as buccal.</p><p>Proximal surfaces: using a very thin long pointed tapered diamond bur (long needle), the contact is removed carefully with the bur rested on the prepared tooth (to prevent damage to the adjacent tooth), moving the bur up and down until the contact is opened bucco-lingually. Once the contact is open, a round-end tapered fissure bur planes the wall and forms a chamfer. A safe-sided disc can also be used, and placing a matrix band on the adjacent tooth can also help. After occlusal and axial preparation, all surfaces are smoothed to remove sharp line and point angles, which act as stress-concentration areas. A <b>seating groove</b> is finally placed in the buccal surface of the lower molar and the palatal surface of the upper molar. Advantages: it acts as a guide during placement of the crown; it prevents rotation of the crown (by increasing resistance); and it improves retention.</p>"},{"k":"اختبر نفسك","t":"Quiz: full-metal indications, 1.5 mm and 1 mm clearances, and the seating groove","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A full metal crown in this lecture is especially useful, and is contraindicated, when:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">It is the first choice whenever high esthetic demand is present, and it is never used as a bridge retainer</button><button type=\"button\" class=\"opt\" data-i=\"1\">It is commonly indicated for posteriors when appearance of metal is acceptable. It has better retention and resistance than a 3/4 or 7/8 crown. Indications include extensive destruction, a large amalgam, an endodontically treated tooth, a short crown needing maximum retention, recontouring for an RPD clasp, a bridge retainer (including a small abutment with a long span), minor inclination or occlusal-plane correction, and a high caries index. It is contraindicated when high esthetic need is demanded, when less than maximum retention is necessary, when a more conservative 3/4 crown could be used (intact buccal surface and a very short span), or when the caries index is low. It is more conservative than PFM or all-ceramic full crowns, but more destructive than a partial crown, and vitality testing (especially electrical) is difficult</button><button type=\"button\" class=\"opt\" data-i=\"2\">It must never be used on an endodontically treated tooth</button><button type=\"button\" class=\"opt\" data-i=\"3\">Knife-edge is the only finishing line this lecture allows for a full metal crown</button></div><div class=\"qexp\" hidden><p>تاج معدني كامل للخلفية إذا المعدن مقبول. أفضل تثبيتاً من 3/4. استطبابات منها سن معالج لبّياً، تاج قصير، مثبت جسر ويه دعامة صغيرة ومسافة طويلة، ومؤشر نخر عالي. ممنوع إذا الجمال مطلوب، أو إذا 3/4 يكفي (شدق سليم وجسر قصير). الخط الموصى chamfer، وحافة السكين هم جائزة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Occlusal clearance for a full metal crown, depth-orientation grooves, and the seating groove in this lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">2 mm over every cusp, with no orientation grooves and no seating groove</button><button type=\"button\" class=\"opt\" data-i=\"1\">Create 1.5 mm clearance over the functional cusps and 1 mm over the non-functional cusps, using planar reduction. D.O.G.s run from each cusp tip to the central groove; bur diameter equals groove depth (1.5 mm functional, 1 mm non-functional). Then remove the islands, place a wide functional-cusp bevel, and check clearance in centric and eccentric relation. Buccal (and lingual) walls get three 1 mm D.O.G.s. Open proximal contact with a long needle bur resting on the prepared tooth, then plane a chamfer. Smooth sharp angles. A seating groove is placed on the buccal of a lower molar and the palatal of an upper molar: it guides placement, prevents rotation, and improves retention</button><button type=\"button\" class=\"opt\" data-i=\"2\">Seating grooves are placed on every anterior incisor only</button><button type=\"button\" class=\"opt\" data-i=\"3\">D.O.G.s are optional decorations and must not follow cusp inclines</button></div><div class=\"qexp\" hidden><p>1.5 ملم فوق الوظيفية و 1 ملم فوق غير الوظيفية. أخاديد العمق من رأس الحدبة للميزاب المركزي بسنبلة نفس العمق. شطف الحدبة الوظيفية، وافحص المركزي واللامركزي. أخدود الجلوس: شدق الرحى السفلية وحنك العلوية — دليل، يمنع الدوران، ويزيد التثبيت.</p></div></div>"},{"k":"Dr. Alaa · Lecture 5","t":"What a PFM crown is, its six disadvantages, and when it is contraindicated","b":"<p>A <b>porcelain-fused-to-metal (PFM)</b> crown is the most widely used fixed restoration. It is a full metal crown having a facial surface (or all surfaces) covered by ceramic material. It consists of a ceramic layer bonded to a thin cast metal coping, combining the strength and accurate fit of the cast metal coping with the cosmetic effect of ceramic — the advantages of a full metal crown and the esthetic of an all-ceramic crown.</p><p>Disadvantages: (1) removal of a substantial amount of tooth structure; (2) subject to fracture because of the brittle nature of porcelain; (3) shade selection can be difficult; (4) inferior esthetic compared with a porcelain jacket crown; (5) discoloration of the gingival margin may occur with time; (6) more expensive. Indications: teeth that need to be completely covered for esthetic demand; as a retainer for a fixed partial denture; and indications similar to those of a full metal crown. Contraindications: teeth with a large pulp (possibility of pulp exposure during preparation); an intact buccal wall where a more conservative retainer can be used; teeth with short crowns; and a patient with bad oral hygiene.</p>"},{"k":"Dr. Alaa · Lecture 5","t":"PFM preparation requirements, a 2 mm incisal reduction, and 1.5–2 mm labial reduction","b":"<p>Preparation requirements: deep facial reduction to provide enough space for the metal coping and porcelain, and shallower reduction on the other surfaces covered with metal only. A shoulder, radial shoulder, or heavy chamfer can be used as the gingivo-facial finishing line, whereas a chamfer or knife-edge finishing line is used for the remaining surfaces covered with metal only. Because the restoration is a combination of metal and porcelain, tooth preparation is likewise a combination. A silicone index is fabricated first; it acts as a guide to check the amount of tooth structure removed.</p><p>Incisal reduction: <b>2 mm</b> should be removed from the incisal edge to allow adequate translucency. A flat-end tapered diamond bur is used, placed parallel to the incisal inclination (with a slight palatal inclination in the upper incisors and a labial inclination in the lower incisors). Labial reduction is <b>1.5–2 mm</b>, to give enough space for metal and porcelain and so avoid overcontouring and poor esthetic. Advantages of adequate (deep) facial reduction: the restoration will be properly contoured (an effect on esthetic and gingival health); and the shade and translucency will match the adjacent natural tooth. Of this labial depth, about <b>0.5 mm</b> is for the metal coping and <b>1 mm</b> for porcelain, made up of a <b>0.2 mm</b> opaque layer, a <b>0.5 mm</b> body (“dentin”) layer, and a <b>0.3 mm</b> incisal (“enamel”) layer.</p>"},{"k":"Dr. Alaa · Lecture 5","t":"Two-plane labial reduction, the “wing,” and posterior PFM depths (2 mm functional, 1.5 mm non-functional)","b":"<p>Because of the labial anatomy, the face should be reduced in two planes: a gingival plane and an incisal plane. Advantages of two-plane reduction: to follow the anatomy of the surface; to avoid hitting the pulp; and to give enough space for the metal and porcelain layers, avoiding poor esthetic or overcontour. Gingival plane: three D.O.G. of <b>1.5 mm</b> depth in the gingival third, parallel to the long axis. Incisal plane: three D.O.G. of <b>1.5 mm</b> depth, parallel to the inclination of this area. A flat-end tapered fissure bur is used to create a shoulder finishing line extended <b>1 mm lingual to the contact</b>.</p><p>Palatal (lingual) reduction: in the cingulum, a D.O.G. of <b>1 mm</b> is placed in the centre with a 1 mm round bur, then a small wheel diamond bur reduces this area following the concavity. For lingual axial reduction, a 1 mm D.O.G. is placed parallel to the long axis, and a round-end tapered fissure bur reduces the area to create a chamfer. Proximal reduction: a pointed tapered fissure bur (long needle) breaks the contact, moving up and down from palatal to labial; then a round-end tapered fissure bur creates a chamfer continuous with the palatal chamfer and joining the labial shoulder at a line angle called the <b>“wing.”</b> The silicone index is used to check the amount of reduction. For posterior PFM crowns the same principles as a full metal crown are used, except for deep reduction in the area to be covered with both metal and porcelain: <b>1.5 mm</b> for the non-functional cusps, <b>2 mm</b> for the functional cusps, and <b>1.5–2 mm</b> for the facial reduction. The same anterior PFM steps are used, starting with a silicone index.</p>"},{"k":"Dr. Alaa · Lecture 5","t":"A full metal crown with an acrylic facing: cheaper than PFM, with its own finishing line and drawbacks","b":"<p>A <b>full metal crown with an acrylic facing</b> is a full metal crown whose labial or buccal surface is covered with tooth-coloured acrylic resin. It was widely used before porcelain became the usual facing material, but it is still used because of its lower cost compared with PFM. It combines the strength and accuracy of a full metal crown with the esthetics of tooth-coloured acrylic, and it is less expensive than a PFM crown. Preparation involves deep facial reduction to provide enough space for both metal and facing material. The finishing line is a <b>shoulder with bevel</b> facially (labially or buccally) and a chamfer or knife edge for the other surfaces. When esthetic is critical, subgingival positioning of the finish line is recommended. The main disadvantages are related to the acrylic facing: discoloration with time, wearing, and poor compatibility of the acrylic resin with the gingival tissue.</p>"},{"k":"اختبر نفسك","t":"Quiz: PFM layer thicknesses, two-plane reduction, and the acrylic-facing margin","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Labial and incisal depths, and the porcelain layers, for an anterior PFM crown in this lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Incisal reduction of 0.5 mm and labial reduction of 0.5 mm, all used for metal only, with a knife-edge around the whole tooth</button><button type=\"button\" class=\"opt\" data-i=\"1\">Remove 2 mm from the incisal edge (flat-end tapered diamond, slight palatal inclination in upper incisors and labial inclination in lower incisors). Labial reduction is 1.5–2 mm: about 0.5 mm for the metal coping and 1 mm for porcelain (0.2 mm opaque, 0.5 mm body/dentin, 0.3 mm incisal/enamel). A silicone index checks reduction. The gingivo-facial finish may be a shoulder, radial shoulder or heavy chamfer; metal-only surfaces take a chamfer or knife edge. Contraindications include a large pulp, an intact buccal wall, short crowns, and bad oral hygiene</button><button type=\"button\" class=\"opt\" data-i=\"2\">PFM is esthetically superior to a porcelain jacket crown and never discolors at the gingival margin</button><button type=\"button\" class=\"opt\" data-i=\"3\">Posterior PFM cusps are reduced only 0.5 mm, the same as a full metal non-functional cusp</button></div><div class=\"qexp\" hidden><p>القاطع 2 ملم. الشفوي 1.5–2 ملم: 0.5 معدن و 1 خزف (0.2 عاتم، 0.5 جسم، 0.3 ميناء). الوجه كتف أو heavy chamfer؛ المعدن chamfer أو سكين. للخلفية: 2 ملم وظيفية و 1.5 غير وظيفية. مضادات: لب كبير، شدق سليم، تاج قصير، ونظافة سيئة. جماله أقل من الجاكيت الخزفي، وقد يتصبغ هامش اللثة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Two-plane labial reduction, the “wing,” and a metal crown with an acrylic facing in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The labial surface is reduced in a single flat plane only; an acrylic facing uses a knife edge on the facial surface and is more expensive than PFM</button><button type=\"button\" class=\"opt\" data-i=\"1\">Two-plane (gingival and incisal) labial reduction follows anatomy, helps avoid the pulp, and makes space. Each plane has three 1.5 mm D.O.G.s; the shoulder extends 1 mm lingual to the contact. The palatal chamfer joins the labial shoulder at a line angle called the wing. An acrylic-facing full metal crown is cheaper than PFM and still used for cost; the facial finish is a shoulder with bevel, with chamfer or knife edge elsewhere, and a subgingival finish when esthetic is critical. Acrylic drawbacks: discoloration, wear, and poor gingival compatibility</button><button type=\"button\" class=\"opt\" data-i=\"2\">The wing is a type of cement, not a line angle</button><button type=\"button\" class=\"opt\" data-i=\"3\">Two-plane reduction is used only to make the preparation shorter</button></div><div class=\"qexp\" hidden><p>مستويان شفويان ويه أخاديد 1.5 ملم، والكتف يمتد 1 ملم لساني عن التماس. الجناح زاوية التقاء chamfer الحنكي وكتف الشفوي. واجهة الأكريل أرخص من PFM: كتف ويه شطف وجهياً، وقد ينزل الخط تحت اللثة للجمال. عيوب الأكريل: تصبغ وسحل وتوافق لثوي ضعيف.</p></div></div>"},{"k":"Dr. Alaa · Lecture 6","t":"The complete ceramic crown: the most esthetic, and the weakest","b":"<p>A <b>complete ceramic (all-ceramic) crown</b> is the most esthetically pleasing fixed restoration. Because there is no metal understructure to block light transmission, it can resemble a natural tooth in colour and translucency better than any other restoration. Since it is made entirely from a ceramic substance, it is the weakest type of crown restoration (more susceptible to fracture). It is not a conservative type of crown. Most of the time it is used as a single restoration on upper or lower incisors.</p><p>Advantages: superior esthetic; good tissue response even for subgingival margins; slightly more conservative of the facial wall. Disadvantages: reduced strength compared with a metal-ceramic restoration (PFM); proper preparation is extremely critical; it is among the least conservative preparations; the brittle nature of the material; and it can be used as a single restoration only. Indications: high esthetic requirements; considerable proximal caries; endodontically treated teeth with a post and core; an incisal edge that is reasonably intact; and a favorable distribution of occlusal load. Contraindications: when superior strength is required and a PFM crown is more appropriate; thin teeth faciolingually; an unfavorable distribution of occlusal load; insufficient coronal tooth structure for support (very short teeth); edge-to-edge occlusion; and bruxism.</p>"},{"k":"Dr. Alaa · Lecture 6","t":"Porcelain-jacket preparation: a long prep, a 1 mm shoulder, and 1.5–2 mm incisal clearance","b":"<p>Preparation requirements for a porcelain jacket crown: (1) the preparation must be as long as possible to give support to the porcelain — a short preparation leads to stress concentration in the lingual area and fracture there; (2) a shoulder of uniform width (<b>1 mm</b>) is used as the gingival finishing line, to provide a flat seat that resists force directed from the incisal; (3) the incisal edge is flat and should be prepared with a slight inclination toward the lingual (for the lower incisors, a labial inclination); (4) all sharp angles should be slightly rounded to reduce the danger of fracture at points of stress concentration; (5) it should be avoided on teeth with an edge-to-edge occlusal relation; (6) occlusion is critical for avoiding fracture — centric contacts are best confined to the <b>middle third of the lingual surface</b>.</p><p>A silicone index is constructed before reduction. Incisal reduction should provide <b>1.5–2 mm</b> of clearance for porcelain in all mandibular movements, important for a cosmetically pleasing restoration with adequate strength. A flat-end tapered diamond bur is placed parallel to the incisal inclination. (For posterior teeth, <b>2 mm</b> occlusal clearance is needed on all cusps.) D.O.G.s of <b>1.3 mm</b> depth are first made on the incisal edge, then remaining structure between the grooves is removed to <b>1.5 mm</b>. Incisal clearance is checked in centric and eccentric relations.</p>"},{"k":"Dr. Alaa · Lecture 6","t":"Two-plane facial reduction, a shoulder all around, and the acrylic jacket crown","b":"<p>Labial reduction is again in two planes. Incisal plane: three D.O.G.s of <b>1 mm</b>, parallel to the inclination of this area, then the islands are removed at the same bur angle. Gingival plane: 1 mm D.O.G.s in the gingival part, parallel to the long axis, then a flat-end tapered fissure bur creates a shoulder finishing line. Lingual reduction is as for PFM but with deeper reduction (<b>1 mm</b>): a cingulum D.O.G. of <b>0.8 mm</b> in the centre, reduced with a small wheel diamond following the inclination; then a lingual-axial D.O.G. of 0.8 mm parallel to the long axis, reduced with a flat-end tapered fissure bur to create a shoulder. Proximal reduction is done in the same manner as for a full metal crown. The silicone index is used to check reduction, and the preparation is smoothed to remove any sharp angle. The finishing line advocated for a porcelain jacket (all-ceramic) crown is a <b>shoulder or radial shoulder all around</b>. The depth and contour of the shoulder are established with the tip of a flat-end tapered fissure bur; sharp angles should be rounded to avoid stress concentration.</p><p>An <b>acrylic jacket crown</b> is made entirely from tooth-coloured acrylic resin. It can be near-perfect in appearance when fitted, but later discoloration and loss of contour take place. Poor adaptation is a great disadvantage, related to the coefficient of thermal expansion. It is used in selected patients, such as a young patient for whom another type of crown is planned but delayed until complete eruption of the tooth. Most of the time it is used as a temporary crown. Preparation is basically the same as for a porcelain jacket crown. Disadvantages: poor marginal fitness; poor tissue response; discoloration with time; and loss of contour (it wears easily).</p>"},{"k":"اختبر نفسك","t":"Quiz: all-ceramic strength, the 1 mm shoulder, and when an acrylic jacket is used","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">An all-ceramic crown in this lecture is, and is contraindicated when:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The strongest crown type, always used as a long-span bridge retainer, and indicated in bruxism and edge-to-edge occlusion</button><button type=\"button\" class=\"opt\" data-i=\"1\">The most esthetic fixed restoration (no metal blocking light) but the weakest and among the least conservative, usually a single restoration on incisors. Advantages include superior esthetic and a good tissue response even with subgingival margins. It is contraindicated when superior strength is needed (PFM is more appropriate), in faciolingually thin teeth, unfavorable occlusal load, very short teeth, edge-to-edge occlusion, and bruxism. The preparation must be as long as possible; a short prep concentrates stress lingually and may fracture. A uniform 1 mm shoulder is the gingival finish. Centric contacts are best confined to the middle third of the lingual surface. Incisal clearance is 1.5–2 mm (2 mm on all posterior cusps). D.O.G.s start at 1.3 mm and reduction is completed to 1.5 mm. Use a shoulder or radial shoulder all around</button><button type=\"button\" class=\"opt\" data-i=\"2\">Centric contacts should be placed only on sharp incisal edges</button><button type=\"button\" class=\"opt\" data-i=\"3\">An all-ceramic crown is more conservative than a 3/4 crown in every case</button></div><div class=\"qexp\" hidden><p>الأجمل والأضعف، عادة مفرد على القواطع. ممنوع ويه صريف أو إطباق حد لحد أو أسنان قصيرة جداً أو رقيقة. التحضير أطول ما يمكن وكتف 1 ملم. التماسات بالثلث الأوسط اللساني. الخلف القاطع 1.5–2 ملم. أخاديد 1.3 ثم 1.5. كتف أو كتف نصف قطري على كل المحيط.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">An acrylic jacket crown in this lecture is used mainly as:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The first-choice long-span posterior bridge retainer in a bruxist</button><button type=\"button\" class=\"opt\" data-i=\"1\">A tooth-coloured all-acrylic crown that can look near-perfect when first fitted, but later discolors and loses contour, with poor adaptation related to the coefficient of thermal expansion. It is used for selected patients such as a young patient waiting for complete eruption, and most of the time as a temporary crown. Preparation is basically the same as for a porcelain jacket. Disadvantages: poor marginal fitness, poor tissue response, discoloration, and easy wear</button><button type=\"button\" class=\"opt\" data-i=\"2\">A metal-ceramic crown with a 0.5 mm metal coping</button><button type=\"button\" class=\"opt\" data-i=\"3\">A finishing-line design, not a crown type</button></div><div class=\"qexp\" hidden><p>الجاكيت الأكريلي غالباً مؤقت أو لمريض شاب ينتظر اكتمال البزوغ. شكله أول مرة حلو، وبعدين يتصبغ ويضيع كفافه، وحافته ضعيفة بسبب معامل التمدد الحراري. تحضيره مثل الجاكيت الخزفي.</p></div></div>"},{"k":"Dr. Alaa · Lecture 7","t":"The three-quarter crown: what it covers, when to use it, and when not to","b":"<p>A <b>partial veneer crown</b> is a cast metal crown that covers only a part of the clinical crown. The most commonly used type is the <b>three-quarter (3/4) crown</b>: it covers three-quarters of the crown (occlusal or incisal, palatal or lingual, and proximal), leaving the labial or buccal surface unprepared. It tends to be less retentive and resistant than a full veneer crown. It can be used for anterior or posterior teeth, as a single restoration or as a retainer for a short-span bridge, and as a splint in anterior teeth.</p><p>Indications for posterior teeth: a moderate amount of lost tooth structure with an intact and well-supported buccal surface; and as a retainer for a fixed partial denture. For anterior teeth: teeth with sufficient bulk and an intact labial surface; and as a retainer for an FPD or for splinting of anterior teeth. Contraindications: a short clinical crown; a high caries index; extensive destruction; poor alignment; thin teeth; a long-span bridge; and non-vital teeth. Advantages: conservative of tooth structure; easy access of the margins; less gingival irritation than a complete crown; easy escape of cement and good seating; an electrical pulp test is possible; and complete seating can be easily seen by direct observation. Disadvantages: more difficult preparation; a greater possibility of recurrent caries along the cavo-surface line angle; a possibility of showing metal, especially in lower anterior and posterior teeth; less retention and resistance than a complete cast crown; and limited adjustment can be done in the path of withdrawal.</p>"},{"k":"Dr. Alaa · Lecture 7","t":"Maxillary posterior 3/4 preparation, including 0.5 mm at the bucco-occlusal line angle","b":"<p>Recommended dimensions on the lecture’s figure notes include: <b>1.5 mm</b> on the functional cusp (lingual); <b>1.0 mm</b> on the non-functional cusp (facial); less than <b>0.5 mm</b> on the facial cusp tip if there is sufficient horizontal overlap; <b>1.5 mm</b> clearance; follow the contours of the opposing tooth and maintain the contours of the tooth being prepared; and extend the bevel into the lingual embrasure.</p><p>Steps on maxillary posterior teeth. Occlusal surface: D.O.G.s are placed on the anatomic ridges and grooves with a round-end tapered fissure bur; the grooves should extend through the occluso-buccal line angle but only <b>0.5 mm</b> deep there, to prevent metal display. Occlusal reduction then removes structure between the grooves, reproducing the geometric inclined-plane pattern of the cusps; the depth of reduction should decrease at the occluso-buccal line angle. A wide bevel is placed on the functional cusps. Clearance is checked in centric and eccentric mandibular relations. Lingual surface: D.O.G.s parallel to the long axis, islands removed following the contour, and a round-end tapered fissure bur obtains a chamfer finishing line that is <b>0.5 mm supragingival</b>. Interproximal: a short needle diamond is moved up and down until contact is broken and access for a larger bur is produced, extending facially and gingivally. Proximal grooves (mesial and distal) are placed parallel to the path of withdrawal and to each other with a carbide fissure bur. Unsupported structure remaining on the buccal side is flared to remove it. Avoid damage to the adjacent tooth and excessive axial reduction.</p>"},{"k":"Dr. Alaa · Lecture 7","t":"Proximal grooves (bur No. 171), the 1 mm occlusal offset, and how the lower posterior 3/4 differs","b":"<p>Proximal grooves substitute for the uncovered wall and improve retention. They should be parallel to the long axis or path of insertion, and to each other, and are cut with a carbide fissure bur. Requirements: (1) cut to the full diameter of carbide bur No. <b>171</b> (<b>0.5 mm</b>) to create a definite lingual wall; (2) extend to the full length of the proximal wall, ending about <b>0.5 mm</b> from the chamfer; (3) placed as far facially as possible without undermining the facial surface (between the middle and labial thirds); (4) parallel to the long axis of the tooth. Advantages: they increase retention; prevent rotation (resistance); reinforce the margin of the restoration at this area; and act as a guide during placement.</p><p>An <b>occlusal offset</b> is a <b>1 mm</b>-wide groove on the lingual incline of the facial cusp; it is an inverted V lying at a uniform distance from the occlusal finish line. Advantages: it improves the strength of the casting, and it reinforces the margin of the restoration at this area. The gingival finish on lingual and proximal surfaces is a chamfer; a <b>45°</b> bevel finishing line is used on the proximofacial and occlusofacial margins.</p><p>Differences between upper and lower posterior 3/4 preparations: the big difference is the position of the finishing line on the facial surface. For maxillary posterior teeth it terminates near the bucco-occlusal line angle, while in mandibular posterior teeth the occlusal finishing line is <b>1 mm gingival</b> to the lower occlusal contact with the upper teeth, because the buccal cusps in the lower are the functional cusps. In the upper there should be an occlusal offset; for the lower there is no offset — instead there is a bucco-occlusal shoulder (an occlusal shoulder on the buccal aspect of the buccal surface), which serves the same purpose as the offset.</p>"},{"k":"Dr. Alaa · Lecture 7","t":"Anterior 3/4 crowns: a 45° linguo-incisal bevel, a reverse bevel on lower incisors, and grooves parallel to the incisal two-thirds","b":"<p>For a maxillary anterior 3/4 crown, lingual reduction is done in two steps, similar to other crown types (cingulum area, then lingual axial reduction). Incisal termination: a linguo-incisal bevel is placed with a diamond bur at <b>45°</b> to the path of insertion; this termination should not be extended labially, to prevent showing of metal. For a lower anterior, however, a <b>reverse bevel</b> is placed on the labial surface, so the metal extends to cover the incisal edge in order to: (1) protect unsupported enamel from fracture; (2) prevent dislodgement of the crown in the lingual direction.</p><p>Proximal reduction is similar to a full veneer crown except that the preparation should have a path of insertion <b>parallel to the incisal two-thirds of the labial surface</b> (not to the long axis). Two proximal grooves are placed at the junction between the labial and middle thirds of the proximal surface, parallel to that same incisal two-thirds (the path of insertion), using a carbide fissure bur, because: (1) the longest groove can be placed in this direction (better retention); (2) this avoids over-cutting the labial surface (which would affect esthetic) if the grooves were cut parallel to the long axis. The mesial and distal grooves should be connected with a V-shaped <b>incisal offset</b>, which improves the strength of the casting at this area and reinforces the margin by connecting the two proximal grooves. The difference between anterior and posterior preparations: in anterior teeth the retentive proximal groove should be parallel to the incisal two-thirds of the labial surface, while in posterior teeth it is parallel to the long axis, to get the longest groove for better retention.</p>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: 3/4 contraindications, bur 171, lower versus upper posteriors, and the anterior path of insertion","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A three-quarter crown in this lecture covers, and is contraindicated, as follows:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">It covers the buccal surface and leaves the palatal unprepared; it is the first choice for a long-span bridge on a non-vital short tooth</button><button type=\"button\" class=\"opt\" data-i=\"1\">It covers the occlusal or incisal, palatal or lingual, and proximal surfaces, leaving the labial or buccal unprepared. It is less retentive than a full veneer crown, and is used as a single restoration, a short-span retainer, or an anterior splint, when the facial surface is intact and well supported. Contraindications: a short clinical crown, high caries index, extensive destruction, poor alignment, thin teeth, a long-span bridge, and non-vital teeth. Advantages include conservation, easier margin access, less gingival irritation, easier cement escape, possible electric pulp testing, and visible complete seating</button><button type=\"button\" class=\"opt\" data-i=\"2\">An electrical pulp test is impossible through a 3/4 crown</button><button type=\"button\" class=\"opt\" data-i=\"3\">A 3/4 crown always shows less metal than a jacket crown in the lower anterior region</button></div><div class=\"qexp\" hidden><p>3/4 يترك الشدقي أو الشفوي بدون تحضير. ممنوع ويه تاج قصير، نخر عالي، تدمير واسع، محاذاة سيئة، أسنان رقيقة، جسر طويل، وسن غير حي. فائدة مهمة: فحص الحيوية الكهربائي ممكن، وتشوف الجلوس بعينك.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Proximal grooves, the occlusal offset, and the lower versus upper posterior 3/4 design in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Grooves are cut with a round bur 3 mm wide and must undermine the facial enamel; both arches use the same facial finish line next to the bucco-occlusal angle only</button><button type=\"button\" class=\"opt\" data-i=\"1\">Grooves are cut with carbide bur No. 171 (0.5 mm) to a definite lingual wall, full length of the proximal wall ending about 0.5 mm from the chamfer, as far facial as possible without undermining (between the middle and labial thirds), and parallel to each other and to the path of insertion. They increase retention, prevent rotation, reinforce the margin, and guide placement. A 1 mm inverted-V occlusal offset on the lingual incline of the facial cusp strengthens the casting. Lingual/proximal finish is a chamfer, with a 45° bevel on proximofacial and occlusofacial margins. On maxillary posteriors the facial finish ends near the bucco-occlusal line angle and an occlusal offset is used; on mandibular posteriors the occlusal finish is 1 mm gingival to the lower occlusal contact (buccal cusps are functional) and a bucco-occlusal shoulder replaces the offset. Occlusal D.O.G.s cross the occluso-buccal line angle only 0.5 mm deep to hide metal, and the lingual chamfer is 0.5 mm supragingival</button><button type=\"button\" class=\"opt\" data-i=\"2\">Lower posteriors use an occlusal offset and no shoulder, because their buccal cusps are non-functional</button><button type=\"button\" class=\"opt\" data-i=\"3\">Bur 171 is used only for incisal reduction of a jacket crown</button></div><div class=\"qexp\" hidden><p>سنبلة 171 قطر 0.5 ملم، الأخدود ينتهي 0.5 ملم قبل الـ chamfer. Offset إطباقي 1 ملم بالعلوي الخلفي. السفلي الخلفي: الخط 1 ملم لثوي عن التماس، وكتف إطباقي شدقي بدل الـ offset لأن الحدبة الشدقية وظيفية. أخاديد الإطباق عند زاوية الشدقي-الإطباق عمقها 0.5 ملم حتى المعدن ما يبين.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The path of insertion and incisal termination of an anterior 3/4 crown in this lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Always parallel to the long axis, like a posterior 3/4, with no bevel on the incisal edge</button><button type=\"button\" class=\"opt\" data-i=\"1\">The path of insertion is parallel to the incisal two-thirds of the labial surface, not the long axis, so the longest proximal grooves can be placed without over-cutting the labial surface. A maxillary anterior gets a 45° linguo-incisal bevel that must not extend labially (to hide metal). A mandibular anterior gets a reverse bevel on the labial surface so metal covers the incisal edge, protecting unsupported enamel and preventing lingual dislodgement. Mesial and distal grooves are connected by a V-shaped incisal offset. In posteriors the grooves are instead parallel to the long axis, again to obtain the longest groove</button><button type=\"button\" class=\"opt\" data-i=\"2\">A reverse bevel on a lower incisor is used only to display as much metal as possible</button><button type=\"button\" class=\"opt\" data-i=\"3\">Anterior and posterior 3/4 grooves always follow the same long-axis path</button></div><div class=\"qexp\" hidden><p>مسار الأمامي يوازي الثلثين القاطعين للشفوي. العلوي: شطف 45 درجة لساني-قاطع بدون امتداد شفوي. السفلي: شطف عكسي شفوي حتى المعدن يغطي القاطع. الأخدودان يتوصلان بإزاحة قاطعة. بالخلفية الأخدود يوازي المحور الطويل.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">Name the recommended occlusal clearances for a full metal crown and for posterior PFM cusps in this lecture.</button><div class=\"flash-a\" hidden>Full metal: 1.5 mm over the functional cusps and 1 mm over the non-functional cusps. Posterior PFM: 2 mm for the functional cusps, 1.5 mm for the non-functional cusps, and 1.5–2 mm facial reduction.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا ثاني ملف للتيجان والجسور: التاج المعدني الكامل، تاج الخزف الملتصق بالمعدن (وواجه أكريل)، تاج الخزف الكامل وتاج الجاكيت الأكريلي، وتاج ثلاثة الأرباع. صفحات 25–54 (40 و 42 شبه فارغات). شرح عراقي مفصل ويه أسئلة.</p>","<p>التاج المعدني الكامل يغطي كل السطوح المحورية والسطح الإطباقي، ومصنوع من معدن. من أكثر التيجان استطباباً للخلفية. استخدمه إذا المريض ما يمانع منظر المعدن، أو الجمال مو عامل. ممكن وحدة مفردة أو مثبت لجسر، خاصة ويه دعامة صغيرة ومسافة حواف طويلة حتى يتغلّب على القوى ويمنع إزاحة الجسر. تثبيته ومقاومته أفضل من 3/4 و 7/8 لأن كل الجدران المحورية والإطباق داخلين.</p><p>السبائك ثلاث: عالية النُبل (ذهب)؛ قليلة النُبل (فضة-بلاديوم وذهب-بلاديوم)؛ وغير نبيلة (نيكل-كروم). الاستطبابات تسعة: تدمير واسع من نخر أو رضّ؛ حشوة ملغم كبيرة؛ سن معالج لبّياً؛ حاجة لأقصى تثبيت ومقاومة (تاج قصير)؛ إعادة كفاف لسن راح ياخذ ضمّة طقم جزئي متحرك؛ مثبت جسر؛ تصحيح ميل بسيط؛ مؤشر نخر عالي؛ وتصحيح المستوى الإطباقي.</p>","<p>المضادات: حاجة جمالية عالية؛ لما ما تحتاج أقصى تثبيت ومقاومة؛ لما يگدر تستخدم تاج أكثر محافظة مثل 3/4 (سطح شدقي سليم وجسر مسافته قصيرة جداً)؛ ومؤشر نخر واطي. المزايا: تثبيت وقوة أكبر؛ مقاومة عالية للتشوه؛ يمكن تعديل الكفاف المحوري؛ أكثر محافظة من التيجان الكاملة الثانية (PFM والخزف الكامل). العيوب: حذف أكثر من التاج الجزئي؛ صعوبة فحص الحيوية خاصة بالكهربائي؛ قد يأثر على الذوق؛ وظهور المعدن.</p><p>خطوات التحضير: إطباق، شدق، لسان، ثم السطوح المجاورة. <b>أخاديد توجيه العمق (D.O.G.)</b> مرجع لكمية الحذف؛ بدونها ممكن تحضير ناقص أو زائد وتضيّع وقت بالفحص المتكرر. خط الإنهاء الموصى به <b>chamfer</b> بسنبلة شق مستدقة نهاية مدورة. حافة السكين هم ممكن تُستخدم.</p>","<p>هدف تخفيض الإطباق: خلف <b>1.5 ملم</b> فوق الحدبات الوظيفية و<b>1 ملم</b> فوق غير الوظيفية. التخفيض التشريحي (على المستويات المائلة) يعطي سمك منتظم، يحافظ على طول الجدار المحوري، ويحسّن التثبيت والمقاومة.</p><p>التسلسل: أخاديد عمق بكل حدبة من رأسها للميزاب المركزي، وعمق الأخدود = قطر السنبلة (<b>1.5 ملم</b> للوظيفية و<b>1 ملم</b> لغير الوظيفية). شيل ما بين الأخاديد حسب كفاف الحدبات. حط شطف واسع على الحدبات الوظيفية. وبعدين افحص الخلف بالإطباق المركزي واللامركزي.</p>","<p> الشدقي: ثلاثة أخاديد عمق <b>1 ملم</b> — واحد بالنص وواحد بكل زاوية انتقال إنسية ووحشية — موازية للمحور الطويل أو لمسار الإدخال المقترح. حرّك السنبلة إنسياً ووحشياً وشيل الجزر بين الأخاديد. المدى اللثوي يحدد إذا الحافة تبقى فوق اللثة (الأفضل) أو تنزل تحتها. سنبلة شق مستدقة نهاية مدورة تعطي chamfer. اللساني مثل الشدقي.</p><p>المجاور: سنبلة ماسية طويلة إبرية رفيعة، تستند على السن المحضَّر حتى ما تجرح السن المجاور، طلوع ونزول لين ينفتح التماس شدقياً-لسانياً. بعدين سنبلة نهاية مدورة تسوّي الجدار وتعمل chamfer. گدر تستخدم ديسك آمن من جهة، أو شريط مصفوفة على السن المجاور. بعدين نعّم كل الزوايا الحادة لأنها تركّز الإجهاد. أخيراً <b>أخدود الجلوس</b> على السطح الشدقي للرحى السفلية والحنكي للرحى العلوية: دليل أثناء الإنزال، يمنع الدوران (يزيد المقاومة)، ويحسّن التثبيت.</p>","<p>سؤالان على استطباب التاج المعدني، و 1.5/1 ملم، وأخدود الجلوس.</p>","<p>تاج <b>الخزف الملتصق بالمعدن (PFM)</b> الأكثر استخداماً بين الترميمات الثابتة: تاج معدني كامل ويه وجه (أو كل السطوح) مغطى بخزف، طبقة خزفية ملتصقة بقشرة معدنية رقيقة مصبوبة. يجمع قوة ومطابقة المعدن ويه جمال الخزف.</p><p>العيوب ستة: حذف بنية كثير؛ معرض للكسر لأن الخزف قصِف؛ اختيار اللون صعب؛ جماله أقل من تاج الجاكيت الخزفي؛ قد يتصبغ هامش اللثة مع الوقت؛ وأغلى. الاستطباب: تغطية كاملة لطلب جمالي؛ مثبت جسر؛ وهم استطبابات تشبه المعدني الكامل. المضادات: لب كبير (خطر انكشاف)؛ جدار شدقي سليم يگدر تستخدم مثبت أكثر محافظة؛ تيجان قصيرة؛ ونظافة فم سيئة.</p>","<p>متطلبات التحضير: تخفيض وجهي عميق لفراغ المعدن والخزف، وتخفيض أضحل بالسطوح المعدنية فقط. خط الإنهاء الوجهي-اللثوي: كتف، كتف نصف قطري، أو heavy chamfer. باقي السطوح المعدنية: chamfer أو حافة سكين. لأن الترميم مزيج، التحضير هم مزيج. أول شي اعمل دليل سيليكون حتى تفحص كمية الحذف.</p><p>التخفيض القاطع <b>2 ملم</b> حتى الشفافية تكفي. سنبلة ماسية مستدقة نهاية مسطحة، موازية لميل الحافة القاطعة (ميل حنكي خفيف بالقواطع العلوية، وشفوي بالسفلية). التخفيض الشفوي <b>1.5–2 ملم</b> حتى ما يصير تضخيم وكفاف سيء. من هذا العمق تقريباً <b>0.5 ملم</b> للقشرة المعدنية و<b>1 ملم</b> للخزف: <b>0.2</b> عاتم، <b>0.5</b> جسم (عاج)، و<b>0.3</b> قاطع (ميناء).</p>","<p>الوجه يُخفَّض بمستويين (لثوي وقاطع) حتى يتبع التشريح، يتجنّب اللب، ويعطي فراغ للمعدن والخزف. المستوى اللثوي: ثلاثة أخاديد <b>1.5 ملم</b> موازية للمحور الطويل. المستوى القاطع: ثلاثة أخاديد <b>1.5 ملم</b> موازية لميل المنطقة. سنبلة نهاية مسطحة تعمل كتف يمتد <b>1 ملم لساني عن التماس</b>.</p><p>الحديبة: أخدود 1 ملم بسنبلة مدورة ثم عجلة ماسية صغيرة تتبع التقعر. المحوري اللساني: أخدود 1 ملم وسنبلة نهاية مدورة تعطي chamfer. المجاور: إبرة طويلة تفتح التماس، وبعدين chamfer يلتقي كتف الشفوي بزاوية اسمها <b>الجناح (wing)</b>. افحص بدليل السيليكون. للخلفية: <b>1.5 ملم</b> لغير الوظيفية، <b>2 ملم</b> للوظيفية، و<b>1.5–2 ملم</b> للوجه.</p>","<p>تاج معدني كامل ويه <b>واجهة أكريل</b>: السطح الشفوي أو الشدقي مغطى براتنج أكريلي بلون السن. كان شائع قبل ما يصير الخزف هو الواجهة المعتادة، وهم يُستخدم اليوم لأنه أرخص من PFM. يجمع قوة ومطابقة المعدن ويه جمال الأكريل. التحضير يحتاج تخفيض وجهي عميق. خط الإنهاء: <b>كتف ويه شطف</b> وجهياً، و chamfer أو حافة سكين لباقي السطوح. إذا الجمال حرج، يُفضَّل إنزال الخط تحت اللثة. عيوبه الأساسية من الأكريل: تصبغ مع الوقت، سحل، وتوافق ضعيف ويه نسيج اللثة.</p>","<p>سؤالان على تخفيض PFM والطبقات، والجناح، وواجهة الأكريل.</p>","<p>تاج <b>الخزف الكامل</b> الأجمل لأن ما في معدن تحتّه يحجب الضوء، فيشبه السن الطبيعي باللون والشفافية أكثر من أي ترميم ثاني. بس هو <b>أضعف</b> نوع (أكثر عرضة للكسر)، ومو محافظ. غالباً يُستخدم كترميم مفرد على القواطع العلوية أو السفلية.</p><p>المزايا: جمال أعلى؛ رد نسيجي جيد حتى ويه الحواف تحت اللثة؛ وأشوي أكثر محافظة بالجدار الوجهي. العيوب: قوة أقل من PFM؛ التحضير حرج جداً؛ من أقل التحضيرات محافظة؛ المادة قصِفة؛ ويُستخدم كترميم مفرد فقط. الاستطباب: طلب جمالي عالي؛ نخر مجاور كثير؛ سن معالج لبّياً ويه وتد وقلب؛ حافة قاطعة سليمة بشكل معقول؛ وتوزيع حمل إطباقي مناسب. المضادات: إذا تحتاج قوة أعلى (PFM أنسب)؛ أسنان رقيقة وجهياً-لسانياً؛ حمل إطباقي غير مناسب؛ بنية تاجية غير كافية (أسنان قصيرة جداً)؛ إطباق حد لحد؛ وصريف.</p>","<p>التحضير لازم يكون أطول ما يمكن حتى يدعم الخزف: التحضير القصير يركّز الإجهاد بالمنطقة اللسانية وقد ينكسر هناك. كتف بعرض منتظم <b>1 ملم</b> كخط إنهاء لثوي، مقعد مسطح يقاوم القوة من القاطع. الحافة القاطعة مسطحة ويه ميل لساني خفيف (وللسفلية ميل شفوي). دبّب الزوايا الحادة حتى ما ينكسر من تركيز الإجهاد. تجنّبه ويه إطباق حد لحد. التماسات المركزية أفضل تتحصر بال<b>ثلث الأوسط من السطح اللساني</b>.</p><p>قبل التخفيض اعمل دليل سيليكون. الخلف القاطع <b>1.5–2 ملم</b> بكل حركات الفك؛ وللخلفية <b>2 ملم</b> على كل الحدبات. أولاً أخاديد <b>1.3 ملم</b> وبعدين شيل ما بينها لحد <b>1.5 ملم</b>. افحص الخلف بالمركزي واللامركزي.</p>","<p>الوجه هم مستويان: القاطع ثلاثة أخاديد <b>1 ملم</b>؛ اللثوي أخاديد 1 ملم موازية للمحور وسنبلة نهاية مسطحة تعمل كتف. اللساني مثل PFM بس أعمق (<b>1 ملم</b>): أخدود الحديبة <b>0.8 ملم</b> وعجلة صغيرة؛ والمحوري اللساني أخدود 0.8 ملم وسنبلة نهاية مسطحة لكتف. المجاور مثل المعدني الكامل. خط الإنهاء للجاكيت الخزفي: <b>كتف أو كتف نصف قطري على كل المحيط</b>.</p><p>تاج <b>الجاكيت الأكريلي</b> كله أكريل بلون السن. أول ما ينركب شكله يقرب من المثالي، وبعدين يتصبغ ويضيع كفافه. التكيف الحافي ضعيف بسبب معامل التمدد الحراري. يُستخدم لمريض مختار مثل شاب راح ياخذ تاج ثاني بس ينتظر اكتمال البزوغ؛ وغالباً كتاج مؤقت. التحضير أساساً مثل الجاكيت الخزفي. عيوبه: حافة ضعيفة، رد نسيجي سيء، تصبغ، وضياع كفاف (ينسحل بسهولة).</p>","<p>سؤالان على الخزف الكامل والجاكيت الأكريلي.</p>","<p>تاج <b>الوجه الجزئي</b> معدني مصبوب يغطي جزء من التاج السريري. الأشيع <b>تاج 3/4</b>: يغطي الإطباق أو القاطع، والحنكي أو اللساني، والمجاور، و<b>يترك السطح الشفوي أو الشدقي بدون تحضير</b>. تثبيته ومقاومته أقل من تاج الوجه الكامل. يُستخدم أمامي أو خلفي، كترميم مفرد أو مثبت لجسر قصير المسافة، أو كجبيرة أمامية.</p><p>استطباب الخلفية: ضياع معتدل ويه سطح شدقي سليم ومدعوم؛ ومثبت جسر. الأمامية: حجم كافي وسطح شفوي سليم؛ ومثبت أو جبيرة. المضادات: تاج سريري قصير؛ مؤشر نخر عالي؛ تدمير واسع؛ محاذاة سيئة؛ أسنان رقيقة؛ جسر طويل المسافة؛ وأسنان غير حية. المزايا: محافظ؛ الحواف سهلة الوصول؛ أقل تهييج لثوي؛ الإسمنت يهرب بسهولة والجلوس أفضل؛ فحص الحيوية الكهربائي ممكن؛ وتشاهد الجلوس مباشرة. العيوب: تحضير أصعب؛ نخر راجع على زاوية الخط السطحي الحفري؛ احتمال ظهور معدن خاصة بالسفلي؛ تثبيت أقل؛ وتعديل مسار الخروج محدود.</p>","<p>الأبعاد الموصى بها: <b>1.5 ملم</b> على الحدبة الوظيفية (لسانية)؛ <b>1 ملم</b> على غير الوظيفية (وجهية)؛ أقل من <b>0.5 ملم</b> على رأس الحدبة الوجهية إذا التراكب الأفقي كافي؛ خلف 1.5 ملم؛ والشطف يمتد للإمبراشور اللساني.</p><p>بالخلفية العلوية: أخاديد الإطباق توصل لزاوية الإطباق- الشدقي بس بعمق <b>0.5 ملم</b> هناك حتى المعدن ما يبين. عمق التخفيض يقل بهالزاوية. شطف واسع على الوظيفية، وافحص الخلف. اللساني: chamfer <b>0.5 ملم فوق اللثة</b>. المجاور: إبرة قصيرة تفتح التماس. أخاديد مجاورة (إنسي ووحشي) متوازية ويه مسار الخروج وويه بعض بسنبلة كاربيد؛ والبنية غير المدعومة شدقياً تُفلَّر. لا تجرح السن المجاور ولا تبالغ بالتخفيض المحوري.</p>","<p>الأخاديد المجاورة تعوّض الجدار المكشوف وتحسّن التثبيت. تتعمل بسنبلة كاربيد رقم <b>171</b> (قطر <b>0.5 ملم</b>) حتى يتكوّن جدار لساني واضح؛ تمتد طول الجدار المجاور كاملاً وتنتهي حوالي <b>0.5 ملم</b> قبل الـ chamfer؛ تتحط أبعد ما يمكن وجهياً بدون ما تضعّف السطح الوجهي (بين الثلث الأوسط والشفوي)؛ وموازية للمحور الطويل. المزايا: تثبيت أكثر، تمنع الدوران، تقوّي الحافة، ودليل بالإنزال.</p><p>ال<b>إزاحة الإطباقية (occlusal offset)</b> أخدود عرض <b>1 ملم</b> على الميل اللساني للحدبة الوجهية، شكل V مقلوب على مسافة منتظمة من خط الإنهاء الإطباقي — يقوّي الصبّة ويقوّي الحافة. الخط اللثوي chamfer لسانياً ومجاوراً؛ وشطف <b>45 درجة</b> على الحواف الوجهية الإطباقية والمجاورة الوجهية.</p><p>الفرق بين العلوي والسفلي الخلفي: بالعلوي خط الإنهاء الوجهي ينتهي قرب زاوية الشدقي-الإطباق؛ بالسفلي الخط الإطباقي <b>1 ملم لثوي</b> عن تماس الإطباق ويه الأسنان العلوية، لأن الحدبات الشدقية بالسفلي هي الوظيفية. العلوي فيه offset إطباقي؛ السفلي ما فيه، وبداله كتف إطباقي شدقي بنفس الوظيفة.</p>","<p>للأمامي العلوي: تخفيض لساني بخطوتين. إنهاء قاطع: شطف لساني-قاطع بزاوية <b>45 درجة</b> على مسار الإدخال، وما يمتد شفوياً حتى المعدن ما يبين. للأمامي السفلي: <b>شطف عكسي</b> على السطح الشفوي حتى المعدن يغطي الحافة القاطعة — يحمي الميناء غير المدعوم من الكسر، ويمنع خلع التاج لسانياً.</p><p>المجاور يشبه تاج الوجه الكامل، بس مسار الإدخال <b>يوازي الثلثين القاطعين للسطح الشفوي</b> (مو المحور الطويل). أخدودان عند ملتقى الثلث الشفوي والأوسط، بنفس الاتجاه، لأن هذا أطول أخدود (تثبيت أفضل) وحتى ما تقص زيادة من الشفوي وتخرّب الجمال. الأخدودان يتوصلان ب<b>إزاحة قاطعة</b> شكل V تقوّي الصبّة والحافة. الفرق: بالأمامية الأخدود يوازي الثلثين القاطعين للشفوي؛ بالخلفية يوازي المحور الطويل، حتى تحصل أطول أخدود.</p>","<p>ثلاثة أسئلة ختامية + بطاقة أرقام التخفيض + زر الدرجة. إذا غلطت ارجع للشرائح.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>

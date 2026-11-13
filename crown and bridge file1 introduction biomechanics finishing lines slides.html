@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Crown and Bridge File 1 — Introduction, Biomechanical Principles, and Finishing Lines</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Crown & Bridge · Dr. Alaa Lectures 1–3</div>
+    <h1>Introduction to Fixed Prosthodontics, Biomechanical Principles, and Finishing Lines</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lectures 1–3 by Dr. Alaa (PDF pages 2–24).</p>
+    <ul>
+      <li>What fixed prosthodontics includes, how crowns are classified, and the parts of a bridge (major and minor retainers)</li>
+      <li>Eleven construction steps (clinical 1–4 and 11, laboratory 5–10) and this lecture’s ideal 1:2 crown/root ratio</li>
+      <li>Five biomechanical principles, 5–6 degree convergence, 1–1.5 mm occlusal reduction, and the functional-cusp bevel</li>
+      <li>When a margin should stay supragingival, and the six finishing-line designs with their burs and angles</li>
+      <li>Total run time: <b>40 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 20</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Crown & Bridge · File 1","t":"Introduction to fixed prosthodontics, biomechanical principles, and finishing lines","b":"<p>University of Baghdad, College of Dentistry — Crown and Bridge syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file covers PDF pages 2–24, Lectures 1–3 by Dr. Alaa (د. آلاء): an introduction to fixed prosthodontics, the biomechanical principles of tooth preparation, and the designs of the finishing line.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Medical terms stay in English next to the Arabic. Numbers in this lecture (for example the ideal crown/root ratio of 1:2) are kept even if a later lecturer gives a different figure.</p>"},{"k":"Dr. Alaa · Lecture 1","t":"What prosthodontics and fixed prosthodontics are","b":"<p><b>Prosthodontics</b> is the dental specialty concerned with the making of artificial replacements for missing parts of the mouth and jaw. It is also named “Prosthetic Dentistry” or “Prosthodontia.”</p><p><b>Fixed prosthodontics</b> (crown and bridge prosthodontics) is a branch of dental science that deals with restoration of damaged teeth with an artificial crown, and replacing the missing natural teeth by a dental prosthesis permanently cemented in place (a fixed partial denture). Fixed prosthodontics includes: inlays; onlays; veneers; crowns; and fixed partial dentures.</p><p>A <b>crown</b> is a fixed extra-coronal artificial restoration of the coronal portion of a natural tooth. It must restore the morphology, contour and function of the tooth and should protect the remaining tooth structure from further damage.</p>"},{"k":"Dr. Alaa · Lecture 1","t":"How crowns are classified by coverage and by material","b":"<p>Types of crowns according to coverage area: (1) a <b>complete crown</b> covers all the coronal portion of the tooth, such as a full metal crown, a porcelain-fused-to-metal crown, and an all-ceramic crown; (2) a <b>partial crown</b> covers part of the coronal portion, such as a 3/4 crown or a 7/8 crown; (3) a <b>complete replacement</b> replaces the natural crown entirely and retains itself by means of a dowel (post) extended inside the root-canal space, such as a post crown. A three-quarter crown is a partial crown covering all tooth surfaces except the buccal surface.</p><p>According to the materials used: (1) a metal crown, made from gold alloy and its alternatives, such as a full metal crown and a 3/4 crown; (2) a non-metal crown, made from acrylic resin, zirconium or porcelain, as in a jacket crown; (3) a combination of metal and plastic materials, such as a porcelain-fused-to-metal crown.</p>"},{"k":"Dr. Alaa · Lecture 1","t":"What a bridge is, and its three components (including major and minor retainers)","b":"<p>A <b>bridge</b> is a fixed dental prosthesis which replaces and restores the function and esthetic of one or more missing natural teeth and cannot be removed from the mouth by the patient. It is primarily supported by natural teeth or a root. The tooth that gives support to the bridge is called the <b>abutment tooth</b>.</p><p>Components of a bridge: (1) the <b>retainer</b> is the part that seats over (on or in) the abutment tooth. It could be major or minor. (2) the <b>pontic</b> is the suspended member of the fixed partial denture that replaces the missing tooth or teeth; it usually occupies the position of the missing natural tooth. (3) the <b>connector</b> is the part that joins the individual components of the bridge together (the retainer and the pontic). It could be a fixed (rigid) or a movable (flexible) connector. When the retainer is attached to a fixed connector it is called a <b>major retainer</b>; when it is attached to a flexible (movable) connector it is called a <b>minor retainer</b>.</p>"},{"k":"Dr. Alaa · Lecture 1","t":"Six purposes of a crown, and the eleven steps of a cast restoration (clinical versus laboratory)","b":"<p>Purposes of crown construction: (1) to restore a grossly damaged tooth, a fractured tooth, or a tooth with a heavy filling (amalgam or composite); (2) to restore masticatory function and speech; (3) to restore esthetic (a hypoplastic condition, whether a hereditary or an acquired defect); (4) to maintain periodontal health by recontouring the occlusion and preventing food impaction; (5) to alter the occlusion (occlusal relationship) as a part of occlusal reconstruction, to solve occlusal problems or to improve function; (6) as a retainer for the bridge.</p><p>Steps in the construction of cast restorations: (1) diagnosis; (2) tooth preparation; (3) final impression; (4) temporary (provisional) restoration; (5) construction of a working model; (6) waxing; (7) investing; (8) burn-out (wax elimination); (9) casting; (10) cleaning and finishing; (11) try-in and cementation. Steps 1–4 and 11 are clinical steps; steps 5–10 are laboratory steps carried out by the laboratory technician. These steps concern restorations made entirely from metal or a combination of metal and plastic material. All-ceramic restorations are fabricated using other laboratory procedures such as CAD/CAM (computer-aided design / computer-aided manufacturing).</p>"},{"k":"Dr. Alaa · Lecture 1","t":"Diagnosis (including a 1:2 crown/root ratio), what preparation is, and four preparation objectives","b":"<p>The first step is diagnosis of whether the case is indicated for crown-and-bridge work. Examination of the tooth and surrounding structures includes: (a) periodontal examination — the patient should have proper oral hygiene so that plaque does not accumulate on the crown margins and lead to caries; (b) dental examination. Visual examination covers the occlusion, crowding, spacing, rotation, tilting (drifting) and supra-eruption of the abutment, plus the remaining tooth structure, caries, and the quality of existing old fillings. Radiographic examination reveals the shape and number of the roots, the condition of the surrounding structures, and the bone support (crown/root ratio). The <b>ideal crown/root ratio</b> of a tooth to be used as an abutment for a fixed partial denture is <b>1:2</b> in this lecture. The radiograph also reveals a lesion in the bone, root-canal treatment, fracture of the tooth or root, bone loss, unerupted teeth, and so on — information that affects the prognosis.</p><p>Tooth preparation is the cutting or instrumentation procedure carried out on the tooth during crown construction. The prepared tooth is the final form after cutting. Rotary instruments reduce the height and contour so that the crown can slide into place and withstand occlusal forces. The <b>finishing line</b> is a line that separates the prepared and unprepared tooth portions; it is the end margin of the preparation. It should be smoothly continuous from one surface to the other; otherwise it will interfere with seating of the crown if it is poorly done.</p><p>Objectives of tooth preparation: (1) to eliminate undercuts from the axial surfaces (facial — labial or buccal — proximal, and palatal/lingual); (2) to provide enough space for the crown to withstand masticatory force — metal needs little space, while plastic materials need more; (3) not to enlarge the size of the tooth; (4) to provide good esthetic. Disadvantages of crowns: (1) heat generation during cutting might affect pulp health, so a water coolant must be used; (2) over-preparation can cause pulp irritation or even pulp exposure and death of the pulp, and can also weaken the tooth; (3) periodontal problems — food impaction with subsequent gingivitis, periodontal pocket formation, and secondary caries.</p>"},{"k":"اختبر نفسك","t":"Quiz: crown types, major versus minor retainers, clinical steps, and the 1:2 ratio","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">In this lecture, a three-quarter crown, a post crown, and a porcelain-fused-to-metal crown are classified as:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A 3/4 crown is a complete crown; a post crown is a partial crown that covers only the buccal surface; PFM is a non-metal jacket</button><button type=\"button\" class=\"opt\" data-i=\"1\">A 3/4 crown is a partial crown covering all surfaces except the buccal. A post crown is a complete replacement retained by a dowel in the root-canal space. A PFM crown is a combination of metal and plastic materials. A complete crown (full metal, PFM or all-ceramic) covers all the coronal portion. A jacket crown is a non-metal crown of acrylic, zirconium or porcelain</button><button type=\"button\" class=\"opt\" data-i=\"2\">Every crown is removable by the patient</button><button type=\"button\" class=\"opt\" data-i=\"3\">A 7/8 crown replaces the natural crown entirely with a dowel</button></div><div class=\"qexp\" hidden><p>تاج 3/4 جزئي يغطي كل السطوح ما عدا الشدقي. تاج الوتد تعويض كامل ويه dowel داخل القناة. PFM مزيج معدن ومادة بلاستيكية. الجاكيت غير معدني (أكريل أو زركونيوم أو خزف).</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A major retainer, a minor retainer, the eleven construction steps, and the ideal abutment crown/root ratio in this lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Both retainers attach only to a movable connector; all eleven steps are laboratory steps; the ideal ratio is 2:1</button><button type=\"button\" class=\"opt\" data-i=\"1\">The retainer seats on or in the abutment. Attached to a rigid (fixed) connector it is a major retainer; attached to a flexible (movable) connector it is a minor retainer. The pontic replaces the missing tooth; the connector joins retainer and pontic. Steps 1–4 and 11 (diagnosis, preparation, final impression, provisional, then try-in and cementation) are clinical; steps 5–10 (working model through cleaning and finishing) are laboratory. All-ceramic work may use CAD/CAM instead. The ideal crown/root ratio for an abutment in this lecture is 1:2</button><button type=\"button\" class=\"opt\" data-i=\"2\">A bridge can always be removed by the patient, and diagnosis is a laboratory step only</button><button type=\"button\" class=\"opt\" data-i=\"3\">Metal and plastic restorations are never made by the eleven cast-restoration steps</button></div><div class=\"qexp\" hidden><p>المثبت الرئيسي ويه رابط صلب؛ الثانوي ويه رابط متحرك. الخطوات 1–4 و 11 سريرية، و 5–10 مختبر. الخزف الكامل قد يُصنع بـ CAD/CAM. نسبة التاج/الجذر المثالية بهالمحاضرة 1:2 (محاضر لاحق قد يذكر 2:3 — اكتب رقم كل محاضرة ويه محاضرتها).</p></div></div>"},{"k":"Dr. Alaa · Lecture 2","t":"The five biomechanical principles, and why preparation must stay conservative","b":"<p>The design of the preparation of a tooth for cast metal or porcelain restorations is limited by five principles: (1) preservation of tooth structure; (2) retention and resistance form; (3) structural durability of the restoration; (4) preservation of the periodontium; (5) marginal integrity.</p><p>The preparation must be conservative: a minimal amount of tooth structure must be removed. Excessive removal, besides being destructive, has harmful effects: thermal hypersensitivity, pulpal inflammation and necrosis may result from approaching the pulp closely; and the tooth might be over-tapered or shortened, which might affect the retention and resistance of the prepared tooth.</p>"},{"k":"Dr. Alaa · Lecture 2","t":"Retention versus resistance, and the path of insertion (including the anterior 3/4 crown exception)","b":"<p><b>Retention</b> is the ability of the preparation to resist dislodgement of the crown by forces directed along its path of insertion. <b>Resistance</b> is the ability of the preparation to resist dislodgement by forces directed obliquely or horizontally to the restoration.</p><p>The <b>path of insertion</b> is an imaginary line along which the restoration can be inserted and removed without causing lateral forces on the abutment. The crown should have a <b>single path of insertion</b> to be retentive. Most of the time this path is parallel to the long axis of the tooth, but this is not a rule: in a three-quarter crown for the anterior teeth the path of insertion should be parallel to the <b>incisal two-thirds of the crown</b>, not to the long axis. By limiting the path of withdrawal, retention is improved. A preparation with unlimited freedom of displacement is much less retentive.</p>"},{"k":"Dr. Alaa · Lecture 2","t":"Taper and the 5–6 degree convergence angle","b":"<p>Factors affecting retention and resistance: (1) taper of the preparation; (2) surface area; (3) length and height; (4) diameter (tooth width); (5) texture of the preparation; (6) accessory means.</p><p>The <b>convergence angle</b> is the angle formed between each two opposing axial walls of a tooth prepared to receive a crown. It determines the taper of the prepared tooth. The greater the taper, the less the retention. The degree of this angle is one of the factors that determine how much axial and non-axial force can be tolerated without loss of the crown. A <b>5–6 degree</b> convergence angle is mostly used to provide the needed retention. The more nearly parallel the opposing walls, the greater the retention — but truly parallel walls are difficult to obtain inside the mouth without creating undercuts, and might make the crown difficult to seat; that is why 5–6 degrees is mostly used. For resistance: the more parallel the axial walls, the greater the resistance. The walls of a short wide preparation must be kept nearly parallel to achieve adequate resistance form.</p>"},{"k":"Dr. Alaa · Lecture 2","t":"Surface area, height, why a narrow tooth can resist tipping better, texture, and extra grooves","b":"<p>Increasing the surface area increases retention. Factors that influence surface area: (a) size of the tooth — a full metal crown on a molar is more retentive than one on a premolar; (b) extent of coverage — a full metal crown on a molar is more retentive than a three-quarter crown on the same tooth; (c) accessory features such as boxes, grooves and pin holes. Increasing the length (height) of the preparation increases retention and resistance, and vice versa.</p><p>Under some circumstances a crown on a <b>narrow</b> tooth can have greater resistance to tipping than one on a wider tooth, because the crown on the narrower tooth has a shorter radius for rotation, resulting in a lower tangent line and a larger resisting area. Depending on the luting cement, texture may affect retention: smooth surfaces are less retentive than rough ones (mechanical interlocking). Retention can be greatly enhanced by adding grooves, pin holes or boxes.</p>"},{"k":"Dr. Alaa · Lecture 2","t":"Structural durability: 1–1.5 mm occlusal reduction, planar anatomy, and the functional-cusp bevel","b":"<p>The preparation must give the restoration structural durability: the crown must be rigid enough not to flex, perforate (if metal) or fracture (if plastic). Rigidity needs bulk, so enough tooth structure must be removed to create space. This lets the restoration withstand occlusal forces, prevents wearing holes in the metal, and allows proper contouring and carving of occlusal anatomy.</p><p>Preparation features related to durability: (1) <b>occlusal reduction</b> — enough structure is removed so the restoration can be built back to ideal occlusion and thick enough to prevent wearing or distortion (<b>1–1.5 mm</b>). <b>Occlusal clearance</b> is the space between the occlusal surface of the prepared tooth and that of the opposing tooth; it should be evaluated in centric and eccentric relation. <b>Functional cusps</b> are the cusps that give centric stops of occlusion (palatal of upper posterior teeth and buccal of lower posterior teeth). Occlusal reduction must reflect the geometric inclined planes of the occlusal surface (“planar” or “anatomical” occlusal reduction). Avoid creating steep planes with sharp angles (they lead to stress). Flat occlusal reduction leads to metal that is too thin and later perforation. Lowering the entire occlusal surface to make space is a non-conservative preparation and shortens the axial walls, which harms retention and resistance.</p><p>A <b>functional cusp bevel (FCB)</b> is a wide bevel placed on the functional cusps of posterior teeth to provide structural durability. It allows adequate thickness at this critical area without undue sacrificing of tooth structure. If the FCB is omitted, the restoration is likely to be too thin in this stress-bearing area. In the absence of an FCB the technician may overbuild the crown, leading to premature contact with the opposing tooth. (2) <b>Axial reduction</b> must be sufficient so the restoration can be built with enough thickness and will not flex when occlusal forces act on it.</p>"},{"k":"Dr. Alaa · Lecture 2","t":"Where to place the margin, six advantages of a supragingival finish, and three reasons to go subgingival","b":"<p>For preservation of the periodontium: (a) whenever possible, the margin of the preparation should be placed supragingivally; (b) the crown should have proper contact, embrasure form, occlusion, and a healthy occluso-gingival contour. The finishing line can be placed supragingivally, subgingivally, or equigingivally (at the level of the gingiva).</p><p>Advantages of placing the margin above the gingival tissue: (a) it can be easily prepared and finished by the operator; (b) it provides good vision during preparation; (c) the impression can be easily made; (d) the patient can keep the area clean more easily; (e) most of the time such a position is situated on hard enamel; (f) it is less destructive. So it is better to place the margin supragingivally whenever possible. Situations that require subgingival placement: (a) for esthetic; (b) when extra retention is needed, as in teeth with short crowns; (c) when there is caries or a filling at the area of the finish line (the preparation margin should be placed on sound tooth structure).</p>"},{"k":"Dr. Alaa · Lecture 2","t":"Marginal integrity: three requirements of the restoration margin","b":"<p>The restoration can survive in the biological environment of the oral cavity only if the margin is closely adapted to the preparation margin. The configuration of the finishing line determines the shape and bulk of the restoration margin, which will affect both marginal adaptation and the degree of seating of the restoration. The restoration margin should: (a) fit as closely as possible against the finishing line of the preparation; (b) have sufficient strength; (c) whenever possible, be placed in an area where the dentist can finish easily and the patient can clean properly.</p>"},{"k":"اختبر نفسك","t":"Quiz: retention versus resistance, 5–6 degrees, 1–1.5 mm, and the functional-cusp bevel","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Retention, resistance, and the path of insertion of an anterior three-quarter crown in this lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Retention resists horizontal forces only; resistance resists forces along the path of insertion; every crown must follow the long axis, including an anterior 3/4 crown</button><button type=\"button\" class=\"opt\" data-i=\"1\">Retention resists dislodgement by forces along the path of insertion; resistance resists oblique or horizontal forces. A retentive crown needs a single path of insertion, usually parallel to the long axis — except an anterior 3/4 crown, whose path should be parallel to the incisal two-thirds of the crown, not the long axis. A preparation with unlimited freedom of displacement is much less retentive</button><button type=\"button\" class=\"opt\" data-i=\"2\">Unlimited paths of withdrawal always improve retention</button><button type=\"button\" class=\"opt\" data-i=\"3\">Resistance is not affected by taper or height</button></div><div class=\"qexp\" hidden><p>التثبيت ضد قوى على مسار الإدخال؛ المقاومة ضد قوى مائلة أو أفقية. مسار واحد عادة يوازي المحور الطويل، إلا تاج 3/4 الأمامي يوازي الثلثين القاطعين. حرية الخروج من كل اتجاه تضعّف التثبيت.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The convergence angle mostly used in this lecture, and the occlusal-reduction and functional-cusp facts, are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A 20–25 degree taper is always best; occlusal reduction is 0.2 mm and must be completely flat</button><button type=\"button\" class=\"opt\" data-i=\"1\">A 5–6 degree convergence angle is mostly used (greater taper means less retention; truly parallel walls are hard to obtain without undercuts and may hinder seating). Occlusal reduction is 1–1.5 mm and should be planar/anatomical, not steep with sharp angles and not flat (thin metal will perforate). Functional cusps are the palatal cusps of upper posteriors and the buccal cusps of lower posteriors. A functional-cusp bevel gives thickness in this stress-bearing area without undue sacrifice of tooth; if it is omitted the restoration may be too thin, or the technician may overbuild and create a premature contact. A narrow tooth can have greater resistance to tipping than a wider one because of a shorter radius of rotation</button><button type=\"button\" class=\"opt\" data-i=\"2\">A short wide preparation should be highly tapered to improve resistance</button><button type=\"button\" class=\"opt\" data-i=\"3\">Smooth surfaces are always more retentive than rough ones, regardless of cement</button></div><div class=\"qexp\" hidden><p>زاوية التقارب 5–6 درجات. التخفيض الإطباقي 1–1.5 ملم تشريحي. الحدبات الوظيفية: حنكية العلوي الخلفي وشدقية السفلي الخلفي. شطف الحدبة الوظيفية ضروري وإلا المعدن يرِق أو الفنّي يبني زيادة ويصير تماس مبكر. السن الأضيق قد يقاوم الانقلاب أكثر. السطح الخشن أثبت (تداخل ميكانيكي).</p></div></div>"},{"k":"Dr. Alaa · Lecture 3","t":"What the finishing line is, and the six configuration designs","b":"<p>The finishing line of the preparation (the preparation margin) is the final margin that separates prepared from unprepared tooth structure. This line should be smoothly continuous from one surface to another; otherwise it will interfere with seating of the crown if it is poorly done. The margin is a very critical area, as most failures start from this margin.</p><p>Types of finishing line according to design or configuration, depending on the type of crown: (1) knife edge (also named “feather end”); (2) chamfer; (3) heavy chamfer; (4) shoulder; (5) radial shoulder; (6) shoulder with bevel.</p>"},{"k":"Dr. Alaa · Lecture 3","t":"Knife-edge (feather-end) finishing line: more than 135°, conservative, but a thin weak margin","b":"<p>A pointed-end tapered fissure bur (a long needle diamond fissure bur) is used to provide a knife-edge or feather-end margin. It is the most conservative type of finishing line, since the least amount of tooth structure is removed, but the margin is weak because this design does not provide enough bulk or thickness for the material. It forms a cavo-surface line angle of more than <b>135°</b>.</p><p>Advantages: it is the most conservative type; it is easy to prepare; it is a burnishable type of finishing line (burnishing is the further adaptation of the margin of a metal restoration to the tooth structure). Disadvantages: it is difficult for the laboratory technician to identify; it provides a thin margin that is difficult to wax and cast accurately; the restoration margin is susceptible to distortion because there is not enough thickness. Indications: mainly for a full metal crown (all the surfaces); and for the lingual and proximal surfaces of a full veneer crown, a three-quarter crown, and a post crown.</p>"},{"k":"Dr. Alaa · Lecture 3","t":"Chamfer (130–160°, unburnishable) and heavy chamfer (90° with a large-radius internal angle)","b":"<p>A <b>chamfer</b> is a well-defined finishing line somewhat like a knife edge except that the cut is made deeper. It forms a <b>130–160°</b> cavo-surface line angle. A round-end tapered fissure bur is used. It provides adequate space at the cervical region so the contour of the crown can stay within the contour of the natural tooth, without overcontouring of the final restoration. Because the restoration margin obtained with this finishing line is thick, it is <b>unburnishable</b>. It is indicated for areas to be covered by metal only, as with the knife-edge finishing line: a full metal crown (all surfaces); and the lingual and proximal surfaces of a full veneer crown, a three-quarter crown, and a post crown.</p><p>A <b>heavy chamfer</b> provides a <b>90°</b> cavo-surface line angle with a large-radius internal angle, so it provides better support for the ceramic crown. It can be used with a porcelain-fused-to-metal crown and an all-ceramic crown.</p>"},{"k":"Dr. Alaa · Lecture 3","t":"Shoulder, radial shoulder, and shoulder with a 45° bevel","b":"<p>A <b>shoulder</b> (“butt shoulder”) is the least conservative finishing line, because of the excessive amount of tooth structure removed. In the “butt” type the axial walls meet the finishing line at a right angle. A flat-end tapered fissure bur is used. This design is used when bulk is required for strength or esthetic, which is why it is almost used with a jacket crown: a jacket crown is made of porcelain or acrylic resin, which are brittle and need enough thickness to withstand occlusal forces without fracture. The increased thickness also provides a better shade and so better esthetics.</p><p>A <b>radial shoulder</b> is a shoulder with rounded internal line angles. This reduces the shoulder slightly and minimizes stress concentration on the tooth and on the restoration. It was introduced with the development of all-ceramic materials, in an attempt to increase the fracture strength of all-ceramic crowns by decreasing stress concentration.</p><p><b>Shoulder with bevel</b> is a shoulder with a bevel added at a <b>45°</b> angle. Objectives of the bevel: (1) it provides a burnishable margin for the metal that may extend subgingivally (the thinner it is, the more adaptable to the tooth surface); (2) to provide enough space for shape and contour; (3) to reduce marginal discrepancies; (4) to remove unsupported enamel. Indications: when a combination of metal with a facing material (acrylic or porcelain) is used, as in a full veneer crown, where it is used for the labial surface; and it is recommended for extremely short walls.</p>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: supragingival versus subgingival margins, and the six finishing-line designs","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">This lecture prefers a supragingival margin whenever possible because, and goes subgingival when:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A supragingival margin is always more destructive and harder to impress; go subgingival in every posterior tooth</button><button type=\"button\" class=\"opt\" data-i=\"1\">Advantages of a supragingival margin: easier to prepare and finish, better vision, an easier impression, easier cleaning for the patient, usually on hard enamel, and less destructive. Go subgingival for esthetic, for extra retention on short crowns, or when caries or a filling is at the finish-line area (the margin must be on sound tooth structure). The restoration margin must fit the finishing line closely, have sufficient strength, and whenever possible lie where the dentist can finish it and the patient can clean it. Most failures start from this margin, which must be smoothly continuous from surface to surface</button><button type=\"button\" class=\"opt\" data-i=\"2\">An equigingival margin is the only design this lecture allows</button><button type=\"button\" class=\"opt\" data-i=\"3\">Periodontal health is unrelated to contact, embrasure form or contour</button></div><div class=\"qexp\" hidden><p>فوق اللثة أفضل كلما أمكن لستة أسباب. تحت اللثة: جمال، تثبيت إضافي للتاج القصير، أو نخر/حشوة بمنطقة الخط (الحافة على بنية سليمة). الحافة لازم تتطابق وتكون قوية وبمكان ينتهي ويتنظف. أغلب الفشل يبدأ من هالخط.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Which finishing-line designs and angles match this lecture?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Knife edge is the least conservative and uses a flat-end bur at 90°; a shoulder is burnishable and used on all metal surfaces only</button><button type=\"button\" class=\"opt\" data-i=\"1\">Knife edge (feather end): pointed-end tapered fissure bur, most conservative, cavo-surface angle more than 135°, burnishable but thin and hard for the technician to identify; used for full metal crowns and for lingual and proximal surfaces of full veneer, 3/4 and post crowns. Chamfer: 130–160°, round-end tapered fissure bur, unburnishable because the margin is thick; same metal-area indications. Heavy chamfer: 90° with a large-radius internal angle, for PFM and all-ceramic. Shoulder (butt): least conservative, flat-end tapered fissure bur, almost used with jacket crowns that need bulk. Radial shoulder: rounded internal angles to reduce stress, for all-ceramic fracture strength. Shoulder with 45° bevel: burnishable metal that may go subgingivally, used on the labial of a full veneer crown and for extremely short walls</button><button type=\"button\" class=\"opt\" data-i=\"2\">A chamfer is always more than 180° and is preferred for every jacket crown</button><button type=\"button\" class=\"opt\" data-i=\"3\">A heavy chamfer cannot be used with porcelain-fused-to-metal crowns</button></div><div class=\"qexp\" hidden><p>حافة سكين: أكثر من 135°، الأكثر محافظة وقابلة للبرنَش بس رقيقة. Chamfer: 130–160° وغير قابل للبرنَش. Heavy chamfer: 90° ويه نصف قطر داخلي كبير، لـ PFM والخزف الكامل. الكتف أقل محافظة لتاج الجاكيت. النصف قطري يهوّن الإجهاد للخزف الكامل. الكتف ويه شطف 45° لحافة معدنية قابلة للبرنَش، خاصة الشفوي بتاج الوجه الكامل والجدران القصيرة جداً.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">Name the five biomechanical principles of tooth preparation in this lecture, in order.</button><div class=\"flash-a\" hidden>Preservation of tooth structure; retention and resistance form; structural durability of the restoration; preservation of the periodontium; and marginal integrity.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا أول ملف ل<b>التيجان والجسور</b> من منهج المعادلة: مقدمة للتعويضات الثابتة، مبادئ التحضير الميكانيكية الحيوية، وأنواع خط الإنهاء. صفحات 2–24، محاضرات د. آلاء 1–3. شرح عراقي مفصل ويه أسئلة. أرقام هالمحاضرة (مثل النسبة المثالية للتاج/الجذر 1:2) تبقى حتى لو محاضر لاحق ذكر رقم مختلف.</p>","<p><b>التعويضات السنية (Prosthodontics)</b> تخصص يهتم بعمل تعويضات صناعية للأجزاء المفقودة من الفم والفك. هم يسمونه Prosthetic Dentistry أو Prosthodontia.</p><p><b>التعويضات الثابتة</b> (تيجان وجسور): ترميم الأسنان المتضررة بتاج صناعي، وتعويض الأسنان الطبيعية المفقودة بجهاز يُلصق بشكل دائم (طقم جزئي ثابت / جسر). تشمل: الحشوات المصبوبة الداخلية (inlays)، والغطائية (onlays)، والقشور (veneers)، والتيجان، والجسور.</p><p>ال<b>تاج</b> ترميم صناعي ثابت خارج التاج الطبيعي (extra-coronal) يعوّض الجزء التاجي للسن. لازم يرجع الشكل والكفاف والوظيفة، ويحمي البنية المتبقية من ضرر إضافي.</p>","<p>حسب التغطية: <b>تاج كامل</b> يغطي كل الجزء التاجي (معدني كامل، خزف ملتصق بمعدن، أو خزف كامل). <b>تاج جزئي</b> يغطي جزء من التاج، مثل تاج 3/4 أو 7/8. تاج 3/4 يغطي كل السطوح <b>ما عدا السطح الشدقي</b>. <b>التعويض الكامل</b> يستبدل التاج الطبيعي كله ويثبت نفسه بوتد (dowel/post) داخل قناة الجذر، مثل تاج الوتد (post crown).</p><p>حسب المادة: معدني (سبيكة ذهب وبدائلها) مثل التاج المعدني الكامل و 3/4؛ غير معدني من راتنج أكريلي أو زركونيوم أو خزف مثل تاج الجاكيت؛ أو مزيج معدن ومادة بلاستيكية مثل الخزف الملتصق بالمعدن (PFM).</p>","<p>ال<b>جسر</b> جهاز سني ثابت يعوّض وظيفة وجمال سن أو أكثر مفقودة، والمريض <b>ما يقدر يشيله</b> من فمه. يتسند أساساً على أسنان طبيعية أو جذر. السن اللي يعطي الدعم اسمه <b>دعامة (abutment)</b>.</p><p>المكوّنات ثلاث: (1) ال<b>مثبت (retainer)</b> يقعد على أو داخل الدعامة، وقد يكون رئيساً أو ثانوياً. (2) ال<b>dummy / pontic</b> العضو المعلّق اللي يعوّض السن المفقود وعادة ياخذ مكانه. (3) ال<b>رابط (connector)</b> يوصل المثبت بالدُمية، ثابت (صلب) أو متحرك (مرن). إذا المثبت متصل برابط ثابت يُسمى <b>مثبت رئيسي (major retainer)</b>؛ وإذا متصل برابط مرن/متحرك يُسمى <b>مثبت ثانوي (minor retainer)</b>.</p>","<p>أغراض التاج ستة: ترميم سن متضرر جداً أو مكسور أو ويه حشوة كبيرة (ملغم أو كمبوزت)؛ إرجاع المضغ والكلام؛ إرجاع الجمال (نقص تنسج وراثي أو مكتسب)؛ الحفاظ على صحة اللثة بإعادة كفاف الإطباق ومنع انحشار الطعام؛ تعديل العلاقة الإطباقية ضمن إعادة بناء إطباقي؛ ومثبت للجسر.</p><p>خطوات الترميم المصبوب 11: تشخيص؛ تحضير السن؛ طبعة نهائية؛ ترميم مؤقت؛ عمل موديل العمل؛ تشميع؛ استثمار؛ حرق الشمع (burn-out)؛ صب؛ تنظيف وإنهاء؛ تجربة وإلصاق. الخطوات 1–4 و 11 <b>سريرية</b>؛ 5–10 <b>مختبرية</b> يسويها فنّي المختبر. هالخطوات للترميمات المعدنية بالكامل أو مزيج معدن ومادة بلاستيكية. الخزف الكامل يُصنع بإجراءات ثانية مثل <b>CAD/CAM</b>.</p>","<p>التشخيص أول خطوة: هل الحالة تستطب تاج وجسر؟ فحص لثوي: نظافة فم حتى اللويحة ما تتجمع على حواف التاج وتسوس. فحص سني بصري: إطباق، ازدحام، فراغات، دوران، ميلان (انزياح)، بزوغ زائد للدعامة، وحالة البنية والنخر والحشوات القديمة. الأشعة: شكل وعدد الجذور، الأنسجة المحيطة، والدعم العظمي (نسبة التاج/الجذر). بهالمحاضرة النسبة المثالية لدعامة الجسر <b>1:2</b>. هم تكشف الآفات، علاج قناة، كسر، ضياع عظم، وأسنان غير بازغة — وكل هذا يأثر على الإنذار.</p><p>التحضير قص أو تسليح للسن. الخط النهائي (<b>finishing line</b>) يفصل المحضَّر عن غير المحضَّر، ولازم يكون مستمر ناعم من سطح لسطح وإلا يعيق جلوس التاج.</p><p>أهداف التحضير: إزالة التجاويف الداخلية (undercuts) من السطوح المحورية (وجهية، مجاورة، وحنكية/لسانية)؛ توفير فراغ يكفي للتاج (المعدن يحتاج فراغ قليل، والمواد البلاستيكية أكثر)؛ عدم تكبير حجم السن؛ وجمال جيد. مضار التيجان: حرارة أثناء القص (لازم تبريد مائي)؛ التحضير الزائد يهيّج اللب أو يكشفه وقد يميته ويضعّف السن؛ ومشاكل لثوية (انحشار طعام، التهاب لثة، جيب، ونخر ثانوي).</p>","<p>سؤالان على تصنيف التيجان، مكوّنات الجسر، الخطوات، ونسبة 1:2.</p>","<p>تصميم التحضير لترميمات المعدن المصبوب أو الخزف مقيّد بخمسة مبادئ احفظها: (1) الحفاظ على بنية السن؛ (2) شكل التثبيت والمقاومة؛ (3) المتانة الهيكلية للترميم؛ (4) الحفاظ على النسيج المحيط (اللثة والعظم الداعم)؛ (5) سلامة الحافة.</p><p>التحضير لازم يكون محافظ: أقل كمية ممكنة من البنية. الحذف الزائد مدمّر وهم يسبب حساسية حرارية والتهاب لب وحتى تنخر إذا اقتربت من اللب؛ والسن قد يصير أكثر تقارباً أو أقصر وهذا يضعّف التثبيت والمقاومة.</p>","<p><b>التثبيت (retention)</b>: قدرة التحضير على مقاومة خلع التاج بقوى تسير <b>على خط الإدخال</b>. <b>المقاومة (resistance)</b>: مقاومة الخلع بقوى <b>مائلة أو أفقية</b>.</p><p><b>مسار الإدخال</b> خط تخيلي يندخل وينهال عليه الترميم بدون قوى جانبية على الدعامة. حتى يكون التاج مثبت لازم يكون له <b>مسار إدخال واحد</b>. غالباً يوازي المحور الطويل للسن، بس مو قاعدة دائماً: بتاج 3/4 للأسنان الأمامية المسار يوازي <b>الثلثين القاطعين للتاج</b> مو المحور الطويل. كل ما حدّيت مسار الخروج، التثبيت يتحسن. التحضير اللي يطلع من كل اتجاه تثبيتّه أضعف بكثير.</p>","<p>عوامل التثبيت والمقاومة ستة: التقارب، مساحة السطح، الطول/الارتفاع، قطر السن، ملمس التحضير، ووسائل إضافية.</p><p><b>زاوية التقارب (convergence angle)</b> هي الزاوية بين كل جدارين محوريين متقابلين. كل ما زاد التقارب قلّ التثبيت. بهالمحاضرة الزاوية المستخدمة غالباً <b>5–6 درجات</b>. الجدران الأقرب للتوازي تعطي تثبيت أكثر، بس التوازي التام داخل الفم صعب وبدون undercuts وقد يصعّب جلوس التاج. للمقاومة: كل ما كانت الجدران أقرب للتوازي زادت المقاومة. التحضير القصير الواسع لازم تبقى جدرانه شبه متوازية حتى تحصل مقاومة كافية.</p>","<p>زيادة مساحة السطح تزيد التثبيت. السن الأكبر (رحى مقابل ضاحك) يغطي مساحة أكثر. التغطية الأوسع (تاج معدني كامل مقابل 3/4 على نفس السن) تثبيت أكثر. الصناديق والأخاديد وثقوب الدبابيس تزيد المساحة. زيادة ارتفاع التحضير تزيد التثبيت والمقاومة.</p><p>أحياناً التاج على سن <b>أضيق</b> يقاوم الانقلاب أكثر من سن أعرض، لأن نصف قطر الدوران أقصر، فيصير خط المماس أوطأ ومساحة المقاومة أكبر. السطح الناعم أقل تثبيتاً من الخشن (تداخل ميكانيكي)، حسب نوع الإسمنت. الأخاديد وثقوب الدبابيس والصناديق تعزّز التثبيت كثير.</p>","<p>المتانة الهيكلية: التاج لازم يكون صلب حتى ما ينثني أو يثقب (معدن) أو ينكسر (مادة بلاستيكية). الصلابة تحتاج حجم، فتشيل بنية كافية لتعمل فراغ. التخفيض الإطباقي <b>1–1.5 ملم</b> حتى الترميم يرجع لإطباق مثالي وبسُمك يمنع السحل أو التشوه. <b>الخلف الإطباقي (clearance)</b> يُقيَّم بالإطباق المركزي واللامركزي.</p><p><b>الحدبات الوظيفية</b>: حدبات التوقف المركزي — الحنكية بالأسنان الخلفية العلوية، والشدقية بالخلفية السفلية. التخفيض لازم يتبع المستويات المائلة التشريحية (planar / anatomical)، مو مستويات حادة تسبب إجهاد، ومو سطح مستوٍ يخلّي المعدن رقيق وينثقب بعدين. تخفيض الإطباق كله مرة وحدة غير محافظ ويقصّر الجدران المحورية فيضعّف التثبيت والمقاومة.</p><p><b>شطف الحدبة الوظيفية (FCB)</b> شطف واسع على الحدبات الوظيفية يعطي سمك كافي بدون تضييع بنية زيادة. إذا نسيته، الترميم يصير رقيق بمنطقة الضغط، أو الفنّي يبني زيادة ويصير تماس مبكر ويه السن المقابل. التخفيض المحوري هم لازم يكفي حتى التاج ما ينثني تحت القوى.</p>","<p>للحفاظ على النسيج المحيط: الحافة فوق اللثة كلما أمكن؛ والتاج لازم يكون ويه تماس صحيح، شكل الإمبراشور (embrasure)، إطباق، وكفاف إطباقي-لثوي صحي. خط الإنهاء ممكن فوق اللثة، تحتها، أو بمستواها (equigingival).</p><p>مزايا الحافة فوق اللثة ستة: أسهل تحضيراً وإنهاءً؛ رؤية أفضل؛ طبعة أسهل؛ المريض ينظّف أسهل؛ غالباً على ميناء صلب؛ وأقل تدميراً. لذلك فضّلها كلما تقدر. متى تنزل تحت اللثة؟ للجمال؛ لتثبيت إضافي بالتيجان القصيرة؛ أو إذا في نخر أو حشوة بمنطقة خط الإنهاء (الحافة لازم تكون على بنية سليمة).</p>","<p>الترميم يعيش ببيئة الفم فقط إذا حافته متكيفة جيداً ويه حافة التحضير. شكل خط الإنهاء يحدد شكل وحجم حافة الترميم، وهذا يأثر على التكيف الحافي وعلى مدى جلوس الترميم. المطلوب من حافة الترميم ثلاث: تتطابق أقرب ما يمكن ويه خط الإنهاء؛ تكون ويه قوة كافية؛ وكلما أمكن تتحط بمكان الطبيب يقدر ينهيه بسهولة والمريض ينظّفه زين.</p>","<p>سؤالان على التثبيت والمقاومة، و 5–6 درجات، و 1–1.5 ملم، وشطف الحدبة الوظيفية.</p>","<p>خط الإنهاء (حافة التحضير) هو الخط النهائي اللي يفصل البنية المحضَّرة عن غير المحضَّرة. لازم يكون مستمر ناعم من سطح لسطح، وإلا يعيق جلوس التاج إذا انعمل غلط. هالمنطقة حرجة جداً لأن أغلب الفشل يبدأ من هالحافة.</p><p>ستة تصاميم حسب نوع التاج: (1) حافة سكين أو نهاية ريشة (knife edge / feather end)؛ (2) chamfer؛ (3) chamfer ثقيل؛ (4) كتف (shoulder)؛ (5) كتف نصف قطري (radial shoulder)؛ (6) كتف ويه شطف (shoulder with bevel).</p>","<p>حافة السكين تُعمل بسنبلة شق مستدقة نهاية مدببة (سنبلة ماسية طويلة إبرية). أكثر نوع محافظ (أقل حذف)، بس الحافة ضعيفة لأنها ما تعطي حجم أو سمك كافي للمادة. زاوية الخط السطحي الحفري <b>أكثر من 135 درجة</b>.</p><p>المزايا: الأكثر محافظة؛ سهل التحضير؛ حافة قابلة للبرنَش (البرنَش = زيادة تكييف حافة الترميم المعدني على السن). العيوب: صعب على فنّي المختبر يميّزه؛ حافة رقيقة صعب تتشمّع وتُصب بدقة؛ وعرضة للتشوه من قلة السمك. الاستطباب: تاج معدني كامل (كل السطوح)؛ والسطوح اللسانية والمجاورة لتاج الوجه الكامل، وتاج 3/4، وتاج الوتد.</p>","<p>الـ <b>chamfer</b> خط إنهاء واضح يشبه حافة السكين بس القص أعمق. زاوية الخط السطحي الحفري <b>130–160 درجة</b>. يُعمل بسنبلة شق مستدقة نهاية مدورة. يعطي فراغ عنقي كافي حتى كفاف التاج يبقى ضمن كفاف السن الطبيعي بدون تضخيم زائد. بس لأن الحافة الناتجة سميكة، هي <b>غير قابلة للبرنَش</b>. استطبابها مثل حافة السكين: تاج معدني كامل؛ ولساني ومجاور لتاج الوجه الكامل و 3/4 وتاج الوتد.</p><p>الـ <b>heavy chamfer</b> يعطي زاوية <b>90 درجة</b> ويه زاوية داخلية واسعة نصف القطر، فيدعم التاج الخزفي أفضل. يُستخدم ويه PFM والخزف الكامل.</p>","<p>ال<b>كتف (shoulder / butt)</b> أقل نوع محافظ لأنه يحذف بنية كثيرة. بالجدران المحورية تلتقي خط الإنهاء بزاوية قائمة. يُعمل بسنبلة شق مستدقة نهاية مسطحة. يُستخدم لما تحتاج حجم للقوة أو الجمال، ولذلك شبه دائماً ويه تاج الجاكيت (خزف أو أكريل قصِف يحتاج سمك حتى ما ينكسر). السمك الزائد هم يحسّن اللون.</p><p>ال<b>كتف النصف قطري</b> كتف ويه زوايا داخلية مدورة، يقلل الكتف شوية ويقلل تركيز الإجهاد على السن والترميم. طُرح مع تطور الخزف الكامل حتى يزيد مقاومة الكسر بتقليل تركيز الإجهاد.</p><p>ال<b>كتف ويه شطف 45 درجة</b>: الشطف يعطي حافة معدنية قابلة للبرنَش قد تمتد تحت اللثة (كل ما صارت أرق تتكيف أكثر)؛ يعطي فراغ للشكل والكفاف؛ يقلل الفروقات الحافية؛ ويزيل الميناء غير المدعوم. يُستطب ويه تاج الوجه الكامل (مزيج معدن ووجه أكريل أو خزف) على السطح الشفوي؛ ويُوصى به للجدران القصيرة جداً.</p>","<p>سؤالان ختاميان + بطاقة المبادئ الخمسة + زر الدرجة. إذا غلطت ارجع للشرائح.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
