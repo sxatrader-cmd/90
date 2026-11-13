@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Endodontics File 7 — Filling Materials and Obturation Techniques (Prof. Anas)</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Endodontics · Prof. Anas Lectures 7–8</div>
+    <h1>Root-Canal Filling Materials and Obturation Techniques</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lectures 7–8 by Prof. Dr. Anas Falih Mahdi (PDF pages 122–134).</p>
+    <ul>
+      <li>Sealer functions and ideal properties; ZOE types (Rickert, Procosol, Roth, Tubli-Seal), calcium hydroxide, glass ionomer, resins including AH Plus, silicones and bioceramics</li>
+      <li>How to place sealer, gutta-percha phases and this lecture’s composition figures, disinfection, Resilon (withdrawn 2014), and why silver cones were abandoned</li>
+      <li>Four radiographic success factors, timing of obturation for vital and necrotic pulps, and warm lateral versus warm vertical compaction</li>
+      <li>Continuous-wave / System B at 200 °C, Obtura III injection, and Thermafil carrier-based gutta-percha</li>
+      <li>Solvent techniques, pastes, apical barriers (dentin chips, calcium hydroxide, MTA) and the revascularization sequence</li>
+      <li>Total run time: <b>40 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 20</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Endodontics · File 7","t":"Root-canal filling materials and obturation techniques (Prof. Anas Lectures 7–8)","b":"<p>University of Baghdad, College of Dentistry — Endodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file covers PDF pages 122–134, Lectures 7–8 by Prof. Dr. Anas Falih Mahdi (أ.د. أنس فالح مهدي): sealers (zinc oxide–eugenol, calcium hydroxide, glass ionomer, resin, silicone and bioceramic), gutta-percha and Resilon, then obturation timing and heat-softened, injection, carrier-based and solvent techniques, and apical barriers including MTA and revascularization. Some composition figures differ from 4th-year Lecture 8 in File 4; this file reports this lecture’s own numbers.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Medical terms stay in English next to the Arabic.</p>"},{"k":"Prof. Anas · Sealers","t":"Why a sealer is essential, its four functions, and eleven ideal properties","b":"<p>Most obturation techniques employ a core material and a sealer. Regardless of the core material, a sealer is essential to every technique and helps achieve a fluid-tight seal. Materials used for root-canal obturation are: (1) root-canal sealers; (2) solid or semi-solid fillings such as gutta-percha, Resilon, or a silver cone.</p><p>Sealers are paste-like materials that are essential to seal the space between the dentinal wall and the gutta-percha. Functions: (1) cementing the core material to the canal wall; (2) filling and marking irregularities that cannot be filled by gutta-percha (lateral and accessory canals); (3) acting as a lubricant to ease placement of the master cone; (4) acting as a bactericidal agent.</p><p>Properties of an ideal sealer: (1) exhibits tackiness when mixed to provide good adhesion; (2) produces a hermetic seal; (3) radiopaque; (4) a very fine powder, to get a smooth mix with the liquid; (5) no shrinkage on setting; (6) no staining of tooth structure; (7) bacteriostatic; (8) exhibits a slow set; (9) insoluble in tissue fluids; (10) tissue-tolerant; (11) soluble in common solvents.</p>"},{"k":"Prof. Anas · Sealers","t":"Zinc oxide–eugenol sealers: six properties, and Rickert, Procosol, Roth and Tubli-Seal","b":"<p>Zinc oxide–eugenol sealers have been used for many years. Their properties in this lecture: (1) the sealer is resorbable if extruded into the peri-radicular region; (2) a slow setting time; (3) shrinkage on setting; (4) solubility; (5) they stain tooth structure; (6) antimicrobial activity.</p><p>Types: (1) <b>Rickert sealer</b> is the first formula introduced, a powder and a liquid. The powder consists of zinc oxide, silver particles, resin, and thymol iodide; the liquid contains eugenol and Canada balsam. The silver particles are important for antimicrobial properties and radiopacity; however, they stain tooth structure. This sealer can be used with thermoplastic techniques. (2) <b>Procosol</b> is a modification of Rickert’s formula in which the silver particles have been removed. (3) <b>Roth’s sealer</b> is a modification of Rickert’s sealer, as it is non-staining. (4) <b>Tubli-Seal</b> is a catalyst/base zinc oxide–eugenol sealer. It has a faster setting time than liquid/powder sealers. <b>Noneugenol sealers</b> (for example Nogenol) are root-canal sealers without the irritating effects of eugenol.</p>"},{"k":"Prof. Anas · Sealers","t":"Calcium-hydroxide sealers (a limited high pH) and glass-ionomer sealers (Ketac-Endo)","b":"<p>Calcium-hydroxide sealers were developed for their antimicrobial activity and osteogenic–cementogenic potential due to the presence of Ca(OH)<sub>2</sub>. However, research has found that these actions were very limited, because of the inability of these sealers to sustain a high pH over time on the root-canal surface. Examples: Sealapex (a catalyst/base system), Apexit and Apexit Plus.</p><p>Glass-ionomer sealers were developed because of their dentin-bonding properties. An example is <b>Ketac-Endo</b>. Properties of this group: (1) adhesion between the material and the canal wall; (2) it is difficult to properly treat the dentinal walls in the apical and middle thirds with conditioning agents to receive the glass-ionomer sealer; (3) a disadvantage is that they are more difficult to remove if retreatment is required; (4) minimal antimicrobial activity.</p>"},{"k":"Prof. Anas · Resin sealers","t":"Epoxy resins (AH-26 and AH Plus), the monoblock idea, and methacrylate examples","b":"<p>Resin sealers were developed to provide adhesion, and they do not contain eugenol. There are two major categories: epoxy resin and methacrylate resin.</p><p>Epoxy: <b>AH-26</b> is a slow-setting epoxy resin that releases formaldehyde when setting. <b>AH Plus</b> is a modified formulation of AH-26 in which formaldehyde is not released. It exhibits a working time of approximately <b>4 hours</b>.</p><p>Methacrylate resin sealers followed self-priming, self-etching and self-adhesive resin-cement technologies in restorative dentistry. The term <b>monoblock</b> means a perfectly filled root-canal space with a gap-free, solid mass that consists of different materials and interfaces, with the purported advantages of simultaneously improving the seal and the fracture resistance of an obturated root-canal system. Examples: (1) <b>EndoREZ</b> — a dual-cure methacrylate resin with hydrophilic properties, designed to flow into accessory canals and dentinal tubules to facilitate resin-tag formation for retention and seal after smear-layer removal with NaOCl and EDTA. When used with resin-coated gutta-percha cones, the sealer bonds to both the canal walls and the core. (2) <b>Diaket</b> — a polyvinyl resin sealer initially intended as a root-end filling material, with better sealing ability compared with other root-end filling materials; biocompatibility is reported to be higher when mixed to the thicker consistency advocated for root-end filling. (3) Fourth-generation methacrylate sealers (for example MetaSEAL and RealSeal) contain an acidic monomer and can self-adhere to dentin without separate etching and priming steps. <b>Epiphany</b> is another resin-based sealer composed of Resilon and used with the Resilon root-filling material.</p>"},{"k":"Prof. Anas · Sealers","t":"Silicone sealers (RoekoSeal and GuttaFlow) and bioceramic sealers","b":"<p>Silicone sealers: (1) <b>RoekoSeal</b> is a polyvinylsiloxane that is reported to expand slightly on setting. (2) <b>GuttaFlow and GuttaFlow 2</b> is a cold, flowable matrix that is triturated. It consists of gutta-percha in a particulate form added to RoekoSeal. The material comes in a capsule that can be injected into the root canal, followed by placement of a single master cone. Sealing ability is comparable to other techniques.</p><p>Bioceramic sealers are composed of zirconium oxide, calcium silicates, calcium phosphate monobasic, calcium hydroxide, and various filling and thickening agents. Properties: (1) a hydrophilic sealer that utilizes moisture within the canal to complete the setting reaction; (2) it does not shrink on setting; (3) a bioactive property which induces periapical cells (cementoblasts and osteoblasts) to regenerate the periapical tissue; (4) antimicrobial properties during the setting reaction. Examples: BioRoot RCS, iRoot SP, and TotalFill BC Sealer.</p>"},{"k":"Prof. Anas · Sealers","t":"Three ways to place the sealer, and why injection with a cannula is preferred","b":"<p>Methods for placing a root-canal sealer: (1) <b>Master cone</b> — coat the master cone with sealer and slowly insert it to the full working length. This approach might be insufficient in oval or wide canals. (2) A <b>Lentulo spiral, or a file and/or reamer</b>, used either manually or with a rotary device, to place the sealer inside the root canal through a <b>counter-clockwise</b> motion until the sealer becomes visible at the canal orifice. (3) The technique that is mostly recommended is <b>injection of the sealer</b> into the canal with a flexible cannula capillary tip connected to the sealer syringe (it comes with bioceramic sealers). The sealer should first be injected until it comes out from the tip of the plastic cannula, to remove any trapped air. The syringe tip is then placed in the canal at the level of the coronal or middle third and the sealer is injected until it comes out of the canal orifice. This is followed by inserting the master cone until it reaches the full working length.</p>"},{"k":"Prof. Anas · Gutta-percha","t":"Gutta-percha as a polymer: α and β phases, and the temperatures 46 °C, 54–60 °C and 64 °C","b":"<p>Gutta-percha is a linear crystalline polymer that melts at a set temperature, with a random but distinct change in structure. It occurs naturally as 1,4-polyisoprene and is harder, more brittle, and less elastic than natural rubber. The crystalline phase has two forms, the alpha phase and the beta phase. The alpha form is the material that comes from the natural tree product. The processed, or beta, form is used in gutta-percha for root fillings.</p><p>When heated, gutta-percha undergoes phase transitions. The transition from beta phase to alpha phase occurs at around <b>46 °C</b>. An amorphous phase develops at around <b>54 °C to 60 °C</b>. When cooled very slowly, gutta-percha crystallizes to the alpha phase. Normal cooling returns the gutta-percha to the beta phase. Gutta-percha cones soften at a temperature above <b>64 °C</b>. These cones can easily be dissolved in many solvents such as chloroform, halothane and xylene. Modern gutta-percha cones used for root-canal fillings contain only about <b>20% gutta-percha</b>. The major component is zinc oxide (<b>60% to 75%</b>), and the remaining <b>5% to 10%</b> consists of various resins, waxes, and metal sulfate. (File 4’s 4th-year lecture used a different β-form breakdown — 20% / 3% / 66% / 11% — so keep each lecture’s figures with that lecture.)</p>"},{"k":"Prof. Anas · Gutta-percha","t":"Disinfection, a 1–2% shrinkage on cooling, and why a sealer is always needed","b":"<p>Although gutta-percha points cannot be heat-sterilized, they can be sterilized by placing them in <b>5.25% NaOCl for 1 minute</b>. Other antimicrobial agents can be used, such as 2% glutaraldehyde, 2% chlorhexidine, and 70% ethyl alcohol; however they are not as effective as NaOCl.</p><p>Pressure applied during filling procedures does not compress gutta-percha, but rather compacts the cones to obtain a more three-dimensionally complete fill. Compaction of heat-treated gutta-percha can compensate for the slight shrinkage after cooling (approximately <b>1% to 2%</b>) when the gutta-percha has solidified. Gutta-percha cannot be used alone as a filling material, because it lacks the adherent properties necessary to seal the root-canal space; a sealer is always needed for the final seal. Cones are available in different tapers: ISO tapering 0.02, and the larger tapers matching rotary instruments such as 0.04 and 0.06.</p>"},{"k":"Prof. Anas · Core materials","t":"Advantages of gutta-percha, Resilon (withdrawn in 2014), and why silver cones were abandoned","b":"<p>Advantages of gutta-percha in this lecture: inert; dimensional stability; non-allergic; non-staining to dentin; radiopaque; compactable; softened by heat; softened by organic solvents. Disadvantages: lack of rigidity; no adherence to dentin; no complete adaptation to narrow areas.</p><p><b>Resilon</b> is a thermoplastic, synthetic, polymer-based root-canal filling material, developed to create an adhesive bond between the solid-core material and the sealer (Epiphany). It can be supplied in the same ISO sizes and shapes (cones and pellets) as gutta-percha, and when manufactured in cones its flexibility is similar. Based on polyester polymers, Resilon contains bioactive glass and radiopaque fillers (bismuth oxychloride and barium sulfate) with a filler content of approximately <b>65%</b>. It can be softened with heat or dissolved with solvents such as chloroform. However, research found that Resilon is not stable and breaks down within the tooth over time, presumably due to enzymatic degradation, which appears to negatively affect long-term success; it was <b>withdrawn from the market in 2014</b>.</p><p>Solid-type materials: (1) semi-rigid materials such as silver cones, which are not used now. They are flexible and fill narrow curved root canals. When silver cones contact tissue fluids or saliva they corrode; the corrosion products are cytotoxic. (2) Rigid materials such as Vitallium cones or implants, which are inflexible and were used as endodontic implants.</p>"},{"k":"اختبر نفسك","t":"Quiz: AH Plus, bioceramics, gutta-percha percentages and temperatures, and Resilon","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">AH-26 versus AH Plus, and bioceramic sealer properties in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">AH Plus releases formaldehyde and sets in 10 minutes; bioceramics shrink on setting and are hydrophobic</button><button type=\"button\" class=\"opt\" data-i=\"1\">AH-26 is a slow-setting epoxy that releases formaldehyde; AH Plus does not release formaldehyde and has a working time of about 4 hours. Bioceramic sealers are hydrophilic (they use moisture in the canal to set), do not shrink, are bioactive (cementoblasts and osteoblasts), and are antimicrobial during setting. Examples include BioRoot RCS, iRoot SP and TotalFill BC Sealer</button><button type=\"button\" class=\"opt\" data-i=\"2\">AH-26 is a calcium-hydroxide sealer that sustains a high pH for years</button><button type=\"button\" class=\"opt\" data-i=\"3\">Ketac-Endo is the easiest sealer to remove in retreatment</button></div><div class=\"qexp\" hidden><p>AH-26 يحرر فورمالديهايد؛ AH Plus لا، ووقت العمل حوالي 4 ساعات. الخزفية محبة للماء، ما تتقلص، حيوية ومضادة للجراثيم أثناء الشك. سيلرات هيدروكسيد الكالسيوم فعلها محدود لأنها ما تحافظ على أس هيدروجيني عالي. الأيونومر الزجاجي أصعب بالإزالة عند إعادة العلاج.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Modern gutta-percha composition and phase temperatures in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">100% gutta-percha; it softens at 20 °C and never shrinks</button><button type=\"button\" class=\"opt\" data-i=\"1\">About 20% gutta-percha, zinc oxide 60–75%, and 5–10% resins, waxes and metal sulfate. Beta-to-alpha around 46 °C; an amorphous phase around 54–60 °C; cones soften above 64 °C. Disinfect in 5.25% NaOCl for 1 minute (more effective than 2% glutaraldehyde, 2% CHX or 70% alcohol). Compaction compensates for about 1–2% shrinkage on cooling. A sealer is always needed</button><button type=\"button\" class=\"opt\" data-i=\"2\">The only disinfectant allowed is dry heat</button><button type=\"button\" class=\"opt\" data-i=\"3\">Gutta-percha is used alone because it adheres strongly to dentin</button></div><div class=\"qexp\" hidden><p>20% GP، أوكسيد زنك 60–75%، و 5–10% الباقي. 46 م° بيتا إلى ألفا؛ 54–60 غير بلوري؛ تلين فوق 64 م°. عقّم دقيقة بـ NaOCl 5.25% (أفضل من الباقي). تقلص التبريد حوالي 1–2%. السيلر دائماً لازم. أرقام ملف 4 مختلفة — لا تخلط.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Resilon in this lecture, and the preferred method of sealer placement:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Resilon is still the first-choice core in 2025 because it never degrades; sealer should be placed only on a loose cone in oval canals</button><button type=\"button\" class=\"opt\" data-i=\"1\">Resilon is a polyester thermoplastic core used with Epiphany, about 65% filler, withdrawn from the market in 2014 because it breaks down enzymatically over time. The most recommended sealer placement is injection with a flexible cannula: express sealer to clear air, place the tip in the coronal or middle third until sealer exits the orifice, then seat the master cone to full working length. A Lentulo or file/reamer is used counter-clockwise until sealer is visible at the orifice</button><button type=\"button\" class=\"opt\" data-i=\"2\">Silver cones are preferred today because they never corrode</button><button type=\"button\" class=\"opt\" data-i=\"3\">RoekoSeal shrinks markedly and cannot be used with GuttaFlow</button></div><div class=\"qexp\" hidden><p>Resilon انسحب 2014 لأنه يتحلل إنزيمياً داخل السن. الحقن بالقنية المرنة هو الأكثر توصية (طلع الهواء أولاً، الرأس بالثلث التاجي أو الأوسط). الـ Lentulo عكس عقارب الساعة. مخاريط الفضة تتآكل ونواتجها سامة وما تُستخدم هسه. RoekoSeal يتوسع قليلاً؛ GuttaFlow هو GP مضاف له.</p></div></div>"},{"k":"Prof. Anas · Obturation","t":"The goal of 3-D obturation, four radiographic success factors, and four objectives","b":"<p>Microorganisms and their by-products are the major cause of pulpal and periapical diseases. It is difficult to consistently and totally disinfect root-canal systems. Therefore the goal of three-dimensional obturation is to provide an impermeable fluid-tight seal within the entire root-canal system, to prevent oral and apical microleakage. Assessment of nonsurgical treatment is based primarily on the post-treatment radiographic examination. This lecture lists four factors that influenced the success of treatment: the absence of a periapical lesion (PL); root-canal obturations containing no radiographic voids; obturation to within <b>2.0 mm of the radiographic apex</b>; and an adequate coronal restoration.</p><p>Objectives of canal obturation: (1) elimination of coronal leakage of microorganisms or of potential nutrients to support their growth in the dead space of the root-canal system; (2) to confine any residual microorganisms that have survived chemo-mechanical cleaning and shaping, to prevent their proliferation and pathogenicity; (3) to prevent percolation of periapical fluids into the root-canal system, which could feed residual microorganisms; (4) creation of a favourable biological environment for tissue healing.</p>"},{"k":"Prof. Anas · Obturation","t":"When to obturate: symptoms, vital versus necrotic pulp, and why culture is less relied on","b":"<p>Timing of obturation: (1) Patient symptoms — sensitivity on percussion indicates inflammation of the periodontal-ligament space, therefore the canal should not be obturated before the inflammation has subsided. (2) Pulp and periradicular status — <b>vital pulp tissue:</b> obturation can be done in a single visit after complete cleaning and shaping. <b>Necrotic pulp tissue:</b> single-visit endodontics can be done if the tooth is asymptomatic. If the tooth is symptomatic — tenderness to percussion, purulent exudate, or the presence of a sinus tract — this indicates an active inflammatory condition of the periapical region, so the canal should be obturated after the inflammation has subsided. (3) Negative culture — dependence on a negative culture has decreased now, because it may give a false indication about the exact inflammatory condition.</p>"},{"k":"Prof. Anas · Obturation techniques","t":"Warm lateral compaction, and warm vertical compaction (the cone 1–2 mm from the apical stop)","b":"<p><b>Warm lateral compaction</b> depends on a heated spreader to soften the gutta-percha during lateral condensation, to improve adaptation to the canal wall, with fewer voids and more dimensional stability. Technique: (1) the root canal is cleaned and shaped properly; (2) fit the master cone to full working length with slight resistance to withdrawal (tug-back); (3) insert a hot spreader laterally into the master cone to soften the gutta-percha and create space for accessory cones; (4) insert an accessory cone and repeat until the canal is completely filled; (5) an electrically heated spreader may be used.</p><p><b>Warm vertical</b> filling is a method of filling the radicular space in three dimensions. The canal should be a continuously tapering funnel, keeping the apical foramen as small as possible. The armamentarium includes a variety of pluggers and a heat source. Technique: (1) select a master cone according to the shape and size of the prepared canal. The cone should fit in <b>1–2 mm of the apical stop</b>, because when the softened material moves apically it adapts better to the canal walls; (2) select heat-transferring instruments and pluggers according to canal shape and size — pluggers are prefitted at <b>5 mm intervals</b> so as to capture the maximum cross-section of the softened gutta-percha; (3) lightly coat the canal with sealer; (4) cut the coronal end of the selected cone and insert it until the exact length is reached; (5) a plugger is inserted and the gutta-percha is compacted, forcing the plasticized material apically; (6) the process is repeated until the apical portion has been filled; (7) the coronal space is back-filled using small pieces. The sectional method consists of placing <b>3–4 mm sections</b> of gutta-percha of approximating size into the canal, applying heat, then compacting the mass with a plugger.</p>"},{"k":"Prof. Anas · Obturation techniques","t":"Continuous-wave compaction with System B at 200 °C","b":"<p>The <b>continuous-wave compaction</b> technique is a variation of warm vertical compaction. Manufacturing cones to mimic the tapered preparation (using rotary instrumentation) permits the application of greater hydraulic force during compaction when appropriately tapered pluggers are used. The technique employs the <b>System B</b> connected to 0.04, 0.06, 0.08, 0.10 or 0.12 tapered stainless-steel dead-soft pluggers.</p><p>Technique: (1) after selecting an appropriate master cone, a plugger is prefitted to be within <b>5 to 7 mm of the canal length</b>; (2) confirm the fit of the cone, then cut the tip of the master cone <b>0.5 mm short of working length</b>, and apply sealer in the canal; (3) with the System B turned on to “use,” place it in touch mode and set the temperature at <b>200 °C</b>; (4) place the master cone, cut the excess at the canal orifice with the preheated plugger, then push the plugger on the softened gutta-percha to push it <b>3–4 mm apically</b>; (5) release the heating switch and hold the plugger here for <b>10 seconds</b> with sustained pressure, to take up any shrinkage which might occur upon cooling; (6) maintaining the apical pressure, activate the heat switch for <b>1 second</b>, followed by a <b>1-second pause</b>, then remove the plugger; (7) after removal, introduce a small flexible end of another plugger with pressure to confirm that the apical mass has cooled, set and not dislodged. Following radiographic confirmation, the canal is ready for backfill by any means.</p><p>Advantages: compaction can be done at the same time as heat-softening; excellent apical control; fast, easy, predictable; thorough condensation of the main canal and lateral canals; compaction occurs at all levels simultaneously throughout the movement of the heating and compacting instrument apically.</p>"},{"k":"Prof. Anas · Obturation techniques","t":"Thermoplastic injection (Obtura III): needle gauges, 3–5 mm from the apex, and alcohol-dipped pluggers","b":"<p>Heating of gutta-percha outside the tooth and injecting the material into the canal is an additional variation of the thermoplastic technique. It is used to obturate irregularities difficult to fill by other techniques, such as internal resorption, or for backfill after apical filling. Examples of devices: Obtura III, Calamus, Ultradent and GuttaFlow. The Obtura III system consists of a handheld “gun” that contains a chamber surrounded by a heating element into which pellets of gutta-percha are loaded. Silver needles (varying gauges of <b>20, 23 and 25</b>) deliver the thermoplasticized material. The regular β-phase of gutta-percha was used in old devices, while the newer used the α-phase. The gutta-percha comes in pellet form rather than cones.</p><p>Technique: (1) canal preparation is similar to other techniques, and the apical foramen should be as small as possible to prevent extrusion; (2) the canal walls are coated with sealer using the master apical file; (3) a gutta-percha pellet is preheated in the gun, and the needle is positioned in the canal so that it reaches within <b>3 to 5 mm of the apical preparation</b>; (4) gutta-percha is then gradually, passively injected by the “gun”; (5) the needle backs out of the canal as the apical portion is filled; (6) pluggers dipped in alcohol are used to compact the gutta-percha — compaction should continue until the gutta-percha cools and solidifies, to compensate for contraction on cooling; (7) both overextension and underextension can be expected by this procedure.</p>"},{"k":"Prof. Anas · Obturation techniques","t":"Carrier-based gutta-percha (Thermafil): 10 seconds to insert, then 2–4 minutes to cool","b":"<p>Thermafil and Soft Core cones were introduced as a gutta-percha obturation material with a solid core. The technique has a central plastic core which facilitates the adaptation of α-phase gutta-percha to the root-canal walls apically and laterally. Advantages included ease of placement and the pliable properties of the gutta-percha.</p><p>Technique: (1) size verifiers should fit passively at the corrected working length; (2) removal of the smear layer is strongly recommended because it enhances the seal; (3) after drying the canal, a light coat of sealer is applied and a carrier is marked, set to the predetermined working length; (4) the carrier is disinfected with <b>5.25% NaOCl for 1 minute</b> and rinsed in <b>70% alcohol</b>; (5) the carrier is then placed in the heating device to the specified temperature; (6) when the carrier is heated, there are approximately <b>10 seconds</b> in which to insert it into the canal — this is accomplished without rotation or twisting; (7) the position of the carrier is verified radiographically; (8) the gutta-percha is allowed <b>2 to 4 minutes</b> to cool before resecting the coronal portion of the carrier; (9) vertical compaction of the coronal gutta-percha can be accomplished; (10) an advantage is the potential for movement of gutta-percha into lateral and accessory canals, but extrusion of material beyond the apical extent of the preparation is a disadvantage.</p>"},{"k":"Prof. Anas · Obturation techniques","t":"Solvent techniques, pastes that contain paraformaldehyde, and why an immature apex is not just “closed with filling”","b":"<p>Gutta-percha can be plasticized with solvents such as chloroform, eucalyptol and xylol. A cone is softened and placed into the canal to adapt better to the wall; the mass hardens as the solvent evaporates. Disadvantages: (1) shrinkage occurs with the evaporation process, causing voids; (2) irritation of periradicular tissues by the solvent.</p><p>Pastes can adapt to complex internal canal anatomy, but the flow characteristic can result in extrusion or incomplete obturation. The inability to control the material is a distinct disadvantage, and when extrusion occurs it is possible that it can be corrected only by surgical intervention. In addition, some pastes are toxic because they include paraformaldehyde; therefore they are not used now.</p><p>Apical barriers may be necessary in cases with external apical root resorption, and where instrumentation extends beyond the confines of the root. However, in teeth with an immature root apex, the treatment should promote apical root formation rather than apical closure with filling. These techniques include root apexification, vital pulp therapies, or revascularization. Several materials can seal the apical area: dentin chips, calcium hydroxide, demineralized dentin, lyophilized bone, tricalcium phosphate, hydroxyapatite, and collagen. The barriers are designed to permit obturation without extrusion into the periradicular tissues, but are often incomplete and do not seal the canal.</p>"},{"k":"Prof. Anas · Apical barriers","t":"Dentin chips, calcium hydroxide, MTA, and the revascularization sequence","b":"<p><b>1. Dentin chips</b> are taken from shaving the internal wall of the root canal after instrumentation, and applied at the apical end to act as a biologic seal to enhance healing. Contaminated dentin with bacteria decreases the success of this treatment.</p><p><b>2. Calcium hydroxide</b> is extensively used as a common apical barrier. It has been shown to induce an apical barrier in apexification. It is free of bacterial contamination and may provide a better but imperfect apical seal. It enhances healing by inducing cementum and bone formation.</p><p><b>3. Mineral trioxide aggregate (MTA)</b> has been successfully employed as an apical barrier before obturation. MTA is sterile, biocompatible, and capable of inducing hard-tissue formation. Technique: after cleaning and shaping, the canal is dried and MTA is placed; the material is compacted into the apical portion of the root to form a barrier; after the material sets, gutta-percha can then be compacted without extrusion.</p><p><b>4. Pulp regenerative techniques including revascularization</b> aim to regenerate the vitality of the pulp, to increase the thickness of the canal walls, and to induce apical root development and root-apex formation. Technique: (a) copious irrigation; (b) minimal canal preparation; (c) use of an antibiotic paste as an interim medication; (d) at the next visit, bleeding is induced in the canal to induce a clot that is covered with MTA; (e) when the MTA is set, a definitive restoration can be placed to ensure a coronal seal.</p>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: when to obturate, System B numbers, Obtura and Thermafil, and revascularization","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">In this lecture, a necrotic tooth may be obturated in a single visit when:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">There is always purulent exudate and a sinus tract, because culture is mandatory and always reliable</button><button type=\"button\" class=\"opt\" data-i=\"1\">The tooth is asymptomatic. If there is tenderness to percussion, purulent exudate or a sinus tract, wait until the inflammation has subsided. A vital pulp may be cleaned, shaped and obturated in a single visit after complete preparation. Dependence on a negative culture has decreased, because it may give a false indication. Four success factors include no periapical lesion, no radiographic voids, obturation to within 2.0 mm of the radiographic apex, and an adequate coronal restoration</button><button type=\"button\" class=\"opt\" data-i=\"2\">Sensitivity to percussion is an indication to obturate immediately</button><button type=\"button\" class=\"opt\" data-i=\"3\">Success is judged only by tooth colour</button></div><div class=\"qexp\" hidden><p>اللب الحي: زيارة واحدة بعد تحضير كامل. المتنخر: زيارة واحدة فقط إذا بلا أعراض؛ إذا قرع أو قيح أو ناسور انتظر هدوء الالتهاب. المزرعة قلت أهميتها. النجاح: بلا آفة ذروية، بلا فراغات، ضمن 2 ملم من الذروة الشعاعية، وترميم تاجي كافٍ.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Continuous-wave (System B) settings and steps in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Temperature 37 °C; the plugger is prefitted to the radiographic apex and removed immediately with no hold time</button><button type=\"button\" class=\"opt\" data-i=\"1\">Plugger prefitted within 5–7 mm of canal length; master-cone tip cut 0.5 mm short of working length; System B in touch mode at 200 °C; after placing the cone, cut the excess at the orifice and push 3–4 mm apically; release heat and hold 10 seconds; then 1 second of heat, a 1-second pause, and remove the plugger; confirm the apical mass with a small flexible plugger. In this lecture’s warm vertical method the cone should fit in 1–2 mm of the apical stop; pluggers are prefitted at 5 mm intervals, and sectional backfill uses 3–4 mm pieces</button><button type=\"button\" class=\"opt\" data-i=\"2\">Warm lateral compaction never uses tug-back</button><button type=\"button\" class=\"opt\" data-i=\"3\">System B pluggers are only 0.02 taper</button></div><div class=\"qexp\" hidden><p>System B: السداد ضمن 5–7 ملم، قص رأس المخروط 0.5 ملم، 200 م°، دفع 3–4 ملم، مسك 10 ثوانٍ بعد إطفاء الحرارة، بعدين ثانية حرارة وثانية توقف. الرص العمودي بهالمحاضرة: المخروط ضمن 1–2 ملم من الموقف الذروي؛ سدادات كل 5 ملم؛ قطع 3–4 ملم. الرص الجانبي الحار يستخدم tug-back. سدادات System B ميول 0.04 إلى 0.12.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Obtura III and Thermafil figures in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Obtura needles must pass through the apical foramen; Thermafil is rotated vigorously for 10 minutes before insertion</button><button type=\"button\" class=\"opt\" data-i=\"1\">Obtura III uses silver needles of gauges 20, 23 and 25; the needle reaches within 3–5 mm of the apical preparation; pluggers are dipped in alcohol; both over- and underextension can be expected. Newer devices used α-phase pellets. Thermafil: verifiers fit passively at the corrected length; disinfect the carrier in 5.25% NaOCl for 1 minute and rinse in 70% alcohol; after heating you have about 10 seconds to insert it without rotation; allow 2–4 minutes to cool before resecting the coronal carrier. An advantage is filling of lateral and accessory canals; a disadvantage is apical extrusion</button><button type=\"button\" class=\"opt\" data-i=\"2\">Solvent techniques never shrink</button><button type=\"button\" class=\"opt\" data-i=\"3\">Pastes that contain paraformaldehyde are the first choice today</button></div><div class=\"qexp\" hidden><p>Obtura: إبر 20 و 23 و 25، ضمن 3–5 ملم من التحضير الذروي، سدادات بالكحول، وقد يصير حشو زائد أو ناقص. Thermafil: عقّم دقيقة بـ 5.25% واشطف بكحول 70%، 10 ثوانٍ للإدخال بلا دوران، تبريد 2–4 دقائق. ميزة القنوات الجانبية، وعيب البثق. المذيبات تتقلص وتهيج. معاجين البارافورمالديهايد ما تُستخدم هسه.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Revascularization and MTA as an apical barrier, in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">In an immature apex the only treatment is to close the apex immediately with a paraformaldehyde paste</button><button type=\"button\" class=\"opt\" data-i=\"1\">For an immature apex, treatment should promote apical root formation (apexification, vital pulp therapy, or revascularization) rather than merely closing the apex with filling. Revascularization: copious irrigation, minimal preparation, an interim antibiotic paste; at the next visit induce bleeding to form a clot, cover it with MTA, and after the MTA sets place a definitive restoration for a coronal seal. MTA is sterile, biocompatible and induces hard tissue: dry the canal, compact MTA apically, and after it sets compact gutta-percha without extrusion. Calcium hydroxide is a common barrier and induces cementum and bone, but the seal is better yet imperfect. Contaminated dentin chips reduce success</button><button type=\"button\" class=\"opt\" data-i=\"2\">MTA must be placed on a wet, uncleaned canal and never allowed to set</button><button type=\"button\" class=\"opt\" data-i=\"3\">Dentin chips work best when they are heavily contaminated</button></div><div class=\"qexp\" hidden><p>الذروة غير المكتملة: شجّع تكوّن الجذر، مو سد الحشوة فقط. إعادة الأوعية: غسول غزير، تحضير أصغري، معجون مضاد حيوي، نزف/جلطة، غطاء MTA، بعد الشك ترميم نهائي. الـ MTA عقيم ومتوافق ويحث نسيجاً صلباً. هيدروكسيد الكالسيوم شائع ويحث ملاط وعظم، والختم أحسن بس مو كامل. رقائق العاج الملوثة تقلل النجاح.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">List the four radiographic success factors in this lecture, and the four functions of a sealer.</button><div class=\"flash-a\" hidden>Success factors: absence of a periapical lesion; no radiographic voids; obturation to within 2.0 mm of the radiographic apex; and an adequate coronal restoration. Sealer functions: cement the core to the canal wall; fill (and mark) irregularities that gutta-percha cannot fill, including lateral and accessory canals; lubricate placement of the master cone; act as a bactericidal agent.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا سابع ملف: مواد حشو القناة وتقنيات الحشو من محاضرات الأستاذ أنس، صفحات 122–134. بعض أرقام تركيب الـ gutta-percha تختلف عن ملف 4 — هنا نكتب أرقام هالمحاضرة. شرح عراقي مفصل ويه أسئلة.</p>","<p>أغلب التقنيات تستخدم مادة قلب (<b>core</b>) ويه سيلر. مهما كانت مادة القلب، السيلر ضروري حتى تحصل ختم محكم للسوائل.</p><p>وظائف السيلر أربعة: يلزّق القلب بجدار القناة؛ يملأ (ويعلّم) التعرجات اللي الـ gutta-percha ما تملاها، مثل القنوات الجانبية والإضافية؛ يزيّت إدخال المخروط الرئيسي؛ ويعمل كعامل قاتل للجراثيم.</p><p>السيلر المثالي: لزج يلتصق؛ ختم محكم (<b>hermetic</b>)؛ ظليل للأشعة؛ بودرة ناعمة جداً حتى الخلط يصير ناعم؛ ما يتقلص بالشك؛ ما يصبغ السن؛ مثبّط للجراثيم؛ شك بطيء؛ ما يذوب بسوائل النسيج؛ النسيج يتحمله؛ ويذوب بالمذيبات الشائعة (حتى تقدر تشيله بإعادة العلاج).</p>","<p>سيلرات أوكسيد الزنك والأوجينول مستخدمة من سنين. خصائصها بهالمحاضرة: تُمتص إذا طلعت لمنطقة حول الذروة؛ شك بطيء؛ تتقلص بالشك؛ تذوب؛ تصبغ بنية السن؛ وفيها مفعول مضاد للجراثيم. يعني مو مثالية بكل النقاط — تتصبغ وتتقلص وتذوب.</p><p>الأنواع: <b>Rickert</b> أول تركيبة (بودرة وسائل). البودرة: أوكسيد زنك، دقائق فضة، راتنج، ويوديد الثايمول. السائل: أوجينول وبلسم كندا. الفضة مهمة للتأثير المضاد للجراثيم والظلالية، <b>بس تصبغ السن</b>. تصلح ويه التقنيات الحرارية. <b>Procosol</b> تعديل على Rickert بشيل دقائق الفضة. <b>Roth</b> تعديل غير مصبّغ. <b>Tubli-Seal</b> أساس/حفاز، يشك أسرع من نظام البودرة والسائل. وفي سيلرات بدون أوجينول (مثل Nogenol) حتى ما تهيج.</p>","<p>سيلرات هيدروكسيد الكالسيوم انوجدت للمفعول المضاد للجراثيم ولإمكانية تكوين عظم وملاط بسبب الـ Ca(OH)<sub>2</sub>. بس البحث لقى هالفعل <b>محدود جداً</b>، لأن السيلر ما يقدر يحافظ على أس هيدروجيني عالي على سطح القناة مع الوقت. أمثلة: Sealapex (أساس/حفاز)، Apexit و Apexit Plus.</p><p>سيلرات الأيونومر الزجاجي بسبب التصاقها بالعاج. مثال: <b>Ketac-Endo</b>. تلتصق بجدار القناة؛ صعب تعالج جدران العاج بالثلث الذروي والأوسط بالمواد المهيئة حتى تستقبل السيلر؛ أصعب بالإزالة إذا احتجت إعادة علاج؛ ومفعولها المضاد للجراثيم قليل.</p>","<p>سيلرات الراتنج للالتصاق وبدون أوجينول. فئتان: إيبوكسي وميثاكريلات.</p><p>الإيبوكسي: <b>AH-26</b> شك بطيء ويحرر فورمالديهايد أثناء الشك. <b>AH Plus</b> تعديل ما يحرر فورمالديهايد، ووقت العمل تقريباً <b>4 ساعات</b>.</p><p>الميثاكريلات ومصطلح <b>monoblock</b>: فراغ القناة ممتلئ بشكل كامل، كتلة صلبة بلا فجوات من مواد وواجهات مختلفة، والفائدة المفترضة تحسين الختم ومقاومة الكسر بنفس الوقت. <b>EndoREZ</b> راتنج ميثاكريلات ثنائي التصلب، محب للماء، يجري للقنوات الإضافية والنبيبات بعد شيل اللطاخة بالهايبوكلوريت و EDTA، ويلتصق بالجدران وبالقلب إذا المخاريط مغلفة بالراتنج. <b>Diaket</b> راتنج بولي فينيل كان أصلاً لحشو نهاية الجذر، وختمه أفضل، وتوافقه الحيوي أعلى بالقوام الأثخن. الجيل الرابع (MetaSEAL و RealSeal) فيه مونومر حمضي يلتصق وحده بدون تخريش وتهيئة منفصلين. <b>Epiphany</b> يُستخدم ويه مادة <b>Resilon</b>.</p>","<p>السليكون: <b>RoekoSeal</b> بولي فينيل سيلوكسان، يتوسع قليلاً بالشك. <b>GuttaFlow</b> (و 2): خليط بارد سائل يُخلط بالجهاز، عبارة عن دقائق gutta-percha مضافة لـ RoekoSeal، بكبسولة تُحقن بالقناة وبعدين مخروط رئيسي واحد. الختم يقارب باقي التقنيات.</p><p>السيلرات الحيوية الخزفية (<b>bioceramic</b>): أوكسيد زركونيوم، سيليكات كالسيوم، فوسفات كالسيوم أحادي القاعدة، هيدروكسيد كالسيوم، ومواد حشو وتكثيف. محبة للماء وتستخدم رطوبة القناة حتى تكتمل الشك؛ <b>ما تتقلص بالشك</b>؛ حيوية النشاط تحرّض خلايا الذروة (بانيات ملاط وعظم) حتى تجدّد النسيج؛ ومضادة للجراثيم أثناء الشك. أمثلة: BioRoot RCS، iRoot SP، و TotalFill BC Sealer.</p>","<p>ثلاث طرق لوضع السيلر. الأولى: طلي المخروط الرئيسي وإدخاله ببطء لطول العمل الكامل — قد ما تكفي بالقنوات البيضية أو الواسعة. الثانية: لولب Lentulo أو ملف/موسّع، يدوياً أو دوّار، بحركة <b>عكس عقارب الساعة</b> لين السيلر يبان من فوهة القناة. الثالثة وهي <b>الأكثر توصية</b>: حقن السيلر بقنية مرنة (تجي ويه السيلرات الخزفية). أولاً ادفع السيلر لين يطلع من رأس القنية حتى تشيل الهواء المحبوس. بعدين حط الرأس بالثلث التاجي أو الأوسط وادفع لين السيلر يطلع من الفوهة، وبعدها أدخل المخروط الرئيسي لطول العمل الكامل.</p>","<p>الـ gutta-percha بوليمر بلوري خطي، أصلها 1,4-بولي أيزوبرين، أصلب وأكثر هشاشة وأقل مرونة من المطاط الطبيعي. شكلان: ألفا (من الشجرة الطبيعي) وبيتا (المعالَج اللي نستخدمه بحشو الجذور).</p><p>التحوّلات الحرارية احفظها: من بيتا إلى ألفا حوالي <b>46 م°</b>. طور غير بلوري حوالي <b>54–60 م°</b>. إذا بردت ببطء شديد ترجع ألفا؛ التبريد العادي يرجعها بيتا. المخاريط تلين فوق <b>64 م°</b>. تذوب بالكلوروفورم والهالوثين والزايلين. التركيب بهالمحاضرة: حوالي <b>20%</b> gutta-percha، وأكسيد الزنك هو الأساس <b>60–75%</b>، والباقي <b>5–10%</b> راتنجات وشموع وكبريتات معدن. ملف 4 عنده تفصيل أرقام مختلف — لا تخلطهم.</p>","<p>المخاريط ما تُعقّم بالحرارة. عقّمها بـ <b>هايبوكلوريت 5.25% لمدة دقيقة</b>. تقدر تستخدم غلوتارالدهيد 2%، كلورهيكسيدين 2%، أو كحول إيثيلي 70%، بس <b>ما هي بفعالية الهايبوكلوريت</b>.</p><p>الضغط أثناء الحشو ما يضغط المادة بمعنى الضغط الحجمي، بل يرصّ المخاريط حتى الحشو الثلاثي الأبعاد يكتمل. رص الـ GP المعالَجة بالحرارة يعوّض التقلص البسيط بعد التبريد (حوالي <b>1–2%</b>). الـ GP وحدها ما تكفي لأنها ما تلتصق — السيلر دائماً لازم. المخاريط بميول 0.02 و 0.04 و 0.06.</p>","<p>ميزات الـ GP بهالمحاضرة: خاملة، ثابتة الأبعاد، غير محسّسة، لا تصبغ العاج، ظليلة، قابلة للرص، تلين بالحرارة وبالمذيبات. عيوبها: قلة الصلابة، ما تلتصق بالعاج، وما تتكيف كاملة ويه المناطق الضيقة.</p><p><b>Resilon</b> مادة بوليمر صناعية حرارية، تاخذ نفس أحجام الـ GP، مرونتها مشابهة، أساسها بوليستر ويه زجاج حيوي ومواد ظليلة (أوكسي كلوريد البزموت وكبريتات الباريوم) بحوالي <b>65%</b> حشو. تلين بالحرارة وتذوب بالكلوروفورم. بس البحث لقى إنها <b>مو ثابتة وتتكسر داخل السن مع الوقت</b> (تحلل إنزيمي)، وتأثر سلباً على النجاح طويل الأمد، و<b>انسحبت من السوق سنة 2014</b>.</p><p>مخاريط الفضة كانت مرنة للأقنية الضيقة المنحنية، بس <b>ما تُستخدم هسه</b>: إذا لمست سوائل النسيج أو اللعاب تتآكل ونواتج التآكل سامة للخلايا. مخاريط أو زرعات Vitallium صلبة وغير مرنة، كانت تُستخدم كزرعات لبية.</p>","<p>ثلاث أسئلة على AH Plus والخزفيات، تركيب وحرارة الـ GP، وResilon وطريقة وضع السيلر.</p>","<p>الجراثيم ونواتجها السبب الرئيسي لأمراض اللب والذروة، والتعقيم الكامل الصعب ثابت. لذلك هدف الحشو الثلاثي الأبعاد: ختم محكم غير نفّاذ لكل جهاز القناة، حتى نمنع التسرب من الفم ومن الذروة.</p><p>تقييم العلاج غير الجراحي يعتمد أساساً على صورة بعد العلاج. أربعة عوامل نجاح بهالمحاضرة: غياب آفة ذروية؛ الحشو بلا فراغات شعاعية؛ الحشو ضمن <b>2.0 ملم من الذروة الشعاعية</b>؛ وترميم تاجي كافٍ.</p><p>الأهداف: منع تسرب تاجي للجراثيم أو لغذائها في الفراغ الميت؛ حصر أي جراثيم بقيت بعد التنظيف حتى ما تتكاثر؛ منع تسرب سوائل الذروة للقناة (هذا هم غذاء للجراثيم)؛ وتهيئة بيئة حيوية مناسبة لشفاء النسيج.</p>","<p>متى تحشي؟ إذا في حساسية للقرع، هذا التهاب بالرباط — <b>لا تحشي قبل ما الالتهاب يهدى</b>.</p><p>إذا اللب <b>حي</b>: تقدر تحشي بزيارة واحدة بعد تنظيف وتحضير كامل. إذا اللب <b>متنخر</b>: زيارة واحدة مسموحة إذا السن بلا أعراض. إذا السن عرضي (إيلام قرع، نضح قيحي، أو ناسور)، فهذا التهاب ذروي نشط — أخّر الحشو لين الالتهاب يهدى.</p><p>الاعتماد على المزرعة السلبية هسه قلّ، لأنها قد تعطي مؤشر كاذب عن حالة الالتهاب الحقيقية. (ملف 4 هم قال المزرعة موضع خلاف.)</p>","<p>الرص الجانبي الحار: مباعد حار يلين الـ GP أثناء الرص الجانبي حتى التكيف أحسن، فراغات أقل وثبات أبعاد أحسن. المخروط الرئيسي لطول العمل ويه tug-back خفيف؛ المباعد الحار يدخل جانبياً ويفتح مكان للمخاريط المساعدة. ممكن مباعد كهربائي حار.</p><p>الرص العمودي الحار: حشو ثلاثي الأبعاد. القناة قمع متوهج مستمر، والثقبة أصغر ما يمكن. بهالمحاضرة المخروط لازم ينزل ضمن <b>1–2 ملم من الموقف الذروي</b> (مو نفس صياغة ملف 4 عن عدم ضرورة الـ tug-back) — لأن المادة اللينة تتحرك ذروياً وتتكيف أحسن. السدادات تُقاس مسبقاً كل <b>5 ملم</b>. الحشو الراجع بقطع <b>3–4 ملم</b> (الطريقة القطاعية): حط القطعة، سخّن، ارصّ بسداد.</p>","<p>الموجة المستمرة (<b>continuous wave</b>) تنويع للرص العمودي الحار، ويه جهاز <b>System B</b> وسدادات ستينلس لينة بميول 0.04 إلى 0.12.</p><p>الخطوات بدقة: السداد يُقاس مسبقاً ضمن <b>5–7 ملم من طول القناة</b>. قص رأس المخروط <b>0.5 ملم أقصر من طول العمل</b>، وطلي سيلر. الجهاز على وضع اللمس وحرارة <b>200 م°</b>. حط المخروط، اقطع الزائد عند الفوهة بالسداد الحار، وادفع المادة <b>3–4 ملم ذروياً</b>. اطفي الحرارة و<b>امسک 10 ثوانٍ</b> بضغط مستمر حتى تعوّض تقلص التبريد. وانت ماسك الضغط الذروي، شغّل الحرارة <b>ثانية واحدة</b>، انتظر <b>ثانية</b>، وبعدين شيل السداد. سداد صغير مرن يؤكد إن الكتلة الذروية بردت وما انخلعت. بعد الصورة، كمّل الحشو الراجع بأي طريقة.</p><p>المميزات: الرص والحرارة بنفس الوقت؛ سيطرة ذروية ممتازة؛ سريع وسهل ومتوقع؛ رص جيد للقناة الرئيسية والجانبية؛ والرص يصير بكل المستويات بنفس حركة الأداة للذروة.</p>","<p>الحقن الحراري: تليين الـ GP برا السن وحقنها بالقناة. تفيد لتعرجات صعبة مثل الامتصاص الداخلي، أو للحشو الراجع بعد الحشو الذروي. أمثلة: Obtura III، Calamus، Ultradent و GuttaFlow. الـ Obtura III مسدس ويه حجرة تسخين يتحمّل كريات GP، وإبر فضة بعيارات <b>20 و 23 و 25</b>. الأجهزة القديمة استخدمت طور البيتا، والجديدة طور الألفا. المادة كريات مو مخاريط.</p><p>الثقبة أصغر ما يمكن حتى المادة ما تطلع. طلي السيلر بالملف الذروي الرئيسي. الإبرة توصل ضمن <b>3–5 ملم من التحضير الذروي</b>. احقن تدريجياً وبسكون؛ الإبرة تطلع للخلف كلما امتلأت الذروة. ارصّ بسدادات مغموسة بالكحول لين المادة تبرد وتتصلب (تعويض التقلص). بهالإجراء تتوقع حشو زائد أو ناقص — يعني السيطرة مو مطلقة.</p>","<p>الحشو على حامل (Thermafil و Soft Core): قلب بلاستك مركزي يساعد الـ GP طور ألفا تتكيف ذروياً وجانبياً. سهلة الوضع والمادة لينة.</p><p>أدوات التحقق من الحجم تنزل بسكون لطول العمل المصحح. شيل الطبقة اللطاخة بقوة يُنصح به لأنه يحسّن الختم. طلي خفيف للسيلر، وعلّم الحامل على طول العمل. عقّم الحامل بـ <b>هايبوكلوريت 5.25% دقيقة</b> واشطفه بـ <b>كحول 70%</b>. بعد التسخين عندك تقريباً <b>10 ثوانٍ</b> تدخل الحامل <b>بدون دوران أو فتل</b>. أكّد الموقع بالأشعة. اترك الـ GP تبرد <b>2–4 دقائق</b> قبل ما تقص الجزء التاجي من الحامل. تقدر ترصّ تاجياً رص عمودي. الميزة: المادة قد تدخل القنوات الجانبية والإضافية. العيب: بثق وراء نهاية التحضير الذروي.</p>","<p>تقنيات المذيب: تليين الـ GP بالكلوروفورم أو الأوكاليبتول أو الزايلول حتى تتكيف أحسن، وتتصلب بعد تبخر المذيب. العيوب: تقلص مع التبخر يترك فراغات؛ وتهيّج أنسجة حول الذروة من المذيب.</p><p>المعجونات تتكيف ويه التشريح الداخلي المعقد، بس الجريان قد يسبب بثق أو حشو ناقص. السيطرة ضعيفة، وإذا صار بثق قد ما ينصلح إلا بجراحة. بعضها سام لأنه يحتوي بارافورمالديهايد — <b>لذلك ما تُستخدم هسه</b>.</p><p>الحواجز الذروية قد تلزم ويه امتصاص جذري ذروي خارجي، أو إذا التحضير تجاوز حدود الجذر. أما السن ويه ذروة غير مكتملة: العلاج لازم يشجّع <b>تكوّن الجذر الذروي</b>، مو بس سد الذروة بحشوة. هذا يشمل التذريّ، علاجات اللب الحي، أو إعادة الأوعية. مواد الحاجز: رقائق عاج، هيدروكسيد كالسيوم، عاج منزوع الكلس، عظم مجفف بالتجميد، فوسفات ثلاثي الكالسيوم، هيدروكسي أباتيت، وكولاجين. الحواجز غالباً ناقصة وما تختم القناة تماماً، بس تساعد تحشي بدون بثق.</p>","<p>رقائق العاج: من كشط الجدار الداخلي بعد التحضير، تتحط بالذروة كختم حيوي يساعد الشفاء. إذا العاج ملوث بالجراثيم، النجاح يقل.</p><p>هيدروكسيد الكالسيوم: حاجز ذروي شائع، يحث حاجزاً ذروياً بالتذريّ، خالٍ من التلوث الجرثومي، ختمه أحسن بس مو كامل، ويحث تكوين ملاط وعظم.</p><p><b>MTA</b>: عقيم، متوافق حيوياً، يحث تكوين نسيج صلب. بعد التنظيف والتحضير، جفّف القناة وحط MTA وارصّه بالجزء الذروي ليصير حاجز. بعد ما يشك، ارصّ الـ GP بدون بثق.</p><p>تقنيات تجديد اللب ومنها إعادة الأوعية (<b>revascularization</b>): الهدف إرجاع حيوية اللب، زيادة سمك جدران القناة، وحث نمو الجذر وتكوّن الذروة. الخطوات: غسول غزير؛ تحضير أصغري؛ معجون مضاد حيوي كدواء مؤقت؛ بالزيارة الجاية حرّض نزف بالقناة حتى يتكون جلطة وغطيها بـ MTA؛ بعد شك الـ MTA حط ترميم نهائي لضمان الختم التاجي.</p>","<p>أربعة أسئلة ختامية + بطاقة + زر الدرجة: توقيت الحشو، أرقام System B، Obtura و Thermafil، وإعادة الأوعية و MTA. إذا غلطت ارجع للشرائح.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
