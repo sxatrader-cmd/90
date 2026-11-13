@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Prosthodontics File 23 — Maxillofacial Prosthesis</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Prosthodontics · 5th year</div>
+    <h1>Maxillofacial Prosthesis</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of the maxillofacial-prosthesis lectures by Lect. Dr. Mustafa Saadi Ali (PDF pages 581–591).</p>
+    <ul>
+      <li>Definitions, acquired / congenital / developmental defects, indications and objectives, and the maxillofacial team</li>
+      <li>Extraoral prostheses (nasal, auricular, orbital, cranial, radiation carrier, carrier stent) and intraoral types</li>
+      <li>Obturators: functions, Aramany Classes I–VI, and surgical (~10 days), interim (2 weeks to 3–6 months) and definitive types</li>
+      <li>Feeding appliance, speech aid, palatal lift (incompetence versus anatomic deficiency), and Cantor and Curtis mandibular-resection types</li>
+      <li>Construction steps (monoplane occlusion is usually used) and retentive aids (anatomic, adhesives, magnets, clasps, buttons, clips, implants)</li>
+      <li>Total run time: <b>22 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 11</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Prosthodontics · File 23","t":"Maxillofacial prosthesis","b":"<p>University of Baghdad, College of Dentistry — Prosthodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This 5th-year file covers PDF pages 581–591 (Lect. Dr. Mustafa Saadi Ali / د. مصطفى سعدي علي): maxillofacial prosthetics — definitions and types of defects, indications and objectives, the team, extraoral and intraoral prostheses (including obturators and Aramany’s and Cantor–Curtis classifications), construction steps, and means of retention.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end.</p>"},{"k":"5th year · Maxillofacial prosthesis","t":"Definitions, types of defect, indications and objectives","b":"<p><b>Maxillofacial prosthetics</b> is the branch of prosthodontics concerned with the restoration and/or replacement of the stomatognathic and craniofacial structures with prostheses that may or may not be removed on a regular or elective basis. A <b>maxillofacial prosthesis</b> is an artificial device, or any prosthesis, used to replace part or all of any stomatognathic and/or craniofacial structure.</p><p>Maxillofacial defects may be caused by congenital malformation, trauma, or surgical resection of a tumor. They can be: (1) <b>acquired</b> — the result of trauma, or of disease and its treatment (for example a soft and/or hard palate defect after removal of a squamous-cell carcinoma); (2) <b>congenital</b> — typically craniofacial defects present from birth (the most common are cleft defects of the palate that may include the premaxillary alveolus); (3) <b>developmental</b> — defects that occur because of a genetic predisposition expressed during growth and development.</p><p>Indications: when plastic surgery is contraindicated; when recurrence of malignancy is expected; when radiotherapy is being instituted (a radium appliance and a radium-protector shield can be used); and a temporary maxillofacial prosthesis can be used when plastic surgery requires various steps.</p><p>Objectives: (1) improve or restore esthetics or cosmetic appearance, which is of prime importance; (2) improve or restore functions, including speech when part of the jaw or palate is lost, nutrition when part of the jaw is lost, and avoiding escape of food into the nasal cavity in children with a cleft, overcoming a feeding problem; (3) protect the tissues — adjacent tissue as with a radium protector, also to protect a wound, stop bleeding and carry medication after surgery, and protect the teeth as in a mouth guard for contact sport; (4) therapeutic or healing effects by placement of a radium applicator, and help in healing fracture segments of facial bones; (5) psychologic therapy, to raise the morale of the patient.</p>"},{"k":"5th year · Maxillofacial prosthesis","t":"The maxillofacial team, and how prostheses are classified","b":"<p>Maxillofacial team members listed in this lecture: plastic surgeon; prosthodontist; radiotherapist; oral surgeon; orthodontist; dental technician; ENT specialist; psychiatrist; social workers; neurologist; and physiatrist.</p><p>Classification of maxillofacial prostheses:</p><ul><li><b>Extraoral (cranial or facial):</b> nasal prosthesis; auricular prosthesis; eye (orbital, ocular) prosthesis; radiation carrier; cranial prosthesis; and carrier stent.</li><li><b>Intraoral:</b> obturator; feeding prosthesis; mandibular prosthesis; speech prosthesis; and palatal-lift prosthesis.</li><li><b>Combined (extra- + intraoral):</b> lost part of the maxilla or mandible with facial extension.</li></ul>"},{"k":"5th year · Maxillofacial prosthesis","t":"Extraoral prostheses: nose, ear, eye, cranial plate, radiation carrier and carrier stent","b":"<p><b>Nasal prosthesis:</b> a removable prosthesis attached to the skin which artificially restores part or all of the nose. Fabrication requires creation of an original mold; additional prostheses usually can be made from the same mold, and, assuming no further tissue changes, the same mold can be used for extended periods.</p><p><b>Auricular prosthesis:</b> an artificial ear produced from a previously made mold. Unfortunately, the presence of hair and the absence of anatomic irregularities often result in unfavorable adhesive retention. Endosseous implants may permit positive retention of an auricular prosthesis.</p><p><b>Eye (orbital, ocular) prosthesis:</b> loss of an eye is an emotional and psychologic problem. An orbital prosthesis is created to restore a more normal anatomical structure and cosmetic effect. This type of restoration needs retention by implant, especially when the defect is large.</p><p><b>Cranial prosthesis:</b> a biocompatible, permanently implanted replacement of a portion of the skull bones.</p><p><b>Radiation carrier</b> (also called a radiation applicator, radium carrier, or radiotherapy prosthesis): a device used to administer radiation to confined areas by means of capsules, beads or needles of radiation-emitting materials such as radium or cesium. Its function is to hold the radiation source securely in the same location during the entire period of treatment. Radiation oncologists occasionally request these devices to achieve a close approximation and controlled application of radiation to a tumor deemed amenable to eradication.</p><p><b>Carrier stent:</b> used to carry a skin or mucous-membrane graft in the vestibule, palate or floor of the mouth in approximation to periosteum during initial healing, and to prevent formation of a hematoma between the graft and the underlying bone and periosteum.</p>"},{"k":"5th year · Maxillofacial prosthesis","t":"The obturator: definition, functions, and Aramany’s classification","b":"<p>An <b>obturator</b> is a maxillofacial prosthesis used to close, cover or maintain the integrity of the oral and nasal compartments resulting from a congenital, acquired or developmental disease process (for example cancer, cleft palate, or osteoradionecrosis of the palate). It facilitates speech and deglutition by replacing tissues lost due to the disease process and can, as a result, reduce nasal regurgitation and hypernasal speech, and improve articulation, deglutition and mastication.</p><p>Functions of an obturator: feeding; maintains the wound/defect area clean and holds dressings or packs post-surgically in maxillary resections; enhances healing of traumatic or post-surgical defects; helps to reshape or reconstruct the palatal contour and/or soft palate; and improves speech.</p><p><b>Aramany’s classification</b> for partially edentulous maxillectomy dental arches: Class I — midline resection; Class II — unilateral resection; Class III — central resection; Class IV — bilateral anteroposterior resection; Class V — posterior resection; Class VI — anterior resection.</p>"},{"k":"5th year · Maxillofacial prosthesis","t":"Surgical, interim and definitive obturators","b":"<p>A <b>surgical obturator</b> is a temporary maxillofacial prosthesis inserted during or immediately following surgical or traumatic loss of a portion or all of one or both maxillary bones and contiguous alveolar structures (gingival tissue, teeth). It usually has no teeth. It is secured either by a palatal screw, a suture, or circum-zygomatic wires, and is mostly used for about 10 days, more or less, depending on the treatment plan. Advantages: provides a matrix on which surgical packing can be placed; reduces oral contamination of the wound and the incidence of local infection; enables the patient to speak more effectively by reproducing normal palatal contour and covering the defect; permits deglutition, so the nasogastric tube may be removed earlier; lessens the psychological impact of surgery; and reduces the period of hospitalization.</p><p>An <b>interim (transitional) obturator</b> is used from 2 weeks until 3–6 months of the post-operative period; it is the transitive prosthesis between the immediate surgical obturator and the permanent definitive obturator. The closed bulb extending into the defect is usually hollow. The patient is usually seen every 2 weeks because of the rapid soft-tissue changes during organization and healing. Correction of the tissue–prosthesis relation can be made by relining. The temporary obturator may need to function comfortably for as long as 6 months. Timing depends on the size of the defect, the progress of healing, and the presence or absence of teeth.</p><p>A <b>definitive obturator</b> is made when further tissue changes or recurrence of tumor are unlikely and more permanent prosthetic rehabilitation can be achieved; it is intended for long-term use. Reasons for constructing a new definitive obturator: periodic addition of lining material increases the bulk and weight, and this temporary material may become rough and unhygienic; if the anterior teeth were included in the resection, adding anterior denture teeth can be of great psychological benefit; and if retention and stability are inadequate, occlusal contact on the defect side may result in improvement of these aspects.</p>"},{"k":"5th year · Maxillofacial prosthesis","t":"Feeding appliance, speech aid, palatal lift, and mandibular resection (Cantor and Curtis)","b":"<p>A <b>feeding prosthesis (baby feeding appliance)</b> maintains the right and left maxillary segments of an infant cleft-palate patient in their proper orientation until surgery is performed to repair the cleft. It closes the oral–nasal cavity defect, thus enhancing sucking and swallowing.</p><p>A <b>speech-aid prosthesis</b> is functionally shaped to the palatopharyngeal musculature to restore or compensate for areas of the soft palate that are deficient because of surgery or a congenital anomaly. It consists of a palatal component, which contacts the teeth to provide stability and anchorage for retention; a palatal extension, which crosses the residual soft palate; and a pharyngeal component, which fills the palatopharyngeal port during muscular function, restoring the speech valve of the palatopharyngeal region.</p><p>A <b>palatal-lift prosthesis</b> positions a flaccid soft palate posteriorly and superiorly to narrow the palatopharyngeal opening, improving oral air pressure and therefore speech. Patients who have a structurally normal soft palate and pharyngeal port can still demonstrate hypernasal speech caused by paralysis of the regional musculature. This condition is <b>palatopharyngeal incompetence</b>, because the failure lies in function, not in anatomic deficiency.</p><p>A <b>mandibular resection prosthesis</b> is provided to patients who have acquired mandibular defects with loss of teeth and significant portions of the mandible. Resection may preserve mandibular continuity or may result in discontinuity defects. <b>Cantor and Curtis</b> classification: Type I — the inferior border is intact and normal movements can be expected; Type II — the mandible is often resected in the region of the second premolar and first molar; Type III — a defect to the midline or farther toward the intact side, leaving half or less of the mandible remaining; Type IV — uses the same design concepts as Type II or III with the corresponding edentulous areas; Type V — when the anterior or posterior denture-bearing area has been surgically reconstructed, the removable partial denture design is similar to the Type I resection design.</p>"},{"k":"5th year · Maxillofacial prosthesis","t":"Construction of an obturator: impression, jaw relation, try-in and delivery","b":"<p><b>Primary impression.</b> Gauze may be placed in the defect-undercut area, and a preliminary impression is made in a stock tray with irreversible hydrocolloid while tissues are still in the healing phase. Be careful: in certain cases alginate may tear in the defect during removal. Silicone can also be used, and in some cases two compatible materials in a modified technique. The impression must extend as far as possible into the defected areas. The primary cast is used to fabricate a custom tray for the definitive impression; undercuts that may interfere with tray construction must be blocked, and relief areas determined.</p><p><b>Final impression</b> is made in a properly extended, well-adjusted special tray; sectional or double-tray techniques can be used. Proper border molding and flange extension must be established. <b>Digital impression:</b> laser surface scanning can acquire three-dimensional imaging data of the patient’s facial defect, transferred to a CAD/CAM interactive program, producing a model for fabrication of the facial prosthesis.</p><p><b>Jaw relation.</b> Minimal block-out should be made, because excessive block-out results in an unstable record base. Improve esthetics by attempting to compensate for the loss of facial support on the defect side. The occlusal plane and wax level are difficult in most cases because of tissue scar and the block-out procedure. Transfer the jaw relation to a semi-adjustable articulator; <b>monoplane occlusion is usually used</b> for these patients. At <b>try-in</b>, verify vertical dimension, centric jaw relation, and esthetics. At <b>delivery</b>, use pressure-indicating paste to check pressure areas, remount the prosthesis for occlusal adjustment, and instruct the patient to maintain good oral hygiene.</p>"},{"k":"5th year · Maxillofacial prosthesis","t":"Means of retention: anatomic, adhesives, mechanical aids, and implants","b":"<p>The prosthodontist has a major role because of knowledge of anatomy, physiology and pathology and skill with materials compatible with remaining tissues, but is limited by inadequate materials for facial restorations, movable tissue beds, difficulty retaining a large prosthesis, and the patient’s capability to accept the final result.</p><p><b>1. Anatomic retention.</b> Intraoral retention uses hard and soft tissues (teeth, mucosa, and bony tissues). Anatomic undercut areas are welcome after surgery; they may be found in the palatal, cheek, retromolar, labial, septal, posterior nasopharyngeal or anterior-nasal-spine areas. Additional aids include proper occlusion, a proper post dam, and surface adhesion. Extraoral retention uses hard and soft tissues of the head and neck — for example any bony wall of a defect, or a cartilaginous remnant of the ear. Soft tissues are more troublesome because of flexibility, mobility, lack of bony support, and lower resistance to displacement.</p><p><b>2. Adhesives</b> for facial prostheses include acrylic resin, latex, silicone, pressure-sensitive tapes, spirit gum, and water-based adhesives. Selection considers the prosthetic materials used. Factors: strength of the bond to skin and to the prosthetic material; biocompatibility; design and material of the prosthesis; composition of the adhesive; type and quality of the patient’s skin; and convenience of handling and removing. Advantages: ease of application; readily available; no surgical procedures; less expensive than implants. Disadvantages: may tear at the margins; routine removal may damage external pigmentation; patients with poor dexterity may have difficulty applying it; some may develop allergic or irritative responses.</p><p><b>3. Mechanical retention.</b> Eyeglasses may retain a nasal prosthesis with newly designed frames for a patient whose nasal bridge has been surgically removed. Magnets are used widely: by implanting a pole in the jaw or soft tissue and fixing the other pole inside the prosthesis; to join a large two-part prosthesis after total maxillectomy with limited mouth opening (the parts are inserted separately then connected); to connect intra- and extra-oral parts; and the repulsion effect of magnets of the same pole, fixed at the posterior area of upper and lower dentures, used in retention of those dentures. Cast clasps are the most common method for retaining an intraoral prosthesis, engaging an undercut and providing stability, splinting, bilateral bracing, reciprocation, and retention. Acrylic buttons — mushroom-shaped projections on an acrylic substructure that fits into the defect — allow the final prosthesis to snap over them. Retentive clips (metallic or plastic) snap over a bar used as a superstructure connected to implants; they have more retentive ability in terms of breakaway force than magnets. Implants: intraoral prostheses may be retained by osseointegrated implants as an ordinary implant-supported overdenture; extraoral prostheses by implants in the facial bones; retention to implants is by ball-and-socket or by magnets.</p>"},{"k":"اختبر نفسك","t":"Quiz: Aramany classes, and surgical versus interim obturators","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">In Aramany’s classification of partially edentulous maxillectomy arches, a midline resection is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Class VI (anterior resection)</button><button type=\"button\" class=\"opt\" data-i=\"1\">Class I (midline resection); Class II is unilateral, III central, IV bilateral anteroposterior, V posterior, and VI anterior</button><button type=\"button\" class=\"opt\" data-i=\"2\">Class V only, which is a feeding appliance</button><button type=\"button\" class=\"opt\" data-i=\"3\">Cantor and Curtis Type I, because the inferior mandibular border is intact</button></div><div class=\"qexp\" hidden><p>Aramany: I منتصف الخط؛ II أحادي؛ III مركزي؛ IV أمامي-خلفي ثنائي؛ V خلفي؛ VI أمامي. تصنيف Cantor و Curtis خاص باستئصال الفك السفلي (النوع I الحافة السفلية سليمة).</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A surgical obturator, compared with an interim obturator, is typically:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The long-term definitive prosthesis, with a hollow bulb, reviewed every 2 weeks for 3–6 months</button><button type=\"button\" class=\"opt\" data-i=\"1\">Inserted during or immediately after maxillary loss, usually without teeth, secured by a palatal screw, suture or circum-zygomatic wires, and used for about 10 days; the interim obturator is used from 2 weeks until 3–6 months and is usually hollow in the defect</button><button type=\"button\" class=\"opt\" data-i=\"2\">Used only for palatopharyngeal incompetence</button><button type=\"button\" class=\"opt\" data-i=\"3\">Never allowed to hold surgical packing</button></div><div class=\"qexp\" hidden><p>الجراحية فورية، عادة بلا أسنان، تُثبَّت ببرغي حنكي أو خياطة أو أسلاك حول الوجني، حوالي 10 أيام. المؤقتة من أسبوعين لـ 3–6 أشهر، البصلة عادة مجوفة، ومراجعة كل أسبوعين.</p></div></div>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: palatal lift versus speech aid, and usual occlusion for an obturator","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Palatopharyngeal incompetence, and the prosthesis used for it in this lecture, are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">An anatomic hole in the soft palate, treated only with a feeding appliance</button><button type=\"button\" class=\"opt\" data-i=\"1\">Hypernasal speech from paralysis of a structurally normal soft palate and pharyngeal port (a failure of function, not anatomic deficiency); a palatal-lift prosthesis positions the flaccid soft palate posteriorly and superiorly</button><button type=\"button\" class=\"opt\" data-i=\"2\">The same thing as a surgical obturator Class IV</button><button type=\"button\" class=\"opt\" data-i=\"3\">Always treated with magnetic repulsion between complete dentures</button></div><div class=\"qexp\" hidden><p>القصور الحنكي-البلعومي فشل وظيفي (شلل) ويه تشريح طبيعي؛ رافعة الحنك ترفع الحنك الرخو المرتخي للخلف وللأعلى. تعويض مساعدة النطق شيء ثاني: يعوّض نقص تشريحي بالحنك الرخو بجزء حنكي وامتداد وجزء بلعومي.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">In construction of an obturator, which occlusal scheme does this lecture say is usually used, and why is block-out kept minimal?</button><div class=\"flash-a\" hidden>The jaw relation is transferred to a semi-adjustable articulator, and monoplane occlusion is usually used for these patients. Minimal block-out should be made because excessive block-out results in an unstable record base. At try-in, verify VDO, centric relation and esthetics; at delivery use pressure-indicating paste, remount for occlusal adjustment, and give oral-hygiene instructions.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا الملف عن <b>التعويضات الوجهية الفكية</b>: التعاريف وأنواع العيوب، الاستطبابات والأهداف، الفريق، التعويضات خارج الفم وداخله (بما فيها السدادات وتصنيفا Aramany و Cantor–Curtis)، خطوات التصنيع، ووسائل التثبيت.</p>","<p><b>التعويضات الوجهية الفكية</b> فرع من صناعة الأسنان يعنى بإصلاح أو تعويض بنى جهاز الفم والوجه القحفي بتعويضات قد تُرفع بانتظام أو اختيارياً. <b>التعويض الوجهي الفكي</b> جهاز اصطناعي يعوّض جزءاً أو كل بنية من هذه البنى.</p><p>الأسباب: تشوه خلقي، رضّ، أو استئصال ورم جراحي. الأنواع: (1) <b>مكتسبة</b> من رضّ أو مرض وعلاجه (مثل عيب الحنك بعد استئصال سرطان حرشفي الخلايا)؛ (2) <b>خلقية</b> من الولادة (أشيعها شق الحنك وقد يشمل السنخ أمام الفكي)؛ (3) <b>تطورية</b> من استعداد وراثي يظهر أثناء النمو.</p><p>الاستطبابات: عندما الجراحة التجميلية مضاد استطباب؛ عندما يُتوقع نكس الخباثة؛ عندما يُبدأ بالأشعة (جهاز راديوم وواقي راديوم)؛ وتعويض مؤقت عندما الجراحة التجميلية تحتاج خطوات متعددة.</p><p>الأهداف: تحسين أو استعادة التجميل (الأهم)؛ تحسين الوظائف (النطق، التغذية، ومنع هروب الطعام للأنف عند الأطفال ويه الشق)؛ حماية النسيج (واقي الراديوم، حماية الجرح وإيقاف النزف وحمل الدواء، وواقي الفم بالرياضة)؛ تأثير علاجي أو شفائي (مبضع راديوم، والمساعدة بشفاء كسور عظام الوجه)؛ وعلاج نفسي يرفع معنويات المريض.</p>","<p>أعضاء الفريق بالمحاضرة: جرّاح تجميل؛ أخصائي تعويضات سنية؛ معالج أشعة؛ جرّاح فم؛ مقوّم أسنان؛ فنّي أسنان؛ اختصاصي أنف وأذن وحنجرة؛ طبيب نفسي؛ أخصائيون اجتماعيون؛ طبيب أعصاب؛ وطبيب طب فيزيائي (physiatrist).</p><p>التصنيف: <b>خارج الفم</b> (أنفي، أذني، عيني/حجاجي، حامل أشعة، قحفي، ودعامة حاملة/stent). <b>داخل الفم</b> (سدادة، تعويض إطعام، تعويض فك سفلي، تعويض نطق، ورافعة حنك). <b>مشترك</b>: ضياع جزء من الفك العلوي أو السفلي ويه امتداد وجهي.</p>","<p><b>الأنفي</b>: تعويض متحرك يُثبَّت على الجلد ويعيد جزءاً أو كل الأنف. يحتاج قالب أصلي، ومنه تكدر تصنع تعويضات إضافية إذا النسيج ما تغيّر.</p><p><b>الأذني</b>: أذن اصطناعية من قالب سابق. وجود الشعر وغياب التضاريس التشريحية غالباً يضعف تثبيت اللاصق. الزرعات داخل العظم قد تعطي تثبيت إيجابي.</p><p><b>العين (حجاجي أو عيني)</b>: فقدان العين مشكلة عاطفية ونفسية. يحتاج تثبيت بزرعة خصوصاً إذا العيب كبير.</p><p><b>القحفي</b>: بديل متوافق حيوياً يُزرع بشكل دائم لجزء من عظام الجمجمة.</p><p><b>حامل الأشعة</b> (مبضع أشعة، حامل راديوم، تعويض علاج شعاعي): يحمل مصدر الإشعاع (كبسولات أو خرز أو إبر راديوم أو سيزيوم) بنفس المكان طول فترة العلاج، حتى التطبيق يكون قريب ومتحكم به على الورم.</p><p><b>الدعامة الحاملة (carrier stent)</b>: تحمل طعم جلد أو مخاطية بالدهليز أو الحنك أو قاع الفم ملاصق للسمحاق أثناء الشفاء الأولي، وتمنع تجمع دموي بين الطعم والعظم والسمحاق.</p>","<p>ال<b>سدادة (obturator)</b> تعويض يغلق أو يغطي أو يحافظ على سلامة الحيزين الفموي والأنفي نتيجة عملية مرضية خلقية أو مكتسبة أو تطورية (سرطان، شق حنك، أو تنخر عظمي شعاعي للحنك). تسهّل النطق والبلع وتعوّض النسيج الضائع، فتقلل رجوع الطعام للأنف والنطق الأنفى المفرط، وتحسّن النطق والبلع والمضغ.</p><p>وظائفها: الإطعام؛ إبقاء منطقة الجرح/العيب نظيفة ومسك الضمادات بعد استئصال الفك العلوي؛ تعزيز الشفاء؛ المساعدة بإعادة تشكيل محيط الحنك و/أو الحنك الرخو؛ وتحسين النطق.</p><p>تصنيف <b>Aramany</b> لأقواس استئصال الفك العلوي الجزئية العديمة: I استئصال بمنتصف الخط؛ II أحادي الجانب؛ III مركزي؛ IV أمامي-خلفي ثنائي الجانب؛ V خلفي؛ VI أمامي.</p>","<p>السدادة <b>الجراحية</b> مؤقتة تُدخل أثناء أو فوراً بعد ضياع جراحي أو رضي لجزء أو كل عظم أو عظمي الفك العلوي والبنى السنخية المجاورة. عادة بلا أسنان. تُثبَّت ببرغي حنكي أو خياطة أو أسلاك حول الوجني. تُستخدم حوالي <b>10 أيام</b> حسب الخطة. المزايا: قاعدة لوضع الحشو الجراحي؛ تقليل تلوث الجرح والخمج؛ نطق أفضل بإعادة محيط الحنك وتغطية العيب؛ تسمح بالبلع فقد يُرفع الأنبوب الأنفي المعدي أبكر؛ تخفف الأثر النفسي؛ وتقلل مدة الرقود.</p><p>ال<b>المؤقتة/الانتقالية</b> من <b>أسبوعين حتى 3–6 أشهر</b> بعد العملية، بين الجراحية والنهائية. البصلة المغلقة الممتدة للعيب عادة مجوفة. المريض يُرى كل أسبوعين بسبب تغيّر النسيج السريع. التصحيح بإعادة التبطين. قد تشتغل حتى 6 أشهر. التوقيت يعتمد على حجم العيب وتقدم الشفاء ووجود الأسنان.</p><p>ال<b>النهائية</b> عندما تغيّر النسيج أو نكس الورم صار غير محتمل، للاستخدام الطويل. أسباب صنع جديدة: إضافة البطانة تزيد الحجم والوزن والمادة المؤقتة تصير خشنة وغير صحية؛ إضافة أسنان أمامية إذا استُؤصلت تفيد نفسياً جداً؛ وإذا التثبيت والثبات ناقصين، التماس الإطباقي على جهة العيب قد يحسّنهم.</p>","<p>تعويض <b>الإطعام (جهاز إطعام الرضيع)</b> يحافظ على قطعتي الفك العلوي اليمنى واليسرى للمولود ويه شق الحنك بوضعها الصحيح لحد جراحة الإصلاح. يغلق العيب الفموي-الأنفي فيحسّن المص والبلع.</p><p>تعويض <b>مساعدة النطق</b> يُشكَّل وظيفياً على عضلات الحنك-البلعوم ليعوّض نقص الحنك الرخو. يتكوّن من جزء حنكي يلامس الأسنان للثبات والتثبيت؛ امتداد حنكي يعبر الحنك الرخو المتبقي؛ وجزء بلعومي يملأ فتحة الحنك-البلعوم أثناء وظيفة العضلات ويعيد صمام النطق.</p><p><b>رافعة الحنك</b> تضع حنكاً رخواً مرتخياً للخلف وللأعلى حتى تضيّق الفتحة وتحسّن ضغط الهواء الفموي وبالتالي النطق. إذا الحنك والفتحة طبيعيان تشريحياً بس في شلل عضلي، النطق الأنفي المفرط يُسمّى <b>قصور حنكي-بلعومي (incompetence)</b> — الفشل وظيفي مو نقص تشريحي.</p><p>تعويض <b>استئصال الفك السفلي</b> لعيوب مكتسبة ويه ضياع أسنان وأجزاء مهمة من الفك. قد يحفظ الاستمرارية أو يقطعها. تصنيف <b>Cantor و Curtis</b>: I الحافة السفلية سليمة والحركة متوقعة طبيعية؛ II غالباً يُستأصل بمنطقة الضاحك الثاني والرحى الأولى؛ III العيب للمنتصف أو أبعد نحو الجهة السليمة، يبقى نصف الفك أو أقل؛ IV نفس تصميم II أو III ويه المناطق العديمة المقابلة؛ V إذا أُعيد بناء منطقة تحمل أمامية أو خلفية، تصميم الجزئي المتحرك يشبه النوع I.</p>","<p>الطبعة الأولية: قد تُوضع شاش بمنطقة التقعر-العيب، وطبعة أولية بطابع جاهز وألجينات والنسيج بعد بالشفاء. انتبه: الألجينات قد تتمزق بالعيب ويه الإخراج. السيليكون ممكن، وأحياناً مادتان متوافقتان. تمتد للعيب أقصى ما يمكن. المصبوب الأولي لطابع خاص؛ سدّ التقعرات اللي تعيق الطابع وحدّد مناطق التفريغ.</p><p>الطبعة النهائية بطابع خاص ممتد ومضبوط؛ يمكن طوابع مقطعية أو مزدوجة. تشكيل حدود وامتداد شفاه صحيح. الطبعة الرقمية: مسح ليزري ثلاثي الأبعاد للعيب الوجهي يُنقل لبرنامج CAD/CAM لإنتاج نموذج لتعويض الوجه.</p><p>العلاقة الفكية: سدّ أدنى لأن السدّ المفرط يخلّي قاعدة السجل غير ثابتة. حاول تعوّض ضياع دعم الوجه على جهة العيب. مستوى الإطباق ومستوى الشمع صعبان غالباً بسبب الندبة والسدّ. انقل العلاقة لمفصلة شبه قابلة للتعديل؛ <b>عادة يُستخدم إطباق مستوي</b>. بالتجربة: تحقق من البعد العمودي والعلاقة المركزية والتجميل. بالتسليم: معجون كشف الضغط، إعادة تركيب للتعديل الإطباقي، وتعليمات نظافة الفم.</p>","<p>دور طبيب التعويضات كبير، بس محدود بمواد الوجه غير الكافية، فرش نسيج متحركة، صعوبة تثبيت التعويض الكبير، وتقبّل المريض للنتيجة.</p><p><b>1. التثبيت التشريحي.</b> داخل الفم: أسنان ومخاطية وعظم. التقعرات بعد الجراحة مرحّب بيها (حنكي، خد، خلف الرحى، شفوي، حاجزي، بلعومي أنفي خلفي، أو الشوك الأنفي الأمامي). مساعدات إضافية: إطباق صحيح، سد خلفي صحيح، والالتصاق السطحي. خارج الفم: عظم أو بقية غضروف الأذن. النسيج الرخو أصعب لأنه مرن ومتحرك وبلا دعم عظمي وأسهل إزاحة.</p><p><b>2. اللاصقات:</b> أكريل، لاتكس، سيليكون، أشرطة ضغط، صمغ روح، ولاصقات مائية. عوامل الاختيار: قوة الربط، التوافق الحيوي، تصميم ومادة التعويض، تركيب اللاصق، نوع وجودة الجلد، وسهولة الوضع والإزالة. المزايا: تطبيق سهل، متوفرة، بلا جراحة، أرخص من الزرعات. العيوب: قد تتمزق بالحواف؛ الإزالة المتكررة قد تتلف التصبغ؛ ضعف المهارة يصعّب التطبيق؛ وقد تحدث حساسية أو تهيّج.</p><p><b>3. التثبيت الميكانيكي.</b> النظارات لأنف بعد استئصال جسر الأنف. المغناطيس شائع: قطب بالفك أو النسيج الرخو وقطب بالتعويض؛ لربط تعويض كبير من جزئين بعد استئصال فك علوي كامل ويه فتحة فم محدودة؛ لربط أجزاء داخلية وخارجية؛ وتنافر نفس القطب خلف الطقمين العلوي والسفلي لتثبيتهما. المشابك المصبوبة أشيع وسيلة داخل الفم (ثبات، تجبير، دعم ثنائي، تقابل، وتثبيت). أزرار أكريل بشكل فطر على هيكل يدخل العيب، والتعويض النهائي ينقفز فوقها. مشابك التثبيت (معدن أو بلاستيك) تنقفز على قضيب فوق الزرعات، وقوة انفلاتها أكبر من المغناطيس. الزرعات: داخل الفم كطقم فوقي؛ خارج الفم بعظام الوجه؛ التثبيت كرة-محور أو مغناطيس.</p>","<p>Aramany I = استئصال منتصف الخط. السدادة الجراحية حوالي 10 أيام؛ المؤقتة من أسبوعين حتى 3–6 أشهر.</p>","<p>أسئلة ختامية + بطاقة + زر الدرجة: القصور الوظيفي ورافعة الحنك؛ والإطباق المستوي عادة ويه السدادة، والسدّ الأدنى حتى قاعدة السجل تبقى ثابتة. إذا غلطت ارجع للشرائح.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>

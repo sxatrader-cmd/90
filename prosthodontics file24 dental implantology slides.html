@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Prosthodontics File 24 — Dental Implantology</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Prosthodontics · 5th year</div>
+    <h1>Dental Implantology</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of the dental-implantology lectures by Lect. Dr. Mustafa Saadi Ali (PDF pages 592–607).</p>
+    <ul>
+      <li>Definitions and classification (endosteal, subperiosteal, transosteal); placement and loading times</li>
+      <li>Osseointegration (Brånemark) and healing factors, including 44–47°C for one minute</li>
+      <li>Team responsibilities, indications and contraindications, and implant components</li>
+      <li>FP-1 / FP-2 / FP-3 and RP-4 (5–7 mandible, 6–8 maxilla) versus RP-5; screw-retained versus cemented</li>
+      <li>Impression techniques and implant-protective occlusion (IPO), including the light-then-heavy adjustment (28 μm, paper <25 μm)</li>
+      <li>Total run time: <b>28 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 14</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Prosthodontics · File 24","t":"Dental implantology","b":"<p>University of Baghdad, College of Dentistry — Prosthodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This 5th-year file covers PDF pages 592–607 (Lect. Dr. Mustafa Saadi Ali / د. مصطفى سعدي علي): dental implantology — definitions and classifications, osseointegration, the team and indications, implant components, FP and RP prosthetic options, impression techniques, and implant-protective occlusion (IPO).</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end.</p>"},{"k":"5th year · Dental implantology","t":"Definitions, and classification by placement in the tissues","b":"<p>A <b>dental implant</b> is a prosthetic device made of alloplastic material(s) implanted into the oral tissues beneath the mucosal and/or periosteal layer and on or within the bone to provide retention and support for a fixed or removable dental prosthesis; a substance placed into and/or on the jaw bone to support a fixed or removable dental prosthesis.</p><p><b>Implant prosthodontics</b> is the branch of implant dentistry concerned with the restorative phase following implant placement and with the overall treatment-plan components before placement. It is the phase of implantology concerned with replacement of missing teeth and/or associated structures by restorations attached to dental implants. An <b>implant prosthesis</b> is a dental prosthesis — such as an artificial crown, fixed complete denture, fixed partial denture, removable complete overdenture, removable partial overdenture, or a maxillofacial prosthesis — supported and retained in part or whole by dental implants. An <b>implant system</b> is the set of dental-implant components designed to mate together; it consists of the necessary parts and instruments to complete implant-body placement and abutment attachment, and can represent a specific concept, inventor or patent.</p><p>Classification based on placement within the tissues: (1) <b>Endosteal (endosseous)</b> implants are inserted into the dentoalveolar and/or basal bone and protrude through the mucoperiosteum. They are the most common type and can be used in all areas of the mouth. They come in different shapes: root-form cylindrical cones or screws, thin plates or blades, pins, or discs. (2) <b>Subperiosteal</b> implants are placed directly over the surface of the bone cortex and just beneath the periosteum, as open meshes or custom-made frameworks to fit over the bone. (3) <b>Transosteal (transosseous)</b> implants pass through the full thickness of the jaw bone, penetrating both cortical plates. They are only used in the anterior region of the mandible in cases of severe ridge resorption.</p>"},{"k":"5th year · Dental implantology","t":"Endosseous implants: surgical stages, timing of placement, and timing of loading","b":"<p>According to the surgical stages: a <b>single-stage (non-submerged, transgingival) design</b> — the body of the implant is inserted into the bone with its abutment portion penetrating through the mucoperiosteum during the healing period; a <b>two-stage design</b> — the implant body is completely embedded in bone for complete osseointegration, then exposed, and a healing abutment is placed for soft-tissue healing before the impression is made for the prosthesis.</p><p>According to the time of placement: <b>immediate implants</b> are placed into a prepared extraction socket immediately following tooth extraction; <b>early implants</b> are placed within 4–8 weeks after the tooth loss; <b>delayed implants</b> are placed within 3–6 months after extraction, when complete healing and bone remodeling occur.</p><p>According to the time of prosthetic loading: <b>immediately loaded implants</b> — an acrylic-resin prosthesis designed to be out of occlusion is placed immediately after implant placement, especially in the anterior region for esthetic purposes; <b>delayed loading</b> is done in maxillary implants after 4–6 months and in mandibular implants after 3–4 months, to allow for better osseointegration because of the difference in bone composition.</p>"},{"k":"5th year · Dental implantology","t":"Osseointegration, and the factors that affect healing around implants","b":"<p><b>Osseointegration</b> is the apparent direct attachment or connection of osseous tissue to an inert, alloplastic material without intervening fibrous connective tissue; or the direct bone anchorage to an implant body, which can provide a foundation to support a prosthesis. Dr. Per-Ingvar Brånemark, a Swedish professor, developed the concept when he surgically inserted a titanium implant into the tibia of a rabbit.</p><p>Factors affecting healing of bone around dental implants: (1) <b>Surgical technique.</b> All surgery is traumatic; the level of trauma determines whether healing progresses toward fibrous or osseous integration. Surgical preparation of hard tissue causes a necrotic zone of bone (interface) from cutting of blood vessels, frictional heat and vibrational trauma. Excessive trauma leads to fibrous encapsulation. Trauma must be minimized. The temperature for impaired bone regeneration has been shown to be <b>44°C to 47°C for one minute</b>. (2) <b>Premature loading.</b> Time should be allowed for healing of necrotic bone formed by surgery. Movement during this phase results in fibrous encapsulation. Many operators recommend keeping recently placed implants unloaded for <b>two to eight months</b>, depending on the clinical situation, implant coating, location, and whether the implant is placed into bone grafts. (3) <b>Surgical fit.</b> Even with the best precautions, bone contacts only portions of the implant and perfect microscopic contact is not possible. A longer healing period is required before loading when the surgical fit is less than optimal. (4) <b>Bone quality and quantity.</b> The mandible has a denser cortex and coarser, thicker cancellous bone than the maxilla. Posteriorly, the jaws tend to have a thinner, more porous cortex and finer lacunae. Bone regeneration is more likely to progress faster if the surroundings are denser. When bone amount is not enough, measures include: short implants; changing implant angulation; ridge augmentation; transpositioning of the neurovascular bundle in the mandible; and subantral augmentation (sinus lift) in the maxilla. (5) <b>Physical condition of the patient:</b> nutritional status, aging, diabetes mellitus, blood diseases, corticosteroid therapy and radiation treatment, among other factors that can affect healing.</p>"},{"k":"5th year · Dental implantology","t":"Team approach, responsibilities, indications and contraindications","b":"<p>Some authors believe the same operator should place and restore the implants (more efficient for the patient, and changes at surgery can be incorporated more readily because the same person is responsible for the prosthesis). Others believe a team approach is more appropriate: a surgeon places the implants and a prosthetic dentist completes the restoration, using the expertise of two individuals, with a built-in second opinion and shared responsibility and liability. Regardless of the philosophy, responsibilities at each stage should be delineated, and it should be clear that a dental implant is a prosthetic technique with a surgical step.</p><p>Responsibility of the prosthodontist: perform the initial clinical evaluation; perform the initial radiographic evaluation; obtain diagnostic casts; obtain a diagnostic wax-up; determine the location and number of implants and fabricate a surgical template; select the proper abutment following implant exposure; design and fabricate the prosthesis; provide oral-hygiene care and instructions; and ensure recall to evaluate maintenance and provide care as required. Responsibility of the oral surgeon: confirmation of the radiographic evaluation; confirmation of the physical evaluation; determination of the location and number of implants within limits set by the prosthodontist; placement of the implants (first-stage surgery); uncovering of the implants (second-stage surgery); and confirmation of osseointegration.</p><p>Indications of an implant prosthesis: an edentulous patient with a history of difficulty wearing removable dentures; severe change in complete-denture-bearing tissues; poor oral muscular coordination; parafunctional habits that compromise prosthesis stability; unrealistic patient expectations for complete dentures; a hyperactive gag reflex; and low tissue tolerance of the supporting mucosa. Contraindications: high-dose irradiated patients; psychiatric problems such as psychosis; hematological disorders; pathology of hard and soft tissues; and drug, alcohol or tobacco-chewing abuse.</p>"},{"k":"5th year · Dental implantology","t":"Implant components","b":"<p>(1) <b>Implant fixture (implant body)</b> — the portion that provides support for the abutment(s) through adaptation upon (eposteal), within (endosteal) or through (transosteal) the bone. The body is designed to be surgically placed into the bone and may extend slightly above the crest of the ridge. (2) <b>Healing (cover) screw</b> — seals, usually on an interim basis, the implant body during healing after surgical placement, to maintain patency of the internal threaded section for later attachment of the abutment at second-stage surgery. (3) <b>Healing abutment (gingival former, interim abutment)</b> — used for a limited time to assist healing or modification of the adjacent tissues. After a prescribed healing period, second-stage surgery uncovers the implant and attaches the transepithelial portion (a second-stage permucosal extension), which extends the implant above the soft tissue and results in a permucosal seal. (4) <b>Implant abutment</b> — supports and/or retains the prosthesis. Three main categories according to how the prosthesis is retained: abutment for a <b>screw-retained</b> prosthesis; for a <b>cement-retained</b> prosthesis; and for an <b>attachment</b> (to retain a removable prosthesis). Each type is further classified into straight and angled abutments, describing the axial relationship between implant body and abutment. (5) <b>Abutment screw</b> — secures the abutment to the implant body. (6) <b>Hygiene screw</b> — placed over the abutment between prosthetic appointments to prevent debris and plaque from entering the screw space. (7) <b>Transfer coping (impression coping)</b> — registers the position of the implant body or abutment relative to adjacent structures. (8) <b>Implant analog (laboratory analog)</b> — used in the master cast to replicate the retentive portion of the implant body or abutment; after the impression, the corresponding analog is attached to the transfer coping and the assembly is poured in stone. (9) <b>Coping (gold cylinder)</b> — a thin covering usually designed to fit the implant abutment and serve as the connection between abutment and prosthesis or superstructure; a prefabricated coping is usually a plastic pattern cast into the metal superstructure. (10) <b>Coping screw</b> — secures the coping to the abutment.</p>"},{"k":"5th year · Dental implantology","t":"Prosthetic options: FP-1, FP-2 and FP-3","b":"<p><b>FP-1</b> is a fixed prosthesis that replaces only the crown and looks like a natural tooth. It appears to the patient to replace only the anatomical crowns of the missing natural teeth. To fabricate this type there must be minimal loss of hard and soft tissues. The volume and position of the residual bone must permit ideal placement of the implant in a location similar to the root of a natural tooth. The final restoration appears very similar in size and contour to most traditional fixed prostheses used to restore or replace natural crowns.</p><p><b>FP-2</b> is a fixed prosthesis that replaces the crown and a portion of the root; the crown contour appears normal in the occlusal half but is elongated or hyper-contoured in the gingival half. The volume and topography of the available bone are more apical compared with the ideal bone position of a natural root (1–2 mm below the cemento-enamel junction) and dictate a more apical implant placement than for FP-1. As a result, the incisal edge is in the correct position, but the gingival third of the crown is over-extended, usually apical and lingual to the position of the original tooth. These restorations are similar to teeth exhibiting periodontal bone loss and gingival recession.</p><p><b>FP-3</b> is a fixed prosthesis that replaces missing crowns and a portion of the edentulous site; it most often uses denture teeth and acrylic gingiva, but may be porcelain-to-metal. It appears to replace the natural crowns and has pink-colored restorative materials to replace a portion of the soft tissue, especially the interdental papillae. As with FP-2, the original available bone height has decreased by natural resorption or by osteoplasty at implant placement. To place the incisal edge correctly for esthetics, function, lip support and speech, the excessive vertical dimension to be restored requires teeth that are unnatural in length. Unlike the requirements for an FP-2, the patient may have a normal to high maxillary lip line during smiling, or a low mandibular lip line during speech, so the soft-tissue drape should also be replaced. Prosthetic replacement of the soft-tissue drape (FP-3) is most often desirable when multiple adjacent teeth are missing.</p>"},{"k":"5th year · Dental implantology","t":"RP-4 and RP-5 overdentures, and screw-retained versus cemented fixed prostheses","b":"<p><b>RP-4</b> is a removable prosthesis (overdenture) supported completely by implants (usually with a superstructure bar). The restoration is rigid when inserted; overdenture attachments usually connect the removable prosthesis to a low-profile tissue bar or superstructure that splints the implant abutments. Usually <b>five to seven implants in the mandible and six to eight implants in the maxilla</b> are required to fabricate completely implant-supported RP-4 prostheses in patients with favorable dental criteria.</p><p><b>RP-5</b> is an overdenture supported by both soft tissue and implants (may or may not have a superstructure bar). The amount of implant support is variable. A completely edentulous mandibular overdenture may have: (1) two or three anterior implants independent of each other, primarily for retention; (2) splinted implants in the canine regions to enhance retention and stability; (3) three splinted implants in the premolar and central-incisor areas to provide improved retention and lateral stability; or (4) four or five implants splinted with a cantilevered bar to improve retention, stability and support, which reduces soft-tissue abrasions and limits the amount of soft-tissue coverage needed. The primary advantage of an RP-5 is reduced cost, because fewer implants may be inserted than for a fixed restoration, and there is less demand for bone augmentation often required for additional implants. The prosthesis is very similar to traditional overdentures supported by natural teeth.</p><p><b>Screw-retained versus cemented</b> fixed implant prostheses: both can give excellent long-term results, although the retrievability of screw-retained prostheses clearly offers the safer and most versatile option. Some dentists prefer cementation because it precludes visibility of access openings in the occlusal or facial surfaces of the artificial teeth. Any submucosal extension of a prosthesis could predispose to iatrogenic peri-implant inflammation with marginal bone loss if all cement remnants are not removed. For full-arch prostheses, a screw-retained design is recommended, because any maintenance or subsequent treatment (fracture of veneering material or of an abutment screw, or treatment of mucositis and peri-implantitis) can be performed more efficiently by removing the prosthesis.</p>"},{"k":"5th year · Dental implantology","t":"Impression techniques: implant-level and abutment-level","b":"<p>Impression techniques: (1) implant-level — transfer (closed tray) and pick-up (open tray); (2) abutment-level — direct technique and indirect technique.</p><p><b>Transfer (closed-tray) implant-level technique:</b> uses tapered copings and a closed tray. The copings are connected to the implants, an impression is made and removed from the mouth, leaving the copings intraorally. The copings are then removed, connected to implant analogs, and the coping–analog assemblies are inserted into the impression before the definitive cast is poured. Clinical situations that indicate a closed tray: limited inter-arch space, a tendency to gag, or when it is too difficult to access an implant in the posterior region.</p><p><b>Pick-up (open-tray) technique:</b> uses square copings and an open tray (a tray with an opening) so that the coronal ends of the impression-coping screws are exposed. Before separating from the implants, the coping screws are unscrewed to be removed along with the impression. Implant analogs are then connected to the copings in the impression to fabricate the definitive cast. The pick-up technique takes advantage of impression materials having rigid properties and eliminates the error of permanent deformation, because the transfer coping remains within the impression until the master model is poured and separated. Advantages: reduces the effect of implant angulation; reduces deformation of the impression material. Disadvantage: there may be some rotational movement of the impression transfer when securing the implant analog.</p><p><b>Abutment-level, direct technique:</b> the implant abutment may be restored as a natural-tooth restoration. A (usually prefabricated) abutment is inserted into the implant body, prepared in the mouth, and an impression of the abutment is made; a stone cast is poured and an individual die of the abutment is trimmed; the restoration is fabricated similarly to a tooth. Advantages: familiar to the restoring dentist; no laboratory analog components are required; splinting crowns together is less complicated because transfer components and analogs are not required (manufacturer precision); reduced cost because analogs and laboratory fees for abutment preparation are eliminated. Disadvantages: the abutments are prepared in the mouth; retraction-cord placement is required in esthetic zones or when additional abutment height is required for retention.</p><p><b>Abutment-level, indirect technique:</b> uses a closed tray and an elastic impression material. The abutment is screwed into the implant body and remains in place when a traditional closed-tray impression is set and removed. The abutment is then removed from the implant body in the mouth, connected to an implant-body analog, and reinserted into the closed-tray impression before the definitive cast is poured — hence the transfer is “indirect.”</p>"},{"k":"5th year · Dental implantology","t":"Why implant occlusion differs from natural teeth, and what IPO is","b":"<p>Differences between natural teeth and implants that must be considered when restoring implants: (1) Natural teeth have high occlusal awareness (proprioception) of about <b>20 μm</b>, and a periodontal ligament as a shock absorber that allows apical intrusion. In an implant-supported prosthesis, the lack of proprioception and of periodontal shock absorption is often associated with increased impact force compared with a tooth-supported prosthesis. (2) In occlusal trauma, mobility can develop in a tooth as well as in an implant; upon removal of the trauma, mobility can be reduced or controlled with a natural tooth, while no such response can be noted in an implant. (3) In general the diameter of natural teeth is larger than that of implants; the cross-section of implants is rounded, and diameter is selected primarily according to available bone, not according to the anticipated load.</p><p>These differences led to <b>implant-protective occlusion (IPO)</b>: an occlusal scheme often unique and specifically designed for restoration of an endosteal implant. A primary goal is to maintain the occlusal load transferred to the implant body within the physiologic limits of each patient.</p><p>Significance of IPO on osseointegrated endosteal implants: there are no specific defense mechanisms against occlusal forces in an implant, so a poorly restored occlusion has a deleterious effect; the prosthesis must be fabricated as accurately as possible, and occlusion should be a key factor in the overall success rate; an impact force can have destructive effects on the prosthesis, implants and supporting bone, and IPO has a protective role by reducing the effect of impact forces and transferring the loads to the supporting bone through the implant body.</p>"},{"k":"5th year · Dental implantology","t":"Goals of IPO, and how premature contacts are adjusted (light then heavy bite)","b":"<p>Goals of implant-protective occlusion: bilateral simultaneous contact; no premature contacts in retruded contact position (RCP); smooth and even lateral excursive movement with no non-working interferences; equal distribution of occlusal forces; freedom from deflective contacts in intercuspal position (IP) — there is some evidence that a degree of freedom in horizontal movement is helpful, and shallow cusp angles may be associated with reduced horizontal loading of an implant; and anterior guidance whenever possible.</p><p>Consideration 1 — no premature occlusal contacts or interferences: excessive occlusal load during premature contact causes severe crestal bone resorption and loss of osseointegration. Movement patterns of the natural tooth and the implant differ. The implant has no periodontal ligament, so concern centers on the potential for the “non-mobile” implant to bear the total load compared with the “mobile” natural tooth. The difference in vertical movement of teeth and implants in the same arch is <b>28 μm</b>. Initial occlusal contacts should account for this difference, or implants will sustain greater loads. Occlusal adjustment should eliminate premature contacts on the implant restoration. Thin articulating paper (<b>less than 25 μm</b> thickness) is used for the initial implant occlusal adjustment in centric-relation occlusion under a <b>light tapping force</b>. The implant prosthesis should barely contact, and the adjacent teeth should exhibit greater initial contacts. Only axial occlusal contacts should be present on the implant crown. Once equilibration with a light bite is completed, a <b>heavier centric occlusal force</b> is applied. The contacts should remain axial over the implant body and may be of similar intensity on the implant crown and the adjacent teeth under greater bite force, so that all elements react similarly to the load. A heavy-bite adjustment is used because it depresses the natural teeth, positioning them closer to the depressed implant position and equally sharing the load.</p><p>The initial lateral movement of healthy anterior teeth ranges from <b>68 to 108 μm</b> before secondary tooth movement. Implant lateral movements are not immediate and range from <b>10 to 50 μm</b>. Because of the greater discrepancies in lateral movement, occlusal adjustment in this direction is more critical to implant success. A light force and thin articulating paper are used, and the implant crown exhibits minimum contact compared with the natural abutment crown. A heavy bite force is then used to establish equal occlusal contacts for all implant crowns and natural teeth.</p>"},{"k":"5th year · Dental implantology","t":"IPO considerations: surface area, cusp angle, contact positions, and crown contour","b":"<p><b>Influence of surface area.</b> An important part of IPO is adequate surface area to sustain load transmission to the prosthesis. Wider-diameter root-form implants have a greater area of contact at the crest than narrow implants, which reduces mechanical stress at the crest. When narrow-diameter implants are used in regions that receive greater loads, additional splinted implants are indicated to compensate for the design.</p><p><b>Crown cusp angle.</b> Occlusal contact along an angled cusp results in an angled load to the crestal bone. A posterior implant crown should have shallow cusps and a wider central fossa perpendicular to the implant body. The opposing cusp should be modified to occlude in the fossa of the implant crown.</p><p><b>Occlusal contact positions.</b> Contact position determines the direction of force to the implant body. The ideal implant-body (fixture) position is usually under the central fossa, and maybe 1–2 mm to the facial aspect (when bone is abundant) so as to be under the buccal cusp of the mandible and to improve the esthetic emergence of maxillary implant crowns. Ideal primary contacts should reside within the diameter of an implant. Secondary occlusal contacts should remain within 1 mm of the periphery of the implant. A marginal-ridge contact is considered a cantilever load because the implant is not under the marginal ridge, and marginal-ridge contacts should be avoided.</p><p><b>Implant crown contour.</b> A wide occlusal table favors offset contacts during function or parafunction. Narrower implant bodies are even more vulnerable to occlusal-table width and offset loads. Wider root-form implants can accept a broader range of vertical occlusal contacts while still transmitting lesser forces at the permucosal site under offset loads. Therefore, in IPO the width of the occlusal table is directly related to the width of the implant body. Restorations mimicking the occlusal anatomy of natural teeth often result in offset loads (increased stress), complicated home care, and an increased risk of porcelain fracture. In non-esthetic regions, the occlusal table should be reduced in width compared with natural teeth.</p>"},{"k":"اختبر نفسك","t":"Quiz: placement and loading times, and the 44–47°C rule","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">According to this lecture, delayed implants are placed, and delayed loading is done, at which times?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Delayed implants at the same visit as extraction; delayed loading after 2 weeks in both jaws</button><button type=\"button\" class=\"opt\" data-i=\"1\">Early implants 4–8 weeks after tooth loss; delayed implants 3–6 months after extraction; delayed loading after 4–6 months in the maxilla and 3–4 months in the mandible</button><button type=\"button\" class=\"opt\" data-i=\"2\">Immediate loading always in full occlusion on the day of surgery</button><button type=\"button\" class=\"opt\" data-i=\"3\">Transosteal implants only in the posterior maxilla after 1 week</button></div><div class=\"qexp\" hidden><p>المبكرة 4–8 أسابيع بعد الفقد؛ المتأخرة 3–6 أشهر بعد القلع. التحميل المتأخر: علوي 4–6 أشهر، سفلي 3–4 أشهر. التحميل الفوري: تعويض أكريل خارج الإطباق، خصوصاً بالأمام للتجميل. عبر العظم فقط بأمامية السفلي ويه امتصاص شديد.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Impaired bone regeneration around an implant has been shown at which temperature and time, and what does excessive surgical trauma tend to produce?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">10°C for one second, which always improves osseointegration</button><button type=\"button\" class=\"opt\" data-i=\"1\">44°C to 47°C for one minute; excessive trauma leads to fibrous encapsulation rather than osseous integration</button><button type=\"button\" class=\"opt\" data-i=\"2\">100°C for ten minutes, which is the recommended osteotomy temperature</button><button type=\"button\" class=\"opt\" data-i=\"3\">Only the patient’s age, with no effect from frictional heat</button></div><div class=\"qexp\" hidden><p>الحرارة اللي تعيق تجدد العظم <b>44–47 م° لمدة دقيقة</b>. الرضّ الجراحي المفرط يؤدي إلى محفظة ليفية مو اندماج عظمي. كثير يشغّلون بلا تحميل شهرين إلى ثمانية حسب الحالة.</p></div></div>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: RP-4 implant numbers, IPO light-then-heavy adjustment, and occlusal table width","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Completely implant-supported RP-4 overdentures in this lecture usually require:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">One implant in each jaw, with no bar</button><button type=\"button\" class=\"opt\" data-i=\"1\">Five to seven implants in the mandible and six to eight in the maxilla (RP-5 combines implant and soft-tissue support, and may use as few as two or three anterior mandibular implants primarily for retention)</button><button type=\"button\" class=\"opt\" data-i=\"2\">Always a cemented full-arch prosthesis with no retrievability</button><button type=\"button\" class=\"opt\" data-i=\"3\">An FP-1 crown on every implant, regardless of bone height</button></div><div class=\"qexp\" hidden><p>RP-4 مدعوم بالكامل بالزرعات: عادة 5–7 بالسفلي و 6–8 بالعلوي. RP-5 مشترك ويه النسيج الرخو، وقد يبدأ بزرعتين أو ثلاث أمامية للتثبيت. للقوس الكامل يُفضَّل التصميم ببرغي لسهولة الإخراج والصيانة. (أرقام هذه المحاضرة؛ محاضرة الطقم الفوقي السابقة قد تختلف — احفظ رقم كل محاضرة.)</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">For IPO adjustment of an implant crown next to natural teeth, this lecture describes:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Heavy force first with thick paper, aiming for the implant to hit harder than the teeth</button><button type=\"button\" class=\"opt\" data-i=\"1\">Thin articulating paper (<25 μm) and a light tapping force first, so the implant barely contacts and adjacent teeth contact more; then a heavier bite so contacts become similar; vertical tooth–implant difference is about 28 μm</button><button type=\"button\" class=\"opt\" data-i=\"2\">Only marginal-ridge contacts, because they are axial loads</button><button type=\"button\" class=\"opt\" data-i=\"3\">Matching natural-tooth occlusal anatomy in non-esthetic regions to widen the table</button></div><div class=\"qexp\" hidden><p>ورق أرق من 25 ميكرون وطرق خفيف أولاً: الزرعة تكاد تلمس والأسنان المجاورة تماسها أكبر. بعدين عضة أثقل حتى التماس يتساوى (العضة الثقيلة تغوّر الأسنان أقرب لموضع الزرعة). فرق الحركة العمودية حوالي 28 ميكرون. تجنّب تماس الحافة الهامشية (حمل كابولي). بالمناطق غير التجميلية قلّل عرض طاولة الإطباق؛ العرض يرتبط بعرض جسم الزرعة.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">What do FP-1, FP-2 and FP-3 replace, in this lecture’s terms?</button><div class=\"flash-a\" hidden>FP-1 replaces only the crown and looks like a natural tooth (minimal hard- and soft-tissue loss; implant placed like a natural root). FP-2 replaces the crown and a portion of the root: the occlusal half looks normal, but the gingival half is elongated or hyper-contoured because the implant is placed more apically. FP-3 replaces missing crowns and a portion of the edentulous site, usually with denture teeth and pink acrylic (or porcelain-to-metal) to replace the soft-tissue drape, especially when multiple adjacent teeth are missing and the lip line would show it.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا الملف عن <b>زراعة الأسنان</b>: التعاريف والتصنيفات، الاندماج العظمي، الفريق والاستطبابات، أجزاء الزرعة، خيارات FP و RP، تقنيات الطبعة، والإطباق الواقي للزرعة (IPO).</p>","<p>ال<b>زرعة السنية</b> جهاز تعويضي من مادة غريبة عن الجسم يُزرع بأنسجة الفم تحت المخاطية و/أو السمحاق وعلى العظم أو داخله ليعطي تثبيت ودعم لتعويض ثابت أو متحرك.</p><p><b>تعويضات الزرعات</b> فرع يهتم بالمرحلة الترميمية بعد الزرع وبمكونات خطة العلاج قبل الزرع. <b>تعويض الزرعة</b> تاج أو طقم ثابت كامل أو جزئي ثابت أو طقم فوقي متحرك كامل أو جزئي أو تعويض وجهي فكي، مدعوم ومثبَّت كلياً أو جزئياً بالزرعات. <b>نظام الزرعة</b> أجزاء مصممة لتتعاشق مع بعض، وتشمل ما يلزم لوضع الجسم وربط الدعامة.</p><p>التصنيف حسب موضعها بالنسيج: (1) <b>داخل العظم (endosteal)</b> الأكثر شيوعاً، تدخل العظم السنخي و/أو القاعدي وتبرز من السمحاق المخاطي؛ أشكالها مخروط أو برغي جذري، صفائح أو شفرات، دبابيس، أو أقراص. (2) <b>تحت السمحاق</b> مباشرة فوق قشر العظم وتحت السمحاق، كشبكات مفتوحة أو هياكل مفصّلة. (3) <b>عبر العظم (transosteal)</b> تخترق كامل سماكة الفك والصفيحتين القشريتين؛ تُستخدم فقط بمنطقة الفك السفلي الأمامية ويه امتصاص شديد.</p>","<p>حسب المراحل الجراحية: تصميم <b>مرحلة واحدة</b> (غير مغمور، عبر اللثة) — الجسم بالعظم والدعامة تخترق السمحاق المخاطي أثناء الشفاء؛ وتصميم <b>مرحلتين</b> — الجسم يُطمر كاملاً بالعظم للاندماج، بعدين يُكشف وتُوضع دعامة شفاء للنسيج الرخو قبل الطبعة.</p><p>حسب وقت الزرع: <b>فورية</b> بنفس جلسة القلع داخل السنخ المحضَّر؛ <b>مبكرة</b> خلال <b>4–8 أسابيع</b> بعد الفقد؛ <b>متأخرة</b> خلال <b>3–6 أشهر</b> بعد القلع عند اكتمال الشفاء وإعادة تشكيل العظم.</p><p>حسب التحميل: <b>فوري</b> — تعويض أكريل مصمم يكون خارج الإطباق يُوضع فوراً بعد الزرع، خصوصاً بالأمام للتجميل؛ <b>متأخر</b> — بالعلوي بعد <b>4–6 أشهر</b> وبالسفلي بعد <b>3–4 أشهر</b>، لأن تركيب العظم يختلف.</p>","<p>ال<b>اندماج العظمي</b> اتصال مباشر للنسيج العظمي بمادة خاملة غريبة بلا نسيج ضام ليفي بينهما؛ أو تثبيت عظمي مباشر لجسم الزرعة. المفهوم طوّره الدكتور <b>Per-Ingvar Brånemark</b> (سويدي) لما زرع تيتانيوم بساق أرنب.</p><p>عوامل الشفاء: (1) <b>التقنية الجراحية</b> — مستوى الرضّ يحدد اندماج عظمي أو محفظة ليفية. التحضير يسبب منطقة عظم متنخر من قطع الأوعية والحرارة الاحتكاكية والاهتزاز. الحرارة اللي تعيق تجدد العظم <b>44–47 م° لمدة دقيقة</b>. (2) <b>التحميل المبكر</b> — الحركة أثناء شفاء العظم المتنخر تعطي محفظة ليفية. كثير يشغّلون بلا تحميل <b>شهرين إلى ثمانية</b> حسب الحالة والطلاء والموقع والطعم. (3) <b>الملاءمة الجراحية</b> — حتى بأفضل احتياط العظم يلمس أجزاء فقط؛ إذا الملاءمة مو مثالية لازم شفاء أطول قبل التحميل. (4) <b>كمية ونوعية العظم</b> — السفلي قشره أكثف وإسفنجيه أخشن من العلوي؛ كلما رحنا للخلف القشر أرق وأكثر مسامية. التجدد أسرع ويه المحيط الأكثف. إذا الكمية ما تكفي: زرعات قصيرة، تغيير الزاوية، زيادة الحافة، نقل الحزمة العصبية الوعائية بالسفلي، ورفع الجيب (sinus lift) بالعلوي. (5) <b>حالة المريض</b>: التغذية، الشيخوخة، السكري، أمراض الدم، كورتيكوستيرويد، والأشعة.</p>","<p>بعض المؤلفين يفضلون نفس الطبيب يزرع ويعوّض (أ الكفاءة للمريض، والتغيير وقت الجراحة يندمج بالخطة أسهل). غيرهم يفضلون فريقاً: جرّاح يزرع وتعويضات تكمل الترميم (خبرتان، رأي ثانٍ مدمج، ومسؤولية مشتركة). بأي فلسفة، حدّد المسؤوليات. الزرعة تقنية تعويضية ويه خطوة جراحية.</p><p>مسؤوليات طبيب التعويضات: التقييم السريري والشعاعي الأولي؛ مصبوبات تشخيصية؛ تشميع تشخيصي؛ تحديد موقع وعدد الزرعات وصنع دليل جراحي؛ اختيار الدعامة بعد الكشف؛ تصميم وصنع التعويض؛ تعليمات النظافة؛ وضمان المراجعة. مسؤوليات جرّاح الفم: تأكيد التقييم الشعاعي والجسدي؛ تحديد الموقع والعدد ضمن حدود طبيب التعويضات؛ الزرع (المرحلة الأولى)؛ الكشف (المرحلة الثانية)؛ وتأكيد الاندماج العظمي.</p><p>الاستطبابات: عديم أسنان ويه صعوبة لبس أطقم متحركة؛ تغيّر شديد بأنسجة تحمل الطقم الكامل؛ تنسيق عضلي فموي ضعيف؛ عادات خارج الوظيفة تضّر ثبات التعويض؛ توقعات غير واقعية للطقم الكامل؛ منعكس غثيان مفرط؛ وتحمل نسيج واطي للمخاطية الداعمة. المضادات: جرعة أشعة عالية؛ مشاكل نفسية مثل الذهان؛ اضطرابات دموية؛ أمراض النسيج الصلب والرخو؛ وإساءة استعمال دواء أو كحول أو مضغ تبغ.</p>","<p>(1) <b>جسم الزرعة (fixture)</b> يدعم الدعامة بالتكيف على العظم أو داخله أو عبره، وقد يمتد قليلاً فوق قمة الحافة. (2) <b>برغي الشفاء (الغطاء)</b> يسند الجسم أثناء الشفاء ويحافظ على مجرى اللولب الداخلي لربط الدعامة بالمرحلة الثانية. (3) <b>دعامة الشفاء (مُشكِّل لثوي)</b> مؤقتة تساعد شفاء أو تعديل النسيج؛ بعد فترة الشفاء تُكشف الزرعة وتُربَط الزيادة عبر المخاطية حتى يتكون ختم مخاطي. (4) <b>دعامة الزرعة</b> تدعم و/أو تثبّت التعويض: لبرغي، لإسمنت، أو لوصلة (لتعويض متحرك). كل نوع مستقيم أو زاوي حسب العلاقة المحورية. (5) <b>برغي الدعامة</b> يثبّت الدعامة بالجسم. (6) <b>برغي الصحة</b> فوق الدعامة بين الجلسات حتى الفضلات ما تدخل مجرى البرغي. (7) <b>غطاء الطبعة (transfer coping)</b> يسجّل موضع الجسم أو الدعامة. (8) <b>نظير الزرعة (analog)</b> بالمصبوب الرئيسي يكرّر الجزء المثبت؛ بعد الطبعة يُربَط بالنظير ويُصب بالحجر. (9) <b>الغطاء (أسطوانة ذهبية)</b> غطاء رقيق يلائم الدعامة ويربطها بالتعويض؛ غالباً نمط بلاستيك يُصب بالمعدن. (10) <b>برغي الغطاء</b> يثبّت الغطاء بالدعامة.</p>","<p><b>FP-1</b> تعويض ثابت يعوّض التاج فقط ويبان مثل سن طبيعي. يحتاج ضياع نسيج صلب ورخو أدنى، وعظم متبقّي يسمح بوضع مثالي للزرعة بموقع يشبه جذر السن الطبيعي.</p><p><b>FP-2</b> يعوّض التاج وجزءاً من الجذر؛ النصف الإطباقي طبيعي، بس النصف اللثوي مطوَّل أو مفرط التحدب. العظم المتوفر أبعد ذروياً من الوضع المثالي لجذر طبيعي (1–2 ملم تحت الملتقى المينائي الملاطي)، فالزرعة تُوضع أبعد ذروياً من FP-1. الحافة القاطعة بموضعها الصحيح، بس الثلث اللثوي ممتد زيادة، عادة ذروياً ولسانياً عن السن الأصلي. يشبه أسنان ويه ضياع لثوي وانحسار.</p><p><b>FP-3</b> يعوّض التيجان وجزءاً من الموقع العديم؛ غالباً أسنان طقم ولثة أكريل، وقد يكون خزف على معدن. مواد وردية تعوّض جزءاً من النسيج الرخو خصوصاً الحليمات. ارتفاع العظم نقص بالامتصاص أو بتقليم عظمي وقت الزرع، فحتى الحافة القاطعة تكون صحيحة تحتاج أسنان بطول غير طبيعي. بخلاف FP-2، المريض قد يكون خط شفته العلوي طبيعي إلى عالي ويه الابتسامة، أو خط الشفة السفلية واطي ويه الكلام، فستار النسيج الرخو هم لازم يتعوّض. FP-3 مرغوب غالباً لما أسنان متجاورة متعددة مفقودة.</p>","<p><b>RP-4</b> طقم فوقي متحرك مدعوم بالكامل بالزرعات (عادة ويه قضيب هيكل). يكون صلب بعد الإدخال؛ الوصلات تربطه بقضيب نسيجي منخفض أو هيكل يجبّر الدعامات. عادة يلزم <b>5–7 زرعات بالسفلي و 6–8 بالعلوي</b> ويه معايير سنية مناسبة. (أرقام هذه المحاضرة؛ محاضرة الطقم الفوقي السابقة ذكرت أرقاماً مختلفة للدعم بالزرعات — احتفظ برقم كل محاضرة كما كتبت.)</p><p><b>RP-5</b> طقم فوقي مدعوم بالنسيج الرخو والزرعات (قد يكون أو لا يكون ويه قضيب). مقدار الدعم متغيّر. مثال سفلي عديم كامل: (1) زرعتان أو ثلاث أمامية مستقلة أساساً للتثبيت؛ (2) زرعات مجبّرة بمنطقة الأنياب لتحسين التثبيت والثبات؛ (3) ثلاث مجبّرة بمنطقة الضواحك والقواطع المركزية لتثبيت وثبات جانبي أفضل؛ أو (4) أربع أو خمس مجبّرة ويه قضيب كابولي لتحسين التثبيت والثبات والدعم وتقليل سحج النسيج وتغطية النسيج. المزية الأساسية: تكلفة أقل لأن زرعات أقل، وطلب زيادة عظم أقل. يشبه الأطقم الفوقية التقليدية على أسنان طبيعية.</p><p>التعويض الثابت <b>المثبَّت ببرغي مقابل الإسمنت</b>: الاثنان يعطيان نتائج طويلة ممتازة، بس قابلية الإخراج بالبرغي أوضح كخيار أأمن وأكثر مرونة. بعض الأطباء يفضلون الإسمنت حتى فتحات الدخول ما تبان. أي امتداد تحت المخاطية قد يسبب التهاب حول الزرعة وضياع عظم هامشي إذا بقايا الإسمنت ما انشالت كلها. للأقواس الكاملة يُفضَّل التصميم ببرغي لأن الصيانة (كسر الخزف أو برغي الدعامة، أو علاج التهاب المخاطية وحول الزرعة) أسهل بإخراج التعويض.</p>","<p>تقنيات الطبعة: (1) مستوى الزرعة — نقل (طابع مغلق) والتقاط (طابع مفتوح)؛ (2) مستوى الدعامة — مباشرة وغير مباشرة.</p><p>ال<b>نقل (طابع مغلق)</b>: أغطية مخروطية وطابع مغلق. الأغطية مربوطة بالزرعات، الطبعة تطلع والأغطية تبقى بالفم، بعدين تنشال وتُربَط بنظائر وتتركّب بالطبعة قبل صب المصبوب النهائي. الاستطباب: مسافة بين القوسين محدودة، ميل للغثيان، أو صعوبة الوصول لزرعة خلفية.</p><p>ال<b>التقاط (طابع مفتوح)</b>: أغطية مربعة وطابع ويه فتحة حتى أطراف براغي الأغطية ظاهرة. قبل الفصل، تُفك البراغي وتطلع ويه الطبعة. النظائر تُربَط بالأغطية داخل الطبعة. يستفيد من صلابة المادة ويلغي خطأ التشوه الدائم لأن الغطاء يبقى بالطبعة لحد الصب والفصل. المزايا: يقلل تأثير زاوية الزرعة وتشوه المادة. العيب: قد يحدث دوران للنقل ويه تثبيت النظير.</p><p>مستوى الدعامة <b>المباشر</b>: الدعامة (غالباً جاهزة) تُحضَّر بالفم والطبعة عليها مثل سن طبيعي؛ مصبوب حجري وقالب فردي. مزايا: مألوفة للطبيب، بلا نظائر مختبر، تجبير التيجان أبسط، وتكلفة أقل. عيوب: التحضير بالفم، وقد تحتاج خيط إبعاد بالمناطق التجميلية أو إذا ارتفاع إضافي مطلوب.</p><p>مستوى الدعامة <b>غير المباشر</b>: طابع مغلق ومادة مرنة. الدعامة تبقى بمكانها ويه إخراج الطبعة، بعدين تنشال من الفم وتُربَط بنظير جسم الزرعة وتُرجع للطبعة قبل الصب — لذلك النقل «غير مباشر».</p>","<p>فروقات مهمة: (1) الأسنان الطبيعية ويه إحساس إطباقي عالي (استقبال عميق) حوالي <b>20 ميكرون</b>، ورباط حول سني يمتص الصدمة ويسمح بغؤور ذروي. بالزرعة ما في هالإحساس ولا ممتص صدمة، فقوة الاصطدام غالباً أكبر. (2) ويه رضّ الإطباق الحركة تصير بالسن والزرعة؛ بعد رفع الرضّ الحركة تنسيطر بالسن الطبيعي، بينما الزرعة ما تظهر نفس الاستجابة. (3) قطر السن الطبيعي عموماً أكبر؛ مقطع الزرعة مستدير، والقطر يُختار أساساً حسب العظم المتوفر مو حسب الحمل المتوقع.</p><p>لذلك وُضع <b>الإطباق الواقي للزرعة (IPO)</b>: مخطط إطباقي خاص بترميم الزرعة داخل العظم. الهدف الأساسي إبقاء الحمل المنقول لجسم الزرعة ضمن الحدود الفسيولوجية للمريض.</p><p>أهميته: ما في آليات دفاع خاصة ضد قوى الإطباق بالزرعة، فالإطباق السيء مضر؛ دقة التصنيع والإطباق مفتاح النجاح؛ قوة الاصطدام قد تخرّب التعويض والزرعات والعظم، وIPO يحمي بتقليل أثر الاصطدام ونقل الحمل للعظم عبر جسم الزرعة.</p>","<p>أهداف IPO: تماس ثنائي متزامن؛ بلا تماس مبكر بموضع التماس المتراجع (RCP)؛ حركة جانبية ملساء بلا تداخلات جهة عدم العمل؛ توزيع قوى متساوٍ؛ حرية من التماسات المحرّفة بموضع التشابك (قد تفيد حرية أفقية، وميل حدبة ضحل قد يقلل الحمل الأفقي)؛ وتوجيه أمامي كلما أمكن.</p><p>بلا تماس مبكر: الحمل المفرط يسبب امتصاص قمة شديداً وضياع الاندماج. الزرعة «غير متحركة» قد تحمل الحمل كله مقابل السن «المتحرك». فرق الحركة العمودية بين الأسنان والزرعات بنفس القوس <b>28 ميكرون</b>. عدّل التماسات المبكرة. ورق تمفصل رقيق (<b>أقل من 25 ميكرون</b>) للتعديل الأولي بإطباق العلاقة المركزية ويه <b>طرق خفيف</b>: تعويض الزرعة يكاد يلمس، والأسنان المجاورة تماسها الأولي أكبر. التماس على تاج الزرعة يكون محورياً فقط. بعد التعادل بالعضة الخفيفة، تُطبَّق <b>قوة إطباق مركزية أثقل</b>: التماس يبقى محورياً فوق الجسم وقد يتساوى الشدة ويه الأسنان المجاورة تحت العضة الأثقل، لأن العضة الثقيلة تغوّر الأسنان الطبيعية أقرب لموضع الزرعة فيتشاركون الحمل.</p><p>الحركة الجانبية الأولية للقواطع الصحية <b>68–108 ميكرون</b> قبل الحركة الثانوية. حركة الزرعة الجانبية مو فورية و<b>10–50 ميكرون</b>. لذلك التعديل الجانبي أهم لنجاح الزرعة: عضة خفيفة أولاً (تماس الزرعة أدنى)، وبعدين عضة ثقيلة لتماس متساوٍ.</p>","<p><b>مساحة السطح:</b> الزرعة الجذرية الأوسع قطرها تعطي مساحة تماس أكبر عند القمة فتقلل الإجهاد الميكانيكي. إذا استُخدمت زرعات ضيقة بمناطق حمل أكبر، يلزم زرعات إضافية مجبّرة للتعويض.</p><p><b>زاوية حدبة التاج:</b> التماس على حدبة مائلة يعطي حملاً مائلاً لعظم القمة. تاج الزرعة الخلفي لازم حدباته ضحلة وحفرته المركزية أوسع وعمودية على جسم الزرعة. حدبة الخصم تُعدَّل حتى تطبق بالحجرة.</p><p><b>مواضع التماس:</b> تحدد اتجاه القوة. الوضع المثالي لجسم الزرعة عادة تحت الحفرة المركزية، وربما 1–2 ملم للجهة الوجهية (إذا العظم وفير) حتى تكون تحت الحدبة الشدقية بالسفلي وتحسّن بزوغ تاج الزرعة العلوي تجميلياً. التماسات الأولية المثالية داخل قطر الزرعة. الثانوية تبقى ضمن 1 ملم من محيط الزرعة. تماس الحافة الهامشية يُعد حملاً كابولياً لأن الزرعة مو تحت الحافة الهامشية — تجنّبه.</p><p><b>محيط تاج الزرعة:</b> طاولة إطباق واسعة تشجّع تماسات منحرفة. الأجسام الأضيق أضعف أمام عرض الطاولة والأحمال المنحرفة. بالـ IPO عرض طاولة الإطباق يرتبط مباشرة بعرض جسم الزرعة. تقليد تشريح السن الطبيعي غالباً يزيد الأحمال المنحرفة ويصعّب العناية ويزيد كسر الخزف. بالمناطق غير التجميلية قلّل عرض الطاولة مقارنة بالأسنان الطبيعية.</p>","<p>توقيت الزرع والتحميل كما بالمحاضرة، وحرارة 44–47 م° لدقيقة تعيق تجدد العظم.</p>","<p>أسئلة ختامية + بطاقة + زر الدرجة: أرقام RP-4، تعديل IPO خفيف ثم ثقيل، وماذا يعوّض FP-1 و 2 و 3. إذا غلطت ارجع للشرائح.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
