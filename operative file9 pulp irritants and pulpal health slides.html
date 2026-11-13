@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Operative File 9 — Pulp Irritants and Pulpal Health</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Operative (Conservative) Dentistry · Dr. Ahmed H. Ali Lectures 9–10</div>
+    <h1>Pulp Irritants, Inflammatory Conditions, and Restorative Effects on Pulpal Health</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lectures 9–10 by Dr. Ahmed H. Ali (PDF pages 173–193): pulp irritants and inflammatory conditions, then how operative procedures, liners and restorations affect pulpal health.</p>
+    <ul>
+      <li>Pulp is 75% water; remaining dentine under 300 µm makes acid etching hazardous; a 5.5 °C rise for 10 seconds can damage the pulp</li>
+      <li>Reactionary versus reparative dentine (about 15 days), infected versus affected dentine, and a pulp-polyp pulpotomy only if there is no necrosis</li>
+      <li>Ultra-speed 300,000 rpm needs a water coolant; a 1–2 mm base is a thermal barrier; keep liners off the margins</li>
+      <li>Unreacted resin monomer 1.5–5%, freshly mixed amalgam more cytotoxic than set amalgam, and the accumulative insult to the pulp</li>
+      <li>Total run time: <b>36 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 18</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Operative · File 9","t":"Pulp irritants, inflammatory conditions, and how restorative work affects pulpal health","b":"<p>University of Baghdad, College of Dentistry — Operative (conservative) dentistry syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file covers PDF pages 173–193: Lecture 9 by Dr. Ahmed H. Ali on pulp irritants and inflammatory conditions of the pulp, and Lecture 10 on restorative dentistry and pulpal health. Page 179 is almost empty (only a heading on chemical irritation of restorative materials); that topic is taken up in Lecture 10 and is not invented here.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Medical terms stay in English next to the Arabic. Numbers in these lectures are kept as written, including a pulp of 75% water and 25% organic material, remaining dentine thickness of less than 300 µm, and an intrapulpal temperature rise of 5.5 °C for 10 seconds.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 9","t":"The pulp is 75% water, and it forms, nourishes, senses and protects","b":"<p>Dental pulp consists of <b>75% water</b> and <b>25% organic material</b> (collagen fibres and ground organic substances). The organic material supports the nervous, cellular and vascular components of the vital tooth. Vascularization is through the apical foramen at the root apex. Pulp tissue is enclosed in the hard dentinal structure of the tooth.</p><p>Functions: (1) formative — generates primary, secondary and tertiary dentine (dentinogenesis); (2) nutritive — provides the vascular supply and a ground-substance transfer medium for metabolic functions and maintenance of cells and organic matrix; (3) sensory — transmits afferent pain sensation (nociception); (4) protective — coordinates inflammatory, antigenic, neurogenic and dentinogenic responses to injury; (5) homeostasis and clearance of noxious and antigenic substances through the vascular and lymphatic systems and through defense cells such as macrophages and leukocytes. The pulp and dentine are considered one organ, the pulp–dentine complex, which responds through pulpal immune-inflammation defense and dentine repair. Like other soft tissues, the pulp reacts to irritants with inflammation. Irritants are classified as bacterial, physical, irradiation, or chemical.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 9","t":"Bacterial irritants: caries toxins, an exposed pulp, and periodontal disease reaching the apex","b":"<p>Carious enamel and dentine contain numerous bacteria such as Streptococcus mutans, lactobacilli and Actinomyces. The population decreases to few or none in the deepest layers of carious dentine. Microorganisms produce toxins that penetrate the pulp through the tubules. Odontoblasts release cytokines and chemokines that start inflammation, first with chronic inflammatory cells; as the lesion deepens, the infiltrate becomes a more severe type. Outward tubular fluid flow during primary irritation does not prevent bacteria or toxins from reaching the pulp. The extent of inflammation depends on the depth of bacterial invasion, how much permeability has been reduced by sclerosis and reparative dentine, and the duration of the irritant.</p><p>When bacteria or toxins actually invade the pulp, severe inflammation is infiltrated locally by polymorphonuclear leukocytes to form liquefaction necrosis at the exposure site. The pulp may stay inflamed for long periods and necrose eventually, or become necrotic quickly, leaving a non-vital tooth that requires root-canal treatment. Periodontal disease may extend to the pulp through accessory canals, the apical foramen and open tubules. Inflammatory pulp changes occur when there are many accessory canals or when periodontal disease has progressed to the apex. Cumulative periodontal disease may damage the pulp (calcification, inflammation or resorption), but total pulp disintegration is certain only when the apical foramen is infected. Some studies found that the initial periodontal effect may be degenerative rather than directly inflammatory. Root curettage that extends around the apex may sever pulp vessels and devitalize the pulp.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 9","t":"Mechanical, orthodontic and traumatic irritants, and remaining dentine thinner than 300 µm","b":"<p>Pulp trauma results when the pulp is closely approached or dentine is extensively removed. Over-cutting, whether the pulp is exposed or not, is one of the greatest damages. Both the depth and the width of the cavity matter: pulpal damage is roughly proportional to the amount of tooth structure removed and to the depth of removal. Remaining dentine thickness (RDT) after a deep preparation plays a significant role; there is an inverse relationship between RDT and pulp injury. In teeth with remaining dentine thickness <b>less than 300 µm</b>, acid etching may lead to severe irritation of odontoblasts and persistent pulp inflammation because of the high permeability caused by etching. Operative procedures without water coolant cause more irritation than those performed under a water spray.</p><p>Orthodontic movement disturbs pulp circulation similarly to periodontally involved teeth. If the force exceeds physiologic tolerance, periodontal-ligament vessels may rupture, nutrition to pulp cells is lost, and hemorrhage from larger pulp vessels can necrose the entire pulp. Movement may also initiate resorption of the root apex, usually without a change in pulp vitality. Tooth fracture (direct trauma, indirect jaw trauma, or severe occlusal pressure on a tooth with a large filling) is usually followed by bacterial invasion; untreated invasion decreases any chance of sustained vitality. A fracture through the root disturbs the vascular supply and often leads to loss of vitality.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 9","t":"Attrition, abrasion and abfraction as pulp irritants, and desensitizing when the tooth is hypersensitive","b":"<p>Attrition is mechanical wear of incisal or occlusal structure from functional or parafunctional mandibular movement (grinding or bruxism, usually due to stress). Pulp inflammation or necrosis related to incisal wear is seldom, because the pulp can lay down dentine; but when wear exceeds the rate of reparative-dentine deposition, pulp exposure with an observable incisal opening may be seen, or the pulp may already have been devitalized earlier and attrition finally reaches the chamber. Sometimes the tooth needs to be crowned. Abrasion is loss by mechanical or frictional forces (excessive brushing, floss, toothpicks or removable appliances). These lesions can progress rapidly at the CEJ because enamel is thin and dentine and cementum wear away quickly, and they may invade the pulp space. Horizontal brushing commonly produces V-shaped notches on the labial surface. Abfraction is a non-carious cervical lesion attributed to flexure from occlusal compressive and tensile stresses, with microfractures of hydroxyapatite, fatigue and deformation, facilitated by thin cervical enamel and a low packing density of the Hunter–Schreger band. It is important to determine and eliminate the cause. If the tooth is hypersensitive, relief may come from desensitizing agents, topical fluoride, a fluoride rinse, dentine-bonding agents, or a restoration.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 9","t":"A 5.5 °C rise for 10 seconds can damage the pulp; pulse the laser, and know the limits of air abrasion","b":"<p>Tooth preparation, composite polymerization, and finishing and polishing can raise intrapulpal temperature. It was reported that an intrapulpal temperature increase of <b>5.5 °C for 10 seconds</b> can cause histological damage (irreversible pulpitis or even pulp necrosis). Two newer preparation methods are laser and kinetic cavity preparation (air abrasion). A laser produces high-intensity beams of various wavelengths; on soft tissue it can produce a completely blood-free incision followed by rapid healing. CO<sub>2</sub>, Er:YAG and free-electron (FEL) lasers on tooth structure have demonstrated a minimal pulpal response, comparable to high-speed rotary instrumentation. The effect depends on the power of the beam and the extent to which it is absorbed. Cutting enamel and dentine with a laser generates heat that might affect the pulp, so it should be used in a <b>pulsating manner, not continuously</b>. Air abrasion generates heat and makes it difficult for the operator to judge cutting progress (loss of tactile sensation). It is used for stain removal and cleansing pits and fissures before sealing. Animal studies have shown that air-abrasion cavity preparation is no more traumatic to the pulp than rotary instrumentation.</p><p>Irradiation: the pulp of teeth in a patient exposed to deep radiation therapy for a malignant growth in the head and neck is affected; in time odontoblasts and other cells become necrotic, and salivary glands are affected with decreased salivary flow. Chemical irritants include erosion (constant citrus, airborne acids, or repeated gastric acid) — rounded, cupped-out defects first confined to enamel, then accelerating once dentine is reached. A heading on chemical irritation of various restorative materials sits on an almost empty page; that topic is developed in Lecture 10.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 9","t":"Quiz: pulp composition, RDT under 300 µm, and a 5.5 °C rise for 10 seconds","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Pulp composition, bacterial irritants and remaining dentine thickness in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The pulp is 90% mineral; outward tubular flow always blocks toxins; acid etching is harmless even when remaining dentine is 100 µm thick</button><button type=\"button\" class=\"opt\" data-i=\"1\">Pulp is 75% water and 25% organic material, vascularized through the apical foramen, and has formative, nutritive, sensory, protective and clearance functions as part of the pulp–dentine complex. Caries toxins (from S. mutans, lactobacilli, Actinomyces) reach the pulp despite outward fluid flow; inflammation depends on invasion depth, sclerosis and reparative dentine, and duration. Actual bacterial invasion produces local liquefaction necrosis and may necrose the pulp, requiring root-canal treatment. Periodontal disease can reach the pulp via accessory canals, the foramen and open tubules; total disintegration is certain only when the apical foramen is infected, and apical curettage may sever vessels. Over-cutting (depth and width) damages the pulp in proportion to structure removed. Remaining dentine thickness is inversely related to injury; if it is less than 300 µm, acid etching may severely irritate odontoblasts and sustain inflammation. Procedures without water coolant irritate more than those under a water spray</button><button type=\"button\" class=\"opt\" data-i=\"2\">Periodontal disease never affects the pulp unless the crown is carious</button><button type=\"button\" class=\"opt\" data-i=\"3\">Cavity width is irrelevant to pulpal damage; only depth matters</button></div><div class=\"qexp\" hidden><p>اللب 75% ماء. إذا العاج المتبقي أقل من 300 مايكرومتر، الحفر الحامضي قد يهيّج اللب بشدة. الشغل بلا ماء أضر. التفكك الكامل من مرض اللثة أكيد فقط إذا الثقبة الذروية انعدمت.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Physical and thermal irritants in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">An intrapulpal rise of 1 °C is always necrotic; lasers must run continuously; attrition never exposes the pulp</button><button type=\"button\" class=\"opt\" data-i=\"1\">Excessive orthodontic force may rupture ligament vessels and necrose the pulp, or resorb the apex without changing vitality. A root fracture often costs vitality. Attrition rarely inflames the pulp unless wear outruns reparative dentine. Abrasion at the CEJ can invade the pulp space (V-notches from horizontal brushing). Abfraction is cervical flexure with hydroxyapatite microfracture. An intrapulpal rise of 5.5 °C for 10 seconds can cause irreversible pulpitis or necrosis. CO₂, Er:YAG and FEL lasers have a minimal pulpal response comparable to high-speed rotary work, but cutting should be pulsed, not continuous. Air abrasion generates heat and loses tactile sense, yet animal studies found it no more traumatic than rotary cutting. Head-and-neck radiotherapy can necrose odontoblasts and reduce saliva. Erosion starts as a cupped enamel defect and accelerates in dentine. Hypersensitivity may be eased with desensitizers, fluoride, bonding agents or a restoration once the cause is removed</button><button type=\"button\" class=\"opt\" data-i=\"2\">Air abrasion never generates heat and always preserves a clear sense of depth</button><button type=\"button\" class=\"opt\" data-i=\"3\">Water coolant is optional when using ultra-speed burs near the pulp</button></div><div class=\"qexp\" hidden><p>ارتفاع 5.5°م لمدة 10 ثوانٍ يضر اللب. الليزر نبضي مو مستمر. السحل عند الـ CEJ قد يوصل لفضاء اللب.</p></div></div>"},{"k":"Dr. Ahmed H. Ali · Lecture 9","t":"Defense of the dentine–pulp complex: reduced permeability, dead tracts and sclerotic dentine","b":"<p>Dentine and pulp should be considered one vital organ. Reactions to injury include: (1) <b>reduced dentine permeability</b> — diffusion of plasma proteins into the tubules, coagulation of fibrin from pulpal vessels beneath a recently cut cavity, pathologic precipitation of intratubular materials (mineral deposits, collagen fibrils, proteoglycan linings and bacteria), and a smear layer of dentine debris on the cut surface; all contribute to intratubular occlusion. (2) <b>Dead tracts</b> — regions of empty tubules in primary dentine from degeneration of the odontoblastic process, found under most carious cavities; at the pulpal end the dead tract is sealed off by a layer of impermeable calcified tissue. (3) <b>Sclerotic dentine</b> — mineral deposition in the tubules from aging or slowly progressing caries, gradually occluding them, decreasing permeability and reducing sensitivity to cold and rapid air. Peritubular dentine becomes wider as tubules fill. Sclerosis from aging is physiologic; from irritation, reactive. Clinically, sclerotic dentine is shiny, darkly coloured and hard to an explorer, whereas freshly cut normal dentine lacks the shine and allows some penetration (softer). It is common under old, discoloured restorations. It walls off the lesion by sealing tubules and appears translucent under the light microscope (the translucent or transparent zone).</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 9","t":"Reactionary versus reparative dentine, and infected versus affected dentine","b":"<p>Tertiary dentine divides into <b>reactionary dentine</b>, formed by surviving post-mitotic odontoblasts as a reaction to stimuli such as caries, abrasion, attrition, cavity preparation or erosion (acidic caries by-products stimulate a modified atubular matrix), and <b>reparative dentine</b>, formed by odontoblast-like cells that differentiate from pulp stem cells after death of the primary odontoblasts. When caries advances rapidly with high acid production, odontoblasts degenerate and there is mild pulp inflammation; in about <b>15 days</b>, new odontoblasts differentiate and lay down irregular, often atubular, reparative dentine confined to the irritated area of the pulp-cavity wall.</p><p><b>Infected dentine</b> is very softened and contaminated with bacteria (the superficial necrotic zone). Clinically it is a wet, mushy, easily removable mass; histologically structureless and granular with a mass of bacteria, and remnants of distorted tubules filled with bacteria. It is easily removed with a hand instrument without excessive force and flakes off in layers parallel to the DEJ. If the lesion is progressing slowly, a zone of sclerotic dentine lies subjacent to the demineralized affected dentine. <b>Affected dentine</b> is softened (demineralized) by acidic products from the superficial infected layer, but is still not invaded by bacteria; it has intact tubules containing odontoblastic processes, a porous surface and crystalline material, and is capable of remineralization if the pulp remains vital. In slowly advancing lesions, remove all softened infected dentine down to the identified zone of affected dentine. In rapidly advancing lesions there is little clinical evidence by texture and colour to mark the limit; a caries indicator may help distinguish infected from affected dentine.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 9","t":"Why an inflamed pulp is in danger, and the eight-step sequence from a healthy pulp to necrosis","b":"<p>To choose treatment, pulp status must be determined accurately. Histologically the inflammation is similar to that in other connective tissues, but the long-term response to severe irritation differs: the pulp has no room in which to swell, which may increase cell death in an ever-widening area. It is generally the coronal pulp that is injured, and it lacks collateral blood supply, so extra nutrition and defenses cannot be marshaled quickly. Inflammation itself may destroy normal cells as well as foreign substances. The most severe reaction occurs at the time of actual pulp exposure. In progressive order the status of the pulp in response to injury is: (1) healthy pulp; (2) hyperemia; (3) acute pulpitis; (4) chronic partial pulpitis without necrosis; (5) chronic partial pulpitis with necrosis; (6) chronic total pulpitis with partial necrosis; (7) total necrosis of the pulp; (8) acute pulpitis superimposed on chronic pulpitis.</p><p>A healthy pulp is free of disease and has no inflammatory cells, though its histology varies with age and function. Hyperemia is a physiologic increase in blood flow; histologically, dilated and congested vessels are seen, and the pulp may not yet be inflamed. About <b>41%</b> of carious teeth did have hyperemia, suggesting that it may frequently be an early sign of inflammation. Because early vascular events precede or are an early component of inflammation, removing the cause should revert the microcirculation to its normal state.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 9","t":"Acute pulpitis lasts about 3 days, and a pulp polyp may still allow a conservative pulpotomy","b":"<p>Acute pulpitis follows various operative procedures, including mechanical pulp exposure, and also deep scaling and curettage. An acute reaction always develops beneath the affected tubules, and may superimpose itself on an existing chronic reaction (for example after operative work on a previously restored tooth). Histologically, odontoblasts may be destroyed or ruptured by edema; there is increased eosinophilia, marked dilatation of lymphatics and vessels, packing of erythrocytes, pavementing of leukocytes, and infiltration around dilated vessels. This reaction lasts <b>3 days</b> and either resolves into repair or becomes chronic if the irritant persists. Clinically there is mild pain during hot and/or cold application that lasts only as long as the stimulus remains. This is categorized as <b>reversible pulpitis</b> if there is no partial necrosis and the stimulus is removed.</p><p>Chronic partial pulpitis without necrosis develops from deep caries, pulp exposure, operative procedures, a deep periodontal lesion, or orthodontic movement. Inflammation is confined to the coronal pulp and is usually dominated by small lymphocytes, monocytes, macrophages and plasma cells. In children and young adults a hyperplastic reaction (a <b>pulp polyp</b>, or chronic hyperplastic pulpitis) may occur because of a rich blood supply and a favorable immune response. It is uncommon, bleeds easily to touch, and can mimic gingival reactive or neoplastic lesions; it is differentiated from a gum polyp by tracing its origin with a probe. It results from mechanical irritation and bacterial invasion of a tooth with significant crown destruction, usually with the entire dentinal roof exposed. Treatment: a conservative vital pulpotomy has been successful in selected cases when only the coronal pulp is affected (no necrosis). Root-canal therapy or extraction is used when there is necrosis in the pulp — then the condition is <b>irreversible pulpitis</b>. If there is no partial necrosis it can be categorized as reversible pulpitis.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 9","t":"When necrosis is present the pulpitis is irreversible — pain may last half an hour, or throb at night","b":"<p>Chronic partial pulpitis with partial necrosis develops from persistence of the same irritants, causing liquefaction or coagulation necrosis with the inflammatory lesion extending deeper. Painful symptoms may occur; these liquefaction areas are called a “pulp abscess,” surrounded by disintegrated polymorphonuclear leukocytes, collagen fibres and chronic inflammatory cells. The pain is spontaneous, due to pressure of the abscess on surrounding nerve, may last for <b>half an hour</b>, and does not disappear with analgesics. A radiograph should be taken; the tooth could be exposed (caries has reached the pulp — chronic open pulpitis) or closed (toxins or a severe irritant from which the pulp cannot recover). Treatment is endodontic (root-canal treatment) or extraction — <b>irreversible pulpitis</b> because of partial necrosis.</p><p>Chronic total pulpitis with partial necrosis extends to the entire pulp (coronal and radicular). There is severe pain, sometimes lasting many hours, or throbbing pain that increases when the patient sleeps because pressure inside the pulp rises. Treatment is root-canal treatment or extraction (irreversible). Total necrosis: cells have died by coagulation (the cell is still recognizable but intracellular details have disappeared) or liquefaction (the entire outline has disappeared, with a dense zone of polymorphonuclear leukocytes and chronic inflammatory cells). Treatment of choice is root-canal treatment or extraction. Acute pulpitis superimposed on chronic pulpitis: severe pain especially at night until an abscess forms, then slight but not complete relief unless drainage is made through the tooth (access opening) or a surgical incision with antibiotic cover; the patient should be seen within a few days, then treatment continues with root-canal treatment or extraction.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 9","t":"Quiz: 15-day reparative dentine, 41% hyperemia, and when a pulp polyp is still reversible","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Defense reactions and infected versus affected dentine in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Sclerotic dentine is soft and wet; infected dentine can remineralize; reparative dentine is always formed in 24 hours by the original odontoblasts</button><button type=\"button\" class=\"opt\" data-i=\"1\">Permeability falls when plasma proteins, fibrin, mineral deposits and a smear layer occlude tubules. Dead tracts are empty primary-dentine tubules sealed pulpally by calcified tissue. Sclerotic dentine is shiny, dark and hard, translucent microscopically, common under old restorations, and walls off a lesion. Reactionary dentine comes from surviving post-mitotic odontoblasts; reparative dentine comes from stem-cell-derived odontoblast-like cells after the originals die, appearing in about 15 days as irregular atubular dentine confined to the injured wall. Infected dentine is a wet, mushy, bacteria-filled mass that flakes off parallel to the DEJ with a hand instrument. Affected dentine is demineralized but not invaded, has intact processes, and can remineralize if the pulp is vital — remove infected dentine down to this zone in a slow lesion; a caries indicator may help in a rapid one</button><button type=\"button\" class=\"opt\" data-i=\"2\">Affected dentine is always packed with bacteria and must be excavated with a high-speed bur into the pulp</button><button type=\"button\" class=\"opt\" data-i=\"3\">Dead tracts increase permeability because they remain wide open at the pulp</button></div><div class=\"qexp\" hidden><p>العاج الترميمي خلال حوالي 15 يوم من خلايا جذعية. المصاب طري ومليان بكتيريا؛ المتأثر منزوع الكلس وقابل لإعادة التمعدن إذا اللب حي.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Inflammatory conditions of the pulp in this lecture, in order, include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Hyperemia is always irreversible; a pulp polyp always requires extraction; pain that lasts only as long as a cold stimulus is a sign of total necrosis</button><button type=\"button\" class=\"opt\" data-i=\"1\">The pulp cannot swell and lacks collateral supply, so injury can widen. The sequence is healthy pulp, hyperemia, acute pulpitis, chronic partial pulpitis without then with necrosis, chronic total pulpitis with partial necrosis, total necrosis, and acute pulpitis on chronic pulpitis. About 41% of carious teeth showed hyperemia, an early change that should revert if the cause is removed. Acute pulpitis lasts about 3 days; mild pain only while a hot or cold stimulus remains is reversible if there is no partial necrosis. A pulp polyp (chronic hyperplastic pulpitis in the young) may be treated by vital pulpotomy if only the coronal pulp is affected and there is no necrosis; with necrosis it is irreversible (root canal or extraction). Once partial necrosis or a pulp abscess is present (spontaneous pain that may last half an hour and does not yield to analgesics), or the whole pulp is involved or totally necrotic, treatment is root-canal therapy or extraction. Acute flare on chronic pulpitis causes severe night pain; drain through an access or a surgical incision with antibiotics, review within a few days, then complete root-canal treatment or extraction</button><button type=\"button\" class=\"opt\" data-i=\"2\">Total necrosis is treated only with a sedative dressing and never with a root canal</button><button type=\"button\" class=\"opt\" data-i=\"3\">A three-day acute reaction always becomes total necrosis even if the irritant is removed</button></div><div class=\"qexp\" hidden><p>الاحتقان بـ 41% من الأسنان النخرة وقد يرجع. الألم ويه المنبه فقط التهاب راجع. السليلة اللبية ممكن بتر حيوي إذا بلا نخر. وجود نخر جزئي يجعل الحالة غير راجعة.</p></div></div>"},{"k":"Dr. Ahmed H. Ali · Lecture 10","t":"Local anaesthetic, frictional heat, and why 300,000 rpm needs a water coolant","b":"<p>Teeth are vital organs and should be treated with consideration. The pulp responds quickly; the response depends on the severity of the stimulus. Vasoconstrictors in local anaesthetic potentiate and prolong the effect by reducing blood flow; that reduction during a restorative procedure could increase the concentration of irritants accumulating within the pulp.</p><p>Despite the low thermal conductivity of dentine, heat from grinding is often considered the greatest single cause of damage if high temperatures are produced in a deep cavity by continuous cutting without proper cooling. Excessive heat changes dentine colour because of vascular stasis and hemorrhage in the sub-odontoblastic plexus. If damage is extensive and the cell-rich zone is destroyed, reparative dentine may not form, and generalized cellular degeneration and a localized abscess may develop. Factors that raise pulp temperature: (a) force applied by the operator is directly proportional to heat; (b) revolutions per minute — ultra-speed (<b>300,000 rpm</b> and more) was found to be more traumatic than low speed (<b>6,000 rpm</b>) because of frictional heat, but this occurs if inadequate air–water coolant is used. High-speed handpieces must have adequate cooling; a water-cooling system is better than air-cooling (it reduces temperature rise, removes debris, and gives a clean view); (c) size, shape and condition of the tool — tungsten carbide is much harder than stainless steel; a dull bur decreases cutting efficiency and increases heat and vibration. A diamond bur has full-surface contact, so more heat; a bur with longitudinal serration or a cross-cut is better because water can reach the blades. (d) Duration — intermittent cutting at intervals of a few seconds reduces heat compared with continuous cutting. Polishing also matters: dry powder is a concern; rubber polishing burs created higher temperatures than cup brushes; continuous high-speed polishing produces more heat than intermittent low-speed polishing.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 10","t":"Cutting close to the cell body, drying the dentine, remaining thickness, exposure and pins","b":"<p>Amputation of the distal segment of an odontoblast process is a consequence of cavity preparation and is quickly followed by repair of the cell membrane; if amputation occurs close to the cell body, the injury is irreversible. Cutting also disturbs tight junctions between adjacent odontoblasts, increasing permeability of the odontoblast layer and the potential entry of toxins. After cavity preparation in rat molars, apoptosis of odontoblasts occurs, which may indicate a greater impact of the surgical phase than of the restorative materials; in humans the main reparative response is secretion of reactionary dentine. Drying freshly cut dentine with a jet of air causes rapid outward fluid movement, stimulates sensory nerves, and draws odontoblasts up into the tubules; the displaced cells die, autolyse and incite inflammation. They are replaced by new odontoblast-like cells from the cell-rich zone, and within <b>1–3 months</b> reparative dentine is formed.</p><p>Remaining dentine thickness: permeability increases with cavity depth because of larger, more numerous tubules. The distance from the floor to the pulp greatly influences the pulpal response. Conservation of remaining tooth structure is more important to pulpal health than replacing lost structure with a liner and base; there is an inverse relationship between RDT and pulp injury and repair. Pulpal exposure while removing carious dentine, or accidental exposure while placing pins or retention points (a large chamber or extensive horn even in a shallow cavity), injures the pulp mainly by bacterial contamination — carious exposure causes much more contamination than accidental exposure, so the prognosis is poorer. Occasionally an exposure is unnoticed because there is no bleeding, and the first sign is pain when the anaesthetic wears off. Pin insertion can support amalgam or composite or a core for a crown, but has been associated with increased inflammation and death: heat, inadvertent insertion into or very near the pulp, and craze and stress in dentine.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 10","t":"Liners and bases: zinc phosphate is highly irritant when mixed; a 1–2 mm base is an effective barrier","b":"<p>Newly mixed zinc phosphate is highly acidic because of phosphoric acid and is highly irritant to the pulp, producing irreversible pulpal damage (acidity decreases blood flow and can cause pulpal death), even though the pH approaches neutrality in a short period. Zinc polycarboxylate is less irritant, probably because of the large molecular size of polyacrylic acid, which restricts penetration through dentine; it adapts well to dentine and has a bactericidal effect. Zinc oxide–eugenol has a palliative effect, pH 7, is bacteriostatic and bactericidal, and has a good marginal seal — but eugenol, a phenol derivative, is toxic and can produce thrombosis of blood vessels when applied directly to pulp tissue, so there is a question whether it should be used in a very deep cavity where there is a risk of pulp exposure. Glass ionomer has been found to have no irritating effect upon living pulp. Lining materials should not be placed on the walls and margins, because they dissolve in oral fluid and leave a wide gap. The thickness of a base should be <b>1–2 mm</b>, an effective barrier against both hot and cold in a deep cavity. Force of cementation: a patient may complain of pulp pain when an inlay or crown is cemented with zinc phosphate, from chemical irritation of the liquid and from hydraulic pressure driving fluid toward the pulp, which can separate the odontoblast layer from the dentine.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 10","t":"Resin monomers, etching, amalgam ions, and the accumulative insult to the pulp","b":"<p>In resin restoration the initial toxic shock can be severe; extensive use of mouth-curing plastic as a filling and temporary crown has been related to a great number of pulp deaths. Resin composites and bonding resins can cause marked inflammation, pulp damage and vascular dilatation when placed in deep dentine. Compounds such as TEGDMA, camphorquinone and HEMA can diffuse through dentine into the pulp in small quantities (micrograms) within hours and days and cause adverse cytotoxic effects. Release of unreacted monomer (<b>1.5–5%</b> of the methacrylic group remains unreacted) is enough to initiate a cytotoxic effect, because mechanical, thermal and chemical factors inhibit complete polymerization. Acid etching has no significant effect on pulpal microvascular vessels, but it widens tubule openings, increases permeability and enhances bacterial penetration. Amalgam ions (silver, copper and mercury) may adversely affect the pulp by diffusion; freshly mixed amalgam is more cytotoxic than set amalgam because of unreacted mercury, and mercury compounds showed higher cytotoxicity than resin-composite constituents. Hypersensitivity after amalgam insertion may relate to the force of insertion or to expansion after insertion. Deep metallic restorations need a cement base when dentine is inadequate for thermal isolation. No permanent filling provides a perfect marginal seal. An adequate liner or base that can inhibit bacterial growth (for example ZOE or GIC) should seal the tubules before the restoration is inserted. Marginal adaptation is affected by temperature changes and masticatory forces; a different coefficient of thermal expansion produces gaps. In composite, the marginal seal is improved by etching beveled enamel and using a bonding agent, but the initial seal tends to decrease as the restoration ages. The accumulative effect is the whole irritation the tooth is subjected to (caries, preparation, lining and filling, secondary caries); a small inflammatory process may worsen until the pulp is necrotic, quickly or slowly, sometimes without discomfort. Insults can be minimized by controlling depth, width and extension; heat and desiccation; chemical injury from medicaments; toxicity of liners, bases and fillings; and prevention of microleakage.</p>"},{"k":"Dr. Ahmed H. Ali · Lectures 9–10","t":"Self-test: 5.5 °C, 300,000 rpm with water, a 1–2 mm base, and 1.5–5% unreacted monomer","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Cutting, cooling and remaining dentine in Lecture 10 include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Ultra-speed at 300,000 rpm is always kinder than 6,000 rpm, even without water; drying dentine with air is harmless; remaining dentine thickness does not affect pulp injury</button><button type=\"button\" class=\"opt\" data-i=\"1\">Vasoconstrictors in local anaesthetic reduce blood flow and may concentrate irritants in the pulp. Frictional heat from continuous uncooled cutting is often the greatest single cause of pulp damage. Ultra-speed (300,000 rpm and more) is more traumatic than 6,000 rpm if the air–water coolant is inadequate; water cooling is better than air (less heat, debris removal, a clean view). Use a sharp bur (dull tools make more heat and vibration); a serrated or cross-cut bur lets water reach the blades better than a full-contact diamond. Cut intermittently for a few seconds rather than continuously; polish intermittently at low speed, and beware dry powder and rubber burs. Amputation close to the odontoblast cell body is irreversible. An air blast can draw odontoblasts into tubules; reparative dentine then forms in 1–3 months. Conserving remaining dentine matters more than replacing it with a liner; injury is inversely related to thickness. Carious exposure has a poorer prognosis than accidental exposure because of heavier contamination. Pins may generate heat, enter or approach the pulp, or craze dentine</button><button type=\"button\" class=\"opt\" data-i=\"2\">A diamond bur always generates less heat than a cross-cut bur, because water cannot reach a cross-cut blade</button><button type=\"button\" class=\"opt\" data-i=\"3\">Polishing with a dry rubber bur at continuous high speed is the safest way to protect the pulp</button></div><div class=\"qexp\" hidden><p>300,000 دورة أضر من 6,000 إذا التبريد ناقص؛ الماء أفضل من الهواء. القطع والتلميع المتقطع. العاج الترميمي بعد التجفيف خلال 1–3 أشهر. حفظ السمك المتبقي أهم من القاعدة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Liners, resins and amalgam in Lecture 10, and the idea of accumulative insult, include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Fresh zinc phosphate is bland to the pulp; unreacted resin monomer never reaches the pulp; amalgam ions cannot diffuse</button><button type=\"button\" class=\"opt\" data-i=\"1\">Newly mixed zinc phosphate is highly acidic and may cause irreversible pulp damage. Polycarboxylate is less irritant because of a large polyacrylic-acid molecule. ZOE is palliative at pH 7, but eugenol can thrombose vessels if applied directly to pulp, so its use in a very deep cavity at risk of exposure is questioned. Glass ionomer has been found not to irritate living pulp. Keep liners off walls and margins; a 1–2 mm base is an effective thermal barrier. Cementation pressure may drive fluid pulpward and separate odontoblasts. TEGDMA, camphorquinone and HEMA can diffuse into the pulp; 1.5–5% unreacted methacrylic groups can be cytotoxic. Etching widens tubules and can aid bacterial penetration without a significant microvascular effect. Fresh amalgam is more cytotoxic than set amalgam (unreacted mercury). Seal tubules with an antibacterial liner or base (ZOE or GIC) before filling; composite’s initial etched seal tends to decline with age. Accumulative irritation (caries, preparation, lining, filling, secondary caries) may necrose the pulp, sometimes silently. Control depth and width, heat and drying, chemicals, material toxicity and microleakage</button><button type=\"button\" class=\"opt\" data-i=\"2\">A perfect hermetic seal is guaranteed by every modern composite, so a liner is never useful</button><button type=\"button\" class=\"opt\" data-i=\"3\">Glass ionomer is the most irritating cement in this lecture and must never be used near the pulp</button></div><div class=\"qexp\" hidden><p>فوسفات الزنك الطازج مهيّج جداً. القاعدة 1–2 ملم. المونومر غير المتفاعل 1.5–5%. الملغم الطازج أسمّ من المتصلب. الأثر التراكمي قد يميت اللب حتى بلا ألم.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">In these lectures, what intrapulpal temperature rise, and for how long, was reported to cause histological pulp damage?</button><div class=\"flash-a\" hidden>An intrapulpal temperature increase of 5.5 °C for 10 seconds can cause histological damage (irreversible pulpitis or even pulp necrosis).</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا تاسع ملف معالجة: محاضرتا د. أحمد ح. علي 9 و 10 عن مهيجات اللب والتهابه، وتأثير الترميم على صحة اللب (صفحات 173–193). صفحة 179 شبه فارغة (عنوان عن التهييج الكيميائي للمواد)، والموضوع يُكمَّل بمحاضرة 10 فما نخترع نص. الأرقام مثل تركيب اللب 75% ماء، وسمك العاج المتبقي أقل من 300 مايكرومتر، وارتفاع حرارة اللب 5.5°م لمدة 10 ثوانٍ تبقى كما بالمحاضرة.</p>","<p>اللب <b>75% ماء</b> و<b>25% مادة عضوية</b> (كولاجين ومادة أساس) تدعم الأعصاب والخلايا والأوعية. التغذية من الثقبة الذروية، واللب محصور داخل العاج الصلب.</p><p>وظائفه: تكويني (عاج أولي وثانوي وثالثي)؛ غذائي؛ حسي (نقل الألم)؛ وقائي (ينسّق ردود الالتهاب والدفاع وتكوين العاج)؛ وتوازن وإزالة المواد الضارة عبر الأوعية واللمف وخلايا الدفاع. اللب والعاج عضو واحد (المعقد اللبي-العاجي). المهيجات: جرثومية، فيزيائية، إشعاعية، أو كيميائية.</p>","<p>نخر المينا والعاج فيه بكتيريا مثل Streptococcus mutans والعصيات اللبنية و Actinomyces؛ بأعمق طبقات العاج النخر عددها يقل إلى قليل أو صفر. السموم تدخل اللب عبر الأقنية، ومصورات العاج تطلق سايتوكينات تبدأ التهاب مزمن أولاً، ثم يشتد كلما تعمق النخر. جريان السائل للخارج ما يمنع وصول السموم. شدة الالتهاب تعتمد على عمق الغزو، ومدى تقليل النفاذية بالتصلب والعاج الترميمي، ومدة التهييج.</p><p>إذا البكتيريا دخلت اللب فعلاً، يصير نخر تسييل بمكان الانكشاف، واللب قد يموت بسرعة أو بعد فترة ويحتاج علاج قناة. مرض اللثة يصل للب عبر الأقنية الإضافية والثقبة الذروية والأقنية المفتوحة. التفكك الكامل للي أكيد فقط إذا الثقبة الذروية انعدمت. كحت الجذر حول الذروة قد يقطع أوعية اللب ويُميت الحيوية.</p>","<p>القطع الزائد — سواء انكشف اللب أو لا — من أكبر الأضرار. العمق والعرض مهمان، والضرر يتناسب تقريباً ويه كمية وعمق القطع. سمك العاج المتبقي مهم، والعلاقة عكسية ويه أذى اللب. إذا السمك المتبقي <b>أقل من 300 مايكرومتر</b>، الحفر الحامضي قد يهيّج مصورات العاج بشدة ويبقي التهاب مستمر بسبب زيادة النفاذية. الشغل بلا تبريد مائي أضر من الشغل ويه رذاذ الماء.</p><p>التقويم يضطرب دورة اللب؛ إذا القوة تجاوزت التحمل، أوعية الرباط قد تتمزق وقد يموت كل اللب، وقد يحدث امتصاص ذروي عادة بدون فقدان الحيوية. كسر السن (رض مباشر أو غير مباشر أو ضغط إطباقي على حشوة كبيرة) يتبعه غزو بكتيري؛ الكسر عبر الجذر غالباً يفقد الحيوية.</p>","<p>البلى الوظيفي نادراً يسبب التهاب أو موت اللب لأن اللب يضع عاج؛ بس إذا البلى أسرع من تكوين العاج الترميمي قد ينكشف اللب، أو يكون اللب مات قبل ما البلى يوصل الحجرة. أحياناً يحتاج تاج. السحل عند الـ CEJ يتقدم بسرعة وقد يغزو فضاء اللب؛ التفريش الأفقي يعطي حزوز V على الشفوي. الانكسار العنقي من انثناء السن تحت الحمل. حدّد السبب وأزله. إذا السن حسّاس: مواد مخدّرة للحساسية، فلوريد موضعي أو مضمضة، مواد رابطة، أو ترميم.</p>","<p>تحضير السن، وتبلمر الكمبوزت، والإنهاء والتلميع ترفع حرارة داخل اللب. ارتفاع <b>5.5°م لمدة 10 ثوانٍ</b> يسبب ضرر نسيجي (التهاب غير راجع أو حتى نخر اللب). الليزر (CO<sub>2</sub> و Er:YAG و FEL) على بنية السن يعطي رد لبّي بسيط يقارن بالقبضات السريعة؛ على الأنسجة الرخوة قص بلا دم وشفاء سريع. تأثيره حسب قوة الحزمة والامتصاص، وقطع المينا والعاج يولّد حرارة لذلك يُستخدم <b>نبضي مو مستمر</b>. السحل الهوائي يولّد حرارة ويضيّع الإحساس اللمسي؛ يُستخدم لإزالة التصبغ وتنظيف الشقوق قبل الختم، ودراسات الحيوان تقول إنه مو أضر للب من الفرِز الدوّار.</p><p>الإشعاع العميق لسرطان الرأس والعنق يميّت مصورات العاج ويقلل اللعاب. الحت الكيميائي يبدأ بمينا مجوف مدور ويتسارع إذا وصل العاج. تهييج المواد الترميمية عنوان بصفحة شبه فارغة ويُفصَّل بمحاضرة 10.</p>","<p>سؤالان على تركيب اللب، وسمك أقل من 300 مايكرومتر، وارتفاع الحرارة 5.5°م.</p>","<p>اللب والعاج عضو حي واحد. دفاعاته: (1) تقليل النفاذية بانتشار بروتينات البلازما وتخثر الفيبرين وترسبات داخل الأقنية وطبقة اللطاخة. (2) <b>المسالك الميتة</b>: أقنية فارغة تحت أغلب الحفر النخرة، تُختَم من جهة اللب بنسيج متكلس غير نفّاذ. (3) <b>العاج المتصلب</b> من الشيخوخة أو النخر البطيء يسد الأقنية ويقلل الحساسية. سريرياً لمّاع وغامق وصلب للمسبر، بينما العاج الطبيعي الطازج أطرى وأقل لمعاناً. يظهر شفافاً تحت المجهر (المنطقة الشفافة) ويُرى كثيراً تحت الترميمات القديمة المتصبغة.</p>","<p>العاج التفاعلي من مصورات عاج ناجية بعد الانقسام؛ والعاج الترميمي من خلايا شبيهة بمصورات العاج تتمايز من الخلايا الجذعية بعد موت المصورات الأصلية. بالنخر السريع، خلال حوالي <b>15 يوم</b> تتكون مصورات جديدة وتضع عاج ترميمي غير منتظم وغالباً بلا أقنية بمكان الأذى فقط.</p><p>العاج <b>المصاب (infected)</b> طري جداً ومليان بكتيريا: كتلة رطبة سهلة الشيل باليد وتتفلق طبقات موازية للـ DEJ. العاج <b>المتأثر (affected)</b> منزوع الكلس من حوامض الطبقة السطحية بس مو مغزو بالبكتيريا، وأقنيته سليمة وقابل لإعادة التمعدن إذا اللب حي. بالنخر البطيء شيل المصاب لحد المتأثر؛ بالسريع الدلالة السريرية قليلة وقد تفيد صبغة النخر.</p>","<p>التهاب اللب يشبه باقي الأنسجة، بس اللب ما عنده مجال يتورم، والتغذية الإضافية ما توصل بسرعة لأنه بلا دورة جانبية، فالخلايا تموت بمساحة تتوسع. أشد رد فعل وقت الانكشاف الفعلي. التسلسل: لب سليم؛ احتقان؛ التهاب حاد؛ التهاب جزئي مزمن بلا نخر؛ جزئي مزمن ويه نخر؛ كلي مزمن ويه نخر جزئي؛ نخر كامل؛ ثم التهاب حاد فوق مزمن.</p><p>اللب السليم بلا خلايا التهابية. الاحتقان زيادة جريان وتمدد أوعية، وقد يكون اللب بعد مو ملتهب. حوالي <b>41%</b> من الأسنان النخرة كان عندها احتقان، كعلامة مبكرة؛ إذا انشال السبب المفروض الدورة ترجع طبيعية.</p>","<p>الالتهاب الحاد تحت الأقنية المتأثرة بعد التحضير أو الانكشاف أو الكحت العميق، وقد يركب على التهاب مزمن قديم. يستمر حوالي <b>3 أيام</b> ويختفي أو يصير مزمن إذا المهيج بقي. سريرياً ألم خفيف ويه الحر أو البرد طول ما المنبه موجود — <b>التهاب راجع</b> إذا ما في نخر جزئي وانشال المنبه.</p><p>الالتهاب الجزئي المزمن بلا نخر ينحصر بالتاج. بالילדים والشباب ممكن <b>سليلة لبية (pulp polyp)</b> تنزف بسهولة وتتميّز عن سليلة اللثة بالسبر من أصلها. إذا اللب التاجي فقط متأثر وبلا نخر، البتر الحيوي قد ينجح؛ إذا في نخر، علاج قناة أو قلع (<b>غير راجع</b>).</p>","<p>إذا بقي المهيج وصار نخر جزئي (خراج لب محاط بخلايا صديدية)، الألم تلقائي من الضغط على العصب، قد يستمر <b>نصف ساعة</b> وما يروح ويه المسكن. سوّ أشعة: مفتوح (النخر وصل اللب) أو مغلق. العلاج قناة أو قلع — <b>غير راجع</b>.</p><p>إذا الالتهاب امتد لكل اللب: ألم شديد ساعات أو نبضي يزيد بالنوم من ارتفاع الضغط. النخر الكلي تخثري (الخلية باينة بلا تفاصيل) أو تسييلي (الشكل اختفى). التهاب حاد فوق مزمن: ألم ليلي شديد لحد ما يتكون خراج، وبعدين راحة ناقصة إلا إذا صار نزح من السن (فتحة دخول) أو شق جراحي ويه مضاد، وراجع المريض خلال أيام ثم قناة أو قلع.</p>","<p>سؤالان على العاج الترميمي خلال 15 يوم، والاحتقان 41%، ومتى السليلة ما زالت راجعة.</p>","<p>مضيّقات الأوعية بالتخدير الموضعي تقلل الجريان وقد تزيد تركيز المهيجات داخل اللب وقت الترميم.</p><p>الحرارة من الفري بدون تبريد من أكبر أسباب ضرر اللب؛ تغير لون العاج من ركود ونزف تحت مصورات العاج، وإذا تدمرت المنطقة الغنية بالخلايا قد ما يتكون عاج ترميمي ويصير خراج موضعي. القوة تناسب الحرارة. السرعة الفائقة (<b>300,000 دورة</b>) أضر من الواطية (<b>6,000</b>) إذا التبريد ناقص. تبريد الماء أفضل من الهواء (يقلل الحرارة ويشيل البقايا ويوضح الرؤية). الفرازة الثلمية أو المتصالبة أوصل للماء من الألماسية كاملة التماس. القطع المتقطع بعد ثوانٍ أبرد من المستمر. تلميع المطاط أحر من فرش الكأس، والتلميع المستمر السريع أحر من المتقطع الواطي.</p>","<p>قطع نهاية امتداد مصورة العاج يُصلح بسرعة؛ إذا القطع قرب جسم الخلية فالأذى غير راجع. القطع يفك الارتباطات المحكمة ويزيد دخول السموم. تجفيف العاج المقطوع بهواء يسرّع جريان السائل ويسحب المصورات للأقنية فتموت؛ تُعوَّض من المنطقة الغنية بالخلايا ويتكون عاج ترميمي خلال <b>1–3 أشهر</b>.</p><p>حفظ سمك العاج المتبقي أهم لصحة اللب من تعويضه ببطانة وقاعدة. انكشاف النخر أسوأ إنذاراً من الانكشاف الحادث لأن التلوث أكثر؛ أحياناً ما في نزف وأول علامة ألم بعد زوال التخدير. المسامير قد تولّد حرارة أو تدخل اللب أو تشقق العاج.</p>","<p>فوسفات الزنك المختلط حديثاً حامضي جداً ومهيّج وقد يسبب ضرر غير راجع (يقلل الجريان وقد يميت اللب) حتى لو الـ pH يقترب من التعادل بعد فترة قصيرة. البولي كاربوكسيلات أقل تهييجاً لجزيئته الكبيرة، ويتكيف زين ويه العاج وله تأثير قاتل للجراثيم. ZOE مهدئ ويه pH 7 وختم جيد، بس اليوجينول سام وقد يسبب تخثر أوعية إذا وصل اللب مباشرة — فيه تساؤل عن استخدامه بالحفر العميقة جداً المعرّضة للانكشاف. الأيونومر بلا تهييج على اللب الحي. لا تضع البطانة على الجدران والحواف لأنها تذوب وتترك فجوة. سمك القاعدة <b>1–2 ملم</b> حاجز فعّال ضد الحر والبرد. ضغط الإلصاق قد يدفع السائل نحو اللب ويفصل طبقة مصورات العاج.</p>","<p>الكمبوزت والمواد الرابطة قد تسبب التهاب وتمدد أوعية بالحفر العميقة. مواد مثل TEGDMA و CQ و HEMA تنفذ للب بكميات صغيرة (مايكروغرام) خلال ساعات وأيام. المونومر غير المتفاعل (<b>1.5–5%</b>) يكفي لتأثير سام للخلايا. الحفر الحامضي ما يغيّر أوعية اللب بشكل مهم، بس يوسّع الأقنية ويزيد دخول البكتيريا. أيونات الملغم (فضة ونحاس وزئبق) قد تضر؛ الملغم الطازج أسمّ من المتصلب بسبب الزئبق غير المتفاعل. الحساسية بعد الملغم قد تكون من قوة الرص أو التمدد. بالحفر العميقة المعدنية حط قاعدة عازلة. ما في حشوة تختم ختماً كاملاً؛ بطانة أو قاعدة تثبط الجراثيم (ZOE أو GIC) قبل الحشوة. ختم الكمبوزت يتحسّن بالحفر والشطف والمادة الرابطة، بس يقل مع تقدّم العمر. الأثر التراكمي (نخر وتحضير وبطانة وحشوة ونخر ثانوي) قد يميت اللب حتى بلا ألم. قلّل الأذى بالعمق والعرض، والحرارة والتجفيف، وكيماويات المواد، ومنع التسرب.</p>","<p>سؤالان ختاميان وبطاقة على ارتفاع 5.5°م لمدة 10 ثوانٍ، وزر الدرجة.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>

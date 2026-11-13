@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Operative File 10 — Caries Diagnosis and Minimally Invasive Removal</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Operative (Conservative) Dentistry · Assist. Prof. Dr. Ahmed H. Ali Lecture 8</div>
+    <h1>Caries Diagnosis, Activity, Prevention and Minimally Invasive Removal</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lecture 8 by Assist. Prof. Dr. Ahmed H. Ali (PDF pages 194–211): how to detect and diagnose caries, how to tell an active lesion from an arrested one, prevention and treatment, and minimally invasive removal technologies.</p>
+    <ul>
+      <li>Dry clean teeth for more than 5 seconds; magnification can improve detection by 50%; a sharp explorer can cavitate a white-spot lesion</li>
+      <li>DIAGNOdent at 655 nm scores 0–99; bite-wings are best for proximal surfaces but cannot prove cavitation</li>
+      <li>Fluoride varnish 5% NaF (22,600 ppm F), sealants that can arrest sealed dentine lesions, and ICON for the inner half of enamel or the outer third of dentine</li>
+      <li>Air abrasion, Carisolv, Er:YAG, a self-limiting Smartprep bur, and ozone for 20–40 seconds (75–100% harder at one year)</li>
+      <li>Total run time: <b>24 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 12</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Operative · File 10","t":"Caries diagnosis, activity, prevention, and minimally invasive removal","b":"<p>University of Baghdad, College of Dentistry — Operative (conservative) dentistry syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file covers PDF pages 194–211: Lecture 8 by Assist. Prof. Dr. Ahmed H. Ali on caries diagnosis and treatment, including conventional and new detection methods, how to judge whether a lesion is active or arrested, prevention and treatment of non-cavitated and cavitated lesions, and minimally invasive technologies for caries removal.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Medical terms stay in English next to the Arabic. Numbers in this lecture are kept as written, including drying for more than 5 seconds, magnification improving detection by 50%, a DIAGNOdent diode at 655 nm, fluoride varnish at 5% NaF (22,600 ppm F), and ozone applied for 20–40 seconds.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 8","t":"Caries is a dynamic process, and early lesions can still be reversed or arrested","b":"<p>Caries is a dynamic process of demineralization and remineralization of dental hard tissue which may result in progression, regression (reversal), or arrest (stabilization) of the lesion. When demineralization (loss of hydroxyapatite crystals) outgains remineralization, caries progresses — which occurs with frequent eating (continuous reduction in the pH of the oral environment) and inadequate use of fluorides.</p><p>Caries detection is determining whether clinical signs of caries are present at one point in time. Caries diagnosis is the determination of activity and causes of the lesion in addition to detection. Detection draws on clinical examination, caries diagnostic aids, communication with the patient, and knowledge about the caries process. The aim of detecting early lesions is to limit progression as early as possible and to monitor activity. Early caries is a reversible disease and can be prevented by preventing demineralization and promoting remineralization with effective prophylaxis, to reverse or arrest the lesion before restorative intervention is needed.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 8","t":"Look at clean teeth, dried for more than 5 seconds — magnification can improve detection by 50%","b":"<p>Conventional methods are visual and radiographic examination. An early lesion can be seen as a white or a brown/black spot. Non-cavitated and cavitated stages can be identified by clinical signs. Visual examination must be performed while the teeth are: (1) cleaned from plaque by a probe or a prophylactic cleaning; (2) dried with an air–water syringe for <b>more than 5 seconds</b>, because removing water from the porous tissue enables the dentist to gauge how far through the enamel a lesion has progressed; (3) use of magnification such as loupes or an operating microscope can improve caries detection by <b>50%</b>.</p><p>Pit-and-fissure lesions are most often detected by visual inspection with good lighting and dry, clean teeth. Any sign of visible cavitation on the occlusal surface corresponds to progression of the lesion into the dentine. An opaque, matte texture of enamel adjacent to stained pits and fissures may indicate active caries underneath; when there is no caries underneath, discoloration remains within the confines of the pit or fissure. Bite-wing radiographs can detect only large occlusal lesions; small lesions cannot be detected because of the large amount of surrounding sound enamel. Tactile examination of fissures with a sharp probe is unreliable, because the explorer can damage a white-spot lesion by breaking through the intact surface zone and create a cavity that will trap plaque and encourage progression.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 8","t":"Proximal, smooth and root surfaces: bitewings, transillumination, and softness of active root caries","b":"<p>Extensive active proximal lesions can be revealed by shadowing or grayish discoloration of the undermined occlusal enamel ridge. Bite-wing radiographs are the most effective method for evaluating proximal smooth surfaces for demineralization, because these areas are not readily assessed visually or tactilely when there is contact. Assess the radiograph for penetration into enamel, the DEJ, the outer half or the inner half of dentine. A bite-wing still cannot distinguish cavitated from non-cavitated proximal lesions. Fibre-optic transillumination is useful: a fine light is transmitted through the contact, and lesions appear as a dark shadow, though it is difficult to determine whether penetration is into enamel or dentine. An orthodontic separator has been advocated in some cases so that the dentist can see more clearly and gently feel for a break in the enamel.</p><p>Lesions on smooth free (buccal and lingual) surfaces are usually close to the gingival margin and have a chalky, matte, whitish/yellowish surface. Root surfaces exposed by gingival recession should be examined visually and tactilely. Discoloration (light brown, dark brown or black on the root or at the CEJ) is common and usually associated with remineralization — generally, the darker the discoloration, the greater the remineralization. Active, progressing root caries shows little discoloration and is primarily detected by softness and cavitation.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 8","t":"New detection tools: electronic monitors, digital subtraction, and DIAGNOdent at 655 nm (scores 0–99)","b":"<p>Conventional visual and radiographic methods cannot quantitatively measure continued mineral change. Newer devices claim to detect and monitor activity from changes in reflectance, transmission, fluorescence or electrical conductance/impedance after demineralization. Reasons to use them: early and hidden occlusal-lesion detection; objective, quantitative assessment for monitoring; visualization of the process; and avoiding potentially harmful ionizing radiation.</p><p>Electronic caries monitors: sound tooth structure should have limited or no conductivity, whereas carious enamel has measurable conductivity that increases with demineralization (porosity holds ion-containing fluid). Conductivity from the occlusal surface to a ground electrode is measured with a probe; the drawback is that it is time-consuming in a full-mouth examination (for example the handheld, battery-operated CarieScan). Direct digital radiographs use a wire-based sensor with a computer chip; the image appears instantly on a PC, permits image manipulation, reduces radiation, needs no darkroom, and can be tele-transmitted. Digital subtraction radiography, used for recurrent caries, compares two standardized radiographs of identical exposure and geometry by their pixel values; differences show as dark or bright areas once the complex anatomic background is cancelled, and the images suit linear, area and density measurements. An intra-oral camera helps detection and patient motivation. Infrared laser fluorescence (DIAGNOdent) can be used on occlusal and smooth surfaces: a diode laser at <b>655 nm</b> is absorbed by metabolites of caries bacteria, which emit red fluorescence indicated as a number between <b>0 and 99</b> — the higher the number, the more the caries. It is a complementary tool beside visual examination, most useful in confirming caries in a suspicious fissure and detecting deep (hidden) dentinal caries, and is non-invasive, but the original device is not used for recurrent or proximal caries. A newer DIAGNOdent pen permits assessment of both occlusal and proximal surfaces.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 8","t":"FOTI, CariVu and dyes that stain infected dentine but leave affected dentine","b":"<p>Fibre-optic transillumination (FOTI) is based on carious enamel having a lower index of light transmission than sound enamel. Intact tooth absorbs very little light; caries absorbs and scatters light and appears as a dark shadow. It is used mainly for proximal caries and cracks. Advantages: lesions that cannot be diagnosed radiographically can be diagnosed; no radiation hazard; comfortable for the patient. Disadvantages: not possible in all locations, and cannot detect small lesions. DEXIS CariVu combines FOTI with a digital camera for immediate imaging of early lesions on proximal and occlusal surfaces. Contraindications: large fillings, a crown, and subgingival caries; calculus or discoloration can scatter light and appear as a shade.</p><p>Caries-detector dyes such as silver nitrate and methyl red detect carious sites by a change of colour. They help the dentist differentiate infected dentine, selectively staining infected demineralized dentine which should be removed, and leaving the inner affected (demineralized but not infected) dentine that should be kept because it could be remineralized.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 8","t":"Quiz: dry for more than 5 seconds, bitewings versus a sharp probe, and DIAGNOdent 0–99","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Detection and early diagnosis in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Caries is a one-way loss of mineral and is never reversible; teeth should be examined wet, without magnification; a sharp explorer is the gold standard for every fissure</button><button type=\"button\" class=\"opt\" data-i=\"1\">Caries is a dynamic demineralization–remineralization process that may progress, reverse or arrest; it progresses when demineralization outgains remineralization (frequent eating and inadequate fluoride). Detection is whether signs are present now; diagnosis also judges activity and causes. Early caries is reversible if demineralization is prevented and remineralization promoted before a restoration is needed. Examine clean teeth dried for more than 5 seconds; magnification (loupes or a microscope) can improve detection by 50%. Visible occlusal cavitation corresponds to dentine involvement; a matte opaque halo beside a stained fissure may mean active caries underneath, whereas stain confined to the fissure may not. Bite-wings detect only large occlusal lesions. A sharp probe is unreliable and can cavitate a white-spot surface and trap plaque. Bite-wings are best for proximal contacts (enamel, DEJ, outer or inner half of dentine) but cannot tell cavitation from a non-cavitated lesion. FOTI shows a dark proximal shadow. Darker root discoloration usually means more remineralization; active root caries is mainly soft and cavitated with little discoloration</button><button type=\"button\" class=\"opt\" data-i=\"2\">A bite-wing always distinguishes a cavitated from a non-cavitated proximal lesion</button><button type=\"button\" class=\"opt\" data-i=\"3\">Root-surface blackness always means rapidly progressing active caries and must be cut immediately</button></div><div class=\"qexp\" hidden><p>جفف أكثر من 5 ثوانٍ. التكبير يحسّن الكشف 50%. المسبر الحاد غير موثوق. أشعة العضة للتقريبي أفضل، وللإطباق تكشف فقط الآفات الكبيرة. على الجذر الطراوة أهم من اللون.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Newer detection methods in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">DIAGNOdent uses ultraviolet light and a score of 0–5, and is the method of choice for recurrent proximal caries under a crown</button><button type=\"button\" class=\"opt\" data-i=\"1\">Electronic monitors measure increased conductivity as porous, ion-filled enamel demineralizes (for example CarieScan); they can be time-consuming in a full-mouth exam. Digital radiography gives an instant, lower-dose, transmissible image. Digital subtraction compares two standardized films to highlight recurrent caries. DIAGNOdent (655 nm diode) scores bacterial-metabolite fluorescence from 0 to 99 and complements visual examination of suspicious fissures and hidden dentinal caries; the original unit is not for recurrent or proximal caries, but a pen version can assess occlusal and proximal surfaces. FOTI (and CariVu, which adds a camera) shows caries as a dark shadow; CariVu is contraindicated with large fillings, crowns or subgingival caries. Dyes such as silver nitrate or methyl red stain infected dentine to be removed and leave affected dentine that can remineralize</button><button type=\"button\" class=\"opt\" data-i=\"2\">FOTI always measures the exact depth into dentine and can be used under every crown</button><button type=\"button\" class=\"opt\" data-i=\"3\">Caries dyes must remove both infected and affected dentine, because affected dentine cannot remineralize</button></div><div class=\"qexp\" hidden><p>DIAGNOdent 655 نانومتر ورقم 0–99، يكمّل الفحص البصري، والأصلي مو للتقريبي أو الراجع. الأصباغ تلوّن المصاب وتبقي المتأثر.</p></div></div>"},{"k":"Dr. Ahmed H. Ali · Lecture 8","t":"Active versus arrested lesions — matte and plaque-covered versus shiny, hard and plaque-free","b":"<p>A caries lesion can be active or inactive (arrested). Clinical criteria used to assess activity in enamel or root are: appearance (colour and luster); texture (roughness and hardness: soft, leathery, firm or hard); translucency (opaque versus semitransparent); presence of plaque (covered versus plaque-free); and cavitation (probing the cavity in enamel reveals either a hard or a soft base). Active lesions can be arrested at any stage if a plaque-free condition is maintained. If the lesion is arrested, no treatment is required except for esthetic or functional reasons. If it is active, treatment is needed to arrest progression and must include preventive measures; it may also include restorative dentistry.</p><p>This lecture’s table: an <b>active occlusal</b> lesion has a matte or frosted, plaque-covered white-spot surface, or is cavitated (microcavities to cavities involving dentine), or is visible in dentine on a bite-wing. An <b>arrested occlusal</b> lesion is a white or brown spot with a shiny surface. An <b>active proximal</b> lesion appears on a radiograph, may have persistent gingival inflammation despite the patient’s attempts to floss, or was not present at a previous examination. An <b>arrested proximal</b> lesion shows no deeper progression on successive, reproducible bite-wings. An <b>active smooth-surface</b> lesion is a white spot close to the gingival margin that may be frosted and plaque-covered, or a plaque-covered cavity with or without exposed dentine (if exposed dentine is soft, it is heavily infected). An <b>arrested smooth-surface</b> lesion is shiny white or brown and not plaque-covered; a cavitated arrested lesion is dark brown with hard dentine at the base, not plaque-covered, and away from the gingival margin. An <b>active root</b> lesion is close to the gingival margin, plaque-covered, and soft or leathery. An <b>arrested root</b> lesion is far from the gingival margin, not plaque-covered, and as hard as the surrounding healthy root surface.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 8","t":"Prevention and non-cavitated treatment: 5% NaF varnish (22,600 ppm), sealants, and ICON infiltration","b":"<p>Self-applied measures (by the patient) — good oral hygiene (brushing and flossing), control of sucrose and carbohydrate in the diet, and fluoride toothpastes — can affect initiation and also remineralize incipient lesions, especially on smooth surfaces, to arrest them. An arrested lesion requires no restorative treatment. Professionally applied measures include pit-and-fissure sealant and fluoride varnish. Fluoride varnishes form a calcium-fluoride globule deposit because they contain a high level of fluoride (<b>5% NaF, 22,600 ppm F</b>); this deposit slowly releases fluoride and calcium over time to make the surface more resistant to acid demineralization. Pit-and-fissure sealant is the most effective method of preventing pit-and-fissure caries, by preventing the growth of bacteria that promote decay in those sites.</p><p>Non-cavitated occlusal and proximal lesions can be treated by self-preventive measures plus occlusal and proximal sealants. When active fissure caries has been diagnosed, or if a high risk has been established, sealants may be indicated. Advantages: they prevent progression of active dentine lesions (there is ample evidence that lesions do not progress as long as the fissure remains sealed), no cutting of tooth structure is needed, and they prevent new lesions on other sites of the fissure. On proximal surfaces, active lesions have been treated with adhesives or fissure sealants after temporary tooth separation, but proximal sealing is as complex and time-consuming as a proximal restoration. A newer approach for active non-cavitated non-proximal and proximal smooth-surface lesions that extend radiographically into the <b>inner half of enamel or the outer third of dentine</b> is lesion infiltration (for example ICON caries infiltrant): a protective low-viscosity light-curing resin is applied to occlude the lesion pores, create a diffusion barrier, change the cariogenic environment and stabilize the fragile structure.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 8","t":"When a cavity must be restored, and why the most conservative option comes first","b":"<p>Once caries has produced cavitation (the lesion is active and there is dentine involvement), preventive measures are usually inadequate, because plaque stagnates in non-cleansable cavities and enhances progression, so cavity preparation and restoration are needed. The most important reason for placing a restoration is to aid plaque control, and an attempt should be made to select the most conservative option to prevent iatrogenic damage during preparation, such as damage to the proximal surfaces of adjacent teeth. Indications of restorative treatment: sensitivity of the cavitated tooth to hot, cold and sweetness; a non-cleansable deep occlusal or proximal lesion extending into dentine; a lesion endangering the pulp; disability of the patient to provide home care; loss of proximal contact; and an unesthetic appearance. Once the pulp is dead partially or completely, root-canal filling becomes necessary to avoid extraction.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 8","t":"Minimally invasive removal: air abrasion, Carisolv, Er:YAG, a Smartprep bur, and ozone","b":"<p><b>Air abrasion</b> removes enamel and dentine with a stream of aluminium-oxide particles from compressed air. Applications: detection of pit-and-fissure caries; removal of superficial enamel defects; cleaning fissures and surface preparation for a sealant or preventive resin; and small Class I and V preparations. Advantages: no heat, pressure, vibration or sound; reduced need for anaesthesia; minimal cutting; a dry field; reduced risk of microcrack and chipping. Disadvantages: the air jet can cause sensitivity; not recommended for deep cavities; only composite can be used afterwards; lack of tactile sensation; impaired indirect vision; and damage to the dental mirror.</p><p><b>Chemo-mechanical</b> removal (the idea developed from NaOCl in endodontics) selectively dissolves carious dentine by disrupting hydrogen bonding in partially degraded collagen of infected dentine, making it more friable and easier to scrape with a special hand instrument, leaving well-organized affected dentine (example: Carisolv). Advantages: less need for local anaesthetic; conservation of structure; reduced risk of pulp exposure; no noise, vibration or heat; and selective removal of infected dentine while leaving affected dentine. Disadvantages: time-consuming; still needs a hand instrument; expensive; only with composite (no amalgam); and a limited shelf life. <b>Lasers</b> (for example Er:YAG, or a laser-powered hydrokinetic system) remove decay by photovaporization of water, creating high pressure that destroys a selected area; a direct water stream is important to reduce heat. Advantages: comfortable, often no local anaesthetic; no vibration or noise; conservation of sound structure; increased surface area for composite bonding; ideal for children and adults. A <b>Smartprep (Smart bur)</b> is a polymer that removes decayed dentine and is self-limiting — it will not cut sound dentine unless applied with great force, and then it wears away rather than cutting healthy dentine; used at low speed, single-patient use, often without local anaesthetic. Advantages: less chance of iatrogenic pulp exposure and minimal removal of sound structure. Disadvantages: studies concluded that this technique leaves a large amount of decayed portion unexcavated; it is expensive; and there is a chance of damage if the bur touches enamel or sound dentine. <b>Ozone</b>: a delivery system produces ozone gas delivered into a disposable sterile cup at <b>615 cc/minute</b>, changing the volume of gas inside the cup over <b>300 times every second</b>. The cup seals around the lesion so that ozone cannot leak into the mouth. Around <b>20–40 seconds</b> of application have been shown to penetrate carious dentine and eliminate live bacteria, fungi and viral contamination, priming tissues for remineralization. Advantages: non-invasive and painless; does not cause allergy; microorganisms do not develop resistance; decreased treatment time (<b>20–120 seconds</b> per lesion); studies show that <b>75–100%</b> of ozone-treated lesions become harder during a 1-year period.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 8","t":"Self-test: 22,600 ppm varnish, ICON’s radiographic limit, and 20–40 seconds of ozone","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Activity, prevention and non-cavitated treatment in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Every shiny brown spot must be cut and filled; fluoride varnish is 0.05% NaF; ICON is only for cavitated pulpal exposures</button><button type=\"button\" class=\"opt\" data-i=\"1\">Activity is judged by colour and luster, texture (soft to hard), translucency, plaque, and whether a cavity base is hard or soft. Active lesions can arrest if kept plaque-free; arrested lesions need no restoration except for esthetics or function. Active occlusal lesions are matte or frosted and plaque-covered, or cavitated, or visible in dentine on a bite-wing; arrested ones are shiny white or brown. Active root lesions are near the gingiva, plaque-covered and soft or leathery; arrested ones are distant, plaque-free and as hard as healthy root. Patient measures (hygiene, diet, fluoride paste) plus professional sealants and fluoride varnish (5% NaF, 22,600 ppm F, a CaF₂ deposit that slowly releases fluoride and calcium) can prevent and arrest. Sealants can stop progression of active dentine lesions while the fissure stays sealed, without cutting. ICON infiltration is for active non-cavitated smooth-surface lesions that reach the inner half of enamel or the outer third of dentine radiographically. Once a cavity is non-cleansable and involves dentine, a conservative restoration is needed mainly to aid plaque control; indications include sensitivity, a lesion endangering the pulp, poor home care, lost contact, or poor esthetics; a dead pulp needs a root canal</button><button type=\"button\" class=\"opt\" data-i=\"2\">An arrested root lesion is always soft, plaque-covered and next to the gingival margin</button><button type=\"button\" class=\"opt\" data-i=\"3\">Proximal sealants after separation are always quicker and simpler than a proximal restoration</button></div><div class=\"qexp\" hidden><p>الورنيش 5% NaF ويه 22,600 جزء بالمليون. ICON للنصف الداخلي للمينا أو الثلث الخارجي للعاج. المتوقفة بلا لويحة وصلبة؛ النشطة طرية ومغطاة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Minimally invasive removal technologies in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Air abrasion is ideal for every deep cavity and may be followed by amalgam; ozone must be applied for 10 minutes and never seals around the lesion</button><button type=\"button\" class=\"opt\" data-i=\"1\">Air abrasion uses aluminium-oxide particles for small Class I and V work, fissure cleansing and detection; it has little heat or vibration but can cause sensitivity, lacks tactile sense, is not for deep cavities, and only composite follows it. Chemo-mechanical removal (Carisolv, from the NaOCl idea) selectively softens infected dentine and leaves affected dentine; it is slower and costlier, needs a hand instrument, has a limited shelf life, and is not used with amalgam. Er:YAG or hydrokinetic lasers photovaporize water (use a water stream to limit heat), often without local anaesthetic, and increase the area for composite bonding. A Smartprep polymer bur is self-limiting on sound dentine at low speed, but studies found a large amount of decay left unexcavated, and it can be damaged if it touches enamel or sound dentine. Ozone is delivered into a sealed cup at 615 cc/minute (the cup volume changes over 300 times a second); 20–40 seconds can eliminate bacteria, fungi and viruses, treatment takes 20–120 seconds per lesion, and 75–100% of treated lesions became harder over one year</button><button type=\"button\" class=\"opt\" data-i=\"2\">A Smartprep bur always removes every trace of infected dentine and never leaves decay behind</button><button type=\"button\" class=\"opt\" data-i=\"3\">Lasers must be used dry, because water prevents ablation</button></div><div class=\"qexp\" hidden><p>السحل الهوائي مو للحفر العميقة وبعده كمبوزت فقط. Carisolv يترك العاج المتأثر. الأوزون 20–40 ثانية، و75–100% تصير أصلب خلال سنة.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">In this lecture, how long should teeth be dried for a visual caries exam, and by how much can magnification improve detection?</button><div class=\"flash-a\" hidden>Dry the teeth with an air–water syringe for more than 5 seconds. Magnification with loupes or an operating microscope can improve caries detection by 50%.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا عاشر ملف معالجة: محاضرة د. أحمد ح. علي 8 عن تشخيص النخر وعلاجه (صفحات 194–211). الأرقام مثل التجفيف أكثر من 5 ثوانٍ، والتكبير يحسّن الكشف 50%، وجهاز DIAGNOdent بطول 655 نانومتر، وورنيش الفلوريد 5% (22,600 جزء بالمليون)، والأوزون 20–40 ثانية تبقى كما بالمحاضرة.</p>","<p>النخر عملية ديناميكية: نزع تمعدن وإعادة تمعدن، فقد يتقدم أو يرجع أو يتوقف. يتقدم إذا نزع الكلس غلب الإعادة — ويه الأكل المتكرر (pH ينخفض باستمرار) وقلة الفلوريد.</p><p>الكشف: هل في علامات سريرية بهاللحظة. التشخيص: يحدد النشاط والأسباب هم. يعتمد على الفحص والوسائل المساعدة والتواصل ويه المريض ومعرفة العملية. هدف كشف الآفة المبكرة إيقاف التقدم مبكراً ومراقبة النشاط. النخر المبكر مرض راجع: امنع نزع الكلس وشجّع إعادة التمعدن قبل ما تحتاج ترميم.</p>","<p>الفحص البصري والأشعة هما الطريقتان التقليديتان. الآفة المبكرة بقعة بيضاء أو بنية/سوداء. الفحص البصري ويه أسنان: منظفة من اللويحة؛ <b>مجففة أكثر من 5 ثوانٍ</b> حتى تقدّر عمق الآفة بالمينا؛ والتكبير (عدسات أو مجهر) يحسّن الكشف <b>50%</b>.</p><p>الحفر والشقوق بالعين ويه إضاءة جيدة وسن ناشف نظيف. أي تجويف ظاهر على الإطباق يعني الآفة وصلت العاج. مينا معتم مطفي بجانب شق متصبغ قد يدل على نخر نشط تحته؛ إذا ما في نخر، التصبغ يبقى داخل حدود الشق. أشعة العضة تكشف فقط الآفات الإطباقية الكبيرة. المسبر الحاد غير موثوق وقد يكسر سطح البقعة البيضاء ويعمل حفرة تحبس اللويحة.</p>","<p>الآفة التقريبية النشطة الواسعة قد تظهر تظليل أو رمادي على الحافة الإطباقية. أشعة العضة أفضل طريقة للسطوح التقريبية عند وجود تماس، وتبيّن الامتداد للمينا أو الـ DEJ أو النصف الخارجي أو الداخلي للعاج، بس ما تفرّق بين متجوفة وغير متجوفة. الإضاءة النافذة تعطي ظل داكن، وتحديد العمق صعب. أحياناً فاصل تقويمي يساعد تشوف وتحس بكسر المينا بلطف.</p><p>السطوح الحرة عادة قرب اللثة ويه مظهر طباشيري مطفي مبيض/مصفر. على الجذر التصبغ الداكن غالباً إعادة تمعدن (كل ما أغمق، التمعدن أكبر). النخر النشط على الجذر قليل التصبغ ويُكشف أساساً بالطراوة والتجويف.</p>","<p>الطرق التقليدية ما تقيس التغير المعدني كمياً. الأجهزة الجديدة تعتمد على الانعكاس أو النفاذ أو التألق أو التوصيل الكهربائي. أسباب استخدامها: كشف مبكر وآفات إطباقية مخفية، قياس كمي للمتابعة، رؤية العملية، وتجنب الإشعاع.</p><p>المراقب الإلكتروني: السن السليم توصيله محدود، والنخر يوصّل أكثر كلما زاد نزع الكلس (مثال CarieScan). الأشعة الرقمية فورية وأقل إشعاعاً وقابلة للإرسال. الطرح الرقمي لمقارنة صورتين قياسيتين لكشف النخر الراجع. DIAGNOdent: ليزر ديود <b>655 نانومتر</b>، والناتج رقم من <b>0 إلى 99</b> (كلما زاد الرقم زاد النخر). يكمّل الفحص البصري، مفيد بالشق المشكوك والنخر العاجي المخفي، والنسخة الأصلية مو لكشف النخر الراجع أو التقريبي؛ القلم الأحدث يقيّم الإطباقي والتقريبي.</p>","<p>الإضاءة النافذة: المينا النخر ينفذ الضوء أقل ويظهر ظل داكن، خصوصاً للتقريبي والشقوق. مزايا: آفات ما تبين بالأشعة، بلا إشعاع، ومريحة. عيوب: مو بكل المواقع، وما تكشف الآفات الصغيرة. جهاز CariVu يجمع الإضاءة ويه كاميرا رقمية؛ موانعه حشوات كبيرة وتاج ونخر تحت اللثة، والجير أو التصبغ قد يظلل.</p><p>أصباغ النخر (مثل نترات الفضة والميثيل الأحمر) تلوّن العاج المصاب اللي ينشال، وتخلي العاج المتأثر (منزوع الكلس وغير مصاب) لأنه ممكن يتمعدن من جديد.</p>","<p>سؤالان على التجفيف والتكبير وأشعة العضة وجهاز DIAGNOdent.</p>","<p>الآفة نشطة أو متوقفة. المعايير: اللون واللمعان؛ القوام (طري، جلدي، متماسك، صلب)؛ الشفافية؛ وجود لويحة؛ وقاعدة الحفرة صلبة أو طرية. النشطة تتوقف بأي مرحلة إذا بقت بلا لويحة. المتوقفة ما تحتاج ترميم إلا للجمال أو الوظيفة. النشطة تحتاج وقاية، وقد تحتاج ترميم.</p><p>بالإطباق النشط: سطح مطفي/صقيعي مغطى بلويحة، أو تجويف، أو ظاهر بالعاج على أشعة العضة؛ المتوقف بقعة لامعة. بالتقريبي النشط: يظهر بالأشعة، أو التهاب لثوي مستمر رغم الخيط، أو جديد؛ المتوقف ما يتعمق بصور متتالية. بالسطوح الملساء النشطة قرب اللثة ومطفية ومغطاة؛ المتوقفة لامعة وبعيدة عن اللثة وقاعدة صلبة. بالجذر النشط قرب اللثة وطري أو جلدي؛ المتوقف بعيد وصلب مثل الجذر السليم.</p>","<p>الوقاية المنزلية: تفريش وخيط، ضبط السكر والكربوهيدرات، ومعجون فلوريد. المتوقفة ما تحتاج ترميم. عند الطبيب: مانع شقوق، وورنيش فلوريد <b>5% NaF (22,600 جزء بالمليون)</b> يكوّن كريات فلوريد كالسيوم تطلق الفلوريد والكالسيوم ببطء. مانع الشقوق أفعل وقاية لنخر الحفر والشقوق.</p><p>الآفة غير المتجوفة: وقاية + مانعات. المانع يوقف تقدم آفات العاج طالما الشق مختوم، وبلا قطع. على التقريبي بعد فصل مؤقت، بس التقنية معقدة مثل الترميم. تقنية الارتشاح (مثل ICON) لآفات ملساء نشطة غير متجوفة تمتد بالأشعة إلى <b>النصف الداخلي للمينا أو الثلث الخارجي للعاج</b>: راتنج خفيف اللزوجة يسد المسام ويعمل حاجز انتشار.</p>","<p>إذا صار تجويف (آفة نشطة ويه إصابة عاج)، الوقاية عادة ما تكفي لأن اللويحة تستقر بالحفر غير القابلة للتنظيف. أهم سبب للترميم مساعدة السيطرة على اللويحة، واختر الخيار الأكثر محافظة حتى ما تضر السطح التقريبي للمجاور. الاستطبابات: حساسية للحر والبرد والحلو؛ آفة إطباقية أو تقريبية عميقة غير قابلة للتنظيف وصلت العاج؛ آفة تهدد اللب؛ عجز المريض عن العناية المنزلية؛ ضياع التماس التقريبي؛ ومنظر غير تجميلي. إذا اللب مات جزئياً أو كلياً، يلزم حشوة قناة حتى ما ينقلع السن.</p>","<p>السحل الهوائي بجزئيات أكسيد الألمنيوم: لكشف شقوق، وتنظيفها للمانع، وحفر I و V الصغيرة. بلا حرارة واهتزاز تقريباً، وبس بعده كمبوزت، وممنوع بالحفر العميقة، ويضر المرآة.</p><p>الكيميائي-الميكانيكي (مثل Carisolv) يذوب العاج المصاب انتقائياً ويترك المتأثر؛ أبطأ وأغلى وفقط ويه كمبوزت. الليزر (مثل Er:YAG) يبخّر الماء ويه تيار مائي لتقليل الحرارة. فرازة Smartprep بوليمر محدود ذاتياً ما يقطع العاج السليم إلا بقوة كبيرة، بس الدراسات تقول تترك جزء نخر غير منشاف. الأوزون بكأس معقم بمعدل <b>615 سم³/دقيقة</b> (يتجدد الحجم أكثر من <b>300 مرة بالثانية</b>)؛ <b>20–40 ثانية</b> تقتل الجراثيم، وزمن العلاج <b>20–120 ثانية</b>، و<b>75–100%</b> من الآفات تصير أصلب خلال سنة.</p>","<p>سؤالان ختاميان وبطاقة على التجفيف أكثر من 5 ثوانٍ والتكبير 50%، وزر الدرجة.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
