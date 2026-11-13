@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Crown and Bridge File 7 — Biomechanics and Bridge Retainers</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Crown & Bridge · Dr. Lamis Lectures 3 and 5</div>
+    <h1>Biomechanics of the Span, Special Abutments, and Bridge Retainers</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of the second part of Lecture 3 and Lecture 5 by Dr. Lamis A. Al-Taee (PDF pages 146–167).</p>
+    <ul>
+      <li>The law of the beam: two pontics bend 8 times as much, three pontics 27 times, and halving connector height yields 8 times the flexure</li>
+      <li>Double abutments, a distal keyway on a pier, uprighting a tilted molar in about 3 months, and the special rules for replacing a canine</li>
+      <li>Major versus minor retainers, a 5–6° convergence, and when to choose full metal, PFM, all-ceramic or a 3/4 crown</li>
+      <li>Post-crown length and diameter in this lecture, Maryland retainers, a pinledge, an inlay and an onlay</li>
+      <li>Total run time: <b>42 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 21</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Crown & Bridge · File 7","t":"Biomechanics of the span, special abutments, and how to choose a retainer","b":"<p>University of Baghdad, College of Dentistry — Crown and Bridge syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file covers PDF pages 146–167: the second part of Lecture 3 by Dr. Lamis A. Al-Taee (biomechanical considerations of a fixed partial denture) and Lecture 5 (bridge retainers). There is no Lecture 4 in this syllabus block. Topics include the law of the beam, double abutments, a pier abutment, a tilted molar, canine replacement, and the types and requirements of retainers.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Medical terms stay in English next to the Arabic. Lecture-specific numbers are kept as written here.</p>"},{"k":"Dr. Lamis · Lecture 3","t":"Span length and the law of the beam: two pontics bend 8 times as much, three pontics 27 times","b":"<p>The design of a bridge must handle occlusal and dislodging forces such as torque, flexure and tension, and occlusion must distribute those forces evenly throughout the envelope of motion. Biomechanical considerations include span dimension, pontic characteristics, the connectors or joints, the abutment tooth, and masticatory forces. <b>Span length</b> is the distance between abutments that affects the feasibility of placing an FPD. One missing tooth is ideal; two or three adjacent missing teeth require careful evaluation of crown/root ratio, root length and form, periodontal health, mobility, occlusal force and other biomechanical factors. The mesiodistal length and occlusogingival height of the span affect the number of abutments, the type of retainers and the materials used. Longer spans place more load on the periodontal ligament and are less rigid. All FPDs flex slightly under a load; the longer the span, the greater the flexing.</p><p><b>Law of the beam (length):</b> bending or deflection varies directly with the <b>cube of the length</b> and inversely with the <b>cube of the occlusogingival thickness</b> of the pontic. Compared with a single-tooth pontic span, a two-tooth pontic span will bend <b>8 times</b> as much, and a three-tooth pontic span will bend <b>27 times</b> as much. This means that replacing three missing posterior teeth with an FPD rarely has a favourable prognosis, especially in the mandibular arch (treatment with an RPD or an implant-supported prosthesis is then preferred). <b>Height of the connector:</b> as the height of the span decreases, flexure increases with the cube; therefore <b>halving the connector height would yield 8 times the flexure</b>. A pontic of a given occlusogingival dimension will likewise bend 8 times as much if its thickness is halved. A long-span FPD on short mandibular teeth can therefore have disappointing results. Excessive flexing may fracture a porcelain veneer, break a connector, loosen a retainer (with caries), or produce an unfavourable tooth or tissue response.</p>"},{"k":"Dr. Lamis · Lecture 3","t":"How to minimise flexing, and the rules for a double abutment","b":"<p>To minimise flexing: select a pontic design with a greater occlusogingival dimension; make pontics and connectors as bulky as possible to ensure optimum rigidity without jeopardizing gingival health; and, for a long span or an unfavourable crown/root ratio, use <b>double abutments</b> to enhance retention and support. A double abutment means two adjacent abutment teeth at one or both ends of the FPD. Indications: to increase retention; to increase the area of supporting periodontal ligament and bone; an unfavourable crown/root ratio; a long-span FPD; and to splint and stabilise periodontally compromised teeth. Criteria: secondary abutments must have <b>as much root surface area and a favourable crown/root ratio as the primary abutment</b>; and the retainers on the secondary abutment must be <b>at least as retentive</b> as those on the primary abutments, because when the pontic flexes, tensile forces are applied on the retainers of the secondary abutments.</p>"},{"k":"Dr. Lamis · Lecture 3","t":"Arch curvature: four maxillary incisors, and first premolars as secondary abutments","b":"<p>When pontics lie outside the inter-abutment line they act as a lever arm and can produce a torquing movement. This is a common problem when replacing all four maxillary incisors with an FPD, and it is more pronounced in a pointed, tapered anterior arch. The more the taper of the arch, the longer the lever arm and the greater the stress or torque; a more circular arch curvature reduces the problem. To offset the torque, additional retention is obtained in the opposite direction from the lever arm and at a distance from the inter-abutment axis equal to the length of the lever arm. This means that <b>two abutment teeth at each end</b> of a long-span anterior FPD must be used. In practice, the <b>first premolars are used as secondary abutments</b> for a maxillary four-pontic canine-to-canine FPD.</p>"},{"k":"Dr. Lamis · Lecture 3","t":"A pier abutment acts as a fulcrum: put the keyway on the distal of the pier","b":"<p>A <b>pier (intermediate) abutment</b> is a natural tooth located between the terminal abutments that serves to support a fixed or removable prosthesis. Because it lies in the middle of the span it creates huge stresses on the terminal abutments and acts as a <b>fulcrum</b>, causing failure of the weaker retainer (loosening of the retainer or casting, or leakage around the margin and extensive caries). Approaches: (1) use extremely retentive retainers; (2) when periodontal support is adequate, a simpler approach is to cantilever one segment of the bridge on one side of the pier; (3) use a <b>non-rigid connector</b> — a broken-stress mechanical union of a retainer (dovetail keyway) and a pontic (T-shaped key). It transfers shear stress to the supporting bone rather than the connectors, and appears to minimise mesiodistal torquing of the abutments while permitting them to move independently. The most commonly used design is a T-shaped key attached to the pontic and a dovetail keyway placed in the retainer.</p><p>Location: the <b>keyway should be placed within the distal contours of the pier abutment</b>, and the <b>key on the mesial side of the distal pontic</b>. Why distal, not mesial, of the pier? The long axes of posterior teeth usually lean slightly mesially and tilt more mesially under occlusal forces. If the keyway is on the distal of the pier, mesial movement seats the key into the keyway more solidly. If the keyway is on the mesial, mesial movement unseats the key and in time can cause pathologic mobility in the canine or failure of the canine retainer.</p>"},{"k":"Dr. Lamis · Lecture 3","t":"A mesially tilted second molar: uprighting in about 3 months, or a proximal half-crown","b":"<p>Early loss of a mandibular first molar is still relatively common. If the space is ignored, the second molar will tilt mesially, and the erupting third molar may drift and tilt with it. A satisfactory FPD then becomes difficult because the positional relationship no longer allows a parallel path of insertion without interference from adjacent teeth. Solutions: (1) <b>orthodontic uprighting</b> if the tilting is severe. This helps distribute occlusal forces and eliminates bony defects along the mesial surface of the root. If a third molar is present it is better extracted to facilitate movement of the second molar. Average treatment time is <b>3 months</b>. (2) A <b>proximal half-crown</b> as a retainer on the tilted molar (the lecture also writes “proximal hall”). This is simply a three-quarter crown rotated 90 degrees so that the distal surface is uncovered, used as a retainer on the distal abutment. It is possible only if the distal surface is caries-free and not decalcified, there is a very low incidence of proximal caries throughout the mouth, and the patient can keep the area exceptionally clean.</p>"},{"k":"Dr. Lamis · Lecture 3","t":"Telescope crowns versus a non-rigid connector on a tilted molar","b":"<p>(3) A <b>telescope crown and coping</b> can be used as a retainer on the distal abutment: a full-crown preparation with heavy reduction is made to follow the long axis of the tilted molar; an inner coping is made to fit the preparation; and a proximal half-crown that will serve as the FPD retainer is fitted over the coping. Advantage: total coverage of the clinical crown while compensating for the discrepancy between the paths of insertion. (4) A <b>non-rigid connector</b> is another solution: a full preparation on the molar with its path of insertion parallel to the long axis of the tilted tooth, and a box form on the distal surface of the premolar to accommodate a keyway in the distal aspect of the premolar. The non-rigid connector is <b>not</b> placed on the mesial aspect of the tipped molar, because that can lead to greater tipping. This option is indicated when the molar exhibits marked lingual as well as mesial inclination, because a routine FPD would then lead to a drastically over-tapered preparation with no retention. Both telescope crowns and non-rigid connectors require more destructive preparations than normal. A dowel core or a DO amalgam on the premolar would favour a non-rigid connector, while extensive facial and/or lingual restorations on the tilted molar would call for a telescope crown.</p>"},{"k":"Dr. Lamis · Lecture 3","t":"Replacing a canine is a complex FPD, and a maxillary canine is under more stress than a mandibular one","b":"<p>Canine-replacement FPDs can be difficult because the canine often lies outside the inter-abutment axis. The prospective abutments are the lateral incisor (usually the weakest tooth in the entire arch) and the first premolar (the weakest posterior tooth). An FPD replacing a maxillary canine is subjected to more stress than one replacing a mandibular canine, because forces are transmitted outward (labially) on the maxillary arch against the inside of the curve (its weakest point), while on the mandibular canine the forces are directed inward (lingually) against the outside of the curve (its strongest point). Any canine-replacement FPD must be considered complex; no FPD replacing a canine should replace more than one additional tooth (support from secondary abutments will have to be considered); and an edentulous space created by the loss of a canine and any two contiguous teeth is best restored with implants or an RPD. The path of insertion should be checked before the impression; a parallelometer-mirror can easily show the positional relationship of the prepared abutments.</p>"},{"k":"اختبر نفسك","t":"Quiz: the 8-times and 27-times rule, a distal keyway, and canine replacement","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">According to the law of the beam in this lecture, flexure of a span is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Independent of length; a three-tooth pontic is always more rigid than a single pontic</button><button type=\"button\" class=\"opt\" data-i=\"1\">Bending varies directly with the cube of the length and inversely with the cube of the occlusogingival thickness. A two-tooth pontic span bends 8 times as much as a single pontic, and a three-tooth span bends 27 times as much. Halving the connector height (or the pontic thickness) also yields 8 times the flexure. Replacing three missing posterior teeth with an FPD rarely has a favourable prognosis, especially in the mandible (an RPD or implants are then preferred). To minimise flexing, use a greater occlusogingival pontic dimension, bulky connectors that do not harm the gingiva, and double abutments when the span is long or the crown/root ratio is unfavourable. A secondary abutment must have as much root surface area and a favourable crown/root ratio as the primary, and at least equally retentive retainers (the flexing pontic applies tensile force to the secondary retainers). For four missing maxillary incisors, first premolars are used as secondary abutments at each end to offset the lever arm</button><button type=\"button\" class=\"opt\" data-i=\"2\">Halving connector height reduces flexure to one-eighth</button><button type=\"button\" class=\"opt\" data-i=\"3\">A double abutment is used only when the primary abutment has a better crown/root ratio than the secondary</button></div><div class=\"qexp\" hidden><p>دميتان = انثناء 8 مرات؛ ثلاث = 27 مرة. تنصيف الارتفاع = 8 مرات انثناء. ثلاث خلفيات نادراً ما تنجح بالفك السفلي. الدعامة الثانوية بمساحة جذر وتثبيت لا يقلّان عن الأساسية. لتعويض القواطع الأربع العلوية نضيف الضواحك الأُوَل.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">For a pier abutment and a mesially tilted second molar, this lecture recommends:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Place the keyway on the mesial of the pier, and always place a non-rigid connector on the mesial of the tipped molar</button><button type=\"button\" class=\"opt\" data-i=\"1\">A pier acts as a fulcrum and can fail the weaker retainer. Options include very retentive retainers, cantilevering one segment if periodontal support is adequate, or a non-rigid connector (a T-shaped key on the pontic and a dovetail keyway in the retainer). The keyway is within the distal contours of the pier and the key is on the mesial of the distal pontic, because mesial drift then seats the key; a mesial keyway can unseat it and may loosen a canine retainer. For a tilted mandibular second molar: orthodontic uprighting (about 3 months; extract a third molar if present); a proximal half-crown (a 3/4 crown rotated 90° with the distal uncovered) only if that distal is caries-free and the mouth has a very low proximal-caries rate; a telescope crown and coping; or a non-rigid connector with the keyway in the distal of the premolar, not on the mesial of the tipped molar (that would increase tipping)</button><button type=\"button\" class=\"opt\" data-i=\"2\">A proximal half-crown uncovers the mesial surface and is used even when the distal is carious</button><button type=\"button\" class=\"opt\" data-i=\"3\">Orthodontic uprighting in this lecture takes an average of three years</button></div><div class=\"qexp\" hidden><p>الـ keyway وحشي الـ pier حتى الحركة الإنسية تُجلس المفتاح. للرحى الثانية المائلة: تقويم حوالي 3 أشهر (وقلع الثالثة إن وُجدت)، أو نصف تاج وحشي بشروط صارمة، أو تلسكوبي، أو رابط غير صلب على وحشي الضاحك مو إنسي الرحى.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A fixed partial denture that replaces a canine, in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Is simple, and a maxillary canine replacement is under less stress than a mandibular one</button><button type=\"button\" class=\"opt\" data-i=\"1\">Must be considered complex. The usual abutments are the lateral incisor (often the weakest tooth in the arch) and the first premolar (the weakest posterior tooth). A maxillary canine FPD is under more stress than a mandibular one, because maxillary forces go outward (labially) against the inside of the curve (its weakest point), while mandibular forces go inward (lingually) against the outside of the curve (its strongest point). No canine-replacement FPD should replace more than one additional tooth. Loss of a canine plus any two contiguous teeth is best restored with implants or an RPD. Check the path of insertion before the impression</button><button type=\"button\" class=\"opt\" data-i=\"2\">Can safely replace a canine plus two neighbouring teeth with a three-abutment FPD as the first choice</button><button type=\"button\" class=\"opt\" data-i=\"3\">The mandibular canine lies against the weakest point of the arch curve</button></div><div class=\"qexp\" hidden><p>تعويض الناب معقّد. العلوي عليه إجهاد أكثر (القوة ضد داخل القوس). لا تعوّض أكثر من سن إضافي واحد ويه الناب. ناب + سنّان ملاصقان: غرسات أو طقم جزئي.</p></div></div>"},{"k":"Dr. Lamis · Lecture 5","t":"Major and minor retainers, and how retainers are classified by preparation and by material","b":"<p>The bridge retainer unites the abutment to the restoration: it takes support from the abutment and provides stabilization and retention, seating over or in the abutment and connecting the pontic to it. <b>Major retainers</b> are used in fixed-fixed, spring and cantilever bridges; in a fixed-mobile bridge the major retainer is at one end of the pontic only. In conventional bridges the major retainer must be retentive and cover the whole occluding surface (a rigid connection to the pontic). A <b>minor retainer</b> is the lesser retainer of a fixed-mobile bridge, into which a movable connector from the pontic seats or attaches; it does not need full occlusal coverage (a flexible connection).</p><p>By preparation design: extracoronal (complete or partial crown); intracoronal (inlay, onlay); and intraradicular (post and core). Standard designs include a full metal crown, 3/4 crown, 7/8 crown, post crown, PFM, full zirconium, and combinations. Non-standard designs include an implant, an inlay, an onlay, and a resin-bonded “Maryland bridge”. By material: all-metal, metal-ceramic, all-ceramic, zirconium, and acrylic retainers. All-metal retainers are the most conservative, the simplest to prepare and the least expensive, and are used in the posterior region when aesthetics are not critical. Metal-ceramic, all-ceramic and zirconium are used for anterior replacements where aesthetics are essential. An acrylic retainer is used with a temporary bridge.</p>"},{"k":"Dr. Lamis · Lecture 5","t":"Eight criteria for choosing a retainer, including a conservation hierarchy and cost","b":"<p>Criteria for choosing a suitable retainer: alignment of the abutments, the retention required, aesthetics, the condition of the abutments, the periodontium, conservation of tooth structure, cost, and caries susceptibility. (1) When abutments are more or less parallel, either a complete or a partial crown can be used; if they are not parallel, a complete-crown retainer will be less conservative. (2) If aesthetics are critical, PFM, all-ceramic, zirconium or a 3/4 crown can be used. Some patients worry about metal display on the occlusal surface of posterior teeth and want porcelain to cover it, which leads to a destructive preparation that is not always possible or desirable. (3) Extensive caries, a large restoration involving the buccal surface, or loss due to fracture necessitate complete-coverage retainers. Pulp condition and the incisal relationship play a vital role, especially when the clinical crown is short (worn teeth). (4) Conservation, from more to less conservative: inlays and onlays &gt; partial coverage &gt; complete coverage; and full metal &gt; PFM &gt; all-ceramic. If the buccal enamel and dentine are sound, partial coverage is conservative, reduces harm to the pulp and periodontium, and does not destroy the natural appearance — but if there is a sound indication for a complete crown, this must be done. (5) Cost: a partial or complete metal crown may be less expensive than PFM, which is less expensive than all-ceramic or zirconium; metal retainers are the least expensive. (6) A partial crown needs a sufficiently large and long tooth. (7) A patient with poor oral hygiene is indicated for a complete crown. (8) The retention of a bridge retainer should be at least as great as for a similar restoration made as a single unit, and varies with preparation features, crown-material properties and the luting cement.</p>"},{"k":"Dr. Lamis · Lecture 5","t":"What decides how much retention a retainer needs, including a Class III inlay on the distal of a canine","b":"<p>Factors affecting the amount of required retention: (1) <b>Length of span and rigidity</b> — the longer the span, the greater the stresses on the retainer and the more likely it is to become uncemented, and the casting is more liable to flex, so all components must be sufficiently rigid (the longer the span, the stronger every component must be). (2) <b>Type of bridge</b> — certain types induce greater stresses on the cementing media; strong retainers are required for a fixed-fixed more than for a fixed-mobile bridge. Little retention is needed for the minor retainer of a fixed-mobile design, to preserve tooth tissue. Example: replacement of a maxillary first premolar by a fixed-mobile bridge using full coverage on the second premolar as the major retainer and a Class III inlay on the distal of the canine as the minor retainer — conservative, aesthetic, with an intact labial surface. (3) <b>Strength of the bite</b> varies with age, sex and muscular development; the heavier the bite, the stronger and thicker the retainer material must be. (4) <b>The tooth being replaced</b> — replacing a molar causes greater stress than a lower incisor, and forces on a canine are more likely than on an incisor. (5) <b>Occlusal coverage</b> — full occlusal coverage is always indicated for fixed-fixed bridges; it protects the abutment during mastication and protects cusps from fracture, especially with large restorations or endodontically treated teeth. The occlusal reduction must be sufficient for a rigid thickness of material. (6) <b>Habits</b> such as pipe smoking, clenching and bruxism induce stress; if many teeth are severely worn, a metal retainer will similarly wear unless the habit is corrected, so the retainer must be thicker and stronger than normal.</p>"},{"k":"Dr. Lamis · Lecture 5","t":"An ideal retainer, five preparation principles, and a 5–6° convergence angle","b":"<p>Requirements of an ideal retainer: maximum retention; maximum aesthetics; preservation of the vitality of the prepared teeth; a conservative preparation (less traumatic reduction); biological acceptance by the surrounding tissues; the ability to withstand masticatory forces; and easy construction. If the case permits, preparation of an abutment for a metal or porcelain crown is limited by five principles: (1) preservation of tooth structure; (2) retention and resistance form; (3) structural durability of the restoration; (4) preservation of the periodontium; (5) marginal integrity. Factors affecting retention and resistance: taper of the preparation — the more nearly parallel the opposing walls, the greater the retention. To avoid an undercut and seating problems, a <b>5–6°</b> convergence angle is used. Tooth preparation must be kept to a minimum because of the adverse effect on retention. Other factors: surface area of the preparation; length and height; diameter (tooth width); texture of the preparation; and accessory means. Structural durability: the crown must be rigid enough to avoid flexing, perforation or fracture, which needs sufficient reduction for bulk, proper contour and carved anatomy, and to prevent wearing holes in the metal.</p>"},{"k":"Dr. Lamis · Lecture 5","t":"Margin placement: supragingival when possible, and the finishing-line designs in this lecture","b":"<p>Whenever possible the margin is placed supragingivally; the casting should have proper contact, embrasure form, occlusion, and a healthy occlusogingival contour. Margins must fit as closely as possible against the finishing line, in an area the dentist can prepare and finish and the patient can clean. Placement may be supragingival (more conservative on hard enamel; easier preparation, finishing, visibility, impression-making and hygiene), subgingival, or equigingival. Factors that affect the position of the finishing line: aesthetics; extra retention; and caries or a filling near the margin. The finishing line must be clear, smooth, well defined, continuous from one surface to the other, and on sound tooth structure. Designs in this lecture: knife edge, shoulder, shoulder with a bevel, radial shoulder, chamfer and heavy chamfer, depending on the type of restoration, the materials, and the occlusal force.</p>"},{"k":"Dr. Lamis · Lecture 5","t":"Full-metal and PFM retainers: when each is indicated or contraindicated","b":"<p>A <b>complete cast (full metal) crown</b> is the most conservative crown, indicated in the posterior region when aesthetics are not needed. It provides better retention and resistance because all axial surfaces are included. It is indicated when the abutment has extensive destruction from caries or trauma, can receive a clasp, is endodontically treated, or the patient has a high caries index. Advantages: greater retention and resistance; high resistance to deformation even in thin sections; preservation of tooth structure; easy to prepare. Disadvantages: poor aesthetics; difficulty testing vitality especially with an electric pulp tester; interference with taste; tarnish and corrosion, so prophylactic measures are needed.</p><p>A <b>porcelain-fused-to-metal</b> retainer is the most widely used when aesthetics are a factor: it combines the strength of a full metal crown and the aesthetics of an all-ceramic crown. It is indicated when aesthetics, excessive retention and resistance are needed, and contraindicated in the case of a large pulp chamber, an intact buccal wall, and when a more conservative retainer is required. Advantages: that combination of strength and aesthetics. Disadvantages: substantial removal of tooth structure; more subject to fracture because of the brittle nature of porcelain; shade selection might be difficult; inferior aesthetics compared with an all-ceramic crown; more expensive.</p>"},{"k":"Dr. Lamis · Lecture 5","t":"An all-ceramic retainer: the most aesthetic, and when it is contraindicated","b":"<p>An <b>all-ceramic crown</b> is the most aesthetically pleasing retainer, made entirely from ceramic with no metal substructure to block light transmission, and it resembles the colour and translucency of natural teeth more than other restorations. It is indicated when high aesthetics are needed, there is considerable proximal caries, the tooth is endodontically treated with a post and core, and there is a favourable distribution of occlusal load. It is contraindicated when high strength is needed, the tooth is thin faciolingually or has insufficient coronal tooth structure, there is an unfavourable distribution of occlusal load, and in bruxism.</p>"},{"k":"Dr. Lamis · Lecture 5","t":"A 3/4 crown and a telescopic retainer","b":"<p>A <b>partial veneer (3/4) crown</b> covers three-quarters of the clinical crown, leaving the buccal or labial surface intact. It has less retention and resistance than a full metal or a full veneer with a facing. It is indicated in a short-span bridge, teeth with good clinical crown length and labiolingual thickness, good oral hygiene and a low caries index, and a good axial relationship of the abutments to facilitate the path of insertion. It is contraindicated in short teeth, poor oral hygiene, grossly carious teeth, long-span bridges, poorly aligned abutments, and endodontically treated teeth. Advantages: conservative; good aesthetics; reduced pulpal and periodontal insult; less periodontal irritation because all margins are placed supragingivally; a vitality test can be done on the unprepared surfaces; easy finishing and hygiene. Disadvantages: recurrent caries along the cavosurface line angle; possible showing of gold, especially in lower anterior and posterior teeth; more difficult preparation; limited adjustment of the path of placement.</p><p><b>Telescopic retainers:</b> two copings, one over the other. The internal (primary) coping modifies the morphology of the tooth and changes the path of insertion; the secondary (external) coping fits over it. Recommended when the path of insertion of the FPD does not coincide with the long axis of the abutment.</p>"},{"k":"Dr. Lamis · Lecture 5","t":"A post-crown retainer: two-thirds of the root, 4–5 mm from the apex, and 8 mm from the CEJ","b":"<p>A <b>post crown</b> completely replaces the coronal portion of a natural tooth and is retained by a post (dowel) cemented into the root canal of an endodontically treated tooth. It reinforces remaining tooth structure by distributing forces to the supporting tissue. It is indicated for endodontically treated abutments, a short clinical crown, and realignment of a malposed abutment. In multi-rooted posterior teeth the post is placed in the largest canal: the palatal canal in a maxillary molar, the distal canal in a mandibular molar, and the buccal canal in a maxillary premolar. Retention depends on: taper (a parallel-sided preparation is more retentive than a tapered one that diverges occlusally); post length (the longer, the more retention — <b>two-thirds of the root length, equal to the length of the clinical crown, 4–5 mm from the apex, and 8 mm deep from the CEJ</b>); diameter (<b>one-third of the root diameter at the CEJ</b>, and at least <b>2 mm less</b> than the root diameter at mid-root); and surface texture. The root must have sufficient length and width, without sharp angulations in the middle third, without internal or external resorption, and with a well-condensed root filling especially in the apical third.</p>"},{"k":"Dr. Lamis · Lecture 5","t":"Resin-bonded (Maryland) retainers and a pinledge","b":"<p><b>Resin-bonded retainers</b> are the most conservative retainers: they require minimal tooth preparation, are acid-etched, aesthetically attractive, economical, and do not irritate soft or hard tissues. They are indicated when the abutment has sufficient enamel for etching, and they can stabilize teeth after orthodontic treatment. They are contraindicated in patients with sensitivity to base-metal alloys, when the facial aesthetics of the abutment are not efficient, when there is inadequate enamel to bond (caries, an existing restoration, attrition), and in thin incisors.</p><p>A <b>pinledge</b> is a partial veneer retainer whose preparation incorporates pin holes for retention. It is indicated when the anterior teeth are not damaged, there is a high aesthetic requirement, proximal grooves are impossible to prepare, and also to alter the lingual contour of maxillary anterior teeth.</p>"},{"k":"Dr. Lamis · Lecture 5","t":"An inlay as a minor retainer, and an onlay that restores cusps","b":"<p>An <b>inlay</b> is a fixed intracoronal restoration made outside the tooth to correspond to the prepared cavity, then luted into the tooth. It may be used as a single-tooth restoration or as a minor retainer for an FPD, in gold alloy or ceramic. It is contraindicated in a high caries index, poor oral hygiene, MODs, and poor dentine support that would require a wide preparation. An <b>onlay</b> restores one or more cusps and the adjoining occlusal surfaces, or the entire occlusal surface, and is retained mechanically or by a dental adhesive. It is used to restore extensively damaged posterior teeth that need wide mesio-occluso-distal restorations, and can be used as a retainer for FPDs. It is contraindicated in high caries risk, poor oral hygiene, a short clinical crown, an extruded tooth, and bruxism.</p>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: major versus minor retainers, a 5–6° taper, and post-crown numbers","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Major and minor retainers, and how much retention a bridge needs, in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A minor retainer must always cover the whole occlusal surface; a fixed-mobile design needs stronger cement than a fixed-fixed design</button><button type=\"button\" class=\"opt\" data-i=\"1\">Major retainers (fixed-fixed, spring and cantilever, and one end of a fixed-mobile pontic) must be retentive and cover the whole occluding surface. A minor retainer of a fixed-mobile bridge does not need full occlusal coverage. All-metal is the most conservative, simplest and least expensive posterior retainer when aesthetics are not critical. Retention of a bridge retainer should be at least as great as for a similar single-unit restoration. A longer span needs stronger, more rigid components. Stronger retainers are required for fixed-fixed than for fixed-mobile; little retention is needed for a minor retainer (example: a maxillary first-premolar space with full coverage on the second premolar and a Class III inlay on the distal of the canine). Full occlusal coverage is always indicated for fixed-fixed bridges. Conservation: inlay/onlay &gt; partial coverage &gt; complete coverage, and full metal &gt; PFM &gt; all-ceramic</button><button type=\"button\" class=\"opt\" data-i=\"2\">Acrylic retainers are the first choice for a definitive anterior FPD in this lecture</button><button type=\"button\" class=\"opt\" data-i=\"3\">A patient with poor oral hygiene is indicated for a partial veneer rather than a complete crown</button></div><div class=\"qexp\" hidden><p>الكبرى تغطي كل الإطباق؛ الصغرى ما تحتاج تغطية كاملة. المسافة الأطول تحتاج أجزاء أقوى. الثابت-ثابت يحتاج تثبيتاً أكثر من الثابت-متحرك. مثال: تغطية كاملة على الضاحك الثاني و inlay صنف III على وحشي الناب.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Preparation principles and the three complete-coverage retainers in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A 20° convergence is ideal; margins must always be subgingival; an all-ceramic crown is first choice in bruxism and on a thin faciolingual tooth</button><button type=\"button\" class=\"opt\" data-i=\"1\">A 5–6° convergence angle is used to avoid undercuts and still provide retention. Five principles: preservation of tooth structure, retention and resistance, structural durability, preservation of the periodontium, and marginal integrity. Place the margin supragingivally whenever possible. A full metal crown is the most conservative posterior crown when aesthetics are not needed. PFM is the most widely used when aesthetics matter, but is contraindicated with a large pulp chamber, an intact buccal wall, or when a more conservative retainer is required. An all-ceramic crown is the most aesthetic (no metal to block light), contraindicated when high strength is needed, the tooth is thin faciolingually or short of coronal structure, the occlusal load is unfavourable, or in bruxism. A 3/4 crown leaves the buccal or labial surface intact, is for a short span with good crown length and hygiene, and is contraindicated on short, grossly carious, poorly aligned or endodontically treated teeth and in long spans</button><button type=\"button\" class=\"opt\" data-i=\"2\">PFM requires less tooth reduction than a full metal crown</button><button type=\"button\" class=\"opt\" data-i=\"3\">A 3/4 crown is the retainer of choice for a long-span posterior FPD in this lecture</button></div><div class=\"qexp\" hidden><p>التقارب 5–6 درجات. المعدن الكامل أكثر محافظة للخلف. PFM للجمال مع قوة، ويُمنع إذا اللب كبير أو الجدار الشدقي سليم. الخزف الكامل الأجمل ويُمنع بصريف الأسنان والسن الرفيع. ثلاثة الأرباع لمسافة قصيرة مو للطويلة ولا للمعالج لبياً.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Post-crown and conservative-retainer numbers and rules in this lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The post should fill the whole root to the apex, and a resin-bonded retainer is indicated on thin incisors with little enamel</button><button type=\"button\" class=\"opt\" data-i=\"1\">In multi-rooted teeth the post goes in the largest canal (palatal of an upper molar, distal of a lower molar, buccal of an upper premolar). A parallel-sided post is more retentive than a tapered one. Length: two-thirds of the root, or equal to the clinical crown, 4–5 mm from the apex, and 8 mm deep from the CEJ. Diameter: one-third of the root at the CEJ and at least 2 mm less than the mid-root diameter. The root filling must be well condensed, especially in the apical third, without sharp mid-root angulation or resorption. Resin-bonded (Maryland) retainers are the most conservative, need enough enamel for etching, and are contraindicated with base-metal allergy, inadequate enamel, or thin incisors. A pinledge uses pin holes when proximal grooves cannot be prepared. An inlay may be a minor FPD retainer; an onlay can restore cusps and serve as a retainer, but not in high caries risk, a short crown, an extruded tooth or bruxism</button><button type=\"button\" class=\"opt\" data-i=\"2\">Post diameter should equal the mid-root diameter so the canal is completely widened</button><button type=\"button\" class=\"opt\" data-i=\"3\">An onlay is first choice in bruxism in this lecture</button></div><div class=\"qexp\" hidden><p>طول الوتد: ثلثا الجذر أو يساوي التاج، 4–5 ملم من الذروة و 8 ملم من CEJ. القطر ثلث عند CEJ وأقل بـ 2 ملم عن منتصف الجذر. Maryland الأكثر محافظة ويه ميناء كافٍ، مو بالقواطع الرفيعة.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">Where is the keyway of a non-rigid connector placed on a pier abutment, and why?</button><div class=\"flash-a\" hidden>Within the distal contours of the pier, with the key on the mesial of the distal pontic. Posterior teeth lean mesially under load, so a distal keyway lets that movement seat the key more solidly. A mesial keyway can unseat the key and may cause mobility or failure of a canine retainer.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا سابع ملف: تكملة محاضرة د. لميس 3 (الميكانيكا الحيوية للجسر) ومحاضرة 5 (ماسكات الجسر). صفحات 146–167. ماكو محاضرة 4 بهالجزء. راح نمر على قانون العتبة، الدعامات المزدوجة، الدعامة الوسطية، الرحى المائلة، تعويض الناب، وأنواع الماسكات. شرح عراقي مفصل ويه أسئلة.</p>","<p>تصميم الجسر لازم يتحمل قوى الإطباق والخلع (عزم، انثناء، شد) ويوزع القوى بعدل. طول المسافة بين الدعامات يقرر إمكانية الجسر: سن واحد مفقود مثالي؛ سنان أو ثلاثة يحتاجون تقييم دقيق (نسبة تاج/جذر، شكل الجذر، الأنسجة الداعمة، الحركة، وقوة الإطباق). المسافة الأطول تحمل الرباط أكثر وتكون أقل صلابة.</p><p><b>قانون العتبة (Law of the beam)</b>: الانثناء يتناسب طردياً ويه <b>مكعّب الطول</b> وعكسياً ويه <b>مكعّب السُمك الإطباقي-اللثوي</b>. مقابل دمية سن واحد: دميتان ينثنيان <b>8 مرات</b> أكثر، وثلاث دمى <b>27 مرة</b> أكثر. لذلك تعويض ثلاث خلفيات بجسر ثابت نادراً ما تكون النتيجة (prognosis) جيدة، خصوصاً بالفك السفلي (يفضَّل طقم جزئي أو غرسات). <b>تنصيف ارتفاع الرابط يعطي انثناء 8 مرات</b>. المسافة الطويلة على أسنان سفلية قصيرة قد تفشل: كسر خزف، كسر رابط، ارتخاء ماسكة ونخر، أو رد فعل سيئ للسن والأنسجة.</p>","<p>لتقليل الانثناء: اختَر دمية بسُمك إطباقي-لثوي أكبر؛ خلِّ الدمى والروابط أضخم ما يمكن بدون ما تضر اللثة؛ وبالمسافة الطويلة أو نسبة تاج/جذر غير مناسبة استخدم <b>دعامات مزدوجة</b> (سنّان متجاوران بطرف واحد أو بطرفين). الاستطبابات: زيادة التثبيت؛ زيادة مساحة الرباط والعظم؛ نسبة تاج/جذر غير مناسبة؛ مسافة طويلة؛ وجبائر لأسنان متأذية داعماً. الشروط: الدعامة الثانوية لازم تكون <b>لها نفس مساحة سطح الجذر تقريباً ونسبة تاج/جذر مناسبة مثل الأساسية</b>؛ وماسكاتها <b>على الأقل بنفس تثبيت</b> الأساسية، لأن انثناء الدمية يولّد قوى شد على ماسكات الثانوية.</p>","<p>إذا الدمى برا خط ما بين الدعامات تصير ذراع عتلة وتعمل عزم. هالمشكلة شائعة لما نعوّض القواطع العلوية الأربع بجسر، وأوضح بالقوس الأمامي المدبب المستدق: كل ما زاد الاستدقاق طال الذراع وزاد العزم؛ القوس الأكثر استدارة يخفف المشكلة. لتعويض العزم نحتاج تثبيت إضافي بالاتجاه المعاكس وعلى مسافة تساوي طول الذراع عن محور الدعامات — يعني <b>دعامتان بكل طرف</b>. عملياً يُستخدم <b>الضاحك الأول كدعامة ثانوية</b> لجسر علوي من ناب إلى ناب ويه أربع دمى.</p>","<p>ال<b>دعامة الوسطية (pier)</b> سن طبيعي بين الدعامات الطرفية. لأنها بمنتصف المسافة تعمل <b>نقطة ارتكاز (fulcrum)</b> وتولّد إجهادات كبيرة قد تفشل الماسكة الأضعف (ارتخاء أو تسرب ونخر واسع). الحلول: ماسكات عالية التثبيت جداً؛ أو إذا الدعم الداعم كافٍ، كوابح لجزء من الجسر على جهة من الـ pier؛ أو <b>رابط غير صلب</b> (اتحاد ميكانيكي يكسر الإجهاد): مفتاح بشكل T على الدمية ومجرى ذيل الحمامة (dovetail keyway) بالماسكة. ينقل إجهاد القص للعظم بدل الروابط، ويسمح للدعامات بالحركة بشكل مستقل.</p><p>الموضع: ال<b>keyway بحدود الوحشي للدعامة الوسطية</b>، وال<b>مفتاح بإنسي الدمية الوحشية</b>. ليش وحشي مو إنسي؟ الأسنان الخلفية تميل إنسياً ويزيد ميلها ويه الإطباق. إذا المجرى وحشي، الحركة الإنسية تُجلس المفتاح بإحكام. إذا إنسي، الحركة تطلع المفتاح وقد تسبب حركة مرضية للناب أو فشل ماسكته.</p>","<p>فقدان الرحى الأولى السفلية مبكراً شائع. إذا الفراغ اتُرك، الرحى الثانية تميل إنسياً وقد تنجرف الثالثة ويهها، ويصير مسار الإدخال المتوازي صعب. الحلول: (1) <b>تقويم لتعديل الميلان</b> إذا كان شديداً (يوزع القوى ويزيل عيوب عظمية بإنسي الجذر). إذا الرحى الثالثة موجودة الأفضل تُقلع لتسهيل الحركة. متوسط العلاج <b>3 أشهر</b>. (2) <b>نصف تاج proximally</b> على الرحى المائلة (المحاضرة كتبت hall والمقصود half): تاج ثلاثة أرباع مُدار 90 درجة حتى السطح الوحشي يبقى مكشوفاً. يجوز فقط إذا الوحشي خالٍ من النخر وغير منزوع الكلس، ونخر المجاور قليل جداً بكل الفم، والمريض يگدر ينظف المنطقة بشكل استثنائي.</p>","<p>(3) <b>تاج تلسكوبي ويه coping</b> على الدعامة الوحشية: تحضير كامل بسحل كبير بمحور الرحى المائلة، coping داخلي، وفوقه نصف تاج proximally كماسكة للجسر. يغطي التاج السريري كامل ويعوّض اختلاف مسار الإدخال. (4) <b>رابط غير صلب</b>: تحضير كامل للرحى بمحورها، وصندوق على وحشي الضاحك للمجرى. <b>لا</b> يُوضع الرابط على إنسي الرحى المائلة لأنه يزيد الميلان. يُستطب إذا الرحى مائلة إنسياً ولسانياً بشكل واضح (الجسر الاعتيادي راح يصير استدقاقه مفرط ويفقد التثبيت). الاثنان أكثر تخريباً من التحضير العادي. وجود وتد ولب أو حشوة DO بالضاحك يميل للرابط غير الصلب؛ ترميمات وجهية/لسانية واسعة بالرحى تميل للتلسكوبي.</p>","<p>تعويض الناب صعب لأنه غالباً برا محور الدعامات. الدعامات المتوقعة: الرباعية (عادة أضعف سن بالقوس) والضاحك الأول (أضعف خلفي). تعويض الناب <b>العلوي</b> عليه إجهاد أكثر من السفلي: القوى تطلع شفوياً ضد داخل القوس (أضعف نقطة)، بينما بالسفلي تدخل لسانياً ضد خارج القوس (أقوى نقطة). أي جسر يعوّض ناب يُعدّ معقّداً؛ لا يعوّض أكثر من سن إضافي واحد مع الناب؛ وفقدان الناب ويه أي سنّين ملاصقين يُفضَّل بالغرسات أو الطقم الجزئي. افحص مسار الإدخال قبل الطبعة.</p>","<p>ثلاثة أسئلة على قانون العتبة، ومجرى الـ pier، وتعويض الناب.</p>","<p>الماسكة توحد الدعامة بالترميم وتثبت الجهاز. ال<b>ماسكة الكبرى</b> بالجسور الثابت-ثابت والنابض والكوابح؛ وبالثابت-متحرك تكون بطرف واحد فقط من الدمية، وتغطي كل سطح الإطباق (رابط صلب). ال<b>ماسكة الصغرى</b> بالثابت-متحرك يدخل فيها الرابط المتحرك، وما تحتاج تغطية إطباقية كاملة.</p><p>حسب التحضير: خارج تاجية (تاج كامل أو جزئي)؛ داخل تاجية (inlay, onlay)؛ وداخل جذرية (وتد ولب). التصاميم القياسية: معدن كامل، ثلاثة أرباع، سبعة أثمان، تاج وتد، PFM، زيركونيا كاملة، ومزيج. غير القياسية: غرسة، inlay، onlay، وجسر Maryland المرتبط بالراتنج. المعدن الكامل أكثر محافظة وأرخص للخلفيات إذا الجمال مو حرج. الخزف-معدن والخزف الكامل والزيركونيا للأماميات. الأكريل للمؤقت.</p>","<p>معايير اختيار الماسكة: صف الدعامات، التثبيت المطلوب، الجمال، حالة الدعامات، الأنسجة الداعمة، المحافظة على النسيج، الكلفة، وقابلية النخر. إذا الدعامات متوازية تقريباً يمكن تاج كامل أو جزئي؛ إذا مو متوازية فالتاج الكامل أقل محافظة. للجمال: PFM أو خزف كامل أو زيركونيا أو ثلاثة أرباع. تغطية الإطباق بالخزف سحل أكبر ومو دائماً مرغوب. النخر الواسع أو كسر الجدار الشدقي يحتاج تغطية كاملة. سلم المحافظة: inlay/onlay &gt; تغطية جزئية &gt; كاملة؛ ومعدن كامل &gt; PFM &gt; خزف كامل. الكلفة: المعدن الأرخص، بعدين PFM، وبعدين الخزف الكامل أو الزيركونيا. النظافة السيئة مؤشر لتاج كامل. تثبيت ماسكة الجسر لازم ما يقل عن ترميم مفرد مماثل.</p>","<p>ما يحدد مقدار التثبيت المطلوب: <b>طول المسافة والصلابة</b> — المسافة الأطول تزيد الإجهاد وقد تفك الإسمنت وتثني الصبّة، فكل الأجزاء لازم تكون أقوى. <b>نوع الجسر</b> — الثابت-ثابت يحتاج ماسكات أقوى من الثابت-متحرك؛ الماسكة الصغرى تحتاج تثبيتاً قليلاً للحفاظ على النسيج. مثال: تعويض الضاحك الأول العلوي بجسر ثابت-متحرك: تغطية كاملة على الضاحك الثاني (كبرى) وحشوة مطعمة صنف III على وحشي الناب (صغرى) — محافظ وجمالي والسطح الشفوي سليم. <b>قوة العضة</b> تزيد الحاجة لسماكة وقوة. تعويض الرحى إجهاده أكبر من القاطع السفلي، والناب أكثر من القاطع. التغطية الإطباقية الكاملة دائماً للثابت-ثابت. عادات مثل الغليون وصريف الأسنان تتطلب ماسكة أثخن وأقوى، وإلا المعدن أيضاً يتسجح.</p>","<p>الماسكة المثالية: أقصى تثبيت وجمال، الحفاظ على حيوية السن، تحضير محافظ، قبول حيوي، تحمل قوى المضغ، وسهولة الصنع. مبادئ التحضير خمسة: الحفاظ على النسيج؛ شكل التثبيت والمقاومة؛ متانة الترميم؛ الحفاظ على الأنسجة الداعمة؛ وسلامة الحافة. كل ما كانت الجدران أقرب للتوازي زاد التثبيت. لتجنب التحت قطع ومشاكل الجلوس يُستخدم تقارب <b>5–6 درجات</b>. عوامل أخرى: المساحة، الطول/الارتفاع، قطر السن، ملمس السطح، ووسائل إضافية. المتانة الإنشائية تحتاج سحل كافٍ حتى الترميم ما ينثني أو يُثقب.</p>","<p>الحافة فوق اللثة أفضل عندما يمكن (أسهل تحضيراً وإنهاءً وطبعة وتنظيفاً، وعلى ميناء صلب أكثر محافظة). قد تكون فوق اللثة، أو تحتها، أو بمستواها (equigingival). موضع خط الإنهاء يتأثر بالجمال والحاجة لتثبيت إضافي والنخر أو الحشوة قرب الحافة. لازم يكون واضح، أملس، محدد، مستمر من سطح لآخر، وعلى نسيج سليم. التصاميم بهالمحاضرة: حافة سكين، كتف، كتف بحافة مائلة، كتف نصف قطري، شطب، وشطب ثقيل — حسب نوع الترميم والمادة وقوة الإطباق.</p>","<p>تاج <b>المعدن الكامل</b> أكثر تاج محافظة، للخلفيات إذا الجمال مو مطلوب. تثبيت ومقاومة أفضل لأن كل الجدران المحورية داخلة بالتحضير. يُستطب ويه تخريب واسع، أو عندما يستقبل ضمة، أو سن معالج لبياً، أو مؤشر نخر عالي. عيوبه: جمال ضعيف، صعوبة فحص الحيوية بالكهرباء، قد يغيّر الذوق، وتلطخ/تآكل يحتاج وقاية.</p><p>ال<b>PFM</b> الأشيع لما الجمال مهم: قوة المعدن وجمال الخزف. يُستطب عند الحاجة لجمال وتثبيت ومقاومة عاليين. يُمنع إذا حجرة اللب كبيرة، أو الجدار الشدقي سليم ويُطلب تصميم أكثر محافظة. عيوبه: سحل كبير، الخزف قابل للكسر، اختيار اللون قد يصعب، وأقل جمالاً من الخزف الكامل، وأغلى.</p>","<p>تاج <b>الخزف الكامل</b> الأجمل (بلا هيكل معدني يحجب الضوء)، ويشبه لون وشفافية السن الطبيعي أكثر من غيره. يُستطب للجمال العالي، نخر مجاور معتبر، سن معالج لبياً ويه وتد ولب، وتوزيع حمل مناسب. يُمنع عند الحاجة لقوة عالية، سن رفيع دهليزي-لساني أو تاج ناقص، توزيع حمل غير مناسب، وصريف الأسنان.</p>","<p>تاج <b>ثلاثة الأرباع</b> يترك الشدق أو الشفة سليمة. تثبيت أقل من المعدن الكامل. يُستطب لمسافة قصيرة، تاج طويل وسميك بما يكفي، نظافة جيدة ومؤشر نخر واطي، وعلاقة محورية جيدة. يُمنع بالأسنان القصيرة، النظافة السيئة، النخر الشديد، المسافة الطويلة، الدعامات سيئة الصف، والمعالجة لبياً. الحواف فوق اللثة، ويمكن فحص الحيوية على السطح غير المحضَّر. عيوبه: نخر راجع على زاوية السطح، ظهور ذهب خصوصاً بالفك السفلي، وتحضير أصعب.</p><p>ال<b>التلسكوبي</b>: coping داخلي يعدّل الشكل ومسار الإدخال، وخارجي يركب فوقه، عندما مسار الجسر لا يطابق محور الدعامة.</p>","<p>تاج ال<b>وتد</b> يعوّض التاج بالكامل ويُثبَّت بوتد داخل قناة سن معالج لبياً. يُستطب للدعامة المعالجة لبياً، والتاج السريري القصير، وإعادة صف دعامة بسوء وضع. بالقنوات المتعددة: الحنكية للرحى العلوية، الوحشية للسفلية، والشدقية للضاحك العلوي. الوتد المتوازي أكثر تثبيتاً من المستدق. الطول: <b>ثلثا الجذر، أو يساوي التاج السريري، 4–5 ملم من الذروة، و 8 ملم من الملتقى المينائي الملاطي</b>. القطر: <b>ثلث قطر الجذر عند CEJ</b>، و<b>أقل بـ 2 ملم على الأقل</b> من القطر بمنتصف الجذر. الحشو جيد التكثيف خصوصاً بالثلث الذروي، بلا امتصاص وبلا انحناء حاد بالثلث الأوسط.</p>","<p>ماسكات <b>مرتبطة بالراتنج (Maryland)</b> الأكثر محافظة: تحضير أصغري، تحميض، جميلة ورخيصة نسبياً وما تهيج الأنسجة. تُستطب إذا الميناء يكفي للتحميض، ولتثبيت الأسنان بعد التقويم. تُمنع بحساسية معادن الأساس، إذا جمال الوجه غير كافٍ، إذا الميناء غير كافٍ للربط (نخر أو حشوة أو تسحّج)، وبالقواطع الرفيعة.</p><p>ال<b>pinledge</b> ماسكة قشرية جزئية ويه ثقوب دبابيس للتثبيت. للأماميات غير المتضررة ويه حاجة جمالية عالية، عندما الأخاديد المجاورة مستحيلة، أو لتعديل الكفاف اللساني للأماميات العلوية.</p>","<p>ال<b>inlay</b> ترميم داخل تاجي يُصنع خارج السن ويُلصق بالحفرة؛ قد يكون ماسكة صغرى، من سبيكة ذهب أو خزف. يُمنع ويه مؤشر نخر عالي، نظافة سيئة، حفر MOD، ودعم عاجي ضعيف يحتاج تحضيراً واسعاً. ال<b>onlay</b> يرمم حدبة أو أكثر أو كل السطح الإطباقي، ميكانيكياً أو بلاصق، للأسنان الخلفية المتضررة بحشوات MOD واسعة، ويمكن أن يكون ماسكة للجسر. يُمنع ويه خطر نخر عالي، تاج قصير، سن بازغ زائد، وصريف الأسنان.</p>","<p>ثلاثة أسئلة ختامية + بطاقة مجرى الـ pier + زر الدرجة.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
