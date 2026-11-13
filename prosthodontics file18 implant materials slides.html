@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Prosthodontics File 18 — Ideal Materials for Dental Implants</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Prosthodontics · 5th year</div>
+    <h1>Characteristics of Ideal Materials for Dental Implants</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of the 5th-year lecture on ideal dental-implant materials (PDF pages 491–502): definitions and classifications, polymers and ceramics, titanium and surface modification, coatings, guided bone regeneration, and bone-graft mechanisms.</p>
+    <ul>
+      <li>Four conditions for implant success, osseointegration, and Strunt’s versus Combe’s classifications</li>
+      <li>Polymers and PEEK, vitreous carbon, alumina and zirconia, and bioactive HA and bioglass coatings</li>
+      <li>Titanium properties (4.51 g/cm³, 110 GPa, 1668°C), CPT grades 1, 2 and 4, and the adverse interface reaction reported for Ti-6Al-4V</li>
+      <li>Machined, blasted, etched, sintered and plasma-sprayed surfaces, ceramic-coating methods, and bone-to-implant contact</li>
+      <li>GBR materials including e-PTFE and TEFGEN-FD, and osteogenesis versus osteoinduction versus osteoconduction (autograft, allograft, alloplast)</li>
+      <li>Total run time: <b>28 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 14</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Prosthodontics · File 18","t":"Ideal materials for dental implants","b":"<p>University of Baghdad, College of Dentistry — Prosthodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This 5th-year file covers PDF pages 491–502 (Dr. Thekra Ismael): characteristics of ideal dental-implant materials — definitions (implant, osseointegration, biomaterial, biocompatibility), Strunt’s and Combe’s classifications, polymers, carbons, ceramics, bioactive coatings, titanium and its surface modifications, ceramic coatings, guided bone regeneration, and the mechanisms and types of bone grafts.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. A later 5th-year lecture on dental implantology (pp 592–607) is a separate file.</p>"},{"k":"5th year · Implant materials","t":"Definitions, four conditions for a successful implant, and biomaterials","b":"<p>A <b>dental implant</b> is a prosthetic device made of alloplastic material(s) implanted into the oral tissues beneath the mucosal and/or periosteal layer and on or within the bone to provide retention and support for a fixed or removable dental prosthesis; a substance that is placed into and/or on the jaw bone to support a fixed or removable dental prosthesis.</p><p>The composition and nature of the surface of an implant are important because of their effect on the biologic development of an interfacial relationship between the bone and the implant. To be successful, an implant must meet four conditions: (1) be <b>biocompatible</b> so there is no undesirable reaction between the tissues and the implant (that is, corrosion, dissolution and/or resorption); (2) have an interface that stabilizes postoperatively in as short a time as possible; (3) be capable of carrying and transferring the occlusal stresses that are placed upon it; and (4) remain stable for a long period of time.</p><p><b>Osseointegration:</b> (1) the apparent direct attachment or connection of osseous tissue to an inert, alloplastic material without intervening fibrous connective tissue; (2) the process and resultant apparent direct connection of an exogenous material’s surface and the host bone tissues, without intervening fibrous connective tissue; (3) the interface between alloplastic materials and bone.</p><p>A <b>biomaterial</b> is any substance other than a drug that can be used for any period of time as part of a system that treats, augments, or replaces any tissue, organ, or function of the body; also, a synthetic material used to make devices to replace part of a living system or to function in intimate contact with living tissue. <b>Biocompatibility</b> is acceptance of an artificial implant by the surrounding tissues and by the body as a whole.</p><p>Material selection should ideally follow a logical sequence: analysis of the problem; consideration of requirement; consideration of available materials and their properties; then choice of material. The most common classes of biomedical materials are polymers, metals, and ceramics, used singly and in combination. An implant material should have suitable mechanical strength, biocompatibility, and structural biostability in physiologic environments.</p>"},{"k":"5th year · Implant materials","t":"Strunt’s classification by behaviour in bone","b":"<p>Implant materials are classified (1) according to biocompatibility in bone — <b>Strunt’s classification</b> — and (2) according to type of material, metallic or non-metallic — <b>Combe’s classification</b>.</p><p>Strunt’s classification depends on the reaction with surrounding bone and on the ability of the implant material to stimulate bone formation:</p><p><b>a. Distant osteogenesis (biotolerated material).</b> There is a gap between implant and bone filled with connective tissue — a connective-tissue capsule (fibrous scar). Possible osteoid or chondroid contact can be seen. Materials include stainless steel, Co-Cr alloy, gold alloy, and polymethylmethacrylate.</p><p><b>b. Contact osteogenesis (bioinert material).</b> There is contact between implant and bone, as with titanium, tantalum, aluminium oxide, and ceramic of the non-reactive type. Ceramics are of two types: reactive (induce bone formation) and non-reactive (do not induce bone formation).</p><p><b>c. True-bond osteogenesis (bioactive material).</b> There is a chemical bond between the implant and bone, as with ceramic bioglass and calcium-phosphate apatite.</p><p><b>d. Bond osteogenesis (bioinert and structure-osteotropic material).</b> There is physical and chemical bonding of the implant to bone. Materials: titanium with a rough surface (to increase the surface area) and a very thin coating layer.</p>"},{"k":"5th year · Implant materials","t":"Combe’s non-metallic materials: polymers, vitreous carbon, and non-reactive ceramics","b":"<p>Combe’s classification divides materials into metallic and non-metallic. Non-metallic bioinert (non-reactive) materials have minimal interaction with the tissue, and include polymers, vitreous carbon, and non-reactive ceramics (for example aluminium oxide and zirconium oxide).</p><p><b>Polymers</b> used as implants or parts of implant systems include acrylics, polyamides, polyesters, polyethylene, polysiloxanes, polyurethane, polytetrafluoroethylene (PTFE), polyetheretherketone (PEEK), and a number of reprocessed biological materials. All polymers are radiolucent. They are used as a coating or membrane, but nowadays PEEK is used as a solid implant after modification of its mechanical properties by addition of different types of fillers.</p><p><b>Vitreous carbon</b> is a stable, well-tolerated material, classified as a ceramic because of its inertness and biocompatibility. It has undesirable physical properties and has been widely used in cardiovascular disease. Disadvantages of carbon: it has not performed well in clinical practice, with a high percentage of clinical failure and withdrawal of the device; it is radiolucent on radiograph; the colour of the material is black; and it is brittle and lacks ductility. Pyrolytic carbons appear to have better potential because of enhanced physical properties, and may be further reinforced with carbon fibre, producing a material which is well tolerated when implanted.</p><p><b>Non-reactive ceramics.</b> One type that has shown evidence of success in clinical studies is made from aluminium oxide (Al<sub>2</sub>O<sub>3</sub>), either as a polycrystal or as a single crystal. Although this ceramic is well tolerated by bone, it is not bioactive, because it does not promote the formation of bone. It possesses high strength, stiffness and hardness. These implants are designed with either a screw or a blade shape, and appear to work optimally when used as abutments for a prosthesis in a partially edentulous patient.</p><p><b>Zirconia-based ceramics</b> are well tolerated in the tissue; possess mechanical stability during an experimental period of one year; have an attractive colour; are easy to prepare as an abutment; are radiopaque; and need a surface structure that creates enough unique fracture toughness. Because of their good combination of mechanical properties and excellent biocompatibility, zirconium ceramics are recognized as one of the best biocompatible materials for joint prostheses. Proper quality control during manufacturing and polishing is required when they are used as endosseous dental implants.</p>"},{"k":"5th year · Implant materials","t":"Bioactive materials: hydroxyapatite and bioglass, and how they bond to bone","b":"<p>Bioactive materials (hydroxyapatite, bioglass) are used to enhance the bond strength of the implant to bone and to accelerate the rate at which attachment occurs. They are used mainly as a coating applied to develop a bonded interface with bone and to promote bone formation. They promote bonding to bone by: providing bonding sites for collagen fibres; providing an environment which favours osteoblasts over fibroblasts; and releasing ions which promote hydroxyapatite formation. They have a bone–implant interface characterised by direct chemical bonding of the implant with surrounding bone; free calcium and phosphate compounds at the surface; and a controlled surface reactivity. Surface reactivity affects ionic changes and this favours osteoblast rather than osteoclast formation, depending on the field. They are used as a coating, not as the implant itself, because of brittleness and dissolution of the material.</p><p><b>Hydroxyapatite (HA)</b> ceramics have been shown to be biocompatible, non-toxic, and capable of forming a biochemical bond with bone because of chemical similarity to bone mineral. Using HA as a coating for titanium substructures addresses the mechanical deficiencies of the material while realizing the benefits of its bioactivity.</p><p><b>Bioglass</b> is a dense ceramic material made from CaO, Na<sub>2</sub>O, and phosphate and silica (written in the lecture as PO5 and Si2O). This material bonds chemically to bone. The bond has been shown to be so strong that, when tested, fracture occurs within the bone or the bioglass, leaving the interface intact. Thus the brittle nature of bioglass becomes the limiting factor in its use as a stress-bearing dental implant.</p>"},{"k":"5th year · Implant materials","t":"Metallic systems, and why titanium is the material of choice","b":"<p>The conventional metals and alloys used for medical devices belong to three main metallic systems: stainless steel, cobalt–chromium alloys, and titanium alloys. These systems exhibit an excellent combination of high strength, relative workability, and good resistance to corrosion. Improvements consist mainly of variations in chemical composition, heat treatments and processing technologies, in order to improve fatigue behaviour, wear, corrosion, ion release and stress transmission to the surrounding tissues. Stainless steel and Co-Cr alloy have acceptable physical properties and relatively good corrosion resistance; they are tolerated by bone to a certain extent but cannot integrate with it. Currently, titanium or titanium-alloy implants are widely used for their superior biocompatibility. Other metals used as implant materials are gold and tantalum.</p><p><b>Titanium</b> has proven its worth as a material of choice for the prosthetic superstructure since the late 1980s (written “late 80’s” in the lecture). It is a silvery-grey metal of group IVb of the periodic table. It is a lightweight metal with a density of <b>4.51 g/cm³</b>, a low elastic modulus of <b>110 GPa</b>, and a relatively high melting point of <b>1668°C</b>. Pure titanium is ductile; its elastic modulus is half that of steel and five times greater than that of compact bone.</p><p>Titanium is a <b>reactive</b> metal: in air, water or any other electrolyte an oxide is spontaneously formed on the surface. This oxide is one of the most resistant minerals known, building a dense film which protects the metal from chemical attack, including that of aggressive body fluids. Titanium is inert in tissue: the oxide film in contact with the tissue is practically insoluble, and no ions are released that could go on to react with organic molecules. Titanium possesses good mechanical properties; its tensile strength is very close to that of the stainless steel used for load-bearing surgical implants. The poisoning effect of titanium is low because the metal is passivated by the immediate formation of the surface oxide during manufacturing. The thickness of the oxide increases during sterilization in water vapour; it is this oxide layer that the biomolecules meet when the implant is placed into bone. Besides its excellent physical properties, titanium has a high corrosion resistance.</p>"},{"k":"5th year · Implant materials","t":"Commercially pure titanium grades, and Ti-6Al-4V","b":"<p>Commercially pure titanium (CPT) is available in four grades; the purest is known as grade 1. American specifications require that such material should contain a maximum of <b>0.18% by weight of oxygen</b> and <b>0.2% by weight of iron</b>. The strength of CPT increases with increasing concentration of oxygen and iron.</p><ul><li><b>Grade I:</b> the softest and most ductile; made as a barrier for guided bone regeneration (GBR) procedures.</li><li><b>Grade 2:</b> used for implant and abutment parts.</li><li><b>Grade 4:</b> the hardest type and the least ductile.</li></ul><p>Ti-6Al-4V requires a particular tensile strength of this alloy. The (Ti-6Al-4V) alloy was found to cause an adverse tissue reaction in the interface, in contrast to CPT; commercially pure titanium has been found to cause the most natural tissue reaction of those metals tested.</p>"},{"k":"5th year · Implant materials","t":"Five types of surface modification, and overall surface design","b":"<p>Types of surface modification:</p><ol><li><b>Machined surfaces.</b> The microscopic surfaces of machined implants are related to the machining operation used for forming the threaded shapes, and include fine machining lines, pits and grooves. These line surface features may be significant for promoting osteoblast adherence, bone formation and attachment, and therefore osseointegration.</li><li><b>Shot-blasted features.</b> A sand-blasting medium is used to produce a rough surface. Typically Al<sub>2</sub>O<sub>3</sub>, SiC, glass or TiO<sub>2</sub> shot (particles) is used to erode a substrate and form a very irregular surface with pits and depressions that vary in size and shape depending on the blasting conditions.</li><li><b>Chemically etched surfaces.</b> Controlled surface chemical attack from acid solutions forms small pits in more or less regular arrays. The result is a significant increase in implant surface area (<b>two times or more</b>) and more effective mechanical interlock of bone, improving implant fixation.</li><li><b>Porous sintered surfaces.</b> Fixation by bone ingrowth and micromechanical interlock is achieved by sintering Ti-6Al-4V alloy powders to a mechanical titanium-alloy substrate.</li><li><b>Plasma-sprayed surfaces.</b> A material is deposited onto a substrate to form an irregular surface suitable for promoting secure implant fixation by bone growth onto surface irregularities. It is used widely because of the higher temperature reached and higher powder-particle velocities; it exhibits higher densities and higher bond strengths. Plasma is a neutral electrical flame containing equal amounts of positive and negative charges; the ions and electrons are produced by passing a gas or mixture of gases through a high-current arc.</li></ol><p>Surface design of an implant can be: porous; roughened (to minimize shear movement); granulated; textured (a screw-shaped surface is ideal for a dental implant); or smooth (weak bonding because of sliding of the implant).</p>"},{"k":"5th year · Implant materials","t":"Ceramic coatings, HA advantages, and methods that enhance bone-to-implant contact","b":"<p>Ceramic coatings include both the bioactive type, such as calcium phosphates, and the inert ceramics such as aluminium oxide and zirconium oxide. Methods of applying a ceramic coating for a dental implant are: plasma spraying; vacuum-deposition techniques; sol-gel and dip-coating methods; and electrolytic (electrochemical) processing. Electrochemical coating has the advantages of a thin coating layer, a fine crystalline structure, high solubility, and 100% coverage of a porous implant structure.</p><p>Advantages of an HA coating: it aids in direct bonding of bone to the implant surface; and it gives quicker closure of the surgical site, as new bone grows from the implant surface to meet bone growing from the socket. The final properties of a ceramic coating are influenced by the method of processing. The most popular ceramic coating from a commercial standpoint is plasma-sprayed HA.</p><p>Methods used to enhance bone-to-implant contact:</p><ol><li>Hydroxyapatite plasma-sprayed onto a roughened and prepared titanium implant (the lecture gives an HA coating range of <b>50–70 nm</b>); a pressurized hydrothermal post-plasma-spray treatment increases the crystalline HA content from <b>77% to 96%</b>, which improves bone adhesion.</li><li>A titanium plasma-sprayed surface implant: high-velocity molten drops of metal are sprayed onto the implant body to a thickness of <b>10–40 nm</b> (as written in the lecture), giving a greater area for bone attachment, with results reported in fully and partially edentulous patients.</li><li>Implant-surface pitch (the number of threads per unit length) is an important factor in osseointegration. Increased pitch and increased depth between individual threads allow improved contact area between bone and implant. Moderately rough surfaces of <b>1.5 µm</b> also improved contact area between bone and implant surface.</li></ol><p>A <b>superstructure</b> can be defined as a metal framework that fits the implant abutments and provides retention for the prosthesis. Recently it has been defined as the superior part of a multiple-layer prosthesis that includes the replaced teeth and associated structures.</p>"},{"k":"5th year · Implant materials","t":"Guided bone regeneration (GBR): materials, e-PTFE, indications, and TEFGEN-FD","b":"<p>Bone-augmentation procedures are frequently used in oral and maxillofacial reconstructive surgery when there is insufficient bone volume for implant placement. Several methods, including bone grafting and membrane techniques, have been described. The principle of <b>guided bone regeneration (GBR)</b> has been successfully applied to the regeneration of bone in conjunction with the placement of endosseous dental implants where insufficient bone support exists before or after placement of implants.</p><p>Materials used as GBR: Millipore filter; polylactic acid (PLA), used in iliac-bone-crest reconstruction; polygalactin; collagen membrane; Biobrane; dura mater; human periosteum; and <b>e-PTFE</b> (expanded polytetrafluoroethylene), the most biocompatible material used in dental implant work. e-PTFE membranes could regenerate bone in a surgically created jaw defect, using a special membrane and, under it, a special bone (pure tricalcium phosphate), which is a bioresorbable material: it will induce bone formation and then resolve like a scaffold; when the membrane is placed, the bone will be guided in one direction for one month.</p><p>Indications: dehiscence defects; residual osseous defects; fenestration defects; and extraction defects.</p><p><b>TEFGEN-FD</b> is a non-resorbable membrane for oral surgery: a totally inserted biomaterial, optimal for use in oral surgery, and easy to handle. Applications: protect an extraction site; cover a periodontal defect; provide space for bone augmentation; augment an implant site; and cover a peri-implant defect. Advantages: it is non-porous (the pores are <b>0.2 micron</b>); no primary closure is necessary; the membrane can remain exposed to the oral cavity; healing occurs without infection; it is easy to handle; and removal is uncomplicated, with no need for a second surgery as described.</p>"},{"k":"5th year · Implant materials","t":"Osteogenesis, osteoinduction and osteoconduction, and types of graft","b":"<p>Mechanisms of bone grafting:</p><p><b>Osteogenesis</b> is the development or formation of bone. An osteogenic graft is derived from or composed of tissue involved in the growth or repair of bone. Osteogenic cells differentiate through the phases of bone regeneration, encourage bone formation in soft tissue, or actively quicker bone growth.</p><p><b>Osteoinduction</b> is the capability of chemicals or procedures to induce bone formation through the differentiation and recruitment of osteoblasts — phenotypic conversion of mesenchymal cells into osteoblasts. It is the act or process of stimulating osteogenesis. It can be used to enhance bone regeneration, and bone may even grow or extend into an area where it is not normally found.</p><p><b>Osteoconduction</b> is the process whereby bone grows on a surface or on a scaffolding that is conducive to bone deposition; this is a <b>passive</b> process. It provides a physical matrix or scaffolding suitable for deposition of new bone, and allows bone apposition from existing bone, but osteoconductive grafts do not produce bone formation when placed in soft tissue. An osteoconductive graft is a graft material that serves as a scaffold for new bone growth.</p><p>Types of graft material:</p><ul><li><b>Autogenous bone</b> — originating or derived from sources within the same individual (autologous). An autogenous graft is taken from the patient’s own body. Autogenous bone is an organic autologous material that utilizes osteogenesis, osteoinduction and osteoconduction, and is the best grafting material, from intra-oral or extra-oral sites. Disadvantages: the need for a second operative site, and the possibility of not being able to obtain a sufficient amount of bone.</li><li><b>Allografts</b> — a graft of tissue between genetically dissimilar members of the same species.</li><li><b>Alloplasts</b> — an inert foreign body used for implantation within tissue; a material originating from a non-living source that surgically replaces missing tissue or augments that which remains. An alloplastic graft consists of an inert material; an alloplastic material is any non-biologic material suitable for implantation as an alloplast.</li></ul>"},{"k":"اختبر نفسك","t":"Quiz: four success conditions, Strunt classes, and titanium numbers","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">In Strunt’s classification, stainless steel, Co-Cr alloy, gold alloy and PMMA are examples of:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">True-bond osteogenesis (bioactive), with a chemical bond to bone</button><button type=\"button\" class=\"opt\" data-i=\"1\">Distant osteogenesis (biotolerated): a connective-tissue capsule fills the gap between implant and bone</button><button type=\"button\" class=\"opt\" data-i=\"2\">Contact osteogenesis (bioinert), as with titanium</button><button type=\"button\" class=\"opt\" data-i=\"3\">Bond osteogenesis of rough titanium with a thin coating</button></div><div class=\"qexp\" hidden><p>هذه مواد <b>متحمَّلة حيوياً (biotolerated)</b> ويه تكوين عظم بعيد: فراغ يمتلئ بمحفظة نسيج ضام. التماس (خامل) مثل التيتانيوم والتنتالوم وأكسيد الألمنيوم. الرابطة الحقيقية (نشط) مثل البيوجلاس وأباتيت فوسفات الكالسيوم. رابطة فيزيائية-كيميائية: تيتانيوم خشن ويه طلاء رقيق جداً.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Pure titanium’s density, elastic modulus and melting point, as given in the lecture, are about:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">7.8 g/cm³, 220 GPa, and 800°C</button><button type=\"button\" class=\"opt\" data-i=\"1\">4.51 g/cm³, 110 GPa (half that of steel and five times compact bone), and 1668°C</button><button type=\"button\" class=\"opt\" data-i=\"2\">1.0 g/cm³, 10 GPa, and 100°C</button><button type=\"button\" class=\"opt\" data-i=\"3\">19 g/cm³, equal to compact bone, and 500°C</button></div><div class=\"qexp\" hidden><p>الكثافة <b>4.51 غم/سم³</b>، معامل المرونة <b>110 GPa</b> (نصف الفولاذ وخمس مرات العظم المكتنز)، والانصهار <b>1668°م</b>. التيتانيوم تفاعلي: أكسيد تلقائي يحميه، و practically غير ذائب بالنسيج.</p></div></div>"},{"k":"اختبر نفسك","t":"Quiz: CPT grades, why HA is used as a coating, and GBR’s most biocompatible membrane","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Which commercially pure titanium grade is used for implant and abutment parts, and which finding was reported for Ti-6Al-4V?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Grade I (softest, for GBR barriers); Ti-6Al-4V caused the most natural tissue reaction</button><button type=\"button\" class=\"opt\" data-i=\"1\">Grade 2 for implant and abutment parts; Ti-6Al-4V was found to cause an adverse tissue reaction at the interface, in contrast to CPT</button><button type=\"button\" class=\"opt\" data-i=\"2\">Grade 4 is the most ductile and is used only as a GBR barrier</button><button type=\"button\" class=\"opt\" data-i=\"3\">All grades contain more than 2% oxygen</button></div><div class=\"qexp\" hidden><p>الدرجة 1 أطرى وأكثر مطيلية (حواجز GBR). <b>الدرجة 2 لقطع الزرعة والدعامة</b>. الدرجة 4 أصلب وأقل مطيلية. القوة تزيد ويه زيادة الأكسجين (حد 0.18%) والحديد (0.2%). Ti-6Al-4V سبب تفاعل ضار بالسطح الفاصل، بخلاف CPT اللي كان أطبيعي تفاعل.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Bioactive materials such as hydroxyapatite and bioglass are used mainly as coatings, not as the implant itself, because:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">They are radiolucent polymers</button><button type=\"button\" class=\"opt\" data-i=\"1\">Of brittleness and dissolution of the material; HA on a titanium substructure keeps the bioactivity while addressing mechanical weakness, and bioglass is limited as a stress-bearing implant by its brittleness</button><button type=\"button\" class=\"opt\" data-i=\"2\">They cannot form any chemical bond with bone</button><button type=\"button\" class=\"opt\" data-i=\"3\">They always produce a fibrous capsule like stainless steel</button></div><div class=\"qexp\" hidden><p>النشطة حيوياً تكوّن رابطة كيميائية مباشرة ويه العظم، بس هشة وتذوب فتصير طلاء مو زرعة كاملة. البيوجلاس الكسر يصير بالعظم أو بالمادة والسطح الفاصل يبقى سليم — الهشاشة هي العامل المحدد.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">Which GBR material does the lecture call the most biocompatible for dental-implant work, and what are TEFGEN-FD’s listed pore size and handling points?</button><div class=\"flash-a\" hidden>e-PTFE (expanded polytetrafluoroethylene). TEFGEN-FD is a non-resorbable membrane, non-porous with 0.2-micron pores, needs no primary closure, can remain exposed to the mouth, heals without infection, and is described as removable without a second surgery.</div></div>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: osteoconduction versus osteoinduction, autogenous grafts, and surface area after etching","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Osteoconduction, as defined in this lecture, is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The phenotypic conversion of mesenchymal cells into osteoblasts, so bone may form even where it is not normally found</button><button type=\"button\" class=\"opt\" data-i=\"1\">A passive process in which bone grows on a surface or scaffold; an osteoconductive graft does not produce bone when placed in soft tissue</button><button type=\"button\" class=\"opt\" data-i=\"2\">The same as osteogenesis from the patient’s own living cells only</button><button type=\"button\" class=\"opt\" data-i=\"3\">Always superior to autogenous bone</button></div><div class=\"qexp\" hidden><p>التوصيل العظمي عملية <b>سلبية</b>: سقالة يترسب عليها عظم من عظم موجود، وما تكوّن عظم إذا انحطت بنسيج رخو. الحث العظمي يحوّل خلايا ميزانشيمية إلى بانيات عظم وقد ينمو العظم بمنطقة غير معتادة. تكوين العظم (osteogenesis) نمو العظم من خلايا مولِّدة للعظم.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Autogenous bone is described as the best grafting material because it utilizes osteogenesis, osteoinduction and osteoconduction. Listed disadvantages are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">That it is always taken from another species</button><button type=\"button\" class=\"opt\" data-i=\"1\">The need for a second operative site, and the possibility of not obtaining a sufficient amount of bone</button><button type=\"button\" class=\"opt\" data-i=\"2\">That it is an inert alloplast only</button><button type=\"button\" class=\"opt\" data-i=\"3\">That it cannot be taken from intra-oral sites</button></div><div class=\"qexp\" hidden><p>الذاتي من نفس الشخص (من الفم أو من خارجه) وهو الأفضل. السيئات: موقع جراحي ثاني، وقد الكمية ما تكفي. الخيفي بين أفراد نفس النوع مختلفين وراثياً. المغاير/الصنعي مادة غير حية خاملة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Chemical etching of an implant surface is said to increase surface area by about:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A negligible amount, and it always weakens fixation</button><button type=\"button\" class=\"opt\" data-i=\"1\">Two times or more, giving more effective mechanical interlock of bone</button><button type=\"button\" class=\"opt\" data-i=\"2\">Exactly 1.5 µm of pitch only</button><button type=\"button\" class=\"opt\" data-i=\"3\">100% coverage by an electrochemical HA coat is the same process</button></div><div class=\"qexp\" hidden><p>الحفر الكيميائي يزيد مساحة السطح <b>مرتين أو أكثر</b> ويحسّن التشابك الميكانيكي. 1.5 ميكرومتر هي خشونة معتدلة تحسّن تماس العظم. التغطية 100% من حسنات الطلاء الكهروكيميائي، عملية مختلفة.</p></div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا الملف عن <b>مواد الزرعات السنية المثالية</b>: تعاريف، تصنيفي Strunt و Combe، البوليمرات والكربون والسيراميك والطلاءات النشطة حيوياً، التيتانيوم وتعديل سطحه، الطلاء السيراميكي، التجديد العظمي الموجّه (GBR)، وآليات وأنواع الطعوم العظمية. محاضرة زراعة الأسنان السريرية (صفحات 592–607) بملف لاحق.</p>","<p>الزرعة السنية جهاز تعويضي من مادة مغايرة (alloplastic) يُزرع تحت المخاطية و/أو السمحاق وعلى العظم أو داخله ليعطي تثبيت ودعم لتعويض ثابت أو متحرك.</p><p>تركيب السطح وطبيعته مهمان لأنهما يأثران على العلاقة الحيوية بين العظم والزرعة. أربعة شروط للنجاح: <b>توافق حيوي</b> بلا تفاعل غير مرغوب (تآكل، ذوبان، أو امتصاص)؛ سطح يثبات بأقصر وقت بعد العملية؛ تقدر تحمل وتنقل الإجهادات الإطباقية؛ وتبقى ثابتة فترة طويلة.</p><p><b>الاندماج العظمي (osseointegration)</b>: اتصال مباشر ظاهر بين العظم ومادة مغايرة خاملة، بلا نسيج ضام ليفي في الوسط.</p><p><b>المادة الحيوية (biomaterial)</b>: أي مادة مو دواء تُستخدم كجزء من نظام يعالج أو يعوّض نسيج أو عضو أو وظيفة؛ أو مادة تركيبية تشتغل بتماس حميم ويه النسيج الحي. <b>التوافق الحيوي</b>: قبول الجسم والأنسجة المحيطة للزرعة.</p><p>اختيار المادة: حلّل المشكلة، حدد المتطلبات، ادرس المواد المتاحة وخواصها، وبعدين اختار. الأشيع: بوليمرات، معادن، وسيراميك — وحدها أو مجتمعة. لازم قوة ميكانيكية مناسبة، توافق حيوي، وثبات بنيوي بالبيئة الفسيولوجية.</p>","<p>تصنيفان: حسب التوافق الحيوي بالعظم (<b>Strunt</b>)، وحسب نوع المادة معدنية أو غير معدنية (<b>Combe</b>).</p><p>تصنيف Strunt حسب التفاعل ويه العظم المحيط وقدرة المادة على تحفيز تكوين العظم:</p><p><b>أ) تكوين عظم بعيد (مادة متحمَّلة حيوياً biotolerated)</b>: فراغ بين الزرعة والعظم يمتلئ بنسيج ضام — محفظة ندبية ليفية. ممكن تماس عظماني أو غضروفي. المواد: فولاذ مقاوم، خليطة كوبالت-كروم، خليطة ذهب، وPMMA.</p><p><b>ب) تكوين عظم بالتماس (مادة خاملة حيوياً bioinert)</b>: في تماس بين الزرعة والعظم، مثل التيتانيوم، التنتالوم، أكسيد الألمنيوم، والسيراميك غير التفاعلي. السيراميك نوعان: تفاعلي يحرّض تكوين عظم، وغير تفاعلي ما يحرّض.</p><p><b>ج) تكوين عظم برابطة حقيقية (مادة نشطة حيوياً bioactive)</b>: رابطة كيميائية بين الزرعة والعظم، مثل البيوجلاس وأباتيت فوسفات الكالسيوم.</p><p><b>د) تكوين عظم برابطة (مادة خاملة حيوياً ويه بنية موجِّهة للعظم)</b>: ارتباط فيزيائي وكيميائي. مثال: تيتانيوم سطحه خشن (يزيد المساحة) وطبقة طلاء رقيقة جداً.</p>","<p>تصنيف Combe: معدني وغير معدني. غير المعدني الخامل تفاعله ويه النسيج أقل ما يمكن: بوليمرات، كربون زجاجي، وسيراميك غير تفاعلي (أكسيد ألمنيوم وأكسيد زركونيوم).</p><p>البوليمرات تشمل الأكريلك، البولي أميدات، البوليستر، البولي إيثيلين، البولي سيلوكسانات، البولي يوريثان، PTFE، و<b>PEEK</b>، ومواد حيوية معاد تصنيعها. كلها نفاذة للأشعة. تُستخدم كطلاء أو غشاء، وهسه الـ PEEK يُستخدم كزرعة صلبة بعد تعديل خواصها الميكانيكية بإضافة حشوات.</p><p>الكربون الزجاجي ثابت ومتحمَّل، يُصنَّف سيراميك لخموله وتوافقه، بس خواصه الفيزيائية غير مرغوبة. سيئاته: أداء سريري ضعيف ونسبة فشل وسحب عالية؛ نفاذ للأشعة؛ لونه أسود؛ وهش بلا مطيلية. الكربونات التحللية الحرارية (pyrolytic) إمكانيتها أحسن، وقد تُقوَّى بألياف كربون.</p><p>السيراميك غير التفاعلي الناجح سريرياً: أكسيد الألمنيوم (بلورة متعددة أو مفردة). متحمَّل من العظم بس مو نشط حيوياً (ما يشجع تكوين عظم). قوة وتيبس وصلادة عالية. تصميم لولب أو شفرة، وأفضل أداء كدعامة بتعويض لفاقد أسنان جزئي.</p><p>سيراميك الزركونيا: متحمَّل، ثبات ميكانيكي بتجربة سنة، لون جذاب، تحضير الدعامة سهل، ظليل للأشعة، وسطح مهم لصلاة الكسر. يُعد من أفضل المواد للتوافق الحيوي بتعويض المفاصل. يحتاج ضبط جودة وصقل إذا استُخدم كزرعة داخل العظم.</p>","<p>المواد النشطة حيوياً (هيدروكسي أباتيت، بيوجلاس) تعزز قوة الربط ويه العظم وتسرّع الارتباط. تُستخدم أساساً كطلاء لسطح مرتبط يشجع تكوين العظم. آلية الربط: مواقع لربط ألياف الكولاجين؛ بيئة تفضّل بانيات العظم على الأرومات الليفية؛ وتحرير أيونات تشجع تكوين هيدروكسي أباتيت. السطح في مركبات كالسيوم وفوسفات حرة، وتفاعلية سطح مسيطر عليها تؤثر على التغيرات الأيونية وتميل لتكوين بانيات العظم لا كاسرات العظم (حسب المجال). تُستخدم كطلاء مو كزرعة كاملة بسبب الهشاشة والذوبان.</p><p>الهيدروكسي أباتيت متوافق حيوي، غير سام، ويكوّن رابطة كيميائية حيوية ويه العظم لشبهه بمعدن العظم. طلاءه على هياكل تيتانيوم يعالج ضعف المادة الميكانيكي ويخلي فائدة نشاطها الحيوي.</p><p>البيوجلاس سيراميك كثيف من CaO و Na2O وفوسفات وسليكا (بالمحاضرة مكتوبة PO5 و Si2O). يرتبط كيميائياً بالعظم بقوة بحيث الكسر ويه الفحص يصير بالعظم أو بالمادة، والسطح الفاصل يبقى سليم. لذلك هشاشته هي العامل المحدد لاستخدامه كزرعة تتحمل إجهاد.</p>","<p>ثلاثة أنظمة معدنية تقليدية: فولاذ مقاوم، خلائط كوبالت-كروم، وخلائط التيتانيوم. قوة عالية، قابلية تشكيل نسبية، ومقاومة تآكل جيدة. التحسينات بتغيير التركيب والمعاملة الحرارية وتقنيات التصنيع (التعب، البلى، التآكل، تحرير الأيونات، ونقل الإجهاد للأنسجة). الفولاذ و Co-Cr متحمَّلان لحد ما من العظم بس <b>ما يندمجان ويه</b>. حالياً التيتانيوم وخلائطه الأشيع لتوافقهما الحيوي الأفضلي. معادن ثانية: ذهب وتنتالوم.</p><p>التيتانيوم مادة الاختيار للهيكل الفوقي من أواخر الثمانينات. معدن رمادي فضي من المجموعة IVb، خفيف الكثافة <b>4.51 غم/سم³</b>، معامل مرونة واطي <b>110 GPa</b>، ودرجة انصهار <b>1668°م</b>. النقي مطيل؛ معامله نصف الفولاذ وخمس مرات أكبر من العظم المكتنز.</p><p>التيتانيوم <b>تفاعلي</b>: بالهواء أو الماء أو أي كهرل يتكون أكسيد تلقائي على السطح، من أقاوم المعادن المعروفة، فيلم كثيف يحمي من الهجوم الكيميائي بما فيه سوائل الجسم. بالنسيج يُعد خامل: فيلم الأكسيد تقريباً غير ذائب وما تتحرر أيونات تتفاعل ويه الجزيئات العضوية. قوة الشد قريبة من فولاذ الزرعات الجراحية الحاملة للحمل. تأثيره التسممي واطي لأنه يتخمل فوراً بأكسيد السطح أثناء التصنيع، وسُمك الأكسيد يزيد بالتعقيم ببخار الماء — وهذا اللي تقابله الجزيئات الحيوية عند وضع الزرعة بالعظم. ومقاومته للتآكل عالية.</p>","<p>التيتانيوم النقي تجارياً (CPT) بأربعة درجات، أنقاها الدرجة 1. المواصفات الأمريكية: حد أقصى <b>0.18% وزن أكسجين</b> و<b>0.2% وزن حديد</b>. القوة تزيد كلما زاد الأكسجين والحديد.</p><p><b>الدرجة I</b>: الأطرى والأكثر مطيلية؛ تُستخدم كحاجز بإجراءات التجديد العظمي الموجّه (GBR).</p><p><b>الدرجة 2</b>: لقطع الزرعة والدعامة.</p><p><b>الدرجة 4</b>: أصلبها وأقلها مطيلية.</p><p>خليطة <b>Ti-6Al-4V</b> وُجد إنها تسبب تفاعل نسيجي ضار بالسطح الفاصل، بخلاف الـ CPT؛ التيتانيوم النقي تجارياً أعطى أطبيعي تفاعل نسيجي بين المعادن المفحوصة.</p>","<p>تعديلات السطح خمسة:</p><p>1) <b>مشغول (machined)</b>: خطوط تشغيل دقيقة وحفر وأخاديد من تشكيل الشكل الملولب؛ قد تساعد التصاق بانيات العظم وتكوين العظم والاندماج.</p><p>2) <b>قذف رملي (shot-blasted)</b>: جزيئات أكسيد ألمنيوم أو كربيد سيليكون أو زجاج أو TiO2 تخدش السطح فتصير حفر وتعرجات حسب ظروف القذف.</p><p>3) <b>حفر كيميائي</b>: حمض يكوّن حفر صغيرة منتظمة تقريباً، فيزيد مساحة السطح <b>مرتين أو أكثر</b> والتشابك الميكانيكي ويه العظم أحسن.</p><p>4) <b>سطوح مسامية ملبدة</b>: مساحيق Ti-6Al-4V تُلبد على ركيزة خليطة تيتانيوم حتى العظم ينمو داخل المسام.</p><p>5) <b>رش بلازمي</b>: ترسيب مادة على الركيزة سطح غير منتظم يثبت الزرعة بنمو العظم على التعرجات. شائع لأن الحرارة وسرعة الجزيئات أعلى، والكثافة وقوة الربط أعلى. البلازما لهب كهربائي متعادل ويه شحنات موجبة وسالبة متساوية، تتكوّن بتمرير غاز خلال قوس تيار عالي.</p><p>تصميم السطح عموماً: مسامي؛ خشن (يقلل حركة القص)؛ حُبيبي؛ محكم النسيج (السطح اللولبي مثالي للزرعة السنية)؛ أو أملس (ربط ضعيف بسبب انزلاق الزرعة).</p>","<p>الطلاءات السيراميكية: نشطة حيوياً مثل فوسفات الكالسيوم، أو خاملة مثل أكسيد الألمنيوم وأكسيد الزركونيوم. طرق التطبيق: رش بلازمي؛ ترسيب بالفراغ؛ sol-gel والغمس؛ ومعالجة كهروكيميائية. الحسنات الكهروكيميائية: طبقة رقيقة، بنية بلورية ناعمة، ذوبانية عالية، وتغطية 100% للبنية المسامية.</p><p>حسنات طلاء HA: يساعد الربط المباشر للعظم بسطح الزرعة؛ ويسرّع إغلاق الموقع الجراحي لأن عظم جديد ينمو من سطح الزرعة حتى يلتقي عظم السنخ. خواص الطلاء النهائية تتأثر بطريقة التصنيع. الأشيع تجارياً: HA مرشوش بلازمياً.</p><p>لزيادة تماس العظم-الزرعة: HA مرشوش على تيتانيوم محضَّر وخشن (مدى الطلاء بالمحاضرة <b>50–70 نانومتر</b>)؛ معاملة حرارية مائية بعد الرش ترفع HA البلوري من <b>77% إلى 96%</b> فتحسّن الالتصاق. سطح تيتانيوم مرشوش بلازمياً بسمك <b>10–40 نانومتر</b> كما مكتوب بالمحاضرة، يعطي مساحة أكبر. و<b>خطوة اللولب (pitch)</b> — عدد اللوالب لوحدة الطول — مهمة؛ زيادة الخطوة والعمق بين اللوالب تحسّن مساحة التماس. السطوح خشنة بدرجة معتدلة <b>1.5 ميكرومتر</b> هم تحسّن التماس.</p><p>الـ <b>superstructure</b>: هيكل معدني ينطبق على دعامات الزرعة ويعطي تثبيت للتعويض؛ أو حديثاً الجزء العلوي من تعويض متعدد الطبقات يشمل الأسنان المعوَّضة والهياكل المرتبطة.</p>","<p>إجراءات زيادة العظم شائعة إذا حجم العظم ما يكفي لوضع الزرعة. مبدأ <b>التجديد العظمي الموجّه (GBR)</b> نجح ويه زرعات داخل العظم إذا الدعم العظمي ناقص قبل أو بعد الوضع.</p><p>مواد الـ GBR: مرشح Millipore؛ حمض البوليلاكتيك (PLA) لإعادة بناء عرف الحرقفة؛ بولي غالاكتين؛ غشاء كولاجين؛ Biobrane؛ الأم الجافية؛ سمحاق إنساني؛ و<b>e-PTFE</b> (بولي تترافلوروإيثيلين موسَّع) — أكثرها توافقاً حيوياً بالزرعات. أغشية e-PTFE تكدر تجدّد عظم بعيب فكي جراحي، ويه غشاء خاص وتحته فوسفات ثلاثي الكالسيوم النقي (مادة قابلة للامتصاص الحيوي): تحفّز تكوين العظم وبعدين تذوب مثل سقالة؛ والغشاء يوجّه العظم باتجاه واحد لمدة شهر.</p><p>الاستطبابات: عيوب انفتاح (dehiscence)؛ عيوب عظمية متبقية؛ عيوب نوافذ (fenestration)؛ وعيوب القلع.</p><p><b>TEFGEN-FD</b> غشاء غير قابل للامتصاص للجراحة الفموية، سهل التعامل. استخداماته: حماية موقع قلع؛ تغطية عيب لثوي؛ توفير حيز لزيادة العظم؛ زيادة موقع زرعة؛ وتغطية عيب حول الزرعة. حسناته: غير مسامي (المسام <b>0.2 ميكرون</b>)؛ ما يحتاج إغلاق أولي؛ يكدر يبقى مكشوف للفم؛ شفاء بلا التهاب؛ تعامل سهل؛ وإزالته بسيطة بلا حاجة لجراحة ثانية كما وُصف.</p>","<p>آليات الطعم العظمي ثلاثة:</p><p><b>تكوين العظم (osteogenesis)</b>: نمو أو تكوّن العظم. الطعم المكوِّن للعظم مشتق من أو مكوَّن من نسيج مشارك بنمو أو إصلاح العظم. الخلايا العظمية التخليقية تتمايز وتشجع تكوين عظم بالنسيج الرخو أو تسرّع النمو.</p><p><b>الحث العظمي (osteoinduction)</b>: قدرة مواد أو إجراءات على حث تكوين العظم بتمايز وتجنيد بانيات العظم — تحويل نمط الخلايا الميزانشيمية إلى بانيات عظم. يحرّك عملية تكوين العظم، وقد ينمو العظم حتى بمنطقة ما يكون بيها عادة.</p><p><b>التوصيل العظمي (osteoconduction)</b>: عملية <b>سلبية</b> ينمو بيها العظم على سطح أو سقالة مناسبة للترسيب. تعطي قالب فيزيائي يسمح بترسيب عظم جديد من عظم موجود، بس الطعم الموصل ما يكوّن عظم إذا انحط بنسيج رخو.</p><p>أنواع الطعم: <b>ذاتي (autogenous)</b> من نفس الشخص، أفضل مادة لأنه يستخدم الآليات الثلاث (من الفم أو من خارجه). سيئاته: يحتاج موقع جراحي ثاني، وقد ما تحصل كمية عظم كافية. <b>طعم خيفي (allograft)</b>: بين أفراد نفس النوع مختلفين وراثياً. <b>طعم مغاير/صنعي (alloplast)</b>: جسم غريب خامل، مادة من مصدر غير حي تعوّض أو تزيد النسيج؛ أي مادة غير بيولوجية مناسبة للزرع كطعم مغاير.</p>","<p>Strunt: الفولاذ و Co-Cr و الذهب و PMMA متحمَّلة ويه محفظة ليفية. أرقام التيتانيوم 4.51 / 110 / 1668.</p>","<p>الدرجة 2 للزرعة والدعامة؛ Ti-6Al-4V تفاعله أسوأ من CPT. النشطة حيوياً طلاء بسبب الهشاشة. وe-PTFE أكثر مواد GBR توافقاً.</p>","<p>ثلاثة أسئلة ختامية + زر الدرجة: التوصيل سلبي وما يكوّن عظم بالنسيج الرخو؛ الذاتي أفضل بس ويه موقع ثاني؛ والحفر الكيميائي يضاعف المساحة أو أكثر. إذا غلطت ارجع للشرائح.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>

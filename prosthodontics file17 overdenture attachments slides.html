@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Prosthodontics File 17 — Attachments in Overdentures</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Prosthodontics · 5th year</div>
+    <h1>Attachments in Overdentures</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of the 5th-year lecture on attachments used with overdentures (PDF pages 481–490): functions and selection, rigid versus non-rigid types, stud, bar, magnet and O-ring systems, and hygiene and follow-up care.</p>
+    <ul>
+      <li>Functions of an attachment and the twelve factors that guide selection</li>
+      <li>Rigid versus non-rigid behaviour, and when a short dowel or unfavourable tooth distribution indicates a non-rigid attachment</li>
+      <li>Stud systems: Zest (intraradicular), Ceka and Dalbo</li>
+      <li>Bar units versus bar joints: Hader, Ackerman/C.M., and Dolder (including the Schubiger unit)</li>
+      <li>Cobalt–samarium magnets, O-rings, denture and abutment hygiene (0.2% chlorhexidine; 0.025% fluoride), and prosthodontic follow-up</li>
+      <li>Total run time: <b>20 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 10</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Prosthodontics · File 17","t":"Attachments in overdentures","b":"<p>University of Baghdad, College of Dentistry — Prosthodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This 5th-year file covers PDF pages 481–490 (Dr. Thekra Ismael): attachments used with overdentures — definition and functions, factors in selection, retentive mechanisms, rigid versus non-rigid attachments, stud (Zest, Ceka, Dalbo), bar (Hader, Ackerman, Dolder), magnet and O-ring systems, and oral-hygiene and follow-up care.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end.</p>"},{"k":"5th year · Attachments in overdenture","t":"What an attachment is, what it does, and how one is chosen","b":"<p>Attachments are small mechanical devices incorporated to provide retention and support. One part is connected to a root, tooth or implant (the <b>male</b> part) and the other part to the prosthesis (the <b>female</b> part).</p><p>Functions: securing the prosthesis against forces that tend to lift it; providing periodontal support for the prosthesis; transferring the forces of the muscles of mastication from the prosthesis to the periodontium in as nearly an axial direction as possible; distributing shearing forces; and stabilizing and/or splinting the abutment teeth.</p><p>Factors affecting attachment selection: available inter-arch space; crown–root ratio and alignment of the roots; type of coping; vertical space available; number of teeth present; amount of bone support; location of abutments; location of the strongest abutments; whether the overdenture is tooth-supported or tooth–tissue-supported; the type of opposing dentition (complete denture, overdenture, fixed appliance or natural dentition); maintenance problems and cost; and clinical experience and personal preference.</p><p>Retentive mechanism is achieved by either: active retention provided by springs that fit into recesses; friction between the components; or magnetic anchorage.</p>"},{"k":"5th year · Attachments in overdenture","t":"Rigid versus non-rigid attachments","b":"<p><b>Rigid attachments.</b> A retentive attachment is considered rigid if it grasps the abutment tooth bodily and permits no movement between the anchor and the prosthesis, except for rotation around the long axis of the element in the case of a single tooth. Even with a rigid attachment there is a minimal amount of movement, which can increase when the attachment wears. Advantages: reduction of the load on the edentulous ridge during function and parafunction; and minimum tipping of the abutment teeth when they are subjected to lateral forces. Disadvantage: applied forces and movements of the denture are transmitted almost entirely to the abutment teeth.</p><p><b>Non-rigid attachments</b> permit rotational movements of the denture around the anchor in one or more planes, or vertical body movements. The greater the number of non-rigid attachments used in the same denture, the more limited will be the movement of each. Advantage: a reduced effect of tipping force on the abutment teeth. Disadvantage: greater stress on the tissues supporting the denture (ridge resorption).</p><p>Non-rigid attachments may be indicated when the geometric distribution of the remaining teeth is unfavourable for denture stability — this can give rise to undesirable tipping and rocking, especially if the soft-tissue support is more resilient and/or less expanded than normal; and when only a short dowel (post) can be used to anchor the coping — if a rigid attachment were used over a short dowel, uncontrolled movement of the denture might loosen the dowel from the root.</p>"},{"k":"5th year · Attachments in overdenture","t":"Types of attachment, and stud systems: Zest (intraradicular)","b":"<p>Types of attachments:</p><ul><li><b>Stud attachments</b> — two types: intra-radicular (for example the Zest anchor) and extra-radicular (for example the Ceka Revax).</li><li><b>Bar attachments</b> — two types: bar units and bar joints.</li><li><b>Magnet attachments.</b></li></ul><p>In a stud attachment the male stud is soldered to the base, which is a coping covering the prepared tooth stump; the female housing is embedded in the acrylic of the overdenture, or is soldered to a substructure in the overdenture. Male and female attachments may be either resilient or non-resilient.</p><p><b>Zest anchor (intraradicular).</b> A post preparation is made within the root and the female sleeve is cemented into place. The male portion consists of a nylon post and a ball head, attached to the overdenture as a chairside procedure. It is ideal for an interim overdenture.</p><p>Advantages: it overcomes any space problem, since the attachment is within the root structure; leverage on the abutment tooth is reduced; the attachment procedure is simple; parallelism is not necessary if more than one tooth is used, because of the flexibility of the nylon; and no casting is required. Disadvantages: caries susceptibility, as no coping is placed; the nylon stud can bend and prevent seating (frequent recall visits are necessary to correct this); and eating foods without the overdenture can cause food to stagnate in the female part.</p>"},{"k":"5th year · Attachments in overdenture","t":"Extra-radicular studs: Ceka and Dalbo","b":"<p><b>Ceka attachment (extra-radicular).</b> The male part is fixed to the tooth and has a rounded shape, wider at the top and split vertically into four sections; these are flexible and can be compressed. The female housing fits over this. The attachment can also be constructed with a different type of retentive male that has a space between the parts to allow both rotational and vertical movement.</p><p><b>Dalbo attachment.</b> It may be rigid, resilient, or of the stress-breaker type. The male part is soldered to the tooth and the housing to the base. The rigid type has a cylindrical male unit with a rounded head. The resilient type is the smallest and the most commonly used. Rotational and vertical movement are possible because of relief spacers between the units. Retention is by the flexible arms of the female unit fitting over the undercut head of the male unit.</p>"},{"k":"5th year · Attachments in overdenture","t":"Bar attachments: units versus joints; Hader, Ackerman and Dolder","b":"<p>The purposes of using bars are splinting of abutment teeth, and retention and support of the prosthetic appliance. There are two types: <b>bar units</b>, which are the rigid type — no movement between the bar and the overlying sleeve, transmitting occlusal stress totally to the abutments; and <b>bar joints</b>, which allow some movement of the rotational type and utilize the residual ridge for support.</p><p><b>Hader bar.</b> This bar can serve either as a bar joint or a bar unit, or as a stud. It consists of preformed plastic bars and clips. The bar is attached to the coping wax-up and is cast with the coping. The plastic clips can be embedded in the denture base to gain retention.</p><p><b>Ackerman clip and C.M. clip.</b> A round bar is soldered to the post copings and the clip fits over the bar. It has, in addition, retention wings for engagement of the clip into the resin of the overdenture. A spacer is supplied so that the clip does not rest directly on the bar, providing both rotational and vertical movement.</p><p><b>Dolder bar.</b> As a <b>bar unit</b>: a preformed bar with parallel sides and a rounded top is soldered to the coping; a sleeve is present in the denture base; retention is due to friction. If the posts of the copings cannot be made parallel in order to seat the soldered bar, a Schubiger unit is used. Because of the parallel walls and close adaptation, rotation is not possible. As a <b>bar joint</b>: an egg-shaped bar with a spacer, which allows some movement; it is difficult to adapt to tissue contour and is bulky.</p>"},{"k":"5th year · Attachments in overdenture","t":"Magnet and O-ring attachments, hygiene, and follow-up care","b":"<p><b>Magnet attachments.</b> The system uses a cobalt–samarium magnet built into the denture base, and a magnetisable dowel-coping or keeper plate of palladium–cobalt–nickel alloy in the abutment teeth.</p><p><b>O-ring attachments</b> are doughnut-shaped synthetic polymer objects that can bend with resistance and then return to their original shape. The O-ring attaches to a post with a groove or undercut area. Advantages: ease in changing the attachment; a wide range of movement; low cost; and elimination of the time and cost of a superstructure of the prosthesis.</p><p><b>Oral hygiene.</b> Motivating and instructing the patient in the care of the overdenture is of extreme importance for its long-term success. Procedures learned during the preliminary treatment phase should continue without interruption after placement.</p><p><b>Overdenture care:</b> an ordinary toothbrush or a special denture brush; toothpastes with low abrasiveness and non-alkaline soaps; denture cleansers (mostly peroxide-based) as a useful adjunct. Candidiasis can be treated by immersing the denture in a <b>0.2% chlorhexidine</b> solution for <b>10–15 minutes</b> every day.</p><p><b>Care of the abutment — mechanical:</b> all abutment teeth, with or without a root coping, must be cleaned on all sides; all exposed root surfaces and gingival areas should be brushed again with an interproximal brush; dental floss is used only to clean under interdental bars and beneath root copings that are soldered together. <b>Chemical:</b> fluoride in gel, or fluoride as a <b>0.025%</b> solution used as a daily rinse; chlorhexidine as a <b>0.1–0.2%</b> solution as a daily rinse, or a gel applied inside the denture base or the female attachment.</p><p><b>Prosthodontic follow-up</b> is needed to correct: occlusion (remounting records); the base (relining); pressure spots; the bar (loose screws); bar clips (broken or loose); female retainers and clips remounted with acrylic resin; and signs of wear.</p>"},{"k":"اختبر نفسك","t":"Quiz: rigid versus non-rigid, and when a non-rigid attachment is indicated","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A rigid overdenture attachment is one that:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Always allows free vertical movement to spare the abutments all occlusal load</button><button type=\"button\" class=\"opt\" data-i=\"1\">Grasps the abutment bodily and permits no movement between anchor and prosthesis except rotation around the long axis in the case of a single tooth; forces are then transmitted almost entirely to the abutments</button><button type=\"button\" class=\"opt\" data-i=\"2\">Is the same as a magnet</button><button type=\"button\" class=\"opt\" data-i=\"3\">Must be used whenever only a short dowel can be placed</button></div><div class=\"qexp\" hidden><p>الصلب يمسك الدعامة كجسم وما يسمح بحركة إلا دوران محوري إذا السن واحد. الحسنات: حمل الحافة يقل وإمالة الدعامات ويه القوى الجانبية تقل. السيئة: القوى تنتقل تقريباً كلها للدعامات. حتى الصلب في حركة بسيطة تزيد ويه التآكل.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A non-rigid attachment is particularly indicated when:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The remaining teeth are ideally distributed and a long dowel is always available</button><button type=\"button\" class=\"opt\" data-i=\"1\">Only a short dowel can be used to anchor the coping, or the remaining teeth are unfavourably distributed for stability (especially if soft-tissue support is more resilient than normal)</button><button type=\"button\" class=\"opt\" data-i=\"2\">The aim is to send all occlusal stress only to the abutments, as with a bar unit</button><button type=\"button\" class=\"opt\" data-i=\"3\">The patient cannot clean under a bar</button></div><div class=\"qexp\" hidden><p>غير الصلب مُشار إليه إذا توزيع الأسنان مو مناسب للثبات (إمالة وهز، خصوصاً ويه نسيج أطرى)، أو إذا الوتد قصير — لأن ملحق صلب فوق وتد قصير قد يفك الوتد من الجذر. كلما زاد عدد غير الصلبة بنفس الطقم، حركة كل واحد تصير محدودة أكثر. السيئة: إجهاد أكبر على الحافة.</p></div></div>"},{"k":"اختبر نفسك","t":"Quiz: Zest, Dolder, and magnets","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The Zest anchor is an intra-radicular stud whose advantages include that no casting is required and parallelism is not necessary because of nylon flexibility. A listed disadvantage is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">It always needs a metal coping</button><button type=\"button\" class=\"opt\" data-i=\"1\">Caries susceptibility because no coping is placed, and the nylon stud can bend and prevent seating</button><button type=\"button\" class=\"opt\" data-i=\"2\">It cannot be used for an interim overdenture</button><button type=\"button\" class=\"opt\" data-i=\"3\">The male is a cobalt–samarium magnet</button></div><div class=\"qexp\" hidden><p>الـ Zest مثالي للطقم المؤقت، والملحق داخل الجذر يتجاوز مشكلة المساحة وما يحتاج صب أو توازي. سيئاته: <b>ماكو coping فالنخر أسهل</b>، النايلون قد ينثني ويمنع القعود (مراجعات متكررة)، والطعام يركد بالأنثى إذا الأكل بلا الطقم.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A Dolder bar used as a bar unit, compared with a Dolder bar joint, is characterised by:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">An egg-shaped bar with a spacer that allows movement, and is bulky and hard to adapt to tissue contour</button><button type=\"button\" class=\"opt\" data-i=\"1\">Parallel sides and a rounded top, frictional retention with a sleeve in the base, and no rotation because of the parallel walls; a Schubiger unit is used if the posts cannot be made parallel</button><button type=\"button\" class=\"opt\" data-i=\"2\">A nylon ball placed chairside into a root sleeve</button><button type=\"button\" class=\"opt\" data-i=\"3\">An O-ring on a grooved post only</button></div><div class=\"qexp\" hidden><p>وحدة Dolder: جدران متوازية وقمة مدورة، تثبيت بالاحتكاك، دوران مو ممكن. إذا الأوتاد ما تتوازى تُستخدم وحدة Schubiger. مفصل Dolder: قضيب بيضوي ويه spacer يسمح بحركة، منتفخ وصعب التكيف ويه النسيج. وحدة القضيب عموماً تنقل كل الإجهاد للدعامات؛ المفصل يستخدم الحافة للدعم.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">What metals are used in the magnet attachment system described in the lecture?</button><div class=\"flash-a\" hidden>A cobalt–samarium magnet is built into the denture base, and a magnetisable dowel-coping or keeper plate of palladium–cobalt–nickel alloy is placed in the abutment teeth.</div></div>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: O-rings, chlorhexidine, and fluoride rinses","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">O-ring attachments are doughnut-shaped synthetic polymers that return to their original shape after bending. Listed advantages include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">They always require a cast bar superstructure</button><button type=\"button\" class=\"opt\" data-i=\"1\">Ease of changing the attachment, a wide range of movement, low cost, and elimination of the time and cost of a prosthetic superstructure</button><button type=\"button\" class=\"opt\" data-i=\"2\">They are intra-radicular nylon posts cemented in the root</button><button type=\"button\" class=\"opt\" data-i=\"3\">They must be rigid and permit no movement</button></div><div class=\"qexp\" hidden><p>حسنات الـ O-ring: سهلة التبديل، مدى حركة واسع، رخيصة، وتلغي وقت وكلفة الـ superstructure. تتركب على وتد ويه أخدود أو undercut.</p></div></div><div class=\"qbox\" data-ans=\"0\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">For candidiasis of an overdenture, and for daily chemical care of the abutments, the lecture advises:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Immersing the denture in 0.2% chlorhexidine for 10–15 minutes daily; fluoride 0.025% as a daily rinse, and chlorhexidine 0.1–0.2% as a daily rinse or as a gel inside the base or female attachment</button><button type=\"button\" class=\"opt\" data-i=\"1\">Boiling the denture and using a highly abrasive alkaline soap only</button><button type=\"button\" class=\"opt\" data-i=\"2\">Floss under every coping, including those that are not soldered together, and no chemical agents</button><button type=\"button\" class=\"opt\" data-i=\"3\">Leaving the denture in at night and avoiding all rinses</button></div><div class=\"qexp\" hidden><p>داء المبيضات: نقع <b>كلورهيكسيدين 0.2% لمدة 10–15 دقيقة يومياً</b>. مضمضة فلورايد <b>0.025%</b> يومياً (أو جل). كلورهيكسيدين <b>0.1–0.2%</b> مضمضة أو جل داخل القاعدة أو الملحق الأنثوي. الخيط بس تحت القضبان بين الأسنان وتحت الـ copings الملحومة سوية.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Bar units differ from bar joints in that bar units:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Allow rotational movement and use the residual ridge for support</button><button type=\"button\" class=\"opt\" data-i=\"1\">Are rigid: there is no movement between the bar and the overlying sleeve, so occlusal stress is transmitted totally to the abutments</button><button type=\"button\" class=\"opt\" data-i=\"2\">Are always egg-shaped Dolder joints</button><button type=\"button\" class=\"opt\" data-i=\"3\">Cannot be used to splint abutment teeth</button></div><div class=\"qexp\" hidden><p>وحدات القضيب صلبة، كل الإجهاد الإطباقي للدعامات. مفاصل القضيب تسمح بحركة دورانية وتستخدم الحافة للدعم. الغرض من القضبان عموماً: ربط الدعامات، وتثبيت ودعم التعويض.</p></div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا الملف عن <b>الملحقات (attachments)</b> بالطقم الفوقي: تعريفها ووظائفها، عوامل الاختيار، آلية التثبيت، الصلبة مقابل غير الصلبة، أنواع الـ stud والقضيب والمغناطيس والـ O-ring، ونظافة الفم والمتابعة.</p>","<p>الملحقات أجهزة ميكانيكية صغيرة تعطي تثبيت ودعم. جزء يتوصل بالجذر أو السن أو الزرعة (<b>الذكر male</b>) والجزء الثاني بالتعويض (<b>الأنثى female</b>).</p><p>وظائفها: تمسك التعويض ضد قوى الرفع؛ تعطي دعم دواعم السن؛ تنقل قوى عضلات المضغ من التعويض إلى النسيج الداعم بأقرب اتجاه محوري ممكن؛ توزع قوى القص؛ وتثبّت و/أو تربط الدعامات.</p><p>عوامل الاختيار: المسافة بين الفكين؛ نسبة التاج للجذر واستقامة الجذور؛ نوع الـ coping؛ المسافة العمودية؛ عدد الأسنان؛ كمية دعم العظم؛ موقع الدعامات؛ موقع أقوى دعامة؛ هل الطقم مدعوم بالسن فقط أو بالسن والنسيج؛ نوع الإطباق المقابل (طقم كامل، فوقي، ثابت، أو أسنان طبيعية)؛ مشاكل الصيانة والكلفة؛ وخبرة الطبيب وتفضيله.</p><p>آلية التثبيت: تثبيت فعال بنوابض تدخل تجاويف؛ احتكاك بين الأجزاء؛ أو تثبيت مغناطيسي.</p>","<p>الملحق <b>الصلب (rigid)</b> يمسك الدعامة كجسم واحد وما يسمح بحركة بين المرساة والتعويض، إلا دوران حول المحور الطويل إذا الدعامة سن واحد. حتى الصلب في حركة بسيطة تزيد ويه التآكل. حسناته: يقلل الحمل على الحافة العديمة أثناء الوظيفة والعادات؛ وأقل إمالة للدعامات ويه القوى الجانبية. سيئته: القوى وحركات الطقم تنتقل تقريباً كلها للدعامات.</p><p>الملحق <b>غير الصلب</b> يسمح بدوران الطقم حول المرساة بمستوًى أو أكثر، أو بحركة جسم عمودية. كل ما زاد عدد غير الصلبة بنفس الطقم، حركة كل واحد تصير محدودة أكثر. الحسنات: تأثير قوة الإمالة على الدعامات يقل. السيئة: إجهاد أكبر على أنسجة دعم الطقم (امتصاص الحافة).</p><p>استطباب غير الصلب: توزيع الأسنان الباقية مو مناسب لثبات الطقم (إمالة وهز، خصوصاً إذا النسيج الرخو أكثر مرونة و/أو أقل امتداداً من الطبيعي)؛ وإذا تكدر تستخدم بس وتد قصير — لأن ملحق صلب فوق وتد قصير، حركة الطقم غير المنضبطة قد تفك الوتد من الجذر.</p>","<p>الأنواع: ملحقات <b>وتدية (stud)</b> — داخل الجذر (مثل Zest) وخارج الجذر (مثل Ceka Revax)؛ ملحقات <b>قضيب</b> — وحدات قضيب (bar units) ومفاصل قضيب (bar joints)؛ وملحقات <b>مغناطيس</b>.</p><p>بالـ stud: الجزء الذكر يُلحم على قاعدة هي coping يغطي جذع السن المحضَّر؛ البيت الأنثوي يُطمَر بأكريلك الطقم أو يُلحم على هيكل داخلي. قد تكون مرنة أو غير مرنة.</p><p><b>Zest (داخل الجذر)</b>: تحضير وتد داخل الجذر ويُلصَق غلاف أنثوي. الجزء الذكر وتد نايلون ويه رأس كروي، يُركَّب بالطقم على الكرسي. مثالي لطقم فوقي مؤقت.</p><p>حسناته: يتجاوز مشكلة المساحة لأن الملحق داخل الجذر؛ الرافعة على الدعامة تقل؛ الإجراء بسيط؛ التوازي مو لازم إذا أكثر من سن بسبب مرونة النايلون؛ وما يحتاج صب. سيئاته: قابلية نخر لأنه ماكو coping؛ وتد النايلون قد ينثني ويمنع القعود (تحتاج مراجعات متكررة)؛ والأكل بلا الطقم يخلي الطعام يركد بالجزء الأنثوي.</p>","<p><b>Ceka</b> (خارج الجذر): الجزء الذكر مثبت على السن، شكله مدور وأعرض من فوق ومشقوق عمودياً لأربعة أقسام مرنة تنضغط. البيت الأنثوي يركب فوقه. ممكن يتصنع ويه ذكر تثبيت مختلف في فراغ بين الأجزاء يسمح بحركة دوران وعمودية.</p><p><b>Dalbo</b>: صلب، أو مرن، أو نوع كاسر إجهاد. الذكر يُلحم على السن والبيت على القاعدة. النوع الصلب وحدة ذكرية اسطوانية ويه رأس مدور. النوع المرن أصغرها وأشيعها. حركة الدوران والعمودية ممكنة بسبب فواصل تفريغ بين الوحدات. التثبيت من أذرع أنثوية مرنة تركب فوق رأس الذكر الـ undercut.</p>","<p>أهداف القضيب: ربط (splinting) الدعامات، وتثبيت ودعم التعويض. <b>وحدات القضيب (bar units)</b> صلبة: ماكو حركة بين القضيب والغلاف فوقه، فكل الإجهاد الإطباقي يروح للدعامات. <b>مفاصل القضيب (bar joints)</b> تسمح بحركة دورانية وتستخدم الحافة المتبقية للدعم.</p><p><b>Hader</b>: يشتغل كمفصل أو وحدة أو حتى stud. قضبان وكليبات بلاستيكية جاهزة؛ القضيب يُربَط على تشميع الـ coping وينصب ويه. الكليبات البلاستيكية تنطمر بقاعدة الطقم للتثبيت.</p><p><b>Ackerman و C.M. clip</b>: قضيب دائري يُلحم على copings الوتد والكليب يركب فوقه، ويه أجنحة تثبيت بالأكريلك. في spacer حتى الكليب ما يستند مباشرة على القضيب، فيصير حركة دوران وعمودية.</p><p><b>Dolder كوحدة</b>: قضيب جاهز بجدران متوازية وقمة مدورة يُلحم على الـ coping؛ غلاف بقاعدة الطقم؛ التثبيت بالاحتكاك. إذا أوتاد الـ copings ما تتكدر تتوازى حتى ينقعد القضيب، يُستخدم وحدة Schubiger. بسبب الجدران المتوازية والتكيف الوثيق، الدوران مو ممكن. <b>كمفصل</b>: قضيب شكل بيضة ويه spacer يسمح بحركة؛ صعب يتكيف ويه شكل النسيج وهو منتفخ.</p>","<p>المغناطيس: مغناطيس كوبالت-ساماريوم بقاعدة الطقم، ووتد-coping أو صفيحة حافظة من خليطة البلاديوم-كوبالت-نيكل بالدعامات.</p><p>الـ <b>O-ring</b>: حلقة بوليمر صناعي شكل دونات، تنثني ويه مقاومة وترجع لشكلها. تتركب على وتد ويه أخدود أو undercut. حسناتها: سهلة التبديل؛ مدى حركة واسع؛ رخيصة؛ وتلغي وقت وكلفة هيكل التعويض العلوي (superstructure).</p><p>النظافة أهم شي لنجاح طويل الأمد، وتتواصل من مرحلة العلاج الأولية بدون انقطاع بعد التسليم.</p><p>عناية الطقم: فرشاة عادية أو فرشاة طقم خاصة؛ معاجين قليلة الكشط وصابون غير قلوي؛ ومنظفات طقم (غالباً أساسها بيروكسيد). داء المبيضات: نقع الطقم بمحلول <b>كلورهيكسيدين 0.2%</b> لمدة <b>10–15 دقيقة</b> يومياً.</p><p>عناية الدعامة ميكانيكياً: كل الدعامات ويه أو بلا coping تتنظف من كل الجهات؛ السطوح الجذرية المكشوفة واللثة تتنظف هم بفرشاة بين الأسنان؛ الخيط بس تحت القضبان بين الأسنان وتحت الـ copings الملحومة سوية. كيميائياً: جل فلورايد، أو مضمضة فلورايد <b>0.025%</b> يومياً؛ وكلورهيكسيدين <b>0.1–0.2%</b> مضمضة يومية، أو جل داخل القاعدة أو الملحق الأنثوي.</p><p>المتابعة: تصحيح الإطباق (سجلات إعادة التركيب)؛ القاعدة (تبطين)؛ نقاط الضغط؛ القضيب (براغي فاكة)؛ كليبات القضيب (مكسورة أو فاكة)؛ إعادة تركيب الحافظات الأنثوية والكليبات بأكريلك؛ وعلامات التآكل.</p>","<p>الصلب ينقل الحمل للدعامات؛ غير الصلب يحمي الدعامة القصيرة الوتد أو التوزيع السيء، بس يزيد امتصاص الحافة.</p>","<p>Zest داخل الجذر بلا coping (خطر نخر). وحدة Dolder متوازية الجدران بلا دوران. المغناطيس كوبالت-ساماريوم بالقاعدة ويه حافظة Pd-Co-Ni.</p>","<p>ثلاثة أسئلة ختامية + زر الدرجة: حسنات الـ O-ring، أرقام الكلورهيكسيدين والفلورايد، والفرق بين وحدة القضيب ومفصله. إذا غلطت ارجع للشرائح.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
