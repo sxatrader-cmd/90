@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Prosthodontics - File 7 - RPD Impressions, Master Casts, Distal-Extension Support and Framework Fit</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">Prosthodontics &middot; File 7 &middot; 4th year &middot; Lectures 5–6 &middot; pp 230–260</div>
+    <h1>RPD Impressions, Master Casts, Distal-Extension Support and Framework Fit</h1>
+    <p style="margin:0 0 16px">University of Baghdad, College of Dentistry — Prosthodontics syllabus for the degree equivalency exam (October 2025 attempt). 4th-year Lectures 5 and 6 and the framework-fitting lecture, PDF pages 230–260 (Dr. Ihab Nabeel Al-mgotar).</p>
+    <ul>
+      <li>Every slide is shown for <b>2 minutes</b>.</li>
+      <li><b>Next</b> unlocks only when the countdown reaches zero.</li>
+      <li><b>Back</b> is always available, and never re-locks your progress.</li>
+      <li>Each slide has an <b>Iraqi Arabic explanation</b> (الشرح بالعراقي) under the English content — written to be very simple, with everyday analogies. Medical terms stay in English.</li>
+      <li>Tap <b>اختبر نفسك</b> questions and flashcards on the slides. A short self-test is at the end of the file.</li>
+      <li>Total run time: <b>38 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 19</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Prosthodontics · File 7","t":"RPD Impressions, Master Casts, Distal-Extension Support and Framework Fit","b":"<p>University of Baghdad, College of Dentistry — Prosthodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This 4th-year file covers PDF pages 230–260 (Dr. Ihab Nabeel Al-mgotar):</p><ul><li>Lec. 5 — Impression materials and techniques for RPD (primary and secondary, materials, hydrocolloid handling, and the clinical impression sequence).</li><li>Lec. 6 — Pouring a type-IV stone cast, custom trays, McLean and Hindel methods, and support for the distal-extension base.</li><li>Fitting the RPD framework in the laboratory and in the mouth, occlusal clearance, and the procedures that follow a successful fit.</li></ul><p class=\"note\">Every slide has a very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end.</p>"},{"k":"4th year · Lec. 5","t":"What an impression is, and primary versus secondary techniques","b":"<p>An impression is a negative replica or registration of the entire denture-bearing, stabilizing and border-seal areas.</p><p>A <b>primary impression</b> is made for diagnosis or for construction of a tray. A <b>secondary (definitive) impression</b> records the entire functional denture-bearing area to ensure maximum support, retention and stability in use, and also records the functional width and depth of the sulci.</p><p>Secondary impressions are classified as: conventional techniques; selective-pressure techniques; functional techniques; and reline and rebase techniques.</p><p>The <b>conventional (anatomic / mucostatic)</b> technique records the ridge in its resting form, with no occlusal load, usually with a soft, less viscous alginate. Disadvantage in a free-end saddle: the distal end will show tissue-ward movement under occlusal load. It is recommended for tooth-supported (Kennedy Class III and IV) bounded saddles.</p><p>Selective-pressure techniques include the altered-cast method for Kennedy Class I. Functional dual-impression (Applegate) techniques are also described. The elastomers used for final impressions range from irreversible hydrocolloid (alginate) to vinylpolysiloxane or polyether, according to the clinician’s preference.</p>"},{"k":"4th year · Lec. 5","t":"Impression materials: rigid, thermoplastic and elastomeric","b":"<p><b>Rigid.</b> Impression plaster has largely been replaced by elastic materials; modified plasters are still used for maxillomandibular records, and for impressions of edentulous areas without undercuts. Metallic-oxide (ZOE-type) pastes are not used as primary materials, must never be used in impressions that include remaining natural teeth, and must not be used in stock trays. They can be secondary materials for complete dentures and for extension-base areas in a properly designed custom acrylic tray attached to the framework, and for relining a distal-extension base.</p><p><b>Thermoplastic.</b> These cannot record minute undercut detail accurately, because they distort permanently on withdrawal. Modeling plastic is most often used for border molding of custom trays for Kennedy Class I and II bases. Red-brown cake material records edentulous areas; green stick is used for border molding. Impression waxes and natural resins record the functional or supporting form of an edentulous ridge, and may correct borders of more rigid impressions.</p><p><b>Elastomers:</b> polysulphide, polyether, and silicone (addition or condensation). Polysulphide is used for RPD impressions and especially for secondary corrected or altered-cast impressions.</p>"},{"k":"4th year · Lec. 5","t":"Agar versus alginate, and when to pour","b":"<p><b>Reversible hydrocolloid (agar)</b> is used mainly for fixed restorations. It is fluid at high temperature and gels on cooling; border control is difficult. Its main use in this course is fabrication of a refractory cast in duplication. Special cooling equipment is needed if it is used intra-orally.</p><p><b>Irreversible hydrocolloid (alginate)</b> is used for diagnostic casts, orthodontic casts, and RPD master casts. It is dimensionally unstable but hydrophilic, pleasant, non-toxic and non-staining, with lower strength and less surface detail than other materials. The reversible type converts gel to sol by heat and back by cooling (physical, reversible). Alginate becomes a gel by a chemical reaction when powder meets water (irreversible).</p><p>Alginate is widely used because it is easy, inexpensive and needs no special office equipment. Its key disadvantage is a short accurate time, because of syneresis. If managed properly it is cost-effective when the master cast is poured in the office immediately — <b>less than 12–14 minutes</b> after removal — rather than shipping the impression to an off-site laboratory later. Vinylpolysiloxane or polyether may be chosen when longer accuracy is needed.</p><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">An alginate impression for a master cast should be poured:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The next day at an off-site laboratory, to allow full syneresis</button><button type=\"button\" class=\"opt\" data-i=\"1\">In the office as soon as possible, ideally in less than 12–14 minutes after removal</button><button type=\"button\" class=\"opt\" data-i=\"2\">After 24 hours in open air</button><button type=\"button\" class=\"opt\" data-i=\"3\">Only after boiling the impression</button></div><div class=\"qexp\" hidden><p>الألجينيت يفقد دقة بسرعة بسبب الـ syneresis. نصب الصبّة بالعيادة فوراً، ويفضّل خلال <b>أقل من 12–14 دقيقة</b>.</p></div></div>"},{"k":"4th year · Lec. 5","t":"Handling hydrocolloid impressions, and operator position","b":"<p>Precautions: do not expose the impression to air (dehydration and shrinkage); do not immerse it in water or disinfectants (imbibition and expansion); protect it in a humid atmosphere or a damp paper towel and pour within <b>15 minutes</b> of removal to prevent volume change; hydrocolloid exudate retards gypsum and gives a chalky surface — pour immediately, or first immerse in an accelerator if one is not already in the formula.</p><p>Clinical steps: position of patient and dentist; tray selection; mixing and loading; making and removing the impression; inspecting, cleaning and disinfecting. The occlusal plane should be parallel to the floor. The dentist stands and the patient sits upright. For a <b>maxillary</b> impression the dentist stands at the patient’s <b>right rear</b>; for a <b>mandibular</b> impression, at the <b>right front</b>.</p><p>The prime consideration in tray selection is <b>rigidity</b> (metal or rigid disposable plastic; rim-lock or perforated, modified to the patient’s anatomy).</p>"},{"k":"4th year · Lec. 5","t":"Step-by-step hydrocolloid impression","b":"<p>Select a sterilized perforated or rim-lock tray that leaves a <b>2–4 mm</b> thickness of material between the teeth/tissues and the tray. Build up the palatal portion of a maxillary tray with wax or modeling plastic so the material does not slump away from the palate; packing the palate with gauze sprayed with a topical anesthetic can reduce glandular secretions. If gelation starts next to the tissue while the deeper material is still fluid, the palatal impression distorts and the finished major connector may not contact tissue. Extend the maxillary tray posteriorly to include the tuberosities and vibrating-line region. The mandibular lingual flange may need wax in the retromylohyoid area or posteriorly, and wax inside the distolingual flange can stop the floor of the mouth rising into the tray.</p><p>With alginate, use water at <b>70°F</b>, add powder to water, and spatulate against the bowl in less than 1 minute. The patient rinses with cool water. Avoid trapping air; lock the first layer through the perforations or rim-lock. Rub material onto critical areas (rest preparations, abutments; for the maxilla, the height of the palate and the rugae) after removing the anesthetic gauze. Retract the far cheek, seat far side first, then anterior (lip reflected), then near side; let the lip drape naturally. Do not seat too deeply — leave material over occlusal and incisal surfaces. Hold the tray <b>immobile for 3 minutes</b> with light pressure over the premolar areas; any movement during gelation ruins accuracy — do not hand the tray to the patient or assistant mid-set. After complete set, release surface tension and remove quickly in line with the long axes of the teeth. Rinse, inspect, disinfect, cover with a damp towel, and pour immediately (a 15-minute disinfection delay is acceptable in a humid atmosphere).</p>"},{"k":"4th year · Lec. 6","t":"Pouring a type-IV stone cast from a hydrocolloid impression","b":"<p>Use a more abrasion-resistant <b>type IV stone</b>. Have measured stone and room-temperature water ready, a clean 600-mL rubber bowl, a stiff spatula, a vibrator, and a No. 7 spatula. Pour the water first, then add the stone; spatulate thoroughly for 1 minute (insufficient spatulation gives a weak, porous cast). Mechanical spatulation under vacuum is preferred; otherwise knead the bowl on the vibrator to escape air.</p><p>Shake surplus moisture from the impression, then hold it over the vibrator <b>impression side up</b>, with only the tray handle contacting the vibrator — never the impression material itself, or it may distort. Add the first stone at the distal area away from you and let it vibrate from tooth to tooth; keep adding at that same distal site so each portion pushes the mass ahead and avoids trapped air. Discard the fluid material that is expelled at the opposite end. Then fill the rest of the impression.</p><p>Do not let the weight of a poorly supported, filled impression distort the hydrocolloid. The base can be completed with the same mix. The base should be <b>16–18 mm</b> at its thinnest part and should extend beyond the impression borders so buccal, labial and lingual borders are recorded. An inverted impression may distort the cast. When the stone has body, trim excess from the sides, then wrap impression and cast in a wet towel or place them in a humidor until initial set — otherwise the hydrocolloid can rob water needed for crystallization and leave a chalky surface around the teeth. After <b>30 minutes</b> in a humid atmosphere, separate (trim any stone that locks the tray). Clean the tray while the material is still elastic. Defer trimming the sides until final set.</p>"},{"k":"4th year · Lec. 6","t":"Causes of an inaccurate or weak cast, and the custom tray","b":"<p>Causes of an inaccurate or weak cast: distortion of the hydrocolloid (non-rigid tray; partial dislodgment; shrinkage from dehydration; expansion from imbibition, which is toward the teeth and gives an <b>undersized</b> cast; or pouring stone that has already begun to set); too high a water-to-powder ratio (weak, even if size is acceptable); improper mixing (weak or chalky); trapped air from insufficient vibration; a chalky surface from hydrocolloid retardation or from the dehydrating colloid absorbing crystallization water; premature separation; or leaving the cast in the impression for an extended period.</p><p>Custom-tray outline on the diagnostic cast includes all teeth and tissues involved in the RPD. Adapt one layer of baseplate wax over the tissues and two layers over the teeth as a spacer, trimmed <b>2–3 mm short</b> of the outline. Remove wax over the posterior palatal seal so the tray contacts tissue there and orients correctly. Expose portions of the central-incisor incisal edges as anterior stops, and bevel the wax as a guiding incline. Block out other undercuts. Add an extra wax layer over the teeth if the impression will be alginate (not needed for rubber-base or silicone). Paint exposed stone with a model-release agent; adapt VLC tray material without thinning it over the teeth or the posterior border; attach a handle; light-cure per the manufacturer (often a maximum of 1 minute); remove the tray, peel the warm wax, paint with air-barrier coating and cure again tissue-side up; finish the borders; if alginate will be used, place No. 8 perforations at <b>5 mm</b> intervals except in the alveolar grooves; sanitize and try the tray in the mouth before the impression. For the secondary impression, paint or inject material in critical areas: rest preparations, hard palate and peripheral extensions.</p>"},{"k":"4th year · Lec. 6","t":"Anatomic versus functional form; McLean and Hindel methods","b":"<p><b>Anatomic form</b> is the ridge contour when it is not supporting an occlusal load. <b>Functional form</b> is the contour when it is supporting a functional load.</p><p>In one approach a custom tray is made on a preliminary cast, a functional impression of the distal-extension ridge is made while the patient applies biting force with occlusion rims, then an alginate impression is made with that first impression held in its functional position by finger pressure (<b>McLean’s physiologic impression</b>).</p><p><b>Hindel’s modification:</b> the impression of the edentulous ridge is <b>not</b> made under pressure; it is an anatomic impression at rest with ZOE paste. While the hydrocolloid impression is being made, finger pressure is applied through holes in the tray to the anatomic impression.</p><p>Disadvantages of these methods: a constantly compressed residual ridge is prone to excessive bone resorption; and if the clasps do not hold the partial denture, tissue rebound can push the denture slightly occlusally and cause premature contacts.</p><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Hindel’s modification differs from McLean’s physiologic impression mainly because:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">It records the ridge under heavy occlusal load with alginate only</button><button type=\"button\" class=\"opt\" data-i=\"1\">The ridge is recorded anatomically at rest with ZOE paste, and finger pressure is applied through tray holes while the hydrocolloid impression is made</button><button type=\"button\" class=\"opt\" data-i=\"2\">It never uses a custom tray</button><button type=\"button\" class=\"opt\" data-i=\"3\">It is used only for Class III bounded saddles</button></div><div class=\"qexp\" hidden><p>هندل يسجّل الحافة وهي مرتاحة بمعجون ZOE، والضغط بالإصبع يصير من خلال ثقوب الطابع أثناء طبعة الكوليد — مو تحت عض من البداية مثل ماكلين.</p></div></div>"},{"k":"4th year · Distal-extension support","t":"What support means, and why a distal-extension base is different","b":"<p><b>Support</b> is resistance to the vertical components of masticatory force toward the basal seat. All partial dentures must be supported by oral structures and retained against reasonable dislodging forces. Cradock classifies support as dental, mucosal, or mixed.</p><p>Tooth support (bounded saddle) is usually obtained by occlusal rests. Mucosal support allows a varying degree of displacement, depending on the pressure applied, mucosal thickness, the area covered (wider area, less displacement), the fit of the base, and the impression type. A Class III RPD needs support (rests), connectors (stabilizing components) and retainers; an anatomic impression is enough to record teeth and ridge at rest.</p><p>A distal-extension prosthesis does not have total tooth support: one or more bases extend over the ridge distal to the last abutment. Support is <b>composite</b> — resilient ridge support must be coordinated with the more stable support of the abutments. The base must also provide some stability and retention, and <b>indirect retention</b> must be designed. Three further needs: the best support from resilient ridge tissues (more an impression issue than a framework-design issue, and coverage matters); direct retainers that allow inevitable tissue-ward movement under load and still transmit occlusal load along the long axis of the abutments; and prevention of movement of the unsupported end away from the tissues by an indirect retainer.</p><p>Main problems of tooth-tissue support: mucosa is resilient and can make the prosthesis unstable; it is difficult to record resting and displaced mucosa at the same time; and under function the mucosa compresses and the denture acts as a <b>Class I lever</b>, damaging the abutments — the solution is to record the tissue in functional form so the denture does not add extra stress to those teeth.</p>"},{"k":"4th year · Distal-extension support","t":"Six factors that influence support of a distal-extension base","b":"<p>The six factors are: quality of the residual ridge; extent of residual-ridge coverage; type and accuracy of the impression; accuracy of the denture base; design of the partial framework; and the total occlusal load applied.</p><p>An ideal ridge would be cortical bone over relatively dense cancellous bone, with a broad rounded crest, high vertical slopes, and firm dense fibrous connective tissue. In the mandible the <b>buccal shelf</b> (between the external oblique line and the crest) is the primary stress-bearing area; the crest is mostly cancellous and is not good for support. In this lecture, the crest of the maxillary residual ridge is described as the primary supporting region for a maxillary distal-extension base; buccal and palatal slopes mainly counteract horizontal rotation, and the incisive papilla and mid-palatal raphe must be relieved. Mandibular crest and retromolar pads should be recorded in anatomic (undisplaced) form; additional pressure may be placed on the buccal shelves; lingual slopes mainly resist horizontal rotation and should be recorded undisplaced.</p><p>The broader the coverage, the less the load per unit area — extend the base to the maximum within physiologic limits. The longer the edentulous span, however, the greater the potential lever on the abutments. A flat ridge: good support, poor stability. A sharp, spiny ridge: poor support, poor to fair stability. Displaceable tissue: poor support and poor stability.</p><p>A one-stage anatomic impression records tissues at rest. Under load the rests act as a stop near the abutment, while the distal end moves more and overloads the distal ridge and torques the abutment. No single impression material can record anatomic tooth-and-tissue form and functional ridge form at once, so a secondary or corrected impression is needed. That method must (1) record and relate supporting soft tissue under some loading and (2) distribute the load over as large an area as possible. Selective tissue placement uses firm areas for extra stress and relieves tissues that cannot stay healthy under continuous load; slight intermittent placement is tolerated, but over-displacement causes inflammation and resorption.</p>"},{"k":"4th year · Distal-extension support","t":"Framework design and occlusal load","b":"<p>Some rotation of a distal-extension base at the distal abutment is inevitable under function. The greatest movement is at the most posterior extent — the retromolar-pad region in the mandible and the tuberosity in the maxilla. A more anterior or mesial rest is suggested: it allows more vertical ridge loading, permits a greater ridge area for support, and transfers stress to a more anterior abutment. Incorporate an indirect retainer, and in a free-end saddle an RPI system for stress release. A maximally extended maxillary base plus a wide palatal strap helps resist rotation.</p><p>Patients tend to orient the food bolus over natural teeth rather than prosthetic teeth (more stable dentition, proprioceptive feedback, and possible nociceptive feedback from mucosa). The number of artificial teeth, the width of their occlusal surfaces, and their occlusal efficiency influence the total load. Reducing the size of the occlusal table reduces vertical and horizontal forces on the RPD and lessens stress on the abutments and supporting tissue.</p><p>Requirements often listed with a functionally based denture include: positive occlusal rests; an all-rigid, non-flexible framework; indirect retainers to aid stability; and well-adapted, broad-coverage bases.</p>"},{"k":"4th year · Framework fit","t":"Why the clinician fits the framework, and the initial inspection","b":"<p>The clinician is responsible for framework fit just as for the fit of a single crown, to give the patient the highest long-term quality of care.</p><p>When the framework returns from the laboratory: inspect the casting off and on the master cast, using magnification. The surface should be smooth and free of scratches and defects, and should follow the submitted design exactly. Confirm that all rests, indirect retainers, retentive and reciprocating clasps, and major and minor connectors are present and well made. Measure components with calipers: a minimum of <b>1.5 mm</b> base-metal thickness is required for strength.</p><p>Inspect the intaglio under magnification. Remove or smooth voids and nodules; there must be no voids or porosities in high-stress areas such as where clasps and rests join minor connectors. Internal and external finish lines should be sharp, well delineated, and at an angle of <b>less than 90°</b> for mechanical retention of the resin. External metal should be highly polished, except the intaglio of a maxillary major connector, which is left for close palatal adaptation. Tissue-contacting internal metal should have a smooth matte finish. A frame that does not fit the master cast well will not likely fit the mouth — this check is comparable to inspecting a crown on its die.</p><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Base-metal framework parts such as rests, clasps and minor connectors should remain at least how thick after adjustment?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">0.2 mm</button><button type=\"button\" class=\"opt\" data-i=\"1\">1.5 mm; thinner metal is likely to fracture or deform and will necessitate a remake</button><button type=\"button\" class=\"opt\" data-i=\"2\">5 mm everywhere, including the palatal connector intaglio</button><button type=\"button\" class=\"opt\" data-i=\"3\">Thickness does not matter if the surface is polished</button></div><div class=\"qexp\" hidden><p>بعد التعديل هم لازم يبقى على الأقل <b>1.5 ملم</b> بالمناطق الحساسة. أرفع من هيج ينكسر أو ينعوج وراح نعيد الهيكل.</p></div></div>"},{"k":"4th year · Framework fit","t":"Laboratory and clinical fitting, occlusion, and what follows","b":"<p>Initial fitting should occur in the laboratory before the patient arrives. Remove obvious nodules or debris from the intaglio with a straight-shank round bur. If heavy rubbing or excessive pressure is needed on the master cast, relieve the framework until insertion is smooth. It should sit passively without wedging the abutments. If it is not fully seated, paint the intaglio with a disclosing medium (chloroform and rouge, or disclosing wax), seat with firm pressure, inspect high spots under magnification, and adjust until complete seating.</p><p>Clinically, do not skip a framework try-in when, for example, a Kennedy Class I case has extensive posterior loss and moderate-to-extensive ridge resorption. If the RPD is finished without verifying the framework, it is hard to tell whether a problem is in the acrylic, the metal, or both. Seat with visual and tactile checking; apply seating pressure to the <b>rests and major connector only</b> — pressure on tissue-borne areas makes the denture pivot. It should go into place smoothly, then sit passively without rocking. Common interferences: guide planes, undersides of rests, clasp shoulders, and minor connectors. Adjust with high-speed diamonds, carbides or stones. If it still will not seat after several attempts, remake it. A framework that fits the master cast but not the mouth means the master cast is inaccurate — make a new impression.</p><p>Occlusal evaluation: remove the framework and watch the patient close; if spaces appear that were not there, the framework is high. When both arches have frameworks, try each alone before together. Common high spots: rests, clasp shoulders and minor connectors. A matte micro-abraded finish makes marks easier to see. Recheck thickness with calipers (at least 1.5 mm). Adjust until there is no metal contact against opposing teeth, prostheses, soft tissues or the opposing framework; repolish; the patient should report stability and comfort before any further steps.</p><p>After a successful fit: a corrected or altered-cast impression (often needed for long-span distal extensions or long-span anterior spaces); maxillomandibular records; face-bow transfer; interocclusal records; and wax try-in.</p>"},{"k":"اختبر نفسك · Impressions and casts","t":"Quiz — Lectures 5 and 6","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A conventional mucostatic impression is recommended mainly for:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Every Kennedy Class I distal-extension saddle</button><button type=\"button\" class=\"opt\" data-i=\"1\">Tooth-supported bounded saddles (Kennedy Class III and IV); in a free-end saddle the distal end will move tissue-ward under load</button><button type=\"button\" class=\"opt\" data-i=\"2\">Border molding with green stick only</button><button type=\"button\" class=\"opt\" data-i=\"3\">Shipping alginate to a laboratory the next day</button></div><div class=\"qexp\" hidden><p>الطبعة التشريحية المرتاحة تناسب الفراغات المحدودة. بالنهاية الحرة الطرف الخلفي ينزل تحت الحمل.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Metallic-oxide paste may be used:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">As a primary impression in a stock tray that includes natural teeth</button><button type=\"button\" class=\"opt\" data-i=\"1\">As a secondary impression for an extension base in a custom tray attached to the framework, or to reline a distal-extension base — never including remaining natural teeth in a stock tray</button><button type=\"button\" class=\"opt\" data-i=\"2\">To duplicate a refractory cast instead of agar</button><button type=\"button\" class=\"opt\" data-i=\"3\">Only for border molding of Class III cases</button></div><div class=\"qexp\" hidden><p>معجون الأكسيد المعدني مو للطبعة الأولية ولا ويه أسنان طبيعية بطابع جاهز. يصلح كطبعة ثانية للنهاية الحرة بطابع فردي على الهيكل.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Imbibition of a hydrocolloid impression produces:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Shrinkage and an oversized cast</button><button type=\"button\" class=\"opt\" data-i=\"1\">Expansion toward the teeth and an undersized cast</button><button type=\"button\" class=\"opt\" data-i=\"2\">No dimensional change</button><button type=\"button\" class=\"opt\" data-i=\"3\">Automatic sterilization</button></div><div class=\"qexp\" hidden><p>التشرب يوسّع الطبعة باتجاه الأسنان، فالصبّة تطلع <b>أصغر</b>.</p></div></div>"},{"k":"اختبر نفسك · Support and framework fit","t":"Quiz — distal-extension support and fitting","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Under function, a distal-extension base that was made on a purely anatomic impression tends to:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Load the residual ridge evenly and spare the abutment</button><button type=\"button\" class=\"opt\" data-i=\"1\">Stop near the rest and overload the distal ridge, transmitting more torque to the abutment through the rigid framework</button><button type=\"button\" class=\"opt\" data-i=\"2\">Eliminate the need for an indirect retainer</button><button type=\"button\" class=\"opt\" data-i=\"3\">Convert the case into a Class III bounded saddle</button></div><div class=\"qexp\" hidden><p>الـ rest يوقف الجانب القريب، والطرف البعيد ينزل أكثر ويشد الدعامة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">During clinical seating of the framework, pressure should be applied:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Only to the tissue-borne denture-base areas</button><button type=\"button\" class=\"opt\" data-i=\"1\">To the rest seats and major connector only; pressure on tissue-borne areas causes the denture to pivot and rock</button><button type=\"button\" class=\"opt\" data-i=\"2\">To the clasp tips alone</button><button type=\"button\" class=\"opt\" data-i=\"3\">By the patient biting hard on a cotton roll over the saddles</button></div><div class=\"qexp\" hidden><p>الضغط على المقاعد والموصل الرئيسي فقط، وإلا الهيكل يتأرجح.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A framework that fits the master cast but not the mouth means:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The patient is at fault and no remake is needed</button><button type=\"button\" class=\"opt\" data-i=\"1\">The master cast is inaccurate; a new impression should be made to remake the framework</button><button type=\"button\" class=\"opt\" data-i=\"2\">Only the acrylic needs polishing</button><button type=\"button\" class=\"opt\" data-i=\"3\">The vibrating line was Class I</button></div><div class=\"qexp\" hidden><p>إذا ينطبق على الصبّة وما ينطبق بالفم، الصبّة مو دقيقة — طبعة جديدة وإعادة الهيكل.</p></div></div>"},{"k":"الاختبار النهائي · 1–5","t":"Self-test — materials, pouring and trays","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">For a maxillary hydrocolloid impression the dentist stands at the patient’s:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Left front only</button><button type=\"button\" class=\"opt\" data-i=\"1\">Right rear (mandibular: right front); the patient sits upright with the occlusal plane nearly parallel to the floor</button><button type=\"button\" class=\"opt\" data-i=\"2\">Directly behind, with the patient fully supine and the tray moving during set</button><button type=\"button\" class=\"opt\" data-i=\"3\">Right front for both arches</button></div><div class=\"qexp\" hidden><p>العليا من اليمين الخلفي، السفلى من اليمين الأمامي، والمريض منتصب.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The tray is held immobile during alginate gelation for about:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">3 seconds</button><button type=\"button\" class=\"opt\" data-i=\"1\">3 minutes, with light pressure over the premolar areas; movement produces an inaccurate impression</button><button type=\"button\" class=\"opt\" data-i=\"2\">30 minutes in the mouth</button><button type=\"button\" class=\"opt\" data-i=\"3\">Until the next day</button></div><div class=\"qexp\" hidden><p>ثبات حوالي <b>3 دقائق</b> على الضواحك، بدون حركة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A type-IV stone base should be about how thick at its thinnest part, and when is the cast separated?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">2 mm, and separated immediately</button><button type=\"button\" class=\"opt\" data-i=\"1\">16–18 mm at its thinnest; separate after about 30 minutes in a humid atmosphere</button><button type=\"button\" class=\"opt\" data-i=\"2\">50 mm, inverted on the bench from the start</button><button type=\"button\" class=\"opt\" data-i=\"3\">No base is poured</button></div><div class=\"qexp\" hidden><p>القاعدة 16–18 ملم عند أنحف جزء، والفصل بعد نصف ساعة بالرطوبة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Wax over the posterior palatal seal area of a custom tray is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Doubled in thickness</button><button type=\"button\" class=\"opt\" data-i=\"1\">Removed so that intimate tray–tissue contact there helps orient the tray</button><button type=\"button\" class=\"opt\" data-i=\"2\">Replaced with modeling plastic only after burnout</button><button type=\"button\" class=\"opt\" data-i=\"3\">Used as an anterior stop</button></div><div class=\"qexp\" hidden><p>نشيل الشمع عن الـ PPS حتى الطابع يلمس الأنسجة ويتوجه صح.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">If an alginate impression will be made in a VLC custom tray, perforations are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Never used</button><button type=\"button\" class=\"opt\" data-i=\"1\">Made with a No. 8 bur at about 5 mm intervals, except in the alveolar grooves</button><button type=\"button\" class=\"opt\" data-i=\"2\">Cut only after the impression has set</button><button type=\"button\" class=\"opt\" data-i=\"3\">Replaced by a face-bow fork</button></div><div class=\"qexp\" hidden><p>ثقوب سنبلة 8 كل 5 ملم، ما عدا أخاديد الحافة.</p></div></div>"},{"k":"الاختبار النهائي · 6–10","t":"Self-test — distal-extension support and framework try-in","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Support for a distal-extension RPD is described as composite because:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Only the teeth carry the load</button><button type=\"button\" class=\"opt\" data-i=\"1\">Resilient ridge support must be coordinated with the more stable support of the abutment teeth</button><button type=\"button\" class=\"opt\" data-i=\"2\">The major connector is always flexible</button><button type=\"button\" class=\"opt\" data-i=\"3\">No impression is required</button></div><div class=\"qexp\" hidden><p>دعم مركب: الحافة المرنة ويا الدعامات الأثبت لازم ينسجمون.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The primary mandibular stress-bearing area for a distal-extension base in this lecture is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The cancellous crest of the residual ridge</button><button type=\"button\" class=\"opt\" data-i=\"1\">The buccal shelf (firm dense tissue over cortical bone); the crest is mostly cancellous and is not good for support</button><button type=\"button\" class=\"opt\" data-i=\"2\">The mental foramen</button><button type=\"button\" class=\"opt\" data-i=\"3\">The incisive papilla</button></div><div class=\"qexp\" hidden><p>الـ buccal shelf هو التحميل الأساسي بالأسفل.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Finish lines on the framework should be sharp and:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Greater than 120° so resin slides off</button><button type=\"button\" class=\"opt\" data-i=\"1\">Less than 90°, to provide adequate mechanical retention of the resin base</button><button type=\"button\" class=\"opt\" data-i=\"2\">Polished away completely</button><button type=\"button\" class=\"opt\" data-i=\"3\">Parallel to the occlusal plane only</button></div><div class=\"qexp\" hidden><p>خطوط الإنهاء حادة وبزاوية أقل من 90° حتى الأكريلك يتعلق.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">When both maxillary and mandibular frameworks are tried for occlusion they should be:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Tried together first, never separately</button><button type=\"button\" class=\"opt\" data-i=\"1\">Tried individually before they are tried together</button><button type=\"button\" class=\"opt\" data-i=\"2\">Left unadjusted if the patient is in a hurry</button><button type=\"button\" class=\"opt\" data-i=\"3\">Cemented before occlusal checking</button></div><div class=\"qexp\" hidden><p>كل هيكل لوحده أولاً، وبعدين الاثنين معاً.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">After the framework fits and occlusion is cleared, a corrected or altered-cast impression is often required for:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Every Class III short bounded saddle</button><button type=\"button\" class=\"opt\" data-i=\"1\">Long-span distal extensions or long-span anterior edentulous areas</button><button type=\"button\" class=\"opt\" data-i=\"2\">Shade selection only</button><button type=\"button\" class=\"opt\" data-i=\"3\">Infection-control training</button></div><div class=\"qexp\" hidden><p>الطبعة المصححة كثيراً تلزم بالنهايات الحرة الطويلة أو الفراغات الأمامية الطويلة.</p></div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"},{"k":"الخلاصة بالعربي","t":"الخلاصة بالعربي — الطبعات، الصبّات، دعم النهاية الحرة وانطباق الهيكل","b":"<div class=\"ar\"><p>الطبعة نسخة سالبة لمناطق التحميل والثبات والختم. الأولية للتشخيص أو الطابع؛ النهائية للدعم الأقصى. الطبعة المرتاحة (mucostatic) تناسب Class III و IV؛ بالنهاية الحرة نحتاج ضغط انتقائي أو طبعة وظيفية.</p><p>معجون الأكسيد المعدني مو ويه أسنان طبيعية ولا بطابع جاهز. الكومباوند لتقليم الحواف (أخضر ستيك). الألجينيت رخيص بس صبّه خلال 12–14 دقيقة؛ لا تتركه بالهواء ولا تغطسه بالمي؛ لفّه رطب وصب خلال 15 دقيقة. الطبيب واقف، المريض منتصب: العليا من اليمين الخلفي، السفلى من اليمين الأمامي. سماكة 2–4 ملم، امسك 3 دقائق بدون حركة، وطلّع بسرعة مع محاور الأسنان.</p><p>صبّة type IV، مي ثم حجر، الخلط دقيقة، الهزاز على يد الطابع فقط، نبدأ من الخلف، القاعدة 16–18 ملم، رطوبة، فصل بعد 30 دقيقة. التشرب يعطي صبّة أصغر. الطابع الفردي: فاصل 2–3 ملم أقصر من الخط، نكشف الـ PPS والثنايا، ثقوب 5 ملم للألجينيت.</p><p>ماكلين: طبعة وظيفية تحت عض ثم ألجينيت. هندل: الحافة مرتاحة بـ ZOE والضغط من ثقوب الطابع. عيبهم امتصاص أو ارتداد نسيج.</p><p>دعم النهاية الحرة مركب، وستة عوامل (جودة، تغطية، طبعة، دقة القاعدة، تصميم، حمل إطباقي). الرافعة من الصنف الأول تضر الدعامة إذا الطبعة تشريحية فقط. rest إنسي، مثبت غير مباشر، RPI، وطاولة إطباق أضيق تخفف الحمل. انطباق الهيكل مسؤولية الطبيب: سمك 1.5 ملم، ضغط على المقاعد والموصل فقط، وإذا ينطبق على الصبّة وما ينطبق بالفم — الصبّة غلط ونعيد.</p></div>"}];
+var AR = ["<p>هذا الملف السابع: شلون ناخذ طبعة دقيقة للطقم الجزئي، نصب صبّة حجر، ندعم النهاية الحرة، ونركّب الهيكل المعدني بالفم قبل ما نكمّل الأسنان.</p><p>الطبعة الغلط = هيكل ما ينطبق. والهيكل اللي ما نضبطه قبل الأكريلك راح يصعب تعديله بعدين.</p>","<p>الطبعة = نسخة سالبة لكل مناطق التحميل والثبات وختم الحواف.</p><p>الأولية: للتشخيص أو صنع طابع. النهائية: تسجّل منطقة التحميل الوظيفية كلها حتى الدعم والتثبيت يصيرون بأقصى حد، وهم عرض وعمق الدهليز وهو يشتغل.</p><p>التقليدية (mucostatic) تصوّر الحافة وهي مرتاحة، غالباً بألجينيت طري. عيبها بالنهاية الحرة: الطرف الخلفي ينزل تحت المضغ. تناسب Class III و IV المحدودة الأسنان. للنهاية الحرة نحتاج ضغط انتقائي (altered cast) أو طبعة وظيفية.</p>","<p>المواد الصلبة: الجبس تقريباً انبدل؛ معجون الأكسيد المعدني (مثل ZOE) <b>مو</b> للطبعة الأولية، و<b>ممنوع</b> إذا باقي أسنان طبيعية أو بطابع جاهز. يصلح كطبعة ثانية للنهاية الحرة بطابع فردي مربوط بالهيكل، أو لتبطين القاعدة.</p><p>المواد الحرارية (كومباوند): ما تسجّل التفاصيل تحت الـ undercut بدقة لأنها تتشوّه وهي تطلع. الأحمر/البني للكعك تسجّل المناطق اللابدها أسنان؛ الأخضر ستيك لتقليم الحواف. شموع الطبعة تسجّل الشكل الوظيفي للحافة.</p><p>المرنة: بولي سلفايد، بولي إيثر، سيليكون. البولي سلفايد شائع للطبعة المصححة أو الـ altered cast.</p>","<p>الأغار (عكسي): يذوب بالحرارة ويجهد بالتبريد؛ حدوده صعبة؛ عندنا يستخدم أكثر لنسخ الصبّة المقاومة. الألجينيت (غير عكسي): تفاعل كيميائي ويا المي؛ رخيص وسهل، بس ضعيف التفاصيل و<b>غير ثابت بالأبعاد</b>.</p><p>أكبر عيب: وقت الدقة قصير (syneresis). إذا تستخدمه لصبّة نهائية، صبّه بالعيادة فوراً — أقل من <b>12–14 دقيقة</b> بعد الخروج من الفم. إذا تحتاج وقت أطول، اختار سيليكون إضافي أو بولي إيثر.</p>","<p>لا تترك الطبعة بالهواء (تنكمش)، ولا تغطسها بالمي أو المعقم (تنتفخ). لفها بمنشفة رطبة وصب خلال <b>15 دقيقة</b>. إفرازات الكوليد تؤخر الجبس وتعطي سطح طبشوري — صب فوراً أو استخدم مسرّع.</p><p>المريض جالس منتصب، مستوى الإطباق موازي للأرض، والطبيب واقف: الطبعة العليا من <b>اليمين الخلفي</b>، والسفلى من <b>اليمين الأمامي</b>. أهم شي بالطابع: <b>الصلابة</b>.</p>","<p>الطابع يترك سماكة مادة <b>2–4 ملم</b>. بالأعلى نبني الحنك بالشمع حتى المادة ما تنزل؛ أحياناً شاش بمخدّر موضعي يقلل إفراز الغدد. إذا الطبقة الملامسة تجهد واللي جوه بعد سائل، الحنك يتشوّه والموصل ما يلمس الأنسجة. مدد الطابع للحدبات وخط الاهتزاز. بالأسفل قد نحتاج شمع بمنطقة خلف الضرس اللامي، وشمع من داخل الحافة حتى أرضية الفم ما تصعد جوه الطابع.</p><p>ماء الألجينيت حوالي <b>70°ف</b>، نخلط أقل من دقيقة. افرد مادة على المقاعد والدعامات وحنك الأعلى. ركّب الجهة البعيدة أولاً، بعدين القدام، بعدين القريبة. امسك الطابع <b>ثابت 3 دقائق</b> — أي حركة تخرب الدقة، لا تسلّمه للمريض وهو يجهد. طلّعه بسرعة باتجاه محاور الأسنان، عقّم، وصب فوراً.</p>","<p>نستخدم حجر <b>type IV</b> مقاوم للحكي. المي أولاً بعدين الحجر، نخلط دقيقة كاملة؛ الخلط تحت تفريغ أفضل. الطبعة فوق الهزاز ووجهها لفوق، واللي يلمس الهزاز <b>يد الطابع فقط</b> مو المادة.</p><p>نبدأ الحجر من الخلف البعيد ونخليه يمشي سن سن حتى الهواء ما ينحبس. قاعدة الصبّة أقل سماكة <b>16–18 ملم</b> وتتجاوز حدود الطبعة. لا تقلبها. لفها بمنشفة رطبة حتى الجبس ما ينسرق منه المي فيصير السطح طبشوري. بعد <b>30 دقيقة</b> بالرطوبة افصل الصبّة.</p>","<p>أسباب صبّة ضعيفة أو غلط: طابع مو صلب، المادة انفلتت، جفاف (انكماش)، تشرب مي (تمدد باتجاه الأسنان = صبّة <b>أصغر</b>)، حجر بدأ يتصلب، مي زيادة (ضعف)، خلط ناقص، هواء، سطح طبشوري، فصل مبكر أو تأخير فصل طويل.</p><p>الطابع الفردي: شمع فاصل طبقة على الأنسجة وطبقات على الأسنان، يوقف <b>2–3 ملم</b> قبل الخط. نشيل الشمع عن منطقة الـ PPS حتى الطابع يلمس ويتركّب صح، ونكشف حواف الثنايا كـ stops قدامية. إذا الطبعة ألجينيت نزيد طبقة شمع على الأسنان ونثقب بطابع سنبلة 8 كل <b>5 ملم</b>. جرّب الطابع بالفم قبل الطبعة النهائية.</p>","<p>الشكل التشريحي: الحافة بدون حمل. الشكل الوظيفي: الحافة وهي تتحمل حمل المضغ.</p><p>طريقة <b>ماكلين</b>: طبعة وظيفية والنهاية الحرة تحت عض بحواف إطباق، وبعدين طبعة ألجينيت والطبعة الأولى ممسوكة بإصبع بمكانها الوظيفي.</p><p>تعديل <b>هندل</b>: طبعة الحافة تشريحية وهو مرتاحة بـ ZOE، والضغط بالإصبع يمر من ثقوب الطابع أثناء طبعة الكوليد.</p><p>عيوبهم: ضغط مستمر قد يزيد امتصاص العظم؛ وإذا الكلاسب ما يمسك، النسيج يرجع (tissue rebound) والطقم يطلع شوية ويصير تماس مبكر.</p>","<p>الدعم = مقاومة القوة العمودية باتجاه قاعدة الجلوس. النهاية الحرة دعمها <b>مركب</b>: الحافة المرنة لازم تنسجم ويه دعم الأسنان الأثبت، وهي تحتاج مثبت غير مباشر.</p><p>ثلاث حاجات إضافية: أفضل دعم من أنسجة الحافة (الطبعة والتغطية أهم من شكل الهيكل هنا)؛ مثبتات مباشرة تسمح بالحركة المحتومة باتجاه النسيج وتضل تنقل الحمل بمحور الدعامة؛ ومثبت غير مباشر يمنع الطرف الحر يطلع عن الأنسجة.</p><p>المشكلة: الغشاء ينضغط والطقم يشتغل مثل رافعة من الصنف الأول ويضر الدعامة. الحل: نسجّل النسيج بشكله الوظيفي حتى ما نزيد الحمل على السن.</p>","<p>ست عوامل: جودة الحافة، مدى التغطية، نوع ودقة الطبعة، دقة القاعدة، تصميم الهيكل، والحمل الإطباقي الكلي.</p><p>بالأسفل الـ buccal shelf هو التحميل الأساسي، والقمة الإسفنجية مو زينة للدعم. بهالمحاضرة قمة حافة الأعلى تعتبر المنطقة الداعمة الأساسية للنهاية الحرة العليا، والمنحدرات تقاوم الدوران الأفقي، والحليمة والـ raphe لهم relief. التغطية الأوسع توزّع الحمل، بس الفراغ الأطول يزيد الرافعة على الدعامة.</p><p>طبعة تشريحية لمرحلة واحدة تسجّل النسيج مرتاح؛ تحت المضغ الطرف البعيد ينزل أكثر ويظلم الدعامة. لذلك نحتاج طبعة ثانية/مصححة: تسجّل النسيج الداعم تحت تحميل محسوب، وتوزّع الحمل على أكبر مساحة. الضغط الخفيف المتقطع مقبول؛ الضغط الزائد المستمر يسبب التهاب وامتصاص.</p>","<p>أكبر حركة تصير بأبعد نقطة: الـ retromolar pad بالأسفل والحدبة بالأعلى. لذلك نفضّل rest إنسي/قدامي حتى التحميل يصير أعمودي على مساحة أكبر، ونضيف مثبت غير مباشر، وبنهاية حرة نظام RPI يحرر الإجهاد. بالأعلى قاعدة ممتدة وحزام حنكي عريض يقاوم الدوران.</p><p>المريض يمضغ أكثر على أسنانه الطبيعية. تقليل عرض الطاولة الإطباقية يخفف القوى على الطقم والدعامات. وأربع متطلبات متكررة: rests إيجابية، هيكل صلب بالكامل، مثبت غير مباشر، وقواعد عريضة منطبقة.</p>","<p>الطبيب مسؤول عن انطباق الهيكل مثل ما هو مسؤول عن انطباق التاج. افحصه على الصبّة وبدونها بعدسة. السطح أملس، والتصميم مطابق للطلب، وكل المكونات موجودة. السماكة الأدنى لسبيكة الأساس <b>1.5 ملم</b>.</p><p>ماكو فراغات أو مسام بمناطق الإجهاد (اتصال الكلاسب والـ rest بالـ minor connector). خطوط الإنهاء حادة وبزاوية <b>أقل من 90°</b> حتى الأكريلك يتعلق. البرّا ملمّع؛ باطن الموصل الحنكي الأعلى يُترك لينطبق على الحنك. إذا ما ينطبق على الصبّة، غالباً ما ينطبق بالفم.</p>","<p>أول تجربة بالラボ قبل ما يجي المريض. إذا ما يجلس بهدوء على الصبّة، ادهن الباطن بمادة كاشفة وعدّل. بالفم اضغط على الـ <b>rests والموصل الرئيسي فقط</b> — الضغط على القاعدة يخلي الهيكل يتأرجح. لازم يدخل بهدوء ويجلس ثابت. مناطق الخبط الشائعة: أسطح التوجيه، تحت المقاعد، أكتاف الكلاسب، والموصلات الصغرى. إذا ما دخل بعد عدة محاولات: نعيده. إذا ينطبق على الصبّة وما ينطبق بالفم: الصبّة غلط، طبعة جديدة.</p><p>بعدين الإطباق: شيل الهيكل وشوف عضّة المريض؛ إذا انفتح الإطباق، الهيكل عالي. إذا في هيكلين، جرّب كل واحد لحاله أولاً. بعد التعديل تأكد السمك 1.5 ملم، ولمع، والمريض مرتاح. وبعدها: طبعة مصححة/altered cast إذا يلزم، تسجيلات الفكين، فيس بو، تجربة شمع.</p>","<p>ثلاث أسئلة على المواد والصبّة. بعدها الدعم وانطباق الهيكل.</p>","<p>ركّز على الرافعة بالنهاية الحرة، ووين تضغط وأنت تركّب الهيكل.</p>","<p>خمسة على الطبعة والصبّة والطابع. كمّل الخمسة الثانية.</p>","<p>آخر خمسة. بعد ما تجاوب، احسب النتيجة.</p>",""];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>

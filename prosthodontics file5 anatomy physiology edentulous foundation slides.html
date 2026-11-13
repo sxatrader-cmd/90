@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Prosthodontics - File 5 - Anatomy and Physiology Related to Dental Prostheses</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">Prosthodontics &middot; File 5 &middot; 4th year &middot; pp 187–205</div>
+    <h1>Anatomy and Physiology Related to Dental Prostheses</h1>
+    <p style="margin:0 0 16px">University of Baghdad, College of Dentistry — Prosthodontics syllabus for the degree equivalency exam (October 2025 attempt). 4th-year Lect. 1 and the myology lecture, PDF pages 187–205 (Dr. Ihab Nabeel Al-mgotar).</p>
+    <ul>
+      <li>Every slide is shown for <b>2 minutes</b>.</li>
+      <li><b>Next</b> unlocks only when the countdown reaches zero.</li>
+      <li><b>Back</b> is always available, and never re-locks your progress.</li>
+      <li>Each slide has an <b>Iraqi Arabic explanation</b> (الشرح بالعراقي) under the English content — written to be very simple, with everyday analogies. Medical terms stay in English.</li>
+      <li>Tap <b>اختبر نفسك</b> questions and flashcards on the slides. A short self-test is at the end of the file.</li>
+      <li>Total run time: <b>52 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 26</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Prosthodontics · File 5","t":"Anatomy and Physiology Related to Dental Prostheses","b":"<p>University of Baghdad, College of Dentistry — Prosthodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file is the start of the <b>4th-year</b> block (PDF pages 187–205), Dr. Ihab Nabeel Al-mgotar:</p><ul><li>Lect. 1 — Osteology of the edentulous foundation: supporting, stress-relief and border-limiting structures of the maxilla and mandible, resorption pattern, and bearing-area size.</li><li>Myology lecture — muscles of facial expression, mentalis, buccinator, orbicularis oris, supra- and infrahyoid muscles, muscles of mastication, the soft palate, the tongue, oral mucosa, and saliva.</li></ul><p class=\"note\">Every slide has a very simple Iraqi Arabic explanation. Tap <b>اختبر نفسك</b> as you go. A short self-test is at the end.</p>"},{"k":"4th year · Lect. 1","t":"Why anatomy matters, and three kinds of tissue area","b":"<p>To construct a prosthesis the dentist needs a thorough knowledge of the anatomy and physiology of the supporting structures.</p><p>The osseous structures not only support the denture; they also influence impression making, the position of the teeth, and the contours of the finished denture. The tissues that support the maxillary and mandibular dentures also help retention and stability.</p><ul><li><b>Stress-bearing areas</b> are better suited to bear masticatory stresses.</li><li><b>Stress-relief areas</b> are not suited to take these stresses, because of their anatomy or the structures that lie beneath them.</li><li><b>Border-limiting areas</b> limit the extension of the complete dentures.</li></ul><p>The mucous membrane varies by zone. The <b>submucosa</b> is connective tissue that attaches mucosa to the underlying structures; its composition depends on whether the mucosa is firmly or loosely attached, and whether muscle lies between it and the bone. Blood vessels and nerves travel in the submucosa.</p>"},{"k":"4th year · Lect. 1","t":"Factors that influence the form and size of supporting bone","b":"<p>Factors that influence the form and size of the supporting bone include:</p><ol><li>The original size and arch form before extractions.</li><li>The severity of periodontal disease.</li><li>The amount of alveoloplasty at the time of tooth extraction.</li><li>Forces developed by the surrounding musculature.</li><li>Forces accruing from the wearing of dental prostheses.</li><li>The relative length of time different parts of the jaws have been edentulous.</li><li>Unknown genetic predisposition to bone resorption.</li></ol><p>Edentulous foundation structures fall into two categories: <b>supporting structures</b> (they support the denture) and <b>border-limiting structures</b> (they limit the border extent of the maxillary or mandibular denture).</p>"},{"k":"4th year · Lect. 1 · Maxilla","t":"Bones of the maxillary foundation, and the supporting-structure list","b":"<p>The maxillary denture is supported by two pairs of bones — the <b>maxillae</b> and the <b>palatine bones</b>. The mandibular denture is supported by one bone, the mandible. Each maxilla has a central body and four processes (alveolar, frontal, zygomatic and palatine). Some of the body and two of the processes are involved in maxillary denture support.</p><p>Supporting structures in the maxillary edentulous foundation:</p><ol><li>Zygomatico-alveolar crest (malar process).</li><li>Alveolar process.</li><li>The palatine bone.</li><li>Palatine process of the maxilla.</li><li>The incisive fossa.</li><li>The pterygoid hamulus.</li><li>Maxillary tuberosity.</li><li>The greater palatine foramen.</li><li>Cuspid eminence.</li></ol><div class=\"figrow\"><img src=\"prostho-img/file5/maxilla-palate-bones.jpg\" alt=\"\"><img src=\"prostho-img/file5/maxillary-landmarks.jpg\" alt=\"\"></div><p class=\"cap\">The maxillary denture sits on the maxillae and palatine bones; numbered landmarks guide support and relief.</p>"},{"k":"4th year · Lect. 1 · Maxilla","t":"Zygomatico-alveolar crest and the residual alveolar ridge","b":"<p>The <b>zygomatico-alveolar crest (malar process)</b> is located opposite the first-molar region. Some dentures require relief over this area to prevent soreness and to aid retention, especially on a severely resorbed ridge.</p><p>The <b>alveolar process</b> arises from the lower surface of the maxilla. It consists of two parallel plates of cortical bone that unite behind the last molar to form the tuberosity. What remains after tooth loss is the <b>residual alveolar ridge</b>. The maxillary ridge acts as a <b>secondary stress-bearing area</b>. The slopes of the ridges help stability during function, so some stress is transmitted through the slopes.</p>"},{"k":"4th year · Lect. 1 · Maxilla","t":"Hard palate, mid-palatal raphe, palatine bone, PPS and the vibrating line","b":"<p>The palatine processes arise as horizontal plates and unite in the midline, forming the mid-palatine suture. Overgrowth of bone here is a <b>torus palatinus</b>. The hard palate resists resorption and is a <b>primary stress-bearing area</b>.</p><p>The sutural joint (mid-palatal raphe) is covered by mucous membrane firmly adherent to bone, with little submucosal tissue, so there is no resiliency. This is a <b>stress-relief area</b>. During the final impression the mid-palatal raphe is relieved to create equilibrium between resilient and non-resilient supports.</p><p>The horizontal plate of the palatine bone unites with the posterior border of the maxillary palatal process. The posterior borders of the palatine bones meet in the midline as the posterior nasal spine; the soft palate attaches here. The <b>posterior palatal seal (PPS)</b> is placed at the junction of the immovable and movable parts of the soft palate.</p><p><b>PPS area:</b> the soft-tissue area on which pressure within physiologic limits can be placed by a complete denture to aid retention. It is limited posteriorly by the distal demarcation of movable and non-movable soft-palate tissues, and anteriorly by the junction of the hard and soft palates.</p><p>The <b>vibrating line</b> is an imaginary line across the posterior soft palate marking the division between movable and immovable tissues; it is identified when the movable tissues are functioning.</p><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The mid-palatal raphe is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A primary stress-bearing area like the hard palate beside it</button><button type=\"button\" class=\"opt\" data-i=\"1\">A stress-relief area (firmly adherent mucosa, little submucosa) and is relieved in the final impression</button><button type=\"button\" class=\"opt\" data-i=\"2\">Always covered with a thick compressible pad</button><button type=\"button\" class=\"opt\" data-i=\"3\">The lateral limit of the buccal vestibule</button></div><div class=\"qexp\" hidden><p>ال raphe الحنكي الوسطي ملتصق بقوة وما فيه وسادة، لذلك منطقة <b>تخفيف</b> مو تحميل. بالطبعة النهائية نريليفها حتى الضغط يتوزع على الأنسجة المرنة جنبه.</p></div></div>"},{"k":"4th year · Lect. 1 · Maxilla","t":"Incisive foramen and papilla; greater palatine foramen","b":"<p>The <b>incisive foramen</b> lies on the median palatal line posterior to the maxillary central incisors. In the edentulous mouth it comes nearer the crest of the ridge as resorption progresses. Failure to relieve this area may cause irritation and a burning sensation in the anterior palate.</p><p>The <b>incisive papilla</b> is a pad of fibrous connective tissue overlying the foramen. The submucosa here contains the nasopalatine nerves and vessels.</p><p><b>Significance:</b> it is a stable landmark related to the emerging neurovascular bundle; a biometric guide to the maxillary canines (a perpendicular from the center of the papilla to the sagittal plane passes through the canines); and a guide to the central incisors, which lie about <b>8–10 mm anterior</b> to the papilla. During impression making the papilla must not be compressed — it is a relief area.</p><img class=\"fig\" src=\"prostho-img/file5/incisive-papilla.jpg\" alt=\"\"><p class=\"cap\">The incisive papilla must be relieved; it also guides the position of the central incisors and canines.</p><p>The <b>anterior (greater) palatine foramen</b> is medial to the third molar, at the junction of the ridge and the horizontal plates of the palatine bone. Relief is rarely required here, because the nerve and vessels lie in a groove and are covered by thick soft tissue.</p>"},{"k":"4th year · Lect. 1 · Maxilla","t":"Maxillary tuberosity and the hamular notch","b":"<p>The <b>maxillary tuberosity</b> is the residual ridge that extends distally from the second-molar area to the hamular notch. Tuberosities are often dense fibrous tissue with little compressibility, and then they offer considerable support. Problems include:</p><ol><li>Enlargement with bilateral undercuts that interfere with insertion and removal.</li><li>Pendulous tuberosities that reduce posterior inter-arch distance against the retromolar pad.</li><li>An occlusal radiograph is needed before surgical resection, to prevent an oro-antral fistula.</li><li>If undercuts are severe, reduce the undercut on the preferential chewing side.</li><li>The last posterior tooth should not be placed on the tuberosity.</li></ol><p>The <b>hamular notch</b> is a narrow cleft of loose connective tissue, about <b>2 mm</b> anteroposteriorly, between the tuberosity in front and the pterygoid hamulus behind. It marks the posterolateral limit of the upper denture. The thick, loose areolar submucosa can be displaced to a degree without trauma, so a seal can be obtained here. It is the lateral boundary of the PPS; the pterygomandibular raphe attaches to the hamulus.</p><p>The denture must not extend beyond the hamular notch. If it does: pterygomandibular-raphe movement is restricted; the denture dislodges when the mouth is opened wide; and the raphe may be sandwiched under the denture.</p>"},{"k":"4th year · Lect. 1 · Maxilla","t":"Cuspid eminence and the limiting structures of the upper denture","b":"<p>The <b>cuspid eminence</b> is a bony elevation on the residual ridge, formed after extraction of the canine, over the canine root. It is a guide for positioning the artificial canine.</p><p>The limiting structures of the upper denture divide into three areas:</p><ol><li>The <b>labial vestibule</b>, from one buccal frenum to the other on the labial side of the ridge.</li><li>The right and left <b>buccal vestibules</b>, from the buccal frenum to the hamular notch.</li><li>The <b>vibrating line</b>, from one hamular notch to the other across the palate.</li></ol>"},{"k":"4th year · Lect. 1 · Mandible","t":"Mandibular osseous structures, the coronoid process, and the residual ridge","b":"<p>Osseous structures associated with the mandibular denture: coronoid process; residual alveolar ridge; buccal shelf; mental foramen; mylohyoid ridge; lingual tuberosity; genial tubercles; torus mandibularis; and the external oblique ridge.</p><p>The mandible is the movable member of the stomatognathic system. It has a body and two rami; each ramus ends in a posterior condyloid process and an anterior coronoid process.</p><p>If the <b>distobuccal flange of the maxillary denture</b> is too thick, it causes discomfort and dislodges the upper denture when the mandible is protruded or moved from side to side. Trimming the flange solves the problem (the coronoid process collides with that thick flange).</p><p>The residual alveolar ridge is what remains after tooth loss. Bone under the crest is <b>cancellous</b>, which makes it unfavorable for resisting applied denture forces.</p><div class=\"figrow\"><img src=\"prostho-img/file5/mandible-bone.jpg\" alt=\"\"><img src=\"prostho-img/file5/mandibular-landmarks.jpg\" alt=\"\"></div><p class=\"cap\">Mandibular landmarks used for support, relief and border extension of the lower denture.</p>"},{"k":"4th year · Lect. 1 · Mandible","t":"The buccal shelf — primary stress-bearing area","b":"<p>The <b>buccal shelf</b> lies between the mandibular buccal frenum and the anterior edge of the masseter. It is bounded medially by the crest of the ridge, laterally by the bony external oblique ridge, and distally by the retromolar pad. Buccinator fibers attach horizontally along the oblique ridge.</p><p>As the ridge resorbs, the buccal shelf does <b>not</b> resorb, because of those muscle attachments on its posterior and lateral borders. The mandibular alveolar ridge sits significantly medial to the inferior border, so as the ridge resorbs the denture-bearing surface becomes flatter and widens toward the buccal shelf.</p><p>The shelf is dense cortical bone and lies at right angles to vertical occlusal forces, and is therefore a <b>primary stress-bearing area</b> for the mandibular denture.</p><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The primary stress-bearing area of the mandibular denture is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The crest of the residual ridge, because it is cancellous</button><button type=\"button\" class=\"opt\" data-i=\"1\">The buccal shelf (and the retromolar pad): dense cortical bone at right angles to vertical forces, and it does not resorb like the ridge</button><button type=\"button\" class=\"opt\" data-i=\"2\">The mental foramen</button><button type=\"button\" class=\"opt\" data-i=\"3\">The mylohyoid ridge</button></div><div class=\"qexp\" hidden><p>الـ <b>buccal shelf</b> (ويه الـ retromolar pad) هو التحميل الأساسي بالأسفل: عظم قشري كثيف، عمودي على قوى الإطباق، وما يمتص مثل قمة الحافة.</p></div></div>"},{"k":"4th year · Lect. 1 · Mandible","t":"Mental foramen, mylohyoid ridge, lingual tuberosity, genial tubercles, tori and the external oblique ridge","b":"<p>The <b>mental foramen</b> is on the lateral surface of the mandible, between the first and second premolars, halfway between the lower border and the alveolar crest. The mental nerve leaves here below the ridge, but with continued resorption the foramen can reach the crest and be compressed by the denture, causing pain or altered sensation (numbness of the lower lip).</p><p>The <b>mylohyoid ridge</b> runs along the lingual surface. Anteriorly it lies close to the inferior border; posteriorly it lies flush with the residual ridge. Thin mucosa over it may be traumatized and should be relieved. The area under the ridge is an undercut.</p><img class=\"fig\" src=\"prostho-img/file5/lingual-tuberosity-spines.jpg\" alt=\"\"><p class=\"cap\">Lingual tuberosity, mylohyoid line and genial (mental) spines on the lingual mandible.</p><p>The <b>lingual tuberosity</b> is an irregular bony prominence distal to the mylohyoid ridge; when prominent it should be relieved, rounded, or surgically removed.</p><p><b>Genial tubercles</b> (mental spines), two to four in number, lie on the lingual midline and give attachment to genioglossus and geniohyoid. They are usually below the crest. In a severely resorbed ridge they appear above the residual ridge and must be relieved; the covering mucosa is thin and tightly adherent. Relieve them with a spacer, or ulceration follows.</p><p><b>Mandibular tori</b> are lingual, bilateral or unilateral cortical prominences in the premolar area (they may extend to the molars). Small tori may need only denture relief; large tori require removal before a denture can be made.</p><p>The <b>external oblique ridge</b> of dense bone runs from just above the mental foramen, superiorly and distally, to become continuous with the anterior border of the ramus. In most people it is the anatomic guide for the lateral end of the buccal flange of the lower denture.</p>"},{"k":"4th year · Lect. 1 · Mandible","t":"The retromolar pad","b":"<p>The <b>retromolar pad</b> is a triangular pad of tissue at the distal end of the residual ridge. The anterior part of the triangle is keratinized remnant gingiva of the third molar — the <b>pear-shaped pad</b>. The posterior part is thin non-keratinized epithelium with loose connective tissue, glandular tissue, fibers of the temporalis tendon, buccinator and superior constrictor, and the pterygomandibular raphe.</p><p>The underlying bone is dense cortical bone because of the muscle attachments, and is resistant to resorption. The denture should cover the retromolar pad for support and because that cortical bone does not resorb readily over the long term.</p><img class=\"fig\" src=\"prostho-img/file5/retromolar-diagram.jpg\" alt=\"\"><p class=\"cap\">The denture should cover the retromolar pad; its underlying bone resists long-term resorption.</p>"},{"k":"4th year · Lect. 1","t":"Stress-bearing areas, relief sites, resorption pattern, and bearing-area size","b":"<p><b>Maxillary stress-bearing areas:</b> primary — firm tuberosities, and the hard palate on either side of the palatal raphe; secondary — alveolar ridge and rugae.</p><p><b>Mandibular stress-bearing areas:</b> primary — buccal shelves and retromolar pads; secondary — alveolar ridge.</p><p><b>Areas requiring relief in the impression:</b> secondary stress-bearing areas; palatal torus; median palatal raphe; mandibular tori; retromylohyoid ridge; and undercuts or sharp bony prominences on the ridges.</p><p><b>Pattern of resorption:</b> the maxilla resorbs upward and inward and becomes progressively smaller (<b>centripetal</b>). The mandible resorbs downward and inclines outward and becomes gradually wider (<b>centrifugal</b>). This makes many edentulous patients appear prognathic.</p><p>The mean denture-bearing area of the edentulous maxilla is <b>23 cm²</b>, of the mandible <b>12 cm²</b>, in contrast with <b>45 cm²</b> of periodontal ligament in each dental arch. Masticatory loads on natural teeth are about <b>20 kg</b>, while maximum chewing forces of about <b>6 kg</b> have been recorded with complete dentures. Maximal bite force is about five to six times less in complete-denture wearers than in people with natural teeth.</p><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Mean denture-bearing areas and the pattern of jaw resorption are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Maxilla 12 cm² and widening (centrifugal); mandible 23 cm² and shrinking (centripetal)</button><button type=\"button\" class=\"opt\" data-i=\"1\">Maxilla about 23 cm², resorbing upward and inward (centripetal, smaller); mandible about 12 cm², resorbing downward and outward (centrifugal, wider)</button><button type=\"button\" class=\"opt\" data-i=\"2\">Both jaws 45 cm² with no resorption</button><button type=\"button\" class=\"opt\" data-i=\"3\">Mandible 23 cm² primary on the ridge crest only</button></div><div class=\"qexp\" hidden><p>الأعلى حوالي <b>23 سم²</b> ويمتص لبرّه لفوق ولداخل فيصغر (centripetal). الأسفل حوالي <b>12 سم²</b> ويمتص لتحت ولبرّه فيتوسع (centrifugal) — لذلك المريض يبدو وكأنه فكه الأسفل بارز (prognathic).</p></div></div>"},{"k":"4th year · Myology","t":"Muscles of facial expression, and why they matter","b":"<p>Muscles of the lower half of the face include zygomaticus major and minor, levator labii superioris, levator labii superioris alaeque nasi, levator anguli oris, depressor anguli oris, risorius, platysma, incisivus superioris and inferioris, orbicularis oris, mentalis and buccinator. Their functions include laughing, smiling and frowning; they reflect mood; when relaxed the face lacks expression.</p><p>Why we study the perioral muscles:</p><ol><li>They do not insert into bone, so they need support from the teeth for proper function.</li><li>Incorrect tooth position or incorrect denture-base contour can change their normal tonicity and harm facial expression.</li><li>Lack of support allows the soft tissues to sag; stretching inhibits normal contraction and changes muscle tone.</li></ol><p>These muscles insert partly into the connective tissue of the skin and partly into the mucous membrane of the lips. The <b>modiolus</b> (muscular node) is a concentration of many fibers laterally and slightly above the corner of the mouth. The labial flange of the maxillary denture should be reduced in thickness here so it does not affect upper-denture stability. The mandibular first premolar should be arranged on the crest of the residual ridge to avoid interference with the modiolus.</p>"},{"k":"4th year · Myology","t":"Mentalis, incisivus, buccinator and orbicularis oris","b":"<p><b>Mentalis:</b> contraction can dislodge the mandibular denture; it dictates how far the labial flange of the lower denture may extend below the crest; it makes the lower vestibule shallower when it contracts; surgical repositioning is sometimes advisable.</p><p>The <b>incisivus labii superioris and inferioris</b> act on the vestibular fornix much like mentalis. Alone they rarely dislodge a denture, but they can still create problems of flange extension and retention.</p><p>The <b>buccinator</b> does <b>not</b> directly dislodge the denture, because it contracts in a line parallel to the occlusal plane. Its fibers run at right angles to those of masseter. When masseter is activated it pushes the buccinator medially against the denture border in the retromolar-pad area, so the denture should be contoured to accommodate this — the <b>masseter groove</b>.</p><p><b>Orbicularis oris</b> is the sphincter of the mouth. The upper lip is supported by the six anterior teeth, not by the denture border. In normal occlusion the superior border of the lower lip is supported by the incisal third of the maxillary anterior teeth; if not, the lower lip is caught by the anterior teeth in occlusion. When the lip muscles are relaxed they become flaccid (this happens with the jaw open), so their action must be recorded when making impressions. If the muscle is stretched, the angles of the mouth are easily irritated when a tray is inserted.</p>"},{"k":"4th year · Myology","t":"Suprahyoid and infrahyoid muscles, and the muscles of mastication","b":"<p><b>Suprahyoid muscles</b> (digastric, stylohyoid, geniohyoid, mylohyoid) elevate the hyoid and larynx and depress the mandible. Geniohyoid and mylohyoid may influence the border of the mandibular denture. The mylohyoid forms the muscular floor of the mouth and elevates the hyoid, tongue and membranous floor during swallowing. If the denture extends below and under the mylohyoid line it will impinge on the muscle and affect its action. Mylohyoid actions: elevate the floor of the mouth in the first stage of deglutition; elevate the hyoid; depress the mandible.</p><p><b>Infrahyoid muscles</b> (sternohyoid, omohyoid, sternothyroid, thyrohyoid) have no particular significance for denture borders, but they are part of the kinetic chain of mandibular movement: they fix the hyoid so the suprahyoid muscles can act on the mandible.</p><p><b>Muscles of mastication:</b> masseter, temporalis, medial pterygoid and lateral pterygoid. They produce masticatory and non-masticatory mandibular movements. In complete dentures, non-masticatory movements and tooth contacts during those movements are probably of more concern than masticatory movements themselves. In recording jaw relation, centric relation is obtained with the aid of the <b>posterior fibers of temporalis</b>.</p>"},{"k":"4th year · Myology","t":"Pterygomandibular raphe, soft-palate muscles, and palatal classes","b":"<p>The <b>pterygomandibular raphe</b> is a tendinous band from the pterygoid hamulus above to the mandible in the retromolar-pad area below. Buccinator attaches laterally and the superior pharyngeal constrictor medially.</p><p>Soft-palate muscles: tensor veli palatini, levator veli palatini, musculus uvulae and palatoglossus. When taut, <b>tensor veli palatini</b> can influence denture contour in the hamular-notch area. <b>Levator veli palatini</b> elevates the soft palate in swallowing and helps determine the vibrating line when a PPS is developed. When both palatoglossi contract they draw the tongue and soft palate toward each other and exert lateral pressure on the lingual extension of a mandibular denture.</p><p>We study these muscles because the vibrating line lies on the soft palate, not over the palatine bone. The patient says “Ah”, or closes both nostrils and blows gently; the air forces the soft palate inferiorly at the junction of movable and non-movable parts.</p><p>Soft-palate classification:</p><ul><li><b>Class I:</b> horizontal, little muscular movement — more tissue coverage is possible for the PPS.</li><li><b>Class II:</b> the soft palate makes a 45° angle to the hard palate — less PPS coverage than Class I.</li><li><b>Class III:</b> about a 70° angle — minimum tissue coverage for the PPS.</li></ul><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A Class I soft palate, compared with Class III, allows:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Minimum posterior palatal seal coverage, because it drops at 70°</button><button type=\"button\" class=\"opt\" data-i=\"1\">More tissue coverage for the posterior palatal seal, because it is horizontal with little muscular movement</button><button type=\"button\" class=\"opt\" data-i=\"2\">No vibrating line at all</button><button type=\"button\" class=\"opt\" data-i=\"3\">Relief of the buccal shelf only</button></div><div class=\"qexp\" hidden><p>Class I أفقي وحركته قليلة فيسمح بتغطية أكبر للـ PPS. Class III زاويته حوالي 70° والتغطية أقل شي.</p></div></div>"},{"k":"4th year · Myology","t":"The tongue, and types of muscle contraction","b":"<p>The tongue has intrinsic muscles (origin and insertion inside the tongue — change its shape) and extrinsic muscles (originate outside — move the tongue and can also change its shape).</p><p>It is in intimate contact with the lingual flanges of the mandibular denture. Those flanges must be contoured to allow the tongue’s normal wide range of movement. During muscle trimming of the lower impression the patient should move the tongue left and right, protrude it, and moisten the lips.</p><p>After tooth loss, many periodontal sensory receptors are lost. Muscle contraction is <b>isometric</b> when the muscle does not shorten, and <b>isotonic</b> when it shortens but tension stays the same. In the mandible both occur: isotonic to move the mandible, isometric to brace it when the teeth contact. When a load is applied a muscle elongates within a limit — the greater the load, the greater the stretch — which matters when jaw relations are recorded.</p>"},{"k":"4th year · Myology","t":"Oral mucous membrane","b":"<p>Much of the mucous membrane either supports a complete denture directly or contacts it intermittently. Oral mucosa is classified as:</p><ol><li><b>Masticatory mucosa</b> — keratinized stratified squamous epithelium. In edentulous patients it covers the crest of the residual ridge (firmly attached) and the hard palate.</li><li><b>Lining mucosa</b> — non-keratinized stratified squamous epithelium, in the lips, cheeks, vestibular spaces and ventral tongue. It usually meets the denture borders. Its submucosa may be tightly or loosely attached.</li><li><b>Specialized mucosa</b> — covers the dorsum of the tongue (keratinized, including the papillae).</li></ol><p>The oral mucosa of the soft palate is non-keratinized stratified squamous epithelium; the submucosa has numerous glands and is a transition between loosely and fixedly attached mucosa.</p>"},{"k":"4th year · Myology","t":"Saliva: glands, thick saliva, xerostomia, and functions","b":"<p>Saliva comes from three main exocrine glands: <b>parotid</b> — serous; <b>submandibular</b> — mixed, mostly serous; <b>sublingual</b> — mixed, mostly mucous. Smaller glands lie in the mucosa of the tongue, lips and palate.</p><p>Very thick, ropy saliva can: force the dentures out of position; complicate impression making by forming voids while the material sets; and cause the patient to gag during impressions and after new dentures are placed.</p><p><b>Xerostomia</b> (lack of saliva) causes: reduced denture retention; sticking of the cheeks and lips to the denture base; sore spots under the denture; and lack of oral hygiene.</p><p>Physiologic factors: agreeable taste stimuli give profuse salivation; a smooth surface in the mouth (for example a polished denture surface) increases salivation; dehydration decreases it; emotional and psychological stimuli alter autonomic function; and with age saliva becomes more ropy.</p><p>Functions of saliva: contains the digestive enzyme ptyalin for starchy foods; lubricates mucosa and the denture surface; is a protective agent (antifungal and antibiotic activity); aids retention of removable prostheses; and provides mechanical cleansing.</p><div class=\"flash\"><button type=\"button\" class=\"flash-q\">Name the secretion type of the three major salivary glands, and two problems of xerostomia for the denture wearer.</button><div class=\"flash-a\" hidden>Parotid: serous. Submandibular: mixed, mostly serous. Sublingual: mixed, mostly mucous. Xerostomia reduces retention, lets cheeks and lips stick to the base, causes sore spots, and impairs oral hygiene.</div></div>"},{"k":"اختبر نفسك · Osteology","t":"Quiz — supporting, relief and limiting structures","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The maxillary residual ridge is classed as a:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Primary stress-bearing area, like the hard palate beside the raphe</button><button type=\"button\" class=\"opt\" data-i=\"1\">Secondary stress-bearing area; the hard palate (either side of the raphe) and firm tuberosities are primary</button><button type=\"button\" class=\"opt\" data-i=\"2\">Border-limiting area only</button><button type=\"button\" class=\"opt\" data-i=\"3\">Structure that should never be covered</button></div><div class=\"qexp\" hidden><p>الحافة العليا تحميل <b>ثانوي</b>. الأساسي: الحنك الصلب جانبي ال raphe والحدبات الثابتة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">If the denture is not relieved over the incisive papilla, the patient may have:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Improved taste only</button><button type=\"button\" class=\"opt\" data-i=\"1\">Irritation and a burning sensation in the anterior palate</button><button type=\"button\" class=\"opt\" data-i=\"2\">A deeper buccal shelf</button><button type=\"button\" class=\"opt\" data-i=\"3\">A Class III soft palate</button></div><div class=\"qexp\" hidden><p>ما نضغط الحليمة القاطعة — وإلا حرق وتهيّج بقدام الحنك.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A thick distobuccal flange on a maxillary denture mainly interferes with:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The mental nerve only</button><button type=\"button\" class=\"opt\" data-i=\"1\">The coronoid process during protrusion or lateral movement, dislodging the upper denture</button><button type=\"button\" class=\"opt\" data-i=\"2\">The incisive papilla</button><button type=\"button\" class=\"opt\" data-i=\"3\">The infrahyoid muscles</button></div><div class=\"qexp\" hidden><p>الناتئ الإكليلي يخبط الحافة السميكة للطقم الأعلى ويطيّره.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Central incisors are set about how far in front of the incisive papilla?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">1 mm</button><button type=\"button\" class=\"opt\" data-i=\"1\">8–10 mm</button><button type=\"button\" class=\"opt\" data-i=\"2\">25 mm</button><button type=\"button\" class=\"opt\" data-i=\"3\">They are set over the papilla itself</button></div><div class=\"qexp\" hidden><p>الثنايا تقريباً <b>8–10 ملم</b> أمام الحليمة القاطعة.</p></div></div>"},{"k":"اختبر نفسك · Myology and saliva","t":"Quiz — muscles, soft palate and saliva","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Which statement about the buccinator is correct?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">It directly dislodges the denture because its fibers run vertically</button><button type=\"button\" class=\"opt\" data-i=\"1\">It does not directly dislodge the denture (fibers parallel to the occlusal plane); masseter may push it medially, and the border is given a masseter groove</button><button type=\"button\" class=\"opt\" data-i=\"2\">It forms the posterior palatal seal alone</button><button type=\"button\" class=\"opt\" data-i=\"3\">It inserts only into the coronoid process</button></div><div class=\"qexp\" hidden><p>ما تطيّر الطقم مباشرة؛ بس الماضغة تدفعها، فنسوي masseter groove.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Centric relation, in this lecture, is obtained with the aid of:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Only the mentalis muscle</button><button type=\"button\" class=\"opt\" data-i=\"1\">The posterior fibers of temporalis</button><button type=\"button\" class=\"opt\" data-i=\"2\">The infrahyoid muscles acting on the denture border</button><button type=\"button\" class=\"opt\" data-i=\"3\">The incisivus muscles alone</button></div><div class=\"qexp\" hidden><p>تسجيل العلاقة المركزية يستعين بالألياف الخلفية للصدغية.</p></div></div><div class=\"qbox\" data-ans=\"2\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Thick ropy saliva can do all of the following except:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Force dentures out of position</button><button type=\"button\" class=\"opt\" data-i=\"1\">Leave voids in a setting impression and provoke gagging</button><button type=\"button\" class=\"opt\" data-i=\"2\">Increase maxillary bearing area from 23 to 45 cm²</button><button type=\"button\" class=\"opt\" data-i=\"3\">Complicate impression making</button></div><div class=\"qexp\" hidden><p>اللعاب الثقيل يحرّك الطقم ويعمل فراغات ويسبب غثيان — ما يكبّر مساحة التحميل.</p></div></div>"},{"k":"الاختبار النهائي · 1–5","t":"Self-test — osteology of the edentulous foundation","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Border-limiting areas are those that:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Bear all masticatory stress</button><button type=\"button\" class=\"opt\" data-i=\"1\">Limit the extension of the maxillary and mandibular complete dentures</button><button type=\"button\" class=\"opt\" data-i=\"2\">Must never be covered by a flange</button><button type=\"button\" class=\"opt\" data-i=\"3\">Replace the need for a posterior palatal seal</button></div><div class=\"qexp\" hidden><p>هذي المناطق <b>تحدد امتداد</b> حافة الطقم، مو تحمل كل الضغط.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The maxillary denture is supported by which bones?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The mandible only</button><button type=\"button\" class=\"opt\" data-i=\"1\">Two pairs of bones: the maxillae and the palatine bones</button><button type=\"button\" class=\"opt\" data-i=\"2\">The hyoid and the zygoma only</button><button type=\"button\" class=\"opt\" data-i=\"3\">The temporal bone alone</button></div><div class=\"qexp\" hidden><p>الأعلى: الفكين العلويين + عظام الحنك. الأسفل: الفك السفلي وحده.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The hamular notch is about 2 mm anteroposteriorly and:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Should be crossed so the denture sits on the pterygoid hamulus</button><button type=\"button\" class=\"opt\" data-i=\"1\">Marks the posterolateral limit of the upper denture and the lateral boundary of the PPS; the denture must not extend beyond it</button><button type=\"button\" class=\"opt\" data-i=\"2\">Is a primary mandibular stress-bearing area</button><button type=\"button\" class=\"opt\" data-i=\"3\">Is another name for the incisive papilla</button></div><div class=\"qexp\" hidden><p>حد خلفي وحشي للطقم الأعلى وحد جانبي للـ PPS. إذا تعدّيناه الطقم ينخلع والفم مفتوح.</p></div></div><div class=\"qbox\" data-ans=\"0\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">On a severely resorbed mandible the mental foramen may:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Move onto the crest and be compressed, causing pain or lower-lip numbness</button><button type=\"button\" class=\"opt\" data-i=\"1\">Disappear, so relief is never needed</button><button type=\"button\" class=\"opt\" data-i=\"2\">Become a primary stress-bearing area</button><button type=\"button\" class=\"opt\" data-i=\"3\">Attach the buccinator</button></div><div class=\"qexp\" hidden><p>الثقبة تصعد للقمة والطقم يضغط العصب: ألم أو خدر بالشفة السفلى.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The denture should cover the retromolar pad because:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">It is non-keratinized throughout and must be left uncovered</button><button type=\"button\" class=\"opt\" data-i=\"1\">Underlying cortical bone from muscle attachments resists resorption, and the pad provides support</button><button type=\"button\" class=\"opt\" data-i=\"2\">It is the only origin of mentalis</button><button type=\"button\" class=\"opt\" data-i=\"3\">It replaces the buccal shelf entirely</button></div><div class=\"qexp\" hidden><p>نغطيه لأن العظم تحته قشري مقاوم للامتصاص ويعطي دعم.</p></div></div>"},{"k":"الاختبار النهائي · 6–10","t":"Self-test — resorption, muscles, mucosa and saliva","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Resorption makes the edentulous maxilla smaller (centripetal) and the mandible wider (centrifugal), so many patients appear:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Retrognathic only</button><button type=\"button\" class=\"opt\" data-i=\"1\">Prognathic</button><button type=\"button\" class=\"opt\" data-i=\"2\">Exactly as they did with natural teeth</button><button type=\"button\" class=\"opt\" data-i=\"3\">To have a Class I soft palate automatically</button></div><div class=\"qexp\" hidden><p>الأعلى يصغر للداخل، الأسفل يتوسع للبرّه، فالمريض يبدو prognathic.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The upper lip is supported by:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The denture border alone</button><button type=\"button\" class=\"opt\" data-i=\"1\">The six anterior teeth, not the denture border</button><button type=\"button\" class=\"opt\" data-i=\"2\">The masseter groove</button><button type=\"button\" class=\"opt\" data-i=\"3\">The infrahyoid muscles</button></div><div class=\"qexp\" hidden><p>الشفة العليا يدعمها الستة الأمامية، مو حافة الطقم.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">If a lower denture extends below and under the mylohyoid line it will:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Improve swallowing</button><button type=\"button\" class=\"opt\" data-i=\"1\">Impinge on the mylohyoid muscle and can affect its action</button><button type=\"button\" class=\"opt\" data-i=\"2\">Convert lining mucosa into masticatory mucosa</button><button type=\"button\" class=\"opt\" data-i=\"3\">Increase bearing area to 45 cm²</button></div><div class=\"qexp\" hidden><p>إذا نزل تحت خط الضرس اللامي يعترض العضلة ويأثر على عملها.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Masticatory mucosa is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Non-keratinized lining of the cheeks</button><button type=\"button\" class=\"opt\" data-i=\"1\">Keratinized epithelium covering the residual-ridge crest and the hard palate</button><button type=\"button\" class=\"opt\" data-i=\"2\">Found only on the soft palate glands</button><button type=\"button\" class=\"opt\" data-i=\"3\">The same as specialized tongue mucosa</button></div><div class=\"qexp\" hidden><p>المخاطية المضغية متقرنة على قمة الحافة والحنك الصلب.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Which is a listed function of saliva?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Replacing the posterior palatal seal</button><button type=\"button\" class=\"opt\" data-i=\"1\">Lubricating mucosa and the denture surface, aiding retention, cleansing, digestion (ptyalin), and protection</button><button type=\"button\" class=\"opt\" data-i=\"2\">Preventing all ridge resorption</button><button type=\"button\" class=\"opt\" data-i=\"3\">Raising maximal bite force to 20 kg in every complete-denture wearer</button></div><div class=\"qexp\" hidden><p>اللعاب يزيت، يساعد التثبيت، ينظف، يهضم النشا، ويحمي — مو يمنع الامتصاص ولا يرجّع قوة العض للطبيعي.</p></div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"},{"k":"الخلاصة بالعربي","t":"الخلاصة بالعربي — تشريح وفسلجة دعم الطقم","b":"<div class=\"ar\"><p>هذي بداية المرحلة الرابعة: خريطة العظم والعضلة واللعاب.</p><p><b>ثلاث مناطق:</b> تحمل الضغط، تخفيف الضغط، ومناطق تحدد امتداد الحافة. شكل العظم يعتمد على القوس الأصلي، مرض اللثة، كمية العظم المنشال، العضلات، الطقم نفسه، مدة الفقد، والوراثة.</p><p><b>الأعلى</b> يجلس على الفكين العلويين وعظام الحنك. التحميل الأساسي: الحدبات الثابتة والحنك الصلب جانبي ال raphe. الحافة والـ rugae ثانوية. ال raphe الوسطي والحليمة القاطعة مناطق تخفيف (الحرق القدامي إذا انضغطت الحليمة). الثنايا 8–10 ملم أمام الحليمة. الـ PPS عند التقاء الحنك الثابت والمتحرك، وخط الاهتزاز يحدده. الـ hamular notch (~2 ملم) حد خلفي وحشي — لا تتعداه. الحافة الشدقية الخلفية السميكة للطقم الأعلى تخبط الناتئ الإكليلي.</p><p><b>الأسفل:</b> التحميل الأساسي buccal shelf (عظم قشري ما يمتص بسهولة) والـ retromolar pad (غطّه). قمة الحافة إسفنجية وثانوية. الثقبة الذقنية إذا طلعت للقمة تسبب خدر الشفة. الشوكات الذقنية والفطور والخط اللامي تحتاج relief أو جراحة حسب الحجم.</p><p><b>الامتصاص:</b> الأعلى centripetal يصغر؛ الأسفل centrifugal يتوسع؛ المريض يبدو prognathic. المساحة 23 سم² أعلى مقابل 12 سم² أسفل (مقابل 45 سم² رباط). قوة المضغ بالطقم حوالي 6 كغم مقابل 20 كغم طبيعياً.</p><p><b>العضلات:</b> تعبير الوجه يحتاج دعم الأسنان؛ الموديولوس يحتاج حافة شفوية أرفع. الـ mentalis تطيّر الطقم الأسفل. الـ buccinator ما تطيّر مباشرة؛ نسوي masseter groove. الشفة العليا من الستة الأمامية. لا تنزل تحت الخط اللامي. العلاقة المركزية تستعين بألياف الصدغية الخلفية. الحنك Class I أفقي تغطية PPS أكبر، Class III زاوية ~70° تغطية أقل.</p><p><b>اللعاب:</b> النكفية مصلية، تحت الفك أغلبها مصلية، تحت اللسان أغلبها مخاطية. الثقيل يطلّع الطقم ويعمل فراغات بالطبعة. الجفاف يقلل التثبيت ويسبب تقرح والتساق الخدود.</p></div>"}];
+var AR = ["<p>هذا أول ملف من المرحلة الرابعة: تشريح وفسلجة المناطق اللي الطقم يجلس عليها والعضلات اللي تحركه أو تطيّره.</p><p>إذا ما تعرف وين العظم قوي ووين العصب قريب ووين العضلة تسحب، الطبعة والقواعد راح تأذي المريض أو الطقم ما يثبت. اعتبره خريطة الأرض قبل ما تبني البيت.</p>","<p>قبل ما تسوي طقم لازم تفهم الأرض اللي راح يجلس عليها. العظم مو بس يحمل الطقم، هم يأثر على الطبعة ومكان الأسنان وشكل القاعدة.</p><p>ثلاث أنواع مناطق: <b>stress-bearing</b> تتحمل ضغط المضغ؛ <b>stress-relief</b> ما تتحمل (إما العظم حاد أو في عصب/أوعية تحتها) لازم نخفف عنها؛ و<b>border-limiting</b> تحدد وين يوقف امتداد حافة الطقم.</p><p>الـ submucosa تحت الغشاء المخاطي هي اللي تربطه بالعظم؛ أحياناً مثبتة بقوة وأحياناً رخوة، وأحياناً عضلة بيناتهن. الأوعية والأعصاب تمشي هنا — لذلك إذا ضغطت غلط، المريض يحس حرق أو خدر.</p>","<p>شكل وحجم العظم الداعم ما يجي صدفة. يعتمد على: شكل القوس الأصلي قبل القلع؛ شدة مرض اللثة؛ كم عظم انشال وقت القلع (alveoloplasty)؛ قوى العضلات؛ قوى الطقم نفسه؛ كم مدة هالمنطقة بلا أسنان؛ وقابلية وراثية للامتصاص مو دائماً معروفة.</p><p>والهياكل نفسها صنفين: <b>داعمة</b> تحمل الطقم، و<b>محدِّدة للحدود</b> توقف امتداد الحافة.</p>","<p>طقم الفك الأعلى يجلس على زوجين من العظام: <b>الفكين العلويين</b> و<b>عظام الحنك</b>. الأسفل يجلس على عظم واحد: الفك السفلي.</p><p>احفظ قائمة الدعم بالأعلى: العرف الوجني السنخي، الناتئ السنخي، عظم الحنك، الناتئ الحنكي، الحفرة القاطعة، الشص الجناحي، الحدبة الفكية، الثقبة الحنكية الكبرى، وبارزة الناب.</p>","<p>العرف الوجني السنخي مقابل منطقة الرحى الأولى. أحياناً نعمل له <b>relief</b> حتى ما يصير ألم، خصوصاً إذا الحافة ممتصة بشدة — هم يساعد التثبيت.</p><p>بعد قلع الأسنان يبقى <b>residual alveolar ridge</b>. بالفك الأعلى هالحافة <b>داعمة ثانوية</b> (مو الأساسية). المنحدرات تساعد ثبات الطقم وقت الوظيفة، فجزء من الضغط يمشي عليها.</p>","<p>الصفائح الحنكية تلتقي بالوسط (الدروز). أحياناً يطلع نمو عظمي اسمه <b>torus palatinus</b>. الحنك الصلب يقاوم الامتصاص وهو <b>منطقة تحمل أساسية</b>.</p><p>بس خط الدروز الوسطي (mid-palatal raphe) الغشاء ملتصق بالعظم وما فيه نسيج تحت مخاطي — ما في مرونة، فهي منطقة <b>تخفيف</b>. بالطبعة النهائية نريليفها حتى يتعادل الدعم المرن ويا الغير مرن.</p><p>الـ <b>PPS</b> ينحط عند التقاء الجزء الثابت والمتحرك من الحنك اللين، ويساعد التثبيت بضغط داخل حدود فسلجية. وخط الاهتزاز (<b>vibrating line</b>) خط تخيلي يفصل الأنسجة المتحركة عن غير المتحركة، يبان والحنك يشتغل.</p>","<p>الثقبة القاطعة بالخط الوسط خلف الثنايا. كل ما الحافة تمتص، تقرب من قمة الحافة. إذا ما سوينا relief، يصير تهيّج وإحساس حرق بقدام الحنك.</p><p>الـ <b>incisive papilla</b> وسادة فوق الثقبة، وفيها أعصاب وأوعية أنفية حنكية. معلم ثابت: خط عمودي من مركزها يمر بالناب؛ والثنايا تبعد تقريباً <b>8–10 ملم</b> أمامها. بالطبعة لا نضغطها — منطقة تخفيف.</p><p>الثقبة الحنكية الكبرى قرب الرحى الثالثة: نادراً نحتاج relief لأن العصب بوادٍ ومغطي بنسيج سميك.</p>","<p>الحدبة الفكية من منطقة الرحى الثانية لين الـ hamular notch. غالباً نسيج ليفي كثيف يعطي دعم زين. مشاكلها: undercuts ثنائية تمنع الإدخال؛ حدبة متدلية تقلل المسافة ويه الـ retromolar pad؛ قبل القص الجراحي لازم صورة حتى ما نفتح الناسور الفموي الجيبي؛ إذا الـ undercut شديد نختزل جهة المضغ المفضّلة؛ وآخر سن ما ينركب فوق الحدبة.</p><p>الـ <b>hamular notch</b> شق رخو حوالي <b>2 ملم</b>، الحد الخلفي الوحشي للطقم الأعلى، والحد الجانبي للـ PPS. الطقم <b>ما يتعداه</b>: وإلا الرباط يتنحشر، والطقم يطيح لما الفم ينفتح وايد.</p>","<p>بارزة الناب تبقى بعد قلع الناب، وتفيد كدليل لمكان الناب الصناعي.</p><p>حدود الطقم الأعلى ثلاثة: الدهليز الشفوي من لجام شدقي للثاني؛ الدهليزان الشدقيان من اللجام لين الـ hamular notch؛ وخط الاهتزاز من نوتش لنوتش عبر الحنك.</p>","<p>هياكل الفك الأسفل: الناتئ الإكليلي، الحافة المتبقية، الرف الشدقي، الثقبة الذقنية، خط الضرس اللامي، الحدبة اللسانية، الشوكات الذقنية، الفطور اللسانية، والعرف المنحرف الخارجي.</p><p>ملاحظة مهمة: إذا حافة الطقم <b>الأعلى</b> من الجهة الخلفية الشدقية سميكة، الناتئ الإكليلي يخبطها والطقم الأعلى ينخلع لما المريض يمد فكه أو يحركه يمين يسار. الحل: نقصّ الحافة.</p><p>قمة الحافة السفلى عظمها إسفنجي (cancellous) — مو مثالي لتحمل الضغط.</p>","<p>الـ <b>buccal shelf</b> بين اللجام الشدقي السفلي وحافة العضلة الماضغة من القدام. من الداخل قمة الحافة، من بره العرف المنحرف الخارجي، ومن الخلف الـ retromolar pad.</p><p>ليش مهم؟ لأن تعلق العضلات يمنعه يمتص مثل الحافة. وهو عظم قشري كثيف وعمودي على قوى الإطباق — يعني <b>منطقة تحمل أساسية</b> للطقم الأسفل. كل ما الحافة تمتص، سطح التحميل يتسطح ويتوسع باتجاه هالرف.</p>","<p>الثقبة الذقنية بين الضاحك الأول والثاني. إذا الامتصاص شديد تصعد لقمة الحافة والطقم يضغط العصب: ألم أو خدر بالشفة السفلى — لازم relief.</p><p>خط الضرس اللامي لساني: بالقدام قريب من الحد السفلي، بالخلف بمستوى الحافة. الغشاء رقيق ينجرح، فتحت الخط في undercut.</p><p>الحدبة اللسانية إذا بارزة: نريليف أو ندوّر أو جراحة. الشوكات الذقنية (2–4) لعضلتي اللسان واللامي؛ بالامتصاص الشديد تطلع فوق الحافة ونريليفها بspacer وإلا تصير قرحة.</p><p>الفطور اللسانية الصغيرة نريليفها بالطقم؛ الكبيرة تنشال قبل ما نسوي طقم. والعرف المنحرف الخارجي دليل نهاية الحافة الشدقية للطقم الأسفل.</p>","<p>الـ <b>retromolar pad</b> وسادة مثلثة بنهاية الحافة السفلى. جزئها القدامي جلد متقرن من بقايا لثة الرحى الثالثة اسمه <b>pear-shaped pad</b>. الجزء الخلفي أنحف، فيه غدد وألياف عضلية والرباط الجناحي الفكي.</p><p>العظم تحته قشري كثيف بسبب تعلق العضلات ويقاوم الامتصاص. لذلك الطقم <b>لازم يغطي</b> الـ retromolar pad — دعم ثابت على المدى الطويل.</p>","<p>احفظ جدول التحميل:</p><p>الأعلى: أساسي = الحدبات الثابتة + الحنك الصلب على جانبي ال raphe؛ ثانوي = الحافة والـ rugae.</p><p>الأسفل: أساسي = buccal shelves + retromolar pads؛ ثانوي = الحافة.</p><p>مناطق relief: التحميل الثانوي، torus حنكي، ال raphe الوسطي، فطور لسانية، خط خلف الضرس اللامي، والبروزات الحادة.</p><p>الامتصاص: الأعلى لفوق ولداخل فيصغر؛ الأسفل لتحت ولبرّه فيكبر — المريض يصير شكله prognathic.</p><p>مساحة التحميل: أعلى <b>23 سم²</b>، أسفل <b>12 سم²</b>، مقابل 45 سم² رباط سنّي بكل قوس. قوة المضغ الطبيعية حوالي 20 كغم، وبالطقم الكامل أقصاها حوالي 6 كغم (أقل 5–6 مرات).</p>","<p>عضلات تعبير الوجه ما تنغرز بالعظم، فتحتاج دعم من الأسنان. إذا الأسنان أو محيط القاعدة غلط، التوتر العضلي يتغير والوجه ينهار أو ينشد.</p><p>الـ <b>modiolus</b> عقدة عضلية شوية فوق وبرت زاوية الفم. هنا نحذف سماكة الحافة الشفوية للطقم الأعلى حتى ما يطيح. والضاجك الأول الأسفل يترتب على قمة الحافة حتى ما يتعارض ويه هالعقدة.</p>","<p>الـ <b>mentalis</b> تقدر تطيّر الطقم الأسفل، وتحدد امتداد الحافة الشفوية، وتضحّل الدهليز لما تنقبض. أحياناً نحتاج نغيّر مكانها جراحياً.</p><p>الـ <b>buccinator</b> <b>ما تطيّر الطقم مباشرة</b> لأن أليافها موازية لمستوى الإطباق. بس الماضغة تدفعها للداخل بمنطقة الـ retromolar، فنحفر بالحافة أخدود اسمه <b>masseter groove</b>.</p><p>الـ <b>orbicularis oris</b>: الشفة العليا تدعمها الستة الأمامية، مو حافة الطقم. الشفة السفلى تدعمها الثلث القاطع للأسنان الأمامية العليا، وإلا الشفة تنعض. لما الفك مفتوح الشفاه ترخى — لازم نسجّل حركتها بالطبعة. وإذا انشدّت، زوايا الفم تنجرح من الطابع.</p>","<p>عضلات فوق اللامي تأثر على حدود الطقم الأسفل. الـ mylohyoid هي أرضية الفم العضلية؛ إذا الطقم نزل تحت خطها يعترضها ويزعاج البلع.</p><p>عضلات تحت اللامي ما تحدد حافة الطقم، بس تثبّت العظم اللامي حتى اللي فوقه تحرك الفك.</p><p>عضلات المضغ أربعة. بالطقم الكامل الحركات <b>غير المضغية</b> وملامسة الأسنان خلالها أهم غالباً. تسجيل العلاقة المركزية يستعين بالألياف <b>الخلفية للصدغية (temporalis)</b>.</p>","<p>الرباط الجناحي الفكي من الشص لفوق لمنطقة الـ retromolar لتحت.</p><p>عضلات الحنك اللين: الـ tensor تأثر على منطقة الـ hamular notch؛ الـ levator ترفع الحنك وتساعد تحديد خط الاهتزاز؛ الـ palatoglossus تضغط على الامتداد اللساني للطقم الأسفل.</p><p>خط الاهتزاز على الحنك اللين مو على العظم. المريض يقول «آه»، أو يسكر مناخيره وينفخ بهدوء حتى الحنك ينزل عند منطقة الانتقال.</p><p>تصنيف الحنك: I أفقي = تغطية PPS أكبر؛ II زاوية 45° = أقل؛ III حوالي 70° = أقل تغطية.</p>","<p>اللسان يلامس الحواف اللسانية للطقم الأسفل، فالحافة لازم تسمح بحركته الواسعة. بتقليم العضلات نطلب من المريض يحرك لسانه يمين ويسار ويطلعه ويبلل شفايفه.</p><p>بعد قلع الأسنان نفقد مستقبلات الرباط. الانقباض <b>isometric</b> (الطول ثابت) و<b>isotonic</b> (يقصر والتوتر ثابت). بالفك الاثنين يصيرون: isotonic للحركة، وisometric لتثبيت الفك لما الأسنان تتلامس. تمدد العضلة تحت الحمل مهم بتسجيل علاقات الفكين.</p>","<p>ثلاثة أنواع غشاء: <b>مضغي</b> متقرن على قمة الحافة والحنك الصلب (مثبت زين)؛ <b>بطاني</b> غير متقرن بالشفاه والخدود والدهليز وبطن اللسان، وهو اللي يلامس حواف الطقم؛ و<b>متخصص</b> على ظهر اللسان.</p><p>حنك لين: غير متقرن وفيه غدد، حالة وسط بين التثبيت الرخو والثابت.</p>","<p>الغدد: النكفية مصلية؛ تحت الفك مختلطة وأغلبها مصلية؛ تحت اللسان مختلطة وأغلبها مخاطية.</p><p>اللعاب الثقيل الخيطي يقدر يطلّع الطقم من مكانه، يعمل فراغات بالطبعة، ويسبب غثيان.</p><p>قلّة اللعاب (<b>xerostomia</b>): التثبيت يقل، الخدود والشفاه تلتصق بالقاعدة، تقرح تحت الطقم، والنظافة تسوء.</p><p>وظائفه: هضم النشا (ptyalin)، تزييت، حماية، يساعد تثبيت الأجهزة، وتنظيف ميكانيكي.</p>","<p>أسئلة على مناطق التحميل والتخفيف وحدود الطقم. اضغط الجواب.</p>","<p>ركّز على العضلات واللعاب. بعدها الاختبار النهائي.</p>","<p>خمسة على التشريح العظمي. كمّل المجموعة الثانية بعدهن.</p>","<p>آخر خمسة. بعد ما تجاوب، احسب نتيجتك من الزر.</p>",""];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
