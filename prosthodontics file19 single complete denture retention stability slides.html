@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Prosthodontics File 19 — Single Complete Denture, Retention and Stability</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Prosthodontics · 5th year · Lectures 1–3</div>
+    <h1>Single Complete Denture, Retention and Stability</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lectures 1–3 by Asst. Lect. Ghasaq Hisham (PDF pages 503–526): the single complete denture and combination syndrome, how complete-denture retention is obtained, and the factors of stability and support.</p>
+    <ul>
+      <li>Single complete-denture combinations, Yurkstas / Swenson / Bruce modification, and Kelly’s combination syndrome</li>
+      <li>Fracture precautions, porcelain versus acrylic versus gold or amalgam occlusals, and the poor prognosis of a mandibular single denture</li>
+      <li>Retention: anatomical factors, adhesion (24 cm² / 14 cm²), cohesion, atmospheric pressure, House PPS sizes in this lecture, adhesives and why suction chambers are avoided</li>
+      <li>Stability, the neutral zone, and a U-shaped vault as the ideal palatal form</li>
+      <li>Support: mandibular buccal shelf and maxillary hard palate as primary areas; ridge crests as secondary; implants and mini-implants</li>
+      <li>Total run time: <b>24 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 12</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Prosthodontics · File 19","t":"Single complete denture, retention and stability","b":"<p>University of Baghdad, College of Dentistry — Prosthodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This 5th-year file covers PDF pages 503–526 (Asst. Lect. Ghasaq Hisham / م.ا. د. غسق هشام), Lectures 1–3: the single complete denture (combinations, occlusal modification, combination syndrome, fracture and wear, and construction steps); retention of complete dentures (anatomical, physical, mechanical, muscular and surgical factors); and stability and support, including primary and secondary bearing areas.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Residual-ridge resorption, occlusion and esthetics continue in Files 20 and 21. Bearing-area figures in this retention lecture are 24 cm² (maxilla) and 14 cm² (mandible), the same numbers as File 10.</p>"},{"k":"5th year · Single complete denture","t":"What a single complete denture is, and how to modify the opposing natural occlusion","b":"<p>The construction of a single denture may be presented in a variety of dental combinations: a single complete denture opposing natural teeth — (a) an upper complete denture opposing a complete mandibular dentition; (b) an upper complete denture opposing a mandibular partial denture; (c) a lower complete denture opposing an upper partial denture; or (d) a lower complete denture opposing a complete maxillary dentition — or a single complete denture opposing a previously constructed complete denture. The single complete maxillary denture opposing all or some of the mandibular natural teeth is a very common clinical situation.</p><p>When a maxillary complete denture opposes a complete mandibular dentition, gross occlusal discrepancies are very common and require occlusal modification, adjustment or orthodontics. The morphology of the natural teeth determines the selection of the artificial teeth (for example size and shape). If the mandibular teeth are attrited, cuspless teeth are preferred; if they are not attrited, anatomic teeth are preferred. Occlusal modification of the remaining natural teeth is usually required before construction; it is a pre-prosthetic procedure in which occlusal discrepancies in the natural teeth are corrected.</p><p>Techniques used to determine the necessary modifications:</p><ol><li><b>Yurkstas technique</b> — a commercially available U-shaped metal occlusal template, slightly convex on the lower surface, often an aid in detecting minor deviations in the occlusal scheme.</li><li><b>Swenson’s technique</b> — upper and lower casts are mounted on the articulator and the upper denture is constructed. If the lower natural teeth interfere with placement of the denture teeth, they are adjusted on the cast and the area is marked with a pencil; the natural teeth are then modified using the marked diagnostic cast as a guide. This technique is simple but time-consuming.</li><li><b>Bruce technique</b> — a clear acrylic-resin template is fabricated over the modified stone cast. The inner surface of the template is coated with pressure-indicating paste and placed over the patient’s natural teeth.</li></ol>"},{"k":"5th year · Single complete denture","t":"Combination (Kelly’s) syndrome: pathogenesis, five features, and six associated changes","b":"<p>When an upper complete denture opposes a mandibular partial denture, complications are significant. Tooth selection: if the opposing partial denture has porcelain teeth, porcelain is preferred; if opposing natural teeth have gold or metal crowns, acrylic teeth are preferred; acrylic teeth are also preferred when the denture opposes normal natural teeth or a partial denture with acrylic teeth. Complications include combination syndrome, fracture of the denture, and wear of the natural teeth.</p><p><b>Combination syndrome (Kelly, 1972)</b> describes destructive problems that may be encountered after long-term use of a mandibular distal-extension partial denture against a complete maxillary denture. Sequence 1: the patient concentrates the occlusal load on the remaining natural mandibular anterior teeth for proprioception, so more force acts on the anterior part of the maxillary denture. This leads to increased resorption of the anterior maxilla, which is replaced by flabby tissue; the occlusal plane tilts anteriorly upwards and posteriorly downwards from lack of anterior support. The labial flange displaces and irritates the labial vestibule, leading to epulis fissuratum. Posteriorly there is fibrous overgrowth of the maxillary tuberosity. The posterior-downward shift produces resorption in the mandibular distal-extension bearing area; vertical dimension decreases, and retention and stability fall. The tilted plane disoccludes the lower anteriors, which super-erupt and lose periodontal support, increasing force on the anterior complete denture, and the vicious cycle continues. Sequence 2 starts with gradual resorption of the mandibular distal-extension residual ridge, tilting the plane the same way; the rest of the cycle continues.</p><p>The syndrome consists of: (1) loss of bone from the maxillary anterior edentulous ridge; (2) downgrowth of the maxillary tuberosities; (3) papillary hyperplasia of the tissues of the hard palate; (4) extrusion of the lower anterior teeth; and (5) loss of bone beneath the removable partial-denture bases. It usually has six associated changes: loss of vertical dimension of occlusion; occlusal-plane discrepancy; anterior spatial resorption of the mandible; development of epulis fissuratum; poor adaptation of the prosthesis; and periodontal changes. It is the result of three main factors: the great magnitude of forces involved; the unsuitability of the denture foundation to resist them; and a particularly unfavourable occlusal relationship.</p><p>Setting of teeth and occlusal concept: balanced occlusion or monoplane occlusion. If the opposing teeth are anatomic, balanced occlusion is used; if they are attrited, monoplane occlusion is used.</p>"},{"k":"5th year · Single complete denture","t":"Fracture, wear of teeth, the mandibular single denture, and how to overcome the problems","b":"<p><b>Fracture of the denture</b> is common with a single complete denture because the denture receives an excessive load from the natural teeth. Precipitating factors: excessive anterior occlusal load; deep labial frenal notches; and a high occlusal load from excessive action of the masseter. Precautions: maintain adequate thickness of the denture base; never deepen the labial notch; and, for cases with high fracture potential, use a cast metal denture base.</p><p><b>Wear of teeth.</b> When porcelain teeth are used, severe abrasion of opposing natural teeth will occur, so proper selection of tooth material is very important, and occlusal discrepancy should be avoided. Types of teeth: porcelain teeth cause rapid wear of opposing natural teeth while the occlusal vertical dimension is maintained (a problem). Acrylic teeth do not wear the opposing natural teeth and are the teeth of choice; their major disadvantage is their own wear, which results in loss of vertical dimension. Acrylic with gold occlusal surfaces can minimize wear and is considered the best material to oppose natural teeth, but is expensive and time-consuming. In patients with limited financial resources, amalgam stops can be inserted into the cusp tips of acrylic resin denture teeth to reduce occlusal wear; the technique is simple, less time-consuming and less expensive than gold occlusals.</p><p>The prognosis of a <b>mandibular single denture</b> against natural teeth is less favourable than when a full upper denture is opposed by natural lower teeth, and it would be difficult to classify this case as clinically successful, because of: excessive resorption of the lower ridge from greater stresses per unit area; the amount of firmly attached mucosa; and a smaller denture-bearing area in the mandible than in the maxilla. Alternative treatment: dental implants if possible, or a resilient denture liner in the mandibular denture. Mandibular single dentures have a very poor prognosis.</p><p>Problems of a single denture include a greater magnitude of forces changing the underlying bone; an occlusal form of the remaining natural teeth that may be unsuitable for the denture; and an occlusal scheme causing more horizontal forces. These may produce single-denture syndrome, a loose or tilting denture, mucosal damage, and ridge resorption. The primary consideration for continued success is preservation of remaining tissue: proper diagnosis (history and examination, study of casts, face-bow mounting of the upper, provisional centric record of the lower at an acceptable vertical dimension) and complete-denture principles — maximum base extension within functional anatomical limits (force per unit area kept to a minimum), lip support, minimal vertical overlap (overbite), suitable occlusion and free articulation, and avoidance of broad inclined planes. Construction steps: proper diagnosis and mounting of diagnostic casts (ridge relationship, interdental space, occlusal plane, spaces, tooth position including cusp inclination and rotations, and tooth wear — the opposing natural dentition often has an uneven occlusal plane or tilted teeth); occlusal adjustment and tooth modification; a final impression providing maximum extension without muscle impingement, intimate tissue contact, proper borders including the posterior maxillary border, and proper relief of hard and sensitive areas; jaw relation and face-bow transfer (wax may be freely removed from the upper rim to achieve the required jaw closure; the incisal level and occlusal plane can later be determined by reference to the lower natural teeth); artificial-teeth adjustment and try-in; and delivery.</p>"},{"k":"5th year · Retention of complete dentures","t":"What retention is, the three denture surfaces, and anatomical factors","b":"<p><b>Retention</b> is the quality of a denture that resists movement away from the tissue. Denture surfaces: the <b>occlusal surface</b> makes contact or near contact with the corresponding surface of the opposing denture or dentition; the <b>polished surface</b> is usually polished and includes the labial, buccal and lingual surfaces of the teeth, and is in contact with the lips, cheeks and tongue — proper contour should be in harmony with the function of tongue and cheeks to keep the denture in position. Craddock described the gripping action of the buccinator on the buccal flange of the mandibular denture. If the buccal flanges of the maxillary denture slope up and out from the occlusal surfaces, and those of the mandibular denture slope down and out from the occlusal plane, contraction of the buccinator will tend to seat both dentures on their basal seats. The <b>impression surface</b> had its shape determined by the impression; it includes the borders and extends to the polished surface. The lingual surfaces of the lingual flanges should slope toward the centre of the mouth so the tongue can fit against them and perfect the border seal on the lingual side; lingual flanges turn laterally in the posterior part toward the ramus, which also helps the border seal at the back end of the mandibular denture.</p><p>Factors affecting retention: anatomical, physical, mechanical, muscular, and surgical.</p><p><b>Anatomical factors</b> (size and quality of the denture-bearing area, mainly affecting the lower denture): <b>Ridge form</b> — a high, flat-crested, well-formed ridge after recent extraction has the problem only of little space for setting teeth; a flat ridge is difficult, with no retention and stability, so extend the impression beyond the mylohyoid area; a ridge with undercuts is more common in the upper (bilateral maxillary tuberosity) — surgery on one side, block out the other, and change the path of insertion; a knife ridge is difficult and causes lacerations and pain, so relief is used; a flabby fibrous movable ridge gives no good seal, so modify the impression technique or do surgical correction. <b>Vault form</b> — U-shaped is good in retention and stability; V-shaped has retention but no stability, and any pressure could break the seal; flat-shaped has not enough depth, so no retention and stability. <b>Arch form</b> — squared, ovoid or tapered; the best is squared, because there are four points of contact and it resists lateral forces. <b>Arch relationship</b> — most edentulous patients have Class III because of the pattern of ridge resorption, so movement is limited to opening and closing (no protrusive movement); some have Class II, which is unfavourable because of a small surface area and difficulty getting the upper and lower into contact. Small inter-arch space gives more retention. A tongue that is too big can interfere and dislodge the lower and upper. Mucosa should be firm, compressible and of even thickness, not thick and flabby.</p>"},{"k":"5th year · Retention of complete dentures","t":"Physical factors: adhesion, cohesion, capillary attraction, atmospheric pressure and the PPS","b":"<p><b>Adhesion</b> is the physical attraction between unlike molecules, as in the contact of saliva with both oral tissue and the denture base. The amount depends on: close adaptation of the denture base; the type of saliva (viscosity and wettability) — thin serous saliva provides better adhesion than thick ropy saliva, which builds up pressure and pushes the denture out of position; and the area covered by the denture. In this lecture the size of the maxillary denture-bearing area is about <b>24 cm²</b> and that of the mandible about <b>14 cm²</b>. The mandibular foundation therefore has decreased adhesion. A V-shaped palate induces sliding or deflection, so retention by adhesion is less.</p><p><b>Cohesion</b> is the physical attraction between like molecules. It is directly related to the area covered (if other factors are equal); the salivary film should be thin — watery serous saliva forms a thinner, more cohesive film than thick mucous saliva; and close adaptation is needed so that only a thin film of saliva is present. <b>Interfacial surface tension</b> is a property of liquids in which the exposed surface tends to contract to the smallest possible area. For maximum interfacial tension: saliva should be thin and even; there should be perfect adaptation; the base should cover a large area; and the denture should have good adhesive and cohesive force.</p><p><b>Capillary attraction</b> is the quality that causes elevation or depression of the surface of a liquid in contact with a solid. It is improved by close adaptation (the greater the distance, the less the capillary force) and by a greater denture-bearing area.</p><p><b>Atmospheric pressure and peripheral seal.</b> When a dislodging force is applied to a denture with a good border seal, a negative pressure develops in the space between the base and the mucous membrane, and atmospheric pressure from outside pushes the denture towards the basal seat. Factors: closeness of adaptation (impression technique; an impression material that places slight generalized pressure on soft tissue is preferred; proper border molding); the peripheral seal (contact between the mucous membrane and the peripheral polished surface); and the posterior palatal seal area (soft tissue at or along the junction of the hard and soft palates on which pressure within physiologic limits can be applied). According to House in this lecture: Class I (flat, wide palatal vault) — a butterfly PPS <b>3–4 mm</b> in width and <b>1.5 mm</b> in depth; Class II intermediate; Class III (deep, high vault) — a bead <b>1 mm</b> in depth (the lecture also writes “Width 1.5 depth”). Functions of the PPS: aids retention by constant contact during speech, mastication and deglutition; reduces the gag reflex by preventing a gap during function; prevents food accumulation at the posterior border; and compensates for polymerization shrinkage.</p><p><b>Gravity</b> acts as a retentive force for the mandibular denture and as a displacing force for the maxillary denture when the patient is upright. <b>Viscosity</b> is resistance to flow; additional saliva can lose retention because it increases the distance between denture and mucosa. <b>Wettability:</b> for adhesion between a solid and a fluid, wetting must take place; a high contact angle indicates poor wetting.</p>"},{"k":"5th year · Retention of complete dentures","t":"Mechanical, muscular and surgical factors, including denture adhesives","b":"<p><b>Mechanical factors:</b> undercuts; magnetic force; denture adhesive; and suction chambers and suction discs. Unilateral undercuts aid retention, while bilateral undercuts interfere with insertion and require surgical correction. If bony undercuts exist, retention may be enhanced by designing a denture that uses them, with special care in planning the path of insertion so that the mucosa is not traumatized. Intramucosal magnets aid retention of a highly resorbed ridge, and magnetic attachments can significantly improve retention of a mandibular complete overdenture; their location greatly influences the retentive force. Some metal alloys possess magnetic properties that can be used in overdentures or partial dentures.</p><p><b>Denture adhesives</b> are indicated when well-made complete dentures do not satisfy a patient’s perceived retention and stability expectations; in xerostomia; in neurological diseases such as stroke and orofacial dyskinesia; and after extensive surgery for removal of oral neoplasia. They should not be used for a patient with ill-fitting or worn-out dentures; as a substitute for a reline or a tissue conditioner; for a patient physically unable to clean dentures; with temporary or immediate dentures where infections could result; or in a patient allergic to the adhesive. They enhance retention by optimizing interfacial forces: increasing the adhesive and cohesive properties and viscosity of the interposed medium; eliminating voids between the base and the basal seat; increasing the viscosity of saliva; the hydrated material swells in saliva or water and sticks readily to the tissue surface and the mucosal surface of the denture. Powder starts its action immediately with maximum effectiveness, which then decreases with time. Cream starts immediately with accepted effectiveness, which increases to a maximum with time. Listed side effects: high or elevated zinc blood levels; symptoms of nerve damage; numbness or tingling in the arms and legs (paresthesia); anemia; and bone-marrow failure.</p><p>A <b>vacuum device</b> (suction chamber; also called a rubber disc or palatal window) was used in the past in maxillary dentures to create an area of negative pressure. These are avoided now because of their potential for creating palatal hyperplasia.</p><p><b>Muscular factors.</b> The oral and facial musculature supply supplementary retentive forces provided the teeth are positioned in the neutral zone between the cheeks and tongue, and the polished surfaces are properly shaped. For these muscles to be most effective: the bases must be properly extended to cover the maximum area possible without interfering with the health and function of surrounding structures; the occlusal plane must be at the correct level; and the arch form of the teeth must be in the neutral zone. Muscles affecting retention: buccinator, orbicularis oris, and the muscle of the tongue. Accurate approximation of tongue, cheeks and lip controls the flow of saliva under the denture and increases the effective area of retention; inaccurate extension may allow saliva and air under the denture and cause loss of retention.</p><p><b>Surgical factors:</b> vestibuloplasty; tuberoplasty; and ridge augmentation.</p>"},{"k":"5th year · Stability and support","t":"Stability: definition and the factors that keep a denture from being displaced","b":"<p><b>Stability</b> is that quality of maintaining a constant position in the presence of forces that threaten it; the quality of a denture to be firm, stable or constant and to resist displacement by functional stresses, and not to be subject to change of position when forces are applied.</p><p>Factors affecting stability: vertical height of the residual ridge; quality of the impression; occlusal rims / occlusal plane; arrangement of the teeth; contour of the polished surface; shape of the palatal vault; retention; and proper relief. The width of the occlusal table must be less than that of natural teeth, to obtain good stability and retention.</p><p>The residual ridge should have sufficient vertical height; highly resorbed ridges offer the least stability. An impression should be as accurate as possible, smooth, and should duplicate all the details; it should be devoid of voids and rough surfaces, should not warp on removal, should be dimensionally stable, and the cast should be poured as soon as possible. The occlusal plane should be oriented parallel to the ridge — if it is inclined, a sliding force may reduce stability — and should divide the inter-arch space equally.</p><p>The position of the teeth and their occlusion play an important role. Balanced occlusion facilitates even distribution of force; absence of balanced occlusion may produce an unbalanced lever-type force on one side, leading to loss of stability. The teeth should be arranged in the <b>neutral zone</b> — the potential space between the lips and cheeks on one side and the tongue on the other — where natural or artificial teeth are subjected to equal and opposite forces from the surrounding musculature. The polished surface should be harmonious with the oral structures and should not interfere with the oral musculature. A steep palatal vault may enhance stability by providing a greater surface area of contact and long inclines approaching a right angle to the direction of force. Hard-palate forms: U-shaped is ideal for both retention and stability; V-shaped has less retention because the peripheral seal is easily broken; rounded has reduced resistance to lateral and rotator forces. Stability decreases with loss of vertical height of the ridge and with an increase in the movement of flabby tissue.</p>"},{"k":"5th year · Stability and support","t":"Support: primary and secondary bearing areas, and how to improve retention, stability and support","b":"<p><b>Support</b> is the resistance to vertical forces of mastication, occlusal forces and other forces applied in a direction towards the denture-bearing area. Initial denture support is achieved by an impression procedure that provides optimal extension and functional loading of the supporting tissue.</p><p>The soft tissues: in the edentulous person, the mucosa covering the hard palate and the crest of the residual ridge, including residual attached gingiva, is masticatory mucosa, with a well-defined keratinized layer whose thickness changes depending on whether dentures are worn and on their clinical acceptability. The submucosa is firmly attached to the periosteum and will usually withstand denture pressures successfully. The thickness and consistency of the submucosa are largely responsible for the support the mucous membrane affords, because in most instances the submucosa makes up the bulk of the membrane. When the submucosal layer is thin, the soft tissues are non-resilient and easily traumatized; when it is loosely attached, inflamed or edematous, the tissue is easily displaceable and stability and support are adversely affected. Hard tissue should be relatively resistant to remodeling and resorptive changes. Pressure should be minimized in the regions most susceptible, and forces directed toward those relatively resistant to resorption. Cortical bone is harder, stronger and stiffer than cancellous bone; cancellous bone is less dense, softer, weaker and less stiff.</p><p><b>Mandible.</b> The <b>buccal shelf</b> (from the residual ridge to the external oblique line in the lower buccal vestibule, covered with cortical bone) is the <b>primary support area</b> for the mandibular denture because it is usually covered by mucosa with an intervening submucous layer containing glandular connective tissue and buccinator fibres; it is parallel to the occlusal plane; and it is lined by cortical bone. The mandibular residual ridge is covered by a keratinized layer attached by its submucosa to the periosteum; the extent of this attachment varies — in some people the crest is loosely attached and quite movable. The ridge crests are reserved as <b>secondary support areas</b>, because of lack of muscle attachment and the presence of cancellous bone.</p><p><b>Maxilla.</b> The horizontal portion of the hard palate is considered the <b>primary stress-bearing area</b> (keratinized masticatory mucosa over a distinct submucosa almost everywhere). In the region of the medial palatal suture the submucosa is extremely thin, so the mucosa is practically in contact with bone and may need relief to avoid trauma. The rugae area is set at an angle to the residual ridge and is thinly covered; it contributes in a secondary capacity. The submucosa over the incisive papilla and nasopalatine canal contains the nasopalatine vessels and nerves. The crest of the edentulous ridge is an important area of support, but the bone is subject to resorption, unlike the palate, which is resistant; the ridge crest should therefore be looked on as a <b>secondary</b> supporting area. The inclined facial surface of the maxillary ridge provides little support, although the peripheral tissues should be contacted to provide a border seal.</p><p>Factors that influence the form and size of the supporting bone include: its original size and consistency; the person’s general health; forces developed by the surrounding musculature; the severity and location of periodontal disease (a frequent cause of tooth loss); forces from wearing dental prostheses; surgery at the time of removal of the teeth; and the relative length of time different parts of the jaws have been edentulous. Dental implants improve the support, retention and stability of a full or partial denture, reducing slip and movement while speaking or eating. Mini-implants have become a common treatment option for improving retention of lower dentures.</p>"},{"k":"اختبر نفسك","t":"Quiz: combination syndrome, tooth materials, and Yurkstas versus Swenson","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Kelly’s combination syndrome, seen with a complete maxillary denture opposing a mandibular distal-extension partial denture, includes which set of findings?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Only wear of porcelain teeth against gold crowns</button><button type=\"button\" class=\"opt\" data-i=\"1\">Loss of bone from the maxillary anterior ridge, downgrowth of the tuberosities, papillary hyperplasia of the hard palate, extrusion of the lower anteriors, and loss of bone under the partial-denture bases</button><button type=\"button\" class=\"opt\" data-i=\"2\">A high, well-rounded residual ridge only</button><button type=\"button\" class=\"opt\" data-i=\"3\">Improved vertical dimension and a more retentive upper denture</button></div><div class=\"qexp\" hidden><p>خمس موجودات المتلازمة: ضياع عظم الحافة الأمامية العلوية، نزول الحدبات، تضخم حليمي بجلد الحنك الصلب، بروز الأمامية السفلية، وضياع عظم تحت قواعد الجزئي. ويه ست تغيرات مرافقة (نقص البعد العمودي، خلل المستوى، امتصاص أمامي سفلي، epulis، تكيف سيء، وتغيرات لثوية).</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">When a single complete denture opposes natural teeth, the lecture’s preferred tooth material, and a cheaper way to reduce acrylic wear, are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Porcelain teeth, because they never wear the natural dentition</button><button type=\"button\" class=\"opt\" data-i=\"1\">Acrylic teeth (the teeth of choice, though they wear and vertical dimension may be lost); amalgam stops in the cusp tips if gold occlusals are too expensive; never deepen the labial notch if fracture risk is high</button><button type=\"button\" class=\"opt\" data-i=\"2\">Only a mandibular single denture, which has the better prognosis</button><button type=\"button\" class=\"opt\" data-i=\"3\">Cuspless teeth against all unattrited anatomic opposing teeth</button></div><div class=\"qexp\" hidden><p>الأكريلك المفضّل لأنه ما يبري الطبيعية، بس يتآكل فيضيع البعد العمودي. الذهب أفضل مقابل الطبيعية بس غالي؛ توقفات الأملغم أرخص. البورسلين يبري الطبيعية بشدة. الطقم السفلي المفرد إنذاره أسوأ. إذا المقابلة متآكلة فضّل بلا حدبات؛ إذا مو متآكلة فضّل تشريحية. لا تعمّق قلم اللجام الشفوي.</p></div></div>"},{"k":"اختبر نفسك","t":"Quiz: bearing-area size, House PPS in this lecture, and adhesives","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">In this retention lecture, the maxillary and mandibular denture-bearing areas, and the saliva that gives better adhesion, are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">12 cm² and 23 cm², with thick ropy saliva preferred</button><button type=\"button\" class=\"opt\" data-i=\"1\">About 24 cm² (maxilla) and 14 cm² (mandible); thin serous saliva provides better adhesion than thick ropy saliva, which can push the denture out of position</button><button type=\"button\" class=\"opt\" data-i=\"2\">Equal areas in both arches, so adhesion is equal</button><button type=\"button\" class=\"opt\" data-i=\"3\">Only the shape of the vault matters, never the area</button></div><div class=\"qexp\" hidden><p>بهالمحاضرة العلوي حوالي <b>24 سم²</b> والسفلي <b>14 سم²</b> (نفس أرقام ملف 10، مو 12 و 23 اللي بملف 5). اللعاب المصلي الرقيق أفضل؛ الكثيف الخيطي يكوّن ضغط ويدفع الطقم.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A vacuum (suction-chamber) device in a maxillary denture, and a zinc-containing denture adhesive, are discussed as follows:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Suction chambers are still first-line, and adhesives have no listed side effects</button><button type=\"button\" class=\"opt\" data-i=\"1\">Suction chambers are avoided now because of their potential to create palatal hyperplasia; adhesive side effects listed include elevated zinc, nerve-damage symptoms, paresthesia, anemia and bone-marrow failure. Adhesives must not be used on an ill-fitting denture or as a substitute for a reline</button><button type=\"button\" class=\"opt\" data-i=\"2\">Adhesives should replace every reline, and vacuum cups always prevent hyperplasia</button><button type=\"button\" class=\"opt\" data-i=\"3\">Powder adhesives never start working immediately</button></div><div class=\"qexp\" hidden><p>غرف الشفط كانت تعمل ضغط سالب، هسه تُتجنَّب لتضخم الحنك. اللاصق مو لبدتيل التبطين ولا لطقم سيء الانطباق. البودرة تبدأ فوراً بأقصى فعل ثم ينقص؛ الكريم يزيد لأقصى حد ويه الوقت.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">For House Class I versus Class III palates, what PPS shape and size does this lecture give?</button><div class=\"flash-a\" hidden>Class I (flat, wide vault): a butterfly PPS 3–4 mm wide and 1.5 mm deep. Class II is intermediate. Class III (deep, high vault): a bead 1 mm deep (the lecture also writes “Width 1.5 depth”). These are this lecture’s figures; File 15 used House widths of 3–4 mm, 2–3 mm, or a single bead on the posterior vibrating line.</div></div>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: buccal shelf, maxillary primary support, and stability of the occlusal plane","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The primary support area of the mandibular complete denture, and why the residual-ridge crest is secondary, are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The ridge crest, because it is all cortical bone with muscle attachment</button><button type=\"button\" class=\"opt\" data-i=\"1\">The buccal shelf (cortical bone, parallel to the occlusal plane, with submucosa containing glandular tissue and buccinator fibres); the ridge crest is secondary because of lack of muscle attachment and the presence of cancellous bone</button><button type=\"button\" class=\"opt\" data-i=\"2\">The incisive papilla, which contains no vessels</button><button type=\"button\" class=\"opt\" data-i=\"3\">The facial incline of the maxillary ridge, which provides most mandibular support</button></div><div class=\"qexp\" hidden><p>الرف الشدقي هو الدعم الأولي للسفلي. قمة الحافة ثانوية. بالعلوي الجزء الأفقي من الحنك الصلب هو تحمل الإجهاد الأولي، وقمة الحافة ثانوية لأنها تمتص بخلاف الحنك. الدرز الأوسط قد يحتاج تفريغ لأن النسيج تحت المخاطي رقيق.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Stability is reduced when the occlusal plane is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Oriented parallel to the ridge and divides the inter-arch space equally, with teeth in the neutral zone and a U-shaped vault</button><button type=\"button\" class=\"opt\" data-i=\"1\">Inclined so that a sliding force acts, or when ridge height is lost and flabby tissue is more movable; absence of balanced occlusion may also produce a lever-type force on one side</button><button type=\"button\" class=\"opt\" data-i=\"2\">Always made much narrower than natural teeth is never a factor</button><button type=\"button\" class=\"opt\" data-i=\"3\">Recorded only after using a palatal suction disc</button></div><div class=\"qexp\" hidden><p>مستوى الإطباق لازم يوازي الحافة ويقسم المسافة بالتساوي. الميل يولد انزلاق. الحافة الواطئة والنسيج الرخو المتحرك يقللان الثبات. الإطباق المتوازن يوزع القوة؛ غيابه رافعة على جهة واحدة. الأسنان بالمنطقة المحايدة. القبة U مثالية.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Swenson’s technique for deciding occlusal modification of opposing natural teeth is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A U-shaped metal template slightly convex on its lower surface (that is Yurkstas)</button><button type=\"button\" class=\"opt\" data-i=\"1\">Mounting the casts, constructing the upper denture, adjusting interfering lower teeth on the cast, marking them, and then modifying the natural teeth from that guide — simple but time-consuming</button><button type=\"button\" class=\"opt\" data-i=\"2\">A clear template with pressure-indicating paste only (that is Bruce)</button><button type=\"button\" class=\"opt\" data-i=\"3\">Always treating a mandibular single denture as having the better prognosis</button></div><div class=\"qexp\" hidden><p>Yurkstas: قالب معدني U. Swenson: تعديل على المصبوبة ودليل بالقلم — بسيط بس يأخذ وقت. Bruce: قالب شفاف ويه معجون كاشف ضغط.</p></div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا الملف يجمع ثلاث محاضرات للمرحلة الخامسة (م.ا. د. غسق هشام): الطقم الكامل المفرد، تثبيت الطقم الكامل، والثبات والدعم. أرقام مساحة التحمل هنا <b>24 سم² للعلوي و 14 سم² للسفلي</b> (نفس ملف 10). الامتصاص والإطباق والشكل بالملفين 20 و 21.</p>","<p>الطقم الكامل المفرد يجي بعدة تراكيب: طقم علوي كامل مقابل أسنان سفلية كاملة أو طقم جزئي سفلي؛ أو طقم سفلي كامل مقابل جزئي علوي أو أسنان علوية كاملة؛ أو مقابل طقم كامل مصنوع سابقاً. الأشيع: طقم علوي كامل مقابل كل أو بعض الأسنان السفلية الطبيعية.</p><p>بهذا الوضع التdiscrepancies الإطباقية الكبيرة شائعة وتحتاج تعديل أو تقويم. شكل الأسنان الطبيعية يحدد اختيار الصناعية. إذا السفلية متآكلة فضّل أسنان بلا حدبات؛ إذا مو متآكلة فضّل تشريحية. تعديل إطباق الأسنان الطبيعية عادة لازم قبل التصنيع.</p><p>ثلاث طرق: <b>Yurkstas</b> — قالب معدني شكل U محدب قليلاً من تحت يكشف انحرافات بسيطة. <b>Swenson</b> — تركيب المصبوبات وصنع الطقم العلوي، وعدّل الأسنان على المصبوبة وعلّمها بالقلم وعدّل الطبيعية على هالدليل (بسيطة بس تاخذ وقت). <b>Bruce</b> — قالب أكريلك شفاف فوق المصبوبة المعدّلة، باطنه معجون كاشف ضغط ويُوضَع على أسنان المريض.</p>","<p>طقم علوي مقابل جزئي سفلي مضاعفاته مهمة. اختيار الأسنان: إذا الجزئي بورسلين فضّل بورسلين؛ إذا الطبيعية تيجان ذهب أو معدن فضّل أكريلك؛ وأكريلك هم مقابل أسنان طبيعية أو جزئي أكريلك. المضاعفات: متلازمة التركيب، كسر الطقم، وتآكل الأسنان الطبيعية.</p><p><b>متلازمة Kelly (1972)</b>: مشاكل تدميرية من استعمال طويل لطقم جزئي سفلي بامتداد بعيد مقابل طقم علوي كامل. المريض يركز الحمل على الأمامية السفلية الباقية (إحساس عميق)، فالقوة تزيد على مقدم الطقم العلوي. يمتص مقدم الفك العلوي ويتعوض بنسيج رخو؛ مستوى الإطباق يميل أمامياً لفوق وخلفياً لتحت. الشفة الصناعية تزاح وتهيّج الدهليز فيصير epulis fissuratum، وخلفياً نمو ليفي بالحدبات. الامتصاص يمتد لمساحة التحمل السفلية البعيدة؛ البعد العمودي والتثبيت والثبات ينقصون. المستوى المائل يفك إطباق الأمامية السفلية فتنبثق زيادة ويضعف دعمها اللثوي، والقوة تزيد أكثر — حلقة مفرغة. التسلسل 2 يبدأ بامتصاص الحافة السفلية ذات الامتداد البعيد ونفس الميل.</p><p>خمس موجودات: ضياع عظم الحافة الأمامية العلوية؛ نزول الحدبات العلوية؛ تضخم حليمي بجلد الحنك الصلب؛ بروز الأمامية السفلية؛ وضياع عظم تحت قواعد الطقم الجزئي. وست تغيرات مرافقة: نقص البعد العمودي الإطباقي؛ خلل مستوى الإطباق؛ امتصاص مكاني أمامي للفك السفلي؛ epulis fissuratum؛ تكيف سيء للتعويض؛ وتغيرات لثوية. ثلاثة عوامل رئيسة: مقدار قوى كبير، أساس ما يقاومها، وعلاقة إطباق غير مواتية جداً.</p><p>مفهوم الإطباق: متوازن إذا المقابلة تشريحية؛ مستوٍ (monoplane) إذا متآكلة.</p>","<p>كسر الطقم شائع لأن الحمل من الأسنان الطبيعية زايد. العوامل: حمل إطباقي أمامي مفرط؛ أقلام لجام شفوي عميقة؛ وحمل عالي من عمل ماضغة مفرط. الاحتياط: سماكة قاعدة كافية؛ <b>لا تعمّق قلم اللجام الشفوي</b>؛ وإذا احتمال الكسر عالي استخدم قاعدة معدنية مصبوبة.</p><p>تآكل الأسنان: البورسلين يبري الطبيعية بشدة والبعد العمودي يبقى (مشكلة). الأكريلك ما يبري الطبيعية وهو المفضّل، بس يتآكل هو فيضيع البعد العمودي. أكريلك ويه سطوح ذهبية أفضل مقابل الطبيعية بس غالي ويأخذ وقت. بموارد محدودة: توقفات أملغم بقمم حدبات الأكريلك تقلل التآكل، أبسط وأرخص من الذهب.</p><p>إنذار <b>الطقم السفلي المفرد</b> مقابل أسنان طبيعية أسوأ من العلوي مقابل سفلية طبيعية، ويصعب اعتباره نجاحاً سريرياً: امتصاص سفلي زايد (ضغط أكبر لوحدة المساحة)، كمية مخاطية ملتصقة، ومساحة تحمل أصغر من العلوي. البدائل: زرعات إن أمكن، أو بطانة طرية. إنذاره ضعيف جداً.</p><p>المشاكل: قوى أكبر تغيّر العظم؛ شكل إطباق الطبيعية قد ما يناسب الطقم؛ وقوى أفقية أكثر — متلازمة الطقم المفرد، طقم فاگ أو يميل، ضرر مخاطية، وامتصاص. النجاح يعتمد على الحفاظ على النسيج: تشخيص كامل، امتداد قاعدة أقصى ضمن الحدود الوظيفية، دعم شفة، تراكب عمودي أقل ما يمكن، إطباق مناسب، وتجنب سطوح مائلة عريضة.</p>","<p><b>التثبيت (retention)</b>: صفة الطقم اللي تقاوم الحركة بعيداً عن النسيج. ثلاثة سطوح: <b>إطباقي</b> يتماس أو يقترب من المقابل؛ <b>مصقول</b> يشمل السطوح الشفوية والشدقية واللسانية للأسنان ويلامس الشفة والخد واللسان — شكله لازم ينسجم ويه وظيفتهم. Craddock وصف مسكة العضلة الشفوية على الشفة الشدقية للطقم السفلي: إذا شفاه العلوي تميل لفوق ولبرّة من الإطباق، والسفلية لتحت ولبرّة، تقلص الشفوية يقاعد الطقمين على أساسهم. <b>سطح الطبعة</b> شكله من الطبعة ويشمل الحدود. السطوح اللسانية للشفاه اللسانية تميل لمركز الفم حتى اللسان يكمل السد؛ وخلفياً تنحرف للجانب نحو الرأد فتسد نهاية الطقم السفلي.</p><p>العوامل التشريحية (خاصة السفلي): حافة عالية مسطحة القمة بعد قلع حديث مشكلتها بس ضيق مساحة ترتيب الأسنان؛ الحافة المسطحة صعبة — مدّ الطبعة أبعد من منطقة الضرسية اللامية؛ الـ undercuts أشيع بالعلوي (حدبتان) — جراحة بجهة وسد الثانية وغيّر مسار الإدخال؛ الحافة السكينية تؤلم فتحتاج تفريغ؛ الرخوة ما تعطي سد جيد فعدّل الطبعة أو الجراحة. قبة الحنك: <b>U</b> جيدة تثبيت وثبات؛ <b>V</b> تثبيت بلا ثبات وأي ضغط يكسر السد؛ المسطحة بلا عمق كافٍ. شكل القوس: المربع أفضل (أربع نقاط تماس ويقاوم القوى الجانبية). علاقة الأقواس: أغلب فاقدي الأسنان صنف III بسبب نمط الامتصاص فالحركة فتح وإغلاق فقط؛ الصنف II غير مواتي (مساحة صغيرة وصعوبة التماس). مسافة بين الفكين صغيرة = تثبيت أكثر. لسان كبير يفكك. المخاطية لازم تكون متماسكة قابلة للانضغاط وبسمك متساوٍ، مو سميكة رخوة.</p>","<p><b>الالتصاق (adhesion)</b>: تجاذب بين جزيئات مختلفة (اللعاب ويه النسيج وقاعدة الطقم). يعتمد على انطباق وثيق؛ نوع اللعاب (الرقيق المصلي أفضل من الكثيف الخيطي اللي يكوّن ضغط ويدفع الطقم)؛ والمساحة المغطاة. بهالمحاضرة مساحة التحمل العلوية حوالي <b>24 سم²</b> والسفلية <b>14 سم²</b> فالتصاق السفلي أقل. القبة V تقلل الالتصاق.</p><p><b>التماسك (cohesion)</b>: تجاذب بين جزيئات متشابهة، يزيد ويه المساحة، وفيلم لعاب رقيق مصلي أتماسك من المخاطي الكثيف. <b>التوتر السطحي البيني</b>: سطح السائل يميل ينكمش لأصغر مساحة. لأقصى توتر: لعاب رقيق متساوٍ، انطباق تام، مساحة كبيرة، وقوى التصاق وتماسك جيدة.</p><p><b>الجاذبية الشعرية</b>: ارتفاع أو انخفاض سطح السائل عند تماس الصلب. كل ما زادت المسافة ضعفت؛ وكل ما كبرت مساحة التحمل زادت.</p><p><b>الضغط الجوي والسد المحيطي</b>: ويه قوة إزاحة وطقم بسد جيد يتكون ضغط سالب تحت القاعدة، والضغط الجوي من برّة يدفع الطقم لأساسه. يعتمد على الانطباق (تقنية الطبعة، مادة بضغط خفيف معمم مفضّلة، وتشكيل حدود صحيح) والسد المحيطي والسد الحنكي الخلفي. حسب House بهالمحاضرة: صنف I (قبة عريضة مسطحة) فراشة <b>3–4 ملم</b> عرضاً و<b>1.5 ملم</b> عمقاً؛ صنف II وسط؛ صنف III (قبة عالية عميقة) خرزة عمق <b>1 ملم</b>. وظائف الـ PPS: تماس مستمر يقلل التهوع وتجمع الطعام، ويعوّض تقلص البلمرة.</p><p>الجاذبية تثبّت السفلي وتزيح العلوي والمريض واقف. زيادة اللعاب تزيد المسافة فتفقد التثبيت. زاوية تماس عالية = بلّ ضعيف.</p>","<p>العوامل الميكانيكية: undercuts (أحادي الجانب يساعد؛ الثنائي يعيق الإدخال ويحتاج جراحة؛ إذا استخدمتها خطط مسار الإدخال حتى ما ترضّ المخاطية)؛ مغناطيس داخل المخاطية للحافة الممتصة جداً، وملحقات مغناطيسية تحسّن تثبيت الطقم الفوقي السفلي؛ ولاصق طقم؛ وغرف/أقراص شفط.</p><p><b>لاصق الطقم</b> مشار إليه إذا طقم مصنوع زين ما يلبي توقع المريض للتثبيت والثبات؛ ويه جفاف الفم؛ أمراض عصبية مثل السكتة وخلل الحركة الوجهي الفموي؛ وبعد جراحة واسعة لأورام الفم. لا يُستخدم ويه طقم سيء الانطباق أو تالف؛ كبديل لتبطين أو مكيّف نسيج؛ إذا المريض ما يگدر ينظف؛ ويه طقم مؤقت أو فوري (التهاب)؛ أو حساسية للمادة. آليته: يزيد الالتصاق والتماسك واللزوجة، يملأ الفراغات، والمادة المتماهة تنتفخ وتلزگ. البودرة تبدأ فوراً بأقصى فعل ثم ينقص ويه الوقت؛ الكريم يبدأ فوراً ويزيد لأقصى حد ويه الوقت. آثار جانبية مذكورة: ارتفاع زنك الدم؛ أعراض ضرر عصبي؛ خدر أو نخز بالذراع والرجل؛ فقر دم؛ وفشل نقي العظم.</p><p><b>جهاز التفريغ</b> (غرفة شفط، قرص مطاط، أو نافذة حنكية) كانوا يستخدمونه لضغط سالب بالعلوي؛ هسه يُتجنَّب لأنه قد يسبب تضخم حنكي.</p><p>العضلات (الشفوية، الدويرية الفموية، وعضلة اللسان) تساعد إذا الأسنان بالمنطقة المحايدة والسطوح المصقولة مضبوطة، والقاعدة ممدودة لأقصى حد بلا أذى، ومستوى الإطباق صحيح. التمديد الخطأ يدخل لعاب وهواء ويضيّع التثبيت. جراحياً: رأب دهليز، رأب حدبة، وزيادة حافة.</p>","<p><b>الثبات (stability)</b>: بقاء الطقم بمكان ثابت رغم القوى اللي تهدده، ويقاوم الإزاحة من الإجهاد الوظيفي.</p><p>العوامل: ارتفاع الحافة العمودي؛ جودة الطبعة؛ حواف/مستوى الإطباق؛ ترتيب الأسنان؛ شكل السطح المصقول؛ شكل قبة الحنك؛ التثبيت؛ والتفريغ المناسب. عرض سطح الإطباق لازم يكون أقل من الأسنان الطبيعية حتى الثبات والتثبيت يحسنون.</p><p>الحافة تحتاج ارتفاع كافٍ؛ الممتصة جداً أقل ثبات. الطبعة دقيقة ملساء بدون فراغات ولا تلتوي، والمصبوبة تُصب بأسرع وقت. مستوى الإطباق يوازي الحافة ويقسم المسافة بين الفكين بالتساوي؛ إذا مائل قوة الانزلاق تقلل الثبات.</p><p>الإطباق المتوازن يوزع القوة؛ غيابه يكوّن رافعة على جهة واحدة فيضيع الثبات. الأسنان بالمنطقة المحايدة بين الشفة/الخد واللسان، ويه قوى متساوية متعاكسة. السطح المصقول ما يعرقل العضلات. قبة حنكية شديدة الانحدار قد تزيد الثبات بمساحة تماس أكبر وميول تقارب الزاوية القائمة ويه اتجاه القوة. شكل الحنك: U مثالي؛ V السد المحيطي ينكسر بسهولة؛ المستدير مقاومة أقل للقوى الجانبية والدورانية. الثبات يقل ويه ضياع ارتفاع الحافة وزيادة حركة النسيج الرخو.</p>","<p><b>الدعم (support)</b>: مقاومة القوى العمودية للمضغ والإطباق باتجاه مساحة التحمل. يتحقق أولاً بطبعة بامتداد وتحميل وظيفي أمثل.</p><p>المخاطية الماضغة فوق الحنك الصلب وقمة الحافة متقرنة. سمك وقوام النسيج تحت المخاطي هما المسؤولان غالباً عن الدعم. إذا الطبقة رقيقة النسيج غير مرن وينرض بسهولة؛ إذا مرتخية أو ملتهبة أو وذمية تنزاح بسهولة فيضعف الثبات والدعم. العظم القشري أصلب وأقوى من الإسفنجي.</p><p>بالفك السفلي: <b>الرف الشدقي (buccal shelf)</b> هو <b>منطقة الدعم الأولية</b> لأنه مغطى بمخاطية ويه طبقة تحت مخاطية فيها نسيج غدي وألياف شفوية، يوازي مستوى الإطباق، ومبطن بعظم قشري. قمم الحواف <b>دعم ثانوي</b> (نقص اندغال عضلي ووجود عظم إسفنجي).</p><p>بالعلوي: الجزء الأفقي من الحنك الصلب <b>منطقة تحمل الإجهاد الأولية</b>. الدرز الحنكي الأوسط نسيجه تحت المخاطي رقيق جداً وقد يحتاج تفريغ. منطقة الثنيات الحنكية دعم ثانوي. الوسادة القاطعة والقناة الأنفيحنكية فيها أوعية وأعصاب. قمة الحافة مهمة بس العظم يمتص، بخلاف الحنك المقاوم للامتصاص، لذلك القمة <b>دعم ثانوي</b>. السطح الوجهي المائل دعمه قليل، بس يُلامَس للسد المحيطي.</p><p>شكل وحجم العظم الداعم يتأثر بحجمه الأصلي، الصحة العامة، قوى العضلات، مرض دواعم السن، قوى التعويض، جراحة القلع، ومدة فقد الأسنان. الزرعات تحسّن الدعم والتثبيت والثبات. الزرعات الصغيرة صارت خيار شائع لتحسين تثبيت الأطقم السفلية.</p>","<p>متلازمة Kelly خمس موجودات معروفة. والأكريلك مفضّل مقابل الطبيعية، ويه توقفات أملغم إذا الذهب غالي.</p>","<p>24 مقابل 14 سم²، واللعاب الرقيق أفضل. غرف الشفط تُتجنَّب لتضخم الحنك. وأرقام House بهالمحاضرة فراشة 3–4 ملم عرض و 1.5 ملم عمق للصنف I.</p>","<p>ثلاثة أسئلة ختامية + زر الدرجة: الرف الشدقي دعم أولي سفلي؛ مستوى الإطباق المائل يضيّع الثبات؛ وSwenson هو التعديل على المصبوبة. إذا غلطت ارجع للشرائح.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>

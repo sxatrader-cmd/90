@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Prosthodontics File 21 — Occlusion and Esthetics in Complete Dentures</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Prosthodontics · 5th year · Lectures 6–9</div>
+    <h1>Occlusion in Complete Dentures, and Esthetics</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lectures 6–9 by Asst. Lect. Ghasaq Hisham (PDF pages 544–563) on complete-denture occlusion and esthetics.</p>
+    <ul>
+      <li>Occlusion versus articulation; CR (bone-to-bone) should coincide with CO (tooth-to-tooth) in complete dentures</li>
+      <li>Six lecture requirements (including incisal clearance and mesiodistal unlocking) and four objectives (tissues, mastication, stability/retention/support, phonetics and esthetics)</li>
+      <li>Balanced, lingualized and monoplane schemes; Hanau’s quint; Theilman’s formula as written in the lecture: (C × I) ÷ (OP × CC × CA)</li>
+      <li>Condylar guidance ~33° (fixed); incisal guidance 10°, not exceeding 20° (dentist-controlled); the dentist mainly changes the compensating curve and cusp inclination</li>
+      <li>Esthetics: impression and VDO, size/shade/mold guides, SPA, a natural arrangement, characterization, and Frush and Fisher’s dentogenic concept</li>
+      <li>Total run time: <b>40 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 20</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Prosthodontics · File 21","t":"Occlusion in complete dentures, and esthetics","b":"<p>University of Baghdad, College of Dentistry — Prosthodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This 5th-year file covers PDF pages 544–563 (Asst. Lect. Ghasaq Hisham / م.ا. د. غسق هشام), Lectures 6–9: occlusion versus articulation, CR and CO, requirements and objectives of complete-denture occlusion, balanced, lingualized and monoplane schemes, Hanau’s quint and Theilman’s formula, anatomic / semi-anatomic / non-anatomic teeth, and complete-denture esthetics (selection, arrangement, characterization, and Frush and Fisher’s dentogenic concept).</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end.</p>"},{"k":"5th year · Occlusion in complete dentures","t":"Occlusion versus articulation, CR versus CO, and related terms","b":"<p><b>Occlusion</b> is the static relationship between the incising and masticating surfaces of the maxillary or mandibular teeth or tooth analogues. <b>Articulation</b> is the contact relationship of maxillary and mandibular teeth as they move against each other.</p><p><b>Centric relation (CR)</b> is a maxillomandibular relationship, independent of tooth contact, in which the condyles articulate in the anterior-superior position against the posterior slopes of the articular eminences. It is a clinically useful, repeatable reference position (bone-to-bone). <b>Centric occlusion (CO)</b> is the occlusion of opposing teeth when the mandible is in centric relation; this may or may not coincide with the maximal intercuspal position (tooth-to-tooth). In complete dentures, CR and CO should coincide.</p><p><b>Occlusal balance</b> is simultaneous contacts of opposing teeth or tooth analogues on both sides of the opposing dental arches during eccentric movements within the functional range. <b>Occlusal harmony</b> is a condition in maximal intercuspal position and eccentric jaw relation in which there are no interceptive or deflective contacts of occluding surfaces. An <b>occlusal interference</b> is any tooth contact that inhibits the remaining occluding surfaces from achieving stable and harmonious contacts, or any undesirable occlusal contact. <b>Maximal intercuspal position</b> is the complete intercuspation of the opposing teeth, independent of condylar position.</p><p>Mandibular movement can be opening, closing, protrusive, and lateral. In a lateral excursion the <b>working side</b> is the side toward which the mandible moves; the <b>non-working (balancing) side</b> is the side the mandible moves away from.</p>"},{"k":"5th year · Occlusion in complete dentures","t":"Six requirements and four objectives of complete-denture occlusion","b":"<p>Requirements of an ideal complete-denture occlusion in this lecture: (1) stability of the denture in both centric and eccentric relation; (2) balanced occlusal contact, bilateral; (3) cusp height reduced to control horizontal force; (4) cutting, penetrating and shearing efficiency of the occlusal surface; (5) incisal clearance during posterior function such as chewing; and (6) unlocking (removing interference) of cusps mesiodistally.</p><p>Objectives of occlusion in the complete denture: preservation of the remaining tissues; proper masticatory efficiency; enhancement of denture stability, retention and support; and enhancement of phonetics and esthetics.</p>"},{"k":"5th year · Occlusion in complete dentures","t":"Balanced occlusion: definition, working and balancing contacts, and advantages","b":"<p>Three types of occlusion are used: balanced occlusion, lingualized occlusion, and monoplane occlusion.</p><p><b>Balanced occlusion</b> in complete dentures is stable simultaneous contact of the opposing upper and lower teeth in centric relation, and a continuous smooth bilateral gliding from this position to any eccentric position within the normal range of mandibular function.</p><p>In a lateral excursion on the <b>working side</b>: the maxillary and mandibular anterior teeth contact; and the buccal and lingual cusps of the maxillary and mandibular posterior teeth are in contact. If the scheme is lingualized, the maxillary lingual cusp contacts the mandibular lingual cusp. On the <b>balancing side</b>: the maxillary and mandibular anterior teeth may contact; and the lingual cusps of the maxillary teeth contact the buccal cusps of the mandibular teeth. With <b>monoplane balanced occlusion</b>, usually only the second molars are in contact, or a balancing ramp is used.</p><p>Advantages of balanced occlusion: distribution of load; stability; reduced trauma; functional movement; efficiency; and comfort.</p>"},{"k":"5th year · Occlusion in complete dentures","t":"Hanau’s quint and Theilman’s formula","b":"<p>Five factors (the laws of articulation — Hanau’s quint) affect balanced occlusion: condylar guidance; incisal guidance; the occlusal plane; the compensatory curves; and cusp angulation.</p><p>Theilman’s formula is written in this lecture as:</p><p><b>Balanced occlusion = (condylar inclination × incisal guidance) ÷ (occlusal plane × compensatory curve × cusp angulation)</b></p><p>The five factors are interrelated; a change in one must be compensated by a change in another if balance is to be kept.</p>"},{"k":"5th year · Occlusion in complete dentures","t":"Condylar guidance and incisal guidance","b":"<p><b>Condylar guidance</b> is the angle formed by an imaginary horizontal line at the superior head of the condyle and the path that the condyle will pass through during function. It varies from person to person because of anatomical differences, and is about <b>33°</b>. GPT-9 also defines it as mandibular guidance generated by the condyle and articular disc traversing the contour of the articular eminence, and as the mechanical form in the posterior region of an articulator that controls movement of its mobile member. This first factor is recorded from the patient, so it is a <b>fixed factor that cannot be modified by the dentist</b>.</p><p><b>Incisal guidance</b> is the influence of the contacting surfaces of the mandibular and maxillary anterior teeth on mandibular movements. It is usually expressed in degrees of angulation from the horizontal by a line drawn in the sagittal plane between the incisal edges of the upper and lower incisors when closed in centric occlusion (the articulator definition is the influence of the guide pin and guide table). It depends on the desired overjet and overbite: the angle varies <b>directly with the vertical overbite and inversely with the horizontal overjet</b>. In complete dentures this angle is set to <b>10°</b> and should not exceed <b>20°</b>. It is determined by esthetics, phonetics, ridge relation and inter-alveolar distance, which means it is under the control of the dentist.</p>"},{"k":"5th year · Occlusion in complete dentures","t":"Occlusal plane, compensating curve, cusp inclination, and what the dentist changes","b":"<p>The <b>plane of occlusion</b> is an imaginary surface related anatomically to the cranium that theoretically touches the incisal edges of the incisors and the tips of the occluding surfaces of the posterior teeth. The maxillary occlusal plane should be parallel to the interpupillary line (the lecture typographically writes “interpapillary”) and, posteriorly, usually parallel to the ala-tragus line. In the mandible it is established anteriorly by the cusp height of the lower canine near the commissure of the mouth (the corner), and posteriorly by the retromolar pad.</p><p>The <b>compensating curve</b> is the arc introduced in the construction of complete removable dental prostheses to compensate for the opening influences produced by the condylar and incisal guidances during lateral and protrusive eccentric movements (GPT-9). It is incorporated in a properly oriented plane of occlusion; in the artificial dentition it is described here as an anteroposterior curve.</p><p><b>Cuspal angulation</b> (or the inclination of cuspless artificial teeth) depends on residual ridge, neuromuscular control, esthetics and similar factors; however, it is better to reduce cuspal inclination to help reduce horizontal forces of occlusion.</p><p>Of the four factors the dentist can control, two (incisal guidance and the plane of occlusion) can be altered only a slight amount because of esthetic and physiologic limits. <b>The important working factors for the dentist to manipulate are the compensating curve and the inclinations or cusps on the occlusal surfaces of the teeth.</b></p>"},{"k":"5th year · Occlusion in complete dentures","t":"Lingualized occlusion: arrangement, indications, advantages and disadvantages","b":"<p><b>Lingualized occlusion</b> uses a large upper palatal cusp against a wide shallow lower central fossa. The buccal cusps of the upper and lower teeth do not contact each other. The maxillary palatal cusp tip should contact the opposite mandibular central fossa. The cusp incline of the mandibular teeth is relatively flat, which results in less lateral force and less displacement during function.</p><p>Indications: high esthetic need; weak muscles of mastication; displaceable supporting tissue; severe alveolar bone resorption; a discrepancy in jaw size (narrow upper arch and wide lower arch); an implant-supported overdenture; and a previous successful denture with lingualized occlusion.</p><p>Advantages: a simpler technique and less precise CR records; esthetics; better penetration of the food bolus; easier occlusal adjustment; it may be used in Class II, Class III and cross-bite; centralization of vertical forces; minimizing tipping force; and the potential of bilateral balance.</p><p>Disadvantages: difficulty in obtaining a repeatable centric record (incoordination, jaw malrelation); and severe ridge resorption, in which lateral forces may displace the denture and which may more easily be handled with a monoplane scheme.</p>"},{"k":"5th year · Occlusion in complete dentures","t":"Monoplane (neutrocentric) occlusion","b":"<p><b>Monoplane (neutrocentric) occlusion</b> uses a flat occlusal plane set with non-anatomic teeth. The anteroposterior occlusal plane is parallel to the denture foundation area. There is no vertical overlap of the anterior teeth. Tooth contact should occur only when the mandible is in centric relation; opposing artificial teeth should not contact when the jaws are in an eccentric relation. In protrusion there is disclusion of the posterior teeth because of the single-plane arrangement; the patient is instructed not to incise the bolus. There is no curve of Spee or curve of Wilson (compensating curves).</p><p>Indications: jaw-size discrepancies (Class II, Class III, malocclusion and cross-bite); uncoordinated jaw movement; mostly for geriatric patients; and a minimal or resorbed ridge (it reduces horizontal forces — an implant may help).</p><p>Advantages: a simple technique and less time-consuming; less precise jaw-relation records; lateral forces are reduced by eliminating cuspal inclines; simpler and easier occlusal adjustments; and the occlusion is not locked.</p><p>Disadvantages: least esthetic; poor bolus penetration; and it cannot be balanced in eccentric excursions. (This is ordinary monoplane/neutrocentric occlusion. Earlier, under balanced occlusion, the lecture notes that <b>monoplane balanced</b> occlusion usually uses second-molar contacts or a balancing ramp — that is a different arrangement from classic neutrocentric, in which there should be no eccentric contact.)</p>"},{"k":"5th year · Occlusion in complete dentures","t":"Anatomic, semi-anatomic and non-anatomic teeth, and how the scheme is chosen","b":"<p><b>Anatomic teeth</b> simulate the natural tooth form, with an inclination of approximately <b>33°</b>. Advantages: esthetics; better food penetration; vertical stress decreases; harmony with the TMJ and muscles of mastication; and balanced occlusion in an eccentric position. Disadvantages: a precise technique is required; more time; difficult tooth position in Class II and Class III; and greater lateral force.</p><p><b>Semi-anatomic (modified anatomic) teeth</b> have a cusp incline less steep than anatomic teeth (less than 33°). Advantages listed: esthetics; good chewing efficacy; less lateral force; and balanced occlusion. Disadvantages listed: least esthetic; poor bolus penetration; and cannot be balanced in eccentric excursions — wording that matches the monoplane-disadvantage list and is reported here as the lecture writes it.</p><p><b>Non-anatomic teeth</b> are flat and without cusp height. Advantages: used for the patient with poor neuromuscular coordination; used for jaw malrelation; used for cross-bite or Class III; more comfortable; less time required in the set-up; and slightly more esthetic than neutrocentric occlusion. Disadvantages: use of a compensatory curve may cause the same damaging effects as cuspal inclines; and occlusal adjustments are more difficult to accomplish. (A heading “Balance occlusion for non-anatomic teeth may be accomplish by” appears in the lecture without a readable list of methods in the extracted text, so none is invented here.)</p><p>Factors influencing selection of the occlusal scheme: characteristics of the scheme itself (tooth form and arrangement; balanced or not); and characteristics of the patient (height and width of the residual ridge; aesthetic demands; skeletal relations; neuromuscular control; and a tendency for parafunctional activity).</p>"},{"k":"اختبر نفسك","t":"Quiz: requirements, Theilman’s formula, and incisal guidance","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Which of the following is one of this lecture’s six requirements of ideal complete-denture occlusion?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Psychological comfort as a formal requirement, with a thick occlusal table</button><button type=\"button\" class=\"opt\" data-i=\"1\">Incisal clearance during posterior function (chewing), and unlocking of cusps mesiodistally, along with stability in centric and eccentric relation and bilateral balanced contact</button><button type=\"button\" class=\"opt\" data-i=\"2\">Maximal intercuspation independent of any condylar reference in every denture</button><button type=\"button\" class=\"opt\" data-i=\"3\">A steep incisal guidance of 33° in every complete denture</button></div><div class=\"qexp\" hidden><p>المتطلبات الستة تشمل خلوص قاطعي أثناء مضغ الخلفيات، وإلغاء تداخل الحدبات إنسياً-وحشياً، وثبات بالمركزية واللامركزية، وتماس متوازن ثنائي، وتقليل ارتفاع الحدبة، وكفاءة قطع وقص. الأهداف: الحفاظ على الأنسجة، كفاءة المضغ، تحسين الثبات والتثبيت والدعم، وتحسين النطق والتجميل.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">In this lecture Theilman’s formula is written as balanced occlusion equals:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">C × I = OP × CC × CA only, with condylar guidance freely changed by the dentist</button><button type=\"button\" class=\"opt\" data-i=\"1\">(Condylar inclination × incisal guidance) ÷ (occlusal plane × compensatory curve × cusp angulation); condylar guidance is about 33° and is fixed from the patient, while incisal guidance is set to 10° and should not exceed 20°</button><button type=\"button\" class=\"opt\" data-i=\"2\">Incisal guidance alone, fixed at 33°</button><button type=\"button\" class=\"opt\" data-i=\"3\">Only the interpupillary line</button></div><div class=\"qexp\" hidden><p>المحاضرة كتبت المعادلة ككسر: (ميل اللقمة × توجيه القواطع) ÷ (مستوى الإطباق × المنحنى المعوِّض × زاوية الحدبات). توجيه اللقمة ~33° ثابت من المريض. توجيه القواطع 10° وما يتجاوز 20°، يزيد ويه التراكب العمودي ويقل ويه التراكب الأفقي، والطبيب يسيطر عليه. العاملان المهمان للتلاعب: المنحنى المعوِّض وميل الحدبات.</p></div></div>"},{"k":"اختبر نفسك","t":"Quiz: lingualized contacts and monoplane (neutrocentric) rules","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">In lingualized occlusion, contact is arranged so that:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Upper and lower buccal cusps contact each other on the working side</button><button type=\"button\" class=\"opt\" data-i=\"1\">A large upper palatal cusp meets a wide shallow lower central fossa; the buccal cusps of upper and lower teeth do not contact each other</button><button type=\"button\" class=\"opt\" data-i=\"2\">Only a balancing ramp is used, with no palatal-cusp contact</button><button type=\"button\" class=\"opt\" data-i=\"3\">Anterior vertical overlap is increased to 20° in every case</button></div><div class=\"qexp\" hidden><p>حدبة حنكية علوية كبيرة مقابل حفرة مركزية سفلية واسعة ضحلة؛ الشدقي العلوي والسفلي ما يتماسون. الاستطبابات تشمل عضلات مضغ ضعيفة ونسيج قابل للإزاحة وامتصاص شديد وعدم تطابق حجم الفكين (علوي ضيق وسفلي واسع) وطقم فوقي بزرعات. العيوب كما بالمحاضرة: صعوبة سجل مركزي قابل للتكرار، والامتصاص الشديد قد يُعالَج أسهل بمستوي.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Classic monoplane (neutrocentric) occlusion typically includes:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Curves of Spee and Wilson, and incision of the bolus with the anteriors</button><button type=\"button\" class=\"opt\" data-i=\"1\">A flat plane with non-anatomic teeth, no anterior vertical overlap, contact only in CR, no eccentric contact, disclusion of the posteriors in protrusion, and the patient is told not to incise the bolus</button><button type=\"button\" class=\"opt\" data-i=\"2\">Only anatomic 33° teeth, locked in a tight intercuspation</button><button type=\"button\" class=\"opt\" data-i=\"3\">Balancing contacts on every upper buccal cusp as a requirement of neutrocentric occlusion</button></div><div class=\"qexp\" hidden><p>مسطح، بلا تراكب عمودي أمامي، تماس فقط بـ CR، بلا تماس لامركزي، وانفصال الخلفيات بالبروز؛ المريض ما يقطع اللقمة بالقواطع. (المستوي المتوازن، اللي يستخدم الأرحاء الثانية أو منحدر موازنة، ترتيب مختلف ذُكر تحت الإطباق المتوازن.)</p></div></div>"},{"k":"5th year · Esthetics in complete dentures","t":"Definitions, factors that influence appearance, and the five steps","b":"<p><b>Esthetics</b>, in dentistry, is the theory and philosophy that deal with beauty, especially with respect to the appearance of a dental restoration as achieved through its form and/or color. <b>Dental esthetics</b> is the application of those principles to the natural or artificial teeth and restorations. <b>Denture esthetics</b> is the effect produced by a dental prosthesis that affects the beauty, attractiveness, character and dignity of an individual; it is a combination of the art and science of prosthodontics.</p><p>Factors influencing the appearance of dentures: patient factors; tooth factors; denture-base factors; and tooth/denture-base factors. Patient factors listed are sex, age and personality. Types of tooth positioning listed are personality, horizontally, and individual. Tooth factors are position, color, size and form.</p><p>Steps in achieving an esthetic complete denture: (1) an accurate impression; (2) jaw relation; (3) selection of teeth; (4) arrangement of teeth; and (5) characterization.</p>"},{"k":"5th year · Esthetics in complete dentures","t":"Impression and jaw relation as the foundation of denture appearance","b":"<p>An accurate impression sets the thickness of the labial flange of both dentures, so that esthetics as well as retention and stability are important goals at this stage. Border thickness should vary with the needs of the patient, depending on the extent of residual-ridge loss. The vestibular fornix should be filled, but not overfilled, to restore facial contour.</p><p>Jaw relation sets the amount of separation between the maxilla and the mandible — that is, the correct vertical dimension of occlusion. A proper VDO helps restore normal physiological length to the muscles and allows normal facial expression. Re-establishing the appropriate vertical spacing improves appearance by decreasing the sunken and aging look. This vertical space must be not only esthetically pleasing but also compatible with the temporomandibular joint apparatus, including the muscles of mastication.</p>"},{"k":"5th year · Esthetics in complete dentures","t":"Tooth selection: objectives and guides to anterior size","b":"<p>Selecting the appropriate shade, size and form of the artificial teeth determines the esthetics and function of the denture. Objectives of tooth selection: function efficiently; normal speech; aesthetically pleasing; no tissue abuse; and maintenance of the vertical dimension. Anterior teeth are selected primarily to satisfy esthetics, while posteriors are selected for function.</p><p>Guides for anterior-tooth size — <b>pre-extraction records</b>: diagnostic casts, photographs, radiographs, extracted teeth, and a previous denture. <b>Post-extraction records</b>: the central incisors should restore the philtrum if possible; the central incisors should restore the vermillion border; incisal points and the smile line determine the height of the tooth (age-related); and the position of the canine points is related to inter-alar width (smiling) and to the pupils (this requires a pre-extraction photograph). If the patient already wears a denture, the mouth should be examined with the dentures in place, giving importance to physiological and esthetic aspects.</p>"},{"k":"5th year · Esthetics in complete dentures","t":"Shade by pair comparison, size factors, and mold form","b":"<p><b>Color.</b> Show the patient a complete shade guide and select the two lightest and darkest tabs. Point out how different these two are and find out which one they prefer. Delete the rejected color, and select another shade from the preferred half of the guide. Repeat this pair comparison, and after two or three selections you will have the shades the patient wants. Note the selections in the file.</p><p><b>Size</b> may depend on existing dentures, models of previous teeth, and a photograph. Factors that influence the size of the anterior teeth: size of the face; amount of available inter-arch space; the measured distance between the distal of the right and left maxillary cuspids; length of the lip; and size and relation of the arches.</p><p><b>Mold.</b> Select and agree on the mold. Teeth of a similar size can appear entirely different because of their taper, contacts and labial curvature. Allow the patient to select between molds of the same size but different shapes: set two different molds on the right and left sides of a piece of wax rope and ask which they prefer. There is a choice of mold: <b>square</b>, <b>tapering</b> or <b>ovoid</b>. In general, square molds suit patients with large, rugged features; long and narrow faces may be best suited to tapering molds; ovoid molds tend to suit patients with small, round faces.</p>"},{"k":"5th year · Esthetics in complete dentures","t":"SPA: sex differences and age changes in anterior teeth","b":"<p>The form of the anterior teeth is determined using the shape of the patient’s face and the <b>SPA</b> factors (sex, personality, age). Personality is named as an SPA factor in this lecture without a separate detailed list.</p><p><b>Sex.</b> In females the incisal angles are more rounded and the teeth have a lesser angulation; in males the incisal angles are rounded to a lesser degree and the teeth are more angular. In males the incisal edge of the central incisors is parallel to the lips and the laterals are above the occlusal plane; in females the incisal edges of the central and lateral incisors follow the curve of the lower lip. The distal surface of the centrals is rotated posteriorly for females. The mesial surface of the laterals is rotated anteriorly in relation to the centrals in females; in males the mesial end of the laterals is hidden by the centrals, which makes the canine very prominent. Only the mesial thirds of the canines are visible in females (they are rotated anteriorly), whereas even the middle two-thirds of the canines are visible in males. Cervical regions are more prominent in males than in females. Females on smiling expose more anterior teeth, so the premolars should be arranged with aesthetics in mind for females.</p><p><b>Age.</b> With advance in age, decreased muscle tone leads to sagging of the cheeks and lower lips; to prevent cheek biting, the horizontal overlap of the posterior teeth can be increased. Inter-occlusal distance reduces with age, so mandibular teeth are more visible than maxillary teeth. Older people usually have abraded teeth with worn contacts, so placement of heavily contoured teeth may look artificial. Gingival recession can be reproduced in the dentures. Older people show a blunt smile line and pathologic migration of teeth. The color also changes: enamel is abraded and the dentine, which carries a yellow tinge, is more visible.</p>"},{"k":"5th year · Esthetics in complete dentures","t":"Arrangement: midline, lip support, a natural look, and the incisal relationship","b":"<p>Goals of tooth arrangement: the front teeth should look good; the patient should speak clearly; and all the teeth should be positioned for the best comfort, stability and retention of the dentures. The amount of tooth showing, the orientation of the occlusal plane, and labiolingual inclination all influence aesthetics. If the occlusal plane is set too low, or if the anterior teeth are set on a flat plane, the teeth will be too visible, especially when the patient smiles and the teeth do not follow the smile line of the lip. If the plane is not approximately parallel to the interpupillary line, the smile will look crooked.</p><p>The centre line of the teeth must coincide with the centre line of the face. <b>The labial frenum should not be used to guide the centre line</b>, as it is often not in the centre of the face. A common misconception is that lip support depends on the shape of the labial flange; if the flange is thickened it will bulk out beneath the nose, similar to a gum shield. If teeth are moved away from the crest of the ridge this will cause instability. Setting teeth directly over the crest with an upright inclination will not provide adequate lip support. Biometric guides that place the teeth where the natural teeth used to be can improve aesthetics dramatically. A further possibility is to <b>place the necks of the teeth close to the alveolar ridge and tilt the incisal edges labially</b> — this improves lip support and is less likely to be unstable than when using biometric guides alone.</p><p>Irregularity or crowding of natural teeth is common, so a “perfect” arrangement often looks artificial. As a general rule, <b>imperfection in the anterior arrangement is a basic requirement</b> in creating the illusion of natural teeth. Complete symmetry should be avoided: for example, the incisal edges should not all be at the same level. The vertical axes can be varied, but the inclination on one side should approximately balance that on the other. The same rules apply to the lower anteriors, which in many patients are displayed more during function than the uppers; consider vertical overlap, horizontal overlap, anteroposterior inclination in a proximal view, and inclination of the long axes.</p><p>The incisal relationship must suit the patient’s skeletal relationship. A Class I incisal relationship on a marked skeletal Class II base risks instability and a poor, inharmonious aesthetic result.</p>"},{"k":"5th year · Esthetics in complete dentures","t":"Gingival contour, characterization, Frush and Fisher, and the final decision","b":"<p>Three aspects of gingival contour: the contour of the gingival margins at the necks of the teeth (this varies from central to lateral to canine and should be reproduced); the contour of the flange (smooth or anatomical — anatomical finishing reproduces the shapes of the roots, and the flange can also be stippled to reproduce stippling of the keratinized gingiva; these features are most useful with a high smile line and a visible flange, but extensively stippled flanges are harder to keep clean); and the color of the flange (color tints in the acrylic can reproduce the oral mucosa; a photograph or seeing the patient helps the technician, and the appearance is enhanced if the flange is visible because of a high smile line).</p><p>Denture-base factors are contour and colour. Benefits of a properly contoured denture: improved tolerance and comfort; it facilitates stability and control; and it prevents chronic biting of the lip or cheek.</p><p><b>Characterization</b> is altering the prosthesis by unique markings, indentations, coloration and similar custom means to enhance a natural appearance, without grossly deviating from the principles of teeth setting. Without characterization, complete-denture wearers can look similar, with a monotony of sameness. It is the dentist’s duty to inform the patient that the denture can be characterized. Characterization should have a realistic perception rather than unrealistic features. Size and shade of the teeth can be selected to match the patient’s natural teeth and should harmonize with the facial features and be functionally acceptable.</p><p>According to <b>Frush and Fisher</b>, the dentogenic concept includes the effects of three main factors — age, sex and personality — in the sequence of esthetic planning. Means that can be incorporated include minor irregularities in arrangement, overlapping, tilting, depth grinding, modification of incisal edges, rotations, stippling, staining, tinting of the denture base, crowding, and fixing dental jewelry.</p><p>The final decision for esthetics depends upon: maxillomandibular relationships; the patient’s appearance; the patient’s mental attitude; and functional requirements. A high smile line that displays a lot of gingiva benefits from a less tapered mold with a long contact point, which minimizes the interproximal display of pink gingival acrylic.</p>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: SPA and pair comparison, the midline and lip support, and the final esthetic decision","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">SPA in this lecture, and the shade-selection method described, are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Support, Pressure and Adhesion, with a single shade tab chosen in the dark</button><button type=\"button\" class=\"opt\" data-i=\"1\">Sex, Personality and Age; shade is chosen by pair comparison of the lightest and darkest tabs, repeating from the preferred half of the guide</button><button type=\"button\" class=\"opt\" data-i=\"2\">Spee, Plane and Articulator only</button><button type=\"button\" class=\"opt\" data-i=\"3\">Stippling, Papilla and Arch, with the labial frenum as the shade guide</button></div><div class=\"qexp\" hidden><p>SPA = الجنس، الشخصية، والعمر (أساس مفهوم Frush و Fisher). اللون: مقارنة زوجية بين أفتح وأغمق بطاقة، وتكرار الاختيار من النصف المفضّل مرتين أو ثلاث.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Lip support, and the facial midline, should be handled how?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Thicken the labial flange like a gum shield, and use the labial frenum as the midline</button><button type=\"button\" class=\"opt\" data-i=\"1\">Do not use the labial frenum as the midline (it is often off-centre); lip support comes from tooth position (necks close to the ridge with incisal edges tilted labially), not from a thick flange</button><button type=\"button\" class=\"opt\" data-i=\"2\">Always set every incisal edge at the same level in a perfect Class I relationship on a marked skeletal Class II base</button><button type=\"button\" class=\"opt\" data-i=\"3\">Stipple the flange heavily because that always improves hygiene</button></div><div class=\"qexp\" hidden><p>اللجام الشفوي غالباً مو بمنتصف الوجه. دعم الشفة من موضع الأسنان (الرقاب قرب الحافة والحواف القاطعة مائلة شفوياً)، مو من شفة سميكة تنتفخ تحت الأنف. الترتيب الناقص الانتظام أطبيعي. التنقيط الواسع يصعّب التنظيف.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">What four things does this lecture say the final esthetic decision depends upon?</button><div class=\"flash-a\" hidden>Maxillomandibular relationships; the patient’s appearance; the patient’s mental attitude; and functional requirements.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا الملف عن <b>الإطباق بالطقم الكامل</b> (محاضرات 6–7) و<b>التجميل</b> (محاضرات 8–9): الفرق بين الإطباق والتمفصل، العلاقة المركزية والإطباق المركزي، متطلبات وأهداف الإطباق، المخططات المتوازنة واللساني والمستوي، خماسية Hanau ومعادلة Theilman، وأنواع الأسنان، وتجميل الطقم.</p>","<p><b>الإطباق</b> علاقة ثابتة بين سطوح القطع والمضغ. <b>التمفصل</b> علاقة تماس الأسنان العلوية والسفلية وهي تتحرك على بعض.</p><p><b>العلاقة المركزية (CR)</b> علاقة فكين مستقلة عن تماس الأسنان، اللقمتان بموقع أمامي-علوي على المنحدرات الخلفية لنتوء المفصل. مرجع سريري قابل للتكرار (عظم بعظم). <b>الإطباق المركزي (CO)</b> إطباق الأسنان ويه العلاقة المركزية؛ قد يطابق أو لا يطابق أقصى تشابك (سن بسن). بالطقم الكامل لازم CR و CO يتطابقون.</p><p><b>التوازن الإطباقي</b>: تماسات متزامنة على الجهتين أثناء الحركات اللامركزية ضمن المدى الوظيفي. <b>الانسجام الإطباقي</b>: بلا تماس معترض أو محرّف ويه أقصى تشابك والحركات اللامركزية. <b>التداخل الإطباقي</b>: أي تماس يمنع تماس منسجم، أو أي تماس غير مرغوب. <b>أقصى تشابك</b> مستقل عن موضع اللقمة.</p><p>حركة الفك: فتح وإغلاق وأمامية وجانبية. جهة <b>العمل</b> اللي الفك يروح إلها؛ جهة <b>عدم العمل (الموازنة)</b> اللي يبتعد عنها.</p>","<p>ستة متطلبات: ثبات الطقم بالعلاقة المركزية واللامركزية؛ تماس إطباقي متوازن ثنائي الجانب؛ تقليل ارتفاع الحدبة للسيطرة على القوة الأفقية؛ كفاءة قطع واختراق وقص لسطح الإطباق؛ خلوص قاطعي أثناء وظيفة الخلفيات (مثل المضغ)؛ وإلغاء تشابك (رفع التداخل) الحدبات إنسياً-وحشياً.</p><p>أربعة أهداف: الحفاظ على الأنسجة المتبقية؛ كفاءة مضغ صحيحة؛ تحسين ثبات وتثبيت ودعم الطقم؛ وتحسين النطق والتجميل.</p>","<p>ثلاثة أنواع: متوازن، لساني، ومستوي.</p><p>الإطباق <b>المتوازن</b>: تماس مستقر متزامن للأسنان العلوية والسفلية بالعلاقة المركزية، وانزلاق ثنائي الجانب أملس مستمر من هذا الموضع لأي موضع لامركزي ضمن المدى الطبيعي.</p><p>على جهة <b>العمل</b>: تماس الأمامية العلوية والسفلية؛ وتماس الحدبات الشدقية واللسانية للخلفيات العلوية والسفلية. إذا المخطط لساني، الحدبة اللسانية العلوية تلمس الحدبة اللسانية السفلية. على جهة <b>الموازنة</b>: الأمامية قد تتماس؛ والحدبات اللسانية العلوية تلمس الحدبات الشدقية السفلية. ويه <b>إطباق مستوي متوازن</b> عادة فقط الأرحاء الثانية تتماس، أو يُستخدم منحدر موازنة.</p><p>مزايا التوازن: توزيع الحمل؛ ثبات؛ تقليل الرضّ؛ حركة وظيفية؛ كفاءة؛ وراحة.</p>","<p>خمسة عوامل (قوانين التمفصل، خماسية <b>Hanau</b>): توجيه اللقمة؛ توجيه القواطع؛ مستوى الإطباق؛ المنحنيات المعوِّضة؛ وزاوية الحدبة.</p><p>معادلة <b>Theilman</b> كما كتبتها هذه المحاضرة:</p><p><b>الإطباق المتوازن = (ميل اللقمة × توجيه القواطع) ÷ (مستوى الإطباق × المنحنى المعوِّض × زاوية الحدبات)</b></p><p>العوامل مترابطة؛ تغيّر واحد لازم يتعوّض بتغيّر آخر حتى يبقى التوازن.</p>","<p><b>توجيه اللقمة</b>: الزاوية بين خط أفقي تخيلي عند الرأس العلوي لللقمة والمسار اللي تمر بيه أثناء الوظيفة. يختلف من شخص لشخص، وحوالي <b>33°</b>. يُسجَّل من المريض فهو <b>عامل ثابت الطبيب ما يعدّله</b>.</p><p><b>توجيه القواطع</b>: تأثير سطوح تماس الأمامية على حركات الفك. يُعبَّر عنه بدرجات من الأفقي بخط سهمي بين الحواف القاطعة ويه الإطباق المركزي. يعتمد على التراكب الأفقي والعمودي المطلوب: الزاوية <b>تزيد ويه التراكب العمودي وتقل ويه التراكب الأفقي</b>. بالطقم الكامل تُضبط على <b>10°</b> وما تتجاوز <b>20°</b>. تتحدد بالتجميل والنطق وعلاقة الحافة والمسافة بين الحواف، يعني تحت سيطرة الطبيب.</p>","<p>مستوى الإطباق: سطح تخيلي يلامس نظرياً الحواف القاطعة ورؤوس سطوح الخلفيات. المستوى العلوي موازي لخط ما بين الحدقتين (المحاضرة كتبت interpapillary)، وخلفياً عادة موازي لخط جناح الأنف-الزنمة. بالسفلي: أمامياً ارتفاع حدبة الناب السفلي قرب زاوية الفم، وخلفياً الوسادة خلف الرحى.</p><p>المنحنى المعوِّض: قوس يُدخل بتصنيع الطقم حتى يعوّض تأثير الفتح من توجيه اللقمة والقواطع أثناء الحركات الجانبية والأمامية. بالمحاضرة يُوصف كمنحنى أمامي-خلفي.</p><p>زاوية الحدبات تعتمد على الحافة والسيطرة العصبية العضلية والتجميل؛ والأفضل تقليل الميل حتى تقل القوى الأفقية.</p><p>من الأربعة اللي الطبيب يسيطر عليها، توجيه القواطع ومستوى الإطباق يتغيّرون بحدود بسيطة فقط. <b>العاملان المهمان اللي يلاعب بيهم هما المنحنى المعوِّض وميل أو حدبات سطوح الإطباق</b>.</p>","<p>الإطباق اللساني: حدبة حنكية علوية كبيرة مقابل حفرة مركزية سفلية واسعة ضحلة. <b>الحدبات الشدقية العلوية والسفلية ما تتماس</b>. رأس الحدبة الحنكية يلمس الحفرة المركزية السفلية المقابلة. ميل حدبات السفلية نسبياً مسطح، فقوة جانبية أقل وإزاحة أقل.</p><p>الاستطبابات: حاجة تجميلية عالية؛ عضلات مضغ ضعيفة؛ نسيج داعم قابل للإزاحة؛ امتصاص عظمي شديد؛ عدم تطابق حجم الفكين (قوس علوي ضيق وسفلي واسع)؛ طقم فوقي مدعوم بزرعات؛ وطقم سابق ناجح ويه إطباق لساني.</p><p>المزايا: تقنية أبسط وسجلات CR أقل دقة؛ تجميل؛ اختراق لقمة أفضل؛ تعديل أسهل؛ يصلح لصنف II و III والعضة المعكوسة؛ مركزة القوى العمودية؛ تقليل قوة الانقلاب؛ وإمكانية توازن ثنائي الجانب.</p><p>العيوب: صعوبة الحصول على سجل مركزي قابل للتكرار (عدم تناسق، سوء علاقة فكية)؛ والامتصاص الشديد حيث القوى الجانبية قد تزيح الطقم، وقد يُعالَج أسهل بمخطط مستوي.</p>","<p>الإطباق المستوي (neutrocentric): مستوى مسطح ويه أسنان غير تشريحية. المستوى الأمامي-الخلفي موازي لمنطقة أساس الطقم. ما في تراكب عمودي للأمامية. التماس فقط ويه العلاقة المركزية؛ بالأوضاع اللامركزية ما لازم يكون في تماس. بالبروز تنفصل الخلفيات بسبب الترتيب بمستوى واحد؛ المريض يُنصَح ما يقطع اللقمة بالقواطع. ما في منحنى Spee أو Wilson.</p><p>الاستطبابات: عدم تطابق حجم الفكين (صنف II و III وسوء إطباق وعضة معكوسة)؛ حركة فك غير متناسقة؛ غالباً لكبار السن؛ وحافة ضئيلة أو ممتصة (يقلل القوى الأفقية — الزرعة قد تساعد).</p><p>المزايا: تقنية بسيطة ووقت أقل؛ سجلات علاقة فكية أقل دقة؛ القوى الجانبية تقل بحذف ميول الحدبات؛ تعديل أسهل؛ والإطباق مو مقفول.</p><p>العيوب: الأقل تجميلاً؛ اختراق لقمة ضعيف؛ وما يتوازن بالحركات اللامركزية. (هذا المستوي الاعتيادي. سابقاً المحاضرة ذكرت إن <b>المستوي المتوازن</b> عادة يستخدم تماسات الأرحاء الثانية أو منحدر موازنة — هذا ترتيب مختلف عن neutrocentric الكلاسيكي اللي ما بيه تماس لامركزي.)</p>","<p>الأسنان <b>التشريحية</b> تحاكي الشكل الطبيعي ويه ميل حوالي <b>33°</b>. مزايا: تجميل؛ اختراق طعام أفضل؛ الإجهاد العمودي يقل؛ انسجام ويه المفصل وعضلات المضغ؛ وتوازن بالوضع اللامركزي. عيوب: تقنية دقيقة؛ وقت أكثر؛ صعوبة الوضع بصنف II و III؛ وقوة جانبية أكبر.</p><p><b>شبه التشريحية</b> ميل حدبة أقل من 33°. المزايا المكتوبة: تجميل؛ كفاءة مضغ جيدة؛ قوة جانبية أقل؛ وإطباق متوازن. العيوب المكتوبة: الأقل تجميلاً؛ اختراق ضعيف؛ وما يتوازن لامركزياً — صياغة تطابق عيوب المستوي، وننقلها كما كتبتها المحاضرة.</p><p><b>غير التشريحية</b> مسطحة بلا ارتفاع حدبة. مزايا: سيطرة عصبية عضلية ضعيفة؛ سوء علاقة فكين؛ عضة معكوسة أو صنف III؛ أريح؛ وقت أقل بالترتيب؛ وأجمل شوية من الإطباق neutrocentric. عيوب: استعمال منحنى معوِّض قد يعطي نفس ضرر ميول الحدبات؛ والتعديل أصعب. (عنوان عن موازنة غير التشريحية ظهر بلا قائمة مقروءة، فما اختراعنا طرق.)</p><p>اختيار المخطط: خصائص المخطط (شكل وترتيب السن؛ متوازن أو لا) وخصائص المريض (ارتفاع وعرض الحافة؛ الطلب التجميلي؛ العلاقات الهيكلية؛ السيطرة العصبية العضلية؛ وميل لنشاط خارج الوظيفة).</p>","<p>راجع المتطلبات الستة كما بالمحاضرة (مو قائمة مخترعة)، ومعادلة Theilman ككسر، وتوجيه القواطع 10°–20°.</p>","<p>اللساني: حنكي علوي يقابل حفرة سفلية، بلا تماس شدقي بشدقي. المستوي الكلاسيكي: تماس فقط بالمركزية، وما يقطع بالقواطع.</p>","<p><b>التجميل</b> بالطب السني نظرية الجمال خاصة بمظهر الترميم من الشكل و/أو اللون. <b>تجميل الأسنان</b> تطبيق هذه المبادئ على الأسنان الطبيعية أو الاصطناعية. <b>تجميل الطقم</b> التأثير على جمال وجاذبية وشخصية وكرامة الفرد؛ مزيج فن وعلم.</p><p>العوامل المؤثرة: عوامل المريض؛ عوامل السن؛ عوامل قاعدة الطقم؛ وعوامل السن/القاعدة. عوامل المريض: الجنس والعمر والشخصية. عوامل السن: الموضع واللون والحجم والشكل.</p><p>خمس خطوات: طبعة دقيقة؛ علاقة فكية؛ اختيار الأسنان؛ الترتيب؛ والتوصيف (characterization).</p>","<p>الطبعة الدقيقة تحدد سماكة الشفة الشفوية للطقمين؛ التجميل والتثبيت والثبات أهداف مهمة بهالمرحلة. سماكة الحدود تختلف حسب ضياع الحافة. قبو الدهليز يُملأ بس ما ينملأ زيادة، حتى يرجع شكل الوجه.</p><p>العلاقة الفكية تحدد البعد العمودي الإطباقي الصحيح. البعد الصحيح يرجع الطول الفسيولوجي للعضلات ويسمح بتعبير وجه طبيعي. إعادة المسافة العمودية المناسبة تحسّن المظهر وتقلل الشكل الغائر المسن. لازم يكون البعد مرضي تجميلياً وهم متوافق ويه جهاز المفصل وعضلات المضغ.</p>","<p>اختيار اللون والحجم والشكل يحدد تجميل ووظيفة الطقم. أهداف الاختيار: وظيفة كفوءة؛ نطق طبيعي؛ إرضاء تجميلي؛ بلا أذى للنسيج؛ والحفاظ على البعد العمودي. الأمامية أساساً للتجميل، والخلفية للوظيفة.</p><p>أدلة حجم الأمامية — <b>قبل القلع</b>: مصبوب تشخيصي، صور، أشعة، أسنان مقلوعة، وطقم سابق. <b>بعد القلع</b>: القواطع المركزية ترجّع النثرة (philtrum) إن أمكن، وترجّع حد الشفة الأحمر (vermillion)؛ نقاط القاطع وخط الابتسامة تحدد ارتفاع السن (حسب العمر)؛ ونقاط الأنياب تُربَط بعرض ما بين جناحي الأنف (ويه الابتسامة) وبالحدقتين (تحتاج صورة قبل القلع). إذا المريض لابس طقم، افحص الفم والطقم بمكانه من الناحية الفسيولوجية والتجميلية.</p>","<p>اللون: اعرض دليل الألوان كامل واختر أفتح وأغمق بطاقة. بيّن الفرق واسأل أيّهم يفضّل. احذف المرفوض واختر لون ثاني من النصف المفضّل. كرّر المقارنة الزوجية مرتين أو ثلاث حتى توصل للألوان اللي يريدها، وسجّلها بالملف.</p><p>الحجم قد يعتمد على أطقم موجودة، نماذج أسنان سابقة، وصورة. العوامل: حجم الوجه؛ المسافة بين القوسين؛ المسافة المقاسة بين وحشي النابين العلويين؛ طول الشفة؛ وحجم وعلاقة الأقواس.</p><p>القالب: أسنان بنفس الحجم قد تبان مختلفة بسبب الاستدقاق والتماس والتقوس الشفوي. خلِّ المريض يختار بين قالبَين بنفس الحجم وشكل مختلف (حطهم يمين ويسار على حبل شمع). الاختيار: <b>مربع</b> للملامح الكبيرة الخشنة؛ <b>مستدق</b> للوجه الطويل الضيق؛ <b>بيضي</b> للوجه الصغير المستدير.</p>","<p>شكل الأمامية يُحدَّد بشكل الوجه وعوامل <b>SPA</b> (الجنس، الشخصية، العمر). الشخصية مذكورة كعامل بلا قائمة تفصيلية منفصلة بهالمحاضرة.</p><p><b>الجنس.</b> الأنثى: زوايا قاطعة أكثر استدارة وميل أقل؛ الذكر: أقل استدارة وأكثر زوايا. بالذكر حافة القاطع المركزي موازية للشفاه والجانبية فوق مستوى الإطباق؛ بالأنثى حواف المركزي والجانبي تتبع تقوس الشفة السفلية. وحشي المركزي يُدار للخلف بالأنثى. إنسي الجانبية يُدار للأمام نسبة للمركزي بالأنثى؛ بالذكر إنسي الجانبية ينختفي وراء المركزي فيبرز الناب. بالأنثى يظهر الثلث الإنسي فقط من الناب؛ بالذكر حتى الثلثين الأوسطين. الرقاب أبرز بالذكر. الأنثى ويه الابتسامة تظهر أسنان أمامية أكثر، فالضواحك تُرتَّب تجميلياً.</p><p><b>العمر.</b> ضعف توتر العضلات يخلي الخدود والشفة السفلية ترخي؛ زيد التراكب الأفقي للخلفيات حتى ما ينعض الخد. المسافة بين الإطباقية تقل، فالأسنان السفلية تبان أكثر من العلوية. الأسنان المتآكلة ويه تلامسات بالية تخلي السن شديد التحدب يبان اصطناعي. يمكن توصيف انحسار اللثة. خط ابتسامة أبلط وهجرة مرضية. المينا تتآكل والعاج الأصفر يبان أكثر.</p>","<p>أهداف الترتيب: الأمامية تبان حلوة؛ المريض يحكي واضح؛ وكل الأسنان بموضع يخدم الراحة والثبات والتثبيت. إذا مستوى الإطباق واطي زيادة أو الأمامية بمستوى مسطح، الأسنان تبان زيادة وما تتبع خط ابتسامة الشفة. إذا المستوى مو موازي لخط الحدقتين، الابتسامة تبان محنية.</p><p>خط منتصف الأسنان لازم يطابق خط منتصف الوجه. <b>لا تستخدم اللجام الشفوي كدليل للمنتصف</b> لأنه غالباً مو بمنتصف الوجه. الفكرة الغلط إن دعم الشفة يعتمد على شكل شفة الطقم؛ إذا ثخّنت الشفة تنتفخ تحت الأنف مثل واقي اللثة. إبعاد الأسنان عن قمة الحافة يسبب عدم ثبات؛ وتصفيفها عمودية تماماً فوق القمة ما يعطي دعم شفة كافٍ. الأدلة الحيوية (موضع الأسنان الطبيعية السابق) تحسّن التجميل جداً. احتمال ثاني: <b>حط رقاب الأسنان قرب الحافة وميل الحواف القاطعة شفوياً</b> — يحسّن دعم الشفة وأقل عرضة لعدم الثبات.</p><p>عدم الانتظام أو الازدحام شائع بالأسنان الطبيعية، فالترتيب «المثالي» يبان اصطناعي. <b>النقص بالترتيب الأمامي مطلب أساسي</b> لإيهام الطبيعية. تجنب التناظر الكامل؛ لا تكون كل الحواف القاطعة بنفس المستوى. المحاور العمودية تتغيّر بس الميل على جهة لازم يوازن الجهة الثانية. نفس القواعد للأمامية السفلية (غالباً تبان أكثر أثناء الوظيفة): تراكب عمودي وأفقي، ميل أمامي-خلفي، وميل المحاور.</p><p>علاقة القواطع لازم تناسب العلاقة الهيكلية. علاقة قاطعة صنف I على قاعدة هيكلية صنف II واضحة تخاطر بعدم الثبات وتجميل سيء غير منسجم.</p>","<p>ثلاثة جوانب لشكل اللثة: حواف اللثة عند رقاب الأسنان (تختلف من المركزي للجانبي للناب وتُستنسَخ)؛ شكل الشفة (أملس أو تشريحي يكرّر شكل الجذور، ويمكن تنقيط الشفة لمحاكاة اللثة المتقرنة — مفيد ويه خط ابتسامة عالي، بس التنقيط الواسع أصعب تنظيفاً)؛ ولون الشفة (تلوين الأكريل؛ صورة أو رؤية المريض تساعد الفنّي).</p><p>عوامل قاعدة الطقم: الشكل واللون. فوائد الشكل الصحيح: تحمل وراحة أفضل؛ يسهّل الثبات والسيطرة؛ ويمنع عض الشفة أو الخد المزمن.</p><p><b>التوصيف</b>: علامات وتجاويف وتلوين مخصصة بدون الخروج الفاضح عن مبادئ الترتيب. بدون توصيف لابسين الطقم يبانون متشابهين. واجب الطبيب يخبر المريض إن طقمه يكدر يتوصّف. لازم يكون واقعي مو مبالغ. الحجم واللون ينسجمون ويه ملامح الوجه ويكونون مقبولين وظيفياً.</p><p>حسب <b>Frush و Fisher</b> المفهوم التكويني السني يشمل العمر والجنس والشخصية بترتيب التخطيط التجميلي. الوسائل: عدم انتظام بسيط، تراكب، إمالة، طحن عمق، تعديل الحواف، دوران، تنقيط، تلوين، تزاحم، وحتى مجوهرات سنية.</p><p>القرار النهائي يعتمد على: العلاقات الفكية؛ مظهر المريض؛ موقفه النفسي؛ والمتطلبات الوظيفية. خط ابتسامة عالي يظهر لثة كثيرة يستفيد من قالب أقل استدقاق ويه نقطة تماس طويلة حتى يقل ظهور الأكريل الوردي بين الأسنان.</p>","<p>أسئلة ختامية + بطاقة + زر الدرجة: SPA والمقارنة الزوجية للون؛ اللجام مو خط منتصف ودعم الشفة من موضع السن؛ والقرار النهائي يعتمد على أربعة أمور ذكرتها المحاضرة. إذا غلطت ارجع للشرائح.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
