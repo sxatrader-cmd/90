@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Operative File 8 — Enamel, Dentine and Cervical Lesions</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Operative (Conservative) Dentistry · Dr. Al-Shammaa Lectures 3–5</div>
+    <h1>Biologic Considerations of Enamel and Dentine, and Cervical Lesions</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lectures 3–5 by Dr. Abdullah Al-Shammaa (PDF pages 148–172): enamel and dentine biology in operative dentistry, then carious and non-carious cervical lesions and dentinal sensitivity.</p>
+    <ul>
+      <li>Enamel HV = 275 (4–5 times dentine), 30,000–40,000 rods/mm², a 10- to 20-fold etch, and shade before isolation</li>
+      <li>Tubules 15,000–20,000/mm² at the DEJ to 45,000–65,000/mm² at the pulp, and inner dentine about eight times more permeable</li>
+      <li>Tensile strength 10 versus 98 MPa, a third of the fracture resistance after endodontic access, and hydrodynamic sealing of tubules</li>
+      <li>Root caries judged by softness, NCCLs at 5–85%, a 6-week wait after gingival surgery, and an open or closed sandwich</li>
+      <li>Total run time: <b>42 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 21</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Operative · File 8","t":"Biologic considerations of enamel and dentine, and cervical lesions","b":"<p>University of Baghdad, College of Dentistry — Operative (conservative) dentistry syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file covers PDF pages 148–172: Lectures 3–5 by Dr. Abdullah Al-Shammaa on the biologic considerations of enamel and of dentine (Parts I and II) and their clinical significance, then a lecture on carious and non-carious cervical lesions, including dentinal sensitivity.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Medical terms stay in English next to the Arabic. Numbers in these lectures are kept as written, including enamel hardness HV = 275 versus dentine HV = 65, 30,000–40,000 enamel rods/mm², and tubule counts of 15,000–20,000/mm² at the DEJ rising to 45,000–65,000/mm² at the pulp.</p>"},{"k":"Dr. Al-Shammaa · Lecture 3","t":"Enamel cannot repair itself, and acid etch multiplies the bondable area 10- to 20-fold","b":"<p>Enamel is formed by ameloblasts. It provides a hard, durable shape for the functions of teeth and a protective cap for dentine and pulp. Enamel is incapable of repairing itself once destroyed, because the ameloblast degenerates after formation of the enamel rod. The final act of the ameloblast is secretion of a membrane covering the end of the rod — Nasmyth’s membrane, or the primary enamel cuticle — which covers the newly erupted tooth and is worn away by mastication and cleaning, then replaced by a pellicle (a precipitate of salivary proteins). Microorganisms may invade the pellicle to form bacterial plaque, a potential precursor to dental disease.</p><p>Structurally, enamel is composed of millions of rods or prisms, densely packed, with a wavy course, each extending from the DEJ to the external surface. The prisms contain millions of small elongated apatite crystals in a distinct orientation, surrounded by an organic matrix or prism sheath. The spacing and orientation of the crystals and the amount of organic matrix make the rod boundary and the central core differentially soluble in weak acids. The acid-treated surface is irregular and pitted with microscopic undercuts and a higher surface energy, so resin monomer flows in, polymerizes and forms retentive tags. Because there are <b>30,000 to 40,000 enamel rods/mm²</b> and acid-etch penetration increases the bondable surface area <b>10- to 20-fold</b>, micromechanical bonding of resin to enamel is significant — a conservative alternative to retentive grooves, pins and extension for prevention.</p>"},{"k":"Dr. Al-Shammaa · Lecture 3","t":"How enamel rods run: about 60° on vertical walls, and an obtuse cervical cavosurface","b":"<p>Starting at <b>1 mm from the CEJ</b>, the rods on the vertical surfaces run occlusally or incisally at approximately a <b>60-degree</b> inclination, and progressively incline approaching the marginal ridges and cusp tips, where the rods are parallel to the long axis of the crown. The rods beneath the occlusal fissures are also parallel to the long axis, but rods on each side of the fissure vary up to <b>20 degrees</b> from the long axis.</p><p>Loss of enamel rods that form the cavity wall at the cavosurface margin creates a gap defect and leakage of bacteria and their products that may lead to secondary caries. Therefore a basic principle of cavity-wall preparation is to bevel or parallel the direction of enamel rods and avoid undercutting them. In the cervical region of permanent teeth, enamel rods are oriented outward in a slightly apical direction; a cut perpendicular to the external surface of occlusal walls of a preparation on axial surfaces compromises enamel, so an <b>obtuse enamel cavosurface angle</b> is recommended to closely parallel the rod direction and preserve the integrity of the enamel margin.</p>"},{"k":"Dr. Al-Shammaa · Lecture 3","t":"Enamel properties: HV = 275 (four to five times dentine), 90% mineral, and 4–12% water","b":"<p>Hardness: enamel is the hardest substance of the human body. The hardness value of enamel (<b>HV = 275</b>) is around <b>4 to 5 times</b> higher than that of dentine (<b>HV = 65</b>). Brittleness: enamel is very brittle and requires a base of dentine to withstand masticatory stress; rods that fail to possess a dentine base because of caries or improper cavity design are easily fractured away from neighboring rods.</p><p>Permeability: at maturity, enamel is about <b>90% inorganic hydroxyapatite</b> by volume, with a small amount of organic matrix and <b>4% to 12% water</b> in intercrystalline spaces and a network of micropores opening to the external surface. The micropores form a dynamic connection between the oral cavity and the pulpal and dentinal-tubule fluids. Fluids, ions and low-molecular-weight substances can diffuse through semipermeable enamel, so acid demineralization, caries, remineralization and fluoride uptake are not limited to the surface but are active in three dimensions. Solubility of enamel increases from the surface to the DEJ. Fluoride present during formation or applied topically decreases surface solubility; fluoride concentration decreases toward the DEJ. Trace fluoride stabilizes enamel by lowering acid solubility, decreasing the rate of demineralization and enhancing remineralization, while preserving the apatite structure. Color: enamel is relatively translucent, glossy, and varies from light yellow to grayish white. Tooth colour is primarily a function of the underlying dentine, enamel thickness and stain in the enamel. Thickness is greater at cusp tips and incisal edges, decreases below deep fissures, and becomes thin cervically at the junction with cementum. Translucency relates to the degree of calcification and homogeneity.</p>"},{"k":"Dr. Al-Shammaa · Lecture 3","t":"Take the shade before you isolate: isolated enamel turns temporarily whiter in minutes","b":"<p>Enamel becomes temporarily whiter within minutes when the tooth is isolated from the moist oral environment by a rubber dam or absorbents. Thus the shade must be determined <b>before isolation and preparation</b> for a tooth-coloured restoration. This change is explained by the temporary loss of loosely bonded (or exchangeable) water (less than <b>1% by weight</b>).</p><p>Key diagnostic signs: (1) colour changes associated with demineralization — subsurface enamel porosity from carious demineralization is manifested clinically by a milky white opacity called a <b>white-spot lesion</b> on smooth surfaces. In later stages, internal demineralization of enamel at the DEJ and subsurface cavitation imparts a <b>blue or gray</b> colour to the overlying enamel. (2) Cavitation — dentine is affected until enamel breaks away to create a cavity, and a restoration must then be placed. If untreated, cavitation expands, weakens the crown, and microorganisms infiltrate deep dentine and may affect vitality. When the lesion extends gingival to the CEJ, as in root caries, isolation, access and gingival-tissue response complicate the procedure. (3) Wear — enamel is as hard as steel, but it will wear from attrition or frictional contact against opposing enamel or harder restorations such as porcelain. Heavy occlusal wear grinds rounded cuspal contacts to flat facets. Depending on bruxism, malocclusion, age and diet, cusps may be completely lost and dentine exposed. Cavity outline should avoid critical high-stress areas of occlusal contact. (4) Faults and fissures — a deep fissure is formed by incomplete fusion of lobes of cuspal enamel; the narrow clefts protect acidogenic bacteria. Pits and fissure defects are <b>eight times more vulnerable</b> to caries than smooth surfaces. (5) Cracks that extend from developmental grooves across marginal ridges to axial walls, or from the margins of large restorations, may cause cuspal fracture. When the crack extends through dentine, or when the patient has pain on chewing, the tooth requires a restoration that provides complete cuspal coverage.</p>"},{"k":"Dr. Al-Shammaa · Lecture 3","t":"Quiz: HV = 275, a 10- to 20-fold etch, and shade before the dam","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Enamel structure, etching and rod direction in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Enamel repairs itself throughout life; etching reduces the bondable area; rods should be undercut at every margin</button><button type=\"button\" class=\"opt\" data-i=\"1\">Ameloblasts degenerate after forming the rod, so enamel cannot repair itself. Nasmyth’s membrane (primary enamel cuticle) is worn away and replaced by a salivary pellicle that plaque can invade. There are 30,000–40,000 rods/mm², and acid etch increases the bondable area 10- to 20-fold, giving micromechanical resin tags — a conservative alternative to grooves, pins and extension for prevention. From 1 mm of the CEJ, vertical-surface rods run at about 60° and become parallel to the long axis at ridges and cusp tips; beside a fissure they may vary up to 20°. Bevel or parallel the rods and do not undercut them. Cervically, rods lean slightly apically, so an obtuse cavosurface is recommended</button><button type=\"button\" class=\"opt\" data-i=\"2\">Rods at the cusp tip run at 60° to the long axis, and a right-angle cervical margin is preferred</button><button type=\"button\" class=\"opt\" data-i=\"3\">Etching is useful only for dentine, not for enamel</button></div><div class=\"qexp\" hidden><p>المينا ما يصلح نفسه. الحفر يزيد المساحة 10–20 مرة. من 1 ملم عن الـ CEJ القضبان بحوالي 60°. بالعنق زاوية منفرجة حتى توازي القضبان.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Enamel properties and clinical signs in this lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Enamel is softer than dentine (HV = 65 versus 275), is 50% water, and shade is taken only after the dam is on</button><button type=\"button\" class=\"opt\" data-i=\"1\">Enamel HV = 275 is about 4–5 times dentine (HV = 65); it is brittle and needs a dentine base. Mature enamel is about 90% hydroxyapatite by volume with 4–12% water in micropores, so diffusion, caries and fluoride act in three dimensions. Solubility increases toward the DEJ; fluoride lowers surface solubility, slows demineralization and aids remineralization. Tooth colour depends mainly on underlying dentine, thickness and stain. Isolated enamel becomes temporarily whiter within minutes from loss of loosely bonded water (less than 1% by weight), so shade is taken before isolation. A white-spot lesion is a milky opacity of subsurface demineralization; later a blue or gray colour appears when the DEJ is involved. Pits and fissures are eight times more vulnerable than smooth surfaces. A crack through dentine, or pain on chewing, needs complete cuspal coverage. Outline should avoid high-stress occlusal contacts</button><button type=\"button\" class=\"opt\" data-i=\"2\">A white-spot lesion always means the enamel has already cavitated and must be cut immediately</button><button type=\"button\" class=\"opt\" data-i=\"3\">Fluoride increases enamel solubility from the surface inward</button></div><div class=\"qexp\" hidden><p>صلابة المينا 275 مقابل العاج 65. اللون قبل العزل لأن المينا يبيض مؤقتاً. الشقوق أضعف ثماني مرات. الشق اللي يخترق العاج يحتاج تغطية حدبة.</p></div></div>"},{"k":"Dr. Al-Shammaa · Lecture 4","t":"Dentine is a living tissue: Tomes fibres 100–200 µm, and primary dentine is finished about 3 years after eruption","b":"<p>Dentine is a mineralized connective tissue covered by enamel in the crown and cementum in the root, enclosing the pulp. It is formed by odontoblasts, whose cell bodies lie in the pulp but whose long cytoplasmic processes (Tomes fibres) extend well (<b>100–200 µm</b>) into the tubules of mineralized dentine. Because of these processes, dentine is considered a living tissue, able to react to physiologic and pathologic stimuli. The processes may extend beyond the DEJ into enamel as enamel spindles, which are responsible for a sensitivity sensation during cavity preparation in enamel.</p><p>Dentine formation begins immediately before enamel formation. The most recently formed layer is always on the pulpal surface. Odontoblasts generate an extracellular collagen matrix as they move away from adjacent ameloblasts; mineralization follows. The unmineralized zone next to the odontoblast cell bodies is <b>predentine</b>. Formation begins subjacent to the cusp tip or incisal ridge and spreads at about <b>4 µm/day</b> toward the root apex. Unlike enamel, dentine formation continues after eruption and throughout the life of the pulp. The dentine that forms the initial shape of the tooth is primary dentine, usually completed <b>3 years after eruption</b> in permanent teeth.</p>"},{"k":"Dr. Al-Shammaa · Lecture 4","t":"Tubule numbers rise from 15,000–20,000/mm² at the DEJ to 45,000–65,000/mm² at the pulp","b":"<p>Dentinal tubules extend from the pulp to the DEJ. Each contains a Tomes fibre and is lined with peritubular dentine, which is much more mineralized than the surrounding intertubular dentine. The tubules comprise about <b>10%</b> of dentine volume. In mature dentine the odontoblastic process extends to about <b>one-third</b> the dentinal thickness. The number of tubules increases from <b>15,000 to 20,000/mm² at the DEJ</b> to <b>45,000 to 65,000/mm² at the pulp</b>. In coronal dentine the average tubule diameter is <b>0.5 to 0.9 µm</b> at the DEJ, increasing to <b>2 to 3 µm</b> near the pulp. Tubules are generally perpendicular to the DEJ; small lateral openings (canaliculi) come from secondary branches of adjacent processes. The DEJ is  <b>2 to 15 µm</b> wide; some collagen fibres from dentine are embedded in enamel and may add strength and resilience to the junction.</p>"},{"k":"Dr. Al-Shammaa · Lecture 4","t":"Mature dentine is 45–50% mineral, and inner dentine is about eight times more permeable than dentine at the DEJ","b":"<p>Mature dentine is less hard than enamel but slightly harder than bone: <b>45%–50% inorganic</b>, <b>30% organic</b> (about 90% type I collagen and 10% non-collagenous proteins), and <b>25% water</b>. The mineral is mainly calcium hydroxyapatite, Ca<sub>10</sub>(PO<sub>4</sub>)<sub>6</sub>(OH)<sub>2</sub>, similar to that in enamel but in a lower percentage than enamel and higher than cementum and bone. Dentine crystals are platelike and <b>30% smaller</b> than those in enamel; thickness varies from <b>3.5 nm</b> near the DEJ to about <b>2 nm</b> close to the pulp. Carbonate and fluoride are also present; mineral content increases with age.</p><p>Intertubular dentine is the hydroxyapatite-embedded collagen matrix between tubules and forms the bulk of the structure. Peritubular dentine is hypermineralized dentine limited to the tubule walls; the walls thicken with age, the lumen narrows, fluid flow is restricted, and the dentine becomes harder, denser and less sensitive — physiologic dentine sclerosis. In outer dentine near the DEJ the tubules are relatively far apart and intertubular dentine makes up <b>96%</b> of the surface area. In inner dentine the tubule diameters are larger and the distance between centres is half that at the DEJ, so the intertubular matrix is only <b>12%</b> of the surface area, and inner dentine is about <b>eight times more permeable</b> than dentine near the DEJ.</p>"},{"k":"Dr. Al-Shammaa · Lecture 4","t":"Primary, secondary, sclerotic and reparative dentine — including a 150 µm mantle layer","b":"<p><b>Primary dentine</b> is formed relatively quickly until root formation is completed. The first-formed, <b>150-µm-thick</b> layer subjacent to enamel is <b>mantle dentine</b>: it is <b>4% less mineralized</b> than other primary dentine, and its collagen fibres are perpendicular rather than parallel to the DEJ. Odontoblasts produce primary dentine, mainly intertubular, at <b>4 to 8 µm/day</b>. Approximately 2 to 3 years after eruption, the bulk around the pulp chamber and canals is circumpulpal dentine, and synthesis then slows to <b>1 to 2 µm/day</b>, decreasing with age but continuing as long as the tooth is vital. <b>Secondary dentine</b> is this slowly formed dentine at 1 to 2 µm/day. Continued deposition constricts the pulp chamber; in response to mild occlusal stimulus it is mainly deposited in the pulp horns and on the roof and floor, so after many decades the chamber becomes quite narrow occluso-gingivally. This reduces the possibility of pulp exposure in older patients during cavity or crown preparation — the dentist must still attend to the size and location of the chamber when designing the preparation and placing pins.</p><p><b>Sclerotic dentine</b> (transparent or peritubular) results from aging or mild irritation (slow caries, attrition, abrasion, erosion, occlusal trauma). Tubular content is replaced by calcified material that obliterates the tubules from the DEJ pulpally. The dentine is harder, denser, less sensitive and more protective of the pulp. Sclerosis from aging is physiologic; from mild irritation it is reactive. The combination of a thickened peritubular wall and intratubular crystals creates a hypermineralized translucent zone of sclerosis beneath exposed or carious dentine, limiting permeability. <b>Reparative (tertiary) dentine</b>: intense trauma (bacterial penetration with caries, or heat and trauma from a bur) may destroy the supporting odontoblasts. Within <b>3 weeks</b>, fibroblasts or mesenchymal cells of the pulp differentiate to simulate original odontoblasts and form irregularly organized atubular reparative dentine.</p>"},{"k":"Dr. Al-Shammaa · Lectures 4–5","t":"Quiz: tubule counts, 45–50% mineral, and reparative dentine in 3 weeks","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Dentine formation and tubule anatomy in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Dentine is non-vital; tubules are widest at the DEJ and fewest near the pulp; primary dentine stops at eruption</button><button type=\"button\" class=\"opt\" data-i=\"1\">Odontoblast processes (Tomes fibres) extend 100–200 µm into tubules, so dentine is a living tissue; enamel spindles can cause sensitivity when cutting enamel. Predentine lies next to the cell bodies. Formation spreads at about 4 µm/day; primary dentine is usually completed 3 years after eruption of a permanent tooth. Tubules are about 10% of volume; the process extends about one-third of the thickness in mature dentine. Counts rise from 15,000–20,000/mm² at the DEJ (diameter 0.5–0.9 µm) to 45,000–65,000/mm² at the pulp (2–3 µm). The DEJ is 2–15 µm wide. Mature dentine is 45–50% mineral, 30% organic (mostly type I collagen) and 25% water; crystals are 30% smaller than enamel’s (3.5 nm near the DEJ to about 2 nm near the pulp). Intertubular dentine is 96% of the surface area in outer dentine and only 12% in inner dentine, which is about eight times more permeable</button><button type=\"button\" class=\"opt\" data-i=\"2\">Inner dentine is less permeable than dentine at the DEJ because the tubules disappear</button><button type=\"button\" class=\"opt\" data-i=\"3\">Tomes fibres never enter mineralized dentine</button></div><div class=\"qexp\" hidden><p>ألياف تومز 100–200 مايكرومتر. الأقنية 15–20 ألفاً عند الـ DEJ إلى 45–65 ألفاً عند اللب. التركيب 45–50% معدني و30% عضوي و25% ماء. العاج الداخلي أنفذ بحوالي 8 مرات.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Primary, secondary, sclerotic and reparative dentine in this lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Secondary dentine forms only after the pulp is dead; reparative dentine appears in 3 hours and is highly tubular</button><button type=\"button\" class=\"opt\" data-i=\"1\">Primary dentine includes a 150 µm mantle layer that is 4% less mineralized, formed at 4–8 µm/day until about 2–3 years after eruption, then circumpulpal dentine continues at 1–2 µm/day while the tooth is vital. Secondary dentine at 1–2 µm/day constricts the chamber, especially at the roof, floor and horns, reducing exposure risk in older patients — still check chamber size before pins. Sclerotic dentine from aging or mild irritation obliterates tubules, is harder and less sensitive, and limits permeability beneath caries or restorations. Intense insult that kills odontoblasts leads, within 3 weeks, to irregular atubular reparative (tertiary) dentine from pulp fibroblasts or mesenchymal cells</button><button type=\"button\" class=\"opt\" data-i=\"2\">Mantle dentine is 4% more mineralized than the rest of primary dentine</button><button type=\"button\" class=\"opt\" data-i=\"3\">Secondary dentine is deposited only on the root apex, never on the roof of the chamber</button></div><div class=\"qexp\" hidden><p>عاج الوشاح 150 مايكرومتر وأقل تمعدناً 4%. الأولي 4–8 مايكرومتر/يوم ثم 1–2. الثانوي يضيّق الحجرة. الترميمي خلال 3 أسابيع وبلا أقنية منتظمة.</p></div></div>"},{"k":"Dr. Al-Shammaa · Lecture 5","t":"What dentine does: tensile strength 98 MPa, and an endodontic access leaves only a third of the fracture resistance","b":"<p>Functions of dentine: (1) it forms the bulk of the tooth; (2) coronal dentine gives the crown its underlying yellow hue (deeper in permanent teeth); infection or death of the pulp discolours dentine and darkens the clinical crown; (3) elasticity — tensile strengths are <b>10 MPa for enamel</b> and <b>98 MPa for dentine</b>; enamel is harder but brittle and can fracture without the elastic dentine support that absorbs heavy occlusal loads; (4) support — resistance of a tooth to fracture is significantly lowered with increasing depth and width of the cavity. A posterior tooth with an endodontic access retains only <b>a third</b> of the fracture resistance of an intact tooth. A conservative first approach (localized caries removal, a bonded restoration and a sealant) is recommended; if large preparations are required, consider an inlay, onlay or crown. Higher concentrations of tooth-whitening (bleaching) agents may also have adverse effects on the fracture toughness of dentine; (5) protection — a vital tissue without its own blood supply or innervation, yet able to respond to thermal, chemical or tactile stimuli through the tubules.</p><p>During preparation, dentine is distinguished from enamel by: colour (enamel is translucent; dentine is yellow-white and slightly darker, and in older patients may be brown or black if exposed to oral fluids, old restorations or slowly advancing caries); reflectance (dentine is opaquer and duller; enamel is shinier); hardness (dentine is softer — a sharp explorer tends to catch and hold; hardness averages <b>one-fifth</b> that of enamel, and hardness near the DEJ is about <b>three times</b> greater than near the pulp); and sound (enamel gives a sharper, higher-pitched sound under an explorer).</p>"},{"k":"Dr. Al-Shammaa · Lecture 5","t":"Permeability, the smear layer, microleakage, and remaining dentine thickness","b":"<p>When enamel and cementum are lost (caries, burs, abrasion or erosion), exposed tubules become channels between the pulp and the mouth. After bur cutting, the orifices are usually occluded by a tenacious grinding-debris <b>smear layer</b> that adheres and partially plugs the tubules. Removing the smear layer with acid etching during bonding increases local permeability and outward fluid movement, creating a wet environment that may reduce bond strength over time. Restored teeth are also at risk of <b>microleakage</b> — diffusion of bacteria, oral fluids, ions and molecules into the tooth–filling interface by capillary action — which can start secondary caries on internal walls and allow bacterial by-products to reach the pulp, causing inflammation and sensitivity. No restorative material or technique can ensure a complete hermetic seal, and leakage at gingival (cementum or dentine) margins of resin-bonded restorations is commonly reported. Varnishes, liners or dentine-bonding adhesives help seal margins and the dentinal surface, but <b>remaining dentine thickness</b> is the key determinant of the diffusion rate into the pulp: thicker remaining dentine means smaller tubular diameters and greater length, and significantly reduces toxic and bacterial irritation.</p><p>Regional differences: coronal dentine is much more permeable than root dentine. Coronal occlusal dentine (the pulpal floor) is inherently less permeable than dentine around the pulp horns or axial surfaces; only about <b>30%</b> of the subjacent tubules on the occlusal surface are patent over their entire length. Prepared proximal boxes or gingival margins, which are relatively more susceptible to microleakage and recurrent caries, are located where the dentine is most permeable.</p>"},{"k":"Dr. Al-Shammaa · Lecture 5","t":"Four theories of dentine sensitivity — and why sealing the tubules matters more than an insulator","b":"<p>Dentine is sensitive to thermal, tactile and osmotic stimuli across its <b>3–3.5 mm</b> thickness, yet it is neither vascularized nor innervated, except for about <b>20%</b> of tubules that have nerve fibres penetrating inner dentine by a few microns. Odontoblastic processes reach only the inner third, and their cell membrane is not conductive; recent studies suggest odontoblasts could be involved through a mechanosensory system.</p><p>Theories: (1) <b>Direct innervation</b> — nerve endings extend to the DEJ and are stimulated mechanically. Shortcomings: outer dentine, usually the most sensitive, lacks evidence of innervation; the plexus of Rashkow and intratubular nerves are not established until after eruption, yet a newly erupted tooth is sensitive; bradykinin applied to dentine fails to induce pain, and local anaesthetic on dentine does not prevent pain as it does on skin. (2) <b>Odontoblast receptor</b> — odontoblasts act as receptors and relay to a nerve terminal; most studies treat them as matrix-forming, not excitable, and no synapses have been shown. (3) <b>Thermal shock</b> — pain is from direct temperature change transferred to the pulp, especially when remaining dentine is thin; protection would be an adequate thickness of insulating cement. (4) <b>Hydrodynamic theory</b> — in a vital tooth with exposed dentine there is a constant slow outward fluid flow. A stimulus (air, cold, heat from a bur, or a probe) makes the flow rapid, displaces odontoblast cell bodies, stretches nerve terminals, allows sodium entry, and pain is perceived. Near the pulp, higher tubule density and diameter increase fluid volume and flow, which explains why deeper restorations have more sensitivity. The hydrodynamic theory has gained general acceptance and has changed restorative procedures away from thermal insulation and toward <b>dentinal sealing</b>: if the tubules can be occluded, rapid outward flow is prevented and temperature changes do not induce pain.</p>"},{"k":"Dr. Al-Shammaa · Lecture 5","t":"Closing tubules to desensitize, and a reactionary-dentine barrier that is not continuous with primary tubules","b":"<p>In root-dentine hypersensitivity, the degree of tubule closure by intratubular crystals correlated directly with decreased sensitivity to touch, air or temperature. Toothpastes that contain strontium chloride or oxalates can promote intratubular crystallization and desensitize dentine. Resin bonding agents, fluoride varnishes, and potassium and silver nitrate can also reduce hypersensitivity by occluding tubules or by nerve desensitization. Calcium-silicate cements can reduce it by remineralization as well.</p><p>When a tooth is exposed to thermal, mechanical and chemical stimuli for a long time, the rate, thickness and organization of reactionary dentine depend on the intensity and duration of the stimulus. The barrier of reactionary dentine is superior because there is no continuity between the affected permeable tubules of regular primary dentine and those within the reactionary dentine. The tooth can compensate for traumatic or carious loss of peripheral dentine with new substrate and reduced pulpal irritation. Unless the lesion is arrested or removed and a restoration placed, diffusion of bacterial toxins can initiate a strong inflammatory response and pulpal necrosis.</p>"},{"k":"Dr. Al-Shammaa · Lecture 5","t":"Quiz: 10 versus 98 MPa, a third of the strength after access, and sealing rather than insulating","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Dentine function, how to tell it from enamel, and permeability in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Enamel has a higher tensile strength than dentine; an endodontic access does not weaken a posterior tooth; occlusal dentine is the most permeable dentine in the crown</button><button type=\"button\" class=\"opt\" data-i=\"1\">Dentine forms the bulk and the yellow hue of the crown (which darkens if the pulp dies). Tensile strength is 10 MPa for enamel and 98 MPa for dentine; enamel needs this elastic support. Fracture resistance falls as the cavity deepens and widens; a posterior tooth with an endodontic access retains only a third of the resistance of an intact tooth, so start conservatively (caries removal, a bonded restoration and a sealant) and consider an inlay, onlay or crown for large preparations. Strong bleaching agents may reduce dentine’s fracture toughness. Dentine is yellow-white, duller and softer than enamel (explorer catches; hardness about one-fifth of enamel, and about three times greater near the DEJ than near the pulp) and sounds lower-pitched. After a bur cut a smear layer partly plugs tubules; etching it off increases outward fluid and may weaken the bond. Microleakage can start secondary caries and pulpal inflammation. Remaining dentine thickness is the key diffusion barrier. Coronal dentine is more permeable than root dentine; only about 30% of occlusal-floor tubules are patent along their length, while proximal boxes and gingival margins sit in the most permeable dentine</button><button type=\"button\" class=\"opt\" data-i=\"2\">A smear layer must always be completely removed or bonding is impossible, and a hermetic seal is guaranteed by any composite</button><button type=\"button\" class=\"opt\" data-i=\"3\">Root dentine is much more permeable than coronal dentine</button></div><div class=\"qexp\" hidden><p>قوة شد العاج 98 مقابل 10 للمينا. المدخل اللبي يترك ثلث مقاومة الكسر. سمك العاج المتبقي أهم حاجز. أرضية الإطباق أقل نفاذية (حوالي 30% سالكة)، والصندوق التقريبي بالمكان الأنفذ.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Dentine sensitivity in this lecture is best explained, and managed, as follows:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Direct innervation of outer dentine is proven, so the only treatment is a thick insulating cement, and sealing tubules has no effect on thermal pain</button><button type=\"button\" class=\"opt\" data-i=\"1\">Dentine is sensitive across 3–3.5 mm, yet only about 20% of tubules have nerves in inner dentine for a few microns. Direct-innervation and odontoblast-receptor theories have important shortcomings. Thermal-shock theory would rely on an insulating cement. The generally accepted hydrodynamic theory says a stimulus speeds the slow outward tubular flow, displaces odontoblasts and fires nerves — worse in deep cavities because tubule density and diameter increase toward the pulp. Occluding tubules (strontium chloride or oxalate pastes, bonding agents, fluoride varnish, potassium or silver nitrate, or calcium-silicate cements) prevents rapid flow so temperature changes do not induce pain; restorative emphasis has shifted from insulation to dentinal sealing. Reactionary dentine is a superior barrier because its tubules are not continuous with those of the affected primary dentine. If a lesion is not arrested or restored, bacterial toxins may cause inflammation and necrosis</button><button type=\"button\" class=\"opt\" data-i=\"2\">Local anaesthetic applied to dentine always blocks pain just as it does on skin, which proves direct innervation of outer dentine</button><button type=\"button\" class=\"opt\" data-i=\"3\">Deeper restorations are less sensitive because fluid flow falls as the pulp is approached</button></div><div class=\"qexp\" hidden><p>النظرية الهيدروديناميكية هي المقبولة: ختم الأقنية أهم من العازل الحراري. الحفر الأعمق أحس لأن الأقنية أوسع وأكثف قرب اللب.</p></div></div>"},{"k":"Dr. Al-Shammaa","t":"Cervical lesions: root caries is judged by softness, and NCCLs have a prevalence of 5–85%","b":"<p>Cervical (Class V) lesions include carious and non-carious defects in the gingival third of facial and lingual surfaces. Class V caries is produced by plaque acids. A Class V lesion from factors other than caries is a <b>non-carious cervical lesion (NCCL)</b>.</p><p>Cervical lesions involving enamel (coronal to the CEJ) can be detected visually by a colour change. Tooth colour is not a good predictor of root-caries damage: a root surface may be discoloured and still have a hard sclerotic surface that would not warrant preparation unless the discoloration was an esthetic problem; conversely, some root-caries lesions have the colour of healthy tooth structure but are soft when tested with an instrument. Caries-disclosing dyes may be inconsistent on root surfaces. The best correlation to date for clinical detection of root caries is <b>softness of the surface</b> evaluated with a dental instrument.</p><p>NCCLs are now generally accepted to have a multifactorial etiology comprising stress, friction and biocorrosion. Prevalence, regardless of form or etiology, varies from <b>5% to 85%</b> in modern dentitions. They are most commonly found in premolars and molars, and prevalence and severity increase with age.</p>"},{"k":"Dr. Al-Shammaa","t":"Erosion, abrasion and abfraction: cupped acids, V-shaped brush notches, and cervical flexure","b":"<p><b>Erosion</b> is loss of tooth structure from chemical action — constant citrus ingestion, chlorinated swimming-pool water, or gastrointestinal problems with repeated gastric-acid exposure. The lesions generally present as rounded, cupped-out defects. Early on, acidic action produces a smooth, silk-glazed enamel surface coronal to the CEJ with an intact ring of enamel along the gingival margin. In an intermediate stage, shallow flat concavities with rounded borders develop; enamel may be totally removed, exposing a polished-looking dentine, and rounding of cusps, grooves and incisal edges can occur. In more severe cases, reactionary and reparative dentine form and obliterate tubules to compensate for the loss.</p><p><b>Abrasion</b> is loss by mechanical or frictional forces, commonly excessive toothbrushing, or repeated forces from floss, toothpicks or removable appliances. Brushing lesions appear as <b>V-shaped notches</b>. Main factors: the brushing technique; the type of toothbrush; the abrasiveness of the toothpaste; and the duration and intensity of brushing. <b>Abfraction</b> is a theory for some V-shaped notches: as teeth flex under occlusal load, stresses transmitted to the cervical area cause cervical enamel rods to fracture and dislodge. It occurs in patients with heavy occlusal loads and clinical evidence of bruxism.</p>"},{"k":"Dr. Al-Shammaa","t":"Isolating a Class V, waiting 6 weeks after gingival surgery, and when an NCCL should be restored","b":"<p>When a cervical lesion is supragingival, access is easy; if it has progressed below the free gingival margin, isolation for complete caries removal, preparation, placement and finishing is difficult. If a restoration is placed without complete access to sound tooth structure on all margins, carious structure may remain and the restoration may fail. Even in a non-carious lesion, inability to reach the gingival margin may give a poor interface, more microleakage and premature loss. Class V lesions can be treated using cotton rolls and retraction cord. If the lesion extends below the gingival margin a rubber dam is useful. When a dam fails to provide complete visualization and access, a surgical approach (gingivoplasty) must be used. It is advantageous to have periodontal surgical procedures accomplished <b>at least 6 weeks</b> before tooth restoration, to allow the gingival margin to heal to its stable position.</p><p>If active caries is present, treatment must be initiated to control it. NCCLs should be treated to protect remaining structure if the loss is extensive or progressing; if esthetics is compromised; to control or reduce sensitivity; or to accommodate a removable-partial-denture clasp. Non-carious lesions that are not extensive and are asymptomatic are preferably treated by prophylaxis: good diagnosis and causal therapy, prophylactic changes in possible causal factors, fluoride, and documentation and follow-up. Once a restoration is decided, the extent is determined by the lesion; all demineralized structure and unsupported enamel should be removed.</p>"},{"k":"Dr. Al-Shammaa","t":"Class V materials, an open or closed sandwich, and treating dentinal sensitivity","b":"<p>Non-esthetic Class V materials: amalgam; direct gold foil (not widely used); gold inlay (not widely used). Esthetic materials: resin composite with a dentine-bonding system; resin composite with a glass-ionomer base (sandwich) — glass ionomer replaces missing dentine, reduces microleakage and increases retention, while a composite veneer enhances esthetics and polishability and increases abrasion resistance; flowable composite; glass ionomer; resin-modified glass ionomer; compomer; and porcelain inlay (not widely used). The sandwich (laminated) technique combines the advantages of GIC and composite and can be open (GIC at the gingival margin is exposed) or closed (GIC is completely covered by composite), using GIC as an intermediate layer between dentine and resin.</p><p>Dentinal sensitivity is often associated with gingival recession and NCCLs, from exposure of tubules that communicate between the pulp and the mouth. The degree of sensitivity is influenced by the number and size of open tubules. Changes in the direction of fluid movement are perceived as pain by mechanoreceptors near the pulp; tactile, thermal or osmotic stimuli can elicit pain. Hypersensitivity secondary to gingival recession is best treated surgically with root-coverage procedures such as connective-tissue grafts. Prevention or treatment by occluding open tubules: dentine adhesives provide short-term relief; oxalate solutions used alone or with electrophoresis can be successful; stannous fluorides have been used with positive results; potassium nitrate in dentifrices or as an office gel is reported to be effective, thought to act directly on nerve membranes to reduce sensory-nerve activity rather than by occluding the tubules.</p>"},{"k":"Dr. Al-Shammaa · Lectures 3–5","t":"Self-test: rod direction, tubule density, hydrodynamic sealing, and a 6-week surgical wait","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Enamel and dentine numbers that this lecture asks you to keep are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Enamel HV is 65 and dentine 275; tubules are densest at the DEJ; tensile strength is higher in enamel than in dentine</button><button type=\"button\" class=\"opt\" data-i=\"1\">Enamel HV = 275 is about 4–5 times dentine (HV = 65). There are 30,000–40,000 rods/mm², and etch increases the bondable area 10- to 20-fold. From 1 mm of the CEJ rods run at about 60°; an obtuse cervical cavosurface parallels apical-leaning cervical rods. Shade is taken before isolation because loosely bonded water (less than 1% by weight) is lost and enamel looks whiter. Tubules increase from 15,000–20,000/mm² (0.5–0.9 µm) at the DEJ to 45,000–65,000/mm² (2–3 µm) at the pulp; inner dentine is about eight times more permeable. Mature dentine is 45–50% mineral, 30% organic and 25% water. Mantle dentine is 150 µm and 4% less mineralized, formed at 4–8 µm/day, then 1–2 µm/day. Reparative dentine can appear within 3 weeks. Tensile strengths are 10 MPa (enamel) and 98 MPa (dentine). An endodontic access leaves a posterior tooth with only a third of its fracture resistance. Hardness of dentine is about one-fifth that of enamel and about three times greater near the DEJ than near the pulp. Only about 30% of occlusal-floor tubules are patent along their length</button><button type=\"button\" class=\"opt\" data-i=\"2\">Pits and fissures are less vulnerable to caries than smooth surfaces</button><button type=\"button\" class=\"opt\" data-i=\"3\">Primary dentine of a permanent tooth is complete at the moment of eruption</button></div><div class=\"qexp\" hidden><p>HV 275 مقابل 65. الأقنية 15–20 ألفاً عند الـ DEJ إلى 45–65 ألفاً عند اللب. قوة الشد 10 و 98. المدخل اللبي يترك ثلث المقاومة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Cervical lesions and dentinal sensitivity in this lecture are managed as follows:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Root caries is diagnosed only by colour; every NCCL must be restored the same day as a gingivoplasty; potassium nitrate works only by blocking tubules</button><button type=\"button\" class=\"opt\" data-i=\"1\">Root caries correlates best with softness on instrumentation, not colour. NCCL prevalence is 5–85%, mainly in premolars and molars, rising with age, from stress, friction and biocorrosion. Erosion is chemical and cupped; abrasion is mechanical (often a V-notch from brushing — technique, brush, paste, duration and intensity); abfraction is a flexure theory in heavy bruxers. If the lesion is subgingival, isolate well (cord, dam, or gingivoplasty). Do periodontal surgery at least 6 weeks before the restoration so the margin can stabilize. Restore an NCCL if loss is extensive or progressing, for esthetics, sensitivity, or a partial-denture clasp; otherwise prophylaxis, fluoride and follow-up. Class V options include amalgam, bonded composite, a GIC–composite sandwich (open or closed), flowable, GIC, RMGI and compomer. Sensitivity from recession is best treated with root-coverage grafts; tubules may also be occluded with adhesives, oxalates, stannous fluoride, or potassium nitrate (thought to reduce nerve activity rather than block tubules). Hydrodynamic sealing of tubules is preferred over relying on an insulating cement alone</button><button type=\"button\" class=\"opt\" data-i=\"2\">A rubber dam is contraindicated for any Class V that crosses the gingival margin</button><button type=\"button\" class=\"opt\" data-i=\"3\">Open sandwich means the glass ionomer is completely hidden under composite at the gingival margin</button></div><div class=\"qexp\" hidden><p>نخر الجذر يُشخَّص بالطراوة مو باللون. الجراحة اللثوية قبل الترميم بـ 6 أسابيع على الأقل. الساندويتش المفتوح يكشف الأيونومر على الحافة اللثوية. نترات البوتاسيوم تخدّر العصب أكثر مما تسد الأقنية.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">In this lecture, what are the hardness values of enamel and dentine, and why must the shade be taken before a rubber dam is placed?</button><div class=\"flash-a\" hidden>Enamel HV = 275, about 4 to 5 times dentine (HV = 65). Isolated enamel becomes temporarily whiter within minutes from loss of loosely bonded water (less than 1% by weight), so the shade is determined before isolation and preparation.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا ثامن ملف معالجة: محاضرات د. عبد الله الشماع 3–5 عن البيولوجيا السريرية للمينا والعاج (صفحات 148–166)، وبعدها آفات العنق النخرة وغير النخرة وحساسية العاج (صفحات 167–172). الأرقام مثل صلابة المينا 275 مقابل العاج 65، وعدد قضبان المينا 30–40 ألف لكل ملم²، وكثافة الأقنية 15–20 ألفاً عند الـ DEJ إلى 45–65 ألفاً عند اللب تبقى كما بالمحاضرة.</p>","<p>المينا تكوّنه خلايا مصورات المينا، وهو غطاء قاسي يحمي العاج واللب. بعد ما يتكون القضيب، الخلية تموت، لذلك المينا <b>ما يصلح نفسه</b>. آخر عمل للخلية إفراز غشاء ناسميث (الجليدة الأولية) فوق السن البازغ، ينحك بالأكل والتنظيف ويتحوّل إلى غشاء مكتسب من بروتينات اللعاب، والبكتيريا ممكن تغزوه وتعمل لويحة.</p><p>المينا ملايين القضبان من الـ DEJ لحد السطح، ويه بلورات أباتيت ومصفوفة عضوية (غمد المنشور) تذوب بشكل مختلف بالحامض الضعيف. السطح المحفور منقر ويه طاقة أعلى، فيدخل المونومر ويعمل ألسنة راتنج. في <b>30,000 إلى 40,000 قضيب/ملم²</b>، والحفر يزيد المساحة القابلة للارتباط <b>10 إلى 20 مرة</b> — بديل محافظ للأخاديد والمسامير والامتداد للوقاية.</p>","<p>بدءاً من <b>1 ملم عن الملتقى الملاطي-المينائي</b>، القضبان على السطوح العمودية تميل إطباقياً أو قاطعياً بحوالي <b>60 درجة</b>، وتقترب من المحور الطويل عند الحواف الهامشية ورؤوس الحدبات. تحت الشقوق الإطباقية هم موازية للمحور، وعلى جانبي الشق قد تميل لحد <b>20 درجة</b>.</p><p>إذا انشرت قضبان جدار الحفرة عند الحافة، تصير فجوة وتسرب ونخر ثانوي. لذلك الجدار يُشطَف أو يوازي اتجاه القضبان وما ينحفر تحتها. بالعنق القضبان تتجه للخارج ومائلة ذروياً بشوي؛ القطع العمودي على السطح يضعّف المينا، فالحافة تُعمل <b>زاوية منفرجة</b> حتى توازي القضبان وتحافظ على سلامة الحافة.</p>","<p>المينا أصلب مادة بالجسم: <b>HV = 275</b>، حوالي <b>4 إلى 5 أضعاف</b> العاج (<b>HV = 65</b>). بس هش ويحتاج قاعدة عاج حتى يتحمل المضغ؛ إذا القضيب بلا قاعدة عاج (نخر أو تصميم غلط) ينكسر بسهولة.</p><p>عند النضج حوالي <b>90% هيدروكسي أباتيت</b> بالحجم، و<b>4–12% ماء</b> بالمسامات الدقيقة اللي تربط الفم ويه سوائل اللب والأقنية. الذوبان والانتشار ثلاثي الأبعاد مو بس على السطح. الذوبان يزيد من السطح باتجاه الـ DEJ. الفلوريد يقلل ذوبان السطح، وتركيزه يقل باتجاه الملتقى، ويثبّت المينا: يبطّئ نزع الكلس ويسرّع إعادة التمعدن. اللون أساساً من العاج تحت المينا وسمك المينا والتصبغ. السمك أكبر عند الحدبات والحواف القاطعة، ويقل تحت الشقوق العميقة وعند العنق.</p>","<p>المينا يصير أبيض مؤقت خلال دقائق إذا عزلت السن عن رطوبة الفم (سد مطاطي أو مواد ماصة)، لذلك <b>اللون يُختار قبل العزل والتحضير</b>. السبب فقدان مؤقت لماء مرتبط بضعف (أقل من <b>1% بالوزن</b>).</p><p>علامات التشخيص: بقعة بيضاء حليبية (نخر تحت السطح على السطوح الملساء)؛ لاحقاً لون أزرق أو رمادي إذا نزع الكلس وصل الـ DEJ. إذا انكسر المينا وصارت حفرة لازم ترميم، وإذا امتد تحت الـ CEJ (نخر جذر) العزل والوصول أصعب. البلى يحول التماس المدور إلى سطح مسطح؛ خلِّ الحواف بعيدة عن مناطق الإجهاد العالي. الحفر والشقوق <b>أضعف ثماني مرات</b> من السطوح الملساء. الشقوق الواضحة اللي تمتد عبر الحافة الهامشية أو من حواف ترميم كبير قد تكسر الحدبة؛ إذا اخترقت العاج أو المريض يتألم بالمضغ، يحتاج تغطية حدبة كاملة.</p>","<p>سؤالان على صلابة المينا والحفر واتجاه القضبان واختيار اللون قبل العزل.</p>","<p>العاج نسيج ضام متمعدن، يغطيه المينا بالتاج والملاط بالجذر، ويغلّف اللب. تكوّنه مصورات العاج: أجسامها باللب وامتداداتها (ألياف تومز) تدخل الأقنية <b>100–200 مايكرومتر</b>، لذلك العاج نسيج حي يرد على المنبهات. الامتدادات قد تدخل المينا كمغازل مينائية وتسبب إحساس بالحفر داخل المينا.</p><p>تكوين العاج يبدأ قبل المينا مباشرة، وأحدث طبقة دائماً باتجاه اللب. المنطقة غير المتمعدنة بجانب أجسام الخلايا هي <b>العاج الأولي غير المتمعدن (predentin)</b>. التكوين يبدأ تحت رأس الحدبة أو الحافة القاطعة وينتشر بحوالي <b>4 مايكرومتر/يوم</b> نحو الذروة، ويستمر مدى حياة اللب. العاج الأولي اللي يشكّل السن يكتمل عادة <b>3 سنوات بعد البزوغ</b> بالأسنان الدائمة.</p>","<p>الأقنية تمتد من اللب إلى الـ DEJ، كل واحدة فيها ليف تومز ومبطنة بعاج محيط بالقناة (أتمعدن من العاج بين الأقنية). الأقنية حوالي <b>10%</b> من حجم العاج، والامتداد الخلوي بسن ناضج يوصل لحوالي <b>ثلث</b> السمك. العدد يزيد من <b>15,000–20,000/ملم² عند الـ DEJ</b> إلى <b>45,000–65,000/ملم² عند اللب</b>. القطر بالتاج <b>0.5–0.9 مايكرومتر</b> عند الملتقى، و<b>2–3 مايكرومتر</b> قرب اللب. الملتقى عرضه <b>2–15 مايكرومتر</b> وفيه ألياف كولاجين مغروسة بالمينا تزيد القوة.</p>","<p>العاج الناضج: <b>45–50% معدني</b>، <b>30% عضوي</b> (90% كولاجين نوع I)، و<b>25% ماء</b>. البلورات صفائحية و<b>أصغر 30%</b> من بلورات المينا: سمكها <b>3.5 نانومتر</b> عند الـ DEJ إلى حوالي <b>2 نانومتر</b> قرب اللب. التمعدن يزيد مع العمر.</p><p>العاج بين الأقنية هو bulk البنية. العاج المحيط بالقناة أتمعدن ويتغلظ مع العمر (تصلب فسيولوجي) فيقل الإحساس. بالعاج الخارجي قرب الملتقى العاج بين الأقنية يشكّل <b>96%</b> من المساحة؛ بالعاج الداخلي فقط <b>12%</b>، والنفاذية أعلى بحوالي <b>ثماني مرات</b> من العاج قرب الـ DEJ.</p>","<p>العاج <b>الأولي</b> يتكون بسرعة لحد اكتمال الجذر. أول طبقة <b>150 مايكرومتر</b> تحت المينا اسمها عاج الوشاح: أقل تمعدناً بـ <b>4%</b>، وكولاجينه عمودي على الـ DEJ. معدل التكوين <b>4–8 مايكرومتر/يوم</b>، وبعد سنتين إلى ثلاث من البزوغ يبطّئ إلى <b>1–2 مايكرومتر/يوم</b>. العاج <b>الثانوي</b> بهذا المعدل البطيء يضيّق الحجرة اللبية (خصوصاً على السقف والأرضية والقرون) فيقل خطر انكشاف اللب عند كبار السن، بس لازم تنتبه لموقع الحجرة وقت التحضير والمسامير.</p><p>العاج <b>المتصلب</b> من الشيخوخة أو تهييج خفيف يسد الأقنية من الـ DEJ باتجاه اللب: أصلب وأكثف وأقل حساسية ويحمي اللب. العاج <b>الترميمي (الثالثي)</b>: إذا الرضح شديد دمّر مصورات العاج، خلال <b>3 أسابيع</b> خلايا اللب تتميز وتعمل عاج غير منتظم بلا أقنية.</p>","<p>سؤالان على أعداد الأقنية وأنواع العاج.</p>","<p>وظائف العاج: يشكّل معظم السن؛ يعطي التاج صبغته الصفراء (وإذا مات اللب التاج يغمق)؛ مرونة وقوة شد <b>98 ميغاباسكال</b> مقابل <b>10</b> للمينا الهش. مقاومة الكسر تقل كلما زاد عمق وعرض الحفرة؛ سن خلفي ويه مدخل لبي يبقى عنده فقط <b>ثلث</b> مقاومة الكسر — لذلك ابدأ محافظ، وإذا الحفرة كبيرة فكّر بحشوة مصبوبة أو تاج. مواد التبييض العالية التركيز قد تضعف متانة العاج. العاج يحمي اللب وينقل المنبهات عبر الأقنية.</p><p>تمييزه عن المينا: أصفر-أبيض وأعتم وأقل لمعاناً، وأطرى (المسبر يمسك به)، صلابته متوسط <b>خمس</b> صلابة المينا وأقرب للـ DEJ أصلب بحوالي <b>ثلاث مرات</b> من قرب اللب، وصوته أوطى من صوت المينا.</p>","<p>إذا انكشف العاج، الأقنية تصير قنوات بين اللب والفم. بعد القطع بالفرازة طبقة اللطاخة تسد فوهات الأقنية جزئياً. شيلها بالحفر الحامضي يزيد النفاذية وجريان السائل للخارج وقد يضعف الربط مع الوقت. <b>التسرب المجهري</b> يخلي البكتيريا والسوائل تدخل الواجهة وتعمل نخر ثانوي وتهيج اللب. ما في مادة تختم ختماً محكماً كاملاً، خصوصاً الحواف اللثوية للراتنج. الورنيش والبطانات والمواد الرابطة تساعد، بس <b>سمك العاج المتبقي</b> هو العامل الأهم: كل ما كان أسمك قلت أقطار الأقنية وزاد طولها وقلّ الأذى على اللب.</p><p>عاج التاج أنفذ من عاج الجذر. أرضية الإطباق أقل نفاذية من حول القرون أو الجدران المحورية؛ فقط حوالي <b>30%</b> من أقنية السطح الإطباقي سالكة على طولها. صناديق التقريب والحواف اللثوية بمكان العاج الأكثر نفاذية، لذلك أسهل للتسرب والنخر الراجع.</p>","<p>العاج حسّاس عبر سمكه <b>3–3.5 ملم</b> رغم إنه بلا أوعية، وما فيه أعصاب إلا بحوالي <b>20%</b> من الأقنية لمسافة ميكرونات قليلة بالعاج الداخلي.</p><p>النظريات: التعصيب المباشر (ضعيف الدليل، والسن البازغ حديثاً حسّاس قبل ما تتكون الضفيرة). مصورة العاج كمستقبل (غالباً مو خلية قابلة للاستثارة). الصدمة الحرارية (عزل بإسمنت). و<b>النظرية الهيدروديناميكية</b> المقبولة أكثر: جريان سائل للخارج يتسارع بالمنبه فيزحزح الخلايا ويشد النهايات العصبية فيصير ألم. قرب اللب الأقنية أوسع وأكثف لذلك الحفر العميقة أحس. اليوم التأكيد على <b>ختم الأقنية</b> أكثر من وضع عازل حراري.</p>","<p>إغلاق الأقنية ببلورات داخلها يقلل حساسية الجذر. معاجين ويه كلوريد السترونتيوم أو الأوكسالات تساعد على التبلور. المواد الرابطة وورنيش الفلوريد ونترات البوتاسيوم والفضة قد تسد الأقنية أو تخدّر العصب. إسمنتات سيليكات الكالسيوم تساعد بإعادة التمعدن.</p><p>العاج التفاعلي حاجز ممتاز لأنه أقنيته <b>مو متصلة</b> بأقنية العاج الأولي المصاب، فيقل وصول السموم للب. إذا الآفة ما توقفت أو ما انشالت وانرمّمت، السموم قد تسبب التهاب ونخر اللب.</p>","<p>سؤالان على قوة الشد والنفاذية ونظرية الحساسية.</p>","<p>آفات العنق (صنف V) نخرة أو غير نخرة بالثلث اللثوي الشدقي أو اللساني. غير النخرة اسمها <b>NCCL</b>.</p><p>فوق الـ CEJ اللون يفيد للكشف. على الجذر اللون مو دليل جيد: سطح متصبغ قد يكون صلباً متصنّعاً وما يحتاج تحضير إلا للتجميل، وآفة نخر قد تكون بلون طبيعي بس طرية للأداة. أصباغ النخر قد تكون غير ثابتة على الجذر. أفضل ارتباط للكشف السريري هو <b>طراوة السطح</b> بالأداة.</p><p>الآفات غير النخرة متعددة الأسباب (إجهاد، احتكاك، تآكل حيوي). الانتشار <b>5–85%</b>، أكثر شي بالضواحك والأرحاء، وتزيد مع العمر.</p>","<p><b>الحت الكيميائي (erosion)</b>: من الحمض (حمضيات مستمرة، ماء مسبح مكلور، أو حمض المعدة). الحفر مدورة مجوفة. أول شي سطح مينا أملس لامع فوق الـ CEJ ويه حلقة مينا سليمة على الحافة اللثوية؛ بعدين تقعرات ضحلة، وقد ينكشف عاج ملمّع وتنتدّر الحدبات والحواف. بالحالات الشديدة يتكون عاج تفاعلي وترميمي يسد الأقنية.</p><p><b>السحل (abrasion)</b>: قوة ميكانيكية، غالباً تفريش مفرط أو خيط أو عيدان أو أجهزة متحركة، وتظهر <b>حزوز على شكل V</b>. العوامل: طريقة التفريش، نوع الفرشاة، خشونة المعجون، والمدة والشدة. <b>الانكسار العنقي (abfraction)</b> نظرية: انثناء السن تحت الحمل يوصل إجهاد للعنق فيكسر قضبان المينا. يُذكر ويه أحمال إطباق ثقيلة وصرير.</p>","<p>إذا الآفة فوق اللثة الوصول سهل؛ إذا نزلت تحت الحافة الحرة العزل أصعب. بلا وصول كامل للحواف السليمة ممكن يبقى نخر أو تصير واجهة ضعيفة وتسرب وضياع مبكر. القطن وخيط الإبعاد يكفي أحياناً؛ تحت اللثة السد المطاطي مفيد؛ وإذا ما كفى، جراحة (تجميل اللثة). يفضّل إنجاز الجراحة اللثوية <b>قبل 6 أسابيع على الأقل</b> من الترميم حتى الحافة تستقر.</p><p>النخر النشط يُعالَج فوراً. الآفة غير النخرة تُرمَّم إذا الضياع واسع أو يتقدم، أو الجمال متأثر، أو الحساسية، أو لتناسب ضابطة جهاز جزئي. إذا مو واسعة وبلا أعراض: تشخيص سببي، تعديل العوامل، فلوريد، وتوثيق ومتابعة. مدى الترميم حسب الآفة، وشيل كل المنزوع الكلس والمينا غير المدعوم.</p>","<p>مواد صنف V غير التجميلية: ملغم، وذهب مباشر أو حشوة ذهب مصبوبة (مو شائعين). التجميلية: كمبوزت ويه نظام ربط؛ كمبوزت فوق قاعدة أيونومر (ساندويتش: الأيونومر يعوّض العاج ويقلل التسرب ويزيد التثبيت، والكمبوزت يحسّن الجمال والتلميع ومقاومة السحل)؛ كمبوزت سائل؛ أيونومر؛ أيونومر معدّل بالراتنج؛ كومبومر؛ وحشوة خزف مصبوبة (مو شائعة). الساندويتش مفتوح (الأيونومر مكشوف على الحافة اللثوية) أو مغلق (مغطى بالكامل بالكمبوزت).</p><p>حساسية العاج غالباً ويه انحسار اللثة وآفات العنق غير النخرة، من انكشاف الأقنية. أفضل علاج إذا السبب انحسار: تغطية جذر جراحياً (طعم نسيج ضام). لإغلاق الأقنية: مواد رابطة (راحة قصيرة)، محاليل أوكسالات وحدها أو ويه ترحيل كهربائي، فلوريد القصدير، ونترات البوتاسيوم (معجون أو جل) يُعتقد إنها تقلل نشاط العصب مباشرة مو بسد الأقنية.</p>","<p>سؤالان ختاميان وبطاقة على صلابة المينا واختيار اللون قبل العزل، وزر الدرجة.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
