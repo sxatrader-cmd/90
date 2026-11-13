@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Prosthodontics File 16 — Overdentures</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Prosthodontics · 5th year</div>
+    <h1>Overdentures</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of the 5th-year lecture on overdentures (PDF pages 468–480): definition and goals, indications, abutment preparation, impressions and base design, and implant-supported overdentures. Attachments are covered in File 17.</p>
+    <ul>
+      <li>GPT-9 definition, goals, indications and contraindications, and advantages versus caries, periodontal and space problems</li>
+      <li>Tooth- versus implant-supported types; non-coping, short (2–3 mm) and long (5–8 mm) copings, attachments, submerged vital roots, and telescopic crowns</li>
+      <li>Immediate, transitional and definitive overdentures; abutment evaluation (5–7 mm bone; mandibular canines)</li>
+      <li>Six preparation methods (two attachments are enough); impressions and a record base that does not cover facial marginal gingiva</li>
+      <li>Open versus closed bases, and implant-supported designs (tissue-borne 2–4 / 3–4 versus implant-borne 4 / 6–8) with 8–10 mm bar spacing</li>
+      <li>Total run time: <b>32 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 16</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Prosthodontics · File 16","t":"Overdentures","b":"<p>University of Baghdad, College of Dentistry — Prosthodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This 5th-year file covers PDF pages 468–480 (Dr. Thekra Ismael): the overdenture — definition and goals, indications and contraindications, advantages and disadvantages, classification (tooth- and implant-supported; abutment-preparation methods; immediate, transitional and definitive), treatment sequence and abutment evaluation, abutment-preparation techniques, impressions and record bases, denture-base design (open versus closed), and implant-supported overdentures.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Attachments used with overdentures are covered in File 17 (pp 481–490).</p>"},{"k":"5th year · Overdenture","t":"Definition, other names, and the main goals","b":"<p>The <b>overdenture</b> is any removable dental prosthesis that covers and rests on one or more remaining natural teeth, the roots of natural teeth, and/or dental implants; a dental prosthesis that covers and is partially supported by natural teeth, natural tooth roots, and/or dental implants (GPT-9, 2017). It is also called an overlay denture, overlay prosthesis, or superimposed prosthesis.</p><p>The important goals of an overdenture are:</p><ol><li>Maintaining teeth as part of the residual ridge — giving more support, withstanding more occlusal load, and improving retention.</li><li>Decreasing the rate of bone resorption (alveolar bone exists as a support for teeth).</li><li>Retaining proprioception.</li><li>Increasing the patient’s manipulative skills in handling the denture.</li></ol>"},{"k":"5th year · Overdenture","t":"Indications and contraindications","b":"<p>Indications:</p><ol><li>Few remaining teeth that are unsuitable for fixed or removable partial dentures.</li><li>Remaining teeth present with an unhealthy periodontal condition.</li><li>Patients with Angle Class II or Class III — esthetics and masticatory function are improved.</li><li>Patients presenting abnormal jaw size, or large maxillary or mandibular bone defects.</li><li>As an alternative line of treatment to a single denture opposing a few natural teeth.</li><li>Patients with congenitally missing teeth and congenital defects such as cleft palate, microdontia, amelogenesis or dentinogenesis imperfecta, or partial anodontia.</li></ol><p>Contraindications:</p><ol><li>Poor oral hygiene.</li><li>Inter-arch space inadequate to accept the denture and the abutments.</li><li>Mentally and/or physically handicapped patients (as listed in the lecture).</li><li>Cost and time considerations.</li><li>When other treatment modalities promise superior results.</li><li>Lack of patient acceptance.</li></ol>"},{"k":"5th year · Overdenture","t":"Advantages and disadvantages of the tooth-supported overdenture","b":"<p>Advantages:</p><ol><li>Preserving the remaining residual ridge by decreasing the rate of bone resorption.</li><li>Preserving the abutments as part of the residual ridge to gain support.</li><li>Preserving the proprioceptive response that exists in the periodontal membrane of the abutment tooth.</li><li>The modified teeth provide a definite vertical stop for the denture base.</li><li>Horizontal and torque forces are minimized.</li><li>Stability and support are increased.</li><li>Patient acceptance and psychological benefits.</li><li>A simple approach to the problem patient.</li><li>Fewer post-insertion problems.</li><li>Convertibility and effective management.</li><li>Periodontal maintenance, by distributing the applied forces over the remaining teeth (physiological stimulation).</li><li>Providing retention through attachments.</li></ol><p>Disadvantages:</p><ol><li>The susceptibility of the overlaid teeth to caries is high.</li><li>Periodontal disease of the retained teeth.</li><li>Bony undercuts of the alveolar ridge are often found adjacent to retained teeth, leading to over-contoured (bulky) dentures or under-contoured flanges, especially at the canine eminence.</li><li>Encroachment on the interocclusal distance beyond the denture space.</li><li>Construction is time-consuming and expensive.</li></ol>"},{"k":"5th year · Overdenture","t":"Classification: tooth- versus implant-supported, and abutment-preparation methods (non-coping and copings)","b":"<p>Overdentures can be classified as <b>tooth-supported</b> or <b>implant-supported</b>.</p><p>A tooth-supported overdenture is a complete or partial removable denture supported by a tooth or retained roots, intended to improve support, stability, and tactile and proprioceptive sensation, and to reduce ridge resorption. It is also called an overlay denture, telescopic denture, or biological denture, among other terms.</p><p>An implant-supported overdenture appears like a traditional prosthesis, but the part overlying the implants is modified to retain various attachments that receive implant extensions projecting above the gum.</p><p>Tooth-supported overdentures are further classified by the method of abutment preparation:</p><p><b>1. Non-coping abutment.</b> The tooth is reduced to a coronal height of <b>2 to 3 mm</b>. The crown is contoured to a convex or dome shape. The tooth is endodontically treated and filled with amalgam or composite.</p><p><b>2. Abutment with coping preparation.</b> A coping is a cover for the exposed tooth surface. Cast metal copings have a dome-shaped surface and a chamfer finish line at the gingival margin. There are two types:</p><ul><li><b>Short cast copings:</b> 2 to 3 mm long (the cast coping has a post fitted to an endodontically treated canal).</li><li><b>Long cast copings:</b> a 5 to 8 mm long abutment; endodontic treatment is not a must (the abutment is prepared conservatively to prevent pulp involvement); and a greater level of osseous support is required.</li></ul>"},{"k":"5th year · Overdenture","t":"Abutments with attachments, submerged vital roots, and telescopic crowns; types of overdenture","b":"<p><b>3. Abutments with attachment.</b> An attachment is a small precision device. Most attachments are secured to the abutment by a cast coping. The objective is to improve retention of the denture base. Each consists of two parts: a male and a female.</p><p><b>4. Submerged vital roots.</b> This additional category is an innovative attempt to overcome problems associated with more conventional overdenture abutments, including caries, gingivitis, periodontitis, and the need for endodontic therapy. Vital roots are transected and reduced to <b>2 mm below the crestal bone</b> and covered by a mucoperiosteal flap. Disadvantages of this method are dehiscences over the retained roots, and pulp pathosis.</p><p><b>5. Abutments with a telescopic crown.</b> Abutment teeth are either vital or endodontically treated, and are contoured to a tapered configuration. Tapered metal copings are constructed and cemented over the abutments. The denture is constructed with metal crowns having veneered facings. Indications: unparalleled abutments; uneven spaces between abutments; and useful for obturators. Advantage: increased retention and stability. Disadvantage: bulky crowns.</p><p>Classification based on the type of overdenture:</p><ul><li><b>Immediate overdenture:</b> the remaining teeth are reduced to accept the overdenture on the cast; the overdenture is constructed before abutment preparation and is inserted after the preparation.</li><li><b>Transitional or intermediate overdenture:</b> used in a transition or preparation phase until a permanent overdenture is constructed, or for a patient with an old partial denture to which new artificial teeth are added with self-cure acrylic resin.</li><li><b>Definitive overdenture:</b> a conventional complete overdenture constructed over one or more abutment teeth, made entirely of acrylic resin or in conjunction with metal bases.</li></ul><p>The overdenture approach also has applications besides complete-denture replacement. In congenital and acquired defects (cleft palate, microdontia, amelogenesis imperfecta, and so on) it can be a workable, relatively simple, and <b>totally reversible</b> solution. A <b>partial overdenture</b> can use an overlaid tooth that might otherwise be extracted, to give posterior support to a distal-extension base or anterior support for a large anterior span on a partial denture.</p>"},{"k":"5th year · Overdenture","t":"Treatment sequence, and how to evaluate the abutments","b":"<p>Sequence of treatment: <b>A. Assessment of the patient</b> — history (general and oral); clinical examination (visual and digital, radiographic examination, and a study model of the arch). <b>B. Treatment plan</b>, which includes evaluation of the abutments for periodontal status, endodontic considerations, and the number and position of abutment teeth in the arch.</p><p><b>Periodontal status.</b> Minimum mobility; acceptable bone support of <b>5–7 mm</b>; and amenable to periodontal therapy. Periodontal treatment includes: initial therapy; and surgical therapy — root planing with direct visual access; surgical reduction of periodontal pockets by gingivectomy and/or flap procedures; surgical crown lengthening; and widening of the attached gingiva through mucogingival surgery.</p><p><b>Endodontic consideration.</b> The tooth must be treated endodontically to allow sufficient reduction of the clinical crown. Ideally, patients with single-rooted teeth that have only one canal are the best candidates, although multi-rooted teeth can also be used.</p><p><b>Number and position.</b> In the maxillary arch, incisors are used; at least one tooth per quadrant should be present, and the ideal is two teeth per quadrant. Stress is distributed over a rectangular area; a tripod approach can also be used. The teeth most commonly used as abutments in the mandible are the <b>canines</b>, because of their position, large surface area, the canine response, the time period of retention of the tooth, less susceptibility to periodontal breakdown, and fewer anatomical and positional difficulties.</p>"},{"k":"5th year · Overdenture","t":"Six methods of preparing the abutment","b":"<p><b>1. Simple tooth modification and reduction.</b> The teeth are reshaped to eliminate undercuts and to reduce the vertical height. This is often used in a partially anodontic patient or in a patient with severe abrasion of the teeth. Indications: good oral hygiene with a low caries index; a vital pulp; a partially anodontic patient; severe abrasion of the teeth; and sufficient interocclusal distance.</p><p><b>2. Tooth reduction and a cast coping.</b> Cast copings are made after reducing the teeth to prevent sensitivity or as caries control. Endodontics is not done on these teeth. The technique is used when there is adequate bony support and a good periodontal prognosis. Indications: adequate bony support; good periodontal prognosis; and adequate interocclusal distance.</p><p><b>3. Endodontic therapy and an amalgam plug.</b> Indicated when there is normal coronal height and a normal interocclusal distance, with little or no loss of vertical dimension. After endodontic therapy the abutment is reduced <b>1–2 mm at gingival level</b> to receive an amalgam-type restoration.</p><p><b>4. Endodontic therapy and a cast coping.</b> A shallow dome shape with the margin slightly supra-gingival. Used when there is recurrent decay on the exposed dentin and a history of carious involvement. Retention is gained from a short post placed within the root canal.</p><p><b>5. Endodontic therapy with a cast coping utilizing some form of attachment.</b> Overdentures retained by attachments offer the patient the idea of a fixed-removable bridge instead of a denture. The abutments are prepared as for a short coping, but with a long intraradicular post to prevent root-coping dislodgement. <b>Two attachments are enough</b> to retain a denture; a third attachment adds unnecessary complexity and weakens the denture.</p><p><b>6. An endodontically treated tooth with a prefabricated retentive element</b> (for example the Dalbo-Rotex system: a spherical retentive element attached to a threaded post). This is a simple and inexpensive way to obtain temporary fixation of an overdenture. The disadvantage is that the omission of a protective coping increases the risk of carious destruction and root fracture.</p>"},{"k":"5th year · Overdenture","t":"Impressions of the abutments, and the record base","b":"<p><b>One-stage technique with a supporting element (no retentive attachment in the impression).</b> For designs that rest on abutment teeth without root copings, the full-arch impression is made as soon as the abutments are prepared. When root copings without retentive elements are used, the impression is made after final cementation of the copings. The full-arch impression is made in a custom tray similar to one for a conventional complete denture. It covers the entire ridge except for any undercut areas near the abutment teeth that could not be used for the future denture base anyway. The impression is made with zinc oxide–eugenol paste or an elastomer, in the same manner as in an edentulous arch.</p><p><b>One-stage technique with an existing retentive element.</b> A single-step full-arch impression in zinc oxide–eugenol paste or an elastomer is used for an overdenture that will rest on pre-existing retentive elements. Transfer matrices are set in place on the involved retentive elements and picked up in the impression; this makes it possible to incorporate retentive-element analogs in the working cast. A custom tray similar to that used for a complete denture is used; the tray must touch neither the root coping nor the transfer matrices.</p><p><b>Record base.</b> The only difference in construction of the record bases for a tooth-supported overdenture versus a conventional denture is the incorporation of the metal bearing in the record base. The shape of the record base must correspond to that of the future overdenture — that is, it should not cover the facial marginal gingiva in the abutment region.</p>"},{"k":"5th year · Overdenture","t":"Designing the denture base: criteria, open designs, and basic rules","b":"<p>Criteria for designing the base: it should not unnecessarily promote plaque accumulation; not mechanically traumatize the marginal gingiva; not impede good oral hygiene; not interfere with normal function of the tongue, lips and cheeks; and not interfere with esthetics or speech.</p><p><b>Designs that leave the periodontium uncovered:</b> the base does not cover the gingiva, and the artificial teeth are prepared to fit directly upon the roots or the dowel copings. Two patterns are described: bases that are circumdentally open, and bases that are facially and proximally open. Temperatures in the gingival sulcus are significantly higher under closed bases that cover the gingival margin than with open designs. Gingival reaction was always most severe where the denture base covered the gingival margin, and least severe at uncovered gingival margins.</p><p>Basic rules of overdenture base design: (1) cover as little of the marginal gingiva as possible; (2) border the proximal spaces with metal; (3) the greater the number of abutment teeth and the better their prognosis, the more open the construction may be.</p><p>Advantages of a base that does not cover the gingiva: it precludes direct mechanical trauma; reduces plaque retention around the abutments; makes it possible to clean the proximal surfaces of the root coping with interproximal brushes with the prosthesis in place; prevents a suction effect which, combined with inadequate coping shape and poor oral hygiene, would lead to hyperplastic proliferation (suction hyperplasia); and prevents undesirable vacuum retention in maxillary overdentures with a retentive attachment.</p><p>Disadvantages: increased risk of fracture of the base; unfavourable spatial relationships that do not permit extensive proximal openings; esthetic considerations; increased food impaction in the open proximal spaces; speech problems such as sigmatism; and a poor prognosis for the abutment teeth, making an early conversion to a complete denture probable.</p>"},{"k":"5th year · Overdenture","t":"Circumdentally open versus facially and proximally open bases","b":"<p><b>Circumdentally opened design — advantages:</b> it is possible to clean the abutments without removing the denture; the base cannot traumatize the gingiva around the abutments; and there is minimal extension of the base. <b>Disadvantages:</b> it is very complex; the risk of fracture is greater; and the possibilities are limited for modifying and adding to the denture when abutment teeth are lost. <b>Indications:</b> abundant space over the abutments, and a good prognosis.</p><p><b>Facially and proximally open design.</b> These bases have enough rigidity only if they incorporate custom-cast reinforcing frameworks. Advantages: less involved technical construction; a reduced risk of fracture; and ease of modification when an abutment is lost, which seldom causes any problem with phonation or food retention. Disadvantages: difficulty in cleaning, and the greater extension of the denture base (a psychological disadvantage). Indications: a poor prognosis; speech problems; extensive tissue loss in the anterior region; and unfavourable spatial relations.</p>"},{"k":"5th year · Overdenture","t":"Implant-supported overdentures: two types, numbers of implants, and indications","b":"<p>An implant-retained overdenture is an alternative to a fixed-implant prosthesis. The denture may attach on a cast bar fixed to abutments, or it may attach to individual abutments. The patient can remove the overdenture for cleaning.</p><p><b>1. Implant-retained and tissue-borne overdenture.</b> It depends primarily on the residual alveolar ridge for support. The implants provide support in the area of the arch in which they are placed when loading is directed over them. This type needs a smaller number of implants (depending on the quality and quantity of bone): <b>2–4 implants for the mandible</b>, and <b>3–4 implants for the maxilla</b>.</p><p><b>2. Implant-retained and implant-borne overdenture.</b> It does not depend on tissue support; the implants bear the total occlusal loading. This type requires a sufficient number of implants to accommodate the load: a minimum of <b>4 implants for the mandible</b> and <b>6–8 implants for the maxilla</b>.</p><p>Indications: the patient’s general health allows only a short surgical procedure; an atrophic ridge, so objective improvement cannot be expected from new conventional dentures; the patient has worn removable dentures previously; edentulous patients who are no longer able to wear complete dentures; the patient is basically satisfied with complete dentures but wants the security of increased retention; and economics — the patient is unwilling or unable to bear the expense of a fixed reconstruction.</p><p>Contraindications: systemic conditions; inadequate bone substance for placement of at least two implants; unrealistic patient expectation; mental disorders; pregnancy; radiation to the implant site; and improper patient motivation.</p><p>Considerations that determine the type: the patient’s desire; the quality and quantity of bone in the arch; the opposing occlusion; the amount of inter-arch distance; and economic considerations.</p>"},{"k":"5th year · Overdenture","t":"Advantages and disadvantages of implant overdentures, implant arrangement, and comparison with fixed prostheses","b":"<p>Advantages of an implant-supported overdenture: prevent bone loss; maintain facial esthetics; reduce or eliminate prosthesis movement; create a reproducible centric-relation occlusion; eliminate soft-tissue abrasions; improve prosthesis retention (listed twice in the lecture); increase occlusal force; improve chewing efficiency; and improve speech compared with dentures.</p><p>Disadvantages, as listed in the lecture: eliminate bone grafting or implants with a poor prognosis for fixed restorations; some patients want implants primarily because they do not want to be able to remove the prosthesis, and an overdenture would not satisfy the psychological need to feel that the prosthesis is part of their body; and lack of sufficient inter-arch space makes an overdenture system more difficult to fabricate than a porcelain-fused-to-metal fixed prosthesis, and more prone to component fatigue and failure.</p><p>Requirements of the implants used: the distance between bar-connected implants must be no less than <b>8 to 10 mm</b>, so that the lengths of the bar segments between implants are sufficient for proper placement of the retention clips; arrangement of the implants should be as symmetrical as possible; points of emergence of all implants should lie at the same height; in the mandible, two implants may be sufficient; in the maxilla, more than two implants are recommended.</p><p>A removable implant-supported denture may present certain advantages over a fixed implant prosthesis: decreased costs associated with fewer implants; easier access for oral-hygiene procedures; improved facial support via denture flanges; and improved esthetics and phonetics, particularly in the maxillary arch.</p>"},{"k":"اختبر نفسك","t":"Quiz: goals, contraindications, and short versus long copings","b":"<div class=\"qbox\" data-ans=\"2\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Which of the following is a listed contraindication to an overdenture?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Angle Class II or Class III, because esthetics cannot be improved</button><button type=\"button\" class=\"opt\" data-i=\"1\">Congenital defects such as cleft palate or amelogenesis imperfecta</button><button type=\"button\" class=\"opt\" data-i=\"2\">Poor oral hygiene, or inter-arch space inadequate to accept the denture and the abutments</button><button type=\"button\" class=\"opt\" data-i=\"3\">A few remaining teeth that are unsuitable for a fixed or removable partial denture</button></div><div class=\"qexp\" hidden><p>صنف II/III، العيوب الخلقية، والأسنان القليلة غير المناسبة للطقم الجزئي أو الجسر كلها <b>استطبابات</b>. الموانع تشمل نظافة فم سيئة، مسافة بين الفكين غير كافية، إعاقة عقلية و/أو جسدية، الكلفة والوقت، إذا علاج ثاني أفضل، وعدم قبول المريض.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A short cast coping, compared with a long cast coping, is typically:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">5–8 mm long, and endodontic treatment is not a must</button><button type=\"button\" class=\"opt\" data-i=\"1\">2–3 mm long, with a post fitted to an endodontically treated canal; a long coping is 5–8 mm and may be prepared conservatively without endodontics if osseous support is greater</button><button type=\"button\" class=\"opt\" data-i=\"2\">Reduced 2 mm below crestal bone and covered by a flap</button><button type=\"button\" class=\"opt\" data-i=\"3\">Always used without any finish line</button></div><div class=\"qexp\" hidden><p>الـ coping القصير <b>2–3 ملم</b> ويه وتد بقناة معالجة لبياً. الطويل دعامة <b>5–8 ملم</b>، علاج اللب مو لازم إذا التحضير محافظ والدعم العظمي أكبر. الاختزال 2 ملم تحت العظم القمي هو للجذور الحية الغاطسة، مو للـ coping.</p></div></div>"},{"k":"اختبر نفسك","t":"Quiz: how many attachments, mandibular abutments, and open-base rules","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">When an overdenture is retained by attachments on short copings with long intraradicular posts, the lecture states that:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">At least four attachments are required in every arch</button><button type=\"button\" class=\"opt\" data-i=\"1\">Two attachments are enough to retain a denture; a third adds unnecessary complexity and weakens the denture</button><button type=\"button\" class=\"opt\" data-i=\"2\">Attachments must never be used on endodontically treated teeth</button><button type=\"button\" class=\"opt\" data-i=\"3\">A prefabricated Dalbo-Rotex element is always preferable because it includes a protective coping</button></div><div class=\"qexp\" hidden><p><b>ملحقان يكفان</b>. الثالث يزيد تعقيد ويضعّف الطقم. نظام Dalbo-Rotex عنصر جاهز رخيص للتثبيت المؤقت، بس بلا coping واقي يزيد خطر النخر وكسر الجذر.</p></div></div><div class=\"qbox\" data-ans=\"2\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The teeth most commonly used as overdenture abutments in the mandible, and the acceptable bone support cited for an abutment, are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Maxillary incisors only, with 1–2 mm of bone</button><button type=\"button\" class=\"opt\" data-i=\"1\">Mandibular first molars, with 15 mm of bone</button><button type=\"button\" class=\"opt\" data-i=\"2\">Mandibular canines, with acceptable bone support of 5–7 mm; ideally at least one tooth per quadrant (two per quadrant is ideal) in the maxilla</button><button type=\"button\" class=\"opt\" data-i=\"3\">Any mobile tooth, because mobility is desirable</button></div><div class=\"qexp\" hidden><p>أشيع دعامة سفلية <b>الناب</b> (موضعه، مساحته، استجابته، بقاء أطول، أقل انهيار لثوي). الدعم العظمي المقبول <b>5–7 ملم</b>، وحركة أقل ما يمكن. بالعلوي القواطع، على الأقل سن لكل ربع والمثالي سنّين، أو ترتيب tripod.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">Should the overdenture base cover the facial marginal gingiva around the abutments?</button><div class=\"flash-a\" hidden>Cover as little of the marginal gingiva as possible. Gingival reaction is most severe under closed bases that cover the margin (sulcus temperature is also higher). An uncovered design reduces trauma and plaque and prevents suction hyperplasia, but increases fracture risk, food impaction and possible sigmatism. The record base should not cover the facial marginal gingiva in the abutment region.</div></div>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: implant numbers, bar spacing, and submerged roots","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">For an implant-retained, tissue-borne overdenture, the lecture’s usual implant numbers are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A minimum of 4 in the mandible and 6–8 in the maxilla (those are the implant-borne figures)</button><button type=\"button\" class=\"opt\" data-i=\"1\">2–4 in the mandible and 3–4 in the maxilla; an implant-borne design needs at least 4 in the mandible and 6–8 in the maxilla</button><button type=\"button\" class=\"opt\" data-i=\"2\">One implant in each arch is always enough</button><button type=\"button\" class=\"opt\" data-i=\"3\">Eight implants in the mandible and two in the maxilla</button></div><div class=\"qexp\" hidden><p>المحمول بالنسيج: <b>2–4 سفلي</b> و<b>3–4 علوي</b>. المحمول بالزرعة (يحمل كل الحمل بلا دعم نسيجي): الحد الأدنى <b>4 سفلي</b> و<b>6–8 علوي</b>.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The distance between bar-connected implants should be no less than:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">2–3 mm, as for a short coping</button><button type=\"button\" class=\"opt\" data-i=\"1\">8 to 10 mm, so that bar segments are long enough for proper placement of the retention clips; arrangement should be as symmetrical as possible and emergence points at the same height</button><button type=\"button\" class=\"opt\" data-i=\"2\">20 mm in every case</button><button type=\"button\" class=\"opt\" data-i=\"3\">It does not matter, because clips can be placed on a zero-length bar</button></div><div class=\"qexp\" hidden><p>المسافة لا تقل عن <b>8–10 ملم</b> حتى قطع القضيب تكفي لكليبات التثبيت. الترتيب متناظر قدر الإمكان، ونقاط البزوغ بنفس الارتفاع. بالسفلي زرعتان قد تكفيان؛ بالعلوي أكثر من زرعتين.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Submerged vital roots are reduced to 2 mm below crestal bone and covered by a mucoperiosteal flap in an attempt to avoid caries, gingivitis, periodontitis and endodontics. A listed disadvantage is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">That the method always requires three attachments</button><button type=\"button\" class=\"opt\" data-i=\"1\">Dehiscences over the retained roots, and pulp pathosis</button><button type=\"button\" class=\"opt\" data-i=\"2\">That the roots must be 5–8 mm above the bone</button><button type=\"button\" class=\"opt\" data-i=\"3\">That it is the same as a long cast coping</button></div><div class=\"qexp\" hidden><p>السيئات المذكورة: <b>انفتاح فوق الجذور المحتفظ بها، وأمراض لب</b>. هذا مو coping طويل (5–8 ملم فوق)، ومو ملحقات.</p></div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا الملف عن الـ <b>overdenture</b> (الطقم فوق الأسنان أو الجذور أو الزرعات): تعريفه وأهدافه، الاستطبابات وموانعها، الحسنات والسيئات، التصنيف، تقييم الدعامات وتحضيرها، الطبعات وقاعدة التسجيل، تصميم القاعدة (مفتوحة أو مغلقة)، والطقم المدعوم بالزرعات. الملحقات (attachments) بالملف 17.</p>","<p>الـ <b>overdenture</b> أي طقم متحرك يغطي ويستند على سن طبيعي متبقٍ أو أكثر، أو جذور أسنان، و/أو زرعات؛ ويعطى دعم جزئي منها (تعريف GPT-9 لسنة 2017). أسماء ثانية: overlay denture، overlay prosthesis، أو superimposed prosthesis (طقم فوقي).</p><p>أهدافه المهمة: يخلي الأسنان جزء من الحافة المتبقية — دعم أكثر، يتحمل حمل إطباقي أكبر، وتثبيت أحسن؛ يقلل سرعة امتصاص العظم (لأن العظم السنخي موجود أصلاً لدعم الأسنان)؛ يحافظ على الإحساس العميق (<b>proprioception</b>)؛ ويزيد مهارة المريض بالسيطرة على الطقم.</p>","<p>الاستطبابات: أسنان قليلة متبقية مو مناسبة لجسر ثابت أو طقم جزئي؛ أسنان متبقية ويه حالة لثوية غير صحية؛ مرضى صنف II أو III حسب Angle (الشكل والمضغ يتحسنون)؛ حجم فك غير طبيعي أو عيوب عظمية كبيرة؛ بديل عن طقم مفرد مقابل أسنان طبيعية قليلة؛ وأسنان مفقودة خلقياً أو عيوب خلقية (شق حنكي، صغر أسنان، نقص تكوين الميناء أو العاج، أو فقد جزئي خلقي).</p><p>الموانع: نظافة فم سيئة؛ مسافة بين الفكين ما تكفي للطقم والدعامات؛ إعاقة عقلية و/أو جسدية (كما وردت بالمحاضرة)؛ الكلفة والوقت؛ إذا علاج ثاني يعطي نتيجة أفضل؛ وعدم قبول المريض.</p>","<p>الحسنات: يحافظ على الحافة بتقليل الامتصاص؛ يحافظ على الدعامات كجزء من الحافة للدعم؛ يحافظ على الإحساس العميق بغشاء دواعم السن؛ الأسنان المعدّلة تعطي وقفة عمودية واضحة لقاعدة الطقم؛ القوى الأفقية وعزم اللي تقل؛ الثبات والدعم يزيدان؛ قبول نفسي للمريض؛ مدخل بسيط للمريض الصعب؛ مشاكل أقل بعد التسليم؛ قابلية التحويل وإدارة فعالة؛ صيانة لثوية بتوزيع القوى (تحفيز فسيولوجي)؛ وتثبيت عبر الملحقات.</p><p>السيئات: قابلية النخر عالية بالأسنان المغطاة؛ مرض لثوي بالأسنان المحتفظ بها؛ غالباً undercuts عظمية جنب الأسنان المحتفظ بها فالطقم يصير منتفخ أو الشفة الصناعية ناقصة التشكيل، خصوصاً عند بروز الناب؛ التعدي على المسافة بين الإطباق أكثر من حيز الطقم؛ والتصنيع ياخذ وقت ويكلف.</p>","<p>التصنيف الأساسي: مدعوم بالأسنان أو بالزرعات.</p><p>المدعوم بالسن أو الجذور: طقم كامل أو جزئي يتحسّن بيّه الدعم والثبات والإحساس، ويقل الامتصاص. أسماء ثانية: overlay، telescopic، أو biological denture.</p><p>المدعوم بالزرعة شكله مثل الطقم التقليدي، بس الجزء فوق الزرعات معدّل حتى يمسك ملحقات تستقبل امتدادات الزرعة فوق اللثة.</p><p>حسب تحضير الدعامة:</p><p><b>1) بدون تاج تغطية (non-coping)</b>: السن يُختزل لارتفاع تاجي <b>2–3 ملم</b>، يُشكَّل محدب أو قبة، ويُعالج لبياً ويُحشى بأملغم أو كمبوزت.</p><p><b>2) ويه coping</b> (غطاء لسطح السن المكشوف): معدن مصبوب سطحه قبة وخط إنهاء chamfer عند حافة اللثة. القصير <b>2–3 ملم</b> ويه وتد بقناة معالجة لبياً. الطويل دعامة <b>5–8 ملم</b>، علاج اللب مو لازم (تحضير محافظ حتى ما ينكشف اللب)، ويحتاج دعم عظمي أكبر.</p>","<p><b>3) ويه ملحق (attachment)</b>: جهاز دقيق صغير، غالباً يُثبَّت على الدعامة بـ coping مصبوب، هدفه تحسين تثبيت القاعدة. جزء ذكر وجزء أنثى.</p><p><b>4) جذور حيّة غاطسة</b>: محاولة لتجاوز النخر والتهاب اللثة وداء دواعم السن والحاجة لعلاج لب. الجذور الحية تُقطع وتُخفض <b>2 ملم تحت العظم القمي</b> وتُغطى بشرائح مخاطية سمحاقية. السيئات: انفتاح (dehiscence) فوق الجذور، وأمراض لب.</p><p><b>5) تاج تلسكوبي</b>: الدعامة حيّة أو معالجة لبياً وتُشكَّل مستدقة؛ copings معدنية مستدقة تُلصَق عليها؛ والطقم يتصنع ويه تيجان معدنية بوجوه تجميلية. الاستطباب: دعامات غير متوازية؛ مسافات غير متساوية؛ ومفيد لسدادات (obturators). الحسنات: تثبيت وثبات أكثر. السيئة: تيجان منتفخة.</p><p>حسب نوع الطقم: <b>فوري</b> — يُحضَّر على المصبوبة ويُصنع قبل تحضير الدعامات ويُسلَّم بعد التحضير. <b>انتقالی/وسطي</b> — لمرحلة انتظار الطقم الدائم، أو إضافة أسنان لطقم جزئي قديم بأكريلك ذاتي. <b>نهائي</b> — طقم كامل تقليدي فوق دعامة أو أكثر، أكريلك بالكامل أو ويه قواعد معدنية.</p><p>تطبيقات ثانية: العيوب الخلقية والمكتسبة — الحل قابل للعكس بالكامل. والطقم الجزئي الفوقي يعطي دعم خلفي لقاعدة امتداد بعيد أو دعم أمامي لامتداد أمامي كبير.</p>","<p>التسلسل: تقييم المريض (تاريخ عام وفموي؛ فحص سريري بصري وإصبعي، صور، ومصبوبة دراسة). وبعدين خطة علاج تتضمن تقييم الدعامات.</p><p>لثوياً: حركة أقل ما يمكن؛ دعم عظمي مقبول <b>5–7 ملم</b>؛ وقابلة للعلاج اللثوي (علاج أولي، وبعدين جراحي: تسوية جذور بوصول بصري، تقليل الجيوب بقطع لثة و/أو شريحة، إطالة تاج جراحي، وتوسيع اللثة الملتصقة).</p><p>لبياً: غالباً لازم علاج لب حتى تكدر تختزل التاج السريري كفاية. الأفضل أسنان وحيدة الجذر ويه قناة واحدة، بس متعددة الجذور هم تُستخدم.</p><p>العدد والموضع: بالعلوي تُستخدم القواطع؛ على الأقل سن واحد لكل ربع، والمثالي سنّين لكل ربع. الإجهاد يتوزع على مساحة مستطيلة، أو بترتيب ثلاثي الأرجل (tripod). بالسفلي أشيع دعامة هي <b>الناب</b>: موضعه، مساحته الكبيرة، استجابته، مدة بقائه، أقل تعرض لانهيار لثوي، وصعوبات تشريحية وموضعية أقل.</p>","<p>1) تعديل واختزال بسيط: تشيل الـ undercuts وتقلل الارتفاع. غالباً ويه فقد أسنان جزئي أو تآكل شديد. استطباباته: نظافة جيدة ومؤشر نخر واطي؛ لب حي؛ فقد جزئي؛ تآكل شديد؛ ومسافة بين الإطباق كافية.</p><p>2) اختزال ويه coping مصبوب: لمنع الحساسية أو للسيطرة على النخر. ما ينسوي علاج لب. يحتاج دعم عظمي كافٍ وإنذار لثوي جيد، ومسافة بين الإطباق كافية.</p><p>3) علاج لب + حشوة أملغم: ارتفاع تاجي ومسافة إطباق طبيعية، ويه نقص قليل أو معدوم بالبعد العمودي. بعد علاج اللب تختزل الدعامة <b>1–2 ملم بمستوى اللثة</b> وتستقبل أملغم.</p><p>4) علاج لب + coping مصبوب: شكل قبة ضحلة، والحافة أعلى شوي من اللثة. إذا في نخر راجع على العاج المكشوف وتاريخ نخر. التثبيت من وتد قصير بالقناة.</p><p>5) علاج لب + coping ويه ملحق: يعطي إحساس جسر ثابت-متحرك. التحضير مثل الـ coping القصير بس ويه وتد طويل داخل الجذر حتى ما يفلت الغطاء. <b>ملحقان يكفان</b> لتثبيت الطقم؛ الثالث يزيد تعقيد ويضعّف الطقم بدون فايدة.</p><p>6) سن معالج لبياً ويه عنصر تثبيت جاهز (مثلاً نظام Dalbo-Rotex: كرة على وتد ملولب) — رخيص وبسيط للتثبيت المؤقت. السيئة: بلا coping واقي يزيد خطر النخر وكسر الجذر.</p>","<p>طبعة مرحلة واحدة بدون ملحق تثبيت: إذا التصميم يستند على الأسنان بلا copings، الطبعة للقوس الكامل تصير فور تحضير الدعامات. إذا في copings بلا عناصر تثبيت، الطبعة بعد الإلصاق النهائي. الطابق الخاص مثل طقم كامل تقليدي، يغطي الحافة كلها إلا underscuts جنب الدعامات اللي أصلاً ما تنستخدم للقاعدة. المادة: أكسيد زنك-يوجينول أو مطاط، بنفس أسلوب القوس العديم الأسنان.</p><p>إذا في عنصر تثبيت موجود: طبعة واحدة بنفس المواد. تتحط قوالب نقل (transfer matrices) على عناصر التثبيت وتنلتقط بالطبعة حتى تحط نظائرها بالمصبوبة الشغالة. الطابق الخاص ما يلمس لا الـ coping ولا قوالب النقل.</p><p>قاعدة التسجيل: الفرق الوحيد عن الطقم التقليدي هو إدخال المحمل المعدني (metal bearing). شكلها لازم يطابق الطقم المستقبلي، يعني <b>ما تغطي اللثة الهامشية الوجهية بمنطقة الدعامة</b>.</p>","<p>معايير تصميم القاعدة: لا تشجع تجمع اللويحة بدون داعي؛ لا ترضّ اللثة الهامشية؛ لا تعرقل النظافة؛ لا تعيق وظيفة اللسان والشفاه والخدين؛ ولا تخرب الشكل أو النطق.</p><p>التصاميم اللي تترك النسيج اللثوي مكشوف: القاعدة ما تغطي اللثة، والأسنان الصناعية تنطبق مباشرة على الجذور أو الـ copings. نوعان: مفتوح محيطياً حول السن (circumdentally open)، ومفتوح وجهياً وتقريباً. حرارة الميزاب اللثوي أعلى بشكل واضح تحت القواعد المغلقة اللي تغطي حافة اللثة. رد الفعل اللثوي دائماً أشد وين القاعدة تغطي الحافة، وأخف وين اللثة مكشوفة.</p><p>القواعد الأساسية: غطّ أقل ما يمكن من اللثة الهامشية؛ حوّط المسافات التقريبية بمعدن؛ وكل ما زادت الدعامات وحسن إنذارها، كبر تقدر تخلي البناء مفتوح.</p><p>حسنات عدم التغطية: تمنع الرض الميكانيكي المباشر؛ تقلل اللويحة؛ تكدر تنظف سطوح الـ coping التقريبية بفرشاة بين الأسنان والطقم بموضعه؛ تمنع تأثير الشفط اللي ويه شكل coping سيء ونظافة ضعيفة يسبب تضخم (suction hyperplasia)؛ وتمنع تثبيت تفريغي غير مرغوب بالطقم العلوي ويه ملحق تثبيت.</p><p>السيئات: خطر كسر أعلى؛ علاقات فراغية ما تسمح بفتحات تقريبية واسعة؛ اعتبارات شكل؛ انحشار طعام أكثر؛ مشاكل نطق مثل السيجماتيزم؛ وإنذار دعامة ضعيف يجعل التحويل المبكر لطقم كامل متوقع.</p>","<p>التصميم المفتوح محيطياً حول السن: تكدر تنظف الدعامات بدون شيل الطقم؛ القاعدة ما ترضّ اللثة حولها؛ وامتداد القاعدة أقل ما يمكن. سيئاته: معقد جداً؛ خطر الكسر أكبر؛ وصعب تعدّل أو تضيف إذا ضاعت دعامة. استطبابه: مساحة وفيرة فوق الدعامات، وإنذار جيد.</p><p>المفتوح وجهياً وتقريباً: صلابته تكفي فقط إذا في إطار تقوية مصبوب خاص. حسناته: تصنيع أقل تعقيداً؛ خطر كسر أقل؛ وسهولة التعديل إذا ضاعت دعامة، ونادراً يسبب مشكلة نطق أو احتباس طعام. سيئاته: تنظيف أصعب، وامتداد القاعدة أكبر (عيب نفسي). استطباباته: إنذار ضعيف؛ مشاكل نطق؛ ضياع نسيج واسع بالأمام؛ وعلاقات فراغية غير مواتية.</p>","<p>الطقم المثبت بالزرعات بديل عن التعويض الثابت على الزرعات. ممكن يتعلق على قضيب مصبوب ثابت على الدعامات، أو على دعامات مفردة. المريض يشيله للتنظيف.</p><p><b>1) مثبت بالزرعة ومحمول بالنسيج</b>: الدعم الأساسي من الحافة المتبقية، والزرعات تدعم المنطقة اللي بيها إذا الحمل اتوجه عليها. يحتاج عدد أقل: <b>2–4 بالفك السفلي</b>، و<b>3–4 بالعلوي</b> (حسب كمية ونوعية العظم).</p><p><b>2) مثبت ومحمول بالزرعة</b>: ما يعتمد على دعم النسيج؛ الزرعات تحمل كل الحمل الإطباقي. الحد الأدنى: <b>4 زرعات للسفلي</b> و<b>6–8 للعلوي</b>.</p><p>الاستطبابات: الصحة العامة تسمح بس بجراحة قصيرة؛ حافة ضامرة فما يُتوقع تحسن واضح من طقم تقليدي جديد؛ المريض لبس أطقم متحركة سابقاً؛ فاقد أسنان ما عاد يگدر يلبس طقم كامل؛ راضي أساساً بالطقم بس يريد أمان تثبيت أكثر؛ والكلفة (ما يريد أو ما يگدر يتحمل تعويض ثابت).</p><p>الموانع: حالات جهازية؛ عظم ما يكفي لزرعتين على الأقل؛ توقعات غير واقعية؛ اضطرابات عقلية؛ حمل؛ أشعة لموقع الزرعة؛ ودافع غير مناسب. اختيار النوع يعتمد على رغبة المريض، كمية ونوعية العظم، الإطباق المقابل، المسافة بين الفكين، والكلفة.</p>","<p>حسنات الطقم على الزرعات: يمنع ضياع العظم؛ يحافظ على شكل الوجه؛ يقلل أو يلغي حركة التعويض؛ يخلق إطباق علاقة مركزية قابل للإعادة؛ يلغي سحجات النسيج الرخو؛ يحسّن التثبيت (مذكور مرتين بالمحاضرة)؛ يزيد القوة الإطباقية؛ يحسّن كفاءة المضغ؛ ويحسّن النطق مقارنة بالطقم العادي.</p><p>السيئات كما انذكرت بالمحاضرة: عبارة “يلغي التطعيم العظمي أو الزرعات ويه إنذار ضعيف للتعويض الثابت”؛ بعض المرضى يريدون زرعات لأنهم ما يريدون يشيلون التعويض، والطقم الفوقي ما يلبي حاجتهم النفسية إن التعويض جزء من جسمهم؛ ونقص المسافة بين الفكين يصعّب التصنيع أكثر من جسر بورسلين ملتحم بمعدن، ويزيد تعب وفشل المكوّنات.</p><p>متطلبات الزرعات: المسافة بين الزرعات الموصولة بقضيب لا تقل عن <b>8–10 ملم</b> حتى طول قطعة القضيب يكفي لوضع كليبات التثبيت؛ الترتيب أقرب ما يمكن للتناظر؛ نقاط البزوغ بنفس الارتفاع؛ بالسفلي زرعتان قد تكفيان؛ بالعلوي يُنصح بأكثر من زرعتين.</p><p>مقارنة ويه الثابت على الزرعات: كلفة أقل بعدد زرعات أقل؛ تنظيف أسهل؛ دعم وجهي أحسن عبر شفاه الطقم؛ وشكل ونطق أحسن خصوصاً بالقوس العلوي.</p>","<p>فرّق الاستطباب عن المانع، وارتفاع الـ coping القصير (2–3 ملم ويه علاج لب) عن الطويل (5–8 ملم، اللب مو دائماً لازم).</p>","<p>ملحقان يكفيان، والناب السفلي أشيع دعامة ويه دعم 5–7 ملم، والقاعدة تغطي أقل ما يمكن من اللثة الهامشية.</p>","<p>ثلاثة أسئلة ختامية + زر الدرجة: أرقام الزرعات تختلف بين محمول نسيج ومحمول زرعة؛ مسافة القضيب 8–10 ملم؛ والجذور الغاطسة خطرها الانفتاح وأمراض اللب. إذا غلطت ارجع للشرائح.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
