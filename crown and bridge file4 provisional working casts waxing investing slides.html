@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Crown and Bridge File 4 — Provisionals, Working Casts, Waxing and Investing</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Crown & Bridge · Dr. Alaa Lectures 12–15</div>
+    <h1>Provisional Restorations, Working Casts and Dies, Waxing, and Investing</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lectures 12–15 by Dr. Alaa (PDF pages 78–100; pages 91 and 100 are almost empty).</p>
+    <ul>
+      <li>Six objectives of a provisional, preformed and customized methods, Revotek LC (10 then 20 seconds), and a 4 mm wire for a post-crown temporary</li>
+      <li>Working casts and dies, Pindex (20 mm of stone, 60 minutes, 15 mm minimum thickness), Di-Lok, and when a bite rim is needed</li>
+      <li>Ditching, Type I versus Type II inlay wax, and sprue rules (as large as possible, 6 mm from the ring end, at the bulkiest non-centric area)</li>
+      <li>Ring liners 3 mm short at both ends, gypsum-bonded investment unstable above 650 °C, and phosphate-bonded investment for higher-temperature alloys</li>
+      <li>Total run time: <b>46 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 23</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Crown & Bridge · File 4","t":"Provisional restorations, working casts and dies, waxing, and investing","b":"<p>University of Baghdad, College of Dentistry — Crown and Bridge syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file covers PDF pages 78–100 (pages 91 and 100 are almost empty), Lectures 12–15 by Dr. Alaa: provisional (temporary) restorations, the working cast and die, waxing and the sprue, and investing.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Medical terms stay in English next to the Arabic.</p>"},{"k":"Dr. Alaa · Lecture 12","t":"What a provisional restoration is, and its six objectives","b":"<p>A <b>provisional (temporary) restoration</b> is a crown used in fixed prosthodontics during the interim between tooth preparation and final placement of the definitive crown. Objectives: (1) to protect the tooth from pain stimuli as a result of thermal (hot and cold), chemical and osmotic changes in the mouth; (2) to prevent sensitivity and further irritation to the pulp, since a certain degree of pulp trauma is inevitable during preparation because of the sectioning of the dentinal tubules; (3) to prevent movement of the prepared, adjacent and opposing teeth — that is, to prevent supra-eruption and drifting; (4) to protect the gingival tissue from irritation and food impaction; (5) to provide esthetic, phonetic and function; (6) to prevent tooth fracture.</p>"},{"k":"Dr. Alaa · Lecture 12","t":"Five requirements of an optimum provisional restoration","b":"<p>Requirements of an optimum provisional restoration: (1) it must seal and insulate the prepared tooth surface from the oral environment, to prevent sensitivity and further pulp irritation; (2) it must have a good marginal fit, proper contour and a smooth surface, to maintain gingival health and to facilitate plaque control by the patient; (3) it should maintain proper contacts with the adjacent and opposing teeth, to prevent supra-eruption and horizontal movement (drifting); (4) it should have enough strength and retention to withstand the forces to which it is subjected without fracture or coming off the tooth, and it should remain intact during its removal so that it can be reused if necessary; (5) it should provide esthetic, phonetic and function.</p>"},{"k":"Dr. Alaa · Lecture 12","t":"Preformed metal temporary crowns, and cementation with zinc oxide–eugenol","b":"<p>Types of provisional restoration: (1) preformed temporary crowns; (2) customized temporary restorations (chairside); (3) laboratory-made temporary restorations. Preformed temporary crowns consist of a shell of plastic or metal that can be cemented directly on the prepared tooth after adjustment, or after lining with a resin. They can be used for single or multiple preparations. Types: (a) metal; (b) plastic; (c) celluloid crown forms.</p><p>Metal temporary crowns are mainly indicated for posterior teeth. They are made of stainless steel, nickel–chromium, or aluminium. The most commonly used type is aluminium, in two forms: non-anatomical or flat-topped cylindrical crowns, and anatomical or morphological aluminium crowns. Clinical procedure: (1) select the proper size and shape according to the prepared tooth; (2) trim the cervical margin with scissors to conform to the gingival margin of the preparation (the finishing line) and to accommodate the vertical height of the prepared tooth; (3) seat the crown and ask the patient to bite; check the margins and the occlusion (centric and eccentric); (4) smooth the margins with a stone bur; (5) cement with <b>zinc oxide–eugenol cement</b>.</p>"},{"k":"Dr. Alaa · Lecture 12","t":"Plastic temporary crowns (acrylic and polycarbonate), and when to reline them","b":"<p>Plastic temporary crowns are used mostly for the anterior teeth. The clinical procedure is nearly the same as for a metal temporary crown. Types: (1) <b>acrylic</b> temporary crowns — acrylic-resin restorations were widely used in the past but have lost ground since higher-quality materials emerged; they come in different sizes and colours and are used for anterior teeth; (2) <b>polycarbonate</b> temporary crowns, made from polycarbonate plastic combined with micro glass fibres, available for anterior and posterior teeth. If we need to improve the fit, or if no size approximately fits the prepared tooth, we can reline the temporary crown with a resin after selecting the most suitable size and shade and cutting its margin to the finishing line. Relining can be done directly on the prepared tooth (in a manner similar to a celluloid crown) or indirectly on a study cast of the prepared tooth.</p>"},{"k":"Dr. Alaa · Lecture 12","t":"Celluloid crown forms, two escape holes, and removing Bis-acryl at the semi-plastic stage","b":"<p>Celluloid crown forms are used mainly for anterior teeth, but can be used for posterior teeth as well. They are made from a very thin translucent layer of cellulose acetate and act as a mold for the temporary crown, in different sizes. Clinical procedure: (1) coat the prepared tooth with Vaseline to facilitate removal; (2) select the proper size and shape; (3) make <b>two holes in the corners</b> of the crown to provide an escape way for the excess material; (4) cut the gingival margin to accommodate that of the prepared tooth; (5) fill the celluloid crown with a provisional material (Bis-acryl composite resin or composite resin) of the same shade, and seat it over the prepared tooth until setting. If Bis-acryl composite resin is used, the celluloid crown should be removed at its <b>semi-plastic stage</b> so that the polymerization reaction of the acrylic resin will occur outside the mouth, to prevent pulpal irritation, since the reaction is exothermic. (6) Take the crown out, remove the excess, reseat it, and check occlusion, contact with the adjacent teeth, fitness and extension.</p>"},{"k":"Dr. Alaa · Lecture 12","t":"Customized temporaries: indications, and the eight steps of the indirect over-impression method","b":"<p>Fabrication of a customized temporary requires a mold of the patient’s teeth before preparation. This may be obtained from any elastic impression material, into which a resin (Bis-acryl or composite) is placed, and the mold is held either directly on the prepared tooth or teeth, or indirectly against a cast. Indications: (1) coverage of multiple individual crown preparations; (2) coverage of a single tooth preparation which is usually large or of a special design — that is, when a preformed temporary does not fit; (3) abutment preparations for a fixed partial denture, to construct a temporary bridge. Methods: impression (over-impression) — indirect chairside, or direct chairside.</p><p>Indirect impression method: (1) a preoperative over-impression with alginate or silicone is made from the patient’s teeth or a study model and carefully stored until preparation is complete; (2) after preparation, another alginate impression is taken and poured with fast-setting plaster or stone; the cast is separated after setting; (3) coat the prepared tooth or teeth on the cast with a separating medium (such as petroleum jelly); (4) mix tooth-coloured resin and place it in the over-impression at the area of tooth preparation only; (5) seat the cast into the over-impression in an upright position and maintain constant pressure until the resin sets, making sure the cast is correctly seated; (6) after complete polymerization, separate the cast and remove the formed crown from the prepared tooth on the cast; (7) trim excess, seat the crown in the mouth, and check and adjust occlusion in centric and eccentric; (8) cement with zinc oxide–eugenol cement.</p>"},{"k":"Dr. Alaa · Lecture 12","t":"The direct over-impression method, and three reasons the indirect method is safer","b":"<p>The clinical procedure of the <b>direct</b> impression method is the same as the indirect method, except that it is done directly inside the patient’s mouth. A preoperative over-impression is needed, but there is no need for a study cast. Prepare the tooth or teeth, mix the resin, place it in the over-impression at the area of preparation, seat the over-impression in the mouth, and then follow the same later steps as in the indirect method.</p><p>Advantages of the indirect method over the direct method: (1) there is no direct contact of the free monomer of the resin with the prepared tooth or gingival tissue, which might cause tissue irritation or an allergic reaction; (2) the indirect method avoids subjecting the prepared tooth to the heat of polymerization, since the reaction is exothermic; (3) the indirect method saves the clinician’s chair time.</p>"},{"k":"Dr. Alaa · Lecture 12","t":"Visible light-activated putty (Revotek LC): 10 seconds in the mouth, then a final 20 seconds","b":"<p>Visible light-activated (VLA) composites need no preoperative impression. These malleable, light-cured composites have a clay- or dough-like consistency, allowing them to be molded over the preparation and then cured. The simplest system, <b>Revotek LC (GC)</b>, is a VLA, single-component, sculptable UDMA resin composite, supplied as a putty stick in a light-proof plastic tray. A small portion is cut from the stick and adapted to the preparation directly in the mouth, sculpted with hand instruments, and the patient is instructed to occlude into it to establish a functionally generated occlusal scheme. The provisional is then light-activated for <b>10 seconds</b> in the mouth, removed, and given a final <b>20-second</b> light exposure. After finishing and polishing it is cemented with temporary cement. Advantages: no methyl methacrylate, so no exothermic heat, odor or irritation; fast and easy; no mixing, no messy powder–liquids, and no wasteful cartridges and tips; unlike bis-acrylics, there is no heavy oxygen-inhibited layer; and there is no need for a preoperative impression, a stent, a wax-up or model modifications.</p>"},{"k":"Dr. Alaa · Lecture 12","t":"A temporary for a post-crown preparation: a stainless-steel wire extending 4 mm supragingivally","b":"<p>It is often difficult to fabricate a temporary crown for a tooth prepared to receive a post crown, because there is so little tooth structure supragingivally that it cannot give support to the temporary. In such a case we need an intra-canal retentive means. A piece of <b>stainless-steel wire</b> can be used: it should be adapted to the prepared root canal and should extend coronally at least <b>4 mm</b> — that is, 4 mm of the wire should extend supragingivally outside the canal — before the temporary crown is constructed. The wire then becomes part of the temporary crown. <b>Zinc oxide–eugenol cement</b> is the most commonly used cement for temporary crowns and bridges. This cement promotes healing and allows easy removal of the temporary restoration.</p>"},{"k":"اختبر نفسك","t":"Quiz: provisional objectives, celluloid timing, indirect versus direct, and the 4 mm wire","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A provisional restoration in this lecture must, among other things:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Leave the prepared dentine open to the mouth so the pulp can “breathe,” and it need not contact the opposing teeth</button><button type=\"button\" class=\"opt\" data-i=\"1\">Seal and insulate the prepared surface; have a good marginal fit, proper contour and a smooth surface for gingival health; maintain contacts with adjacent and opposing teeth to prevent supra-eruption and drifting; be strong and retentive enough to stay on and remain intact for reuse; and provide esthetic, phonetic and function. Its six objectives also include protection from thermal, chemical and osmotic stimuli, protection of the gingiva from irritation and food impaction, and prevention of tooth fracture. Preformed metal crowns (most often aluminium) are mainly for posteriors and are cemented with zinc oxide–eugenol. Polycarbonate crowns (with micro glass fibres) are available for anterior and posterior teeth</button><button type=\"button\" class=\"opt\" data-i=\"2\">Metal temporaries are used only on incisors, and must never be cemented</button><button type=\"button\" class=\"opt\" data-i=\"3\">A temporary should always be destroyed on removal and never reused</button></div><div class=\"qexp\" hidden><p>المؤقت يختم ويعزل، حافته وكفافه ناعمَين، يحافظ على التماسات حتى ما يصير بزوغ زائد أو انزياح، قوي ويثبت ويبقى سليم لإعادة الاستخدام. المعدني (غالباً ألمنيوم) للخلفية ويه ZOE. البولي كربونات ويه ألياف زجاج للأمامية والخلفية.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Celluloid forms, the indirect customized method, Revotek LC timings, and a post-crown temporary in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Leave a Bis-acryl celluloid crown in the mouth until it is completely set and cold; the direct method is always safer for the pulp; Revotek needs a preoperative alginate; a post temporary never uses a wire</button><button type=\"button\" class=\"opt\" data-i=\"1\">Coat the tooth with Vaseline, make two corner escape holes, and if Bis-acryl is used remove the celluloid at the semi-plastic stage so the exothermic reaction finishes outside the mouth. The indirect over-impression method avoids monomer contact and polymerization heat on the tooth and saves chair time, unlike the direct method. Revotek LC (UDMA putty, no MMA and no preoperative impression) is light-activated 10 seconds in the mouth, then a final 20 seconds after removal. A post-crown temporary is retained by a stainless-steel wire adapted to the canal and extending at least 4 mm supragingivally; zinc oxide–eugenol is the usual temporary cement because it promotes healing and easy removal</button><button type=\"button\" class=\"opt\" data-i=\"2\">Customized temporaries are indicated only for a single unprepared tooth</button><button type=\"button\" class=\"opt\" data-i=\"3\">The indirect method requires the free monomer to contact the gingiva on purpose</button></div><div class=\"qexp\" hidden><p>السلولويد: ثقبين بالزوايا، ويه Bis-acryl شيله بشبه اللدن حتى الحرارة برا الفم. غير المباشرة أأمن (بلا مونومر وبلا حرارة) وتوفّر وقت. Revotek: 10 ثوانٍ بالفم و 20 ثانية بعد الشيل. مؤقت تاج الوتد: سلك يمتد 4 ملم فوق اللثة. ZOE للشفاء والإزالة السهلة.</p></div></div>"},{"k":"Dr. Alaa · Lecture 13","t":"The working cast and the die: requirements, die materials, and ADA gypsum types I–IV","b":"<p>A <b>working (master) cast</b> is a replica of the prepared tooth or teeth, the ridge area, and other parts of the dental arch, obtained from the final impression, and on which the wax pattern is made (laboratory work). Requirements: (1) it must reproduce all the details captured in the impression; (2) it must be free from air bubbles, especially at the finishing line and the occlusal surface; (3) it must be free from any distortion; (4) it should be trimmed at the margins of the prepared tooth or teeth to ensure access for carving of the wax pattern (ditching); (5) it should allow precise articulation. A <b>die</b> is the positive reproduction of the individual prepared tooth on which the wax pattern is done, also obtained from the final impression. Die requirements: (1) it must reproduce the prepared tooth exactly; (2) it must be free from air bubbles and voids; (3) it must return to its exact position on the cast when it is removed; (4) it must be stable even when the cast is inverted.</p><p>The two critical properties of a die material are dimensional stability (accuracy) and abrasion resistance during construction of the wax pattern. Types according to material: silver-plated, copper-plated, amalgam, and stone dies. Advantages of a stone die: easy to prepare; can be used with all types of impression material; cheap; needs fewer requirements and is easy to manipulate. ADA types of dental gypsum: Type I impression plaster; Type II model plaster; Type III dental stone; Type IV high-strength dental stone (die stone).</p>"},{"k":"Dr. Alaa · Lecture 13","t":"Separated versus removable dies, and how a dowel pin is located with a bobby pin","b":"<p>Types of die: a working cast with separated dies, or a working cast with removable dies (straight dowel pin, curved dowel pin, Pindex system, Di-Lok tray, and the DVA and Zeiser model systems). In the <b>multiple-pour (separated-die)</b> system the final impression is poured twice: one cast is sectioned to obtain the individual dies, while the other is articulated. In a <b>removable-die</b> system the impression is poured only once, and the working cast involves removable dies. <b>Dowel pins</b> are ready-made metal pins used to orient the die to the original working cast, so that it can be easily removed and accurately replaced. The dowel pin is tapered and cylindrical with one flat side for positive seating.</p><p>To obtain a working cast with removable dies: (1) dry the impression; (2) a dowel pin is used for each prepared tooth, placed over the centre of the prepared tooth parallel to its long axis. A bobby pin holds the dowel between its arms and is positioned bucco-lingually across the impression so that the dowel is centred over the tooth. A straight paper pin is inserted between the arms of the bobby pin and into the impression buccally and lingually. The dowel is then stabilized within the bobby pin, and the bobby pin itself against the straight pin, with sticky wax.</p>"},{"k":"Dr. Alaa · Lecture 13","t":"Pouring the removable die: stone 2 mm above the margin, a wax ball, and an occlusally diverging saw cut","b":"<p>Continuing the procedure: (3) the impression is placed on the vibrator and dental stone is added in small increments to about <b>2 mm above the cervical margin</b>; the stone should cover the serrated end of the dowel pin; (4) a retentive means such as paper clips is placed in the poured stone before it sets, to retain the second layer; (5) when the first layer has set, the bobby pins and paper pins are removed, and a ball of soft wax is placed on the tip of each dowel pin; (6) the surface of the first layer is lubricated with a separating medium, and a second (base) layer of stone is poured, covering the dowel pins completely; (7) after complete setting, the cast is removed and the wax ball on each dowel tip is removed with a sharp knife; (8) a saw is used to section the proximal sides (mesial and distal) of each prepared tooth bucco-lingually; the cutting should be through the first layer only, and should <b>diverge toward the occlusal surface</b> to facilitate removal of the die; (9) the end of the dowel pin is tapped gently to loosen the die.</p>"},{"k":"Dr. Alaa · Lecture 13","t":"The Pindex system: 20 mm of stone, a 60-minute set, and a minimum 15 mm base-to-finish thickness","b":"<p>In the <b>Pindex</b> system a reverse drill creates a master cast with dies that can be removed and replaced repeatedly with great precision. The impression is poured without positioning and attaching dowel pins. The machine accurately drills parallel holes from the underside of a trimmed cast. Technique: pour the impression in the usual manner, adding approximately <b>20 mm</b> of stone beyond the edge of the tray. Allow the cast to set <b>60 minutes</b>, remove it, and trim the side and the bottom. The underside should be perfectly flat on the tabletop (so that the pinholes will be parallel), and its thickness from the base to the preparation finish must be a minimum of <b>15 mm</b>. Mark the location of each dowel on the occlusal surface. <b>Two dowels</b> are needed to stabilize each segment; alternative single pins are used for a small preparation. Position the cast on the drill stage; a light indicates the location of the drill. Hold the cast firmly and press the lever; this activates the drill, which penetrates the cast.</p>"},{"k":"Dr. Alaa · Lecture 13","t":"The Di-Lok tray, and when a bite registration is needed (or not)","b":"<p>The <b>Di-Lok</b> technique uses a specially articulated tray for precise reassembly of a sectioned definitive cast. The impression is poured and the cast is trimmed into a horseshoe that fits the special tray. The tray is filled with a second mix and the cast is seated. When the stone has set, the tray is disassembled, saw cuts are made on each side of the preparation, and the die is trimmed. The cast and die can be reassembled in the tray, which is then mounted on an articulator. A disadvantage is that the overall size of the tray can make articulation and manipulation awkward and difficult. The DVA and Zeiser systems include a pin-alignment and drilling machine that determines dowel locations before the model is poured, pre-manufactured base plates, and specially designed dowel pins.</p><p>The objective of an <b>interocclusal record (bite registration)</b> is to transfer the relation between the upper and lower dental arches from the mouth to the articulator, and to orient the die or dies to the opposing arch. When enough teeth are present in both arches, the relation can be transferred by <b>hand articulation</b> of the casts — no bite registration is needed. If the remaining teeth are insufficient, record the bite with pink base-plate wax, bite-registration paste, or a bite (occlusal) rim. Guide the mandible to the required relation (centric or eccentric), mark reference points, then place the material and register. Pink base-plate wax is the most widely used: soften it, ask the patient to bite while you guide to the marks, ask the patient to mold the wax lingually with the tongue while you adapt it labially and buccally, then after setting trim the excess and attach it to the cast. A bite rim is used in: (1) a free-end saddle; (2) when we need to restore the anterior teeth; (3) when we do not have enough teeth to obtain the centric relation.</p>"},{"k":"اختبر نفسك","t":"Quiz: Type IV stone, the 15 mm Pindex rule, and when to use a bite rim","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A working cast with removable dies in this lecture, and the Pindex numbers, are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The impression is always poured twice, pins are never used, and the Pindex cast may be only 5 mm thick</button><button type=\"button\" class=\"opt\" data-i=\"1\">A dowel pin (tapered, cylindrical, one flat side) orients each die so it can be removed and replaced. In the bobby-pin method, stone is poured to about 2 mm above the cervical margin over the serrated end; paper clips retain a second base layer; a wax ball marks each pin tip; the saw cut is through the first layer only and diverges toward the occlusal. In Pindex, pour about 20 mm of stone beyond the tray, wait 60 minutes, trim a flat underside, keep at least 15 mm from base to preparation finish, and use two dowels per segment (a single pin for a small preparation). The multiple-pour system instead pours twice: one cast is sectioned into dies, the other is articulated. ADA Type IV is high-strength die stone. A stone die is cheap, easy, and usable with all impression materials</button><button type=\"button\" class=\"opt\" data-i=\"2\">Di-Lok trays are always smaller and easier to articulate than a conventional cast</button><button type=\"button\" class=\"opt\" data-i=\"3\">Type I gypsum is the die stone of choice for every removable die</button></div><div class=\"qexp\" hidden><p>الوتد أسطواني مستدق ويه جهة مسطحة. الحجر 2 ملم فوق العنقي؛ القطع بالطبقة الأولى ويتباعد إطباقياً. Pindex: 20 ملم زيادة، 60 دقيقة، سُمك لا يقل عن 15 ملم، وتدان لكل قطعة. Type IV حجر الأفاتح عالي القوة. Di-Lok حجمها كبير ويصعّب الرصف.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Bite registration in this lecture is unnecessary when, and a bite rim is used when:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A bite record is always required, even when both arches have enough teeth to hand-articulate; a bite rim is used only for a complete denture</button><button type=\"button\" class=\"opt\" data-i=\"1\">When enough teeth are present in both arches, the casts can be hand-articulated and no bite registration is needed. If teeth are insufficient, use pink base-plate wax (the most widely used), a bite-registration paste, or a bite rim. Guide the mandible to reference points; the patient molds the wax lingually with the tongue. A bite rim is used for a free-end saddle, when anterior teeth need to be restored, or when there are not enough teeth to obtain centric relation</button><button type=\"button\" class=\"opt\" data-i=\"2\">Pink wax must never be used for a bite record</button><button type=\"button\" class=\"opt\" data-i=\"3\">Hand articulation is used only when there are no remaining teeth</button></div><div class=\"qexp\" hidden><p>إذا الأسنان كافية: رصف يدوي بلا تسجيل. إذا مو كافية: شمع وردي (الأشيع) أو معجون أو حافة عضّ. الحافة: سرج حر، أو تعويض أمامي، أو أسنان ما تكفي للعلاقة المركزية.</p></div></div>"},{"k":"Dr. Alaa · Lecture 14","t":"Ditching, the wax pattern, and Type I versus Type II inlay wax","b":"<p>Before waxing we should do <b>ditching</b>: trimming of the stone that represents the gingiva around the prepared tooth, in order to expose a finishing line that is located subgingivally or at the level of the gum. It is done with a sharp hand instrument (a sharp knife). A <b>wax pattern</b> is the precursor of the final cast restoration that will be placed on the prepared tooth. Requirements: it should be clean and smooth; it should duplicate accurately the anatomical features of the original tooth; and it should be free from any debris. Information for duplication is taken from the adjacent teeth, the opposing teeth, and general knowledge of dental anatomy. Why wax is used: it is easily manipulated; inexpensive; and easily eliminated from the mold cavity during the burnout procedure.</p><p>The wax used is inlay casting wax. According to the ADA there are two types: <b>Type I</b> is a hard wax used for the intra-oral waxing technique, with a higher melting temperature; <b>Type II</b> is softer than Type I, has a lower melting temperature, and is used for the extra-oral technique to construct the pattern on the cast. Requirements of a good inlay wax: it must flow readily when heated; become rigid when cooled; and be capable of carving without chipping or smearing when this is done in fine margins.</p>"},{"k":"Dr. Alaa · Lecture 14","t":"Direct versus indirect waxing, and building the pattern to the curves of Spee and Wilson","b":"<p>Techniques: (1) the <b>intra-oral (direct)</b> technique constructs the pattern in the mouth with Type I inlay wax, and is mostly used for a posterior inlay and an anterior post crown; (2) the <b>extra-oral (indirect)</b> technique uses Type II inlay wax on the die of the working cast. Advantages of the indirect technique: it reduces chair time, saving the dentist’s time and being more comfortable for the patient; it offers an opportunity for visualization of the restoration and direct access for waxing of the margin; and it is probably the easiest means of fabricating a cast restoration.</p><p>Extra-oral waxing procedure: apply a wax lubricant (die spacer) on the die and leave it to dry; cover all the preparation at one time with molten wax to make a coping (this first layer can be obtained by immersing the preparation in a dish of molten wax); add wax to the proximal surfaces to build the contacts with the adjacent teeth; build the axial walls (buccal and lingual) to the normal contour; build the occlusal surface following the <b>curve of Spee</b> and the <b>curve of Wilson</b>, then check and adjust the occlusal relation with the opposing teeth in centric and eccentric; and check the margins for no over- or under-extension.</p>"},{"k":"Dr. Alaa · Lecture 14","t":"The lost-wax technique, and sprue rules (as large as possible, 6 mm from the ring end, at the bulkiest non-centric area)","b":"<p>The <b>lost-wax technique</b> surrounds the wax pattern with a mold of heat-resistant material (investment), eliminates the wax by heating, and then introduces molten metal into the mold cavity through a channel called the sprue. A <b>sprue</b> is a small-diameter pin of wax, plastic or metal; one end is attached to the wax pattern and the other to the crucible former. After burnout it provides a channel that acts as an inlet for the gold forced into the mold cavity. Requirements of the sprue: (1) it must allow the molten wax to escape from the mold cavity; (2) it must allow the molten metal to flow into the mold cavity with as little turbulence as possible; (3) the metal within the sprue must remain molten slightly longer than the alloy that has filled the mold, to provide a reservoir that compensates for shrinkage during solidification.</p><p>Diameter: the sprue should be <b>as large as possible</b>, to improve flow and to provide that reservoir. Length: when the sprue is attached to the crucible former, the margin of the wax pattern should be about <b>6 mm</b> away from the end of the casting ring, so that the pattern is in the centre of the ring and surrounded by a uniform thickness of investment. Location: attach the sprue to the <b>bulkiest area</b> of the pattern, at an angle that allows the incoming metal to pass freely to all portions without turbulence, and at the <b>non-centric area</b>.</p>"},{"k":"Dr. Alaa · Lecture 15","t":"Investing, the casting ring, and a liner that is 3 mm short at both ends (asbestos 0.6 mm, or fibreglass)","b":"<p><b>Investing</b> is the surrounding of the wax pattern with a mold of heat-resistant material that can accurately duplicate the shape and anatomical features of the pattern, to obtain a mold after burning out the wax. Objectives: (1) an accurate reproduction of the anatomical form of the wax pattern; (2) sufficient strength to withstand the heat of burnout and the actual casting of the molten metal; (3) compensation expansion equal to the solidification shrinkage of the metal, so that the mold cavity is larger than the wax pattern (otherwise the restoration will be smaller). We need a casting ring, a ring liner, a crucible former, and investment material.</p><p>The <b>casting ring</b> is metal and holds the investment during setting and restricts its expansion. Used alone, there will be no expansion, so a <b>ring liner</b> of a compressible material is needed. An example is asbestos (<b>0.6 mm</b> thick), which allows the investment to expand to some degree, but as it is carcinogenic other materials such as fibreglass may be used. If there is no room for expansion outward, the mold would produce a small casting. The liner should be <b>3 mm shorter than both ends</b> of the casting ring, because it will bind the investment to the ring and prevent the whole mass from slipping during casting. Advantages of the liner: it provides a room of pliable material against which the investment can expand to enlarge the mold and compensate for solidification shrinkage; it permits easier removal of the investment and casting after burnout; and it acts as an insulator against loss of heat during casting.</p>"},{"k":"Dr. Alaa · Lecture 15","t":"The crucible former, gypsum-bonded investment (unstable above 650 °C), and phosphate-bonded investment","b":"<p>A <b>crucible former</b> is a cone-shaped base of rubber or metal that forms the base of the casting ring, and to which the other end of the sprue is attached. Purposes: to get a proper position of the wax pattern inside the ring, and to create a cone-shaped way for easy entrance of the molten metal. The <b>mold cavity</b> is the space created inside the investment after burnout, which was occupied by the wax pattern, sprue and crucible former.</p><p>According to the binder there are two types of investment, both consisting of a binder and a refractory (silica). <b>Gypsum-bonded</b> investment has a binder of calcium sulfate hemihydrate, and is used with an alloy of low melting temperature. At high temperature, decomposition of calcium sulfate releases sulfur into the mold, which mixes with gold and results in a brittle casting, so it is unstable in a burnout temperature above <b>650 °C</b>. <b>Phosphate-bonded</b> investment has a binder of magnesium phosphate and ammonium phosphate, which can withstand a high casting temperature, and is therefore used for alloys with higher casting temperatures. Mixing may be manual (spatula) or mechanical (a vacuum mixer, to ensure a mix free from bubbles). Pouring may be by a brush technique (investment is applied to the pattern with a brush, then the ring is filled) or a vacuum technique (the ring is attached to the vacuum mixing bowl, and the bowl is inverted under vibration to fill the ring).</p>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: Type I versus Type II wax, the 6 mm sprue rule, and the 650 °C gypsum limit","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Ditching, and the two ADA inlay waxes in this lecture, are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Ditching is the addition of extra stone over the finishing line; Type I wax is the softer extra-oral wax</button><button type=\"button\" class=\"opt\" data-i=\"1\">Ditching is trimming of the stone that represents the gingiva, with a sharp knife, to expose a subgingival or equigingival finishing line. Type I inlay wax is hard, has a higher melting temperature, and is used intra-orally (mostly for a posterior inlay and an anterior post crown). Type II is softer, has a lower melting temperature, and is used extra-orally on the die. Indirect waxing reduces chair time, gives better access to the margins, and is probably the easiest way to make a cast restoration. The occlusal surface is built to the curves of Spee and Wilson and checked in centric and eccentric relation. A die spacer is applied first, then a full molten-wax coping</button><button type=\"button\" class=\"opt\" data-i=\"2\">Type II wax is only for intra-oral post crowns</button><button type=\"button\" class=\"opt\" data-i=\"3\">Wax is used because it cannot be eliminated from the mold during burnout</button></div><div class=\"qexp\" hidden><p>الـ ditching تقليم حجر اللثة حتى ينكشف خط الإنهاء. نوع I صلب داخل الفم (حشوة خلفية وتاج وتد أمامي). نوع II أطرى على الأفاتح. غير المباشرة أسهل وأريح. الإطباق حسب Spee و Wilson.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Sprue dimensions and location in this lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The sprue must be as thin as possible and attached to the thinnest centric-contact area, with the pattern touching the end of the ring</button><button type=\"button\" class=\"opt\" data-i=\"1\">The sprue (wax, plastic or metal) must let wax escape and metal enter with little turbulence, and the metal in the sprue must stay molten slightly longer than the alloy in the mold, as a reservoir against solidification shrinkage. Its diameter should be as large as possible. When it is on the crucible former, the margin of the wax pattern should be about 6 mm from the end of the casting ring, so the pattern sits in the centre with a uniform investment thickness. Attach it to the bulkiest area, at an angle, and at a non-centric area</button><button type=\"button\" class=\"opt\" data-i=\"2\">A short, thin sprue in a centric fossa always improves flow</button><button type=\"button\" class=\"opt\" data-i=\"3\">The sprue is attached only after burnout is complete</button></div><div class=\"qexp\" hidden><p>الـ sprue أعرض ما يمكن، وحافة النموذج تبعد حوالي 6 ملم عن نهاية الحلقة حتى يكون بالوسط. يتركّب على أضخم منطقة، بزاوية، وفي منطقة غير مركزية. المعدن فيه يبقى منصهر أطول شوية حتى يعوّض التقلص.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A ring liner and the two investment binders in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A full-length asbestos liner is mandatory, and gypsum-bonded investment is preferred above 900 °C for all gold alloys</button><button type=\"button\" class=\"opt\" data-i=\"1\">The liner (historically asbestos 0.6 mm thick, now often fibreglass because asbestos is carcinogenic) is 3 mm shorter than both ends of the ring, so the investment binds to the ring and does not slip. It allows expansion that enlarges the mold to compensate for metal shrinkage, eases removal after burnout, and insulates against heat loss. Gypsum-bonded investment (calcium sulfate hemihydrate) is for low-melting alloys and is unstable above 650 °C, because sulfur from decomposing sulfate can make a gold casting brittle. Phosphate-bonded investment (magnesium and ammonium phosphate) withstands higher casting temperatures. Mix under vacuum when possible to avoid bubbles</button><button type=\"button\" class=\"opt\" data-i=\"2\">Phosphate-bonded investment cannot be used for high-temperature alloys</button><button type=\"button\" class=\"opt\" data-i=\"3\">Without a liner the mold always expands more than enough</button></div><div class=\"qexp\" hidden><p>البطانة أقصر بـ 3 ملم من الطرفين (أسبستوس 0.6 ملم كان يُستخدم وهو مسرطن، فيبدّل بألياف زجاج). الاستثمار الجصي غير مستقر فوق 650 م° (كبريت يقصّف الذهب). الفوسفاتي للسبائك أعلى حرارة. الخلط بالتفريغ يقلل الفقاعات. بدون بطانة ما يصير تمدد كافي والصبّة تطلع صغيرة.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">Name the three advantages of the indirect provisional method over the direct method, and the usual temporary cement in this lecture.</button><div class=\"flash-a\" hidden>No direct contact of free resin monomer with the prepared tooth or gingiva (which might irritate or cause allergy); the prepared tooth is not subjected to the exothermic heat of polymerization; and it saves chair time. Zinc oxide–eugenol is the most commonly used temporary cement, because it promotes healing and allows easy removal.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا رابع ملف للتيجان والجسور: الترميم المؤقت، قالب العمل والأفاتح، التشميع والـ sprue، والاستثمار. صفحات 78–100 (91 و 100 شبه فارغات). شرح عراقي مفصل ويه أسئلة.</p>","<p>الترميم <b>المؤقت (provisional)</b> تاج يُستخدم بالفترة بين تحضير السن وإنزال التاج النهائي. أهدافه ستة: يحمي السن من منبهات الألم (حر وبرد، كيميائي، وأسموزي)؛ يمنع الحساسية ويزيد تهيّج اللب (لأن قص النبيبات العاجية يسبب درجة من أذى اللب لا مفر منها)؛ يمنع حركة السن المحضَّر والمجاور والمقابل (بزوغ زائد وانزياح)؛ يحمي اللثة من التهيّج وانحشار الطعام؛ يوفّر جمال ونطق ووظيفة؛ ويمنع كسر السن.</p>","<p>خمسة شروط للمؤقت المثالي: يختم ويعزل سطح التحضير عن بيئة الفم حتى ما تزيد الحساسية وأذى اللب؛ حافة منطبقة وكفاف صحيح وسطح ناعم حتى صحة اللثة وتنظيف اللويحة؛ تماسات صحيحة ويه المجاور والمقابل حتى ما يصير بزوغ زائد أو انزياح؛ قوة وتثبيت يكفون للقوى بدون كسر أو خلع، ويبقى سليماً عند الشيل حتى يتعاود استخدامه إذا لزم؛ ويوفّر جمال ونطق ووظيفة.</p>","<p>أنواع المؤقت ثلاث: تيجان جاهزة؛ مخصّصة بجانب الكرسي؛ ومصنوعة بالمختبر. الجاهزة قشرة بلاستيك أو معدن تُلصق مباشرة بعد التعديل، أو بعد تبطين براتنج. المعدنية أساساً للخلفية: ستينلس، نيكل-كروم، أو ألمنيوم. الأشيع الألمنيوم بنوعين: أسطواني مسطح غير تشريحي، وتشريحي (مورفولوجي).</p><p>الخطوات: اختَر الحجم والشكل؛ قص الحافة العنقية بالمقص حتى تطابق خط الإنهاء وارتفاع السن؛ أنزلها وخلِّ المريض يعض، وافحص الحواف والإطباق (مركزي ولامركزي)؛ نعّم بحجر؛ وألصق ب<b>إسمنت أوكسيد الزنك والأوجينول</b>.</p>","<p>التيجان البلاستيكية غالباً للأمامية، وخطواتها تقريباً مثل المعدنية. نوعان: <b>أكريل</b> — كانت شائعة بس تراجعت بعد مواد أعلى جودة، بأحجام وألوان، للأمامية؛ و<b>بولي كربونات</b> مع ألياف زجاج دقيقة، للأمامية والخلفية. إذا المطابقة ضعيفة أو ما في حجم مناسب، بطّنها براتنج بعد اختيار الحجم واللون وقص الحافة حسب خط الإنهاء. التبطين مباشرة على السن أو بصورة غير مباشرة على قالب دراسة.</p>","<p>قوالب ال<b>سلولويد</b> غالباً للأمامية وهم تصلح للخلفية: طبقة رقيقة شفافة من خلات السليلوز تعمل كقالب. حط فازلين على السن حتى يسهل الشيل؛ اختَر الحجم؛ اعمل <b>ثقبين بالزوايا</b> لمخرج الزيادة؛ قص الحافة اللثوية؛ املأه بمادة مؤقتة (كمبوزت Bis-acryl أو كمبوزت) بنفس اللون وأنزله لين يتصلب.</p><p>إذا استخدمت Bis-acryl، شيل قالب السلولويد بمرحلة <b>شبه لدن (semi-plastic)</b> حتى تفاعل البلمرة (وهو ناشر للحرارة) يصير خارج الفم، حتى ما ينتهي اللب. بعدين شيل الزيادة، أعد الإنزال، وافحص الإطباق والتماس والمطابقة والامتداد.</p>","<p>المؤقت المخصّص يحتاج قالب لأسنان المريض <b>قبل</b> التحضير، من أي مادة طبعة مرنة، ويتحط فيه راتنج (Bis-acryl أو كمبوزت) إما مباشرة على السن أو بصورة غير مباشرة على قالب. الاستطباب: تغطية تحضيرات متعددة؛ سن واحد كبير أو تصميم خاص ما يناسبه الجاهز؛ وتحضيرات دعامات جسر لعمل جسر مؤقت.</p><p>الطريقة غير المباشرة: طبعة قبل التحضير (ألجينات أو سيليكون) وتتخزن؛ بعد التحضير طبعة ثانية تتصب بحجر أو جص سريع؛ دهن السن على القالب بمادة فاصلة (فازلين)؛ حط الراتنج بمنطقة التحضير فقط بالطبعة الأولية؛ أنزل القالب بوضع قائم ويه ضغط ثابت؛ بعد التبلمر شيل التاج، قلّم الزيادة، جرّبه بالفم وعدّل الإطباق؛ وألصق بأوكسيد الزنك والأوجينول.</p>","<p>الطريقة <b>المباشرة</b> نفس الخطوات بس داخل فم المريض: تحتاج طبعة قبل التحضير، و<b>ما</b> تحتاج قالب دراسة. حضّر، اخلط الراتنج، حطه بالطبعة بمنطقة التحضير، وأنزل الطبعة بالفم، وبعدين نفس خطوات التقليم والإلصاق.</p><p>لماذا غير المباشرة أفضل؟ (1) ما في تماس مباشر للمونومر الحر ويه السن أو اللثة (تهيّج أو حساسية)؛ (2) السن ما يتعرّض لحرارة البلمرة الناشرة للحرارة؛ (3) تختصر وقت الكرسي.</p>","<p>كمبوزت <b>مفعّل بضوء مرئي (VLA)</b> ما يحتاج طبعة قبل التحضير. قوامه مثل الطين أو العجين، يتشكّل على التحضير وبعدين يتصلب بالضوء. أبسط نظام <b>Revotek LC من GC</b>: عود معجون UDMA بمكوّن واحد بصينية محمية من الضوء. اقطع قطعة، شكّلها بالفم، خلِّ المريض يعض حتى يتولد إطباق وظيفي، فعّل الضوء <b>10 ثوانٍ</b> بالفم، شيله، وأعطه تعرض نهائي <b>20 ثانية</b>، وبعدين إنهاء وتلميع وإلصاق مؤقت.</p><p>المزايا: ما في ميثيل ميثاكريلات، فما حرارة ناشئة ولا رائحة ولا تهيّج؛ سريع وسهل؛ بلا خلط وبلا خراطيش ضائعة؛ بخلاف الـ bis-acrylic ما في طبقة ثقيلة يثبّطها الأوكسجين؛ وما تحتاج طبعة قبلية ولا قالب ولا تشميع.</p>","<p>المؤقت لسن محضَّر لتاج وتد صعب لأن البنية فوق اللثة قليلة وما تدعم التاج، فتحتاج وسيلة تثبيت داخل القناة. استخدم <b>سلك ستينلس</b> يتكيّف ويه القناة ويمتد تاجياً على الأقل <b>4 ملم</b> خارج القناة فوق اللثة، وبعدين يصير جزء من التاج المؤقت. إسمنت <b>أوكسيد الزنك والأوجينول</b> الأشيع للمؤقت: يشجّع الشفاء ويسمح بإزالة سهلة.</p>","<p>سؤالان على شروط المؤقت، والسلولويد، وغير المباشرة، والسلك 4 ملم.</p>","<p>قالب العمل (master/working cast) نسخة من السن المحضَّر والحافة وباقي القوس، من الطبعة النهائية، وعليه يُعمل نموذج الشمع. شروطه: ينقل كل التفاصيل؛ بلا فقاعات خاصة عند خط الإنهاء والإطباق؛ بلا تشوه؛ يُقلَّم عند الحواف حتى يسهل نحت الشمع (ditching)؛ ويسمح برصف دقيق. ال<b>أفاتح (die)</b> نسخة إيجابية للسن المحضَّر المفرد. شروطه: مطابق تماماً؛ بلا فقاعات؛ يرجع لنفس موقعه بالقالب بعد الشيل؛ وثابت حتى لو قلبت القالب.</p><p>خاصيتان حرجتان لمادة الأفاتح: ثبات الأبعاد ومقاومة السحل أثناء التشميع. الأنواع: مطلي فضة، مطلي نحاس، ملغم، وحجر. الحجر سهل ورخيص ويُستخدم ويه كل مواد الطبعة. أنواع الجص حسب ADA: I جص الطبعة؛ II جص النماذج؛ III حجر سني؛ IV حجر عالي القوة (حجر الأفاتح).</p>","<p>نوعان: قالب ويه أفاتح مفصولة (صب مرتين: واحد يتقطع للأفاتح والثاني يُرصف)، أو قالب ويه أفاتح قابلة للإزالة (وتد مستقيم أو منحني، نظام Pindex، صينية Di-Lok، وأنظمة DVA و Zeiser). ال<b>وتد المعدني الجاهز</b> يوجّه الأفاتح للقالب حتى ينشال ويرجع بدقة. شكله أسطواني مستدق ويه جهة مسطحة للجلوس الإيجابي.</p><p>بعد تجفيف الطبعة، حط وتد فوق مركز كل سن محضَّر موازي لمحوره. مسكة شعر (bobby pin) تمسك الوتد، وتتحط شدقياً-لسانياً عبر الطبعة. دبوس ورق مستقيم يدخل بين ذراعي المسكة داخل الطبعة شدقياً ولسانياً. ثبّت الكل بشمع لاصق.</p>","<p>صب الحجر على هزاز بزيادات صغيرة لحد حوالي <b>2 ملم فوق الحافة العنقية</b>، ويغطي النهاية المسننة للوتد. قبل التصلب حط مشابك ورق حتى تمسك الطبقة الثانية. بعد تصلب الأولى شيل المسكات والدبابيس، وحط كرة شمع طري على رأس كل وتد. دهن سطح الأولى بمادة فاصلة، وصب طبقة ثانية (قاعدة) تغطي الأوتاد. بعد التصلب شيل القالب وكرات الشمع. اقطع بالمناشار السطوح المجاورة شدقياً-لسانياً <b>بالطبقة الأولى فقط</b>، والقطع يتباعد نحو الإطباق حتى يسهل شيل الأفاتح. طق نهاية الوتد بلطف حتى تفك الأفاتح.</p>","<p>نظام <b>Pindex</b>: مثقاب عكسي يعمل ثقوب متوازية من أسفل قالب مقلَّم، والأفاتح تنشال وترجع بدقة عالية، بدون تثبيت أوتاد أثناء الصب. صب الحجر بحوالي <b>20 ملم</b> وراء حافة الصينية، انتظر <b>60 دقيقة</b>، قلّم الجوانب والقاعدة حتى تصير القاعدة مستوية تماماً على الطاولة (حتى الثقوب تطلع متوازية)، والسُمك من القاعدة لخط إنهاء التحضير لا يقل عن <b>15 ملم</b>. علّم مواقع الأوتاد إطباقياً. كل قطعة تحتاج <b>وتدين</b> للتثبيت؛ التحضير الصغير گدر وتد واحد. ضوء الجهاز يدل على موقع المثقاب.</p>","<p>صينية <b>Di-Lok</b>: القالب يُقلَّم بشكل حدوة وينزل بصينية خاصة، وبعد التصلب تُفك وتُنشر قطعتان على جانبي التحضير. عيبها حجمها الكبير يصعّب الرصف والمناولة. أنظمة DVA و Zeiser تحدّد مواقع الأوتاد قبل صب القالب.</p><p>تسجيل العضة ينقل علاقة القوسين للمفصلة. إذا الأسنان كافية، <b>رصف يدوي</b> بدون تسجيل. إذا مو كافية: شمع وردي (الأشيع)، أو معجون، أو حافة عضّ. وجّه الفك لنقاط مرجع، والمريض يشكّل الشمع لسانياً بلسانه وأنت من الشفوي والشدقي. الحافة الإطباقية تُستخدم ويه سرج حر النهاية، أو عند تعويض الأمامية، أو إذا ما في أسنان كافية للعلاقة المركزية.</p>","<p>سؤالان على الأفاتح و Pindex، وتسجيل العضة.</p>","<p>قبل التشميع سوّي <b>ditching</b>: تقليم حجر اللثة حول السن المحضَّر حتى ينكشف خط الإنهاء إذا كان تحت اللثة أو بمستواها، بسكين حاد. نموذج الشمع هو سلف الترميم المصبوب النهائي. لازم يكون نظيف وناعم، يكرر تشريح السن الأصلي، وبلا فضلات. المعلومات من الأسنان المجاورة والمقابلة ومن علم التشريح. لماذا الشمع؟ سهل التشكيل، رخيص، وينشال بسهولة عند الحرق.</p><p>شمع الحشوة المصبوبة نوعان حسب ADA: <b>نوع I</b> صلب للتقنية داخل الفم ودرجة انصهاره أعلى؛ <b>نوع II</b> أطرى ودرجة انصهاره أقل، للتقنية خارج الفم على القالب. الشمع الجيد يسيل بالحرارة، يتصلب بالتبريد، وينْحت بدون تقطيع أو طمس بالحواف الدقيقة.</p>","<p>التقنية <b>المباشرة</b> داخل الفم بشمع نوع I، غالباً لحشوة مصبوبة خلفية وتاج وتد أمامي. ال<b>غير المباشرة</b> بشمع نوع II على أفاتح قالب العمل. مزايا غير المباشرة: تقلل وقت الكرسي وتريح المريض؛ تسمح برؤية الترميم ووصول مباشر لحافته؛ وأسهل طريقة تقريباً لعمل ترميم مصبوب.</p><p>خطوات غير المباشرة: مادة فاصلة (die spacer) على الأفاتح وتجفيفها؛ غطِّ التحضير كله مرة واحدة بشمع منصهر (غمس أول طبقة)؛ ابنِ التماسات المجاورة؛ الكفاف المحوري الشدقي واللساني؛ السطح الإطباقي حسب <b>منحنى Spee</b> و<b>منحنى Wilson</b>، وعدّل ويه المقابل بالمركزي واللامركزي؛ وافحص الحواف حتى ما تزيد أو تنقص.</p>","<p>تقنية <b>الشمع الضائع</b>: تحيط النموذج بمادة استثمار مقاومة للحرارة، تحرق الشمع، وتدخل معدن منصهر عبر قناة اسمها <b>sprue</b> (وتد رفيع من شمع أو بلاستيك أو معدن: طرف للنموذج وطرف لقاعدة البوتقة). بعد الحرق تصير مدخل للذهب. شروطه: يسمح للشمع المنصهر بالخروج؛ يسمح للمعدن بالدخول بأقل اضطراب؛ والمعدن داخل الـ sprue يبقى منصهراً أطول شوية من اللي مالة التجويف، حتى يكون خزان يعوّض تقلص التصلب.</p><p>القطر <b>أكبر ما يمكن</b> لتدفق وخزان أفضل. الطول: حافة نموذج الشمع تبعد حوالي <b>6 ملم</b> عن نهاية حلقة الصب، حتى النموذج بمنتصف الحلقة ويه سُمك استثمار منتظم. الموقع: على <b>أضخم منطقة</b> من النموذج، بزاوية تخلّي المعدن يمشي بحرية بلا اضطراب، وفي <b>منطقة غير مركزية (غير إطباق مركزي)</b>.</p>","<p>ال<b>استثمار</b> إحاطة نموذج الشمع بمادة مقاومة للحرارة تنسخ شكله، وبعد حرق الشمع يبقى التجويف. أهدافه: نسخ تشريحي دقيق؛ قوة تكفي لحرارة الحرق وصب المعدن؛ وتمدد يعوّض تقلص تصلب المعدن حتى التجويف أكبر من النموذج (وإلا الترميم يطلع أصغر). نحتاج حلقة صب، بطانة، قاعدة بوتقة، ومادة استثمار.</p><p>حلقة الصب معدنية تمسك الاستثمار وتقيّد تمدده. لوحدها ما في تمدد، فنحتاج <b>بطانة</b> قابلة للضغط، مثلاً أسبستوس سمكه <b>0.6 ملم</b> (مسرطن، فيبدّل بألياف زجاج). إذا ما في مجال للتمدد للخارج، الصبّة تطلع صغيرة. البطانة أقصر <b>بـ 3 ملم من الطرفين</b> حتى تربط الاستثمار بالحلقة وتمنع انزلاق الكتلة أثناء الصب. المزايا: مجال للتمدد يعوّض التقلص؛ أسهل شيل بعد الحرق؛ وعازل ضد فقدان الحرارة.</p>","<p>قاعدة البوتقة (<b>crucible former</b>) مخروط من مطاط أو معدن، قاعدة الحلقة وعليها طرف الـ sprue الثاني. الغرض: موضع صحيح للنموذج داخل الحلقة، وطريق مخروطي لدخول المعدن بسهولة. تجويف القالب هو الفراغ بعد الحرق اللي كان فيه الشمع والـ sprue والقاعدة.</p><p>حسب الرابط نوعان (وياهما مادة صامدة: سيليكا). الاستثمار <b>المرتبط بالجص</b>: الرابط كبريتات كالسيوم نصف مائية، للسبائك منخفضة الانصهار. بدرجات عالية تتحلل الكبريتات ويتحرر كبريت يمتزج ويه الذهب فيطلع الصب قصِف؛ لذلك غير مستقر فوق <b>650 م°</b>. الاستثمار <b>المرتبط بالفوسفات</b>: فوسفات مغنيسيوم وفوسفات أمونيوم، يتحمل حرارة أعلى لسبائك أعلى انصهاراً. الخلط يدوي أو بجهاز تفريغ (بدون فقاعات). الصب بفرشاة على النموذج أو بقلب وعاء التفريغ ويه اهتزاز.</p>","<p>ثلاثة أسئلة ختامية + بطاقة المؤقت غير المباشر و ZOE + زر الدرجة.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>

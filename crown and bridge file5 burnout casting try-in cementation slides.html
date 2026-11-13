@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Crown and Bridge File 5 — Burnout, Casting, Try-In and Cementation</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Crown & Bridge · Dr. Alaa Lectures 16–18</div>
+    <h1>Burnout and Casting, Cleaning and Finishing, Clinical Try-In, and Permanent Cementation</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lectures 16–18 by Dr. Alaa (PDF pages 101–118).</p>
+    <ul>
+      <li>Burnout at 200 °C for 30 minutes then 480–650 °C for 45 minutes, and the bluish reducing zone as the only flame that must touch the metal</li>
+      <li>Precious, semi-precious and non-precious alloys, centrifugal casting (three or four turns), and why PFM alloys get no flux (1200 / 1300 / 1500 °F)</li>
+      <li>Quenching, pickling in 50% hydrochloric acid, try-in without anaesthesia, floss and two-direction probe tests, and a 1 mm burnished margin</li>
+      <li>Zinc phosphate (14,000–16,000 PSI, pH about 3.5), polycarboxylate, glass ionomer, resin and RMGI, and a 3–4 minute seating bite on a wooden stick</li>
+      <li>Total run time: <b>38 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 19</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Crown & Bridge · File 5","t":"Burnout and casting, cleaning and finishing, clinical try-in, and permanent cementation","b":"<p>University of Baghdad, College of Dentistry — Crown and Bridge syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file covers PDF pages 101–118, Lectures 16–18 by Dr. Alaa: burnout and casting, cleaning and finishing of the casting, the clinical try-in and adjustment, and permanent cementation (including zinc phosphate, glass ionomer, resin and resin-modified glass ionomer).</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Medical terms stay in English next to the Arabic. Temperatures are kept in the units this lecture uses (Celsius for burnout, Fahrenheit for some casting temperatures).</p>"},{"k":"Dr. Alaa · Lecture 16","t":"Burnout: 200 °C for 30 minutes, then 480–650 °C for 45 minutes","b":"<p><b>Burnout</b> is the heating of the invested (casting) ring in a thermostatically controlled oven until traces of wax are vaporized, so that a mold cavity is created into which the molten metal can enter. Advantages: (1) elimination of the wax and plastic material from the mold cavity; (2) elimination of moisture or water from the ring; (3) to produce the necessary expansion in the investment to compensate for the solidification shrinkage of the alloy after casting; (4) to raise the temperature of the mold to the proper point that permits the flow of the molten metal into the cavity.</p><p>Step by step: (1) after the ring is separated from the crucible former, place it in the oven, increase the temperature to <b>200 °C</b> and hold for <b>30 minutes</b> — the wax and water vaporize; (2) the ring is then heated to <b>480–650 °C</b> for the final burnout and left for <b>45 minutes</b>; (3) the ring should be in the centre of the oven so that the atmosphere around it is the same as that recorded on the thermal indicator; (4) a too-rapid increase of burnout temperature may cause cracking of the investment and distortion of the mold, so the ring should never be placed in an overheated oven.</p>"},{"k":"Dr. Alaa · Lecture 16","t":"Casting alloys: precious (at least 75% noble), semi-precious, and non-precious","b":"<p><b>Casting</b> is introducing the molten metal into the mold cavity in the investing ring. Metal alloys used: (1) <b>precious alloys</b> consist of at least <b>75% by weight</b> noble elements, and involve gold alloys. According to ADA specification No. 5 there are four types of gold alloys: Type I soft, Type II moderate, Type III hard, and Type IV extra hard. Precious elements are gold, platinum and palladium. (2) <b>Semi-precious alloys</b> are used because of the high cost of gold, for example a silver–palladium alloy (<b>60% Pd, 30% Ag</b>). (3) <b>Non-precious alloys</b>: the two main ones are nickel–chromium (<b>75% Ni, 15% Cr</b>) and cobalt–chromium (<b>60% Co, 25% Cr</b>). Phosphate-bonded investment is used with these alloys to withstand their high melting temperature.</p>"},{"k":"Dr. Alaa · Lecture 16","t":"Gas-air versus oxygen-acetylene torches, and the four zones of the flame","b":"<p>A casting machine needs a heat source to melt the alloy and a casting force to force the molten alloy into the mold. The heat source can be the reducing part of a flame from a pipe torch, or electricity. According to melting temperature there are two pipe torches: (i) a <b>gas-air</b> blow torch, used for low-melting alloys (gold alloys II and III); (ii) an <b>oxygen-acetylene</b> torch, with a single orifice or multiple orifices, used for high-melting alloys such as porcelain fused to metal. The single-orifice torch is used for melting silver–palladium alloy (and, later in this lecture, gold–platinum). The multi-orifice torch is used to melt base-metal alloys (nickel–chromium).</p><p>The parts of the flame can be identified by the conical area: (1) the <b>mixing zone</b> — a cool, colourless zone of air–gas mixture, with no heat; (2) the <b>combustion zone</b> surrounds the first zone, is greyish-yellow, is an oxidizing zone, and should be kept away from the metal; (3) the <b>reducing zone</b> surrounds the second zone, is bluish, is the hottest zone, and is the only zone that must come in contact with the metal during melting; (4) the <b>oxidizing zone</b> is behind the reducing zone, where final combustion between gas and air occurs. Neither the combustion zone nor the oxidizing zone should be used for heating or melting, because they are not as hot as the reducing zone, and because melting in an oxidizing atmosphere might lead to non-metallic impurities, a subsequent change in strength, alteration in shrinkage, and increased corrosion of the casting.</p>"},{"k":"Dr. Alaa · Lecture 16","t":"Centrifugal casting: three clockwise turns (four for metal-ceramic), and a yellowish mirror-like melt","b":"<p>The casting force must be enough to overcome the high surface tension of the molten alloy and the resistance of gas within the mold. The most common machine is the <b>centrifugal</b> casting machine: a crucible for melting, and a part that throws the molten alloy quickly by centrifugal action into the mold. Procedure: (1) the machine is given <b>three clockwise turns</b> (<b>four</b> if metal-ceramic alloys) and locked with the pin; (2) adapt a wet asbestos liner to the bottom of the crucible and heat it in place with the torch (the liner prolongs the life of the crucible and protects the metal from contamination); (3) place the alloy on the liner and heat it with the reducing part of the flame (the hottest part, and it does not produce contamination) until it flows up and appears <b>yellowish with a mirror-like surface</b>; (4) add a small amount of <b>flux</b> (a deoxidizing agent used to prevent oxidation and to increase the fluidity of the molten alloy); (5) remove the ring from the oven and place it on the cradle; (6) slide the platform against the ring; (7) release the pin and allow the machine to spin until it stops.</p>"},{"k":"Dr. Alaa · Lecture 16","t":"High- versus low-melting alloys: a quartz crucible, no flux on PFM, and 1200 / 1300 / 1500 °F","b":"<p>Differences in casting between high- and low-melting alloys: (1) a single-orifice torch melts gold–platinum and silver–palladium, and a multi-orifice torch melts base-metal alloys; (2) a <b>quartz crucible</b> is used for high-melting alloys, and an asbestos liner is not used here because the high temperature decomposes the asbestos and contaminates the molten alloy; (3) <b>no flux is added to porcelain-fused-to-metal alloys</b> during melting, because it will upset the balance of the alloy and interfere with bonding later; (4) extra winding of the arm of the casting machine is needed to complete casting of a high-melting alloy; (5) casting temperatures in this lecture: gold–platinum <b>1300 °F</b>, base-metal alloy <b>1500 °F</b>, which differ from the casting temperature of gold alloy (<b>1200 °F</b>).</p>"},{"k":"اختبر نفسك","t":"Quiz: burnout temperatures, the reducing zone, and why PFM alloys get no flux","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The burnout schedule in this lecture, and why the ring must not go into an overheated oven, are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Place the ring at once into a 900 °C oven for 5 minutes at the edge of the chamber</button><button type=\"button\" class=\"opt\" data-i=\"1\">After separating the ring from the crucible former, heat to 200 °C and hold 30 minutes (wax and water vaporize), then 480–650 °C for 45 minutes for the final burnout, with the ring in the centre of the oven. A too-rapid rise may crack the investment and distort the mold, so never place the ring in an overheated oven. Burnout also produces the expansion that compensates for solidification shrinkage and raises the mold to a temperature that lets the metal flow</button><button type=\"button\" class=\"opt\" data-i=\"2\">Burnout is only for drying the outside of the ring, and the wax is left inside the mold</button><button type=\"button\" class=\"opt\" data-i=\"3\">The first hold is 650 °C for 30 minutes, then 200 °C for 45 minutes</button></div><div class=\"qexp\" hidden><p>200 م° لـ 30 دقيقة، بعدين 480–650 م° لـ 45 دقيقة، والحلقة بمنتصف الفرن. لا ترفع الحرارة بسرعة ولا تحط الحلقة بفرن محموم حتى الاستثمار ما يتشقق.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Which flame zone must contact the metal, and which casting rules match this lecture?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The greyish-yellow combustion zone or the oxidizing zone, because they are the hottest; add flux to every PFM alloy; use three turns for metal-ceramic and a clay crucible with an asbestos liner for base metal</button><button type=\"button\" class=\"opt\" data-i=\"1\">Only the bluish reducing zone (the hottest) must contact the metal. The combustion and oxidizing zones are cooler and an oxidizing atmosphere can cause impurities, a change in strength, altered shrinkage and more corrosion. Give the centrifugal machine three clockwise turns (four for metal-ceramic). Heat until the gold is yellowish and mirror-like, then add flux (except PFM alloys — flux upsets the balance and later bonding). High-melting alloys use a quartz crucible without an asbestos liner, a multi-orifice torch for base metal, and extra winding. Casting temperatures here: gold alloy 1200 °F, gold–platinum 1300 °F, base metal 1500 °F. Precious alloys are at least 75% noble; ADA gold types are I soft, II moderate, III hard, IV extra hard</button><button type=\"button\" class=\"opt\" data-i=\"2\">A gas-air torch is used for nickel–chromium, and an oxygen-acetylene multi-orifice torch is used only for gold type I</button><button type=\"button\" class=\"opt\" data-i=\"3\">Semi-precious silver–palladium in this lecture is 90% gold</button></div><div class=\"qexp\" hidden><p>المنطقة المختزِلة الزرقاء فقط تلامس المعدن. ثلاث لفات (أربع للخزف-معدن). الذهب أصفر مثل المرآة، ويه flux ما عدا PFM. بوتقة كوارتز بدون أسبستوس للعالية. درجات الصب: 1200 / 1300 / 1500 ف°. الثمينة 75% نبيلة على الأقل.</p></div></div>"},{"k":"Dr. Alaa · Lecture 17","t":"Quenching, sandblasting, and pickling in 50% hydrochloric acid","b":"<p>After casting is completed, the ring is taken immediately from the machine and thrust or plunged under running cold water into a large mixing rubber bowl. This is <b>quenching</b>. Benefits: (1) to anneal the alloy to provide better working qualities during finishing; (2) disintegration of the hot investment when it contacts cold water. After quenching, the casting is cleaned of investment remnants with a sharp hand instrument and a toothbrush, then <b>sandblasted</b> (a machine that throws sand and compressed air on the casting) to remove remaining residues. It is then placed into a pickling solution made of <b>50% hydrochloric acid</b> — <b>pickling</b>. Advantages: it removes oxide from the surface of the metal, and it removes any remnant of investment. The casting is then ready for finishing.</p>"},{"k":"Dr. Alaa · Lecture 17","t":"Finishing on the die: cut the sprue with a disc, seat with no pressure, and stop 1 mm from the margins when polishing","b":"<p>Finishing: (1) the sprue is cut with a <b>Carborundum separating disc</b>. Cutting pliers or a wire cutter are not recommended, because they generate stress that could distort the casting. Leave a little excess, then recontour with stones and a sand disc to re-establish coronal morphology. (2) Before seating, inspect the inner surface for nodules or bubbles of metal that might interfere (sometimes with magnification) and remove them with a round bur at high speed. (3) The crown is seated on the die <b>without any pressure</b>; if there is interference, relieve contact areas until complete seating with no pressure is obtained. If it is seated with pressure the die will crack and distort. (4) Transfer the die and casting to the working cast and slowly adjust the interproximal relationship to a slight contact with the adjacent teeth and complete seating of the die. (5) Adjust occlusion in centric and eccentric to relieve prematurities (articulating paper). Be certain of complete seating, otherwise you might grind the casting out of occlusion. (6) Smooth the axial walls with a rubber wheel, held parallel to the margin near the margin, then finish the occlusal surface with small finishing burs. A short summary on the lecture’s last finishing slide: contour the sprue stump; adjust interproximal contacts; adjust occlusion; clean and polish occlusal grooves; polish axial walls — protect the interproximal contact, and <b>stop 1 mm from the margins</b>. The casting is then ready to be tried in the mouth.</p>"},{"k":"Dr. Alaa · Lecture 18","t":"Clinical try-in without anaesthesia if possible, and how dental floss judges the contact","b":"<p>After laboratory work, the casting is tried on the prepared tooth in the mouth prior to final finishing and cementation. The procedure can be accomplished in most patients <b>without anaesthesia</b>, which preserves unimpaired tactile sensation that is of great value during occlusal adjustment. Try-in without anaesthesia is better, but anaesthesia is sometimes used if the patient is uncooperative. Seating: (1) remove the temporary (with a Backhaus towel clamp or GC pliers) and clean any remnant of cement, which would interfere with seating; (2) seat the restoration on the prepared tooth with pressure; (3) examine the interproximal contact — it should be as tight as the others in the mouth. Dental floss should pass with <b>slight resistance</b>. Heavy resistance (floss cannot pass) means the contact is heavy and must be reduced. No resistance (floss passes easily) means an under-contoured, deficient contact — either remake the restoration or correct the defect by adding solder. (4) If the contact is perfect but the crown is not completely seated, there may be internal interference (metal bubbles or an undercut). Use a pressure-indicating paste (a silicone wash) or a spray on the inner surface, seat with pressure, then remove and inspect for shiny areas that should be relieved.</p>"},{"k":"Dr. Alaa · Lecture 18","t":"Four types of marginal defect, and how to move the probe in two directions","b":"<p>The margin is the most critical area: there should be complete fitness between the restoration margin and the finishing line. Check with a sharp pointed probe, moved in two directions — the direction matters. Types of marginal defect: (1) a <b>short margin</b> (under-extension, shoulder or ledge) — the crown margin lies short of the finish line; (2) a <b>long margin</b> (over-extension, overhang) — the margin lies beyond the finish line; (3) an <b>open margin</b> — the margin is within the finish line but there is a space between the restoration and the prepared tooth; (4) <b>overcontoured</b> — the margin is within the finish line but bulky. How to check: (1) move the probe from the restoration toward the tooth; if it passes smoothly the margin is acceptable, but any catch indicates an under-extended margin; (2) move from the tooth toward the restoration; if the probe is caught by the margin, this indicates an over-extended margin (correction might lead to an open margin); (3) if the probe passes smoothly in both directions, the extension is correct; (4) if there is a space at the finishing line and the probe can go in, this means an open margin. The restoration should also be stable: it should not rock or rotate when force is applied.</p>"},{"k":"Dr. Alaa · Lecture 18","t":"Occlusal adjustment, a 1 mm burnished margin, and polishing with Tripoli","b":"<p>After complete seating, adjust the occlusal relationship in all mandibular movements (centric and eccentric) with articulating paper. Any prematurity is relieved with a green stone bur. Margin finishing aims to obtain at least a <b>1 mm wide</b> margin closely adapted to the tooth at the finish line, against microleakage. A <b>subgingival</b> margin can be finished on the die with a burnisher; no intra-oral finishing is desirable because of the risk of damaging the tooth and the periodontal tissue. A <b>supragingival</b> margin can be finished directly on the tooth; adaptation can be improved with a burnisher or a dull bur. The restoration is then ready for final polishing, to provide a smooth shiny surface less susceptible to plaque. Purposes of polishing: a glossy surface; plaque resistance; tarnish/corrosion resistance; and a good appearance. Surface defects are removed by grinding with abrasive particles on a stone, rubber wheel or paper disc, or as a paste. The most commonly used abrasive is <b>Tripoli</b> on a soft Robinson bristle brush.</p>"},{"k":"اختبر نفسك","t":"Quiz: quenching and pickling, a no-pressure seating, and probe direction","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Immediately after casting, and during finishing on the die, this lecture says you should:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Let the ring cool slowly on the bench, cut the sprue with pliers, and seat the crown on the die with heavy pressure</button><button type=\"button\" class=\"opt\" data-i=\"1\">Quench the ring at once under running cold water (to anneal the alloy and to disintegrate the hot investment), clean it, sandblast it, and pickle it in 50% hydrochloric acid to remove oxide and leftover investment. Cut the sprue with a Carborundum disc, not pliers (pliers can stress and distort the casting). Seat the crown on the die with no pressure — pressure can crack the die. Confirm complete seating before occlusal grinding, or you may grind the crown out of occlusion. When polishing the axial walls, protect the contacts and stop 1 mm from the margins</button><button type=\"button\" class=\"opt\" data-i=\"2\">Pickling is done with 2% chlorhexidine only, and the sprue is left attached for try-in</button><button type=\"button\" class=\"opt\" data-i=\"3\">Sandblasting is never used after quenching</button></div><div class=\"qexp\" hidden><p>غطّس فوراً بماء بارد (تلدين وتفكيك الاستثمار)، رمل، وخلل بحامض هيدروكلوريك 50%. اقطع الـ sprue بديسك مو كماشة. الجلوس على الأفاتح بلا ضغط. قبل طحن الإطباق تأكد الجلوس كامل. عند التلميع قف 1 ملم قبل الحواف.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">At try-in, dental floss and a probe in this lecture tell you:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Try-in must always be under anaesthesia; floss that will not pass means a deficient contact that is corrected only by remaking the whole arch</button><button type=\"button\" class=\"opt\" data-i=\"1\">Try-in is better without anaesthesia so tactile sense helps occlusal adjustment (anaesthetize only if the patient is uncooperative). Floss should meet slight resistance. Heavy resistance means a heavy contact to be reduced; no resistance means a deficient contact (remake or add solder). If contacts are good but the crown is not seated, use a pressure-indicating paste or spray and relieve shiny internal spots. A probe moving from the restoration toward the tooth that catches means a short (under-extended) margin; from the tooth toward the restoration, a catch means a long (over-extended) margin — correction of a long margin might open it. A probe that enters a space means an open margin. The crown must not rock. Subgingival margins are finished on the die, not in the mouth</button><button type=\"button\" class=\"opt\" data-i=\"2\">An open margin is diagnosed only when the probe will not catch in either direction</button><button type=\"button\" class=\"opt\" data-i=\"3\">Supragingival margins must never be finished in the mouth</button></div><div class=\"qexp\" hidden><p>التجربة بلا تخدير أفضل للإطباق. الخيط ويه مقاومة خفيفة. ثقيل يُقلَّل؛ ناقص يُلحَم أو يُعاد. المسبر من الترميم للسن ينمسك = حافة قصيرة؛ من السن للترميم ينمسك = طويلة. إذا يدخل فراغ = مفتوحة. الحافة تحت اللثة تُنهى على الأفاتح مو بالفم.</p></div></div>"},{"k":"Dr. Alaa · Lecture 18","t":"What a luting cement is for, and the four factors that affect retention of a cemented casting","b":"<p>Dental cement is designed to produce a mechanical interlocking effect upon hardening in the mouth. It should provide a seal against marginal leakage, have good esthetics and proper thermal and chemical resistance, and be non-irritating to pulp and gingiva. Cements are used as luting (cementing) agents, as protective, insulating or sedative bases, and as temporary restorative materials. Factors affecting retention of a cemented cast restoration: (1) geometrical relations of the preparation (taper, height, surface area, and so on); (2) biophysical factors relating to the casting (accuracy of fit, metallurgical character, inside surface texture); (3) mechanical properties of the luting agent (compressive, tensile and shear strength, adhesive property and film thickness); (4) the difference in the coefficient of thermal expansion between tooth, casting and cement. Functions of cement: to secure lasting retention of the restoration to the prepared tooth; to seal the gap against penetration of fluid and bacteria; and to act as an insulating barrier against thermal and galvanic activity. Properties of an ideal luting agent: good working and setting properties; adequate strength; compressible into a thin layer; a good seal and non-toxic to the pulp; adherence to the inner surface of the restoration; and low viscosity and solubility.</p>"},{"k":"Dr. Alaa · Lecture 18","t":"Soft versus hard cements, and zinc phosphate (14,000–16,000 PSI, pH about 3.5)","b":"<p>Luting agents may be classified as soft or hard. Soft cements are used for provisional cementation of definitive crowns when a trial assessment period is needed, for example if the occlusion or aesthetics is being significantly altered. Hard cements are used for definitive cementation, and are essentially conventional, resin, or a hybrid of the two. Conventional cements rely on an acid–base reaction forming an insoluble salt and water (zinc phosphate, zinc polycarboxylate and glass ionomer). Resin cements set by polymerization.</p><p><b>Zinc phosphate cement (ZPC)</b> is composed of ZnO powder and phosphoric acid. It has a compressive strength of <b>14,000–16,000 PSI</b>, with a low pH at the time of cementing (about <b>3.5</b>) which might irritate the pulp. Advantages: good compressive strength if correctly proportioned; good film thickness; reasonable working time; resistant to water dissolution; a long track record; and no adverse effect on the pulp although initially acidic. Disadvantages: low tensile strength; no chemical bonding; not resistant to acid dissolution. Recommendations: a good default cement for conventional crowns and posts with retentive preparations; working time can be extended for multiple restorations by incremental mixing and a cooled slab. <b>Zinc silicophosphate</b> is a mixture of zinc phosphate and silicate cement, with a compressive strength of <b>22,000 PSI</b>, a highly acidic pH that can irritate the pulp, film thickness and strengths in the range of ZPC with slightly lower solubility, and an anti-cariogenic property due to fluoride.</p>"},{"k":"Dr. Alaa · Lecture 18","t":"Polycarboxylate (bonds enamel, dentine and steel, but not gold) and glass ionomer (18,600 PSI, fluoride)","b":"<p><b>Polycarboxylate</b> adheres to enamel, dentine and stainless steel but <b>not to gold alloy</b>. The setting pH is <b>4.8</b>, but because of the large size of the polyacrylic-acid molecule it has less effect on the pulp. High bond strength to enamel (<b>1,300 PSI</b>) but considerably less to dentine (<b>480 PSI</b>). Advantages: good compressive strength if correctly proportioned; adequate working time; bonds to enamel and dentine; adequate resistance to water dissolution (but less good than zinc phosphate); a reasonable track record; no adverse effect on the pulp and less acidic than zinc phosphate on mixing. Disadvantages: low tensile strength; can deform under loading; it is difficult to obtain a low film thickness; not resistant to acid dissolution. Recommendations: traditionally used for vital or sensitive teeth, but there is no evidence to support efficacy (dentine bonding agents to seal the preparation may be a better option); occasionally useful to retain an unretentive provisional crown.</p><p><b>Glass-ionomer cement (GIC)</b> has a compressive strength of <b>18,600 PSI</b> and bonds to enamel and dentine (to enamel more). It releases fluoride after setting, an indication of an ability to inhibit secondary caries. Advantages: as for polycarboxylate, but the cement has similar acidity to zinc phosphate on mixing, plus fluoride release. Disadvantages: sensitive to early moisture contamination; low tensile strength; not resistant to acid dissolution; it has been accused of causing post-operative sensitivity, but a controlled trial reports it is no worse than zinc phosphate. Recommendations: used empirically for conventional crowns where the patient has had a previously high caries rate; may be used as an alternative to zinc phosphate.</p>"},{"k":"Dr. Alaa · Lecture 18","t":"Resin cements, RMGI (may crack porcelain by water absorption), and why plain ZOE is not permanent","b":"<p><b>Resin luting cements</b> have a wide range of formulations, classified by polymerization method (chemical, light-cure, dual-cure) and the presence of dentine-bonding mechanisms. Chemical cure is used for metal restorations, light cure for ceramic restorations. Advantages: good compressive and tensile strengths; high tensile strength relative to conventional cements; resistant to water and relatively to acid dissolution; can enhance the strength of a ceramic restoration if a bond is obtained. Disadvantages: film thickness varies substantially; excess at the margin may be difficult to remove, especially proximally. Recommendations: must be used with, or incorporate, an effective dentine-bonding agent; material of choice for porcelain veneers, ceramic onlays and resin-bonded ceramic crowns; may be used to improve retention where preparation geometry is sub-optimal, but clinical studies are needed for long-term success.</p><p><b>Resin-modified glass ionomer (RMGI)</b> is a hybrid of traditional GIC with small additions of light-curing resin, aiming to overcome the moisture sensitivity and low strength of conventional glass ionomer, and combining resin strength and insolubility with fluoride release. Compomers are also resin and glass ionomer but are more closely related to composites, with the glass-ionomer reaction occurring slowly as moisture is absorbed into the set resin matrix. RMGIs are popular because of a relatively high bond to dentine and a very thin film; they leach fluoride, but it is unclear how useful this is against secondary caries. Advantages include good strengths, reasonable working time, resistance to water dissolution, and fluoride release. Disadvantages: a short track record; they <b>may expand and crack overlying porcelain because of water absorption</b>. Worth trying for metal or metal-ceramic crowns, especially where preparation retention is borderline; it is currently unclear which RMGI cements can be used safely with ceramic crowns.</p><p>No one cement is perfect. Selection should be based on knowledge of the materials, the type of restoration, the patient’s requirements, and the clinician’s experience. Zinc phosphate is mainly used because of its long-time use and excellent clinical performance. Resins are useful for all-ceramic restorations and veneers, and for metal or metal-ceramic restorations where retention and resistance form is compromised. Plain zinc oxide–eugenol is a classical soft cement and is <b>not used for permanent cementation</b> because of poor oral durability due to continuous eugenol loss, and low compressive strength; it is used for temporary cementation. To improve ZOE, a modified type was introduced by adding 2-ethoxybenzoic acid (EBA), aluminium oxide and PMM.</p>"},{"k":"Dr. Alaa · Lecture 18","t":"The zinc-phosphate cementation sequence, including a 3–4 minute bite on a wooden stick","b":"<p>Cementation procedure for zinc phosphate: (1) remove the temporary crown and clean the prepared tooth of any residues of cement; (2) isolate the prepared tooth or teeth with a cotton roll (a dry field of operation); (3) partial protection of the pulp can be provided by application of <b>two layers of cavity varnish</b>; (4) start mixing the cement, slowly and over a wide area on a <b>cool glass slab</b>, to ensure that a maximum amount of powder can be incorporated to reduce acidity; (5) apply a coating of the cement to the inside of a clean, dry casting, and if there are internal features such as grooves or boxes apply some cement on these areas of the preparation as well; (6) seat the crown on the tooth with pressure and have the patient apply force to the occlusal surface by biting on a wooden stick or a cotton roll for <b>3–4 minutes</b> (to ensure complete seating); (7) after the cement has set, remove any excess from the interproximal area, the gingival cervix and underneath the bridge, using a dental probe and dental floss; (8) check the occlusion.</p>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: zinc phosphate numbers, what does not bond to gold, RMGI and porcelain, and the 3–4 minute seating","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Zinc phosphate in this lecture, compared with polycarboxylate and glass ionomer, is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A resin cement with a pH of 8, bonding chemically to gold, and never used as a default luting agent</button><button type=\"button\" class=\"opt\" data-i=\"1\">ZPC is ZnO plus phosphoric acid, compressive strength 14,000–16,000 PSI, pH about 3.5 at cementation. It is a good default for conventional crowns and posts with retentive preparations; working time can be extended by incremental mixing on a cooled slab. It has no chemical bond and a low tensile strength. Polycarboxylate bonds enamel, dentine and stainless steel but not gold (enamel 1,300 PSI, dentine 480 PSI; setting pH 4.8). Glass ionomer is 18,600 PSI, bonds enamel more than dentine, releases fluoride, is sensitive to early moisture, and may be chosen empirically after a high caries rate. A trial found post-operative sensitivity with GIC no worse than with zinc phosphate. Silicophosphate is 22,000 PSI and highly acidic, with fluoride</button><button type=\"button\" class=\"opt\" data-i=\"2\">Glass ionomer never releases fluoride and always bonds better to dentine than to enamel</button><button type=\"button\" class=\"opt\" data-i=\"3\">Polycarboxylate is the only cement in this lecture that bonds strongly to gold</button></div><div class=\"qexp\" hidden><p>فوسفات الزنك 14–16 ألف PSI وأس هيدروجيني 3.5، خيار افتراضي جيد. البولي كربوكسيلات يلتصق بالميناء والعاج والستينلس مو بالذهب (1,300 و 480 PSI). الأيونومر 18,600 PSI وفلور، حسّاس للرطوبة المبكرة، وقد يُختار ويه تاريخ نخر عالي.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Resin and RMGI cements in this lecture, and why plain ZOE is not permanent:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">RMGI is the safest luting agent under every all-ceramic crown; plain ZOE is the first-choice permanent cement because of its high compressive strength</button><button type=\"button\" class=\"opt\" data-i=\"1\">Resin cements (chemical cure for metal, light cure for ceramic) are the material of choice for porcelain veneers, ceramic onlays and resin-bonded ceramic crowns, and may help when geometry is sub-optimal; excess can be hard to remove. RMGI combines resin strength with fluoride release, but may expand and crack overlying porcelain because of water absorption — worth trying for metal or metal-ceramic crowns when retention is borderline, and it is unclear which RMGIs are safe with ceramic crowns. No cement is perfect; ZPC remains widely used for its long clinical record. Plain ZOE is not for permanent cementation because of continuous eugenol loss and low compressive strength (it is a soft, temporary cement). Modified ZOE adds EBA, aluminium oxide and PMM</button><button type=\"button\" class=\"opt\" data-i=\"2\">Compomers in this lecture are identical to zinc phosphate</button><button type=\"button\" class=\"opt\" data-i=\"3\">Resin cements must never be used with a dentine-bonding agent</button></div><div class=\"qexp\" hidden><p>الراتنج للقشور والحشوات الغطائية الخزفية والتيجان الخزفية المرتبطة. RMGI قد يتمدد ويكسر الخزف من امتصاص الماء. ZOE العادي مؤقت مو دائم (فقدان أوجينول وقوة واطية). ما في إسمنت مثالي؛ فوسفات الزنك ما زال شائع لسجله.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The zinc-phosphate cementation sequence in this lecture includes:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Mix quickly on a warm slab with minimal powder, seat without isolation, and have the patient rinse after ten seconds</button><button type=\"button\" class=\"opt\" data-i=\"1\">Remove the temporary and clean the tooth; isolate with a cotton roll (dry field); apply two layers of cavity varnish for partial pulp protection; mix slowly over a wide area on a cool glass slab so that the maximum powder can be incorporated to reduce acidity; coat the inside of a clean dry casting and also any grooves or boxes; seat with pressure and have the patient bite on a wooden stick or cotton roll for 3–4 minutes; after setting, remove excess with a probe and floss from the contacts, the cervix and under a bridge; then check occlusion</button><button type=\"button\" class=\"opt\" data-i=\"2\">Varnish is never used under zinc phosphate in this lecture</button><button type=\"button\" class=\"opt\" data-i=\"3\">The patient must not apply occlusal force during setting</button></div><div class=\"qexp\" hidden><p>حقل جاف، طبقتان ورنيش، خلط بطيء على لوح بارد لأكبر كمية مسحوق (تقل الحموضة)، تغليف الداخل والأخاديد، عضّ 3–4 دقائق على عود أو قطن، شيل الزيادة، وافحص الإطباق.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">Name the four flame zones in this lecture, and which one must contact the metal.</button><div class=\"flash-a\" hidden>Mixing zone (cool, colourless, no heat); combustion zone (greyish-yellow, oxidizing, keep away from the metal); reducing zone (bluish, the hottest — the only zone that must contact the metal); and oxidizing zone (behind the reducing zone). Do not melt in the combustion or oxidizing zones.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا خامس ملف للتيجان والجسور: حرق الشمع والصب، التنظيف والإنهاء، التجربة السريرية، والإلصاق الدائم. صفحات 101–118، محاضرات د. آلاء 16–18. شرح عراقي مفصل ويه أسئلة. درجات الحرارة بهالمحاضرة تبقى بوحدات المحاضرة (مئوية للحرق، وفهرنهايت لبعض درجات الصب).</p>","<p>ال<b>حرق (burnout)</b> تسخين حلقة الاستثمار بفرن منظم حرارياً حتى يتبخر الشمع ويتكون تجويف يدخل فيه المعدن المنصهر. فوائده: إزالة الشمع والبلاستيك؛ إزالة الرطوبة؛ تمدد الاستثمار يعوّض تقلص تصلب السبيكة؛ ورفع حرارة القالب حتى المعدن يسيل للتجويف.</p><p>الخطوات: بعد فصل الحلقة عن قاعدة البوتقة، حطها بالفرن على <b>200 م°</b> لمدة <b>30 دقيقة</b> (يتبخر الشمع والماء)؛ بعدين ارفع إلى <b>480–650 م°</b> لمدة <b>45 دقيقة</b> للحرق النهائي. الحلقة بمنتصف الفرن حتى الجو حولها يطابق مؤشر الحرارة. لا تحط الحلقة بفرن محموم ولا ترفع الحرارة بسرعة، لأن الاستثمار قد يتشقق والقالب يتشوه.</p>","<p>ال<b>صب</b> إدخال المعدن المنصهر لتجويف القالب. السبائك: <b>ثمنية</b> فيها على الأقل <b>75% وزناً</b> عناصر نبيلة، وتشمل سبائك الذهب حسب ADA رقم 5: نوع I طري، II متوسط، III صلب، IV صلب جداً. العناصر الثمينة: ذهب وبلاتين وبلاديوم. <b>شبه ثمينة</b> بسبب غلاء الذهب، مثلاً فضة-بلاديوم (<b>60% بلاديوم، 30% فضة</b>). <b>غير ثمينة</b>: نيكل-كروم (<b>75% نيكل، 15% كروم</b>) وكوبالت-كروم (<b>60% كوبالت، 25% كروم</b>). الاستثمار الفوسفاتي يُستخدم ويه هذه لأن درجة انصهارها عالية.</p>","<p>آلة الصب تحتاج مصدر حرارة وقوة صب. الحرارة من الجزء المختزِل للهب أو من الكهرباء. نوعان من المواقد: <b>غاز-هواء</b> للسبائك منخفضة الانصهار (ذهب II و III)؛ و<b>أوكسجين-أسيتيلين</b> للسبائك عالية الانصهار مثل الخزف الملتصق بالمعدن. الفوهة الواحدة لفضة-بلاديوم (وذهب-بلاتين لاحقاً بهالمحاضرة)؛ متعددة الفوهات لمعادن الأساس مثل نيكل-كروم.</p><p>مناطق اللهب أربع: <b>الخلط</b> باردة عديمة اللون بلا حرارة؛ <b>الاحتراق</b> رمادي-أصفر مؤكسِدة وبعيدة عن المعدن؛ <b>الاختزال</b> زرقاء وهي الأسخن والوحيدة اللي تلامس المعدن أثناء الصهر؛ و<b>الأكسدة</b> وراء الاختزال. لا تستخدم الاحتراق ولا الأكسدة: مو بحرارة الاختزال، والجو المؤكسد يسبب شوائب غير معدنية وتغيّر بالقوة والتمدد/التقلص وزيادة التآكل.</p>","<p>قوة الصب تتغلّب على التوتر السطحي العالي للمعدن المنصهر ومقاومة الغاز داخل القالب. الأشيع آلة <b>طرد مركزي</b>. الخطوات: <b>ثلاث لفات باتجاه عقارب الساعة</b> (<b>أربع</b> إذا سبيكة خزف-معدن) وتُقفل بالدبوس؛ بطانة أسبستوس رطبة بقعر البوتقة وتُسخَّن (تطيل عمر البوتقة وتحمي المعدن من التلوث)؛ سخّن السبيكة بالجزء المختزِل حتى تسيل وتصير <b>صفراء ويه سطح مثل المرآة</b>؛ حط كمية قليلة من ال<b>flux</b> (مانع أكسدة يزيد السيولة)؛ طلّع الحلقة من الفرن حطها على الحامل؛ زلق المنصة ضد الحلقة؛ وحرّر الدبوس وخلِّ الآلة تدور لين توقف.</p>","<p>الفروق بين السبائك عالية ومنخفضة الانصهار: فوهة واحدة لذهب-بلاتين وفضة-بلاديوم، ومتعددة لمعادن الأساس؛ بوتقة <b>كوارتز</b> للعالية، و<b>بدون</b> بطانة أسبستوس لأن الحرارة العالية تحلل الأسبستوس وتلوّث المعدن؛ <b>لا تُضاف flux لسبائك الخزف الملتصق بالمعدن</b> لأنها تخلّ بتوازن السبيكة وتعيق الارتباط لاحقاً؛ لفة إضافية لذراع الآلة؛ ودرجات الصب بهالمحاضرة: ذهب-بلاتين <b>1300 ف°</b>، معدن أساس <b>1500 ف°</b>، وذهب عادي <b>1200 ف°</b>.</p>","<p>سؤالان على الحرق، ومنطقة الاختزال، وصب PFM.</p>","<p>بعد الصب فوراً، اغمس الحلقة تحت ماء بارد جارٍ بوعاء مطاطي كبير — هذا ال<b>تغطيس (quenching)</b>. فائدتان: يلدّن السبيكة حتى الإنهاء يصير أسهل؛ والاستثمار الحار يتفكك ويه الماء البارد. بعدين نظّف بآلة حادة وفرشاة أسنان، و<b>رمل (sandblast)</b> (رمل ويه هواء مضغوط). بعدين <b>تخليل (pickling)</b> بمحلول <b>حامض هيدروكلوريك 50%</b> لإزالة الأوكسيد وبقايا الاستثمار. (المحاضرة كتبت hydrochloride والمقصود hydrochloric.)</p>","<p>الإنهاء: اقطع الـ sprue ب<b>ديسك Carborundum</b>، مو كماشة أو قطّاع أسلاك لأنهم يولّدون إجهاد وقد يشوهون الصبّة. اترك زيادة قليلة وعدّل الشكل. افحص الداخل بحثاً عن عقد أو فقاعات معدن (أحياناً بتكبير) وشيلها بسنبلة مدورة سريعة. أنزل التاج على الأفاتح <b>بدون أي ضغط</b> — إذا ضغطت، الأفاتح ينكسر ويتشوه. بعدين عدّل التماس المجاور (تماس خفيف) والإطباق بورق عضّ، وتأكد إن الجلوس كامل وإلا ممكن تطحن الصبّة خارج الإطباق. نعّم الجدران بعجلة مطاط موازية للحافة قرب الحافة. ملخص الشريحة الأخيرة: احمِ التماس المجاور، و<b>قف على بعد 1 ملم من الحواف</b> عند التلميع.</p>","<p>التجربة السريرية غالباً <b>بدون تخدير</b> حتى الإحساس اللمسي يبقى كاملاً أثناء تعديل الإطباق. التخدير إذا المريض غير متعاون. شيل المؤقت (كلاب Backhaus أو كماشة GC) ونظّف بقايا الإسمنت. أنزل الترميم بضغط. التماس المجاور لازم يكون مثل باقي الفم: الخيط يمر ويه <b>مقاومة خفيفة</b>. مقاومة شديدة (الخيط ما يمر) = تماس ثقيل يقلَّل. بلا مقاومة = تماس ناقص، إما تعيد الترميم أو تضيف لحام (solder). إذا التماس تمام وال تاج ما يجلس كامل، غالباً تداخل داخلي (فقاعات أو undercut): استخدم معجون كشف الضغط أو بخاخ، والمناطق اللامعة تُزال.</p>","<p>الحافة أحرَج منطقة: لازم تطابق تام ويه خط الإنهاء. افحص بمسبر حاد باتجاهين. أنواع العيب: حافة <b>قصيرة</b> (تحت الامتداد، كتف أو حافة)؛ حافة <b>طويلة</b> (تجاوز، بروز)؛ حافة <b>مفتوحة</b> (داخل الخط بس في فراغ)؛ و<b>زائدة الكفاف</b> (داخل الخط بس سميكة).</p><p>كيف تفحص: من الترميم نحو السن — إذا المسبر انمسك فالحافة قصيرة؛ من السن نحو الترميم — إذا انمسك فالحافة طويلة (تصحيحها قد يفتح الحافة)؛ الاتجاهان بسلاسة = الامتداد صحيح؛ إذا في فراغ والمسبر يدخل = حافة مفتوحة. وهم الترميم لازم ما يهتز أو يدور ويه الضغط.</p>","<p>بعد الجلوس الكامل عدّل الإطباق بكل الحركات بورق عضّ، وشيل أي تماس مبكر بحجر أخضر. إنهاء الحافة يهدف إلى حافة عرضها على الأقل <b>1 ملم</b> متكيفة ويه السن ضد التسرب المجهري. الحافة <b>تحت اللثة</b> تُنهى على الأفاتح بالمبرنش، ومو داخل الفم حتى ما تتضرر اللثة والسن. الحافة <b>فوق اللثة</b> تُنهى على السن بمبرنش أو سنبلة كليلة. التلميع يعطي سطح لامع أقل عرضة للويحة: لمعان، مقاومة لويحة وتلطخ/تآكل، ومظهر جيد. الأشيع <b>Tripoli</b> على فرشاة Robinson ناعمة.</p>","<p>سؤالان على التغطيس والتخليل، والخيط والمسبر بالتجربة.</p>","<p>إسمنت الإلصاق يعمل تداخل ميكانيكي بعد التصلب بالفم، ويختم ضد التسرب الحافي، ويه مقاومة حرارية وكيميائية، وما يهيج اللب واللثة. يُستخدم إلصاق، أو قاعدة عازلة/مهدئة، أو ترميم مؤقت. عوامل التثبيت أربع: هندسة التحضير (تقارب، ارتفاع، مساحة)؛ عوامل الصبّة (المطابقة، خصائص المعدن، ملمس الداخل)؛ خصائص الإسمنت الميكانيكية (ضغط، شد، قص، التصاق، سُمك الفيلم)؛ والفرق بمعامل التمدد الحراري بين السن والصبّة والإسمنت. وظائفه: تثبيت دائم؛ ختم ضد السوائل والجراثيم؛ وحاجز عازل حراري وكهركيميائي (galvanic).</p>","<p>الإسمنت <b>طري</b> لإلصاق مؤقت لتيجان نهائية عندما تحتاج فترة تجربة (مثلاً تغيّر كبير بالإطباق أو الجمال). ال<b>صلب</b> للإلصاق الدائم: تقليدي (تفاعل حامض-قاعدة: فوسفات الزنك، بولي كربوكسيلات، أيونومر زجاجي) أو راتنج (بلمرة) أو هجين.</p><p><b>فوسفات الزنك</b>: مسحوق ZnO ويه حامض فوسفوريك. مقاومة ضغط <b>14,000–16,000 PSI</b>، وأس هيدروجيني حوالي <b>3.5</b> وقت الإلصاق قد يهيج اللب. مزاياه: قوة ضغط جيدة، فيلم جيد، زمن عمل معقول، يقاوم الذوبان بالماء، سجل طويل، وما يضر اللب رغم الحموضة الأولية. عيوبه: شد ضعيف، بلا ارتباط كيميائي، وما يقاوم الذوبان بالحامض. خيار افتراضي جيد للتيجان والأوتاد ويه تحضير مثبت. زمن العمل يمتد بخلط تدريجي ولوح بارد. سيليكوفسفات الزنك 22,000 PSI وأحمض، ويه فلور مضاد للنخر.</p>","<p>ال<b>بولي كربوكسيلات</b> يلتصق بالميناء والعاج والستينلس، <b>بس مو بسبيكة الذهب</b>. أس هيدروجيني عند التصلب <b>4.8</b>، وجزيء الحامض البولي أكريلي كبير فأثره على اللب أقل. ارتباط الميناء <b>1,300 PSI</b> والعاج <b>480 PSI</b>. قد يتشوه تحت الحمل، وصعب تحصل فيلم رقيق. تقليدياً للأسنان الحية أو الحساسة، وأحياناً لمؤقت ضعيف التثبيت.</p><p>ال<b>أيونومر الزجاجي</b> مقاومة ضغط <b>18,600 PSI</b>، يرتبط بالميناء أكثر من العاج، ويحرر فلور بعد التصلب (يمنع نخر ثانوي). حسّاس للتلوث الرطوبي المبكر. اتُّهم بتسبيب حساسية بعد العمل، بس تجربة مضبوطة تقول ما هو أسوأ من فوسفات الزنك. يُستخدم تجريبياً إذا تاريخ النخر عالي، أو كبديل لفوسفات الزنك.</p>","<p>إسمنت ال<b>راتنج</b>: كيميائي للمعدن، ضوئي للخزف، أو ثنائي التصلب. قوة شد أعلى من التقليدي، ويقاوم الماء والحامض نسبياً، وقد يقوّي الخزف إذا حصل ارتباط. الزيادة عند الحافة صعبة الشيل خاصة بالمجاور. الخيار للقشور والحشوات الغطائية الخزفية والتيجان الخزفية المرتبطة بالراتنج. لازم ويه عامل ربط عاجي فعّال.</p><p>ال<b>أيونومر المعدَّل بالراتنج (RMGI)</b> هجين يحاول يتجاوز حساسية الرطوبة وضعف القوة، ويه تحرير فلور. قد <b>يتمدد ويكسر الخزف فوقه بسبب امتصاص الماء</b>. يستحق التجربة للمعدن أو الخزف-معدن إذا التثبيت على الحدود؛ مو واضح أي نوع آمن ويه تيجان الخزف الكامل. ما في إسمنت مثالي. فوسفات الزنك ما زال الأشيع لسجله الطويل. الراتنج للخزف الكامل والقشور، وللمعدن إذا الشكل المثبت ضعيف. <b>ZOE العادي مو للإلصاق الدائم</b> (فقدان أوجينول مستمر وقوة ضغط واطية)؛ يُعدَّل بـ EBA وأوكسيد ألمنيوم و PMM.</p>","<p>خطوات إلصاق فوسفات الزنك: شيل المؤقت ونظّف البقايا؛ اعزل بلفافة قطن (حقل جاف)؛ حماية جزئية لللب ب<b>طبقتين ورنيش حفرة</b>؛ اخلط ببطء وعلى مساحة واسعة بلوح زجاج <b>بارد</b> حتى تدخل أكبر كمية مسحوق وتقل الحموضة؛ غلّف داخل الصبّة النظيفة الجافة، وحط إسمنت بالأخاديد أو الصناديق هم؛ أنزل بضغط وخلِّ المريض يعض على عود خشب أو قطن لمدة <b>3–4 دقائق</b> حتى الجلوس يكتمل؛ بعد التصلب شيل الزيادة بالمجاور والعنق وتحت الجسر بمسبر وخيط؛ وافحص الإطباق.</p>","<p>ثلاثة أسئلة ختامية + بطاقة مناطق اللهب + زر الدرجة. إذا غلطت ارجع للشرائح.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
