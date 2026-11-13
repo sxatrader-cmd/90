@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Endodontics File 4 — Obturation and Endodontic Diagnosis</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Endodontics · 4th year Lecture 8 and Prof. Anas Lecture 1</div>
+    <h1>Obturation of the Root Canal, and Endodontic Diagnosis</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lecture 8 by Prof. Dr. Hussain Al-Huwaizi and Lecture 1 (diagnosis) by Prof. Dr. Anas Falih Mahdi (PDF pages 72–90).</p>
+    <ul>
+      <li>Objective of obturation (ingress and egress), four aims, and the criteria for filling, including the controversy about a negative culture</li>
+      <li>Gutta-percha composition (β-form percentages), disinfection, standardized versus non-standardized cones, silver points, and sealer functions</li>
+      <li>Underfilling versus overfilling (Ng et al. 2007, 2 mm), lateral condensation with tug-back, and warm vertical compaction</li>
+      <li>Five stages of diagnosis, pain history, extra-oral and intra-oral examination, and tracing a sinus tract with a #25 or #30 cone</li>
+      <li>Palpation, percussion, mobility, pulp tests (cold, heat not more than 5 seconds, EPT, cavity test), the bite test, staining, and the cementoma radiographic warning</li>
+      <li>Total run time: <b>50 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 25</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Endodontics · File 4","t":"Obturation of the root canal, and endodontic diagnosis","b":"<p>University of Baghdad, College of Dentistry — Endodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file covers PDF pages 72–90: 4th-year Lecture 8 on obturation by Prof. Dr. Hussain Al-Huwaizi (أ.د. حسين فيصل الحويزي), then the first lecture of Prof. Dr. Anas Falih Mahdi (أ.د. أنس فالح مهدي) on endodontic diagnosis.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Medical terms stay in English next to the Arabic.</p>"},{"k":"4th year · Obturation","t":"The objective of obturation: a fluid-tight seal, ingress and egress","b":"<p>After chemo-mechanical debridement of the root-canal system, the next step is complete (three-dimensional) obturation of the root-canal space, to keep the tooth functional within the dental arch. The objective is to create a <b>fluid-tight seal</b> along the length of the root-canal system, from the coronal opening to the apical termination (particularly at the apical foramen), to prevent an <b>ingress</b> of tissue fluid and bacteria and subsequently an <b>egress</b> of irritants. The lecture defines ingress as the inward movement of tissue fluid, and egress as the outward movement of irritants.</p><p>Fluid moves by osmotic pressure into an empty space. If a root canal is left empty without filling, tissue fluid might stay for a while and then fill this empty canal. Because there is no circulation and no lymphatic system in that space, the fluid undergoes degeneration and destruction, and then a foreign body leaks again to the periapical area, leading to inflammation; or bacteria may find a way into this space, live and proliferate, and produce enzymatic toxins, which then seep again to the periapical area and cause infection. In obturation, a solid or semisolid core material is used with a sealer to produce the fluid-tight seal, by filling the main root canal(s), the accessory canals, voids, spaces and irregularities.</p>"},{"k":"4th year · Obturation","t":"Four aims of obturation, and the criteria before you fill","b":"<p>Aims of root-canal obturation: (1) three-dimensional obliteration of the root-canal space, to prevent ingress of bacteria and body fluids into the space as well as egress of bacteria or their toxins out of the root canal; (2) a fluid-tight seal within all regions of the root-canal space, to prevent microleakage; (3) replacement of the root-canal space that was filled with necrotic tissue by an inert filling material, to create a favourable healing environment and avoid recurrent infection; (4) an adequate coronal seal with a proper coronal restoration, to obtain long-term success of root-canal therapy.</p><p>Criteria for filling: (1) prepare the root canal in a manner that ensures optimum access to the apical area; (2) the tooth must be asymptomatic (no pain and no tenderness); (3) the canal must be dry; (4) a negative culture — this is controversial: some say they need a negative culture, others say there is no significance from it.</p>"},{"k":"4th year · Gutta-percha","t":"Gutta-percha: source, the α and β forms, and the composition of the β-form","b":"<p><b>Gutta-percha</b> is the most commonly used semi-solid root-canal filling material. It is a natural material extracted as a dried coagulate from Brazilian trees (<b>Palaquium</b>). Its molecular structure is close to natural rubber. Chemically, gutta-percha is available in two crystalline forms: alpha (α) and beta (β).</p><p>The <b>β-form</b> is composed of the following: organic — gutta-percha <b>20%</b> plus waxes and resins <b>3%</b>; inorganic — zinc-oxide filler <b>66%</b> plus heavy-metal sulfates as radiopacifiers <b>11%</b>.</p>"},{"k":"4th year · Gutta-percha","t":"Properties of gutta-percha, how to disinfect it, and standardized versus non-standardized cones","b":"<p>Properties: (1) gutta-percha expands on heating and increases in volume, which can be advantageous for compacting into root-canal spaces; however, it shrinks on cooling. (2) Heat sterilization is inapplicable. For disinfection, gutta-percha points can be immersed in <b>ethanol 96%</b> or <b>sodium hypochlorite 5.25% for one minute</b> before use. (3) Because gutta-percha has no adherence property, it should always be used with sealers. (4) It can be dissolved in solvents such as chloroform, eucalyptus oil, orange oil, and others. This chemically plasticized property is important for softening points for better filling, or for easier removal during retreatment.</p><p>A <b>standardized cone</b> is designed to have the same size and taper as the corresponding intracanal instrument, and is used as a master cone. A <b>non-standardized cone</b> has greater tapering, with a fine tip and a heavy body; it is used with the master cone to aid obturation.</p>"},{"k":"4th year · Filling materials","t":"Advantages and disadvantages of gutta-percha, and why silver points are limited","b":"<p>Advantages of gutta-percha: compatibility (adaptation to the canal wall); inertness (does not interact with the tissue); tissue tolerance; dimensional stability; radiopacity; and plasticity (can be softened with heat or a chemical solvent). Disadvantages: lack of rigidity — it can bend easily with pressure, which makes application difficult especially in narrow canals; lack of adhesiveness, so it should always be used with sealers and cements; and it is easily displaced by pressure.</p><p><b>Silver points</b> are made from silver. They have the advantage of being rigid, and therefore they are used in very narrow and severely curved canals. The main disadvantages are that silver cones are round in cross-section, so they cannot be used in oval-cross-sectioned canals, and that silver cones may produce corrosion products which will be harmful to the periapical region.</p>"},{"k":"4th year · Sealer and ideal properties","t":"Sealer functions, absorbent points, and ten characteristics of an ideal filling material","b":"<p>A <b>sealer</b> is a paste, mostly made of radiopaque zinc-oxide–eugenol cement, capable of producing a seal by filling irregularities between the gutta-percha and the dentine walls. It also acts as a lubricant, facilitating placement of the gutta-percha cone. It is supplied as two pastes, or as a liquid and a powder, which are mixed to a thick, creamy consistency. Functions: (1) lubricate and aid the seating of gutta-percha cones; (2) bonding between gutta-percha and the root-canal walls; (3) filling gaps and anatomical spaces; (4) the sealer and the primary filling effectively increase the fluid-tight seal and the prognosis — and some sealers (cements) can be used as an obturating material without gutta-percha; (5) an antimicrobial agent, immediately after placement; (6) radiopacity, identifying auxiliary canals, resorption regions, root fracture, and the shape of the apical foramen.</p><p><b>Absorbent points</b> are made of absorbent paper, in the same standardized sizes as the root-canal instruments, and are used to dry the root canal.</p><p>Characteristics of an ideal root-filling material: (1) easily introduced into the root canal; (2) provides an apical and lateral seal; (3) dimensionally stable after use; (4) impervious to moisture; (5) bacteriostatic, or at least should not encourage bacterial growth; (6) radiopaque; (7) non-staining to tooth structure; (8) non-irritating; (9) sterile or easily sterilized; (10) removed easily from the canal if required.</p>"},{"k":"4th year · Obturation","t":"Underfilling, overfilling, and the 2 mm figure from Ng et al. (2007)","b":"<p><b>Underfilling</b> occurs when the root-canal filling is shorter than the total root-canal space. This definitely provides an environment for initiation, persistence or recurrence of periradicular infection.</p><p><b>Overfilling</b> occurs when the root-filling material extends beyond the CDJ. According to <b>Ng et al. 2007</b>, extrusion of the root-canal filling is considered to be acceptable within <b>2 mm beyond the radiographic apex</b>, if it is associated with three-dimensional sealing of the root-canal system.</p>"},{"k":"4th year · Lateral condensation","t":"Lateral condensation: choosing the master cone, and what tug-back means","b":"<p><b>Lateral condensation</b> with gutta-percha is the most commonly used obturating technique for most root-canal system configurations. Before obturation, verify the completion of root preparation and ensure a dry and symptom-free tooth.</p><p>Procedure of master-cone selection (the cone that occupies most of the root-canal parts): (1) the master cone selected should have the same size as the <b>master apical file (MAF)</b>, and it should have the same length as the full working length. (2) The master cone should need some force to be seated inside the canal, and some force is required to dislodge it. This is called <b>tug-back</b>. This resistance to removal enhances the sealing ability at the apical area. (3) If the master cone goes to the full working length but is loose inside the canal, take a larger gutta-percha cone, or remove <b>1 mm from the apical end</b> of the master cone to increase its width. (4) Verify the master-cone position with a radiograph to ensure optimum fitness.</p>"},{"k":"4th year · Lateral condensation","t":"Lateral condensation steps: sealer, the spreader, auxiliary cones, and cutting the excess","b":"<p>(5) Mix the sealer and coat the wall by picking up sealer on the MAF and spinning it <b>counter-clockwise</b>; once the MAF is rotated there will be painting of the walls with sealer. (6) Dip the tip of the master cone in the sealer and seat it in the root canal. (7) With the spreader, the master cone is pushed laterally and apically, providing room for an auxiliary gutta-percha point. The spreader should rotate <b>180°</b> (to the right and left) until it becomes loose and is pushed outside. (8) The spreader should penetrate the <b>apical third</b> (a rubber stopper should mark the length of penetration, <b>2–3 mm from the tip of the master cone</b>). (9) Place an auxiliary cone (smaller than the master cone) after its tip is dipped in the sealer. (10) Repeat with more points and more spreading until the entire canal is filled, when the spreader cannot be placed beyond the cervical line of the root canal. (11) Take a radiograph to check the obturation mass. (12) A hot instrument is used to cut the excess gutta-percha to just below the cervical line. The instrument can be an excavator or Ash no. 6, and should be very hot so as to cut in one motion; if it is not hot enough, the master cone might be dislodged. (13) A plugger is used for vertical condensation to assure tightness. (14) All the sealer and gutta-percha should be removed from the pulp chamber by a round bur. (15) A cement base and a coronal restoration are placed in the tooth.</p>"},{"k":"4th year · Lateral condensation","t":"Advantages and disadvantages of lateral condensation","b":"<p>Advantages: (1) it can be used in most routine clinical situations; (2) during lateral compaction it provides length control, with less chance of overfilling and of post-operative pain.</p><p>Disadvantages: (1) it may not sufficiently fill the irregularities within the canal; (2) it does not produce a homogeneous mass; (3) voids and spaces may exist between accessory and master cones.</p>"},{"k":"4th year · Warm vertical compaction","t":"Warm vertical compaction: canal shape needed, and why tug-back is not required","b":"<p>The <b>warm vertical compaction</b> technique was introduced to overcome the drawbacks of lateral condensation. It uses a hot plugger with vertical pressure to compact the heat-softened gutta-percha so that it flows into canal irregularities. The prepared canal that can be filled by this technique should have: a funnel shape with continuous tapering to the apex; and a good apical-stop region (the apical constriction is as small as possible).</p><p>Procedure, first steps: (1) select the master cone, which should fit the canal size and taper, and check its fitness by radiograph. <b>Tug-back is not necessary</b> for the master cone in this technique. (2) Dry the canal completely with a paper point. (3) Select the sizes of pluggers according to the size and taper of the canal. Pluggers should be prefitted at <b>5 mm intervals</b> in order to capture the maximum cross-sectional area of the softened gutta-percha. (4) Coat the canal lightly with sealer by a paper point. (5) Cut the coronal end of the gutta-percha cone at the incisal or occlusal reference point. (6) Use the heated plugger to force the master cone vertically into the canal, folding the softened gutta-percha inward to fit apically and laterally. If the softened gutta-percha sticks to the plugger tip, slightly rotate the plugger to loosen it. This vertical compaction will free 2–3 mm of space coronally, to allow adding more gutta-percha.</p>"},{"k":"4th year · Warm vertical compaction","t":"Backfilling, and the advantages and disadvantages of warm vertical compaction","b":"<p>(7) After finishing the apical filling, complete obturation by backfilling: this can be done by heating small segments of gutta-percha and carrying them into the canal using heated larger pluggers. (8) Be careful not to overheat the gutta-percha, so as to facilitate its handling. (9) After completion, clean the pulp chamber from excess sealer and gutta-percha with a piece of cotton soaked in alcohol, then place the temporary or final restoration.</p><p>Advantage: it provides excellent sealing of the canal apically and laterally, with filling of the lateral and accessory canals. Disadvantages: (1) increased risk of vertical root fracture; (2) overfilling and apical extrusion of the gutta-percha and sealer periapically; (3) it is a time-consuming procedure.</p>"},{"k":"اختبر نفسك","t":"Quiz: gutta-percha composition, tug-back, Ng et al., and warm vertical compaction","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The β-form of gutta-percha in this lecture is composed of:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">100% pure gutta-percha, with no filler</button><button type=\"button\" class=\"opt\" data-i=\"1\">Organic: gutta-percha 20% plus waxes and resins 3%; inorganic: zinc-oxide filler 66% plus heavy-metal sulfates (radiopacifiers) 11%. Disinfect points in ethanol 96% or NaOCl 5.25% for one minute; heat sterilization is inapplicable, and the material shrinks on cooling</button><button type=\"button\" class=\"opt\" data-i=\"2\">Silver 66% and chloroform 34%</button><button type=\"button\" class=\"opt\" data-i=\"3\">Only α-form wax, sterilized in a dry-heat oven</button></div><div class=\"qexp\" hidden><p>بيتا: 20% GP + 3% شموع وراتنجات + 66% أوكسيد زنك + 11% كبريتات معادن ثقيلة. تعقيم دقيقة بكحول 96% أو هايبوكلوريت 5.25%. تتمدد بالحرارة وتتقلص بالتبريد. التعقيم الحراري ما ينفع.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Tug-back in lateral condensation means, and if the cone is loose at full working length you should:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">No resistance is ever wanted; cut 5 mm from the coronal end only</button><button type=\"button\" class=\"opt\" data-i=\"1\">The master cone (same size as the MAF, full working length) needs some force to seat and to dislodge; that resistance enhances the apical seal. If it reaches full length but is loose, take a larger cone or remove 1 mm from the apical end to increase width. In warm vertical compaction, tug-back is not necessary</button><button type=\"button\" class=\"opt\" data-i=\"2\">Tug-back is only a property of silver points</button><button type=\"button\" class=\"opt\" data-i=\"3\">Always skip the radiograph after choosing the cone</button></div><div class=\"qexp\" hidden><p>الـ tug-back بالرص الجانبي مقاومة الإدخال والإخراج، تحسّن ختم الذروة. إذا وصل الطول بس فضاوة: مخروط أكبر أو قص 1 ملم من النهاية الذروية. بالرص العمودي الحار الـ tug-back مو ضروري.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">According to Ng et al. 2007 in this lecture, extrusion of the filling is considered acceptable:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">At any distance beyond the apex, even without a seal</button><button type=\"button\" class=\"opt\" data-i=\"1\">Within 2 mm beyond the radiographic apex, if it is associated with three-dimensional sealing of the root-canal system. Underfilling (shorter than the canal space) provides an environment for initiation, persistence or recurrence of periradicular infection</button><button type=\"button\" class=\"opt\" data-i=\"2\">Only when the canal is left empty on purpose</button><button type=\"button\" class=\"opt\" data-i=\"3\">Only with silver points in oval canals</button></div><div class=\"qexp\" hidden><p>Ng 2007: البثق مقبول ضمن 2 ملم وراء الذروة الشعاعية إذا ويه ختم ثلاثي الأبعاد. الحشو الناقص يهيئ بيئة للخمج حول الذروة. مخاريط الفضة ما تصلح للمقطع البيضي وقد تتآكل.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">In lateral condensation the spreader, and a disadvantage of warm vertical compaction, are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The spreader is never rotated and must stay short of the middle third; warm vertical compaction has no disadvantages</button><button type=\"button\" class=\"opt\" data-i=\"1\">The spreader is rotated 180° (right and left) until loose, should reach the apical third, and a stopper marks penetration 2–3 mm from the master-cone tip. Warm vertical compaction seals well including lateral and accessory canals, but increases the risk of vertical root fracture, overfilling/extrusion, and it is time-consuming. Cut excess GP with a very hot excavator or Ash no. 6 in one motion</button><button type=\"button\" class=\"opt\" data-i=\"2\">Pluggers are prefitted at 20 mm intervals only in lateral condensation</button><button type=\"button\" class=\"opt\" data-i=\"3\">Sealer is spun clockwise on the MAF and never used with GP</button></div><div class=\"qexp\" hidden><p>المباعد 180 درجة، يوصل الثلث الذروي، والسدادة 2–3 ملم من رأس المخروط الرئيسي. قطع الزائد بأداة حارة جداً (منقرة أو Ash 6) بحركة واحدة. الرص العمودي الحار يختم زين بس يزيد كسر الجذر العمودي والبثق ويأخذ وقت. السدادات تُقاس مسبقاً كل 5 ملم. السيلر يُدهن بالـ MAF عكس عقارب الساعة.</p></div></div>"},{"k":"Prof. Anas · Diagnosis","t":"Five stages of diagnosis, and the pain history you must ask","b":"<p>The process of making a diagnosis can be divided into five stages: (1) the patient tells the clinician the reasons for seeking advice; (2) the clinician questions the patient about the symptoms and history that led to the visit; (3) the clinician performs objective clinical tests; (4) the clinician correlates the objective findings with the subjective details and creates a tentative list of differential diagnoses; (5) the clinician formulates a definitive diagnosis. Information is gathered by an organized, systematic approach that requires considerable clinical judgment. Careful listening is paramount. Subjective findings combined with diagnostic tests provide the critical information needed.</p><p><b>Subjective findings</b> are obtained by questioning the patient and are not evident to the examiner. The <b>chief complaint</b> is a description of the dental problem in the patient’s own words. After recording it, the history of present dental illness is recorded. Pain is the main reason for the patient’s complaint. The dentist should ask about pain: (1) quality — dull, sharp, throbbing, constant; (2) location — localized, diffuse, referred, radiating; (3) duration — constant or intermittent, lasting for seconds, minutes or hours; (4) onset — stimulation required, intermittent, spontaneous; (5) initiating factors — cold, heat, palpation, percussion; (6) relieving factors — cold, heat, any medications, sleep.</p>"},{"k":"Prof. Anas · Diagnosis","t":"Medical history, extra-oral signs, and an extra-oral sinus tract","b":"<p>There are no medical conditions which specifically contraindicate endodontic treatment, but there are several which require special care. Scully and Cawson have given a checklist of medical conditions which need to be taken special care of. If there is any doubt regarding the state of health of the patient, consult the medical practitioner before initiating endodontic treatment.</p><p><b>Objective findings</b> are examinations and tests performed by the clinician. Extra-oral examination: inflammatory changes that originated intra-orally and are observable extra-orally may indicate a serious spreading problem. Signs to look for: (1) physical limitations, such as limitation in mouth movement during speaking; (2) facial asymmetry that results from facial swelling; (3) lymph-node involvement; (4) the presence of a skin open sinus tract. Visual examination and palpation of the face and neck determine whether a swelling is localized or diffuse, and firm or fluctuant — findings that play a significant role in determining the appropriate treatment. Sinus tracts of odontogenic origin may also open through the skin of the face. These openings generally close once the offending tooth is treated and healing occurs, leaving a scar on the skin surface.</p>"},{"k":"Prof. Anas · Diagnosis","t":"Intra-oral examination, and how to trace a sinus tract with gutta-percha","b":"<p>The oral vestibules and buccal mucosa should be examined for localized swelling, a sinus tract, or colour changes. Then check the lingual and palatal soft tissues. Any raised lesions or ulcerations should be documented and, when necessary, evaluated with a biopsy or referral. Teeth should be inspected for a carious lesion, a faulty restoration, loss of teeth, and the presence of deciduous or supernumerary teeth. Intra-oral swellings should be visualized and palpated to determine whether they are diffuse or localized and whether they are firm or fluctuant. They may be present in the attached gingiva, alveolar mucosa, mucobuccal fold, palate, or sublingual tissues.</p><p>Intra-oral sinus tracts may open in the alveolar mucosa, in the attached gingiva, or through the furcation or gingival crevice. They may exit through either the facial or the lingual tissues, depending on the proximity of the root apices to the cortical bone. Tracing the sinus tract provides objectivity in locating the problematic tooth. A size <b>#25 or #30 gutta-percha cone</b> is threaded into the opening of the sinus tract and inserted until resistance is felt. After a periapical radiograph is exposed, the origin is determined by following the path taken by the gutta-percha cone.</p>"},{"k":"Prof. Anas · Diagnosis","t":"Palpation, percussion (vertical versus horizontal), and mobility greater than +1 mm","b":"<p><b>Palpation:</b> apply firm pressure with the index finger to the mucosa covering the roots and apices, and ask the patient about any areas that feel unusually sensitive. This can detect periradicular abnormalities or areas that produce a painful response to digital pressure. A positive response may indicate an active periradicular inflammatory process; however, this test does not indicate whether the process is of endodontic or periodontal origin.</p><p><b>Percussion</b> is performed by gentle tapping on the incisal or occlusal surfaces of the tooth in question with a blunt instrument, usually the back end of a metal instrument handle, and comparing that with a normal tooth. The crown should first be tapped vertically; if sensitivity is obtained this could indicate the presence of periapical pathosis. Horizontal tapping should also be performed to differentiate between a periapical lesion and a lateral periodontal lesion.</p><p><b>Mobility</b> is directly proportional to the integrity of the attachment apparatus or to the extent of inflammation in the periodontal ligament. Often the mobility reverses to normal after the initiating factors are repaired or eliminated. The test is done with the back ends of two mirror handles, one on the buccal and one on the lingual aspect. Pressure is applied in a facial–lingual direction as well as vertically, and mobility is scored. Any mobility that exceeds <b>+1 mm</b> should be considered abnormal. Teeth should also be evaluated relative to the adjacent and contralateral teeth.</p>"},{"k":"Prof. Anas · Diagnosis","t":"Periodontal probing, a narrow defect, and occlusal interferences","b":"<p>Periodontal pathology such as gingivitis and periodontal pockets may affect the pulp, therefore periodontal treatment may be necessary before or with the endodontic treatment. Detailed periodontal probing around suspected teeth may reveal a sulcus within normal limits; however, deeper pocketing will be identified. A <b>narrow defect</b> may be an indication of a root fracture or of an endodontic lesion draining through the gingival crevice. This causes an endodontic–periodontal lesion.</p><p>Analysis of occlusion: it is important to examine suspected teeth for interferences on the retruded arc of closure, in the intercuspal position, and in lateral excursions. Interferences in any of these positions could result in a degree of occlusal trauma and institute acute apical periodontitis.</p>"},{"k":"Prof. Anas · Pulp testing","t":"Objectives of pulp testing, the normal thermal response, and the cold test","b":"<p>A pulp test (pulp sensibility test) determines pulp status by applying thermal, electrical, or mechanical stimuli. Objectives: (1) to assess the health of the pulp based on its qualitative sensory response, prior to restorative or endodontic procedures; (2) to differentially diagnose periapical pathologies of pulpal or periodontal origin; (3) to assess the status of the pulp as a follow-up after trauma to teeth; (4) to check the status of a tooth that has a past history of pulp capping or a deep restoration; (5) to diagnose oral pain — whether it is of pulpal or periodontal origin, or because of another reason.</p><p>The baseline or normal response to either cold or hot is that a sensation is felt but disappears immediately upon removal of the thermal stimulus. Abnormal responses include a lack of response (the tooth is non-vital), or intensified pain on placement or after removal of the stimulus (the tooth is inflamed). The cold or hot stimulus should be placed on the <b>middle third of the labial or lingual surface</b> to be more effective.</p><p><b>Cold testing</b> is the most commonly used test for assessing pulp vitality. Cold causes contraction of fluid within dentinal tubules, resulting in an outward flow of fluid from the tubules and thereby pain. This test is used to differentiate reversible from irreversible pulpitis and to identify necrotic teeth. If a tooth is sensitive to a cold stimulus which subsides after removal of the stimulus, the condition is reversible. If the sensitivity takes more than a few seconds, the condition may be irreversible. Teeth with calcified canals need more time for the cold stimulus to reach the pulp. This test is especially useful for patients presenting with porcelain-jacket crowns or porcelain-fused-to-metal crowns where no natural tooth surface (or much metal) is accessible. Cold testing may be done by an air blast, a cold drink, an ice stick, or ethyl chloride.</p>"},{"k":"Prof. Anas · Pulp testing","t":"The heat test (not more than 5 seconds), and how the electric pulp tester works","b":"<p><b>Hot testing</b> is most advantageous when the patient’s chief complaint is intense dental pain upon contact with any hot object or liquid. A hot stimulus can help locate a symptomatic tooth with a necrotic pulp. A heated gutta-percha stick or hot water may be used. A disadvantage of a gutta-percha stick is that, because of the high temperature, pulpal damage can occur. A heat test should not be done for <b>more than 5 seconds</b>, because prolonged heat application causes biphasic stimulation of Aδ fibres followed by C fibres, which can result in persistent pain.</p><p>An <b>electric pulp tester</b> is a battery-operated device which acts by generating pulsatile electrical stimuli and stimulation of Aδ nerve fibres. Many factors affect the level of response: enamel thickness, the area of probe placement (in the middle third of the labial surface), dentin calcification, restorations, and the patient’s level of anxiety. False-positive and false-negative results may happen. A newly erupted tooth may give a negative response, whereas a traumatized young tooth may not respond to testing. Multirooted teeth give inconclusive readings because there are many roots with different degrees of pulp inflammation in each root canal.</p>"},{"k":"Prof. Anas · Pulp testing","t":"Electric pulp-testing steps, the cavity test, and selective anaesthesia","b":"<p>Electric pulp-testing procedure: isolate the tooth to avoid a false-positive response — the best way is a rubber dam; apply an electrolyte on the tooth electrode and place it on the facial surface of the tooth; take the precaution of avoiding contact with adjacent gingival tissue or metallic restorations, which would give a false-positive response; confirm the complete circuit by clipping a ground attachment onto the patient’s lip; once the circuit is complete, slowly increase the current and ask the patient to point out when the sensation occurs; each tooth should be tested two to three times and the average reading noted; if the vitality of a tooth is in question, use the pulp tester on the adjacent teeth and the contralateral tooth as controls.</p><p>The <b>cavity test</b>, occasionally used as a last resort, cuts an access cavity into dentine without local anaesthesia as an additional way of vitality testing. Sensitivity or pain felt by the patient indicates pulp vitality; if no pain is felt, the tooth is not vital and endodontic therapy may be carried out.</p><p><b>Selective anaesthesia</b> can be useful in cases of referred pain to distinguish whether the source of pain is mandibular or maxillary in origin. It is less useful for distinguishing pain from adjacent teeth, as the anaesthetic solution may diffuse laterally.</p>"},{"k":"Prof. Anas · Diagnosis","t":"The bite test and Tooth Slooth, methylene-blue staining, and transillumination","b":"<p>A <b>bite test</b> helps identify a cracked or fractured tooth, and is done if the patient complains of pain on mastication. The tooth is sensitive to biting if pulpal necrosis has extended to the periodontal-ligament space, or if a crack is present. The test can be done by asking the patient to bite on a hard object such as a cotton roll or wood sticks. <b>Tooth Slooth</b> is a commercially available device for the bite test; it has a small concave area on its top which is placed in contact with the cusp to be tested. Pain present on biting indicates apical periodontitis; pain present on release of the biting force indicates a cracked tooth.</p><p>To determine a crack on the surface, a stain (<b>methylene blue dye</b>) is often of great assistance: it may be necessary to remove the restoration to better visualize a crack; paint methylene blue on the tooth surface with a cotton-tip applicator (the dye can penetrate into cracked areas); remove the excess dye with a moist application of <b>70% isopropyl alcohol</b>; the remaining dye will indicate the possible location of the crack. Transillumination with a bright fibre-optic light probe is also helpful. Directing a high-intensity light directly on the exterior surface of the tooth at the CEJ may reveal the extent of the fracture. Teeth with fractures block transilluminated light and appear dark, while the part of the tooth that is proximal to the light source will absorb this light and glow. Although a fracture may be evident using dyes and transillumination, the full extent of the fracture cannot always be determined by these tests alone.</p>"},{"k":"Prof. Anas · Diagnosis","t":"Radiographs in diagnosis: the cementoma warning, and what early pulpitis does not show","b":"<p>Radiographic interpretation of a potential endodontic pathosis is an integral part of diagnosis and prognosis assessment. However, the dentist should not rely solely on radiography to give a premature definitive diagnosis without using other diagnostic tests. When not coupled with a proper history and clinical examination and testing, the radiograph alone can lead to a misinterpretation of normality and pathosis. The lecture’s example (its Figure 7) shows what appears to be a mandibular lateral incisor associated with a periapical lesion of a non-vital tooth; although pulp necrosis can be suspected, the tooth tested vital. In this case, the appearance of apical bone loss is secondary to a <b>cementoma</b>.</p><p>Radiographs do not show early signs of pulpitis, as there is no periodontal widening at this stage of pulpal degeneration. Radiographic findings may include the loss of lamina dura (laterally or apically) or a periradicular radiolucency indicative of pulp necrosis. Alternatively, radiographs may show pulp-chamber or root-canal calcification, which may explain reduced responses to pulp-sensitivity testing. This emphasises the need to use more than one test. Radiographic examination may also reveal tooth or root resorptive defects.</p>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: tracing a sinus, percussion, cold versus heat, the bite test, and the cementoma radiograph","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">To trace an intra-oral sinus tract in this lecture you should:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Inject methylene blue into the facial vein only</button><button type=\"button\" class=\"opt\" data-i=\"1\">Thread a size #25 or #30 gutta-percha cone into the opening until resistance is felt, then take a periapical radiograph and follow the path of the cone. A positive palpation test may indicate active periradicular inflammation but does not say whether the origin is endodontic or periodontal</button><button type=\"button\" class=\"opt\" data-i=\"2\">Rely on the radiograph alone, without a cone</button><button type=\"button\" class=\"opt\" data-i=\"3\">Use a #8 K-file as the only tracer and skip the radiograph</button></div><div class=\"qexp\" hidden><p>تتبع الناسور بمخروط GP رقم 25 أو 30 لحد المقاومة، بعدين صورة ذروية. الجس الإيجابي ما يفرّق أصل لبي من لثوي.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Vertical versus horizontal percussion, and mobility, in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Only horizontal tapping diagnoses periapical pathosis; any mobility is normal</button><button type=\"button\" class=\"opt\" data-i=\"1\">Tap vertically first — sensitivity may indicate periapical pathosis; tap horizontally to differentiate a periapical lesion from a lateral periodontal lesion. Mobility exceeding +1 mm is abnormal; compare also with adjacent and contralateral teeth</button><button type=\"button\" class=\"opt\" data-i=\"2\">Percussion must be done only on the gingiva with a sharp explorer</button><button type=\"button\" class=\"opt\" data-i=\"3\">Mobility is never reversible after treatment</button></div><div class=\"qexp\" hidden><p>القرع العمودي أولاً للمرض الذروي؛ الأفقي يفرّق آفة ذروية من آفة لثوية جانبية. حركة أكثر من +1 ملم غير طبيعية. وغالباً الحركة ترجع بعد إزالة السبب.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Cold and heat testing in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Heat may be applied for 30 seconds; cold that lingers more than a few seconds is always only reversible pulpitis</button><button type=\"button\" class=\"opt\" data-i=\"1\">The stimulus is placed on the middle third of the labial or lingual surface. Cold that stops when the stimulus is removed suggests reversible pulpitis; sensitivity lasting more than a few seconds may be irreversible. A heat test should not exceed 5 seconds, because prolonged heat stimulates Aδ then C fibres and can cause persistent pain; a heated GP stick may itself damage the pulp. Heat helps locate a symptomatic tooth with a necrotic pulp when the complaint is pain to hot food or drink</button><button type=\"button\" class=\"opt\" data-i=\"2\">Newly erupted teeth always give a strong EPT response, and multirooted teeth always give a single clear reading</button><button type=\"button\" class=\"opt\" data-i=\"3\">Cold must never be used on a porcelain-jacket crown</button></div><div class=\"qexp\" hidden><p>المنبه على الثلث الأوسط. برد يختفي برفع المنبه = قابل للرجوع؛ إذا استمر أكثر من ثوانٍ قد يكون غير قابل. الحر لا يزيد عن 5 ثوانٍ (Aδ ثم C). فحص الحر يفيد ويه ألم من الحار وسن متنخر عرضي. فحص البرد مفيد ويه تيجان البورسلين/PFM. السن البازغ حديثاً قد يعطي EPT سلبي، ومتعدد الجذور قراءته غير حاسمة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">On a bite test with a Tooth Slooth, and with methylene blue:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Pain on biting means a cracked tooth, and pain on release means apical periodontitis only; dye is removed with chloroform</button><button type=\"button\" class=\"opt\" data-i=\"1\">Pain on biting indicates apical periodontitis; pain on release of the biting force indicates a cracked tooth. Methylene blue is painted on, excess is removed with 70% isopropyl alcohol, and remaining dye may show the crack. Transillumination at the CEJ: the fractured part blocks light and appears dark</button><button type=\"button\" class=\"opt\" data-i=\"2\">Tooth Slooth is only an apex locator</button><button type=\"button\" class=\"opt\" data-i=\"3\">Dyes always show the full depth of every fracture</button></div><div class=\"qexp\" hidden><p>ألم أثناء العض = التهاب ذروة؛ ألم عند الإطلاق = سن مشقوق. أزرق الميثيلين يُزال زائده بكحول أيزوبروبيل 70%. الضوء النافذ عند الـ CEJ: الجزء المكسور يظهر غامق. هالفحوص ما تحدد دائماً مدى الكسر بالكامل.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The lecture’s radiographic warning about a mandibular lateral incisor is that:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Every apical radiolucency means a necrotic pulp, so no pulp test is needed</button><button type=\"button\" class=\"opt\" data-i=\"1\">What looks like a periapical lesion of a non-vital mandibular lateral incisor may be vital; in the example, apical bone loss was secondary to a cementoma. Radiographs do not show early pulpitis (no periodontal widening yet). Do not rely on the radiograph alone</button><button type=\"button\" class=\"opt\" data-i=\"2\">Early pulpitis always shows a wide periodontal ligament on the first film</button><button type=\"button\" class=\"opt\" data-i=\"3\">A cementoma always tests as a necrotic tooth</button></div><div class=\"qexp\" hidden><p>مثال المحاضرة: السن اختبر حي، والإشفاق كان من cementoma مو تنخر. الأشعة ما تبين التهاب اللب المبكر. لا تعتمد على الصورة وحدها.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">List the four criteria for filling in Lecture 8, and say what the lecture says about a negative culture.</button><div class=\"flash-a\" hidden>Prepare the canal so there is optimum access to the apical area; the tooth must be asymptomatic (no pain and no tenderness); the canal must be dry; and a negative culture — which the lecture calls controversial: some operators require it, others say it has no significance.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا رابع ملف: حشو القناة (المحاضرة 8 للأستاذ حسين الحويزي) وبعدها تشخيص طب اللب (أول محاضرة للأستاذ أنس فالح مهدي)، صفحات 72–90. شرح عراقي مفصل ويه أسئلة.</p>","<p>بعد التنظيف الكيميائي-الآلي، الخطوة الجاية حشو ثلاثي الأبعاد لفراغ القناة حتى السن يبقى شغّال بالقوس. الهدف: <b>ختم محكم للسوائل</b> من فتحة التاج لنهاية الذروة (خصوصاً عند الثقبة الذروية)، حتى نمنع <b>دخول (ingress)</b> سائل النسيج والجراثيم، وبعده نمنع <b>خروج (egress)</b> المهيجات برا.</p><p>السائل يتحرك بالضغط الأسموزي لأي فراغ فاضي. إذا تركت القناة بدون حشو، سائل النسيج يتجمع ويملأها. وما في دورة دموية ولا جهاز لمفاوي داخل هذا الفراغ، فيصير تنكس وتدمير، وبعدين جسم غريب يتسرب لمنطقة الذروة ويسوي التهاب؛ أو الجراثيم تدخل، تعيش وتتكاثر، وتطلع إنزيمات وسموم وترجع تسرب للذروة وتصير خمج. لذلك نستخدم مادة قلب صلبة أو شبه صلبة ويه سيلر حتى نسد القناة الرئيسية والإضافية والفراغات وعدم الانتظام.</p>","<p>أهداف الحشو أربعة: (1) طمس ثلاثي الأبعاد حتى لا تدخل جراثيم وسوائل ولا تطلع سموم. (2) ختم محكم بكل مناطق القناة حتى ما يصير تسرب دقيق (<b>microleakage</b>). (3) تبديل الفراغ اللي كان فيه نسيج متنخر بمادة خاملة حتى بيئة الشفاء تصير مناسبة وما ترجع العدوة. (4) ختم تاجي مناسب ويه ترميم تاجي صحيح — بدون هذا النجاح طويل الأمد يضعف.</p><p>شروط قبل الحشو: القناة محضَّرة وتعطيك وصول أمثل للذروة؛ السن بلا أعراض (لا ألم ولا إيلام)؛ القناة جافة؛ ومزرعة سلبية — وهذا نقطة خلاف: بعض الأساتذة يطلبونها، وبعضهم يقول ما لها أهمية. لا تعتبرها شرط مجمع عليه.</p>","<p>الـ <b>gutta-percha</b> أشهر مادة حشو شبه صلبة. مادة طبيعية من أشجار برازيلية اسمها <b>Palaquium</b>، وتركيبها الجزيئي قريب من المطاط الطبيعي. لها شكلان بلوريان: ألفا وبيتا.</p><p>تركيب شكل البيتا احفظ الأرقام: عضوي: gutta-percha <b>20%</b> + شموع وراتنجات <b>3%</b>. غير عضوي: حشو أوكسيد الزنك <b>66%</b> + كبريتات معادن ثقيلة كمواد ظليلة للأشعة <b>11%</b>. يعني أغلب المخروط أوكسيد زنك، مو كله كوتابيركا.</p>","<p>خصائص مهمة: تتمدد بالحرارة (يفيد الرص) <b>وتتقلص بالتبريد</b>. التعقيم الحراري ما ينفع وياها. للتعقيم اغمس المخاريط بـ <b>كحول إيثانول 96%</b> أو <b>هايبوكلوريت 5.25% لمدة دقيقة</b> قبل الاستخدام. ما تلتصق وحدها، فدائماً ويه سيلر. تذوب بمذيبات مثل الكلوروفورم وزيت الكافور وزيت البرتقال — هذا يفيد تليينها للحشو أو إخراجها بإعادة العلاج.</p><p>المخروط <b>المقيّس (standardized)</b>: نفس حجم وميل الأداة المقابلة، ويُستخدم كمخروط رئيسي (<b>master cone</b>). <b>غير المقيّس</b>: ميل أكبر، رأس رفيع وجسم ثقيل، يُستخدم ويه المخروط الرئيسي حتى يساعد بالحشو (مخاريط مساعدة عادة).</p>","<p>ميزات الـ gutta-percha: تتكيف ويه الجدار؛ خاملة ما تتفاعل ويه النسيج؛ النسيج يتحملها؛ ثابتة الأبعاد؛ ظليلة للأشعة؛ ومرنة تلين بالحرارة أو المذيب. عيوبها: مو صلبة، تنثني بسهولة فصعب تدخلها بالأقنية الضيقة؛ ما تلتصق فدائماً ويه سيلر؛ وتنزاح بسهولة بالضغط.</p><p>مخاريط <b>الفضة (silver points)</b>: صلبة، لذلك للأقنية الضيقة جداً والمنحنية بشدة. عيوبها الرئيسية: مقطعها دائري فما تصلح للقنوات البيضية؛ وقد تطلع نواتج تآكل (<b>corrosion</b>) تضر منطقة الذروة.</p>","<p>السيلر غالباً إسمنت أوكسيد الزنك والأوجينول الظليل، يسد الفراغات بين الـ gutta-percha وجدار العاج، وهم يزيّت إدخال المخروط. يجي معجونين أو سائل ومسحوق، يُخلطان لقوام كريمي ثخين. وظائفه: تزييت وإدخال المخاريط؛ ربط بين الـ GP والجدران؛ ملء الفراغات؛ يزيد الختم والإنذار — وبعض السيلرات تُستخدم كمادة حشو بدون GP؛ مضاد جرثومي فور وضعه؛ وظلالية توريك القنوات الإضافية ومناطق الامتصاص وكسور الجذر وشكل الثقبة الذروية.</p><p>نقاط الامتصاص ورق بنفس أحجام الأدوات المقيّسة، وظيفتها تجفيف القناة.</p><p>عشر صفات للمادة المثالية: سهلة الإدخال؛ ختم ذروي وجانبي؛ ثابتة الأبعاد؛ لا ينفذها الرطوبة؛ مثبّطة للجراثيم أو على الأقل لا تشجع نموها؛ ظليلة؛ لا تصبغ السن؛ غير مهيجة؛ معقمة أو سهلة التعقيم؛ وسهلة الإزالة إذا احتجت.</p>","<p><b>الحشو الناقص (underfilling)</b>: الحشوة أقصر من فراغ القناة كله. هذا يوفّر بيئة لبدء أو استمرار أو رجوع خمج حول الذروة. يعني تركت فراغ للعدوة.</p><p><b>الحشو الزائد (overfilling)</b>: المادة تتجاوز ملتقى الملاط والعاج (CDJ). حسب <b>Ng وزملائه 2007</b>، بثق الحشوة يُعتبر مقبولاً إذا كان ضمن <b>2 ملم وراء الذروة الشعاعية</b>، <b>وبشرط</b> أن يكون ويه ختم ثلاثي الأبعاد لجهاز القناة. مو معناه الزائد دائماً زين — الشرط الختم الثلاثي الأبعاد، والحد 2 ملم بهالمصدر.</p>","<p>الرص الجانبي (<b>lateral condensation</b>) أشهر تقنية لمعظم أشكال الأقنية. قبل الحشو تأكد التحضير كامل، والسن جاف وبلا أعراض.</p><p>اختيار المخروط الرئيسي: نفس حجم <b>الملف الذروي الرئيسي (MAF)</b> ونفس طول العمل الكامل. لازم يحتاج شوية قوة حتى ينزل، وقوة حتى ينسحب — هذا اسمه <b>tug-back</b> (سحب رجوعي). هالمقاومة تحسّن الختم بالذروة.</p><p>إذا وصل لطول العمل كامل بس فضاوة بالقناة: خذ مخروط أكبر، أو قص <b>1 ملم من النهاية الذروية</b> حتى عرض المخروط يزيد (لأن جسمه أعرض من رأسه). وبعدين أكّد الموقع بالأشعة.</p>","<p>اخلط السيلر وطلي الجدران بالـ MAF ويه دوران <b>عكس عقارب الساعة</b>. اغمس رأس المخروط الرئيسي بالسيلر ونزّله. بالمباعد (<b>spreader</b>) ادفع المخروط جانبياً وذروياً حتى يصير مكان لمخروط مساعد. لف المباعد <b>180 درجة</b> يمين ويسار حتى يفتل ويطلع. لازم المباعد يوصل للثلث الذروي، والسدادة تعلّم العمق: <b>2–3 ملم من رأس المخروط الرئيسي</b>.</p><p>المخروط المساعد أصغر، رأسه مغموس بالسيلر. كرر لحد ما المباعد ما يعدّي خط العنق. صوّر. اقطع الزائد بأداة حارة جداً (منقرة أو Ash رقم 6) بحركة واحدة لتحت خط العنق شوية؛ إذا الأداة مو حارة كفاية، المخروط الرئيسي ممكن ينسحب ويهها. بعدين سداد (plugger) للرص العمودي. شيل كل السيلر والـ GP من الحجرة بـ bur دائري. وبعدين قاعدة إسمنت وترميم تاجي.</p>","<p>ميزات الرص الجانبي: يصلح لأغلب الحالات الروتينية؛ ويعطيك سيطرة على الطول، يعني فرصة أقل للحشو الزائد والألم بعد الجلسة.</p><p>عيوبه: قد ما يملأ تعرجات القناة بشكل كافٍ؛ ما ينتج كتلة متجانسة؛ وقد تبقى فراغات بين المخروط الرئيسي والمخاريط المساعدة. لهذا جاءت تقنية الرص العمودي الحار حتى تعالج هالعيوب.</p>","<p>الرص العمودي الحار انوجد حتى يعالج عيوب الرص الجانبي. سداد حار ويه ضغط عمودي يلين الـ GP حتى تجري لتعرجات القناة. القناة لازم تكون قمعية ويه توهج مستمر للذروة، وموقف ذروي زين (التضيّق أصغر ما يمكن).</p><p>خطوات أولى: المخروط يناسب الحجم والميل، وتأكده بالأشعة. بهالتقنية <b>الـ tug-back مو ضروري</b> (فرق مهم عن الرص الجانبي). جفّف بورق الامتصاص. السدادات تُقاس مسبقاً بفواصل <b>5 ملم</b> حتى تمسك أكبر مقطع من الـ GP الليّنة. طلي خفيف للسيلر بورقة. قص نهاية المخروط التاجية عند نقطة المرجع. السداد الحار يدفع عمودياً ويطوي المادة للداخل ذروياً وجانبياً. إذا لزقت على رأس السداد، لفّه خفيف حتى تفلت. هذا الرص يحرر 2–3 ملم تاجياً حتى تضيف المزيد.</p>","<p>بعد ما تخلص الحشو الذروي، كمّل بـ <b>الحشو الراجع (backfilling)</b>: سخّن قطع صغيرة من الـ GP وادخلها بسدادات أكبر حارة. لا تسخن زيادة حتى تبقى تتحكم بالمادة. بعد الختم، نظّف الحجرة بقطعة قطن مبللة بالكحول، وبعدين حط ترميم مؤقت أو نهائي.</p><p>الميزة: ختم ممتاز ذروياً وجانبياً، ويملأ القنوات الجانبية والإضافية. العيوب: زيادة خطر كسر الجذر العمودي؛ حشو زائد وبثق ذروي للمادة والسيلر؛ وتاخذ وقت.</p>","<p>أربعة أسئلة على تركيب الـ GP، الـ tug-back، رقم Ng 2007، والمباعد والرص العمودي الحار.</p>","<p>التشخيص خمس مراحل: المريض يقول ليش جاي؛ الطبيب يسأل عن الأعراض والتاريخ؛ فحوص موضوعية؛ ربط النتائج ويه كلام المريض وعمل قائمة تفريقية أولية؛ وبعدين تشخيص نهائي. لازم تسمع زين وتسأل صح، بنظام.</p><p>النتائج الذاتية (<b>subjective</b>) تجي من السؤال، مو شي تشوفه بعينك. الشكوى الرئيسية تُكتب <b>بكلام المريض نفسه</b>، وبعدها تاريخ المرض الحالي. الألم السبب الأشيع. اسأل عن: النوعية (خافت، حاد، نابض، مستمر)؛ المكان (موضعي، منتشر، رجيع، شعاع)؛ المدة (مستمر أو متقطع، ثوانٍ أو دقائق أو ساعات)؛ البداية (يحتاج منبه، متقطع، تلقائي)؛ ما الذي يبدأه (برد، حر، جس، قرع)؛ وما الذي يريحه (برد، حر، دواء، نوم).</p>","<p>ما في حالة طبية تمنع علاج القناة بشكل خاص، بس في حالات تحتاج عناية خاصة. في قائمة Scully و Cawson. إذا شكيت بحالة المريض، استشر الطبيب العام قبل ما تبدأ.</p><p>الفحوص الموضوعية يسويها الطبيب. خارج الفم: إذا الالتهاب طالع من داخل الفم ويظهر برا، قد يكون انتشار خطير. ابحث عن: محدودية حركة الفم أثناء الكلام؛ عدم تناظر من تورم الوجه؛ إصابة العقد اللمفاوية؛ وناسور جلدي مفتوح. الجس يبين التورم موضعي أو منتشر، وصلب أو متموج (<b>fluctuant</b>) — وهذا يغيّر خطة العلاج (مثلاً شق وتفريغ). الناسور سني الأصل إذا فتح بالجلد عادة ينغلق بعد علاج السن المسبب، ويترك ندبة.</p>","<p>افحص دهليز الفم والغشاء الشدقي: تورم موضعي، ناسور، أو تغيّر لون. بعدين الأنسجة اللسانية والحنكية. أي آفة بارزة أو تقرح وثّقه، وإذا لزم خزعة أو إحالة. افحص الأسنان: نخر، ترميم معيب، فقدان أسنان، أسنان لبنية أو زائدة. التورم داخل الفم هم: منتشر أو موضعي، صلب أو متموج — قد يكون باللثة الملتصقة، الغشاء السنخي، الطية الشدقية، الحنك، أو تحت اللسان.</p><p>الناسور داخل الفم قد يفتح بالغشاء السنخي أو اللثة الملتصقة أو من الفرقة أو الميزاب اللثوي، شدقي أو لساني حسب قرب الذروة من العظم القشري. لتتبعه: أدخل مخروط <b>gutta-percha رقم 25 أو 30</b> بفتحة الناسور لحد ما تحس مقاومة، وصوّر ذروياً، واتبع مسار المخروط حتى تعرف السن المصدر.</p>","<p>الجس: ضغط ثابت بسبابتك على الغشاء فوق الجذور والذرا. الإيجابي قد يعني التهاب نشط حول الذروة، <b>بس ما يفرّق</b> إذا أصله لبي أو لثوي.</p><p>القرع: نقر لطيف على القاطع أو الإطباق بظهر مقبض معدني، وقارن ويه سن طبيعي. أولاً نقر عمودي — الحساسية تشير لمرض ذروي. بعدين نقر أفقي حتى تفرّق بين آفة ذروية وآفة لثوية جانبية.</p><p>الحركة تتناسب ويه سلامة جهاز الارتباط أو مدى التهاب الرباط، وغالباً ترجع طبيعية بعد إصلاح السبب. اختبرها بظهري مقبضَي مرآتين شدقي ولساني، ضغط شدقي-لساني وعمودي. أي حركة أكثر من <b>+1 ملم</b> تُعتبر غير طبيعية، وهم قارن ويه الأسنان المجاورة والمقابلة.</p>","<p>التهاب اللثة والجيوب قد تأثر على اللب، لذلك علاج اللثة قد يلزم قبل أو ويه علاج القناة. السبر التفصيلي قد يبين ميزاب طبيعي أو جيوب أعمق. <b>عيب ضيق (narrow defect)</b> قد يعني كسر جذر، أو آفة لبية تصرف من الميزاب اللثوي — وهذي آفة لبية-لثوية.</p><p>افحص الإطباق: تداخلات على قوس الإغلاق المتراجع، وفي وضع الإطباق المتداخل، وفي الحركات الجانبية. أي تداخل بهالمواضع قد يسوي رضّ إطباقي ويبدأ التهاب ذروة حاد. يعني مو كل ألم ذروي من لب ميت؛ أحياناً العضّ الغلط هو السبب.</p>","<p>فحص اللب (حسّاسية) حراري أو كهربائي أو ميكانيكي. أهدافه: تقييم صحة اللب قبل الترميم أو العلاج اللبي؛ التفريق إذا الآفة الذروية أصلها لب أو لثة؛ متابعة بعد الرضّ؛ فحص سن ويه تاريخ تغطية لب أو ترميم عميق؛ وتشخيص ألم الفم إذا لبي أو لثوي أو سبب ثاني.</p><p>الرد الطبيعي للبرد أو الحر: يحس بس الإحساس يختفي فوراً برفع المنبه. ما في رد = السن غير حي. ألم أشد أثناء أو بعد رفع المنبه = اللب ملتهب. حط المنبه على <b>الثلث الأوسط للسطح الشفوي أو اللساني</b>.</p><p>فحص البرد الأشيع. البرد يقبض سائل النبيبات فيطلع السائل ويصير ألم. إذا الحساسية تختفي بعد رفع المنبه = قابل للرجوع. إذا تستمر أكثر من ثوانٍ قليلة = قد يكون غير قابل للرجوع. الأقنية المتكلسة تحتاج وقت أطول. مفيد خاصة ويه تيجان بورسلين أو PFM لما سطح السن الطبيعي (أو المعدن) مو متوفر. الطرق: نفخ هواء، شراب بارد، عود ثلج، أو كلوريد الإيثيل.</p>","<p>فحص الحر مفيد إذا شكوى المريض ألم شديد من أي شيء حار. يساعد تحدد سن عرضي ويه لب متنخر. ممكن عود gutta-percha ساخن أو ماء حار. عيب عود الـ GP: الحرارة العالية قد تضر اللب. <b>لا تسوي فحص الحر أكثر من 5 ثوانٍ</b>، لأن الحرارة المطوّلة تنبّه أولاً ألياف Aδ وبعدين ألياف C، فيصير ألم مستمر.</p><p>جهاز الحيوية الكهربائي بطارية، نبضات كهربائية تنبّه ألياف Aδ. عوامل تأثر الرد: سمك الميناء، مكان المسبار (الثلث الأوسط الشفوي)، تكلس العاج، الترميمات، وقلق المريض. ممكن نتائج إيجابية أو سلبية كاذبة. السن البازغ حديثاً قد يعطي رد سلبي؛ والسن الفتي المرضوض قد ما يرد. الأسنان متعددة الجذور قراءتها غير حاسمة لأن كل قناة درجة التهابها مختلفة.</p>","<p>خطوات الجهاز الكهربائي: اعزل السن (أفضل شي الحاجز المطاطي) حتى ما يطلع رد إيجابي كاذب؛ حط كهرل على القطب وضعه على السطح الشفوي؛ لا تلمس اللثة المجاورة ولا الترميمات المعدنية (رد كاذب إيجابي)؛ كلّب الأرضي على شفة المريض حتى الدائرة تكتمل؛ زِد التيار ببطء والمريض يشير متى يحس؛ افحص كل سن مرتين أو ثلاث وخذ المعدل؛ وإذا في شك، اختبر المجاور والمقابل كضوابط.</p><p>فحص التجويف آخر حل: افتح إلى العاج بدون تخدير. إذا أحس بألم فاللب حي؛ إذا ما أحس فالسن غير حي وتقدر تبدأ العلاج اللبي.</p><p>التخدير الانتقائي يفيد بألم رجيع حتى تفرّق إذا المصدر فك سفلي أو علوي. أقل فائدة للتفريق بين أسنان متجاورة لأن المخدر قد ينتشر جانبياً.</p>","<p>فحص العض يفيد لكسر أو شق، إذا المريض يتألم بالمضغ. السن حساس للعض إذا تنخر اللب امتد لفراغ الرباط، أو إذا في شق. العض على قطعة قطن أو عود خشب، أو جهاز <b>Tooth Slooth</b> (فيه تقعر صغير يتحط على الحدبة المختبرة). ألم <b>أثناء العض</b> = التهاب ذروة؛ ألم <b>عند رفع العضّة</b> = سن مشقوق. هذا الفرق مهم.</p><p>صبغة أزرق الميثيلين: قد تحتاج تشيل الترميم؛ ادهن الصبغة؛ شيل الزائد بكحول أيزوبروبيل 70% رطب؛ الباقي يبيّن مكان الشق المحتمل. الإنارة النافذة: ضوء قوي على السطح عند الملتقى المينائي الملاطي. السن المشقوق يحجب الضوء ويظهر غامق، والجزء القريب من الضوء يمتصه ويضيء. هالفحوص تبين وجود الكسر، بس ما تحدد دائماً مدى الكسر بالكامل لوحدها.</p>","<p>الأشعة جزء أساسي من التشخيص والإنذار، <b>بس لا تعتمد عليها وحدها</b> وتعطي تشخيص نهائي بدون فحوص ثانية. بدون تاريخ وفحص سريري، الصورة ممكن تخلط الطبيعي بالمرض. مثال المحاضرة: قاطع جانبي سفلي يبان ويه آفة ذروية لسن غير حي، بس فحص الحيوية طلع السن حي — ضياع العظم الذروي كان ثانوياً لـ <b>cementoma</b> (ورم ملاطي)، مو تنخر لب.</p><p>الأشعة <b>ما تبين العلامات المبكرة لالتهاب اللب</b>، لأنه بهالمرحلة ما في توسع بالرباط بعد. قد تشوف ضياع الصفيحة الصلبة (جانبياً أو ذروياً) أو إشفاق حول الذروة يدل على تنخر. أو تكلس بالحجرة أو القناة يفسّر ضعف الرد على فحوص الحسّاسية. لذلك استخدم أكثر من فحص. والأشعة قد تكشف عيوب امتصاص بالسن أو الجذر.</p>","<p>خمسة أسئلة ختامية + بطاقة شروط الحشو + زر الدرجة. إذا غلطت ارجع للشرائح.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
