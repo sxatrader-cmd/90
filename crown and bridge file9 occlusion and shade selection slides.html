@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Crown and Bridge File 9 — Occlusion, Interocclusal Records and Shade Selection</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Crown & Bridge · Prof. Dr. Adel Lectures 8–9</div>
+    <h1>Interocclusal Records, Occlusion, Articulators, and Shade Selection</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lectures 8 and 9 by Prof. Dr. Adel F. Ibraheem (PDF pages 196–219).</p>
+    <ul>
+      <li>Bite-registration materials (wax is the most inaccurate; addition silicone shows the least distortion) and a 12 mm hinge-axis rotation before translation</li>
+      <li>Centric relation versus CO and MI, when to hand-articulate, Dawson’s bimanual manipulation, and arcon versus non-arcon articulators</li>
+      <li>Munsell hue, chroma (0–12) and value (0–10), mid-day daylight, and metamerism</li>
+      <li>Vita Classic letter groups and the B1-to-C4 value order, Vita 3D-Master’s five value levels, and why a spectrophotometer is preferred</li>
+      <li>Total run time: <b>42 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 21</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Crown & Bridge · File 9","t":"Interocclusal records, occlusion, articulators, and shade selection","b":"<p>University of Baghdad, College of Dentistry — Crown and Bridge syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file covers PDF pages 196–219: Lecture 8 by Prof. Dr. Adel F. Ibraheem (interocclusal records, occlusion, and articulators) and Lecture 9 (shade selection in fixed prosthodontics).</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Medical terms stay in English next to the Arabic. Lecture-specific numbers and definitions are kept as written here.</p>"},{"k":"Prof. Dr. Adel · Lecture 8","t":"What a bite registration is for, Dawson’s criteria, and the ideal material","b":"<p>An <b>interocclusal (bite registration) record</b> is an imprint of the positional relation of opposing teeth or jaws to each other, made of the surfaces of occlusal rims or teeth with a material such as plaster of Paris, wax, zinc oxide–eugenol paste, or acrylic resin. Objectives: to transfer the relation between the upper and lower arches from the mouth to the articulator, and to orient the die or dies of the same arch to the opposing arch; an accurate record and correct mounting allow the technician to create proper contours and alignment of the metal substructure and proper intercuspation in porcelain; failure to capture an accurate record results in time-consuming chairside adjustments, remounting, and possible refabrication. Accuracy is influenced by: material properties; recording technique; reliability of the mandibular position (influenced by occlusal contacts); muscular action; and tissue changes within the joints. <b>Dawson’s criteria</b>: the recording material must not cause any movement of teeth or displacement of soft tissues; it must fit the casts as accurately as it fits the teeth in the mouth; and the accuracy of the jaw-relation record should be checked in the mouth and on the casts. An ideal material has: limited resistance before setting (so as not to displace teeth or the mandible); rigidity after setting; minimum dimensional change; an accurate record of incisal and occlusal surfaces; easy manipulation; no adverse effect on tissue; and records that are verifiable.</p>"},{"k":"Prof. Dr. Adel · Lecture 8","t":"Bite-registration materials: wax is the most inaccurate; elastomers (especially addition silicone) show the least error","b":"<p>(1) <b>Impression plaster</b> (soluble plaster): Type I modified with accelerators to decrease setting time and setting expansion; records are accurate and rigid after setting and do not distort with extended storage, but they are difficult to handle and brittle. Not used now. (2) <b>Bite-registration waxes</b>: easy to manipulate, but they have a high coefficient of thermal expansion, high resistance to closure, and common distortion on removal. They are dimensionally inaccurate and may interfere with active and passive movements. Wax has been classified as the <b>most inaccurate</b> material among the interocclusal records studied. Therefore zinc oxide–eugenol or resin was added to a wax impression in a very thin layer to improve poor detail transfer and displacement of the wax. (4) <b>Zinc oxide–eugenol paste</b> (the lecture’s numbering skips 3): fluidity before setting is critical, because it ensures minimal interference with mandibular closure; it adheres to carriers, is rigid and inelastic after setting, is accurate and highly reproducible, but is brittle (a vital portion may be lost by breakage), sticks to tissues, and unless trimmed, flash around the teeth may prevent accurate seating of the casts. (5) <b>Acrylic resin</b> is used most often for single-stop centric-occlusion records; it is accurate and rigid after setting, but has dimensional instability from polymerization shrinkage, and its rigidity can damage plaster casts and dies during mounting. (6) <b>Elastomers</b> for interocclusal records (Luxabite): the <b>least error</b> among the materials studied; easy to manipulate, with little or no resistance to closure; they set to a consistency that is easy to trim without distortion and accurately reproduce tooth details. Among the elastomers, <b>addition silicones exhibit the least amount of distortion</b>, because they set by addition polymerization with no by-products and no loss of volatiles. They offer dimensional stability, accuracy and elastic recovery, with a short working time.</p>"},{"k":"Prof. Dr. Adel · Lecture 8","t":"Anterior and posterior determinants of occlusion","b":"<p><b>Occlusion</b> is the contact of the opposing surfaces of the teeth of the two jaws — the relationship of mandibular and maxillary teeth when closed or during side-to-side movements, in any functional or parafunctional relationship. Anterior determinants are the teeth: the anterior teeth (canine to canine) determine movement of the anterior portion of the mandible (they guide it in right and left lateral excursions and in protrusion); anterior guidance is variable, because it can be altered by restorations, extractions, orthodontics, attrition, and so on. The posterior teeth provide vertical stops for mandibular closure and guide the mandible into maximum intercuspation. The posterior determinants are the right and left temporomandibular joints; condylar guidance is a fixed factor, and the TMJs are the posterior controlling factor in mandibular movement.</p>"},{"k":"Prof. Dr. Adel · Lecture 8","t":"Mandibular movement in three planes, and a 12 mm incisor separation before translation begins","b":"<p>Complex three-dimensional mandibular movement can be broken into translation (all points have identical motion) and rotation (the body turns about an axis), and into three perpendicular planes (sagittal, horizontal and frontal), or into motions around three axes. In the <b>sagittal plane</b> the mandible can rotate purely and also translate. Rotation occurs around the terminal hinge axis (an imaginary horizontal line through the rotational centres of the left and right condyles) and is limited to about <b>12 mm of incisor separation</b> before the temporomandibular ligament structures force the mandible to translate. The initial rotation is between the condyle and the articular disc; during translation the lateral pterygoid contracts and moves the condyle–disc assembly forward along the posterior incline of the tubercle. In the <b>horizontal plane</b>, lateral movement consists of rotation around an axis in the working (laterotrusive) condyle, with relatively little concurrent translation; the orbiting (non-working) condyle travels forward and medially. In the <b>frontal plane</b>, the mediotrusive (non-working) condyle moves down and medially while the laterotrusive (working) condyle rotates around the sagittal axis. By axes: a horizontal axis (pure rotational opening and closing in centric relation around the transverse hinge axis through both condyles); a vertical axis (lateral excursion around the working-side condyle); and a sagittal axis (the opposite condyle travels forward, and one side drops down during a lateral excursion — Shillingburg et al., 1997).</p>"},{"k":"Prof. Dr. Adel · Lecture 8","t":"Centric occlusion, centric relation (rearmost, uppermost, midmost), and maximum intercuspation","b":"<p>Based on mandibular position, occlusion is divided into centric and eccentric. <b>Centric occlusion (CO)</b> is the occlusion of the teeth as the mandible closes in centric relation: it is a tooth-to-tooth relation, and a reference point from which all other relations are eccentric. <b>Centric relation (CR)</b> is a bone-to-bone relation: the relation between the maxilla and the mandible when the condyles are in the <b>rearmost, uppermost, midmost</b> position in the glenoid fossae. <b>Maximum intercuspation (MI)</b> is the most closed, complete interdigitation of mandibular and maxillary teeth, irrespective of condylar centricity. MI may or may not coincide with CO, depending on the position of the condyle. If MI occurs with the condyles out of centricity, the two positions do not coincide: that MI is then called habitual or physiological occlusion or closure, and is considered an eccentric position. A low percentage of the population have MI coinciding with CO (condylar centricity); such a case is referred to as ideal occlusion. Keep in mind: (1) CR should not be confused with CO; (2) CR is not a relation about teeth — an edentulous mandible is in CR if the condyle–disc assemblies are completely seated; (3) CR is not just a convenience position because it is repeatable: it is universally accepted because it is physiologically and biomechanically correct, and it is the only jaw position that permits an interference-free occlusion. <b>Eccentric occlusion</b> is occlusion other than CO — contacts during movement. Lateral (working or functional side) occlusion is contact between opposing teeth (canines and posterior teeth) on the side towards which the mandible moves. Protruded occlusion: the mandible is anterior to CR; ideally the six maxillary anterior teeth contact along the lingual inclines of the mandibular anterior teeth while the posteriors disocclude. Balancing (non-functional) side occlusion: contacts in the segment away from which the mandible moves (for example, a left movement with contacts on the right).</p>"},{"k":"Prof. Dr. Adel · Lecture 8","t":"Group function, bilateral balance, and canine-protected occlusion — plus Angle’s key of occlusion","b":"<p>Based on the organization of occlusion during lateral movement: (A) <b>unilateral balanced occlusion (group function)</b> — simultaneous contact of maxillary and mandibular teeth on the working side as they glide, acting as a group to share and distribute forces, while teeth on the balancing (non-working) side are free from any contact. It is a widely accepted and used concept in fixed restorative dentistry. (B) <b>Bilateral balanced occlusion</b> — simultaneous contact on the working and balancing sides, in anterior and posterior areas, when the mandible moves from CR to eccentric relations (balanced and equal contacts throughout the arch in all excursions). This type is rarely found in the natural dentition, but is generally considered necessary for denture stability. (C) <b>Canine-guided (protected) occlusion</b> — during lateral movements the opposing upper and lower canines of the working side contact, thereby causing disclusion of all posterior teeth on the working and balancing sides (the anterior teeth protect the posterior teeth in all mandibular excursions, and the posterior teeth protect the anterior teeth at the intercuspal position). It is widely accepted, easy to fabricate, and has greater patient tolerance. Based on the relationship of the first maxillary permanent molar: (a) Class I (neutro-occlusion) — the mesiobuccal cusp of the upper first permanent molar occludes with the mesiobuccal groove of the lower first permanent molar (the <b>key of occlusion</b>); (b) Class II (disto-occlusion) — the mandibular first permanent molar is placed posterior to the normal Class I position (Division I and Division II); (c) Class III (mesio-occlusion) — the mandibular first permanent molar is placed anterior to the normal Class I position.</p>"},{"k":"Prof. Dr. Adel · Lecture 8","t":"When to keep maximum intercuspation, when to use centric relation, and when a bite record is needed","b":"<p>Types of interocclusal records: centric intercuspal records (CO or MI); a centric interocclusal record (CR); and eccentric records (lateral and protrusive). In fixed prosthodontics, most of the time, if the patient has a <b>stable intercuspal position</b> (whether or not it coincides with CO), treatment is restricted to the restoration area, the remaining teeth are not involved, and there are no signs or symptoms of occlusal trauma, the goal should be to <b>maintain pre-treatment intercuspation and occlusal vertical dimension (OVD)</b>. In occlusal reconstruction or complete-mouth rehabilitation, or if the intercuspal position is unstable with signs and symptoms of trauma from occlusion, the goal should be to use <b>centric relation</b> as the treatment position. Recording CO or MI: if there are an adequate number of teeth, a stable ICP, no trauma signs, and the goal is to maintain pre-treatment ICP and OVD, the most accurate method of articulation is to <b>occlude opposing casts by hand, without intervening bite-registration material</b>. Recording material placed between the teeth in this case often prevents the casts from maximal intercuspation, and the record is registered at an increased OVD. Indications for an interocclusal record: (1) when a segmental restoration is planned and the remaining teeth are insufficient for hand articulation — a tripod of vertical support and horizontal stability must exist between the casts; the pre-treatment MIP is usually maintained; (2) when a unilateral FPD involving terminal teeth is prepared, a record is needed to recapture the lost “leg” and create a tripod of vertical support; (3) after construction of a bite rim, when an FPD is planned for a patient with missing posterior teeth (a free-end saddle) who needs anterior teeth restored, or with insufficient teeth for an accurate record. Factors that influence the procedure: amount and equalization of pressure (uniform consistency of the material); comfort of the patient (stability and compatibility of record bases — artificial teeth are more compatible with mandibular movements than occlusion rims); and a record with multiple points of reference made by styli or cusp tips is more satisfactory than occluding surfaces of wax or non-cusp-form teeth.</p>"},{"k":"Prof. Dr. Adel · Lecture 8","t":"How to record a bite with pink wax or elastomer","b":"<p>Whatever the material, you have to guide the mandible to the required relation (centric or eccentric). Ask the patient to close and guide him, put a reference point (occlusion of the teeth opposite the side of treatment), then place the recording material over the area between the prepared teeth only and register the relation. The most widely used materials are pink base-plate wax or an elastomer. Soften the wax, apply it over the occlusal surface of the prepared teeth, ask the patient to bite while you guide the mandible to the marked reference point; the patient moulds the wax lingually with the tongue, and you adapt it labially with a finger. With an elastomer you can ask the patient to close, then inject the material at the area of treatment. After setting, remove the record, trim the excess, attach it to the cast and transfer it to the articulator.</p>"},{"k":"Prof. Dr. Adel · Lecture 8","t":"Dawson’s bimanual manipulation, and an anterior jig that must leave the posteriors out of contact","b":"<p>Recording centric relation — the <b>Dawson technique (bimanual manipulation)</b>: the lecture writes “Dowson in 1914.” The dental chair is reclined and the patient’s head is fixed, with the dentist standing behind the patient, both thumbs on the chin and the fingers resting on the inferior border of the mandible. By gentle downward pressure with the thumbs and upward pressure with the fingers, the mandible is brought into centric relation, and the patient bites on the registration material. An <b>anterior-jig programmer</b> (mostly an acrylic-resin anterior stop) separates the posterior teeth immediately before the CR record, so that the patient “forgets” established protective reflexes and mandibular hinge movements are easier to reproduce. The stop holds the desired vertical dimension. It should be thin enough that the first point of tooth contact barely misses, and under no circumstances should any posterior tooth contact when the anterior stop is in place. A firm-setting bite-registration paste is then injected between the posterior teeth and allowed to set. If properly executed, a deprogramming device allows the patient to close into an operator-defined, repeatable position unassisted.</p>"},{"k":"Prof. Dr. Adel · Lecture 8","t":"Digital bite records, mounting, and kinematic versus arbitrary face-bows","b":"<p>Bite registrations for CAD/CAM can be recorded digitally, like a digital impression. Indirectly, an extra-oral (in-lab) scanner is used and an antagonist bite registration is required; this record can be captured without a contrast medium. Directly, an intra-oral digital camera captures the occlusal relation of the opposing arch from inside the mouth, without any bite-registration material. <b>Mounting</b> is attaching the maxillary and mandibular casts to the articulator in their recorded jaw relation: the maxillary cast is first mounted using a face-bow record, then the mandibular cast is mounted after the centric jaw relation is recorded. A <b>face-bow</b> records the relationship of the maxilla to the hinge axis of rotation of the mandible and transfers it to the articulator, so that the maxillary cast is placed in an equivalent relationship. To identify the true hinge axis, a hinge-axis locator and a hinge-axis face-bow are necessary. A face-bow is either <b>kinematic</b> (orients the maxilla to the actual hinge axis) or <b>arbitrary</b> (orients it on an arbitrary hinge axis).</p>"},{"k":"Prof. Dr. Adel · Lecture 8","t":"Articulators: non-adjustable, semi-adjustable (arcon versus non-arcon), and fully adjustable","b":"<p>An <b>articulator</b> is a mechanical device that represents the TMJs and the jaw members, to which casts may be attached to simulate jaw movements. Purposes: to hold the casts in a determined fixed relationship; to simulate opening and closing; and to produce border and intra-border movements similar to those in the mouth. Uses include diagnosing occlusion, planning procedures (for example evaluating balanced occlusion), fabricating and correcting restorations, and arranging artificial teeth. Types: (1) <b>non-adjustable</b> — they open and close in a fixed horizontal axis and have a fixed condylar path; (2) <b>semi-adjustable</b> — adjustable condylar path, lateral condylar paths, incisal guide table and intercondylar distance. <b>Arcon</b>: the condylar element (spheres) is attached to the lower member and the condylar guidance (mechanical fossae) to the upper member — this resembles the TMJ. <b>Non-arcon</b>: the fossae are on the lower member and the spheres on the upper — the reverse of the TMJ. (3) <b>Fully adjustable</b> articulators can be adjusted to follow mandibular movement in all directions, with customized readings for each patient; they do not have a condylar guidance, but receptacles in which acrylic dough can be contoured to form a customized condylar and incisal guidance.</p>"},{"k":"اختبر نفسك","t":"Quiz: the 12 mm hinge rotation, when to hand-articulate, and arcon versus non-arcon","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Bite-registration materials and the opening rotation in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Wax is the most accurate material; elastomers show the most error; pure hinge rotation continues until the incisors are 40 mm apart</button><button type=\"button\" class=\"opt\" data-i=\"1\">Impression plaster is accurate and rigid but brittle and not used now. Wax is the most inaccurate interocclusal material studied (high thermal expansion, resistance to closure, and distortion on removal); a thin layer of ZOE or resin has been added to improve it. ZOE paste is fluid before setting and rigid after, but brittle, and flash must be trimmed. Acrylic is accurate and rigid but shrinks on polymerization and can damage casts. Elastomers (for example Luxabite) show the least error; addition silicones show the least distortion because they have no by-product. In the sagittal plane, pure rotation around the terminal hinge axis is limited to about 12 mm of incisor separation before translation begins. Dawson’s criteria: the material must not move teeth or displace soft tissue, must fit the casts as it fits the mouth, and must be checked in both places</button><button type=\"button\" class=\"opt\" data-i=\"2\">Addition silicone is inaccurate because of an alcohol by-product</button><button type=\"button\" class=\"opt\" data-i=\"3\">Translation always occurs before any rotation in the sagittal plane</button></div><div class=\"qexp\" hidden><p>الشمع أكثر المواد عدم دقة. المطاطيات أقل خطأ، وسليكون الإضافة أقل تشوهاً. الدوران النقي حول محور المفصلة محدود بحوالي 12 ملم انفصال بالقواطع قبل الانتقال.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Centric relation, when to keep MI, and articulators in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">CR is a tooth-to-tooth position identical to MI in everyone; a bite material should always be placed between complete arches; an arcon articulator has the condylar spheres on the upper member</button><button type=\"button\" class=\"opt\" data-i=\"1\">CO is a tooth-to-tooth relation as the mandible closes in CR. CR is a bone-to-bone relation with the condyles in the rearmost, uppermost, midmost position in the fossae, and is the only position that permits an interference-free occlusion (it is not merely a convenience position). MI may or may not coincide with CO; coincidence is called ideal occlusion and is uncommon. If ICP is stable and treatment is limited, with no trauma signs, maintain pre-treatment ICP and OVD and hand-articulate the casts without bite material (material often increases OVD). Use CR for full-mouth rehabilitation or an unstable ICP with trauma. A record is needed when there are not enough teeth for a tripod of support, when a unilateral FPD involves terminal teeth, or with a free-end saddle. Dawson’s bimanual manipulation (the lecture writes Dowson, 1914): thumbs on the chin, fingers under the mandible. An anterior jig must prevent any posterior contact. Arcon: spheres on the lower member, fossae on the upper (like the TMJ). Non-arcon is the reverse. Group function is widely used in fixed dentistry; bilateral balance is rare naturally but needed for denture stability; canine guidance discludes all posteriors</button><button type=\"button\" class=\"opt\" data-i=\"2\">Class I occlusion in this lecture has the upper first molar anterior to the lower first molar’s groove</button><button type=\"button\" class=\"opt\" data-i=\"3\">Fully adjustable articulators have a single fixed condylar path and no custom guidance</button></div><div class=\"qexp\" hidden><p>CR عظم-لعظم (أبعد، أعلى، أوسط). إذا التشابك مستقر علاج محدود: طابق باليد بلا مادة. Arcon مثل المفصل (الكرات تحت). الوظيفة الجماعية شائعة بالثابت؛ التوازن الثنائي للطقم؛ حماية الناب تفصل الخلفيات.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Group function, canine guidance, and Angle’s Class I in this lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Bilateral balanced occlusion is the usual scheme in natural teeth and in fixed dentistry; canine guidance keeps all posteriors in contact</button><button type=\"button\" class=\"opt\" data-i=\"1\">Group function (unilateral balanced occlusion) has simultaneous working-side contacts distributing forces, with the balancing side free of contact — a widely used concept in fixed restorative dentistry. Bilateral balanced occlusion contacts both sides through all excursions; it is rare in the natural dentition but is generally considered necessary for denture stability. Canine-protected occlusion: the working-side canines contact and disclude all posteriors on both sides (anteriors protect posteriors in excursions; posteriors protect anteriors at ICP); it is widely accepted, easy to fabricate, and well tolerated. Angle Class I (the key of occlusion): the mesiobuccal cusp of the upper first permanent molar occludes in the mesiobuccal groove of the lower first permanent molar. Class II places the mandibular first molar posterior to that; Class III places it anterior</button><button type=\"button\" class=\"opt\" data-i=\"2\">Class III has the mandibular first molar posterior to the Class I key</button><button type=\"button\" class=\"opt\" data-i=\"3\">An anterior jig in this lecture must allow firm posterior contact while it is in place</button></div><div class=\"qexp\" hidden><p>الوظيفة الجماعية شائعة بالثابت (جهة العمل تتماس وجهة الموازنة حرة). التوازن الثنائي نادر طبيعياً ومطلوب لثبات الطقم. حماية الناب تفصل كل الخلفيات. مفتاح الإطباق: الحدبة الإنسية الشدقية للرحى الأولى العلوية بأخدود السفلية.</p></div></div>"},{"k":"Prof. Dr. Adel · Lecture 9","t":"Colour needs light (380–750 nm), and Munsell’s three dimensions: hue, chroma and value (0–10)","b":"<p>Shade selection is the process of replicating the colour of the adjacent teeth in an artificial prosthesis. Colour is “light, modified by an object as perceived by an eye.” Perceived colour is the result of a light source, the object (which absorbs, transmits, reflects or scatters the light), and the interpretation by the human visual system. Without light, colour does not exist. What is commonly called “the colour of a tooth” is actually the colour of the reflected light. Light is a form of visible energy; the eye is sensitive only to the visible portion of the spectrum (<b>380–750 nm</b>). When pure white light is passed through a prism we see the component colours; shorter wavelengths bend more than longer ones. Additive primary colours are red, green and blue: red + blue = magenta; red + green = yellow; green + blue = cyan. The pigment-mixture primaries are yellow, cyan and magenta. The <b>Munsell</b> colour system describes three dimensions that can be varied independently: (1) <b>hue</b> — the quality by which we distinguish one colour family from another. There are ten hue families (the lecture lists R, YR, Y, GY, G, BG, B, PB, P and RP; each is subdivided into ten numbered segments, so the middle red is 5R). (2) <b>chroma</b> — the intensity or saturation of a hue, the degree of departure from white or grey; range <b>0–12</b>. (3) <b>value</b> — lightness or darkness, range <b>0–10</b> (black is 0, white is 10). Low-value colours are dark; high-value colours are light. A black-and-white television tube emits only a range of values. Value is generally considered the most important of the three dimensions, because lightness/darkness differences are readily detected even by untrained observers, and because value differences remain easier to detect at a variety of viewing distances, whereas hue and chroma become harder to quantify as distance increases.</p>"},{"k":"Prof. Dr. Adel · Lecture 9","t":"Clark’s ranges for natural teeth, and why mid-day daylight is the ideal matching light","b":"<p>Dr E. B. Clark (1931) was the first to describe tooth colour accurately, from a visual analysis of <b>6,000 teeth from 1,000 patients over 8 years</b>: hue ranged from <b>6 YR to 9.3 Y</b>, value from <b>4 to 8</b>, and chroma from <b>0 to 7</b>. Factors that influence apparent colour: (1) the nature of the light. Three sources are incandescent, fluorescent and natural daylight. Most offices have incandescent and fluorescent lights. Incandescent light emits a high concentration of yellow waves; fluorescent light emits a high concentration of blue waves; <b>neither is suitable for shade matching</b>. Chair light is not recommended, because it is overpowering and interferes with fine discrimination of the three dimensions. <b>Natural daylight is the best</b>, closest to a full spectrum of white light, and is the standard by which other sources are judged. Morning and evening light is rich in yellow/orange and lacks blue/green (shorter wavelengths scatter before penetrating the atmosphere). Mid-day (the hours around noon), when the full spectrum is visible, is the <b>ideal time for colour matching</b>.</p>"},{"k":"Prof. Dr. Adel · Lecture 9","t":"Opalescence, a moist tooth, a gingival mask, and metamerism","b":"<p>Physical properties of the object: some wavelengths are absorbed, some transmitted, the remainder reflected — the colour is the reflected light. True colour and translucency cannot be correctly perceived unless the tooth is free of plaque and surface stains. With increasing opacity the grey-scale value decreases and brightness (value) increases; the higher the brightness, the lower the transparency; the more transparent a tooth, the greyer it appears. The <b>opal effect (opalescence)</b> is due to fine hydroxyapatite crystals in enamel, which reflect short wavelengths and allow longer wavelengths to pass: bluish areas in reflected light, orange-red in transmitted light. Translucent areas appear grey; an opaque incisal edge appears white. Areas of higher translucency have a lower value because light transilluminates through and away from the viewer. The tooth must be kept moist during shade selection. The colour environment (gum, lip, the colour behind the object) influences perception; a gingival mask (colour contractor) was developed to neutralize that influence. <b>Metamerism</b> is the phenomenon in which two objects appear to match under one lighting source but not under a different source. A tooth and a crown of a differing shade may appear matched under certain lights but show a discrepancy in daylight — that is why shade selection must be evaluated under multiple light sources.</p>"},{"k":"Prof. Dr. Adel · Lecture 9","t":"The observer’s eye, colour deficiency (8% of men, 0.5% of women), and nine principles of shade selection","b":"<p>(3) Subjective assessment of the observer: rods in the retina detect only lightness and darkness (value); cones perceive the chromatic aspects (hue and chroma). Colour-vision deficiency affects <b>8% of males and 0.5% of females</b>. Variations: achromatism (complete lack of hue sensitivity); dichromatism (sensitivity to two primary hues); and anomalous trichromatism (sensitivity to all three hues, with an abnormality in the cones affecting one of the primary pigments). Dentists should have their colour vision evaluated; if a deficiency is detected, they should seek assistance when selecting shades. Principles of shade selection: (1) teeth to be matched must be clean and moist; (2) remove bright colours from the field of view (make-up, tinted glasses, bright gloves, and use neutral operatory walls); (3) view the patient at eye level; (4) evaluate the shade under multiple light sources; (5) make comparisons at the beginning of the appointment; (6) make comparisons quickly, to avoid eye fatigue; (7) a selection made at <b>3–6 feet</b> from the mouth is often more useful, because it represents the conditions under which the patient’s teeth will most often be observed; (8) use colour contrastors; (9) hold the shade tab <b>above the mandibular tooth or below the maxillary tooth</b>, aligned as close as possible to the plane of the facial surface — holding the tab over the tooth can give a false impression, because the background of the tab is then the tooth colour rather than the oral cavity.</p>"},{"k":"Prof. Dr. Adel · Lecture 9","t":"Vita Classic (A–D letter groups) and the value-ordered sequence from B1 to C4","b":"<p>Visual shade matching compares the patient’s tooth with a colour standard (a shade guide). The most commonly used guides in fixed prosthodontics in this lecture are Vita Classic, Vita 3D-Master, and VITA Linearguide 3D-Master. <b>Vita Classic</b> is very popular: tabs of similar hue are clustered into letter groups — <b>A (red-yellow), B (yellow), C (grey), D (red-yellow-grey)</b>. The manufacturer’s recommended sequence is: (1) hue selection; (2) chroma selection; (3) value selection — because value level is not involved in this shade guide, the use of a second, value-ordered shade guide is recommended. The value-oriented order from bright to dark in this lecture is: <b>B1, A1, B2, D2, A2, C1, C2, D4, A3, D3, B3, A3.5, B4, C3, A4, C4</b>. Then a final check or revision is made.</p>"},{"k":"Prof. Dr. Adel · Lecture 9","t":"Vita 3D-Master (five value levels) and the Linearguide’s two-step method (value 0–5, then chroma/hue)","b":"<p><b>Vita 3D-Master</b> is a more precise guide: tooth colour is divided into <b>five levels of value</b>; for each value group there is a deviation from a medium hue toward yellow or red. In the medium (M) hue there are three chroma levels; deviations toward more yellowish hues (L) or more reddish hues (R) exist at two chromas. How to use it: Step 1 — determine the lightness level (value). Hold the guide to the patient’s mouth and start with the darkest group, moving to the left; select value group 1, 2, 3, 4 or 5. Step 2 — select the chroma from the chosen value group: remove the middle tab (M), spread the samples like a fan, and select one of the three samples. Step 3 — determine the hue: check whether the natural tooth is more yellowish or more reddish than the selected sample. The <b>VITA Linearguide 3D-Master</b> uses the same scientific principles and the <b>29 shades</b> of the 3D-Master, in a sleeker linear design. Shade taking in two steps: Step 1 — remove the Valueguide from the top and determine the correct degree of lightness <b>0 to 5</b>; Step 2 — make a detailed choice within that lightness using the corresponding Chroma/Hueguide. Photography is an effective aid: a shade tab closest to the tooth is placed next to it and photographed, giving the ceramist a “palette” of shades rather than a single tab; several photographs with different tabs can be taken if needed.</p>"},{"k":"Prof. Dr. Adel · Lecture 9","t":"Digital shade devices: hold the probe perpendicular, 1–2 mm from the edges, and prefer a spectrophotometer","b":"<p>Instrumental colour analysis: the tooth should be clean and free of debris; the probe must be held <b>perpendicular</b> to the tooth; colour varies depending on where the probe is located; the tip is centred (<b>1–2 mm from the gingiva and the incisal edge</b>) or three zones are used (gingival, middle and incisal). Advantages of a digital system include objective readings and accuracy. Two types are commonly used: the <b>spectrophotometer</b> and the <b>colorimeter</b>. A spectrophotometer consistently and accurately measures natural tooth colour in reference to any known colour or shading system, indicating deviations of value, chroma and hue from a standard, and gives the technician the clues needed to recreate or modify a shade. A colorimeter analyzes colour based on preloaded data related to a shade system and determines the closest tab; it is typically less accurate than a spectrophotometer, but may suffice in most dental situations. Because both tend to eliminate ambient light by standardizing the immediate environs of the target tooth, the shade can be taken in any operatory with any kind of lighting. Digital shade taking is therefore far easier, more practical and more accurate than using colour tabs and the naked eye in a variable environment. The current <b>best approach is the spectrophotometer</b>. Some systems also read translucence and reflectivity, and some can compare scans before and after treatment (useful for tooth-whitening). Examples in this lecture: VITA EasyShade, VITA EasyShade Compact, MHT SpectroShade, and Cynovad ShadeScan (a handheld optical device that obtains a shade map of the whole tooth from a single image, integrated with CAD/CAM, at the click of a button).</p>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: Munsell value, mid-day daylight, Vita Classic groups, and the spectrophotometer","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Munsell dimensions, Clark’s ranges, and the best light for shade matching in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Value ranges from 0–12 and is the least important dimension; fluorescent office light is the ideal shade-matching source; Clark found a value range of 0–10 in every tooth</button><button type=\"button\" class=\"opt\" data-i=\"1\">Hue is the colour family (ten families, each in ten segments; middle red is 5R). Chroma (intensity) ranges from 0–12. Value (lightness/darkness) ranges from 0 (black) to 10 (white) and is generally the most important dimension. Visible light is 380–750 nm. Additive primaries are red, green and blue (red+blue=magenta, red+green=yellow, green+blue=cyan). Clark (1931), from 6,000 teeth in 1,000 patients over 8 years, reported hue 6 YR to 9.3 Y, value 4–8, chroma 0–7. Incandescent (yellow) and fluorescent (blue) lights, and the chair light, are not suitable. Natural mid-day daylight (around noon, full spectrum) is ideal; morning and evening light is rich in yellow/orange and lacks blue/green. Metamerism: two objects match under one light but not another, so evaluate under multiple sources. Keep the tooth moist and free of plaque. Colour deficiency affects 8% of men and 0.5% of women; a dentist with a deficiency should get help</button><button type=\"button\" class=\"opt\" data-i=\"2\">Metamerism means a shade is identical under every possible light source</button><button type=\"button\" class=\"opt\" data-i=\"3\">Chair light is recommended because it is the closest to noon daylight</button></div><div class=\"qexp\" hidden><p>القيمة 0–10 وهي الأهم. كلارك: 6000 سن، صبغة 6 YR إلى 9.3 Y، قيمة 4–8، تشبع 0–7. أفضل ضوء النهار الطبيعي حول الظهر. المتوهج والفلوريسنت وضوء الكرسي غير مناسبين. نقص الألوان 8% رجال و 0.5% نساء.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Visual and digital shade methods in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Vita Classic groups are numbered only, with no letter hues; hold the tab directly over the tooth; a colorimeter is always more accurate than a spectrophotometer</button><button type=\"button\" class=\"opt\" data-i=\"1\">Match at the start of the appointment, quickly, at eye level, under multiple lights, with bright colours removed, often at 3–6 feet, with the tab held above a mandibular tooth or below a maxillary tooth (not over the tooth). Vita Classic letter groups: A red-yellow, B yellow, C grey, D red-yellow-grey; sequence hue, then chroma, then value (a second value-ordered guide is recommended). The value order from bright to dark is B1, A1, B2, D2, A2, C1, C2, D4, A3, D3, B3, A3.5, B4, C3, A4, C4. Vita 3D-Master has five value levels: choose value (starting from the darkest group), then chroma, then hue (L more yellow, R more red). The Linearguide uses the same 29 shades in two steps (value 0–5, then chroma/hue). For a digital device, hold the probe perpendicular, centred 1–2 mm from the gingiva and the incisal edge, or use three zones. A spectrophotometer is the current best, more accurate than a colorimeter, and can be used in any operatory lighting</button><button type=\"button\" class=\"opt\" data-i=\"2\">Vita 3D-Master starts with hue, and value is chosen last</button><button type=\"button\" class=\"opt\" data-i=\"3\">Photography is never useful, because a single shade tab is always enough for the technician</button></div><div class=\"qexp\" hidden><p>Classic: A أحمر-أصفر، B أصفر، C رمادي، D أحمر-أصفر-رمادي؛ الترتيب صبغة ثم تشبع ثم قيمة. 3D-Master خمسة مستويات قيمة. المسبار عمودي، 1–2 ملم من اللثة والقاطع. مقياس الطيف أفضل من مقياس اللون.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Colour-vision deficiency, shade-tab position, and Vita Classic groups in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Colour deficiency is equally common in men and women; hold the tab directly over the tooth; Vita Classic has no letter groups</button><button type=\"button\" class=\"opt\" data-i=\"1\">Colour-vision deficiency affects 8% of males and 0.5% of females; a dentist with a deficiency should seek help. Hold the tab above a mandibular tooth or below a maxillary tooth, not over the tooth (that makes the tooth the background and gives a false impression). Vita Classic groups: A red-yellow, B yellow, C grey, D red-yellow-grey. A selection at 3–6 feet is often useful. Vita 3D-Master has five value levels, starting from the darkest group. The Linearguide uses the same 29 shades in two steps (value 0–5, then chroma/hue)</button><button type=\"button\" class=\"opt\" data-i=\"2\">The chair light is the recommended source for Vita Classic matching</button><button type=\"button\" class=\"opt\" data-i=\"3\">Value in Vita Classic is chosen first, and no second guide is ever needed</button></div><div class=\"qexp\" hidden><p>نقص الألوان 8% رجال و 0.5% نساء. اللسان فوق السفلي أو تحت العلوي، مو فوق السن. Classic: A أحمر-أصفر، B أصفر، C رمادي، D أحمر-أصفر-رمادي. 3D-Master خمسة مستويات قيمة.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">In this lecture, when should you hand-articulate the casts without a bite-registration material, and when should you use centric relation instead?</button><div class=\"flash-a\" hidden>Hand-articulate without material when the patient has a stable intercuspal position, enough teeth, no signs of occlusal trauma, and treatment is limited — the aim is to keep pre-treatment ICP and OVD (material between the teeth often increases OVD). Use centric relation for occlusal reconstruction or complete-mouth rehabilitation, or when ICP is unstable with signs and symptoms of trauma from occlusion.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا تاسع ملف: محاضرة أ.د. عادل إبراهيم 8 (تسجيل الإطباق، الإطباق، والمفصلات) ومحاضرة 9 (اختيار اللون). صفحات 196–219. شرح عراقي مفصل ويه أسئلة.</p>","<p>سجل <b>الإطباق (bite registration)</b> طبعة لعلاقة الأسنان أو الفكين المتقابلين، بمواد مثل جص باريس، شمع، معجون أوكسيد الزنك والأوجينول، أو راتنج أكريلي. الهدف: نقل علاقة القوسين من الفم للمفصلة، وتوجيه الأفاتح للقوس المقابل، حتى المختبر يسوي الكفاف والإطباق صح. إذا السجل غلط، راح تضيع وقت بتعديلات كرسي أو إعادة تصنيع. الدقة تتأثر بالمادة، التقنية، ثبات وضع الفك، الفعل العضلي، وتغيرات المفصل. معايير <b>Dawson</b>: المادة ما تحرك الأسنان ولا تزيح الأنسجة؛ تطابق الأمثلة مثل ما تطابق الأسنان بالفم؛ وتُفحص الدقة بالفم وعلى الأمثلة. المادة المثالية: مقاومة قليلة قبل التصلب، صلبة بعده، تغيّر أبعاد قليل، تسجّل السطوح بدقة، سهلة، بلا ضرر للأنسجة، وقابلة للتأكيد.</p>","<p>(1) <b>جص الطبعة</b>: دقيق وصلب وما يتشوه بالخزن الطويل، بس صعب وهش، وما يُستخدم الآن. (2) <b>شمع التسجيل</b>: سهل، بس تمدده الحراري عالي ومقاومته للإغلاق عالية ويتشوه عند الرفع — <b>أكثر مادة غير دقيقة</b> بين المواد المدروسة. لذلك يضاف طبقة رقيقة من ZOE أو راتنج لتحسين التفاصيل. (4) <b>معجون أوكسيد الزنك والأوجينول</b>: سائل قبل التصلب (ما يعيق الإغلاق)، صلب وغير مرن بعده، دقيق وقابل للتكرار، بس هش ويلصق بالأنسجة والزوائد تمنع جلوس الأمثلة إن ما تُقلم. (5) <b>الراتنج الأكريلي</b> لسجلات توقف واحد عند الإطباق المركزي: دقيق وصلب، بس يتقلص بالبلمرة وقد يضر الأمثلة. (6) <b>المطاطيات (مثل Luxabite)</b> <b>أقل خطأ</b>؛ خصوصاً سليكون الإضافة أقل تشوهاً لأنه بلا ناتج ثانوي.</p>","<p>ال<b>إطباق</b> تماس سطوح الأسنان المتقابلة بأي علاقة وظيفية أو غير وظيفية. المحددات الأمامية هي الأسنان: الأماميات (من ناب لناب) توجّه الفك بالحركات الجانبية والبروز، وهالتوجيه يتغيّر بالترميم أو القلع أو التقويم أو التسحّج. الخلفيات توقف عمودي وتوجّه الفك لأكبر تشابك. المحددات الخلفية المفصلان الصدغيان الفكيان (توجيه اللقمة عامل ثابت).</p>","<p>الحركة ثلاثية الأبعاد: انتقال ودوران، بثلاثة مستويات. بالمستوى <b>السهمي</b> الدوران حول محور المفصلة الطرفي محدود بحوالي <b>12 ملم انفصال بالقواطع</b> قبل ما الأربطة تجبر الفك على الانتقال. الدوران الأولي بين اللقمة والقرص؛ أثناء الانتقال ينقبض الجناحي الوحشي ويسحب مجمع اللقمة-القرص للأمام. الأفقي: الدوران حول اللقمة العاملة، واللقمة غير العاملة تتقدم وتتحرك إنسياً. الجبهي: غير العاملة تنزل إنسياً، والعاملة تدور حول المحور السهمي. المحاور: أفقي (فتح وإغلاق دوراني نقي بـ CR)، عمودي (رحلة جانبية حول لقمة العمل)، وسهمي (اللقمة المقابلة تتقدم وأحد الجانبين ينزل).</p>","<p><b>الإطباق المركزي (CO)</b> إطباق الأسنان لما الفك ينغلق بالعلاقة المركزية: علاقة سن-لسن، ونقطة مرجع. <b>العلاقة المركزية (CR)</b> علاقة عظم-لعظم: اللقم في أبعد، أعلى، وأوسط موضع بالحفرة الحُقّية. <b>أكبر تشابك (MI)</b> أكمل تداخل بغض النظر عن مركزية اللقم. قد يتطابق أو لا ويه CO. إذا الـ MI ويه اللقم خارج المركزية يُسمّى إطباقاً اعتيادياً أو فسيولوجياً ويُعد وضعاً لامركزياً. نسبة قليلة من الناس يتطابق عندهم MI ويه CO وهذا الإطباق المثالي. لا تخلط CR ويه CO؛ الـ CR مو علاقة أسنان (الفك العديم الأسنان هم يكون بـ CR إذا اللقم جالسة كاملة)؛ وهي الوضع الوحيد اللي يسمح بإطباق بلا تداخلات، وصح فسيولوجياً وميكانيكياً. الإطباق اللامركزي: جانبي (جهة العمل)، بروزي (الأماميات تتماس والخلفيات تنفصل مثالياً)، وجهه الموازنة (بعكس جهة الحركة).</p>","<p>تنظيم الإطباق بالحركة الجانبية: (أ) <b>الوظيفة الجماعية (group function)</b> تماس بجهة العمل كمجموعة لتوزيع القوى، وجهة الموازنة بلا تماس — مفهوم شائع بالتعويض الثابت. (ب) <b>التوازن الثنائي</b> تماس بالجهتين بكل الرحلات — نادر بالأسنان الطبيعية، ومطلوب عادة لثبات الطقم الكامل. (ج) <b>حماية الناب</b> أنياب جهة العمل تتماس وتنفصل كل الخلفيات بالجهتين؛ الأماميات تحمي الخلفيات بالحركات، والخلفيات تحمي الأماميات عند التشابك. مقبول وسهل والمرضى يتحملونه أكثر. حسب الرحى الأولى العلوية: الصنف I (مفتاح الإطباق) الحدبة الإنسية الشدقية للرحى الأولى العلوية بأخدود الإنسي الشدقي للسفلية؛ الصنف II الرحى السفلية أخلف؛ الصنف III أقدم.</p>","<p>أغلب حالات التعويض الثابت: إذا التشابك مستقر (يتطابق ويه CO أو لا)، والعلاج محدود بمنطقة الترميم، وبلا أعراض رض إطباقي — حافظ على التشابك والبعد العمودي السابقين. أدق طريقة: <b>طابق الأمثلة باليد بلا مادة تسجيل</b>، لأن المادة غالباً ترفع البعد العمودي. أما إعادة بناء الإطباق أو الفم بالكامل، أو تشابك غير مستقر ويه أعراض رض — استخدم <b>العلاقة المركزية</b>. يُحتاج سجل إطباق إذا الأسنان الباقية ما تكفي لمطابقة يدوية (لازم حامل ثلاثي للدعم العمودي والثبات الأفقي)؛ أو جسر وحيد الجهة يشمل الأسنان الطرفية (ضاع «رجل» الحامل الثلاثي)؛ أو بعد عمل حافة عضّ لطقم حر النهاية أو أسنان غير كافية. الأسنان الاصطناعية أهدأ ويه حركة الفك من حواف الإطباق.</p>","<p>وجّه الفك للوضع المطلوب، وحط نقطة مرجع (إطباق الأسنان عكس جهة العلاج)، والمادة فقط فوق منطقة الأسنان المحضَّرة. الأشيع شمع القاعدة الوردي أو مطاط. ليّن الشمع، حطه على إطباق المحضَّر، وخلِّ المريض يعض وانت توجّه للمرجع؛ المريض يشكل اللساني بلسانه وأنت تشكل الشفوي. بالمطاط يمكن تحقن بعد ما يعض. بعد التصلب قلم الزيادة وثبّتها على المثال وانقلها للمفصلة.</p>","<p>تقنية <b>Dawson (مناورة باليدين)</b> — المحاضرة كتبت Dowson سنة 1914: الكرسي مائل، الطبيب خلف المريض، الإبهامان على الذقن والأصابع على الحافة السفلية للفك، ضغط لطيف للأسفل بالإبهام وللأعلى بالأصابع حتى يدخل الفك بالعلاقة المركزية. ال<b>وقف الأمامي (anterior jig)</b> من أكريل يفصل الخلفيات فوراً قبل السجل حتى المريض «ينسى» المنعكسات الواقية، ويثبت البعد العمودي. لازم يكون رقيقاً بحيث أول تماس بالكاد يفوت، و<b>ولا سن خلفي يتماس</b> والوقف موجود. بعدين يُحقن معجون بين الخلفيات.</p>","<p>سجل العضة الرقمي: غير مباشر (ماسح خارج الفم) يحتاج سجل خصم ويمكن بلا مادة تباين؛ مباشر (كاميرا داخل الفم) يلتقط علاقة الإطباق من داخل الفم بلا أي مادة. تركيب الأمثلة: أولاً المثال العلوي ويه <b>القوس الوجهي (face-bow)</b>، بعدين السفلي بعد تسجيل العلاقة المركزية. القوس الوجهي يسجّل علاقة الفك العلوي بمحور دوران الفك السفلي. منه <b>حركي (kinematic)</b> للمحور الحقيقي، و<b>اعتباطي (arbitrary)</b> لمحور تقريبي.</p>","<p>المفصلة تمثّل المفصلين وحركات الفك: تمسك الأمثلة بعلاقة ثابتة، وتحاكي الفتح والإغلاق وحركات الحدود. تُستخدم للتشخيص، والتخطيط (مثل تقييم الإطباق المتوازن)، وصنع وتصحيح الترميمات، وترتيب الأسنان الاصطناعية. أنواعها: غير قابلة للتعديل (محور ومسار لقمة ثابتان)؛ شبه قابلة للتعديل (<b>Arcon</b>: كرات اللقمة بالعضو السفلي والحفرة بالعلوي مثل المفصل الطبيعي؛ <b>Non-arcon</b> بالعكس)؛ وقابلة للتعديل بالكامل ويه توجيهات لقمة وقاطعية مخصّصة من عجينة أكريل لكل مريض.</p>","<p>ثلاثة أسئلة على المواد والـ 12 ملم، ومتى نطابق باليد، والوظيفة الجماعية.</p>","<p>اختيار اللون نسخ لون الأسنان المجاورة بالتعويض. اللون ضوء معدَّل بالجسم كما يدركه العين، وبدون ضوء ماكو لون. العين تحس بالطيف المرئي <b>380–750 نانومتر</b>. الألوان الأساسية الضوئية: أحمر وأخضر وأزرق (أحمر+أزرق=أرجواني، أحمر+أخضر=أصفر، أخضر+أزرق=سماوي). نظام <b>Munsell</b> ثلاثة أبعاد مستقلة: <b>الصبغة (hue)</b> عائلة اللون (عشر عوائل، كل واحدة مقسمة لعشرة، فالأحمر الأوسط 5R)؛ <b>التشبع (chroma)</b> شدة اللون، المدى <b>0–12</b>؛ و<b>القيمة (value)</b> الفاتح والغامق من <b>0 (أسود) إلى 10 (أبيض)</b>. القيمة أهم بعد لأن فرق الفاتح والغامق يُلاحظ حتى من غير المدرَّبين ومن مسافات مختلفة.</p>","<p>كلارك 1931: تحليل <b>6000 سن من 1000 مريض خلال 8 سنوات</b> — الصبغة من <b>6 YR إلى 9.3 Y</b>، القيمة <b>4–8</b>، والتشبع <b>0–7</b>. الضوء المتوهج أصفر، والفلوريسنت أزرق، <b>الاثنان غير مناسبين</b> لاختيار اللون، وضوء الكرسي هم لا. أفضل ضوء <b>النهار الطبيعي</b>، والوقت المثالي <b>حول الظهر</b> (طيف كامل). الصباح والمساء أغنى بالأصفر/البرتقالي وأفقر بالأزرق/الأخضر.</p>","<p>لون الجسم هو الضوء المنعكس. لازم السن يكون خالياً من اللويحة والتصبغات. كل ما زادت العتامة قلت الرمادية وزادت القيمة، وكل ما زادت الشفافية بدا أرمَد. التأثير <b>الأوبالي</b>: بلورات الهيدروكسي أباتيت تعكس الموجات القصيرة وتمرر الطويلة — أزرق بالانعكاس وبرتقالي-أحمر بالنفاذ. المناطق الشفافة تبدو رمادية والحافة القاطعة العاتمة بيضاء. أبقِ السن رطباً. قناع اللثة (مباين لون) يقلل تأثير بيئة اللون. <b>التحول اللوني (metamerism)</b>: لونان يتطابقان تحت ضوء ويختلفان تحت ضوء آخر — لذلك افحص تحت مصادر متعددة.</p>","<p>العصي بالشبكية تدرك القيمة فقط؛ المخاريط تدرك الصبغة والتشبع. نقص رؤية الألوان يصيب <b>8% من الرجال و 0.5% من النساء</b>. إذا عند الطبيب نقص، يطلب مساعدة باختيار اللون. المبادئ: الأسنان نظيفة ورطبة؛ أزل الألوان الساطعة من المجال (مكياج، نظارات ملونة، قفازات ساطعة، جدران محايدة)؛ انظر بمستوى العين؛ افحص تحت أضواء متعددة؛ اختر في بداية الجلسة وبسرعة حتى ما تتعب العين؛ مسافة <b>3–6 أقدام</b> غالباً مفيدة أكثر؛ استخدم مباينات اللون؛ وامسك الدليل <b>فوق السن السفلي أو تحت العلوي</b>، مو فوق السن نفسه لأن الخلفية تصير لون السن وتعطي انطباعاً غلط.</p>","<p>المطابقة البصرية تقارن سن المريض بدليل ألوان. الأشيع بهالمحاضرة: Vita Classic، و 3D-Master، و Linearguide. ال<b>Classic</b> يجمع الألسنة حسب الصبغة: <b>A أحمر-أصفر، B أصفر، C رمادي، D أحمر-أصفر-رمادي</b>. تسلسل الشركة: أولاً الصبغة، بعدين التشبع، بعدين القيمة — ولأن القيمة مو مرتبة بهالدليل يُنصح بدليل ثانٍ مرتب حسب القيمة. الترتيب من الفاتح للغامق بهالمحاضرة: <b>B1، A1، B2، D2، A2، C1، C2، D4، A3، D3، B3، A3.5، B4، C3، A4، C4</b>، وبعدين مراجعة نهائية.</p>","<p>دليل <b>3D-Master</b> أدق: <b>خمسة مستويات قيمة</b>، ولكل مجموعة انحراف عن الصبغة المتوسطة نحو الأصفر أو الأحمر. الاستخدام: (1) حدد القيمة وابدأ من أغمق مجموعة نحو اليسار (مجموعات 1–5)؛ (2) اختر التشبع من المجموعة: شيل اللسان الأوسط (M) وفرّش كالمروحة؛ (3) حدد الصبغة: السن أصفَر أم أحمر أكثر من العينة. ال<b>Linearguide</b> نفس المبادئ و<b>29 لوناً</b> بخطوتين: قيمة من <b>0 إلى 5</b>، بعدين دليل التشبع/الصبغة. التصوير مفيد: حط اللسان الأقرب بجانب السن وصوّر حتى المختبر ياخذ «لوحة» ألوان مو لسان واحد فقط.</p>","<p>التحليل الآلي: السن نظيف، والمسبار <b>عمودي</b> على السن. موضع المسبار يغيّر القراءة؛ الطرف يتوسّط (<b>1–2 ملم من اللثة ومن الحافة القاطعة</b>) أو ثلاث مناطق (لثة، وسط، قاطع). نوعان: ال<b>مقياس الطيف (spectrophotometer)</b> أدق ويقيس انحراف القيمة والتشبع والصبغة عن المعيار؛ و<b>مقياس اللون (colorimeter)</b> يختار أقرب لسان من بيانات جاهزة وهو عادة أقل دقة. الاثنان يعزلان ضوء المحيط فيمكن القياس بأي عيادة وأي إضاءة. <b>أفضل مقاربة حالياً مقياس الطيف</b>. أمثلة بهالمحاضرة: VITA EasyShade و Compact، و MHT SpectroShade، و Cynovad ShadeScan (صورة واحدة تعطي خريطة لون لكل السن وترتبط بـ CAD/CAM).</p>","<p>سؤالان ختاميان + بطاقة متى نطابق باليد ومتى نستخدم CR + زر الدرجة.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
