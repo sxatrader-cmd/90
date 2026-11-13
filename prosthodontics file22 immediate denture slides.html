@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Prosthodontics File 22 — Immediate Dentures</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Prosthodontics · 5th year</div>
+    <h1>Immediate Dentures</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of the immediate-denture lectures by Lect. Dr. Mustafa Saadi Ali (PDF pages 564–580).</p>
+    <ul>
+      <li>Definition, indications (philosophical patient) and contraindications</li>
+      <li>Advantages and disadvantages; conventional (CID, relined) versus interim (IID, replaced by a second denture)</li>
+      <li>Flanged versus flangeless (open-face) design, and what must be explained to the patient</li>
+      <li>Diagnosis, impressions (single full-arch custom tray versus sectional tray), try-in, cast trimming and the surgical guide</li>
+      <li>Insertion, the first 24 hours (do not remove), the 24-hour adjustment, and follow-up lining and recall</li>
+      <li>Total run time: <b>28 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 14</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Prosthodontics · File 22","t":"Immediate dentures","b":"<p>University of Baghdad, College of Dentistry — Prosthodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This 5th-year file covers PDF pages 564–580 (Lect. Dr. Mustafa Saadi Ali / د. مصطفى سعدي علي): immediate dentures — definition, indications and contraindications, advantages and disadvantages, conventional versus interim types, flange design, diagnosis, impressions, try-in and cast trimming, the surgical guide, insertion, and follow-up.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end.</p>"},{"k":"5th year · Immediate denture","t":"Definition, indications, contraindications, and the philosophical patient","b":"<p>There are different treatment options for a patient facing loss of remaining natural teeth. An immediate denture is one option that provides esthetics, function and psychological support after extractions and during the healing phase.</p><p>An immediate denture is “any complete or partial removable dental prosthesis fabricated for placement immediately following the removal of natural teeth.” Immediate dentures are constructed before all of the remaining teeth have been removed and are inserted immediately after removal of the remaining teeth. An immediate denture may replace one tooth or all sixteen teeth in either the maxillary or the mandibular arch, or in both arches.</p><p>Indications: an educated patient with daily social activity (doctors, lawyers and teachers); hopeless remaining teeth (caries, periodontal diseases or malocclusion); a patient with a stable health condition; and a patient who does not mind some additional visits or cost. The best patient is the <b>philosophical type</b>: their motivation is the maintenance of health and appearance, and they accept replacement of natural teeth that cannot be saved as a normal procedure.</p><p>Contraindications: poor general health (systemic diseases); patients identified as uncooperative, indifferent and unappreciative; a patient at risk from bacteremia; a recurrent history of post-extraction hemorrhage; the presence of acute periapical or periodontal diseases and extensive bone loss; and a patient who does not mind being edentulous for a period of time until complete healing.</p>"},{"k":"5th year · Immediate denture","t":"Advantages and disadvantages","b":"<p>Advantages: the patient’s appearance is maintained because there is no edentulous period; circumoral support, muscle tone, VDO, jaw relationship and face height can be maintained, and the tongue will not spread out as a result of tooth loss; less postoperative pain is likely because the extraction sites are protected; some researchers have discussed whether immediate dentures reduce residual ridge resorption; it is easier to duplicate (if desired) the natural tooth shape and position, plus arch form and width; the patient is likely to adapt more easily while recovery from surgery is progressing — speech and mastication are rarely compromised, and nutrition can be maintained; and overall psychological and social well-being is preserved. The most compelling reasons are that the patient does not have to go without teeth and that there is no interruption of a normal lifestyle of smiling, talking, eating and socializing.</p><p>An immediate denture is a more challenging modality than a conventional complete denture because the presence of teeth makes impressions and maxillomandibular positions more difficult to record. Specific disadvantages: the inability to accomplish a denture-tooth try-in in advance of extractions precludes knowing what the denture will actually look like on the day of insertion; more chair time, additional appointments (relines) and therefore increased costs; the anterior ridge undercut (often severe) caused by remaining teeth may interfere with impression procedures, and capturing a posteriorly located undercut could be inaccurate and lead to poor retention; different numbers of remaining teeth in various locations frequently lead to incorrectly recording CR or improperly planning the appropriate VDO — an occlusal adjustment, or even selective pre-treatment extractions, may be needed to make accurate records at the proper VDO; and functional activities such as speech and mastication are likely to be impaired, though this is a temporary inconvenience.</p>"},{"k":"5th year · Immediate denture","t":"Conventional (CID) versus interim (IID) immediate dentures, and other classifications","b":"<p><b>Conventional (classic) immediate denture (CID)</b> is intended as the final or long-term prosthesis. After healing is completed the denture is relined (refitted) with acrylic resin to serve as the long-term prosthesis. The esthetics of the denture cannot then be changed. At the end of treatment the patient has one denture. It is contraindicated for patients who will need complicated treatment plans involving both arches, such as periodontal therapy, crowns and fixed prostheses, and dentures opposing removable partial dentures.</p><p><b>Interim (transitional or non-traditional) immediate denture (IID)</b> is intended for short-term use only. After healing, a second (new complete) denture is fabricated as the long-term prosthesis. The interim prosthesis is designed to enhance esthetics, stabilization and/or function for a limited period, after which it is replaced by a definitive prosthesis. The second-denture procedure allows an alteration of esthetics and of all other factors if indicated. At the end of treatment the patient has a spare denture to use in case of extenuating circumstances. It is often indicated when the patient will become edentulous in one arch and partially edentulous in the opposing arch for the first time: an interim complete denture can be made, and then any periodontal procedures, crowns and fixed or partial dentures can be done during the initial healing stage.</p><p>According to the type of restoration: immediate complete denture; immediate partial denture; and immediate overdenture. According to flange design: <b>flanged</b> type (complete flange or partial flange) and <b>flangeless</b> type (open face or close fit).</p>"},{"k":"5th year · Immediate denture","t":"Flanged versus flangeless (open-face) immediate dentures","b":"<p>Comparisons in this lecture: (1) the appearance of a flanged denture is not altered after fitting, while the appearance of an open-face denture (although good initially) can deteriorate rapidly as resorption creates a gap between the necks of the teeth and the ridge. (2) The flanged denture allows freedom in positioning the teeth; in an open-face denture the teeth have to be positioned in the sockets of the natural teeth, so good alignment of malpositioned teeth can be achieved with a flange but not with an open face. (3) In an upper denture a flange creates a more effective border seal and therefore better retention than an open face. (4) In the lower arch an open-face denture is not usually constructed because of poor stability during function, so a flanged denture is commonly used and is better for retention and stability. (5) A labial flange produces a stronger, stiffer denture, so midline fatigue fracture from repeated flexing is reduced. (6) As bone resorbs and the denture becomes loose, a labial flange makes it easier to add a short-term soft liner or a cold-curing reline as a chair-side procedure; the color of some reline materials is not always ideal, so they may be visible with an open-face denture. (7) The flanged denture covers the clot completely and protects it more effectively, and exerts pressure on both lingual and labial gingiva, reducing post-extraction hemorrhage. (8) An open-face denture can produce a scalloped ridge in the region of the socketed teeth; a flanged denture distributes functional loads more favorably and thus minimizes bone resorption. (9) Once a patient has got used to an open-face immediate denture, there is difficulty accepting a labial flange later, and the patient will complain of fullness of the lip — a problem avoided if a flanged denture was worn from the beginning. (10) When ridge morphology produces a deeply undercut area, a full labial flange may not be possible without surgical reduction; a partially flanged or open-face denture is then preferable if surgery is contraindicated.</p>"},{"k":"5th year · Immediate denture","t":"What must be explained to the patient","b":"<p>Explanation to the patient concerning immediate dentures: (1) they do not fit as well as complete dentures — they may need temporary linings with tissue conditioners and may require denture adhesives; (2) they will cause discomfort — the pain of the extractions, in addition to sore spots from the immediate denture, will make the first week or two after insertion difficult; (3) the esthetics may be unpredictable — without an anterior try-in, the appearance may be different from what was expected; (4) many other factors are unpredictable, such as a gagging tendency, increased salivation, different chewing sounds, and facial contour; (5) immediate dentures must be worn for the first 24 hours without being removed by the patient — if they are removed, they may not be able to be reinserted for 3 to 4 days; the dentist will remove them at the 24-hour visit; (6) because supporting-tissue changes are unpredictable, immediate dentures may loosen during the first 1–2 years, or in 4–6 months, depending on the number of teeth and their location.</p>"},{"k":"5th year · Immediate denture","t":"Diagnostic steps and the choice of surgical procedure","b":"<p>Good oral hygiene is essential. The systemic condition must be checked because multiple extractions may not be tolerated by all patients; uncontrolled systemic diseases exclude this treatment, while patients under medical control that does not interfere with construction and extractions (with or without some surgical corrections) can be included — medical consultation is advisable. A full dental history is recorded. Periodontal condition (mobility, pocket measurement) must be assessed because it may affect the surgical step; severe periodontal disease may suggest some surgical correction after extraction so that a well-contoured residual ridge is covered with firmly attached mucosa, and it gives a primitive assessment of later bone remodeling. Full tooth charting is done; teeth that may help retention as a partial denture or as overdenture abutments must be determined, and any soft- or hard-tissue correction (frenal release or bone reduction) is planned after evaluation. Radiographic examination is essential: a periapical film may be useful for a localized area; an OPG gives a general view of both jaws in a single image. Tooth mold and shade must be recorded, with proper communication about shade, form, alignment and individual variations (diastema, spacing, rotation) if the patient wishes to preserve the same appearance or if the dentist suggests improvement — but premature contacts must be removed because they may interfere with a correct jaw-relation record, and essential changes to the occlusal plane, midline, overjet and overbite are planned. Occlusal-plane adjustment is often necessary because the factors that necessitate extraction are often associated with occlusal discrepancies that also interfere with the CR record and with proper VDO; low and high lip lines must be located. Infection or inflammation (periapical abscess, granuloma, cysts) may make tissue changes at extraction and during healing unpredictable and increase the risk of an unfitted denture. A previous prosthesis, if present, is an added reference for jaw relations or tooth selection. Diagnostic casts are essential in many cases for the treatment plan, communication, and as a pre-extraction record. All patients must have good oral prophylaxis, proper scaling and good oral hygiene to reduce postoperative edema and infection. Other treatments (restorations or crowns and bridges) must be done in coincidence with immediate-denture planning.</p><p>With all of this information you decide the surgical procedure: extraction of teeth only, or extraction with alveoloplasty. Simple corrections at the extraction site may be needed to improve the shape of the alveolar process; in these cases a surgical splint, constructed on the master cast after tooth trimming, is important. Excessive bone correction may end with rapid resorption and an unfitted denture, so bone removal must be conservative. Consultation with the surgeon is essential in some cases.</p>"},{"k":"5th year · Immediate denture","t":"Impressions: loose teeth, the primary impression, and choosing a final technique","b":"<p>A successful impression is governed by proper tray selection, proper material selection and manipulation (usually irreversible hydrocolloid), and a well-trained dentist. When remaining teeth are very loose there is a risk of extraction during impression making, so try to fix them by: (1) applying a lubricant to the teeth; (2) if teeth are adjacent, applying molding soft wax into sub-contact-point spaces and around the necks so that the impression material is prevented from locking into the undercuts; (3) for a solitary tooth, placing a loose-fitting copper band (the lecture typographically writes “cupper band”) over the tooth before taking the impression.</p><p>For the <b>primary impression</b>, a stock tray (metal or plastic) must extend to cover the intended denture-bearing area and be able to record vestibule extension: it must cover the retromolar area in the lower arch and extend posteriorly to include the tuberosity and hamular notch in the upper arch. There should be enough space for a uniform thickness of material; an oversized tray distorts the tissue. Sheet wax may complete a minor under-extension. The impression must be free of voids and fully extended according to the planned design. The primary cast, poured in a gypsum product, serves as a study cast and is used to construct a special tray. A primary impression may be useful as a final impression in the case of immediate single-tooth replacement with or without a short-span partially edentulous arch.</p><p>Final-impression techniques range from simple to more complicated. Selection depends on case difficulty; the number and location of teeth included; teeth and tissue undercut; the type of impression material; and the dentist’s skill and experience. The imperative is to record the tissues and denture-bearing area with maximum accuracy, so as to minimize insertion, post-extraction adjustment and maintenance as much as possible.</p>"},{"k":"5th year · Immediate denture","t":"Final impression: the single full-arch custom tray, and the sectional tray","b":"<p><b>The single full-arch custom-tray technique</b> is used for an interim immediate denture and can be used for a conventional immediate denture. It is used when the patient has anterior teeth only, or anterior and posterior remaining teeth. A custom tray is fabricated on the primary cast with cold-cured acrylic resin, covering all teeth and the denture-bearing area, and should be 2 mm short of the vestibules. A single or double layer of sheet wax (depending on the impression material) is placed over the teeth as a spacer before tray fabrication. After the tray is checked in the mouth, border molding is done with tracing compound as in a conventional complete denture, and the final impression follows. Final materials may be irreversible hydrocolloid, silicone, polysulfide rubber base, or polyether. A more expert dentist may use two materials (ZOE + alginate) in one tray for maximum accuracy.</p><p><b>The sectional (split-impression-tray) technique</b> is used in a conventional immediate denture only, and cannot be used in an interim immediate denture. It is used mainly when the posterior area is edentulous and only anterior teeth remain. Two trays are constructed on the same cast: one for the posterior region, made as in a complete denture, and a second for the anterior region; indices or references must be made in the tray. The anterior section captures the facial anatomy of the teeth and the vestibular anatomy. The posterior sectional tray is tried for proper extension, border-molded with tracing compound, and a final impression of the edentulous area is made with ZOE, polyvinyl siloxane, polysulfide or polyether. The two sections are removed separately, reassembled outside the mouth using the indices, and prepared for casting. Accuracy and proper seating and reassembly are the most important points; take care not to distort the assembly during removal or pouring, so it is advisable to bead and box the impression before pouring. The impression records the whole denture-bearing area with two different materials. A modification uses a full tray covering the bearing area with a hole for the teeth; border molding and an impression of the edentulous area are made, then a proper stock tray over the custom tray captures the teeth area with alginate.</p>"},{"k":"5th year · Immediate denture","t":"Beading and boxing, the record base, jaw relations, and the try-in","b":"<p>The impression must be beaded before pouring. Wax may not stick to alginate, so care is needed to ensure proper beading; once the beading wax is fixed, boxing-wax sheets can stick easily. In a sectional impression, seat the sections properly on the indices. Pour and remove the tray as in the conventional manner.</p><p>Bite rims are usually constructed to record jaw relations. If the patient has enough remaining anterior and posterior teeth, there is no need for a record base or bite rim, as in most interim immediate dentures. If there are not enough remaining teeth — as in all conventional immediate dentures and some interim cases — a bite rim must be constructed. Before constructing the record base, all teeth and tissue undercuts must be blocked with wax; cold-cure acrylic dough is then applied on the edentulous area of the cast, finished and polished to a stable, properly extended base. A wax occlusion rim is added to the corresponding edentulous area; leveling depends on anatomical landmarks such as the retromolar area, and you may use the remaining teeth but not always. Extension and wax-rim height are evaluated clinically. High and low lip lines are determined and marked on the cast so that corrections can be considered in tooth setting.</p><p>Jaw-relation records include vertical and horizontal relations, usually made as in conventional denture construction. If there are vertical stops between two opposing posterior teeth, these relations are maintained unless further corrections are needed. The existing VDO must be evaluated and the dentist decides whether it will be restored or modified. Uneven tooth loss, wear, loosening, drifting and extrusion may all indicate correction of the vertical relation. In this visit the dentist must record the midline, canine lines, ala-tragus line, smiling and high lip line, and the anterior occlusal plane in relation to the remaining teeth. A face-bow transfer and a centric jaw relation must be recorded, then the casts are mounted on a suitable articulator. Artificial teeth are selected for the anterior and posterior segments: shade, size, form, and the occlusal form of the posterior teeth must fit each case.</p><p>A try-in is not possible in every immediate-denture case, but even so the mounting of the master casts must be confirmed at a patient visit. In most conventional cases the posterior teeth are already missing, so you can set the posteriors as in a conventional complete denture, following the rules of arrangement in centric occlusion. Confirm the diagnostic landmarks and the patient’s wishes: the midline — whether it stays the same or is changed, and if you decide any change you must inform the patient and explain the reasons; the anterior plane of occlusion — extruded or over-erupted teeth must be corrected on the casts, using the interpupillary line and parallelism with the ala-tragus line; the high lip line, marked on the cast, with a discussion of the amount of display of teeth and gingiva; any localized alveoloplasty or change in alignment suggested to improve appearance, which the patient must see and approve; and diastema, rotated teeth, overjet and overbite and other natural variations, because some patients ask for a perfect look they never had, while others like their natural variations (in this way nobody can notice the denture). The patient must be actively involved in esthetic decisions. Further information is given about surgical procedures, tissue changes such as edema and discoloration in the few days after insertion, and a local sense of lip puffiness even after edema has resolved, due to flange extension. Answer all questions directly and clearly. At the end of the try-in, mark on the cast everything related to the present teeth and everything you have to change (teeth and tissues).</p>"},{"k":"5th year · Immediate denture","t":"Cast trimming, the surgical guide, and setting the anterior teeth","b":"<p>The remaining teeth must now be trimmed and replaced with artificial teeth. Trimming must be done carefully to estimate as far as possible the shape of the residual ridge after extraction; the final cast ridge must be similar to the contour of the foundation area after extraction. More than one method may be used, depending on whether you decide to duplicate the same alignment or not, on esthetic and functional requirements, and on the amount of change expected during surgery. Teeth are usually trimmed with a saw or a disc bur; a sharp knife or wax knife may help. Scribe guidelines on the cast recording the position, angulation and incisal level of the natural teeth; in this step it must follow the <b>rule of third</b> to guide cast trimming (the lecture names the rule but does not spell out the thirds). The amount of grinding is very minimal on the palatal side, because remodeling after extraction is usually minimal on this side. The final ridge form must be round and continuous from the buccal and lingual surfaces. Cast trimming may be done at the same time as tooth arrangement. Do not change or trim the essential landmarks such as the incisive papilla or any frenum.</p><p>After complete cast trimming, a <b>surgical splint (surgical guide)</b> must be constructed. It is a thin transparent form of the tissue surface of the immediate denture, used to guide surgical shaping of the alveolar process. It is essential when alveolar corrections are needed after extraction, or for ridge recontouring, correction of interseptal bone, or multiple extractions. Steps: make an alginate impression on the trimmed cast; pour the impression (cast duplication); and make a clear template processed by heat or light — vacuum-form and sprinkle-on methods can also be used. Advantage: the splint also helps to remove any expected pressure area at the site of extraction, thus minimizing insertion time and adjustment at the insertion visit.</p><p>Arrangement of anterior teeth: the dentist decides whether the teeth need to be changed in location or alignment to improve aesthetics, or whether they are well aligned and aesthetically and functionally acceptable, in which case the same alignment can be reproduced. Two ways to arrange the teeth in the same alignment as the natural teeth: <b>first</b>, produce a labial index of the natural teeth before they are cut off the cast; the artificial teeth can be set into the index while it is held against the cast, preserving the same location and duplicating the same morphology. <b>Second (the alternative method)</b>: remove one tooth from the cast and immediately wax an artificial tooth into position so that the adjacent teeth serve as a guide; repeat this procedure alternately. Or trim all the teeth on one side and use the other side as a reference.</p>"},{"k":"5th year · Immediate denture","t":"Waxing, insertion day, the first 24 hours, and follow-up care","b":"<p>In waxing and flasking, any custom-selected personalization criteria must be carved. Processing and flasking are the same as in a conventional complete denture. Keep both the denture and the splint template in disinfectant until delivery.</p><p>On the day of surgery and insertion: (1) examine the patient intraorally for any changes; (2) extract the marked teeth — preserve the labial plate and be conservative; no bone trimming is done without guiding; use a suture if necessary; (3) use the surgical template to guide any alveolar corrections — seat the template: blanch areas seen through it indicate pressure and need correction; (4) insert the denture, remove all detected over-extended flanges, correct any pressure areas, and check frenum relief; (5) check occlusion — no gross occlusal interference; (6) tissue conditioner is usually used to retain the denture, but do not allow the material to extend into the socket areas or normal socket healing will be compromised; (7) try to reduce the number of insertions and removals of the denture that day to avoid trauma and edema.</p><p>First 24 hours: avoid removing the immediate denture; put gentle biting pressure on the denture during the first four hours; avoid hard food and eat soft healthy food, and avoid drinking hot fluids; an ice pack in the first 24 hours (20 minutes on followed by 20 minutes off) may control inflammation and swelling; remind the patient that the pain from extraction will not be reduced by removing the denture; and analgesic and antibiotic must be prescribed depending on the case.</p><p>The first adjustment is after 24 hours: the denture should be kept out of the mouth only for a short time, so quickly check tissue sore spots, over-extension and any gross occlusal discrepancy. On removal the denture may be painful — inform the patient and adjust sore areas, which appear as deep red areas, mostly undercuts such as the canine eminence, tuberosity and retro-mylohyoid ridge. Adjust occlusion. Assess retention and use tissue conditioner if needed.</p><p>First week: instruct the patient to wear the denture day and night for the first 7 days after extraction or until swelling reduction; after the first day, remove the denture 4 or 5 times a day and rinse the mouth with warm salt water, for the first week; the denture must be cleaned and rinsed after meals as early as possible, and when insertion and removal is with little or tolerable pain. Further follow-up: the second week is the next call, depending on the case, then the patient should be seen one month later, and at 4–6 month intervals. A denture adhesive will be necessary to help hold the denture in place. Relining may be necessary to achieve esthetic and occlusion corrections. Frequent or periodic recall is mainly for changing the temporary liner, depending on the rate and amount of bone resorption and the patient’s ability to keep the liner clean.</p>"},{"k":"اختبر نفسك","t":"Quiz: CID versus IID, and flanged versus open-face","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">After healing is completed, a conventional (classic) immediate denture (CID) is handled how, compared with an interim (IID) denture?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A second new complete denture is always made, and the CID is discarded</button><button type=\"button\" class=\"opt\" data-i=\"1\">The CID is relined to serve as the long-term prosthesis (esthetics cannot then be changed; the patient has one denture); an IID is replaced by a second new denture, so the patient has a spare</button><button type=\"button\" class=\"opt\" data-i=\"2\">Both types are left unadjusted for two years</button><button type=\"button\" class=\"opt\" data-i=\"3\">An IID is contraindicated when one arch will become edentulous and the other partially edentulous for the first time</button></div><div class=\"qexp\" hidden><p>التقليدي (CID) يُعاد تبطينه ويبقى النهائي (التجميل ما يتغيّر؛ طقم واحد). المؤقت (IID) يُستبدل بطقم جديد فالمريض يبقى عنده احتياط. المؤقت غالباً يُستطب إذا قوس راح يصير عديم أسنان والآخر جزئي لأول مرة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Which statement about flange design is consistent with this lecture?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">An open-face lower denture is preferred because it is more stable in function</button><button type=\"button\" class=\"opt\" data-i=\"1\">A flanged denture gives a better border seal in the upper, is commonly used in the lower, is stronger against midline flexure, protects the clot, and is easier to reline; an open face may scallop the ridge and makes a later labial flange hard to accept</button><button type=\"button\" class=\"opt\" data-i=\"2\">A full labial flange is always possible in a deep undercut without surgery</button><button type=\"button\" class=\"opt\" data-i=\"3\">Open-face appearance improves with residual-ridge resorption</button></div><div class=\"qexp\" hidden><p>الشفة أفضل: ختم وتثبيت بالعلوي، ثبات بالسفلي، أقوى ضد كسر المنتصف، تحمي الجلطة، وأسهل تبطين. الوجه المفتوح يبان حلو أولاً بس يتدهور ويه الامتصاص وقد يسنّن الحافة، والمريض بعدين يرفض الشفة. إذا تقعر عميق والجراحة مضاد، شفة جزئية أو وجه مفتوح أفضل.</p></div></div>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: the 24-hour rule, impressions, and the surgical guide","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">If the patient removes an immediate denture during the first 24 hours, this lecture warns that:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">It can always be reinserted at home without problems</button><button type=\"button\" class=\"opt\" data-i=\"1\">It may not be able to be reinserted for 3 to 4 days; the dentist removes it at the 24-hour visit. The denture is worn day and night for the first 7 days or until swelling reduces</button><button type=\"button\" class=\"opt\" data-i=\"2\">Pain from extraction is relieved by taking the denture out</button><button type=\"button\" class=\"opt\" data-i=\"3\">Tissue conditioner should be packed into the sockets to improve retention</button></div><div class=\"qexp\" hidden><p>أول 24 ساعة لا يشيله المريض؛ إذا انشال قد ما ينرجع 3–4 أيام. الطبيب يشيله بزيارة الـ 24 ساعة. يُلبس ليل ونهار أول 7 أيام أو لحد ما يخف التورم. ألم القلع ما يقل بإخراج الطقم. مكيّف النسيج ما يمتد داخل السنخ حتى ما ينخرّب الشفاء.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The sectional (split-tray) impression technique in this lecture is used:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">For interim immediate dentures only, never for conventional ones</button><button type=\"button\" class=\"opt\" data-i=\"1\">In conventional immediate dentures only (not IID), mainly when the posterior area is edentulous and only anterior teeth remain; two trays are reassembled on indices outside the mouth</button><button type=\"button\" class=\"opt\" data-i=\"2\">Only as a primary impression with an oversized stock tray</button><button type=\"button\" class=\"opt\" data-i=\"3\">Without beading and boxing, because alginate always holds wax easily</button></div><div class=\"qexp\" hidden><p>المقطعية للتقليدي فقط، مو للمؤقت؛ أساساً لما الخلف عديم والأمامية باقية. الطابعان يتركّبون برّة على الدلائل، ويُفضَّل التضبيض والتغليف. الطابع الخاص لكامل القوس يُستخدم للمؤقت ويمكن للتقليدي، وأقصر 2 ملم من الدهليز.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">What is a surgical splint (surgical guide) here, and how is an expected pressure area recognized at insertion?</button><div class=\"flash-a\" hidden>It is a thin transparent form of the tissue surface of the immediate denture, used to guide surgical shaping of the alveolar process (and to reduce insertion adjustments). It is made from a duplicate of the trimmed cast as a clear template (heat, light, vacuum-form or sprinkle-on). When the template is seated, blanch areas seen through it indicate pressure and need correction. No bone trimming is done without this guidance.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا الملف عن <b>الطقم الفوري</b>: التعريف، الاستطبابات ومضاداتها، المزايا والعيوب، التقليدي مقابل المؤقت، تصميم الشفة، التشخيص والطبعات، التجربة وتقليم المصبوب، الدليل الجراحي، والإدخال والمتابعة.</p>","<p>الطقم الفوري خيار يعطي تجميل ووظيفة ودعم نفسي بعد القلع وأثناء الشفاء. التعريف: <b>أي طقم كامل أو جزئي متحرك يُصنَّع ليُوضع فوراً بعد قلع الأسنان الطبيعية</b>. يُصنع قبل قلع كل الأسنان المتبقية ويُدخل فوراً بعد قلعها. قد يعوّض سن واحد أو الستة عشر كلها بقوس علوي أو سفلي أو الاثنين.</p><p>الاستطبابات: مريض متعلم ويه نشاط اجتماعي يومي (أطباء، محامين، مدرسين)؛ أسنان متبقية ميؤوس منها؛ صحة مستقرة؛ ومريض ما يمانع زيارات أو تكلفة إضافية. أفضل مريض هو النوع <b>الفلسفي</b>: هدفه الحفاظ على الصحة والمظهر، ويتقبل تعويض الأسنان اللي ما تنحفظ كإجراء طبيعي.</p><p>المضادات: صحة عامة ضعيفة؛ مريض غير متعاون أو غير مبالٍ أو غير مقدِّر؛ خطر تجرثم الدم؛ نزيف متكرر بعد القلع؛ أمراض ذروية أو لثوية حادة وضياع عظمي واسع؛ ومريض ما يمانع يبقى بلا أسنان لفترة حتى يكتمل الشفاء.</p>","<p>المزايا: المظهر محفوظ لأنه ما في فترة بلا أسنان؛ دعم حول الفم وتوتر العضلات والبعد العمودي وعلاقة الفكين وارتفاع الوجه ينحفظون، واللسان ما ينفرش؛ ألم أقل بعد العملية لأن مواقع القلع محمية؛ بعض الباحثين ناقشوا هل يقلل امتصاص الحافة؛ أسهل تنسخ شكل وموضع الأسنان الطبيعية وشكل وعرض القوس؛ التكيّف أسهل ويه الشفاء — النطق والمضغ نادراً ما ينضرّون، والتغذية تنحفظ؛ والوضع النفسي والاجتماعي محفوظ. أقوى سبب: المريض ما يبقى بلا أسنان وما تنقطع حياته الطبيعية.</p><p>أصعب من الطقم الكامل التقليدي لأن وجود الأسنان يصعّب الطبعة وسجلات الفكين. العيوب: ما تكدر تسوي تجربة للأسنان قبل القلع فشكل الطقم يوم الإدخال مو معروف مسبقاً؛ وقت كرسي وزيارات (إعادة تبطين) وتكلفة أكثر؛ التقعر الأمامي (غالباً شديد) يعيق الطبعة، والتقعر الخلفي قد ينسجل غلط فيضعف التثبيت؛ أعداد ومواضع مختلفة للأسنان المتبقية غالباً تخرب سجل العلاقة المركزية أو تخطيط البعد العمودي — قد تحتاج تعديل إطباق أو قلع انتقائي قبل التسجيل؛ والنطق والمضغ قد يضعفون مؤقتاً.</p>","<p>الطقم الفوري <b>التقليدي (CID)</b> مقصود كتعويض نهائي طويل الأمد. بعد الشفاء يُعاد تبطينه بالأكريل. التجميل ما يتغيّر بعدين. بنهاية العلاج المريض عنده طقم واحد. مضاد استطباب إذا الخطة معقدة بالقوسين (علاج لثوي، تيجان وثابت، وطقم مقابل جزئي متحرك).</p><p>الطقم الفوري <b>المؤقت/الانتقالي (IID)</b> للاستخدام القصير فقط. بعد الشفاء يُصنع طقم كامل جديد كنهائي. المؤقت يحسّن التجميل و/أو الثبات و/أو الوظيفة لفترة محدودة ثم يُستبدل. الإجراء الثاني يسمح بتغيير التجميل وكل العوامل إذا لزم. بنهاية العلاج المريض عنده طقم احتياط. غالباً يُستطب إذا راح يصير عديم أسنان بقوس وجزئي بالقوس المقابل لأول مرة: يصنعون طقم كامل مؤقت، وبعدين الإجراءات اللثوية والتيجان والثابت أو الجزئي أثناء الشفاء الأولي.</p><p>حسب نوع الترميم: كامل فوري؛ جزئي فوري؛ وفوقي فوري. حسب الشفة: <b>بشفة</b> (كاملة أو جزئية) و<b>بلا شفة</b> (وجه مفتوح أو إطباق وثيق).</p>","<p>مقارنة الشفة وبدون شفة: (1) مظهر الشفة ما يتغيّر بعد التركيب، بينما الوجه المفتوح بدايته حلوة بس يتدهور بسرعة ويه الامتصاص (فجوة بين رقاب الأسنان والحافة). (2) الشفة تعطي حرية بموضع الأسنان؛ الوجه المفتوح يحط الأسنان بسنخ الطبيعية، فالأسنان المنحرفة ما تنعدّل بيّه. (3) بالعلوي الشفة تعطي ختم حدود وتثبيت أفضل. (4) بالسفلي الوجه المفتوح عادة ما يُصنع لضعف الثبات، فالشفة أفضل. (5) الشفة الشفوية تقوّي الطقم وتقلل كسر منتصف من الثني المتكرر. (6) ويه الارتخاء بعد الامتصاص الشفة تسهّل إضافة بطانة لينة أو إعادة تبطين بارد على الكرسي؛ لون بعض المواد مو مثالي وقد يبان ويه الوجه المفتوح. (7) الشفة تغطي الجلطة وتحميها وتضغط على اللثة اللسانية والشفوية فتقلل النزف. (8) الوجه المفتوح قد ينتج حافة مسننة عند السنخ؛ الشفة توزّع الحمل أفضل وتقلل الامتصاص. (9) إذا اعتاد المريض على الوجه المفتوح يصعب يقبل شفة بعدين ويشتكي من امتلاء الشفة. (10) إذا في تقعر عميق، الشفة الكاملة قد تحتاج تصغير جراحي؛ الشفة الجزئية أو الوجه المفتوح أفضل إذا الجراحة مضاد استطباب.</p>","<p>لازم تشرّح للمريض: (1) ما يركبون مثل الطقم الكامل — قد يحتاجون تبطين مؤقت بمكيّف نسيج ولاصق؛ (2) راح يسببون عدم راحة — ألم القلع ويه نقاط الوجع من الطقم يصعّبون أول أسبوع أو أسبوعين؛ (3) التجميل قد يكون غير متوقع بدون تجربة أمامية؛ (4) عوامل ثانية غير متوقعة: غثيان، زيادة لعاب، أصوات مضغ مختلفة، وشكل الوجه؛ (5) لازم ينلبس أول 24 ساعة بلا ما المريض يشيله — إذا انشال قد ما ينرجع إلا بعد 3–4 أيام؛ الطبيب يشيله بزيارة الـ 24 ساعة؛ (6) تغيّر النسيج غير متوقع، فقد يرتخي خلال أول 1–2 سنة، أو خلال 4–6 أشهر، حسب عدد ومكان الأسنان.</p>","<p>نظافة فم جيدة أساسية. افحص الصحة العامة لأن القلع المتعدد مو لكل المرضى؛ الأمراض الجهازية غير المسيطر عليها تُخرج المريض، واللي تحت سيطرة طبية ما تعارض الخطوات يكدرون يندخلون — استشارة طبية مستحسنة. سجّل التاريخ السني كامل. قيّم اللثة (حركة، جيوب) لأنها تؤثر على الخطوة الجراحية وقد تحتاج تصحيح بعد القلع لحافة جيدة ويه مخاطية مثبتة. جدّول الأسنان؛ حدد اللي يفيدون كدعامات جزئي أو طقم فوقي، وخطط تحرير لجام أو تصغير عظم. الأشعة ضرورية: ذروية لمنطقة محددة، وبانوراما لنظرة عامة. سجّل القالب واللون وناقش الشكل والمحاذاة والفروقات (فُرجة، تباعد، دوران). بس لازم تشيل التماسات المبكرة لأنها تخرب سجل العلاقة الفكية، وخطط تصحيح مستوى الإطباق والمنتصف والتراكب. تعديل مستوى الإطباق غالباً ضروري. خطوط الشفة الواطئة والعالية لازم تتحدد. الخمج أو الالتهاب (خراج، ورم حبيبي، أكياس) يخلي التغيّر غير متوقع ويزيد خطر طقم غير مناسب. الطقم السابق مرجع إضافي. المصبوبات التشخيصية مهمة للخطة والتواصل وكسجل قبل القلع. تقليح ونظافة لتقليل الوذمة والخمج. الترميمات والتيجان ويه التخطيط.</p><p>بعدها تقرر: قلع فقط، أو قلع ويه رأب سنخ. التصحيحات البسيطة تحتاج جبيرة جراحية على المصبوب الرئيسي بعد تقليم الأسنان. التصحيح العظمي المفرط قد يسرّع الامتصاص، فالتصغير يكون محافظ. استشر الجرّاح ببعض الحالات.</p>","<p>نجاح الطبعة: طابع مناسب، مادة مناسبة (عادة هيدروغرويد غير عكوس/ألجينات)، وطبيب متمرس. إذا الأسنان رخوة جداً في خطر قلع ويه الطبعة: (1) زيت/مزلق على الأسنان؛ (2) إذا متجاورة، شمع طري تحت نقاط التماس وحول الرقاب حتى المادة ما تنقفل بالتقعرات؛ (3) للسن المفرد، طوق نحاس فضفاض (المحاضرة كتبت cupper) فوق السن قبل الطبعة.</p><p>الطبعة <b>الأولية</b>: طابع جاهز معدني أو بلاستيك يغطي منطقة التحمل ويسجّل الدهليز — يغطي المنطقة خلف الرحى بالسفلي، والحدبة والثلمة الشصّية بالعلوي. مسافة كافية لسماكة منتظمة؛ الطابع الأكبر من اللازم يشوّه النسيج. شمع صفيحة يكمل نقص بسيط. بلا فراغات وامتداد كامل حسب التصميم. المصبوب الأولي (جبس) للدراسة ولصنع طابع خاص. الطبعة الأولية قد تكفي ك النهائية بتعويض سن واحد فوري ويه أو بدون قوس جزئي قصير.</p><p>اختيار تقنية النهائية يعتمد على صعوبة الحالة، عدد ومكان الأسنان، التقعر، نوع المادة، وخبرة الطبيب. المطلوب أعلى دقة حتى تقلل الإدخال والتعديل والصيانة.</p>","<p>تقنية <b>الطابع الخاص لكامل القوس</b> تُستخدم للمؤقت ويمكن استخدامها للتقليدي. للحالات ويه أسنان أمامية فقط، أو أمامية وخلفية متبقية. طابع أكريل بارد على المصبوب الأولي يغطي الأسنان ومنطقة التحمل، و<b>أقصر 2 ملم من الدهليز</b>. طبقة أو طبقتان من شمع الصفيحة فوق الأسنان كمباعد. بعد الفحص، تشكيل حدود بوسم التتبع مثل الطقم الكامل، وبعدين الطبعة النهائية (ألجينات، سيليكون، بولي سلفايد، أو بولي إيثر). الطبيب الأكثر خبرة قد يستخدم مادتين (ZOE + ألجينات) بطابع واحد.</p><p>تقنية <b>الطبعة المقطعية (طابع منقسم)</b> للتقليدي فقط، <b>ما تُستخدم بالمؤقت</b>. أساساً لما الخلف عديم أسنان والأمامية فقط باقية. طابعان على نفس المصبوب: خلفي مثل الطقم الكامل، وأمامي؛ ويه دلائل/فهارس. الأمامي يلتقط تشريح الأسنان الوجهي والدهليز. الخلفي يُفحص ويُشكَّل حدوده، والطبعة النهائية للمنطقة العديمة بـ ZOE أو سيليكون أو بولي سلفايد أو بولي إيثر. يتشالون منفصلين ويتركّبون برّة الفم على الدلائل. أهم شي الدقة والتركيب؛ لا تشوّه التجميع، والأفضل تضبيض وتغليف قبل الصب. تعديل: طابع كامل ويه فتحة للأسنان، طبعة المنطقة العديمة، وبعدين طابع جاهز فوق الخاص يلتقط الأسنان بالألجينات.</p>","<p>الطبعة لازم تتضبيض قبل الصب. الشمع قد ما يلتصق بالألجينات فانتبه؛ بعد تثبيت شمع التضبيض، شمع التغليف يلتصق بسهولة. بالمقطعية ركّب الأجزاء على الدلائل.</p><p>حواف العض عادة لتسجيل العلاقة. إذا في أسنان أمامية وخلفية كافية، ما تحتاج قاعدة سجل أو حافة عض (أغلب المؤقت). إذا ما كافية — بكل التقليدي وبعض المؤقت — لازم حافة عض. قبل قاعدة السجل سدّ كل التقعرات بالشمع، وأكريل بارد على المنطقة العديمة، يُنَهَّى حتى القاعدة ثابتة وممتدة صح. حافة شمعية على المنطقة العديمة؛ التسوية حسب معالم مثل المنطقة خلف الرحى، وقد تستخدم الأسنان المتبقية بس مو دائماً. حدّد خطي الشفة العالي والواطي وعلّمهم على المصبوب.</p><p>سجلات العلاقة العمودية والأفقية مثل الطقم التقليدي. إذا في وقفات عمودية بين خلفيات متقابلة، تُحفَظ إلا إذا تحتاج تصحيح. قيّم البعد العمودي الموجود وقرر ترجّعه أو تعدّله. الضياع غير المتساوي والتآكل والارتخاء والهجرة والبزوغ قد تستدعي تصحيح العمودي. بهالزيارة سجّل المنتصف، خطوط الأنياب، خط جناح الأنف-الزنمة، خط الابتسامة والشفة العالي، ومستوى الإطباق الأمامي. نقل قوس الوجه والعلاقة المركزية، وبعدين ركّب على مفصلة مناسبة. اختيار الأسنان: لون وحجم وشكل، وشكل إطباق الخلفيات يناسب الحالة.</p><p>التجربة مو ممكنة بكل حالة، بس لازم تتأكد من تركيب المصبوبات. بأغلب التقليدي الخلفيات مفقودة فترتبها مثل الطقم الكامل بالإطباق المركزي. أكّد المعالم ورغبات المريض: المنتصف (إذا تغيّر لازم تشرح السبب)؛ مستوى الإطباق الأمامي (صحّح الأسنان البازغة، ويه خط الحدقتين وموازاة خط جناح الأنف-الزنمة)؛ خط الشفة العالي وكمية ظهور الأسنان واللثة؛ أي رأب سنخ موضعي أو تغيير محاذاة (المريض يشوف ويوافق)؛ والفُرجة والدوران والتراكب — بعض المرضى يريدون شكل مثالي ما كان عندهم، وبعضهم يحبون فروقهم الطبيعية. أشرك المريض بقرارات التجميل. أخبره عن الجراحة، الوذمة وتغيّر اللون بأيام بعد الإدخال، وإحساس انتفاخ الشفة حتى بعد زوال الوذمة بسبب امتداد الشفة. بنهاية التجربة علّم على المصبوب كل اللي راح يتغيّر.</p>","<p>قلم الأسنان المتبقية وعوّضها باصطناعية. التقليم بحذر حتى تقدّر شكل الحافة بعد القلع؛ الحافة النهائية بالمصبوب لازم تشبه محيط منطقة الأساس بعد القلع. الطريقة تعتمد على هل تنسخ نفس المحاذاة، والمتطلبات التجميلية والوظيفية، وكمية التغيير المتوقع بالجراحة. عادة بالمنشار أو فرز القرص؛ سكين حاد أو سكين شمع يساعد. ارسم خطوط دليل لموضع وميل ومستوى القاطع؛ بهالخطوة اتبع <b>قاعدة الأثلاث</b> لتوجيه التقليم (المحاضرة تسمّي القاعدة وما تفصّل الأثلاث). الطحن على الجهة الحنكية قليل جداً لأن إعادة التشكيل هناك قليلة عادة. الشكل النهائي يكون مستدير ومستمر من الشدقي واللساني. لا تقلّم المعالم الأساسية مثل الحليمة القاطعة أو أي لجام.</p><p>بعد التقليم تُصنع <b>جبيرة/دليل جراحي</b>: شكل شفاف رقيق لسطح النسيج للطقم الفوري، يوجّه تشكيل الناتئ السنخي. ضروري إذا في تصحيحات سنخية أو إعادة تشكيل حافة أو تصحيح عظم بين الأسنان أو قلع متعدد. الخطوات: طبعة ألجينات على المصبوب المقلم؛ صب (نسخ المصبوب)؛ قالب شفاف بالحرارة أو الضوء — أو تفريغ أو رش. الفائدة: يساعد يشيل مناطق الضغط المتوقعة فيقلل وقت الإدخال والتعديل.</p><p>ترتيب الأمامية: إما تغيّر الموضع لتحسين التجميل، أو تنسخ المحاذاة إذا مقبولة. طريقتان للنسخ: <b>الأولى</b> دليل شفوي للأسنان الطبيعية قبل قصّها؛ الأسنان الاصطناعية تتركب بالدليل وهو ممسوك على المصبوب. <b>الثانية (البديلة)</b>: شيل سن واحد وحط اصطناعي فوراً والأسنان المجاورة دليل؛ كرّر بالتناوب. أو قلم جهة كاملة واستخدم الجهة الثانية كمرجع.</p>","<p>بالتشميع والتفلية انحت أي توصيف شخصي مختار. التفلية مثل الطقم التقليدي. خلِّ الطقم والجبيرة بالمطهّر لحد التسليم.</p><p>يوم الجراحة والإدخال: افحص الفم لأي تغيّر؛ اقلع الأسنان المعلَّمة — حافظ على الصفيحة الشفوية وكن محافظاً؛ ما في تقليم عظم بلا دليل؛ خيط إذا لزم. استخدم الدليل الجراحي: مناطق التبييض من خلاله تعني ضغط وتحتاج تصحيح. أدخل الطقم، شيل الامتداد الزايد، صحّح الضغط، وفكّك اللجام. افحص الإطباق بلا تداخل فجّ. عادة مكيّف نسيج للتثبيت، <b>بس لا تخلّي المادة تمتد لداخل السنخ</b> حتى ما ينخرّب الشفاء. قلّل عدد الإدخال والإخراج ذلك اليوم حتى تتجنب الرضّ والوذمة.</p><p>أول 24 ساعة: لا تشيل الطقم؛ عضّة لطيفة بأول أربع ساعات؛ تجنّب الأكل الصلب والسوائل الحارة؛ كمادة ثلج أول 24 ساعة (20 دقيقة شغل و 20 إيقاف)؛ ألم القلع ما يقل إذا شلت الطقم؛ ومسكن ومضاد حيوي حسب الحالة.</p><p>أول تعديل بعد 24 ساعة: الطقم برّة الفم وقت قصير فقط؛ افحص بسرعة نقاط الوجع والامتداد الزايد وأي خلل إطباق فجّ. الإخراج قد يؤلم — عدّل المناطق الحمراء العميقة، غالباً تقعرات مثل بروز الناب والحدبة والحافة خلف الضرس اللامي. عدّل الإطباق. قيّم التثبيت ومكيّف النسيج إذا لزم.</p><p>أول أسبوع: البس الطقم ليل ونهار أول 7 أيام أو لحد ما يخف التورم؛ بعد أول يوم شيله 4 أو 5 مرات باليوم واغسل الفم بماء ملح دافئ طوال الأسبوع؛ نظّف بعد الأكل بأقرب وقت، لما الإدخال والإخراج يصير بألم محتمل. المتابعة: الأسبوع الثاني حسب الحالة، وبعد شهر، وبعدين كل 4–6 أشهر. غالباً يحتاج لاصق. قد تحتاج إعادة تبطين لتصحيح التجميل والإطباق. المراجعة الدورية أساساً لتغيير البطانة المؤقتة حسب سرعة الامتصاص وقدرة المريض ينظّفها.</p>","<p>CID يُبطَّن ويبقى؛ IID يُستبدل بطقم جديد. الشفة عموماً أفضل من الوجه المفتوح إلا ويه تقعر عميق والجراحة ممنوعة.</p>","<p>أسئلة ختامية + بطاقة + زر الدرجة: قاعدة الـ 24 ساعة ولبس أول 7 أيام؛ الطبعة المقطعية للتقليدي فقط؛ والدليل الجراحي ومناطق التبييض. إذا غلطت ارجع للشرائح.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
