@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Operative File 7 — Posterior Composite and Patient Assessment</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Operative (Conservative) Dentistry · Prof. Linz Lecture 15 and Dr. Al-Shammaa Lectures 1–2</div>
+    <h1>Posterior Composite (Classes I and II), and Patient Assessment and Treatment Planning</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lecture 15 by Prof. Linz (PDF pages 133–138) on posterior composite, and Lectures 1–2 by Dr. Abdullah Al-Shammaa (pages 139–147) on patient assessment, diagnosis and treatment planning.</p>
+    <ul>
+      <li>Class I and II composite versus amalgam: no extension for prevention, a remaining 2 mm marginal ridge, and usually a 1–2 mm depth</li>
+      <li>Increments of no more than 2 mm, a 4–5 mm bulk fill, and a sandwich when the gingival margin extends beyond the CEJ</li>
+      <li>Caries detection without a sticky explorer, pulp tests, and a biologic width of about 2–3 mm</li>
+      <li>Cracked-tooth syndrome at 33–50 years, transillumination and a biting test, cervical burnout, and treating the most acute tooth first</li>
+      <li>Total run time: <b>38 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 19</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Operative · File 7","t":"Posterior composite (Classes I and II), then patient assessment and treatment planning","b":"<p>University of Baghdad, College of Dentistry — Operative (conservative) dentistry syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file covers PDF pages 133–147: Lecture 15 by Prof. Linz on posterior composite preparations and placement for Classes I and II, then Lectures 1 and 2 by Dr. Abdullah Al-Shammaa on patient assessment, diagnosis and treatment planning (Parts I and II).</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Medical terms stay in English next to the Arabic. Numbers in these lectures are kept as written, including a remaining marginal ridge of 2 mm, composite increments of no more than 2 mm, a bulk increment of 4–5 mm, and a biologic width of approximately 2–3 mm.</p>"},{"k":"Prof. Linz · Lecture 15","t":"Class I posterior composite: preserve a 2 mm marginal ridge, and a conservative modified form","b":"<p>Three typical composite preparations are described: (1) conventional — for a large preparation or restorations subjected to heavy occlusal forces; (2) beveled conventional; (3) modified — for a small to moderate restoration.</p><p>Class I conventional, or conventional with a bevel: an amalgam-like preparation. Facial and lingual extension and width depend on caries or the old restoration. Cuspal and marginal-ridge areas should be preserved as much as possible. Outline form should be as conservative as possible. The remaining marginal ridge should be <b>2 mm</b>. A bevel is needed to increase retention. A modified Class I design has no uniform or flat pulpal floor or axial walls, is as conservative as possible in tooth-structure removal, and the cavity size is determined by the size of the caries.</p>"},{"k":"Prof. Linz · Lecture 15","t":"Class I amalgam versus composite: no “extension for prevention,” and a depth usually of 1–2 mm","b":"<p>Similarities between a Class I amalgam and a Class I composite: removal of unsupported enamel; all angles should be rounded to prevent stress concentration on tooth structure; and the walls should be parallel to the long axis of the tooth.</p><p>Differences — outline: amalgam includes all pits and fissures (extension for prevention) and a cavity width of ¼ ICD; composite is limited to the defective area (no extension for prevention) and is as conservative as possible. Retention: amalgam uses mechanical retention, facial and lingual walls that are parallel or slightly converge occlusally, retention that depends on cavity design, and a flat pulpal floor; composite uses chemical retention, and sometimes mechanical retention is needed, such as a dentinal groove and an enamel bevel. Resistance: amalgam depth should be 1.5–2 mm with a smooth pulpal floor; composite depth is not necessarily uniform but is usually <b>1–2 mm</b>, with rough walls.</p>"},{"k":"Prof. Linz · Lecture 15","t":"Class II composite: a 0.5–1 mm proximal bevel, or a box or slot with no occlusal step","b":"<p>Class II conventional or beveled-conventional design: used for moderate to very large caries; composed of a Class I and a proximal box; walls prepared perpendicular to the long axis of the tooth; roughened walls; bevels of the proximal box <b>0.5–1 mm</b> on the facial and lingual cavosurface margins, which provide a more accessible location for finishing and polishing.</p><p>Modified design — box-like preparation: used for a small proximal lesion with no caries on the occlusal surface; composed of a proximal box only; the depth of the box is determined by the depth of the caries; walls are 90 degrees or greater; no bevel is indicated. Slot preparation: a minimally invasive cavity preparation when caries is on the proximal surface but access can be obtained from either the facial or the lingual direction rather than through the marginal ridge.</p>"},{"k":"Prof. Linz · Lecture 15","t":"Placing posterior composite: increments of no more than 2 mm, a 4–5 mm bulk fill, or a sandwich past the CEJ","b":"<p>Layering (a common technique): the thickness of each increment of resin composite is not more than <b>2 mm</b>, and each increment should be fully polymerized before the next one is inserted. Wedge-shaped (oblique) layering: wedge-shaped increments are placed and polymerized only from the occlusal surface. Bulk technique: one bulk increment of <b>4–5 mm</b> without traditional layering, done with a special composite-resin system.</p><p>Sandwich technique: two different materials are used — glass ionomer or flowable composite as a liner under composite. Two sandwich techniques are available: a closed sandwich and an opened sandwich. The sandwich technique is used mainly when the gingival margins extend beyond the cemento-enamel junction.</p>"},{"k":"Prof. Linz · Lecture 15","t":"Quiz: no extension for prevention, a 2 mm increment, and when to use a sandwich","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Class I and II posterior composite preparations in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Composite outline must include all pits and fissures at ¼ ICD; depth is always a uniform 0.5 mm; a modified Class II always has a 0.5–1 mm bevel</button><button type=\"button\" class=\"opt\" data-i=\"1\">Three typical designs are conventional (large, or heavy occlusal force), beveled conventional, and modified (small to moderate). A conventional Class I is amalgam-like, preserves cusps and a remaining 2 mm marginal ridge, and uses a bevel for added retention; a modified Class I has no uniform flat pulpal floor or axial walls and is sized by the caries. Unlike amalgam (extension for prevention, width ¼ ICD, mechanical retention, flat floor, depth 1.5–2 mm), composite is limited to the defective area with no extension for prevention, uses chemical retention (sometimes a dentinal groove and enamel bevel), and has a depth that is not necessarily uniform but usually 1–2 mm, with rough walls and rounded angles. A conventional or beveled Class II (moderate to very large) has a Class I plus a proximal box, walls perpendicular to the long axis, and 0.5–1 mm facial and lingual bevels on the box. A modified box is for a small proximal lesion with no occlusal caries: box only, depth by the caries, walls 90° or greater, and no bevel. A slot is minimally invasive, with facial or lingual access rather than through the marginal ridge</button><button type=\"button\" class=\"opt\" data-i=\"2\">A slot preparation must always be cut through the marginal ridge with an occlusal dovetail</button><button type=\"button\" class=\"opt\" data-i=\"3\">Amalgam and composite Class I outlines are identical, including extension for prevention</button></div><div class=\"qexp\" hidden><p>الكمبوزت بلا امتداد للوقاية، والحافة الهامشية 2 ملم، والعمق عادة 1–2 ملم. شطف الصندوق التقريبي 0.5–1 ملم. الصندوق المعدّل بلا شطف، والشق يدخل من الشدقي أو اللساني.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Placement of a posterior composite in this lecture is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Every restoration must be placed as one 8 mm increment and never layered; a sandwich is used only on occlusal enamel</button><button type=\"button\" class=\"opt\" data-i=\"1\">In layering, each increment is no more than 2 mm thick and is fully polymerized before the next is placed. Wedge-shaped (oblique) increments are polymerized only from the occlusal surface. A bulk technique uses one 4–5 mm increment without traditional layering, with a special composite system. A sandwich uses glass ionomer or flowable composite as a liner under composite, in a closed or an opened form, mainly when the gingival margin extends beyond the CEJ</button><button type=\"button\" class=\"opt\" data-i=\"2\">Increments of 3 mm are required, and they must not be cured until all of them are in place</button><button type=\"button\" class=\"opt\" data-i=\"3\">A bulk fill of 4–5 mm is done with ordinary hybrid composite and no special system</button></div><div class=\"qexp\" hidden><p>كل طبقة لا تزيد على 2 ملم وتتصلب كاملة. الحشو الكتلي 4–5 ملم بنظام خاص. الساندويتش إذا الحافة اللثوية تجاوزت الـ CEJ.</p></div></div>"},{"k":"Dr. Al-Shammaa · Lecture 1","t":"Infection control first, then a medical history that can change or stop treatment","b":"<p>Pretreatment considerations — patient assessment, examination and diagnosis, and treatment planning — are the foundation of sound dental care. Excellence is achieved through the dentist’s ability to assess the patient, determine his needs, and design an appropriate plan of treatment.</p><p>Before the examination and diagnosis, attention is given to infection control. Before, during and after any patient visit, appropriate infection-control measures must be instituted. Barrier protection of personnel using masks, protective eyewear, gloves and gowns is now a standard requirement for dental procedures.</p><p>Medical history: the medical systemic-care phase includes aspects of treatment that affect the patient’s systemic health. A comprehensive medical history helps the dentist identify conditions that could alter, complicate or contraindicate dental procedures, for example: (1) contagious diseases that require special precautions, procedures or referral; (2) allergies or medications that may contraindicate the use of certain drugs; (3) systemic diseases and cardiac abnormalities that demand less strenuous procedures or prophylactic antibiotic coverage; and (4) physiologic changes associated with aging that may alter clinical presentation and influence treatment.</p>"},{"k":"Dr. Al-Shammaa · Lecture 1","t":"The chief complaint, in the patient’s own words, and a brief dental history","b":"<p>The chief complaint is generally the first information obtained. Chief complaints are symptoms or problems expressed by the patient in his own words relating to the condition that prompted the patient to seek treatment. The patient should be encouraged and guided to discuss all aspects of the current problem, including onset, duration, symptoms and related factors. By this discussion: (1) the patient feels that his problems have been recognized and the doctor–patient relationship begins positively; (2) the information is vital to establish the need for specific diagnostic tests and to determine the cause and treatment of the complaint; (3) by writing C.C. (chief complaint) the dentist is assured that it will not be omitted from the problem list.</p><p>A brief history of past dental treatment can provide useful information about the patient’s tolerance for dental treatment. Questions about previous episodes of fractured or lost restorations, trauma, infection, sensitivity and pain can alert the dentist to possible problems and guide clinical and radiographic examination. Patients may not volunteer this information, so specific questions about thermal sensitivity, discomfort during chewing, gingival bleeding and pain are warranted. When there is a history of symptoms indicative of pulpal damage or incomplete tooth fracture, specific diagnostic tests should be performed during the examination.</p>"},{"k":"Dr. Al-Shammaa · Lecture 1","t":"A clean, dry, well-lit mouth — and why a sharp explorer is a poor test for pit-and-fissure caries","b":"<p>Clinical examination is the “hands-on” process of observing both normal and abnormal conditions. Diagnosis is a determination and judgment of variations from normal. Intraoral assessment involves the periodontium, the dentition and the occlusion. The examination is performed systematically in a clean, dry, well-illuminated mouth, with a mirror, an explorer and a periodontal probe. An accurate examination can occur only when the teeth are clean and dry — this may require initial scaling, flossing and a toothbrushing prophylaxis. Elements include assessment of caries risk and plaque at baseline, which provides a basis for communication and is important in establishing a prognosis; the patient can be given instructions for good oral hygiene.</p><p>Pit-and-fissure caries may begin in small enamel defects that lie near the DEJ, so they are difficult to detect early on a radiograph (they must be extensive to be detected radiographically). Tactile examination with firm application of a sharp explorer into a fissure, and a sticky sensation on removal, has been the classic sign — but clinical studies have shown this method to be unreliable, producing many false-positive and false-negative diagnoses, and an explorer can cause cavitation in a demineralized pit and fissure, preventing the possibility of remineralization. Visual observation with magnification of a clean dry tooth has been found to be a reliable, non-destructive method. Pit-and-fissure lesions appear as a gray or gray-yellow opaque area that shows through the enamel. Fibre-optic transillumination may be helpful. A variety of new technologies are being evaluated, such as air abrasion and laser.</p>"},{"k":"Dr. Al-Shammaa · Lecture 1","t":"Smooth-surface caries, and pulp tests: cold, heat, an electric tester, and a test cavity","b":"<p>Smooth-surface caries: proximal caries are the most difficult to detect clinically, because they are inaccessible to both visual and tactile examination. Proximal lesions are usually detected by radiograph in posterior teeth, while in anterior teeth they may be diagnosed radiographically or by visual examination using transillumination. Smooth caries on the buccal and lingual surfaces can be easily detected by visual and tactile examination.</p><p>Pulp assessment: each tooth that has an extensive restoration, and teeth with pulps of questionable vitality, should be tested. (1) Cold and heat are valuable vitality tests. A cotton pellet saturated with an aerosol refrigerant spray such as tetrafluoroethane is placed on the tooth, or a pencil of ice made by freezing water inside a sterilized anaesthetic cartridge. Heat is applied with a heated piece of gutta-percha on the tooth surface. (2) An electric pulp tester has limitations: it cannot be used in a wet field or on teeth with metallic restorations unless measures are taken to insulate adjacent teeth, and the method does not reflect the health of the pulp or its prognosis. (3) A test cavity is used when previous thermal and electric tests failed to give a clear picture and a restoration is indicated: preparation is initiated without anaesthetic; if pain or sensitivity is elicited when dentine is cut with a bur, pulpal vitality is confirmed.</p>"},{"k":"Dr. Al-Shammaa · Lecture 1","t":"Percussion and palpation — and why a positive percussion test on a maxillary tooth may be sinusitis","b":"<p>Percussion is performed by gently tapping the occlusal or incisal surfaces of the suspected tooth and adjacent teeth with the end of the handle of a mouth mirror, to determine tenderness. Pain on percussion suggests possible injury to the periodontal membrane from pulpal or periodontal inflammation. Care must be taken when interpreting a positive response on maxillary teeth, because teeth in close proximity to the maxillary sinuses may also exhibit pain on percussion when the patient has maxillary sinusitis.</p><p>Palpation is performed by rubbing the index finger along the facial and lingual mucosa overlying the apical region of the tooth. An alveolar abscess in an advanced stage, or other periapical pathosis, may cause tenderness to palpation.</p>"},{"k":"Dr. Al-Shammaa · Lecture 1","t":"Quiz: a sticky explorer is unreliable, and an electric pulp tester has limits","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Patient assessment and caries detection in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A medical history is optional; pit-and-fissure caries is diagnosed only by pushing a sharp explorer firmly until it sticks</button><button type=\"button\" class=\"opt\" data-i=\"1\">Infection control with masks, protective eyewear, gloves and gowns is required before, during and after the visit. A medical history may reveal contagious disease, drug-limiting allergies or medications, systemic or cardiac conditions needing lighter procedures or prophylactic antibiotics, and age-related changes. The chief complaint is recorded in the patient’s own words (onset, duration, symptoms) and written as C.C. so it is not omitted. A dental history asks about lost restorations, trauma, infection, thermal sensitivity, chewing discomfort, bleeding and pain. Examination is systematic in a clean, dry, well-lit mouth (scaling and prophylaxis first if needed) with a mirror, explorer and probe, and includes baseline caries risk and plaque. Pit-and-fissure lesions near the DEJ are hard to see early on a radiograph. A sticky explorer is unreliable (false positives and negatives) and can cavitate a demineralized fissure, blocking remineralization. Visual examination with magnification of a clean dry tooth is reliable and non-destructive: a gray or gray-yellow opaque area showing through enamel; fibre-optic transillumination may help. Proximal lesions are usually found on posterior radiographs, or on anterior teeth by radiograph or transillumination; buccal and lingual smooth caries are easier to see and feel</button><button type=\"button\" class=\"opt\" data-i=\"2\">A chief complaint should be rewritten in technical language and never recorded in the patient’s words</button><button type=\"button\" class=\"opt\" data-i=\"3\">Pit-and-fissure caries is always obvious on a bitewing as soon as it starts at the DEJ</button></div><div class=\"qexp\" hidden><p>العزل القياسي: كمام ونظارة وكفوف ورداء. الشكوى بكلام المريض. لا تعتمد على مسبر لزج بالحفر والشقوق — ممكن يسوّي تجويف ويمنع إعادة التمعدن. عاين ويه تكبير سن نظيف ناشف: منطقة رمادية أو رمادية-صفراء معتمة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Pulp, percussion and palpation tests in this lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">An electric pulp tester can be used in a wet field on a metal crown and tells the prognosis of the pulp; percussion pain on an upper tooth is always apical abscess</button><button type=\"button\" class=\"opt\" data-i=\"1\">Teeth with extensive restorations or questionable pulps should be tested. Cold (a cotton pellet with tetrafluoroethane, or ice frozen in a sterile anaesthetic cartridge) and heat (heated gutta-percha) are valuable. An electric pulp tester cannot be used in a wet field or on metallic restorations unless adjacent teeth are insulated, and it does not reflect pulp health or prognosis. A test cavity, started without anaesthetic when thermal and electric tests are unclear and a restoration is indicated, confirms vitality if cutting dentine causes pain or sensitivity. Percussion (gentle tapping with a mirror handle) suggests periodontal-membrane injury from pulpal or periodontal inflammation; on maxillary teeth, sinusitis may also cause a positive response. Palpation of the apical mucosa may reveal tenderness from an advanced alveolar abscess or other periapical pathosis</button><button type=\"button\" class=\"opt\" data-i=\"2\">A test cavity is always cut under local anaesthetic so that the patient feels nothing</button><button type=\"button\" class=\"opt\" data-i=\"3\">Palpation is performed on the occlusal surface with a sharp explorer</button></div><div class=\"qexp\" hidden><p>البرد ببخاخ أو قلم ثلج، والحر بكوتابيركا. المختبر الكهربائي ما يُستخدم بحقل رطب أو على معدن بدون عزل، وما يعطي إنذار اللب. حفرة الاختبار بلا تخدير. القرع بالفك العلوي قد يكون التهاب جيوب.</p></div></div>"},{"k":"Dr. Al-Shammaa · Lecture 2","t":"Judging old restorations: amalgam ditching is not enough, and biologic width is about 2–3 mm","b":"<p>Criteria for evaluating an existing restoration: (1) <b>Structural integrity</b> — whether it is intact or portions are partially or completely fractured or missing. The presence of a fracture line indicates replacement of the restoration. (2) <b>Marginal opening</b> — for amalgam, the existence of marginal ditching does not indicate replacement, because the margins of amalgam restorations become relatively well sealed by the accumulation of corrosion products, unless signs of recurrent caries are present. For composite, a marginal gap should be considered for repair or replacement. The presence of a marginal gap is less critical for restorations with anticariogenic properties, for example glass ionomer, because tooth structure adjacent to GIC restorations is less susceptible to caries; replacement is indicated only when adjacent tooth structure becomes carious, or when there is esthetically unacceptable marginal staining, especially in anterior teeth. (3) <b>Caries</b> — use a combination of visual, tactile and radiographic examination. A radiolucent area surrounding a radiopaque restoration, or the presence of soft tooth structure, generally indicates caries that must be repaired or replaced. (4) <b>Restoration-related periodontal health</b> — problems commonly encountered are surface roughness, interproximal overhangs, and impingement on the zone of attachment (the <b>biologic width</b>): the area approximately <b>2–3 mm</b> in the apico-coronal dimension, occupied by the junctional epithelium and the connective-tissue attachment. All three of these phenomena can cause inflammation. Open or rough subgingival margins can harbor plaque. Gingival inflammation around a crown may also be due to an allergic reaction to material in the crown.</p>"},{"k":"Dr. Al-Shammaa · Lecture 2","t":"Contacts, occlusion and attrition — including a night guard for bruxism","b":"<p>(5) Occlusal and interproximal contacts: all interproximal contacts should be assessed with thin dental floss. Contacts should allow the smooth passage of floss. Contacts that are open or excessively tight should be evaluated to determine whether pathosis, food impaction or annoyance to the patient has resulted. Occlusal contacts of all restorations should be evaluated to determine whether they are serving their masticatory function without creating a symptomatic or pathogenic occlusion. Restorations whose occlusal contacts are creating primary occlusal trauma should be altered or replaced. Restorations that are in significant infra-occlusion may permit the super-eruption of opposing teeth and should be considered for replacement.</p><p>(6) Esthetics of existing restorations: common problems include display of metal; discoloration or a poor shade match in a tooth-coloured restoration; poor contour in a tooth-coloured restoration; and a poor periodontal-tissue response in an anterior restoration. Occlusal examination should also evaluate: interferences between the occlusion of centric relation and that of maximum intercuspation; the number and position of occlusal contacts and the stress placed on them (these strongly influence the choice of material and the design of the preparation and restoration); the amount and pattern of attrition of teeth and restorations; and the inter-arch space available for a needed restoration. Attrition is excessive occlusal wear caused by occlusal parafunction (bruxism); facets on opposing teeth match well. Prevention is accomplished with an occlusal resin appliance (a night guard, or bite plane) and education of the patient.</p>"},{"k":"Dr. Al-Shammaa · Lecture 2","t":"Cracked-tooth syndrome: most often at 33–50 years, and a biting test is the most definitive","b":"<p>Cracked-tooth syndrome is a fairly common result of incomplete tooth fracture. Patients often experience cold sensitivity and sharp pains of short duration while chewing. The cusps most commonly fractured are the <b>non-functional cusps</b>. Patients with multiple cracked teeth often have parafunctional habits or malocclusions. It is an age-related phenomenon; the greatest occurrence is among patients between <b>33 and 50 years</b> of age. The syndrome is often difficult to diagnose: the patient is unable to identify the offending tooth, and radiographs, visual examination, percussion and pulp tests are typically non-diagnostic. The two most useful tests are: <b>transillumination</b> — when a cracked tooth is transilluminated from the facial or the lingual, light transmission is interrupted at the crack, and the portion of the tooth on the side away from the light appears quite dark; and a <b>biting test</b>, the most definitive means of localizing the crack, by having the patient bite a wooden stick or a rubber wheel to reproduce the symptom and identify the fractured tooth. In treatment of an incomplete tooth fracture, the tooth sections are splinted together with a cuspal-coverage restoration — an amalgam or composite restoration, a crown, or an indirectly fabricated onlay.</p>"},{"k":"Dr. Al-Shammaa · Lecture 2","t":"Esthetic problems of the whole dentition, from bleaching to veneers and a “gummy smile”","b":"<p>In addition to an esthetic evaluation of existing restorations, an assessment of the esthetics of the entire dentition should be completed. Commonly encountered esthetic problems related to restorative dentistry include: (1) stained or discolored anterior teeth; (2) unaesthetic contours in anterior teeth (length, width, incisal-edge shape or axial contour); (3) unaesthetic position or spacing of anterior teeth; (4) carious lesions and unaesthetic restorations; (5) unaesthetic colour and/or contour of tissue adjacent to anterior restorations, including excessive gingival display, occasionally referred to as a “gummy smile.” Restorative treatment may range from conservative therapy such as microabrasion or bleaching to more invasive care such as resin veneers, ceramic veneers or complete-coverage crowns. Periodontal, endodontic or orthodontic procedures may also be helpful depending on the nature of the problem.</p>"},{"k":"Dr. Al-Shammaa · Lecture 2","t":"The periodontium, radiographs, and “burnout” that can mimic cervical caries","b":"<p>The periodontium is evaluated to determine the effect of periodontal health on the restorative plan, and the effect of planned and existing restorations on the periodontium. Evaluation includes clinical attachment levels, bony support, tooth mobility, a qualitative assessment of tissue health, and a radiographic evaluation of supporting bone. The most consistent clinical indicator of inflammation is <b>bleeding on probing</b>; any bleeding on gentle probing should be noted. Qualitative assessment includes tissue colour, texture, contours, edema and sulcular exudate, and local factors such as plaque and calculus and their relationship to inflammation. During the examination the dentist must estimate the location of margins for future restorations and their potential to impinge on the biologic width.</p><p>Radiographs may be indicated after previous periodontal or root-canal therapy; a history of pain or trauma; large or deep restorations; a deep carious cavity; swelling and mobility, a fistula or a sinus-tract infection; abutment teeth for a fixed or removable partial prosthesis; unusual tooth morphology or colour; and missing teeth for an unknown reason. For restorative purposes, note open interproximal contacts, marginal openings, overhanging restorations, and periapical radiolucencies. Interpret abnormal findings with caution. A radiographic phenomenon known as <b>burnout</b> is a radiolucency not caused by caries; it occurs when the x-ray beam traverses a portion of the tooth with less thickness than surrounding areas, most commonly in the cervical area — so it must not be mistaken for demineralized tooth structure. Also be cautious in diagnosing caries beneath existing restorations, because certain radiolucent dental materials have a radiographic appearance similar to carious tooth structure.</p>"},{"k":"Dr. Al-Shammaa · Lecture 2","t":"Diagnostic casts, four planning factors, and treating the most acute tooth first, quadrant by quadrant","b":"<p>Diagnostic casts let the dentist see areas that are visually inaccessible in the mouth. Facets and marginal openings that may be difficult to see intra-orally are readily visible on the casts. Cases involving multiple missing teeth need casts mounted on a semi-adjustable articulator, so that the dentist can assess the occlusal relationship and plan treatment.</p><p>After a comprehensive examination, the dentist lists the problems related to restorative dentistry. Planning the restoration of individual teeth requires consideration of four factors: (1) the amount and form of remaining tooth structure; (2) the functional need of each tooth; (3) the esthetic needs of each tooth; (4) the final objective of the overall treatment plan. When the completed treatment has been visualized and the design of the restorations established, the final step is sequencing. Restorative treatment aimed at the control of active disease generally consists of direct procedures using amalgam, resin composite or glass ionomer. The sequence within the disease-control phase is dictated by: (1) severity of the disease (the most symptomatic tooth, the tooth with the deepest lesion, or the most debilitated tooth is restored first); (2) esthetic needs; (3) effective use of time. At each appointment, treatment is rendered in the area in most acute need. When possible, restorations should be completed quadrant by quadrant to optimize the use of time.</p>"},{"k":"Prof. Linz and Dr. Al-Shammaa","t":"Self-test: a 2 mm increment, biologic width, cracked-tooth tests, and cervical burnout","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">When judging old restorations, occlusion and a cracked tooth, this lecture says:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Every ditched amalgam must be replaced; biologic width is 8 mm; cracked-tooth syndrome is diagnosed only on a radiograph in teenagers</button><button type=\"button\" class=\"opt\" data-i=\"1\">A fracture line in a restoration indicates replacement. Amalgam marginal ditching alone does not, because corrosion products tend to seal the margin, unless recurrent caries is present. A composite marginal gap should be considered for repair or replacement; a gap next to glass ionomer is less critical unless adjacent structure becomes carious or staining is esthetically unacceptable, especially anteriorly. A radiolucency around a radiopaque restoration, or soft tooth structure, generally means caries needing repair or replacement. Periodontal harm may come from roughness, overhangs, or impingement on biologic width — about 2–3 mm apico-coronally (junctional epithelium plus connective-tissue attachment). Check contacts with thin floss; open or tight contacts, primary occlusal trauma, and significant infra-occlusion (risk of super-eruption) may need change or replacement. Attrition from bruxism shows well-matched opposing facets; prevention is a night guard (bite plane) and education. Cracked-tooth syndrome (cold sensitivity and short sharp chewing pain, most often non-functional cusps, greatest at 33–50 years) is hard to localize: radiographs, percussion and pulp tests are typically non-diagnostic. Transillumination (the far side looks dark) and a biting test on a stick or rubber wheel (the most definitive) help. Treatment is cuspal coverage (amalgam or composite, a crown, or an indirect onlay)</button><button type=\"button\" class=\"opt\" data-i=\"2\">A night guard is contraindicated in bruxism because it increases attrition</button><button type=\"button\" class=\"opt\" data-i=\"3\">The biting test is the least useful test for a cracked tooth, and treatment is always extraction</button></div><div class=\"qexp\" hidden><p>تغضّن حافة الملغم وحده مو كافي للاستبدال. العرض البيولوجي حوالي 2–3 ملم. متلازمة السن المتشقق أكثر شي بين 33–50 سنة؛ أنفع اختبارين الإضاءة النافذة واختبار العض، والعلاج تغطية حدبة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Periodontium, radiographs, casts and the disease-control sequence in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Bleeding on probing can be ignored; cervical burnout is always caries; treat the easiest tooth first, never by quadrant</button><button type=\"button\" class=\"opt\" data-i=\"1\">The periodontium is examined for its effect on the plan and the effect of restorations on it, including attachment, bone, mobility and tissue health. The most consistent indicator of inflammation is bleeding on gentle probing. Estimate future margins so they do not impinge on biologic width. Radiographs may be indicated after previous periodontal or endodontic care, pain or trauma, large or deep restorations or caries, swelling, mobility, a fistula, abutments, unusual form or colour, or unexplained missing teeth; note open contacts, marginal openings, overhangs and periapical radiolucencies. Cervical burnout is a radiolucency from a thinner area, most often cervical, and must not be mistaken for demineralization; some radiolucent materials also mimic caries under restorations. Diagnostic casts show hidden facets and marginal openings; multiple missing teeth need casts on a semi-adjustable articulator. Plan each tooth by remaining structure, function, esthetics and the overall objective. In the disease-control phase (direct amalgam, composite or glass ionomer), treat first by severity (most symptomatic, deepest, or most debilitated), then esthetics and efficient use of time, and complete restorations quadrant by quadrant when possible</button><button type=\"button\" class=\"opt\" data-i=\"2\">A radiolucency under every restoration is definitely caries and needs no clinical check</button><button type=\"button\" class=\"opt\" data-i=\"3\">Treatment sequence ignores symptoms and always starts in the upper left quadrant</button></div><div class=\"qexp\" hidden><p>النزف عند السبر أوضح علامة التهاب. الاحتراق الشعاعي العنقي مو نخر. مرحلة السيطرة: الأشد أعراضاً أو الأعمق أولاً، وإذا ممكن ربع ربع.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">In Lecture 15, how thick may each layered increment of posterior composite be, and how large is a bulk increment?</button><div class=\"flash-a\" hidden>Each layered increment is not more than 2 mm thick and must be fully polymerized before the next is placed. A bulk technique uses one increment of 4–5 mm with a special composite system.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا سابع ملف معالجة: محاضرة أ.د. لنز 15 عن الكمبوزت الخلفي لصنف I و II (صفحات 133–138)، وبعدها محاضرتا د. عبد الله الشماع 1 و 2 عن تقييم المريض والتشخيص وخطة العلاج (صفحات 139–147). الأرقام مثل الحافة الهامشية 2 ملم، والطبقة لا تزيد على 2 ملم، والحشو الكتلي 4–5 ملم، والعرض البيولوجي حوالي 2–3 ملم تبقى كما بالمحاضرة.</p>","<p>ثلاثة تحضيرات نموذجية للكمبوزت: تقليدي (للحفر الكبيرة أو الترميم تحت قوى إطباق ثقيلة)، وتقليدي مشطوف، ومعدّل (لترميم صغير إلى متوسط).</p><p>صنف I التقليدي أو المشطوف: تحضير يشبه الملغم. الامتداد والعرض حسب النخر أو الترميم القديم. حافظ على الحدبات والحافة الهامشية قدر الإمكان، والكفاف محافظ. الحافة الهامشية الباقية يجب أن تكون <b>2 ملم</b>. الشطف يزيد التثبيت. التصميم المعدّل بلا أرضية لبية أو جدران محورية مسطحة وموحّدة، ومحافظ قدر الإمكان، وحجم الحفرة حسب حجم النخر.</p>","<p>التشابه: شيل المينا غير المدعوم، تدوير كل الزوايا حتى ما يتركز الإجهاد، والجدران موازية للمحور الطويل.</p><p>الاختلاف — الكفاف: الملغم يضم كل الحفر والشقوق (امتداد للوقاية) وعرض ¼ ICD؛ الكمبوزت يقتصر على المنطقة المعيبة (<b>بلا امتداد للوقاية</b>) ومحافظ قدر الإمكان. التثبيت: الملغم ميكانيكي وجدران تتقارب إطباقياً وأرضية مسطحة؛ الكمبوزت كيميائي، وأحياناً أخدود عاجي وشطف مينا. المقاومة: الملغم عمق 1.5–2 ملم وأرضية ملساء؛ الكمبوزت العمق مو بالضرورة موحّد وعادة <b>1–2 ملم</b>، والجدران خشنة.</p>","<p>صنف II التقليدي أو المشطوف: لنخر متوسط إلى كبير جداً؛ يتكوّن من صنف I وصندوق تقريبي؛ الجدران عمودية على محور السن وخشنة؛ شطف الصندوق التقريبي <b>0.5–1 ملم</b> على الحافتين الشدقية واللسانية حتى التنظيف والتلميع أسهل.</p><p>التصميم المعدّل الصندوقي: لآفة تقريبية صغيرة بلا نخر إطباقي؛ صندوق تقريبي فقط، عمقه حسب النخر، والجدران 90° أو أكثر، وبلا شطف. تحضير الشق (<b>slot</b>): غزو أصغري، الدخول من الشدقي أو اللساني بدل المرور من الحافة الهامشية.</p>","<p>الطبقات (الأشيع): سمك كل طبقة لا يزيد على <b>2 ملم</b>، وصلّب الطبقة كاملة قبل اللي بعدها. الطبقات الإسفينية (مائلة): تتحط وتُصلَّب من الإطباق فقط. التقنية الكتلية: دفعة واحدة <b>4–5 ملم</b> بلا طبقات تقليدية، ويه نظام كمبوزت خاص.</p><p>تقنية الساندويتش: مادتان — أيونومر زجاجي أو كمبوزت سائل كبطانة تحت الكمبوزت. نوعان: مغلق ومفتوح. تُستخدم أساساً إذا الحافة اللثوية تجاوزت الملتقى الملاطي-المينائي.</p>","<p>سؤالان على تحضير الكمبوزت الخلفي وتقنيات الوضع.</p>","<p>تقييم المريض والفحص والتشخيص وخطة العلاج هي أساس الرعاية السليمة.</p><p>قبل الفحص: مكافحة العدوى قبل وأثناء وبعد الزيارة. الحماية الحاجزة صارت قياسية: كمامات، ونظارات واقية، وكفوف، وأردية.</p><p>التاريخ الطبي يكشف حالات قد تغيّر أو تعقّد أو تمنع العلاج: أمراض معدية تحتاج احتياطات أو إحالة؛ حساسية أو أدوية تمنع استخدام أدوية معينة؛ أمراض جهازية أو قلبية تحتاج إجراءات أخف أو تغطية بالمضاد الحيوي الوقائي؛ وتغيرات الشيخوخة اللي تغيّر الصورة السريرية والعلاج.</p>","<p>الشكوى الرئيسية أول معلومة، ويه كلام المريض نفسه عن اللي خلّاه يجي. شجّعه يحكي بداية المشكلة ومدتها وأعراضها وما يتعلق بيها. بهالكلام المريض يحس إن مشكلته انسمعت والعلاقة تبدأ زين، والمعلومات تحدد الفحوصات والعلاج، وكتابتها (C.C.) تضمن ما تنسى بقائمة المشاكل.</p><p>تاريخ الأسنان السابق يدل على تحمّل المريض. اسأل عن كسور أو ضياع ترميم، ورضح، والتهاب، وحساسية وألم — المريض ممكن ما يحكي لحاله. إذا في أعراض تلف لب أو كسر ناقص، سوّ فحوصات نوعية أثناء الفحص.</p>","<p>الفحص السريري منتظم بفم نظيف وناشف ومضاء زين، ويه مرآة ومسبر ومسبار لثوي. الأسنان لازم تكون نظيفة وناشفة — قد تحتاج تقليح وخيط وتفريش أول. قيّم خطر النخر واللويحة كخط أساس للتواصل والإنذار، وعلّم المريض النظافة.</p><p>نخر الحفر والشقوق يبدأ بعيوب مينا قرب الـ DEJ، فصعب ينشاف بالأشعة إلا إذا صار واسع. غرس المسبر الحاد والإحساس باللزوجة كان الفحص الكلاسيكي، بس الدراسات بيّنت إنه غير موثوق (إيجابيات وسلبيات كاذبة كثيرة)، والمسبر ممكن يعمل تجويف بشق منزوع الكلس ويمنع إعادة التمعدن. المعاينة البصرية ويه تكبير لسن نظيف ناشف طريقة موثوقة وغير مدمّرة: الآفة تظهر رمادية أو رمادية-صفراء معتمة من خلال المينا. الإضاءة عبر الألياف البصرية قد تساعد، وتقنيات جديدة مثل السحل الهوائي والليزر قيد التقييم.</p>","<p>نخر السطوح الملساء التقريبي أصعب كشف سريري (ما ينشاف ولا يُلمس). بالخلفية عادة بالأشعة، وبالأمامية بالأشعة أو بالمعاينة ويه الإضاءة النافذة. الشدقي واللساني سهلين بالعين والمسبر.</p><p>اختبار اللب لكل سن ويه ترميم واسع أو لب مشكوك. البرد: قطنة ويه بخاخ مثل رباعي فلورو الإيثان، أو قلم ثلج من ماء مجمّد بخرطوشة تخدير معقمة. الحر: قطعة كوتابيركا مسخّنة. المختبر الكهربائي ما يُستخدم بحقل رطب ولا على سن ويه ترميم معدني إلا إذا عزلت المجاورات، وما يعكس صحة اللب أو إنذاره. حفرة الاختبار: إذا الاختبارات ما وضّحت والسن يحتاج ترميم، ابدأ التحضير بلا تخدير؛ إذا طلع ألم أو حساسية وقت قطع العاج، الحيوية مؤكدة.</p>","<p>القرع: طبطب بلطف على الإطباق أو القاطع للسن المشكوك والمجاورات بنهاية مقبض المرآة. الألم يقترح أذية بالغشاء الدوري من التهاب لبي أو لثوي. انتبه بالأسنان العلوية: الجيوب الفكية القريبة ممكن تعطي ألم بالقرع إذا عند المريض التهاب جيوب.</p><p>الجس: افرك السبابة على الغشاء الوجهي واللساني فوق منطقة الذروة. خراج سنخي متقدم أو مرض ذروي آخر قد يسبب ألم بالجس.</p>","<p>سؤالان على كشف النخر واختبارات اللب والقرع.</p>","<p>تقييم الترميم الموجود: (1) سلامة البنية — إذا في خط كسر، يُستبدل. (2) فتحة الحافة — <b>تغضّن حافة الملغم لوحده مو مبرر للاستبدال</b>، لأن نواتج التآكل تختم الحافة، إلا إذا في نخر راجع. بالكمبوزت، الفجوة تُدرس للإصلاح أو الاستبدال. بإسمنت الأيونومر (مضاد للنخر) الفجوة أقل أهمية، والاستبدال فقط إذا النخر وصل للسن المجاور أو التصبغ الهامشي غير مقبول جمالياً خصوصاً بالأمامية. (3) النخر: عين ومسبر وأشعة؛ منطقة شفافة حول ترميم ظليل أو عاج طري تعني نخر يحتاج إصلاح أو استبدال. (4) صحة اللثة المرتبطة بالترميم: خشونة السطح، بروز تقريبي، والتعدي على منطقة الارتباط (<b>العرض البيولوجي</b>) حوالي <b>2–3 ملم</b> من التاجي إلى الذروي (الظهارة الموصلة + ارتباط النسيج الضام). الثلاثة تسبب التهاب. الحواف الخشنة أو المفتوحة تحت اللثة تجمّع لويحة. والالتهاب حول التاج قد يكون حساسية لمادة التاج.</p>","<p>التماس التقريبي يُفحص بخيط رفيع يمر بسلاسة. إذا مفتوح أو مشدود زيادة، شوف هل سبب مرض أو انحشار طعام أو إزعاج. التماس الإطباقي لازم يخدم المضغ بلا إطباق مرضي أو عرضي؛ إذا سبّب رض إطباقي أولي عدّله أو بدّله. الترميم الغاطس بشكل واضح قد يسمح ببزوغ معاكس ويستحق التفكير بالاستبدال.</p><p>جمال الترميم: ظهور معدن، تلون أو لون غلط، محيط سيئ، واستجابة لثوية سيئة بالأمامية. افحص أيضاً التداخل بين علاقة المركز وأقصى التداخل الحدبي، وعدد ومواقع وإجهاد التماسات (تؤثر على اختيار المادة وتصميم التحضير)، ونمط البلى، والمسافة بين القوسين. البلى المفرط من وظيفة شاذة (صرير) تظهر سطوح متطابقة على المتقابلين. الوقاية بجهاز راتنجي إطباقي (حارس ليلي أو مستوى عضة) وتثقيف المريض.</p>","<p>متلازمة السن المتشقق نتيجة كسر ناقص شائعة نوعاً ما: حساسية للبرد وألم حاد قصير وقت المضغ. الحدبات اللي تنكسر أكثر هي <b>غير الوظيفية</b>. غالباً ويه عادات شاذة أو سوء إطباق، وأكثر شي بين <b>33 و 50 سنة</b>. التشخيص صعب: المريض ما يحدد السن، والأشعة والمعاينة والقرع واختبار اللب عادة ما تشخّص. أنفع اختبارين: <b>الإضاءة النافذة</b> — الضوء ينقطع عند الشق والجزء البعيد يطلع داكن؛ و<b>اختبار العض</b> (الأكثر حسماً) على عود خشب أو عجلة مطاط لإعادة العرض وتحديد السن. العلاج: ربط أجزاء السن بترميم يغطي الحدبة (ملغم أو كمبوزت، أو تاج، أو حشوة مصبوبة/غير مباشرة تغطي الحدبة).</p>","<p>قيّم جمال الإطباق كله مو بس الترميمات: أسنان أمامية متصبغة؛ محيط غير جميل (طول، عرض، شكل الحافة القاطعة أو المحيط المحوري)؛ موضع أو فراغات غير جميلة؛ نخر وترميمات سيئة المظهر؛ ولون أو محيط النسيج المجاور، ومنها ظهور لثة زائدة (“ابتسامة لثوية”). العلاج من السحل المجهري أو التبييض، إلى قشرات راتنج أو خزف أو تيجان كاملة، وقد تحتاج إجراءات لثوية أو لبية أو تقويمية.</p>","<p>قيّم اللثة لسببين: تأثير صحة اللثة على خطة الترميم، وتأثير الترميمات على اللثة. شوف مستويات الارتباط، والدعم العظمي، والحركة، وصحة النسيج، والأشعة. أوضح مؤشر للالتهاب هو <b>النزف عند السبر</b>. سجّل اللون والقوام والمحيط والوذمة والإفراز، واللويحة والجير. وقدّر موقع حواف الترميمات المستقبلية حتى ما تتعدى على العرض البيولوجي.</p><p>الأشعة قد تلزم بعد علاج لثوي أو لبي، أو تاريخ ألم أو رض، أو ترميمات كبيرة وعميقة، أو نخر عميق، أو تورم وحركة وناسور، أو أسنان دعامات، أو شكل أو لون غير معتاد، أو أسنان مفقودة بلا سبب معروف. انتبه لظاهرة <b>الاحتراق الشعاعي (burnout)</b>: شفافية مو نخر، تصير إذا الأشعة تمر بمنطقة أرق، غالباً عند العنق — لا تخلطها ويه نزع الكلس. وبعض المواد الشفافة بالأشعة تشبه النخر تحت الترميم.</p>","<p>الأمثلة التشخيصية تريك أماكن صعب تشوفها بالفم: سطوح البلى وفتحات الحواف أوضح، والحالات ويه أسنان مفقودة متعددة تحتاج أمثلة مركّبة على مفصلة نصف قابلة للتعديل لتقييم الإطباق والتخطيط.</p><p>خطة ترميم السن الواحد حسب أربعة عوامل: كمية وشكل البنية الباقية؛ الحاجة الوظيفية؛ الحاجة التجميلية؛ والهدف النهائي للخطة ككل. مرحلة السيطرة على المرض النشط عادة ترميم مباشر (ملغم أو كمبوزت أو أيونومر)، والترتيب حسب: شدة المرض (الأكثر أعراضاً، أو الأعمق نخراً، أو الأكثر ضعفاً أولاً)؛ الحاجة التجميلية؛ واستغلال الوقت. بكل جلسة عالج المنطقة الأكثر إلحاحاً، وإذا ممكن كمّل الربع ربع حتى الوقت يُستغل زين.</p>","<p>سؤالان ختاميان وبطاقة على طبقة 2 ملم والحشو الكتلي 4–5 ملم، وزر الدرجة.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
