@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Crown and Bridge File 6 — Introduction, Bridge Designs and Abutment Evaluation</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Crown & Bridge · Dr. Lamis Lectures 1–3</div>
+    <h1>Introduction to Fixed Prosthodontics, Bridge Designs, and Evaluation of the Abutment Tooth</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lectures 1–3 by Dr. Lamis A. Al-Taee (PDF pages 119–145).</p>
+    <ul>
+      <li>The parts of a bridge (major and minor retainers, pontic and connector) and a three-unit example</li>
+      <li>Why a missing tooth should be replaced, posterior bite collapse, and when no prosthesis is chosen</li>
+      <li>Indications and contraindications of an FPD, including the age of 18 years, and the basic designs (fixed-fixed, fixed-movable, cantilevers and Andrew’s bridge)</li>
+      <li>Abutment evaluation, this lecture’s 2:3 and 1:1 crown/root ratios, and Ante’s law</li>
+      <li>Total run time: <b>44 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 22</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Crown & Bridge · File 6","t":"Introduction to fixed prosthodontics, when to replace a missing tooth, and bridge designs","b":"<p>University of Baghdad, College of Dentistry — Crown and Bridge syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file covers PDF pages 119–145, Lectures 1–3 by Dr. Lamis A. Al-Taee (the second block of the syllabus, after Dr. Alaa). It introduces fixed prosthodontics and the parts of a bridge, why a missing tooth should be replaced, indications and contraindications of a fixed partial denture, the basic bridge designs, and how to evaluate an abutment tooth — including this lecture’s crown/root ratios and Ante’s law.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Medical terms stay in English next to the Arabic. Numbers in this lecture are kept even when they differ from Dr. Alaa’s earlier lectures (for example the crown/root ratio here is optimum 2:3 and minimum 1:1).</p>"},{"k":"Dr. Lamis · Lecture 1","t":"What prosthodontics is, and the four branches of the specialty","b":"<p><b>Prosthodontics</b> (prosthetic dentistry or prosthodontia) is the dental specialty concerned with restoring and maintaining oral functions, comfort, appearance and health of patients by making artificial replacements for missing parts of the mouth and jaw. The branches of prosthodontics in this lecture are: (1) <b>fixed prosthodontics</b> (FPDs); (2) <b>removable prosthodontics</b>, which includes complete dentures and removable partial dentures (RPDs); (3) <b>implant prosthodontics</b>; and (4) <b>maxillofacial prosthodontics</b>.</p><p><b>Fixed prosthodontics</b> (crown and bridge prosthodontics) is the branch that deals with restoring damaged teeth with an artificial crown, and with replacing missing natural teeth by a dental prosthesis that is permanently cemented in place (a fixed partial denture).</p>"},{"k":"Dr. Lamis · Lecture 1","t":"Extracoronal versus intracoronal restorations, and how crowns are classified","b":"<p>Types of fixed prostheses: (1) <b>extracoronal</b> restorations seat over the tooth — all types of crown (full metal, partial crown, PFM, all-ceramic) and direct or indirect veneers; (2) <b>intracoronal</b> restorations seat inside the tooth — inlays, onlays, and pinlage (the lecture’s spelling).</p><p>A <b>crown</b> is a fixed extracoronal artificial restoration for the coronal portion of a natural tooth. It must restore morphology, function and contour of the damaged portion, and must protect the remaining tooth structure from further damage. Classification by coverage area: (1) a <b>complete crown</b> covers the coronal portion (full metal, all-ceramic); (2) a <b>partial crown</b> covers part of the coronal portion (3/4 crown, 7/8 crown); (3) a <b>complete replacement</b> replaces the natural crown entirely and retains itself by a metal extension inside the root canal, such as a post crown. Classification by materials: metal crowns (gold alloy and its alternatives); non-metal crowns (acrylic resin, zirconium or porcelain, as in a jacket crown); and a combination of metal and plastic materials, as in a PFM crown.</p>"},{"k":"Dr. Lamis · Lecture 1","t":"The three parts of a bridge, and what major and minor retainers are","b":"<p>A <b>fixed partial denture (bridge)</b> is a fixed dental prosthesis that replaces and restores the function and aesthetics of one or more missing natural teeth. The patient cannot remove it from the mouth, and it is primarily supported by natural teeth or a root. Components: (1) a <b>retainer</b> — the part that seats over (on or in) the abutment and connects the pontic to the abutment. It is either a major or a minor retainer, and it could be a crown, an inlay, or a post and core. (2) a <b>pontic</b> — the suspended member that replaces the missing tooth or teeth and usually occupies the position of the missing natural tooth. (3) a <b>connector</b> — the part that joins the individual components (retainers and pontics) together. It may be fixed (rigid) or movable (flexible). When the retainer is attached to a fixed connector it is called a <b>major retainer</b>; when it is attached to a flexible (movable) connector it is called a <b>minor retainer</b>.</p>"},{"k":"Dr. Lamis · Lecture 1","t":"Abutment, span, saddle, pier, unit, and the path of insertion","b":"<p>Definitions in this lecture: an <b>abutment</b> is a tooth to which a bridge is attached. A <b>span</b> is the space between natural teeth that is to be filled by pontics. A <b>saddle</b> is an area of the edentulous ridge over which the pontic lies. A <b>pier</b> is an abutment standing between two abutments and supporting two pontics, each pontic being attached to a further abutment. A <b>unit</b>, when applied to bridgework, means either a retainer or a pontic; thus a bridge that replaces a premolar using two abutments is referred to as a <b>three-unit bridge</b>. The <b>path of insertion</b> is an imaginary line along which the restoration can be inserted and removed without any interferences or causing a lateral force on the abutment.</p>"},{"k":"Dr. Lamis · Lecture 1","t":"What happens if a missing tooth is not replaced: super-eruption, tilting, and posterior bite collapse","b":"<p>The stability of an individual tooth depends on a balance of forces from the adjacent and opposing teeth, the supporting tissue, and the soft tissue of the cheek, lips and tongue. When a single tooth is not replaced, this balance is upset. Consequences may include: (1) <b>super-eruption</b> of the opposing tooth or teeth, with gingival recession, traumatic occlusion or a lack of bite, loss of bony support, and loss of the proximal contact; (2) <b>loss of function</b> on the affected side — diffuse atrophy, heavy plaque leading to gingivitis and periodontal disease, trauma to the soft tissue during function, and contraction of soft tissue and alveolar bone; (3) <b>tilting (drifting)</b> of the adjacent teeth; (4) <b>loss of the proximal contact</b>, leading to food stagnation and pocketing and to subgingival caries; and (5) a periodontal problem and mobility.</p><p><b>Posterior bite collapse:</b> the posterior teeth support the vertical height of the face. If they are lost, the face tends to lose height and close down. This lecture’s figures describe the back teeth supporting facial height and chewing, while the front teeth cut food, protect the back teeth in lateral movements and provide the smile; loss of the back teeth then puts excessive pressure on the front teeth, causing shifting and a slight loss of facial height, and later spreading of the front teeth.</p>"},{"k":"Dr. Lamis · Lecture 1","t":"General effects of tooth loss, reasons to treat it, and when no prosthesis is chosen","b":"<p>General effects of tooth loss: (1) generalized collapse of the lower and upper dental arches; (2) a premature contact causing deviation of mandibular movement, which might lead to TMJ dysfunction and muscle spasm that causes pain; (3) unilateral mastication on the opposite side, resulting in periodontal problems and caries on the affected side because of deficient mechanical cleaning from mastication; (4) posterior bite collapse, which also puts pressure on the front teeth so they tend to move or splay forward. Treatment at this stage prevents further disruption, but it may be insufficient to restore full health and may need an extended plan including orthodontics and additional cast restorations to correct a disturbed occlusal plane.</p><p>Reasons for treating tooth loss: aesthetics; function (ability to eat); pain due to TMJ dysfunction and muscle spasm; maintenance of the dental arch (occlusal stabilization and prevention of tilting); and speech (particularly lower incisors). Methods: orthodontics; an RPD; an FPD (tooth-supported); an osseointegrated implant; or a combination. In some cases the decision might be no prosthetic treatment: (1) a long-standing edentulous space (long span) into which there has been little or no drifting or elongation of the adjacent teeth; (2) lack of a distal abutment; (3) if the patient perceives no functional, occlusal or aesthetic impairment.</p>"},{"k":"اختبر نفسك","t":"Quiz: parts of a bridge, a three-unit bridge, and posterior bite collapse","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">In this lecture, the parts of a bridge and the meaning of a major versus a minor retainer are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A bridge has only a pontic; every retainer is called minor because the patient can remove it</button><button type=\"button\" class=\"opt\" data-i=\"1\">A fixed partial denture has a retainer (seating on or in the abutment and connecting the pontic to it), a pontic (the suspended replacement), and a connector (rigid/fixed or flexible/movable). A retainer attached to a fixed connector is a major retainer; one attached to a movable connector is a minor retainer. The patient cannot remove the prosthesis, which is primarily supported by natural teeth or a root</button><button type=\"button\" class=\"opt\" data-i=\"2\">A connector is always flexible, and a pontic is the part cemented inside the canal</button><button type=\"button\" class=\"opt\" data-i=\"3\">An extracoronal restoration seats inside the tooth, and an intracoronal restoration seats over it</button></div><div class=\"qexp\" hidden><p>الجسر: ماسكة + دمية + رابط. الماسكة الكبرى مربوطة برابط ثابت، والصغرى برابط متحرك. المريض ما يشيل الجهاز.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A three-unit bridge, a pier, and what happens if posterior teeth are lost:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A unit means only a pontic, a pier is any incisor, and losing back teeth has no effect on facial height</button><button type=\"button\" class=\"opt\" data-i=\"1\">A unit is either a retainer or a pontic, so a bridge that replaces one premolar using two abutments is a three-unit bridge. A pier is an abutment standing between two abutments and supporting two pontics, each attached to a further abutment. Posterior teeth support facial height; if they are lost the face tends to lose height and close down (posterior bite collapse), and the front teeth may shift or splay forward. Other consequences of an unreplaced tooth include super-eruption of the opponent, tilting of neighbours, lost contacts with food stagnation and subgingival caries, and periodontal problems</button><button type=\"button\" class=\"opt\" data-i=\"2\">No prosthesis is ever withheld, even when the patient has no complaint and there has been no drifting in a long-standing space</button><button type=\"button\" class=\"opt\" data-i=\"3\">The path of insertion is a line along which the restoration must always apply a lateral force on the abutment</button></div><div class=\"qexp\" hidden><p>الوحدة ماسكة أو دمية؛ تعويض ضاحك ويه دعامتين = جسر ثلاثي الوحدات. الـ pier دعامة وسطية بين دعامتين. فقدان الخلفيات يقصر الوجه (انهيار العضة الخلفية) وقد يفرّج الأماميات.</p></div></div>"},{"k":"Dr. Lamis · Lecture 2","t":"Benefits of a fixed bridge, and the general and local indications","b":"<p>Purposes (benefits) of fixed bridges: correcting abnormal oral conditions; restoring mastication to full functional efficiency; maintaining the health of the remaining dentition and preventing further injury; and restoring appearance and aesthetics. General indications: (1) <b>psychological</b> — FPDs are more rapidly tolerated than RPDs; (2) <b>systemic</b> — for example in epileptic patients (attacks of unconsciousness) an FPD has adequate strength and retention, while an RPD has a potential for fracture or inhalation; (3) <b>orthodontic</b> — an FPD can stabilize orthodontic results (for example replacing a missing lateral incisor after a diastema between the two centrals has been closed); (4) <b>speech</b> — RPDs are bulky and can cause difficulty in speech, while FPD pontics are similar in size to the missed teeth and rarely cause speech difficulty; (5) <b>periodontal</b> — an FPD can stabilize teeth with minor mobility using a fixed splint (bridge), to prevent further movement, drifting or over-extrusion with more loss of bony support, and to distribute masticatory forces over several teeth rather than overloading tissue weakened by disease.</p><p>Local indications: (1) properly distributed healthy teeth that can serve as abutments — a vital tooth, or an endodontically treated tooth with no radiographic evidence of pathology, an adequate crown/root ratio, a good periodontal condition, and suitable root configuration and angulation; (2) a tooth that is suitable as an abutment and already requires a cast restoration, lying adjacent to the edentulous space; (3) unfavourable angulations of teeth for a removable prosthesis (badly tilted teeth); (4) it is advisable to restore an edentulous space with a fixed rather than a removable prosthesis, because in an FPD the force of occlusion is transmitted to the periodontium and then to the alveolar bone (the natural path), while in an RPD the occlusal force is transmitted to the mucoperiosteum and then to the underlying bone, which is not designed for this function.</p>"},{"k":"Dr. Lamis · Lecture 2","t":"When a fixed bridge is contraindicated, including the age of 18 years in this lecture","b":"<p>General contraindications: (1) an uncooperative patient, which makes a satisfactory result difficult; (2) a social (cost) problem — FPDs are more expensive than RPDs, and the patient must usually be given what he wants or he may be unsatisfied; (3) occupation — boxers, hockey players and pipe smokers are not advisable candidates for FPDs because of the risk of fracture of teeth or restorations; (4) poor oral hygiene — a bad attitude toward dentistry limits the decision unless the patient is positively motivated before treatment; (5) <b>age</b> — FPDs are preferred after the age of <b>18 years</b>, especially in the posterior region, because of large pulp size or because the teeth are not fully erupted. They are not indicated for an elderly patient when there is a lack of resilience of the periodontal membrane, or tooth attrition which increases the size of the occluding surfaces.</p><p>Local contraindications: absence of a distal abutment; considerable bone loss in a visible area of the mouth; a long span; and abutment-related factors (a tooth not suitable as an abutment because of length, shape, caries, or periodontal support). Advantages of bridges: they improve appearance, function and speech; they maintain occlusal stability, provide periodontal splinting, and restore occlusal vertical dimension. Disadvantages: they may induce tooth and pulp damage, potential secondary caries, and a periodontal problem, added to the high cost.</p>"},{"k":"Dr. Lamis · Lecture 2","t":"Eleven comparisons with a removable partial denture, including epileptic and Parkinson patients","b":"<p>Comparison and advantages of fixed bridges over RPDs in this lecture: (1) more stable and comfortable because they cover less tissue (no acrylic base, flanges or clasps); (2) more aesthetic; (3) a more stable occlusion with even distribution of occlusal forces; (4) they provide a splinting action, while RPDs push the teeth and cause mobility; (5) easier cleaning with a toothbrush and dental floss when there is a point contact between the pontic and the underlying tissue, whereas an RPD must be removed to be cleaned; (6) they do not irritate tissues or apply pressure on them; (7) psychological patients can more easily tolerate an FPD; (8) FPDs are preferred for handicapped patients, epileptic patients, and patients with Parkinson disease because of the possibility of fracture or inhalation of an RPD; (9) no speech difficulty with FPDs; (10) badly tilted abutment teeth may interfere with construction of a partial denture (an undercut leading to food stagnation) — a telescopic bridge with a metal coping, a fixed-movable bridge, or a proximal half-crown can be used; (11) anatomical limitations of RPDs such as an abnormally large tongue, a muscular disorder, mandibular tori, and palatal surface tissue.</p>"},{"k":"Dr. Lamis · Lecture 2","t":"How bridges are classified, including conventional, adhesive, hybrid, implant-supported and Andrew’s bridge","b":"<p>Classification of dental bridges: (A) by materials — cast metal, metal-ceramic, all-ceramic, and resin-veneered FPDs. (B) by location — anterior or posterior. (C) by number of teeth — two-unit or three-unit FPDs. (D) by tooth reduction: (1) <b>conventional</b> bridges, where a substantial tooth reduction is necessary; (2) <b>minimally prepared</b> (adhesive, acid-etched, resin-bonded) bridges, luted to unprepared or minimally prepared abutment surfaces with resin adhesives; (3) <b>hybrid</b> bridges — a combination of conventional and minimally prepared teeth (the lecture figure shows a fixed-movable design with a minimal retainer carrying the movable connector); (4) <b>implant-supported</b> FPDs, totally supported by implant fixtures, usually not attached to the adjoining natural teeth, and either removable only by the dentist or also by the patient for cleaning; (5) <b>removable bridges</b>, totally supported by teeth and different from RPDs, likewise removable only by the dentist or also by the patient. They are designed to overcome problems of a long-span FPD, such as the <b>Andrew’s bridge</b> system, indicated for edentulous ridges with a severe vertical defect; the prosthesis consists of a fixed and a removable component.</p>"},{"k":"Dr. Lamis · Lecture 2","t":"The fixed-fixed design: one path of insertion, all major retainers, and coverage of both occlusal surfaces","b":"<p>Basic bridge designs, depending on the connectors. The <b>fixed-fixed</b> bridge: preferred for long-span bridges; has a rigid connector at both ends of the pontic; gives maximum retention and strength; all retainers are major and require extensive tooth reduction (unconservative, with more destruction of tooth structure and trauma to the pulp); must have only <b>one path of insertion</b> (the preparations of both abutments need to be parallel); the entire occlusal surfaces of both abutments must be covered with retainers, otherwise occlusal forces will be directed onto the unprepared area, depress the tooth downward and break the connectors; all retainers must have approximately the same amount of retention, reducing the risk of dislodgement when force is applied on a weak retainer; the abutment teeth are splinted together (adequate in the case of mobile teeth); and the bridge is cemented as one piece.</p>"},{"k":"Dr. Lamis · Lecture 2","t":"The fixed-movable design: a rigid distal connector, a movable mesial connector, and one missing tooth","b":"<p>The <b>fixed-movable</b> design: has a rigid (major) connector at the <b>distal</b> end of the pontic and a movable (minor) connector <b>mesially</b>. It is more conservative of tooth structure than a fixed-fixed design, because minor retainers need less tooth reduction. It allows minor tooth movement (lateral and vertical). It is limited to one missing tooth (limited length of span). Parts of the bridge can be cemented separately. Laboratory construction is complex and difficult. Preparation of the abutments does not need to be parallel. It is indicated for divergent (unparallel) abutment teeth, whenever a pier abutment is present (a complex bridge), and for an aesthetic consideration such as a Class III inlay on the distal of a canine.</p>"},{"k":"Dr. Lamis · Lecture 2","t":"Simple and spring cantilevers, and when a combination (compound) bridge is used","b":"<p>A <b>simple cantilever</b>: support for the pontic is at one end only; the pontic may attach to one or two retainers; the abutment is either mesial or distal to the span; it is the most conservative design; cases are limited, for example replacement of a lateral incisor using the canine as the abutment when the occlusion is favourable. The design can also be used to replace an upper or lower first premolar and a second molar.</p><p>A <b>spring cantilever</b>: the pontic is attached to a long metal arm (a flexible bar) that runs into the palate and terminates with a rigid connector on the palatal side of a single retainer on the upper first premolar, or on a pair of first and second premolars. It is tooth-retained and tissue-borne. Forces are absorbed by the springing of the arm and by displacement of the soft tissue of the palate. The abutments are usually posterior teeth (a tooth that needs a restoration is better used). It is <b>contraindicated in a V-shaped palate and in the lower arch</b> (and is not advised for the lower arch because of instability of the submucosal tissue and a potential for plaque and calculus). It is indicated only for replacing a missing upper incisor when the adjacent teeth are sound, there is a midline diastema, spacing of the anterior teeth, or a posterior tooth needs a crown.</p><p><b>Combination (complex or compound) designs</b> incorporate two or more conventional designs, such as fixed-fixed with a simple cantilever, or fixed-fixed with fixed-movable. Benefits: they can simplify construction of the prosthesis; they help with unfavourable angulation of abutments; they can simplify the preparation and conserve tooth tissue; they are more easily repaired after fracture; and precision retainers permit the separation of two or more components.</p>"},{"k":"اختبر نفسك","t":"Quiz: the age of 18, fixed-fixed versus fixed-movable, and the spring cantilever","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Which statements match this lecture about when an FPD is indicated or contraindicated?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">An FPD is first-choice before the age of 12 because the pulp is small; boxers are ideal candidates; and an RPD transmits occlusal force more naturally to the periodontal ligament than an FPD does</button><button type=\"button\" class=\"opt\" data-i=\"1\">FPDs are preferred after the age of 18 years, especially posteriorly, because of large pulp size or teeth that are not fully erupted, and they are not indicated in an elderly patient with a lack of periodontal-membrane resilience or attrition that enlarges the occluding surfaces. They are more rapidly tolerated than RPDs, are preferred in epilepsy and Parkinson disease (risk of fracture or inhalation of an RPD), can stabilize minor mobility, and transmit occlusal force to the periodontium and then bone (unlike an RPD, which loads the mucoperiosteum). Contraindications include an uncooperative patient, cost, boxers, hockey players and pipe smokers, poor hygiene unless the patient is motivated, lack of a distal abutment, a long span, visible bone loss, and an unsuitable abutment</button><button type=\"button\" class=\"opt\" data-i=\"2\">Speech is always worse with an FPD than with an RPD because pontics are bulkier than a denture base</button><button type=\"button\" class=\"opt\" data-i=\"3\">An FPD is contraindicated whenever a tooth adjacent to the space already needs a crown</button></div><div class=\"qexp\" hidden><p>بعد 18 سنة خصوصاً بالخلف (لب كبير أو بزوغ غير مكتمل). مفضّل بالصرع وباركنسون. القوة تروح للرباط ثم العظم. موانع: عدم تعاون، كلفة، ملاكمة وغليون، نظافة سيئة، بلا دعامة وحشية، مسافة طويلة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Fixed-fixed, fixed-movable, and spring cantilever designs in this lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Fixed-fixed never needs parallel preparations; fixed-movable is preferred for a long span and has two rigid connectors; a spring cantilever is first-choice in the lower arch and in a V-shaped palate</button><button type=\"button\" class=\"opt\" data-i=\"1\">Fixed-fixed is preferred for a long span, has rigid connectors at both ends, all major retainers, one path of insertion (parallel preparations), full occlusal coverage of both abutments, similar retention on both retainers, and is cemented as one piece. Fixed-movable has a rigid major connector at the distal end of the pontic and a movable minor connector mesially, is more conservative, allows minor tooth movement, is limited to one missing tooth, does not need parallel preparations, and is indicated for divergent abutments, a pier, or a Class III inlay on the distal of a canine. A spring cantilever uses a long palatal arm to an upper premolar (or 4 and 5), is contraindicated in a V-shaped palate and in the lower arch, and is used only to replace an upper incisor in selected cases (sound neighbours, a diastema, spacing, or a posterior tooth that needs a crown). A simple cantilever is the most conservative design, for example a canine supporting a lateral incisor when the occlusion is favourable. Andrew’s bridge (fixed plus removable components) is for a severe vertical ridge defect</button><button type=\"button\" class=\"opt\" data-i=\"2\">A major retainer is always attached to a movable connector</button><button type=\"button\" class=\"opt\" data-i=\"3\">Hybrid bridges in this lecture are implant-only prostheses with no tooth retainers</button></div><div class=\"qexp\" hidden><p>الثابت-ثابت للمسافة الطويلة، مسار واحد، تغطية إطباقية كاملة، إلصاق قطعة واحدة. الثابت-متحرك: صلب وحشياً ومتحرك إنسياً، لسن واحد مفقود، وللدعامات المتباعدة أو الـ pier. الكوابح النابض علوي فقط، ممنوع بقبة V والفك السفلي.</p></div></div>"},{"k":"Dr. Lamis · Lecture 3","t":"What an abutment must withstand, and the four evaluation requirements","b":"<p>In fixed prosthodontic terminology an <b>abutment</b> is a tooth, or a portion of a tooth, that supports and/or retains a fixed bridge or part of the bridge, and to which the retainer is connected (cemented). All forces that would have been absorbed by the missing tooth are transmitted through the pontic, connectors and retainers to the abutment teeth. Abutments must withstand forces normally directed to the missing teeth, in addition to those usually applied to the abutments themselves, so the choice of abutment is important. Considerable time and expense are spared by thoroughly investigating each abutment before preparation. Radiographs are made and pulpal health is assessed by the response to thermal and electrical stimulation. Evaluation aids include clinical examination tools, a vitality test, radiographs, diagnostic casts, and a periodontal probe.</p><p>Requirements: (1) the abutment must withstand forces normally directed to the missing teeth, and whenever possible it should be a vital tooth; (2) a symptomatic? — the lecture text says “a symptomatic endodontically treated teeth with a radiographic evidence of good seal and complete obturation of the canal can serve as abutment (post and core for retention and strength).” In context this is the common rule that a satisfactorily treated endodontic tooth (good seal, complete obturation) can serve, with a post and core when needed; (3) the supporting tissue around the abutment must be healthy and free of inflammation; (4) abutment teeth must not exhibit any mobility, since they will be carrying an extra load. Severe uncorrectable periodontal disease is contraindicated for FPDs.</p>"},{"k":"Dr. Lamis · Lecture 3","t":"Tooth factors: shape, crown length and size, caries, and why a pulp-capped tooth should be avoided","b":"<p>Factors related to the tooth: (1) <b>shape</b> — some teeth have a conical, peg, bulbous or tapered crown that interferes with preparation parallelism, necessitating full-coverage crowns to improve aesthetics and retention. Examples: peg laterals, anterior teeth with poorly developed cingula and short proximal walls, mandibular premolars with poorly developed lingual cusps and a short proximal surface, and thin incisors. (2) <b>Crown length</b> — abutments must have adequate occlusocervical crown length for retention. Full-coverage restorations and crown lengthening are considered with short clinical crowns. (3) <b>Size of the crown</b> determines the type of retainer; short, thin, conical, tapered teeth are a poor indication for a partial veneer crown. (4) <b>Health (caries or pulpal)</b> — a sound abutment permits an ideal preparation. A carious tooth may be used if the caries is removed, the pulp is protected with a lining, and the tooth is restored to its original form. The size, number and location of carious lesions or restorations influence the retainer: if the caries is small and far from the margin, the retainer design extends beyond the carious area; if mutilation or fracture is severe, removal of the tooth might be indicated. Vital teeth are preferred; pulpless teeth can be used only after endodontic treatment. <b>Pulp-capped teeth should be avoided</b> because they are at risk of requiring root-canal treatment. Modifications such as a dowel core and pin-retained restorations may be needed to restore crown morphology in a grossly destructed tooth.</p>"},{"k":"Dr. Lamis · Lecture 3","t":"Axial relationship, and which root shapes make a stronger abutment","b":"<p>Axial relationship: (a) rotation, tilting, overlapping or malposition might lead to excluding such a tooth as an abutment, because rotation or torque can damage the supporting structure or loosen the retainer; (b) it may indicate a specific retainer (over-reduction weakens the tooth and endangers the pulp); (c) rotation can increase or decrease the space available for the pontic. Factors related to the root — configuration (shape, angulation and length): a root that is wider labiolingually than mesiodistally, with an elliptic cross-section, offers better support than a tooth with a similar root-surface area but a circular cross-section; parallel-sided roots with developmental depressions resist occlusal forces better than smooth-sided conical roots, which can be used for a short-span bridge if other factors are optimal; a single-rooted tooth with an irregular configuration or some curvature at the apical third is preferable to a nearly perfect taper; multi-rooted teeth with separated roots provide greater stability than single-rooted teeth or teeth with conjoined roots; and teeth with a longer root are stronger abutments than shorter ones, since root length is directly proportional to the stability and strength of the prosthesis.</p>"},{"k":"Dr. Lamis · Lecture 3","t":"This lecture’s crown/root ratio: an optimum of 2:3 and a minimum of 1:1","b":"<p>The <b>crown–root ratio</b> is a linear measurement of the length of the tooth occlusal to the crest of alveolar bone (the crown) compared with the length of the tooth that is embedded in the bone (the root). In this lecture, a <b>2:3</b> crown/root ratio is the <b>optimum</b> for a tooth to be used as an abutment, and a <b>1:1</b> crown/root ratio is the <b>minimum acceptable</b> ratio. A 1:1 ratio might be considered adequate if the opposing occlusion is mobile or periodontally involved, or is composed of artificial teeth, which reduce the occlusal forces acting on the abutment and therefore mean less stress on the abutments.</p><p class=\"note\">Keep this lecture’s numbers as they are written here. Dr. Alaa’s earlier lecture in File 1 gave an ideal crown/root ratio of 1:2. Both figures stay with their own lecture for the exam.</p>"},{"k":"Dr. Lamis · Lecture 3","t":"Ante’s law, Tylman’s statement, and when three missing posterior teeth are a high risk","b":"<p>Factors related to the gingivo-periodontal complex: abutment teeth must be free from periodontal disease, pockets, an osseous defect and gingival inflammation, with an adequate zone of attached gingiva; supporting tissue must be healthy and free of inflammation; abutments should not exhibit any mobility, because they will carry an extra load; an intra-oral radiograph should be used to evaluate bone architecture. Alveolar bone support is one of the most important factors: it must be healthy, with a good trabecular architecture and no sign of a bone defect or bone loss.</p><p>Root surface area (periodontal ligament area) can be used as a scale of the potency of an abutment. <b>Tylman</b> stated that two abutment teeth could support two pontics. Johnston et al. improvised on Tylman’s statement and proposed the famous <b>Ante’s law</b>: the root surface area of the abutment teeth (the pericemental area embedded in bone) must be equal to or greater than the root surface area of the teeth to be replaced. If the periodontal surface area seems inadequate, multiple teeth may be used as abutments, depending on other biomechanical factors. Example in this lecture: when the first molar is missing alone, or with the second premolar, the root surface areas of the missing teeth are equal to those of the abutments (second molar and first premolar). According to this premise: one missing tooth can be successfully replaced if the abutments are healthy (and in a selected case the first premolar can be used as a secondary abutment to increase the capability of the bridge); if two teeth are missing, an FPD can probably replace them but the limit is being approached; if three posterior teeth are missing (the first molar and two premolars), or when the root surface area of the teeth to be replaced is greater than that of the abutments, then a high-risk or unacceptable situation for an FPD exists. Jespen (1963) reported average measurements of root surface areas that can be used to calculate the abutment-to-pontic ratio; this extract does not include the actual table of numbers, so those figures are not invented here.</p>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: pulp-capped teeth, the 2:3 and 1:1 ratios, and Ante’s law","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">When evaluating an abutment tooth, this lecture says:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Pulp-capped teeth are the first-choice abutments; mobility of the abutment is desirable because it shares the load; and radiographs are never needed</button><button type=\"button\" class=\"opt\" data-i=\"1\">Investigate each abutment before preparation (clinical exam, vitality tests, radiographs, diagnostic casts, and a periodontal probe). Prefer a vital tooth; a satisfactorily endodontically treated tooth with a good seal and complete obturation can serve, with a post and core when needed. Supporting tissue must be healthy and free of inflammation, and the abutment must not be mobile — severe uncorrectable periodontal disease contraindicates an FPD. Avoid pulp-capped teeth because they are at risk of needing root-canal treatment. Short, thin, conical or tapered crowns are a poor indication for a partial veneer. A root wider labiolingually than mesiodistally with an elliptic cross-section, parallel sides with developmental depressions, some apical-third curvature, separated multiple roots, and greater root length all make a stronger abutment</button><button type=\"button\" class=\"opt\" data-i=\"2\">A circular root always supports better than an elliptic root of the same surface area</button><button type=\"button\" class=\"opt\" data-i=\"3\">Over-reduction of a rotated tooth is always harmless to the pulp</button></div><div class=\"qexp\" hidden><p>افحص قبل التحضير. يُفضَّل الحي؛ المعالج لبياً بختم جيد يصلح. بلا حركة وبلا التهاب. تجنّب الـ pulp-capped. الجذر الأعرض شفوياً-لسانياً والمنفصل والمتعدد والأطول أقوى.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The crown/root ratio and Ante’s law in this lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The ideal ratio here is 1:2, as in Dr. Alaa’s earlier lecture, and Ante’s law says any two abutments can always replace any five pontics</button><button type=\"button\" class=\"opt\" data-i=\"1\">The crown/root ratio is the length of the tooth occlusal to the alveolar crest compared with the length embedded in bone. In this lecture the optimum is 2:3 and the minimum acceptable is 1:1 (a 1:1 ratio may be adequate if the opposing occlusion is mobile, periodontally involved, or artificial, which reduces the load). Keep this lecture’s 2:3 and 1:1 even though Dr. Alaa’s File 1 lecture gave an ideal of 1:2. Ante’s law: the root surface area of the abutments must be equal to or greater than that of the teeth to be replaced. Tylman said two abutments could support two pontics. One missing tooth can usually be replaced if the abutments are healthy; two missing teeth approach the limit; three missing posterior teeth (first molar and two premolars), or a pontic root area greater than the abutments, is a high-risk or unacceptable FPD situation</button><button type=\"button\" class=\"opt\" data-i=\"2\">Ante’s law compares only crown heights, not root surface areas</button><button type=\"button\" class=\"opt\" data-i=\"3\">A 1:1 ratio is never acceptable under any opposing occlusion in this lecture</button></div><div class=\"qexp\" hidden><p>بهالمحاضرة الأمثل 2:3 والحد الأدنى 1:1 (حتى لو د. آلاء قالت 1:2 سابقاً). قانون Ante: مساحة جذور الدعامات مساوية أو أكبر من المعوَّض. سن واحد غالباً مقبول؛ سنان يقتربان من الحد؛ ثلاث خلفيات خطر عالي أو غير مقبول.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">What is a pier abutment, and what is Andrew’s bridge used for in this lecture?</button><div class=\"flash-a\" hidden>A pier is an abutment standing between two abutments and supporting two pontics, each pontic being attached to a further abutment. Andrew’s bridge is a removable-bridge system (a fixed component plus a removable component) indicated for an edentulous ridge with a severe vertical defect, to overcome problems of a long-span FPD.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا سادس ملف للتيجان والجسور: بداية محاضرات د. لميس (بعد د. آلاء). صفحات 119–145، محاضرات 1–3: مقدمة التعويض الثابت، أجزاء الجسر، ليش نعوّض السن المفقود، استطبابات وموانع الجسر الثابت، تصاميم الجسور، وتقييم الدعامة — ويه نسبة التاج/الجذر بهالمحاضرة (الأمثل 2:3 والحد الأدنى 1:1) وقانون Ante. الأرقام تبقى كما بهالمحاضرة حتى لو اختلفت عن محاضرات د. آلاء.</p>","<p>ال<b>تعويضات السنية (prosthodontics)</b> اختصاص يهتم بإعادة وصيانة وظيفة الفم والراحة والمظهر والصحة عن طريق تعويض الأجزاء المفقودة من الفم والفك. فروعه بهالمحاضرة أربعة: <b>تعويض ثابت</b> (جسور ثابتة FPD)؛ <b>تعويض متحرك</b> (طقم كامل أو جزئي متحرك RPD)؛ <b>تعويض الغرسات</b>؛ و<b>تعويضات الوجه والفكين</b>.</p><p>ال<b>تعويض الثابت</b> (تيجان وجسور) يرمم السن المتضرر بتاج اصطناعي، ويعوّض الأسنان المفقودة بجهاز يُلصق بشكل دائم (جسر ثابت).</p>","<p>الترميمات <b>خارج التاج (extracoronal)</b> تجلس فوق السن: كل أنواع التيجان والقشور. ال<b>داخل تاجية (intracoronal)</b> تجلس داخل السن: حشوة مطعمة (inlay)، حشوة تغطية (onlay)، و<b>pinlage</b> (هذا لفظ المحاضرة).</p><p>ال<b>تاج</b> ترميم خارجي ثابت للجزء التاجي، يعيد الشكل والوظيفة والكفاف ويحمي ما تبقى من السن. حسب التغطية: <b>كامل</b>؛ <b>جزئي</b> (ثلاثة أرباع أو سبعة أثمان)؛ و<b>استبدال كامل</b> مثل تاج الوتد (post crown) اللي يثبت بامتداد معدني داخل القناة. حسب المادة: معدني (ذهب وبدائله)؛ غير معدني (أكريل، زيركونيا أو بورسلين مثل تاج الجاكيت)؛ ومزيج مثل تاج الخزف الملتصق بالمعدن (PFM).</p>","<p>ال<b>جسر الثابت (FPD)</b> يعوّض سناً أو أكثر، والمريض ما يگدر يشيله، ويستند أساساً على أسنان طبيعية أو جذر. أجزاؤه ثلاثة: ال<b>ماسكة (retainer)</b> تجلس على أو داخل الدعامة وتربط الدمية بالدعامة، وتكون كبرى أو صغرى، وقد تكون تاج أو inlay أو وتد ولب. ال<b>دمية (pontic)</b> الجزء المعلّق اللي يعوّض السن المفقود. ال<b>الرابط (connector)</b> يجمع الأجزاء، ثابت (صلب) أو متحرك (مرن). إذا الماسكة متصلة برابط ثابت اسمها <b>ماسكة كبرى (major)</b>؛ وإذا متصلة برابط متحرك اسمها <b>ماسكة صغرى (minor)</b>.</p>","<p>تعاريف بهالمحاضرة: ال<b>دعامة (abutment)</b> السن اللي يتثبت عليه الجسر. ال<b>المسافة (span)</b> الفراغ بين الأسنان الطبيعية اللي تمتلئ بالدمى. ال<b>السرج (saddle)</b> منطقة الحافة العديمة الأسنان اللي فوقها الدمية. ال<b>الدعامة الوسطية (pier)</b> دعامة واقفة بين دعامتين وتحمل دميتين، كل دمية متصلة بدعامة أخرى. ال<b>الوحدة (unit)</b> إما ماسكة أو دمية؛ فالجسر اللي يعوّض ضاحك ويه دعامتين اسمه <b>جسر ثلاثي الوحدات</b>. <b>مسار الإدخال (path of insertion)</b> خط تخيلي ينزل ويه ويطلع الترميم بدون تداخل أو قوة جانبية على الدعامة.</p>","<p>استقرار السن يعتمد على توازن قوى الأسنان المجاورة والمقابلة والأنسجة والخد والشفاه واللسان. إذا ما تعوّض السن المفقود، التوازن ينكسر. النتائج: <b>بزوغ زائد</b> للسن المقابل (انحسار لثة، إطباق رضّي أو نقص عضة، فقدان دعم عظمي، وضياع تماس مجاور)؛ <b>فقدان وظيفة</b> بذلك الجانب (ضمور منتشر، لويحة كثيفة والتهاب لثة وأنسجة داعمة، رض للأنسجة، وانكماش العظم واللثة)؛ <b>ميلان أو انجراف</b> للمجاورات؛ ضياع التماس يؤدي لركود طعام وجيوب ونخر تحت اللثة؛ ومشاكل داعمة وحركة.</p><p><b>انهيار العضة الخلفية (posterior bite collapse)</b>: الأسنان الخلفية تدعم ارتفاع الوجه. إذا فقدت، الوجه يقصر وينغلق. فقدان الخلفيات يضغط على الأماميات فتتحرك أو تنفرج ويقل ارتفاع الوجه شوية.</p>","<p>التأثيرات العامة لفقدان الأسنان: انهيار عام للقوسين؛ تماس مبكر يحرف حركة الفك وقد يسبب اضطراب المفصل الصدغي الفكي وتشنج عضلي وألم؛ مضغ من جهة واحدة يسبب مشاكل داعمة ونخر بالجهة المصابة لأن التنظيف الميكانيكي بالمضغ ناقص؛ وانهيار العضة الخلفية يدفع الأماميات للأمام. العلاج بهالمرحلة يمنع تفاقم المشكلة، بس قد ما يكفي لإرجاع الصحة كاملة وقد يحتاج تقويم وترميمات مصبوبة لتصحيح مستوى الإطباق.</p><p>أسباب العلاج: الجمال؛ الوظيفة؛ ألم المفصل والعضل؛ الحفاظ على القوس (تثبيت الإطباق ومنع الميلان)؛ والنطق (خصوصاً القواطع السفلية). الطرق: تقويم، طقم جزئي متحرك، جسر ثابت، غرسة، أو مزيج. أحياناً ما نسوي تعويض: فراغ قديم طويل بدون ميلان أو بزوغ يُذكر؛ عدم وجود دعامة وحشية؛ أو المريض ما يحس بأي نقص وظيفي أو إطباقي أو جمالي.</p>","<p>سؤالان على أجزاء الجسر، والوحدة الثلاثية، وانهيار العضة الخلفية.</p>","<p>فوائد الجسر الثابت: تصحيح أوضاع فموية غير طبيعية؛ إعادة كفاءة المضغ؛ الحفاظ على باقي الأسنان ومنع أذى إضافي؛ وإعادة المظهر. الاستطبابات العامة: نفسي (المريض يتقبّله أسرع من المتحرك)؛ جهازي مثل الصرع (المتحرك قد ينكسر أو يُبتلع)؛ تقويمي لتثبيت نتيجة التقويم (مثلاً تعويض رباعية بعد إغلاق فراغ بين الثنايا)؛ النطق (المتحرك ضخم قد يعيق الكلام، دمية الجسر بحجم السن نادراً ما تعيق)؛ وداعم (يثبت أسنان بحركة بسيطة ويوزع القوى على عدة أسنان).</p><p>الاستطبابات الموضعية: أسنان سليمة موزعة تصلح دعامات (حية، أو معالجة لبياً بلا مرض شعاعي، نسبة تاج/جذر كافية، لثة جيدة، وشكل جذر مناسب)؛ سن مجاور للفراغ أصلاً يحتاج ترميم مصبوب؛ أسنان مائلة بقوة تصعّب الجهاز المتحرك؛ والأفضل غالباً الثابت لأن قوة الإطباق تنتقل للرباط ثم العظم (الطريق الطبيعي)، بينما بالمتحرك تنتقل للغشاء المخاطي السمحاقي ثم العظم اللي مو مصمم لهالوظيفة.</p>","<p>الموانع العامة: مريض غير متعاون؛ الكلفة (أغلى من المتحرك)؛ مهن مثل الملاكمة وهوكي الجليد ومدخني الغليون (خطر كسر الأسنان أو الترميم)؛ نظافة فم سيئة ما لم يتحفّز المريض قبل العلاج؛ و<b>العمر</b> — يُفضَّل الجسر بعد <b>18 سنة</b> خصوصاً بالخلف بسبب كبر اللب أو الأسنان بعد ما اكتمل بزوغها. لكبار السن قد لا يُستطب إذا الرباط فقد مرونته أو التسحّج زاد سطح الإطباق.</p><p>الموانع الموضعية: عدم وجود دعامة وحشية؛ فقد عظمي واضح بمنطقة ظاهرة؛ مسافة طويلة؛ ودعامة غير مناسبة (طول، شكل، نخر، أو دعم داعم). المزايا: مظهر ووظيفة ونطق، ثبات إطباق، جبائر داعمة، وإعادة البعد العمودي. العيوب: قد يضر السن واللب، نخر ثانوي محتمل، مشاكل داعمة، والكلفة.</p>","<p>مقارنة الجسر الثابت ويه الجزئي المتحرك بهالمحاضرة: أثبت وأريح لأنه يغطي أنسجة أقل (بلا قاعدة أكريل أو شفاه أو ضمات)؛ أجمل؛ إطباق أثبت وتوزيع قوى أعدل؛ يعمل جبائر بينما المتحرك يدفع الأسنان ويسبب حركة؛ تنظيف أسهل بالفرشاة والخيط إذا التماس ويه الأنسجة نقطة، بينما المتحرك لازم ينشال؛ ما يهيج الأنسجة ولا يضغط عليها؛ أسهل تقبّلاً نفسياً؛ مفضّل لذوي الإعاقة ومريض الصرع وباركنسون خوفاً من كسر أو ابتلاع المتحرك؛ بلا صعوبة نطق؛ الأسنان المائلة بقوة تعيق الطقم (تحت قطع وركود طعام) — يمكن جسر تلسكوبي ويه coping معدني، أو ثابت-متحرك، أو نصف تاج proximally؛ وحدود تشريحية للمتحرك مثل لسان كبير جداً، اضطراب عضلي، وذُرى فكية سفلية، وأنسجة قبة الحنك.</p>","<p>تصنيف الجسور: حسب المادة (معدن مصبوب، خزف-معدن، خزف كامل، أو مغطى بالراتنج)؛ حسب الموقع (أمامي أو خلفي)؛ حسب العدد (وحدتان أو ثلاث). حسب التحضير: <b>تقليدي</b> ويه سحل كبير؛ <b>تحضير أصغري</b> (لاصق، محمض، مرتبط بالراتنج) يُلصق على سطوح غير محضَّرة أو محضَّرة بأقل ما يمكن؛ <b>هجين</b> يجمع الاثنين (الشكل: ثابت-متحرك ويه ماسكة أصغرية تحمل الرابط المتحرك)؛ <b>مدعوم بالغرسات</b> عادة غير مربوط بالأسنان المجاورة؛ و<b>جسور متحركة</b> تستند كلياً على الأسنان وتختلف عن الطقم الجزئي، للتغلب على مشاكل المسافة الطويلة، مثل نظام <b>جسر Andrew</b> لحافة عديمة الأسنان ويه عيب عمودي شديد (جزء ثابت وجزء متحرك).</p>","<p>تصميم <b>ثابت-ثابت (fixed-fixed)</b>: مفضّل للمسافات الطويلة؛ رابط صلب بطرفي الدمية؛ أعلى تثبيت وقوة؛ كل الماسكات كبرى وتحتاج سحل واسع (أقل محافظة، وأذى أكبر للب)؛ لازم <b>مسار إدخال واحد</b> (التحضيران متوازيان)؛ لازم تغطية السطح الإطباقي كامل للدعامتين وإلا القوة تنزل على المنطقة غير المحضَّرة وتضغط السن لتحت وتكسر الروابط؛ لازم الماسكات لها تقريباً نفس مقدار التثبيت حتى ما تنخلع الضعيفة؛ الدعامتان مجبّرتان (مناسب إذا في حركة بسيطة)؛ ويُلصق كقطعة واحدة.</p>","<p>تصميم <b>ثابت-متحرك</b>: رابط صلب (كبرى) عند النهاية <b>الوحشية</b> للدمية، ورابط متحرك (صغرى) <b>إنسياً</b>. أكثر محافظة من الثابت-ثابت لأن الماسكة الصغرى تحتاج سحل أقل. يسمح بحركة بسيطة للسن (جانبية وعمودية). محدود بسن واحد مفقود (مسافة قصيرة). يمكن إلصاق أجزاء الجسر بشكل منفصل. العمل المخبري معقّد. التحضيرات ما تحتاج تكون متوازية. يُستطب للدعامات المتباعدة (غير المتوازية)، وعند وجود دعامة وسطية (جسر معقّد)، ولاعتبار جمالي مثل حشوة مطعمة صنف III على وحشي الناب.</p>","<p>ال<b>كوابح البسيط (simple cantilever)</b>: الدعم من طرف واحد فقط؛ الدمية قد تتصل بماسكة أو اثنتين؛ الدعامة إنسية أو وحشية للمسافة؛ أكثر تصميم محافظة؛ حالات محدودة مثل تعويض الرباعية بالناب إذا الإطباق مناسب. يمكن أيضاً تعويض الضاحك الأول العلوي أو السفلي والرحى الثانية.</p><p>ال<b>كوابح النابض (spring cantilever)</b>: الدمية تتصل بذراع معدني طويل مرن يجري بقبة الحنك وينتهي برابط صلب على الجانب الحنكي لماسكة واحدة على الضاحك الأول العلوي، أو على الضاحك الأول والثاني. مثبت بالسن ومستند على الأنسجة. القوى تُمتص بمرونة الذراع وإزاحة أنسجة الحنك. الدعامات عادة خلفية (سن يحتاج ترميم أفضل يُستخدم). <b>يُمنع بقبة حنكية بشكل V وبالقوس السفلي</b> (أنسجة تحت المخاطية غير ثابتة، وخطر لويحة وقلاح). يُستطب فقط لتعويض قاطع علوي مفقود إذا المجاورات سليمة، أو في فراغ الخط المتوسط، أو تباعد الأماميات، أو سن خلفي يحتاج تاج.</p><p>التصاميم <b>المركّبة</b> تجمع تصميمين أو أكثر (ثابت-ثابت مع كوابح بسيط، أو ثابت-ثابت مع ثابت-متحرك). تسهّل البناء، تساعد إذا ميل الدعامات غير مناسب، تحافظ على النسيج، أسهل تصليحاً بعد الكسر، والماسكات الدقيقة تسمح بفصل الأجزاء.</p>","<p>سؤالان على الاستطباب والعمر 18، وتصاميم الثابت-ثابت والثابت-متحرك والكوابح النابض.</p>","<p>ال<b>دعامة</b> سن أو جزء منه يدعم أو يثبّت الجسر وتتصل به الماسكة. كل القوى اللي كانت على السن المفقود تنتقل عبر الدمية والروابط والماسكات إلى الدعامات، فالدعامات تتحمل قواها الأصلية زائد قوى السن المفقود. لذلك التقييم مهم قبل التحضير: فحص سريري، اختبار حيوية (حرارة وكهرباء)، صور شعاعية، أمثلة تشخيصية، ومسبر لثوي.</p><p>المتطلبات: تتحمل القوى، ويفضَّل تكون حية؛ السن المعالج لبياً يمكن أن يخدم إذا الختم الشعاعي جيد والحشو مكتمل (وقد يحتاج وتد ولب للتثبيت والقوة) — نص المحاضرة كتب “a symptomatic” والسياق هو السن المعالج بشكل مرضي/مقبول؛ الأنسجة الداعمة صحيحة بلا التهاب؛ و<b>بلا أي حركة</b> لأن الحمل سيكون إضافياً. المرض الداعم الشديد غير القابل للتصحيح مانع للجسر الثابت.</p>","<p>عوامل السن: <b>الشكل</b> — تاج مخروطي أو وتدي (peg) أو منتفخ أو متقارب يعيق التوازي، وقد تحتاج تغطية كاملة (مثل الرباعية الوتدية، أماميات بوسادة لسانية ضعيفة وجدران مجاورة قصيرة، ضواحك سفلية بحدبات لسانية ضعيفة، وقواطع رفيعة). <b>طول التاج</b> لازم يكفي للتثبيت؛ التاج القصير قد يحتاج تغطية كاملة أو إطالة تاج. <b>حجم التاج</b> يحدد نوع الماسكة؛ الأسنان القصيرة الرفيعة المخروطية مؤشر ضعيف لتاج قشري جزئي. <b>الصحة</b> — السن السليم يسمح بتحضير مثالي؛ النخر يُزال ويه حماية اللب وبطانة ويُرمم لشكله. إذا التخريب شديد قد يُقلع السن. يُفضَّل الحي؛ فاقد اللب فقط بعد معالجة لبية. <b>تجنّب الأسنان ذات التغطية اللبية (pulp-capped)</b> لأنها معرضة للحاجة لمعالجة قناة. الأسنان المخربة بشدة قد تحتاج وتد ولب أو ترميم مثبت بدبابيس.</p>","<p>العلاقة المحورية: الدوران أو الميلان أو التراكب أو سوء الوضع قد يستبعد السن كدعامة، لأن العزم قد يضر الدعم أو يفك الماسكة؛ وقد يفرض نوع ماسكة معيّن (السحل الزائد يضعّف السن ويعرّض اللب)؛ والدوران يغيّر مساحة الدمية. شكل الجذر: الجذر الأعرض شفوياً-لسانياً من إنسي-وحشي ويه مقطع بيضوي أفضل من المقطع الدائري ويه نفس المساحة؛ الجذور المتوازية الجوانب ويه تحدّبات تطورية تقاوم أفضل من المخروطية الملساء (هذي لمسافة قصيرة إذا باقي العوامل جيدة)؛ جذر مفرد غير منتظم أو ويه انحناء بالثلث الذروي أفضل من الاستدقاق المثالي تقريباً؛ متعدد الجذور المنفصلة أثبت من المفرد أو الملتحمة؛ والجذر الأطول أقوى لأن الطول يتناسب طردياً ويه ثبات الجهاز.</p>","<p>نسبة <b>التاج إلى الجذر</b> قياس طولي: طول السن فوق قمة العظم السنخي (التاج) مقابل الطول المدفون بالعظم (الجذر). بهالمحاضرة النسبة <b>المثلى 2:3</b>، و<b>الحد الأدنى المقبول 1:1</b>. النسبة 1:1 قد تُقبل إذا الإطباق المقابل متحرك أو مصاب داعماً، أو أسنان اصطناعية، لأن القوى على الدعامة تقل.</p><p class=\"note\">خلِّ أرقام هالمحاضرة كما هي. بمحاضرة د. آلاء سابقاً (الملف 1) النسبة المثالية كانت 1:2. كل رقم يبقى ويه محاضرته للامتحان.</p>","<p>مركب اللثة والأنسجة الداعمة: الدعامة خالية من المرض الداعم والجيوب والعيوب العظمية والالتهاب، ويه منطقة لثة ملتصقة كافية، وبلا حركة، والعظم بصيغة إسفنجية جيدة بلا فقد. مساحة سطح الجذر (مساحة الرباط) مقياس لقوة الدعامة. <b>Tylman</b> قال إن دعامتين يگدرون يحملون دميتين. بعدين <b>قانون Ante</b>: مساحة سطح جذر الدعامات (المدفونة بالعظم) لازم تكون مساوية أو أكبر من مساحة جذور الأسنان المراد تعويضها. إذا المساحة ناقصة، يمكن زيادة عدد الدعامات حسب عوامل الميكانيكا الحيوية. مثال المحاضرة: فقدان الرحى الأولى وحدها أو ويه الضاحك الثاني، مساحتهما تساوي مساحة دعامتين (الرحى الثانية والضاحك الأول). سن واحد مفقود يمكن تعويضه إذا الدعامات سليمة (وأحياناً يُضاف الضاحك الأول كدعامة ثانوية)؛ سنان مفقودان غالباً ممكن بس الحد صار قريب؛ ثلاثة خلفيات مفقودة (رحى أولى وضاحكان) أو إذا مساحة التعويض أكبر من الدعامات = وضع عالي الخطورة أو غير مقبول للجسر الثابت. Jespen (1963) ذكر قياسات لمساحات الجذور، بس جدول الأرقام ما ظهر بالنص المستخرج فما نختلق أرقام.</p>","<p>سؤالان ختاميان + بطاقة الـ pier وجسر Andrew + زر الدرجة.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
