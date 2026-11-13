@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Prosthodontics - File 6 - Diagnosis, Treatment Planning and Mouth Preparation for Cr/Co RPD</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">Prosthodontics &middot; File 6 &middot; 4th year &middot; Lectures 3–4 &middot; pp 206–229</div>
+    <h1>Diagnosis, Treatment Planning and Mouth Preparation for Cr/Co RPD</h1>
+    <p style="margin:0 0 16px">University of Baghdad, College of Dentistry — Prosthodontics syllabus for the degree equivalency exam (October 2025 attempt). 4th-year Lectures 3 and 4, PDF pages 206–229 (Dr. Ihab Nabeel Al-mgotar).</p>
+    <ul>
+      <li>Every slide is shown for <b>2 minutes</b>.</li>
+      <li><b>Next</b> unlocks only when the countdown reaches zero.</li>
+      <li><b>Back</b> is always available, and never re-locks your progress.</li>
+      <li>Each slide has an <b>Iraqi Arabic explanation</b> (الشرح بالعراقي) under the English content — written to be very simple, with everyday analogies. Medical terms stay in English.</li>
+      <li>Tap <b>اختبر نفسك</b> questions and flashcards on the slides. A short self-test is at the end of the file.</li>
+      <li>Total run time: <b>44 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 22</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Prosthodontics · File 6","t":"Diagnosis, Treatment Planning and Mouth Preparation for Cr/Co RPD","b":"<p>University of Baghdad, College of Dentistry — Prosthodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This 4th-year file covers PDF pages 206–229 (Dr. Ihab Nabeel Al-mgotar):</p><ul><li>Lec. 3 — Diagnosis and treatment planning for cobalt-chromium RPD: interview, examination, diagnostic casts, interpretation, indications, infection control, and FPD versus RPD.</li><li>Lec. 4 — Preparation of the mouth to receive an RPD: surgical, periodontal and tissue-conditioning steps, then abutment modification, guiding planes and rest seats.</li></ul><p class=\"note\">Every slide has a very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end.</p>"},{"k":"4th year · Lec. 3","t":"Patient uniqueness and the four diagnostic processes","b":"<p>The dentist must provide the treatment the patient needs — both the need the patient perceives and the needs shown by clinical examination and interview. Although partially edentulous patients share similarities, significant differences make each patient and treatment plan unique.</p><p>That uniqueness is described through interview and examination in four processes:</p><ol><li>Understanding the patient’s desire or <b>chief complaint</b>.</li><li>Ascertaining the dental need through a diagnostic clinical examination.</li><li>Developing a treatment plan that reflects the best management of desire and need.</li><li>Executing sequenced treatment with planned follow-up.</li></ol>"},{"k":"4th year · Lec. 3","t":"The patient interview, chief complaint, and shared decision-making","b":"<p>The interview is a chance to connect with the patient by listening to the chief complaint — the illness in the patient’s own words. It may include pain, difficulty with function, concern about appearance, problems with an existing prosthesis, or any combination related to the teeth, periodontium, jaws, or previous treatment.</p><p>Listen carefully to why the patient presented; all later information is used to discuss those concerns and whether the proposed treatment will affect them. This discussion at the outset helps outline realistic expectations. It is mandatory that the dentist understand what brings the patient to the clinic. Failure to do so risks an unhappy patient, because the result may not correct the chief complaint.</p><p>The interview (and examination) should follow this sequence: chief complaint and its history; medical-history review; dental-history review, especially previous prosthetic experience; and patient expectations. After that, the most appropriate prosthodontic treatment is decided <b>with</b> the patient, using a communication model called <b>shared decision-making</b>.</p>"},{"k":"4th year · Lec. 3","t":"Objectives of prosthodontic treatment, and starting the oral examination","b":"<p>Objectives that must be maintained:</p><ol><li>Restore lost function within the limits of the patient’s tissue tolerance.</li><li>Maintain or improve appearance — comfort in an esthetically pleasing manner.</li><li>Preserve and maintain the health of the remaining teeth and oral tissues (which will enhance RPD design).</li></ol><p>Oral examination uses visual and digital inspection with a mouth mirror, periodontal probe and tweezers. Sequence:</p><ol><li>Relieve pain and carious lesions with temporary fillings; decide whether acute needs or a prophylaxis must come before a thorough exam.</li><li>A thorough oral prophylaxis, so the teeth are free of calculus and debris and an accurate diagnostic cast can be made.</li><li>A complete intra-oral radiographic survey.</li></ol>"},{"k":"4th year · Lec. 3","t":"Objectives of the radiographic examination","b":"<p>Radiographic objectives:</p><ul><li>Locate infection and other pathosis.</li><li>Reveal root fragments, foreign objects, bone spicules and irregular ridges.</li><li>Show the presence and extent of caries and their relation to the pulp and periodontal attachment.</li><li>Evaluate existing restorations for recurrent caries, marginal leakage and overhanging gingival margins.</li><li>Reveal root-canal fillings and their future prognosis (RPD design may hinge on whether an endodontically treated tooth is kept or extracted).</li><li>Evaluate periodontal conditions and the need and possibility of treatment.</li><li>Evaluate alveolar support of abutment teeth: number, supporting length and morphology of roots, bone already lost, and support that remains.</li></ul><p>Then: impressions for accurate diagnostic casts, preferably mounted on a semi-adjustable articulator; and instrumental plus visual examination of the teeth and residual ridge.</p>"},{"k":"4th year · Lec. 3","t":"Visual examination of teeth, periodontium, ridges and tori","b":"<p>Visual examination shows signs of dental disease. Caries susceptibility is of primary importance (number of restored teeth, recurrent caries). Periodontal disease, gingival inflammation, recession and mucogingival relationships must be observed. The number of remaining teeth, the location of edentulous areas, and residual-ridge quality decide how much support the RPD will get from the teeth versus the ridges.</p><p>Tissue contours may look like a well-formed ridge, but palpation often shows that supporting bone has been replaced by displaceable fibrous tissue — common in the maxillary tuberosity. An RPD cannot be supported adequately by easily displaced tissues. Unless contraindicated, this tissue should be recontoured or removed. A <b>small but stable</b> residual ridge is preferable to a larger unstable ridge.</p><p>Tori or exostoses must be related to framework design. Failure to palpate the median palatal raphe and compare its displaceability with that of the residual-ridge tissues can lead to a rocking, uncomfortable denture. Relief of palatal major connectors must be planned in proportion to that difference — or a major-connector design that does not interfere with the torus is chosen.</p>"},{"k":"4th year · Lec. 3","t":"Occlusion, the floor of the mouth, and purposes of diagnostic casts","b":"<p>Each arch and its occlusal relationship with the opposing arch must be examined separately. A situation that looks simple with the teeth apart may be complicated in occlusion — for example a deep vertical overlap that hinders attaching anterior teeth to a maxillary denture, or extrusion into an edentulous space that interferes with replacements, clasps or rests. These findings are then studied on mounted diagnostic casts. Height of the floor of the mouth is determined (direct or indirect method) to locate the inferior borders of lingual mandibular major connectors.</p><p>A diagnostic cast must accurately reproduce the teeth, adjacent tissues and edentulous spaces (to judge the denture-base type and available support). It is usually poured from an alginate impression in plaster, though stone is sometimes better because it is not so easily abraded.</p><p>Purposes of diagnostic casts:</p><ol type=\"a\"><li>Supplement the oral exam by viewing occlusion from the lingual as well as the buccal side.</li><li>Allow a topographic survey of the arch (parallelism of tooth surfaces and their influence on design).</li><li>Present present and future needs, and the hazards of neglect, to the patient (migration and its effects, loss of occlusal support, traumatic contacts, caries and periodontal risk).</li><li>Fabrication of individual trays.</li><li>A constant reference as work progresses (penciled restorations, modifications, rests, framework design, path of placement).</li><li>Unaltered diagnostic casts should become a permanent part of the patient’s record, just as preoperative radiographs do.</li></ol>"},{"k":"4th year · Lec. 3","t":"Interpreting examination data: bone, roots and the periodontium","b":"<p>Abutment quality is primary, because those teeth will withstand greater loads — especially greater horizontal forces when they provide total abutment support. Abutments next to distal-extension bases also take <b>torque</b> from movement of the tissue-supported base.</p><p>Optimum radiographic bone quality usually shows normal-sized interdental trabecular spaces, and a relatively thin white line of interproximal crest crossing from the lamina dura of one tooth to the next. Radiographic findings are an adjunct and must always be confirmed clinically.</p><p>Root morphology greatly affects an abutment’s ability to resist rotational forces. Teeth with <b>multiple and divergent roots</b> resist stress better than teeth with fused, conical roots, because force is distributed through more periodontal fibers to more bone.</p><p>Assess the gingiva (adequate attached gingiva, pockets), supporting bone and mobility. If mucogingival problems, osseous defects or mobility are found, determine cause and potential treatment. Educate the patient about plaque control and regular maintenance. The most decisive evidence of oral-hygiene habits is the condition of the mouth <b>before</b> the initial prophylaxis.</p><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Abutment teeth next to a distal-extension base are subjected to:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Vertical forces only</button><button type=\"button\" class=\"opt\" data-i=\"1\">Vertical and horizontal forces, and also torque because of movement of the tissue-supported base</button><button type=\"button\" class=\"opt\" data-i=\"2\">No extra load compared with a single crown</button><button type=\"button\" class=\"opt\" data-i=\"3\">Only thermal stress</button></div><div class=\"qexp\" hidden><p>بالإضافة للقوى العمودية والأفقية، في <b>عزم (torque)</b> لأن القاعدة المدعومة من النسيج تتحرك.</p></div></div>"},{"k":"4th year · Lec. 3","t":"Need for extraction, indications for an RPD, and base alloys","b":"<p>Extraction may be needed if: the tooth cannot be restored to health; its absence will permit a more serviceable, less complicated RPD design; or it is so unaesthetically located that removal will improve appearance.</p><p>Specific indications for an RPD:</p><ol><li>The most common situations are Kennedy Class I and II, often with an edentulous space on the opposite side of the arch that helps retention and stabilization.</li><li>Replacement of recently extracted teeth that cannot yet be done satisfactorily with a fixed restoration.</li><li>A long span may still be totally tooth-supported if the abutments and the means of transferring support are adequate and the framework is rigid.</li><li>Need for bilateral stabilization.</li><li>The RPD may act as a periodontal splint through cross-arch stabilization of teeth weakened by periodontal disease.</li><li>Excessive loss of residual bone.</li><li>Economic considerations.</li></ol><p>Types of RPD base (framework) material listed: gold alloy, chromium-cobalt alloy, and titanium.</p>"},{"k":"4th year · Lec. 3","t":"Infection control, and FPD versus RPD (unilateral dentures)","b":"<p>Recommended infection-control practices:</p><ol><li>Gloves for all patients.</li><li>Masks to protect oral and nasal mucosa from blood and saliva splatter.</li><li>Eye protection from the same splatter.</li><li>Sterilization methods known to kill all life forms (steam autoclave, dry-heat oven, chemical-vapor sterilizers, and chemical sterilants).</li><li>Cleanup of instruments and surfaces: scrub with detergent and wipe with iodine or chlorine (diluted household bleach).</li><li>Contaminated disposables in plastic bags; sharps (needles, scalpel blades) first go into puncture-resistant containers.</li></ol><p>Although replacing missing teeth with a tooth- or implant-supported fixed partial denture is generally the method of choice, an RPD may be the better treatment for a specific patient. The choice must meet the patient’s economic limits and personal desires. A <b>unilateral RPD</b> in place of an FPD is uncommon and is strongly discouraged: it places excessive stress on the abutment teeth, and the risk of aspiration is significant if the prosthesis dislodges in use.</p><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A unilateral RPD used instead of a fixed partial denture is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The first choice in every short bounded space</button><button type=\"button\" class=\"opt\" data-i=\"1\">Strongly discouraged, because it overloads the abutments and carries a significant aspiration risk if it dislodges</button><button type=\"button\" class=\"opt\" data-i=\"2\">Safer than any FPD</button><button type=\"button\" class=\"opt\" data-i=\"3\">Required whenever titanium is used</button></div><div class=\"qexp\" hidden><p>الطقم الجزئي <b>أحادي الجانب</b> غير مستحب بقوة: يحمل الدعامة زيادة، وإذا انفلت خطر البلع/الاستنشاق كبير.</p></div></div>"},{"k":"4th year · Lec. 4","t":"Evaluating the mouth by discipline, and what mouth preparation includes","b":"<p>Evaluating existing intra-oral conditions is essential to planning an RPD. Needs fall into the primary disciplines: surgery, periodontics, endodontics, prosthodontics and orthodontics.</p><p>Surgical considerations include: structurally compromised teeth that may need extraction; malpositioned or supra-erupted teeth that may need extraction; an enlarged tuberosity needing soft- or hard-tissue reduction; exostoses and tori that may need removal or alveoloplasty; and displaceable, hyperplastic tissue or an epulis that may need excision.</p><p>Periodontal disease control should be started, when appropriate, before definitive prosthodontic treatment. Endodontics may save an extruded tooth: reduce the occlusal surface into the proper plane and restore it with a crown rather than extract it. From a prosthodontic view, look for caries, defective restorations, structurally compromised teeth, occlusal-plane discrepancies, malocclusion, and the need for modification. Surveying may show a need for enameloplasty (contours, rest seats, guide planes). Tooth modification may be subtractive or additive; surveyed crowns (gold or metal-ceramic) can incorporate the desired modifications.</p><p>Mouth preparation is the second phase of treatment: all procedures that modify the existing oral condition so the prosthesis can be placed and can function properly. It has two parts: procedures done with diagnosis and planning to remove hindrances; and procedures done after the partial-denture design to facilitate that design.</p><p>Preprosthetic procedures include: relief of pain and infection; oral surgery; conditioning of abused, irritated tissue; periodontal therapy; correction of the occlusal plane; orthodontic correction; splinting weakened teeth; reshaping teeth; and preparation of rests and guiding planes.</p>"},{"k":"4th year · Lec. 4","t":"Relief of pain and infection, and oral surgical preparation","b":"<p>Treat in this phase: potential emergencies (acute pain, abscess); carious teeth with pain; asymptomatic deep caries excavated and filled with an intermediate restorative material; gingival diseases such as ANUG, herpetic gingivostomatitis and gingival abscess; and calculus and plaque, with a preventive hygiene program started and maintained.</p><p>The longer the time between surgery and the impression, the better the healing and the more stable the denture-bearing area. Common indications for surgical intervention: extraction of teeth with a poor prognosis; removal of residual roots; extraction of impacted teeth (all impacted teeth should be considered for removal, whether in an edentulous area or next to an abutment); and severely malposed teeth. Loss of neighbors may allow extrusion or mesial drift, often carrying alveolar bone occlusally. Orthodontics can correct many discrepancies, but if it is impractical (for example lack of anchorage), teeth and supporting bone can be surgically repositioned, often as an outpatient procedure.</p>"},{"k":"4th year · Lec. 4","t":"Extractions, residual roots, cysts, tori and hyperplastic tissue","b":"<p>Planned extractions should occur early. Judge each tooth’s strategic importance and its contribution to RPD success. Remove non-strategic teeth that would complicate or harm the design. Generally remove all retained roots or fragments, especially if they are close to the tissue surface or associated with pathology; roots next to abutments may worsen pockets and compromise later periodontal therapy. Indications also include teeth that complicate treatment, malalignment that orthodontics cannot correct, and teeth that interfere with a major connector.</p><p>If a cyst or odontogenic tumor is suspected, confirm the diagnosis by consultation and, if needed, biopsy sent to a pathologist.</p><p>Mucosa over exostoses and tori is usually extremely thin and friable; nearby denture components can irritate and chronically ulcerate it. Design changes can sometimes accommodate a torus, but more often they add stress and compromise function, so surgical removal is frequently indicated.</p><p>Hyperplastic tissue (fibrous tuberosity, redundant folds in the vestibule or floor of the mouth, palatal papillomatosis) should be removed surgically. A surgical stent should be considered so that healing is more comfortable.</p>"},{"k":"4th year · Lec. 4","t":"Frena, knife-edge ridges, mucosal lesions, jaw deformity, implants and augmentation","b":"<p>After loss of ridge height, muscle attachments (especially mylohyoid, mentalis and genioglossus) may insert near the crest; those muscles can also produce bony protuberances that interfere with design. Comfort and function improve if attachments — especially mylohyoid — are repositioned; genioglossus is harder to move. Maxillary labial and lingual frena are frequent sources of interference.</p><p>Sharp bony spicules should be removed and a knife-like crest gently rounded, with minimum bone loss. If correction leaves insufficient ridge support, vestibular deepening may be needed. Polyps, papillomas and abnormal soft-tissue lesions should be excised and submitted for pathology before the RPD is made. All abnormal white, red or ulcerative lesions (hyperkeratosis, erythroplasia, ulceration) must be investigated, regardless of their relation to the planned base.</p><p>Correcting a dentofacial deformity (moving the jaws in horizontal, sagittal or facial planes) can simplify rehabilitation, though replacing teeth and building a harmonious occlusion in these patients is difficult.</p><p>Titanium implants are placed under clean, controlled surgery and allowed to osseointegrate before exposure and prosthesis fabrication. Hydroxyapatite has been used to augment a deficient ridge: it lacks toxicity, does not provoke inflammatory or foreign-body responses, increases width and height, provides a matrix for new bone, and is non-resorbable or only very slightly resorbable.</p>"},{"k":"4th year · Lec. 4","t":"Conditioning abused and irritated tissues","b":"<p>Abused tissues should be treated before impression making, because contour changes as they heal. Causes include ill-fitting dentures, nutritional disturbances, diabetes and blood dyscrasia. Symptoms: inflammation and irritation of the denture-bearing soft tissues; distortion of normal anatomy such as the incisive papillae, rugae and retromolar pads; and a burning sensation in the residual ridge, tongue, cheeks and lips. These are usually linked to an ill-fitting or poorly occluded RPD, and should be treated before relining or making a new one.</p><p>Home care: rinse three times daily with prescribed saline; massage the residual ridge, palate and tongue with a soft toothbrush; remove the prosthesis at night; and use prescribed therapeutic multiple vitamins with a high-protein, low-carbohydrate diet.</p><p>Maximum benefit from a tissue-conditioning material comes from: eliminating deflective occlusal contacts of the old dentures; extending the base to a proper form for support, retention and stability; relieving the tissue side of the base enough (<b>1–2 mm</b>) for an even thickness of material; applying enough material for support and cushioning; and following the manufacturer’s directions. Repeat the procedure until the supporting tissue looks undistorted and healthy.</p><p>These elastopolymers continue to flow for an extended period, allowing distorted tissue to rebound; they soothe irritated mucosa, and because they are soft they distribute occlusal force more evenly.</p>"},{"k":"4th year · Lec. 4","t":"Periodontal preparation and the sequence of abutment-tooth modification","b":"<p>Periodontal preparation is performed at the same time as oral surgery and must be completed before restorative work, because the success of the restoration depends on the health of the supporting structures — especially the abutments.</p><p>After surgery, periodontal treatment, endodontics and tissue conditioning, abutment teeth are prepared to provide support, stabilization, reciprocation and retention. They fall into three groups: those needing only minor coronal modification; those to receive restorations other than crowns; and those to receive crowns.</p><p>Sequence on sound enamel or an existing restoration:</p><ul><li>Prepare proximal surfaces parallel to the path of placement to provide guiding planes.</li><li>Modify contours, lowering the height of contour so that the origin of a circumferential clasp arm can sit well below the occlusal surface, preferably at the junction of the middle and gingival thirds; retentive terminals sit in the gingival third (better esthetics and mechanics); and the reciprocal arm sits on and above a height of contour no higher than the cervical portion of the middle third.</li><li>After axial changes, and <b>before</b> rest-seat preparation, make an irreversible-hydrocolloid impression and pour a fast-setting stone cast. Return it to the surveyor to check that the axial alterations are adequate. Further recontouring can still be done in the same appointment.</li><li>Then prepare occlusal rest areas that will direct occlusal force along the long axis of the abutment.</li></ul>"},{"k":"4th year · Lec. 4","t":"Occlusal and cingulum rest-seat preparation","b":"<p>On sound enamel: a No. 8 round bur lowers the marginal ridge and establishes the outline of the rest seat. A No. 6 round bur then slightly deepens the floor inside that lowered ridge. This gives a rest that directs force axially and interferes as little as possible with the opposing occlusion.</p><p>The floor of the rest seat should incline toward the center of the tooth so that occlusal forces are centered over the root apex. The marginal ridge must be lowered so that the angle formed by the occlusal rest with the minor connector is <b>less than 90°</b>. That helps direct force along the long axis, while still leaving enough bulk so the rest is not weak at the ridge. The lowered marginal ridge must not be the deepest part of the preparation — the floor continues to incline slightly from that ridge toward the center of the tooth.</p><p>A cingulum rest seat needs a prominent cingulum. The preparation is a chevron or inverted “V” mesiodistally, and a concave “V” buccolingually.</p><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">After the marginal ridge is lowered, the floor of an occlusal rest should:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Slope away from the center of the tooth, making an angle greater than 90° with the minor connector</button><button type=\"button\" class=\"opt\" data-i=\"1\">Incline toward the center of the tooth so the angle with the minor connector is less than 90°, and the lowered ridge is not the deepest point</button><button type=\"button\" class=\"opt\" data-i=\"2\">Be perfectly flat and higher than the marginal ridge</button><button type=\"button\" class=\"opt\" data-i=\"3\">Be cut with a fissure bur only, never a round bur</button></div><div class=\"qexp\" hidden><p>قاع المقعد يميل لمركز السن، والزاوية ويه الـ minor connector <b>أقل من 90°</b>، والحافة الهامشية المنخفضة مو أعمق نقطة.</p></div></div>"},{"k":"اختبر نفسك · Diagnosis and planning","t":"Quiz — Lecture 3","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The four diagnostic processes begin with:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Casting the framework</button><button type=\"button\" class=\"opt\" data-i=\"1\">Understanding the chief complaint, then ascertaining need, planning, and executing sequenced treatment with follow-up</button><button type=\"button\" class=\"opt\" data-i=\"2\">Immediate extraction of all remaining teeth</button><button type=\"button\" class=\"opt\" data-i=\"3\">Choosing titanium for every case</button></div><div class=\"qexp\" hidden><p>أول شي افهم الشكوى، بعدين الحاجة، الخطة، والتنفيذ والمتابعة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A small but stable residual ridge, compared with a larger displaceable fibrous ridge, is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Worse for support</button><button type=\"button\" class=\"opt\" data-i=\"1\">Preferable for providing support; easily displaced tissue (common at the tuberosity) cannot support an RPD adequately and is often removed</button><button type=\"button\" class=\"opt\" data-i=\"2\">Useful only if a unilateral RPD is planned</button><button type=\"button\" class=\"opt\" data-i=\"3\">A reason to skip diagnostic casts</button></div><div class=\"qexp\" hidden><p>حافة صغيرة وثابتة أفضل من كبيرة تتحرك. النسيج اللي ينزاح ما يدعم الطقم.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Unaltered diagnostic casts should:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Be discarded after surveying</button><button type=\"button\" class=\"opt\" data-i=\"1\">Become a permanent part of the patient’s record, like preoperative radiographs</button><button type=\"button\" class=\"opt\" data-i=\"2\">Be used only to mix alginate</button><button type=\"button\" class=\"opt\" data-i=\"3\">Replace the need for a medical history</button></div><div class=\"qexp\" hidden><p>نسخة بدون تعديل تبقى بالملف مثل صور ما قبل العلاج.</p></div></div>"},{"k":"اختبر نفسك · Mouth preparation","t":"Quiz — Lecture 4","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Tissue-conditioning material works best when the tissue side of the old base is relieved about:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">10 mm in one spot only</button><button type=\"button\" class=\"opt\" data-i=\"1\">1–2 mm, to provide space for an even thickness and distribution of the material</button><button type=\"button\" class=\"opt\" data-i=\"2\">No relief is ever used</button><button type=\"button\" class=\"opt\" data-i=\"3\">0.1 mm over the occlusal surface of natural teeth</button></div><div class=\"qexp\" hidden><p>ريليف باطن القاعدة حوالي <b>1–2 ملم</b> حتى المادة تتوزع بسمك متساوٍ.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">After axial recontouring and before cutting rest seats, the dentist should:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Send the patient home for six months</button><button type=\"button\" class=\"opt\" data-i=\"1\">Make an alginate impression, pour a fast-setting stone cast, and return it to the surveyor to check the axial changes</button><button type=\"button\" class=\"opt\" data-i=\"2\">Cast the framework immediately</button><button type=\"button\" class=\"opt\" data-i=\"3\">Polish the rests first, then check guiding planes</button></div><div class=\"qexp\" hidden><p>طبعة ألجينيت وصبّة سريعة نرجعها للـ surveyor قبل ما نحفر مقاعد الإسناد.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A No. 8 then a No. 6 round bur are used on enamel to:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Cut a cingulum rest only</button><button type=\"button\" class=\"opt\" data-i=\"1\">Lower the marginal ridge and outline the occlusal rest (No. 8), then slightly deepen the floor inside that ridge (No. 6)</button><button type=\"button\" class=\"opt\" data-i=\"2\">Remove the entire enamel cap</button><button type=\"button\" class=\"opt\" data-i=\"3\">Prepare an implant osteotomy</button></div><div class=\"qexp\" hidden><p>رقم 8 للحافة والحدود، رقم 6 لتعميق قاع المقعد من الداخل.</p></div></div>"},{"k":"الاختبار النهائي · 1–5","t":"Self-test — diagnosis, casts and indications","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Shared decision-making means the treatment choice is made:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">By the laboratory alone</button><button type=\"button\" class=\"opt\" data-i=\"1\">Together with the patient after interview and examination</button><button type=\"button\" class=\"opt\" data-i=\"2\">Only by a relative of the patient</button><button type=\"button\" class=\"opt\" data-i=\"3\">After the denture has been delivered</button></div><div class=\"qexp\" hidden><p>القرار ويا المريض، بعد المقابلة والفحص.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">One listed objective of prosthodontic treatment is to:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Restore function beyond tissue tolerance</button><button type=\"button\" class=\"opt\" data-i=\"1\">Restore lost function within tissue tolerance, improve appearance, and preserve the remaining teeth and tissues</button><button type=\"button\" class=\"opt\" data-i=\"2\">Extract every abutment before design</button><button type=\"button\" class=\"opt\" data-i=\"3\">Avoid all radiographs</button></div><div class=\"qexp\" hidden><p>نرجّع الوظيفة ضمن تحمل الأنسجة، نحسّن الشكل، ونحافظ على الباقي.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Height of the floor of the mouth is determined in order to:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Choose tooth shade</button><button type=\"button\" class=\"opt\" data-i=\"1\">Locate the inferior borders of lingual mandibular major connectors</button><button type=\"button\" class=\"opt\" data-i=\"2\">Measure the incisive papilla</button><button type=\"button\" class=\"opt\" data-i=\"3\">Select a gold alloy automatically</button></div><div class=\"qexp\" hidden><p>حتى نحدد الحد السفلي للموصل اللساني بالفك الأسفل.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Teeth with multiple, divergent roots, as abutments, generally:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Resist stress less well than fused conical roots</button><button type=\"button\" class=\"opt\" data-i=\"1\">Resist additional rotational forces better, because load is distributed through more fibers to more bone</button><button type=\"button\" class=\"opt\" data-i=\"2\">Must always be extracted</button><button type=\"button\" class=\"opt\" data-i=\"3\">Cannot carry a rigid framework</button></div><div class=\"qexp\" hidden><p>الجذور المتعددة المتباعدة توزّع الحمل أفضل.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The most decisive evidence of a patient’s oral-hygiene habits is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">What the patient promises after treatment</button><button type=\"button\" class=\"opt\" data-i=\"1\">The condition of the mouth before the initial prophylaxis</button><button type=\"button\" class=\"opt\" data-i=\"2\">The shade of the first artificial tooth</button><button type=\"button\" class=\"opt\" data-i=\"3\">Whether gold or titanium is chosen</button></div><div class=\"qexp\" hidden><p>أد ق دليل: حالة الفم <b>قبل</b> أول تنظيف.</p></div></div>"},{"k":"الاختبار النهائي · 6–10","t":"Self-test — surgery, tissue conditioning and rest seats","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Planned extractions for an RPD should:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Always be left until after the framework is fitted</button><button type=\"button\" class=\"opt\" data-i=\"1\">Occur early, after judging each tooth’s strategic importance</button><button type=\"button\" class=\"opt\" data-i=\"2\">Never include impacted teeth next to an abutment</button><button type=\"button\" class=\"opt\" data-i=\"3\">Be delayed until the 6-month recall</button></div><div class=\"qexp\" hidden><p>القلع المخطط بكّره، بعد ما تقيّم أهمية كل سن.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Hyperplastic soft tissue (fibrous tuberosity, redundant folds, palatal papillomatosis) should generally be:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Covered without change</button><button type=\"button\" class=\"opt\" data-i=\"1\">Removed surgically, and a surgical stent considered for more comfortable healing</button><button type=\"button\" class=\"opt\" data-i=\"2\">Used as the primary stress-bearing area</button><button type=\"button\" class=\"opt\" data-i=\"3\">Ignored if the patient is happy</button></div><div class=\"qexp\" hidden><p>تنشال جراحياً، ونفكر بستنت حتى الشفاء أريح.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Abused denture-bearing tissues should be treated:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">After the new final impression has been poured</button><button type=\"button\" class=\"opt\" data-i=\"1\">Before impression making, because tissue contour changes with healing</button><button type=\"button\" class=\"opt\" data-i=\"2\">Only if the patient requests a gold base</button><button type=\"button\" class=\"opt\" data-i=\"3\">By immediate delivery of a unilateral RPD</button></div><div class=\"qexp\" hidden><p>قبل الطبعة، لأن الشكل يتغير وهو تشفى.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The angle formed by the occlusal rest with the minor connector should be:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Much greater than 90°, with the marginal ridge the deepest point</button><button type=\"button\" class=\"opt\" data-i=\"1\">Less than 90°, with the floor inclining from the lowered marginal ridge toward the center of the tooth</button><button type=\"button\" class=\"opt\" data-i=\"2\">Exactly 180°</button><button type=\"button\" class=\"opt\" data-i=\"3\">Unimportant if a cingulum rest is not used</button></div><div class=\"qexp\" hidden><p>الزاوية <b>أقل من 90°</b>، والقاع يميل من الحافة المنخفضة لمركز السن.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A cingulum rest seat, when the cingulum is prominent, is prepared as:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A flat box on the incisal edge only</button><button type=\"button\" class=\"opt\" data-i=\"1\">A chevron or inverted “V” mesiodistally, and a concave “V” buccolingually</button><button type=\"button\" class=\"opt\" data-i=\"2\">A hole through the root apex</button><button type=\"button\" class=\"opt\" data-i=\"3\">A bead line 0.5 mm into the palate</button></div><div class=\"qexp\" hidden><p>شكل V مقلوب إنسي وحشي، وV مقعر شدقي لساني.</p></div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"},{"k":"الخلاصة بالعربي","t":"الخلاصة بالعربي — التشخيص وتحضير الفم للطقم الكروم كوبالت","b":"<div class=\"ar\"><p><b>التشخيص:</b> كل مريض فريد. أربع عمليات: افهم الشكوى، تأكد من الحاجة، خطط، ونفّذ مع متابعة. اسمع المريض، وسوّ قرار مشترك حتى النتيجة تعالج شكواه مو بس الشغل اللي يعجبك.</p><p>أهداف العلاج: وظيفة ضمن تحمل الأنسجة، شكل مريح وجميل، والحفاظ على الباقي. تسلسل الفحص: سكّن الألم، نظّف، صور كاملة (التهاب، جذور، تسوس وعلاقته باللب، حشوات، إنذار علاج العصب، ودعم الدعامات)، وصبّات تشخيصية على مطابقة شبه قابلة للتعديل.</p><p>حافة صغيرة ثابتة أفضل من كبيرة رخوة. قارن مرونة ال raphe ويه الحافة قبل ما تصمم الموصل. افحص الإطباق وهو مطبّق مو بس فاغر. الصبّة مرجع وشرح للمريض وسجل دائم.</p><p>الدعامة جنب النهاية الحرة تتعرض لعزم هم. الجذور المتعددة المتباعدة أقوى. أدق دليل على النظافة: الفم قبل أول تنظيف. الطقم أحادي الجانب غير مستحب (حمل زايد وخطر الاستنشاق).</p><p><b>تحضير الفم:</b> ألم وعدوى أولاً، جراحة (قلع مبكر، جذور، منطمر، فطور، أنسجة زائدة مع ستنت)، تكييف الأنسجة المتعبة قبل الطبعة (ريليف 1–2 ملم لمادة التكييف)، ولثة تخلص قبل الترميم. بعدين الدعامات: مستويات توجيه، تنزيل خط المسح، صبّة فحص، وبعدها مقاعد إسناد (سنبلة 8 ثم 6، الزاوية أقل من 90°، القاع يميل للمركز). مقعد الحزام V مقلوب.</p></div>"}];
+var AR = ["<p>هذا الملف السادس من المرحلة الرابعة: أولاً شلون نشخّص ونخطط لطقم كروم كوبالت، وبعدين شلون نحضّر الفم قبل ما المختبر يشتغل.</p><p>إذا خططت غلط أو حضّرت الفم ناقص، أحسن هيكل بالمختبر ما ينفع. التسلسل: افهم شكوى المريض، افحص، قرر، عالج الألم والجراحة واللثة، وبعدين عدّل الدعامات.</p>","<p>واجبك تعالج اللي المريض يحسه، واللي الفحص يبيّنه هم. كل مريض فريد، حتى لو الحالات تتشابه.</p><p>أربع خطوات: افهم الشكوى الرئيسية؛ تأكد من الحاجة بفحص تشخيصي؛ خطط علاج يوازن رغبة المريض وياه الحاجة الحقيقية؛ ونفّذ بتسلسل ومتابعة.</p>","<p>المقابلة: اسمع الشكوى بكلام المريض نفسه (ألم، وظيفة، شكل، مشكلة بطقم قديم...). لازم تفهم <b>ليش جاه</b>، وإلا راح ينجز شغل ممتاز بس مو على مشكلته، ويطلع مو راضي.</p><p>التسلسل: الشكوى وتاريخها، التاريخ الطبي، التاريخ السني (خصوصاً تجارب الطقم السابقة)، وتوقعات المريض. وبعدها القرار <b>ويا المريض</b> — اسمه <b>shared decision-making</b>، مو قرار من طرف واحد.</p>","<p>أهداف العلاج ثلاثة: نرجّع الوظيفة ضمن تحمل الأنسجة؛ ن حسّن الشكل والراحة بشكل جمالي؛ ونحافظ على صحة الأسنان والأنسجة الباقية (وهذا يحسّن تصميم الطقم).</p><p>الفحص: نظر ولمس، مرآة ومسبار ملاقط. التسلسل: سكّن الألم وحشّي مؤقت إذا لازم؛ تنظيف كامل حتى الصبّة التشخيصية تطلع دقيقة؛ وصور شعاعية كاملة داخل الفم.</p>","<p>الصور مو بس “نشوف تسوس”. تدور التهاب وبقايا جذور وأجسام غريبة وشكل الحافة؛ علاقة التسوس باللب واللثة؛ جودة الحشوات والتيجان؛ حالة حشوة العصب (تصميم الطقم قد يعتمد نبقي هالسن لو نقلعه)؛ ودعم العظم للدعامات: طول الجذر وشكله وكدش انفقد وكدش باقي.</p><p>وبعدين طبعة لصبّة تشخيصية، والأفضل نركّبها على مطابقة شبه قابلة للتعديل.</p>","<p>بالنظر: التسوس، اللثة والانحسار، عدد الأسنان ومكان الفراغات وجودة الحافة. أحياناً الحافة شكلها حلو، بس باللمس العظم مفقود وتحتها نسيج ليفي يتحرك (خصوصاً حدبة الفك الأعلى). الطقم ما يندعم على نسيج يتنزاح بسهولة. حافة <b>صغيرة وثابتة</b> أفضل من كبيرة وما تثبّت. هالنسيج غالباً نشيله إذا ما في مانع.</p><p>الفطور لازم نقيّمها ويه التصميم. إذا ما لمست ال raphe الوسطي وقارنت مرونته ويه الحافة، الطقم يتأرجح. كمية الـ relief على الموصل الحنكي على قدر فرق المرونة — أو نختار تصميم ما يتعارض ويه ال torus.</p>","<p>افحص كل قوس وعلاقته ويه المقابل. الوضع وهو فاغر ممكن يصير معقّد بالإطباق: تراكب عمودي شديد، أو سن نازل بالفراغ يعرقل الأسنان الصناعية أو الكلاسب والـ rest. ارتفاع أرضية الفم (طريقة مباشرة أو غير مباشرة) يحدد الحد السفلي للموصل اللساني.</p><p>الصبّة التشخيصية لازم تشمل الفراغات هم. عادة من ألجينيت وجبس، وأحياناً حجر أقوى لأن الجبس ينحك بسهولة.</p><p>فوائدها: تشوف الإطباق من اللسان هم؛ مسح طوبوغرافي وparallelism؛ تشرح للمريض مخاطر الإهمال؛ تسوي طوابع فردية؛ مرجع طول الشغل (تعليم بالقلم)؛ ونسخة بدون تعديل تبقى بملف المريض مثل الصور قبل العلاج.</p>","<p>جودة دعم الدعامة أهم شي، لأن الحمل عليها أكبر، خصوصاً القوى الأفقية. وإذا بجنبها نهاية حرة، يزيد <b>العزم</b> من حركة القاعدة.</p><p>بالصورة: فراغات تر quad ابيكول طبيعية، وخط أبيض رفيع بين الأسنان (القمة العظمية) من lamina dura للي بعدها. والصورة دائماً تتأكد بالفحص السريري.</p><p>الجذور المتعددة والمتباعدة تقاوم أفضل من الجذر المخروطي الملتصق. وأدق دليل على نظافة المريض هو حالة فمه <b>قبل</b> أول تنظيف.</p>","<p>نقلع إذا السن ما ينرد للصحة؛ أو غيابه يسهّل تصميم أبسط وأقوى؛ أو مكانه شوّه الشكل.</p><p>دواعي الطقم الجزئي: الأكثر Class I و II (وغالباً فراغ بالجهة الثانية يساعد التثبيت)؛ تعويض قلع حديث ما يناسب جسر ثابت بعد؛ فراغ طويل ممكن يندعم كله من الأسنان إذا الدعامات والهيكل صلبين؛ حاجة لتثبيت ثنائي الجانب؛ الطقم يشتغل مثل جبيرة لثة عبر القوس؛ فقد عظمي كبير؛ والكلفة.</p><p>مواد القاعدة/الهيكل المذكورة: ذهب، كروم كوبالت، وتيتانيوم.</p>","<p>مكافحة العدوى: كفوف لكل مريض، كمامة، حماية عين، تعقيم يقتل كل أشكال الحياة (أوتوكلاف، حر جاف، بخار كيميائي، مواد كيميائية)، تنظيف الأسطح بديترجنت ومسح بيود أو كلور، والنفايات الحادة بصندوق مقاوم للثقب قبل الكيس.</p><p>الجسر الثابت (أو الزرعة) غالباً الخيار الأول، بس أحياناً الطقم المتحرك أنسب حسب الرغبة والكلفة. أما طقم <b>جهة واحدة فقط</b> بدل الجسر: <b>غير مستحب بقوة</b> — ضغط زايد على الدعامة، وخطر يستنشقه المريض إذا انفلت.</p>","<p>قيّم الفم حسب التخصصات: جراحة، لثة، عصب، تعويض، وتقويم.</p><p>جراحياً: أسنان ضعيفة أو بارزة قد تنقلع؛ حدبة متضخمة؛ فطور؛ وأنسجة رخوة أو epulis تنشال. اللثة تعالج قبل التعويض النهائي. سن نازل ممكن ينحفظ بعلاج عصب وتقصير الإطباق وتاج بدل القلع. ومن جهة التعويض: تسوس، ترميمات فاشلة، مستوى إطباق، وتعديل محيط الأسنان (ناقص أو زائد) أو تيجان ممسوحة.</p><p>تحضير الفم = المرحلة الثانية: كل تعديل يسهّل وضع ووظيفة الطقم. جزء مع التشخيص لإزالة العوائق، وجزء بعد تصميم الطقم لتسهيل هالتصميم (مستويات توجيه ومقاعد إسناد...).</p>","<p>بهالمرحلة: سكّن الألم والخراج، حشّي التسوس المؤلم، والتسوس العميق بدون ألم بحشوة مؤقتة، وعالج أمراض اللثة الحادة، ونظّف الجير وابدأ برنامج وقاية.</p><p>كل ما طالت الفترة بين الجراحة والطبعة، الشفاء أفضل والحافة أثبت. الجراحة تشمل قلع الأسنان سيئة الإنذار، بقايا الجذور، وكل الأسنان المنطمرة (حتى اللي جنب الدعامة)، والأسنان المنحرفة بشدة. أحياناً التقويم يحل؛ إذا ما ينفع، ممكن نحرّك السن وعظمه جراحياً.</p>","<p>القلع المخطط بكّره. قيّم أهمية كل سن للطقم. بقايا الجذور عموماً تنشال، خصوصاً القريبة من السطح أو اللي بيها مرض، واللي جنب الدعامة تخرب اللثة. إذا السن يعرقل الموصل الرئيسي أو ما ينعدّل بالتقويم — يقلع.</p><p>كيس أو ورم: أكّد التشخيص واستشارة، وخزعة إذا لازم. الفطور غشاؤها رقيق ينتقر من الطقم؛ تعديل التصميم أحياناً يزيد الضغط، فغالباً الجراحة أفضل. والأنسجة الزائدة (حدبة ليفية، طيات، حليمات حنكية) تنشال، ونفكر بستنت جراحي حتى الشفاء أريح.</p>","<p>إذا العظم نزل، اندغالات العضلات (خصوصاً mylohyoid وmentalis وgenioglossus) تقرب من القمة وتعرقل الطقم. تحريك الـ mylohyoid يحسّن الراحة؛ الـ genioglossus أصعب. اللجامات الشفوية واللسانية بالأعلى هم كثير تعرقل.</p><p>الأشواك الحادة والحيود السكينية ننعّمها بأقل فقد عظمي؛ إذا الدعم ما يكفي نعمّق الدهليز. أي آفة بيضاء أو حمراء أو تقرحية تنفحص، والزوائد تنشال وتنرسل للفحص قبل صنع الطقم.</p><p>تصحيح تشوه الفكين يسهّل التأهيل. الزرعات التيتانيوم تترك تلتئم (osseointegration) قبل الكشف والطقم. والـ hydroxyapatite يستخدم لتضخيم الحافة: غير سام، يزيد العرض والارتفاع، وشبه غير قابل للامتصاص.</p>","<p>الأنسجة المتعبة تعالج <b>قبل</b> الطبعة، لأن شكلها يتغير وهو تشفى. الأسباب: طقم سيء، تغذية، سكري، وأمراض دم. الأعراض: التهاب، تشوّه معالم مثل الحليمة والـ rugae والـ retromolar pad، وإحساس حرق.</p><p>العناية بالبيت: غسول ملحي ثلاث مرات، تدليك بفرشاة ناعمة، شيل الطقم بالليل، وفيتامينات وحمية بروتين عالي وكربوهيدرات واطي.</p><p>مادة تكييف الأنسجة تعطي أقصى فائدة إذا عدّلنا إطباق الطقم القديم، وصحّحنا امتداده، وريليفنا باطنه <b>1–2 ملم</b> حتى المادة تتوزع بسمك متساوٍ، ونحط كمية كافية، ونتبع تعليمات الشركة. نكرر لين الأنسجة ترجع سليمة. المادة تبقى طرية وتسيل فترة، فالنسيج يرجع مكانه والقوى تتوزع.</p>","<p>اللثة تعالج مع الجراحة وتخلص <b>قبل</b> الترميم، لأن نجاح الشغل يعتمد على دعم الأسنان خصوصاً الدعامات.</p><p>ثلاث مجموعات دعامات: تعديل بسيط على المينا؛ ترميم غير التاج؛ أو تاج. التسلسل: أولاً مستويات توجيه موازية لطريق الدخول؛ بعدين ننزل خط المسح حتى بداية ذراع الكلاسب تصير عند التقاء الثلث الأوسط واللثوي، ورأس التثبيت بالثلث اللثوي، وذراع التبادل لا أعلى من الجزء العنقي للثلث الأوسط.</p><p>بعد تعديل المحاور و<b>قبل</b> مقعد الإسناد، خذ طبعة ألجينيت وصبّة حجر سريع، وارجعها للـ surveyor تتأكد. إذا ناقص، تعدّل بنفس الجلسة. وبعدين مقاعد الإسناد حتى القوة تمشي بمحور السن الطويل.</p>","<p>على المينا السليمة: سنبلة مدورة <b>رقم 8</b> تنزّل الحافة الهامشية وترسم حدود المقعد، وبعدين <b>رقم 6</b> تعمّق القاع شوية من الداخل. القوة تمشي بمحور السن، وأقل تعارض ويه الإطباق المقابل.</p><p>قاع المقعد يميل لمركز السن (فوق ذروة الجذر). الحافة الهامشية تنزل حتى الزاوية بين الـ rest والـ minor connector تصير <b>أقل من 90°</b>، بس تبقى سماكة كافية حتى المقعد ما يضعف عند الحافة. والحافة المنخفضة مو أعمق مكان — القاع يكمل ميلان لجوه.</p><p>مقعد الحزام يحتاج حزام بارز: شكل V مقلوب (شيفرون) من الإنسي للوحشي، وV مقعر من الشدقي للساني.</p>","<p>ثلاث أسئلة على التشخيص والصبّات. بعدها أسئلة تحضير الفم.</p>","<p>ركّز على تكييف الأنسجة وتسلسل تحضير الدعامة.</p>","<p>خمسة على التخطيط. كمّل الخمسة الثانية.</p>","<p>آخر خمسة. بعد الإجابات احسب نتيجتك.</p>",""];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
