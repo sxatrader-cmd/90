@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Prosthodontics - File 4 - Clinical Phases of RPD Construction</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">Prosthodontics &middot; File 4 &middot; Lecture 19</div>
+    <h1>Clinical Phases of Removable Partial Denture Construction</h1>
+    <p style="margin:0 0 16px">University of Baghdad, College of Dentistry — Prosthodontics syllabus for the degree equivalency exam (October 2025 attempt). Lecture 19, PDF pages 152–157 (Dr. Ali Neama Ahmed Hussein).</p>
+    <ul>
+      <li>Every slide is shown for <b>2 minutes</b>.</li>
+      <li><b>Next</b> unlocks only when the countdown reaches zero.</li>
+      <li><b>Back</b> is always available, and never re-locks your progress.</li>
+      <li>Each slide has an <b>Iraqi Arabic explanation</b> (الشرح بالعراقي) under the English content — written to be very simple, with everyday analogies. Medical terms stay in English.</li>
+      <li>Tap <b>اختبر نفسك</b> questions and flashcards on the slides. A short self-test is at the end of the file.</li>
+      <li>Total run time: <b>24 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 12</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Prosthodontics · File 4","t":"Clinical Phases of Removable Partial Denture Construction","b":"<p>University of Baghdad, College of Dentistry — Prosthodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file is <b>Lecture 19</b> (PDF pages 152–157), Dr. Ali Neama Ahmed Hussein: the six clinical phases of RPD construction, in order.</p><ol><li>Patient education.</li><li>Diagnosis, treatment planning, design, treatment sequencing, and mouth preparation.</li><li>Providing support for distal-extension denture bases.</li><li>Establishing and verifying occlusal relations and tooth arrangement.</li><li>Initial placement of the prosthesis.</li><li>Periodic recall.</li></ol><p class=\"note\">Every slide has a very simple Iraqi Arabic explanation. Tap <b>اختبر نفسك</b> as you go; a short self-test is at the end.</p>"},{"k":"Lec. 19 · Phase 1","t":"First phase — education of the patient","b":"<p>Successful treatment starts with patient education so that the patient understands and participates. This includes <b>informed consent</b>, cooperation, and compliance, and is a <b>shared responsibility</b> of dentist and patient. All of it is necessary for a satisfactory, maintainable result.</p><p>The dentist must motivate and instruct the patient in oral hygiene. An RPD can be responsible for periodontal problems, caries, and irritation of poorly maintained tissues. If the patient’s oral hygiene is not satisfactory, the dentist must not supply an RPD until it is.</p><p>Education starts at the initial contact and continues throughout treatment, with particular emphasis at the time of treatment planning and when the prognosis is discussed.</p><p>Give the patient <b>written suggestions</b> as well as spoken ones, because patients will not retain all of the instructions given only orally.</p><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">An RPD should be delivered even if the patient’s oral hygiene is poor, because the denture will clean the teeth.</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">True</button><button type=\"button\" class=\"opt\" data-i=\"1\">False — an RPD can cause periodontal problems and caries if hygiene is poor; do not supply the denture until oral hygiene is satisfactory</button><button type=\"button\" class=\"opt\" data-i=\"2\">True, but only for Class I cases</button><button type=\"button\" class=\"opt\" data-i=\"3\">True if written instructions are given later</button></div><div class=\"qexp\" hidden><p>إذا النظافة سيئة، الطقم راح يسبب أمراض لثة وتسوس. ما نسلّم الطقم حتى النظافة تصير مقبولة.</p></div></div>"},{"k":"Lec. 19 · Phase 2","t":"Second phase — diagnosis, planning, design and mouth preparation","b":"<p>This phase includes a complete medical and dental history, and a thorough examination: clinical and radiographic evaluation of caries, existing restorations, the periodontium, the response of the teeth (especially abutments) and residual ridges to previous stress, and vitality. The occlusal plane, arch form, and occlusal relations are evaluated visually and by diagnostic mounting of the casts.</p><p>Once an RPD is chosen, a definite sequence of treatment must be planned, and the denture designed according to the support that is available. Distal-extension cases and cases with complete abutment support require quite different designs.</p>"},{"k":"Lec. 19 · Phase 2","t":"How distal-extension designs differ, and the role of the surveyor","b":"<p>The differences between a prosthesis supported entirely by abutments and one that takes support from both teeth and residual ridge include:</p><ul><li>The manner of support.</li><li>The impression methods used.</li><li>The types of direct retainers used.</li><li>The material of the denture bases.</li><li>The need for indirect retention.</li></ul><p>A dental <b>surveyor</b> is an absolute necessity in this phase. It is used to diagnose, to plan, to guide tooth preparation, and to verify that preparation. Mouth preparation aims at adequate support, stability and retention, and a harmonious occlusion.</p><div class=\"flash\"><button type=\"button\" class=\"flash-q\">Name the five design differences between a fully tooth-supported RPD and a tooth-and-tissue-supported (distal-extension) RPD listed in Lecture 19.</button><div class=\"flash-a\" hidden>Manner of support; impression methods; types of direct retainers; denture-base material; and the need for indirect retention.</div></div>"},{"k":"Lec. 19 · Phase 2","t":"Diagnostic casts, mouth preparation sequence, and the final design","b":"<p>Diagnostic casts with a <b>tentative design and planned mouth preparation drawn in colored pencil</b> are essential. After occlusal adjustment and abutment restorations or modifications have been completed, the <b>final form of the framework is drawn accurately on the surveyed master cast</b> so that the technician can see the exact design intended.</p><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The final framework design should be drawn:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Only in the patient’s chart, never on a cast</button><button type=\"button\" class=\"opt\" data-i=\"1\">Accurately on the surveyed master cast, after occlusal adjustment and abutment modifications, so the technician can see the exact design</button><button type=\"button\" class=\"opt\" data-i=\"2\">Freehand on the refractory cast after burnout</button><button type=\"button\" class=\"opt\" data-i=\"3\">By the patient at the try-in visit</button></div><div class=\"qexp\" hidden><p>بعد تعديل الإطباق وتحضير الدعامات، نرسم الشكل النهائي بدقة على <b>الصبّة النهائية الممسوحة</b> حتى الفني يشوف التصميم بالضبط.</p></div></div>"},{"k":"Lec. 19 · Phase 3","t":"Third phase — support for distal-extension denture bases","b":"<p>This phase does <b>not</b> apply to a tooth-supported RPD, in which support is obtained entirely through rests on the abutment teeth.</p><p>A base made to anatomic ridge form is inadequate under functional load in a free-end-extension (FEE) situation. A <b>special impression</b> is needed. Primary supporting soft tissue is recorded and related under some degree of loading, so that the base will fit the ridge in function.</p><p>The goal is to make tissue support as equal to, and as compatible with, tooth support as possible.</p><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Phase 3 (special support for the base) is required for:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Every tooth-supported Class III denture</button><button type=\"button\" class=\"opt\" data-i=\"1\">Distal-extension (free-end) bases; it does not apply when support is obtained entirely through rests</button><button type=\"button\" class=\"opt\" data-i=\"2\">Complete dentures only</button><button type=\"button\" class=\"opt\" data-i=\"3\">Maxillary Class IV cases only</button></div><div class=\"qexp\" hidden><p>المرحلة الثالثة للنهاية الحرة بس. إذا الدعم كله من الـ rests، شكل الحافة التشريحي يكفي وما نحتاج هالطبعة الخاصة.</p></div></div>"},{"k":"Lec. 19 · Phase 4","t":"Fourth phase — occlusal relations and tooth arrangement","b":"<p>Establishing and verifying occlusal relations and arranging the teeth is important for both types of RPD. Ridge form is less critical for a tooth-supported prosthesis. For a distal-extension RPD, jaw relations should be recorded only after the <b>best possible support</b> for the bases has been obtained — the same support the finished denture will have.</p><p>Final jaw-relation records are made only after the framework has come back from the laboratory, has been fitted to the abutments, and the opposing occlusion has been verified or corrected, and after a <b>corrected impression</b> has been made. Then a new or corrected resin base is used for the records.</p>"},{"k":"Lec. 19 · Phase 5","t":"Fifth phase — initial placement of the prosthesis","b":"<p>Processing the denture can change the planned occlusion. Before the prosthesis is delivered, occlusal harmony must be ensured, and the fit of the basal seat should be reasonably perfected.</p><p>The patient must understand care of the prosthesis, what to expect, and that adjustments will be needed.</p>"},{"k":"Lec. 19 · Phase 6","t":"Sixth phase — periodic recall","b":"<p>Periodic recall allows early recognition of change. The dentist monitors: the oral tissues; their response to the restorations; the prosthesis itself; the patient’s acceptance of the prosthesis; and the patient’s commitment to oral hygiene.</p><p>A <b>6-month recall</b> is adequate for most patients; some need more frequent visits.</p><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">For most patients, a recall interval that Lecture 19 considers adequate is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Once every 5 years only</button><button type=\"button\" class=\"opt\" data-i=\"1\">A 6-month recall (more frequent for some patients)</button><button type=\"button\" class=\"opt\" data-i=\"2\">Daily visits for a year</button><button type=\"button\" class=\"opt\" data-i=\"3\">No recall if oral hygiene was good at delivery</button></div><div class=\"qexp\" hidden><p>أغلب المرضى مراجعة كل <b>6 أشهر</b> تكفي؛ بعضهم يحتاجون أكثر. الهدف: نلحق أي تغيير مبكر.</p></div></div>"},{"k":"اختبر نفسك · The six phases","t":"Quiz — sequence and key rules","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The six clinical phases, in order, are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Recall, then education, then delivery, then design</button><button type=\"button\" class=\"opt\" data-i=\"1\">Education; diagnosis/planning/design/mouth preparation; distal-extension support; occlusal relations and arrangement; initial placement; periodic recall</button><button type=\"button\" class=\"opt\" data-i=\"2\">Casting the framework first, then educating the patient</button><button type=\"button\" class=\"opt\" data-i=\"3\">Impressions only, then delivery</button></div><div class=\"qexp\" hidden><p>احفظ التسلسل: تثقيف → تشخيص وتخطيط وتصميم وتحضير فم → دعم النهاية الحرة → إطباق وترتيب → تسليم أولي → متابعة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A surveyor in Phase 2 is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Optional if the dentist is experienced</button><button type=\"button\" class=\"opt\" data-i=\"1\">An absolute necessity — used to diagnose, plan, guide tooth preparation, and verify that preparation</button><button type=\"button\" class=\"opt\" data-i=\"2\">Used only after the denture is delivered</button><button type=\"button\" class=\"opt\" data-i=\"3\">Replaced by a face-bow</button></div><div class=\"qexp\" hidden><p>الـ surveyor بهالمرحلة ضروري، مو اختياري.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Final jaw-relation records for a distal-extension RPD should be made:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">On the first visit, before any impression</button><button type=\"button\" class=\"opt\" data-i=\"1\">Only after the framework has been fitted, opposing occlusion verified or corrected, a corrected impression made, and a new or corrected resin base provided</button><button type=\"button\" class=\"opt\" data-i=\"2\">On the anatomic master cast alone, without a framework</button><button type=\"button\" class=\"opt\" data-i=\"3\">After recall at 6 months</button></div><div class=\"qexp\" hidden><p>ما نسجّل الإطباق النهائي إلا بعد ما الهيكل ينطبق، والإطباق يتعدل، والطبعة المصححة والقاعدة الجاهزة — يعني نفس دعم الطقم النهائي.</p></div></div>"},{"k":"الاختبار النهائي","t":"Self-test — Lecture 19 clinical phases","b":"<div class=\"qbox\" data-ans=\"0\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Education of the patient should include written suggestions because:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Patients will not retain all instructions given only orally</button><button type=\"button\" class=\"opt\" data-i=\"1\">Writing replaces the need for informed consent</button><button type=\"button\" class=\"opt\" data-i=\"2\">Laboratories refuse spoken instructions</button><button type=\"button\" class=\"opt\" data-i=\"3\">It shortens recall to 5 years</button></div><div class=\"qexp\" hidden><p>المريض ما يحفظ كل الكلام الشفهي؛ لذلك نعطي تعليم مكتوب هم.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Which listed item is one of the five design differences between fully tooth-supported and distal-extension RPDs?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The color of the surveyor paint</button><button type=\"button\" class=\"opt\" data-i=\"1\">The need for indirect retention</button><button type=\"button\" class=\"opt\" data-i=\"2\">The brand of articulator only</button><button type=\"button\" class=\"opt\" data-i=\"3\">Whether a face-bow can be used</button></div><div class=\"qexp\" hidden><p>من الفروقات: الحاجة لـ <b>indirect retention</b>، بالإضافة لنوع الدعم، الطبعة، المثبتات المباشرة، ومادة القاعدة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A base made to anatomic ridge form under a free-end extension is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Always adequate under functional load</button><button type=\"button\" class=\"opt\" data-i=\"1\">Inadequate under functional load; a special impression that records supporting soft tissue under some loading is needed</button><button type=\"button\" class=\"opt\" data-i=\"2\">Used only after burnout</button><button type=\"button\" class=\"opt\" data-i=\"3\">Preferred because it avoids Phase 3</button></div><div class=\"qexp\" hidden><p>الشكل التشريحي للحافة ما يكفي تحت المضغ بالنهاية الحرة — نحتاج طبعة خاصة بتحميل محسوب.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Processing the denture can change the planned occlusion. Before delivery the dentist must:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Ignore occlusion if the base looks shiny</button><button type=\"button\" class=\"opt\" data-i=\"1\">Ensure occlusal harmony and a reasonably perfected basal-seat fit, and make sure the patient understands care, expectations, and the need for adjustments</button><button type=\"button\" class=\"opt\" data-i=\"2\">Deliver immediately and correct occlusion only at the 6-month recall</button><button type=\"button\" class=\"opt\" data-i=\"3\">Remake the framework at every insertion</button></div><div class=\"qexp\" hidden><p>قبل التسليم: إطباق منسجم، انطباق قاعدة معقول، والمريض فاهم العناية والتوقعات والتعديلات.</p></div></div><div class=\"qbox\" data-ans=\"2\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Periodic recall monitors all of the following except:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Oral tissues and their response to the restorations</button><button type=\"button\" class=\"opt\" data-i=\"1\">The prosthesis, patient acceptance, and oral-hygiene commitment</button><button type=\"button\" class=\"opt\" data-i=\"2\">The brand of wax used in the original blockout of the master cast</button><button type=\"button\" class=\"opt\" data-i=\"3\">Early recognition of change</button></div><div class=\"qexp\" hidden><p>المتابعة على الأنسجة، الاستجابة، الطقم، قبول المريض، والنظافة — مو على نوع شمع الـ blockout القديم.</p></div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"},{"k":"الخلاصة بالعربي","t":"الخلاصة بالعربي — المحاضرة 19","b":"<div class=\"ar\"><p>ست مراحل سريرية، وبهذا الترتيب:</p><p><b>1. تثقيف المريض:</b> موافقة واعية، تعاون، ومسؤولية مشتركة. علّمه النظافة، ولا تسلّم الطقم إذا النظافة سيئة (يسبب لثة وتسوس). ابدأ من أول زيارة، وركّز وقت الخطة والتشخيص. وأعطه تعليم مكتوب لأن الكلام لوحده ما ينحفظ كله.</p><p><b>2. تشخيص، تخطيط، تصميم، تسلسل علاج، وتحضير الفم:</b> تاريخ كامل وفحص سريري وشعاعي (تسوس، ترميمات، لثة، استجابة الدعامات والحواف، الحيوية، مستوى الإطباق والقوس). التصميم حسب الدعم المتوفر. النهاية الحرة تختلف بخمس نقاط: نوع الدعم، الطبعة، المثبتات المباشرة، مادة القاعدة، والحاجة لمثبت غير مباشر. الـ surveyor ضروري. صبّة تشخيص بقلم ملون، وبعد التحضير نرسم الهيكل النهائي بدقة على الصبّة النهائية الممسوحة للفني.</p><p><b>3. دعم قواعد النهاية الحرة:</b> ما تنطبق على الطقم المدعوم كله من الأسنان. الشكل التشريحي للحافة ما يكفي تحت الوظيفة؛ نحتاج طبعة خاصة تسجّل الأنسجة الداعمة تحت تحميل محسوب، حتى دعم الأنسجة يصير منسجم ويه دعم الأسنان.</p><p><b>4. الإطباق وترتيب الأسنان:</b> مهم للنوعين. بالنهاية الحرة نسجّل الفكين فقط بعد أفضل دعم للقاعدة (نفس دعم الطقم النهائي): بعد رجوع الهيكل وانطباقه، تصحيح الإطباق المقابل، وطبعة مصححة، ثم قاعدة أكريلك جديدة أو مصححة.</p><p><b>5. التسليم الأولي:</b> التصنيع ممكن يغيّر الإطباق. قبل التسليم نضبط الإطباق وانطباق القاعدة، ونشرح للمريض العناية والتوقعات وأن التعديلات طبيعية.</p><p><b>6. المتابعة:</b> نكتشف التغيير بدري (الأنسجة، الاستجابة، الطقم، القبول، النظافة). أغلب المرضى كل 6 أشهر، وبعضهم يحتاجون أقرب.</p></div>"}];
+var AR = ["<p>هذا الملف الرابع، ومحاضرة وحدة قصيرة بس مهمة جداً: <b>ست مراحل سريرية</b> لبناء الطقم الجزئي المتحرك، بالترتيب.</p><p>تخيّل بناء بيت: أولاً تتفق ويه صاحب البيت وتعلّمه (تثقيف)، تسوي مخطط وفحوصات (تشخيص وتصميم)، إذا الأساس مو ثابت تعالجه (دعم النهاية الحرة)، تتأكد الأبواب تنطبق (الإطباق)، تسلّم المفاتيح (التنضيد الأولي)، وترجع تزور البيت بين فترة وفترة (المتابعة). إذا تخلطت هالمراحل، الطقم يفشل حتى لو المختبر ممتاز.</p>","<p>أول مرحلة: <b>تثقيف المريض</b>. النجاح يبدأ من فهمه ومشاركته: موافقة واعية (<b>informed consent</b>)، تعاون، والتزام. المسؤولية <b>مشتركة</b> بينك وبينه.</p><p>لازم تحفّزه وتعلّمه تنظيف الفم. الطقم الجزئي إذا النظافة سيئة يسبب مشاكل لثة، تسوس، وتهيّج الأنسجة. إذا النظافة مو زينة، <b>لا تعطه الطقم</b> لحد ما تتحسن.</p><p>التثقيف يبدأ من أول زيارة ويستمر طول العلاج، وبالذات وقت خطة العلاج والتشخيص المستقبلي (prognosis).</p><p>وأعطه <b>تعليم مكتوب</b> مو بس كلام، لأن المريض ما يحفظ كل اللي سمعه بالعيادة.</p>","<p>المرحلة الثانية: تاريخ مرضي وسني كامل، وفحص دقيق — سريري وشعاعي: تسوس، حشوات وتيجان موجودة، اللثة ودعم الأسنان، كيف الأسنان (خصوصاً الدعامات) والحواف استجابت لضغط سابق، وحيوية الأسنان. كمان نقيم مستوى الإطباق، شكل القوس، وعلاقة الإطباق بالنظر وبتثبيت الصبّات التشخيصية على المطابقة.</p><p>إذا قررنا طقم جزئي، لازم تسلسل علاج واضح، والتصميم حسب <b>الدعم المتوفر</b>. النهاية الحرة غير الحالة اللي كلها مدعومة بأسنان — تصميمهم يختلف جذرياً.</p>","<p>خمس فروقات بين طقم مدعوم كله من الأسنان وطقم نهاية حرة: <b>نوع الدعم</b>؛ <b>طريقة الطبعة</b>؛ <b>نوع المثبتات المباشرة</b>؛ <b>مادة القاعدة</b>؛ و<b>الحاجة لمثبت غير مباشر</b>.</p><p>الـ <b>surveyor</b> بهذه المرحلة مو كمالي — <b>ضروري</b>: تشخيص، تخطيط، توجيه تحضير الأسنان، والتأكد أن التحضير تم. هدف تحضير الفم: دعم وثبات وتثبيت كافيين، وإطباق منسجم.</p>","<p>صبّات التشخيص لازم يكون عليها تصميم مبدئي وتحضير الفم المخطط <b>بقلم ملون</b>. بعد ما نعدّل الإطباق ونسوّي ترميمات أو تعديلات الدعامات، نرسم <b>شكل الهيكل النهائي بدقة على الصبّة النهائية الممسوحة</b> حتى الفني ما يخمن — يشوف التصميم المطلوب حرفياً.</p>","<p>المرحلة الثالثة: توفير دعم لقواعد <b>النهاية الحرة</b>. هالمرحلة <b>ما تنطبق</b> على الطقم المدعوم كله من الأسنان، لأن الدعم هناك من الـ rests فقط.</p><p>قاعدة معمولة على الشكل التشريحي للحافة <b>ما تكفي تحت المضغ</b> بالنهاية الحرة. نحتاج <b>طبعة خاصة</b> تسجّل الأنسجة الداعمة وهي تحت نوع من التحميل، حتى القاعدة تنطبق على الحافة <b>أثناء الوظيفة</b> مو بس وهي مرتاحة.</p><p>الهدف: نخلي دعم الأنسجة أقرب وأمنسجم ويه دعم الأسنان قدر الإمكان.</p>","<p>المرحلة الرابعة: تثبيت والتحقق من علاقات الإطباق وترتيب الأسنان. مهمة للحالتين. شكل الحافة أقل أهمية إذا الطقم مدعوم من الأسنان.</p><p>بالنهاية الحرة: نسجّل علاقات الفكين <b>فقط بعد أفضل دعم ممكن للقاعدة</b> — نفس الدعم اللي راح يكون للطقم النهائي. يعني ما تسجّل إطباق على قاعدة ضعيفة وبعدين تركب أسنان.</p><p>التسجيل النهائي يصير بعد ما الهيكل يرجع من المختبر، ينطبق على الدعامات، والإطباق المقابل يتأكد أو يتعدّل، وبعد <b>طبعة مصححة</b>. وبعدها نستخدم قاعدة أكريلك جديدة أو مصححة للتسجيل.</p>","<p>المرحلة الخامسة: التنضيد الأولي (التسليم). تصنيع الأكريلك بالمختبر <b>ممكن يغيّر الإطباق</b> اللي خططناه. قبل التسليم لازم نتأكد الإطباق منسجم، وانطباق القاعدة على الأنسجة معقول ومضبوط.</p><p>والمريض لازم يفهم: شلون يحافظ على الطقم، شنو يتوقع، وأن راح يحتاج تعديلات — مو معناها الشغل فاشل، هذا جزء طبيعي.</p>","<p>المرحلة السادسة: <b>المتابعة الدورية</b>. حتى نكتشف التغيير بدري. نراقب: أنسجة الفم؛ استجابتها للترميمات؛ الطقم نفسه؛ قبول المريض إياه؛ والتزامه بالنظافة.</p><p>مراجعة كل <b>6 أشهر</b> تكفي للأغلب، وبعض المرضى يحتاجون زيارات أقرب. الطقم مو «خلصت وسلّمت» — هو علاج مستمر.</p>","<p>ثلاث أسئلة على ترتيب المراحل وأهم القواعد. بعدها الاختبار النهائي.</p>","<p>خمسة أسئلة تغطي المراحل الست. اضغط الجواب، وبعدين احسب نتيجتك.</p>",""];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
