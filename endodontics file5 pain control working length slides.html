@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Endodontics File 5 — Pain Control and Working Length (Prof. Anas)</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Endodontics · Prof. Anas Lectures 2–3</div>
+    <h1>Pain Control in Endodontics, and Working-Length Determination</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lectures 2–3 by Prof. Dr. Anas Falih Mahdi (PDF pages 91–104).</p>
+    <ul>
+      <li>Aδ versus C fibres (C fibres about three times more numerous), neurogenic inflammation, and factors that lower the pain-reaction threshold</li>
+      <li>Esters and amides, sodium-channel block, vasoconstrictors, infection and pH 5–6, and confirming pulpal anaesthesia with a pulp test</li>
+      <li>IANB (1.8 ml, 15 minutes, 1 hour; two cartridges), Gow-Gates and Akinosi–Vazirani, maxillary infiltration 87–92%, PDL 0.2 ml per root, intraosseous and intrapulpal anaesthesia</li>
+      <li>This lecture’s radiographic working-length method: start 1 mm short, subtract 1 mm for the constriction, or 2 mm if there is external resorption</li>
+      <li>Apex locators: 650 ohms, a pacemaker contraindication, precautions, and generations one to six</li>
+      <li>Total run time: <b>38 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 19</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Endodontics · File 5","t":"Pain control in endodontics, and working-length determination (Prof. Anas)","b":"<p>University of Baghdad, College of Dentistry — Endodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file covers PDF pages 91–104, Lectures 2–3 by Prof. Dr. Anas Falih Mahdi (أ.د. أنس فالح مهدي): pain pathways and local anaesthesia (including mandibular, maxillary and supplemental techniques), then working-length determination as taught in this lecturer’s chapter (radiographic method, 650-ohm apex locators, a pacemaker contraindication, and generations of locators). Some numbers differ from the 4th-year Lecture 5 in File 3; this file reports this lecture’s own figures.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Medical terms stay in English next to the Arabic.</p>"},{"k":"Prof. Anas · Pain","t":"Aδ and C fibres, and neurogenic inflammation (substance P and CGRP)","b":"<p>Pain is an unpleasant and distressful body sensation which could result from injury or disease. Noxious stimuli in teeth are transmitted in primary afferent “nociceptive” (pain-detecting) sensory neurons located in the trigeminal ganglion, and their nerve axons terminate in the dental pulp. Regardless of the nature of the sensory stimulus (thermal, mechanical, chemical, electric), almost all afferent impulses generated from pulp tissue result in the sensation of pain.</p><p>The tooth is innervated by a large number of myelinated (mainly <b>Aδ</b>) and unmyelinated (<b>C</b>) sensory axons. Both fibre types are nociceptors. C fibres in dental pulp are generally <b>three times higher in number than A fibres</b>. Aδ fibres are myelinated and larger in diameter, principally concentrated near the pulp–dentine complex, and they can transmit a sharp, instant and intermittent pain. C fibres are unmyelinated and smaller in diameter, distributed within the pulp with a higher concentration near the pulp–dentine complex; pain transmitted by these fibres is characterized by a burning and aching sensation.</p><p>In addition, these fibres can be stimulated during inflammation to release neurotransmitters such as <b>substance P</b> and <b>calcitonin gene-related peptide (CGRP)</b>. These can cause vasodilatation, which increases the pulp volume and can increase the pressure on the nerve ending, intensifying the pain. This process is called <b>neurogenic inflammation</b> (the lecture cites Samir et al., 2023).</p>"},{"k":"Prof. Anas · Pain","t":"Pain-reaction threshold, catecholamines, and injecting slowly in the supine position","b":"<p>The <b>pain reaction threshold (PRT)</b> is that point at which a person can feel pain. With endodontic therapy, a hyper-response to stimulation is significantly increased. Factors that lower the PRT include: (1) the presence of pain at the beginning of treatment; (2) fatigue; (3) fear and anxiety.</p><p>By an increase of pain sensation, the blood level of catecholamine suddenly elevates, with an increase in blood pressure and heart rate. This might induce fainting, angina pectoris, asthma and psychiatric reactions. To reduce the possibility of such conditions, the anaesthesia has to be introduced slowly and in the <b>supine position</b>. Correct diagnosis of the etiological factors of pain and proper treatment of the problem relieves pain in many cases.</p>"},{"k":"Prof. Anas · Local anaesthesia","t":"Esters versus amides, and how local anaesthetics block sodium channels","b":"<p>Local anaesthesia is the temporary loss of sensation or pain in a certain part of the body, produced by a topically applied or injected agent, without depressing the level of consciousness. Prevention of pain during dental procedures eliminates fear and anxiety. Knowledge of the anatomy prevents problems during injection such as muscle trismus, haematoma and intravascular injection.</p><p>There are two general types of local-anaesthetic chemical formulations: (1) <b>esters</b>, such as procaine and benzocaine; (2) <b>amides</b>, such as lidocaine, mepivacaine, prilocaine and articaine.</p><p>Mechanism of action: the primary action is to decrease the nerve’s permeability to sodium (Na<sup>+</sup>) ions, thus preventing the inflow of Na<sup>+</sup> into the nerve. This interferes with sodium conductance and inhibits the propagation of the impulse along the nerve fibres. Movement of Na<sup>+</sup> is permitted through voltage-gated sodium channels (<b>VGSCs</b>). Local-anaesthetic molecules block these channels on the nerve membrane and prevent the generation and conduction of the nerve action potential.</p>"},{"k":"Prof. Anas · Local anaesthesia","t":"Vasoconstrictors, who needs a physician’s advice, and why infection delays onset (pH 5–6)","b":"<p>Local anaesthetics are vasodilators, absorbed into the circulation, and have a systemic effect related to the blood-plasma level. <b>Vasoconstrictors</b> in the local anaesthetic constrict the blood vessels, to lower local absorption into the bloodstream, to prolong the anaesthetic effect in the working area, and to decrease the possibility of toxicity. They are also used to decrease bleeding, by infiltration of a few drops in the bleeding area. Patients with hyperthyroidism, cardiovascular disease, or diabetes, and patients taking drugs such as tricyclic antidepressants and MAO inhibitors, need a consultation with the physician before injection of a local anaesthetic that has a vasoconstrictor.</p><p>If the local anaesthetic is injected in an infected area, its onset will be delayed. The inflammatory process lowers the pH of the extracellular tissue from its normal value to <b>5–6 or lower</b>. This low pH inhibits anaesthetic action because little of the free-base form of the anaesthetic is allowed to cross into the nerve sheath. In addition, inserting a needle into an active site of infection may spread the infection; therefore alternative nerve-block injections can be used. Traditional methods of confirming anaesthesia (questioning the patient, probing the soft tissue, and/or starting treatment and waiting for a reaction) may not be effective for determining pulpal anaesthesia. The effective way to detect the onset of pulpal anaesthesia is pulp testing: a <b>negative response means positive pulpal anaesthesia</b>.</p>"},{"k":"Prof. Anas · Mandibular anaesthesia","t":"Topical anaesthesia, the inferior alveolar block, and why two cartridges may be better","b":"<p><b>Topical anaesthesia</b> is effective to minimize surface discomfort of the needle (2–3 mm in depth). It is composed of benzocaine (up to 20%) or lidocaine as a solution or ointment (5%) or a spray (up to 10%).</p><p>The site of deposition of an <b>inferior alveolar nerve block (IANB)</b> is near the mandibular foramen, before the entry of the inferior alveolar nerve. It anaesthetizes the mandibular teeth on the side of injection. The lingual nerve also can be anaesthetized in the same injection, with its innervated regions (lingual mucosa and tongue). However, the buccal mucosa cannot be anaesthetized by this injection alone. Administration of a conventional IANB to asymptomatic patients using <b>1.8 mL of 2% lidocaine with 1:100,000 epinephrine</b> would provide pulpal anaesthesia within <b>15 minutes</b> that lasts for <b>1 hour</b>. Research also found that administration of a two-cartridge volume was significantly better for avoiding a missed block than a one-cartridge volume in asymptomatic subjects.</p>"},{"k":"Prof. Anas · Mandibular anaesthesia","t":"The V3 block: Gow-Gates, Akinosi–Vazirani, and the incisive (mental) block","b":"<p>A <b>mandibular (V3) nerve block</b> anaesthetizes all the mandibular teeth in the region with the buccal and lingual soft tissues. It also provides sensory anaesthesia of the buccal and mylohyoid nerves. In most cases a V3 block should be combined with an inferior alveolar nerve block to ensure pulpal anaesthesia.</p><p>Two injection techniques for the V3 block: the <b>Gow-Gates</b> technique can be performed with the patient in a supine position and the mouth open wide. The dentist aims to administer local anaesthetic just anterior to the neck of the condyle, in proximity to the mandibular branch of the trigeminal nerve after its exit from the foramen ovale. The second technique is the <b>Akinosi–Vazirani</b> technique, used when there is limited mouth opening, to assist with further opening. The site of injection is the height of the mucogingival junction of the maxillary third molar, near the maxillary tuberosity.</p><p>The <b>incisive nerve block (mental nerve block)</b> — numbered 4 in the lecture — is given buccally between the mandibular two premolars. It provides anaesthesia to the lower lip, buccal mucosa, and skin of the chin ventral to the mental foramen, in addition to the premolars and anterior teeth in the region.</p>"},{"k":"Prof. Anas · Maxillary anaesthesia","t":"Maxillary infiltration: 87–92% success, onset in 3–5 minutes, and a short duration","b":"<p>The most commonly used injection for anaesthetizing maxillary teeth is infiltration with a cartridge of 2% lidocaine with 1:100,000 epinephrine. Infiltration results in a fairly high incidence of successful pulpal anaesthesia (around <b>87% to 92%</b>). Pulpal anaesthesia usually occurs within <b>3 to 5 minutes</b>. However, the duration of pulpal anaesthesia is a problem with maxillary infiltrations: pulpal anaesthesia of the anterior teeth may last till <b>30 minutes</b>, while in the premolar region until about <b>40 to 45 minutes</b>, and then it starts to decline. Therefore additional local anaesthetic should be administered depending on the duration of the procedure and the tooth group affected.</p><p>Block anaesthesia for the maxillary teeth includes posterior superior alveolar, anterior middle superior alveolar, palatine-anterior superior alveolar, infraorbital, and second-division nerve blocks. All of these are not required for routine restorative and endodontic procedures, according to this lecture.</p>"},{"k":"Prof. Anas · Supplemental anaesthesia","t":"The periodontal-ligament injection: 0.2 ml per root, bevel towards the root, and the STA device","b":"<p>The <b>periodontal ligament (PDL) injection</b> is used when no other technique can be used. It can induce local anaesthesia in either maxillary or mandibular teeth. The needle is inserted between the tooth and the PDL with the bevel of the needle toward the root. An anaesthetic solution of <b>0.2 ml is placed per root</b>. Onset of anaesthesia is immediate, but duration is variable. This technique requires high injection pressure to force the solution through the PDL into the cancellous medullary bone surrounding the tooth. Therefore high-pressure dental syringes such as the Peripress Pen and Ligmaject can be used. In addition, a special motor-driven anaesthetic device such as <b>STA</b> (single-tooth anaesthesia) has been developed for painless PDL anaesthesia.</p>"},{"k":"Prof. Anas · Supplemental anaesthesia","t":"Intraosseous anaesthesia (Stabident), intrapulpal injection, and referred pain","b":"<p><b>Intraosseous anaesthesia</b> is particularly useful in conjunction with an inferior dental block when supplemental anaesthesia is likely to be necessary (for example, in mandibular second-molar teeth). The Stabident IO system uses a slow-speed, handpiece-driven perforator and a solid 27-gauge beveled wire that drills a small hole through the cortical plate. The anaesthetic solution is delivered into cancellous bone through a 27-gauge ultrashort needle placed into that perforation.</p><p><b>Intrapulpal anaesthesia</b> is used when full anaesthesia is not gained by other techniques, especially in irreversible pulpitis. The needle is inserted directly into the pulp and local anaesthetic is introduced with force. This injection controls pain both by applying pressure and by the pharmacologic action of the agent; a profound and rapid onset can be obtained. The major drawback is that the needle and injection are made directly into vital, very responsive pulp tissue, so the injection is quite often moderately to severely painful. Another disadvantage is the duration of pulpal anaesthesia (<b>15 to 20 minutes</b>). The pulpal tissue must be removed quickly and completely to prevent a recurrence of pain during instrumentation. The lecture’s figure shows the needle bent to gain access into the canal.</p><p>Most oral and dental pain can be traced to its source. There are cases in which pain might be experienced away from its source, on the same side but in the other jaw, ears, eyes and sinus. Careful diagnosis reveals the affected tooth or a related anatomic structure (in non-dental pain).</p>"},{"k":"اختبر نفسك","t":"Quiz: C fibres, infection and pH, IANB volumes, and the PDL dose","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">In this lecture, C fibres in the pulp compared with A fibres, and neurogenic inflammation, are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">C fibres are fewer than A fibres and never release peptides</button><button type=\"button\" class=\"opt\" data-i=\"1\">C fibres are generally three times higher in number than A fibres; they give burning, aching pain. Aδ fibres give sharp, instant, intermittent pain. During inflammation, substance P and CGRP cause vasodilatation, increased pulp volume and pressure, and intensified pain (neurogenic inflammation)</button><button type=\"button\" class=\"opt\" data-i=\"2\">Only Aδ fibres are nociceptors</button><button type=\"button\" class=\"opt\" data-i=\"3\">PRT is raised by fatigue, fear and existing pain</button></div><div class=\"qexp\" hidden><p>ألياف C ثلاثة أضعاف A تقريباً، وألمها حارق موجع. Aδ حاد فوري متقطع. الالتهاب العصبي المنشأ: substance P و CGRP يوسّعون الأوعية ويزيدون الضغط والألم. التعب والخوف والألم الموجود تخفّض عتبة الألم (مو ترفعها).</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Injecting local anaesthetic into an infected area, according to this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Speeds onset because pH rises above 8</button><button type=\"button\" class=\"opt\" data-i=\"1\">Delays onset: inflammation lowers extracellular pH to 5–6 or lower, so little free base crosses the nerve sheath; a needle in an active infection may also spread infection, so an alternative nerve block is used. Confirm pulpal anaesthesia by pulp testing (a negative response means anaesthesia is present). Introduce the anaesthetic slowly, with the patient supine, because pain can raise catecholamines, blood pressure and heart rate</button><button type=\"button\" class=\"opt\" data-i=\"2\">Has no effect on pH or onset</button><button type=\"button\" class=\"opt\" data-i=\"3\">Esters and amides do not exist as categories</button></div><div class=\"qexp\" hidden><p>الخمج ينزّل الأس الهيدروجيني لـ 5–6 أو أقل فيتأخر المفعول. لا تحقن ببؤرة نشطة. أكد تخدير اللب بفحص اللب (رد سلبي = تخدير موجود). الحقن ببطء والمريض مستلقٍ. الإسترات مثل بنزوكايين؛ الأميدات مثل ليدوكايين وأرتيكايين. المضيّق يطوّل المفعول ويقلل السمية؛ استشر الطبيب ويه فرط الدرقية والقلب والسكري و TCA/MAO.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A conventional IANB in asymptomatic patients in this lecture, and two-cartridge research:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">0.2 ml of articaine gives 3 hours of buccal-mucosa anaesthesia from IANB alone</button><button type=\"button\" class=\"opt\" data-i=\"1\">1.8 ml of 2% lidocaine with 1:100,000 epinephrine provides pulpal anaesthesia within 15 minutes lasting 1 hour. A two-cartridge volume was significantly better than one cartridge for avoiding a missed block in asymptomatic subjects. IANB can anaesthetize the lingual nerve (lingual mucosa and tongue) in the same injection, but not the buccal mucosa</button><button type=\"button\" class=\"opt\" data-i=\"2\">Gow-Gates is injected at the mental foramen only</button><button type=\"button\" class=\"opt\" data-i=\"3\">Akinosi–Vazirani requires the mouth to be open as wide as Gow-Gates</button></div><div class=\"qexp\" hidden><p>IANB: 1.8 مل، 15 دقيقة، يستمر ساعة؛ خرطوشتان أفضل لتفادي الكتلة الضائعة. يخدر اللساني هم، بس مو الغشاء الشدقي. Gow-Gates أمام عنق اللقمة والفم مفتوح واسع. Akinosi عند محدودية الفتح، عند الملتقى اللثوي للرحى الثالثة العلوية قرب الحدبة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The PDL injection dose and bevel, and intrapulpal duration, in this lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">2.0 ml per tooth with the bevel away from the root; intrapulpal lasts 3 hours and is painless</button><button type=\"button\" class=\"opt\" data-i=\"1\">0.2 ml per root, needle between the tooth and PDL with the bevel toward the root; onset immediate, duration variable, high pressure needed (Peripress Pen, Ligmaject, or STA). Intrapulpal injection (especially irreversible pulpitis) works by pressure plus the drug, is often painful, lasts 15–20 minutes, and the pulp must then be removed quickly and completely</button><button type=\"button\" class=\"opt\" data-i=\"2\">Stabident uses a size 10 file as the only perforator</button><button type=\"button\" class=\"opt\" data-i=\"3\">Maxillary infiltration lasts 3 hours in every anterior tooth and is only 40% successful</button></div><div class=\"qexp\" hidden><p>PDL: 0.2 مل لكل جذر، الشطف نحو الجذر، ضغط عالي. داخل اللب: قوة + دواء، مؤلم غالباً، 15–20 دقيقة، ارفع اللب بسرعة. Stabident ثاقب 27 ثم إبرة 27 قصيرة للعظم الإسفنجي، مفيد ويه IANB خاصة بالرحى الثانية السفلية. التسلل العلوي نجاح 87–92%، يبدأ 3–5 دقائق، الأمامية نحو 30 دقيقة والضواحك 40–45.</p></div></div>"},{"k":"Prof. Anas · Working length","t":"Why working length matters, finding the orifice, and the apical stop","b":"<p>The determination of an accurate working length is one of the most critical steps of endodontic therapy. Cleaning, shaping and obturation cannot be accomplished accurately unless the working length is determined precisely.</p><p>Before the canals can be entered, their orifices must be found. In older patients, finding a canal orifice may be more difficult. The endodontic explorer is used to find the canal orifice and to explore the walls of the pulp chamber. When the orifices are found, a small instrument such as a file size <b>10–15</b> is used to ensure canal patency. The pulp should be removed by a barbed broach, which should enter the canal without bending or engagement with the canal walls.</p><p>In this lecture, working length is the distance from a coronal reference point to the point at which canal preparation and obturation should terminate, which is called the <b>apical stop</b>. The same five apical landmarks as in File 3 are then listed: apical constriction (usually 0.5 to 1.0 mm short of the centre of the apical foramen); apical foramen (generally not in the centre, and may be on the lateral side of the root); radiographic apex; anatomic apex; and the cementodentinal junction.</p>"},{"k":"Prof. Anas · Working length","t":"This lecture’s radiographic method: 1 mm short on the film, then subtract another 1 mm — or 2 mm if there is external resorption","b":"<p>Essential items for the radiographic method: (1) undistorted preoperative radiographs showing the total length and surrounding structures; (2) adequate coronal access to all canals; (3) an endodontic millimetre ruler; (4) knowledge of the average length of all teeth; (5) a definite reference point — a site on the occlusal or incisal surface from which the measurement is made, used throughout preparation and obturation, and a stable area that will not change during treatment. To establish the length, a stainless-steel reamer or file with an instrument stop is needed. The exploring instrument must be small enough to negotiate the total length of the canal but large enough not to be loose in the canal.</p><p>Method in this lecture: (1) measure the tooth on the preoperative radiograph (initial measurement); (2) place the file inside the canal to a length <b>1 mm less</b> than the length from the preoperative radiograph; (3) adjust the rubber stopper on the reference point; (4) take the X-ray by the bisecting-angle or parallel techniques; (5) on the radiograph, measure the difference between the end of the instrument and the end of the root and adjust the working length accordingly; (6) from this adjusted length, subtract a further <b>1.0 mm</b> to calculate subjectively the position of the apical constriction; (7) if there is <b>external root resorption</b> there may be destruction of the apical anatomy, therefore the length of the root canal should be shortened <b>2 mm</b>; (8) set the endodontic ruler at this new corrected length, which will be the length used during treatment.</p>"},{"k":"Prof. Anas · Working length","t":"What happens if the working length is too long, or too short","b":"<p>The working length determines the length of the tooth having the pulpal tissue; endodontic treatment should be confined to this area. Failure to accurately determine and maintain working length leads to the following. Length too long: (1) perforation through the apical constriction; (2) overfilling or over-instrumentation; (3) increased incidence of post-operative pain; (4) a prolonged healing period; (5) a lower success rate. A short working length: (1) incomplete cleaning; (2) underfilling; (3) persistent discomfort; (4) an incomplete apical seal; (5) a lower success rate.</p>"},{"k":"Prof. Anas · Apex locators","t":"How first-generation locators used 650 ohms, and the pacemaker contraindication","b":"<p>The electronic principle is relatively simple and is based on electrical resistance to determine canal length. The apical constriction has a specific electronic characteristic: a resistance of <b>650 ohms</b>. This finding was used to develop the first-generation electronic apex locators. Based on Ohm’s law (V = R × I), these devices deliver a direct current of a known voltage (V) and include an ammeter that measures the intensity (I) of the current after its passage through the file and being recaptured by the labial hook. An electronic component calculates the ratio V/I and deducts the resistance at the level of the canal where the instrument is located. When the resistance is 650 ohms, the screen displays a <b>‘0’</b> and the clinician estimates that the tip is at the apical constriction. The principle is based on the electrical resistance of different tissues; when the circuit is complete, resistance decreases and current begins to flow. Old types were affected by the presence of saliva or blood inside the canal, while recent types are not affected by them and work efficiently in their presence.</p><p>The uses listed are the same five situations as in File 3 (an obscured apex, gag reflex, pregnancy to reduce radiation, children or disabled or heavily sedated patients, and incomplete root formation or a primary tooth). This lecture adds a <b>contraindication</b>: apex locators are contraindicated for patients who have <b>cardiac pacemakers</b>, because electrical stimulation can interfere with pacemaker function.</p>"},{"k":"Prof. Anas · Apex locators","t":"Precautions when you use an apex locator","b":"<p>They are simple to use, but several precautions must be taken to ensure accuracy and reproducibility: remove any metallic parts from the crown of the tooth (amalgam, a crown, and so on) that could affect the flow of the current; initially estimate the root length from the preoperative X-ray; prepare the access cavity, locate the canal openings, and clear the content from the pulp chamber; place the lip hook under the rubber dam, making sure the mucous membrane is damp; clip the second electrode of the locator on the hand instrument and start the device; place the file in the canal and slowly advance toward the apex, using alternating quarter turns (a watch-winding motion); stop advancing when the locator displays ‘0’; check and confirm the measurement three times; and confirm the working length during the procedure using digital or conventional radiography.</p>"},{"k":"Prof. Anas · Apex locators","t":"Generations of apex locators: first, second and third","b":"<p><b>First generation:</b> these locators use a resistance method for measuring working length. The first apex locator was developed in 1969. When compared with radiographs, these devices were found to be unreliable. Patients also experienced pain due to the high current. Presence of strong electrolytes such as endodontic irrigants, haemorrhage, pus or pulp tissue led to inaccurate results.</p><p><b>Second generation:</b> impedance was utilized instead of resistance. In 1971 an apex locator was developed which needed to be calibrated at the periodontal pocket of each tooth. Inaccurate readings were gained when electrolytes were present in the canals and even when the canals were dry.</p><p><b>Third generation:</b> multiple frequencies were used to measure working length. These locators can measure working length even with the presence of electrolytes and have <b>90–100% accuracy</b>.</p>"},{"k":"Prof. Anas · Apex locators","t":"Fourth, fifth and sixth (adaptive) generation locators","b":"<p><b>Fourth generation:</b> similar to the third-generation units, these locators use two separate frequencies, <b>400 Hz and 8 kHz</b>. Their limitations are that they need to be performed in partially dried canals, and in heavy exudates or blood they become inapplicable.</p><p><b>Fifth generation:</b> these work on the basis of comparisons of data taken from the electrical characteristics of the canal and additional mathematical processing. They perform extremely well in the presence of blood and exudate, but in dry canals they experience considerable problems; hence additional liquids inserted in the canals become necessary.</p><p><b>Sixth generation</b> (adaptive type) combines the advantages of the fifth- and fourth-generation appliances. Measurement using the adaptive apex locator eliminates the necessity of drying or moistening the canal, while also achieving a high degree of measurement precision in the presence of blood or sodium hypochlorite, or while manipulating dry canals.</p>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: this lecture’s 1 mm and 2 mm rules, 650 ohms, pacemakers, and locator generations","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">In Prof. Anas’s radiographic working-length method, the file is first placed:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">3 mm beyond the radiographic apex, then 4 mm is subtracted as in File 3’s worked example</button><button type=\"button\" class=\"opt\" data-i=\"1\">1 mm less than the preoperative radiographic length; after adjusting from the working-length film, subtract a further 1.0 mm for the apical constriction; if there is external root resorption, shorten the length by 2 mm. This lecture allows a bisecting-angle or a parallel film. A size 10–15 file is used to ensure patency after the orifice is found with an explorer</button><button type=\"button\" class=\"opt\" data-i=\"2\">Exactly at the anatomic apex with no subtraction</button><button type=\"button\" class=\"opt\" data-i=\"3\">Only with a barbed broach forced against the walls</button></div><div class=\"qexp\" hidden><p>بهالمحاضرة: الملف أولاً أقل 1 ملم من طول صورة قبل العمل، وبعد التعديل اطرح 1 ملم للتضيّق؛ مع امتصاص خارجي قصّر 2 ملم. يجيز تنصيف الزاوية أو الموازاة. ملف 10–15 للنفاذية. أمثلة ملف 3 (أطول 3 انقص 4 / أقصر 3 زِد 2، والموازاة أدق) محاضرة ثانية — لا تخلط الأرقام.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">First-generation apex locators in this lecture display “0” when:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The resistance is 10 ohms at the enamel surface</button><button type=\"button\" class=\"opt\" data-i=\"1\">The resistance at the instrument tip is 650 ohms, estimated as the apical constriction (Ohm’s law: V = R × I). They are contraindicated in patients with cardiac pacemakers. Old types were affected by saliva or blood; recent types work in their presence</button><button type=\"button\" class=\"opt\" data-i=\"2\">The patient has a pacemaker, which is an indication rather than a contraindication</button><button type=\"button\" class=\"opt\" data-i=\"3\">The screen always shows “15 minutes”</button></div><div class=\"qexp\" hidden><p>650 أوم = صفر على الشاشة = التضيّق. ممنوع ويه منظم ضربات القلب. القديمة تتأثر باللعاب والدم؛ الحديثة لا.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Which generation facts match this lecture?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">First generation (1969) was 90–100% accurate in pus; sixth generation works only in dry canals</button><button type=\"button\" class=\"opt\" data-i=\"1\">First generation (resistance, 1969) was unreliable versus radiographs, painful from high current, and inaccurate with irrigants, blood, pus or pulp tissue. Third generation (multiple frequencies) can work with electrolytes and has 90–100% accuracy. Fourth uses 400 Hz and 8 kHz and is inapplicable in heavy exudate or blood. Fifth works well with blood and exudate but has problems in dry canals (add liquid). Sixth (adaptive) combines fourth and fifth and works in blood, NaOCl, or dry canals without having to dry or moisten the canal first</button><button type=\"button\" class=\"opt\" data-i=\"2\">Second generation never needed calibration</button><button type=\"button\" class=\"opt\" data-i=\"3\">Metallic crowns may be left in place because they never affect current flow</button></div><div class=\"qexp\" hidden><p>الأول غير موثوق ويه تيار مؤلم والكهارل تعطله. الثالث 90–100% حتى ويه كهارل. الرابع 400 هرتز و 8 كيلوهرتز ويتعطل ويه نضح/دم. الخامس زين ويه دم بس سيء بالجاف. السادس تكيّفي يشتغل جاف أو ويه دم وهايبوكلوريت. شيل الأجزاء المعدنية من التاج؛ أكّد القياس ثلاث مرات وبالأشعة.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">Name three factors that lower the pain reaction threshold, and the two chemical families of local anaesthetics with an example of each.</button><div class=\"flash-a\" hidden>Factors that lower PRT: pain at the beginning of treatment; fatigue; fear and anxiety. Esters: procaine, benzocaine. Amides: lidocaine, mepivacaine, prilocaine, articaine.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا خامس ملف: السيطرة على الألم، وبعدها طول العمل حسب محاضرات الأستاذ أنس فالح مهدي (صفحات 91–104). بعض الأرقام تختلف عن محاضرة السنة الرابعة بملف 3 — هنا نكتب أرقام هالمحاضرة. شرح عراقي مفصل ويه أسئلة.</p>","<p>الألم إحساس مزعج من أذى أو مرض. المنبهات المؤذية بالأسنان تنتقل بألياف حسّية كاشفة للألم (<b>nociceptive</b>) بجسمها بالعقدة الثلاثية التوائم، ومحاورها تنتهي بلب السن. مهما كان المنبه (حراري، ميكانيكي، كيميائي، كهربائي)، أغلب الإشارات من اللب تُحس ألم.</p><p>السن فيه ألياف ميالينية غالباً <b>Aδ</b> وغير ميالينية <b>C</b>، وكلتاهن كاشفات ألم. ألياف C باللب عموماً <b>ثلاثة أضعاف</b> عدد ألياف A. Aδ أسمك وميالينية، تتركّز قرب معقد اللب-العاج، وألمها حاد فوري متقطع. C أرفع بدون ميالين، موزعة باللب ويه تركيز أعلى قرب المعقد، وألمها حارق وموجع (aching).</p><p>بالالتهاب هالألياف تفرز <b>substance P</b> و <b>CGRP</b>، فيصير توسع أوعية، حجم اللب يزيد، الضغط على نهاية العصب يزيد، والألم يشتد. هالعملية اسمها <b>التهاب عصبي المنشأ (neurogenic inflammation)</b>.</p>","<p>عتبة رد فعل الألم (<b>PRT</b>) هي النقطة اللي الشخص يحس بيها الألم. بعلاج القناة فرط الرد على التنبيه يزيد بشكل واضح. عوامل تخفّض العتبة (يعني المريض يحس أسرع/أكثر): وجود ألم من بداية العلاج؛ التعب؛ والخوف والقلق.</p><p>إذا الألم زاد، الكاتيكولامين بالدم يطلع فجأة، والضغط ونبض القلب يزيدون. هذا قد يسبب إغماء، ذبحة صدرية، ربو، أو ردود نفسية. حتى تقلل هالخطر: ادخال المخدر <b>ببطء والمريض مستلقٍ على ظهره (supine)</b>. وكثير حالات الألم يخف إذا شخصت السبب وعالجته صح — مو بس تخدير.</p>","<p>التخدير الموضعي فقد مؤقت للإحساس أو الألم بمنطقة معينة، بدهون أو حقنة، <b>بدون</b> ما ينخفض وعي المريض. منع الألم يلغي الخوف. ومعرفة التشريح تمنع مشاكل مثل تقلص العضلة (trismus) وورم دموي وحقن داخل وعاء.</p><p>نوعان كيميائيان: <b>إسترات</b> مثل بروكايين وبنزوكايين؛ و<b>أميدات</b> مثل ليدوكايين، ميبِيفيكايين، بريلوكايين، وأرتيكايين.</p><p>آلية العمل: تقلل نفاذية العصب لأيونات الصوديوم، فتمنع دخول الصوديوم، ويتوقف انتشار السيال. الصوديوم يعدي عبر قنوات صوديوم مقيدة بالجهد (<b>VGSC</b>). جزيئة المخدر تسد هالقنوات وتمنع توليد وتوصيل جهد الفعل. يعني العصب ما يقدر يرسل إشارة الألم.</p>","<p>المخدرات الموضعية موسّعات أوعية، تنمتص للدم وتأثر جهازياً. <b>المضيّقات الوعائية</b> تضيق الأوعية حتى الامتصاص يقل، مفعول التخدير يطول بمنطقة الشغل، والسمية تقل. وهم تقلل النزف: قطرات قليلة بمنطقة النزف. مرضى فرط الدرقية، وأمراض القلب، والسكري، واللي ياخذون مضادات اكتئاب ثلاثية الحلقات أو مثبطات MAO: استشر الطبيب قبل حقن مخدر فيه مضيّق وعائي.</p><p>إذا حقنت بمنطقة مخموجة، البداية تتأخر. الالتهاب ينزّل الأس الهيدروجيني للنسيج من الطبيعي إلى <b>5–6 أو أقل</b>، والقاعدة الحرة للمخدر ما تعبر غمد العصب بسهولة. وهم الإبرة بموقع خمج نشط قد تنشر العدوة — لذلك استخدم تخدير كتلي بديل بعيد عن البؤرة. السؤال أو وخز اللثة أو بدء الشغل ما يكفي لتأكيد تخدير اللب. الطريقة الفعالة: فحص اللب. <b>رد سلبي = تخدير لب إيجابي</b>.</p>","<p>التخدير السطحي يقلل ألم وخزة الإبرة بعمق 2–3 ملم. بنزوكايين حتى 20%، أو ليدوكايين مرهم 5% أو بخاخ حتى 10%.</p><p>تخدير العصب السنخي السفلي (<b>IANB</b>): مكان الحقن قرب الثقبة الفكية قبل دخول العصب. يخدر أسنان ذلك الجانب السفلي. العصب اللساني ممكن ينتخدر بنفس الحقنة (غشاء لساني واللسان). <b>الغشاء الشدقي ما ينتخدر بهالحقنة وحدها</b>.</p><p>لمريض بلا أعراض: خرطوشة <b>1.8 مل ليدوكايين 2% ويه أدرينالين 1:100,000</b> تعطي تخدير لب خلال <b>15 دقيقة</b> يستمر <b>ساعة</b>. بحث المحاضرة: حجم خرطوشتين أفضل بشكل واضح لتفادي الكتلة الضائعة من خرطوشة واحدة، عند الأشخاص بلا أعراض.</p>","<p>تخدير الفرع الفكي (V3) يخدر كل أسنان المنطقة السفلية ويه الأنسجة الشدقية واللسانية، وهم العصب الشدقي والضرسي اللامي. بأغلب الحالات يُدمج ويه IANB حتى تخدير اللب يكتمل.</p><p>تقنيتان: <b>Gow-Gates</b> — المريض مستلقٍ والفم مفتوح واسع، والحقن أمام عنق اللقمة مباشرة، قرب الفرع الفكي بعد خروجه من الثقبة البيضية. <b>Akinosi–Vazirani</b> — لما فتحة الفم محدودة، حتى تساعد تفتح أكثر. مكان الحقن: ارتفاع الملتقى اللثوي المخاطي للرحى الثالثة العلوية قرب الحدبة الفكية.</p><p>تخدير العصب القاطع (أو الذقني): شدقياً بين الضاحكين السفليين. يخدر الشفة السفلى والغشاء الشدقي وجلد الذقن أمام الثقبة الذقنية، وهم الضواحك والأمامية بهالمنطقة.</p>","<p>الأشيع لتخدير الأسنان العلوية: تسلل (infiltration) بخرطوشة ليدوكايين 2% ويه أدرينالين 1:100,000. نجاح تخدير اللب حوالي <b>87–92%</b>، وعادة يبدأ خلال <b>3–5 دقائق</b>. المشكلة المدة: الأمامية قد تستمر لـ <b>30 دقيقة</b>، ومنطقة الضواحك حوالي <b>40–45 دقيقة</b> وبعدين ينزل. لذلك أضف مخدر حسب طول الجلسة ومجموعة الأسنان.</p><p>تخديرات كتلية علوية (خلفي علوي سنخي، أمامي أوسط سنخي، حنكي-أمامي سنخي، تحت الحجاج، والفرع الثاني) <b>مو مطلوبة للإجراءات الروتينية</b> الترميمية واللبية بهالمحاضرة.</p>","<p>حقنة الرباط (<b>PDL</b>) تُستخدم لما باقي الطرق ما تنفع. تصلح للفك العلوي أو السفلي. الإبرة بين السن والرباط، والشطف (<b>bevel</b>) باتجاه الجذر. الكمية <b>0.2 مل لكل جذر</b>. البداية فورية، بس المدة متغيرة. تحتاج ضغط عالي حتى المحلول يندفع من الرباط للعظم الإسفنجي حول السن. لذلك سرنجات ضغط عالي مثل Peripress Pen و Ligmaject، أو جهاز <b>STA</b> بمحرك لتخدير رباط أقل ألماً.</p>","<p>التخدير داخل العظم مفيد خاصة ويه تخدير العصب السنخي السفلي لما تتوقع تحتاج دعم (مثلاً الرحى الثانية السفلية). نظام Stabident: ثاقب بطيء بالقبضة وسلك 27 بشطف يحفر ثقب بالصفيحة القشرية، وبعدين إبرة 27 قصيرة جداً تدخل المحلول للعظم الإسفنجي من نفس الثقب.</p><p>التخدير داخل اللب: إذا باقي الطرق ما كمّلت التخدير، خاصة التهاب اللب غير القابل للرجوع. الإبرة تدخل مباشرة باللب والمحلول يُحقن بقوة. يسيطر على الألم بالضغط وهم بالمفعول الدوائي، وبدايته سريعة وعميقة. عيبه الكبير: الحقن بلب حي حساس جداً، وغالباً الألم متوسط إلى شديد. وعيبه الثاني المدة <b>15–20 دقيقة</b> — لازم تشيل اللب بسرعة وبكمال حتى الألم ما يرجع أثناء التحضير. بالصورة الإبرة مثنية حتى تدخل القناة.</p><p>أغلب ألم الفم يُتتبع لمصدره، بس أحياناً الألم ينحس بعيد: نفس الجهة بس الفك الثاني، أو الأذن أو العين أو الجيب. شخّص بعناية حتى تعرف السن أو البنية غير السنية.</p>","<p>أربعة أسئلة على الألياف والالتهاب، الأس الهيدروجيني، الـ IANB، وحقنة الرباط وداخل اللب.</p>","<p>تحديد طول العمل بدقة من أهم الخطوات. بدون طول مضبوط، التنظيف والتحضير والحشو ما يتمون صح.</p><p>قبل تدخل القناة، لَقِ الفوهات. عند كبار السن أصعب. استخدم المسبر اللبي للفوهات وجدران الحجرة. بعد ما تلقاها، ملف صغير حجم <b>10–15</b> حتى تتأكد إن القناة سالكة. شيل اللب بـ barbed broach يدخل بدون ما ينثني أو يتعرّز بالجدران.</p><p>بهالمحاضرة طول العمل: من نقطة المرجع التاجية إلى نقطة توقف التحضير والحشو، واسمها <b>الموقف الذروي (apical stop)</b>. وبعدين تعد نفس المعالم الخمسة: التضيّق (عادة 0.5–1.0 ملم أقصر من مركز الثقبة)، الثقبة، الذروة الشعاعية، الذروة التشريحية، والـ CDJ.</p>","<p>لوازم طريقة الأشعة: صورة قبل العمل غير مشوهة توريك الطول الكامل والأنسجة المحيطة؛ فتحة تاجية كافية لكل الأقنية؛ مسطرة ملم؛ معرفة الأطوال المتوسطة؛ ونقطة مرجع ثابتة على الإطباق أو القاطع ما تتغيّر أثناء العلاج. الأداة المستكشفة صغيرة حتى تمر بكل الطول، وكبيرة حتى ما تكون فضاوة.</p><p>طريقة هالمحاضرة (مو نفس أمثلة ملف 3): قيس السن على صورة قبل العمل؛ حط الملف بطول <b>أقل بـ 1 ملم</b> من طول الصورة؛ عدّل السدادة على نقطة المرجع؛ صوّر بتنصيف الزاوية أو بالموازاة (هالنص يجيز الاثنين)؛ قيس الفرق بين نهاية الأداة ونهاية الجذر وعدّل؛ من الطول المعدَّل اطرح <b>1.0 ملم</b> بعد حتى تقدّر موضع التضيّق؛ إذا في <b>امتصاص جذري خارجي</b> قصّر الطول <b>2 ملم</b> لأن التشريح الذروي قد يكون تخرب. بعدين ثبّت المسطرة على الطول المصحح.</p>","<p>طول العمل يحدّد طول الجزء اللي فيه نسيج اللب، والعلاج لازم ينحصر بهالمنطقة.</p><p>إذا الطول أزيد من اللازم: انثقاب عبر التضيّق؛ حشو أو تحضير زائد؛ ألم أكثر بعد الجلسة؛ شفاء أطول؛ ونجاح أقل.</p><p>إذا أقصر: تنظيف ناقص؛ حشو ناقص؛ عدم راحة مستمر؛ ختم ذروي ناقص؛ ونجاح أقل. يعني الطويل يجرح ما وراء السن، والقصير يترك عدوة وألم جوه.</p>","<p>المبدأ مقاومة كهربائية. للتضيّق الذروي مقاومة مميزة: <b>650 أوم</b>. هذا أساس الجيل الأول. بقانون أوم (V = R × I) الجهاز يعطي تيار معروف الفولتية، ويقيس الشدة بعد ما يمر من الملف ويرجع من خطاف الشفة، ويحسب المقاومة. لما تصير 650 أوم، الشاشة تعرض <b>صفر</b>، يعني رأس الأداة عند التضيّق. الأنواع القديمة تتأثر باللعاب والدم داخل القناة؛ الحديثة تشتغل بوجودهم.</p><p>الاستخدامات نفس ملف 3 (ذروة محجوبة، غثيان، حمل لتقليل الأشعة، أطفال أو إعاقة أو تهدئة شديدة، وذروة غير مكتملة أو سن لبني). هالمحاضرة تضيف <b>مضاد استطباب</b>: <b>منظم ضربات القلب (pacemaker)</b> — التنبيه الكهربائي قد يتداخل ويه وظيفته. لا تستخدمه لهالمريض.</p>","<p>الجهاز سهل، بس احتياطات للدقة: شيل أي جزء معدني من التاج (ملغم، تاج، إلخ) حتى ما يغيّر مسار التيار؛ قدّر طول الجذر من صورة قبل العمل؛ جهّز الفتحة وحدّد الفوهات ونظّف الحجرة؛ حط خطاف الشفة تحت الحاجز المطاطي والغشاء الرطب؛ كلّب القطب الثاني على الأداة وشغّل الجهاز؛ تقدّم بالملف نحو الذروة بربع دورة متناوبة (حركة لف الساعة)؛ وقف لما يطلع صفر؛ أكّد القياس ثلاث مرات؛ وأكّد طول العمل أثناء العمل بأشعة رقمية أو تقليدية. يعني الجهاز ما يلغي الصورة.</p>","<p>الجيل الأول (1969): طريقة المقاومة. مقارنة بالأشعة غير موثوق؛ المرضى يتألمون من تيار عالي؛ والمحاليل القوية (غسول، نزف، قيح، نسيج لب) تخلّي القراءة غلط.</p><p>الجيل الثاني: ممانعة (<b>impedance</b>) بدل المقاومة. جهاز 1971 يحتاج معايرة عند الجيب اللثوي لكل سن. قراءات غلط بوجود الكهارل، وحتى إذا القنوات جافة.</p><p>الجيل الثالث: ترددات متعددة. يقيس حتى بوجود الكهارل، ودقته <b>90–100%</b>.</p>","<p>الجيل الرابع: ترددان <b>400 هرتز و 8 كيلوهرتز</b>. محدوديته: يحتاج قنوات مجففة جزئياً، وما يشتغل ويه نضحة ثقيلة أو دم.</p><p>الجيل الخامس: يقارن بيانات الخصائص الكهربائية ويه معالجة رياضية. ممتاز بوجود دم ونضحة، بس بالقنوات الجافة يعاني مشاكل — لذلك تحتاج تضيف سوائل للقناة.</p><p>الجيل السادس (التكيّفي): يجمع مميزات الرابع والخامس. ما تحتاج لا تجفف ولا ترطّب القناة خصيصاً، ودقته عالية بوجود دم أو هايبوكلوريت، أو بالقنوات الجافة.</p>","<p>ثلاثة أسئلة ختامية + بطاقة + زر الدرجة: طريقة طول العمل بهالمحاضرة، 650 أوم ومنظم القلب، وأجيال المحدد. إذا غلطت ارجع للشرائح.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>

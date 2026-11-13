@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Endodontics File 6 — Radiography and Intracanal Instruments (Prof. Anas)</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Endodontics · Prof. Anas Lectures 4–6</div>
+    <h1>Endodontic Radiography and Intracanal Instruments</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lectures 4–6 by Prof. Dr. Anas Falih Mahdi (PDF pages 105–121).</p>
+    <ul>
+      <li>Bisecting versus paralleling techniques, practical film tips, and the SLOB (buccal-object) rule</li>
+      <li>Rapid processing at 100 °F, digital systems (CCD, storage phosphor with a 90% dose cut, and indirect scanning), and CBCT (small FOV, 60–75 μm voxels)</li>
+      <li>Six groups of intracanal instruments, K-type versus H-type, Golden Mediums, and Gates-Glidden versus Peeso</li>
+      <li>File taper, rake angle and pitch, then ProFile, ProTaper, RaCe, Twisted File, Wave One and ProTaper Next with this lecture’s numbers</li>
+      <li>The self-adjusting file, Giromatic/Endo-Eze, and sonic versus ultrasonic devices (cavitation and acoustic streaming)</li>
+      <li>Total run time: <b>48 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 24</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Endodontics · File 6","t":"Endodontic radiography, and intracanal instruments (Prof. Anas Lectures 4–6)","b":"<p>University of Baghdad, College of Dentistry — Endodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file covers PDF pages 105–121, Lectures 4–6 by Prof. Dr. Anas Falih Mahdi (أ.د. أنس فالح مهدي): endodontic radiography (bisecting and paralleling techniques, the SLOB/buccal-object rule, digital systems and CBCT), then the six groups of intracanal instruments through rotary nickel-titanium systems, the self-adjusting file, reciprocating files, and sonic/ultrasonic devices.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Medical terms stay in English next to the Arabic.</p>"},{"k":"Prof. Anas · Radiography","t":"Basic radiographic concepts: a straight beam, and a 2-D shadow of a 3-D tooth","b":"<p>The dental radiograph allows indirect vision of the dentition and supporting structures, and provides standardization of intracanal procedures. Radiographs are a very important aid for endodontic diagnosis and treatment. However, patients must be examined before ordering or prescribing X-ray images.</p><p>Basic concepts: (1) X-rays are similar to light rays in that both travel in a straight line until deflected or absorbed. Deflected rays reduce image clarity. (2) The radiograph is a shadow image representing differences in density of objects in the X-ray path; therefore it is a two-dimensional image of a three-dimensional structure. (3) The size, shape and contrast of the shadow are subject to many distortions, because they depend on the physical properties of (a) the object through which the X-ray passes, (b) the radiation source, and (c) the film on which the image is recorded. The dentist should be familiar with the normal and abnormal radiographic appearance of the tooth and its surrounding tissue, and of different restorative materials.</p>"},{"k":"Prof. Anas · Radiography","t":"The bisecting-angle technique: when it is easier, and how it distorts","b":"<p>Types of radiographs used for endodontic purposes: intra-oral (intra-oral periapical and bitewing) and extra-oral (panoramic and computed tomography). Intra-oral periapical films can be divided by technique.</p><p>In the <b>bisecting-angle technique</b>, the X-ray beam is directed perpendicular to an imaginary plane which bisects the angle formed by the recording plane of the X-ray film and the long axis of the tooth. Advantages: (1) easy and comfortable for the patient; (2) quick and does not require a holder; (3) easier when the rubber dam is in place. Disadvantages: (1) more image distortion and superimposition of anatomical landmarks; (2) more artifacts such as a cone cut; (3) since a film holder is not used, it is difficult to visualize where the X-ray cone should be directed; (4) difficult to be reproduced.</p>"},{"k":"Prof. Anas · Radiography","t":"The paralleling technique, and three practical tips for a better film","b":"<p>In the <b>paralleling technique</b>, the X-ray film is placed parallel to the long axis of the tooth by using a film holder, and the X-ray beam is directed perpendicular to the film. Advantages: (1) better accuracy with less distorted images; (2) because of the paralleling instrument with an aiming ring, the X-ray beam is easy to align irrespective of the position of the head; (3) images can be reproduced. Disadvantages: (1) the film is more upright, so it impinges more on the floor of the mouth or the palate and is more uncomfortable; (2) difficult to use in patients with a shallow palatal vault, a gag reflex, or extremely long teeth; (3) difficult to use with a rubber dam.</p><p>Suggestions for good endodontic radiography: (1) for a periapical with the bisecting technique, the edge of the film is positioned parallel to and near the incisal or occlusal surface so that the tooth apices are near the centre of the film; (2) because of the angle of the hard palate, films that are held by the finger usually show maxillary molars with short buccal roots and a very long palatal root; (3) the plastic film holder in the paralleling technique facilitates standardization by aiding film positioning and preventing movement of the film during exposure, and the beam is easy to align irrespective of head position.</p>"},{"k":"Prof. Anas · Radiography","t":"The buccal-object (SLOB) rule: same lingual, opposite buccal","b":"<p>When treating premolars and molars, it is often difficult to recognize radiographically which canal is nearer the buccal side. When the exposure is done on a multi-canaled tooth, the canals may be superimposed and difficult to differentiate. If the X-ray cone is deviated mesially or distally with a given angle, the roots will separate on the film. Therefore, when the cone is moved <b>distally</b> the buccal canal appears <b>mesial</b> to the lingual or palatal canal, and when the cone is moved <b>mesially</b> the buccal canal appears <b>distal</b> to the lingual or palatal canal. This is called the <b>SLOB rule</b> (written “SLOP” in the lecture): the canal which moves in the <b>Same</b> direction is <b>Lingual</b>, whereas the canal which moves in the <b>Opposite</b> direction is <b>Buccal</b>.</p>"},{"k":"Prof. Anas · Radiography","t":"What affects film quality, a 100 °F rapid process, and eight things a radiograph can tell you","b":"<p>Factors that affect quality and interpretation: (1) radiolucent rubber-dam frames do not interfere with taking radiography; metal frames and clamps may mask important structures on the film. (2) A quick automated processing technique offers a clear radiograph. It maintains a water bath heated by a thermostatically controlled heater that keeps the developer and fixer at <b>100 °F</b>, shortening the time needed. The exposed film is immersed in the developer for <b>5–10 seconds</b>, rinsed with water, and then placed in the fixer until it becomes clear (<b>15–20 seconds</b>). (3) All endodontic radiographs must be dated and mounted in chronological sequence for immediate reference. (4) Film magnification is essential to see detailed structures, and this is done with a magnifying lens; nowadays digital radiography allows a detailed picture that can be zoomed clearly. (Item 5 is blank in the lecture.)</p><p>Information gained from the radiograph: (1) the crown and pulp anatomy; (2) hard-tissue alterations in the tooth (sclerosis or resorption); (3) number, size, location and direction of the roots; (4) estimation of the working length; (5) related anatomical structures such as the mental foramen and the maxillary sinus; (6) confirmation of the position of the master cone; (7) evaluation of the success of obturation; (8) instrument separations or perforations.</p>"},{"k":"Prof. Anas · Digital radiography","t":"Direct digital radiography: the CCD, three components, and its limits","b":"<p>Digital radiography used in dentistry is available in three variations. <b>(1) A direct digital system</b> uses a solid-state sensor such as a charge-coupled device (CCD), plus a cable that connects the sensor to a computer with software to process and display the image. Direct digital systems have three components: a <b>radio</b> component — a high-resolution sensor with an active area similar in size to conventional film, protected from X-ray degradation by a fibre-optic shield, able to be cold-sterilized, and covered in use by disposable plastic sheaths for infection control; a <b>visio</b> component — a video monitor and display-processing unit; as the image is transmitted it is digitized and stored by the computer; and a <b>graphy</b> component — a high-resolution printer that provides a hard copy of the screen image, using the same video signal.</p><p>Advantages: low radiation dose; a darkroom is not required, as an instant image is viewed, with the hazards of film processing eliminated; the quality of the image is consistent; diagnostic capability is increased through digital enhancement and enlargement of specific areas; storage and archiving of patient information. Disadvantages: expensive; the life expectancy of the CCD is not fixed; a bulky sensor with a cable attachment can make placement in the mouth difficult; large disk space is required to store images.</p>"},{"k":"Prof. Anas · Digital radiography","t":"Storage-phosphor plates (90% dose reduction, 20–30 seconds) and indirect scanning","b":"<p><b>(2) A storage-phosphor system</b> uses a photostimulable phosphor plate that stores the latent image in the phosphor for subsequent readout by an extra-oral laser scanner. Advantages: a low radiation dose (<b>90% reduction</b>); an almost instant image (<b>20–30 seconds</b>); storage and archiving of patient information; flexible plates with similar sizes to X-ray films; and the X-ray source can be remote from the PC. Disadvantages: cost; the life expectancy of phosphor plates; and storage of images (the same as with CCD systems).</p><p><b>(3) An indirect digital system</b> uses a scanning device connected to a computer for digitizing traditional silver-halide dental films.</p>"},{"k":"Prof. Anas · CBCT","t":"CBCT: a small field of view (4 × 4 cm or less), voxels of 60–75 μm, advantages and limits","b":"<p>Since the introduction of maxillofacial <b>cone-beam computed tomography (CBCT)</b> in 1996, it has provided the first clinically practical technology demonstrating 3-D imaging for endodontic considerations. CBCT has a cone-shaped X-ray beam that captures a cylindrical or spherical volume of data, described as the field of view. A 3-D volume is achieved with a single sweep of the scanner, using a simple relationship between beam source and sensor; the latter rotates <b>180–360°</b> around the patient’s head. During the exposure, hundreds of planar projection images are obtained, so immediate 3-D radiographic images are obtained.</p><p>The <b>field of view (FOV)</b> ranges from as small as a portion of a dental arch to an area as large as the entire head. Usually for endodontic purposes a small or limited FOV is required (may reach <b>4 × 4 cm or less</b>). This type has the maximum resolution, measured by voxel; it may reach between <b>75 to 60 μm</b> voxel in some machines.</p><p>Advantages: CBCT overcomes the shortcomings of conventional radiography by producing 3-D images that show accurate anatomy and the spatial relationship of the pathosis and anatomical structures; the clinician can choose and view slices of the volumetric data in all the planes; reduced patient exposure to ionizing radiation and superior image quality of dental hard tissues; CBCT voxels are isotropic, ensuring geometrical accuracy. Limitations: resolution and contrast of CBCT are lower than those of intra-oral radiography; chances of radiographic artifacts are more, for example when the CBCT beam encounters a very high-density object such as enamel or metallic restorations; the patient has to stay absolutely still, because movement can affect the sharpness of the final image.</p><p>Applications in endodontics: (1) evaluation of total tooth morphology — root numbers, curvatures or anomalies, and root-canal numbers and configurations; (2) identification of dental periapical pathosis and apical periodontitis; (3) diagnosis of different types of root resorption and root perforations; (4) proper assessment of dento-alveolar trauma and root fracture; (5) planning of surgical endodontic treatment; (6) postoperative assessment, monitoring root-canal obturation and healing of apical lesions more accurately than conventional radiography.</p>"},{"k":"اختبر نفسك","t":"Quiz: paralleling versus bisecting, the SLOB rule, 100 °F processing, and CBCT FOV","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Compared with the bisecting-angle technique, the paralleling technique in this lecture is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Faster, needs no holder, and is easier with a rubber dam, but more distorted</button><button type=\"button\" class=\"opt\" data-i=\"1\">More accurate and less distorted, easier to align with an aiming ring irrespective of head position, and reproducible; but more uncomfortable (the upright film impinges on the floor of the mouth or palate), and difficult with a shallow palatal vault, a gag reflex, extremely long teeth, or a rubber dam. Bisecting is easier with a dam, needs no holder, but is more distorted and harder to reproduce</button><button type=\"button\" class=\"opt\" data-i=\"2\">Always taken with the finger holding the film so that maxillary buccal roots look long</button><button type=\"button\" class=\"opt\" data-i=\"3\">Never used for endodontic periapicals</button></div><div class=\"qexp\" hidden><p>الموازية أدق وقابلة للإعادة بس أقل راحة وأصعب ويه الحاجز المطاطي والقبة الضحلة والغثيان. تنصيف الزاوية أسهل ويه المطاط وبدون حامل، بس أكثر تشويه. الفلم الممسوك بالإصبع غالباً يقصّر الجذور الشدقية العلوية ويطوّل الحنكية.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">If the X-ray cone is moved mesially, the buccal canal on the film, by the SLOB rule in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Moves mesially, because same = buccal</button><button type=\"button\" class=\"opt\" data-i=\"1\">Appears distal to the lingual or palatal canal: the canal that moves in the same direction as the cone is lingual, and the canal that moves in the opposite direction is buccal. When the cone is moved distally, the buccal canal appears mesial to the lingual or palatal canal</button><button type=\"button\" class=\"opt\" data-i=\"2\">Always stays superimposed and cannot be separated</button><button type=\"button\" class=\"opt\" data-i=\"3\">Is identified only by a panoramic film</button></div><div class=\"qexp\" hidden><p>SLOB: Same = Lingual، Opposite = Buccal. المخروط إنسياً ← الشدقية تظهر وحشية عن اللسانية/الحنكية. المخروط وحشياً ← الشدقية تظهر إنسية عنها.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Rapid automated processing and CBCT field of view in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Developer at 70 °F for 10 minutes; CBCT for endodontics always uses a full-head FOV only</button><button type=\"button\" class=\"opt\" data-i=\"1\">A water bath at 100 °F; developer 5–10 seconds, fixer until clear 15–20 seconds. Endodontic CBCT usually needs a small or limited FOV (may reach 4 × 4 cm or less) with voxels as small as 75 to 60 μm in some machines. Resolution and contrast are still lower than intra-oral radiography, and the patient must stay still. Storage-phosphor systems reduce dose by 90% and show an image in 20–30 seconds</button><button type=\"button\" class=\"opt\" data-i=\"2\">CBCT voxels are never isotropic</button><button type=\"button\" class=\"opt\" data-i=\"3\">Metal rubber-dam frames never mask structures</button></div><div class=\"qexp\" hidden><p>التحميض السريع: 100 فهرنهايت، مظهر 5–10 ثوان، مثبت 15–20 ثانية. CBCT لبي: مجال 4×4 سم أو أقل، فوكسل 75–60 مايكرون، بس دقته أقل من الأشعة داخل الفم والمريض لازم ساكن. الفوسفور يقلل الجرعة 90% والصورة خلال 20–30 ثانية. الإطار المعدني قد يخفي معالم.</p></div></div>"},{"k":"Prof. Anas · Instruments","t":"Six groups of intracanal instruments","b":"<p>Intracanal instruments are divided into six groups. <b>Group I:</b> manually operated instruments, such as barbed broaches and K-type and H-type instruments. <b>Group II:</b> low-speed instruments with a latch-type attachment. Typical instruments are Gates-Glidden burs and Peeso reamers. They are typically used in the coronal part of the canal and never used in a canal curvature. <b>Group III:</b> engine-driven nickel-titanium rotary instruments — a rotating blade that can safely be operated in, and adapt itself to, curved root canals; most engine-driven instruments available today belong to this group. <b>Group IV:</b> engine-driven instruments that adapt themselves three-dimensionally to the shape of the root canal (longitudinally and also to the cross-section). There is currently only one instrument in this group: the <b>self-adjusting file (SAF)</b>. <b>Group V:</b> engine-driven reciprocating instruments. <b>Group VI:</b> ultrasonic instruments.</p>"},{"k":"Prof. Anas · Group I","t":"The barbed broach, and K-type files versus reamers (and transportation)","b":"<p>Barbed broaches were the earliest endodontic instruments used to extirpate the pulp. They are manufactured by hacking a round, tapered wire with a blade to form sharp, projecting barbs that cut or snag tissue. A barbed broach does <b>not</b> cut or machine dentin; it is mostly used to engage and remove soft tissue from the canal. It is an excellent tool for removing cotton or paper points that have accidentally become lodged in the root canal.</p><p>The K-file and K-reamer are the oldest useful instruments for cutting and machining dentin. They are made from a stainless-steel wire that is ground to a tapered square or triangular cross-section and then twisted to create either a file or a reamer. A file has more flutes per length unit than a reamer. K-type instruments are useful for penetrating and enlarging root canals. The instrument works primarily by compression-and-release destruction of the dentin surrounding the canal. Generally, a reaming motion (constant file rotation) causes less transportation than a filing motion. <b>Transportation</b> is the excessive loss of dentin from the outer wall of a curved canal in the apical segment. As the instrument is increased in width, its flexibility is decreased.</p>"},{"k":"Prof. Anas · Group I","t":"K-flex, Flex-O-File, Flex-R, Hedström, and the S-file","b":"<p>A <b>K-flex file</b> has a rhomboid cross-section. It is a twisted instrument with a series of cutting flutes, two acute edges and two obtuse edges. The acute angle cuts into the dentin while the obtuse angle provides more area for debris collection and removal. Cutting efficiency and flexibility are greater than the K-type file.</p><p>A <b>Flex-O-File</b> resembles the K-type file but is triangular in cross-section. There is better cutting action and more room for debris, better flexibility and more resistance to fracture. The tip is non-cutting, so no apical ledge formation is possible. A <b>Flex-R file</b> has a tip design that eliminates the possibility of ledge formation by removing the cutting surface of the tip’s leading edge; this guides the instrument in the canal rather than cut. It has a triangular cross-section which increases flexibility. It cuts more efficiently in an anti-clockwise motion and can be used for a filing action.</p><p>An <b>H-type instrument</b> has spiral edges arranged to allow cutting only during a pulling stroke (for example a Hedström file). It is better for cutting than a K-type instrument, because it has a more positive rake angle and a blade with a cutting rather than a scraping angle. Bending a Hedström file results in points of greater stress concentration than occurs with K-type instruments; these can lead to crack propagation and fatigue failure. All H-type instruments are ground from a tapered blank; Hedström files are formed by grinding a single continuous flute. An <b>S-file (Uni-file)</b> is a ground instrument of S-shaped cross-section, stiffer than the Hedström file; the cutting mode may be filing or reaming.</p>"},{"k":"Prof. Anas · Instrument modifications","t":"Nickel-titanium files, Golden Mediums (sizes 12 to 37), and the Canal Master U","b":"<p>Traditional-instrument modifications in this lecture: (1) <b>Nickel-titanium files</b> showed greater elastic flexibility and resistance to torsional fracture than stainless steel. This file has a non-cutting tip and tends to maintain the curvature of the root canal. (2) <b>Golden Mediums</b> are a series of intermediate-size instruments. They correspond in size to halfway between standard ISO sizes and correspond to numbers <b>12, 17, 22, 27, 32 and 37</b>. (3) The <b>Canal Master U</b> is a hand instrument used to prepare the apical third of the canal. It has a non-cutting pilot tip, a 1 mm length cutting blade, and a narrow parallel-sided shaft. It is used to allow better cutting with more space for debris accumulation and further removal, and it reduces the possibility of a ledge or transportation.</p>"},{"k":"Prof. Anas · Group II","t":"Gates-Glidden burs and Peeso reamers: stay in the straight part","b":"<p>Besides conventional burs, burs with extended shanks for low-speed contra-angle handpieces are useful for good visibility during deep preparation of the pulp chamber — particularly important when using an operating microscope after access has been achieved. Straight-line access to the initial point of curvature can be accomplished using rotary instruments such as Gates-Glidden burs and Peeso instruments. Use of these instruments should be limited to the <b>straight portion</b> of the canal preparation. The risk of perforation is a possibility. The risk of lateral cutting resulting in perforation is lower with Gates-Glidden burs than with Peeso drills. The Peeso reamer is used mostly for <b>post-space preparation</b>.</p>"},{"k":"Prof. Anas · File design","t":"Taper, flutes and the helix angle — including the #25 / 0.02 example","b":"<p>Components of a file: (1) <b>Taper</b> is the amount the file diameter increases each millimetre along its working surface from the tip toward the handle. For example, a size <b>#25 file with a 0.02 taper</b> would have a 0.27 mm diameter 1 mm from the tip, a 0.29 mm diameter 2 mm from the tip, and a 0.31 mm diameter 3 mm from the tip. Some manufacturers express the taper as a percentage (a 0.02 taper is a 2% taper). (2) The <b>flute</b> is the groove in the working surface used to collect soft tissue and dentin chips removed from the wall of the canal. Its effectiveness depends on its depth, width, configuration, and surface finish. (3) The <b>helix angle</b> is the angle the cutting edge forms with the long axis of the file. It gathers debris collected in the flute from the canal, and this angle is important for determining which file technique to use.</p>"},{"k":"Prof. Anas · File design","t":"Rake angle: cutting versus scraping, and what pitch means","b":"<p>If a file is sectioned perpendicular to its long axis, the <b>rake angle</b> is the angle formed by the leading edge and the radius of the file. If the angle formed by the leading edge and the surface to be cut (its tangent) is obtuse, the rake angle is said to be <b>positive or cutting</b>. If that angle is acute, the rake angle is said to be <b>negative or scraping</b>.</p><p>The <b>pitch</b> of the file is the distance between a point on the leading edge and the corresponding point on the adjacent leading edge. The smaller the pitch (the shorter that distance), the more spirals the file has and the greater the helix angle.</p>"},{"k":"Prof. Anas · Rotary NiTi","t":"The ProFile system (1994): U-shape, radial lands, and 275–325 rpm","b":"<p>The <b>ProFile</b> system was introduced in 1994. ProFile instruments have increased tapers compared with conventional hand instruments. The tips of the ProFile Series 29 rotary instruments had a constant proportion of diameter increments (29%). The cross-section of a ProFile instrument has a U-shape design with radial lands and a parallel central core. Lateral views show a 20-degree helix angle, a constant pitch, bullet-shaped non-cutting tips, and a neutral or slightly negative rake angle. This configuration facilitates a reaming action. Debris is transported coronally and is effectively removed from the root canals. The preferred speed is <b>275–325 rpm</b>.</p><p>The <b>ProFile GT (Greater Taper)</b> file was also introduced in 1994 and also has the U-shape file design. The instruments come in four tapers (<b>0.06, 0.08, 0.10, and 0.12</b>), and the maximum diameter of the working part coronally is <b>1 mm</b>. They have a variable pitch and an increasing number of flutes in progression to the tip; the apical instrument diameter is <b>0.2 mm</b>. Instrument tips are non-cutting and rounded.</p>"},{"k":"Prof. Anas · Rotary NiTi","t":"ProTaper Universal: shaping and finishing files, tip sizes, and a brushing stroke","b":"<p>The <b>ProTaper</b> system is composed of six instruments: three shaping files and three finishing files. This set is increased by two larger finishing files and a set designed for retreatment. In cross-section, ProTaper shows a modified K-type file with sharp cutting edges and no radial lands, creating a stable core and sufficient flexibility for the smaller files. The cross-section of finishing files F3, F4 and F5 is slightly relieved for increased flexibility. The difference in design is the varying tapers along the instruments’ long axes: the three shaping files have tapers that increase coronally, and the reverse pattern is seen in the five finishing files.</p><p>Shaping files #1 and #2 have tip diameters of <b>0.185 mm and 0.2 mm</b> respectively, and 14-mm-long cutting blades. The diameters of these files at D14 are <b>1.2 and 1.1 mm</b> respectively. The finishing files (F1–F5) have tip diameters of <b>0.2, 0.25, 0.3, 0.4 and 0.5 mm</b> respectively, between D0 and D3, and the apical tapers are <b>0.07, 0.08, 0.09, 0.05 and 0.04</b> respectively. The finishing files have rounded non-cutting tips. The convex triangular cross-section reduces the contact areas between the file and the dentin. Greater cutting efficiency has been improved by balancing the pitch and helix angle, preventing the instruments from threading into the canal. ProTaper instruments can be used with <b>250 to 300 rpm</b>. Two usage characteristics are recommended: (1) the preparation of a glide path; (2) the use of a more lateral “brushing” working stroke, which allows the clinician to direct larger files coronally away from danger zones and counteract any “threading-in” effect.</p>"},{"k":"Prof. Anas · Rotary NiTi","t":"RaCe (alternating cutting edges) and the Twisted File (R-phase, size 25 only)","b":"<p><b>RaCe</b> (and BioRace) has been manufactured since 1999 by FKG. The name stands for <b>reamer with alternating cutting edges</b>. This design aimed at reducing the tendency to thread the file into the root canal. Cross-sections are triangular, or square for 0.02 instruments with size #15 and #20 tips. The surface quality of RaCe instruments is done by electropolishing. The tips are round and non-cutting.</p><p>The <b>Twisted File</b> was introduced in 2008 as the first fluted NiTi file manufactured by plastic deformation, a process similar to the twisting used to produce stainless-steel K-files. This is done when a thermal process allows twisting during a phase transformation into the <b>“R-phase”</b> of nickel-titanium. The instrument is available with size <b>#25 tip sizes only</b>, in taper <b>0.04 up to 0.12</b>. This production process resulted in superior physical properties.</p>"},{"k":"Prof. Anas · Reciprocation and Next","t":"Wave One: one file, M-wire, and the small, primary and large sizes","b":"<p>The <b>Wave One</b> single-file reciprocating system is a single-use, single-file system to shape the root canal. In most cases the technique only requires one hand file followed by one single Wave One file to shape the canal completely, using reciprocation. The file is made with <b>M-wire</b> technology, which improves strength and resistance to cyclic fatigue about <b>four times</b> that of traditional rotary NiTi files. The system is composed of: the Wave One <b>small</b> file, used in narrow canals — tip ISO <b>20</b> with a continuous taper of <b>6%</b>; the Wave One <b>primary</b> file, used in the majority of canals — tip ISO <b>25</b> with an apical taper of <b>8%</b> that reduces towards the coronal end; and the Wave One <b>large</b> file, used in wide canals — tip ISO <b>40</b> with an apical taper of <b>8%</b> that reduces towards the coronal end. The instruments are designed to work with a reverse cutting action. All instruments have a modified convex triangular cross-section at the tip end and a convex triangular cross-section at the coronal end, which improves flexibility. Variable pitch flutes along the length improve safety.</p>"},{"k":"Prof. Anas · ProTaper Next and SAF","t":"ProTaper Next sizes and swagger, and the self-adjusting file (5000 vibrations/min)","b":"<p><b>ProTaper Next</b> is composed of five files, namely X1, X2, X3, X4 and X5. These correspond to sizes <b>20/0.04, 25/0.06, 30/0.07, 40/0.06 and 50/0.06</b> respectively. X1 and X2 have a variable tapered design, whereas X3–X5 have a fixed taper from D1–D3 then a decreasing percentage taper over the rest of their active portions. This system has an off-centred rectangular cross-section that allows two-point contact with the dentin wall, with the rest of the space free for storing debris, which will be removed by the file’s swaggering motion.</p><p>The <b>self-adjusting file (SAF)</b> is Group IV: a hollow device, designed as a cylinder of thin-walled, delicate NiTi lattice with a lightly abrasive surface. An initial glide path is established with a <b>#20 K-file</b> to allow insertion of the SAF. The file is proposed to be compressed from its <b>1.5 mm</b> diameter into dimensions equivalent to those of a <b>#25 K-file</b>. The handpiece generates in-and-out vibrations with <b>5000 vibrations per minute</b> and <b>0.4 mm amplitude</b>. The compressed file adapts itself to the root-canal walls, applying a uniform cutting action and gradually removing a uniform dentin layer. There is a continuous flow of irrigant which removes the tissue debris and the dentin powder generated by the file.</p>"},{"k":"Prof. Anas · Groups V and VI","t":"Giromatic and Endo-Eze, then sonic versus ultrasonic (kHz, heat, cavitation)","b":"<p>The <b>Giromatic</b> handpiece, a rotary instrument in use since 1969, delivers <b>3000 quarter-turn</b> reciprocating movements per minute. Rasps and barbed broaches are most often used in Giromatic handpieces, but K-type and H-type instruments also can be used. The <b>Endo-Eze</b> file system (Ultradent) is a recently introduced addition for Giromatic handpieces. The set has four instruments designed to clean the middle third of the canal. The sizes and tapers, as written in the lecture, are 0.10 with 0.025 taper, 0.13 with 0.35 taper, 0.13 with 0.45 taper, and 0.13 with 0.06 taper. The use of stainless-steel hand instruments is suggested for the apical third of the canal.</p><p>Group VI: files or ultrasonic tips can be activated by electromagnetic ultrasonic energy, or by piezoelectric ultrasonic units, which activate an oscillating sinusoidal wave in the file with a frequency of about <b>30 kHz</b>. Ultrasonic devices operate at <b>25 to 30 kHz</b> and include the magnetostrictive Cavi-Endo and the piezoelectric Enac. Sonic devices operate at <b>2 to 3 kHz</b> (Sonic Air MM 1500). Ultrasonic devices use regular types of instruments (for example K-files), whereas sonic devices use special instruments known as Rispi-Sonic, Shaper-Sonic, Trio-Sonic, or Heli-Sonic files. Piezoelectric units generate little heat, so no cooling is needed for the electric handpiece. The magnetostrictive system generates considerable heat, and a special cooling system is needed in addition to the irrigation system for the root canal. The file vibrates in a sine-wave fashion, with antinodes (maximal displacement) and nodes (no displacement); the tip exhibits an antinode. Files must be used only for a short time, must remain passive within the canal, and the power must be controlled carefully. Ultrasonic devices have proved very efficient for irrigating root-canal systems. During free ultrasonic vibration in a fluid, two significant physical effects are observed: <b>cavitation</b> (a positive pressure followed by a negative pressure causing implosion) and <b>acoustic streaming</b> (small, intense, circular fluid movement around the instruments).</p>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: transportation, Golden Mediums, ProTaper and Wave One numbers, and the SAF","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Transportation, and the Golden Medium sizes in this lecture, are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Transportation is extra dentin loss from the inner wall of a straight canal; Golden Mediums are sizes 10, 20, 30 only</button><button type=\"button\" class=\"opt\" data-i=\"1\">Transportation is excessive loss of dentin from the outer wall of a curved canal in the apical segment; a reaming motion generally causes less transportation than a filing motion. Golden Mediums are intermediate ISO sizes 12, 17, 22, 27, 32 and 37. A barbed broach does not cut dentin. Gates-Glidden and Peeso stay in the straight portion; perforation risk is lower with Gates-Glidden than Peeso, and Peeso is used mostly for post space</button><button type=\"button\" class=\"opt\" data-i=\"2\">NiTi files are less flexible than stainless steel</button><button type=\"button\" class=\"opt\" data-i=\"3\">H-type instruments cut only on a push stroke</button></div><div class=\"qexp\" hidden><p>النقل: ضياع عاج من الجدار الخارجي للقناة المنحنية ذروياً. التوسيع الدوراني عادة أقل نقلاً من البرد. Golden Mediums: 12 و 17 و 22 و 27 و 32 و 37. البروتش ما يقطع عاج. GG و Peeso بالجزء المستقيم فقط؛ الانثقاب أقل ويه GG؛ Peeso غالباً لمسافة الوتد. NiTi ألين. نوع H يقطع بالسحب فقط.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A #25 file with a 0.02 taper, and a positive rake angle, in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Has a diameter of 0.02 mm at every point; a positive rake is always scraping</button><button type=\"button\" class=\"opt\" data-i=\"1\">Is 0.27 mm at 1 mm from the tip, 0.29 mm at 2 mm, and 0.31 mm at 3 mm (each millimetre adds 0.02). If the angle between the leading edge and the surface to be cut is obtuse, the rake is positive (cutting); if acute, negative (scraping). A smaller pitch means more spirals and a greater helix angle</button><button type=\"button\" class=\"opt\" data-i=\"2\">Taper never changes along a ProTaper file</button><button type=\"button\" class=\"opt\" data-i=\"3\">Radial lands are present on all ProTaper files</button></div><div class=\"qexp\" hidden><p>25/0.02: 0.27 و 0.29 و 0.31 ملم. زاوية رفش منفرجة = موجبة قاطعة؛ حادّة = سالبة كاشطة. خطوة أصغر = حلزونات أكثر. ProTaper ميله يتغيّر على طول الأداة وبدون أراضٍ شعاعية (عكس ProFile اللي فيه U و lands).</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Which ProTaper Universal and Wave One figures match this lecture?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">ProTaper is used only at 1000 rpm with no glide path; Wave One has a single size 10 file</button><button type=\"button\" class=\"opt\" data-i=\"1\">ProTaper: shaping #1 and #2 tips 0.185 and 0.2 mm, D14 of 1.2 and 1.1 mm; finishing F1–F5 tips 0.2, 0.25, 0.3, 0.4, 0.5 mm and apical tapers 0.07, 0.08, 0.09, 0.05, 0.04; 250–300 rpm; prepare a glide path and use a brushing stroke. Wave One is single-use M-wire (about four times the cyclic-fatigue resistance of traditional rotary NiTi): small ISO 20 / 6% continuous; primary ISO 25 / 8% apical taper reducing coronally; large ISO 40 / 8% apical taper reducing coronally</button><button type=\"button\" class=\"opt\" data-i=\"2\">RaCe means a Gates-Glidden bur from 1969</button><button type=\"button\" class=\"opt\" data-i=\"3\">Twisted File comes in every ISO tip size from 6 to 140</button></div><div class=\"qexp\" hidden><p>أرقام ProTaper و Wave One كما فوق. السرعة 250–300، مسار انزلاق وحركة فرشاة. Wave One M-wire تقريباً أربعة أضعاف مقاومة التعب. RaCe موسّع ويه حروف متناوبة من 1999. Twisted File رأس 25 فقط، ميول 0.04–0.12، بطور R-phase من 2008.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The self-adjusting file and ultrasonic versus sonic devices in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">SAF is a solid #40 K-file used only dry; sonic devices run at 30 kHz and need more cooling than piezoelectric units</button><button type=\"button\" class=\"opt\" data-i=\"1\">SAF: establish a glide path with a #20 K-file; the 1.5 mm lattice compresses to about a #25 K-file; 5000 in-and-out vibrations/min at 0.4 mm amplitude, with continuous irrigant. Ultrasonics operate at 25–30 kHz (Cavi-Endo magnetostrictive, Enac piezoelectric); sonics at 2–3 kHz. Piezoelectric units generate little heat (no extra handpiece cooling); magnetostrictive units generate considerable heat and need special cooling. Effects in fluid: cavitation and acoustic streaming. Giromatic (since 1969) delivers 3000 quarter-turns/min</button><button type=\"button\" class=\"opt\" data-i=\"2\">The SAF must never have irrigant flowing</button><button type=\"button\" class=\"opt\" data-i=\"3\">Endo-Eze files are used only to cut the apical foramen wide open</button></div><div class=\"qexp\" hidden><p>SAF: مسار بـ 20، ينضغط من 1.5 ملم لما يعادل 25، 5000 اهتزازة/د و 0.4 ملم، ويه غسول مستمر. فوق صوتي 25–30 كيلوهرتز؛ صوتي 2–3. الكهرضغطي حرارة قليلة؛ المغناطيسي حرارة كثيرة ويحتاج تبريد. تكهّف وجريان صوتي. Giromatic 3000 ربع دورة/د من 1969. Endo-Eze للثلث الأوسط، والذروي يدوياً.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">Recite the SLOB rule, and the preferred rpm ranges for ProFile and for ProTaper in this lecture.</button><div class=\"flash-a\" hidden>Same direction = Lingual; Opposite direction = Buccal (SLOB). When the cone is moved distally the buccal canal appears mesial to the lingual/palatal canal; when moved mesially the buccal appears distal. Preferred ProFile speed: 275–325 rpm. ProTaper: 250–300 rpm.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا سادس ملف: الأشعة اللبية وأدوات داخل القناة من محاضرات الأستاذ أنس، صفحات 105–121. شرح عراقي مفصل ويه أسئلة.</p>","<p>الصورة الشعاعية تعطيك رؤية غير مباشرة للسن والأنسجة الداعمة، وتساعد تقيّس إجراءات داخل القناة. مهمة للتشخيص والعلاج، <b>بس افحص المريض قبل ما تطلب أشعة</b>.</p><p>مفاهيم أساسية: الأشعة تسير بخط مستقيم إلى أن تنحرف أو تُمتص. الأشعة المنحرفة تقلل وضوح الصورة. الصورة ظل لفروق الكثافة — يعني صورة <b>ثنائية الأبعاد لجسم ثلاثي الأبعاد</b>. الحجم والشكل والتباين يتشوهون حسب: الجسم اللي تمر منه الأشعة، ومصدر الأشعة، والفلم. لازم تعرف شكل السن الطبيعي وغير الطبيعي، وشكل مواد الترميم بالأشعة حتى ما تغلط بالتشخيص.</p>","<p>أنواع الصور: داخل الفم (ذروية وعضّة جناحية) وخارج الفم (بانوراما ومقطعية). التقنية الأولى للذروية: <b>تنصيف الزاوية</b>. الحزمة عمودية على مستوى تخيلي ينصّف الزاوية بين مستوى الفلم والمحور الطويل للسن.</p><p>ميزاتها: سهلة ومريحة للمريض؛ سريعة وبدون حامل؛ وأسهل ويه الحاجز المطاطي. عيوبها: تشويه أكثر وتراكب معالم تشريحية؛ آثار أكثر مثل قطع المخروط (<b>cone cut</b>)؛ صعب تعرف وين توجّه المخروط لأن ما في حامل؛ وصعب تعيد نفس الصورة مرة ثانية.</p>","<p>التقنية <b>الموازية</b>: الفلم موازي للمحور الطويل ويه حامل، والحزمة عمودية على الفلم. أدق وأقل تشويه؛ حلقة التصويب تسهّل المحاذاة مهما كان وضع الرأس؛ والصور قابلة للإعادة. عيوبها: الفلم أأكثر انتصاباً فيضغط على قاع الفم أو الحنك (أقل راحة)؛ صعبة ويه قبة حنكية ضحلة أو غثيان أو أسنان طويلة جداً؛ وصعبة ويه الحاجز المطاطي.</p><p>نصائح: بتنصيف الزاوية حط حافة الفلم موازية وقريبة من القاطع أو الإطباق حتى الذرا تكون قرب مركز الفلم. إذا المريض يمسك الفلم بإصبعه، بسبب زاوية الحنك الصلب، الأرحاء العلوية غالباً تبان جذورها الشدقية قصيرة والحنكية طويلة جداً — هذا تشويه مو تشريح حقيقي دائماً. الحامل البلاستكي يثبّت الفلم ويمنع حركته.</p>","<p>بالضواحك والأرحاء القنوات تتراكب بالصورة وصعب تعرف أي واحدة أقرب للشدق. إذا حركت مخروط الأشعة إنسياً أو وحشياً بزاوية، الجذور تنفصل بالفلم.</p><p>القاعدة: إذا حركت المخروط <b>وحشياً</b>، القناة الشدقية تظهر <b>إنسية</b> عن اللسانية أو الحنكية. إذا حركت المخروط <b>إنسياً</b>، الشدقية تظهر <b>وحشية</b> عن اللسانية/الحنكية.</p><p>هذا قانون <b>SLOB</b> (المحاضرة كتبتها SLOP): القناة اللي تتحرك <b>بنفس</b> اتجاه حركة المخروط هي <b>لسانية</b> (Same = Lingual). والقناة اللي تتحرك <b>بالاتجاه المعاكس</b> هي <b>شدقية</b> (Opposite = Buccal). احفظ الجملة هذي.</p>","<p>إطار الحاجز المطاطي الشفاف للأشعة ما يعيق التصوير؛ الإطار المعدني والكلابات قد يخفون معالم مهمة (هذا يذكّرك بملف 2: إطار Young يُشال قبل الأشعة).</p><p>تحميض سريع آلي: حمام ماء بثرموستات على <b>100 فهرنهايت</b>. الفلم بالمظهر <b>5–10 ثوانٍ</b>، شطف، وبعدين المثبت لين يصفى <b>15–20 ثانية</b>. كل الصور تؤرّخ وتُرتب زمنياً. التكبير بعد مهم؛ هسه بالرقمي تكبر على الشاشة.</p><p>شنو تستفيد من الصورة: تشريح التاج واللب؛ تصلب أو امتصاص؛ عدد وحجم ومكان واتجاه الجذور؛ تقدير طول العمل؛ بنى مجاورة (ثقبة ذقنية، جيب فكي)؛ تأكيد المخروط الرئيسي؛ تقييم نجاح الحشو؛ وكسر أدوات أو انثقاب.</p>","<p>الأشعة الرقمية ثلاثة أنواع. الأول: <b>مباشر</b> ويه حسّاس صلب مثل <b>CCD</b> وكابل للكمبيوتر. ثلاثة أجزاء: <b>راديو</b> (حسّاس عالي الدقة بحجم الفلم تقريباً، درع ألياف بصرية، يُعقّم بارداً، ويُغطى بغلاف بلاستك لمرة واحدة)؛ <b>فيزيو</b> (شاشة ووحدة معالجة تخزّن الصورة رقمياً)؛ و<b>غرافي</b> (طابعة عالية الدقة لنسخة ورقية).</p><p>المميزات: جرعة أشعة أقل؛ ما تحتاج غرفة عتمة والصورة فورية؛ جودة ثابتة؛ تحسين وتكبير لمناطق محددة؛ وأرشفة. العيوب: غالي؛ عمر الـ CCD مو ثابت؛ الحسّاس ضخم ويه كابل يصعب وضعه بالفم؛ ويحتاج مساحة خزن كبيرة.</p>","<p>النوع الثاني: ألواح فوسفور قابلة للتحفيز الضوئي (<b>PSP</b>) تخزن الصورة الكامنة، وبعدين جهاز ليزر خارج الفم يقرأها. المميزات: تقليل الجرعة <b>90%</b>؛ صورة شبه فورية خلال <b>20–30 ثانية</b>؛ أرشفة؛ الألواح مرنة وأحجامها مثل الأفلام؛ ومصدر الأشعة ممكن يكون بعيد عن الكمبيوتر. العيوب: التكلفة؛ عمر الألواح؛ ومساحة الخزن مثل الـ CCD.</p><p>النوع الثالث: <b>غير مباشر</b> — ماسحة ترقّم الأفلام التقليدية (هاليد الفضة). يعني تصوّر فلم عادي وبعدين تحوله رقمي.</p>","<p>الـ <b>CBCT</b> من 1996: حزمة مخروطية تلتقط حجم أسطواني أو كروي اسمه مجال الرؤية (<b>FOV</b>). مسحة واحدة، والحسّاس يدور <b>180–360 درجة</b> حول الرأس، ومئات الصور المستوية تعطي حجم ثلاثي الأبعاد فوراً.</p><p>مجال الرؤية من جزء من القوس لحد الرأس كله. لطب اللب عادة مجال صغير أو محدود، قد يوصل <b>4×4 سم أو أقل</b> — وهذا أعلى دقة. الدقة تُقاس بالفوكسل، وقد توصل <b>75 إلى 60 مايكرون</b> ببعض الأجهزة.</p><p>المميزات: صورة ثلاثية الأبعاد توريك التشريح والعلاقة المكانية للمرض ويه البنى؛ تقدر تشوف شرائح بكل المستويات؛ تعرض أقل وجودة أفضل للنسيج الصلب؛ والفوكسل متساوي الأبعاد (<b>isotropic</b>) يعني دقة هندسية. العيوب: الدقة والتباين أقل من الأشعة داخل الفم؛ آثار أكثر إذا الحزمة تصطدم بشي كثيف جداً مثل الميناء أو ترميم معدني؛ والمريض لازم يبقى ساكن تماماً.</p><p>الاستخدامات: شكل السن والجذور والأقنية؛ الآفات الذروية؛ الامتصاص والانثقاب؛ الرضّ وكسر الجذر؛ التخطيط للجراحة اللبية؛ ومراقبة الحشو وشفاء الآفات بدقة أحسن من الأشعة التقليدية.</p>","<p>ثلاث أسئلة على التقنيات، قانون SLOB، والتحميض والـ CBCT.</p>","<p>ستة مجاميع. احفظ التقسيم: (I) يدوية: بروتش شائك، نوع K ونوع H. (II) سرعة واطية ويه لاش: Gates-Glidden و Peeso — للجزء التاجي، <b>ولا تُستخدم بانحناء القناة</b>. (III) دوارة نيكل-تيتانيوم تتكيف ويه الأقنية المنحنية — أغلب الأدوات المحركة اليوم بهالمجموعة. (IV) تتكيف ثلاثي الأبعاد (طولياً وهم ويه مقطع القناة): حالياً بس <b>الملف الذاتي الضبط (SAF)</b>. (V) تبادلية الحركة (reciprocating). (VI) فوق صوتية.</p>","<p>البروتش الشائك أقدم أداة لاستئصال اللب: سلك مستدق يُشق حتى تطلع أشواك. <b>ما يقطع العاج</b>؛ يمسك ويشيل النسيج الرخو، وهم ممتاز لرفع قطن أو ورق امتصاص انحشر بالقناة.</p><p>K-file و K-reamer أقدم أدوات قطع العاج: سلك ستينلس يُطحن لمقطع مربع أو مثلث وبعدين يُفتل. الملف فيه حلزونات أكثر لكل وحدة طول من الموسّع. الشغل أساساً ضغط وإفلات يكسّر العاج. عموماً حركة التوسيع (دوران مستمر) تسبب <b>نقلاً (transportation)</b> أقل من حركة البرد. النقل: ضياع زائد للعاج من الجدار الخارجي للقناة المنحنية بالجزء الذروي. كل ما عرض الأداة يزيد، مرونتها تقل.</p>","<p><b>K-flex</b>: مقطع معيني، حرفان حادان يقطعان العاج وحرفان منفرجان يجمعان الفضلات؛ أقطع وألين من K العادي.</p><p><b>Flex-O-File</b>: مثل K بس مقطع مثلث، قطع أحسن ومكان أكثر للفضلات ومرونة ومقاومة للكسر أحسن، ورأس غير قاطع فما يتكون حافة ذروية. <b>Flex-R</b>: رأسه يوجّه وما يقطع (يشيل السطح القاطع من الحافة الأمامية) حتى ما تتكون حافة؛ مقطع مثلث؛ يقطع أكفأ عكس عقارب الساعة ويُستخدم هم بالبرد.</p><p>نوع <b>H</b> (مثل Hedström): يقطع فقط بحركة السحب، زاوية رفش موجبة أكثر فيقطع أحسن من K. ثنيه يركّز إجهاداً أكثر وقد يسبب شقوق وتعب المعدن. كلها تُطحن من قضيب مستدق. <b>S-file (Uni-file)</b>: مقطع بشكل S، أصلب من الـ Hedström، ويقطع برد أو توسيع.</p>","<p>تعديلات: ملفات <b>النيكل-تيتانيوم</b> ألين وأكثر مقاومة لكسر الفتل من الستينلس، رأسها غير قاطع وتميل تحافظ على انحناء القناة.</p><p><b>Golden Mediums</b>: أحجام وسط بين أرقام الـ ISO القياسية: <b>12، 17، 22، 27، 32، 37</b>. يعني إذا بين 10 و 15 تستخدم 12، وهكذا — حتى ما تقفز قفزة كبيرة.</p><p><b>Canal Master U</b>: يدوي لتحضير الثلث الذروي. رأس قائد غير قاطع، شفرة قاطعة طولها 1 ملم، وعمود ضيق متوازي الجانبين. يقطع أحسن ويه مكان للفضلات، ويقلل احتمال الحافة أو النقل.</p>","<p>غير الـ burs العادية، في burs بساق أطول للقبضة البطيئة حتى تشوف زين وأثناء تحضير الحجرة العميق، خاصة ويه المجهر. الوصول المستقيم لنقطة بداية الانحناء يتم بـ Gates-Glidden أو Peeso. استخدمهم <b>بس بالجزء المستقيم</b> من القناة، مو بالانحناء. خطر الانثقاب موجود. خطر القطع الجانبي اللي يسبب انثقاب <b>أقل ويه Gates-Glidden من Peeso</b>. الـ Peeso يُستخدم غالباً لتحضير <b>مسافة الوتد (post space)</b>.</p>","<p><b>الميل (taper)</b>: كم يزيد قطر الملف كل ملم من الرأس نحو المقبض. مثال المحاضرة: ملف <b>25 وميله 0.02</b> قطره 0.27 ملم بعد 1 ملم من الرأس، 0.29 بعد 2 ملم، و 0.31 بعد 3 ملم (كل ملم +0.02). أحياناً يكتبونه نسبة: 0.02 = ميل 2%.</p><p>ال<b>حلزون (flute)</b>: الميزاب اللي يجمع النسيج الرخو وفتات العاج. فعاليته تعتمد على العمق والعرض والشكل وإنهاء السطح. <b>زاوية الحلزون (helix angle)</b>: الزاوية بين الحافة القاطعة والمحور الطويل، تجمع الفضلات، وهم مهمة تقرر أي تقنية تستخدم.</p>","<p>إذا قطعت الملف عمودي على محوره، <b>زاوية الرفش (rake angle)</b> هي الزاوية بين الحافة الأمامية ونصف القطر. إذا الزاوية بين الحافة الأمامية والسطح المراد قطعه (مماسّه) <b>منفرجة</b>، الزاوية <b>موجبة = قاطعة</b>. إذا <b>حادّة</b>، الزاوية <b>سالبة = كاشطة (scraping)</b>. تذكّر: الـ Hedström زاويته موجبة أكثر فيقطع أحسن من نوع K.</p><p><b>الخطوة (pitch)</b>: المسافة بين نقطة على الحافة الأمامية والنقطة المقابلة على الحافة اللي بعدها. كل ما الخطوة أصغر، الحلزونات أكثر وزاوية الحلزون أكبر.</p>","<p>نظام <b>ProFile</b> من 1994: ميل أكبر من الأدوات اليدوية. سلسلة 29 زيادات القطر بنسبة ثابتة 29%. المقطع بشكل U ويه أراضٍ شعاعية (<b>radial lands</b>) ولب مركزي متوازي. زاوية حلزون 20 درجة، خطوة ثابتة، رأس رصاصي غير قاطع، وزاوية رفش محايدة أو سالبة قليلاً — هذا يسهّل حركة التوسيع وينقل الفضلات تاجياً. السرعة المفضلة <b>275–325 دورة/دقيقة</b>.</p><p><b>ProFile GT</b> هم 1994 ويه تصميم U. أربعة ميول: <b>0.06 و 0.08 و 0.10 و 0.12</b>. أقصى قطر للجزء العامل تاجياً <b>1 ملم</b>. خطوة متغيرة وعدد حلزونات يزيد باتجاه الرأس؛ قطر الذروة <b>0.2 ملم</b>. الرأس غير قاطع ومستدير.</p>","<p>نظام <b>ProTaper</b>: ستة أدوات — ثلاثة تشكيل (shaping) وثلاثة إنهاء (finishing)، وبعدين انزاد ملفَي إنهاء أكبر ومجموعة لإعادة العلاج. المقطع نوع K معدّل، حروف قاطعة حادة و<b>بدون</b> أراضٍ شعاعية. F3 و F4 و F5 مقطعها مخفف شوية لمرونة أكثر. ميل ملفات التشكيل يزيد تاجياً؛ وملفات الإنهاء بالعكس.</p><p>التشكيل 1 و 2: قطر الرأس <b>0.185 و 0.2 ملم</b>، شفرة 14 ملم، وعند D14 القطر <b>1.2 و 1.1 ملم</b>. الإنهاء F1–F5: رؤوس <b>0.2، 0.25، 0.3، 0.4، 0.5 ملم</b>، وميول ذروية <b>0.07، 0.08، 0.09، 0.05، 0.04</b>، ورأس مستدير غير قاطع. المقطع المثلث المحدب يقلل تماس العاج. السرعة <b>250–300 دورة/دقيقة</b>. توصيتان: حضّر مسار انزلاق؛ واستخدم حركة <b>فرشاة جانبية (brushing)</b> حتى توجّه الملفات الكبيرة تاجياً بعيد عن مناطق الخطر وتقاوم انقفال الأداة بالقناة (threading-in).</p>","<p><b>RaCe</b> من 1999 (FKG) يعني موسّع ويه حروف قاطعة متناوبة، حتى يقل ميل الأداة تنقفّل بالقناة. المقطع مثلث، أو مربع لأدوات الميل 0.02 بأحجام رأس 15 و 20. السطح يُصقل كهربائياً (<b>electropolishing</b>)، والرأس مستدير غير قاطع.</p><p><b>Twisted File</b> من 2008: أول ملف نيكل-تيتانيوم محلزَن يُصنع بالتشكيل اللدن (فتل مثل ملفات K الستينلس)، عبر معالجة حرارية بطور <b>R-phase</b>. متوفر برأس <b>حجم 25 فقط</b>، وميول من <b>0.04 إلى 0.12</b>، وخصائصه الفيزيائية أفضل حسب المحاضرة.</p>","<p>نظام <b>Wave One</b>: ملف واحد لمرة واحدة يحضّر القناة. بأغلب الحالات: ملف يدوي واحد وبعده ملف Wave One واحد بحركة تبادلية (<b>reciprocation</b>). مصنوع بتقنية <b>M-wire</b>، قوته ومقاومته لتعب الدورات حوالي <b>أربعة أضعاف</b> ملفات NiTi الدوارة التقليدية.</p><p>ثلاثة أحجام: <b>صغير</b> للأقنية الضيقة — رأس ISO <b>20</b> وميل مستمر <b>6%</b>. <b>أساسي (primary)</b> لأغلب الأقنية — رأس <b>25</b> وميل ذروي <b>8%</b> يقل باتجاه التاج. <b>كبير</b> للأقنية الواسعة — رأس <b>40</b> وميل ذروي <b>8%</b> يقل تاجياً. تقطع بحركة عكسية. المقطع مثلث محدب (معدّل عند الرأس)، وخطوة متغيرة للأمان.</p>","<p><b>ProTaper Next</b> خمسة ملفات: X1 إلى X5 = <b>20/0.04، 25/0.06، 30/0.07، 40/0.06، 50/0.06</b>. X1 و X2 ميل متغير؛ X3–X5 ميل ثابت من D1 إلى D3 وبعدين ميل متناقص. المقطع مستطيل غير متمركز: نقطتا تماس ويه العاج، والباقي فراغ للفضلات تطلع بحركة التأرجح (<b>swaggering</b>).</p><p>الملف الذاتي الضبط (<b>SAF</b>): أسطوانة شبكية رقيقة من NiTi سطحها خشن خفيف، ومجوفة. أولاً مسار انزلاق بملف K رقم <b>20</b>. يتضغط من قطر <b>1.5 ملم</b> إلى ما يعادل ملف K رقم <b>25</b>. القبضة تهتز دخولاً وخروجاً <b>5000 اهتزازة/دقيقة</b> وبسعة <b>0.4 ملم</b>. يتكيف ويه الجدران ويشيل طبقة عاج منتظمة، ويه تدفق غسول مستمر يشيل الفضلات والمسحوق.</p>","<p>قبضة <b>Giromatic</b> من 1969: <b>3000</b> حركة تبادلية ربع دورة بالدقيقة. غالباً تستخدم مبارد وشائكات، وقد تستخدم نوع K أو H. نظام <b>Endo-Eze</b> أربعة أدوات لتنظيف الثلث الأوسط؛ الأحجام والميول كما وردت بالمحاضرة: 0.10/0.025، 0.13/0.35، 0.13/0.45، و 0.13/0.06. الثلث الذروي يُقترح تحضيره يدوياً بستينلس.</p><p>المجموعة السادسة: فوق صوتي حوالي <b>30 كيلوهرتز</b> (الأجهزة 25–30: Cavi-Endo مغناطيسي التقييد، و Enac كهرضغطي). الصوتي <b>2–3 كيلوهرتز</b> (Sonic Air MM 1500) ويه ملفات خاصة (Rispi-Sonic وغيرها). الكهرضغطي يولّد حرارة قليلة وما يحتاج تبريد للقبضة؛ المغناطيسي يولّد حرارة كثيرة ويحتاج تبريد خاص زيادة على غسول القناة. الملف يهتز كموجة جيبية: عقد بلا إزاحة وقمم إزاحة، والرأس قمة. استخدمه وقت قصير، يبقى سلبي بالقناة، وتحكم بالقدرة. فعال جداً لغسول الأقنية. ظاهرتان: <b>تكهّف</b> (ضغط موجب ثم سالب وانهيار) و<b>جريان صوتي</b> (حركة دائرية شديدة صغيرة حول الأداة).</p>","<p>أربعة أسئلة ختامية + بطاقة SLOB والسرعات + زر الدرجة. إذا غلطت ارجع للشرائح.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
