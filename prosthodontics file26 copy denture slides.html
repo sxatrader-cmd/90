@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Prosthodontics File 26 — Copy (Duplicate) Dentures</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Prosthodontics · 5th year</div>
+    <h1>Copy Denture</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of the copy-denture lectures by Lect. Dr. Mustafa Saadi Ali (PDF pages 620–632).</p>
+    <ul>
+      <li>A copy (duplicate, template, replica) denture transfers contours for neuromuscular control and allows limited modifications</li>
+      <li>Especially useful for older patients, stained bases, a spare denture, or experimental occlusion; contraindicated if the old denture has serious defects</li>
+      <li>Three clinical visits only; temporary copies can be modified gradually then copied to a definitive denture</li>
+      <li>Four techniques: duplicating flask, soap container (110°F, 15–30 psi, 30 minutes), silicone putty, and agar-agar</li>
+      <li>Problems: box rigidity, alginate distortion of the ridge, careful reline and jaw-relation records, and careful stock-tooth placement</li>
+      <li>Total run time: <b>18 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 9</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Prosthodontics · File 26","t":"Copy (duplicate) dentures","b":"<p>University of Baghdad, College of Dentistry — Prosthodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This 5th-year file covers PDF pages 620–632 (Lect. Dr. Mustafa Saadi Ali / د. مصطفى سعدي علي): copy or duplicate dentures — definitions, aims, indications and contraindications, advantages and disadvantages, temporary copies, four duplication techniques (duplicating flask, soap container, silicone putty, and agar-agar), modifications, and problems and solutions. Figure-only photographs in the PDF are not given invented measurements.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end.</p>"},{"k":"5th year · Copy denture","t":"Definition, aims, indications and contraindications","b":"<p>A <b>copy denture</b> is a second denture intended to be a copy of the first denture. Other names: duplicate denture, template denture, replica denture. <b>Complete-denture duplication</b> refers to the duplication technique of an existing denture or dentures with or without modification of the old denture. It is a faster alternative to a remake of complete acrylic dentures.</p><p>Aims: (1) the transfer of contours from old to new dentures for maintenance of neuromuscular control; (2) making necessary modification to the basic shape of the old denture, such as correction of the loss of fit (the patient’s complaint) and those considered essential by the operator, for example a slight increase in the OVD and replacement of worn denture teeth.</p><p>Indications: when it is desirable, especially for older patients, to provide replacement dentures (with improved fit) similar in most aspects to those to which patients are already accustomed — it is not easy for a geriatric patient to get used to a new denture with altered polished-surface contours readily; when it is desired to renew old deteriorated and stained denture-base material, so that the duplicate will have the appearance of being completely new; when the patient wants a spare denture in case of accidental fracture or loss of the original, because patients are often concerned about being without dentures during a required repair or reline; and if it is needed to experiment (interchange) different occlusal relationships for clinical or research reasons — this can be carried out on the spare denture without changing the original one.</p><p>Contraindications: when there are serious defects in the denture (indicated for making a new denture). Careful evaluation is done before duplication: previous fractures, craze lines, missing or replaced teeth, esthetics, phonetics, accuracy of fit, and vertical and horizontal jaw relations.</p>"},{"k":"5th year · Copy denture","t":"Advantages, disadvantages, and temporary duplicate dentures","b":"<p>Advantages: no alteration or damage is done to the existing dentures; the patient does not have to be without the dentures for a period of time; the duplication procedure is simple and requires less time than a conventional denture (three clinical steps only); no individual trays or record bases are required; elimination of repolishing after border adjustments; and no thickening of the palate in the finished dentures, as occurs in some relining procedures.</p><p>Disadvantages: the copy technique itself is not familiar to most dentists (some have never been taught it as undergraduates); it is hard to find a laboratory comfortable with the technique, and the laboratory cost is rather high; not all patients are suitable; some flasks and equipment are expensive; and it requires crucial assessment of the existing dentures.</p><p>Production of <b>temporary duplicate dentures</b> is sometimes carried out so that these dentures can be progressively modified if the patient’s capacity to adapt is in doubt (for example a gradual increase in OVD) or if the cause of the patient’s complaints is not clear (for example the patient may be a denture collector). They can be fabricated at low cost and with less clinical and laboratory time. Once a satisfactory appliance has been achieved, it can then be copied to produce a definitive denture.</p>"},{"k":"5th year · Copy denture","t":"General method, and the duplicating-flask technique (three visits)","b":"<p>A number of methods have been reported for producing a template for a duplicate or copy denture. All are similar except in the mold container and materials. Basically, a mold of the old denture is produced in an elastic material, such as alginate or silicone putty, supported in a rigid container. A wax or auto-polymerizing-resin template is fabricated from this mold. Any necessary modifications to the old denture are performed on this template and tried in the patient’s mouth before the prosthesis is finished. In some techniques, auto-polymerizing resin teeth are also fabricated instead of using ready-made acrylic teeth, especially for temporary duplicate dentures. Methods named: the duplicating-flask technique; the soap-container technique; the silicone-putty technique; and the agar-agar technique.</p><p><b>Duplicating-flask technique — first visit:</b> duplication of the old denture in auto-polymerizing acrylic resin (a temporary duplicate denture); recording the centric jaw relation (interocclusal record) if the vertical and horizontal relations are acceptable; and selection of shade, size and form of the denture teeth if the previous teeth are not accepted by the dentist and the patient. The denture is submerged in alginate in a duplicating flask; when the alginate is set, any excess on the tissue side is trimmed with a sharp knife. The flask is then filled with a new mix of alginate (avoiding air entrapment) and the lid is closed. The alginate halves are separated, and the denture is removed and returned to the patient. Sprue holes are cut into the posterior border of the alginate mold. The impression is reassembled and held together with adhesive tape. Auto-polymerizing resin is then run into one of the sprue holes until it rises from the other. Lastly, the duplicate monochrome denture is removed from the flask and mounted on a suitable articulator.</p><p><b>Second visit:</b> try-in of the dentures and verification of the jaw relations and tooth positions for esthetics and phonetics. A relining or rebasing impression is then obtained if needed, as in the conventional reline technique. The dentures are processed, finished and polished with routine laboratory procedures. <b>Third visit:</b> all the necessary clinical procedures of a complete-denture insertion appointment, including pressure-area adjustment and occlusal adjustments. A clinical remount should also be carried out (using the interocclusal record) to perfect the occlusion of the duplicated dentures.</p>"},{"k":"5th year · Copy denture","t":"The soap-container technique","b":"<p>All three visits are the same as with the duplicating-flask method, but denture duplication is done using a soap container. The denture is invested in the lower part of the container, which is filled with alginate. A second pour of alginate completes the investment. After setting, the soap container should be pressed from the sides to avoid its distortion. The two halves are then opened and sprue holes (with a diameter of a pencil) are cut with a sharp knife at the back. Softened wax is then poured in the teeth space for replication of the teeth in the form of a horseshoe. The two halves are reassembled and held together with elastic bands. Self-cure resin is poured down one of the holes with light vibrations, while air escapes from the other. Place the container with the sprue holes upright in a pressure pot that contains water at <b>110°F</b> and process the resin under <b>15–30 psi pressure for 30 minutes</b>. The template denture (with waxed teeth and a self-cured acrylic-resin base) is then recovered from the mold. The wax teeth on one of the dentures are replaced with acrylic-resin teeth; the opposing denture guides the setting of teeth in their identical position to the original denture.</p>"},{"k":"5th year · Copy denture","t":"Silicone-putty and agar-agar techniques, and modifications","b":"<p><b>Silicone-putty technique.</b> Select an impression tray which easily accommodates both the denture and the duplicating silicone putty. Mix the putty, place it in the tray, and push the denture into the putty with the denture’s fitting (tissue) surface uppermost. Once the putty is set, cut two or three locating notches (to ensure that the two parts of the impression fit accurately). Apply a thin layer of separating medium such as petroleum jelly or baby oil to the set putty surface. Mix enough putty to form a good base for the mold. Push a small amount of the mixed putty onto the fitting surface of the denture to prevent voids between the denture and the impression material. Place the remaining putty on a hard flat surface and press the denture into it, engaging the V-shaped cuts. When the two halves of the mold have set completely, separate them and carefully remove the denture. Trim any excess putty from the mold periphery. Inspect the mold carefully, ensuring that there are no air bubbles or voids and that the impression has precisely reproduced all features of the denture. A copy of the old denture can then be created using wax or auto-polymerizing acrylic resin.</p><p><b>Agar-agar technique.</b> Dentures are suspended with a metal rod through sticky-wax sprues. Both dentures are suspended in the agar container, and molten agar is poured in. Once the agar is set, the mold is sectioned through the sprue holes to retrieve the dentures. Auto-polymerized acrylic resin is then poured in the mold space to produce template dentures.</p><p>Modifications of denture duplication named in this lecture: addition of a labial flange to an open-face denture; and production of temporary dentures in which the teeth are fabricated with tooth-colored self-cured acrylic resin before adding tissue-colored pink denture-base resin.</p>"},{"k":"5th year · Copy denture","t":"Problems and solutions in denture duplication","b":"<p>(1) <b>Rigidity of the box.</b> The container used for fabricating the alginate mold must be rigid to avoid distortion of the alginate and subsequently of the self-cured acrylic-resin template. Precautions must be taken so that the rubber bands used to hold the two halves of the mold do not distort the soap container.</p><p>(2) <b>Distortion of the alginate impression of the ridge.</b> Immediately after pouring the wax to form template teeth, the mold should be reassembled to check the alginate impression of the ridge. It should not indent the soft wax. Wax is removed if necessary to avoid distortion of the alginate impression of the residual ridge and production of an acrylic-resin base with an intact impression surface.</p><p>(3) <b>Impression and jaw-relation records.</b> These steps should be performed with utmost care. Silicone impression material is recommended for obtaining the reline impressions, as the template dentures have to be re-inserted in the mouth for recording the OVD and centric relation.</p><p>(4) <b>Tooth position and tissue contours.</b> Since the spatial positioning of the teeth and the resin contours of the polished surfaces are important for neuromuscular control, the selection and placement of the stock (ready-made) teeth on the templates must be undertaken with great care.</p>"},{"k":"اختبر نفسك","t":"Quiz: aims of a copy denture, and how many clinical visits","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The aims of a copy denture in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Always making a completely different polished surface so the geriatric patient must relearn muscle control</button><button type=\"button\" class=\"opt\" data-i=\"1\">Transfer of contours from old to new dentures to maintain neuromuscular control, plus needed modifications such as correction of loss of fit, a slight increase in OVD, and replacement of worn teeth</button><button type=\"button\" class=\"opt\" data-i=\"2\">Only experimenting with occlusion on the original denture, never on a spare</button><button type=\"button\" class=\"opt\" data-i=\"3\">Thickening the palate, as in some relines, as a formal aim</button></div><div class=\"qexp\" hidden><p>الهدف نقل المحيطات للحفاظ على السيطرة العصبية العضلية، مع تعديلات لازمة (ملاءمة، زيادة طفيفة بالبعد العمودي، واستبدال أسنان متآكلة). من المزايا: ثلاث خطوات سريرية فقط، والمريض ما يبقى بلا طقم، وما في تثخين للحنك مثل بعض التبطين.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The duplicating-flask (and soap-container) clinical sequence in this lecture is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A single visit only, with no remount</button><button type=\"button\" class=\"opt\" data-i=\"1\">Three visits: (1) duplicate in auto-polymerizing resin, interocclusal record if relations are acceptable, and tooth selection; (2) try-in, and a reline impression if needed, then process; (3) insertion adjustments and a clinical remount using the interocclusal record</button><button type=\"button\" class=\"opt\" data-i=\"2\">Five laboratory-only visits with no try-in</button><button type=\"button\" class=\"opt\" data-i=\"3\">Always contraindicated if the patient wants a spare denture</button></div><div class=\"qexp\" hidden><p>ثلاث زيارات: نسخ وسجل مركزي واختيار أسنان؛ تجربة وطبعة تبطين إذا لزم ثم التفلية؛ إدخال ويه إعادة تركيب سريرية. الاحتياط استطباب مو مضاد.</p></div></div>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: soap-container processing, and problems to avoid","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">In the soap-container technique, self-cure resin is processed how in this lecture?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">On the bench in open air for two hours, with no pressure</button><button type=\"button\" class=\"opt\" data-i=\"1\">In a pressure pot with water at 110°F, under 15–30 psi for 30 minutes, sprue holes upright; sprue holes are about the diameter of a pencil</button><button type=\"button\" class=\"opt\" data-i=\"2\">Only in molten agar at 44–47°C for one minute</button><button type=\"button\" class=\"opt\" data-i=\"3\">By heat-curing in a metal flask at 100°C without a lid</button></div><div class=\"qexp\" hidden><p>علبة الصابون: فتحات صب بقطر قلم رصاص؛ الأكريل يُصب من فتحة والهواء يخرج من الثانية؛ المعالجة بقدر ضغط ويه ماء 110°ف تحت 15–30 باوند/إنج² لمدة 30 دقيقة، والفتحات للأعلى.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">Name two problems in denture duplication and the lecture’s solutions.</button><div class=\"flash-a\" hidden>The box must be rigid so the alginate (and then the resin template) is not distorted, and rubber bands must not distort a soap container. After pouring wax for template teeth, reassemble the mold so the alginate impression of the ridge does not indent the soft wax. Use silicone for reline impressions because the templates must go back in the mouth to record OVD and CR. Place stock teeth with great care, because tooth position and polished-surface contours matter for neuromuscular control.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا الملف عن <b>الطقم المنسوخ (المكرر)</b>: التعريف والأهداف والاستطبابات، المزايا والعيوب، النسخ المؤقت، أربع تقنيات (دورق النسخ، علبة الصابون، معجون السيليكون، والأغار)، التعديلات، والمشاكل وحلولها.</p>","<p>ال<b>طقم المنسوخ</b> طقم ثانٍ المقصود منه أن يكون نسخة من الأول. أسماء أخرى: طقم مكرر، طقم قالب، طقم مطابق. <b>تكرار الطقم الكامل</b> تقنية نسخ طقم موجود مع أو بدون تعديل. بديل أسرع لإعادة صنع أطقم أكريل كاملة.</p><p>الأهداف: نقل المحيطات من القديم للجديد للحفاظ على السيطرة العصبية العضلية؛ وعمل التعديل اللازم على الشكل الأساسي (تصحيح فقدان الملاءمة، وزيادة طفيفة بالبعد العمودي الإطباقي، واستبدال الأسنان المتآكلة).</p><p>الاستطبابات: خصوصاً للمسنين لتوفير أطقم بديلة بملاءمة أحسن وتشبه اللي اعتادوا عليها (صعب يعتادون على محيطات سطح مصقول جديدة)؛ تجديد قاعدة متدهورة ومتصبغة حتى النسخة تبان جديدة بالكامل؛ طقم احتياط إذا انكسر أو ضاع الأصلي (المريض يقلق يبقى بلا طقم أثناء الإصلاح أو التبطين)؛ وتجربة علاقات إطباق مختلفة للبحث أو السرير على الاحتياط بدون تغيير الأصلي.</p><p>المضاد: عيوب جدية تستدعي طقم جديد. قيّم بعناية: كسور سابقة، خطوط تشقق، أسنان مفقودة أو مستبدلة، التجميل والنطق، دقة الملاءمة، والعلاقات العمودية والأفقية.</p>","<p>المزايا: ما يتضرر الطقم الموجود؛ المريض ما يبقى بلا طقم؛ الإجراء بسيط ووقت أقل من التقليدي (<b>ثلاث خطوات سريرية فقط</b>)؛ ما تحتاج طوابع فردية أو قواعد سجل؛ إلغاء إعادة التلميع بعد تعديل الحدود؛ وما في تثخين للحنك بالنسخة النهائية مثل بعض إجراءات التبطين.</p><p>العيوب: التقنية مو مألوفة لكثير أطباء (بعضهم ما تعلموها بالبكلوريوس)؛ صعب تلاقي مختبر مرتاح بيها والتكلفة عالية؛ مو كل المرضى مناسبين؛ بعض الدورق والمعدات غالية؛ وتحتاج تقييماً دقيقاً للطقم الموجود.</p><p>ال<b>نسخ المؤقتة</b> أحياناً تُصنع حتى تتعدّل تدريجياً إذا قدرة التكيّف مشكوك فيها (مثل زيادة تدريجية بالبعد العمودي) أو سبب الشكوى مو واضح (مثل جامع أطقم). تكلفة ووقت أقل. لما يصير الجهاز مرضي، يُنسَخ لتعويض نهائي.</p>","<p>كل التقنيات متشابهة إلا بوعاء القالب والمواد. أساساً يُصنع قالب للطقم القديم بمادة مرنة (ألجينات أو معجون سيليكون) بوعاء صلب. منه يُصنع قالب شمعي أو أكريل ذاتي التبلمر، والتعديلات تُعمل عليه وتُجرَّب قبل الإنهاء. ببعض الطرق تُصنع أسنان أكريل ذاتي التبلمر بدل الجاهزة، خصوصاً للنسخ المؤقت.</p><p>تقنية <b>دورق النسخ — الزيارة الأولى</b>: نسخ الطقم القديم بأكريل ذاتي التبلمر (نسخة مؤقتة)؛ سجل العلاقة المركزية إذا العلاقات مقبولة؛ واختيار اللون والحجم والشكل إذا الأسنان القديمة مرفوضة. الطقم يُغمر بالألجينات بالدورق؛ بعد التصلب يُقلم الزائد من جهة النسيج. يُملأ الدورق بخلطة ألجينات جديدة (بلا هواء) ويُغلق الغطاء. يُفصل النصفان ويُرجع الطقم للمريض. تُقطع فتحات صب بالحافة الخلفية للقالب، ويُعاد التجميع بشريط لاصق. الأكريل الذاتي يُصب من فتحة حتى يطلع من الثانية. النسخة أحادية اللون تُخرج وتُركَّب على مفصلة مناسبة.</p><p>ال<b>زيارة الثانية</b>: تجربة والتحقق من العلاقات ومواضع الأسنان للتجميل والنطق. طبعة تبطين أو إعادة قاعدة إذا لزم. بعدين التفلية والإنهاء. ال<b>ثالثة</b>: إجراءات الإدخال (تعديل مناطق الضغط والإطباق) و<b>إعادة تركيب سريرية</b> باستخدام سجل الإطباق حتى ينضبط إطباق النسخ.</p>","<p>الزيارات الثلاث نفس طريقة الدورق، بس النسخ ب<b>علبة صابون</b>. الطقم يُطمر بالجزء السفلي المملوء ألجينات، وبعدين صبة ألجينات ثانية. بعد التصلب اضغط العلبة من الجوانب حتى ما تنشوّه. افتح النصفين واقطع فتحات صب بقطر قلم رصاص من الخلف بسكين حاد. صب شمع ليّن بفراغ الأسنان على شكل حدوة. أعد التجميع بأربطة مطاطية. صب أكريل ذاتي التبلمر من فتحة ويه اهتزاز خفيف والهواء يخرج من الثانية. حط العلبة والفتحات للأعلى بقدر ضغط ويه ماء بدرجة <b>110 فهرنهايت</b>، وعالج الراتنج تحت ضغط <b>15–30 باوند/إنج² لمدة 30 دقيقة</b>. أخرج قالب الطقم (أسنان شمع وقاعدة أكريل ذاتي). بدّل أسنان الشمع على أحد الطقمين بأسنان أكريل؛ الطقم المقابل يوجّه الترتيب بنفس موضع الأصلي.</p>","<p>تقنية <b>معجون السيليكون</b>: اختر طابعاً يتسع للطقم والمعجون. حط المعجون بالطابع وادفع الطقم ويه سطح الملاءمة (النسيج) للأعلى. بعد التصلب اقطع ثلمين أو ثلاثة للتموضع. ضع طبقة رقيقة من وسط فاصل (فازلين أو زيت أطفال). ادفع كمية صغيرة على سطح الملاءمة حتى ما تصير فراغات. حط الباقي على سطح صلب مستوٍ واضغط الطقم حتى تدخل القطوع بشكل V. بعد تصلب النصفين افصل وأخرج الطقم بحذر، قلم الزائد، وافحص بلا فقاعات أو فراغات وأن كل التفاصيل اننسخت. بعدين انسخ بشمع أو أكريل ذاتي التبلمر.</p><p>تقنية <b>الأغار</b>: علّق الطقمين بقضيب معدن عبر بوابات شمع لاصق في وعاء الأغار، وصب أغار منصهر. بعد التصلب يُقطع القالب عبر فتحات الصب لإخراج الأطقم، ويُصب أكريل ذاتي التبلمر لإنتاج قوالب الأطقم.</p><p>التعديلات المذكورة: إضافة شفة شفوية لطقم وجه مفتوح؛ وصنع أطقم مؤقتة أسنانها من أكريل لون السن ذاتي التبلمر قبل إضافة قاعدة وردية لون النسيج.</p>","<p>(1) <b>صلابة العلبة</b>: وعاء قالب الألجينات لازم يكون صلباً حتى ما ينشوّه الألجينات وبعدين قالب الأكريل. انتبه أربطة المطاط ما تشوّه علبة الصابون.</p><p>(2) <b>تشوه طبعة الألجينات للحافة</b>: فور صب الشمع لأسنان القالب، أعد تجميع القالب وتأكد إن طبعة الحافة ما تغور بالشمع الطري. شيل شمع إذا لزم حتى ما تنشوّه طبعة الحافة المتبقية وتبقى سطح الطبعة للقاعدة سليماً.</p><p>(3) <b>الطبعة وسجلات العلاقة</b>: بأقصى عناية. يُوصى بمادة سيليكون لطبعات التبطين، لأن قوالب الأطقم لازم ترجع للفم لتسجيل البعد العمودي والعلاقة المركزية.</p><p>(4) <b>موضع الأسنان ومحيطات النسيج</b>: الموضع الفضائي للأسنان ومحيطات السطح المصقول مهمة للسيطرة العصبية العضلية، فاختيار ووضع الأسنان الجاهزة على القوالب لازم بعناية كبيرة.</p>","<p>الهدف نقل المحيطات للسيطرة العصبية العضلية. التسلسل السريري ثلاث زيارات ويه إعادة تركيب بالثالثة.</p>","<p>أسئلة ختامية + بطاقة + زر الدرجة: معالجة علبة الصابون (110°ف، 15–30 psi، 30 دقيقة)، ومشاكل صلابة العلبة وتشوه طبعة الحافة. إذا غلطت ارجع للشرائح.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Prosthodontics File 27 — Neutral Zone in Complete Dentures</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Prosthodontics · 5th year</div>
+    <h1>Neutral Zone in Complete Dentures</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of the neutral-zone lectures by Lect. Dr. Mustafa Saadi Ali (PDF pages 633–645), the last block of the syllabus.</p>
+    <ul>
+      <li>The neutral zone is where outward tongue forces are neutralized by inward lip and cheek forces; locate the potential denture space</li>
+      <li>Indicated especially for a severely atrophic lower ridge and poor neuromuscular control; advantages include stability and tongue space</li>
+      <li>Buccinator, modiolus and tongue must be respected; centralization or lingualization can violate the zone</li>
+      <li>Recording at impression, jaw-relation, try-in or finished-denture stages, using a plaster index to set the teeth</li>
+      <li>Compared with a conventional lower denture: anteriors and premolars slightly lingual, posteriors buccal; larger tissue surface, smaller volume</li>
+      <li>Total run time: <b>20 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 10</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Prosthodontics · File 27","t":"The neutral zone in complete dentures","b":"<p>University of Baghdad, College of Dentistry — Prosthodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This 5th-year file covers PDF pages 633–645 (Lect. Dr. Mustafa Saadi Ali / د. مصطفى سعدي علي), the last block of the syllabus: the neutral zone — definition and concept, objectives and indications, muscles involved, influence of forces on denture surfaces, recording at the impression, jaw-relation, try-in and finished-denture stages, comparison with a conventional mandibular denture, and limitations.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end.</p>"},{"k":"5th year · Neutral zone in complete dentures","t":"Definition, potential denture space, and the concept","b":"<p>The <b>neutral zone</b> is the potential space between the lips and cheeks on one side and the tongue on the other; that area or position where the forces between the tongue and cheeks or lips are equal.</p><p>In completely edentulous patients there is a void in the oral cavity called the <b>potential denture space</b>. Its boundaries are: superiorly, the maxilla and soft palate; inferiorly, the mandible and floor of the mouth; medially, the tongue; and laterally, the muscles and tissues of the cheek and lips.</p><p>The stability of complete dentures is influenced by the surrounding neuromuscular system. Oral functions such as speech, mastication, swallowing, smiling and laughing involve synergistic actions of the tongue, lips, cheeks and floor of the mouth that are very complex and highly individual. Neuromuscular control is the key for denture stability. Size and position of the denture teeth and the contours of the polished surface play a crucial role, because they are subjected to destabilizing forces from the tongue, lips and cheeks if they interfere with the function of oral structures.</p><p>The neutral zone is that area in the mouth where, during function, the forces of the tongue pressing outward are neutralized by the forces of the cheeks and lips pressing inwards. These forces are developed through muscular contraction during chewing, speaking, swallowing and similar acts, and they vary in magnitude and direction in different individuals and in different periods of life. The way these forces are directed against the denture will either stabilize or dislodge it. The objective is to position the teeth and the external (polished) surface so that the force the musculature exerts will have a seating effect. The concept is that for each individual there is a denture space — a specific area where the function of the musculature will not unseat the denture and where forces generated by the tongue are neutralized by those of the lips and cheeks. The idea of the technique is to locate this space.</p>"},{"k":"5th year · Neutral zone in complete dentures","t":"Objectives, indications, advantages and disadvantages","b":"<p>Objectives of the neutral-zone technique: rehabilitation of the complete-denture patient; achieve maximum prosthesis stability, comfort and function; arrange the denture teeth and contour the polished surfaces within the neutral zone; and minimize the ongoing diminution of the residual alveolar ridges.</p><p>Indications: a severely atrophic mandibular ridge; patients with a prominent and highly attached mentalis muscle, and patients with lateral spreading of the tongue as a result of a poor transition from the dentate to the edentulous state and severe resorption; patients with poor or diminished neuromuscular control, such as those with a neuromuscular disease, a history of stroke, Parkinson’s disease, or impaired motor innervation to oral and facial muscles (motor-nerve damage to the tongue) as a result of brain surgery; patients with atypical shape or consistency of oral and perioral structures — for example scleroderma, marginal or segmental mandibulectomy, partial glossectomy, or trauma to the oral and facial structures; and to locate the optimal position for implants in implant-supported or implant-retained overdentures, which enhances the overall outcome of treatment.</p><p>Advantages: improved stability and retention of complete dentures (particularly lower complete dentures); correct positioning of posterior teeth allows sufficient tongue space; reduced food trapping adjacent to the molar teeth; and improved esthetics due to facial support. Disadvantages: increased clinical time, and increased laboratory costs.</p>"},{"k":"5th year · Neutral zone in complete dentures","t":"Muscles of the cheek, and why centralization or lingualization can fail the buccinator","b":"<p>Muscles of the cheek: the <b>masseter</b> affects the distobuccal border of the mandibular denture. The <b>buccinator</b> fibers form a continuous band; hence the size of the arch is limited by the strength of the contractile force and the length of the muscles when they are contracted.</p><p>The common practice of centralization or lingualization of occlusion creates a space between the cheek and the teeth and the external surface of the denture, which prevents the buccinator from performing its proper function in two ways. First: food accumulation, and it becomes more difficult for the cheek to place the food back onto the occlusal surface of the teeth. Second: the space prevents the buccinator from neutralizing the lateral forces of the tongue during function.</p><p>The common practice of lingualization is also described later as one of the greatest influencing factors of lower-denture instability, because it violates the neutral zone and encroaches on the tongue space.</p>"},{"k":"5th year · Neutral zone in complete dentures","t":"Muscles of the lips, the modiolus, and muscles of the tongue","b":"<p>Muscles of the lips: <b>orbicularis oris</b> — during chewing, smiling and swallowing it exerts force against the teeth and denture flanges, counteracted by the tongue. <b>Levator anguli oris (caninus)</b> — together with other muscles, pulls the upper lip upward, and in sucking and swallowing pulls the lip forward, thus exerting forces on the teeth and labial flanges. <b>Zygomaticus major</b> pulls the angle of the mouth upward and backward. <b>Risorius</b> retracts the corner of the mouth. <b>Mentalis</b> turns the lower lip outward and on contraction makes the lower labial vestibule shallow. <b>Triangularis</b> contracts during sucking and exerts pressure on the teeth and denture flange.</p><p>The <b>modiolus</b> is a dense, compact, mobile, fibromuscular tissue mass of facial muscles that alters the position of the angle of the mouth. It is formed by the interlacing of: orbicularis oris (the lecture typographically writes “Orbicilaris oris”); buccinator; levator anguli oris; depressor anguli oris; zygomaticus major; risorius; platysma; and levator labii superioris (quadratus labii superioris). Because of the strength and variability of movement of the area, the modiolus is very important in the stability of the lower denture. Proper positioning of the teeth and contouring and narrowing of the external surface of the premolar area should be done; otherwise the modiolus will constantly unseat the lower denture.</p><p>Muscles of the tongue: <b>intrinsic</b> muscles are confined to the tongue and not attached to bone; they produce change in the shape of the tongue. <b>Extrinsic</b> muscles are attached to the bones and soft palate — genioglossus, styloglossus, hyoglossus and palatoglossus — and are responsible for tongue movement and change in shape. The tongue is capable of changing shape and position during mastication, swallowing and speech, and during function it will be in constant contact with the lingual surface of the lower teeth, the lingual flange of the lower denture, and the palatal surface of the upper denture.</p>"},{"k":"5th year · Neutral zone in complete dentures","t":"Influence of muscles on the arches, polished surfaces, and forces on denture surfaces","b":"<p>During childhood the teeth erupt under the influence of a muscular environment created by the tongue, cheeks and lips, in addition to genetic factors. These forces have a definite influence upon the position of the erupted teeth, arch form and occlusion. Generally, muscular activity and habits which develop during childhood continue throughout life and after tooth loss. It is important to position artificial teeth in the arch form compatible with these muscular forces. As the impression surface area decreases (due to alveolar ridge resorption), the retention and stability of the denture decrease. Consequently, retention and stability become more dependent on the correct positioning of the teeth and the contours of the polished surfaces.</p><p>The polished surfaces should be so contoured that the horizontally directed forces applied by the peri-denture muscles should act to seat the denture. The artificial teeth should not be placed on the crest of the ridge, or buccally or lingually to it, merely by habit; rather they should be placed as dictated by the musculature. After the teeth have been lost, muscle function greatly influences any complete dentures placed in the mouth, so the teeth must fall within the arch form compatible with muscular forces. The neutral zone always moves according to the periods of edentulism and the tonicity of the perioral musculature and tongue. Arrangement of the teeth in the neutral zone, increasing the impression surface area of the denture and reduction in the volume of the denture, provides good retention, stability and comfort.</p><p>The greater the ridge loss, the lesser the area of the denture base and the lesser the influence of impression-surface areas on stability and retention, and the more the external surface area needs to be contoured properly to overcome this. Forces on the external (polished) surfaces are constantly changing in magnitude and direction during function, and remain constant at rest. To construct a denture that functions properly, we must develop the fit and contour of the external surface just as accurately and meticulously as the fit and contour of the impression and occlusal surfaces. The influence of the lip on lower-denture stability becomes more critical as resorption of the ridge increases or as the patient becomes older.</p>"},{"k":"5th year · Neutral zone in complete dentures","t":"Recording the neutral zone at the final-impression stage, and at the jaw-relation stage","b":"<p>The technique can be performed at the impression stage, the jaw-relation stage, the try-in stage, or on a finished or previous denture.</p><p><b>At the final-impression stage:</b> (1) primary impression of the upper and lower arches and pouring of primary casts; (2) construction of individual (special) trays — fabricated without handles and similar to acrylic record bases, with retentive wires to retain the material during recording of the neutral-zone area; (3) modeling compound is used to fabricate occlusion rims and establish the occlusal plane; these rims are then molded intra-orally according to muscle function (recording of the neutral zone). The patient is instructed to perform functional movements such as licking the lips, sucking, puckering, smiling, grinning, swallowing, pronouncing some words, or a combination of these; (4) establishing a tentative OVD and CR; (5) obtain the final impression using ZOE impression material with a closed-mouth technique; (6) final determination of the OVD and CR; (7) pouring the master casts, forming a plaster index for the neutral-zone area (the lecture typographically writes “paster index”), mounting of the casts on the articulator, and setting up of the teeth guided by the plaster index; (8) wax try-in and verification of tooth position intra-orally.</p><p><b>At the jaw-relation stage:</b> (1) primary impression with impression compound; (2) final impression with ZOE; (3) fabrication of a lower acrylic record base with metal wire loops, while the upper occlusal rim is fabricated with an acrylic base and wax; (4) occlusal pillars built with green-stick material on the wire loops to establish the occlusal height (OVD); (5) jaw-relation record; (6) tissue conditioner is mixed and placed on the lower record base, and the patient is instructed to perform certain oral movements including sucking, grinning, whistling, pursing of the lips, and swallowing, so that the tissue conditioner is molded with mouth movement; (7) the record base is returned to the cast and a plaster index is formed; (8) setting up of teeth according to the obtained neutral zone.</p>"},{"k":"5th year · Neutral zone in complete dentures","t":"Recording at try-in and on a finished denture; comparison with a conventional lower denture; limitations","b":"<p><b>At the try-in stage:</b> (1) apply Vaseline on the teeth of the trial denture before making the impression; (2) impression material (usually light-body silicone) is applied on the buccal and lingual surfaces of the waxed-up denture; (3) the patient performs oral function; (4) inspect the impression on the polished area, including the lingual surface; (5) carefully carve the material over the tooth surfaces with a carver.</p><p><b>On a finished denture:</b> first the complete denture should be properly examined to check fitness for the neutral-zone technique. (1) Coat the polished surface with low-viscosity silicone impression material; (2) ask the patient to perform functional movements while the material sets; (3) inspect the denture and adjust any heavy muscle contact; (4) form the index for the neutral zone; (5) remove the old denture teeth with some denture base; (6) place wax in the neutral zone and arrange the teeth accordingly; (7) process and finish the denture. This technique can also be performed for a segment of the denture that needs modification, by removing the teeth and some denture base for that segment, applying adhesive for the silicone, and continuing with the same steps.</p><p>Comparison between a conventional mandibular denture and a mandibular denture made by the neutral-zone technique, according to the setting of the teeth in relation to the crest of the ridge: <b>anterior</b> teeth — conventional slightly labial, neutral zone slightly lingual; <b>premolar area</b> — conventional exactly on the crest, neutral zone slightly lingual; <b>posterior</b> teeth — conventional lingually, neutral zone buccally. According to denture surface area, the neutral-zone denture tissue-surface area is higher than that of the conventional denture. According to denture volume, the neutral-zone denture volume is lower than that of the conventional denture.</p><p>Limitations for success: viscosity of the material used — the more viscous, the more difficult for the muscle to mold; geriatric patients could suffer from the procedure due to loss of their muscular tone; proper stability and retention of the record bases are required, as is comfort, to perform the functional movements properly; the resultant neutral zone is often narrow and might be lingually placed, which might affect the functional movement of the tongue and phonetics; and the technique does not offer any guidelines for the selection of teeth.</p>"},{"k":"اختبر نفسك","t":"Quiz: what the neutral zone is, and buccinator versus lingualization","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The neutral zone is defined in this lecture as:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The crest of the residual ridge only, where every tooth must be set in a conventional complete denture</button><button type=\"button\" class=\"opt\" data-i=\"1\">The potential space between the lips and cheeks on one side and the tongue on the other, where the forces between the tongue and the cheeks or lips are equal</button><button type=\"button\" class=\"opt\" data-i=\"2\">Only the palatal vault of an upper denture</button><button type=\"button\" class=\"opt\" data-i=\"3\">A laboratory flask used to copy an old denture</button></div><div class=\"qexp\" hidden><p>المنطقة المحايدة حيز بين الشفاه والخدود واللسان، حيث القوى متعادلة. حيز الطقم المحتمل حدوده: العلوي والحنك الرخو فوق؛ الفك السفلي وقاع الفم تحت؛ اللسان إنسياً؛ وعضلات الخد والشفاه وحشياً.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Centralization or lingualization of occlusion, according to this lecture, can:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Always improve lower-denture stability by widening tongue space</button><button type=\"button\" class=\"opt\" data-i=\"1\">Create a space that stops the buccinator working properly (food accumulates; the buccinator cannot neutralize lateral tongue forces); lingualization is also called one of the greatest factors in lower-denture instability because it violates the neutral zone and encroaches on tongue space</button><button type=\"button\" class=\"opt\" data-i=\"2\">Be required so that the modiolus can unseat the denture</button><button type=\"button\" class=\"opt\" data-i=\"3\">Replace the need to contour the polished surface</button></div><div class=\"qexp\" hidden><p>مركزة أو لسننة الإطباق تخلق فراغاً يمنع البوقية من وظيفتها (تراكم طعام، وما تعادل قوى اللسان الجانبية). اللسننة تنتهك المنطقة المحايدة وتعتدي على حيز اللسان. الحوية مهمة لثبات السفلي؛ إذا ما ضيّقت السطح الخارجي بمنطقة الضواحك تخلع الطقم باستمرار.</p></div></div>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: tooth position versus a conventional lower denture, and limitations","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Compared with a conventional mandibular complete denture, teeth set by the neutral-zone technique in this lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Anteriors slightly labial, premolars exactly on the crest, and posteriors lingual, with a smaller tissue surface and a larger denture volume</button><button type=\"button\" class=\"opt\" data-i=\"1\">Anteriors slightly lingual, premolars slightly lingual, and posteriors buccal; the tissue-surface area is higher and the denture volume is lower than in a conventional denture</button><button type=\"button\" class=\"opt\" data-i=\"2\">All teeth always on the crest of the ridge, with no change in volume</button><button type=\"button\" class=\"opt\" data-i=\"3\">Posteriors only on the retromolar pad</button></div><div class=\"qexp\" hidden><p>المحايدة: الأمامية شوية لسانية، الضواحك شوية لسانية، الخلفية شدقية (عكس التقليدي تقريباً بالخلف). مساحة سطح النسيج أعلى والحجم أقل من التقليدي.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">Name limitations of the neutral-zone technique listed in this lecture.</button><div class=\"flash-a\" hidden>The more viscous the material, the harder it is for the muscle to mold it. Geriatric patients may suffer because of lost muscular tone. Record bases need proper stability, retention and comfort so functional movements can be performed properly. The resulting zone is often narrow and may be placed lingually, which might affect tongue movement and phonetics. The technique offers no guidelines for selecting the teeth.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا الملف، آخر جزء بالمنهج، عن <b>المنطقة المحايدة بالطقم الكامل</b>: التعريف والمفهوم، الأهداف والاستطبابات، العضلات، تأثير القوى على سطوح الطقم، التسجيل بمراحل الطبعة والعلاقة والتجربة والطقم المنتهي، المقارنة ويه الطقم التقليدي، والقيود.</p>","<p>ال<b>منطقة المحايدة</b> الحيز المحتمل بين الشفاه والخدود من جهة واللسان من جهة؛ الموضع اللي قوى اللسان والخدود أو الشفاه فيه متعادلة.</p><p>عند عديم الأسنان بالكامل في فراغ بالفم اسمه <b>حيز الطقم المحتمل</b>. حدوده: علوياً الفك العلوي والحنك الرخو؛ سفلياً الفك السفلي وقاع الفم؛ إنسياً اللسان؛ ووحشياً عضلات وأنسجة الخد والشفاه.</p><p>ثبات الطقم الكامل يتأثر بالجهاز العصبي العضلي المحيط. وظائف الفم (نطق، مضغ، بلع، ابتسام، ضحك) أفعال متآزرة معقدة وفردية جداً. السيطرة العصبية العضلية مفتاح الثبات. حجم وموضع الأسنان ومحيطات السطح المصقول مهمة، لأنها تتعرض لقوى مزعزعة من اللسان والشفاه والخدود إذا تدخلت بوظيفة بنى الفم.</p><p>المنطقة المحايدة هي المنطقة اللي أثناء الوظيفة قوى اللسان للخارج تتعادل ويه قوى الخدود والشفاه للداخل. هذه القوى من تقلص عضلي أثناء المضغ والكلام والبلع، وتختلف بالمقدار والاتجاه بين الأشخاص ومراحل العمر. اتجاهها أما يثبّت الطقم أو يخلعه. الهدف تموضع الأسنان والسطح الخارجي حتى القوة العضلية تكون لها تأثير إجلاس. لكل فرد حيز طقم محدد ما تخلعه وظيفة العضلات. فكرة التقنية: تحديد هذا الحيز.</p>","<p>الأهداف: إعادة تأهيل مريض الطقم الكامل؛ أقصى ثبات وراحة ووظيفة؛ ترتيب الأسنان وتشكيل السطح المصقول داخل المنطقة المحايدة؛ وتقليل استمرار ضمور الحواف السنخية المتبقية.</p><p>الاستطبابات: حافة سفلية ضامرة بشدة؛ عضلة ذقنية بارزة واندغامها عالي، وانتشار جانبي للسان من انتقال سيء للأسنان المفقودة ويه امتصاص شديد؛ سيطرة عصبية عضلية ضعيفة (مرض عصبي عضلي، سكتة، باركنسون، أو ضرر عصب حركي للسان بعد جراحة دماغ)؛ شكل أو قوام غير نمطي لبنى الفم وحوله (تصلب الجلد، استئصال فك سفلي هامشي أو قطعي، استئصال جزئي للسان، أو رضّ)؛ ولتحديد الوضع الأمثل للزرعات بالطقم الفوقي المدعم أو المثبَّت بها.</p><p>المزايا: ثبات وتثبيت أحسن (خصوصاً الطقم السفلي)؛ موضع صحيح للخلفيات يعطي مساحة لسان كافية؛ تقليل احتباس الطعام بجانب الأرحاء؛ وتجميل أحسن من دعم الوجه. العيوب: وقت سريري أكثر، وتكلفة مختبر أعلى.</p>","<p>عضلات الخد: ال<b>ماضغة</b> تؤثر على الحد الوحشي الشدقي للطقم السفلي. ال<b>بوقية (buccinator)</b> أليافها شريط مستمر؛ لذلك حجم القوس محدود بقوة التقلص وطول العضلات وهي متقلصة.</p><p>عادة <b>مركزة أو لسننة الإطباق</b> تخلق فراغاً بين الخد والأسنان والسطح الخارجي، فيمنع البوقية من أداء وظيفتها بطريقتين: أولاً تراكم الطعام ويصعب على الخد يرجع الطعام لسطح الإطباق؛ ثانياً الفراغ يمنع البوقية من معادلة القوى الجانبية للسان أثناء الوظيفة.</p><p>لاحقاً المحاضرة تقول إن عادة اللسننة من أكبر عوامل عدم ثبات الطقم السفلي، لأنها تنتهك المنطقة المحايدة وتعتدي على حيز اللسان.</p>","<p>عضلات الشفاه: <b>الدويرية الفموية</b> تضغط على الأسنان وشفاه الطقم أثناء المضغ والابتسام والبلع، ويعادلها اللسان. رافعة زاوية الفم تسحب الشفة العلوية لفوق، وبالامتصاص والبلع للأمام. الوجنية الكبيرة تسحب الزاوية لفوق وللخلف. الضحكية تسحب زاوية الفم للخلف. الذقنية تقلب الشفة السفلية لبرّة وبالتقلص تضحّل الدهليز الشفوي السفلي. المثلثة تضغط أثناء الامتصاص.</p><p>ال<b>حوية (modiolus)</b> كتلة ليفية عضلية كثيفة متحركة تغيّر موضع زاوية الفم، من تداخل: الدويرية الفموية، البوقية، رافعة زاوية الفم، خافضة زاوية الفم، الوجنية الكبيرة، الضحكية، platysma، ورافعة الشفة العلوية. بسبب قوة وتنوّع حركة المنطقة، الحوية مهمة جداً لثبات الطقم السفلي. لازم موضع أسنان صحيح وتضييق السطح الخارجي بمنطقة الضواحك، وإلا الحوية تخلع الطقم السفلي باستمرار.</p><p>عضلات اللسان: <b>داخلية</b> محصورة باللسان وغير متصلة بعظم، تغيّر شكله. <b>خارجية</b> متصلة بالعظم والحنك الرخو (ذقنية لسانية، إبرية لسانية، لامية لسانية، وحنكية لسانية) للحركة وتغيّر الشكل. أثناء الوظيفة اللسان بتماس مستمر ويه السطح اللساني للأسنان السفلية، الشفة اللسانية للطقم السفلي، والسطح الحنكي للطقم العلوي.</p>","<p>بالطفولة الأسنان تبزغ تحت تأثير بيئة عضلية (لسان، خدود، شفاه) إضافة للوراثة. هذه القوى تؤثر على موضع الأسنان وشكل القوس والإطباق، وتستمر عادة مدى الحياة وبعد فقد الأسنان. لازم تحط الأسنان الاصطناعية بشكل قوس متوافق ويه هذه القوى. كلما قلت مساحة سطح الطبعة (من امتصاص الحافة)، قل التثبيت والثبات وصار الاعتماد أكبر على موضع الأسنان ومحيطات السطح المصقول.</p><p>السطح المصقول يُشكَّل حتى القوى الأفقية من العضلات المحيطة تُجلس الطقم. الأسنان ما تتحط على قمة الحافة أو شدقياً أو لسانياً من العادة فقط، بل حسب ما تفرضه العضلات. المنطقة المحايدة تتحرك حسب فترة العديم الأسنان وتوتر العضلات حول الفم واللسان. ترتيب الأسنان بالمحايدة، وزيادة مساحة سطح الطبعة، وتقليل حجم الطقم، يعطي تثبيت وثبات وراحة جيدة.</p><p>كل ما زاد ضياع الحافة، قلت مساحة القاعدة وتأثير سطح الطبعة، وزادت الحاجة لتشكيل السطح الخارجي بدقة. قوى السطح المصقول تتغيّر بالمقدار والاتجاه أثناء الوظيفة، وتبقى ثابتة ويه الراحة. لازم دقة السطح الخارجي مثل دقة سطحي الطبعة والإطباق. تأثير الشفة على ثبات الطقم السفلي يصير أحرج كلما زاد الامتصاص أو تقدّم عمر المريض.</p>","<p>يمكن تسجيل المنطقة بمراحل الطبعة، أو العلاقة الفكية، أو التجربة، أو على طقم منتهٍ أو سابق.</p><p><b>بمرحلة الطبعة النهائية:</b> طبعة أولية وصب مصبوبات؛ طوابع خاصة بلا مقابض تشبه قواعد سجل أكريل ويه أسلاك مثبتة للمادة؛ حواف إطباق من مركب النمذجة وتحديد مستوى الإطباق، ثم تُقولَب داخل الفم حسب وظيفة العضلات (لعق الشفاه، امتصاص، زمّ، ابتسام، تكشير، بلع، نطق كلمات، أو مزيج). بعدين بعد عمودي وعلاقة مركزية مبدئيان؛ طبعة نهائية بـ ZOE ويه تقنية الفم المغلق؛ التحديد النهائي للبعد والعلاقة؛ صب المصبوبات الرئيسية، عمل دليل جصي للمنطقة المحايدة، التركيب على المفصلة، وترتيب الأسنان بتجويه الدليل الجصي؛ ثم تجربة شمع والتحقق داخل الفم.</p><p><b>بمرحلة العلاقة الفكية:</b> طبعة أولية بمركب وطبعة نهائية بـ ZOE؛ قاعدة سجل سفلية أكريل ويه حلقات سلك، والحافة العلوية قاعدة أكريل وشمع؛ أعمدة إطباق من عيدان خضر على الحلقات لتحديد ارتفاع الإطباق؛ سجل العلاقة؛ يُخلط مكيّف نسيج ويوضع على القاعدة السفلية والمريض يعمل امتصاص وتكشير وصفير وزمّ الشفاه وبلع حتى يُقولَب المكيّف؛ تُرجع القاعدة للمصبوب ويُعمل دليل جصي؛ وترتيب الأسنان حسب المنطقة المحايدة الحاصلة.</p>","<p><b>بمرحلة التجربة:</b> فازلين على أسنان طقم التجربة؛ مادة طبعة (عادة سيليكون جسم خفيف) على السطوح الشدقية واللسانية للطقم المشمَّع؛ المريض يؤدي وظيفة فموية؛ افحص الطبعة على المنطقة المصقولة بما فيها السطح اللساني؛ واقطع المادة فوق سطوح الأسنان بحذر بالسكينة.</p><p><b>على طقم منتهٍ:</b> افحص أولاً مدى مناسبته للتقنية. غطِّ السطح المصقول بسيليكون منخفض اللزوجة؛ المريض يؤدي حركات وظيفية والمادة تتصلب؛ افحص وعدّل أي تماس عضلي ثقيل؛ شكّل الدليل؛ شيل أسنان الطقم القديم ويه جزء من القاعدة؛ حط شمع بالمنطقة المحايدة ورتّب الأسنان؛ فلِّ وأنهِ. يمكن تطبيقها على قطعة من الطقم تحتاج تعديل: شيل أسنان وقاعدة تلك القطعة، حط لاصق للسيليكون، وأكمل بنفس الخطوات.</p><p>المقارنة ويه الطقم السفلي التقليدي حسب موضع الأسنان نسبة لقمة الحافة: الأمامية — التقليدي شوية شفوي، المحايدة شوية لساني؛ الضواحك — التقليدي تماماً على القمة، المحايدة شوية لساني؛ الخلفية — التقليدي لساني، المحايدة شدقي. مساحة سطح النسيج بالطقم المحايد أعلى من التقليدي؛ وحجم الطقم المحايد أقل من التقليدي.</p><p>القيود: لزوجة المادة (كل ما زادت صعُب القولبة العضلية)؛ المسنون قد يعانون لفقدان توتر العضلات؛ لازم ثبات وتثبيت وراحة لقواعد السجل حتى الحركات تتم صح؛ المنطقة الناتجة غالباً ضيقة وقد تكون لسانية الموضع فتضّر حركة اللسان والنطق؛ والتقنية ما تقدم إرشادات لاختيار الأسنان.</p>","<p>تعريف المنطقة المحايدة، ولماذا مركزة/لسننة الإطباق قد تمنع البوقية وتزعزع الطقم السفلي.</p>","<p>أسئلة ختامية + بطاقة + زر الدرجة: جدول مواضع الأسنان مقابل التقليدي، وقيود التقنية (اللزوجة، توتر المسنين، ضيق المنطقة اللسانية، وما في إرشاد لاختيار الأسنان). إذا غلطت ارجع للشرائح. هذا آخر ملف بالمنهج حتى صفحة 645.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
