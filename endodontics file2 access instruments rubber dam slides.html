@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Endodontics File 2 — Access Opening (Part II), Instruments, and the Rubber Dam</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Endodontics · 4th year · Lectures 3–4</div>
+    <h1>Access Opening (Part II), Instruments, and the Rubber Dam</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lectures 3–4 by Prof. Dr. Hussain Al-Huwaizi (PDF pages 24–47).</p>
+    <ul>
+      <li>Four pre-access guidelines, access burs including the Endo Z bur, and step-by-step anterior and premolar openings</li>
+      <li>Six pulp-cavity anomalies, and access errors (perforation, cutting more apically, a narrow or over-extended opening, and a labial or proximal entrance)</li>
+      <li>General and intracanal instruments: barbed broach, K-reamer and K-file, K-flex, Hedström, spreader and plugger</li>
+      <li>ISO standardization (D0, 2% taper, D16, lengths 21/26/31 mm) and the lecture’s colour-coding sequence</li>
+      <li>Four modes of action, and the rubber dam: reasons, sheet and frames, Ivory clamps, and the three application methods</li>
+      <li>Total run time: <b>50 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 25</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Endodontics · File 2","t":"Access opening (part II), instruments, and the rubber dam","b":"<p>University of Baghdad, College of Dentistry — Endodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This 4th-year file covers PDF pages 24–47 (Prof. Dr. Hussain Al-Huwaizi / أ.د. حسين الحويزي), Lectures 3–4: guidelines, burs and step-by-step access for anterior teeth and premolars, pulp-cavity anomalies, errors in access opening, general and intracanal instruments (including ISO colour coding and modes of action), and rubber-dam components, clamps and the three application methods.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Medical terms stay in English next to the Arabic.</p>"},{"k":"4th year · Access opening, part II","t":"Four guidelines before the bur starts","b":"<p>The lecture opens Lecture 3 with four guidelines for access-cavity preparation.</p><p><b>1) Study the pre-operative radiograph.</b> It shows the surrounding structures of the tooth being treated (bone, lamina dura, maxillary sinus, and adjacent teeth). It gives information about the size, shape, number and curvature of the root canals and roots. It also helps the operator know the depth of preparation, the position of the cavity, and how to align the bur and handpiece during cavity preparation.</p><p><b>2) Excavate all caries.</b> No caries should be left in the tooth, because microorganisms of the carious lesion may be introduced inside the canal during endodontic treatment and cause infection.</p><p><b>3) Replace any defective filling.</b> The defective filling should be removed and replaced, either by a temporary or a permanent restoration, before starting the access opening, because a defective old filling cannot ensure proper sealing of the access cavity.</p><p><b>4) Remove unsupported tooth structure.</b> Any weak tooth structure might fracture, and that would cause loss of the cavity seal and of the reference point, which changes the length of the canals.</p>"},{"k":"4th year · Access burs","t":"Access-opening burs, and the Endo Z refining bur","b":"<p><b>Access opening burs</b> are round burs with a 16 mm bur shank (3 mm longer than standard burs).</p><p><b>Access refining burs</b> are coarse flame-shaped, tapered-round, and diamond burs used for refining the walls of the access cavity. An example is the <b>Endo Z bur</b>: it is made of tungsten carbide. It is a long taper fissure bur used to prepare funnel-shaped cavity walls. It has a safe-ended (non-cutting) tip to prevent penetration and perforation of the pulp-chamber floor or the root-canal walls.</p>"},{"k":"4th year · Anterior access","t":"Anterior access: where to enter, and how the bur changes direction","b":"<p>Entrance is always gained through the <b>lingual surface</b> of all anterior teeth. The initial penetration is prepared in the exact centre of the tooth above the cingulum (in the centre of the middle third).</p><p>The initial entry in the enamel is done by a <b>round bur no. 4 (1.4 mm)</b> operated at a right angle to the long axis of the tooth. The guide for enamel penetration is that only the head of the round bur no. 4 should enter the tooth.</p><p>Then the direction of the bur is changed to be <b>parallel to the long axis</b> of the tooth, and the operator drills until the entrance to the pulp chamber. The operator can know that the pulp chamber has been reached when the cutting resistance on the bur is lost — like falling into a hole — that is, the bur falls into a space which is the pulp chamber.</p>"},{"k":"4th year · Anterior access","t":"Anterior access: deroofing, pulp horns, the lingual shoulder, and the barbed broach","b":"<p><b>3)</b> Remove the roof of the pulp chamber and the pulp horns by working from inside towards the outside of the chamber (a pulling motion). The pulp horns should be eliminated with a <b>round bur no. 2</b> used laterally and incisally, because if they remain, remnants of necrotic tissue would cause discoloration of the anterior teeth.</p><p><b>4)</b> The <b>lingual shoulder</b> — a convexity inside the pulp chamber — is removed by moving the bur from inside towards the outside, to give a continuous smooth flaring preparation.</p><p><b>5)</b> Finishing and funneling are done with a fissure bur. The final shape of the access cavity should coincide with the size of the pulp chamber. The access also funnels down to the orifice of the canal and flares outwards.</p><p><b>6)</b> Extirpate the pulp by introducing a <b>barbed broach</b> into the root canal; by an outward movement the broach catches the pulp and removes it. <b>7)</b> Irrigate the pulp chamber.</p>"},{"k":"4th year · Premolar access","t":"Premolar access: occlusal entry, a buccal chamber in lower premolars, and a rule about the floor","b":"<p>Access is always gained through the <b>occlusal surface</b> of all posterior teeth, at the centre of the central groove. Initial penetration is made parallel to the long axis of the tooth into the exact centre of the central groove. A round bur no. 2 or 4 is used to open into the pulp chamber; the bur will be felt to drop if the pulp is reached. The cavity should be extended bucco-lingually by removing the roof of the pulp chamber, working from inside the cavity to the outside (pulling motion). Finishing of the cavity walls is done with a fissure bur. The final access opening is ovoid buccolingually, reflecting the anatomy of the pulp chamber and the position of the buccal and lingual canal orifices.</p><p>The pulp chamber of the <b>lower premolars is buccally located</b> rather than lingually, so access is started and pushed more buccally. For <b>upper premolars</b>, when there are two canals with curvatures, the buccal canal is sometimes approached palatally, and the palatal canal buccally. The <b>floor of the pulp chamber should not be reached</b>.</p>"},{"k":"4th year · Pulp-cavity anomalies","t":"Six tooth anomalies that interfere with root-canal treatment","b":"<p>Certain tooth anomalies interfere with root-canal treatment — for example calcification or complete obliteration of the root canal, open apices, and others. This lecture lists six:</p><p><b>1. Dentinogenesis imperfecta:</b> there is a small pulp chamber with root-canal obstruction.</p><p><b>2. Hyperparathyroidism:</b> there is a calcified pulp chamber and loss of the lamina dura.</p><p><b>3. Hypofunction of the pituitary gland:</b> there is retarded eruption of the teeth, and the apices of the root will be open.</p><p><b>4. Dentinal dysplasia:</b> there is obliteration of the pulp chamber, and root formation is defective.</p><p><b>5. Shell teeth:</b> the pulp chamber is quite big, with a short root.</p><p><b>6. Dense invagination</b> (as written in the lecture): there is an improper shape of the root canal.</p>"},{"k":"4th year · Errors in access","t":"Access errors: perforation, and cutting more apically","b":"<p><b>1. Perforation.</b> It is common when drilling is continued apically or laterally after reaching the pulp chamber. It is mostly seen in: (a) old patients, because of a small pulp size due to recession; (b) teeth restored by crowns, inlays or big restorations — it is difficult to know the long axis of the tooth, so it is better to remove the restoration and work; (c) tilted teeth; (d) failure to complete a convenient extension.</p><p><b>2. Cutting more apically</b> flattens the floor of the pulp chamber and weakens the tooth structure. This causes: (a) losing the funneling shape of the canal orifice; (b) perforation into the furca; (c) <b>gouging</b> — going laterally in the access opening, so the wall of the cavity will not continue with the wall of the root canal.</p>"},{"k":"4th year · Errors in access","t":"Access errors: a narrow opening, a labial or proximal entrance, and over-extension","b":"<p><b>3. Narrowing the access opening</b> causes incomplete pulp extirpation and incomplete instrumentation through the pulp chamber or pulp horn. This is identified by: (a) excessive bleeding; (b) a change of the colour of the pulpal-floor dentin to dark, due to incomplete cleaning of pulp tissue; (c) anatomical landmarks of the floor — a convex floor and grooves connecting the canal orifices — not being seen clearly; (d) if a probe is placed in the pulp chamber and pulled against the walls, it catches part of the roof of the pulp chamber, which the lecture says indicates remnants of pulp tissue.</p><p><b>4. Entrance through the labial or proximal surfaces</b> is sometimes performed because of severe crowding or caries on the labial surface, or through the proximal surface if the adjacent tooth is missing. This type of access causes incomplete pulp extirpation.</p><p><b>5. An over-extended access-opening preparation</b> undermines and weakens the enamel walls.</p>"},{"k":"اختبر نفسك","t":"Quiz: guidelines, the Endo Z bur, and access errors","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Why must unsupported tooth structure be removed before access opening?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Only to improve colour of the enamel</button><button type=\"button\" class=\"opt\" data-i=\"1\">Weak tooth structure might fracture, causing loss of the cavity seal and of the reference point, which changes canal length</button><button type=\"button\" class=\"opt\" data-i=\"2\">Because the Endo Z bur cannot cut enamel</button><button type=\"button\" class=\"opt\" data-i=\"3\">It is needed only in lower incisors</button></div><div class=\"qexp\" hidden><p>البنية الضعيفة إذا انكسرت يضيع ختم التجويف ونقطة المرجع، فيتغيّر طول الأقنية. مو موضوع لون، وEndo Z bur مو السبب.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Which description of the Endo Z bur matches this lecture?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A short round bur with a 10 mm shank and a sharp cutting tip used to perforate the floor on purpose</button><button type=\"button\" class=\"opt\" data-i=\"1\">A tungsten-carbide long taper fissure bur that prepares funnel-shaped walls and has a safe-ended non-cutting tip to protect the chamber floor and canal walls</button><button type=\"button\" class=\"opt\" data-i=\"2\">A barbed broach used to extirpate the pulp</button><button type=\"button\" class=\"opt\" data-i=\"3\">A metal Young’s frame for the rubber dam</button></div><div class=\"qexp\" hidden><p>Endo Z bur من كربيد التنغستن، شق مستدق طويل، جدران قمعية، ورأس آمن غير قاطع حتى ما يثقب الأرضية أو جدران القناة. الساق 16 ملم هي burs الفتح الدائرية، مو هذا.</p></div></div><div class=\"qbox\" data-ans=\"3\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Flattening the pulp-chamber floor by cutting more apically can cause all of the following except:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Losing the funneling shape of the canal orifice</button><button type=\"button\" class=\"opt\" data-i=\"1\">Perforation into the furca</button><button type=\"button\" class=\"opt\" data-i=\"2\">Gouging, so the cavity wall does not continue with the canal wall</button><button type=\"button\" class=\"opt\" data-i=\"3\">A guaranteed improvement in the reference point and a stronger tooth</button></div><div class=\"qexp\" hidden><p>القطع أكثر للذروة يضعّف السن: يضيّع قمع الفوهة، قد يثقب الفرقة، وقد يسوي gouging. ما يقوّي السن ولا يحسّن نقطة المرجع.</p></div></div>"},{"k":"4th year · General instruments","t":"General instruments: explorer, plastic instrument, excavator, and locking pliers","b":"<p><b>1. Endodontic explorer.</b> A double-ended instrument: one end is straight and is used to locate the root-canal orifices after removal of the pulp chamber; the other end is L-shaped and aids in detecting unremoved parts of the tooth, such as the roof of the pulp chamber.</p><p><b>2. Plastic instrument.</b> It has two ends: the first is used to carry temporary filling material; the opposite end is used as a plugger to condense cement and base materials in the root canal.</p><p><b>3. Endodontic excavator.</b> It has a longer shank than a spoon excavator, used to allow excavation of the contents of the pulp chamber. It is also used in curettage of periapical lesions in surgical endodontics (apicectomy).</p><p><b>4. Endodontic locking pliers (tweezers).</b> They have a lock that allows materials to be held without continuous finger pressure, and a groove which facilitates holding gutta-percha and absorbing points.</p>"},{"k":"4th year · General instruments","t":"Ruler, irrigating syringe, organizer, transfer sponge, and the rubber stopper","b":"<p><b>5. Endodontic ruler.</b> A metal ruler made of 0.5 mm divisions. It is a convenient instrument to measure reamers, files and gutta-percha.</p><p><b>6. Endodontic syringe.</b> It is used to carry irrigating solution into the root canal. The tip of the needle is rounded to prevent canal-wall engagement; it also has a lateral opening and a groove in its tip to permit irrigation that might be under pressure to flow coronally rather than be forced into the apical foramen, which would cause post-operative pain.</p><p><b>7. Instrument organizer (endodontic kit).</b> It is used for arrangement of reamers and files according to size and length. The organizer provides holes for the files to be placed vertically in a sponge saturated with disinfectant, to maintain sterility.</p><p><b>8. Transfer sponge.</b> A sponge saturated with disinfectant solution; reamers and files can be placed in it after being used.</p><p><b>9. Instrument stopper (rubber stopper).</b> It is used to mark the length of the root canal on reamers and files. It should be perpendicular to the long axis of the reamer. It may be made of rubber or metal.</p>"},{"k":"4th year · Intracanal instruments","t":"The barbed broach: uses, and the two-thirds rule","b":"<p>The <b>barbed broach</b> is used inside the canal. It is a short-handled instrument with a shaft having projections directed obliquely towards the handle. It is made of stainless steel, and is used for extirpation of vital pulp and for removal of necrotic tooth debris inside the canal. It can also be used to remove cotton and paper points from the canal.</p><p>It is used in the straight parts of the canal and is inserted freely (by using a suitable size) to the <b>two-thirds</b> of the pulp canal; otherwise, fracture of the instrument may occur.</p>"},{"k":"4th year · Intracanal instruments","t":"K-reamers and K-files, the K-flex file, and Hedström files","b":"<p>K-reamers and K-files are made of stainless steel, because it is more flexible than carbon steel and does not corrode; nowadays a super-flexible material, <b>nickel-titanium</b>, is used. Reamers and files are manufactured by twisting a triangular or square bar to produce flutes, but they differ in the number of flutes.</p><p><b>(a) Reamers</b> are mostly used in a reaming action and are less effective in a filing action. Reamer = <b>0.5–1 flute/mm</b>.</p><p><b>(b) Files</b> are less flexible than reamers. A file is mostly used in a filing action but can also be used in a reaming action. K-file = <b>1.5–2.25 flute/mm</b>.</p><p><b>(c) K-flex file:</b> a diamond-cross-section bar. It is more flexible and has sharper blades, with a non-cutting tip (blind tip).</p><p><b>(d) Hedström files</b> (written “Hedstorem” in the lecture) are machined instruments made of a stainless-steel bar, triangular in shape with very sharp edges. They are very active in a pulling action only, while K-files are effective in both pulling and pushing. A Hedström file cannot be used in a rotation movement.</p>"},{"k":"4th year · Intracanal instruments","t":"Spreaders and pluggers","b":"<p>A <b>spreader</b> is a long, tapered, pointed-end instrument, used to compress gutta-percha into the apex and the periphery of the prepared canal, and also towards the irregularities of canals, leaving a space for insertion of auxiliary root-canal filling-material cones. There is also a finger spreader, and a long-handled spreader which is smaller and shorter to be used in posterior teeth.</p><p>A <b>plugger</b> is a long instrument with a blunt, flat-tip blade. It is necessary for the vertical-condensation technique, and also for plugging of gutta-percha at the termination of all other obturation condensation techniques. There are two types of pluggers: the long-handled type and the finger type.</p>"},{"k":"4th year · Standardization","t":"ISO tip size, the 2% taper, D16, lengths, and colour coding","b":"<p>Each instrument has a number which refers to the size of its tip. A reamer of size 30 means that <b>D0 = 0.3 mm</b>; size 70 means D0 = 0.7 mm. The difference between D0 and D1 is 0.02 mm, which is the value of ISO tapering (<b>2%</b>). <b>D16 = D0 + 0.32 mm</b>. So in a size 50 reamer the tip (D0) is 0.5 mm while D16 is 0.82 mm. The distance between D0 and D16 is 16 mm.</p><p>Files also differ in total length: short (<b>21 mm</b>), medium (<b>26 mm</b>), and long (<b>31 mm</b>) for anterior teeth, and the shorter ones for posterior teeth.</p><p>All intracanal instruments are colour-coded, and each colour represents a size: <b>pink = 6, gray = 8, purple = 10, white = 15, yellow = 20, red = 25, blue = 30, green = 35, black = 40</b>, then the colour returns to <b>white = 45</b>, and so on to <b>blue = 60</b>; then the instruments increase by 10, as <b>green = 70, black = 80</b>, and so on to size 140.</p>"},{"k":"4th year · Modes of action","t":"Four modes of action: reaming, filing, quadrant-turn filing, and circumferential filing","b":"<p><b>1. Reaming action:</b> a repeated clockwise rotation of the instrument which shaves the canal walls and gives a cross-sectional preparation that is approximately round. Reamers are usually more effective for this function.</p><p><b>2. Filing action:</b> a push-pull action without rotation, which has greater efficiency with files than with reamers. The cross-sectional appearance of the prepared root canal is irregular with a general oval configuration, so the canal must be filled with gutta-percha.</p><p><b>3. Quadrant-turn filing:</b> a combination of reaming and filing. The instrument is inserted in the root with a quarter-turn rotation (90°) then moved with a dragging motion to produce an oval cross-section. A K-file and a reamer can be used.</p><p><b>4. Circumferential filing:</b> filing or quarter-turn filing is used with emphasis placed on the out-stroke, so the file is dragged along different sides of the canal wall with each withdrawal. The resultant canal has a wide orifice with greater taper.</p>"},{"k":"اختبر نفسك","t":"Quiz: the barbed broach, flute numbers, colour coding, and modes of action","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A barbed broach, according to this lecture, should be:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Rotated vigorously to the full working length in a curved canal</button><button type=\"button\" class=\"opt\" data-i=\"1\">Inserted freely, in a suitable size, in the straight parts of the canal only as far as two-thirds of the pulp canal, or the instrument may fracture</button><button type=\"button\" class=\"opt\" data-i=\"2\">Used only as a plugger for vertical condensation</button><button type=\"button\" class=\"opt\" data-i=\"3\">Colour-coded pink to mean size 40</button></div><div class=\"qexp\" hidden><p>الـ barbed broach بالأجزاء المستقيمة، تدخل بحرية بحجم مناسب لحد ثلثي القناة، وإلا تنكسر. مو للدوران لطول العمل بالقنوات المنحنية. الوردي = 6 مو 40 (الأسود 40).</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">In this lecture, a reamer has how many flutes per millimetre, and a K-file how many?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Reamer 1.5–2.25 /mm and K-file 0.5–1 /mm</button><button type=\"button\" class=\"opt\" data-i=\"1\">Reamer = 0.5–1 flute/mm; K-file = 1.5–2.25 flute/mm. Files are less flexible than reamers</button><button type=\"button\" class=\"opt\" data-i=\"2\">Both always have 4 flutes/mm and are made only of carbon steel</button><button type=\"button\" class=\"opt\" data-i=\"3\">Hedström files have 0.5–1 flute/mm and are used in rotation</button></div><div class=\"qexp\" hidden><p>الـ reamer 0.5–1 حلزون/ملم؛ الـ K-file 1.5–2.25. الـ files أقل مرونة من الـ reamers. الـ Hedström ما تُدار، وفعال بالسحب فقط.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">ISO size 50 and colour coding: which statement is correct in this lecture?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Size 50 means D0 = 5.0 mm; pink = 40</button><button type=\"button\" class=\"opt\" data-i=\"1\">Size 50 means D0 = 0.5 mm and D16 = 0.82 mm (D16 = D0 + 0.32 mm; 2% ISO taper). Pink = 6, white = 15, then the colours repeat from white = 45; after blue = 60 the sizes increase by 10 (green = 70, black = 80)</button><button type=\"button\" class=\"opt\" data-i=\"2\">All files are only 18 mm long</button><button type=\"button\" class=\"opt\" data-i=\"3\">D16 is always equal to D0</button></div><div class=\"qexp\" hidden><p>حجم 50: D0=0.5 ملم، D16=0.82 (0.5+0.32). الميل 2%. وردي 6، أبيض 15، وترجع الألوان من أبيض 45؛ بعد أزرق 60 الزيادة كل 10. الأطوال 21 و 26 و 31 ملم.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A push-pull action without rotation, giving an irregular oval cross-section that must be filled with gutta-percha, is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Reaming action, which is a repeated clockwise rotation and gives an approximately round cross-section</button><button type=\"button\" class=\"opt\" data-i=\"1\">Filing action, which is more efficient with files than with reamers</button><button type=\"button\" class=\"opt\" data-i=\"2\">Only circumferential filing, which never uses an out-stroke</button><button type=\"button\" class=\"opt\" data-i=\"3\">Only the action allowed for a Hedström file in full rotation</button></div><div class=\"qexp\" hidden><p>البرد = دفع-سحب بدون دوران، مقطع بيضي غير منتظم، أكفأ ويه الـ files. التوسيع = دوران مع عقارب الساعة ومقطع تقريباً دائري. البرد المحيطي يركّز على سحبة الخروج ويعطي فوهة واسعة وميل أكبر.</p></div></div>"},{"k":"4th year · Rubber dam","t":"Why a rubber dam is used, its disadvantages, and how the lecture solves them","b":"<p>The need to work under dry conditions, free of saliva, has been recognized for centuries, and the idea of using a sheet of rubber to isolate the tooth dates more than 150 years (Castellucci, 2004). The rubber dam is a disposable aid in endodontic treatment, used for the following reasons: (1) it helps maintain a dry field of operation by eliminating salivary contamination; (2) it eliminates soft-tissue interference by retracting the cheek and tongue; (3) it enhances better concentration of the dentist by showing only the tooth to be treated; (4) it prevents intracanal irrigants from entering the mouth, because most of them have an unpleasant taste; (5) it prevents accidental swallowing or aspiration of the small, easily dropped endodontic instruments.</p><p>Disadvantages: (1) time-consuming; (2) limited communication between patient and operator; (3) cost. How to solve that: more training on using the rubber dam; enhancing communication using hand control; and anterior teeth can be isolated using <b>widgets</b>, which cost less than using clamps.</p><p>Components listed: rubber-dam sheets; rubber-dam frame; rubber-dam clamps; rubber-dam puncher; rubber-dam forceps; dental floss; scissors; widgets; and other optional components.</p>"},{"k":"4th year · Rubber dam sheet and frame","t":"Sheet thickness, colour, size and sides, and the three frames (Young, Starvisi, Nygaard-Ostby)","b":"<p>The sheet comes in a variety of thicknesses, colours and sizes. Thickness: <b>thin (0.15 mm)</b> — indicated in teeth with tight contact areas; it can be used in lower anterior teeth and partially erupted posterior teeth. <b>Medium (0.2 mm)</b> — indicated in general for all teeth. <b>Heavy (0.25 mm)</b> — has the advantage of providing great adaptation around the teeth and does not tear easily, but it exerts much force on the lips and cheek. Colour: <b>light</b> provides better illumination of the field; <b>dark</b> provides a sharp contrast between the tooth and the dark background, which is better for photography. Size: <b>5 × 5 inch (12.5 × 12.5 cm)</b> and <b>6 × 6 inch (15 × 15 cm)</b>. Type of surface: the <b>shiny side</b> faces the tissue and can slide over tissue without irritation; the <b>matte side</b> faces the tooth and does not reflect light.</p><p>The frame holds the dam so as to provide lip and cheek retraction and unobstructed access to the tooth. <b>Type A — Young’s frame:</b> U-shaped, made of metal; it might interfere with the X-ray and obscure important structures, so it should be removed before taking an X-ray. <b>Type B — Starvisi frame:</b> U-shaped, made from radiolucent plastic and nylon; regarded as a suitable substitute for Young’s frame. <b>Type C — Nygaard-Ostby frame</b> (written “Nygard – Ostby”): made from radiolucent plastic and nylon, and can be left inside the patient’s mouth while taking a radiograph without obstruction.</p>"},{"k":"4th year · Rubber dam clamps","t":"Ivory clamp numbers, winged versus wingless, and serrated versus non-serrated jaws","b":"<p>The clamp grasps the tooth to be treated and secures the dam and frame in place. Ivory numbers in this lecture: <b>No. 9</b> — incisors and bicuspids; <b>No. 1</b> — bicuspids; <b>No. 26</b> — molars; <b>No. 0</b> — incisors and cuspids, and for multiple isolation; <b>No. 14A</b> — molars that are partially erupted or badly broken down, and when other clamps fail.</p><p>According to the wing: a <b>winged</b> clamp offers additional retraction of the dam sheet and allows attachment of the sheet to the clamp before and during placement on the tooth. A <b>wingless</b> clamp is less bulky, and may be used easily in the posterior teeth in patients with particularly thick cheeks.</p><p>According to the jaw: <b>non-serrated</b> clamps can be used in most clinical cases and can be used on porcelain crowns. Some clamps have a different angle of the jaw, directed more gingivally for more anchorage — called gingivally approaching or deep-reaching clamps — used on fractured teeth or teeth with deep gingival caries that require deeper attachment. <b>Serrated</b> clamps are used for badly decayed teeth to gain more anchorage, but they are contraindicated with porcelain crowns.</p>"},{"k":"4th year · Rubber dam puncher and forceps","t":"The puncher’s six holes, and the clamp forceps","b":"<p>The rubber-dam puncher is an instrument used to create a hole in the rubber dam. The hole should be clear, without any tags or tears. The size of the hole punched depends on the tooth to be isolated. The puncher provides this hole so as to give maximum adaptation of the rubber dam around the tooth. The puncher has a rotating head with <b>six holes of varying sizes</b> and a sharp pointed plunger.</p><p>The rubber-dam holder (clamp forceps) is used to place the clamp on the tooth by grasping the rubber-dam clamp from two lateral holes and widening the clamp to fit on the tooth.</p><div class=\"flash\"><button type=\"button\" class=\"flash-q\">Name the five Ivory clamp numbers in this lecture and what each is for.</button><div class=\"flash-a\" hidden>No. 9: incisors and bicuspids. No. 1: bicuspids. No. 26: molars. No. 0: incisors and cuspids, and multiple isolation. No. 14A: molars that are partially erupted or badly broken down, or when other clamps fail.</div></div>"},{"k":"4th year · Applying the rubber dam","t":"Method 1: clamp, sheet and frame applied together","b":"<p>Method 1 is application of the rubber-dam clamp, sheet and frame together. Steps: select the suitable clamp; insert the wing in the hole after stretching the rubber dam on the frame, with the forceps; apply the clamp on the tooth; release the wing from the dam; re-stretch the rubber dam on the frame tightly to provide good retraction of the lips and cheek; swab the isolated tooth and the adjacent dam with a suitable disinfectant.</p><p>Advantages: (1) easy and fast; (2) it does not require the aid of assistance; (3) if the clamp snaps during placement, it is held by the dam. Disadvantage: it does not permit direct visualization of the tooth and soft tissues during placement.</p>"},{"k":"4th year · Applying the rubber dam","t":"Method 2 (clamp then sheet) and Method 3 (sheet then clamp)","b":"<p><b>Method 2:</b> application of the clamp, then the sheet. Steps: select the suitable clamp; place the clamp on the tooth; stretch the dam on the frame; draw the dam over the clamp. Advantages: (1) it allows unobstructed visualization of the tooth and surrounding tissues during clamp placement; (2) it is the most efficient method of dam placement if there is difficulty in securing the clamp. Disadvantages: (1) tearing of the dam; (2) dislodgment of the clamp during rubber-dam drawing.</p><p><b>Method 3:</b> application of the sheet, then the clamp. Steps: select the suitable clamp; stretch the dam on the frame; apply the dam on the tooth; while retracting the dam to expose the tooth and the adjacent gingiva, place the clamp on the tooth. Advantages: (1) there is little tendency to dislodgement of the clamp during placement; (2) it provides direct visualization of the tooth and adjacent gingiva. Disadvantage: it needs the help of assistance, especially in posterior teeth such as the mandibular molars.</p>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: rubber-dam sheets, frames, clamps, and the three methods","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Which sheet and frame facts match this lecture?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Thin is 0.5 mm and is for every tooth; Young’s metal frame can always stay on during the radiograph</button><button type=\"button\" class=\"opt\" data-i=\"1\">Thin = 0.15 mm (tight contacts, lower anteriors, partially erupted posteriors); medium = 0.2 mm (general); heavy = 0.25 mm (adapts well and resists tears but presses on the lips and cheek). The shiny side faces tissue; the matte side faces the tooth. Young’s metal frame should be removed before the X-ray; Nygaard-Ostby (radiolucent) can be left in place</button><button type=\"button\" class=\"opt\" data-i=\"2\">Dark sheets are only for tight contacts, and Starvisi is made of metal</button><button type=\"button\" class=\"opt\" data-i=\"3\">All sheets are 8 × 8 inch only</button></div><div class=\"qexp\" hidden><p>الرقيق 0.15، المتوسط 0.2، السميك 0.25 ملم. اللامع للنسيج، المطفي للسن. إطار Young المعدني يُشال قبل الأشعة؛ Nygaard-Ostby يبقى. Starvisi بلاستك/نايلون شفاف للأشعة، بديل لـ Young. المقاسات 5×5 و 6×6 إنج.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A badly broken-down, partially erupted molar, when other clamps have failed, is the indication in this lecture for Ivory clamp:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">No. 1 (bicuspids only)</button><button type=\"button\" class=\"opt\" data-i=\"1\">No. 14A (molars that are partially erupted or badly broken down, or when other clamps fail)</button><button type=\"button\" class=\"opt\" data-i=\"2\">No. 0 only, which is never used for multiple isolation</button><button type=\"button\" class=\"opt\" data-i=\"3\">A serrated clamp on a porcelain crown</button></div><div class=\"qexp\" hidden><p>14A للأرحاء البازغة جزئياً أو المكسورة بشدة، أو لما غيرهما يفشل. رقم 1 للضواحك. رقم 0 للقواطع والأنياب والعزل المتعدد. الكلابة المسنّنة ممنوعة على تاج البورسلين.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Serrated clamp jaws in this lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The first choice on every porcelain crown</button><button type=\"button\" class=\"opt\" data-i=\"1\">Used for badly decayed teeth to gain more anchorage, but contraindicated with porcelain crowns; non-serrated clamps can be used in most cases and on porcelain crowns</button><button type=\"button\" class=\"opt\" data-i=\"2\">The same as a Young’s frame</button><button type=\"button\" class=\"opt\" data-i=\"3\">Used only on lower incisors with widgets</button></div><div class=\"qexp\" hidden><p>المسنّنة لثبات أكثر على الأسنان المتسوسة بشدة، وممنوعة ويه تيجان البورسلين. غير المسنّنة لأغلب الحالات وعلى البورسلين.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Which method of applying the rubber dam is described as the most efficient when there is difficulty securing the clamp, and which method needs an assistant especially for mandibular molars?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Method 1 is most efficient if the clamp is difficult, and Method 2 needs an assistant for lower molars</button><button type=\"button\" class=\"opt\" data-i=\"1\">Method 2 (clamp then sheet) is the most efficient if there is difficulty securing the clamp; Method 3 (sheet then clamp) needs the help of assistance, especially for mandibular molars. Method 1 is easy and fast, does not need an assistant, and holds a snapped clamp, but does not allow direct visualization during placement</button><button type=\"button\" class=\"opt\" data-i=\"2\">Method 3 is the only method that never visualizes the gingiva</button><button type=\"button\" class=\"opt\" data-i=\"3\">All three methods are identical and never have disadvantages</button></div><div class=\"qexp\" hidden><p>طريقة 2 (كلابة ثم ورقة) أكفأ إذا تثبيت الكلابة صعب. طريقة 3 (ورقة ثم كلابة) تحتاج مساعد خاصة بالأرحاء السفلية. طريقة 1 سهلة وسريعة وبدون مساعد وتمسك الكلابة إذا انكسرت، بس الرؤية أثناء التركيب ناقصة.</p></div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا ثاني ملف لحشوات الجذور: فتحة الدخول جزء ثاني، الأدوات، والحاجز المطاطي. صفحات المنهج 24–47، محاضرات 3 و 4 للأستاذ الدكتور حسين الحويزي. شرح عراقي مفصل ويه أسئلة بكل قسم.</p>","<p>قبل لا تفتح السن، المحاضرة تحط أربع قواعد. مو شغل عشوائي.</p><p><b>1) ادرس الصورة الشعاعية قبل العمل.</b> هي توريك العظم حوالين السن، والصفيحة الصلبة (<b>lamina dura</b>)، والجيب الفكي، والأسنان المجاورة. وهم توريك حجم وشكل وعدد وانحناء الأقنية والجذور. وهم تساعد تعرف عمق التحضير، وين تحط الفتحة، وكيف تسوّي اتجاه السنبل والقبضة.</p><p><b>2) نظّف كل التسوس.</b> لا تترك نخر بالسن. إذا بقي تسوس، الجراثيم ممكن تدخل للقناة أثناء العلاج وتصير خمج. يعني نظّف العدوة قبل لا تفتح الطريق للب.</p><p><b>3) بدّل أي حشوة معيبة.</b> احذف الحشوة القديمة الخربانة وبدلها مؤقتة أو دائمة قبل فتح الدخول. الحشوة المعيبة ما تضمن ختم فتحة الدخول، فيصير تلوث.</p><p><b>4) احذف البنية الضعيفة غير المدعومة.</b> إذا بقيت قطعة سن ضعيفة ممكن تنكسر. إذا انكسرت تضيع ختم التجويف ونقطة المرجع (<b>reference point</b>)، وطول القناة يتغيّر. يعني كل القياسات بعدين تصير غلط.</p>","<p> burs الفتح الأولي: bur دائري ويه ساق طولها <b>16 ملم</b>، يعني أطول بـ <b>3 ملم</b> من الـ bur العادي. ليش أطول؟ حتى توصل للحجرة بدون ما تقرّب الرأس زيادة.</p><p> burs التشذيب: خشنة بشكل لهب، مستدقة دائرية، وألماس، حتى تصقل جدران الفتحة. مثال مهم: <b>Endo Z bur</b>. مصنوع من كربيد التنغستن (<b>tungsten carbide</b>). هو bur شق مستدق طويل يجهّز جدران قمعية الشكل. رأسه <b>آمن غير قاطع</b> (safe-ended / non-cutting tip) حتى ما يثقب أرضية الحجرة أو جدران القناة. يعني يشذّب الجدران بس الرأس ما يحفر للأسفل.</p>","<p>بالأسنان الأمامية، الدخول دائماً من السطح <b>اللساني</b> (مو الشفوي). البداية بمنتصف السن فوق الحديبة اللسانية (<b>cingulum</b>)، بمركز الثلث الأوسط.</p><p>أول دخول بالميناء ويه <b>bur دائري رقم 4</b> (قطره 1.4 ملم)، ويكون عمودي على المحور الطويل للسن. الدليل: بس رأس الـ bur رقم 4 يدخل بالميناء، مو كل الساق.</p><p>بعدين تغيّر اتجاه الـ bur حتى يصير <b>موازي للمحور الطويل</b>، وتحفر لتوصل لحجرة اللب. كيف تعرف وصلت؟ مقاومة القطع تضيع، كأن الـ bur طاح بحفرة. هذا الفراغ هو حجرة اللب. لا تكمل تحفر للأسفل بعد هاللحظة.</p>","<p>بعد ما تدخل الحجرة: احذف السقف وقرون اللب بالشغل من الداخل للخارج (حركة سحب، مو دفع للكباري). قرون اللب تُزال بـ <b>bur دائري رقم 2</b> جانبياً ونحو القاطع. إذا بقيت، بقايا النسيج المتنخر تصبغ الأسنان الأمامية. يعني اللون يتغير بعدين.</p><p>الكتف اللساني (<b>lingual shoulder</b>) هو تحدب داخل حجرة اللب. احذفه هم من الداخل للخارج حتى يصير تحضير متوهج ناعم مستمر.</p><p>التشطيب والتوهج ويه bur شق. الشكل النهائي يطابق حجم الحجرة، ويتوهج للقمة برا ويقمع لتحت نحو فوهة القناة.</p><p>استئصال اللب ويه أداة اسمها <b>barbed broach</b> (المبرد الشائك): تدخلها بالقناة وبحركة للخارج تمسك اللب وتطلعه. وبعدين اغسل الحجرة.</p>","<p>الخلفية كلها (بما فيها الضواحك) تُفتح من السطح <b>الإطباقي</b>، بمركز الميزاب المركزي، والدخول موازي للمحور الطويل. bur دائري 2 أو 4؛ تحس الـ bur يطيح لما توصل للب. وسّع الفتحة شدقياً-لسانياً بحذف السقف من الداخل للخارج. التشطيب bur شق. الشكل النهائي بيضي شدقي-لساني، يعكس شكل الحجرة ومكان الفوهات الشدقية واللسانية.</p><p>مهم بالضواحك السفلية: حجرة اللب<b> موجودة شدقياً</b> أكثر من لسانياً، فابدأ وادفع أكثر للشدقي. بالضواحك العلوية إذا في قناتين منحنيتين، أحياناً تقترب للقناة الشدقية من الحنكي، وللحنكية من الشدقي (مو العكس اللي تتوقعه دايماً). و<b>لا توصل لأرضية الحجرة</b> — الأرضية تبقى علامة تشريحية، إذا حفرتها تضيع الفوهات أو تثقب.</p>","<p>في تشوهات تعرقل علاج القناة: تكلس، طمس كامل للقناة، ذرا مفتوحة، وغيرها. المحاضرة تعد ستة، احفظ كل واحد ويه شنو يسوي بالحجرة:</p><p><b>1. Dentinogenesis imperfecta</b> (نقص تكون العاج): حجرة لب صغيرة ويه انسداد بالقناة.</p><p><b>2. فرط نشاط جار الدرقية (hyperparathyroidism)</b>: حجرة متكلسة <b>وضياع الصفيحة الصلبة</b> (lamina dura). هذا الرقم يميّزه.</p><p><b>3. نقص وظيفة الغدة النخامية</b>: بزوغ متأخر، وذرا الجذور تبقى مفتوحة (open apices).</p><p><b>4. خلل تنسج العاج (dentinal dysplasia)</b>: طمس حجرة اللب، وتكوّن الجذر معيب.</p><p><b>5. أسنان القشرة (shell teeth)</b>: حجرة اللب كبيرة جداً ويه جذر قصير. كأنها قشرة ويه فراغ كبير.</p><p><b>6. Dense invagination</b> (انغماد كثيف، مثل dens in dente): شكل القناة غير سليم.</p>","<p><b>الانثقاب (perforation)</b> يصير لما تكمل الحفر ذروياً أو جانبياً بعد ما وصلت للحجرة. شائع عند: المسنين (اللب صغير من الانحسار)؛ الأسنان المرممة بتاج أو حشوة كبيرة أو inlay (صعب تعرف المحور الطويل، فالأفضل تشيل الترميم وتشتغل)؛ الأسنان المائلة؛ وإذا ما سويت توسيع مناسب للفتحة.</p><p><b>القطع أكثر للذروة</b> يسطّح أرضية الحجرة ويضعّف السن. النتيجة: تضيع شكل القمع لفوهة القناة؛ انثقاب للفرقة (<b>furca</b>) بين الجذور؛ و<b>gouging</b> (حفر جانبي) بحيث جدار الفتحة ما يكمل ويه جدار القناة — يصير درج أو حفرة بالجنب مو طريق مستقيم.</p>","<p><b>فتحة ضيقة</b> تعني ما تطلّع كل اللب وما تحضّر الحجرة وقرون اللب كاملة. علامات الضيق: نزف زايد؛ لون أرضية العاج يصير غامق من بقايا اللب؛ المعالم التشريحية للأرضية (أرضية محدبة وميازيب تربط الفوهات) ما تبين بوضوح؛ وإذا حطيت مسبر بالحجرة وسحبته على الجدران يمسك جزء من سقف الحجرة (بقايا سقف/لب). يعني الفتحة بعد ضيقة وفوگها باقي سقف.</p><p><b>الدخول من الشفوي أو من السطح الملاصق</b> أحياناً يصير من زحمة شديدة أو نخر شفوي، أو من الملاصق إذا السن المجاور مفقود. هالنوع يخلي استئصال اللب ناقص.</p><p><b>الفتحة الواسعة زيادة</b> تقوّض جدران الميناء وتضعّفها. لا توسّع أكثر من حجم الحجرة.</p>","<p>ثلاث أسئلة: ليش نشيل البنية الضعيفة، شنو Endo Z bur، وشنو أضرار القطع أكثر للذروة.</p>","<p><b>المسبر اللبي (explorer)</b>: رأسين. رأس مستقيم يحدد فوهات الأقنية بعد حذف الحجرة. الرأس الثاني بشكل L يساعد تكشف أجزاء باقية من السن، مثل سقف الحجرة اللي ما انحذف.</p><p><b>أداة البلاستك</b>: طرف يحمل مادة الحشوة المؤقتة، والطرف الثاني يعمل سداد (<b>plugger</b>) لرصّ الإسمنت والقواعد بالقناة.</p><p><b>المنقرة اللبية (excavator)</b>: ساقها أطول من منقرة الملعقة العادية، حتى تفرّغ محتويات الحجرة. وهم تُستخدم بكحت الآفات الذروية بالجراحة اللبية (قطع الذروة / apicectomy).</p><p><b>الملقط القافل</b>: قفل يمسك المادة بدون ضغط إصبع مستمر، وفيه ميزاب يسهّل مسك الـ gutta-percha ونقاط الامتصاص (paper points).</p>","<p><b>المسطرة اللبية</b>: معدنية وتقسيماتها <b>0.5 ملم</b>. تقيس بها الموسّعات والبرادي والـ gutta-percha.</p><p><b>السرنجة اللبية</b>: تنقل الغسول للقناة. رأس الإبرة مدور حتى ما ينغرز بجدار القناة. وفيها فتحة جانبية وميزاب بالرأس حتى الغسول إذا كان تحت ضغط يطلع تاجياً، مو يندفع للثقبة الذروية ويسبب ألم بعد الجلسة. يعني مسار الهروب للتاج، مو للذروة.</p><p><b>منظم الأدوات</b>: يرتب الموسّعات والبرادي حسب الحجم والطول، بثقوب عامودية بإسفنجة مشبعة بمطهر حتى تبقى معقمة.</p><p><b>إسفنجة النقل</b>: هم مشبعة بمطهر، تحط بيها الأدوات بعد الاستعمال.</p><p><b>السدادة (stopper)</b>: تعلّم طول القناة على الأداة. لازم تكون <b>عمودية على المحور الطويل</b> للموسّع. ممكن مطاط أو معدن. إذا مائلة، القياس يصير غلط.</p>","<p>الـ <b>barbed broach</b> أداة قصيرة المقبض، ويه العمود نتوءات مائلة باتجاه المقبض (مثل الأشواك راجعة للمقبض). من الستينلس ستيل. تُستخدم لاستئصال اللب الحي، ولرفع فضلات السن المتنخرة من القناة، وهم تطلّع القطن وورق الامتصاص من القناة.</p><p>قاعدة مهمة: استخدمها بالأجزاء <b>المستقيمة</b> من القناة، وأدخلها بحرية (حجم مناسب، مو محشورة) لحد <b>ثلثي</b> القناة. إذا دخلتها أعمق أو بحجم أكبر، ممكن تنكسر جوه. لا تلويها بالقنوات المنحنية.</p>","<p>الموسّعات (<b>reamers</b>) والبرادي (<b>files</b>) من الستينلس ستيل لأنّه ألين من الفولاذ الكربوني وما يصدأ. هسه بعد يستخدمون <b>نيكل-تيتانيوم</b> (NiTi) أكثر مرونة. يُصنعون بفتل قضيب مثلث أو مربع حتى تتكون حلزونات (<b>flutes</b>)، والفرق بعدد الحلزونات.</p><p>الـ reamer غالباً لحركة التوسيع الدورانية، وأقل فعالية بحركة البرد. عدد الحلزونات: <b>0.5–1 لكل ملم</b>.</p><p>الـ file أقل مرونة من الـ reamer. غالباً لحركة البرد، بس يقدر يُستخدم بالتوسيع هم. K-file = <b>1.5–2.25 حلزون/ملم</b> (أكثر حلزونات، يعني أخشن للبرد).</p><p><b>K-flex</b>: مقطع معيني (diamond)، أكثر مرونة وشفرات أحدّ، ورأس غير قاطع (blind tip).</p><p><b>Hedström</b>: مصنوعة بالتشغيل الآلي من قضيب ستينلس مثلث، حروف حادة جداً. فعالة جداً بالسحب فقط؛ بينما K-file تسحب وتدفع. الـ Hedström <b>ما تُستخدم بالدوران</b> — إذا دوّرتها تنكسر أو تتعرّز.</p>","<p>الـ <b>spreader</b> (المباعد): طويل، مستدق، رأسه مدبب. يرصّ الـ gutta-percha نحو الذروة ونحو محيط القناة المحضَّرة ونحو عدم انتظام الأقنية، ويترك فراغ حتى تدخل مخاريط حشو إضافية (auxiliary cones). في نوع إصبعي، ونوع بمقبض طويل أصغر وأقصر للأسنان الخلفية.</p><p>الـ <b>plugger</b> (السداد): طويل ورأسه<b> أنف مسطح كليل</b> (مو مدبب). لازم بتقنية الرص العمودي، وهم لسد الـ gutta-percha بنهاية كل تقنيات الرص الأخرى. نوعان: مقبض طويل، وإصبعي. فرّق: المباعد مدبب يفتح مكان للمخروط الجاي؛ السداد مسطح يدفع للمادة للأسفل.</p>","<p>رقم الأداة = حجم رأسها. حجم 30 يعني <b>D0 = 0.3 ملم</b> (الرقم تقسيم 100). حجم 70 يعني 0.7 ملم. الفرق بين D0 و D1 هو 0.02 ملم، وهذا ميل الـ ISO (<b>2%</b>). بعد 16 ملم من الرأس: <b>D16 = D0 + 0.32 ملم</b> (لأن 16 × 0.02 = 0.32). مثال المحاضرة: حجم 50، الرأس 0.5 ملم و D16 = 0.82 ملم. المسافة بين D0 و D16 هي 16 ملم.</p><p>أطوال الأدوات: قصير <b>21 ملم</b>، متوسط <b>26 ملم</b>، طويل <b>31 ملم</b> للأمامية؛ والأقصر للخلفية.</p><p>الألوان (احفظ التسلسل): وردي 6، رمادي 8، بنفسجي 10، أبيض 15، أصفر 20، أحمر 25، أزرق 30، أخضر 35، أسود 40. بعدين ترجع الدورة: أبيض 45… لحد أزرق 60. بعد الـ 60 الزيادة تصير <b>كل 10</b>: أخضر 70، أسود 80، وهكذا لحد 140.</p>","<p><b>1. حركة التوسيع (reaming)</b>: دوران متكرر مع عقارب الساعة، يحلق جدران القناة ويعطي مقطع تقريبياً دائري. الموسّعات (reamers) أحسن بهالحركة.</p><p><b>2. حركة البرد (filing)</b>: دفع-سحب <b>بدون دوران</b>، وأكفأ ويه الـ files من الـ reamers. المقطع يصير غير منتظم ويه شكل بيضي عام، فالقناة لازم تُحشى بـ gutta-percha (حتى تملأ الشكل البيضي).</p><p><b>3. برد ربع دورة (quadrant-turn filing)</b>: دمج توسيع وبرد. تدخل الأداة ويه ربع دورة (90 درجة) بعدين تسحب حركة سحب، والمقطع يصير بيضي. ينستخدم K-file أو reamer.</p><p><b>4. البرد المحيطي (circumferential filing)</b>: برد أو برد ربع دورة، والتركيز على حركة الخروج: كل مرة تسحب الملف على جهة مختلفة من جدار القناة. النتيجة: فوهة واسعة وميل أكبر.</p>","<p>أربعة أسئلة على البروتش الشائك، عدد الحلزونات، التقييس والألوان، وحركات الأدوات.</p>","<p>الشغل بمنطقة جافة بلا لعاب معروف من قرون، وفكرة ورقة المطاط لعزل السن عمرها أكثر من 150 سنة (Castellucci، 2004). الحاجز المطاطي (<b>rubber dam</b>) أداة لمرة واحدة، وخمس أسباب لاستخدامه:</p><p>(1) يبقي الساحة جافة ويمنع تلوث اللعاب. (2) يبعد الخد واللسان حتى ما يقاطعونك. (3) يخلّيك تركز: تشوف بس السن المطلوب. (4) يمنع الغسول يدخل الفم (طعمه عادة مو زين). (5) يمنع بلع أو استنشاق الأدوات الصغيرة اللي تنفلت بسهولة. هذا السبب الخامس سلامة — إذا الأداة طاحت، المطاط يمسكها.</p><p>العيوب: ياخذ وقت؛ التواصل ويه المريض يصير محدود؛ والتكلفة. الحلول بالمحاضرة: تدرب أكثر؛ تواصل بحركة اليد؛ وبالأسنان الأمامية تقدر تستخدم <b>widgets</b> (مثبتات أرخص من الكلابات).</p><p>المكونات: الورقة، الإطار، الكلابات، الثقّاب، الملقط، خيط الأسنان، مقص، الـ widgets، وأشياء اختيارية ثانية.</p>","<p>سُمك الورقة: <b>رقيق 0.15 ملم</b> للتماس الضيق، ويُستخدم بالقواطع السفلية والأسنان الخلفية البازغة جزئياً. <b>متوسط 0.2 ملم</b> عام لكل الأسنان. <b>سميك 0.25 ملم</b> يتكيف زين وما يتمزق بسهولة، بس يضغط كثير على الشفاه والخد.</p><p>اللون الفاتح: إضاءة أحسن. الغامق: تباين حاد، أحسن للتصوير. المقاس: 5×5 إنج (12.5×12.5 سم) و 6×6 إنج (15×15 سم). الوجه اللامع باتجاه النسيج حتى ينزلق بدون تهيّج؛ الوجه المطفي باتجاه السن وما يعكس الضوء.</p><p>الإطار يبعّد الشفاه والخد ويعطيك وصول بلا عائق. <b>Young</b> (نوع A): حرف U معدني — يتداخل ويه الأشعة، <b>شيله قبل التصوير</b>. <b>Starvisi</b> (نوع B): U من بلاستك ونايلون شفاف للأشعة، بديل مناسب لـ Young. <b>Nygaard-Ostby</b> (نوع C): هم بلاستك ونايلون شفاف للأشعة، <b>يبقى بالفم أثناء التصوير</b> بدون ما يحجب الصورة.</p>","<p>الكلابة تمسك السن وتثبّت المطاط والإطار. أرقام Ivory بهالمحاضرة (احفظها): <b>9</b> قواطع وضواحك؛ <b>1</b> ضواحك؛ <b>26</b> أرحاء؛ <b>0</b> قواطع وأنياب، وعزل متعدد؛ <b>14A</b> أرحاء بازغة جزئياً أو مكسورة بشدة، أو لما باقي الكلابات تفشل.</p><p>ويه أجنحة (<b>winged</b>): تبعّد الورقة زيادة، وتقدر تركّب الورقة على الكلابة قبل وأثناء وضعها على السن. بدون أجنحة (<b>wingless</b>): أقل حجماً، أسهل بالخلف عند مرضى خدودهم تخينة.</p><p>الفك غير المسنّن: أغلب الحالات، ويُستخدم على تيجان البورسلين. بعض الكلابات فكها مائل أكثر للثة (<b>gingivally approaching / deep reaching</b>) لثبات أكثر: أسنان مكسورة أو نخر لثوي عميق يحتاج تثبيت أعمق. المسنّنة (<b>serrated</b>): للأسنان المتسوسة بشدة حتى تمسك أكثر، <b>ممنوعة على تيجان البورسلين</b> لأنها تخدشها.</p>","<p>الثقّاب (<b>puncher</b>) يفتح ثقب بالورقة. الثقب لازم يكون نظيف، بلا زوائد أو تمزقات. حجم الثقب حسب السن المعزول، حتى الورقة تتكيف أقصى ما يمكن حوالين السن. رأس دوّار فيه <b>ستة ثقوب بأحجام مختلفة</b>، ومكبس مدبب حاد.</p><p>ملقط الكلابة يمسك الكلابة من ثقبين جانبيين ويوسّعها حتى تنزل على السن.</p><p>اضغط البطاقة: راجع أرقام Ivory الخمسة قبل طريقة التركيب.</p>","<p>الطريقة الأولى: الكلابة والورقة والإطار <b>سوياً</b>. الخطوات: اختر الكلابة المناسبة؛ مدّ الورقة على الإطار وأدخل الجناح بالثقب ويه الملقط؛ ركّب الكلابة على السن؛ حرّر الجناح من الورقة؛ مدّ الورقة على الإطار مرة ثانية بقوة حتى تبعد الشفاه والخد زين؛ عقّم السن المعزول والمطاط المجاور بمطهر مناسب.</p><p>المميزات: سهلة وسريعة؛ ما تحتاج مساعد؛ وإذا الكلابة انكسرت أثناء التركيب، الورقة تمسكها (ما تنبلع). العيب: ما تخليك تشوف السن والأنسجة الرخوة مباشرة أثناء التركيب.</p>","<p><b>الطريقة الثانية</b>: الكلابة أولاً، بعدين الورقة. حط الكلابة على السن، مدّ الورقة على الإطار، واسحب الورقة فوق الكلابة. المميزات: تشوف السن والأنسجة بوضوح وأثناء تركيب الكلابة؛ وهي<b> الأكفأ إذا تثبيت الكلابة صعب</b>. العيوب: الورقة قد تتمزق؛ والكلابة قد تفلت أثناء سحب الورقة.</p><p><b>الطريقة الثالثة</b>: الورقة أولاً، بعدين الكلابة. مدّ الورقة على الإطار، حطها على السن، وبينما تبعّد الورقة حتى يبان السن واللثة المجاورة، ركّب الكلابة. المميزات: الكلابة أقل ما تفلت أثناء التركيب؛ وتشوف السن واللثة مباشرة. العيب: تحتاج مساعد، خاصة بالأسنان الخلفية مثل الأرحاء السفلية.</p><p>اختصر: 1 سوياً (سريعة وبدون مساعد، بس الرؤية ناقصة). 2 كلابة ثم ورقة (أفضل رؤية وتثبيت صعب، بس تمزق أو إفلات). 3 ورقة ثم كلابة (ثبات و رؤية، بس تحتاج مساعد بالخلف).</p>","<p>الأسئلة الختامية على الورقة والإطارات والكلابات والطرق الثلاث، ويه زر الدرجة. إذا غلطت ارجع للشرائح وحاول مرة ثانية.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
