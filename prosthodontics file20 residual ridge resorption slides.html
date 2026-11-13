@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Prosthodontics File 20 — Residual Ridge Resorption</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Prosthodontics · 5th year · Lectures 4–5</div>
+    <h1>Residual Ridge Resorption (RRR)</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lectures 4–5 by Asst. Lect. Ghasaq Hisham (PDF pages 527–543) on residual ridge resorption: healing and Atwood orders, direction and rate, causes, and prevention.</p>
+    <ul>
+      <li>RRR is chronic, progressive, irreversible and cumulative; sockets fill with bone in about 6 months but remodeling continues for life</li>
+      <li>Atwood orders I–VI and ACP mandibular height Types I–IV (21 mm or more down to 10 mm or less)</li>
+      <li>Centripetal maxillary versus centrifugal mandibular resorption; the anterior mandible resorbs about four times faster (Woelfel 4.2 vs 2.3 sq in)</li>
+      <li>Anatomic, metabolic (hormones, diet, Type I/II osteoporosis) and mechanical causes, including Wolff’s law and bruxism</li>
+      <li>Prevention: snow-shoe coverage, overdentures (0.6 mm vs 5 mm bone loss in a canine-supported study), and implants</li>
+      <li>Total run time: <b>24 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 12</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Prosthodontics · File 20","t":"Residual ridge resorption (RRR)","b":"<p>University of Baghdad, College of Dentistry — Prosthodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This 5th-year file covers PDF pages 527–543 (Asst. Lect. Ghasaq Hisham / م.ا. د. غسق هشام), Lectures 4–5: residual ridge resorption — definitions and timing of socket healing, Atwood’s six orders, ACP mandibular bone-height types, direction and pattern of resorption, maxilla versus mandible, consequences and assessment, anatomic, metabolic and mechanical causes, and prevention and treatment (including the “snow-shoe” effect, overdentures and implants).</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end.</p>"},{"k":"5th year · Residual ridge resorption","t":"What residual ridge resorption is, and when the socket heals","b":"<p><b>Alveolar bone</b> is the bony portion of the maxilla or the mandible in which roots of teeth are held by fibres of the periodontal ligament. A <b>residual ridge</b> describes the shape of the alveolar ridge after healing of bone and soft tissues following tooth extraction.</p><p>After extraction, inflammatory reactions are immediately activated and the socket is temporarily sealed by a blood clot. Epithelial tissue begins to proliferate and migrate within the first week, and disrupted tissue integrity is quickly restored. Histologic evidence of active bone formation at the bottom of the socket is seen as early as <b>2 weeks</b> after extraction, and the socket is progressively filled with newly formed bone in about <b>6 months</b>. Even after the wound has healed, the residual-ridge alveolar bone undergoes lifelong remodeling. The size of the residual ridge is reduced most rapidly in the first six months, but resorption continues throughout life at a slower rate, resulting in removal of a large amount of jaw structure.</p><p>The rate of RRR is different among persons and even at different times and sites in the same person. Residual-ridge remodeling affects the function of removable prostheses, so treatment of edentulous patients requires a maintenance phase throughout the patient’s life. <b>RRR is chronic, progressive, irreversible and cumulative.</b></p>"},{"k":"5th year · Residual ridge resorption","t":"Structure of alveolar bone, and Atwood’s six orders of residual ridge","b":"<p>Alveolar bone has a hard compact outer layer superimposed on a spongy, somewhat resilient substructure. Spaces between the trabeculae communicate throughout the spongy bone. Bone is constantly changing in response to replacement and functional demands. Structural elements: <b>osteocytes</b> (metabolic activity); intercellular substance or bone matrix of fibrils with a calcified cementing substance, to which calcium carbonate and phosphates are bound; <b>osteoblasts</b> (active bone-forming cells that form and calcify the intercellular substance and surround the bone in a continuous layer; some become osteocytes); and <b>osteoclasts</b> (responsible for resorption, which always requires simultaneous elimination of the organic and inorganic components of the intercellular substance).</p><p>The basic change in RRR is a reduction in the size of the bony ridge under the mucoperiosteum — primarily a localized loss of bone structure. Sometimes this leaves the overlying mucoperiosteum excessive and redundant. Residual ridges are categorized in a system of six orders given by Atwood:</p><ul><li><b>Order I — pre-extraction:</b> the lower central incisor is in its socket, with very thin labial and lingual cortical plates and the lamina dura.</li><li><b>Order II — post-extraction:</b> clot formation and organization, filling of the socket to the height of the cortical plates with new trabecular bone, and epithelization over the socket.</li><li><b>Order III — high, well-rounded residual ridge:</b> cortical plates are rounded, narrowing of the crest has begun, and internal trabecular remodeling has taken place. Immediately after extraction, remaining sharp edges are rounded off by external osteoclastic resorption, leaving this high well-rounded ridge.</li><li><b>Order IV — knife-edged residual ridge:</b> marked narrowing of the labiolingual diameter of the crest, as resorption continues from the labial and lingual aspects.</li><li><b>Order V — low, well-rounded residual ridge:</b> the knife-edge becomes shorter and disappears, leaving a more widely rounded but considerably lower ridge.</li><li><b>Order VI — depressed residual ridge:</b> resorption has continued below the level of the genial tubercle.</li></ul>"},{"k":"5th year · Residual ridge resorption","t":"ACP mandibular bone height, direction of resorption, and arrangement of the teeth","b":"<p>According to the American College of Prosthodontists, based on bone height of the mandible only (measured at the least vertical height): <b>Type I</b> 21 mm or greater; <b>Type II</b> 16–20 mm; <b>Type III</b> 11–15 mm; <b>Type IV</b> 10 mm or less.</p><p>The maxilla resorbs upward and inward and becomes progressively smaller because of the direction and inclination of the roots and the alveolar process. The opposite is true of the mandible, which inclines outward and becomes progressively wider. This progressive change makes many patients appear prognathic. Thus RRR is <b>centripetal in the maxilla and centrifugal in the mandible</b>.</p><p>Patterns: in the mandible, a large proportion of bone loss occurs on the labial side of the anterior residual ridge, equally on the buccal and lingual sides in the premolar region, and lingually in the posterior or molar region. In the maxilla, bone loss occurs primarily on the labial or buccal aspect. Therefore, when arranging teeth one should try to restore the natural position of the teeth before they were lost: teeth in the maxillary arch are arranged slightly labially and buccally; in the mandible, anterior teeth are arranged labially, on the centre of the ridge in the premolar region, and slightly lingually in the molar region.</p>"},{"k":"5th year · Residual ridge resorption","t":"Why the mandible resorbs faster, and the clinical consequences of RRR","b":"<p>It is a clinically acknowledged fact that the <b>anterior mandible resorbs four times faster</b> than the anterior maxilla. Woelfel et al. cited the projected maxillary denture area as <b>4.2 sq in</b> and <b>2.3 sq in</b> for the mandible, a ratio of <b>1.8:1</b>. If a patient bites with a pressure of 50 lb, this is calculated as <b>12 lb/sq in</b> under the maxillary denture and <b>21 lb/sq in</b> under the mandibular denture. This significant difference may be a causative factor in the different rates of resorption. Cancellous bone is ideally designed to absorb and dissipate forces. The maxillary residual ridge is often broader, flatter and more cancellous than the mandibular ridge. Trabeculae in the maxilla are oriented parallel to the direction of compression deformation, allowing maximal resistance; the stronger these trabeculae are, the greater is the resistance.</p><p>Consequences of RRR: apparent loss of sulcus width and depth; muscle attachments displaced closer to the crest of the residual ridge; reduced lower-face height from loss of VDO, and anterior rotation of the mandible; a habitual prognathic appearance, with an altered inter-alveolar ridge relationship; morphological changes such as sharp, spiny, uneven residual ridges; resorption of the mandibular-canal wall and exposure of the mandibular nerve; location of the mental foramina close to the top of the mandibular residual ridge; and serious problems for the clinician in providing adequate support, stability and retention.</p>"},{"k":"5th year · Residual ridge resorption","t":"How RRR is assessed, and anatomic plus metabolic causes","b":"<p>Assessment has used diagnostic casts with standardized measurements, lateral cephalograms, and orthopantomograms. Orthopantomograms were chosen to assess bone loss, though they are subject to variations in magnification and distortion (minimized once the level of magnification is known). Today CBCT is used because it has shown an absence of distortion and overlapping, and the dimensions it presents are compatible with actual size. CBCT provides axial, coronal and sagittal multi-planar reconstructed images without magnification, and 3-D images necessary for the diagnosis of intra-bony defects, furcation involvements and buccal/lingual bone loss.</p><p>RRR is a multifactorial biomechanical disease that results from a combination of anatomic, metabolic and mechanical determinants, which vary among patients.</p><p><b>Anatomic factors — amount of bone:</b> some large ridges resorb rapidly and some knife-edge ridges may remain with little change for long periods. Although a broad ridge may have a greater potential for bone loss, the rate of vertical bone loss may actually be slower than that of a small ridge, because there is more bone to be resorbed per unit of time and because the rate also depends on density. <b>Quality of bone:</b> the denser the bone, the slower the rate of resorption, because there is more bone to be resorbed per unit of time.</p><p><b>Metabolic factors.</b> RRR varies directly with certain systemic or localized bone-resorptive factors and inversely with certain bone-formation factors. General body metabolism is the net sum of anabolism and catabolism; in equilibrium osteoblasts and osteoclasts are in balance. In growth, although resorption is constantly taking place in remodeling, increased osteoblastic activity more than makes up for bone destruction.</p>"},{"k":"5th year · Residual ridge resorption","t":"Hormones, diet, calcium needs, and Type I versus Type II osteoporosis","b":"<p>Hormonal factors: the pituitary and hypophysis; the thyroid (regulates the rate of metabolism — hyperthyroidism increases the metabolic rate leading to negative nitrogen balance, equivalent to protein deficiency, which can cause osteoporosis; thyroxin also increases renal excretion of calcium and phosphorus, decreasing bone apposition and increasing osteoclastic activity); the parathyroids (parathormone maintains blood calcium by mobilizing it from the bones through osteoclastic activity); the islets of Langerhans (insufficient insulin causes diabetes mellitus, associated with poor healing, low tissue tolerance and rapid bone resorption); the suprarenal glands (prolonged use of corticoids is considered very dangerous to bone, though one beneficial effect is control of inflammatory defence); and the gonads (androgens and estrogens promote a protein anabolic action on all tissues including bone).</p><p>Dietary factors: <b>protein</b> is necessary to build and maintain tissue and to supply energy; in protein-starved people synthesis of osteoid is compromised and calcification decreases. Inadequate incorporation of protein (the lecture cites <b>3 ounces/day</b>) will cause slow growth of bone, so apposition cannot keep up with normal osteoclastic activity. Vitamins act in many respects like hormones (endocrine glands produce intrinsic hormones; vitamins are extrinsic hormones). Vitamin A deficiency may result in poor development and calcification, and prolonged deficiency causes renal damage with loss of phosphorus reabsorption and a calcium:phosphorus imbalance leading to osteoporosis. Vitamin B complex is necessary for bone-cell metabolism. Lack of vitamin C causes decalcification and has been held responsible for diffuse alveolar atrophy; apposition of new bone slows because osteoblastic activity is impaired, collagen is reduced, and the periosteum thickens with immature fibroblast-like cells, making it easily injured by the denture base. Vitamin D is necessary for the calcium–phosphorus balance; it would be unnecessary if the exact required ratio were in the diet. When bone loses its ability to calcify the matrix, vitamin D will cause calcification and denser bone; moderate overdosage causes excessively mineralized bone, but gross overdosage causes bone resorption. Carbohydrates are only indirectly related (diabetes, or substitution for more favourable foods). Fats yield heat and energy and only secondarily build or repair tissue. Calcium salts form the rigid supporting structure of bones; phosphorus as calcium and magnesium phosphate gives hardness. The body requires <b>0.7 g of calcium/day</b>; the phosphorus need is about <b>1.5 to 3 g</b> daily, depending on the form. Edentulous patients should follow a prescribed dietary regimen.</p><p><b>Type I osteoporosis</b> is the specific consequence of menopausal estrogen deprivation, characteristically presenting bone-mass loss, notably in trabecular bone. <b>Type II osteoporosis</b> reflects a composite of age-related changes in intestinal, renal and hormonal function; both cortical and trabecular bone are affected.</p>"},{"k":"5th year · Residual ridge resorption","t":"Mechanical causes: Wolff’s law, rest, bruxism, balanced occlusion, and prosthetic factors","b":"<p>Functional factors include the frequency, intensity, duration and direction of forces applied to bone, which are translated into cellular activity resulting in either formation or resorption, depending on the patient’s resistance. <b>Wolff’s law</b> postulates that all changes in the function of bone are attended by definite alterations in its internal structure. Forces within physiologic limits are beneficial in their massaging effect. Increased or sustained pressure, through disturbance of the circulatory system, produces bone resorption. Although the total masticatory stress cannot be diminished, increasing tissue coverage and decreasing the length and width of the occlusal table may lessen the load per unit area. Constant pressure causes resorption, while intermittent forces favor bone formation. Recurrent forces over short intervals have essentially the same resorbing effect as constant pressure, so a rest period between meals is beneficial, and the patient should be warned that gum chewing has a destructive effect on the bone.</p><p>Bruxism is an expression of nervous tension (gnashing, grinding or clenching, asleep or awake). Since most denture patients grind their teeth in sleep, the dentures should not be worn during this period, so that the supporting structures get the rest essential to maintenance of alveolar bone. Grinding while awake may be a habit of tension, or due to lack of interocclusal distance. A sharp cusp will penetrate a bolus with less force than a flat occlusal form, but forces applied to an inclined plane produce a resultant vector perpendicular to the plane, so the steep incline of high cusps may produce a lateral force that causes alveolar resorption. Stress distribution favourable to healthy alveolar bone depends principally upon <b>bilateral balanced occlusion</b> — an arrangement that permits the necessary mandibular movements without tending to dislodge the denture or traumatize the supporting structure.</p><p>Prosthetic factors: excessive stress from an artificial environment; abused tissues from lack of rest; long-continued use of an ill-fitting denture; lack of freeway space from an increased vertical dimension of occlusion; and an incorrect centric-relation record. Helpful prosthetic measures include: broad-area coverage (to reduce force per unit area); a decreased number of dental units and decreased buccolingual width of the teeth, with improved tooth form (to decrease the force needed to penetrate a bolus); avoidance of inclined planes; centralization of occlusal contacts (to increase stability and maximize compressive forces); adequate tongue room; and adequate interocclusal distance during rest (to decrease the frequency and duration of tooth contacts).</p>"},{"k":"5th year · Residual ridge resorption","t":"Prevention and treatment: impressions, the snow-shoe effect, nutrition, surgery, overdentures and implants","b":"<p>The best way to manage RRR is to prevent it. <b>A.</b> Prevent the loss of natural teeth, and retain residual roots whenever feasible. <b>B.</b> Proper design and maintenance of dentures: optimal tissue health before the impression; impression procedures using a minimal-pressure technique, or a selective-pressure technique that places stress on those areas that best resist functional force, with adequate relief on non-stress-bearing areas; and, during tooth arrangement, avoidance of inclined planes, centralization of occlusal contacts, a narrow occlusal table, adequate tongue room, adequate interocclusal distance during jaw rest, and broad area of coverage to reduce force per unit area — the <b>“snow-shoe effect”</b>: an increased denture-bearing area can greatly reduce the load per unit area on the underlying mucosa and improve comfort, always assuming that the occlusal vertical dimension is not excessive.</p><p><b>C. Nutrition.</b> One cofactor in RRR is low calcium and vitamin D metabolism. Diet counseling is necessary. Denture patients with excessive RRR report lower calcium intake and a poorer calcium–phosphorus ratio, along with less vitamin D.</p><p><b>D. Pre-prosthetic surgery</b> when excessive RRR has led to loss of sulcus width and depth with muscle attachments displaced toward the crest: osseous reconstruction, removal of high frenal attachments, bone-graft augmentation, vestibuloplasty, and so on. <b>E. Immediate dentures:</b> some authors claim that extraction followed by immediate dentures reduces ridge resorption. <b>F. Overdentures</b> help to minimize ridge resorption and contribute to enhanced retention, stability and support, along with preservation of proprioception. A study of overdentures supported by canines found bone loss of <b>0.6 mm</b>, whereas it was <b>5 mm</b> with conventional complete dentures. <b>G. Implants</b> for an implant-supported or implant-assisted prosthesis also help avert continuing residual-ridge resorption.</p>"},{"k":"اختبر نفسك","t":"Quiz: Atwood orders, the 4× rule, and Woelfel’s areas","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Atwood’s sequence after extraction, once sharp socket edges have been rounded, proceeds as:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Order VI first, then a high well-rounded ridge</button><button type=\"button\" class=\"opt\" data-i=\"1\">A high well-rounded ridge (III), then a knife-edge (IV), then a low well-rounded ridge (V), then a depressed ridge below the genial tubercle (VI)</button><button type=\"button\" class=\"opt\" data-i=\"2\">Only ACP Type I bone, which is 10 mm or less</button><button type=\"button\" class=\"opt\" data-i=\"3\">Order I is a depressed ridge</button></div><div class=\"qexp\" hidden><p>بعد القلع (II) الحواف الحادة تنتعّم فيصير مرتبة III عالية مستديرة، بعدين سكينية IV، بعدين واطئة مستديرة V، وبعدين منخفضة تحت الحديبة الذقنية VI. مرتبة I هي قبل القلع. أنواع ACP: I = 21+ ملم، IV = 10 أو أقل.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Compared with the anterior maxilla, the anterior mandible is said to resorb about:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">At the same rate, because the areas are equal</button><button type=\"button\" class=\"opt\" data-i=\"1\">Four times faster; Woelfel’s projected areas were 4.2 sq in (maxilla) and 2.3 sq in (mandible), ratio 1.8:1, giving about 12 versus 21 lb/sq in under a 50 lb bite</button><button type=\"button\" class=\"opt\" data-i=\"2\">Four times more slowly, because the mandible is more cancellous</button><button type=\"button\" class=\"opt\" data-i=\"3\">Only in a centripetal direction, like the maxilla</button></div><div class=\"qexp\" hidden><p>السفلي الأمامي يمتص <b>أربع مرات أسرع</b>. العلوي centripetal (لفوق ولداخل ويصغر)؛ السفلي centrifugal (لبرّة ويتوسع) فيبان المريض ذقني. مساحة العلوي أكبر فالحمل لوحدة المساحة أقل.</p></div></div>"},{"k":"اختبر نفسك","t":"Quiz: constant versus intermittent force, and osteoporosis types","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">According to this lecture, constant pressure on bone, compared with intermittent force within physiologic limits, tends to:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Favour bone formation, so gum chewing is recommended</button><button type=\"button\" class=\"opt\" data-i=\"1\">Cause resorption (recurrent short-interval forces act like constant pressure); intermittent force favours formation, so rest between meals is beneficial and dentures should be left out at night in bruxism</button><button type=\"button\" class=\"opt\" data-i=\"2\">Have no effect if Wolff’s law is ignored</button><button type=\"button\" class=\"opt\" data-i=\"3\">Always increase trabecular density in Type I osteoporosis only</button></div><div class=\"qexp\" hidden><p>الضغط الثابت يمتص؛ المتقطع ضمن الحدود يشجع البناء. مضغ العلك مدمّر. أغلب المرضى يصرّون بالليل فالطقم يُطلَع حتى العظم يرتاح. قانون Wolff: تغيّر الوظيفة يغيّر البنية الداخلية.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">How do Type I and Type II osteoporosis differ in this lecture?</button><div class=\"flash-a\" hidden>Type I is the specific consequence of menopausal estrogen deprivation, with bone-mass loss notably in trabecular bone. Type II reflects age-related changes in intestinal, renal and hormonal function, and affects both cortical and trabecular bone.</div></div>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: snow-shoe effect, overdenture bone loss, and tooth arrangement after resorption","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The “snow-shoe effect” in denture design means:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Narrowing the base to concentrate force on the crest only</button><button type=\"button\" class=\"opt\" data-i=\"1\">Broad area of coverage so that an increased bearing area reduces load per unit area and improves comfort, provided the occlusal vertical dimension is not excessive</button><button type=\"button\" class=\"opt\" data-i=\"2\">Always increasing the vertical dimension to stretch the muscles</button><button type=\"button\" class=\"opt\" data-i=\"3\">Leaving a suction chamber in the palate</button></div><div class=\"qexp\" hidden><p>تغطية عريضة تقلل الحمل لوحدة المساحة وتحسّن الراحة، <b>بشرط البعد العمودي الإطباقي مو زايد</b>. هم: سطح إطباق ضيق، تجنب السطوح المائلة، مركزة التماس، ومساحة لسان كافية.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A study cited for canine-supported overdentures found residual-bone loss of about:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">5 mm under the overdenture and 0.6 mm under a conventional complete denture</button><button type=\"button\" class=\"opt\" data-i=\"1\">0.6 mm under the overdenture, versus 5 mm under conventional complete dentures</button><button type=\"button\" class=\"opt\" data-i=\"2\">No difference at all</button><button type=\"button\" class=\"opt\" data-i=\"3\">21 mm in every case, which is ACP Type I</button></div><div class=\"qexp\" hidden><p>دراسة أطقم فوقية على الأنياب: ضياع عظم <b>0.6 ملم</b> مقابل <b>5 ملم</b> بالطقم الكامل التقليدي. الطقم الفوقي هم يحافظ على الإحساس العميق ويحسّن التثبيت والثبات والدعم.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Because of the pattern of residual-ridge resorption, mandibular posterior (molar) teeth are arranged:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Slightly buccally, as in the maxillary arch</button><button type=\"button\" class=\"opt\" data-i=\"1\">Slightly lingually in the molar region (anteriors labially, premolars on the centre of the ridge); maxillary teeth slightly labially and buccally</button><button type=\"button\" class=\"opt\" data-i=\"2\">Always off the ridge toward the cheek to widen the arch</button><button type=\"button\" class=\"opt\" data-i=\"3\">Only on a knife-edge residual ridge (Atwood IV)</button></div><div class=\"qexp\" hidden><p>بالسفلي: الأمامية شفوية، الضواحك على المركز، الأرحاء شوية لسانية (لأن الضياع بالخلف لساني). بالعلوي شوية شفوية وشدقية (الضياع أساساً شفوي/شدقي).</p></div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا الملف عن <b>امتصاص الحافة المتبقية (RRR)</b>: تعريف وتوقيت الشفاء، مراتب Atwood الستة، أنواع ارتفاع العظم حسب ACP، اتجاه ونمط الامتصاص، العلوي مقابل السفلي، العواقب والتقييم، الأسباب، والوقاية والعلاج.</p>","<p>العظم السنخي هو جزء الفك اللي جذور الأسنان مثبتة بيّه بألياف الرباط. <b>الحافة المتبقية</b> شكل الحافة بعد شفاء العظم والنسيج الرخو بعد القلع.</p><p>بعد القلع يلتهيئ الالتهاب فوراً والسنخ ينسد مؤقتاً بجلطة. النسيج الظهاري يبدأ يتكاثر ويهاجر خلال الأسبوع الأول. تكوين عظم نشط بقعر السنخ يُرى من <b>أسبوعين</b>، والسنخ يمتلئ بعظم جديد خلال حوالي <b>6 أشهر</b>. حتى بعد الشفاء، العظم يتمرمم طول العمر. الحجم ينقص بأسرع شي بأول ستة أشهر، والامتصاص يستمر أبطأ طول الحياة.</p><p>السرعة تختلف بين الأشخاص وحتى بنفس الشخص حسب الوقت والمكان. لهذا فاقد الأسنان يحتاج مرحلة صيانة طول العمر. الـ RRR <b>مزمن، تقدمي، غير راجع، وتراكمي</b>.</p>","<p>العظم السنخي طبقة خارجية قشرية صلبة فوق بنية إسفنجية مرنة نوعاً ما. الخلايا: <b>osteocytes</b> للأيض؛ مادة بين الخلايا (مصفوفة ويه أملاح كالسيوم)؛ <b>osteoblasts</b> تكوّن العظم وبعضها يصير osteocytes؛ و<b>osteoclasts</b> للامتصاص (يشيلون العضوي واللاعضوي سوية).</p><p>التغيير الأساسي: صغر الحافة العظمية تحت المخاطية السمحاقية، وأحياناً يترك الغطاء رخو زايد. مراتب <b>Atwood</b> الستة:</p><p><b>I</b> قبل القلع (قاطع سفلي بسنخه ويه صفائح قشرية رقيقة وصفيحة صلبة). <b>II</b> بعد القلع (جلطة، امتلاء السنخ بعظم إسفنجي جديد، وتظهّر). <b>III</b> حافة عالية مستديرة جيداً بعد ما الحواف الحادة تنتعّم من برّة. <b>IV</b> حافة سكينية (تضيق شديد لقطر القمة). <b>V</b> حافة واطئة مستديرة بعد ما الجزء السكيني يختفي. <b>VI</b> حافة منخفضة تحت مستوى الحديبة الذقنية.</p>","<p>حسب ACP (ارتفاع الفك السفلي فقط، عند أقل ارتفاع عمودي): نوع I = 21 ملم أو أكثر؛ II = 16–20؛ III = 11–15؛ IV = 10 أو أقل. (نفس أرقام تصنيف فقد الأسنان الكامل بملف 13.)</p><p>العلوي يمتص لفوق ولداخل ويصغر (<b>centripetal</b>)؛ السفلي يميل لبرّة ويتوسع (<b>centrifugal</b>). لهذا كثير مرضى يبانون ذقنية (prognathic).</p><p>النمط: بالسفلي ضياع كبير شفوياً بالأمام، بالتساوي شدقي ولساني بالضواحك، ولسانياً بالأرحاء. بالعلوي أساساً شفوي أو شدقي. لذلك ويه الترتيب حاول ترجع موضع الأسنان الطبيعي: العلوية شوية شفوية وشدقية؛ السفلية الأمامية شفوية، بالضواحك على مركز الحافة، وبالأرحاء شوية لسانية.</p>","<p>الحافة الأمامية السفلية تمتص <b>أربع مرات أسرع</b> من الأمامية العلوية. Woelfel: مساحة الطقم العلوي <b>4.2 إنج مربع</b> والسفلي <b>2.3</b> (نسبة <b>1.8:1</b>). عضّة 50 باوند تصير حوالي <b>12 باوند/إنج²</b> تحت العلوي و<b>21</b> تحت السفلي — فرق قد يفسر اختلاف السرعة. العظم الإسفنجي مصمم يمتص ويبدد القوى؛ الحافة العلوية غالباً أعرض وأفلح وأكثر إسفنجية، وترابيقها موازية لاتجاه الانضغاط فمقاومتها أكبر.</p><p>العواقب: ضياع عرض وعمق الدهليز؛ اندغالات العضلات أقرب للقمة؛ نقص ارتفاع الوجه السفلي من ضياع البعد العمودي ودوران أمامي للفك؛ مظهر ذقني اعتيادي وتغيّر علاقة الحواف؛ حواف حادة أو شوكية أو غير مستوية؛ امتصاص جدار القناة الفكية وانكشاف العصب؛ الثقبة الذقنية قرب قمة الحافة السفلية؛ وصعوبة توفير دعم وثبات وتثبيت كافٍ.</p>","<p>التقييم: مصبوبات قياسية، صور رأس جانبية، وبانوراما (فيها تكبير وتشويه يُقلَّل إذا عرفت مستوى التكبير). اليوم الـ <b>CBCT</b> بلا تشويه أو تراكب، وأبعاده تطابق الحجم الحقيقي، ويعطي صور محورية وإكليلية وسهمية بلا تكبير، وثلاثية الأبعاد لتشخيص العيوب داخل العظم وانكشافات الجذور والضياع الشدقي/اللساني.</p><p>الـ RRR مرض ميكانيكي حيوي متعدد العوامل: تشريحية، استقلابية، وميكانيكية.</p><p>كمية العظم: بعض الحواف الكبيرة تمتص بسرعة وبعض السكينية تبقى فترة طويلة. الحافة العريضة قد يكون جهد الضياع أكبر، بس سرعة الضياع العمودي قد تكون أبطأ لأن في عظم أكثر لكل وحدة وقت، والكثافة هم تؤثر. كل ما كثف العظم، الامتصاص أبطأ.</p><p>الاستقلاب: الامتصاص يزيد ويه عوامل الهدم ويقل ويه عوامل البناء. بالتوازن بانيات وكاسرات العظم متعادلة. بالنمو نشاط البانيات يعوّض الهدم.</p>","<p>هرمونياً: فرط الدرقية يسرّع الأيض ويسبب توازن نتروجين سالب (مثل نقص بروتين) وهشاشة، ويزيد إخراج الكالسيوم والفوسفور. الهرمون الجاردرقي يحرّك كالسيوم الدم من العظم عبر كاسرات العظم. السكري (نقص الإنسولين) ويه شفاء ضعيف وتحمل نسيج واطي وامتصاص سريع. استعمال كورتيكويدات طويل خطر جداً على العظم. الأندروجينات والإستروجينات فعل بنائي بروتيني.</p><p>البروتين ضروري؛ المحاضرة تذكر <b>3 أونصات/يوم</b>، ونقصه يخلي البناء ما يلحق الهدم. فيتامين A لنمو وتكلس العظم. B لأيض خلايا العظم. نقص C يسبب نزع الكلس وضمور سنخي منتشر، ويبطئ نشاط البانيات ويضعف السمحاق أمام قاعدة الطقم. D لتوازن كا/فوس؛ الجرعة الزائدة المعتدلة تعظم التمعدن، والمفرطة تسبب امتصاص. الجسم يحتاج <b>0.7 غم كالسيوم/يوم</b> و<b>1.5–3 غم فوسفور</b>.</p><p>هشاشة نوع I: بعد انقطاع الدورة من نقص الإستروجين، خصوصاً العظم الإسفنجي. نوع II: تغيرات عمرية معوية وكلوية وهرمونية تصيب القشري والإسفنجي.</p>","<p><b>قانون Wolff</b>: كل تغيّر بوظيفة العظم يرافقه تغيّر ببنيته الداخلية. القوى ضمن الحدود الفسيولوجية مفيدة (تدليك). الضغط الزايد أو المستمر يخل بالدورة ويمتص العظم. تكبر مساحة التغطية وتصغّر طول وعرض سطح الإطباق حتى الحمل لوحدة المساحة يقل. الضغط الثابت يمتص؛ المتقطع يشجع البناء. القوى المتكررة بفترات قصيرة مثل المستمر، ففترة راحة بين الوجبات مفيدة، ومضغ العلك مدمّر.</p><p>الصرير: لا تلبس الطقم بالليل حتى العظم يرتاح. الصرير باليقظة قد يكون توتر أو نقص مسافة حرة. الحدبة الحادة تخترق اللقمة بقوة أقل، بس المستوى المائل يولّد قوة جانبية قد تمتص العظم. التوزيع الصحي يعتمد أساساً على <b>إطباق متوازن ثنائي الجانب</b>.</p><p>عوامل تعويضية مضرة: إجهاد زايد، عدم راحة النسيج، طقم سيء طويل الاستعمال، نقص مسافة حرة من بعد عمودي زايد، وسجل علاقة مركزية خطأ. المفيد: تغطية عريضة؛ عدد وحدات وعرض أسنان أقل؛ تجنب السطوح المائلة؛ مركزة التماسات؛ مساحة لسان كافية؛ ومسافة حرة كافية ويه الراحة.</p>","<p>أفضل علاج هو الوقاية: حافظ على الأسنان الطبيعية، واحتفظ بالجذور كلما أمكن.</p><p>تصميم وصيانة صحيحة: صحة نسيج مثالية قبل الطبعة؛ طبعة بضغط أدنى أو ضغط انتقائي على المناطق اللي تقاوم القوة، وتفريغ مناطق غير التحمل. ويه الترتيب: تجنب السطوح المائلة، مركزة التماس، سطح إطباق ضيق، مساحة لسان، مسافة حرة كافية، وتغطية عريضة — <b>تأثير حذاء الثلج (snow-shoe effect)</b>: زيادة مساحة التحمل تقلل الحمل لوحدة المساحة وتحسّن الراحة، بشرط البعد العمودي الإطباقي مو زايد.</p><p>التغذية: نقص كالسيوم وفيتامين D عامل مساعد؛ مرضى الامتصاص المفرط غالباً كالسيومهم أقل ونسبة كا/فوس أسوأ وفيتامين D أقل.</p><p>الجراحة قبل التعويض إذا الدهليز ضاع والعضلات قربت للقمة (إعادة بناء عظمي، قص لجام عالي، تطعيم، رأب دهليز). بعض المؤلفين يقولون الطقم الفوري يقلل الامتصاص. الطقم الفوقي يقلل الامتصاص ويحسّن التثبيت والثبات والدعم ويحافظ على الإحساس العميق؛ دراسة على أنياب: ضياع عظم <b>0.6 ملم</b> مقابل <b>5 ملم</b> بطقم كامل تقليدي. والزرعات هم تساعد توقف استمرار الامتصاص.</p>","<p>مراتب Atwood III→IV→V→VI بعد القلع. والسفلي الأمامي أربع مرات أسرع، ويه أرقام Woelfel 4.2 مقابل 2.3 إنج مربع.</p>","<p>الضغط الثابت يمتص والمتقطع يبني. نوع I هشاشة بعد انقطاع الدورة (إسفنجي)؛ نوع II عمري يصيب القشري والإسفنجي.</p>","<p>ثلاثة أسئلة ختامية + زر الدرجة: تأثير حذاء الثلج، 0.6 مقابل 5 ملم ويه الطقم الفوقي، وترتيب الأرحاء السفلية لسانياً. إذا غلطت ارجع للشرائح.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
