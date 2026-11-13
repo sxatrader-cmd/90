@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Operative File 1 — Introduction, Instruments and Sterilization</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Operative (Conservative) Dentistry · Lectures 1–2</div>
+    <h1>Introduction, Cavity Nomenclature, Hand and Rotary Instruments, and Sterilization</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lecture 1 by Dr. Linz and Lecture 2 by Dr. Rasha (PDF pages 2–29): what operative dentistry is, G.V. Black’s classes, instrument formulas, and sterilization numbers.</p>
+    <ul>
+      <li>Operative dentistry treats defects that do not need full coverage; caries is an irreversible microbial disease of calcified tooth tissue</li>
+      <li>G.V. Black’s Classes I–VI, and the enamel and dentine triangles of occlusal versus smooth-surface spread</li>
+      <li>Black’s three- and four-number formulas, a 1–2 mm contra-angle balance, low speed 500–15,000 rpm and high speed above 160,000 rpm with water coolant</li>
+      <li>Autoclave 250 °F / 15 min / 15 psi (or 273 °F / 3 min / 20 psi), chemiclave, dry heat above 320 °F for 1–2 hours, 2–3% glutaraldehyde for 6–10 hours, and a 30-second handpiece flush</li>
+      <li>Total run time: <b>44 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 22</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Operative · File 1","t":"Introduction, cavity nomenclature, instruments, and sterilization","b":"<p>University of Baghdad, College of Dentistry — Operative (conservative) dentistry syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file covers PDF pages 2–29: Lecture 1 by Dr. Linz (what operative dentistry is, cavity walls and G.V. Black’s classes, and how caries spreads) and Lecture 2 by Dr. Rasha (hand and rotary instruments, plus sterilization and infection control).</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Medical terms stay in English next to the Arabic. Older Day 3–6 operative notes on this site are left in place; these are new locked slideshows.</p>"},{"k":"Dr. Linz · Lecture 1","t":"What operative dentistry is, what caries is, and the four objectives of tooth preparation","b":"<p><b>Operative dentistry</b> is the art and science of the diagnosis and treatment of teeth with defects such as caries, discoloration, a fractured tooth, or a malformed tooth, which do not require full-coverage restorations, to return them to the correct form, function and aesthetic. <b>Caries</b> is an irreversible microbial disease of the calcified tissues of the teeth, characterized by demineralization of the inorganic portion and destruction of the organic substance of the tooth, which often leads to cavitation. <b>Cavity preparation</b> is a mechanical alteration of the tooth to receive a restorative material which will return the tooth to proper form, function and aesthetic.</p><p>Objectives of tooth preparation: (1) to remove diseased tissue (caries) as necessary; (2) to restore the integrity of the tooth surface; (3) to restore the function of the tooth so that, under the force of mastication, the tooth or the restoration or both will not fracture and the restoration will not be displaced; (4) to restore the appearance of the tooth.</p>"},{"k":"Dr. Linz · Lecture 1","t":"How tooth surfaces are named, and what a pulpal floor and an axial wall are","b":"<p>Surfaces are identified by location. Any surface or movement towards the midline of the arch is <b>mesial</b>; away from the midline is <b>distal</b>. Surfaces facing the tongue are <b>lingual</b>; those toward the cheek or lip are <b>facial</b> — <b>labial</b> for anterior teeth and <b>buccal</b> for posterior teeth. Toward the gingiva is <b>gingival</b>. Chewing surfaces of posterior teeth are <b>occlusal</b>; of anterior teeth, <b>incisal</b>. A <b>proximal</b> surface faces an adjacent tooth (mesial and distal). A <b>marginal ridge</b> is the border of the lingual surfaces of anterior teeth and of the occlusal surfaces of posterior teeth.</p><p>The <b>pulpal floor (pulpal wall)</b> faces the pulp and is perpendicular to the long axis of the tooth. The <b>long axis</b> is an imaginary line that passes through the centre of the tooth and bisects it into two identical parts. An <b>axial wall</b> is parallel to the long axis and adjacent to the pulp chamber (in a Class II cavity preparation).</p>"},{"k":"Dr. Linz · Lecture 1","t":"Line angles, point angles, and the cavosurface line angle","b":"<p>A <b>line angle</b> is the junction of two walls in a cavity preparation — for example an axio-pulpal line angle. A <b>point angle</b> is the junction of three walls — for example a facio-axio-gingival point angle. A <b>cavosurface line angle</b> is formed by the junction of a cavity wall and the external tooth surface, and is identified by the name of the adjacent wall — for example a mesial cavosurface line angle or a gingival cavosurface line angle.</p>"},{"k":"Dr. Linz · Lecture 1","t":"G.V. Black’s six classes of carious lesions, and caries by anatomical site","b":"<p>Near the beginning of the 20th century, <b>G.V. Black</b> — known as the father of operative dentistry — classified carious lesions into groups according to their locations in permanent teeth. <b>Class I</b>: lesions in pits and fissures on the facial, lingual and occlusal surfaces of molars and premolars, and on the lingual surface of maxillary anterior teeth (lateral incisors). <b>Class II</b>: proximal surfaces of posterior teeth (molars and premolars). <b>Class III</b>: proximal surfaces of anterior teeth, not involving the incisal edge. <b>Class IV</b>: the proximal surface of an anterior tooth when the incisal angle requires restoration. <b>Class V</b>: facial and lingual surfaces in the gingival third of the teeth. <b>Class VI</b>: pits or wear defects on the incisal edges of anterior teeth or on cusp tips of posterior teeth.</p><p>Abbreviations in this lecture: distal D, lingual L, mesial M, occlusal O, incisal I, facial F, and dentino-enamel junction <b>DEJ</b>. Based on anatomical site, caries is classified as occlusal (pit and fissure) caries, or smooth-surface caries (proximal and cervical).</p>"},{"k":"Dr. Linz · Lecture 1","t":"Linear enamel caries, root-surface caries, and the two triangles of spread","b":"<p><b>Linear enamel caries</b> is seen in the region of the neonatal line of the maxillary anterior teeth, such as in hypocalcaemia or trauma of birth (the lecture writes “truma”). <b>Root-surface caries</b> is more common in older patients as a result of gingival recession; the caries is often asymptomatic, rapidly progressive, closer to the pulp, and more difficult to restore.</p><p>The spread of caries: bacteria cause caries, and caries itself takes the shape of the enamel rods. Accordingly, occlusal (pit and fissure) caries in enamel takes the shape of a <b>triangle with the base toward the dentine and the tip toward the occlusal surface</b>; in dentine it follows the dentinal tubules, so it is a triangle with the <b>base toward the DEJ and the tip toward the pulp</b>. On smooth (proximal) surfaces, in enamel the triangle has its <b>base toward the outer surface and the tip toward the DEJ</b>; in dentine the <b>base is toward the DEJ and the tip toward the pulp</b>.</p>"},{"k":"Dr. Linz · Lecture 1","t":"Quiz: G.V. Black’s classes, and how enamel and dentine triangles point","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">G.V. Black’s classes in this lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Class III includes the incisal angle; Class II is a pit on an anterior palatal surface; Class V is only on cusp tips</button><button type=\"button\" class=\"opt\" data-i=\"1\">Class I: pits and fissures of molars and premolars (facial, lingual or occlusal) and the lingual of maxillary anterior teeth (lateral incisors). Class II: proximal surfaces of posteriors. Class III: proximal of anteriors, not the incisal edge. Class IV: proximal of an anterior when the incisal angle needs restoration. Class V: facial and lingual surfaces in the gingival third. Class VI: pits or wear on incisal edges or cusp tips. Operative dentistry treats defects that do not need full coverage. Caries is an irreversible microbial disease of calcified tooth tissue. Preparation objectives include removing caries as necessary and restoring integrity, function (no fracture or displacement under mastication) and appearance</button><button type=\"button\" class=\"opt\" data-i=\"2\">Class I never occurs on a maxillary lateral incisor</button><button type=\"button\" class=\"opt\" data-i=\"3\">A pulpal floor is parallel to the long axis, and an axial wall is perpendicular to it</button></div><div class=\"qexp\" hidden><p>صنف I حفر وشقوق وحتى لساني الرباعية العلوية. II تقريبي خلفي. III تقريبي أمامي بلا القاطع. IV ويه الزاوية القاطعة. V الثلث اللثوي. VI رؤوس الحدبات أو الحافة القاطعة. المعالجة للعيوب اللي ما تحتاج تغطية كاملة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">How caries spreads, and root-surface caries, in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Occlusal enamel caries is a triangle with its base at the occlusal surface; root caries is typical in children and is slowly progressive and far from the pulp</button><button type=\"button\" class=\"opt\" data-i=\"1\">Occlusal (pit-and-fissure) enamel caries is a triangle with the base toward the dentine and the tip toward the occlusal surface; in dentine the base is toward the DEJ and the tip toward the pulp. On smooth proximal surfaces, enamel has the base toward the outer surface and the tip toward the DEJ; dentine again has the base toward the DEJ and the tip toward the pulp. Root-surface caries is more common in older patients after gingival recession: often asymptomatic, rapidly progressive, closer to the pulp, and harder to restore. Linear enamel caries may be seen at the neonatal line of maxillary anterior teeth (for example hypocalcaemia or birth trauma)</button><button type=\"button\" class=\"opt\" data-i=\"2\">Smooth-surface enamel caries has its base toward the DEJ and its tip toward the outer surface</button><button type=\"button\" class=\"opt\" data-i=\"3\">A line angle is the meeting of three walls, and a point angle is the meeting of two</button></div><div class=\"qexp\" hidden><p>بالإطباق: بالمينا القاعدة نحو العاج والرأس نحو الإطباق؛ بالعاج القاعدة نحو الـ DEJ والرأس نحو اللب. بالسطح الأملس: بالمينا القاعدة للخارج. نخر الجذر أشيع بكبار السن بعد انحسار اللثة، سريع وأقرب للب.</p></div></div>"},{"k":"Dr. Rasha · Lecture 2","t":"Hand instruments: G.V. Black’s classification, and why stainless steel replaced carbon steel","b":"<p>The removal and shaping of tooth structure are essential aspects of restorative dentistry. Initially this was a difficult process accomplished entirely by hand instruments, and later also by rotary, powered cutting instruments. Hand instruments are hand-powered dental instruments. <b>G.V. Black</b> is credited with the first acceptable nomenclature and classification of hand instruments, which let dentists and manufacturers communicate clearly about design and function.</p><p>For many years <b>carbon steel</b> was the primary material, because it was harder and maintained sharpness better than stainless steel. <b>Stainless steel</b> is now preferred, because a stainless-steel instrument remains bright with steam or dry-heat sterilization, and because its properties have been improved by incorporating a significant amount of <b>chromium</b> (corrosion resistance) and <b>carbon</b> (hardness). Hand instruments in operative dentistry may be cutting or non-cutting.</p>"},{"k":"Dr. Rasha · Lecture 2","t":"Handle, shank and blade, and G.V. Black’s three-number instrument formula","b":"<p>Hand cutting instruments have three parts: a <b>handle</b>, a <b>shank</b> and a <b>blade</b>. For non-cutting instruments, the part corresponding to the blade is the <b>nib</b> or working end. Some instruments have a blade on both ends and are double-ended. The shank may be straight, mono-angle (one angle; the lecture writes “mon-angle”), bin-angle (two), triple-angle (three) or quadr-angle (four). <b>Contra-angle</b> refers to a shank in which two or more angles are present. The angles in the shank are important to keep the blade edge within <b>1–2 mm</b> of the long axis of the instrument — a basic factor that concentrates force onto the blade, balances the instrument and prevents its rotation.</p><p>G.V. Black’s <b>three-number instrument formula</b> is used when the cutting edge is at a right angle to the blade: (a) first number — width of the blade in <b>tenths of a millimetre</b>; (b) second number — length of the blade in millimetres; (c) third number — the angle the blade forms with the axis of the handle, in centigrade. Example: an enamel hatchet. Figure examples in this lecture include a straight chisel <b>12-7-0</b>, a Wedelstaedt <b>11½-15-3</b>, a bin-angle chisel <b>10-7-8</b>, and an enamel hatchet <b>10-7-14</b>.</p>"},{"k":"Dr. Rasha · Lecture 2","t":"The four-number formula, and cutting instruments: chisel, hoe, hatchet, GMT and spoon","b":"<p>The <b>four-number formula</b> is used when the cutting edge is at an angle other than a right angle to the blade: (a) width in tenths of a millimetre; (b) the angle the cutting edge forms with the axis of the handle, in centigrade; (c) length of the blade in millimetres; (d) the angle the blade forms with the axis of the handle, in centigrade. Examples: a gingival marginal trimmer and an angle former. Figure examples: GMT <b>12½-100-7-14</b> and <b>12½-75-7-14</b>.</p><p>Cutting instruments: (1) a <b>chisel</b> — a straight shank, a slight blade curvature, or a bin-angle chisel; the blade is bevelled on one side only; the cutting edge is perpendicular to the axis of the handle; used for cutting enamel and dentine with a pushing motion; (2) a <b>hoe</b> — like a chisel, but its blade has a greater angle from the long axis of the handle; the same uses as a chisel; (3) a <b>hatchet</b> (enamel hatchet) — the cutting edge is parallel to the long axis of the handle and bevelled from one side only; used for cutting enamel and dentine, in right and left types; (4) a <b>gingival margin trimmer (GMT)</b> — used for bevelling the gingival enamel margin of proximo-occlusal preparations, and for bevelling the axio-pulpal line angle of a two-surface (Class II) preparation. It is similar to a hatchet except the blade is curved and the cutting edge is at an angle (not parallel) to the long axis of the blade; made as right and left, and as a mesial pair or a distal pair; (5) a <b>spoon excavator</b> — a curved blade whose cutting edge is a semicircle (outer convexity, inner concavity, like a spoon). Like the hatchet, the cutting edge is parallel to the handle, so there are left- and right-cutting spoons. Some shanks hold a small circular <b>discoid</b> blade or a claw-like <b>cleoid</b> blade. Figure spoon examples include bin-angle and triple-angle spoons <b>13-7-14</b>, and a spoon <b>15-7-14</b>.</p>"},{"k":"Dr. Rasha · Lecture 2","t":"Non-cutting instruments: the mirror, probe and tweezers, and plastic filling instruments (Ash 49, Ash 6, a Dycal applicator)","b":"<p>In non-cutting instruments the blade is replaced by a nib or point. They are divided by function into diagnostic, plastic, and amalgam instruments. Diagnostic instruments are needed at every appointment: (1) a <b>mirror</b> — for indirect visualization of any tooth surface that cannot be seen by the eye, for reflection of light, and as a retractor of soft tissue (tongue, cheek and lip); (2) a <b>probe or explorer</b> — a pointed instrument used to feel the tooth surface for irregularities, to determine the hardness of exposed dentine, and for caries detection; probes may be sickle, straight or angled; (3) <b>tweezers or cotton forceps</b> — to carry small items to the mouth.</p><p>Plastic (plastic filling) instruments are used to carry and shape tooth-coloured restorative material such as composite resin and glass ionomer, to pack temporary filling material into unfilled cavities, or to place a base or lining. In the past they were made of plastic. <b>Ash 49</b> is a double-ended instrument with cylindrical nibs and rounded ends. <b>Ash 6</b> is similar to a carver but the margin of its working end is not sharp. A <b>Dycal applicator</b> has a small round nib for mixing and placing Dycal lining. A <b>cement spatula</b> is used for mixing cement or temporary filling material on glass or a paper pad.</p>"},{"k":"Dr. Rasha · Lecture 2","t":"Amalgam instruments — condenser, burnisher, carver and carrier — and the three hand grasps","b":"<p>Amalgam instruments place dental amalgam and, to a certain extent, resin composite. A <b>condenser</b> compresses amalgam into all areas of the prepared cavity; the nib is usually round with a flat face, but may be triangular, rectangular or diamond-shaped. A <b>burnisher</b> has round, oval or rounded-cone nibs of different sizes, and is used to burnish amalgam at the cavity margins, to smooth the carved amalgam surface, to shape a metal matrix band for a more desirable contour, and to bend a cast gold restoration (inlay or onlay) near the margin to narrow the gap between gold and tooth. A <b>carver</b> shapes amalgam or resin composite after placement; the nibs are usually flat with sharp margins. An <b>amalgam carrier</b> carries amalgam and places it into the prepared cavity.</p><p>Hand-instrument grasps: (1) a <b>pen grasp</b> — like holding a pen; pads of the thumb, index and middle fingers hold the instrument, while the tip of the ring finger (or ring and little fingers) rests on a nearby tooth of the same arch; the palm generally faces away from the operator; (2) an <b>inverted pen grasp</b> — the finger positions are the same, but the hand is rotated so the palm is more toward the operator; used mostly for preparing upper teeth with an indirect viewing technique; (3) a <b>palm-and-thumb grasp</b> — the handle lies in the palm and is grasped by all the fingers, while the thumb is free of the instrument and rests on a nearby tooth of the same arch.</p>"},{"k":"Dr. Rasha · Lecture 2","t":"Handpieces: low speed 500–15,000 rpm, high speed above 160,000 rpm (up to 500,000), always with water coolant","b":"<p>There are two basic types of handpiece: a <b>straight handpiece</b>, used for laboratory work, and a <b>contra-angle handpiece</b>, used in the mouth. Contra-angle handpieces are classified by speed. A <b>low-speed</b> handpiece has a free-running speed range from <b>500 to 15,000 rpm</b>. It is used for removal of carious dentine with a round bur rotating slowly; with different bur shapes to finish the prepared cavity (for example rounding sharp edges or flattening the floor); and for finishing and polishing restorations. A <b>high-speed</b> handpiece has a free-running speed <b>above 160,000 rpm</b>, and some have speeds up to <b>500,000 rpm</b>. It is preferred for cutting enamel and dentine. Penetration through enamel and extension of the cavity outline are more efficient at high speed. Small-diameter burs should be used in the high-speed handpiece. High speed generates considerable heat during cutting, even with small burs, and should be used with a <b>water coolant</b> and high-efficiency evacuation.</p>"},{"k":"Dr. Rasha · Lecture 2","t":"Burs: shank, neck and head, and the basic shapes — round, inverted cone, and fissure","b":"<p>Burs turn on an axis at different speeds to cut, abrade, finish or polish. Cutting burs may be manufactured from stainless steel, carbide or diamond, in hundreds of shapes and sizes. Parts of a bur: the <b>shank</b> fits into the handpiece, accepts rotational motion, and is locked inside the handpiece head; the <b>neck</b> connects the head to the shank; the <b>head</b> is the working part and contains the cutting edges or points. Basic head shapes: a <b>round bur</b> — spherical, used for initial entry into the tooth, for retentive holes, or for removal of carious dentine; an <b>inverted-cone bur</b> — a cone whose apex is directed toward the shank, used for flattening the floor, increasing depth, or providing undercuts; a <b>fissure bur</b> — an elongated cylindrical head, used to obtain the outline form and to cut walls, floor or margins, either straight or tapered.</p>"},{"k":"Dr. Rasha · Lecture 2","t":"Quiz: instrument formulas, 1–2 mm shank balance, and handpiece speeds","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">G.V. Black’s instrument formulas and cutting tools in this lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A three-number formula is used when the cutting edge is not at a right angle; a chisel’s cutting edge is parallel to the handle; a GMT is never used on a Class II axio-pulpal line angle</button><button type=\"button\" class=\"opt\" data-i=\"1\">A three-number formula (width in tenths of a millimetre, length in millimetres, blade-to-handle angle in centigrade) is used when the cutting edge is at a right angle to the blade, as with an enamel hatchet (example 10-7-14). A four-number formula inserts the cutting-edge angle as the second number when that edge is not at a right angle, as with a gingival margin trimmer (examples 12½-100-7-14 and 12½-75-7-14). Shank angles (contra-angle means two or more) keep the blade edge within 1–2 mm of the instrument’s long axis. A chisel cuts enamel and dentine with a pushing motion; a GMT bevels the gingival enamel margin and the axio-pulpal line angle of a Class II; a spoon may be discoid or cleoid. Stainless steel is now preferred to carbon steel because chromium resists corrosion and carbon gives hardness, and it stays bright after steam or dry-heat sterilization</button><button type=\"button\" class=\"opt\" data-i=\"2\">Ash 49 is a sharp amalgam carver, and a condenser is used only for composite</button><button type=\"button\" class=\"opt\" data-i=\"3\">A hoe’s blade has a smaller angle to the handle than a chisel does</button></div><div class=\"qexp\" hidden><p>المعادلة الثلاثية إذا الحافة قائمة على النصل (عرض بأعشار الملم، طول، زاوية). الرباعية تضيف زاوية حافة القطع ثانياً، مثل الـ GMT. زوايا الساق تخلي الحافة ضمن 1–2 ملم من المحور. الستينلس مفضّل لأن الكروم ضد التآكل.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Handpieces, burs and grasps in this lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Low speed starts at 50,000 rpm; high speed must never be used with water; a round bur is only for polishing gold</button><button type=\"button\" class=\"opt\" data-i=\"1\">A straight handpiece is for laboratory work; a contra-angle is used in the mouth. Low speed runs from 500 to 15,000 rpm (slow removal of carious dentine, finishing the cavity, polishing). High speed is above 160,000 rpm, some up to 500,000, preferred for cutting enamel and dentine, always with water coolant and high-efficiency evacuation, and with small-diameter burs. A round bur is for initial entry, retentive holes or carious dentine; an inverted cone flats the floor or adds undercuts; a fissure bur (straight or tapered) cuts the outline and walls. A pen grasp rests the ring finger on a nearby tooth of the same arch; an inverted pen (palm toward the operator) is used mostly for upper teeth with indirect vision; a palm-and-thumb grasp leaves the thumb free to rest on a nearby tooth</button><button type=\"button\" class=\"opt\" data-i=\"2\">High-speed cutting should be done dry, to improve visibility</button><button type=\"button\" class=\"opt\" data-i=\"3\">An inverted-cone bur is the usual choice for the first entry into a pit</button></div><div class=\"qexp\" hidden><p>الواطي 500–15,000 دورة لإنهاء وشيل نخر بطيء. العالي فوق 160,000 ودائماً ويه ماء. المدورة للدخول والنخر؛ المخروط المقلوب للأرضية والتقعر؛ الشق للكفاف. مسكة القلم المقلوب غالباً للعلوية.</p></div></div>"},{"k":"Dr. Rasha · Lecture 2","t":"Sterilization versus disinfection, and the four accepted sterilization methods","b":"<p><b>Sterilization</b> is any process that eliminates (removes) or kills all forms of microbial life, including resistant bacterial spores, using physical or chemical means. Because most instruments contact mucosa and/or penetrate oral tissues, reused instruments must be thoroughly cleaned and sterilized by accepted methods that can be routinely tested and monitored. <b>Disinfection</b> is a much lesser term: a procedure offering variable measures of infection control, in which we are not going to kill all living microorganisms — viruses may survive. Classification: physical methods, chemical methods, or a combination of both. There are four accepted methods of sterilization: (1) steam-pressure sterilization (autoclave); (2) chemical-vapor-pressure sterilization (chemiclave); (3) dry-heat sterilization (dryclave); (4) ethylene-oxide sterilization.</p>"},{"k":"Dr. Rasha · Lecture 2","t":"The autoclave: 250 °F (121 °C) for 15 minutes at 15 psi, or 273 °F (134 °C) for 3 minutes at 20 psi","b":"<p>Steam-pressure sterilization is performed in a steam autoclave. For a light load of instruments, the time required at <b>250 °F (121 °C)</b> is a minimum of <b>15 minutes at 15 psi</b>. Time for wrapped instruments can be reduced to <b>3 minutes</b> if the temperature is raised to approximately <b>273 °F (134 °C)</b> to give <b>20 psi</b>. Time required for the sterilizer to reach the correct temperature is not included. Instruments sterilized by autoclave include handpieces, orthodontic pliers, impression trays, and surgical instruments. Advantages: the most rapid and effective method for sterilizing cloth surgical packs and towel packs; economical; good penetration on all surfaces; a short procedure time; and easily monitored. Disadvantages: items sensitive to elevated temperature cannot be autoclaved; autoclaving tends to rust carbon-steel instruments and burs; steam appears to corrode the steel neck and shank of some diamond instruments and carbide burs; and unprotected cutting edges may be dulled.</p>"},{"k":"Dr. Rasha · Lecture 2","t":"Chemiclave (270 °F, 20 lb, about 30 minutes) and dry heat (above 320 °F / 160 °C for 1–2 hours)","b":"<p>Chemical-vapor-pressure sterilization is performed in a Chemiclave, operating at <b>270 °F (131 °C) and 20 lb pressure</b>, with a cycle time of about <b>half an hour</b>. Like ethylene-oxide sterilizers, they must be used with a prescribed chemical from the manufacturer. Instruments: periodontal, restorative and endodontic instruments, and carbon-steel and other corrosion-sensitive burs and pliers. Advantage: carbon steel and corrosion-sensitive burs, instruments and pliers are said to be sterilized without rust or corrosion. Disadvantages: heat-sensitive items will be damaged; instruments must be lightly packaged in bags from the sterilizer manufacturer; towels and heavy cloth wrappings of surgical instruments may not be penetrated.</p><p>Dry-heat sterilization (hot-air ovens) is the most widely used dry-heat method. It is readily achieved at temperatures <b>above 320 °F (160 °C) for 1–2 hours</b>. The oven is electrically heated, with a fan for even distribution and a thermostat. Instruments: endodontic instruments, condensers, hand instruments, orthodontic pliers, surgical instruments, and burs. Advantages: carbon-steel instruments and burs do not rust, corrode, or lose their temper or cutting edges if they are well dried first; economical; easily monitored. Disadvantages: high temperatures may damage rubber or plastic; cycles are prolonged at lower temperatures; heavy loads, crowding and heavy wrapping easily defeat sterilization; and hot air is a bad conductor, with less penetrating power.</p>"},{"k":"Dr. Rasha · Lecture 2","t":"Ethylene oxide for heat-sensitive items, 2–3% glutaraldehyde for 6–10 hours, and a minimum office infection-control list","b":"<p><b>Ethylene oxide</b> is the best method for sterilizing complex, heat-sensitive instruments and delicate materials such as a rotary handpiece. It is a gas at a temperature below 100 °C, highly explosive and inflammable, highly penetrative, non-corrosive, and bactericidal. It is used for towels and for metal and plastic instruments. Liquid sterilants / high-level disinfectants: glutaraldehydes at <b>2% to 3%</b> concentrations; they kill bacterial spores in <b>6–10 hours</b>. Greater dilutions are not encouraged for repeated use. Placing wet items into disinfectant trays dilutes the solution. Glutaraldehydes are irritating and sensitizing to skin and respiratory passages, and can be toxic — keep trays tightly covered in a well-vented area. Do not use 2% glutaraldehyde solutions to wipe counters or equipment (for example the dental unit and chair). A minimum dental-office infection-control program in this lecture: sterilization of instruments; a comprehensive medical history; hepatitis B vaccine to prevent cross-infection; antiseptic and mouthwash; disposable mask and gloves; protective eyeglasses; rubber dam; surface cleaning and a cover tray; and needle and sharp-instrument safety.</p>"},{"k":"Dr. Rasha · Lecture 2","t":"Critical, semi-critical and non-critical items, and why ultrasonic cleaning is said to be nine times more effective than hand cleaning","b":"<p>Dental instruments are classified, based on the risk of transmission and the need for sterilization, as <b>critical, semi-critical, or non-critical</b>. Stages for instrument sterilization: (1) <b>presoaking</b> — placing the instrument in a detergent presoak until time is available for full cleaning prevents drying and begins to soften debris; (2) <b>cleaning</b> — in an ultrasonic cleaner (preferred), an instrument washer, or by hand while wearing proper protection. Ultrasonic cleaners are the safest and most efficient way; ultrasonic cleaning is <b>nine times more effective than hand cleaning</b>, and is fast and thorough without damage to instruments; (3) <b>packaging</b> — in a sealed package or pouch, unless the instruments will be used immediately after sterilization; (4) <b>sterilization</b> — steam autoclaving, dry heat, or chemical vapor; (5) <b>drying or cooling</b> — store instruments in a dry, protected area.</p>"},{"k":"Dr. Rasha · Lecture 2","t":"Surface disinfection (fresh bleach: ¼ cup to 1 gallon), laboratory items, and a 30-second handpiece flush","b":"<p>Countertops and dental-unit surfaces that may have been contaminated should be cleaned with disposable toweling and an appropriate cleaning agent and water, then disinfected with a suitable chemical germicide, including phenolics, iodophors, and chlorine-containing compounds. A fresh solution of <b>sodium hypochlorite</b> (household bleach) prepared daily is an inexpensive and effective intermediate-level germicide. The concentration given is <b>¼ cup of bleach to 1 gallon of water</b>, effective on environmental surfaces that have been cleaned of visible contamination. Caution: chlorine solutions are corrosive to metals, especially aluminium. Laboratory materials and other items that have been used in the mouth (impressions, bite registrations, fixed and removable prostheses, orthodontic appliances) should be cleaned and disinfected before and after being manipulated in the laboratory, and before placement in the patient’s mouth.</p><p>Sterilization of handpieces, after each patient: run any handpiece connected to the dental air/water system to discharge water and/or air for at least <b>30 seconds</b>; leave the bur in place while you clean the outside of the handpiece with detergent and warm water; sterilize in an autoclave; and, if the manufacturer recommends it, lubricate with pressurized oil until clean oil appears. Heat-sensitive or permanently attached unit components that may become contaminated (handles of saliva ejectors, high-speed evacuators, air/water syringes) should be covered with disposable covers changed after each use, or carefully cleaned and treated with at least an intermediate-level germicide. Waste: blood and liquid waste may be poured carefully into a drain connected to a sanitary sewer; disposable needles, scalpels and other sharps should be placed intact into puncture-resistant containers; solid waste contaminated with blood or body fluids should go in sealed, sturdy, impervious bags.</p>"},{"k":"Dr. Linz and Dr. Rasha · Lectures 1–2","t":"Self-test: Black’s classes, caries triangles, autoclave numbers, and the 30-second flush","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">G.V. Black’s classes and the two patterns of caries spread in this lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Class IV never involves the incisal angle; occlusal enamel caries has its base at the fissure opening</button><button type=\"button\" class=\"opt\" data-i=\"1\">Class I includes pits and fissures of posteriors and the lingual of maxillary lateral incisors; Class II is proximal of posteriors; Class III is proximal of anteriors without the incisal edge; Class IV adds the incisal angle; Class V is the gingival third; Class VI is incisal edges or cusp tips. Occlusal enamel caries is a triangle with the base toward the dentine and the tip toward the occlusal surface; dentine has the base toward the DEJ and the tip toward the pulp. Smooth-surface enamel has the base toward the outer surface and the tip toward the DEJ. Root caries is more common in older patients after recession, often fast and close to the pulp</button><button type=\"button\" class=\"opt\" data-i=\"2\">A point angle is the junction of two walls only</button><button type=\"button\" class=\"opt\" data-i=\"3\">Operative dentistry is limited to teeth that already need a full-coverage crown</button></div><div class=\"qexp\" hidden><p>أصناف بلاك من I إلى VI مثل ما انشرحت. مثلث الإطباق بالمينا قاعدته نحو العاج؛ بالسطح الأملس قاعدته نحو الخارج. نخر الجذر لكبار السن بعد انحسار اللثة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Sterilization numbers in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">An autoclave always runs at 160 °C for 6–10 hours; bleach for surfaces is used undiluted; ethylene oxide is the first choice for carbon-steel burs that must not rust</button><button type=\"button\" class=\"opt\" data-i=\"1\">A light autoclave load: 250 °F (121 °C) for at least 15 minutes at 15 psi; wrapped instruments may take 3 minutes at about 273 °F (134 °C) and 20 psi (come-up time is not included). A chemiclave: 270 °F (131 °C) and 20 lb, about 30 minutes, and is said not to rust carbon steel. Dry heat: above 320 °F (160 °C) for 1–2 hours; dry the instruments first so carbon steel does not rust. Glutaraldehyde 2–3% kills spores in 6–10 hours and must not be used to wipe the chair. Ultrasonic cleaning is described as nine times more effective than hand cleaning. Fresh daily bleach for cleaned environmental surfaces is ¼ cup to 1 gallon of water. After each patient, flush the handpiece for at least 30 seconds, then autoclave it</button><button type=\"button\" class=\"opt\" data-i=\"2\">Disinfection always kills bacterial spores and viruses</button><button type=\"button\" class=\"opt\" data-i=\"3\">Hot air has more penetrating power than steam, so a crowded dry-heat load is safer than an autoclave</button></div><div class=\"qexp\" hidden><p>الأوتوكلاف 121 مئوي / 15 دقيقة / 15 psi، أو 134 مئوي / 3 دقائق / 20 psi للمغلف. الكيميكلف 131 مئوي حوالي نصف ساعة. الحرارة الجافة فوق 160 مئوي لمدة 1–2 ساعة. الجلوتارالدهيد 2–3% لمدة 6–10 ساعات. التنظيف فوق الصوتي أفعل 9 مرات. ربع كوب مبيّض لكل غالون. والقبضة تتصرف 30 ثانية.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Formulas, speeds and bur shapes — a last recap:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A three-number formula is for a GMT; low speed starts at 160,000 rpm; an inverted-cone bur is for the first pit entry only</button><button type=\"button\" class=\"opt\" data-i=\"1\">A three-number formula is used when the cutting edge is at a right angle to the blade (width in tenths of a millimetre, length, blade angle). A four-number formula is used when the cutting edge is not at a right angle (the cutting-edge angle is the second number), as with a GMT. Low speed is 500–15,000 rpm; high speed is above 160,000 (up to 500,000) and needs water coolant. A round bur is for entry, retentive holes or carious dentine; an inverted cone flats the floor or adds undercuts; a fissure bur cuts the outline. Shank angles keep the blade within 1–2 mm of the long axis. Stainless steel is preferred because chromium resists corrosion and the instrument stays bright after sterilization</button><button type=\"button\" class=\"opt\" data-i=\"2\">A fissure bur is spherical and used only to detect caries</button><button type=\"button\" class=\"opt\" data-i=\"3\">A palm-and-thumb grasp requires the thumb to hold the handle tightly, with no tooth rest</button></div><div class=\"qexp\" hidden><p>ثلاثية للحافة القائمة، رباعية للمائلة مثل الـ GMT. الواطي 500–15,000 والعالي فوق 160,000 ويه ماء. المدورة للدخول والنخر، والمخروط المقلوب للأرضية والتقعر.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">For a light autoclave load in this lecture, what temperature, time and pressure are required?</button><div class=\"flash-a\" hidden>A minimum of 15 minutes at 250 °F (121 °C) and 15 psi. (Come-up time is not included. Wrapped instruments may instead take 3 minutes at about 273 °F / 134 °C and 20 psi.)</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا أول ملف معالجة (طب الأسنان التحفظي) للمعادلة: محاضرة د. لنز 1 (تعريف المادة، جدران الحفرة، وتصنيف بلاك، وانتشار النخر) ومحاضرة د. رشا 2 (الأدوات اليدوية والدولية والتعقيم). صفحات 2–29. شرح عراقي مفصل ويه أسئلة. ملفات الأيام القديمة 3–6 تبقى بمكانها.</p>","<p>ال<b>معالجة (operative dentistry)</b> فن وعلم تشخيص وعلاج الأسنان اللي بيها عيوب مثل نخر، تصبغ، كسر، أو تشوه، وما تحتاج تغطية كاملة، حتى ترجع للشكل والوظيفة والجمال الصحيح. ال<b>نخر (caries)</b> مرض ميكروبي غير راجع لأنسجة السن المتكلسة: يزيل المعادن ويخرّب المادة العضوية وغالباً يوصل لتجويف. <b>تحضير الحفرة</b> تغيير ميكانيكي بالسن حتى يستقبل مادة ترميم ترجع الشكل والوظيفة والجمال.</p><p>أهداف التحضير أربعة: شيل النخر حسب الحاجة؛ إرجاع سلامة سطح السن؛ إرجاع الوظيفة حتى السن أو الترميم ما ينكسر تحت المضغ والترميم ما ينزاح؛ وإرجاع الشكل.</p>","<p>السطح نحو منتصف القوس <b>إنسي (mesial)</b>، وبعيداً عنه <b>وحشي (distal)</b>. نحو اللسان <b>لساني</b>؛ نحو الخد أو الشفة <b>وجهي</b> — <b>شفوي</b> للأمام و<b>شدقي</b> للخلف. نحو اللثة <b>لثوي</b>. سطح المضغ خلفي <b>إطباقي</b> وأمامي <b>قاطع</b>. ال<b>تقريبي (proximal)</b> يقابل السن المجاور. ال<b>حافة الهامشية</b> حدود اللساني بالأسنان الأمامية والإطباق بالخلفية.</p><p>ال<b>أرضية اللبية (pulpal floor)</b> تواجه اللب وتعامد المحور الطويل. المحور الطويل خط تخيلي يقسم السن لنصفين. ال<b>جدار المحوري (axial wall)</b> يوازي المحور ويكون مجاور لحجرة اللب (بتحضير صنف II).</p>","<p>ال<b>زاوية الخط (line angle)</b> التقاء جدارين، مثلاً الزاوية المحورية-اللبية. ال<b>زاوية النقطة (point angle)</b> التقاء ثلاثة جدران، مثلاً وجهية-محورية-لثوية. زاوية <b>سطح الحفرة (cavosurface)</b> التقاء جدار الحفرة ويه السطح الخارجي للسن، وتُسمّى باسم الجدار المجاور (إنسية أو لثوية مثلاً).</p>","<p><b>جي. في. بلاك</b> أبو المعالجة صنّف آفات النخر حسب موقعها بالأسنان الدائمة. <b>صنف I</b>: حفر وشقوق على الوجهي واللساني والإطباقي للأرحاء والضواحك، ولساني القواطع العلوية (الرباعيات). <b>صنف II</b>: السطح التقريبي للخلفية. <b>صنف III</b>: التقريبي للأمامية بلا الحافة القاطعة. <b>صنف IV</b>: التقريبي الأمامي لما الزاوية القاطعة تحتاج ترميم. <b>صنف V</b>: الوجهي واللساني بالثلث اللثوي. <b>صنف VI</b>: حفر أو بلى على الحافة القاطعة أو رؤوس الحدبات.</p><p>الاختصارات: D وحشي، L لساني، M إنسي، O إطباقي، I قاطع، F وجهي، و<b>DEJ</b> الملتقى المينائي-العاجي. حسب الموقع التشريحي: نخر إطباقي (حفر وشقوق)، أو نخر السطح الأملس (تقريبي وعنقي).</p>","<p>نخر المينا <b>الخطي</b> يظهر بمنطقة الخط الولادي بالقواطع العلوية (مثلاً نقص كالسيوم أو رضّ الولادة). نخر <b>سطح الجذر</b> أشيع عند كبار السن من انحسار اللثة: غالباً بلا أعراض، سريع، أقرب للب، وأصعب ترميم.</p><p>انتشار النخر يتبع قضبان المينا. بالنخر الإطباقي: بالمينا مثلث <b>قاعدته نحو العاج ورأسه نحو الإطباق</b>؛ بالعاج مثلث <b>قاعدته نحو الـ DEJ ورأسه نحو اللب</b>. بالأسطح الملساء (التقريبية): بالمينا القاعدة نحو السطح الخارجي والرأس نحو الـ DEJ؛ بالعاج القاعدة نحو الـ DEJ والرأس نحو اللب.</p>","<p>سؤالان على أصناف بلاك، ومثلثات انتشار النخر.</p>","<p>تشكيل السن أساس بالمعالجة. قديماً كله بأدوات يدوية، وبعدين ويه أدوات دورانية. ال<b>أدوات اليدوية</b> شغّالة باليد. <b>بلاك</b> أول من حط تسمية وتصنيف مقبول حتى الطبيب والمعمل يفهمون بعض.</p><p>سنين طويلة ال<b>فولاذ الكربوني</b> هو الأساس لأنه أصلب ويحافظ على الحدة أحسن. هسه ال<b>ستينلس ستيل</b> مفضّل لأنه يبقى لامع بعد التعقيم بالبخار أو الحرارة الجافة، وبعد ما حسّنوه ب<b>كروم</b> (ضد التآكل) و<b>كربون</b> (للصلابة). الأدوات إما قاطعة أو غير قاطعة.</p>","<p>الأداة القاطعة ثلاثة أجزاء: <b>مقبض</b> و<b>ساق (shank)</b> و<b>نصل (blade)</b>. بغير القاطعة الجزء الشغال اسمه <b>nib</b>. الساق ممكن تكون مستقيمة، بزاوية واحدة، ثنائية، ثلاثية أو رباعية. ال<b>كونترا-أنجل</b> ساق بيها زاويتان أو أكثر، حتى تبقى حافة النصل ضمن <b>1–2 ملم</b> من محور الأداة — هذا يركّز القوة ويمنع الدوران.</p><p>معادلة بلاك <b>الثلاثية</b> إذا حافة القطع تعامد النصل: الرقم الأول عرض النصل ب<b>أعشار الملم</b>؛ الثاني طول النصل بالملم؛ الثالث زاوية النصل ويه المحور بالسنتيغراد. أمثلة الأشكال: إزميل مستقيم <b>12-7-0</b>، Wedelstaedt <b>11½-15-3</b>، ثنائي الزاوية <b>10-7-8</b>، وفأس مينا <b>10-7-14</b>.</p>","<p>المعادلة <b>الرباعية</b> إذا حافة القطع مو قائمة على النصل: عرض بأعشار الملم؛ زاوية حافة القطع ويه المحور؛ طول النصل؛ وزاوية النصل ويه المحور. مثال الـ GMT: <b>12½-100-7-14</b> و <b>12½-75-7-14</b>.</p><p>الأدوات القاطعة: ال<b>إزميل (chisel)</b> شطف من جهة واحدة وحافة تعامد المقبض، لقطع المينا والعاج بالدفع؛ ال<b>المعزقة (hoe)</b> مثل الإزميل بس زاوية النصل أكبر؛ ال<b>فأس (hatchet)</b> حافتها توازي المقبض، يمين ويسار؛ ال<b>مقلّم الحافة اللثوية (GMT)</b> لشطف الحافة اللثوية بالمينا بتحضير تقريبي-إطباقي، وشطف الزاوية المحورية-اللبية بصنف II — نصل مقوس وحافة مائلة، يمين/يسار وإنسي/وحشي؛ و<b>المعلقة (spoon)</b> حافة نصف دائرة، وفي منها <b>discoid</b> دائرية و<b>cleoid</b> مثل المخلب.</p>","<p>بغير القاطعة النصل يصير nib أو رأس. تقسم لتشخيصية، بلاستيكية، وملغم. التشخيصية بكل جلسة: <b>المرآة</b> للرؤية غير المباشرة وعكس الضوء وإبعاد الأنسجة؛ ال<b>المسبر أو المستكشف</b> لتحسس السطح وصلابة العاج وكشف النخر (منجلي أو مستقيم أو بزاوية)؛ و<b>الملقط</b> لحمل الأشياء الصغيرة.</p><p>أدوات البلاستك لحمل وتشكيل الكومبوزت والجلاس أيونومر، أو حشوة مؤقتة، أو البطانه. <b>Ash 49</b> نهايته أسطوانية مدورة؛ <b>Ash 6</b> مثل الكارفر بس حافته مو حادة؛ <b>أداة الدايكال</b> رأس صغير مدور؛ و<b>ملعقة الإسمنت</b> للخلط على زجاج أو ورق.</p>","<p>أدوات الملغم: ال<b>مكثّف (condenser)</b> يضغط الملغم بكل زوايا الحفرة (وجهه عادة دائري مسطح). ال<b>المبرنش (burnisher)</b> يبرنش الحواف، ينعّم السطح المنحوت، يشكّل شريط الماتريكس، ويطوي الذهب المصبوب قرب الحافة حتى يضيّق الفراغ. ال<b>الكارفر</b> ينحت الملغم أو الكومبوزت بحواف حادة. و<b>حامل الملغم</b> يوصّله للحفرة.</p><p>المسكات: <b>مسكة القلم</b> (الإبهام والسبابة والوسطى يمسكون، والبنصر يستند على سن بنفس القوس، والكف بعيداً عنك)؛ <b>القلم المقلوب</b> نفس الأصابع بس الكف أقرب إلك، غالباً للأسنان العلوية ويه الرؤية غير المباشرة؛ و<b>الكف والإبهام</b> المقبض بالكفك وكل الأصابع تمسكه، والإبهام حر يستند على سن مجاور.</p>","<p>نوعان من قبضة اليد: <b>مستقيمة</b> للشغل المختبري، و<b>كونترا-أنجل</b> داخل الفم. الواطية السرعة من <b>500 إلى 15,000 دورة/دقيقة</b>: شيل العاج النخر بفرازة مدورة بطيئة، وإنهاء الحفرة، وتلميع الترميم. العالية <b>فوق 160,000</b> وبعضها يوصل <b>500,000</b>: مفضّلة لقطع المينا والعاج وتوسيع الحفرة. استخدم فراز قطر صغير، ودائماً ويه <b>تبريد ماء</b> وشفط قوي لأن الحرارة عالية.</p>","<p>الفرازات تدور لتقطع أو تبري أو تنهي أو تلمع. مواد القطع: ستينلس أو كاربيد أو ماس. أجزاؤها: <b>ساق</b> تدخل القبضة وتنقفل بيها؛ <b>عنق</b> يربط؛ و<b>رأس</b> فيه حواف القطع. الأشكال الأساسية: <b>مدورة</b> للدخول الأولي أو الثقوب المثبتة أو شيل العاج النخر؛ <b>مخروط مقلوب</b> رأسه نحو الساق، لتسطيح الأرضية أو زيادة العمق أو عمل تقعر؛ و<b>شق (fissure)</b> أسطوانية طويلة لشكل الحفرة وجدرانها، مستقيمة أو مستدقة.</p>","<p>سؤالان على معادلات بلاك، و1–2 ملم، وسرعات القبضة.</p>","<p>ال<b>تعقيم (sterilization)</b> يقضي على كل أشكال الحياة الميكروبية بما فيها الأبواغ المقاومة. أغلب الأدوات تلمس المخاطية أو تخترق الأنسجة، فلازم تننظف وتتعقم بطريقة قابلة للمراقبة. ال<b>التطهير (disinfection)</b> أقل درجة: ما نقتل كل الكائنات، والفيروسات قد تبقى. أربع طرق مقبولة: أوتوكلاف (بخار تحت ضغط)، كيميكلف (بخار كيميائي تحت ضغط)، حرارة جافة، وأوكسيد الإيثيلين.</p>","<p>الأوتوكلاف: لحمل خفيف <b>250 فهرنهايت (121 مئوي) لمدة 15 دقيقة عند 15 psi</b>. للأدوات المغلفة يمكن <b>3 دقائق عند 273 فهرنهايت (134 مئوي) و 20 psi</b>. وقت وصول الجهاز للحرارة ما يُحسب. يناسب القبضات، ملاقط التقويم، أطباق الطبعة، والأدوات الجراحية. أسرع وأكفأ لرزم القماش، اقتصادي، نفاذ زين، وسهل المراقبة. عيوبه: يصدئ الفولاذ الكربوني والفرازات، وقد يأكل أعناق بعض أدوات الماس والكاربيد، ويبلّم الحواف غير المحمية، والمواد الحساسة للحرارة ما تنفع.</p>","<p>ال<b>كيميكلف</b>: <b>270 فهرنهايت (131 مئوي) و 20 باوند، حوالي نصف ساعة</b>. زين للفولاذ الكربوني والأدوات الحساسة للتآكل بلا صدأ. بس يحتاج أكياس الشركة، والقماش الثقيل قد ما ينفذه البخار، والحرارة تضر المواد الحساسة.</p><p>ال<b>حرارة الجافة</b> (فرن هواء ساخن): <b>فوق 320 فهرنهايت (160 مئوي) لمدة 1–2 ساعة</b>. الفولاذ الكربوني ما يصدأ إذا جففته زين أولاً. عيوبها: تضر المطاط والبلاستك، الدورة طويلة، الحمل الثقيل يفشل التعقيم، والهواء الساخن نفاذه ضعيف.</p>","<p><b>أوكسيد الإيثيلين</b> أفضل للطرق الحساسة للحرارة والقبضات الدقيقة: غاز تحت 100 مئوي، شديد الانفجار والاشتعال، نفاذ، غير مآكل، وقاتل للجراثيم. ال<b>جلوتارالدهيد 2–3%</b> يقتل الأبواغ خلال <b>6–10 ساعات</b>. لا تخففه أكثر للاستخدام المتكرر، ولا تحط أدوات مبللة بالصينية (تخفف المحلول)، ولا تمسح فيه الطاولات أو الكرسي — هو مهيّج وسام، غطِّ الصينية بمكان هوايته زينة. برنامج العيادة الأدنى: تعقيم، تاريخ طبي كامل، لقاح التهاب الكبد B، مطهر وغسول، كمام وكفوف وكاسات وكوشن مطاط، تنظيف الأسطح، وأمان الإبر.</p>","<p>تصنيف الأدوات حسب خطر النقل: <b>حرجة، شبه حرجة، وغير حرجة</b>. المراحل: <b>نقع أولي</b> بمنظف حتى الأوساخ ما تنشف؛ <b>تنظيف</b> — الجهاز فوق الصوتي هو الأأمن والأكفأ، و<b>أفعل تسع مرات من التنظيف اليدوي</b>؛ <b>تغليف</b> كيس محكم إلا إذا راح تستخدمها فوراً؛ <b>تعقيم</b> (أوتوكلاف أو حرارة جافة أو بخار كيميائي)؛ و<b>تجفيف أو تبريد</b> وخزن بمكان جاف محمي.</p>","<p>نظّف الأسطح وبعدين طهّرها بفينول أو يودوفور أو الكلور. محلول <b>هايبوكلوريت الصوديوم</b> الطازج يومياً بتركيز <b>ربع كوب مبيّض لكل غالون ماء</b> فعّال على الأسطح بعد شيل الأوساخ الظاهرة — بس يأكل المعادن خصوصاً الألمنيوم. مواد المختبر والطبعات والأجهزة اللي دخلت الفم لازم تننظف وتُطهَّر قبل وبعد المختبر وقبل إرجاعها لفم المريض.</p><p>القبضة بعد كل مريض: شغّلها تصرف ماء أو هواء <b>30 ثانية</b> على الأقل، نظّف الخارج والمنشار بعد موجود، عقّمها بالأوتوكلاف، وزيّتها إذا الشركة توصي. الأجزاء الحساسة للحرارة أو المربوطة بالجهاز غطّها بأغطية تتبدل، أو طهّرها بمطهّر متوسط على الأقل. الإبر والشفرات بصناديق مقاومة للثقب؛ الفضلات السائلة للمجاري الصحية؛ والصلبة الملوثة بأكياس محكمة.</p>","<p>ثلاثة أسئلة ختامية على بلاك ومثلثات النخر، وأرقام التعقيم، ومعادلات الأدوات والسرعات، ويه بطاقة الأوتوكلاف وزر الدرجة.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
