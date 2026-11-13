@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Operative File 6 — Composites, Light-Curing and Class III–V Technique</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Operative (Conservative) Dentistry · Dr. Linz Lectures 12–14</div>
+    <h1>Resin Composites, Light-Curing, Bonding, and Class III–V Technique</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lectures 12–14 by Dr. Linz (PDF pages 109–132): resin-based composites, light-activation sources, etching and bonding generations, and direct Class III, IV and V restorations.</p>
+    <ul>
+      <li>Composite since 1962: conventional 75–80% filler at 8 µm, microfilled 35–50% at 0.01–0.04 µm, hybrids 75–85% at 0.4–1 µm</li>
+      <li>QTH light around 470 nm, an argon laser at 488 nm, PAC and LED sources, and a higher C-factor in Class I and V</li>
+      <li>Enamel etch 15–30 seconds (about 30 MPa); dentine 10–15 seconds or 15 seconds only; total-etch generations 4–5 and self-etch 6–7</li>
+      <li>Class III–V designs: a 0.25–0.5 mm bevel at 45°, a 1–2 mm Class IV bevel, and curing the bond 10 seconds and each increment 20 seconds</li>
+      <li>Total run time: <b>44 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 22</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Operative · File 6","t":"Resin composites, light-curing, etching and bonding, and Class III–V technique","b":"<p>University of Baghdad, College of Dentistry — Operative (conservative) dentistry syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file covers PDF pages 109–132: Lectures 12–14 by Dr. Linz on resin-based composites (introduced commercially in 1962 by Bowen), light-activation sources, polymerization shrinkage, enamel and dentine etching and bonding generations, and the clinical technique for direct Class III, IV and V restorations. A later page headed “clinical steps for acid etch and bonding for each generation” did not extract as readable text, so those figure-only steps are not invented here.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Medical terms stay in English next to the Arabic. Numbers in these lectures are kept as written, including filler percentages and particle sizes, enamel etching for 15–30 seconds, and a dentine etch listed both as 10–15 seconds and as 15 seconds only. The lecture writes nanofill particles as “0.005–001 microm.”; that is treated as 0.005–0.01 µm.</p>"},{"k":"Dr. Linz · Lecture 12","t":"Indications and contraindications for a composite restoration","b":"<p>Resin-based composite was introduced commercially in 1962 by Bowen, and is the most popular tooth-coloured material. Indications: (1) Classes I, II, III, IV, V and VI restorations; (2) core build-ups; (3) fissure sealants and conservative composite restorations (preventive resin restorations); (4) esthetic enhancement procedures — partial veneers, full veneers, tooth-contour modifications, and diastema closures; (5) cements for indirect restorations; (6) temporary restorations.</p><p>Contraindications: (1) an operating area that cannot be adequately isolated; (2) Class V restorations that are not aesthetically critical; (3) restorations that extend onto the root surface (may exhibit gap formation); (4) when heavy occlusal stresses are present.</p>"},{"k":"Dr. Linz · Lecture 12","t":"Advantages of composite, and its material- and technique-related disadvantages","b":"<p>Advantages: (1) aesthetics; (2) conservative of tooth-structure removal (less extension; a uniform depth is not necessary; mechanical retention is usually not necessary); (3) easier, less complex tooth preparation; (4) low thermal conductivity; (5) bonded to tooth structure, resulting in good retention, low microleakage, minimal interfacial staining, and increased strength of remaining tooth structure; (6) repairable.</p><p>Material-related disadvantages: polymerization shrinkage; occlusal wear in areas of high occlusal stress; and a higher linear coefficient of thermal expansion. Technique-related disadvantages: time-consuming; technique-sensitive; and costly compared with amalgam restorations.</p>"},{"k":"Dr. Linz · Lecture 12","t":"What a composite is made of: BIS-GMA, inorganic filler, and a silane coupling agent","b":"<p>Composition: (1) <b>Organic resin</b>, for example the dimethacrylate monomer BIS-GMA — the monomer system is the backbone of the composite-resin system. (2) <b>Inorganic filler</b>, for example fused silica, crystalline quartz, lithium aluminium silicate, or borosilicate glass. Filler reduces polymerization shrinkage and the coefficient of thermal expansion of the resin matrix, gives better mechanical properties such as compressive strength, greater aesthetics, radio-opacity, and improved handling. (3) <b>Coupling agent</b> — silane coupling agents bond the resin with the filler, transfer forces from the flexible resin matrix to the stiffer filler particles, and prevent penetration of water along the filler–resin interface. (4) An initiator system, which activates the setting mechanism. (5) Stabilizers. (6) Pigments.</p><p>Composite resins have been classified according to filler size (macrofilled, microfilled, hybrid, and nano-composite or nanofilled); according to the polymerization method (light-cure, chemical-cure, dual-cure); and according to matrix composition (BIS-GMA or UDMA).</p>"},{"k":"Dr. Linz · Lecture 12","t":"Conventional and microfilled composites: 75–80% at 8 µm, versus 35–50% at 0.01–0.04 µm","b":"<p><b>Conventional (macrofilled) composites</b>: contain <b>75–80%</b> inorganic filler by weight; average particle size <b>8 µm</b>; large, extremely hard filler particles; a rough surface structure; and may include strontium and barium glass (radiopaque).</p><p><b>Microfilled composites</b>, introduced in <b>1980</b>: highly polishable — the small particle size results in a smooth polished surface resistant to plaque, debris and stains; good aesthetics; particle size <b>0.01–0.04 µm</b>; filler content <b>35–50%</b> by weight. Because of the lower filler content, some of their physical properties are inferior. They are used for low-stress restorations, on the buccal and lingual surfaces of Class III and Class V cavities.</p>"},{"k":"Dr. Linz · Lecture 12","t":"Hybrid, nanofill, flowable, packable and reinforced composites","b":"<p><b>Hybrid composites</b> combine the properties of conventional and microfilled materials: <b>75–85%</b> inorganic filler by weight; particle size <b>0.4–1 µm</b>; physical properties superior to conventional; the predominant direct aesthetic resin, with universal clinical applicability. Used in moderate-stress restorations where strength and wear resistance are more important than surface luster — Class I, Class II and Class IV.</p><p><b>Nanofill composites</b> contain extremely small filler particles. The lecture writes “0.005–001 microm.”; that is treated here as <b>0.005–0.01 µm</b>. Because of these small particles, high filler levels can be generated, giving good physical properties and aesthetics; nanofills are highly polishable, and these materials are likely to become a popular choice.</p><p><b>Flowable composites</b> flow into the cavity because of lower viscosity; they have lower filler content and inferior physical properties (lower wear resistance and lower strength). Used in small Class I cavities, as pit-and-fissure sealants, as marginal-repair materials, and as the first increment placed as a liner under hybrid or packable composites. They are easy to use, with good wettability and favourable handling. <b>Packable (condensable) composites</b> are more viscous, with a thicker, stiffer feel; filler features prevent particles from sliding past one another; they make restoration of the proximal contact easier, and handling is similar to amalgam. <b>Reinforced composites</b> consist of a resin matrix, randomly orientated E-glass fibre, and inorganic particulate fillers, and are used as a base filling material in high-stress-bearing areas, especially in large cavities of vital and non-vital posterior teeth.</p>"},{"k":"Dr. Linz · Lecture 12","t":"Chemical, light-activated and dual-cured composites","b":"<p><b>Chemically activated (self-curing)</b> composites are most commonly a two-paste system of catalyst and base. When properly mixed, polymerization is chemically activated. The rate of set is uniform through the bulk, with a gradual increase in viscosity at room temperature, so the material has a limited working time. The technique is time-sensitive, with an increased possibility of incorporating air bubbles during mixing, which affects physical and mechanical properties.</p><p><b>Light-activated</b> composites afford a number of advantages: they are single-component and require no mixing, so they have reduced porosity and better resistance to wear and abrasion. Working time is virtually that chosen by the clinician, and the material hardens rapidly when exposed to light. The mixture is supplied in various shades in disposable syringes made of opaque plastic to protect the material from light.</p><p><b>Dual-cured</b> composites combine self-curing and light-curing. The self-curing rate is slow and is designed to cure only those portions that are not adequately light-cured, especially in interproximal areas where access is limited and special approaches are required to guarantee adequate light-curing energy.</p>"},{"k":"Dr. Linz · Lectures 12–13","t":"Quiz: filler percentages, where microfill is used, and dual-cure at the contact","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Composite was introduced, and is indicated or contraindicated, as follows in this lecture:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">It was introduced in 1980 by Bowen and is first choice whenever isolation is impossible and occlusion is heavy</button><button type=\"button\" class=\"opt\" data-i=\"1\">It was introduced commercially in 1962 by Bowen and is the most popular tooth-coloured material. Indications include Classes I–VI, core build-ups, fissure sealants and preventive resin restorations, esthetic procedures (partial or full veneers, contour changes, diastema closures), cements for indirect restorations, and temporary restorations. Contraindications: an area that cannot be adequately isolated; a Class V that is not aesthetically critical; a restoration that extends onto the root (gap formation may occur); and heavy occlusal stress. Advantages include aesthetics, a conservative preparation (uniform depth and mechanical retention usually unnecessary), low thermal conductivity, bonding with less microleakage, and repairability. Disadvantages include polymerization shrinkage, occlusal wear under high stress, a higher linear coefficient of thermal expansion, and a time-consuming, technique-sensitive, costlier procedure than amalgam</button><button type=\"button\" class=\"opt\" data-i=\"2\">Mechanical retention grooves are always required, because composite does not bond to tooth structure</button><button type=\"button\" class=\"opt\" data-i=\"3\">A uniform 2 mm depth is mandatory in every composite preparation</button></div><div class=\"qexp\" hidden><p>ظهر سنة 1962. يُستخدم بأصناف I–VI والقشرات وإغلاق الفراغات، بس مو إذا العزل صعب أو الإجهاد الإطباقي ثقيل أو الامتداد على الجذر.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Filler types and curing modes in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Microfilled composite has 75–80% filler at 8 µm and is preferred for Class I and II under heavy stress</button><button type=\"button\" class=\"opt\" data-i=\"1\">The resin backbone may be BIS-GMA; silane couples filler to resin. Conventional (macrofilled) composites have 75–80% filler by weight and an average particle size of 8 µm, with a rough surface. Microfilled composites (from 1980) have 0.01–0.04 µm particles and 35–50% filler, so some physical properties are inferior; they are used for low-stress buccal and lingual Class III and V restorations and polish smoothly. Hybrids have 75–85% filler at 0.4–1 µm and are used for moderate-stress Class I, II and IV. Nanofill particles are written “0.005–001 microm.” (taken as 0.005–0.01 µm) and are highly polishable. Flowables have lower filler and weaker properties, and may be the first increment under a hybrid or packable. Packables are stiffer and help the proximal contact. Reinforced composites with randomly orientated E-glass fibre are used as a base in high-stress large posterior cavities. Chemical cure is a two-paste mix with limited working time and a risk of air bubbles; light-cure is a single opaque-syringe paste with clinician-controlled working time; dual-cure is for portions, especially interproximal, that the light may not reach adequately</button><button type=\"button\" class=\"opt\" data-i=\"2\">Dual-cure composite must never be used in an interproximal box</button><button type=\"button\" class=\"opt\" data-i=\"3\">A silane coupling agent is added only to change the shade of the paste</button></div><div class=\"qexp\" hidden><p>التقليدي 75–80% وحجم 8 مايكرومتر. المايكرو 35–50% وحجم 0.01–0.04 لصنف III و V واطي الإجهاد. الهجين 75–85% لأصناف I و II و IV. الثنائي التصلب للمناطق التقريبية اللي الضوء ما يوصلها زين.</p></div></div>"},{"k":"Dr. Linz · Lecture 13","t":"Light-activation sources: ultraviolet, QTH around 470 nm, an argon laser at 488 nm, PAC and LED","b":"<p>Photopolymerization was introduced to dentistry in the late 1960s. An <b>ultraviolet</b> source was first used for pit-and-fissure sealants, but UV radiation raised possible eye problems for office personnel and the possibility of selectively altering the oral flora through exposure to ionizing radiation.</p><p>Visible-light sources: (A) a <b>quartz-tungsten-halogen (QTH)</b> handheld curing light. Visible radiation is passed through an infrared filter and then a band-pass filter, so that only blue light is emitted, restricted to the narrow region where the photoinitiator absorbs maximally. Only the wavelengths around <b>470 nm</b> are strongly absorbed by the composite. (B) <b>Argon-laser</b> lights provide high output energy at <b>488 nm</b> for rapid polymerization of commercially available restoratives. (C) <b>Short-arc xenon (plasma-arc, PAC)</b> units were introduced in the mid-1990s as an alternative for rapid light-curing. Manufacturers claimed that these sources can reduce clinical exposure to only <b>1 to 10 seconds</b>, or that composites could be adequately polymerized in less than <b>1 second</b>. (D) <b>Blue LED</b> curing units became available in output wavelengths within the spectral absorbance of a common dental photoinitiator (camphorquinone, CQ). Intensity has increased rapidly. Instead of the hot filaments used in halogen bulbs, LEDs use a junction of doped semiconductors to generate light.</p>"},{"k":"Dr. Linz · Lecture 13","t":"Polymerization shrinkage: the C-factor is higher in Class I and Class V, so increment the resin","b":"<p>Resin-composite restoratives solidify by polymerization. The resin matrix produces a gelation in which the material is transformed from a viscous-elastic into a rigid-plastic phase. During the early stages, monomers are mainly converted into polymeric chains. After a certain degree of conversion, the predominant reaction is cross-linking of the polymeric chains, resulting in a strong polymeric network.</p><p>Factors affecting polymerization-shrinkage stress: (1) <b>Cavity design</b> — stress can be minimized by considering the ratio between the bonded and unbonded surface area (the <b>C-factor</b>). When this ratio increases, as in Class I and Class V situations, shrinkage-stress loading on the tooth–resin interface increases, leading to debonding. (2) <b>Placement technique</b> — insert resin composites in increments to reduce the volume of resin that is shrinking during polymerization. (3) <b>Composite formulation</b> — non-bonded microfiller particles have been found to produce significant decreases in polymerization stress by acting as stress-relieving sites within the composite.</p>"},{"k":"Dr. Linz · Lecture 13","t":"Etching enamel: 37% acid for 15–30 seconds, about 10 µm removed, and about 30 MPa of retention","b":"<p>Acid etching is a physical process that creates a microscopically rough enamel surface (enamel tags). It was the first successful technique developed to bond dental materials to tooth structure. The acid used is <b>37% ortho-phosphoric acid</b>, sometimes referred to as a conditioner. A <b>smear layer</b> is created when a rotary or handheld instrument is used on dentine: it closes off the dentinal tubules, is lightly adhered to the dentine surface, and contains tooth cuttings, saliva, bacteria and other surface debris.</p><p>Enamel etching: enamel consists of organic and inorganic components. Application of 37% phosphoric acid removes about <b>10 microns</b> of enamel to expose prisms of enamel rods and create the classic honeycomb effect. Acid also increases surface energy for better wetting. Resins flow into micromechanical retentive areas; resin tags fill microscopic holes to provide retention of about <b>30 MPa</b>. Acid etching is done for a minimum of <b>15 to 30 seconds</b>. Thorough rinsing for <b>10 seconds</b> removes acid and dissolved calcium phosphates. Over-etching results in formation of crystals (precipitates) that inhibit bonding. A built-in quality-control check: if properly etched, enamel appears frosty or chalky white.</p>"},{"k":"Dr. Linz · Lecture 13","t":"Etching dentine: 10–15 seconds (this lecture also writes 15 seconds only), and the hybrid layer","b":"<p>Dentine etching also uses <b>37% ortho-phosphoric acid</b>. It removes the smear layer from the dentine surface as well as the plugs of material forced into the tubules during cavity preparation, and decalcifies a layer of dentine several microns thick. Time: <b>10–15 seconds</b>. If the etched tooth surfaces are contaminated with saliva or blood, they need to be re-etched; such a re-etching procedure requires only <b>5 seconds</b>. Under “Adhesion to dentine,” this lecture also writes the conditioning or etchant time as <b>15 seconds only</b> — both wordings are kept.</p><p>The etchant removes the smear layer, exposes intertubular and peritubular collagen, opens the tubules, and decreases the surface free energy. The <b>primer</b> includes bifunctional hydrophilic and hydrophobic molecules; it envelops the external surface of collagen fibrils and re-establishes surface free energy to levels compatible with more hydrophobic restorative materials. The <b>bonding agent</b> (adhesive resin) includes mostly hydrophobic monomers such as Bis-GMA; it copolymerizes with the primer, penetrates and polymerizes into interfibrillar spaces, and serves as a structural backbone to the <b>hybrid layer</b>. After the smear layer is removed, opened tubules are sealed with a hydrophilic primer and then an adhesive, forming a resin-impregnated dentine surface (the hybrid layer) that is acid-resistant, closes the tubules, and prevents bacteria from penetrating — so adhesion to dentine protects the pulp.</p>"},{"k":"Dr. Linz · Lecture 13","t":"Bonding generations: total-etch (4th and 5th) versus self-etch (6th and 7th)","b":"<p>Since their introduction in 1955, dental bonding agents have evolved from no-etch to total-etch to the more recent self-etch systems. There are seven generations; the most common are described here. A later heading, “clinical steps for acid etch and bonding for each generation,” sits on a page that did not extract as readable text, so those figure-only steps are not invented.</p><p><b>Total-etch (etch-and-rinse)</b> adhesives: acid etch removes the smear layer, collagen fibres stand upright and dentinal tubules are opened, then primer is applied and adhesive resin penetrates the opened tubules. This group includes the <b>4th generation</b> (a 3-step system: acid etch, then primer, then bonding) and the <b>5th generation</b> (a 2-step system: acid etch, then bonding composed of primer + bond resin).</p><p><b>Self-etch</b> adhesives leave the smear intact and the tubules plugged, partially demineralize the smear layer with a self-etching primer, and replace it with resin filler into tubular dentine. This group includes the <b>6th generation</b> (a 2-step system: self-etching primer, which is acid etch + primer, then bonding resin) and the <b>7th generation</b> (a 1-step system: a self-etching adhesive composed of acid etch + primer + bonding resin).</p>"},{"k":"Dr. Linz · Lecture 13","t":"Quiz: 470 nm and 488 nm lights, a 15–30 second enamel etch, and bonding generations","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Light sources and shrinkage stress in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Only ultraviolet light is still recommended; the C-factor is highest in a Class III and is reduced by placing the whole restoration in one bulk</button><button type=\"button\" class=\"opt\" data-i=\"1\">Ultraviolet curing was an early method (late 1960s) but raised concerns about eyes and oral flora. A QTH lamp emits blue light; wavelengths around 470 nm are strongly absorbed by the composite. An argon-ion laser provides high output at 488 nm. Plasma-arc (PAC, mid-1990s) units were claimed to cure in 1–10 seconds, or even in less than 1 second. Blue LEDs match the absorbance of camphorquinone (CQ) and use a semiconductor junction rather than a hot halogen filament. Polymerization first builds chains, then a cross-linked network. Shrinkage stress rises when the C-factor (bonded to unbonded surface area) increases, as in Class I and Class V, and can cause debonding. Stress is reduced by placing the composite in increments, and by non-bonded microfiller particles that act as stress-relieving sites</button><button type=\"button\" class=\"opt\" data-i=\"2\">A QTH lamp is absorbed most strongly at 800 nm, which is outside the blue range</button><button type=\"button\" class=\"opt\" data-i=\"3\">Increment placement increases shrinkage stress and should be avoided in Class I</button></div><div class=\"qexp\" hidden><p>الضوء الهالوجيني حوالي 470 نانومتر، وليزر الأرغون 488. عامل C أعلى بصنف I و V؛ قلّل الإجهاد بالطبقات.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Etching, the hybrid layer and bonding generations in this lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Enamel is etched for 2 minutes with 10% acid; dentine is never etched; there are only two generations, both self-etch</button><button type=\"button\" class=\"opt\" data-i=\"1\">Etching uses 37% ortho-phosphoric acid and creates enamel tags. It removes about 10 µm of enamel (honeycomb, better wetting) and gives about 30 MPa of retention. Enamel is etched for a minimum of 15–30 seconds and rinsed for 10 seconds; over-etching forms crystals that inhibit bonding; properly etched enamel looks frosty or chalky white. The smear layer occludes tubules and contains cuttings, saliva and bacteria. Dentine etching (37%) removes the smear and plugs and decalcifies several microns; time is written as 10–15 seconds, and also as 15 seconds only. If saliva or blood contaminates the etch, re-etch for only 5 seconds. Etchant, primer (hydrophilic and hydrophobic) and a mostly hydrophobic bonding resin (for example Bis-GMA) form the acid-resistant hybrid layer that seals tubules and protects the pulp. Total-etch (etch-and-rinse): 4th generation is three steps (etch, primer, bond) and 5th is two steps (etch, then primer+bond). Self-etch leaves smear and plugs, then partially demineralizes: 6th generation is two steps (self-etching primer, then bond) and 7th is one step (etch+primer+bond together). Bonding agents have evolved since 1955</button><button type=\"button\" class=\"opt\" data-i=\"2\">A 5-second re-etch is required after every successful 30-second enamel etch, even if the surface stays clean</button><button type=\"button\" class=\"opt\" data-i=\"3\">The 7th generation is a three-step total-etch system that always removes the entire smear layer with a separate rinse</button></div><div class=\"qexp\" hidden><p>حفر المينا 15–30 ثانية ويه 37%، غسل 10 ثوانٍ، تثبيت حوالي 30 ميغاباسكال. العاج 10–15 ثانية (أو 15 فقط)، وإذا تلوث أعد 5 ثوانٍ. الجيل 4 و 5 حفر كامل، 6 و 7 حفر ذاتي.</p></div></div>"},{"k":"Dr. Linz · Lecture 14","t":"Three preparation designs, and when to enter a Class III from the lingual or the facial","b":"<p>Lecture 14 covers the clinical technique for direct Class III, IV and V restorations. There are three designs of tooth preparation for composite, and sometimes they are used in combination: <b>conventional</b>, <b>beveled conventional</b>, and <b>modified</b>.</p><p>Class III: there is a choice between facial or lingual entry. Indications for a <b>lingual approach</b>: to conserve facial enamel for enhanced aesthetics; the carious lesion is positioned lingually; the lesion is accessible from the lingual; colour matching of the composite is not as critical; and discoloration or deterioration of the restoration is less visible. Indications for a <b>facial approach</b>: the carious lesion is positioned facially; the teeth are irregularly aligned, making lingual access undesirable; extensive caries extends onto the facial surface; or a faulty restoration was originally placed from the facial.</p>"},{"k":"Dr. Linz · Lecture 14","t":"A conventional Class III on the root: 0.75 mm deep, and a 0.25 mm groove with a No. ¼ bur","b":"<p>A conventional Class III is indicated for restorations involving the root surface. (1) Using a No. ½, 1 or 2 round bur, prepare the outline form on the root surface; (2) extend the preparation into sound walls; (3) extend pulpally <b>0.75 mm</b> in depth; (4) the gingival/cervical and incisal walls are perpendicular to the root surface (a box-like design); (5) a continuous groove retention can be prepared <b>0.25 mm</b> (half the diameter of the bur) into dentine of the gingival and incisal walls with a <b>No. ¼ round bur</b>; (6) the groove is placed at the junction of the axial and the external walls; (7) clean the preparation and inspect the final form.</p>"},{"k":"Dr. Linz · Lecture 14","t":"A beveled Class III: 0.2 mm into the DEJ (about 0.75–1.25 mm), and a 0.25–0.5 mm bevel at 45°","b":"<p>A beveled conventional Class III is indicated for replacing an existing defective restoration in the crown portion of the tooth, and when restoring a large carious lesion for which increased retention and/or resistance form is anticipated. Lingual access: (1) use a round bur No. ½, 1 or 2, depending on the size of the caries, to enlarge the opening enough to allow caries removal; (2) extend external walls to sound tooth structure with a straight bur; (3) extend the gingival and incisal walls up to the extent of caries or the old restoration. Unless necessary, do not extend into the facial surface, and do not extend subgingivally. (4) Create an initial axial-wall depth of <b>0.2 mm into the dentine/DEJ</b> (approximately <b>0.75–1.25 mm</b> in depth); (5) the axial wall is convex, following the external contour of the tooth; (6) remove all remaining infected dentine with a round bur or a small spoon excavator; (7) remove unsupported enamel at the margins; (8) if necessary, prepare retention grooves or coves along the gingivo-axial line angle, and sometimes at the inciso-axial line angle, <b>0.25 mm</b> with a No. ¼ round bur; (9) place a cavosurface bevel or flare at the enamel except at the gingival margin; (10) use a flame-shaped or round bur resulting in a <b>45-degree</b> angle to the external tooth surface; (11) bevel width should be <b>0.25 to 0.5 mm</b>; (12) clean and inspect. Facial access follows the same stages; the procedure is simplified because of easier access.</p>"},{"k":"Dr. Linz · Lecture 14","t":"A modified Class III is scooped, with no uniform axial wall, and the same 0.25–0.5 mm bevel","b":"<p>A modified Class III is the most used type of cavity preparation. It is indicated for small and moderate lesions or faults, and is designed to be as conservative as possible. Preparation walls have no specific shapes or forms; the design appears scooped or concave. (1) Use a No. ½, 1 or 2 round bur; the point of entry is within the inciso-gingival dimension of the lesion, perpendicular to the enamel surface. (2) Remove all remaining caries or defect. (3) No attempt is made to create a uniform axial wall. (4) Place a cavosurface bevel or flare at the enamel except at the gingival margin. (5) Use a flame-shaped or round bur resulting in a 45-degree angle to the external tooth surface. (6) Bevel width should be 0.25 to 0.5 mm. (7) Clean and inspect the final preparation.</p>"},{"k":"Dr. Linz · Lecture 14","t":"Class IV: a 1–2 mm bevel and no pins — and a conventional Class V 0.75 mm deep at 90°","b":"<p>Class IV tooth preparation: a preoperative assessment of occlusion is very important (placement of the margin in non-contact areas). Shade selection is more difficult. The preparation is similar to Class III except that it is extended to the incisal angles. For a fracture, if there is no caries or pulpal involvement, a bevel is the only preparation necessary — a <b>1.0–2 mm</b> enamel bevel should be placed around the periphery of the cavity. Retentive pins are not needed, because the adhesive technique provides sufficient retention.</p><p>A conventional Class V: features include a <b>90-degree</b> cavosurface angle, a uniform depth of the axial line angle, and sometimes groove retention. This design is indicated only for the portion of the lesion that extends onto the root surface. Use a tapered fissure (No. 700, 701 or 271) or a No. 1 or 2 round bur. Make entry at a 45-degree angle to the tooth surface, which should result in a 90-degree cavosurface. Axial depth is <b>0.75 mm</b> (for strength of the preparation wall, strength of the composite, and placement of a retention groove). The axial wall should follow the contour of the tooth. Outline form is dictated by the carious lesion. Remove remaining caries, prepare a retention groove similar to Class III, and clean the preparation.</p>"},{"k":"Dr. Linz · Lecture 14","t":"Beveled and modified Class V designs, including a 0.2 mm initial depth when the lesion is in enamel","b":"<p>A beveled conventional Class V is indicated for replacement of a defective Class V restoration, or a large carious lesion. It exhibits 90 degrees of cavosurface. Axial-wall depth is uniform — <b>0.2 mm, or 0.5 mm when a retention groove is to be placed</b>. A groove is not indicated when the periphery of the tooth preparation is located in enamel. Remove all infected dentine and clean the preparation.</p><p>A modified Class V is indicated for a small or moderate lesion, and a lesion entirely in the enamel. There is no effort to prepare a butt joint; no retention groove; the lesion is scooped out; the preparation has divergent walls; the axial wall does not have uniform depth. Prepare the tooth with a round or elliptical instrument. The preparation is extended initially no deeper than <b>0.2 mm</b>. No effort is made to prepare 90-degree cavosurface margins. Infected enamel is removed with a round bur or an excavator.</p>"},{"k":"Dr. Linz · Lecture 14","t":"Placing the restoration: etch 0.5 mm past the margin for 15 seconds, bond 10 seconds, cure 20 seconds","b":"<p>Restorative technique: (1) determine the shade of the tooth — after caries removal and cavity preparation, shade selection is done using a shade guide; (2) clean the tooth preparation using a slurry of pumice and a polishing cup; (3) isolate the tooth, preferably with a rubber dam or cotton rolls, from saliva, blood, debris and other fluids; (4) protect the adjacent unprepared tooth from the acid etchant with a polyester strip, and apply the wedge; (5) apply the gel etchant <b>0.5 mm beyond</b> the prepared margins onto the adjacent unprepared tooth (the lecture writes “0.5 beyond”); (6) leave the etchant undisturbed for <b>15 seconds</b>; (7) wash to remove the etchant; (8) dry the tooth structure; (9) apply the bonding system on all etched tooth structure with a microbrush or other suitable applicator; (10) cure the bonding agent for <b>10 seconds</b>; (11) incrementally place the composite and cure; (12) cure each increment with the light-curing machine for <b>20 seconds</b>; (13) finishing and polishing: polishers with enhancers and polishing paste are used after trimming the excess composite.</p>"},{"k":"Dr. Linz · Lectures 12–14","t":"Self-test: microfill versus hybrid, a 0.25–0.5 mm bevel, and 10- and 20-second cures","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Class III, IV and V composite preparations in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Every Class III must be entered from the facial; a conventional Class III on the root is 2 mm deep with no groove; pins are required for every Class IV fracture</button><button type=\"button\" class=\"opt\" data-i=\"1\">Three designs may be combined: conventional, beveled conventional, and modified. A lingual Class III approach conserves facial enamel; a facial approach is used if the lesion is facial, alignment blocks lingual access, caries extends facially, or an old restoration was facial. Conventional Class III (root): pulpally 0.75 mm, box-like walls perpendicular to the root, and a 0.25 mm continuous groove (half the bur diameter) with a No. ¼ round bur at the axial–external junction. Beveled Class III (crown, or a large lesion needing more retention): initial axial depth 0.2 mm into dentine/DEJ (about 0.75–1.25 mm), a convex axial wall, optional 0.25 mm coves, and a 45° enamel bevel 0.25–0.5 mm wide except at the gingival margin — do not extend facially or subgingivally unless necessary. Modified Class III (most used, small or moderate lesions) is scooped, with no uniform axial wall, and the same bevel. Class IV is like Class III plus the incisal angles; place margins in non-contact areas; a fracture without caries or pulp involvement needs only a 1.0–2 mm enamel bevel, and pins are not needed. Conventional Class V (the root portion): 90° cavosurface, entry at 45°, axial depth 0.75 mm, and a Class-III-like groove. Beveled Class V: 90°, uniform axial depth 0.2 mm, or 0.5 mm if a groove is placed (no groove if the periphery is in enamel). Modified Class V (small or moderate, or entirely in enamel): scooped, divergent, no butt joint or groove, initially no deeper than 0.2 mm</button><button type=\"button\" class=\"opt\" data-i=\"2\">A modified Class V always has a 90° butt joint and a deep retention groove in enamel</button><button type=\"button\" class=\"opt\" data-i=\"3\">A Class IV fracture with no caries still requires a 0.75 mm axial box and a pin</button></div><div class=\"qexp\" hidden><p>صنف III على الجذر عمق 0.75 ملم وأخدود 0.25 ملم. المشطوف: 0.2 ملم داخل الـ DEJ (حوالي 0.75–1.25) وشطف 0.25–0.5 ملم بزاوية 45° ما عدا اللثوي. صنف IV: شطف 1–2 ملم بلا مسامير. صنف V التقليدي 0.75 ملم وزاوية 90°؛ المعدّل لا أعمق من 0.2 ملم.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The restorative sequence in this lecture, after shade selection, is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Etch for 2 minutes without isolating, bond for 60 seconds, and place the composite in one 4 mm increment cured for 2 seconds</button><button type=\"button\" class=\"opt\" data-i=\"1\">Clean with pumice and a polishing cup; isolate (rubber dam or cotton rolls); protect the adjacent tooth with a polyester strip and a wedge; apply gel etchant 0.5 mm beyond the prepared margins; leave it undisturbed for 15 seconds; wash and dry; apply the bonding system to all etched structure with a microbrush; cure the bonding agent for 10 seconds; place the composite incrementally, curing each increment for 20 seconds; then trim the excess and polish with enhancers and paste</button><button type=\"button\" class=\"opt\" data-i=\"2\">Shade is always selected before the rubber dam is considered, and the etchant must not pass the cavosurface</button><button type=\"button\" class=\"opt\" data-i=\"3\">Bonding agent is left uncured so that the composite can dissolve it</button></div><div class=\"qexp\" hidden><p>بعد اللون والتنظيف والعزل: حفر 0.5 ملم وراء الحواف لـ 15 ثانية، المادة الرابطة 10 ثوانٍ، وكل طبقة كمبوزت 20 ثانية.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">In this lecture, how long is enamel etched, and what does properly etched enamel look like?</button><div class=\"flash-a\" hidden>Enamel is etched with 37% ortho-phosphoric acid for a minimum of 15 to 30 seconds and rinsed for 10 seconds. If properly etched it appears frosty or chalky white. Over-etching forms crystals that inhibit bonding.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا سادس ملف معالجة: محاضرات د. لنز 12–14 عن الكمبوزت (ظهر تجارياً سنة 1962 على يد Bowen)، ومصادر الضوء، والانكماش، والحفر والربط، وتحضير أصناف III و IV و V (صفحات 109–132). صفحة خطوات كل جيل ما انقرأت كنص فما نخترعها. الأرقام مثل نسب الحشوات وأزمان الحفر تبقى كما بالمحاضرة؛ وحجم النانو مكتوب “0.005–001” والمقصود 0.005–0.01 مايكرومتر.</p>","<p>الكمبوزت ظهر تجارياً سنة <b>1962</b> على يد Bowen، وهو أشهر مادة بلون السن. الاستطبابات: أصناف I إلى VI؛ بناء قلب (core)； مانعات شقوق وترميمات راتنج وقائية؛ تجميل (قشرة جزئية أو كاملة، تعديل المحيط، إغلاق الفراغات)؛ إسمنتات للترميمي غير المباشر؛ وترميم مؤقت.</p><p>الموانع: إذا ما تقدر تعزل الحقل زين؛ صنف V مو مهم جمالياً؛ الترميم اللي يمتد على سطح الجذر (قد يترك فجوة)؛ وإذا فيه إجهاد إطباقي ثقيل.</p>","<p>المزايا: جمال؛ تحضير محافظ (امتداد أقل، مو لازم عمق موحّد، وغالباً ما تحتاج تثبيت ميكانيكي)؛ تحضير أسهل؛ توصيل حراري واطي؛ يرتبط بالسن فيعطي تثبيت جيد وتسرب قليل وتلون واجهة أقل وقوة أكبر للبنية الباقية؛ وقابل للإصلاح.</p><p>عيوب المادة: انكماش التبلمر؛ تآكل إطباقي بمناطق الإجهاد العالي؛ ومعامل تمدد حراري خطي أعلى. عيوب التقنية: تأخذ وقت، حسّاسة للتقنية، وأغلى من الملغم.</p>","<p>التركيب: (1) <b>راتنج عضوي</b> مثل المونومر BIS-GMA، وهو العمود الفقري للنظام. (2) <b>حشوة غير عضوية</b> مثل السيليكا المنصهرة، والكوارتز البلوري، وسيليكات ألومنيوم الليثيوم، أو زجاج البوروسليكات: تقلل الانكماش ومعامل التمدد، وتحسّن القوة والجمال والإظهار الشعاعي والتعامل. (3) <b>عامل اقتران سيلاني</b> يربط الراتنج بالحشوة، ينقل القوى من القالب المرن للحشوة الأصلية، ويمنع دخول الماء على الواجهة. (4) نظام بادئ للتصلب. (5) مثبتات. (6) أصباغ.</p><p>التصنيف حسب حجم الحشوة (ماكرو، مايكرو، هجين، نانو)، أو طريقة التبلمر (ضوئي، كيميائي، ثنائي)، أو تركيب القالب (BIS-GMA أو UDMA).</p>","<p>الكمبوزت <b>التقليدي (ماكرو)</b>: حشوة <b>75–80%</b> بالوزن، متوسط الحجم <b>8 مايكرومتر</b>، حبيبات كبيرة وصلبة جداً، سطح خشن، وقد يحتوي زجاج السترونتيوم والباريوم (ظاهر بالأشعة).</p><p>ال<b>مايكرو</b> ظهر سنة <b>1980</b>: يلمع زين وسطحه أملس يقاوم البلاك والتصبغات، وجمال جيد. حجم الحبيبات <b>0.01–0.04 مايكرومتر</b>، ونسبة الحشوة <b>35–50%</b> بالوزن — لذلك بعض خواصه الفيزيائية أضعف. يُستخدم بالإجهاد الواطي، على السطوح الشدقية واللسانية لصنف III و V.</p>","<p>ال<b>هجين</b> يجمع خواص التقليدي والمايكرو: حشوة <b>75–85%</b>، حجم <b>0.4–1 مايكرومتر</b>، خواص أقوى من التقليدي، وهو الراتنج التجميلي المباشر الأشيع ويُستخدم بأغلب الحالات. يناسب الإجهاد المتوسط حيث القوة ومقاومة التآكل أهم من اللمعان: أصناف I و II و IV.</p><p>ال<b>نانو</b>: حبيبات صغيرة جداً (المحاضرة كتبت 0.005–001، والمقصود <b>0.005–0.01 مايكرومتر</b>). تسمح بنسبة حشوة عالية، خواص وجمال جيدين، ويلمع زين.</p><p>ال<b>سائل (flowable)</b>: لزوجة واطية وحشوة أقل وخواص أضعف. يُستخدم بصنف I الصغير، ومانع شقوق، وإصلاح الحواف، وكأول طبقة تحت الهجين أو القابل للرص. ال<b>قابل للرص (packable)</b> أسمك وأصلب، يسهّل تماس التقريبي وتعامله يشبه الملغم. ال<b>المقوّى</b> فيه ألياف زجاج E عشوائية، ويُستخدم كقاعدة بمناطق الإجهاد العالي خصوصاً الحفر الكبيرة للأسنان الخلفية الحية وغير الحية.</p>","<p>الكمبوزت <b>الكيميائي (ذاتي التصلب)</b> عادة عجينتان (محفّز وقاعدة). التصلب منتظم بكل الكتلة واللزوجة تزيد بدرجة حرارة الغرفة، فزمن العمل محدود، وسهل يدخل هواء وقت الخلط ويضعف الخواص.</p><p>ال<b>ضوئي</b> مكوّن واحد بلا خلط، فمسام أقل ومقاومة تآكل أفضل. زمن العمل يحدده الطبيب، ويتصلب بسرعة ويه الضوء. يأتي بحقن معتمة بظلال مختلفة حتى الضوء ما يوصل للمادة قبل أوانها.</p><p>ال<b>ثنائي التصلب</b> يجمع الذاتي والضوئي. الذاتي بطيء ومصمم يكمّل الأجزاء اللي الضوء ما يوصلها زين، خصوصاً التقريبي الضيق.</p>","<p>سؤالان على استطبابات الكمبوزت ونسب الحشوات وأنماط التصلب.</p>","<p>التبلمر الضوئي دخل طب الأسنان بأواخر الستينات. الضوء <b>فوق البنفسجي</b> استُخدم أول مرة لمانعات الشقوق، بس فيه مخاوف على عيون الطاقم وتغيير فلورا الفم بالإشعاع المؤين.</p><p>الضوء المرئي: (A) <b>هالوجيني كوارتز-تنغستن (QTH)</b> يدوي، يمرر بفلتر حتى يطلع ضوء أزرق؛ الكمبوزت يمتص بقوة حول <b>470 نانومتر</b>. (B) <b>ليزر الأرغون</b> بطاقة عالية عند <b>488 نانومتر</b> لتبلمر سريع. (C) <b>زينون قصير القوس (PAC)</b> بمنتصف التسعينات؛ الشركات ادّعت تعريض <b>1–10 ثوانٍ</b> أو حتى أقل من <b>ثانية</b>. (D) وحدات <b>LED زرقاء</b> بطول موجي يناسب بادئ الكافوركينون (CQ)، وتولّد الضوء من تقاطع أشباه موصلات بدل الفتيلة الحارة بالهالوجيني.</p>","<p>الكمبوزت يتصلب بالتبلمر: يتحول من طور لزج-مرن إلى بلاستيك صلب. أول شي المونومرات تصير سلاسل، بعدين السلاسل تترابط عرضياً وتعمل شبكة قوية.</p><p>إجهاد انكماش التبلمر: (1) تصميم الحفرة — نسبة السطوح المرتبطة إلى غير المرتبطة اسمها <b>عامل C (C-factor)</b>. إذا هالنسبة تزيد، مثل صنف I و V، يزيد الإجهاد على الواجهة وقد يحدث انفصال. (2) التقنية: حط الكمبوزت <b>طبقات (increments)</b> حتى حجم الراتنج المنكمش يقل. (3) التركيب: حبيبات مايكرو غير مرتبطة تعمل مواقع تفريغ للإجهاد داخل الكمبوزت.</p>","<p>الحفر الحامضي عملية فيزيائية تعمل سطح مينا خشن مجهرياً (ألسنة المينا). الحامض <b>أورثو-فوسفوريك 37%</b> (أحياناً يُسمى مكيّف). طبقة اللطاخة (<b>smear layer</b>) تتكون لما تشتغل على العاج بأداة دوّارة أو يدوية: تسد الأقنية، وتلتصق خفيف، وفيها برادة ولعاب وبكتيريا وبقايا.</p><p>حفر المينا بـ 37% يشيل حوالي <b>10 مايكرون</b> ويعرّض المواشير ويعمل شكل خلية النحل، ويزيد طاقة السطح حتى الراتنج يبلّل ويدخل الثقوب (ألسنة راتنج) وتثبيت حوالي <b>30 ميغاباسكال</b>. الحفر <b>15–30 ثانية</b> على الأقل، والغسل <b>10 ثوانٍ</b>. الإفراط بالحفر يكوّن بلورات تمنع الارتباط. إذا الحفر صحيح، المينا يطلع بمظهر frosty أو أبيض طباشيري.</p>","<p>حفر العاج هم بـ <b>37%</b>: يشيل طبقة اللطاخة والسدادات داخل الأقنية، ويزيل الكلس عن طبقة سمكها عدة مايكرونات. الزمن <b>10–15 ثانية</b>. إذا تلوث بلعاب أو دم، أعد الحفر <b>5 ثوانٍ فقط</b>. بنفس المحاضرة تحت عنوان الالتصاق مكتوب هم <b>15 ثانية فقط</b> — نخلي الصياغتين.</p><p>الحامض يعرّض الكولاجين ويفتح الأقنية ويقلل طاقة السطح. ال<b>برايمر</b> جزيئات ثنائية الوظيفة (محبة وكارهة للماء) يغلّف ألياف الكولاجين ويرجّع طاقة السطح. ال<b>مادة الرابطة</b> مونومرات كارهة للماء مثل Bis-GMA تدخل المسافات بين الألياف وتكون العمود الفقري ل<b>الطبقة الهجينة (hybrid layer)</b> — سطح عاج مشبّع بالراتنج مقاوم للحامض يسد الأقنية ويمنع البكتيريا، وبهالشكل يحمي اللب.</p>","<p>من سنة 1955 المواد الرابطة تطورت من بلا حفر، إلى حفر كامل، إلى الحفر الذاتي. سبعة أجيال؛ الأشيع مذكورة هنا. صفحة خطوات كل جيل ما انقرأت فما نخترعها.</p><p>أنظمة <b>الحفر الكامل (etch-and-rinse)</b>: الحامض يشيل اللطاخة، الكولاجين يوقف، والأقنية تنفتح، بعدين برايمر وراتنج يدخل الأقنية. تشمل <b>الجيل الرابع</b> (ثلاث خطوات: حفر ثم برايمر ثم ربط) و<b>الخامس</b> (خطوتان: حفر ثم مادة رابطة هي برايمر + راتنج).</p><p>أنظمة <b>الحفر الذاتي</b> تترك اللطاخة والأقنية مسدودة، تنزّل الكلس جزئياً ببرايمر ذاتي الحفر وتعوّضه براتنج داخل العاج القنيوي. تشمل <b>الجيل السادس</b> (خطوتان: برايمر ذاتي الحفر = حامض + برايمر، ثم راتنج رابط) و<b>السابع</b> (خطوة واحدة: مادة تجمع الحامض والبرايمر والرابط).</p>","<p>سؤالان على مصادر الضوء والحفر وأجيال الربط.</p>","<p>محاضرة 14 عن التقنية السريرية لأصناف III و IV و V. ثلاثة تصاميم (أحياناً تُجمع): <b>تقليدي</b>، <b>تقليدي مشطوف (beveled)</b>، و<b>معدّل (modified)</b>.</p><p>صنف III: الدخول لساني أو وجهي. اللساني: يحافظ على المينا الوجهي للجمال؛ الآفة لسانية ومتاحة من اللساني؛ مطابقة اللون مو حرجة مثل الوجهي؛ وتغير اللون أقل ظهوراً. الوجهي: الآفة وجهية؛ الأسنان غير منتظمة الصف فالدخول اللساني صعب؛ النخر امتد للوجهي؛ أو ترميم قديم كان من الوجهي.</p>","<p>الصنف III التقليدي لاستطباب الترميم على سطح الجذر. فرازة مدورة رقم ½ أو 1 أو 2 للكفاف على الجذر، وامتد لجدران سليمة، والعمق اللبي <b>0.75 ملم</b>. الجدار اللثوي/العنقي والقاطع عموديان على سطح الجذر (شكل صندوق). أخدود تثبيت مستمر عمق <b>0.25 ملم</b> (نصف قطر الفرازة) بعاج الجدار اللثوي والقاطع ويه فرازة مدورة <b>رقم ¼</b>، عند ملتقى الجدار المحوري ويه الجدران الخارجية. نظّف وافحص.</p>","<p>التقليدي المشطوف لاستبدال ترميم تاجي معيب، أو لحفر كبيرة تحتاج تثبيت أو مقاومة أكثر. من اللساني: فرازة مدورة ½ أو 1 أو 2 لتوسيع المدخل، وامتد لجدران سليمة لحد النخر أو الترميم القديم. لا تمتد للوجهي ولا تحت اللثة إلا إذا لازم. العمق المحوري الأولي <b>0.2 ملم داخل العاج/الـ DEJ</b> (تقريباً <b>0.75–1.25 ملم</b>). الجدار المحوري محدب ويه محيط السن. شيل العاج المصاب والمينا غير المدعوم. إذا احتجت تثبيت: أخدود أو تجويف 0.25 ملم بفرازة ¼ على الزاوية اللثوية-المحورية وأحياناً القاطعة-المحورية. شطف المينا <b>ما عدا الحافة اللثوية</b>، بزاوية <b>45°</b>، وعرض الشطف <b>0.25–0.5 ملم</b>. الدخول الوجهي نفس الخطوات وأسهل لأن الوصول أوضح.</p>","<p>الصنف III المعدّل هو الأكثر استخداماً: للآفات الصغيرة والمتوسطة، ومحافظ قدر الإمكان. الجدران ما لها شكل محدد، والتحضير مجروف أو مقعر. ادخل بفرازة ½ أو 1 أو 2 عمودي على المينا ضمن بعد الآفة القاطع-اللثوي. شيل كل النخر. لا تحاول تسوي جدار محوري موحّد العمق. شطف المينا ما عدا الحافة اللثوية، زاوية 45°، عرض 0.25–0.5 ملم. نظّف وافحص.</p>","<p>صنف IV: قيّم الإطباق قبل التحضير (الحافة بمناطق بلا تماس)، ومطابقة اللون أصعب. التحضير يشبه صنف III بس يمتد للزوايا القاطعة. إذا الكسر بلا نخر ولا إصابة لب، الشطف وحده يكفي: شطف مينا <b>1.0–2 ملم</b> حول المحيط. المسامير مو لازمة لأن الربط يكفي للتثبيت.</p><p>صنف V التقليدي: زاوية سطح حفرة <b>90°</b>، عمق محوري موحّد، وأحياناً أخدود تثبيت. يُستطب فقط للجزء الممتد على الجذر. فرازة شق مخروطية 700 أو 701 أو 271، أو مدورة 1 أو 2. الدخول بزاوية 45° حتى تطلع الحافة 90°. العمق المحوري <b>0.75 ملم</b>. الجدار يتبع محيط السن. أخدود التثبيت مثل صنف III.</p>","<p>صنف V التقليدي المشطوف: لاستبدال ترميم معيب أو آفة كبيرة. زاوية 90°. العمق المحوري موحّد: <b>0.2 ملم، أو 0.5 ملم إذا راح يتحط أخدود تثبيت</b>. الأخدود مو مطلوب إذا المحيط كله بمينا. شيل العاج المصاب ونظّف.</p><p>صنف V المعدّل: لآفة صغيرة أو متوسطة، أو آفة كلها بالمينا. بلا مفصل ناتئ، بلا أخدود، الآفة تتنغرف، الجدران متباعدة، والعمق المحوري مو موحّد. أداة مدورة أو إهليلجية، والعمق الأولي لا يتجاوز <b>0.2 ملم</b>، وبلا حواف 90°. المينا المصاب بفرازة مدورة أو معلقة.</p>","<p>خطوات الترميم: حدّد اللون (بعد شيل النخر والتحضير ويه دليل الألوان)؛ نظّف الحفرة بمعجون خفاف وكأس تلميع؛ اعزل بسد مطاطي أو لفات قطن؛ احمِ السن المجاور بشريط بوليستر وحط الإسفين؛ طبّق جل الحفر <b>0.5 ملم وراء</b> حواف التحضير على السن غير المحضَّر (المحاضرة كتبت “0.5 beyond”)؛ اتركه <b>15 ثانية</b> بلا تحريك؛ اغسل وجفف؛ طبّق نظام الربط بكل السطح المحفور بفرشاة دقيقة؛ صلّب المادة الرابطة <b>10 ثوانٍ</b>؛ حط الكمبوزت طبقات وصلّب كل طبقة <b>20 ثانية</b>؛ بعدين شيل الزائد ولماع ويه معجون تلميع.</p>","<p>سؤالان ختاميان وبطاقة على حفر المينا 15–30 ثانية والمظهر الطباشيري، وزر الدرجة.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>

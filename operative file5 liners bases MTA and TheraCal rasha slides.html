@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Operative File 5 — Liners, Bases, MTA and TheraCal (Dr. Rasha)</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Operative (Conservative) Dentistry · Dr. Rasha Lecture 8</div>
+    <h1>Cavity Liners and Cement Bases, including MTA, Biodentine and TheraCal LC</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lecture 8 by Dr. Rasha (PDF pages 84–108): liners and bases in this lecture’s wording, glass-ionomer Types I–V, and the calcium-silicate cements MTA, Biodentine and TheraCal LC.</p>
+    <ul>
+      <li>A typical cement base of 1–2 mm, and a calcium-hydroxide liner when the floor is judged to be within 0.5 mm of the pulp</li>
+      <li>This lecture’s glass-ionomer Types III (lining), IV (fissure sealants) and V (orthodontic cementation), which differ from the Linz grouping in File 3</li>
+      <li>MTA: grey versus white, a set pH of 12.5, 2 hours and 45 minutes (and later about 3–4 hours), carried with an amalgam carrier or the MAP system</li>
+      <li>Biodentine in about 12 minutes, and TheraCal LC as a light-cured one-paste liner with a short-term high calcium release compared with Dycal</li>
+      <li>Total run time: <b>44 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 22</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Operative · File 5","t":"Cavity liners and cement bases — Dr. Rasha’s Lecture 8, including MTA, Biodentine and TheraCal","b":"<p>University of Baghdad, College of Dentistry — Operative (conservative) dentistry syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file covers PDF pages 84–108: Lecture 8 by Dr. Rasha on cavity liners and cement bases (three parts). Much of the cement and lining text overlaps Dr. Linz Lectures 8–9 in File 3; both lectures’ wordings are kept, including differences such as this lecture’s glass-ionomer Types III, IV and V, a typical base thickness of 1–2 mm, and a calcium-hydroxide liner in the deepest region judged to be within 0.5 mm of the pulp. This lecture also adds calcium-silicate cements: MTA, Biodentine and TheraCal LC.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Medical terms stay in English next to the Arabic. Where this lecture gives two setting times for MTA (“2 hours and 45 minutes,” and later “about 3–4 hours” when it is compared with Biodentine), both figures are kept.</p>"},{"k":"Dr. Rasha · Lecture 8","t":"Pulp-protection reasons, and the ten properties of an ideal lining material","b":"<p>Liners and base materials act as pulp-protection agents and require consideration of: chemical protection, electrical protection, thermal protection, pulpal medication, and mechanical protection. Reasons for use of base and lining materials: (1) insulation against temperature changes and electrical stimuli under metallic restorations such as amalgam; (2) mechanical protection, provided by distributing local stresses from the restoration across the underlying dentine surface; (3) to reduce the risk of microleakage; (4) cementation of cast or ceramic restorations; (5) as a pulp capping; (6) some have bactericidal or bacteriostatic properties; (7) prevention of the risk of long-term damage to the pulp–dentine organ from operative treatment; (8) cementation of orthodontic bands.</p><p>The ideal lining material should: (1) be compatible with the restorative materials; (2) not be irritant to the pulp; (3) prevent injuries of the pulp–dentine from restorative materials; (4) be insoluble in the oral fluids; (5) possess sufficient physical strength during insertion of the restoration; (6) prevent heat/cold conduction from metallic restorations; (7) have a bacteriostatic effect, for example zinc oxide–eugenol; (8) improve the marginal seal and have sealing ability (zinc oxide–eugenol is used as a temporary restorative material for this reason); (9) be easy to manipulate and apply; (10) be radiopaque on the X-ray.</p>"},{"k":"Dr. Rasha · Lecture 8","t":"Varnishes and liners versus cement bases, and a typical base thickness of 1–2 mm","b":"<p>Two groups of pulp-protection materials are available: varnishes and liners, and cement bases. The materials may be used alone or in combination, depending on the extent and location of the preparation, and the restoration material to be used.</p><p>Liners are materials that are placed as a thin coating or layer. Functions: (1) a barrier against chemical irritation (they do not function as thermal isolators); (2) reduce marginal leakage around most filling materials (amalgam), and so reduce the inflammatory reaction and post-operative sensitivity; (3) electrical insulation (treatment of galvanic shock). The need for liners is greatest with metallic restorations that are not well bonded to tooth structure — for example varnish, Ca(OH)<sub>2</sub>, and a resin bond.</p><p>Bases (cement bases, typically <b>1 to 2 mm</b>): deep parts in the dentine should be covered by a base or a sub-base/base combination. The thickness of the base depends on its physical properties, but always allowing adequate thickness for the final restorative material. Functions: thermal insulation; mechanical protection by resisting forces applied during condensation; and a barrier against chemical irritation.</p>"},{"k":"Dr. Rasha · Lecture 8","t":"This lecture’s figure: a calcium-hydroxide liner when the floor is judged to be within 0.5 mm of the pulp","b":"<p>This lecture’s schematic examples of liners and bases for amalgam restorations: (A) for <b>shallow</b> amalgam preparations, varnish or sealer is applied to the walls of the preparation before insertion of the restoration; (B) for <b>moderate-depth</b> preparations, liners may be placed for thermal protection and pulpal medication (the figure notes seats in sound dentine for the amalgam restoration); (C) in a <b>very deep</b> preparation, calcium hydroxide is placed in the deepest region in which infected dentine was excavated, and then a base of glass ionomer is inserted.</p><p>Amalgam-bonding systems are being advocated as a substitute for liner and varnish, except for a calcium-hydroxide liner in the deepest region (judged to be within <b>0.5 mm of the pulp</b>).</p>"},{"k":"Dr. Rasha · Lecture 8","t":"Zinc phosphate in this lecture: 40% acid, a 2–8 minute set, and mixing in 60–90 seconds","b":"<p>Zinc phosphate is hard and strong but irritating to the pulp — a powder–liquid system. The powder is mainly zinc oxide with magnesium oxide and silicon dioxide. The liquid is ortho-phosphoric acid (<b>40%</b>) with metallic salts that slow the setting reaction, and water. The set is exothermic and the initial mixture is highly acidic (zinc oxide + phosphoric acid → amorphous zinc phosphate + unreacted zinc oxide + heat). Advantages: easy to manipulate; high strength necessary for a base; withstands mechanical trauma; and good protection against thermal shock. Uses: a base when high compressive strength is required; to lute cast restorations; cementation of orthodontic bands; and, rarely, a temporary cement dressing.</p><p>Two consistencies: a lower powder/liquid ratio gives a creamy <b>luting</b> mix for crowns and inlays; a higher ratio gives a putty <b>base</b> mix used as a thermal insulator over thin dentine and as a high-strength base. Viscosity depends on time and temperature, so mixing is made on a cool glass slab. Setting time ranges from <b>2 to 8 minutes at 37 °C</b>. Strength depends on composition, the powder/liquid ratio, mixing and handling. A higher powder/liquid ratio increases resistance to solubility and reduces shrinkage on hardening. The cement is highly acidic early on and becomes nearly neutral at <b>48 hours</b>. It is desirable to protect against thermal and electrical trauma to the pulp.</p>"},{"k":"Dr. Rasha · Lecture 8","t":"Mixing and inserting zinc phosphate: a 21 °C slab, a frozen slab, Ash 49 and Ash 6, and a 10-minute wait","b":"<p>Manipulation: incorporate powder slowly into the liquid on a cool slab (approximately <b>21 °C</b>). The slab should be thick, cool and clean because the reaction is exothermic. Incorporate as much powder as possible for the desired consistency. If the liquid absorbs water from a humid atmosphere the set shortens; if it loses water in dry air the set lengthens — keep the bottle tightly closed. Divide the powder into small increments, mix over a large area of the cooled slab with a long narrow-bladed stainless-steel spatula, use a thinner mix for inlays or crowns and a putty mix for a base (lower initial acidity, less post-operative pain, easier placement). Mixing time is not more than <b>60–90 seconds</b>, <b>15 seconds for each increment</b>. Frozen-slab method: cool the slab in a refrigerator at <b>6 °C</b> or a freezer at <b>−10 °C</b> — longer working time and a shorter setting time, useful for multi-retainer bridges, multiple bases at the same visit, or orthodontic bands.</p><p>Insertion: the tooth should be dry. A small ball of cement is rolled between the thumb and the fourth finger, picked up on a probe and carried into the cavity, then shaped with <b>Ash 49</b> on the pulpal floor or <b>Ash 6</b> on a Class II axial wall (the instrument is coated with powder). The axio-pulpal line angle is molded to a rounded angle. A small excavator removes excess from retention grooves, pits and walls. Bur trimming is delayed at least <b>10 minutes</b>; if needed, use sharp burs at low speed and minimum pressure. Leave adequate space for the restoration; no cement should extend over the margins or into the undercuts. Isolated caries spots on the pulpal floor are removed with a round bur without flattening all surrounding sound dentine (that may expose the pulp); a base is used in those deep parts to restore a flat pulpal floor.</p>"},{"k":"Dr. Rasha · Lecture 8","t":"Quiz: a 1–2 mm base, 0.5 mm from the pulp, and this lecture’s zinc-phosphate numbers","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Liners and bases, and the amalgam figure in this lecture, include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Every liner is a 4 mm thermal insulator; bonding systems always replace calcium hydroxide, even over the pulp</button><button type=\"button\" class=\"opt\" data-i=\"1\">Pulp protection may be chemical, electrical, thermal, medicinal and mechanical. Materials are varnishes and liners, or cement bases, used alone or together depending on the extent and location of the preparation and on the restorative material. Liners are a thin coating: a chemical barrier (not a thermal isolator), they reduce leakage and post-operative sensitivity, and they insulate electrically — most needed under poorly bonded metallic restorations. Cement bases are typically 1–2 mm, cover deep dentine (or a sub-base plus a base), leave room for the restoration, insulate thermally, resist condensation, and add a chemical barrier. In this lecture’s amalgam figure: shallow preparations receive varnish or sealer on the walls; moderate-depth preparations may receive liners for thermal protection and pulpal medication, with seats in sound dentine; in a very deep preparation, calcium hydroxide is placed in the deepest excavated region and a glass-ionomer base is inserted. Amalgam-bonding systems are advocated as a substitute for liner and varnish, except for a calcium-hydroxide liner in the deepest region judged to be within 0.5 mm of the pulp</button><button type=\"button\" class=\"opt\" data-i=\"2\">A shallow amalgam preparation always needs a 2 mm zinc-phosphate base and no varnish</button><button type=\"button\" class=\"opt\" data-i=\"3\">Liners are the only materials that provide thermal insulation under amalgam</button></div><div class=\"qexp\" hidden><p>القواعد عادة 1–2 ملم. بالحفر العميقة جداً: هيدروكسيد كالسيوم بأعمق منطقة ثم قاعدة أيونومر. أنظمة ربط الملغم بديل للورنيش والبطانة إلا إذا العمق ضمن 0.5 ملم من اللب.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Zinc phosphate in Dr. Rasha’s lecture is mixed and used as follows:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A warm metal slab, one increment, and immediate bur trimming</button><button type=\"button\" class=\"opt\" data-i=\"1\">It is a pulp-irritating powder–liquid cement (zinc oxide with magnesium oxide and silicon dioxide; 40% ortho-phosphoric acid). The set is exothermic and initially highly acidic, becoming nearly neutral at 48 hours. Setting time is 2–8 minutes at 37 °C. A lower powder/liquid ratio is a creamy luting mix; a higher ratio is a putty base. Mix slowly on a thick, cool, clean slab at about 21 °C, over a large area, in increments, for no more than 60–90 seconds (15 seconds each). A frozen slab at 6 °C or −10 °C lengthens working time and shortens the set. Place on a dry tooth with a probe, shape with Ash 49 or Ash 6, round the axio-pulpal angle, and wait at least 10 minutes before any bur trimming. Keep cement off the margins and out of undercuts, and do not flatten all sound dentine around isolated pulpal-floor caries just to make the floor flat</button><button type=\"button\" class=\"opt\" data-i=\"2\">The liquid bottle should be left open so that absorbed water can lengthen the setting time</button><button type=\"button\" class=\"opt\" data-i=\"3\">A frozen slab is contraindicated for a multi-retainer bridge</button></div><div class=\"qexp\" hidden><p>نفس أرقام ملف 3: حامض 40%، تصلب 2–8 دقائق، خلط 60–90 ثانية على 21°م، وانتظار 10 دقائق. هالمحاضرة لها صياغة د. رشا ونحافظ عليها.</p></div></div>"},{"k":"Dr. Rasha · Lecture 8","t":"Zinc oxide–eugenol in this lecture: pH 7, a set of about 8 minutes, and never under composite","b":"<p>ZOE powder is zinc oxide with white rosin (to reduce brittleness) and zinc acetate (to improve strength). The liquid is eugenol with olive oil as a plasticizer. Strength for luting may be increased by adding methyl methacrylate polymer to the powder, or alumina (Al<sub>2</sub>O<sub>3</sub>) to the powder and ethoxybenzoic acid to the liquid. Setting: zinc oxide + eugenol, in the presence of water, → zinc eugenolate + unreacted zinc oxide. The reaction is not exothermic, so a cooled slab is not required, and moisture is essential for setting. The bulk of the powder is incorporated first, then smaller amounts; the average setting time is around <b>8 minutes</b>.</p><p>Properties: neutral pH (<b>7</b>), so it can be used safely in moderately deep cavities; a sedative effect on the pulp, so it is used without varnish or liner; radiopaque; and an excellent seal, so it is used as a temporary restoration. Uses: temporary restorations; the modified type for crown-and-bridge cementation and as a cement base; and as an endodontic sealer. It is unacceptable as a base under composite because it impairs polymerization of the resin.</p>"},{"k":"Dr. Rasha · Lecture 8","t":"Polycarboxylate: chemical adhesion to calcium, a 2–6 minute set, and a 30–40 second mix","b":"<p>Zinc polycarboxylate (zinc polyacrylate) is supplied as a powder and a liquid, or as a powder mixed with water. The liquid is a water solution of polyacrylic acid (<b>32% to 42%</b>). The powder is essentially zinc oxide and magnesium oxide; the water-mixed powder has zinc oxide particles coated by <b>15% to 18%</b> polyacrylic acid. Properties: chemical adhesion to enamel and dentine by chelation of carboxylate groups to calcium; the large polyacrylic-acid molecule cannot penetrate dentinal tubules, so the cement is low-irritant and is used as a base or for cementation with sensitive teeth; a short setting time (<b>2–6 minutes</b>); and it is more sensitive to disintegration and solubility than zinc phosphate. Uses: a luting agent, a base, and orthodontic-band cementation. Manipulation: base powder/liquid ratio <b>2–3 : 1</b> by weight, luting <b>1.5 : 1</b>; a dry, cool glass slab lengthens working time; do not dispense the liquid until just before mixing (evaporation raises viscosity, lowers strength and raises solubility); complete the mix within <b>30–40 seconds</b>.</p>"},{"k":"Dr. Rasha · Lecture 8","t":"Glass ionomer in this lecture: Class I, III and V fillings, and Types I to V","b":"<p>Glass-ionomer cements are supplied as a powder and a liquid, or as capsules. The powder is fluoro-aluminosilicate glass; the liquid is typically a <b>47.5%</b> solution of a <b>2 : 1</b> polyacrylic acid and itaconic acid copolymer. Uses in this lecture: as a base; as a luting agent; as a filling material, especially the modified types (<b>Class I, Class III, Class V</b>); and as fissure sealants. Properties: compressive strength greater than zinc phosphate; very sensitive to water during setting — isolate the field completely; if used as a filling, once the initial set is reached (about <b>7 minutes</b>) coat the surface with a varnish, because complete setting takes <b>24 hours</b>; chemical (ionic) bonding to calcium and/or phosphate of enamel or dentine, which becomes stronger if enamel is etched with <b>37% phosphoric acid</b> (microporosities improve mechanical retention); and fluoride release with an anti-cariogenic (bacteriostatic or bactericidal) effect, so it can be used in a patient with a high caries index.</p><p>Classification on clinical usage in this lecture: <b>Type I</b> — luting cements, low film thickness and a rapid set; <b>Type II</b> — restorative cements, with Type II-1 aesthetic (conventional or resin-modified) and Type II-2 “reinforced,” more wear-resistant; <b>Type III</b> — lining cements; <b>Type IV</b> — fissure sealants, characterized by low viscosity and a rapid set; and <b>Type V</b> used for orthodontic cementation. (Dr. Linz’s lecture in File 3 grouped liners and fissure sealants together as Type III and did not list Types IV and V; both wordings are kept with their own lectures.)</p>"},{"k":"Dr. Rasha · Lecture 8","t":"Resin cements: 40–80% filler, and self-, light- or dual-cure","b":"<p>Resin cements are thin versions of restorative resins (for example Calibra and Panavia): a resin matrix with inorganic fillers bonded to the matrix with monomers. Fillers are silica or glass particles at <b>40%–80%</b> by weight. Bonding to enamel is by the acid-etch technique, then a bonding agent for mechanical adhesion to the etched surface. Polymerization is by chemical reaction (self-cure), light activation (light-cure), or both (dual-cure). Self-cured composite cements are typically two-paste (base and catalyst); light-cure cement is a single-component system. Properties: insoluble in oral fluids; higher filler loading gives higher strength and stiffness, less polymerization shrinkage, and a lower coefficient of thermal expansion; some products include fluoride as an anti-cariogenic factor and to reduce sensitivity. Uses: luting of casts or tooth-coloured restorations (aesthetic ceramic and laboratory-processed composite); a high-filler resin cement can also be used as a base.</p>"},{"k":"Dr. Rasha · Lecture 8","t":"Quiz: this lecture’s Types IV and V glass ionomer, and ZOE under composite","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">ZOE and polycarboxylate in Dr. Rasha’s lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Both strongly acidic, both mixed on a frozen slab, and both preferred under composite</button><button type=\"button\" class=\"opt\" data-i=\"1\">ZOE sets in the presence of water, is not exothermic, has an average set of about 8 minutes and a pH of 7, is sedative and radiopaque, seals well as a temporary, and in a modified form lutes crowns and bridges or acts as a base or an endodontic sealer — but must not be used as a base under composite. Polycarboxylate liquid is 32–42% polyacrylic acid (or a water-mixed powder coated with 15–18%); it chelates to calcium, the large molecule cannot enter tubules, set is 2–6 minutes, and it is more soluble than zinc phosphate. Base ratio 2–3 : 1, luting 1.5 : 1, mix in 30–40 seconds on a dry cool slab, and do not dispense the liquid early</button><button type=\"button\" class=\"opt\" data-i=\"2\">ZOE must be mixed in 15-second increments for 60–90 seconds on a 21 °C slab</button><button type=\"button\" class=\"opt\" data-i=\"3\">Polycarboxylate has no chemical adhesion to enamel or dentine</button></div><div class=\"qexp\" hidden><p>إسمنت ZOE ويه pH 7 وتصلب حوالي 8 دقائق وممنوع تحت الكمبوزت. البولي كاربوكسيلات يلتصق بالكالسيوم، تصلب 2–6 دقائق، خلط 30–40 ثانية.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Glass ionomer classification in this lecture, unlike the earlier Linz lecture, includes:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Only Type I and Type II; fissure sealants are not a use of glass ionomer here</button><button type=\"button\" class=\"opt\" data-i=\"1\">Powder is fluoro-aluminosilicate glass; liquid typically 47.5% of a 2 : 1 polyacrylic/itaconic copolymer. Uses here include a base, a luting agent, filling material especially modified types for Class I, III and V, and fissure sealants. Isolate from water; after an initial set of about 7 minutes coat a filling with varnish because complete set takes 24 hours; chemical bonding is increased by etching enamel with 37% phosphoric acid; fluoride release is anti-cariogenic. Type I = luting (low film, rapid set); Type II = restorative (II-1 aesthetic, including resin-modified; II-2 reinforced, more wear-resistant); Type III = lining cements; Type IV = fissure sealants (low viscosity, rapid set); Type V = orthodontic cementation. (File 3’s Linz lecture grouped liners and sealants as Type III and did not list IV and V.) Resin cements (Calibra, Panavia) have 40–80% filler and may be self-, light- or dual-cured</button><button type=\"button\" class=\"opt\" data-i=\"2\">Type V glass ionomer is only a pulp-capping paste</button><button type=\"button\" class=\"opt\" data-i=\"3\">Type IV is the only type recommended as a high-strength base under amalgam</button></div><div class=\"qexp\" hidden><p>بهالمحاضرة نوع III بطانة، نوع IV موانع شقوق، ونوع V إلصاق تقويمي. هم يُستخدم حشوة لأصناف I و III و V. بمحاضرة لنز النوع III جمع البطانة والمانع.</p></div></div>"},{"k":"Dr. Rasha · Lecture 8","t":"Cavity varnish: two thin coats, and when it must not be used","b":"<p>Cavity varnishes are solutions of natural or synthetic resins in a solvent such as alcohol, chloroform or acetone. The solvent evaporates, leaving a thin film. Functions: placed on enamel and dentine walls to reduce penetration of oral fluids around amalgam — the varnish inhibits microleakage during the first few weeks, then is dissolved by oral fluids and replaced by amalgam corrosion products at the interface; applied on dentine to minimize penetration of acid from zinc phosphate by occluding tubule orifices; and to reduce post-operative sensitivity. Properties: neither mechanical strength nor thermal insulation, because of the thin film; varnish should not be used as a sub-base under a glass-ionomer base (it prevents fluoride release and chemical bonding); and varnish should not be used under composite resin (it inhibits polymerization — calcium hydroxide can be used under composite instead). Manipulation: a small round piece of cotton, a thin layer gently dried with a stream of air, and a minimum of <b>two thin layers</b> because the first coat leaves voids. Cap the bottle immediately; a separate solvent keeps the varnish from becoming too thick and removes it from the external tooth surface.</p>"},{"k":"Dr. Rasha · Lecture 8","t":"Bonding agents (37% acid for 15–60 seconds) and calcium hydroxide (pH 9.2–11.7)","b":"<p>Bonding agents are generally unfilled resins for mechanical adhesion of composite to conditioned enamel and dentine. Conditioning uses <b>37% phosphoric acid for 15–60 seconds</b>, then washing and drying. They act as a liner for composite, especially in shallow cavities, by occluding tubule orifices and reducing post-operative sensitivity. Special amalgam-bond agents can line amalgam restorations by sealing against fluid flow and microleakage.</p><p>Calcium hydroxide is referred to as a liner, intermediate base, or pulp-capping agent (examples: Calcipulp, Dycal, Hydrex), supplied as a two-paste system (base and catalyst). Properties: an alkaline pH (<b>9.2–11.7</b>), which reduces the acidity of zinc phosphate when used as a sub-base in deep cavities; antimicrobial action useful in indirect pulp capping; stimulates odontoblasts to form secondary dentine (a dentinal bridge) when placed directly over exposed pulp, so it is used for direct pulp capping; and water is important for the setting reaction. Manipulation: equal lengths of the two coloured pastes are mixed to a uniform colour on a paper pad and applied with a Dycal applicator. Setting time is short (about <b>1–2 minutes</b>), so mix quickly and apply on dry dentine. Proper setting requires humidity: a moist cotton pellet at the cavity opening, on top of the newly placed cement, for <b>30 seconds</b> without contacting the cement, then check with an explorer that it cannot be penetrated. A resin has been added to some calcium hydroxide to improve thermal and mechanical properties and reduce solubility; setting is then by light curing. This lecture adds that the light-activated cement is less brittle and has a longer working duration, is provided in syringe form, and a replacement nozzle allows it to be applied directly to the tooth.</p>"},{"k":"Dr. Rasha · Lecture 8","t":"Calcium-silicate cements: they can set in the wet, but they are slow and can be hard to handle","b":"<p>Calcium-silicate base cements have useful characteristics including being biocompatible, having sufficient mechanical qualities, and setting and sealing in wet and blood-contaminated settings. Their primary drawbacks include a prolonged setting time, a lack of radiopacity, and difficulty in handling. When submerged in body fluids, they can chemically precipitate a calcium phosphate/apatite layer. These qualities have resulted in an increasing number of new therapeutic uses, including root-apex restoration, pulp capping and bridges for pulp regeneration, and as an endodontic sealer.</p>"},{"k":"Dr. Rasha · Lecture 8","t":"MTA: grey versus white, a set pH of 12.5, and a setting time of 2 hours and 45 minutes","b":"<p>Mineral trioxide aggregate (MTA) is available in two colours — white and grey. Grey MTA contains: tricalcium silicate; dicalcium silicate; tricalcium aluminate; bismuth oxide; calcium sulfate; and tetracalcium aluminoferrite. White MTA has the same composition as grey MTA except that it lacks tetracalcium aluminoferrite, and is consequently white in colour.</p><p>The pH of MTA is <b>12.5</b> when set, so it has biological and histological properties similar to calcium hydroxide. Setting time is <b>2 hours and 45 minutes</b>. In contrast to Ca(OH)<sub>2</sub>, it produces a hard-setting, non-resorbable surface. It sets in a moist environment (hydrophilic in nature). (A later comparison in this same lecture also describes MTA as reaching a setting time of about <b>3–4 hours</b> when it is placed next to Biodentine; both figures are kept as this lecture wrote them. The lecture’s “Indications of MTA” heading sits on a figure that did not extract as readable text, so no indication list is invented here.)</p>"},{"k":"Dr. Rasha · Lecture 8","t":"Mixing and placing MTA: a putty that does not stick, an amalgam carrier or a MAP system","b":"<p>To prepare MTA, a small amount of liquid and powder are mixed to a putty consistency. Because the MTA mixture is a loose granular aggregate, it does not stick very well to any instrument. It cannot be carried into the cavity with a normal cement carrier, and thus has to be tried with an amalgam carrier or a specially designed carrier (the <b>MAP system</b>). Once MTA is placed, it is compacted with burnishers and micro-pluggers.</p>"},{"k":"Dr. Rasha · Lecture 8","t":"Biodentine sets in about 12 minutes; this lecture also writes MTA as about 3–4 hours","b":"<p>Biodentine is a dental cement available in the form of a capsule containing the ideal ratio of powder and liquid, with a rapid-setting calcium-silicate basis. This cement has a relatively quick setting time (around <b>12 minutes</b>); this is not achievable in MTA that reaches a setting time of about <b>3–4 hours</b>. Biodentine is described here as having better biologic, handling and physical properties, and a superior sealing property, compared with MTA.</p>"},{"k":"Dr. Rasha · Lecture 8","t":"TheraCal LC: a light-cured calcium silicate, with a short-term high calcium release compared with Dycal","b":"<p>TheraCal LC is a resin-modified calcium-silicate cement used as a direct or indirect pulp-capping agent and as a protective liner under composite, amalgam and cements, and other base material. The material’s ease of handling may make it particularly appealing to clinicians. When compared with Dycal, it is a light-cure material and therefore may cause heat generation; it also comes in a one-paste system and has an instant high calcium release for the short term, while Dycal has an instant low calcium release for the long term. Unique benefits listed in this lecture: calcium release stimulates hydroxyapatite and secondary-dentine-bridge formation; an alkaline pH promotes healing and apatite formation; significant calcium release leads to a protective seal; and it is moisture-tolerant and radiopaque — it can be placed under restorative materials and cements.</p>"},{"k":"Dr. Rasha · Lecture 8","t":"Quiz: MTA at pH 12.5, Biodentine in 12 minutes, and TheraCal versus Dycal","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Calcium-silicate cements and MTA in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">MTA is a single white paste that sets in 60–90 seconds on a frozen slab and is strongly acidic</button><button type=\"button\" class=\"opt\" data-i=\"1\">Calcium-silicate base cements are biocompatible, have sufficient mechanical qualities, and can set and seal in wet and blood-contaminated settings; drawbacks include a prolonged set, a lack of radiopacity, and difficult handling. In body fluids they can precipitate a calcium phosphate/apatite layer. Uses include root-apex restoration, pulp capping and bridges for pulp regeneration, and an endodontic sealer. MTA comes in grey and white: grey contains tricalcium silicate, dicalcium silicate, tricalcium aluminate, bismuth oxide, calcium sulfate and tetracalcium aluminoferrite; white lacks tetracalcium aluminoferrite. Set pH is 12.5, with biological and histological properties similar to calcium hydroxide. This lecture gives the setting time as 2 hours and 45 minutes, and later as about 3–4 hours when MTA is compared with Biodentine. Unlike Ca(OH)₂ it produces a hard, non-resorbable surface, and it is hydrophilic. Mix a small amount of liquid and powder to a putty; the loose granular mix does not stick well, so it is carried with an amalgam carrier or the MAP system and compacted with burnishers and micro-pluggers</button><button type=\"button\" class=\"opt\" data-i=\"2\">White MTA is simply grey MTA with added tetracalcium aluminoferrite</button><button type=\"button\" class=\"opt\" data-i=\"3\">MTA must be kept completely dry, because moisture prevents it from setting</button></div><div class=\"qexp\" hidden><p>الـ MTA pH 12.5، تصلب ساعتان و45 دقيقة (وبعدين 3–4 ساعات مقابل Biodentine). الأبيض يفتقد ألومينوفيريت رباعي الكالسيوم. يُنقل بحامل ملغم أو نظام MAP.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Biodentine and TheraCal LC in this lecture are described as:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Biodentine sets in 3–4 hours and is slower than MTA; TheraCal is a two-paste eugenol cement used only under zinc phosphate</button><button type=\"button\" class=\"opt\" data-i=\"1\">Biodentine is a capsule with the ideal powder/liquid ratio and a rapid-setting calcium-silicate basis: about 12 minutes, which this lecture says is not achievable in MTA (about 3–4 hours in that comparison). It is described as having better biologic, handling and physical properties and a superior seal compared with MTA. TheraCal LC is a resin-modified calcium-silicate cement for direct or indirect pulp capping and as a protective liner under composite, amalgam, cements and other bases. Compared with Dycal it is light-cured (so it may generate heat), is a one-paste system, and has an instant high calcium release for the short term, whereas Dycal has an instant low calcium release for the long term. Listed benefits: calcium release stimulates hydroxyapatite and a secondary dentine bridge; alkaline pH promotes healing and apatite; significant calcium release leads to a protective seal; moisture-tolerant and radiopaque, so it can be placed under restorations and cements</button><button type=\"button\" class=\"opt\" data-i=\"2\">TheraCal must never be placed under composite, because light curing is contraindicated near the pulp</button><button type=\"button\" class=\"opt\" data-i=\"3\">Biodentine is mixed on a paper pad for 1–2 minutes like Dycal and then light-cured</button></div><div class=\"qexp\" hidden><p>مادة Biodentine حوالي 12 دقيقة مقابل 3–4 ساعات للـ MTA بهالمقارنة، ويه كبسولة جاهزة النسبة. TheraCal ضوئي، معجون واحد، إطلاق كالسيوم عالي قصير الأمد، بينما Dycal إطلاق واطي طويل الأمد.</p></div></div>"},{"k":"Dr. Rasha · Lecture 8","t":"Where liners may go, and the four clinical depths — including a small pulp exposure","b":"<p>General clinical considerations: (1) the prepared cavity should be clean and dry, and the quadrant isolated completely from saliva, because all lining and base materials are sensitive to water during application and setting; (2) all liners and bases dissolve and disintegrate in saliva with time, so they should not reach the cavity margins (except varnishes and bonding agents). Lining is placed on the pulpal floor in Class I, the pulpal floor and axial wall in Class II, and the axial wall in Classes III, IV and V; (3) in amalgam cavities the base must not extend onto the walls, because it would block the undercuts (buccal and lingual convergence) needed for amalgam retention, and all retentive holes, grooves and pins should be free from lining before amalgam is placed.</p><p>Depth classification in this lecture: (1) <b>Shallow</b> — sufficient dentine, no protective base. Amalgam receives two thin coats of varnish or amalgam bond; composite is etched, given a single coat of bonding agent, and restored. Both provide chemical protection. (2) <b>Moderately deep</b> — extends into dentine beyond the minimal depth needed for retention and strength. Varnish coats the floor and walls, then a cement base (zinc phosphate or modified ZOE) is contoured to replace missing dentine. (3) <b>Deep</b> — some extension toward the pulp. A Ca(OH)<sub>2</sub> liner on the pulpal and axial walls, then a base (zinc phosphate, modified ZOE or polycarboxylate), then varnish on the walls. A newer protocol prefers Dycal with a glass-ionomer base, because chemical bonding reduces microleakage and post-operative sensitivity. (4) <b>Deep with a small pulp exposure</b> and no signs or symptoms of a degenerating pulp: conservative pulp capping in an isolated clean field — calcium hydroxide over the pulp and the surrounding dentine border, then a base (zinc phosphate or reinforced ZOE; a glass-ionomer base is preferred). Complete the restoration as soon as possible. A secondary-dentine barrier is likely within a few weeks.</p>"},{"k":"Dr. Rasha · Lecture 8","t":"Self-test: 0.5 mm from the pulp, Types IV and V, and MTA versus Biodentine","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Numbers and protocols that are distinctive in Dr. Rasha’s liner lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Bases are always 4 mm thick; glass ionomer has only Types I and II; MTA sets in 12 minutes</button><button type=\"button\" class=\"opt\" data-i=\"1\">Cement bases are typically 1–2 mm. In the amalgam figure, a calcium-hydroxide liner is still used in the deepest region judged to be within 0.5 mm of the pulp, even when amalgam-bonding systems are advocated as a substitute for liner and varnish; a very deep preparation receives calcium hydroxide in the excavated region and then a glass-ionomer base. This lecture classifies glass ionomer as Types I (luting), II (restorative), III (lining), IV (fissure sealants) and V (orthodontic cementation), and lists modified glass ionomer as a filling for Classes I, III and V. Light-activated calcium hydroxide is less brittle, has a longer working duration, and comes in a syringe with a replacement nozzle</button><button type=\"button\" class=\"opt\" data-i=\"2\">Varnish should be used as a sub-base under every glass-ionomer base so that fluoride is held in</button><button type=\"button\" class=\"opt\" data-i=\"3\">A moderately deep cavity needs no varnish and no base</button></div><div class=\"qexp\" hidden><p>القاعدة 1–2 ملم. هيدروكسيد الكالسيوم إذا ضمن 0.5 ملم من اللب. الأيونومر بهالمحاضرة أنواع I إلى V. هيدروكسيد الكالسيوم الضوئي يأتي بحقنة وأقل هشاشة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">MTA, Biodentine and TheraCal LC, as this lecture writes them, are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">All three are zinc-oxide pastes that must be kept dry and light-cured for 10 seconds</button><button type=\"button\" class=\"opt\" data-i=\"1\">MTA (grey or white; white lacks tetracalcium aluminoferrite) has a set pH of 12.5, similar biology to calcium hydroxide, a hard non-resorbable surface, and is hydrophilic. This lecture states the set as 2 hours and 45 minutes, and later as about 3–4 hours versus Biodentine. Mix to a putty and carry with an amalgam carrier or the MAP system; compact with burnishers and micro-pluggers. Biodentine is a capsule with a rapid set of about 12 minutes and is described as sealing and handling better than MTA. TheraCal LC is a resin-modified, light-cured, one-paste calcium silicate for direct or indirect capping and as a liner under restorations; it may generate heat, has a short-term high calcium release, and is moisture-tolerant and radiopaque, while Dycal has a long-term low calcium release</button><button type=\"button\" class=\"opt\" data-i=\"2\">Biodentine must be carried only with the MAP system, because it will not go into a capsule</button><button type=\"button\" class=\"opt\" data-i=\"3\">TheraCal LC has an acidic pH and never releases calcium</button></div><div class=\"qexp\" hidden><p>مادة MTA: pH 12.5، ساعتان و45 دقيقة (أو 3–4 ساعات بهالمقارنة). Biodentine حوالي 12 دقيقة. TheraCal ضوئي وإطلاق كالسيوم عالي قصير الأمد مقابل Dycal.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">In this lecture, how thick is a typical cement base, and when is calcium hydroxide still placed even if an amalgam-bonding system is used?</button><div class=\"flash-a\" hidden>Cement bases are typically 1 to 2 mm. A calcium-hydroxide liner is still used in the deepest region judged to be within 0.5 mm of the pulp.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا خامس ملف معالجة: محاضرة د. رشا 8 عن البطانات والقواعد (صفحات 84–108). النص يتداخل ويه محاضرات د. لنز بملف 3، ونخلي الصياغتين حتى الاختلافات مثل أنواع الأيونومر III و IV و V، وسمك القاعدة 1–2 ملم، وبطانة هيدروكسيد الكالسيوم إذا العمق ضمن 0.5 ملم من اللب. بهالمحاضرة هم إسمنتات سيليكات الكالسيوم: MTA و Biodentine و TheraCal LC. للمحاضرة زمنان لتصلب الـ MTA (ساعتان و45 دقيقة، وبعدين 3–4 ساعات مقابل Biodentine) ونحتفظ بالرقمين.</p>","<p>البطانات والقواعد لحماية اللب: كيميائية، كهربائية، حرارية، دوائية للب، وميكانيكية. الأسباب: عزل حراري وكهربائي تحت المعدن مثل الملغم؛ توزيع الإجهاد على العاج؛ تقليل التسرب المجهري؛ إلصاق المصبوب أو الخزف؛ تغطية لب؛ بعضها قاتل أو مثبط للجراثيم؛ منع ضرر طويل الأمد لعضو اللب-العاج؛ وإلصاق أشرطة التقويم.</p><p>البطانة المثالية: متوافقة ويه الترميم، ما تهيّج اللب، تحمي عضو اللب-العاج، ما تذوب باللعاب، قوية وقت الرص، تعزل الحرارة والبرد، مثبطة للجراثيم (مثل ZOE)، تحسّن الختم (لذلك ZOE يُستخدم مؤقتاً)، سهلة التطبيق، وظاهرة بالأشعة.</p>","<p>مجموعتان بهالمحاضرة: الورنيش والبطانات، وقواعد الإسمنت. وحدهن أو مع بعض حسب امتداد وموقع التحضير، ومادة الترميم.</p><p>البطانة طبقة رقيقة: حاجز كيميائي (مو عازل حراري)، تقلل التسرب والحساسية، وتعزل كهربائياً. أكثر حاجة إلها ويه الترميم المعدني اللي ما يرتبط زين بالسن.</p><p>القواعد عادة <b>1 إلى 2 ملم</b> تغطي الأجزاء العميقة (أو قاعدة فوق قاعدة وسيطة)، وسمكها حسب خواصها مع إبقاء مكان كافي للترميم النهائي: عزل حراري، مقاومة الرص، وحاجز كيميائي.</p>","<p>بأشكال هالمحاضرة: (A) الحفرة <b>الضحلة</b> للملغم: ورنيش أو مادة ختم على الجدران قبل الحشوة؛ (B) <b>متوسطة العمق</b>: بطانات للحماية الحرارية والدواء اللبي (والمقاعد على عاج سليم)؛ (C) <b>العميقة جداً</b>: هيدروكسيد كالسيوم بأعمق منطقة انشاف منها العاج المصاب، وبعدين قاعدة أيونومر زجاجي.</p><p>أنظمة ربط الملغم تُقترح كبديل للبطانة والورنيش، <b>ما عدا</b> بطانة هيدروكسيد الكالسيوم بأعمق منطقة إذا اعتبرت ضمن <b>0.5 ملم من اللب</b>.</p>","<p>فوسفات الزنك قوي بس يهيّج اللب. المسحوق أكسيد زنك ويه أكسيد مغنيسيوم وثاني أكسيد السيليكون. السائل حامض أورثو-فوسفوريك <b>40%</b> ويه أملاح تبطّئ التصلب، وماء. التفاعل ناشر للحرارة والمزيج الأولي حامضي جداً. يُستخدم قاعدة عالية القوة، وإلصاق مصبوب، وأشرطة تقويم، ونادراً ضماد مؤقت.</p><p>قوام إلصاق كريمي (نسبة مسحوق أقل) وقوام قاعدة عجيني (نسبة أعلى). التصلب <b>2–8 دقائق بدرجة 37°م</b>. الحموضة تصير تقريباً متعادلة بعد <b>48 ساعة</b>. زيادة المسحوق تقلل الذوبان والانكماش.</p>","<p>الخلط على بلاطة باردة تقريباً <b>21°م</b>، سميكة ونظيفة. أكثر مسحوق ممكن للقوام المطلوب. الرطوبة تقصر التصلب والجفاف يطوله — أغلق القنينة. دفعات صغيرة على مساحة واسعة. الخلط لا يزيد على <b>60–90 ثانية</b> (<b>15 ثانية لكل دفعة</b>). البلاطة المجمدة <b>6°م أو −10°م</b> تطيل العمل وتقصر التصلب.</p><p>السن ناشف. لفة صغيرة تتنقل بالمسبر، وتُشكَّل بـ <b>Ash 49</b> أو <b>Ash 6</b>. انتظر <b>10 دقائق</b> قبل القص بالفرازة. لا إسمنت على الحواف أو بالتجاويف المثبتة. بقع النخر تُشال بفرازة مدورة بدون تسطيح كل العاج السليم حولها.</p>","<p>سؤالان على سمك القاعدة 1–2 ملم، و0.5 ملم من اللب، وأرقام فوسفات الزنك بهالمحاضرة.</p>","<p>إسمنت أكسيد الزنك واليوجينول (ZOE): مسحوق أكسيد زنك ويه صمغ أبيض وأسيتات زنك، وسائل يوجينول ويه زيت زيتون. لتقوية الإلصاق يُضاف ميثيل ميثاكريلات، أو ألومينا ويه حامض إيثوكسي بنزويك. التفاعل مو ناشر للحرارة والرطوبة ضرورية. أغلب المسحوق أول دفعة. التصلب حوالي <b>8 دقائق</b>.</p><p>الخواص: pH <b>7</b>، مهدئ، ظاهر بالأشعة، وختم ممتاز (ترميم مؤقت). النوع المعدّل لإلصاق التيجان والجسور وكقاعدة، وكمادة ختم لبية. <b>ممنوع كقاعدة تحت الكمبوزت</b> لأنه يفسد التبلمر.</p>","<p>بولي كاربوكسيلات الزنك: سائل حامض بولي أكريليك <b>32–42%</b>، أو مسحوق مطلي بـ <b>15–18%</b> من الحامض يُخلط ويه الماء. يلتصق كيميائياً بكالسيوم المينا والعاج، والجزيئة كبيرة فما تدخل الأقنية (قليل التهييج، مناسب للأسنان الحساسة). التصلب <b>2–6 دقائق</b>، وأذوب من فوسفات الزنك. نسبة القاعدة <b>2–3 : 1</b> والإلصاق <b>1.5 : 1</b>، خلط خلال <b>30–40 ثانية</b> على بلاطة جافة وباردة، والسائل لا يُطلَع إلا قبل الخلط.</p>","<p>الأيونومر الزجاجي: مسحوق زجاج فلورو-ألومينو-سيليكات، وسائل عادة <b>47.5%</b> من كوبوليمر بولي أكريليك وإيتاكونيك <b>2 : 1</b>. بهالمحاضرة يُستخدم قاعدة، وإلصاق، وحشوة خصوصاً المعدّل (<b>صنف I و III و V</b>)، ومانع شقوق. قوة الضغط أكبر من فوسفات الزنك، حسّاس للماء، التصلب الأولي حوالي <b>7 دقائق</b> ويكتمل بـ <b>24 ساعة</b> (غطِّ بورنيش). يرتبط كيميائياً ويتقوى بحفر <b>37%</b>، ويطلق فلوريد مفيد للنخر العالي.</p><p>التصنيف بهالمحاضرة: <b>نوع I</b> إلصاق؛ <b>نوع II</b> ترميمي (II-1 تجميلي، II-2 مقوّى)؛ <b>نوع III</b> بطانات؛ <b>نوع IV</b> موانع شقوق (لزوجة واطية وتصلب سريع)؛ <b>نوع V</b> إلصاق تقويمي. بمحاضرة د. لنز النوع III جمع البطانة ومانع الشقوق وما ذكرت IV و V — نخلي النصين كل واحد بمحاضرته.</p>","<p>إسمنتات الراتنج (مثل Calibra و Panavia): قالب راتنجي ويه حشوات سيليكا أو زجاج <b>40–80%</b> بالوزن. الارتباط بالحفر الحامضي ثم مادة رابطة. التبلمر ذاتي أو ضوئي أو ثنائي. الذاتي عجينتان، والضوئي مكوّن واحد. ما تذوب باللعاب، وزيادة الحشوات تزيد القوة وتقلل الانكماش والتمدد الحراري. بعضها ويه فلوريد. تُستخدم لإلصاق المصبوب أو الترميمات التجميلية، وذات الحشوات العالية كقاعدة.</p>","<p>سؤالان على ZOE، وتصنيف الأيونومر بهالمحاضرة (أنواع IV و V).</p>","<p>الورنيش راتنج بمذيب (كحول أو كلوروفورم أو أسيتون) يترك فيلم رقيق. يقلل تسرب الملغم أول أسابيع بعدين يذوب ويحل محله نواتج التآكل؛ يسد الأقنية ضد حامض فوسفات الزنك؛ ويقلل الحساسية. ما عنده قوة ولا عزل حراري. <b>لا تحت الأيونومر</b> (يمنع الفلوريد والارتباط) و<b>لا تحت الكمبوزت</b> (يوقف التبلمر — استخدم هيدروكسيد الكالسيوم). طبقتان رقيقتان على الأقل بقطعة قطن وهواء لطيف. أغلق القنينة فوراً.</p>","<p>المواد الرابطة راتنجات غير مملوءة بعد حفر <b>37% لمدة 15–60 ثانية</b>. تبطن الكمبوزت خصوصاً بالحفر الضحلة، وفي نوع amalgam bond تبطن الملغم ضد السوائل والتسرب.</p><p>هيدروكسيد الكالسيوم (Calcipulp و Dycal و Hydrex) عجينتان، pH <b>9.2–11.7</b>، مضاد للجراثيم بالتغطية غير المباشرة، ويحفز جسر عاجي بالتغطية المباشرة. الخلط سريع (تصلب <b>1–2 دقيقة</b>) على عاج ناشف، وقطنة رطبة <b>30 ثانية</b> بدون لمس الإسمنت. النوع المضاف له راتنج يتصلب بالضوء؛ بهالمحاضرة هم: أقل هشاشة، زمن عمل أطول، يأتي بحقنة، وفوهة بديلة للتطبيق مباشرة على السن.</p>","<p>إسمنتات قاعدة سيليكات الكالسيوم: متوافقة حيوياً، خواص ميكانيكية كافية، وتتصلب وتختم بالرطوبة وحتى ويه تلوث الدم. عيوبها الأساسية: زمن تصلب طويل، نقص الإظهار الشعاعي، وصعوبة التعامل. إذا غُمرت بسوائل الجسم تترسّب طبقة فوسفات كالسيوم/أباتيت. استخداماتها زادت: ترميم ذروة الجذر، تغطية اللب وجسور لتجديد اللب، ومادة ختم لبية.</p>","<p>الـ MTA لونان: رمادي وأبيض. الرمادي يحتوي: سيليكات ثلاثي الكالسيوم، سيليكات ثنائي الكالسيوم، ألومينات ثلاثي الكالسيوم، أكسيد البزموت، كبريتات الكالسيوم، وألومينوفيريت رباعي الكالسيوم. الأبيض نفس التركيب <b>بدون</b> ألومينوفيريت رباعي الكالسيوم، لذلك لونه أبيض.</p><p>حامضية المادة بعد التصلب <b>12.5</b>، فخواصه الحيوية والنسيجية تشبه هيدروكسيد الكالسيوم. زمن التصلب <b>ساعتان و45 دقيقة</b>. بعكس هيدروكسيد الكالسيوم، يكوّن سطح صلب غير ممتص. يتصلب بالرطوبة (محب للماء). بنفس المحاضرة لاحقاً يُذكر تصلب حوالي <b>3–4 ساعات</b> عند المقارنة ويه Biodentine — نخلي الرقمين. عنوان “استطبابات الـ MTA” على شكل ما انقرأ كنص، فما نخترع قائمة.</p>","<p>خلط الـ MTA: كمية صغيرة من السائل والمسحوق لقوام عجيني. المزيج حبيبي مفكوك وما يلزق زين بأي أداة، فما ينتقل بحامل إسمنت عادي — استخدم حامل ملغم أو حامل خاص اسمه <b>نظام MAP</b>. بعد الوضع يُرص باللمّاعات والبلانجرز الدقيقة.</p>","<p>مادة Biodentine إسمنت بكبسولة فيها النسبة المثالية من المسحوق والسائل، أساس سيليكات كالسيوم سريع التصلب: حوالي <b>12 دقيقة</b>، وهذا ما يتحقق بالـ MTA اللي بهالمقارنة يصل لحوالي <b>3–4 ساعات</b>. بهالمحاضرة: خواص حيوية وتعامل وفيزيائية أفضل، وختم أحسن من الـ MTA.</p>","<p>مادة TheraCal LC إسمنت سيليكات كالسيوم معدّل بالراتنج: تغطية لب مباشرة أو غير مباشرة، وبطانة واقية تحت الكمبوزت والملغم والإسمنتات وقواعد أخرى. سهولة التعامل تخليه جذاب للطبيب. مقارنةً ويه Dycal: يتصلب بالضوء لذلك قد يولّد حرارة، يأتي بمعجون واحد، ويطلق كالسيوم عالي فوري لأمد قصير، بينما Dycal يطلق كالسيوم واطي فوري لأمد طويل. فوائده بهالمحاضرة: إطلاق الكالسيوم يحث هيدروكسي أباتيت وجسر العاج الثانوي؛ pH قاعدي يساعد الشفاء وتكوّن الأباتيت؛ إطلاق كالسيوم كبير يعمل ختم واقي؛ ويتحمل الرطوبة وظاهر بالأشعة فيمكن وضعه تحت الترميمات والإسمنتات.</p>","<p>سؤالان على الـ MTA و Biodentine و TheraCal LC.</p>","<p>الحفرة نظيفة وناشفة والربع معزول. البطانات والقواعد ما توصل للحواف (ما عدا الورنيش والمواد الرابطة): الأرضية بصنف I، الأرضية والجدار المحوري بصنف II، والجدار المحوري بـ III و IV و V. بالملغم القاعدة ما تسد التجاويف المثبتة، والثقوب والأخاديد والمسامير تبقى فاضية من البطانة.</p><p>(1) <b>ضحلة</b>: بلا قاعدة؛ ملغم ويه طبقتين ورنيش أو amalgam bond؛ كمبوزت ويه حفر وطبقة رابطة واحدة. (2) <b>متوسطة</b>: ورنيش ثم قاعدة فوسفات زنك أو ZOE معدّل. (3) <b>عميقة</b>: هيدروكسيد كالسيوم ثم قاعدة ثم ورنيش؛ بروتوكول أحدث Dycal ويه قاعدة أيونومر. (4) <b>انكشاف صغير</b> بلا علامات تنكس: هيدروكسيد كالسيوم على اللب وحافة العاج، ثم قاعدة (الأيونومر مفضّل)، وكمّل الترميم بسرعة. حاجز العاج الثانوي يتوقع خلال أسابيع.</p>","<p>سؤالان ختاميان وبطاقة على سمك القاعدة 1–2 ملم وبطانة 0.5 ملم من اللب، وزر الدرجة.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
