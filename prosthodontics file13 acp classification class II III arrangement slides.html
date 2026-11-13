@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Prosthodontics File 13 — ACP Classification of Complete Edentulism and Class II/III Tooth Arrangement</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Prosthodontics · 5th year · Lectures 1–2</div>
+    <h1>ACP Classification, and Arranging Teeth in Abnormal Jaw Relations</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of the 5th-year lectures on the American College of Prosthodontists classification of complete edentulism (Classes I–IV and the four diagnostic criteria) and on arranging anterior and posterior teeth when the residual-ridge relationship is Class II or Class III (PDF pages 401–423).</p>
+    <ul>
+      <li>ACP complete-edentulism Classes I–IV, benefits of a classification system, and the four diagnostic criteria</li>
+      <li>Mandibular bone-height Types I–IV, maxillary ridge Types A–D, mandibular muscle attachments A–E, and MMR Classes I–III</li>
+      <li>The “any more-complex criterion raises the whole class” rule, surgical and systemic modifiers, and when to refer</li>
+      <li>Normal ridge relationship (80° posterior crest line), centripetal / centrifugal resorption, and skeletal percentages (55.5% / 10% / 34.5%)</li>
+      <li>Class II and Class III anterior and posterior tooth arrangement, including first-premolar elimination and cross-arch tooth interchange</li>
+      <li>Total run time: <b>32 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 16</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Prosthodontics · File 13","t":"ACP Classification of Complete Edentulism, and Arrangement in Abnormal Jaw Relations","b":"<p>University of Baghdad, College of Dentistry — Prosthodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This 5th-year file covers PDF pages 401–423 (Dr. Thekra Ismael), Lectures 1–2:</p><ul><li>The American College of Prosthodontists (ACP) classification system for complete edentulism: diagnostic criteria (mandibular bone height, maxillary ridge morphology, mandibular muscle attachments, and maxillomandibular relationship) and overall Classes I–IV.</li><li>Guidelines for using the system, ridge relationship, skeletal Classes I–III, and how to arrange anterior and posterior teeth when the upper or lower arch is protruded or wider than usual.</li></ul><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end.</p>"},{"k":"5th year · ACP classification","t":"Why classify complete edentulism, and who published the system","b":"<p>Completely edentulous patients exhibit a broad range of physical variations and health concerns. Classifying all of them as a single diagnostic group is insensitive to those variations and to the differing treatment procedures required. A graduated classification of complete edentulism has been developed that describes varying levels of loss of denture-supporting structures.</p><p><b>Complete edentulism</b> is the physical state of the jaw(s) following removal of all erupted teeth, and the condition of the supporting structures available for reconstructive or replacement therapies.</p><p>The <b>American College of Prosthodontists (ACP)</b> has developed a classification system for complete edentulism based on diagnostic findings. Four categories are defined, ranging from Class I to Class IV, with Class I representing an uncomplicated clinical situation and Class IV the most complex and higher-risk situation. Each class is differentiated by specific diagnostic criteria. The system is designed for dental professionals involved in diagnosing patients who need treatment for complete edentulism.</p><p>Potential benefits: better patient care; improved professional communication; more appropriate insurance reimbursement; a better screening tool to assist dental-school admission clinics; and standardized criteria for outcomes assessment.</p><p>A review of the literature identified many variables, differentiated into four subclasses: physical findings; prosthetic history; pharmaceutical history; and systemic-disease evaluation. The classification itself was then developed on the most objective variables, and will be monitored and revised as new diagnostic and treatment information becomes available.</p><p>Reasons a classification system can aid treatment: establishing a basis for diagnostic and treatment procedures; justifying treatment procedures and fees to patients; screening patients in dental faculties for assignment to undergraduate or graduate students; providing data for review of treatment outcome; and simplifying communication in discussions of treatment with patients and colleagues.</p>"},{"k":"5th year · ACP classification","t":"The four diagnostic criteria, and mandibular bone-height Types I–IV","b":"<p>The diagnostic criteria are organized by their objective nature, not by rank of significance. Because of variations in adaptive responses, certain criteria are more significant than others, but objective criteria allow the most accurate application of the system. The four diagnostic criteria are:</p><ol><li>Bone height — mandible.</li><li>Maxillomandibular relationship.</li><li>Residual-ridge morphology — maxilla.</li><li>Muscle attachments — mandible.</li></ol><p>Identification and measurement of residual bone height is the most easily quantified objective criterion for the mandibular edentulous ridge, and it represents a measurement of the chronic debilitation associated with complete edentulism in the mandible. Atwood’s 1971 description of alveolar bone loss is still applicable: a “chronic, progressive, irreversible and disabling process, probably of multifactorial origin.” At present the importance of various cofactors is unknown. Continued decrease in bone volume affects: the denture-bearing area; the tissues remaining for reconstruction; facial muscle support/attachment; total facial height; and ridge morphology.</p><p>Radiographic residual-bone-height measurements are affected by variation in technique and by magnification of panoramic machines of different manufacturers. To minimize variability, the measurement should be made on the radiograph at that portion of the mandible of the <b>least vertical height</b>. The values assigned historically relate to pre-prosthetic surgical procedures:</p><ul><li><b>Type I</b> (most favourable): residual bone height of <b>21 mm or greater</b> at the least vertical height of the mandible.</li><li><b>Type II:</b> <b>16 to 20 mm</b>.</li><li><b>Type III:</b> <b>11 to 15 mm</b>.</li><li><b>Type IV:</b> <b>10 mm or less</b>.</li></ul>"},{"k":"5th year · ACP classification","t":"Maxillary residual-ridge morphology: Types A to D","b":"<p>Residual-ridge morphology is the most objective criterion for the maxilla, because measurement of maxillary residual bone height by radiography is not reliable. Types:</p><p><b>Type A</b> (most favorable): anterior labial and posterior buccal vestibular depth that resists vertical and horizontal movement of the denture base; palatal morphology that resists vertical and horizontal movement; sufficient tuberosity definition to resist vertical and horizontal movement; a well-defined hamular notch to establish the posterior extension of the denture base; and absence of tori or exostoses.</p><p><b>Type B:</b> loss of the posterior buccal vestibule; palatal vault morphology that still resists vertical and horizontal movement; poorly defined tuberosity and hamular notch, compromising delineation of the posterior extension; and maxillary palatal tori and/or lateral exostoses that are rounded and do not affect the posterior extension of the denture base.</p><p><b>Type C:</b> loss of the anterior labial vestibule; palatal vault morphology that offers minimal resistance to vertical and horizontal movement; palatal tori and/or lateral exostoses with bony undercuts that do not affect the posterior extension; a hyperplastic, mobile anterior ridge offering minimum support and stability; and reduction of the post-malar space by the coronoid process during mandibular opening and/or excursive movements.</p><p><b>Type D:</b> loss of anterior labial and posterior buccal vestibules; palatal vault morphology that does not resist vertical or horizontal movement; palatal tori and/or lateral exostoses (rounded or undercut) that interfere with the posterior border of the denture; a hyperplastic, redundant anterior ridge; and a prominent anterior nasal spine.</p>"},{"k":"5th year · ACP classification","t":"Mandibular muscle attachments (Types A–E) and maxillomandibular relationship (Classes I–III)","b":"<p>The effects of muscle attachment and location are most important to the function of a mandibular denture, but they are difficult to quantify. The clinician examines the patient and selects the most descriptive category:</p><ul><li><b>Type A</b> (most favorable): attached mucosal base without undue muscular impingement during normal function in all regions.</li><li><b>Type B:</b> attached mucosal base in all regions except labially from canine to canine; mentalis-muscle attachment near the crest of the alveolar vestibular ridge.</li><li><b>Type C:</b> attached mucosal base in all regions except the anterior buccal and lingual vestibules from canine to canine; genioglossus and mentalis attachments near the crest of the alveolar ridge.</li><li><b>Type D:</b> attached mucosal base only in the posterior lingual region; the mucosal base in all other regions is detached.</li><li><b>Type E:</b> no attached mucosa in any region.</li></ul><p>The classification of the maxillomandibular relationship characterizes the position of the artificial teeth in relation to the residual ridge and/or to the opposing dentition:</p><ul><li><b>Class I</b> (most favorable): the relation allows tooth position that has normal articulation, with the teeth supported by the residual ridge.</li><li><b>Class II:</b> the relation requires tooth position outside the normal ridge relation to attain esthetics, phonetics and articulation (for example anterior or posterior tooth position is not supported by the residual ridge; anterior vertical and/or horizontal overlap exceeds the principles of fully balanced articulation).</li><li><b>Class III:</b> the relation requires tooth position outside the normal ridge relation to attain esthetics, phonetics and articulation (that is, a cross-bite — anterior or posterior tooth position is not supported by the residual ridge).</li></ul>"},{"k":"5th year · ACP classification","t":"Overall diagnostic Classes I and II","b":"<p><b>Class I</b> characterizes the stage of edentulism that is most apt to be successfully treated with complete dentures using conventional prosthodontic techniques. All four of the diagnostic criteria are favorable:</p><ul><li>Residual bone height of 21 mm or greater at the least vertical height of the mandible on a panoramic radiograph.</li><li>Residual-ridge morphology that resists horizontal and vertical movement of the denture base; Type A maxilla.</li><li>Muscle attachments conducive to denture-base stability and retention; Type A or B mandible.</li><li>Class I maxillomandibular relationship.</li></ul><p><b>Class II</b> distinguishes itself by the continued physical degradation of the denture-supporting anatomy and, in addition, is characterized by the early onset of systemic-disease interactions, patient-management issues, and/or lifestyle considerations:</p><ul><li>Residual bone height of 16 to 20 mm at the least vertical height of the mandible on a panoramic radiograph.</li><li>Ridge morphology that resists horizontal and vertical movement; Type A or B maxilla.</li><li>Muscle attachments with limited influence on stability and retention; Type A or B mandible.</li><li>Class I maxillomandibular relationship.</li><li>Minor modifiers, psychosocial considerations, mild systemic disease with oral manifestations.</li></ul>"},{"k":"5th year · ACP classification","t":"Overall diagnostic Classes III and IV","b":"<p><b>Class III</b> is characterized by the need for surgical revision of supporting structures to allow for adequate prosthodontic function. Additional factors now play a significant role in treatment outcomes:</p><ul><li>Residual alveolar bone height of 11 to 15 mm at the least vertical height of the mandible.</li><li>Ridge morphology has minimum influence to resist horizontal or vertical movement; Type C maxilla.</li><li>Muscle attachments with moderate influence on stability and retention; Type C mandible.</li><li>Class I, II or III maxillomandibular relationship.</li><li>Conditions requiring pre-prosthetic surgery: minor soft-tissue procedures; minor hard-tissue procedures including alveolotomy; simple implant placement with no augmentation; and multiple extractions leading to complete edentulism for immediate-denture placement.</li><li>Limited inter-arch space (18–20 mm).</li><li>Moderate psychosocial considerations and/or moderate oral manifestations of systemic diseases or conditions such as xerostomia.</li><li>TMD symptoms present.</li><li>A large tongue (occludes the interdental space) with or without hyperactivity.</li><li>A hyperactive gag reflex.</li></ul><p><b>Class IV</b> depicts the most debilitated edentulous condition. Surgical reconstruction is almost always indicated but cannot always be accomplished because of the patient’s health, preferences, dental history and financial considerations. When surgery is not an option, specialized prosthodontic techniques must be used:</p><ul><li>Residual vertical bone height of 10 mm or less.</li><li>The residual ridge offers no resistance to movement; Type D maxilla.</li><li>Muscle-attachment location expected to have significant influence on stability and retention; Type D or E mandible.</li><li>Class I, II or III maxillomandibular relationships.</li><li>Major conditions requiring pre-prosthetic surgery: complex implant placement with augmentation; surgical correction of dentofacial deformities; hard-tissue augmentation required; major soft-tissue revision (vestibular extensions with or without soft-tissue grafting).</li><li>History of paresthesia or dysesthesia; insufficient inter-arch space requiring surgical correction; acquired or congenital maxillofacial defects; severe oral manifestations of systemic disease (for example sequelae of oncological treatment); maxillo-mandibular ataxia (incoordination); tongue hyperactivity that can be associated with a retracted tongue and/or its morphology; a hyperactive gag reflex managed with medication; a refractory patient (chronic complaints following appropriate therapy) who may continue to have difficulty achieving treatment expectations despite the thoroughness or frequency of treatment; and psychosocial conditions warranting professional intervention.</li></ul>"},{"k":"5th year · ACP classification","t":"How the classes differ, and the official guidelines for using the system","b":"<p>The four subclassifications are important determinants in the overall diagnostic classification. In addition, variables expected to contribute to increased treatment difficulty are distributed across all classifications according to their significance. The classes are differentiated from each other by: the skill level required (does the patient require novice or expert treatment?); the necessity for modification of basic clinical or laboratory procedures (will more complicated procedures or more time be required?); and overall management and complexity (will expert intervention and referral be required?).</p><p>Guidelines for use of the complete-edentulism classification system:</p><ul><li>When a patient’s diagnostic criteria are mixed between two or more classes, <b>any single criterion of a more complex class places the patient into the more complex class</b>. Analysis of diagnostic factors is facilitated with the use of a worksheet.</li><li>Use of the system is indicated for pre-treatment evaluation and classification. Re-evaluation of classification status should be considered following pre-prosthetic surgery. Retrospective analysis on a post-treatment basis may alter a patient’s classification.</li><li>The system is based on the most objective criteria available, to facilitate uniform utilization and improve communication among dental professionals.</li><li>It will help identify those patients most likely to require treatment by a specialist, or by a practitioner with additional training and experience in advanced techniques. It should also be valuable to research protocols in which different treatment procedures are evaluated.</li></ul><p>The aim of prosthodontic treatment is to provide a comfortable prosthesis that satisfies the function and esthetics of the patient. This can be achieved by providing a Class I jaw relation and occlusion. Because of variation in the population and differences in the pathways of jaw resorption, treating Class II and Class III cases requires some modifications. Treating these cases with the same principles as Class I cases will influence stability, retention and esthetics.</p>"},{"k":"5th year · Ridge relationship and tooth arrangement","t":"Normal ridge relationship, resorption directions, and skeletal Classes I–III","b":"<p>Ridge relationship is the positional relation of the mandibular ridge to the maxillary ridge. In a <b>normal relationship</b>, anteriorly in centric relation the maxillary ridge in the anterior region is slightly labial to the mandibular ridge; posteriorly, the interalveolar crest line between the two ridges forms an <b>80-degree</b> angle to a horizontal plane, that is, the crest of the mandibular ridge is slightly buccal to that of the maxillary ridge.</p><p>The maxilla is resorbed in an upward and inward direction (<b>centripetal</b>); the mandible is resorbed in a downward and outward direction (<b>centrifugal</b>).</p><p>Two types of classes are considered, and both are equally important: <b>skeletal classification</b>, which affects mainly the final occlusion of the denture; and <b>dental classification</b>, in which previous tooth position greatly affects esthetics, the forces developed on the teeth from the circumoral muscles, and the position of the neutral zone.</p><p>Skeletal ridge classification:</p><ul><li><b>Class I:</b> the most anterior point of the upper jaw is on the same alignment as the most anterior point of the lower jaw, or slightly anterior to it, about 2 mm. Present in about <b>55.5%</b> of patients.</li><li><b>Class II:</b> the most anterior point of the mandible is retruded more than 2 mm from that of the maxilla. Present in about <b>10%</b>.</li><li><b>Class III:</b> the most anterior point of the mandible is protruded — the mandible is anterior to the maxilla. Present in about <b>34.5%</b>.</li></ul><p>During prosthodontic treatment we try to position the teeth with a horizontal and vertical overlap of 2 mm, as in a traditional Class I position, to simulate natural occlusion. In Class I cases, a Class I incisal and molar relation can be achieved easily with few problems in normal patients, but factors related to the ridge and supporting tissue may still affect treatment. Skeletal Class II individuals have an extensive range of motion of the mandible. High FMA (skeletal) corresponds to Class II division 1 dentition; low FMA to Class II division 2. The normal FMA range is 25–30 degrees.</p>"},{"k":"5th year · Ridge relationship and tooth arrangement","t":"Arranging anterior and posterior teeth in Class II (maxillary protrusion / wider upper arch)","b":"<p>In maxillary protrusion the upper arch is further forward in the anterior region, so the first problem is an excessive overjet (horizontal overlap) and an abnormal upper-to-lower canine relationship. <b>No attempt should be made to reduce this horizontal overlap by moving the upper anterior teeth palatally or the lower anterior teeth labially.</b></p><p>Management, depending on the severity:</p><ol><li>If the protrusion is not too extreme, select lower anterior teeth of a narrower mesiodistal width and try to achieve the normal canine relationship.</li><li>If esthetics permit, a little crowding of the lower anterior teeth by overlapping may solve the problem.</li><li>Slight spaces between the upper anterior teeth may attain normal canine relations, but this is esthetically limited.</li><li>If the discrepancy is not too great, grinding the distal surface of the lower canine may restore the normal canine relationship.</li><li>If the discrepancy is excessive and cannot be managed by manipulating the lower anteriors, leave the lower anteriors as they are and <b>eliminate the lower first premolars</b> from the dental arch.</li></ol><p>When the upper jaw is wider (not very common), the lower crest in the posterior region is lingual to the upper residual ridge. If the upper teeth are placed on the crest they will make inadequate contact with correctly placed lower teeth; if the lower teeth are moved buccally to meet correctly placed uppers, the lower denture becomes unstable — more detrimental because the lower bearing area is already small.</p><p>Management: if the discrepancy is very slight, move the upper posteriors slightly palatally (limited, because too much palatal movement affects phonetics and cheek support). If the upper arch is much wider: (a) place the lower posteriors correctly on the crest, occlude the uppers with them, then build buccal contours on the upper teeth in wax later replaced by tooth-colored acrylic, for esthetics and cheek support; or (b) arrange the upper posteriors first for esthetics, keep the lowers on the crest, and add wax on the palatal aspect of the upper posteriors, later replaced by tooth-colored acrylic, to give functional contact plus an acceptable buccal contour. Non-anatomical posterior teeth are best for these procedures, as they allow more freedom in buccolingual placement.</p>"},{"k":"5th year · Ridge relationship and tooth arrangement","t":"Arranging teeth in Class III (mandibular protrusion / wider lower arch)","b":"<p>Mandibular protrusion is characterized by the lower anterior ridge being forward in relation to the maxillary ridge, from an edge-to-edge relation to marked prognathism. Management depends on severity:</p><ol><li>If the ridges are edge-to-edge, the incisal edges of the upper and lower incisors and cuspids will also meet edge-to-edge. Place the teeth as near as possible to the labial plates of their respective ridges. <b>No attempt should be made to introduce a normal horizontal overlap if the ridge relation does not permit it.</b></li><li>With extreme mandibular protrusion, a negative or reverse horizontal labial overlap must be used: the lower anterior teeth are placed labial to the upper anteriors, the magnitude depending on the amount of protrusion of the lower residual ridge.</li><li>If the difference in ridge size is too great: (a) use a slightly larger lower-tooth mold than that suggested for normal use with the upper teeth (the simplest method); (b) use a slight overlapping in the upper anterior teeth, if esthetically acceptable, which narrows the lower-arch space and may eliminate spacing; or (c) use an extra lower incisor to avoid spaces — however this is hardly acceptable; it is better esthetically to leave some spaces between the lower anterior teeth than for the dentures to appear to have too many teeth. The distal surface of the lower canine should coincide with the tip of the upper canine; if it finishes mesial to the canine tip, small spaces between the lower anteriors can restore the normal canine relationship.</li></ol><p>When the lower arch is wider, one of three procedures may be used, depending on severity:</p><ol><li>If the difference is slight and the upper ridge is well formed, the upper posteriors can be set slightly buccal to the crest so that correctly placed lower posteriors can make effective contact — but not to an extent that introduces a potential midline fracture in the upper denture.</li><li>Non-anatomical teeth may be used; they allow more freedom in buccolingual placement while still providing adequate occlusal contact, and can be kept on the crests of the respective ridges.</li><li>If the lower arch is too wide and cannot be managed otherwise, an interchange can be accomplished by using upper teeth on the lower denture and lower teeth on the upper denture, and the interchange is made across the arch as well (right upper teeth on the left lower ridge, left lower teeth on the right upper ridge, and so on). Start by placing the lower teeth on the upper ridge. Because the upper arch is already smaller, the first premolar must be eliminated from the arch to develop correct intercuspal relationships. The second premolar, first molar and second molar (lower teeth) are set on the upper ridge; their buccal cusps correspond to the guideline of the lower occlusal rim.</li></ol><p>Sometimes a cross-bite setting (a reverse horizontal buccal overlap) is suggested without interchanging the teeth. The success of such an arrangement is doubtful, because anatomically the teeth are not meant to intercuspate in this relationship. It might be attempted if non-anatomical posterior teeth are used.</p>"},{"k":"اختبر نفسك","t":"Quiz: mandibular bone height and the “one harder criterion” rule","b":"<div class=\"qbox\" data-ans=\"2\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">On a panoramic radiograph, residual mandibular bone height is measured at the portion of the mandible of least vertical height. Type III residual bone height is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">21 mm or greater</button><button type=\"button\" class=\"opt\" data-i=\"1\">16 to 20 mm</button><button type=\"button\" class=\"opt\" data-i=\"2\">11 to 15 mm</button><button type=\"button\" class=\"opt\" data-i=\"3\">10 mm or less</button></div><div class=\"qexp\" hidden><p>أنواع ارتفاع العظم السفلي (تُقاس بأقل ارتفاع عمودي بالبانوراما): I = 21 ملم أو أكثر؛ II = 16–20؛ <b>III = 11–15 ملم</b>؛ IV = 10 أو أقل.</p></div></div><div class=\"qbox\" data-ans=\"2\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A patient has Type I mandibular bone height (21 mm or more), a Type A maxilla, Type A muscle attachments, but a Class III maxillomandibular relationship. According to the ACP guidelines, the overall diagnostic class is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Class I, because three of the four main criteria are favorable</button><button type=\"button\" class=\"opt\" data-i=\"1\">Class II, because Class III MMR is only a minor modifier</button><button type=\"button\" class=\"opt\" data-i=\"2\">The more complex class indicated by that single criterion — here Class III (or IV if other Class IV findings are also present)</button><button type=\"button\" class=\"opt\" data-i=\"3\">Unclassifiable until surgery is completed</button></div><div class=\"qexp\" hidden><p>القاعدة الذهبية: إذا المعايير مختلطة، <b>أي معيار واحد من الصنف الأصعب يرفع المريض كله لذلك الصنف الأصعب</b>. علاقة الفكين صنف III موجودة بأصناف III و IV، مو بصنف I أو II (اللي يحتاجان علاقة صنف I). فمو صنف I حتى لو باقي المعايير مواتية.</p></div></div>"},{"k":"اختبر نفسك","t":"Quiz: maxillary Types A–D and mandibular muscle attachments","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Which maxillary residual-ridge description is Type D?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Loss of the posterior buccal vestibule only; palatal vault still resists movement; poorly defined tuberosity and hamular notch</button><button type=\"button\" class=\"opt\" data-i=\"1\">Loss of both anterior labial and posterior buccal vestibules; palatal vault does not resist movement; tori may interfere with the posterior border; prominent anterior nasal spine</button><button type=\"button\" class=\"opt\" data-i=\"2\">Attached mucosa in all regions without undue muscular impingement</button><button type=\"button\" class=\"opt\" data-i=\"3\">Vestibular depth and palatal morphology that resist movement, well-defined hamular notch, and no tori</button></div><div class=\"qexp\" hidden><p>خيار A هو نوع B. خيار C هو اندغالات سفلية نوع A (مو شكل الحافة العلوية). خيار D هو نوع A الأفضل. <b>نوع D</b> يضيّع الدهليزين، قبة الحنك ما تقاوم، الفطور تعرقل الحد الخلفي، وحافة أمامية زائدة ويه شوكة أنفية بارزة.</p></div></div><div class=\"qbox\" data-ans=\"2\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Mandibular muscle attachments are Type D when attached mucosa is present:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">In all regions without undue impingement</button><button type=\"button\" class=\"opt\" data-i=\"1\">In all regions except labially from canine to canine</button><button type=\"button\" class=\"opt\" data-i=\"2\">Only in the posterior lingual region (detached elsewhere)</button><button type=\"button\" class=\"opt\" data-i=\"3\">In no region at all</button></div><div class=\"qexp\" hidden><p>A = بكل المناطق؛ B = إلا شفوياً ناب لناب؛ C = إلا الدهليز الشدقي واللساني الأمامي ناب لناب؛ <b>D = ملتصقة بس لسانياً بالخلف</b>؛ E = ماكو مخاطية ملتصقة بأي منطقة.</p></div></div>"},{"k":"اختبر نفسك","t":"Quiz: Class III and Class IV overall findings","b":"<div class=\"qbox\" data-ans=\"2\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Limited inter-arch space of 18–20 mm, Type C maxilla, Type C mandible, bone height 11–15 mm, and a large tongue are findings of:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Class I</button><button type=\"button\" class=\"opt\" data-i=\"1\">Class II</button><button type=\"button\" class=\"opt\" data-i=\"2\">Class III</button><button type=\"button\" class=\"opt\" data-i=\"3\">Class IV only</button></div><div class=\"qexp\" hidden><p>هذه موجودات <b>الصنف III</b>: ارتفاع 11–15، نوع C علوي وسفلي، علاقة I/II/III، جراحة بسيطة، مسافة 18–20 ملم، اعتبارات نفسية/جهازية متوسطة، أعراض مفصل، لسان كبير، وقيء مفرط. الصنف IV أسوأ: 10 ملم أو أقل، نوع D علوي، D أو E سفلي، وجراحة كبرى أو موانع كثيرة.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">High FMA in a skeletal Class II patient corresponds most closely to which dental division?</button><div class=\"flash-a\" hidden>Class II division 1. Low FMA corresponds to Class II division 2. The normal FMA range is 25–30 degrees. Skeletal Class II also has an extensive range of mandibular motion.</div></div>"},{"k":"اختبر نفسك","t":"Quiz: arranging teeth when the jaw relation is not Class I","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">In maxillary protrusion (Class II), the correct statement is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Reduce the excessive overjet by moving the upper anteriors palatally or the lower anteriors labially until a Class I overlap is obtained</button><button type=\"button\" class=\"opt\" data-i=\"1\">Never move teeth off the ridge relationship: leave a large overjet, and if the discrepancy is extreme eliminate the lower first premolars rather than forcing a normal overlap</button><button type=\"button\" class=\"opt\" data-i=\"2\">Always add an extra lower incisor</button><button type=\"button\" class=\"opt\" data-i=\"3\">Set the lower posteriors well buccal to the crest so they meet the wider upper arch</button></div><div class=\"qexp\" hidden><p><b>لا تحاول تقلل التراكب الأفقي الزايد بتحريك العلوية للحنك أو السفلية للشفة.</b> استخدم أسنان سفلية أضيق، ازدحام بسيط، فواصل علوية محدودة، طحن بعيد الناب السفلي، أو احذف الضواحك الأولى السفلية إذا الفرق كبير. تحريك السفلية شدقي بالخلف يفكك الطقم السفلي لأن مساحة تحمله أصلاً صغيرة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">When the lower arch is much wider than the upper and cannot be managed by a slight buccal setting of the uppers or by non-anatomical teeth, the lecture advises:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A reverse buccal overlap with anatomical teeth, which intercuspate reliably in cross-bite</button><button type=\"button\" class=\"opt\" data-i=\"1\">Interchanging teeth across the arches (upper teeth on the lower denture and lower teeth on the upper), starting by placing lower teeth on the upper ridge and eliminating the upper first premolar</button><button type=\"button\" class=\"opt\" data-i=\"2\">Extracting the lower first molars from the setup</button><button type=\"button\" class=\"opt\" data-i=\"3\">Moving the lower posteriors far lingual off the crest</button></div><div class=\"qexp\" hidden><p>التبديل عبر القوس: أسنان علوية على الطقم السفلي وسفلية على العلوي، وهم يمين ويسار يتبادلن. ابدأ بوضع السفلية على الحافة العلوية، واحذف الضاحك الأول من القوس العلوي الأصغر، ورتب 5-6-7 السفلية على الحافة العلوية بحيث حدباتها الشدقية على خط دليل الحافة السفلية. العضة المعكوسة بدون تبديل ويه أسنان تشريحية نجاحها مشكوك؛ ممكن تجربها فقط ويه أسنان غير تشريحية.</p></div></div>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: ACP Classes I–IV, ridge relationship, and Class II / III setups","b":"<div class=\"qbox\" data-ans=\"0\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Skeletal Class I, II and III occur in about what percentages of patients, respectively?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">55.5%, 10%, and 34.5%</button><button type=\"button\" class=\"opt\" data-i=\"1\">70%, 20%, and 10%</button><button type=\"button\" class=\"opt\" data-i=\"2\">34.5%, 55.5%, and 10%</button><button type=\"button\" class=\"opt\" data-i=\"3\">10%, 55.5%, and 34.5%</button></div><div class=\"qexp\" hidden><p>المحاضرة: صنف I حوالي <b>55.5%</b> (نفس المحاذاة أو العلوي متقدم ~2 ملم)؛ صنف II حوالي <b>10%</b> (السفلي مرتجع أكثر من 2 ملم)؛ صنف III حوالي <b>34.5%</b> (السفلي قدام العلوي). مو النسب اللي قد تتوقعها من الإطباق الطبيعي عند ذوي الأسنان.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Normal residual-ridge relationship, posteriorly, means the interalveolar crest line forms an angle of about:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">90 degrees to the horizontal, ridges directly opposite each other</button><button type=\"button\" class=\"opt\" data-i=\"1\">80 degrees to the horizontal, so the mandibular crest is slightly buccal to the maxillary crest</button><button type=\"button\" class=\"opt\" data-i=\"2\">45 degrees, with the mandibular crest well lingual</button><button type=\"button\" class=\"opt\" data-i=\"3\">120 degrees, with the mandibular crest well palatal</button></div><div class=\"qexp\" hidden><p>بالخلف خط قمم الحافتين يعمل زاوية <b>80°</b> ويه المستوى الأفقي، يعني قمة السفلي شوية شدقية بالنسبة للعلوي. بالأمام الحافة العلوية شوية شفوية. العلوي يمتص لفوق ولداخل (centripetal) والسفلي لتحت ولبرّة (centrifugal).</p></div></div><div class=\"qbox\" data-ans=\"2\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Which finding belongs to overall diagnostic Class IV rather than Class III?</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Limited inter-arch space of 18–20 mm</button><button type=\"button\" class=\"opt\" data-i=\"1\">Simple implant placement with no augmentation</button><button type=\"button\" class=\"opt\" data-i=\"2\">Residual vertical bone height of 10 mm or less, Type D maxilla, and Type D or E mandible</button><button type=\"button\" class=\"opt\" data-i=\"3\">Minor alveolotomy and multiple extractions for an immediate denture</button></div><div class=\"qexp\" hidden><p>ارتفاع <b>10 ملم أو أقل</b>، حافة علوية <b>نوع D</b>، واندغالات <b>D أو E</b> من الصنف IV. المسافة 18–20 ملم، زرعة بسيطة بلا تطعيم، وقطع حافة/قلوع لطقم فوري من موجودات الصنف III.</p></div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا أول ملف من المرحلة الخامسة: تصنيف فقدان كل الأسنان حسب الكلية الأمريكية لأطباء التيجان والجسور (ACP)، من الصنف I (الأسهل) للصنف IV (الأصعب)، وبعدين شلون ترتب الأسنان إذا علاقة الفكين مو طبيعية (صنف II و III).</p><p>الفكرة الذهبية: أي معيار واحد من صنف أصعب يرفع المريض كله لذلك الصنف الأصعب. وما تحاول تلغي التراكب الأفقي الزايد بتحريك الأسنان عكس الحافة.</p>","<p>المرضى بلا أسنان مو مجموعة واحدة: في اختلافات جسمية وصحية وايد. تصنيفهم كلهم بنفس الخانة يغفل هالاختلاف ويغفل إن العلاج يختلف. لهذا انعمل تصنيف متدرج حسب كمية ضياع هياكل دعم الطقم.</p><p><b>فقدان كل الأسنان (complete edentulism)</b>: حالة الفك بعد قلع كل الأسنان البازغة، وحالة الهياكل الداعمة المتاحة للتعويض.</p><p>الكلية الأمريكية لأطباء التيجان والجسور (<b>ACP</b>) عملت نظام تصنيف على موجودات التشخيص. أربعة أصناف: <b>I</b> أبسط حالة سريرية، و<b>IV</b> الأعقد وأعلى خطورة. كل صنف له معايير تشخيصية محددة.</p><p>فوائده: رعاية أفضل؛ تواصل مهني أحسن؛ تأمين أنسب؛ أداة فرز لعيادات القبول بالكليات؛ ومعايير موحدة لتقييم النتائج. والمتغيرات انقسمت لأربع فئات فرعية: موجودات جسمية، تاريخ تعويضي، تاريخ دوائي، وتقييم المرض الجهازي. النظام مبني على أوضح المتغيرات الموضوعية، ويتراجع مع أي معلومات جديدة.</p><p>ليش نصنّف؟ أساس للتشخيص والعلاج؛ تبرير العلاج والأجور للمريض؛ فرز المرضى لطلبة المرحلة أو الدراسات العليا؛ بيانات لتقييم النتيجة؛ وتسهيل الكلام ويه المريض والزملاء.</p>","<p>أربعة معايير تشخيصية، مرتبة حسب موضوعيتها مو حسب الأهمية (لأن الاستجابة التكيفية تختلف، فبعض المعايير أهم من غيرها، بس الموضوعي أدق للتطبيق):</p><p>1) ارتفاع العظم — الفك السفلي فقط.</p><p>2) العلاقة بين الفكين.</p><p>3) شكل الحافة المتبقية — الفك العلوي فقط.</p><p>4) اندغالات العضلات — الفك السفلي فقط.</p><p>ارتفاع العظم السفلي أسهل معيار يُقاس رقمياً، ويمثل الضعف المزمن ويه فقد الأسنان. وصف Atwood سنة 1971 بعد منطبق: عملية مزمنة، تقدمية، غير راجعة ومعطِّلة، غالباً متعددة الأسباب. نقص حجم العظم يأثر على: مساحة تحمل الطقم؛ الأنسجة الباقية للبناء؛ دعم/اندغال عضلات الوجه؛ ارتفاع الوجه الكلي؛ وشكل الحافة.</p><p>قياس الصور يتأثر بتقنية الجهاز وتكبير البانوراما حسب الشركة. حتى تقلل الاختلاف، قِس على الجزء <b>الأقل ارتفاعاً عمودياً</b> بالفك السفلي:</p><p><b>نوع I</b> (الأفضل): <b>21 ملم أو أكثر</b>؛ <b>II</b>: <b>16–20</b>؛ <b>III</b>: <b>11–15</b>؛ <b>IV</b>: <b>10 ملم أو أقل</b>.</p>","<p>شكل الحافة العلوية هو أوضح معيار للفك العلوي، لأن قياس ارتفاع العظم العلوي بالصور مو موثوق.</p><p><b>نوع A</b> (الأفضل): عمق دهليز شفوي أمامي وشدقي خلفي يقاوم حركة الطقم عمودياً وأفقياً؛ شكل الحنك يقاوم هم؛ الحدبة واضحة تكفي تقاوم الحركة؛ القلح الشصي واضح يحدد الامتداد الخلفي؛ وماكو فطور أو تحدبات عظمية.</p><p><b>نوع B:</b> ضياع الدهليز الشدقي الخلفي؛ قبة الحنك بعد تقاوم الحركة؛ الحدبة والقلح الشصي ضعيف التعريف فيصعب تحديد الامتداد الخلفي؛ وفطور أو تحدبات مدورة ما تأثر على الامتداد الخلفي.</p><p><b>نوع C:</b> ضياع الدهليز الشفوي الأمامي؛ قبة الحنك مقاومتها قليلة؛ فطور/تحدبات ويه undercuts عظمية بس ما تعرقل الحد الخلفي؛ حافة أمامية متضخمة متحركة دعمها وثباتها قليل؛ والناتئ الإكليلي يضيّق الفضاء خلف الوجنة ويه الفتح أو الحركات.</p><p><b>نوع D:</b> ضياع الدهليز الشفوي الأمامي والشدقي الخلفي؛ قبة الحنك ما تقاوم الحركة؛ فطور/تحدبات تعرقل الحد الخلفي للطقم؛ حافة أمامية متضخمة زائدة؛ وشوكة أنفية أمامية بارزة.</p>","<p>اندغال العضلات مهم جداً لوظيفة الطقم السفلي، بس صعب يُقاس رقمياً. الطبيب يفحص ويختار الوصف الأقرب:</p><p><b>A</b> الأفضل: قاعدة مخاطية ملتصقة بكل المناطق، بلا اصطدام عضلي زايد ويه الوظيفة الطبيعية.</p><p><b>B</b>: ملتصقة بكل المناطق إلا شفوياً من ناب لناب؛ اندغال الذقنية قرب قمة الحافة.</p><p><b>C</b>: ملتصقة إلا بالدهليز الشدقي واللساني الأمامي من ناب لناب؛ الذقنية وعضلة الذقنية اللسانية قرب القمة.</p><p><b>D</b>: ملتصقة بس بالمنطقة اللسانية الخلفية؛ باقي المناطق منفصلة.</p><p><b>E</b>: ماكو مخاطية ملتصقة بأي منطقة.</p><p>علاقة الفكين تصف مكان الأسنان الصناعية نسبة للحافة و/أو الأسنان المقابلة:</p><p><b>صنف I</b> الأفضل: يسمح بموضع أسنان بإطباق طبيعي، والأسنان مدعومة بالحافة.</p><p><b>صنف II</b>: يحتاج موضع أسنان خارج علاقة الحافة الطبيعية حتى تحصل شكل ونطق وإطباق (مثلاً الأسنان مو مدعومة بالحافة، أو التراكب العمودي/الأفقي يتجاوز مبادئ الإطباق المتوازن الكامل).</p><p><b>صنف III</b>: هم يحتاج موضع خارج العلاقة الطبيعية (عضة معكوسة — الأسنان مو مدعومة بالحافة).</p>","<p><b>الصنف I</b> الحالة اللي أغلبها تنجح بطقم كامل بالطرق التقليدية. كل المعايير الأربعة مواتية: ارتفاع عظم 21 ملم أو أكثر؛ حافة علوية نوع A تقاوم الحركة؛ اندغالات A أو B بالسفلي تساعد الثبات والتثبيت؛ وعلاقة فكين صنف I.</p><p><b>الصنف II</b> يتميز بتدهور مستمر بتشريح الدعم، وهم بداية تداخل أمراض جهازية، وإدارة المريض، و/أو أسلوب حياته: ارتفاع 16–20 ملم؛ حافة علوية A أو B بعد تقاوم الحركة؛ اندغالات A أو B تأثيرها محدود؛ علاقة فكين صنف I؛ ومعدّلات بسيطة، اعتبارات نفسية اجتماعية، ومرض جهازي خفيف ويه مظاهر فموية.</p>","<p><b>الصنف III</b> يحتاج تعديل جراحي لهياكل الدعم حتى التعويض يشتغل. ارتفاع 11–15 ملم؛ حافة علوية نوع C مقاومتها قليلة؛ اندغالات سفلية نوع C تأثيرها متوسط؛ علاقة فكين I أو II أو III. جراحة قبل التعويض: إجراءات نسيج رخو بسيطة؛ عظم بسيط يشمل قطع الحافة؛ زرعة بسيطة بلا تطعيم؛ وقلوع متعددة تمهّد لطقم فوري. مسافة بين الفكين محدودة (18–20 ملم). اعتبارات نفسية متوسطة و/أو مظاهر فموية متوسطة لمرض جهازي مثل الجفاف. أعراض مفصل. لسان كبير (يسد المسافة بين الأسنان) ويه أو بلا فرط نشاط. وقيء مفرط.</p><p><b>الصنف IV</b> أسوأ حالة. إعادة البناء الجراحي شبه دائماً مشار إليها، بس أحياناً ما تصير بسبب الصحة أو رغبة المريض أو التاريخ أو المادة. إذا الجراحة مو خيار، نستخدم تقنيات تعويض متخصصة. ارتفاع 10 ملم أو أقل؛ حافة علوية D بلا مقاومة؛ اندغالات D أو E تأثيرها كبير؛ علاقة I أو II أو III. جراحة كبرى: زرعات معقدة ويه تطعيم؛ تصحيح تشوهات وجهية فكية؛ تطعيم عظم؛ تعديل نسيج رخو كبير (توسيع دهليز ويه أو بلا طعم). تاريخ خدر أو حس مؤلم؛ مسافة بين الفكين ناقصة وتحتاج جراحة؛ عيوب فكية وجهية مكتسبة أو خلقية؛ مظاهر فموية شديدة (مثلاً بعد علاج الأورام)؛ عدم تناسق فكي؛ لسان مفرط النشاط قد يكون متراجع؛ قيء يعالج بدواء؛ مريض مقاوم (شكاوى مزمنة بعد علاج مناسب) قد ما يوصل توقعاته رغم كثرة العلاج؛ وحالات نفسية تحتاج تدخل مهني.</p>","<p>الأصناف تختلف بـ: مستوى المهارة المطلوب (مبتدئ لو خبير؟)؛ هل تحتاج تعديل بإجراءات العيادة أو المختبر ووقت أطول؟؛ وهل تحتاج إحالة لخبير؟</p><p>قواعد الاستخدام: إذا معايير المريض مختلطة بين صنفين أو أكثر، <b>أي معيار واحد من الصنف الأصعب يرفع المريض كله لذلك الصنف الأصعب</b>. في ورقة عمل تسهّل التحليل. النظام للقييم قبل العلاج. أعد التقييم بعد الجراحة قبل التعويض. والتحليل بعد العلاج قد يغيّر التصنيف.</p><p>النظام مبني على أوضح المعايير حتى الاستخدام يكون موحّد والتواصل أحسن. يساعدك تعرف مين يحتاج أخصائي أو طبيب بخبرة متقدمة، ويفيد البحوث اللي تقارن طرق علاج.</p><p>هدف العلاج: طقم مريح يلبي الوظيفة والشكل. هذا يتحقق بعلاقة وإطباق صنف I. بس بسبب اختلاف الناس ومسارات الامتصاص، علاج صنفي II و III يحتاج تعديلات. إذا عالجتهم بنفس مبادئ الصنف I، الثبات والتثبيت والشكل يتأثرون.</p>","<p>علاقة الحواف: موضع الحافة السفلية نسبة للعلوية. الطبيعية: بالأمام ويه العلاقة المركزية الحافة العلوية شوية شفوية بالنسبة للسفلية؛ بالخلف خط قمم الحافتين يعمل زاوية <b>80°</b> ويه المستوى الأفقي، يعني قمة السفلي شوية شدقية بالنسبة للعلوي.</p><p>العلوي يمتص لفوق ولداخل (<b>centripetal</b>)؛ السفلي لتحت ولبرّة (<b>centrifugal</b>).</p><p>نوعان بنفس الأهمية: <b>هيكلي</b> يأثر أساساً على الإطباق النهائي؛ و<b>سني</b> (موضع الأسنان السابقة) يأثر على الشكل والقوى من عضلات حول الفم وموضع المنطقة المحايدة.</p><p>التصنيف الهيكلي: <b>I</b> أقدم نقطة بالعلوي بنفس المحاذاة أو شوية قدام السفلي بحوالي 2 ملم — حوالي <b>55.5%</b> من المرضى. <b>II</b> أقدم نقطة بالسفلي مرتجعة أكثر من 2 ملم عن العلوي — حوالي <b>10%</b>. <b>III</b> السفلي متقدم قدام العلوي — حوالي <b>34.5%</b>.</p><p>بالعلاج نحاول تراكب أفقي وعمودي 2 ملم مثل الصنف I الطبيعي. بالصنف I الإطباق الأمامي والرحوي يتحقق بسهولة، بس عوامل الحافة والنسيج قد تأثر. الصنف II الهيكلي مدى حركة الفك واسع. FMA العالي يناظر صنف II قسم 1؛ الواطئ قسم 2. المدى الطبيعي لـ FMA 25–30 درجة.</p>","<p>بالبروز العلوي القوس الأمامي متقدم، فأول مشكلة تراكب أفقي زايد وعلاقة أنياب غير طبيعية. <b>لا تحاول تقلل هالتراكب بتحريك الأمامية العلوية للحنك أو السفلية للشفة.</b></p><p>العلاج حسب الشدة: إذا البروز مو مفرط، اختار أمامية سفلية أضيق أنسياً-بعيداً حتى علاقة الأنياب تصير طبيعية؛ إذا الشكل يسمح، شوية ازدحام وتداخل بالسفلية يحلها؛ أو فواصل بسيطة بين العلوية (محدود تجميلياً)؛ إذا الفرق مو كبير، طحن السطح البعيد للناب السفلي قد يكفي؛ إذا الفرق كبير وما ينحل بتعديل السفلية، خلّ السفلية و<b>احذف الضواحك الأولى السفلية</b> من القوس.</p><p>إذا الفك العلوي أعرض (مو شائع)، قمة الحافة السفلية لساني بالنسبة للعلوية. إذا ركبت العلوية على القمة ما تتلامس زين ويه سفلية صحيحة؛ إذا طلعت السفلية شدقي حتى تتلامس، الطقم السفلي ينفك — وهذا أضر لأن مساحة تحمله أصلاً صغيرة.</p><p>إذا الفرق بسيط، حرّك العلوية شوي للحنك (محدود حتى النطق ودعم الخد ما ينخربان). إذا الفرق كبير: رتب السفلية على القمة وطبق العلوية عليها وابنِ بروز شدقي بالشمع يُستبدل بأكريلك بلون السن؛ أو رتب العلوية للشكل أولاً وخلّ السفلية على القمة وضيف شمع على الجانب الحنكي للعلوية يُستبدل بأكريلك حتى تحصل تماس وظيفي وشكل شدقي مقبول. الأسنان الخلفية غير التشريحية أفضل لأنها تعطيك حرية أكثر بالموضع الشدقي-اللساني.</p>","<p>بالبروز السفلي الحافة الأمامية السفلية قدام العلوية، من حافة بحافة لحد فقم واضح.</p><p>إذا الحواف حافة بحافة: حواف القواطع والأنياب هم تلتقي حافة بحافة. حط الأسنان أقرب ما يمكن للصفائح الشفوية لحوافها. <b>لا تحاول تدخل تراكب أفقي طبيعي إذا علاقة الحافة ما تسمح.</b></p><p>إذا البروز شديد: لازم تراكب أفقي معكوس، السفلية شفوية بالنسبة للعلوية، ومقداره حسب بروز الحافة السفلية.</p><p>إذا فرق الحجم كبير: استخدم قالب سفلي أكبر شوي (أبسط طريقة)؛ أو تداخل بسيط بالعلوية إذا الشكل يسمح حتى تضيق المسافة السفلية؛ أو سن قاطع سفلي إضافي — هذا نادراً مقبول، والأفضل تترك فواصل بين السفلية بدل ما يبان إن الأسنان زيادة. السطح البعيد للناب السفلي يتطابق ويه رأس الناب العلوي؛ إذا خلص أنسي لرأس الناب، فواصل صغيرة بين السفلية ترجّع العلاقة.</p><p>إذا القوس السفلي أعرض: إذا الفرق بسيط والحافة العلوية جيدة التكوين، تكدر تحط العلوية شوي شدقي عن القمة حتى تتلامس ويه سفلية صحيحة — بس مو لدرجة تعرض الخط الأوسط للكسر بالطقم العلوي. أو استخدم أسنان غير تشريحية لحرية الموضع. إذا القوس أعرض وايد: بدّل الأسنان — أسنان علوية على الطقم السفلي وسفلية على العلوي، وهم عبر القوس (يمينية علوية على حافة سفلية يسار، وهكذا). ابدأ بوضع الأسنان السفلية على الحافة العلوية. ولأن القوس العلوي أصغر، احذف الضاحك الأول حتى الإطباق يصح. الضاحك الثاني والرحى الأولى والثانية (أسنان سفلية) تنحط على الحافة العلوية، وحدباتها الشدقية على خط دليل حافة الإطباق السفلية.</p><p>أحياناً يقترحون عضة معكوسة بدون تبديل الأسنان. نجاحها مشكوك لأن الأسنان تشريحياً ما متعوّدة تتعشق بهالوضع. ممكن تجربها إذا استخدمت أسنان غير تشريحية.</p>","<p>سؤالين على أرقام ارتفاع العظم، وقاعدة “المعيار الأصعب يرفع التصنيف كله”. جاوب وجرب الشرح.</p>","<p>فرّق أنواع الحافة العلوية A–D وأنواع اندغالات العضلات A–E. التفاصيل مهمة بالامتحان.</p>","<p>صنف III مو IV: المسافة 18–20 ملم ولسان كبير من موجودات III. والصنف II الهيكلي: FMA العالي يناظر قسم 1.</p>","<p>قاعدتان لا تنساهما: بالصنف II لا تلغي التراكب الأفقي الزايد قسراً؛ وإذا القوس السفلي أعرض وايد، بدّل الأسنان عبر القوس واحذف الضاحك الأول العلوي.</p>","<p>ثلاثة أسئلة ختامية + زر الدرجة. النسب 55.5 / 10 / 34.5، زاوية 80 درجة، وارتفاع 10 ملم أو أقل = صنف IV. إذا غلطت، ارجع للشرائح المعنية.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>

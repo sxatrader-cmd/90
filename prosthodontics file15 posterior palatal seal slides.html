@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Prosthodontics File 15 — Posterior Palatal Seal</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Prosthodontics · 5th year · Lecture 3</div>
+    <h1>Posterior Palatal Seal</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of the 5th-year lecture on the posterior palatal seal of the maxillary complete denture (PDF pages 456–467): anatomy and functions, vibrating lines, House classification, recording methods, errors, and when to record the seal.</p>
+    <ul>
+      <li>PPS definition and functions, including compensation for PMMA shrinkage toward the bulky ridge</li>
+      <li>Post-palatal and pterygomaxillary seals, foveae as a guideline only, and the mid-palatal raphe</li>
+      <li>Anterior versus posterior vibrating lines, and House Classes I–III (widths 3–4 mm, 2–3 mm, or a single bead)</li>
+      <li>Conventional carving (1–1.5 mm / 0.5–1 mm), fluid wax (ZOE or plaster, head flexed 30°), and arbitrary scraping</li>
+      <li>Under-extension as the commonest poor-seal cause; over-extension, under- and over-postdamming; adding a PPS to an existing denture; and recording before versus after try-in</li>
+      <li>Total run time: <b>28 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 14</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Prosthodontics · File 15","t":"Posterior palatal seal","b":"<p>University of Baghdad, College of Dentistry — Prosthodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This 5th-year file covers PDF pages 456–467 (Dr. Thekra Ismael, Lecture 3): the posterior palatal seal (PPS) of the maxillary complete denture — definition and functions, anatomical and physiological considerations, House classification of the soft palate, seal designs, conventional / fluid-wax / arbitrary recording methods, errors (under- and over-extension, under- and over-postdamming), adding a seal to an existing denture, and when to record the seal.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Page 467 is a “Dimension of posterior palatal seal” figure page with no extra readable measurements beyond those already given in the lecture text, so no dimensions were invented from that figure.</p>"},{"k":"5th year · Posterior palatal seal","t":"What the posterior palatal seal is, and why maxillary dentures need it","b":"<p>Complete dentures may suffer from a lack of proper border extension, but most important of all is the posterior palatal extension on maxillary complete dentures. The posterior border terminates on a surface that is movable in varying degrees, and not at a turn of tissue as are the other denture borders. Locating and designing the posterior palatal seal after a thorough understanding of the anatomic and physiological boundaries of this dynamic region greatly enhances the border seal and increases maxillary complete-denture retention. Hundreds of dentures have failed because of an improper distal limit and an improper posterior palatal seal. Its location and preparation on the master cast are often done by the dentist or dental technician without reference to anatomical landmarks of the mouth.</p><p><b>Posterior palatal seal area:</b> the soft-tissue area limited posteriorly by the distal demarcation of the movable and non-movable tissues of the soft palate, and anteriorly by the junction of the hard and soft palates, on which pressure, within physiologic limits, can be placed; this seal can be applied by a removable complete denture to aid in its retention.</p><p>The primary function is completing the peripheral seal and enhancing retention. Other purposes served by the PPS: (1) maintains contact of the denture with soft tissue during functional movements of the stomatognathic system, which decreases the gag reflex; (2) decreases food accumulation, with adequate tissue compressibility; (3) decreases patient discomfort of the tongue with the posterior part of the denture; (4) compensates for volumetric shrinkage that occurs during polymerisation of PMMA; (5) increases retention and stability by creating a partial vacuum; (6) increases the strength of the maxillary denture base; (7) adds confidence and comfort by enhancing retention.</p>"},{"k":"5th year · Posterior palatal seal","t":"How the peripheral seal works, and why acrylic shrinks away from the posterior palate","b":"<p>The peripheral seal of a maxillary denture is an area of contact between the mucosa and the peripheral polished surface of the denture base; the seal prevents passage of air between denture and tissue. Retention is achieved from adhesion, cohesion and interfacial surface tension that resist dislodging forces acting perpendicular to the denture base.</p><p>The posterior palatal seal is placed in the maxillary complete denture because the acrylic will distort slightly and pull away from the posterior palatal area of the maxillary cast. The acrylic shrinks toward the areas of greatest bulk, which are the areas over the ridge where the teeth are placed. The PPS then provides a vacuum seal between the denture and the soft palate that holds the maxillary complete denture securely in place. An adequate PPS also resists the horizontal and lateral forces acting on the maxillary denture base, because the denture border terminates on soft, resilient tissue and thereby maintains a proper denture seal.</p><p>A well-fitting, retentive complete denture requires a well-fitting tissue surface and a peripheral border compatible with the muscles and tissues of the mucobuccal and mucolabial spaces, so that a peripheral seal is created by the soft tissue draping over them. This is usually obtained by labial and buccal seal; in the posterior region it is mainly by the posterior palatal seal. At the posterior extension, where the tissues are less compliant, special attention is required to make the seal effective.</p>"},{"k":"5th year · Posterior palatal seal","t":"Anatomical boundaries: post-palatal and pterygomaxillary seals, foveae, raphe and torus","b":"<p>The PPS is divided into two anatomically separate boundaries: the <b>post-palatal seal</b> and the <b>pterygomaxillary seal</b>.</p><p>The post-palatal seal extends from one tuberosity to the other. The pterygomaxillary seal extends through the pterygomaxillary (hamular) notch, continuing for <b>3–4 mm anterolaterally</b>, approximating the mucogingival junction, and occupies the entire width of the pterygomaxillary notch.</p><p>The notch is covered by the pterygomaxillary fold (extending from the posterior aspect of the tuberosity to the retromolar pad). This fold influences the posterior border seal if the mouth is wide open during the final impression.</p><p>The <b>foveae palatinae</b> are two glandular openings within the tissue posterior of the hard palate, lying on either side of the midline. They should be used only as a <b>guideline</b> for placement of the posterior palatal seal — not as the sole landmark.</p><p>The medial palatal raphe, which overlies the medial palatal suture, contains little or no submucosa and will tolerate little or no compression. The seal area narrows in the mid-palatine region because of the scarcity of connective tissue and the prominence of the posterior nasal spine. Frequently, at the junction of the aponeurosis and the posterior nasal spine, a narrow bundle similar to a ligament is formed; the PPS is not placed over this narrow area. If a palatal torus extends to the bony limit of the palate, leaving little or no room to place the PPS, its removal is indicated.</p>"},{"k":"5th year · Posterior palatal seal","t":"Ropy saliva, and locating the anterior and posterior vibrating lines","b":"<p><b>Saliva.</b> Thick, ropy saliva can create hydrostatic pressure in the area anterior to the posterior palatal seal, resulting in a downward dislodging force.</p><p>The <b>vibrating line</b> is an imaginary line across the posterior part of the soft palate marking the division between the movable and immovable tissues; it can be identified when the movable tissues are functioning. There is an anterior vibrating line (AVL) and a posterior vibrating line (PVL).</p><p><b>Anterior vibrating line:</b> an imaginary line at the junction between the immovable tissues over the hard palate and the slightly movable tissue of the soft palate. To locate it, instruct the patient to say “AH” with <b>short, vigorous bursts</b> (because of the projection of the posterior nasal spine). The AVL is not a straight line between the hamular processes; it is <b>Cupid’s-bow shaped</b>.</p><p><b>Posterior vibrating line:</b> an imaginary line at the junction of the aponeurosis of the tensor veli palatini muscle and the muscular portion of the soft palate, visualised while the patient is instructed to say “ah” in short bursts in a <b>normal, unexaggerated</b> fashion. It represents the demarcation between the part of the soft palate that has limited or shallow movement during function and the remainder that is markedly displaced. The PVL marks the <b>most distal extension of the denture base</b>.</p>"},{"k":"5th year · Posterior palatal seal","t":"House classification of the soft palate, and common PPS designs","b":"<p>According to House’s classification:</p><ul><li><b>Class I:</b> a soft palate that is rather horizontal as it extends posteriorly, with minimum muscular activity. There is considerable separation between the anterior and posterior vibrating lines, and therefore a wide PPS area yielding a more retentive denture base. Class I is the easiest to tolerate, has the broadest range, and is the hardest to locate.</li><li><b>Class II:</b> the soft palate gradually slopes from the hard palate. Over-extension of the posterior limit can be tolerated to some extent. The palatal contour lies between Class I and Class III. Class II is the most common.</li><li><b>Class III:</b> seen in conjunction with a high V-shaped palatal vault. There are only a few millimetres of separation between the anterior and posterior vibrating lines, so the PPS area is small and retention is less. The soft palate abruptly slopes from the hard palate, so the posterior limit of the maxillary denture remains very critical. Class III is the easiest to locate and the hardest to tolerate.</li></ul><p>Winland and Young surveyed commonly employed PPS designs and summarised them as: (1) a bead PPS; (2) a double-bead PPS; (3) a butterfly PPS; (4) a butterfly PPS with a bead on the posterior limit; (5) a butterfly PPS with the hamular-notch area cut to half the depth of a no. 9 bur; and (6) a PPS constructed with reference to House’s palatal forms:</p><ul><li>Class I: a butterfly-shaped PPS, <b>3–4 mm</b> wide.</li><li>Class II: a narrower PPS, <b>2–3 mm</b> wide.</li><li>Class III: a single beading made on the posterior vibrating line.</li></ul>"},{"k":"5th year · Posterior palatal seal","t":"The conventional method: marking, transferring, and carving the master cast","b":"<p>Three methods of recording the PPS area are described: the conventional approach; the fluid-wax technique; and arbitrary scraping of the master cast.</p><p><b>Conventional approach — instructions and location.</b> After the special tray is fabricated, the patient rinses with an astringent mouthwash to remove stringy saliva that might prevent clear transfer of markings. The pterygomaxillary notch is located by moving a T-burnisher along the posterior angle of the maxillary tuberosity until it drops into the notch (necessary because a small depression in the residual ridge may resemble the notch). The PVL is identified by asking the patient to say “AH” in a normal, unexaggerated fashion; the AVL by asking the patient to say “AH” with short, vigorous bursts.</p><p><b>Procedure.</b> A line is placed with an indelible pencil through the pterygomaxillary notch and extended 3–4 mm anterolaterally to the tuberosity, approximating the mucogingival junction (same on the opposite side), completing the outline of the pterygomaxillary seal. The PVL is marked by connecting the pterygomaxillary-seal lines with the line demarcating the post-palatal seal. The resin or shellac tray is inserted and seated firmly so that, on removal, the indelible lines transfer to the tray. Markings may need to be redefined; the tray is returned to the master cast to complete transfer of the posterior border, then trimmed to the PVL so that it decides the posterior extent of the denture border.</p><p>Back in the mouth, the palatal tissues are palpated with the T-burnisher or a mouth mirror to determine their compressibility in width and depth. Termination of glandular tissue usually coincides with the AVL. The AVL is then marked and transferred to the master cast, completing the outline of the PPS area. The visual outline is Cupid’s-bow shaped; the area between the anterior and posterior vibrating lines is usually narrowest in the mid-palatal region because of the projection of the posterior nasal spine.</p><p><b>Carving</b> is done with a Kingsley scraper. The deepest areas are located on either side of the midline, one-third of the distance anteriorly from the PVL, carved to a depth of <b>1–1.5 mm</b>. The tissues covering the mid-palatal raphe are scored to a depth of <b>0.5–1 mm</b>, because they contain little submucosa and cannot withstand the same compressive force as the tissue lateral to them. As the seal approaches the AVL there is just slight scraping of the cast. Just posterior to the deepest portion, the seal is tapered again towards the PVL. Failure to taper the seal posteriorly leads to tissue irritation.</p>"},{"k":"5th year · Posterior palatal seal","t":"Conventional method: advantages and disadvantages","b":"<p>Advantages of the conventional technique:</p><ol><li>The trial base will be more retentive.</li><li>This can produce more accurate maxillomandibular records.</li><li>Patients will be able to experience the retentive qualities of the trial base, giving them the psychological security of knowing that retention will not be a problem in the completed prosthesis.</li><li>The practitioner will be able to determine the retentive qualities of the finished denture.</li><li>The new denture wearer will be able to realise the posterior extent of the denture, which may ease the adjustment period.</li></ol><p>Disadvantages:</p><ol><li>It is not a physiologic technique, and therefore depends upon accurate transfer of the vibrating lines and careful scraping of the cast.</li><li>The potential for over-compression of the tissue is great.</li></ol>"},{"k":"5th year · Posterior palatal seal","t":"The fluid-wax (functional / physiological) technique, and arbitrary scraping","b":"<p>In the fluid-wax technique, location and transfer of the anterior and posterior vibrating lines remain the same as in the conventional method. The markings are recorded in the final impression, which should be in <b>zinc oxide–eugenol or impression plaster</b> — not with an elastomeric impression material, because elastomers are resilient, do not adhere to wax, and distort the wax when reseated in the mouth.</p><p>One of four waxes can be used: Iowa wax (white); Adaptol (green); Korecta wax no. 4 (orange); or K.L. physiologic paste (yellow-white). These waxes are designed to flow at mouth temperature. Melted wax is painted onto the impression surface within the outline of the seal area, usually in slightly excess of the estimated depth, and allowed to cool below mouth temperature to increase its consistency and make it more resistant to flow. The impression is carried to the mouth and held in place under gentle pressure for <b>4–6 minutes</b> to allow the material to flow.</p><p>Patient position: seated upright, with the head flexed <b>30 degrees</b> forward, below the Frankfort (FH) plane, to allow the soft palate to reach its functionally depressed position. The tongue should be placed under tension against either the tray handle or the dentist’s finger held in the region of the upper maxillary incisors. After 4 minutes the tray is removed; if tissue contact has been established the wax will appear glossy. Trim any excess, or if no contact was established add wax and repeat. A secondary insertion is held for <b>3–5 minutes</b> under gentle pressure, followed by <b>2–3 minutes</b> of firm pressure applied to the mid-palatal area of the tray. On removal, check that the wax terminates in a feathered edge near the anterior vibrating line.</p><p>Advantages: it is a physiologic technique that displaces tissues within physiologically acceptable limits; over-compression is avoided; the PPS is incorporated into the trial denture base for added retention; and mechanical scraping of the cast is avoided. Disadvantages: more time is needed during the impression appointment; and the materials are more difficult to handle, with added care during boxing.</p><p><b>Arbitrary scraping of the master cast</b> (Winkler): arbitrarily mark the anterior and posterior vibrating lines and scrape about 1–1.5 mm. This is the <b>least accurate</b> method of marking the PPS. Its high potential for over-postdamming is due to the unphysiologic nature of the recording.</p>"},{"k":"5th year · Posterior palatal seal","t":"Errors in the PPS: under- and over-extension, under- and over-postdamming","b":"<p>Errors in recording the PPS are: under-extension; under-postdamming; over-postdamming; and over-extension.</p><p><b>Under-extension</b> is the most common cause of a poor posterior palatal seal. It may be produced by: the denture not covering the foveae palatinae, so tissue coverage is reduced and the posterior border is not in contact with the soft, resilient tissue that should move with the denture border during function; the dentist leaving the posterior border under-extended in order to reduce the patient’s anxiety about gagging; improper delineation of the anterior and posterior vibrating lines; or excessive trimming of the posterior border of the cast by the technician.</p><p><b>Over-extension</b> can lead to ulceration of the soft palate and painful deglutition — the most frequent complaint is that swallowing is painful and difficult. If the hamuli are covered by the denture base, the patient experiences sharp pain, especially during function. Prevention: these regions are trimmed with a bur and carefully polished.</p><p><b>Under-postdamming.</b> This can occur because of improper head and mouth positioning — for example if the mouth is wide open while the PPS is recorded, the mucosa over the hamular notch becomes stretched and a space is produced between the denture base and the tissue. Diagnosis: insert a wet denture and inspect the posterior border with a mouth mirror; air bubbles escaping under the posterior border indicate under-damming. Prevention: the master cast can be scraped in the posterior palatal area, or the fluid-wax impression can be repeated with proper patient position.</p><p><b>Over-postdamming</b> commonly occurs from excess scraping of the master cast, more often in the hamular-notch region. In the pterygomaxillary seal area, insertion of the denture then displaces the posterior border inferiorly. Prevention: reduction of the denture border with a carbide bur, followed by lightly pumicing the area while maintaining its convexity.</p>"},{"k":"5th year · Posterior palatal seal","t":"Adding a PPS to an existing denture, and when the seal should be recorded","b":"<p>An existing denture may have poor length and depth of PPS. Examine the denture properly. If there are other problems (vertical dimension, centric relation, esthetics, and so on), new dentures should be made. If only the PPS is short, correction should be undertaken. Various techniques and materials have been advised. Moghadam and Scandrett advised the fluid-wax technique for recording the PPS and addition of the seal with autopolymerising acrylic resin. A similar technique using softened greenstick modelling compound has been suggested by Carrol and Shaffer. Other suggested materials are heat-cured acrylic resin, self-cured acrylic resin, and light-cured resin.</p><p>There are two schools of thought as to when to record the PPS:</p><ul><li><b>Before try-in</b> — to provide the patient with psychological confidence.</li><li><b>After try-in</b> — to prevent possible mechanical displacement of the trial base by the tissues, which can result in an inferior placement of the posterior segment of the denture base and lead to occlusal error in the second-molar region because of improper seating of the bases during the jaw relation.</li></ul><p>Orally, the area of the vibrating line can be recorded by making marks with an indelible transfer stick in the fovea palatina area and the hamular-notch areas on both sides of the palate, and then connecting them with a solid line.</p>"},{"k":"اختبر نفسك","t":"Quiz: definition, shrinkage, and the two vibrating lines","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The posterior vibrating line is located by asking the patient to say “ah” in a normal, unexaggerated fashion, and it marks:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The junction of immovable hard-palate tissue and slightly movable soft palate, and is Cupid’s-bow shaped (the AVL)</button><button type=\"button\" class=\"opt\" data-i=\"1\">The most distal extension of the denture base, at the junction of the tensor-veli-palatini aponeurosis and the muscular soft palate</button><button type=\"button\" class=\"opt\" data-i=\"2\">The anterior limit of the labial vestibule</button><button type=\"button\" class=\"opt\" data-i=\"3\">A straight line joining the two tuberosities only</button></div><div class=\"qexp\" hidden><p>الـ <b>PVL</b> ويه “ah” طبيعي غير مبالغ، وهو <b>أبعد امتداد لقاعدة الطقم</b>. الـ AVL ويه “AH” دفعات قصيرة قوية، شكله قوس كيوبيد، عند اتصال أنسجة الحنك الصلب غير المتحركة ويه النسيج قليل الحركة للحنك الرخو.</p></div></div><div class=\"qbox\" data-ans=\"0\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Acrylic in a maxillary complete denture shrinks toward the areas of greatest bulk (over the ridge where the teeth are placed). The PPS is placed because:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The acrylic distorts slightly and pulls away from the posterior palatal area of the cast, and the seal then provides a vacuum against the soft palate</button><button type=\"button\" class=\"opt\" data-i=\"1\">PMMA expands at the posterior border and must be trimmed back</button><button type=\"button\" class=\"opt\" data-i=\"2\">The seal is only decorative and has no effect on shrinkage</button><button type=\"button\" class=\"opt\" data-i=\"3\">Shrinkage occurs only in the flanges, never in the palate</button></div><div class=\"qexp\" hidden><p>الأكريلك ينسحب شوية عن منطقة الحنك الخلفي بالمصبوبة لأن التقلص يتجه لأكبر كتلة (فوق الحافة وين الأسنان). الـ PPS يعوّض هذا ويكوّن سد تفريغ ويه الحنك الرخو. هذه هم وحدة من وظائفه (التعويض عن التقلص الحجمي أثناء بلمرة PMMA).</p></div></div>"},{"k":"اختبر نفسك","t":"Quiz: House classes, carving depths, and impression materials for fluid wax","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">House Class I versus Class III soft palates are best summarised as:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Class I is abrupt, V-shaped, easiest to locate and hardest to tolerate, with a single bead on the PVL</button><button type=\"button\" class=\"opt\" data-i=\"1\">Class I is rather horizontal with a wide PPS (easiest to tolerate, hardest to locate); Class III is an abrupt slope with a high V vault, a small PPS, easiest to locate and hardest to tolerate</button><button type=\"button\" class=\"opt\" data-i=\"2\">Class III is the most common and has a 3–4 mm butterfly seal</button><button type=\"button\" class=\"opt\" data-i=\"3\">All three classes have the same vibrating-line separation</button></div><div class=\"qexp\" hidden><p>صنف I أفقي نوعاً ما، مسافة واسعة بين الخطين، تثبيت أحسن؛ أسهل تحمل وأصعب تحديد؛ فراشة 3–4 ملم. صنف II الأشيع، انحدار تدريجي، عرض 2–3 ملم. صنف III قبة V عالية وانحدار مفاجئ ومسافة كم ملم فقط؛ أسهل تحديد وأصعب تحمل؛ خرزة واحدة على الـ PVL.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">In conventional carving of the master cast, the deepest areas (either side of the midline, one-third of the distance anteriorly from the PVL) and the mid-palatal raphe are scored to about:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">3–4 mm everywhere</button><button type=\"button\" class=\"opt\" data-i=\"1\">1–1.5 mm in the deepest areas, and only 0.5–1 mm over the mid-palatal raphe; the seal is tapered again towards the PVL</button><button type=\"button\" class=\"opt\" data-i=\"2\">0.1 mm only, because the raphe tolerates heavy compression</button><button type=\"button\" class=\"opt\" data-i=\"3\">The same 2 mm from AVL to PVL with no taper</button></div><div class=\"qexp\" hidden><p>أعمق كشط <b>1–1.5 ملم</b> على جانبي الوسط عند ثلث المسافة أمام الـ PVL. الرفاء الأوسط <b>0.5–1 ملم</b> فقط لأنه فقير بالنسيج تحت المخاطي. قرب الـ AVL كشط خفيف، وخلف الأعمق رقق باتجاه الـ PVL وإلا يصير تهيج.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">Which impression materials are used to record fluid-wax PPS markings, and which are avoided?</button><div class=\"flash-a\" hidden>Use zinc oxide–eugenol or impression plaster. Do not use elastomeric impression materials: they are resilient, do not adhere to wax, and distort the wax when the impression is reseated. The four waxes named are Iowa (white), Adaptol (green), Korecta no. 4 (orange) and K.L. physiologic paste (yellow-white).</div></div>"},{"k":"اختبر نفسك — نهاية الملف","t":"Self-test: under-extension, fluid-wax head position, and when to record the PPS","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The most common cause of a poor posterior palatal seal is under-extension, which may occur when:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The hamuli are covered and swallowing is painful</button><button type=\"button\" class=\"opt\" data-i=\"1\">The denture does not cover the foveae, the dentist shortens the border to reduce gagging anxiety, the vibrating lines are poorly marked, or the technician trims the cast excessively</button><button type=\"button\" class=\"opt\" data-i=\"2\">Air bubbles under a wet posterior border have already been treated by pumicing a convex over-scraped hamular notch</button><button type=\"button\" class=\"opt\" data-i=\"3\">A palatal torus is always left covering the PPS area</button></div><div class=\"qexp\" hidden><p>نقص الامتداد أشيع سبب لسد ضعيف. زيادة الامتداد تعطي تقرح وبلع مؤلم، وتغطية الـ hamuli ألم حاد. فقاعات الهواء تحت الحد علامة <b>نقص سد</b> (مو زيادة). الفطر إذا ما يترك مكان للسد يُشار لإزالته.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">For a fluid-wax PPS impression the patient should be:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Fully supine with the mouth wide open, so the hamular mucosa is stretched</button><button type=\"button\" class=\"opt\" data-i=\"1\">Seated upright with the head flexed 30° forward below the Frankfort plane, tongue under tension against the tray handle or the dentist’s finger at the upper incisors</button><button type=\"button\" class=\"opt\" data-i=\"2\">Standing, with the head extended 30° back</button><button type=\"button\" class=\"opt\" data-i=\"3\">In any position, because head flexion does not affect the soft palate</button></div><div class=\"qexp\" hidden><p>جالس مستقيم، الرأس مثني <b>30°</b> للأمام تحت مستوى فرانكفورت حتى الحنك الرخو يوصل وضعه الوظيفي المنخفض. الفم المفتوح وايد يمدد مخاطية القلح ويسبب نقص سد.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Recording the PPS after try-in, rather than before, is advised by one school of thought in order to:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Give the patient earlier psychological confidence in retention</button><button type=\"button\" class=\"opt\" data-i=\"1\">Prevent mechanical displacement of the trial base, which can seat the posterior segment inferiorly and cause occlusal error in the second-molar region during the jaw relation</button><button type=\"button\" class=\"opt\" data-i=\"2\">Avoid using any wax at the posterior border</button><button type=\"button\" class=\"opt\" data-i=\"3\">Shorten the appointment by skipping the vibrating lines</button></div><div class=\"qexp\" hidden><p>قبل التجربة: ثقة نفسية للمريض. <b>بعد التجربة</b>: حتى قاعدة التجربة ما تنزاح ميكانيكياً للأسفل بالجزء الخلفي ويصير خطأ إطباقي بمنطقة الرحى الثانية من قعود ناقص ويه تسجيل علاقة الفكين.</p></div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا الملف عن السد الحنكي الخلفي (<b>PPS</b>) للطقم العلوي الكامل: تعريفه ووظائفه، التشريح والفسلجة، تصنيف House للحنك الرخو، التصاميم، ثلاث طرق تسجيل، الأخطاء (نقص/زيادة امتداد، نقص/زيادة سد)، إضافته لطقم موجود، ومتى تسجّله.</p><p>صفحة 467 شكل عن أبعاد السد بلا أرقام مقروءة زيادة على اللي بالنص، فما اخترعت قياسات من الصورة.</p>","<p>أهم امتداد حدود الطقم هو الامتداد الحنكي الخلفي بالعلوي. الحد الخلفي يوقف على سطح متحرك بدرجات مختلفة، مو على انعطاف نسيج مثل باقي الحدود. فهم تشريح وفسلجة هالمنطقة الديناميكية يحسّن سد الحدود وتثبيت الطقم العلوي. مئات الأطقم فشلت بسبب حد بعيد خطأ وسد حنكي خلفي خطأ، وكثير يُحفَر على المصبوبة بدون رجوع لعلامات الفم.</p><p><b>منطقة السد الحنكي الخلفي</b>: نسيج رخو محدود خلفياً بخط الفصل بين الأنسجة المتحركة وغير المتحركة للحنك الرخو، وأمامياً باتصال الحنك الصلب والرخو، ويتحمل ضغط ضمن الحدود الفسيولوجية يساعد تثبيت الطقم الكامل المتحرك.</p><p>الوظيفة الأساسية: إكمال السد المحيطي وزيادة التثبيت. وهم: يحافظ على تماس الطقم ويه النسيج الرخو أثناء الوظيفة فيقلل التهوع؛ يقلل تجمع الطعام ويه قابلية انضغاط كافية؛ يقلل إزعاج اللسان ويه الجزء الخلفي؛ يعوّض تقلص حجم الـ PMMA أثناء البلمرة؛ يزيد التثبيت والثبات بفراغ جزئي؛ يزيد قوة قاعدة الطقم العلوي؛ ويزيد ثقة وراحة المريض.</p>","<p>السد المحيطي: منطقة تماس بين المخاطية والسطح المصقول المحيطي لقاعدة الطقم، تمنع مرور الهواء بين الطقم والنسيج. التثبيت يجي من الالتصاق والتماسك والتوتر السطحي البيني، تقاوم قوى الإزاحة العمودية على القاعدة.</p><p>ليش نحتاج PPS؟ الأكريلك يتقلص شوية وينسحب بعيداً عن منطقة الحنك الخلفي بالمصبوبة، لأن التقلص يتجه لمناطق أكبر كتلة (فوق الحافة وين الأسنان). السد يكوّن تفريغ بين الطقم والحنك الرخو يمسك الطقم. وهم يقاوم القوى الأفقية والجانبية لأن الحد يوقف على نسيج رخو مرن فيبقى السد مضبوط.</p><p>طقم منطبق يحتاج سطح نسيجي جيد وحدود متوافقة ويه عضلات وأنسجة المسافات الدهليزية حتى النسيج الرخو ينسدل فوقها ويعمل سد. هذا عادة من السد الشفوي والشدقي؛ بالخلف أساساً من الـ PPS. بالنهاية الخلفية الأنسجة أقل مطاوعة، فتحتاج انتباه خاص.</p>","<p>الـ PPS ينقسم لحدين تشريحيين: <b>السد الحنكي الخلفي (post-palatal)</b> و<b>السد الجناحي الفكي (pterygomaxillary)</b>.</p><p>الأول يمتد من حدبة للثانية. الثاني يمر خلال القلح الشصي (pterygomaxillary notch) ويستمر <b>3–4 ملم لأمام-جانب</b> قرب اتصال اللثة المخاطي، ويشغل عرض القلح كله.</p><p>القلح مغطى بالطية الجناحية الفكية (من خلف الحدبة إلى الوسادة خلف الرحوية). هالطية تأثر على السد إذا الفم مفتوح وايد ويه الطبعة النهائية.</p><p>الـ <b>foveae palatinae</b> فتحتان غديتان خلف الحنك الصلب على جانبي الخط الأوسط. تُستخدم <b>كدليل فقط</b> لوضع السد، مو كعلامة وحيدة.</p><p>الرفاء الحنكي الأوسط فوق الدرز فيه نسيج تحت مخاطي قليل أو معدوم، فما يتحمل ضغط. منطقة السد تضيق بالوسط لنقص النسيج الضام وبروز الشوكة الأنفية الخلفية. أحياناً حزمة ضيقة شبيهة بالرباط عند التقاء السفاق والشوكة؛ لا تحط السد فوق هالمنطقة الضيقة. إذا الفطر الحنكي يمتد لحد العظم وما يبقى مكان للسد، يُشار لإزالته.</p>","<p>اللعاب الكثيف الخيطي يكوّن ضغط هيدروستاتيكي أمام السد الحنكي الخلفي، فيولّد قوة إزاحة لتحت.</p><p>خط الاهتزاز (<b>vibrating line</b>): خط تخيلي عبر الجزء الخلفي للحنك الرخو يفصل الأنسجة المتحركة عن غير المتحركة، ويظهر ويه وظيفة الأنسجة المتحركة. في خط أمامي وخط خلفي.</p><p><b>الخط الأمامي (AVL)</b>: عند اتصال الأنسجة غير المتحركة فوق الحنك الصلب ويه النسيج قليل الحركة للحنك الرخو. لتحديده، خلّ المريض يقول “AH” <b>دفعات قصيرة قوية</b> (بسبب بروز الشوكة الأنفية الخلفية). مو خط مستقيم بين الناتئين الشصيّين، شكله <b>قوس كيوبيد (Cupid’s bow)</b>.</p><p><b>الخط الخلفي (PVL)</b>: عند اتصال سفاق عضلة موتر شراع الحنك ويه الجزء العضلي للحنك الرخو، ويه “ah” دفعات قصيرة <b>طبيعية غير مبالغ فيها</b>. يفصل الجزء محدود/ضحل الحركة عن باقي الحنك اللي ينزاح بقوة. الـ PVL يحدّد <b>أبعد امتداد لقاعدة الطقم</b>.</p>","<p>تصنيف House للحنك الرخو:</p><p><b>صنف I</b>: الحنك الرخو أفقي نوعاً ما ويه امتداده للخلف، ونشاط عضلي قليل. مسافة واضحة بين خطي الاهتزاز، فمنطقة السد عريضة والتثبيت أحسن. أسهل تحمل، أوسع مدى، وأصعب تحديد.</p><p><b>صنف II</b>: الحنك الرخو ينحدر تدريجياً من الصلب. زيادة الامتداد الخلفي تُتحمل لحد ما. الشكل بين I و III. <b>الأشيع</b>.</p><p><b>صنف III</b>: ويه قبة حنكية عالية شكل V. بس كم ملم بين الخطين، فمنطقة السد صغيرة والتثبيت أقل. الانحدار مفاجئ، فالحد الخلفي حرج جداً. أسهل تحديد وأصعب تحمل.</p><p>تصاميم Winland و Young: خرزة واحدة؛ خرزة مزدوجة؛ فراشة؛ فراشة ويه خرزة على الحد الخلفي؛ فراشة ويه قطع القلح الشصي لنصف عمق سنبلة رقم 9؛ وتصميم حسب House: صنف I فراشة عرض <b>3–4 ملم</b>؛ صنف II أضيق <b>2–3 ملم</b>؛ صنف III خرزة واحدة على خط الاهتزاز الخلفي.</p>","<p>ثلاث طرق: التقليدية؛ شمع سائل؛ وكشط اعتباطي للمصبوبة.</p><p>بالطريقة التقليدية: بعد عمل الطابق الخاص، المريض يتمضمض بغسول قابض حتى اللعاب الخيطي ما يخرّب نقل العلامات. القلح الشصي يُحدَّد بتحريك محرّاق T على الزاوية الخلفية للحدبة لين يسقط بالقلح (لأن انخفاض صغير بالحافة قد يشبهه). الـ PVL ويه “AH” طبيعي غير مبالغ؛ والـ AVL ويه “AH” دفعات قصيرة قوية.</p><p>الإجراء: خط بقلم لا يُمحى خلال القلح ويمتد 3–4 ملم لأمام-جانب نحو الحدبة قرب اتصال اللثة (ونفس الشي بالجهة الثانية) لإكمال سد الجناحي الفكي. الـ PVL يوصل هالخطوط ويه خط السد الحنكي. الطابق الراتنجي أو الشلاك يُدخل ويُقعد بقوة حتى الخطوط تنتقل عليه، وقد تحتاج إعادة تحديد، وبعدين يُرجَع للمصبوبة لإكمال النقل ويُقلَّم لحد الـ PVL (أبعد امتداد).</p><p>بالفم يُجس النسيج بمحرّاق T أو مرآة لمعرفة قابلية الانضغاط عرضاً وعمقاً. نهاية النسيج الغدي غالباً تطابق الـ AVL، وينقل الخط الأمامي للمصبوبة. الشكل قوس كيوبيد، وأضيق نقطة بالوسط بسبب الشوكة الأنفية الخلفية.</p><p>الكشط بمحكّ Kingsley: أعمق مناطق على جانبي الخط الأوسط، عند ثلث المسافة أمام الـ PVL، عمق <b>1–1.5 ملم</b>. الرفاء الأوسط يُخدش <b>0.5–1 ملم</b> لأنه فقير بالنسيج تحت المخاطي. قرب الـ AVL كشط خفيف فقط. خلف أعمق جزء يُرقَّق السد باتجاه الـ PVL؛ إذا ما رقّقته يصير تهيج نسيج.</p>","<p>مميزات الطريقة التقليدية: قاعدة التجربة تصير مثبتة أكثر؛ تسجيلات العلاقة بين الفكين أدق؛ المريض يحس بالتثبيت مسبقاً ويطمئن نفسياً إن التثبيت ما راح يكون مشكلة بالطقم النهائي؛ الطبيب يقدر يقيّم تثبيت الطقم الجاهز؛ ولابس الطقم الجديد يتعرف على الامتداد الخلفي ففترة التعديل تصير أسهل.</p><p>عيوبها: مو طريقة فسيولوجية، فتعتمد على نقل دقيق لخطوط الاهتزاز وكشط حذر للمصبوبة؛ وإمكانية ضغط النسيج زيادة كبيرة.</p>","<p>بطريقة الشمع السائل، تحديد ونقل خطي الاهتزاز نفس التقليدية. العلامات تُسجَّل بالطبعة النهائية بـ <b>أكسيد الزنك-يوجينول أو جص الطبعة</b> — مو بمادة مرنة (elastomer)، لأنها مرنة وما تلزگ بالشمع وتشوه الشمع إذا انقعدت مرة ثانية بالفم.</p><p>واحد من أربعة شموع: Iowa أبيض؛ Adaptol أخضر؛ Korecta رقم 4 برتقالي؛ أو معجون K.L الفسيولوجي أصفر-أبيض. مصممة تسيل بحرارة الفم. يُدهن الشمع المنصهر على سطح الطبعة داخل حدود السد، عادة أكثر شوي من العمق المتوقع، ويُبرَّد تحت حرارة الفم حتى يصير أسمك وأقل سيولة. الطبعة تتنحط بالفم ويه ضغط لطيف <b>4–6 دقائق</b> حتى يسيل.</p><p>وضعية المريض: جالس مستقيم، الرأس مثني <b>30°</b> للأمام تحت مستوى فرانكفورت، حتى الحنك الرخو يوصل وضعه الوظيفي المنخفض. اللسان تحت توتر على مقبض الطابق أو إصبع الطبيب بمنطقة القواطع العلوية. بعد 4 دقائق تطلع الطبعة: إذا في تماس، الشمع يلمع. قص الزايد، أو ضيف وأعد إذا ماكو تماس. إدخال ثانٍ <b>3–5 دقائق</b> ضغط لطيف، وبعدين <b>2–3 دقائق</b> ضغط ثابت على منتصف الحنك. عند الإخراج، الشمع لازم ينتهي بحافة ريشية قرب خط الاهتزاز الأمامي.</p><p>مميزاتها: فسيولوجية ضمن حدود مقبولة؛ تتجنب الضغط الزايد؛ السد يدخل بقاعدة التجربة فيزيد التثبيت؛ وما في كشط ميكانيكي. عيوبها: تأخذ وقت أكثر بجلسة الطبعة؛ والمواد أصعب والتخبيب يحتاج حذر.</p><p><b>الكشط الاعتباطي</b> (Winkler): علّم الخطين اعتباطياً واكشط حوالي 1–1.5 ملم. <b>أقل الطرق دقة</b>، واحتمال زيادة السد عالي لأنها مو فسيولوجية.</p>","<p>أخطاء تسجيل الـ PPS: نقص امتداد؛ نقص سد؛ زيادة سد؛ وزيادة امتداد.</p><p><b>نقص الامتداد</b> أشيع سبب لسد خلفي ضعيف. أسبابه: الطقم ما يغطي الـ foveae فالتغطية تقل والحد الخلفي ما يلامس النسيج الرخو المرن اللي المفروض يتحرك ويه الحد أثناء الوظيفة؛ الطبيب يقصّر الحد حتى يقلل قلق التهوع؛ تحديد خطأ لخطي الاهتزاز؛ أو تقليم زايد لحد المصبوبة من الفني.</p><p><b>زيادة الامتداد</b> تسبب تقرح الحنك الرخو وبلع مؤلم — أشيع شكوى إن البلع صعب ومؤلم. إذا القاعدة تغطي الخطافين الشصيّين (hamuli) يصير ألم حاد خصوصاً ويه الوظيفة. الوقاية: قلم بالسنبلة وصقل بحذر.</p><p><b>نقص السد</b>: وضعية رأس أو فم خطأ — مثلاً الفم مفتوح وايد ويه التسجيل، المخاطية فوق القلح تتمدد ويصير فراغ بين القاعدة والنسيج. التشخيص: أدخل طقم مبلل وافحص الحد الخلفي بالمرآة؛ فقاعات هواء تهرب من تحت الحد تعني نقص سد. الوقاية: اكشط المصبوبة بالمنطقة الخلفية، أو أعد طبعة الشمع السائل ويه وضعية صحيحة.</p><p><b>زيادة السد</b> غالباً من كشط زايد للمصبوبة، أكثر بمنطقة القلح الشصي. بمنطقة السد الجناحي الفكي، إدخال الطقم يزيح الحد الخلفي لتحت. الوقاية: تقليل الحد بسنبلة كاربيد وبعدين صقل خفيف مع الحفاظ على التحدب.</p>","<p>الطقم الموجود قد يكون طول وعمق السد ضعيف. افحصه زين. إذا في مشاكل ثانية (بعد عمودي، علاقة مركزية، شكل...) سوِّ أطقم جديدة. إذا المشكلة بس السد قصير، صلّحه. Moghadam و Scandrett نصحوا بطبعة الشمع السائل وإضافة السد بأكريلك ذاتي التصلب. طريقة مشابهة بشمع greenstick ليّن اقترحها Carrol و Shaffer. مواد ثانية: أكريلك حراري، ذاتي، أو ضوئي التصلب.</p><p>مدى سنان عن وقت تسجيل الـ PPS:</p><p><b>قبل التجربة</b>: حتى المريض يكتسب ثقة نفسية بالتثبيت.</p><p><b>بعد التجربة</b>: حتى تتجنب إزاحة ميكانيكية لقاعدة التجربة من الأنسجة، اللي قد تنزّل الجزء الخلفي وتسبب خطأ إطباقي بمنطقة الرحى الثانية بسبب قعود ناقص للقواعد ويه تسجيل علاقة الفكين.</p><p>بالفم، تكدر تعلّم منطقة خط الاهتزاز بقلم نقل لا يُمحى عند الـ foveae والقلح الشصي بالجهتين، وتوصلهم بخط مستمر.</p>","<p>فرّق AVL (قوس كيوبيد، AH قوي) عن PVL (أبعد امتداد، ah عادي)، وتذكّر إن الأكريلك ينسحب عن الحنك الخلفي.</p>","<p>صنف I أسهل تحمل وأصعب تحديد؛ صنف III العكس. الكشط 1–1.5 ملم بأعمق مكان و 0.5–1 على الرفاء. والشمع السائل ويه ZOE أو جص، مو مطاط.</p>","<p>ثلاثة أسئلة ختامية + زر الدرجة: نقص الامتداد أشيع سبب؛ الرأس 30° للأمام ويه الشمع السائل؛ وتسجيل السد بعد التجربة حتى ما ينزل الجزء الخلفي. إذا غلطت ارجع للشرائح.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
