@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Prosthodontics File 9 — Pre-prosthetic Surgery &amp; Complete-Denture Diagnosis</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Prosthodontics · 4th year</div>
+    <h1>Pre-prosthetic Surgery and Complete-Denture Diagnosis</h1>
+    <p style="margin:0 0 16px"><p>PDF pages 291–318 (Dr. Ihab Nabeel Al-mgotar). Every important point from the lecture is covered, with detailed simple Iraqi Arabic explanations, figures, in-slide questions and a scored self-test.</p></p>
+    <ul>
+      <li><</li>
+      <li>u</li>
+      <li>l</li>
+      <li>></li>
+      <li><</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li>N</li>
+      <li>o</li>
+      <li>n</li>
+      <li>s</li>
+      <li>u</li>
+      <li>r</li>
+      <li>g</li>
+      <li>i</li>
+      <li>c</li>
+      <li>a</li>
+      <li>l</li>
+      <li> </li>
+      <li>t</li>
+      <li>i</li>
+      <li>s</li>
+      <li>s</li>
+      <li>u</li>
+      <li>e</li>
+      <li> </li>
+      <li>r</li>
+      <li>e</li>
+      <li>s</li>
+      <li>t</li>
+      <li>,</li>
+      <li> </li>
+      <li>o</li>
+      <li>c</li>
+      <li>c</li>
+      <li>l</li>
+      <li>u</li>
+      <li>s</li>
+      <li>a</li>
+      <li>l</li>
+      <li> </li>
+      <li>c</li>
+      <li>o</li>
+      <li>r</li>
+      <li>r</li>
+      <li>e</li>
+      <li>c</li>
+      <li>t</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li> </li>
+      <li>o</li>
+      <li>f</li>
+      <li> </li>
+      <li>o</li>
+      <li>l</li>
+      <li>d</li>
+      <li> </li>
+      <li>d</li>
+      <li>e</li>
+      <li>n</li>
+      <li>t</li>
+      <li>u</li>
+      <li>r</li>
+      <li>e</li>
+      <li>s</li>
+      <li>,</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>n</li>
+      <li>u</li>
+      <li>t</li>
+      <li>r</li>
+      <li>i</li>
+      <li>t</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li>.</li>
+      <li><</li>
+      <li>/</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li><</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li>S</li>
+      <li>u</li>
+      <li>r</li>
+      <li>g</li>
+      <li>i</li>
+      <li>c</li>
+      <li>a</li>
+      <li>l</li>
+      <li> </li>
+      <li>g</li>
+      <li>u</li>
+      <li>i</li>
+      <li>d</li>
+      <li>e</li>
+      <li>s</li>
+      <li>,</li>
+      <li> </li>
+      <li>a</li>
+      <li>l</li>
+      <li>v</li>
+      <li>e</li>
+      <li>o</li>
+      <li>l</li>
+      <li>o</li>
+      <li>p</li>
+      <li>l</li>
+      <li>a</li>
+      <li>s</li>
+      <li>t</li>
+      <li>y</li>
+      <li> </li>
+      <li>(</li>
+      <li>i</li>
+      <li>n</li>
+      <li>c</li>
+      <li>l</li>
+      <li>u</li>
+      <li>d</li>
+      <li>i</li>
+      <li>n</li>
+      <li>g</li>
+      <li> </li>
+      <li>i</li>
+      <li>n</li>
+      <li>t</li>
+      <li>r</li>
+      <li>a</li>
+      <li>s</li>
+      <li>e</li>
+      <li>p</li>
+      <li>t</li>
+      <li>a</li>
+      <li>l</li>
+      <li>)</li>
+      <li>,</li>
+      <li> </li>
+      <li>t</li>
+      <li>u</li>
+      <li>b</li>
+      <li>e</li>
+      <li>r</li>
+      <li>o</li>
+      <li>s</li>
+      <li>i</li>
+      <li>t</li>
+      <li>y</li>
+      <li>,</li>
+      <li> </li>
+      <li>t</li>
+      <li>o</li>
+      <li>r</li>
+      <li>i</li>
+      <li>,</li>
+      <li> </li>
+      <li>m</li>
+      <li>y</li>
+      <li>l</li>
+      <li>o</li>
+      <li>h</li>
+      <li>y</li>
+      <li>o</li>
+      <li>i</li>
+      <li>d</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>g</li>
+      <li>e</li>
+      <li>n</li>
+      <li>i</li>
+      <li>a</li>
+      <li>l</li>
+      <li> </li>
+      <li>r</li>
+      <li>e</li>
+      <li>d</li>
+      <li>u</li>
+      <li>c</li>
+      <li>t</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li>.</li>
+      <li><</li>
+      <li>/</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li><</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li>S</li>
+      <li>o</li>
+      <li>f</li>
+      <li>t</li>
+      <li>-</li>
+      <li>t</li>
+      <li>i</li>
+      <li>s</li>
+      <li>s</li>
+      <li>u</li>
+      <li>e</li>
+      <li> </li>
+      <li>p</li>
+      <li>r</li>
+      <li>o</li>
+      <li>c</li>
+      <li>e</li>
+      <li>d</li>
+      <li>u</li>
+      <li>r</li>
+      <li>e</li>
+      <li>s</li>
+      <li>,</li>
+      <li> </li>
+      <li>h</li>
+      <li>i</li>
+      <li>s</li>
+      <li>t</li>
+      <li>o</li>
+      <li>p</li>
+      <li>a</li>
+      <li>t</li>
+      <li>h</li>
+      <li>o</li>
+      <li>l</li>
+      <li>o</li>
+      <li>g</li>
+      <li>y</li>
+      <li>,</li>
+      <li> </li>
+      <li>f</li>
+      <li>r</li>
+      <li>e</li>
+      <li>n</li>
+      <li>e</li>
+      <li>c</li>
+      <li>t</li>
+      <li>o</li>
+      <li>m</li>
+      <li>y</li>
+      <li>,</li>
+      <li> </li>
+      <li>e</li>
+      <li>p</li>
+      <li>u</li>
+      <li>l</li>
+      <li>i</li>
+      <li>s</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>p</li>
+      <li>a</li>
+      <li>l</li>
+      <li>a</li>
+      <li>t</li>
+      <li>a</li>
+      <li>l</li>
+      <li> </li>
+      <li>p</li>
+      <li>a</li>
+      <li>p</li>
+      <li>i</li>
+      <li>l</li>
+      <li>l</li>
+      <li>a</li>
+      <li>r</li>
+      <li>y</li>
+      <li> </li>
+      <li>h</li>
+      <li>y</li>
+      <li>p</li>
+      <li>e</li>
+      <li>r</li>
+      <li>p</li>
+      <li>l</li>
+      <li>a</li>
+      <li>s</li>
+      <li>i</li>
+      <li>a</li>
+      <li>.</li>
+      <li><</li>
+      <li>/</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li><</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li>H</li>
+      <li>o</li>
+      <li>u</li>
+      <li>s</li>
+      <li>e</li>
+      <li> </li>
+      <li>c</li>
+      <li>l</li>
+      <li>a</li>
+      <li>s</li>
+      <li>s</li>
+      <li>e</li>
+      <li>s</li>
+      <li>,</li>
+      <li> </li>
+      <li>s</li>
+      <li>y</li>
+      <li>s</li>
+      <li>t</li>
+      <li>e</li>
+      <li>m</li>
+      <li>i</li>
+      <li>c</li>
+      <li> </li>
+      <li>s</li>
+      <li>t</li>
+      <li>a</li>
+      <li>t</li>
+      <li>u</li>
+      <li>s</li>
+      <li>,</li>
+      <li> </li>
+      <li>h</li>
+      <li>i</li>
+      <li>s</li>
+      <li>t</li>
+      <li>o</li>
+      <li>r</li>
+      <li>y</li>
+      <li>,</li>
+      <li> </li>
+      <li>e</li>
+      <li>x</li>
+      <li>t</li>
+      <li>r</li>
+      <li>a</li>
+      <li>-</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>i</li>
+      <li>n</li>
+      <li>t</li>
+      <li>r</li>
+      <li>a</li>
+      <li>-</li>
+      <li>o</li>
+      <li>r</li>
+      <li>a</li>
+      <li>l</li>
+      <li> </li>
+      <li>e</li>
+      <li>x</li>
+      <li>a</li>
+      <li>m</li>
+      <li>i</li>
+      <li>n</li>
+      <li>a</li>
+      <li>t</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li>,</li>
+      <li> </li>
+      <li>c</li>
+      <li>l</li>
+      <li>a</li>
+      <li>s</li>
+      <li>s</li>
+      <li>i</li>
+      <li>f</li>
+      <li>i</li>
+      <li>c</li>
+      <li>a</li>
+      <li>t</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li>s</li>
+      <li>,</li>
+      <li> </li>
+      <li>p</li>
+      <li>r</li>
+      <li>o</li>
+      <li>g</li>
+      <li>n</li>
+      <li>o</li>
+      <li>s</li>
+      <li>i</li>
+      <li>s</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>e</li>
+      <li>d</li>
+      <li>u</li>
+      <li>c</li>
+      <li>a</li>
+      <li>t</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li>.</li>
+      <li><</li>
+      <li>/</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li><</li>
+      <li>/</li>
+      <li>u</li>
+      <li>l</li>
+      <li>></li>
+      <li>Total run time: <b>1 hour 10 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 35</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Prosthodontics · File 9","t":"Pre-prosthetic Surgery and Complete-Denture Diagnosis","b":"<p>University of Baghdad, College of Dentistry — Prosthodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This 4th-year file covers PDF pages 291–318 (Dr. Ihab Nabeel Al-mgotar):</p><ul><li>Pre-prosthetic surgical considerations — nonsurgical preparation, surgical guides, bony procedures (alveoloplasty, tuberosity, tori, mylohyoid and genial reduction), and soft-tissue procedures (frenectomy, hyperplasia, epulis, papillary hyperplasia).</li><li>Diagnosis and treatment planning for the complete denture — House’s mental-attitude classes, systemic status, history, extra- and intra-oral examination, ridge and palatal classifications, prognosis and patient education.</li></ul><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end.</p>"},{"k":"4th year · Pre-prosthetic","t":"Nonsurgical methods of preparing the edentulous mouth","b":"<p>Methods to improve the denture foundation and ridge relations may be nonsurgical, surgical, or both.</p><p><b>1. Rest for the denture-supporting tissues.</b> Rest is achieved by removing the dentures for an extended period, or by placing temporary soft liners inside the old dentures. Both allow deformed residual-ridge tissue to return to normal form. Clinical reports also support regular finger or toothbrush massage of denture-bearing mucosa, especially of areas that appear edematous and enlarged.</p><p><b>2. Occlusal correction of the old prostheses.</b> First try to restore an optimal vertical dimension of occlusion to the dentures the patient is wearing, using an interim resilient lining material. This lets the dentist prognosticate how much vertical facial support the patient can tolerate, and allows presumably deformed tissues to recover.</p><p><b>3. Good nutrition.</b> A good nutritional program must be emphasized for every edentulous patient, and is especially important for the geriatric patient whose metabolic and masticatory efficiency may be compromised.</p>"},{"k":"4th year · Pre-prosthetic","t":"When to operate, and how a surgical guide is used","b":"<p>Some denture-bearing conditions need surgery. They may come from unfavorable morphology, or more commonly from long-term wear of ill-fitting dentures. It is often far easier to alter prosthetic techniques and materials than to subject the patient to surgery. The key consideration is whether a good prosthodontic prognosis will result from the surgical outcome.</p><p><b>Surgical guides (templates)</b> are excellent adjuncts when moderate bone recontouring is required and the plan needs precision in the amount and location of bone to be removed. On a duplicated diagnostic cast, the areas of concern are modified to the ideal ridge form. A clear, rigid guide is then made by a vacuum-formed technique. During surgery, after recontouring, the guide is placed over the area with the flap repositioned, and areas of soft-tissue <b>blanching</b> are observed. Blanching means more bone still needs to be removed. The procedure is repeated until there is no blanching and the guide is stable when seated. Soft-tissue trimming, if necessary, can then be done.</p><p>Commonly used pre-prosthetic procedures include: ridge alveoloplasty with or without extractions (knife-edge or other contour problems); intraseptal alveoloplasty; maxillary tuberosity reduction; recontouring of palatal and lateral exostoses (including mandibular and maxillary tori, mylohyoid-ridge reduction and genial-tubercle reduction); and soft-tissue procedures (maxillary tuberosity soft-tissue reduction, maxillary labial frenectomy, mandibular lingual frenectomy, and excision of redundant tissue).</p>"},{"k":"4th year · Pre-prosthetic","t":"Ridge alveoloplasty at the time of extraction","b":"<p>After extraction the clinician decides whether the remaining contour fits the pre-prosthetic plan, and whether recontouring should be done at the extraction or later. If more than finger compression is needed, a full-thickness flap is elevated to a point apical to the area. A bone file may be enough for modest change. For greater recontouring a side-cutting rongeur, or a handpiece and acrylic bur, can be used. With burs, always use <b>copious irrigation</b> to avoid overheating the bone and subsequent necrosis, and to clean the bur flutes and carry away debris. After bulk reduction, a bone file is used to “fine-tune” the contour.</p>"},{"k":"4th year · Pre-prosthetic","t":"Intraseptal alveoloplasty","b":"<p><b>Intraseptal alveoloplasty</b> is considered when the ridge has acceptable contour and height but an unacceptable undercut that extends to the base of the labial vestibule. It is best done at extraction or early in healing. After extraction, the crestal tissue is slightly elevated to expose the sockets. With a small rongeur or bur, the intraseptal bone is removed to the depth of the socket. Constant, controlled finger pressure is then applied until the labiocortical plate is <b>greenstick-fractured</b> and can be positioned palatally, narrowing the crest and eliminating the undercut. Edges are smoothed with a file, the site is irrigated, and the crestal soft tissue is closed with interrupted or continuous sutures. Ideally a surgical stent, or a soft-tissue-lined immediate denture, is inserted to maintain the repositioned segment until the initial stages of healing, at about <b>two weeks</b>.</p>"},{"k":"4th year · Pre-prosthetic","t":"Alveoloplasty of the already-edentulous ridge","b":"<p>For routine elimination of sharp (knife-edge) ridges and undesirable contours, undercuts or prominences, direct vision and frequent palpation until the desired endpoint will suffice. When the ridges need multifocal, moderate or greater recontouring, diagnostic casts to identify the areas, and surgical guides, are recommended. A full-thickness flap fully exposes the targets; files, rasps, rongeurs, burs or combinations recontour them; digital palpation with the flap in place continues until the endpoint; then irrigate and close primarily.</p>"},{"k":"4th year · Pre-prosthetic","t":"Buccal and palatal exostosis: incision design","b":"<p>The same approach can be used on either arch and for irregularities on the palatal aspect of the maxillary alveolus. A crestal incision extends beyond the margins of the area. A full-thickness flap exposes it completely. If an envelope flap would be under tension, a releasing incision may be added. To reach a palatal exostosis, make the incision longer and reflect more tissue for relaxation. Because of the greater palatine and incisive-branch anastomosis, <b>vertical releases in the palate are not recommended</b>. After exposure, protect the tissue, recontour, palpate through the flap, irrigate and close.</p>"},{"k":"4th year · Pre-prosthetic","t":"Maxillary tuberosity reduction (hard tissue)","b":"<p>Hyperplastic maxillary tuberosities present real problems for gaining posterior inter-arch distance. They may be hyperplastic in the horizontal or vertical plane, and may involve bone, soft tissue, or both. A panoramic radiograph usually distinguishes the hard- and soft-tissue components, shows overall contour, and shows proximity to the maxillary sinus. Remember that sinuses may pneumatize into the tuberosity areas.</p><p>A crestal incision is made from a point anterior to where recontouring will start, over and up behind the tuberosity. Tissue is elevated on both the buccal and palatal aspects to fully expose it. After all soft tissue is protected, the tuberosity is recontoured with a file, rongeur or bur; a surgical guide may be needed if a great deal of bone is to be removed. If the sinus has pneumatized, take care when removing bone. The sinus membrane may become exposed; this is not a problem as long as the membrane remains <b>intact</b>.</p>"},{"k":"4th year · Pre-prosthetic","t":"Mandibular and maxillary tori","b":"<p>In the dentate arch, tori pose few problems, though a large torus can interfere with tongue mobility and speech, and the thin overlying mucosa may be chronically irritated by certain foods. In the edentulous arch, tori may significantly interfere with a removable prosthesis and often must be removed. After all tori have been removed and the bone smoothed, the flap is repositioned and the lingual plate is palpated to confirm the desired contours.</p><div class=\"figrow\"><img src=\"prostho-img/file9/mandibular-tori.jpg\" alt=\"\"><img src=\"prostho-img/file9/maxillary-tori.jpg\" alt=\"\"></div><p class=\"cap\">Mandibular and maxillary tori often need removal before a removable prosthesis can be worn comfortably; a posterior palatal torus can also spoil the posterior palatal seal.</p><p>Maxillary tori may pose a significant problem in making and wearing a maxillary complete denture, especially when they sit more posteriorly and interfere with the posterior palatal seal. A midline incision is placed over the torus with oblique releasing incisions at each end. When tori are multilobulated and pedunculated, elevation of the thin mucosa may be difficult. After exposure, adequate flap control for visualization is important; an excellent method is to suture the flap margin to the crest of the ridge on the same side. For some larger pedunculated multilobulated tori, a mid-crestal incision with elevation of the entire palatal mucosa is recommended. This dissection must stay <b>subperiosteal</b> to avoid injury to the palatal blood supply. The desirable endpoint is a palatal vault that is smooth and confluent, with no undercuts or elevations. Hematoma under the flap is a great concern. Excellent pressure methods are a temporary denture with soft reline over the site, or a well-fitting surgical guide with soft reline. Pressure should be maintained for several days; the patient may remove the appliance for local wound care and rinsing.</p>"},{"k":"4th year · Pre-prosthetic","t":"Mylohyoid-ridge reduction","b":"<p>In mandibular post-extraction remodeling, the alveolar bone and external oblique ridge resorb from lack of stressing and functional remodeling. The mylohyoid ridge, which supports the mylohyoid-muscle attachment, remains relatively intact and becomes a prominent feature in the posterior mandible. After profound anesthesia, a mid-crestal incision is made anterior to the site and carried posteriorly, gradually deviating toward the <b>buccal</b> to avoid potential injury to the <b>lingual nerve</b>. The flap is elevated to expose the ridge and attached muscle. Sharp dissection strips the tendinous attachments of the mylohyoid. The area is copiously irrigated and closed primarily. Ideally a denture with a soft reline is then placed so that the lingual flange helps displace the detached mylohyoid muscle.</p>"},{"k":"4th year · Pre-prosthetic","t":"Genial-tubercle reduction","b":"<p>In the anterior mandible the alveolar and tooth-bearing areas resorb, while the superior pair of genial tubercles (insertion of genioglossus) and the lower pair (geniohyoid) remain. With constant tongue movement and stressing, the tubercles can become very prominent and impede seating of the denture. The site lies between two moving structures — the tongue and the lip — so it is prone to wound dehiscence and is a difficult surgery. With the bone exposed and the flap protected, height is reduced to the desired level, the wound is irrigated, and it is closed primarily.</p>"},{"k":"4th year · Pre-prosthetic · Soft tissue","t":"Planning soft-tissue surgery, and sending tissue for histopathology","b":"<p>With tooth loss, resorption and remodeling, soft-tissue and muscular attachments that were not a problem with teeth may become harmful to prosthesis stability and function, and may need removal or alteration. Ill-fitting prostheses can also produce hyperplastic tissues in the bearing and peripheral areas; those tissues worsen fit and stability and can cause discomfort.</p><p>Because it is very difficult to replace oral mucosa after it has been removed, the treatment plan must detail the sequence in which soft-tissue abnormalities will be addressed. Treatment will usually address <b>bony abnormalities first</b>, to achieve normal bone healing with good soft-tissue coverage. If implant placement is planned, bone augmentation may be required, and preserving redundant soft tissue to cover that graft should be considered. Soft-tissue issues may then be addressed after grafting and/or implants have healed.</p><p>In general, excised redundant hyperplastic soft tissues result from chronic irritation by an ill-fitting prosthesis. Because pathologic changes can occur in chronically irritated tissue, as a rule <b>a portion of all excised hyperplastic tissues should be submitted for histopathologic examination</b>.</p>"},{"k":"4th year · Pre-prosthetic · Soft tissue","t":"Maxillary soft-tissue tuberosity reduction","b":"<p>Hyperplastic tuberosity tissues often impinge on the inter-arch distance needed for denture bases. To decide whether reduction will be mainly bone or soft tissue, a panoramic radiograph that can discriminate the soft-tissue shadow from bone is required. If one is not available, sounding the soft tissue with the anesthesia needle after the region is anesthetized will show thickness. If a great deal of tissue removal is anticipated, a surgical guide is recommended.</p><p>A midline elliptical incision is made sharply to bone, widest over the area of most tissue, tapering into normal ridge anteriorly and to the posterior tuberosity behind. The ellipsed portion is elevated and removed. The clinician then evaluates tissue height above the bone. Once excess is gone and mucosa is of uniform thickness, digital pressure approximates the buccal and palatal margins to judge vertical reduction; having the patient close gently on the clinician’s fingers evaluates the change in inter-arch distance. If acceptable, the margins are trimmed for a tension-free <b>butt-joint</b> closure (interrupted or continuous sutures).</p>"},{"k":"4th year · Pre-prosthetic · Soft tissue","t":"Maxillary labial frenectomy (and the lingual frenum)","b":"<p>Labial frenal attachments are thin bands of fibrous tissue/muscle covered with mucosa, extending from the lip or cheek into the periosteum on the side or crest of the ridge (except those that attach at the incisive papilla and contribute to a midline diastema). They matter little when teeth are present, but on an edentulous ridge they may affect seating, stabilization and construction of the prosthesis, and may reduce function and comfort. Mandibular lingual frenectomy is also listed among the commonly used pre-prosthetic soft-tissue procedures.</p><p>For a simple frenectomy, infiltration around the lip is usually adequate; injecting directly into the frenum may distort the anatomy. Two small curved hemostats are placed with the curved sides against the tissues, one on the superior and one on the inferior aspect of the frenum. A blade follows the curvature of each hemostat, excising the frenum and leaving a diamond-shaped wound. Remnants are excised directly to periosteum. A suture is placed through the wound margin, engaging the periosteum in the depth of the vestibule just below the anterior nasal spine. If the frenum extended to the crest through attached tissue, all parts of the wound close primarily except that part in the attached tissue, which is left to granulate and heal by <b>secondary intention</b>.</p><div class=\"figrow\"><img src=\"prostho-img/file9/frenectomy-sutures.jpg\" alt=\"\"><img src=\"prostho-img/file9/lingual-frenum.jpg\" alt=\"\"></div><p class=\"cap\">Left: after a simple labial frenectomy the diamond-shaped wound is sutured, engaging periosteum in the vestibule; the part that ran through attached tissue is left to granulate. Right: a prominent lingual frenum is also commonly released before a lower denture is made.</p>"},{"k":"4th year · Pre-prosthetic · Soft tissue","t":"Redundant tuberosity tissue, and epulis fissuratum","b":"<p>Redundant hypermobile tissue over the tuberosities is often the result of ill-fitting dentures, ridge resorption, or both. After the area to be excised is identified, parallel incisions on the buccal and lingual or palatal aspects are made sharply to bone. The excised piece is dissected from the bone and removed. Digital pressure checks for primary closure. The wound is irrigated and closed primarily. Care should be taken to avoid significant undermining of the buccal/facial flaps and loss of vestibular depth when closing.</p><p><b>Inflammatory fibrous hyperplasia (epulis fissuratum)</b> is a generalized hyperplastic enlargement of mucosa and fibrous tissue in the alveolar ridge and vestibular area. The etiology is most closely associated with chronic trauma from an ill-fitting prosthesis. It progresses in stages, and the surgery indicated varies with the stage. In early stages there is not a significant degree of fibrosis, and nonsurgical therapies may be effective. In later stages with significant fibrosis and hyperplastic change, excision of the mass is the treatment of choice.</p><img class=\"fig\" src=\"prostho-img/file9/epulis.jpg\" alt=\"\"><p class=\"cap\">Epulis fissuratum is a hyperplastic response to chronic trauma from an ill-fitting denture flange; early lesions may respond without surgery, later fibrotic masses need excision.</p>"},{"k":"4th year · Pre-prosthetic · Soft tissue","t":"Surgical removal of an epulis, and how the vestibule is protected","b":"<p>If the epulis mass is not extensive, lasers or electrosurgery give good results. For more extensive masses, the margins are elevated with tissue forceps and an incision is made at the base of the mass, <b>not through the periosteum</b>. The mass is dissected out. Normal mucosal margins are sutured in place, and the superior margins are sutured to the depth of the vestibule. To minimize soft-tissue creeping and loss of vestibular height during healing by secondary intention, a surgical stent with an extended anterior flange lined with soft tissue conditioner is used, or the existing denture with the flange extended to engage the height of the vestibule and lined with conditioner. The prosthesis should be removed only for wound care, rinsing, and cleansing of its interior. Secondary epithelialization takes <b>four to six weeks</b>.</p>"},{"k":"4th year · Pre-prosthetic · Soft tissue","t":"Inflammatory papillary hyperplasia of the palate","b":"<p><b>Inflammatory papillary hyperplasia of the palate</b> is thought to be caused by an ill-fitting prosthesis, poor hygiene, or fungal infection and the associated inflammation. It appears as multiple nodular projections in the palatal mucosa, which may be erythematous or of normal palatal color. Early treatment consists of prosthesis adjustments, a tissue conditioner, and proper oral hygiene. In more advanced presentations, because this is primarily an inflammatory disorder, there is no need to excise the full thickness of the palatal tissue. The superficial inflamed layers are removed, leaving the palatal periosteum intact to heal by secondary intention. Techniques include electrosurgery loops, laser ablation of the superficial layers, sharp dissection, coarse-fluted burs, or cryotherapy. The palate is covered with a surgical stent or a denture with a soft tissue conditioner for comfort and coverage while secondary epithelialization takes place over the following four to six weeks.</p>"},{"k":"4th year · Complete-denture diagnosis","t":"What diagnosis is, and the four main factors","b":"<p>Diagnosis is the critical or scientific evaluation of existing conditions, made toward the end of the examination. It is a continuous procedure, not accomplished in a short time. It is defined as the act or process of deciding the nature of a diseased condition by examination, and as the determination of the nature, location and causes of disease.</p><p>Factors that should be evaluated for a proper diagnosis and treatment plan:</p><ol><li>The patient’s mental attitude.</li><li>The patient’s systemic status.</li><li>Past dental history.</li><li>The local oral condition.</li></ol>"},{"k":"4th year · Complete-denture diagnosis","t":"House’s four mental-attitude classes","b":"<p>Success of a dental prosthesis is related to functional, biological, technical, esthetic and psychological factors. The psychological factor includes the patient’s preparedness and mental attitude toward dentures, their relationship with and attitude toward the dentist, and their ability to learn how to use the dentures. The prosthodontist must fully understand the patient, because that understanding predisposes the patient to accept the needed treatment.</p><p><b>House</b> classified patients into four categories:</p><p><b>1. Philosophical.</b> The best attitude for denture acceptance. These patients are rational, sensible, calm and composed in difficult situations. Their motivation is generalized: they want dentures to maintain health and appearance and feel that having teeth replaced is a normal, acceptable process. They are easy-going, cooperative and well adjusted, understand and accept advice, and do not imagine or anticipate any particular difficulty.</p><p><b>2. Exacting.</b> They may have all the good attributes of the philosophical patient, but they may require extreme care, effort and patience. They like each step explained in detail and need extra hours of education before treatment until an understanding is reached about the best plan.</p><p><b>3. Indifferent.</b> They have little concern for their teeth or oral health and do not appreciate the dentist’s efforts and skill. They give up easily if problems are encountered, often go without dentures for years, have no desire to wear them and do not care much about need or function. In most, a questionable or unfavorable prognosis may be expected. An educational program is recommended before denture construction.</p><p><b>4. Hysterical.</b> Emotionally unstable, excitable, apprehensive and hypertensive. They are neglectful of oral health and unwilling to try to adapt to wearing dentures. Although they may try a denture, they fail to use it because they expect it to look and function like natural teeth. The prognosis is often unfavorable, and additional professional (psychiatric) help is required before and during treatment.</p>"},{"k":"4th year · Complete-denture diagnosis","t":"Social information: name, age, gender, occupation","b":"<p><b>Name</b> is recorded; addressing the patient by name brings some confidence, and the name may also give an idea of family and community.</p><p><b>Age.</b> A young patient will be more adaptable to a new denture than an older person. Problems anticipated with advancing age include: adaptation to the new denture; coordination; bone resorption; tissue sensitivity; healing; and balanced nutrition.</p><p><b>Gender.</b> In general, women are more difficult to please with the appearance of their denture than men, and are more aware of their face and lips. Males are less concerned with esthetics; they do expect comfort and function.</p><p><b>Occupation and social position.</b> In general, the higher the social position, the more demanding the patient about esthetics. A lecturer who speaks a great deal will be concerned about the speech pattern; a musician who plays a wind instrument will care about tooth position.</p>"},{"k":"4th year · Complete-denture diagnosis","t":"Systemic status: debilitating disease, diabetes, cardiovascular disease and anaemia","b":"<p>No prosthodontic procedures should be planned until the systemic status is evaluated. Oral health is closely associated with general health. Except in accidents, people who are losing their teeth are manifesting pathologic conditions, because the loss may result from systemic factors or be associated with unfavorable systemic conditions. Some systemic diseases have a direct relation to denture success even when no local manifestations are apparent.</p><p><b>Debilitating diseases</b> (diabetes, blood dyscrasias, tuberculosis): these patients need extra instruction on oral hygiene, eating habits and tissue rest. Physician consultation is advisable. Supporting bone may be affected, so frequent recall is needed to keep the base adapted and the occlusion corrected.</p><p><b>Diabetes</b> in particular: there may be wasting of tissues; patients need functional rest, so they can be advised less wearing time; in severe diabetes, acetone secreted in the mouth leads to poor fit, so wearing time is reduced; a diet rich in vitamins B and C is recommended, and calcium should be supplemented; a physician should be consulted to control blood sugar; and the condition indicates careful consideration of impression procedure, tooth selection and type of occlusion.</p><p><b>Cardiovascular disease:</b> give early-morning appointments to avoid tissue changes that occur later in the day from medication; keep each appointment short to reduce stress; consultation with a cardiologist may be needed, as some procedures may be contraindicated; the patient must be controlled before dental treatment.</p><p><b>Anaemia:</b> soft tissue overlying bone becomes fragile, with possible enhanced bone loss; bearing capacity of the foundation decreases; healing capacity decreases. Advise a haemogram, with emphasis on improving the blood picture with haematinic principles.</p>"},{"k":"4th year · Complete-denture diagnosis","t":"Joints, neurological disorders, skin disease, oral malignancy and menopause","b":"<p><b>Joint diseases,</b> particularly osteoarthritis, present different problems. If the TMJ is involved, the treatment plan may have to change. In extreme conditions special trays and techniques are often needed because of limited opening; jaw-relation records are difficult, and occlusal correction must be made often because of subsequent changes in the joint. If finger joints are involved, ability to maintain denture hygiene and to insert the denture may decrease.</p><p><b>Neurological disorders</b> such as Bell’s palsy or Parkinson’s require attention to denture retention, maxillomandibular records and the supporting musculature.</p><p><b>Skin diseases</b> may have oral manifestations, such as pemphigus (ulcers to bullae). Medical support is mostly needed because the oral lesions are painful and prevent proper work. Denture use is impossible without medical treatment, and constant use of dentures is contraindicated.</p><p><b>Oral malignancies.</b> Some complete-denture patients with oral cancer may require radiation. A waiting period should elapse before denture construction. Tissue that has a bronze color and loss of tonicity is not suitable for denture support. Once the denture is made, the tissue should be examined frequently for radio-necrosis. Xerostomia can also follow radiotherapy, so sialagogues and denture adhesives may have to be considered.</p><p><b>Menopause</b> can cause glandular changes, osteoporosis, burning sensation and psychiatric changes, which can influence planning and the efficiency of the complete denture.</p>"},{"k":"4th year · Complete-denture diagnosis","t":"Past dental history and examination of previous dentures","b":"<p>Success or failure is frequently the direct result of the adequacy of the dental history. Understanding why the patient lost teeth helps estimate appreciation of dentistry and the prognosis. Patients who lost teeth in an accident may be much unhappier about being edentulous than those who lost them from decay after neglect. Remaining alveolar bone would be expected to be greater after rapid loss from decay than after a long history of progressive periodontal disease.</p><p>The history includes: the chief complaint (it gives ideas about psychology); expectations, classified as realistic or unrealistic; the period of edentulousness (amount and pattern of resorption) and the cause of tooth loss; and previous dentures. Patients who keep changing dentures in a short period are difficult to satisfy and risky to deal with. Any existing prosthesis must be examined thoroughly and objectively — to condemn a prosthesis solely on the patient’s complaint is often an incorrect diagnosis. The old denture reflects oral hygiene and the condition of the supporting tissues. Note number and duration of previous dentures, and information on esthetics, phonetics, mastication, retention, vertical dimension of occlusion and centric relation, plus earlier repairs, rebasing or relining.</p>"},{"k":"4th year · Complete-denture diagnosis","t":"Extra-oral examination: TMJ, muscle tone, neck, face and lips","b":"<p>Local factors are evaluated during clinical examination, divided into extra-oral and intra-oral parts. Extra-orally, examine the head and neck for any pathologic condition, including the face, muscle tone, lips and TMJ.</p><p>Any patient with a history of TMJ problems must be examined carefully, because of possible limitation of movement and opening. Complaints of pain, subluxation, crepitus, or a combination, can be due to a severe discrepancy of vertical dimension, loss of teeth, or loss of posterior stops that shifts the load anteriorly. Examination: the bulk of the index finger is placed in the external auditory meatus and equal pressure is applied while the patient opens; pain indicates an abnormal condition. Also use auscultation.</p><p><b>Muscle tone:</b> Class I — normal tissue tone and function. Class II — approximately normal function and tone, tactile sense preserved by wearing artificial dentures that restore the correct vertical dimension. Class III — subnormal function and tone from ill health, loss of teeth, or grossly inefficient dentures. Tone that is too tense makes cheek and lip manipulation difficult; if it is too loose, the lips and cheeks may be displaced easily by impression material.</p><p>Neck palpation of lymphatics matters: the first sign of oral cancer is often a palpable lymph node. Facial form (square, tapering, ovoid, square-tapering) helps tooth selection. Facial profile: Class 1 normal/straight, Class 2 retrognathic, Class 3 prognathic. A short lip will expose all of the upper anterior teeth and much of the labial flange. A thin lip presents a problem because any slight change in labiolingual tooth position makes an immediate change in lip contour.</p>"},{"k":"4th year · Complete-denture diagnosis","t":"Intra-oral mucosa: color, condition and thickness","b":"<p><b>Color of the mucosa:</b> healthy mucosa is pink; redness indicates inflammatory change. Inflamed tissues give a wrong recording when an impression is made. <b>Condition:</b> Class 1 healthy, Class 2 irritated, Class 3 pathologic. <b>Thickness:</b> Class I firm mucoperiosteum of uniform thickness about 1 mm; Class II thin mucoperiosteum highly susceptible to irritation from denture pressure; Class III thick flabby tissue leading to displacement and soreness, with stability and retention difficult to secure.</p><p><b>Arch form</b> (viewed from above): U-shape or square — best to prevent denture rotation; triangular (tapering) — less resistance to rotation; round (ovoid) — little or no resistance to rotational movements.</p>"},{"k":"4th year · Complete-denture diagnosis","t":"Ridge cross-section, height, inter-arch distance and bony undercuts","b":"<p><b>Arch shape in cross-section:</b> Class I U-shape with a broad flat crest offering excellent resistance to vertical displacing forces; Class II V-shape but the crest still flat enough to offer some vertical support; Class III knife-edge with a narrow sharp crest that offers little or no vertical support.</p><p><b>Height:</b> Class I adequate height that can resist lateral movement; Class II some resorption but still enough bone to resist lateral movement; Class III a resorbed ridge with little or no resistance to lateral forces.</p><p><b>Inter-arch distance:</b> Class I enough to accommodate the dentures; Class II excessive distance — dentures usually less stable because the teeth sit far from supporting bone; Class III limited distance — placement of artificial teeth can be difficult.</p><p><b>Bony undercuts:</b> Class I absent; Class II small undercuts over which the denture can be placed by changing the path of insertion or by relieving after PIP; Class III prominent bilateral undercuts that must be corrected by surgery (sometimes surgery can be limited to one side only).</p>"},{"k":"4th year · Complete-denture diagnosis","t":"Hard palate and soft-palate slope (for the PPS)","b":"<p><b>Hard palate.</b> Broad and relatively flat: best resistance to vertical forces and good retention, but easily dislodged by lateral, anterior or rotating forces. U-shape: adequate support, stability and retention. V-shape: little vertical support, and the peripheral seal is easily broken.</p><p><b>Configuration of the soft palate (posterior palatal seal area):</b> Class I — gradual slope with several millimeters of movable tissue, producing a favorable PPS; Class II — a sharper slope, more limited in the amount of tissue for a seal and in posterior length of the denture; Class III — a sharp drop that restricts the seal and posterior length.</p>"},{"k":"4th year · Complete-denture diagnosis","t":"Tongue size and position, lateral throat form, and saliva","b":"<p><b>Tongue size:</b> Class 1 adequate — fills the floor but does not overfill; Class 2 slightly overfills the floor; Class 3 completely overfills the floor and covers the residual ridge, making impression-making difficult and decreasing denture stability. <b>Tongue position:</b> favorable — tip at or about the lingual surfaces of the lower anterior teeth, lateral borders contacting the lingual surfaces of the posterior teeth and the base of the tongue; unfavorable — a retruded tongue whose tip does not contact the lower denture or residual ridge, so the denture seal is broken.</p><p><b>Lateral throat form (post-mylohyoid space):</b> Class 1 deep, about 0.5 inch between the mylohyoid ridge and the floor of the mouth (favorable); Class 2 moderate depth; Class 3 shallow, which results in a weak lower denture.</p><p><b>Saliva:</b> Class I normal in amount and consistency; Class II excessive thin watery, or thick ropy saliva; Class III insufficient (xerostomia).</p>"},{"k":"4th year · Complete-denture diagnosis","t":"Radiographic examination of the edentulous patient","b":"<p>Radiographic examination (panoramic, cephalometric, occlusal, and periapical intra-oral views) is needed for: roots remaining in the residual ridge; unerupted teeth; cysts; tumors; foreign bodies; the TMJ; osteoporosis; and any other bony pathosis.</p>"},{"k":"4th year · Complete-denture diagnosis","t":"Nine advantages of mounted diagnostic casts, and videography","b":"<p>Diagnostic casts mounted on an articulator have several advantages:</p><ol><li>They let the dentist see oral anatomy without the patient being present.</li><li>They record inter-arch distance.</li><li>They confirm observation of the intra-oral examination.</li><li>They let the dentist examine the size of the residual ridges and their relation to each other, and detect a crossbite relationship of the residual alveolar ridges.</li><li>They can be surveyed for bony undercuts.</li><li>Soft-tissue disease is often more obvious than when saliva and color mask the mouth.</li><li>Displacement of tissue from an old denture is more obvious on a dry diagnostic cast than in the moist environment of the mouth.</li><li>They can be used to plan pre-prosthetic surgery.</li><li>They can be used to educate the patient.</li></ol><p>Intra-oral videography may also be used to record a patient’s denture experience or current oral condition, and to share that record with colleagues if a second opinion is needed.</p>"},{"k":"4th year · Complete-denture diagnosis","t":"The treatment plan","b":"<p>The treatment plan consists of matching possible treatment options with the patient’s needs, then arranging those needs in order of priority and in a logical sequence of treatment. It considers all diagnostic findings that influence treatment, including surgical preparation, impression procedures, jaw-relation records, occlusion, tooth form and material, and patient instructions. A plan is needed so that you can specifically state treatment that will address this patient’s individual need, and will do so in a logical sequence.</p>"},{"k":"4th year · Complete-denture diagnosis","t":"Prognosis and patient education","b":"<p>Prognosis is a judgment in advance of the success of denture fabrication and of the usefulness of the completed denture. Factors that influence it include: anatomy of the denture-bearing surfaces; tongue position and floor-of-mouth posture; neuromuscular control; previous denture history; and psychological classification of the patient.</p><p>Patient education is both initial and continuing. The process includes informing the person about dental health; explaining the significance of being totally edentulous; matching realistic expectations with what can actually be achieved; explaining the nature, use and shortcomings of complete dentures; and identifying alternative treatment and its consequences.</p>"},{"k":"اختبر نفسك","t":"Pre-prosthetic surgery — key choices","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A clear surgical guide is placed after bone recontouring, with the flap repositioned. Soft-tissue blanching under the guide means:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The contour is finished and the wound can be closed</button><button type=\"button\" class=\"opt\" data-i=\"1\">More bone still needs to be removed</button><button type=\"button\" class=\"opt\" data-i=\"2\">The flap is too thin and must be discarded</button><button type=\"button\" class=\"opt\" data-i=\"3\">Only soft tissue, never bone, remains to be trimmed</button></div><div class=\"qexp\" hidden><p>التبييض يعني الدليل يضغط على نسيج فوق عظم بعد زايد. كرّر التشذيب لين ما يبقى تبييض والدليل ثابت، وبعدين فكّر بتشذيب النسيج إذا لزم.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Intraseptal alveoloplasty is chosen when the ridge has:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Poor height and a knife-edge crest that must be reduced vertically</button><button type=\"button\" class=\"opt\" data-i=\"1\">Acceptable contour and height, but an undercut that reaches the base of the labial vestibule</button><button type=\"button\" class=\"opt\" data-i=\"2\">A pneumatized maxillary sinus into the tuberosity</button><button type=\"button\" class=\"opt\" data-i=\"3\">Only soft-tissue hyperplasia over a normal ridge</button></div><div class=\"qexp\" hidden><p>الفكرة نشيل العظم بين الأسناخ ونكسر الصفيحة الشفوية كسر أخضر ونميلها للحنك، حتى الـ undercut يروح بدون ما ننقص ارتفاع الحافة.</p></div></div><div class=\"qbox\" data-ans=\"2\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">During palatal exostosis surgery, vertical releasing incisions in the palate are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Recommended so the flap lies passively</button><button type=\"button\" class=\"opt\" data-i=\"1\">Used only if the greater palatine artery has already been tied</button><button type=\"button\" class=\"opt\" data-i=\"2\">Not recommended, because of the greater palatine and incisive-branch anastomosis</button><button type=\"button\" class=\"opt\" data-i=\"3\">Mandatory whenever a mid-crestal palatal flap is raised</button></div><div class=\"qexp\" hidden><p>بالحنك طول الفتحة وارفع نسيج أكثر عشان الارتخاء، بس لا تسوي تحرير عمودي حتى ما تجرح التفاغر الوعائي.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">If the maxillary sinus membrane is exposed during tuberosity reduction but remains intact, the lecture states this is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">An indication to abort the case and graft immediately</button><button type=\"button\" class=\"opt\" data-i=\"1\">Not a problem so long as the membrane is intact</button><button type=\"button\" class=\"opt\" data-i=\"2\">Always followed by an oro-antral fistula</button><button type=\"button\" class=\"opt\" data-i=\"3\">Treated by packing the sinus with acrylic chips</button></div><div class=\"qexp\" hidden><p>الحذر واجب ويه الجيب المتوسع، بس انكشاف الغشاء السليم مو كارثة حسب المنهج.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A mid-crestal incision for mylohyoid-ridge reduction is carried posteriorly and gradually deviated toward the buccal in order to:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Protect the facial artery</button><button type=\"button\" class=\"opt\" data-i=\"1\">Avoid potential injury to the lingual nerve</button><button type=\"button\" class=\"opt\" data-i=\"2\">Preserve the mental foramen</button><button type=\"button\" class=\"opt\" data-i=\"3\">Keep the mylohyoid attachment intact</button></div><div class=\"qexp\" hidden><p>العصب اللساني بالجهة اللسانية الخلفية. الفتحة تميل شدقي حتى نتجنبه.</p></div></div><div class=\"qbox\" data-ans=\"2\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">As a rule, a portion of all excised hyperplastic soft tissues should be:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Discarded once the wound is closed</button><button type=\"button\" class=\"opt\" data-i=\"1\">Used as a free graft over the same site</button><button type=\"button\" class=\"opt\" data-i=\"2\">Submitted for histopathologic examination</button><button type=\"button\" class=\"opt\" data-i=\"3\">Frozen and returned to the patient</button></div><div class=\"qexp\" hidden><p>التهيج المزمن ممكن يغيّر النسيج مرضياً، فجزء منه يروح للفحص النسيجي.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">In a simple labial frenectomy, injecting directly into the frenum is avoided because it may:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Cause a dry socket</button><button type=\"button\" class=\"opt\" data-i=\"1\">Distort the anatomy</button><button type=\"button\" class=\"opt\" data-i=\"2\">Anesthetize the infraorbital nerve unnecessarily</button><button type=\"button\" class=\"opt\" data-i=\"3\">Prevent secondary-intention healing</button></div><div class=\"qexp\" hidden><p>خدّر حول الشفة، لا داخل اللجام، حتى الشكل يبقى واضح وتقصّ صح.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Advanced inflammatory papillary hyperplasia of the palate should be treated by:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Full-thickness excision of palatal mucosa down to bone</button><button type=\"button\" class=\"opt\" data-i=\"1\">Removing only the superficial inflamed layers, leaving palatal periosteum intact to heal by secondary intention</button><button type=\"button\" class=\"opt\" data-i=\"2\">Immediate placement of a metal palatal base with no soft liner</button><button type=\"button\" class=\"opt\" data-i=\"3\">Extraction of any remaining maxillary teeth</button></div><div class=\"qexp\" hidden><p>هذا اضطراب التهابي، مو ورم يحتاج استئصال كامل السماكة. السمحاق يبقى، والالتئام الثانوي 4–6 أسابيع تحت ستنت أو طقم مبطّن.</p></div></div>"},{"k":"اختبر نفسك","t":"Complete-denture diagnosis — key choices","b":"<div class=\"qbox\" data-ans=\"2\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">According to House, the patient type with the best attitude for denture acceptance is the:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Exacting patient</button><button type=\"button\" class=\"opt\" data-i=\"1\">Indifferent patient</button><button type=\"button\" class=\"opt\" data-i=\"2\">Philosophical patient</button><button type=\"button\" class=\"opt\" data-i=\"3\">Hysterical patient</button></div><div class=\"qexp\" hidden><p>الـ Philosophical عاقل هادي متعاون ويشوف تعويض الأسنان شيء طبيعي. هذا أفضل موقف لقبول الطقم.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">An indifferent patient should usually receive, before denture construction:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Immediate surgery and a same-day denture</button><button type=\"button\" class=\"opt\" data-i=\"1\">An educational program</button><button type=\"button\" class=\"opt\" data-i=\"2\">No further appointments, because the prognosis is always hopeless</button><button type=\"button\" class=\"opt\" data-i=\"3\">A metal palatal base as the first and only treatment</button></div><div class=\"qexp\" hidden><p>هذا المريض ما يهتم ويستسلم بسهولة؛ الإنذار مشكوك أو سيء، فالتعليم يجي أولاً.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">For a patient with cardiovascular disease the lecture recommends appointments that are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Late in the afternoon and as long as needed</button><button type=\"button\" class=\"opt\" data-i=\"1\">Early in the morning and short, to avoid later-day tissue changes from medication and to reduce stress</button><button type=\"button\" class=\"opt\" data-i=\"2\">Scheduled only after all antihypertensive drugs have been stopped</button><button type=\"button\" class=\"opt\" data-i=\"3\">Unnecessary if the blood pressure was once recorded as normal</button></div><div class=\"qexp\" hidden><p>الدواء يغيّر الأنسجة آخر اليوم، والجلسات الطويلة تزود التوتر. الصباح المبكر والقصير أفضل، والمريض لازم يكون مضبوط.</p></div></div><div class=\"qbox\" data-ans=\"2\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The arch form that offers the best resistance to rotational movement of a complete denture is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Triangular (tapering)</button><button type=\"button\" class=\"opt\" data-i=\"1\">Round (ovoid)</button><button type=\"button\" class=\"opt\" data-i=\"2\">U-shaped or square</button><button type=\"button\" class=\"opt\" data-i=\"3\">V-shaped in cross-section only</button></div><div class=\"qexp\" hidden><p>القوس U أو المربع أفضل ضد الدوران. المثلث أقل، والبيضوي تقريباً بلا مقاومة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A Class III (knife-edge) residual ridge in cross-section offers:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Excellent resistance to vertical displacing forces</button><button type=\"button\" class=\"opt\" data-i=\"1\">Little or no vertical support</button><button type=\"button\" class=\"opt\" data-i=\"2\">The same support as a broad flat Class I crest</button><button type=\"button\" class=\"opt\" data-i=\"3\">Automatic resistance to lateral forces even if height is lost</button></div><div class=\"qexp\" hidden><p>القمة الضيقة الحادة ما تقاوم الإزاحة العمودية. الـ U العريض المسطح هو الممتاز.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A Class I soft-palate slope is favorable for the posterior palatal seal because it has:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A sharp drop that shortens the denture</button><button type=\"button\" class=\"opt\" data-i=\"1\">A gradual slope with several millimeters of movable tissue</button><button type=\"button\" class=\"opt\" data-i=\"2\">No movable tissue at all</button><button type=\"button\" class=\"opt\" data-i=\"3\">A V-shaped hard palate only</button></div><div class=\"qexp\" hidden><p>الانحدار التدريجي يعطيك مليميترات من نسيج متحرك تختم بيها PPS زين.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">An unfavorable tongue position is one in which the tip is retruded and:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Rests at the lingual of the lower anterior teeth</button><button type=\"button\" class=\"opt\" data-i=\"1\">Does not contact the lower denture or residual ridge, so the denture seal is broken</button><button type=\"button\" class=\"opt\" data-i=\"2\">Slightly overfills the floor of the mouth but still touches the ridge</button><button type=\"button\" class=\"opt\" data-i=\"3\">Contacts the buccal shelf</button></div><div class=\"qexp\" hidden><p>اللسان المتراجع ما يلمس الطقم السفلي أو الحافة، فالختم ينكسر.</p></div></div><div class=\"qbox\" data-ans=\"2\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Nine listed advantages of mounted diagnostic casts include all of the following EXCEPT:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Surveying bony undercuts and planning pre-prosthetic surgery</button><button type=\"button\" class=\"opt\" data-i=\"1\">Making soft-tissue disease and old-denture tissue displacement more obvious</button><button type=\"button\" class=\"opt\" data-i=\"2\">Replacing the need for any radiographic examination</button><button type=\"button\" class=\"opt\" data-i=\"3\">Educating the patient and recording inter-arch distance</button></div><div class=\"qexp\" hidden><p>الصبّات مفيدة وايد، بس ما تلغي الصور الشعاعية (جذور، أسنان مطمورة، أكياس، أورام...).</p></div></div>"},{"k":"اختبر نفسك","t":"Self-test — File 9 (score at the end)","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Nonsurgical rest of denture-bearing tissues can be obtained by:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Immediate implant placement only</button><button type=\"button\" class=\"opt\" data-i=\"1\">Removing the dentures for an extended period, or placing temporary soft liners in the old dentures</button><button type=\"button\" class=\"opt\" data-i=\"2\">Polishing the intaglio of the old denture with pumice every night</button><button type=\"button\" class=\"opt\" data-i=\"3\">Raising a full-thickness flap and leaving it unsutured</button></div><div class=\"qexp\" hidden><p>الراحة: شيل الطقم فترة، أو تبطين طري مؤقت. وهم تدليك بالإصبع أو الفرشاة للمناطق المتورمة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">After bulk bone reduction with a bur, the lecture insists on:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">No irrigation, so the site stays dry for better vision</button><button type=\"button\" class=\"opt\" data-i=\"1\">Copious irrigation to avoid overheating and necrosis, then a bone file to fine-tune the contour</button><button type=\"button\" class=\"opt\" data-i=\"2\">Packing the wound with modelling wax for 24 hours</button><button type=\"button\" class=\"opt\" data-i=\"3\">Leaving sharp edges so the flap “locks” in place</button></div><div class=\"qexp\" hidden><p>السنبلة تحمي العظم بالغسل الغزير، وبعدين الملف ينعّم.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">After an intraseptal alveoloplasty, a surgical stent or soft-lined immediate denture is ideally worn for about:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Two days</button><button type=\"button\" class=\"opt\" data-i=\"1\">Two weeks</button><button type=\"button\" class=\"opt\" data-i=\"2\">Six months without removal</button><button type=\"button\" class=\"opt\" data-i=\"3\">Until the next extraction visit only</button></div><div class=\"qexp\" hidden><p>يحافظ على الصفيحة المعاد توجيهها لأول مراحل الشفاء، حوالي أسبوعين.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Maxillary tori are especially problematic for a complete denture when they sit more posteriorly because they can:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Increase salivary flow</button><button type=\"button\" class=\"opt\" data-i=\"1\">Interfere with the posterior palatal seal</button><button type=\"button\" class=\"opt\" data-i=\"2\">Raise the vertical dimension automatically</button><button type=\"button\" class=\"opt\" data-i=\"3\">Prevent any need for a surgical guide</button></div><div class=\"qexp\" hidden><p>الفطور الخلفية تخرب منطقة PPS، لذلك غالباً تنشال.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Elevation of a large palatal flap for torus removal must stay subperiosteal in order to:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Expose the nasal floor</button><button type=\"button\" class=\"opt\" data-i=\"1\">Avoid injury to the palatal blood supply</button><button type=\"button\" class=\"opt\" data-i=\"2\">Stimulate hematoma formation under the flap</button><button type=\"button\" class=\"opt\" data-i=\"3\">Allow vertical palatal releasing incisions</button></div><div class=\"qexp\" hidden><p>التشريح تحت السمحاق يحمي تروية الحنك. والتجمع الدموي نمنعه بضغط من طقم أو دليل مبطّن أيام.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">For an extensive epulis, the incision at the base of the mass should:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Cut through periosteum down to bone in every case</button><button type=\"button\" class=\"opt\" data-i=\"1\">Stay above the periosteum (not through it)</button><button type=\"button\" class=\"opt\" data-i=\"2\">Remove a full-thickness palatal graft from the opposite side</button><button type=\"button\" class=\"opt\" data-i=\"3\">Be made only with a coarse bur and no sutures</button></div><div class=\"qexp\" hidden><p>نرفع الكتلة من قاعدتها بدون قطع السمحاق. وبعدين ستنت أو طقم بحافة ممتدة وتبطين 4–6 أسابيع حتى الدهليز ما يضيع.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A hysterical House-class patient often has an unfavorable prognosis because they:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Are calm, cooperative and accept advice readily</button><button type=\"button\" class=\"opt\" data-i=\"1\">Expect the denture to look and function like natural teeth, and may need psychiatric help before and during treatment</button><button type=\"button\" class=\"opt\" data-i=\"2\">Have already adapted to several successful dentures</button><button type=\"button\" class=\"opt\" data-i=\"3\">Never need extra education</button></div><div class=\"qexp\" hidden><p>غير مستقر ويتوقع المستحيل من الطقم. مساعدة نفسية قد تلزم قبل وأثناء العلاج.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Class III lateral throat form (post-mylohyoid space) is described as:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Deep, about 0.5 inch, and favorable for the lower denture</button><button type=\"button\" class=\"opt\" data-i=\"1\">Shallow, resulting in a weak lower denture</button><button type=\"button\" class=\"opt\" data-i=\"2\">Irrelevant to mandibular retention</button><button type=\"button\" class=\"opt\" data-i=\"3\">A hard-palate finding only</button></div><div class=\"qexp\" hidden><p>العميق (Class 1، حوالي نصف إنج) مناسب للتثبيت السفلي؛ الضحل يضعّف الطقم السفلي.</p></div></div><div class=\"qbox\" data-ans=\"2\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Factors that influence complete-denture prognosis include all of the following EXCEPT:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Anatomy of the bearing surfaces, tongue position and floor-of-mouth posture</button><button type=\"button\" class=\"opt\" data-i=\"1\">Neuromuscular control, previous denture history and psychological classification</button><button type=\"button\" class=\"opt\" data-i=\"2\">The brand of articulator used in the laboratory, regardless of records</button><button type=\"button\" class=\"opt\" data-i=\"3\">All of the anatomic and behavioral factors listed in the lecture</button></div><div class=\"qexp\" hidden><p>الإنذار من تشريح الأساس، اللسان وأرضية الفم، التحكم العضلي، التاريخ النفسي والطقوم السابقة — مو من ماركة المفصلة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Patient education for the complete-denture wearer is described as:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A single talk given after insertion only</button><button type=\"button\" class=\"opt\" data-i=\"1\">Both initial and continuing, including realistic expectations, use, shortcomings and alternatives</button><button type=\"button\" class=\"opt\" data-i=\"2\">Unnecessary for philosophical patients</button><button type=\"button\" class=\"opt\" data-i=\"3\">Replaced entirely by a written consent form</button></div><div class=\"qexp\" hidden><p>التعليم من أول يوم ويستمر: توقعات واقعية، طبيعة الطقم ونواقصه، والبدائل.</p></div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا الملف التاسع: قبل ما تسوي طقم كامل (أو تحسّن أساس أي طقم)، أحياناً الفم يحتاج راحة أو تغذية أو جراحة. وبعدين شلون تشخّص مريض الطقم الكامل من النفسية للمرض العام لفحص الفم والحافة.</p><p>الفكرة الذهبية بالجراحة: لا تجرّح إلا إذا النتيجة راح تحسّن إنذار الطقم. أحياناً تغيير طريقة الطبعة أو المادة أسهل وأأمن من عملية.</p>","<p>قبل الجراحة، ثلاث طرق بدون مشرط:</p><p><b>راحة الأنسجة:</b> شيل الطقوم فترة طويلة، أو حط تبطين طري مؤقت جوه الطقم القديم. الاثنين يخلّون النسيج المشوّه يرجع شكله. وهم دلّك يومي بإصبع أو فرشاة ناعمة، خصوصاً المناطق المتورمة المتضخمة.</p><p><b>تصحيح إطباق الطقم القديم:</b> حاول ترجع البعد العمودي الأمثل بتبطين مرن مؤقت. هالخطوة تفيدك تعرف كم دعم وجهي المريض يتحمل، والأنسجة تشفى.</p><p><b>التغذية:</b> مهمة لكل مريض بلا أسنان، وبالأخص كبار السن لأن الأيض والمضغ عندهم أضعف.</p>","<p>الجراحة تجي إما بسبب شكل الحافة الأصلي، أو — وهذا الأغلب — من لبس طقم سيء سنين. السؤال المهم: هل العملية راح تحسّن إنذار الطقم؟ إذا لا، غيّر تقنية التعويض أفضل من تجريح المريض.</p><p>الـ <b>surgical guide</b>: ننسخ الصبّة التشخيصية ونعدّل المناطق للفكرة المثالية، ونسوي دليل شفاف صلب بالتفريغ. بالجراحة، بعد التشذيب نركّب الدليل والغطاء الراجع بمكانه. أي منطقة <b>تتبيّض</b> معناها باقي عظم زايد يتنشال. نكرر لين ما يبقى تبييض والدليل ثابت. بعدين نقصّ النسيج إذا لزم.</p>","<p>بعد القلع قرر: الحافة تناسب الخطة لو تحتاج تعديل هسه لو بعدين. إذا ضغط الإصبع ما يكفي، ارفع غطاء كامل السماكة لتحت المنطقة. التعديل البسيط بملف عظم؛ الأكبر بكماشة قص جانبي أو سنبلة أكريلك. ويا السنابل <b>غسل غزير</b> حتى العظم ما يحتر وينخر، والفضلات تنغسل. بعد التقليل الكبير ننعّم بالملف.</p>","<p>الـ <b>intraseptal</b> نختاره إذا الشكل والارتفاع زينين، بس في undercut يوصل قاع الدهليز الشفوي. أفضل ويه القلع أو أول الشفاء. نشيل العظم بين الأسناخ لعمق السنخ، وبعدين ضغط إصبع ثابت لين الصفيحة الشفوية تنكسر كسر أخضر (greenstick) ونميلها لجهة الحنك، فالقمة تضيق والـ undercut يروح بدون ما ننقص ارتفاع الحافة. ستنت أو طقم فوري مبطّن يحافظ على العظم حوالي <b>أسبوعين</b>.</p>","<p>الحواف السكينية والتحدبات البسيطة: نظر ولمس متكرر يكفي حتى نوصل الشكل المطلوب. إذا التعديل متعدد أو متوسط فما فوق: صبّات تشخيصية ودليل جراحي حتى الشغل يكون دقيق. غطاء كامل السماكة يكشف المناطق، وبعدين تشذيب بملف أو مبرد أو كماشة أو سنبلة. لمس والغطاء راجع لين الشكل يزين، غسيل وإغلاق أولي.</p>","<p>نفس الأسلوب للتحدبات الشدقية أو الحنكية بأي فك. فتحة قموية تتجاوز حدود المنطقة، وغطاء كامل السماكة. إذا الغطاء ينشدّ، أضف فتحة تحرير. بالحنك: افتح أطول وارفع نسيج أكثر حتى يرتخي الغطاء. <b>ممنوع فتحات عمودية بالحنك</b> بسبب تفاغر الشريان الحنكي الكبير وفرع القاطعة. بعد التشذيب لمس عبر الغطاء، غسيل وإغلاق.</p>","<p>الحدبة المتضخمة تقلل المسافة الخلفية بين الفكين. ممكن تكون أفقية أو عمودية، عظم أو نسيج أو الاثنين. صورة بانورامية تبين الكمية وقرب الجيب. تذكّر: الجيب قد يتوسع (pneumatize) داخل الحدبة.</p><p>فتحة قموية من قدام منطقة العمل، فوق الحدبة ووراها، ونرفع شدقي وحنكي. بعد حماية النسيج نشذب بملف أو كماشة أو سنبلة، ودليل جراحي إذا الشغل كبير. إذا الجيب متوسع، خلك حذر. إذا غشاء الجيب انكشف بس <b>سليم ما تمزق</b>، هذا مو مشكلة.</p>","<p>ويا الأسنان، الفطور غالباً ما تؤذي إلا إذا كبيرة تعرقل اللسان والنطق، أو غشاؤها الرقيق ينجرح من الأكل. بلا أسنان، غالباً لازم تنشال لأن الطقم ما يلبس مرتاح. بعد الشيل نلمس الصفيحة اللسانية ونتأكد الشكل.</p><p>فطور الحنك مشكلة بالطقم الكامل العلوي، خصوصاً إذا خلفية تخرب الـ PPS. فتحة وسطية فوق الفطور مع تحرير مائل بطرفيها. إذا مفصّصة ومعنقة، الغشاء الرقيق صعب الرفع. لتثبيت الغطاء ومنظر أوضح: خيّط حافته على قمة الحافة بنفس الجهة. للكبيرة جداً: فتحة قموية ورفع حنك كامل <b>تحت السمحاق</b> حتى ما نجرح تروية الحنك. الهدف: قبة حنكية ملساء متصلة، بلا undercut أو بروز. الخوف الأكبر تجمع دم تحت الغطاء: طقم مؤقت أو دليل جراحي ويه تبطين طري يضغط أيام، والمريض يشيله بس للتنظيف والغسول.</p>","<p>بعد القلع، عظم الحافة والعرف المنحرف الخارجي يمتصون، بس خط الضرس اللامي يبقى بارز بالخلف ويعرقل الطقم. بعد تخدير عميق: فتحة قموية قدام الموقع وتمتد للخلف وتميل <b>شدقي</b> حتى ما نجرح العصب <b>اللساني</b>. نكشف الخط ونقصّ اندغالات الوتر الحادة. غسيل وإغلاق أولي، وبعدين طقم بتبطين طري حتى الحافة اللسانية تساعد تبعد العضلة المنفصلة.</p>","<p>بالفك الأمامي السفلي الحافة تمتص، والشوكات الذقنية تبقى وتبرز: الزوج العلوي اندغال <b>genioglossus</b>، والسفلي <b>geniohyoid</b>. حركة اللسان المستمرة تخلّيهن بارزات وتعرقل جلوس الطقم. المكان بين اللسان والشفة، فالجرح سهل ينفتح — عملية صعبة. بعد كشف العظم وحماية الغطاء، نقلل الارتفاع للمستوى المطلوب، نغسل، ونغلق إغلاق أولي.</p>","<p>بعد فقد الأسنان والامتصاص، اندغالات العضلات والنسيج اللي كانت عادية تصير تضر ثبات الطقم. والطقم السيء يولّد أنسجة متضخمة تزيد عدم الانطباق وعدم الراحة.</p><p>الغشاء المخاطي إذا انشال صعب تعويضه، فالتسلسل مهم: عادة <b>العظم أولاً</b> حتى يلتئم ويه تغطية نسيج زينة. إذا في زرعات أو تطعيم عظم، فكّر تحفظ النسيج الزائد ليغطي الطعم، وعالج النسيج بعد الشفاء.</p><p>وكل نسيج متضخم يتنشال من تهيج مزمن: كقاعدة، <b>جزء منه ينرسل للفحص النسيجي</b>، لأن التغيير المرضي ممكن يصير.</p>","<p>نسيج الحدبة المتضخم يأكل المسافة بين الفكين اللازمة لقواعد الطقم. البانوراما تفرّق ظل النسيج عن العظم؛ إذا ما متوفرة، بعد التخدير نقيس العمق بإبرة التخدير. إذا الشيل كبير، استعمل دليل جراحي.</p><p>فتحة إهليلجية وسطية للعظم، أعرض مكان أكثر نسيج، وتضيق لقدام نحو الحافة الطبيعية وورا نحو الحدبة. نشيل القطعة ونقيّم ارتفاع النسيج فوق العظم. إذا السمك صار منتظم، نقرّب الشدق والحنك بالإصبع، والمريض يعض بلطف على أصابعك حتى تشوف التغيّر بالمسافة بين الفكين. إذا زين: تشذيب الحواف وإغلاق <b>butt-joint</b> بدون شد (غرز متقطعة أو مستمرة).</p>","<p>اللجام شريط رفيع من النسيج الليفي أو العضلة، مغطى بغشاء، من الشفة أو الخد إلى السمحاق بجانب أو قمة الحافة (إلا اللي ينغرز عند الحليمة القاطعة ويساهم بفراغ وسط الأمامية). ويا الأسنان غالباً تافه؛ بلا أسنان يعرقل جلوس وثبات وصنع الطقم. والمنهج يذكر هم تحرير اللجام اللساني السفلي ضمن الإجراءات الشائعة.</p><p>التخدير حول الشفة عادة يكفي؛ <b>لا تحقن داخل اللجام</b> حتى الشكل ما يتشوّه. كماشتين مقوستين، الواحدة فوق والثانية تحت، والحد المحدب باتجاه النسيج. نقصّ على انحناء كل كماشة، الجرح يصير ماسي الشكل. البقايا تنشال لحد السمحاق. خيط يمر من حافة الجرح ويمسك السمحاق بعمق الدهليز تحت الشوكة الأنفية الأمامية. إذا اللجام كان يوصل القمة عبر نسيج ملتصق، باقي الجرح ينغلق أولي، وهالجزء بالنسيج الملتصق يُترك يلتئم بنية ثانوية.</p>","<p>النسيج الرخو الزائد فوق الحدبات غالباً من طقم سيء أو امتصاص أو الاثنين. فتحتين متوازيتين شدقي ولساني/حنكي للعظم، نشيل القطعة، نضغط نشوف إذا الإغلاق أولي ممكن. غسيل وإغلاق. احذر تسحب الغطاء الشدقي وايد حتى ما يضيع عمق الدهليز.</p><p><b>Epulis fissuratum</b>: تضخم مخاطي ليفي عام بالحافة والدهليز من رض مزمن لحافة طقم سيئة. بالمراحل الأولى التليف قليل والعلاج بدون جراحة قد يكفي. إذا التليف صار واضح، الاستئصال هو الخيار.</p>","<p>إذا الـ epulis مو كبير: ليزر أو جراحة كهربائية نتيجة زينة. إذا كبير: ارفع الحواف وافتح من قاعدة الكتلة <b>بدون قطع السمحاق</b>، وشل الكتلة. خيّط الحواف الطبيعية بمكانها، والعليا لعمق الدهليز. حتى اللثة ما تزحف وعمق الدهليز ما يضيع خلال الالتئام الثانوي: ستنت بحافة أمامية ممتدة وتبطين طري، أو الطقم الموجود بحافة ممتدة لارتفاع الدهليز وتبطين. ينشال بس لتنظيف الجرح والغسول وتنظيف داخله. الالتئام الظهاري الثانوي يحتاج <b>4–6 أسابيع</b>.</p>","<p>الحليمات الالتهابية بالحنك سببها غالباً طقم سيء، نظافة ضعيفة، أو فطريات والالتهاب وياها. شكلها عقد متعددة بالحنك، حمراء أو بلون الحنك الطبيعي. بالمرحلة المبكرة: تعديل الطقم، تبطين نسيجي، ونظافة زينة. إذا الحالة متقدمة: هذا اضطراب التهابي، <b>لا تشيل كامل سماكة نسيج الحنك</b>. شيل الطبقات السطحية الملتهبة وخلّ سمحاق الحنك سليم حتى يلتئم بنية ثانوية. الطرق: حلقات جراحة كهربائية، ليزر للسطح، تشريح حاد، سنابل خشنة، أو تبريد (cryotherapy). غطّ الحنك بستنت أو طقم ويه تبطين طري للراحة والتغطية، والالتئام الثانوي 4–6 أسابيع.</p>","<p>التشخيص تقييم علمي للوضع الموجود، يتكوّن بنهاية الفحص، وهو عملية مستمرة مو قرار بخمس دقائق. تقرر طبيعة الحالة ومكانها وأسبابها.</p><p>أربعة محاور: نفسية المريض؛ حالته الجهازية؛ تاريخه السني؛ والوضع المحلي داخل وخارج الفم. إذا نسيت محور، الخطة تمشي عرجاء.</p>","<p>نجاح الطقم مو بس تقنية: في جانب نفسي كبير — استعداد المريض، موقفه من الطقم ومنك، وقدرته يتعلّم يستخدمه. فهمك إياه يخلّيه يقبل العلاج.</p><p>تصنيف <b>House</b> أربعة:</p><p><b>Philosophical</b> (الأفضل): عاقل، هادي، متعاون، يشوف تعويض الأسنان شيء طبيعي للصحة والشكل، وما يتوقع مصائب من رأسه.</p><p><b>Exacting</b>: زين بنفس صفات الأول، بس يريد كل خطوة مشروحة بالتفصيل ويحتاج وقت تعليم أطول وصبر منك.</p><p><b>Indifferent</b>: ما يهتم بأسنانه ولا بتعبك، يستسلم بسرعة، قد يعيش سنين بلا طقم. الإنذار غالباً ضعيف أو مشكوك — علّمه قبل ما تبدأ.</p><p><b>Hysterical</b>: غير مستقر، خايف، مهمل، يتوقع الطقم مثل الأسنان الطبيعية حرفيًا. الإنذار غالباً سيء، وقد يحتاج مساعدة نفسية قبل وأثناء العلاج.</p>","<p>الاسم بالسجل، ومناداته باسمه يطمّنه.</p><p>العمر: الصغير يتكيّف أسرع. ويا التقدم بالعمر توقّع صعوبة بالتكيّف، التناسق الحركي، امتصاص العظم، حساسية الأنسجة، الشفاء، والتغذية المتوازنة.</p><p>الجنس (حسب المنهج): النساء عموماً أصعب إرضاءً بالشكل وأدق بملاحظة الوجه والشفاه؛ الرجال يهتمون أكثر بالراحة والوظيفة.</p><p>المهنة والمكانة: المكانة الأعلى غالباً تطلب جمال أكثر. المحاضر يهتم بالنطق؛ عازف آلة هوائية يهتم بمكان الأسنان.</p>","<p>ما تخطط طقم قبل ما تقيّم الوضع العام. فقد الأسنان (إلا الحوادث) غالباً مرتبط بمرض. وبعض الأمراض تأثر على نجاح الطقم حتى لو الفم شكله “عادي”.</p><p>الأمراض المضعفة (سكري، أمراض دم، سل): تعليم زيادة عن النظافة والأكل وراحة الأنسجة، واستشارة طبيب، ومراجعات أقرب لأن العظم قد يتأثر.</p><p>السكري: الأنسجة قد تضمر؛ راحة وظيفية ووقت لبس أقل؛ بالحالات الشديدة الأسيتون بالفم يضعف الانطباق؛ فيتامين B و C وكالسيوم؛ ضبط السكر ويه الطبيب؛ وانتبه للطبعة واختيار الأسنان ونوع الإطباق.</p><p>القلب: مواعيد صباحية مبكرة (الدواء يغيّر الأنسجة آخر اليوم)، جلسات قصيرة، استشارة قلب إذا لزم، والمريض مضبوط قبل العلاج.</p><p>فقر الدم: النسيج هش، تحمل الأساس يقل، الشفاء أبطأ — اطلب فحص دم وعالج السبب.</p>","<p>خشونة المفاصل إذا أصابت المفصل الفكي: الخطة قد تتغير، الطوابع الخاصة لأن الفتح محدود، تسجيلات صعبة، وتعديل إطباق متكرر لأن المفصل يتغيّر. إذا أصابع اليد مصابة، التنظيف والإدخال يصيرون أصعب.</p><p>أعصاب مثل Bell أو باركنسون: انتبه للتثبيت وتسجيلات الفكين والعضلات.</p><p>أمراض جلد مثل الفقاع: آفات فموية مؤلمة، العلاج الطبي أولاً، والاستخدام المستمر للطقم ممنوع.</p><p>سرطان وشعاع: انتظر فترة قبل صنع الطقم. نسيج برونزي فاقد التوتر مو صالح للدعم. بعد التسليم افحص كثيراً خوفاً من نخر شعاعي. جفاف الفم شائع — محفزات لعاب أو لاصق قد تلزم.</p><p>سن اليأس: تغيّر غدي، هشاشة عظم، حرق، وتغيّرات نفسية تأثر على الخطة وكفاءة الطقم.</p>","<p>التاريخ السني غالباً يقرر النجاح. سبب الفقد يفيدك: حادث يخليه أكثر زعل من شخص أهمل أسنانه سنين. والعظم المتوقع أكثر بعد فقد سريع من تسوس، أقل بعد التهاب لثة سنين.</p><p>سجّل الشكوى (تفيدك نفسياً)، التوقعات هل واقعية لو لا، مدة الفقد وسببه، والطقوم السابقة. اللي يبدّل طقوم بسرعة صعب إرضاؤه وخطر تتعامل وياه. افحص الطقم القديم بموضوعية — لا تذمّه بس لأن المريض اشتكى. الطقم القديم يكشف النظافة وحالة الأنسجة. سجّل العدد والمدة، والشكل والنطق والمضغ والتثبيت والبعد العمودي والعلاقة المركزية، وأي تصليح أو إعادة قاعدة أو تبطين سابق.</p>","<p>خارج الفم: رأس ورقبة، وجه، توتر عضلي، شفاه، ومفصل فكي.</p><p>إذا عنده تاريخ مفصل، افحص بعناية (فتح محدود). الألم أو الخلع الجزئي أو الفرقعة قد تكون من بعد عمودي غلط أو فقد أسنان خلفية فيتحوّل الحمل للأمام. الفحص: إصبع بقناة الأذن وضغط متساوٍ وهو يفتح — الألم علامة غير طبيعية. وهم اسمع المفصل.</p><p>توتر العضلات: I طبيعي؛ II تقريباً طبيعي لأن طقم كفوء رجّع البعد العمودي؛ III ضعيف من مرض أو فقد أو طقم فاشل. التوتر الزايد يصعّب تحريك الخد والشفة؛ الارتخاء الزايد يخلّي مادة الطبعة تزحزحهم بسهولة.</p><p>جس الرقبة: أول علامة سرطان فموي أحياناً عقدة لمفاوية. شكل الوجه يفيد اختيار الأسنان. الشفة القصيرة تكشف الأمامية وحافة الأكريلك؛ الشفة الرقيقة أي تغيير بسيط بمكان السن يغيّر شكلها فوراً.</p>","<p>لون الغشاء الزين وردي. الاحمرار يعني التهاب، والالتهاب يعطي طبعة غلط لأن النسيج متورم وشكله مو حقيقي. الحالة ثلاث درجات: سليمة، متهيّجة، أو مرضية. السمك: <b>I</b> حوالي 1 ملم ثابت منتظم؛ <b>II</b> رقيق ينجرح بسهولة من ضغط الطقم؛ <b>III</b> سميك مرخي يزحزح الطقم ويوجع، والتثبيت والثبات يصيرون صعب.</p><p>شكل القوس من فوق: حرف U أو مربع أفضل ضد دوران الطقم؛ المثلث (مستدق) مقاومته أقل؛ البيضوي تقريباً بلا مقاومة للدوران.</p>","<p>بالمقطع: <b>I</b> حرف U وقمة عريضة مسطحة تقاوم الإزاحة العمودية ممتاز؛ <b>II</b> حرف V بس القمة بعد مسطحة وتعطي بعض الدعم العمودي؛ <b>III</b> سكين، قمة ضيقة حادة، دعم عمودي قليل أو معدوم.</p><p>الارتفاع: <b>I</b> كافي يقاوم الحركة الجانبية؛ <b>II</b> في امتصاص بس باقي عظم يكفي يقاوم الجانب؛ <b>III</b> ممتص وما يقاوم القوى الجانبية.</p><p>المسافة بين الفكين: <b>I</b> كافية للطقم؛ <b>II</b> زيادة، فالطقم عادة أقل ثبات لأن الأسنان صارت بعيدة عن العظم الداعم؛ <b>III</b> ضيقة وترتيب الأسنان الصناعية يصير صعب.</p><p>الـ undercuts العظمية: <b>I</b> ماكو؛ <b>II</b> صغار، تدخل الطقم وياهن بتغيير طريق الإدخال أو بـ relief بعد معجون PIP؛ <b>III</b> ثنائية بارزة تحتاج جراحة (أحياناً جهة واحدة تكفي).</p>","<p>الحنك الصلب العريض المسطح أفضل ضد القوى العمودية ويعطي تثبيت زين، بس ينخلع بسهولة من قوى جانبية أو أمامية أو دورانية. حرف U يعطي دعم وثبات وتثبيت كافيين. حرف V دعمه العمودي قليل، والختم المحيطي ينكسر بسهولة.</p><p>انحدار الحنك الرخو (منطقة ختم PPS): <b>I</b> تدريجي وفيه مليميترات من نسيج متحرك — هذا الأفضل للختم؛ <b>II</b> أحدّ، المجال للختم أقصر والطول الخلفي للطقم محدود أكثر؛ <b>III</b> سقوط حاد يقيّد الختم والطول الخلفي.</p>","<p>حجم اللسان: <b>1</b> يملأ أرضية الفم بدون زيادة؛ <b>2</b> زيادة خفيفة؛ <b>3</b> يملأ الأرضية بالكامل ويغطي الحافة — الطبعة تصير صعبة وثبات الطقم يقل. موقع اللسان المناسب: رأسه عند السطوح اللسانية للأمامية السفلية، وحوافه الجانبية تلمس لسانيات الخلفيات وقاعدة اللسان. الموقع السيء: لسان متراجع، رأسه ما يلمس الطقم السفلي أو الحافة، فينكسر الختم.</p><p>شكل الحلق الجانبي (فضاء خلف خط الضرس اللامي): <b>1</b> عميق حوالي نصف إنج بين الخط وأرضية الفم — مناسب؛ <b>2</b> متوسط العمق؛ <b>3</b> ضحل، وهذا يضعّف الطقم السفلي.</p><p>اللعاب: <b>I</b> طبيعي كماً وقواماً؛ <b>II</b> زيادة، إما مائي رقيق أو لزج مثل الحبال؛ <b>III</b> قليل (جفاف الفم).</p>","<p>الصور الشعاعية (بانوراما، سيفالومترية، إطباقية، وداخل فموية محيطية بالذروة) نحتاجها حتى ندور: جذور باقية بالحافة؛ أسنان مطمورة؛ أكياس؛ أورام؛ أجسام غريبة؛ المفصل الفكي؛ هشاشة عظم؛ وأي مرض عظمي ثاني. الصبّات التشخيصية مفيدة وايد، بس ما تلغي الصور.</p>","<p>مميزات الصبّات التشخيصية المركبة على المفصلة تسعة، احفظها كقائمة:</p><p>تشوف تشريح الفم بدون ما المريض يكون عندك؛ تسجّل المسافة بين الفكين؛ تؤكد اللي شفته بفحص الفم؛ تبيّن حجم الحواف وعلاقتها ببعضها (حتى العضة المعكوسة بين الحواف)؛ تتمسح بالمسّاح حتى نشوف الـ undercuts؛ أمراض النسيج الرخو أوضح لأن اللعاب واللون ما يغطونها؛ إزاحة النسيج من الطقم القديم أوضح على صبّة جافة مما هي بالفم الرطب؛ تساعدك تخطط الجراحة قبل التعويض؛ وتستخدمها لتعليم المريض.</p><p>وهم فيديو داخل الفم يفيد كسجل لتجربة المريض أو وضع فمه الحالي، وتشاركه ويه زميل إذا تحتاج رأي ثاني.</p>","<p>الخطة معناها: تطابق خيارات العلاج ويه حاجة <b>هذا</b> المريض، وترتب الحاجات حسب الأهمية وبتسلسل منطقي. تشمل كل اللي طلع بالتشخيص ويأثر على العلاج: التحضير الجراحي، إجراءات الطبعة، تسجيلات علاقات الفكين، الإطباق، شكل ومادة الأسنان، والتعليمات للمريض. ليش نخطط؟ حتى تقول بوضوح شلون راح تعالج حاجة هذا الشخص، وبأي ترتيب.</p>","<p>الإنذار حكم مسبق: هل تصنيع الطقم راح ينجح، وهل الطقم الجاهز راح يفيد المريض؟ يتأثر بتشريح السطح الحامل، موقع اللسان ووضعية أرضية الفم، التحكم العصبي العضلي، تاريخ الطقوم السابقة، وتصنيف المريض النفسي (House).</p><p>تعليم المريض يبدأ من أول زيارة وما يوقف بعد التسليم: تعلّمه عن صحة الفم؛ تشرح معنى فقد كل الأسنان؛ تطابق توقعاته الواقعية ويه اللي ممكن يتحقق فعلياً؛ تشرح طبيعة الطقم واستخدامه ونواقصه؛ وتعرّفه على البدائل وعواقب كل بديل.</p>","<p>أسئلة الجراحة قبل التعويض. اقرأ الاختيارات بهدوء؛ الجواب يظهر بعد ما تضغط، ويا شرح عراقي بسيط.</p>","<p>أسئلة التشخيص للطقم الكامل. ركّز على تصنيفات House والحنك واللسان والصبّات.</p>","<p>اختبار الملف التاسع. عشر أسئلة من الجراحة والتشخيص. اضغط الزر بنهاية الشريحة حتى تشوف درجتك.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>

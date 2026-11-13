@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Prosthodontics File 10 — Complete-Denture Impressions, TMJ and Mandibular Movement</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Prosthodontics · 4th year</div>
+    <h1>Complete-Denture Impressions, TMJ Anatomy and Mandibular Movement</h1>
+    <p style="margin:0 0 16px"><p>PDF pages 319–342 (Dr. Ihab Nabeel Al-mgotar). Every important point from the lectures is covered, with detailed simple Iraqi Arabic explanations, figures, in-slide questions and a scored self-test.</p></p>
+    <ul>
+      <li><</li>
+      <li>u</li>
+      <li>l</li>
+      <li>></li>
+      <li><</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li>I</li>
+      <li>m</li>
+      <li>p</li>
+      <li>r</li>
+      <li>e</li>
+      <li>s</li>
+      <li>s</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li> </li>
+      <li>d</li>
+      <li>e</li>
+      <li>f</li>
+      <li>i</li>
+      <li>n</li>
+      <li>i</li>
+      <li>t</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>f</li>
+      <li>i</li>
+      <li>v</li>
+      <li>e</li>
+      <li> </li>
+      <li>o</li>
+      <li>b</li>
+      <li>j</li>
+      <li>e</li>
+      <li>c</li>
+      <li>t</li>
+      <li>i</li>
+      <li>v</li>
+      <li>e</li>
+      <li>s</li>
+      <li>;</li>
+      <li> </li>
+      <li>r</li>
+      <li>e</li>
+      <li>t</li>
+      <li>e</li>
+      <li>n</li>
+      <li>t</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li> </li>
+      <li>f</li>
+      <li>a</li>
+      <li>c</li>
+      <li>t</li>
+      <li>o</li>
+      <li>r</li>
+      <li>s</li>
+      <li>;</li>
+      <li> </li>
+      <li>m</li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li>i</li>
+      <li>b</li>
+      <li>u</li>
+      <li>l</li>
+      <li>a</li>
+      <li>r</li>
+      <li> </li>
+      <li>v</li>
+      <li>e</li>
+      <li>r</li>
+      <li>s</li>
+      <li>u</li>
+      <li>s</li>
+      <li> </li>
+      <li>m</li>
+      <li>a</li>
+      <li>x</li>
+      <li>i</li>
+      <li>l</li>
+      <li>l</li>
+      <li>a</li>
+      <li>r</li>
+      <li>y</li>
+      <li> </li>
+      <li>d</li>
+      <li>i</li>
+      <li>f</li>
+      <li>f</li>
+      <li>e</li>
+      <li>r</li>
+      <li>e</li>
+      <li>n</li>
+      <li>c</li>
+      <li>e</li>
+      <li>s</li>
+      <li>.</li>
+      <li><</li>
+      <li>/</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li><</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li>M</li>
+      <li>u</li>
+      <li>c</li>
+      <li>o</li>
+      <li>s</li>
+      <li>t</li>
+      <li>a</li>
+      <li>t</li>
+      <li>i</li>
+      <li>c</li>
+      <li>,</li>
+      <li> </li>
+      <li>s</li>
+      <li>e</li>
+      <li>l</li>
+      <li>e</li>
+      <li>c</li>
+      <li>t</li>
+      <li>i</li>
+      <li>v</li>
+      <li>e</li>
+      <li>-</li>
+      <li>p</li>
+      <li>r</li>
+      <li>e</li>
+      <li>s</li>
+      <li>s</li>
+      <li>u</li>
+      <li>r</li>
+      <li>e</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>m</li>
+      <li>u</li>
+      <li>c</li>
+      <li>o</li>
+      <li>c</li>
+      <li>o</li>
+      <li>m</li>
+      <li>p</li>
+      <li>r</li>
+      <li>e</li>
+      <li>s</li>
+      <li>s</li>
+      <li>i</li>
+      <li>v</li>
+      <li>e</li>
+      <li> </li>
+      <li>t</li>
+      <li>e</li>
+      <li>c</li>
+      <li>h</li>
+      <li>n</li>
+      <li>i</li>
+      <li>q</li>
+      <li>u</li>
+      <li>e</li>
+      <li>s</li>
+      <li>;</li>
+      <li> </li>
+      <li>o</li>
+      <li>p</li>
+      <li>e</li>
+      <li>n</li>
+      <li>-</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>c</li>
+      <li>l</li>
+      <li>o</li>
+      <li>s</li>
+      <li>e</li>
+      <li>d</li>
+      <li>-</li>
+      <li>m</li>
+      <li>o</li>
+      <li>u</li>
+      <li>t</li>
+      <li>h</li>
+      <li> </li>
+      <li>i</li>
+      <li>m</li>
+      <li>p</li>
+      <li>r</li>
+      <li>e</li>
+      <li>s</li>
+      <li>s</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li>s</li>
+      <li>;</li>
+      <li> </li>
+      <li>p</li>
+      <li>r</li>
+      <li>i</li>
+      <li>m</li>
+      <li>a</li>
+      <li>r</li>
+      <li>y</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>f</li>
+      <li>i</li>
+      <li>n</li>
+      <li>a</li>
+      <li>l</li>
+      <li> </li>
+      <li>i</li>
+      <li>m</li>
+      <li>p</li>
+      <li>r</li>
+      <li>e</li>
+      <li>s</li>
+      <li>s</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li>s</li>
+      <li>;</li>
+      <li> </li>
+      <li>b</li>
+      <li>o</li>
+      <li>r</li>
+      <li>d</li>
+      <li>e</li>
+      <li>r</li>
+      <li> </li>
+      <li>m</li>
+      <li>o</li>
+      <li>l</li>
+      <li>d</li>
+      <li>i</li>
+      <li>n</li>
+      <li>g</li>
+      <li>;</li>
+      <li> </li>
+      <li>d</li>
+      <li>i</li>
+      <li>g</li>
+      <li>i</li>
+      <li>t</li>
+      <li>a</li>
+      <li>l</li>
+      <li> </li>
+      <li>s</li>
+      <li>c</li>
+      <li>a</li>
+      <li>n</li>
+      <li>n</li>
+      <li>i</li>
+      <li>n</li>
+      <li>g</li>
+      <li>.</li>
+      <li><</li>
+      <li>/</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li><</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li>T</li>
+      <li>M</li>
+      <li>J</li>
+      <li> </li>
+      <li>p</li>
+      <li>a</li>
+      <li>r</li>
+      <li>t</li>
+      <li>s</li>
+      <li>,</li>
+      <li> </li>
+      <li>l</li>
+      <li>i</li>
+      <li>g</li>
+      <li>a</li>
+      <li>m</li>
+      <li>e</li>
+      <li>n</li>
+      <li>t</li>
+      <li>s</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>m</li>
+      <li>u</li>
+      <li>s</li>
+      <li>c</li>
+      <li>l</li>
+      <li>e</li>
+      <li>s</li>
+      <li>;</li>
+      <li> </li>
+      <li>t</li>
+      <li>h</li>
+      <li>r</li>
+      <li>e</li>
+      <li>e</li>
+      <li> </li>
+      <li>m</li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li>i</li>
+      <li>b</li>
+      <li>u</li>
+      <li>l</li>
+      <li>a</li>
+      <li>r</li>
+      <li> </li>
+      <li>a</li>
+      <li>x</li>
+      <li>e</li>
+      <li>s</li>
+      <li>;</li>
+      <li> </li>
+      <li>r</li>
+      <li>o</li>
+      <li>t</li>
+      <li>a</li>
+      <li>t</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>t</li>
+      <li>r</li>
+      <li>a</li>
+      <li>n</li>
+      <li>s</li>
+      <li>l</li>
+      <li>a</li>
+      <li>t</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li>;</li>
+      <li> </li>
+      <li>P</li>
+      <li>o</li>
+      <li>s</li>
+      <li>s</li>
+      <li>e</li>
+      <li>l</li>
+      <li>t</li>
+      <li> </li>
+      <li>b</li>
+      <li>o</li>
+      <li>r</li>
+      <li>d</li>
+      <li>e</li>
+      <li>r</li>
+      <li> </li>
+      <li>m</li>
+      <li>o</li>
+      <li>v</li>
+      <li>e</li>
+      <li>m</li>
+      <li>e</li>
+      <li>n</li>
+      <li>t</li>
+      <li>s</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>t</li>
+      <li>h</li>
+      <li>e</li>
+      <li> </li>
+      <li>e</li>
+      <li>n</li>
+      <li>v</li>
+      <li>e</li>
+      <li>l</li>
+      <li>o</li>
+      <li>p</li>
+      <li>e</li>
+      <li> </li>
+      <li>o</li>
+      <li>f</li>
+      <li> </li>
+      <li>m</li>
+      <li>o</li>
+      <li>t</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li>;</li>
+      <li> </li>
+      <li>a</li>
+      <li>r</li>
+      <li>t</li>
+      <li>i</li>
+      <li>c</li>
+      <li>u</li>
+      <li>l</li>
+      <li>a</li>
+      <li>t</li>
+      <li>o</li>
+      <li>r</li>
+      <li> </li>
+      <li>c</li>
+      <li>l</li>
+      <li>a</li>
+      <li>s</li>
+      <li>s</li>
+      <li>e</li>
+      <li>s</li>
+      <li>;</li>
+      <li> </li>
+      <li>f</li>
+      <li>a</li>
+      <li>c</li>
+      <li>e</li>
+      <li>-</li>
+      <li>b</li>
+      <li>o</li>
+      <li>w</li>
+      <li> </li>
+      <li>t</li>
+      <li>r</li>
+      <li>a</li>
+      <li>n</li>
+      <li>s</li>
+      <li>f</li>
+      <li>e</li>
+      <li>r</li>
+      <li>.</li>
+      <li><</li>
+      <li>/</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li><</li>
+      <li>/</li>
+      <li>u</li>
+      <li>l</li>
+      <li>></li>
+      <li>Total run time: <b>1 hour 4 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 32</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Prosthodontics · File 10","t":"Complete-Denture Impressions, TMJ Anatomy and Mandibular Movement","b":"<p>University of Baghdad, College of Dentistry — Prosthodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This 4th-year file covers PDF pages 319–342 (Dr. Ihab Nabeel Al-mgotar):</p><ul><li>Impression for the complete denture (Lecture 2): definition, five objectives, retention factors, impression classifications, primary and final impressions, border molding, and a short note on digital scanning.</li><li>Anatomy of the TMJ and mandibular movement: joint parts and ligaments, muscles, the three mandibular axes, basic and functional movements, Posselt’s border movements and envelope of motion, articulator classes, and the face-bow.</li></ul><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end.</p>"},{"k":"4th year · Complete-denture impressions","t":"What an impression is, and the five objectives (in this sequence)","b":"<p>An impression is the negative replica of the teeth and surrounding structures in the oral cavity, introduced as a gel and then becoming relatively hard or set while in contact with those tissues.</p><p>A <b>complete-denture impression</b> is the negative registration of the entire denture-bearing, stabilizing and border-seal areas present in the edentulous mouth.</p><p>Objectives for the complete-denture impression (the lecture says the importance is the sequence):</p><ol><li><b>Preservation.</b> Once the teeth are extracted, the stimulating effect of natural teeth on the alveolar ridge is lost, so the ridge atrophies or resorbs. The impression technique and material, through the denture base, may have a continued effect on the health of both the soft and hard tissues of the jaws.</li><li><b>Support.</b> Resistance to a force that tries to dislodge the denture in a tissue-ward direction. Maximum coverage distributes applied forces over as wide an area as possible, and this helps preservation, stability and retention.</li><li><b>Stability.</b> Resistance to horizontal movement. Close adaptation to undistorted mucosa is most important. Stability decreases with loss of vertical height of the ridge, and with an increase in movement of flabby movable tissue.</li><li><b>Esthetics.</b> Border thickness varies with each patient’s need according to the extent of residual-ridge loss. Esthetics depends on thickness of the border, so the vestibule should be filled, but not over-filled, to restore facial contour.</li><li><b>Retention.</b> If the other objectives are achieved, retention will be adequate.</li></ol>"},{"k":"4th year · Complete-denture impressions","t":"Six factors that affect retention","b":"<p>Factors that affect retention:</p><ol><li>Atmospheric pressure.</li><li>Adhesion.</li><li>Cohesion.</li><li>Mechanical interlock.</li><li>Muscle control.</li><li>Patient tolerance.</li></ol><p><b>Atmospheric pressure</b> depends on a peripheral seal. To ensure that seal, the denture border should extend into the movable tissue, but not far enough to damage it.</p><p><b>Adhesion</b> is the attraction of unlike molecules: the attraction of saliva to the denture.</p><p><b>Cohesion</b> is the attraction of the molecules of saliva to each other.</p><p><b>Mechanical interlock</b> into an undercut usually proves unfavorable for the patient. The soft tissue is subject to damage during insertion and removal of the denture.</p><p><b>Muscle control and patient tolerance</b> have an amazing influence. Dentures are often retained and appear satisfactory not because they accurately conform to the support, but because of the adaptability of the muscles of the lip, tongue and cheek, and of the patient’s tolerance.</p>"},{"k":"4th year · Complete-denture impressions","t":"Why a mandibular impression is not just a smaller maxillary one","b":"<p>Considerations for mandibular impressions are generally similar to those for maxillary impressions, yet there are many differences:</p><ol><li>The basal seat of the mandible is different in size and form from the maxillary counterpart.</li><li>The submucosa in some parts of the mandibular basal seat contains anatomic structures different from those in the upper jaw.</li><li>The nature of the supporting bone on the crest of the residual ridge usually differs between the two jaws.</li><li>The presence of the tongue complicates impression procedures for the lower denture.</li><li>The available area of support from an edentulous mandible is <b>14 cm²</b>, while the same for the edentulous maxilla is <b>24 cm²</b>.</li><li>Supporting and peripheral-sealing areas will be in contact with the denture’s fitting or impression surface. Support for the mandibular denture is derived from the body of the mandible.</li></ol>"},{"k":"4th year · Complete-denture impressions","t":"Classification by pressure: mucostatic impressions","b":"<p>The most practical and easiest classification depends on the amount of pressure exerted while the impression is made. There are three categories: the non-pressure (mucostatic) technique, selective-pressure techniques, and pressure techniques.</p><p><b>Non-pressure (mucostatic) technique.</b> The aim is to record the tissue at rest. Minimal pressure is applied to the oral tissue while the tray is seated and the material sets. This eliminates distortion of the oral tissue and creates a denture base that models the unloaded tissue.</p><p>Requirements:</p><ol><li>The impression is made with the oral mucous membrane and the jaws in a normal, relaxed condition. Border molding is <b>not</b> done.</li><li>The impression is made with an oversized (spaced) tray.</li><li>It requires a material of high fluidity (low viscosity). Materials of choice are impression plaster and alginate.</li><li>Retention is mainly due to interfacial surface tension. The resulting denture is closely adapted to the mucosa of the denture-bearing area but has a <b>poor peripheral seal</b>.</li></ol>"},{"k":"4th year · Complete-denture impressions","t":"Pressure (mucocompressive) and functional impressions","b":"<p>In the <b>pressure (mucocompressive)</b> technique the impression is subjected to pressure while it is being made. That pressure is applied either by the dentist’s finger, or by the teeth of the patient — and in that case it is called a <b>functional impression</b>.</p><p>Functional impression technique:</p><ol><li>It is used in a complete denture that has already been delivered, relieved on its internal aspects and filled with a slow-setting impression material (tissue-conditioning material).</li><li>The patient wears the prosthesis for several days, allowing the tissue to be recorded in function.</li><li>The complete impression is then converted to a hard reline material by laboratory processing.</li><li>This seeks to create a denture base that models the functionally loaded tissue.</li><li>It records the oral tissues in a functional and displaced form. Materials used include impression compound, waxes and soft liners.</li><li>Because oral soft tissues are resilient, they tend to return to their anatomical position once the forces are relieved. Dentures made by this technique tend to be displaced by tissue rebound at rest. During function, the constant pressure on the soft tissues limits blood circulation, leading to residual-ridge resorption.</li></ol>"},{"k":"4th year · Complete-denture impressions","t":"Selective-pressure impressions, and open- versus closed-mouth techniques","b":"<p><b>Selective-pressure techniques</b> use a custom tray constructed with less relief in the primary denture stress-bearing area and greater relief in the non-bearing areas. The variation in relief theoretically applies a greater amount of pressure directly to the primary bearing area, which is biologically and biomechanically more capable of supporting and distributing the load. Low pressure is applied, through greater relief for the impression material, to the non-bearing areas. The denture base then selectively loads the oral tissue during function, optimizing stability and retention.</p><p>Impressions may also be classified by technique:</p><p><b>Open-mouth impressions.</b> The impression is built in a tray that carries the material of choice into the desired contact with the supporting tissues, and into an approximate relation to the peripheral tissues, when the mouth is opened and without applied pressure. The rationale is that the dentures do not dislodge when subjected to biting force. Open-mouth methods also provide clearance for the tissues that are pulled over the edges of the dentures in speech. They develop a contour of the impression surface that is in harmony with the relaxed supporting tissues, and that may be out of perfect adaptation with those tissues when the denture is subjected to occlusal loading.</p><p><b>Closed-mouth impression technique.</b> Wax occlusal rims are fabricated on the preliminary cast. The patient closes on these rims, and a generous clearance is made for the various frenula so that the patient can manipulate the tissues by closing, grimacing, sucking and swallowing to form the peripheral borders.</p>"},{"k":"4th year · Complete-denture impressions","t":"The primary impression: aim, chair position, and why it must not be ignored","b":"<p>Impressions are also classified by sequence into a primary impression and a secondary (final) impression.</p><p>The patient should be seated in an upright and relaxed position. The jaw should be at the level of the operator’s <b>elbow</b> for the upper impression, and at the level of the operator’s <b>shoulder</b> for the lower impression.</p><p>The aim of the primary impression is to record the <b>entire</b> denture-bearing area. Failure to record that area on the primary impression will create difficulties in recording a satisfactory definitive impression and will ultimately result in a poorly retentive denture. It is unwise to disregard the importance of a satisfactory primary impression in the hope that deficiencies will be rectified in the definitive impression.</p><p>Control of the tissues when recording the primary impression is minimal, so the impression will be overextended. If a denture is made on a model cast from such an impression, that denture too will be overextended and not retentive. That is why a slightly under-extended custom tray is later fabricated on this overextended preliminary cast.</p>"},{"k":"4th year · Complete-denture impressions","t":"Stock trays and materials for the primary impression","b":"<p>Stock trays are constructed in metal or plastic and may be perforated or unperforated. An edentulous stock tray approximately <b>5 mm larger</b> than the outside surface of the residual ridge is selected. The dentist places the tray in the mouth and initially positions it by centering the labial notch of the tray over the labial frenum. In the maxilla, the distal extension covers to the vibrating line, allowing space and coverage of the tuberosities. The mandibular tray should extend to the ascending ramus.</p><p>The preliminary impression should be as accurate as possible, and overextension of peripheral borders is preferred to underextension, because a slightly under-extended custom tray will be fabricated on this overextended preliminary cast.</p><p>Select an impression material of relatively high viscosity, so that the material can compensate more easily for deficiencies of the tray. The most suitable materials are alginate (irreversible hydrocolloid), silicone putty, or impression compound.</p>"},{"k":"4th year · Complete-denture impressions","t":"Making an alginate primary impression","b":"<p>Wax or compound may be added to the stock-tray border before impression making, to extend the borders. To avoid voids and an under-extended impression, the impression material should be placed, by finger, into any areas the clinician feels may not be adequately reached by the tray. These areas often include the palatal vault, the retromylohyoid spaces, and/or the buccal vestibules.</p><p>The loaded tray is placed and rotated from one tuberosity, then rotated from that lateral side to the other lateral side and tuberosity. This decreases the risk of trapping air and allows the material to flow to the peripheries. The tray is supported and the patient is asked to suck and pull the cheeks and lips down. The mandible is moved right and left to capture the coronoid space.</p><p>The mandibular tray and alginate are placed in the mouth with the tongue raised. The tray is slipped between the tongue and the ridge, and the patient then relaxes the tongue as the tray is seated. After seating, the patient can suck the lips inward, open the mouth wide, and protrude and move the tongue laterally. The impression should appear very similar to the shape of the final denture.</p>"},{"k":"4th year · Complete-denture impressions","t":"Compound and putty primary impressions, and six common faults","b":"<p><b>Impression compound</b> is a thermoplastic material with a high viscosity. It is softened uniformly in a water-bath at <b>55°C to 70°C</b>. For the upper impression the material is loaded in a ball-like shape; for the lower, in a roll-like shape. The seating procedure is the same as for alginate, except that the borders of the stock tray do not require modification. There is no need for a tray adhesive, and preloading of material in the mouth is usually not required.</p><p><b>Impression putty</b> is a rigid material and, like compound, should ideally be used in a metal stock tray, although a plastic tray will suffice (a tray adhesive is necessary for putty). It is more elastic than compound, and therefore suitable for use in undercut areas. Its main disadvantage is its cost.</p><p>Common faults or errors in impression making:</p><ol><li>Incorrect tray position, so that one or more anatomical areas are not captured.</li><li>Excessive areas of the tray showing through the material, indicating pressure that may have distorted the impression.</li><li>Any void or discrepancy too large to correct accurately on the cast.</li><li>Incorrect border formation from incorrect tray-border length. A sharp border usually indicates that the impression is under-extended in that area.</li><li>An obviously distorted impression because the tray moved while the final material was setting.</li><li>Poor detail because of a poor mixing technique, or because the material had begun to set before the impression was fully seated.</li></ol>"},{"k":"4th year · Complete-denture impressions","t":"The final impression, materials, relief wax and block-out","b":"<p>The final (secondary) impression represents the completion of the registration of the surface or object. It is made for the purpose of fabricating the prosthesis, and it is made with an individual (special) tray. The final impression must be poured with stone to produce the master cast.</p><p>Materials used for the final impression: zinc-oxide eugenol impression material; impression plaster; alginate; and elastomer (rubber-base) impression materials.</p><p>A properly constructed special tray is made over a relieved primary cast. The relief area is created by applying one thickness of baseplate wax over all <b>non-stress-bearing</b> areas of the diagnostic cast before the tray is fabricated; this wax is commonly called “relief wax.” Additionally, to allow tray removal from the diagnostic cast, all excessive undercuts and tissue irregularities on that cast are minimally relieved or blocked out with baseplate wax — often called “block-out wax.”</p>"},{"k":"4th year · Complete-denture impressions","t":"Laboratory and clinical correction of the special tray","b":"<p><b>Laboratory correction:</b> the flange should be 2 mm away from the mucobuccal fold; there must be enough room for the frenum; and the border should be smooth, rounded and well-polished (this can be checked with the little finger).</p><p><b>Clinical correction</b> — with the special tray inside the patient’s mouth, check that:</p><ol><li>The flange is 2 mm away from the mucobuccal fold.</li><li>There is enough clearance for the labial and buccal frena.</li><li>The borders are smooth and rounded.</li><li>Reasonable retention and stability are present.</li><li>There is no over-extension: for the maxillary tray there must be no interference with the pterygomandibular raphe; for the mandibular tray there must be no over-extension of the buccal flange in the buccinator-muscle region, and lingually no over-extension at the sublingual region, the mylohyoid, or the retromylohyoid areas.</li></ol>"},{"k":"4th year · Complete-denture impressions","t":"Border molding: simultaneous versus sectional","b":"<p>Border molding can be performed by two techniques: single-step or simultaneous border molding, and incremental or sectional border molding.</p><p><b>Single-step (simultaneous) border molding</b> refines the entire periphery of the tray in one step. Polyether impression material is the material of choice. Advantages: it is one step, carried out at the same time; and there is less possibility of error if the material is placed correctly. Disadvantage: it is difficult and needs a well-trained dentist.</p><p><b>Incremental or sectional border molding</b> refines portions of the periphery individually. The material of choice is green-stick compound.</p>"},{"k":"4th year · Complete-denture impressions","t":"How the maxillary tray is border-molded","b":"<p>Maxillary tray border molding:</p><ol><li>The lips are first elevated and then extended outwards, downwards and inward.</li><li>The cheek is elevated and then pulled outward, downward and inward.</li><li>The buccal frenum is recorded by pulling the cheek backwards and forwards.</li><li>The distobuccal region is recorded by pulling the cheek outwards, downwards and inwards, followed by opening the mouth wide and moving the mandible from side to side.</li><li>Next the posterior part of the palate is recorded. The patient is asked to say “ah” while the posterior border is being refined.</li></ol>"},{"k":"4th year · Complete-denture impressions","t":"How the mandibular tray is border-molded","b":"<p>Mandibular tray border molding:</p><ol><li>The labial portion is molded by moving the lip outward, upward and inward.</li><li>The buccal frenum is recorded by moving the cheek outward, upward, backward and forward.</li><li>To record the distobuccal sulcus, the cheek should be well retracted and moved upward and inward.</li><li>To record the action of the masseter, the patient is asked to close the mouth willfully while the operator applies pressure in a downward direction. The masseter, acting on the buccinator, produces a depression in the impression called the <b>masseteric notch</b>.</li><li>The anterior lingual border is recorded by asking the patient to protrude the tongue and later to touch the anterior part of the palate. Protrusion records the <b>length</b> of the lingual flange; touching the anterior hard palate establishes the <b>width</b> of the flange.</li><li>The distolingual flange is border-molded by asking the patient to protrude the tongue and move it to the right and left buccal vestibules.</li><li>The retromolar pad is recorded by asking the patient to open the mouth wide.</li><li>Finally, after border molding is complete, the patient should be able to touch the entire upper lip with the tongue without displacement of the tray.</li></ol>"},{"k":"4th year · Complete-denture impressions","t":"Making the ZOE final impression, and digital intra-oral scanning","b":"<p>Making the final impression:</p><ol><li>The wax spacer is removed and escape vents are made in the palatine-raphe area and on either side, to permit excess material to flow out.</li><li>Zinc-oxide eugenol impression material is used according to the manufacturer’s instructions (two equal lengths of base and catalyst are mixed together).</li><li>The homogeneous mixture is applied to the inner surface of the special tray and to the border.</li><li>The loaded tray is inserted, centered correctly (using the labial frenum and the tray handle as a reference), and seated. Tissue function is simulated and pressure is maintained until the material has set.</li><li>The tray is withdrawn, the impression is rinsed in cold water, and the impression surface is examined thoroughly.</li></ol><p>Making a final impression with a digital intra-oral scanner: computer-aided design and computer-aided manufacturing (CAD/CAM) technology have recently been applied to complete dentures. A specialized scan retractor is used to retract the mobile tissues of the lips, cheeks and vestibule while the digital impression is taken.</p>"},{"k":"4th year · TMJ and mandibular movement","t":"What the TMJ is, and how it moves in function","b":"<p>The temporomandibular joint (TMJ) is the articulation of the condyloid process of the mandible and the interarticular disc with the mandibular (glenoid) fossa of the temporal bone. The TMJ consists of:</p><ol><li>The mandibular or glenoid fossa.</li><li>The condyle, or head of the mandible.</li><li>The articular disc or “meniscus,” which lies between the condyle and the glenoid fossa and divides the synovial joint into upper (superior) and lower (inferior) compartments.</li><li>The synovial cavity.</li></ol><img class=\"fig\" src=\"prostho-img/file10/tmj-sagittal.jpg\" alt=\"\"><p class=\"cap\">Sagittal view of the TMJ: condyle, articular disc, glenoid fossa, articular eminence, retrodiscal pad, and the lateral pterygoid attachment.</p><p>Replacement dentures must work in harmony with the patient’s TMJ. The condyles articulate with the temporal bones and sit in the elliptical concave depressions called the glenoid fossae, in which they travel forward, from side to side, and in some instances slightly backward. Between the dome-shaped concavities in the temporal bones and the condyles are the interarticular fibrocartilages (the menisci), attached at their margins to the articular capsules. Movement in the <b>upper</b> compartment is chiefly a gliding anteroposterior motion in which the condyles and the cartilage move as a unit. Movement in the <b>lower</b> compartment is hinge-like. Therefore, condylar paths are the controlling factor in mandibular movements. These movements result from the action of the muscles of mastication and the suprahyoid and infrahyoid muscles.</p>"},{"k":"4th year · TMJ and mandibular movement","t":"Ligaments, and the three groups of mandibular muscles","b":"<p>The ligaments that affect movement of the mandible are: the temporomandibular and capsular ligaments; the sphenomandibular ligament; and the stylomandibular ligament. The mandible is connected to the cranium at the two temporomandibular joints by the temporomandibular and capsular ligaments. The sphenomandibular and stylomandibular ligaments also connect the bones in such a way as to limit some motions of the mandible.</p><p>The muscles that control movement of the mandible may be considered in three groups: closing muscles, gliding muscles, and opening muscles.</p><p><b>Closing muscles:</b> masseter, temporalis, and medial pterygoid (all muscles of mastication). The direction of their fibers is essentially vertical; their origin is superior to their insertion on the mandible. They supply the power for pulling the mandible against the maxilla (elevating and closing the mandible).</p><p><b>Gliding muscles:</b> the lateral pterygoid muscles (muscles of mastication). If both contract simultaneously they pull the mandible forward; if they contract individually they pull it laterally. They connect the mandible to the lateral pterygoid plate and act as the steering mechanism of the mandible.</p><p><b>Opening muscles:</b> the suprahyoid muscles (their origin is below the mandible) and the infrahyoid muscles (their action is downward and backward). The muscles that depress the mandible also include the platysma and the lateral pterygoid muscles. The teeth could not occlude or disocclude without the action of the four paired muscles of mastication.</p><p>Prosthodontic treatment has a direct relation to the structures of the temporomandibular articulation, because occlusion is one of the most important parts of complete-denture treatment. The joints affect the dentures, and likewise the dentures affect the health and function of the joints.</p>"},{"k":"4th year · TMJ and mandibular movement","t":"The four muscles of mastication, in pictures","b":"<div class=\"figrow\"><img src=\"prostho-img/file10/temporalis.jpg\" alt=\"\"><img src=\"prostho-img/file10/masseter.jpg\" alt=\"\"></div><p class=\"cap\">Left: temporalis, a closing muscle with essentially vertical fibers and an origin above its insertion. Right: masseter, another closer, relating to the zygomatic arch, ramus and angle of the mandible.</p><img class=\"fig\" src=\"prostho-img/file10/lateral-pterygoid.jpg\" alt=\"\"><p class=\"cap\">Lateral pterygoid, the principal gliding (steering) muscle, attaching toward the neck of the condyle. Both sides together protrude the jaw; one side moves it laterally. It also helps to open (depress) the mandible.</p>"},{"k":"4th year · TMJ and mandibular movement","t":"The three mandibular axes, and the center of rotation","b":"<p>There are three axes around which mandibular movements take place in the horizontal, sagittal and frontal planes:</p><ol><li><b>Hinge axis, or transverse horizontal axis:</b> an imaginary line around which the mandible may rotate within the sagittal plane (during opening and closing movement).</li><li><b>Sagittal axis of the mandible:</b> an imaginary anteroposterior line around which the mandible may rotate when viewed in the frontal plane.</li><li><b>Vertical axis of the mandible:</b> an imaginary line around which the mandible may rotate through the horizontal plane.</li></ol><div class=\"figrow\"><img src=\"prostho-img/file10/hinge-axis.png\" alt=\"\"><img src=\"prostho-img/file10/vertical-axis.png\" alt=\"\"></div><p class=\"cap\">Left: hinge (transverse horizontal) axis — the mandible rotates in the sagittal plane during opening and closing. Right: vertical axis — the mandible rotates through the horizontal plane.</p><p>Movement of the condyle occurs along the posterior slope of the articular eminence and extends as far forward as its crest; in some instances movements may involve part of the anterior slope. Mandibular movements are related to the three planes of the skull (horizontal, frontal and sagittal). The mandible rotates in each of the three planes of space. The point of intersection of the three axes is called the <b>center of rotation</b>.</p>"},{"k":"4th year · TMJ and mandibular movement","t":"Basic movements: rotation and translation","b":"<p>Mandibular movements may be divided into basic movements and functional movements.</p><p><b>Basic movements</b> occur at the level of the TMJ and are of two types:</p><p><b>a. Rotational movement</b> occurs between the condyle and the inferior surface of the articular disc, that is in the <b>lower</b> compartment of the TMJ. Centric relation — also called the uppermost, rearmost, midmost, or most posterior position — is a purely rotary movement about the transverse horizontal axis. It is a reproducible and consistent movement, and is therefore beneficial in maxillomandibular-relationship recording.</p><p><b>b. Translatory or gliding movement</b> takes place in the <b>upper</b> compartment, between the superior surface of the articular disc and the glenoid fossa.</p><p>Mandibular movements, except opening and closing in the most posterior position (the posterior terminal hinge movement), are a combination of rotation and translation, and are referred to as functional movements.</p>"},{"k":"4th year · TMJ and mandibular movement","t":"Functional movements, and Posselt’s limits (1952)","b":"<p><b>Functional movements</b> are all mandibular movements except the terminal hinge movement. They are combinations of rotation and translation, and they include: opening and closing movements; symmetrical forward and backward movements; and asymmetrical side-to-side (lateral) movement.</p><p>Opening and closing are considered the most important mandibular movements, and they are divided into habitual movement and border movement.</p><p>The mandible can move about <b>10 mm laterally</b>, open about <b>50 to 60 mm</b>, protrude approximately <b>9 mm</b>, and retrude about <b>1 mm</b>. These limits were described by <b>Posselt in 1952</b> and are known as the border movements of the mandible: the most extreme positions to which the jaw is able to move in any direction. The border positions are limited by nerves, bones, muscles, teeth (if present) and ligaments.</p>"},{"k":"4th year · TMJ and mandibular movement","t":"Border movements in the sagittal plane, and the “beak” tracing","b":"<p>Border movements are subdivided into: an <b>anterior</b> border movement, which appears as one arc in the sagittal plane (the condyles rotate and translate); and a <b>posterior</b> border movement, which appears as two arcs in the sagittal plane (the condyles rotate in opening and closing up to the point of terminal hinge opening, then translate to the point of maximal opening).</p><p>Sagittal-plane movements are a map of the boundary of mandibular movement when viewed from one side of the head: a tracing of the maximum vertical and anteroposterior movements of the mandibular central incisors. They include: <b>maximum intercuspation or centric occlusion (CO)</b>, usually defined as the point where the teeth best interdigitate; and, if the mandible is retruded farther to its posterior-most, superior, most terminal hinge position, a border position determined by the structures of the TMJ — often called <b>centric relation (CR)</b>.</p><div class=\"figrow\"><img src=\"prostho-img/file10/terminal-hinge.jpg\" alt=\"\"><img src=\"prostho-img/file10/max-protrusive.jpg\" alt=\"\"></div><p class=\"cap\">Sagittal incisor paths. Left: the terminal-hinge arc, with the condyles rotating in the glenoid fossa. Right: the path out to maximum protrusion.</p><p>A characteristic “beak tracing” is formed while recording border movements in the sagittal plane. The patient moves the mandible from CR to CO, then to the edge-to-edge relationship (ER) guided by incisal guidance, then further forward to maximum protrusion (MP), and then arcs downward to maximum mouth opening (MMO). The operator then guides the mandible backward while the mouth closes. During closing, the mandible arcs upward (rotation after translation, RAT) around a transverse axis passing through the mandibular foramen. The condyle then translates back to CR, where the mandible continues to arc upward around the true hinge axis passing through the condyle (THA).</p><div class=\"figrow\"><img src=\"prostho-img/file10/sagittal-beak.jpg\" alt=\"\"><img src=\"prostho-img/file10/sagittal-tracing-labels.jpg\" alt=\"\"></div><p class=\"cap\">The characteristic sagittal “beak” tracing, labeled: CR, CO, ER, MP, MMO, RAT (rotation after translation) and THA (true hinge axis).</p>"},{"k":"4th year · TMJ and mandibular movement","t":"Horizontal “diamond” and coronal “shield,” and the envelope of motion","b":"<p>Border movements recorded in the horizontal plane produce a characteristic <b>diamond tracing</b>. The patient moves from CR to maximum right lateral (MRL), to maximum protrusive (MP), to maximum left lateral (MLL), and back to centric. An arrow-point tracing formed with Gothic-arch tracers should, and will, coincide with this pattern.</p><img class=\"fig\" src=\"prostho-img/file10/horizontal-diamond.jpg\" alt=\"\"><p class=\"cap\">Diamond tracing of border movement in the horizontal plane (CR, MRL, MP, MLL). A Gothic-arch arrow-point tracing coincides with this pattern.</p><p>Border movements in the coronal plane produce a characteristic <b>shield tracing</b>. The patient moves from CO to canine-guided disocclusion on the right (RD), then to MRL, then arcs downward to MMO; from there the patient arcs upward to MLL, returns medially to canine-guided disocclusion on the left (LD), and then returns to CO.</p><img class=\"fig\" src=\"prostho-img/file10/coronal-shield.jpg\" alt=\"\"><p class=\"cap\">Shield tracing of border movement in the coronal plane (CO, RD, MRL, MMO, MLL, LD).</p><p>When the border movements of all three planes are combined, we get a three-dimensional space within which mandibular movement is possible. This three-dimensional limiting space is called the <b>envelope of motion</b>. It was first described by Posselt in 1952.</p><img class=\"fig\" src=\"prostho-img/file10/envelope-motion.jpg\" alt=\"\"><p class=\"cap\">Envelope of motion: the three-dimensional space, described by Posselt in 1952, that is formed when sagittal, horizontal and coronal border movements are combined.</p>"},{"k":"4th year · TMJ and mandibular movement","t":"Four movements of prime importance to complete-denture service","b":"<p>Four movements of prime importance to complete-denture service are:</p><ol><li>The hinge-like movement used in opening and closing the mouth for the introduction of food.</li><li>A protrusive movement used in the grasping and incision of food.</li><li>Right or left lateral movements, used in the reduction of fibrous as well as other types of food.</li><li><b>Bennett movement</b> — the bodily side shift of the mandible which, when it occurs, may be recorded in the region of the advancing and (balancing) non-working side.</li></ol><p>Functional mandibular movements include all natural or characteristic movements occurring during mastication, swallowing, speech and yawning. <b>Parafunctional movements</b> are movements that occur in the clenching, tapping or grinding of the teeth.</p>"},{"k":"4th year · TMJ and mandibular movement","t":"Recording condylar paths, and the four classes of articulator","b":"<p>Jaw registration of condylar movements is a recording of the paths or positions of the condyles during border movements, made in order to program the articulator so that it can simulate the patient’s condylar movements.</p><p>How it is recorded: a pantographic tracing is used to program a fully adjustable articulator; interocclusal records (face-bow record, CR record, protrusive record, and lateral record) are used to program a semi-adjustable articulator.</p><p>An articulator is a mechanical system used to replicate mandibular movement. Types:</p><ol><li><b>Class I</b> — a simple holding instrument capable of accepting a single static registration; vertical motion is possible (for example a non-adjustable articulator).</li><li><b>Class II</b> — an instrument that permits horizontal as well as vertical motion, but does not orient the motion to the temporomandibular joints.</li><li><b>Class III</b> — an instrument that simulates condylar pathways by using averages or mechanical equivalents for all or part of the motion; it allows orientation of the casts relative to the joints, and may be arcon or non-arcon (for example a semi-adjustable articulator).</li><li><b>Class IV</b> — an instrument that will accept three-dimensional registrations; it allows orientation of the casts relative to the joints and simulation of mandibular movements (for example a fully adjustable articulator).</li></ol>"},{"k":"4th year · TMJ and mandibular movement","t":"The third complete-denture visit, and what a face-bow is for","b":"<p>The third visit in complete-denture construction (a clinical step) covers occlusal-plane orientation, vertical dimension, face-bow transfer, and centric relation. Objectives of this visit:</p><ul><li><b>Occlusal plane:</b> to determine the horizontal and vertical level of the teeth.</li><li><b>Vertical dimension:</b> to determine the amount of space between the rims with the jaws at rest and with the wax rims in occlusion.</li><li><b>Face-bow transfer:</b> to record the position of the jaws as related to the opening axis of the mandible, and to transfer this position so that the casts on the articulator will have the same relationship to the opening axis as the patient.</li><li><b>Centric relation:</b> to record the most posterior position of the mandible to the maxilla and transfer this position to the articulator.</li></ul><p>A face-bow is a caliper-like device used to record the patient’s maxilla / hinge-axis relationship and to transfer this relation to the articulator during mounting of the maxillary cast. If the face-bow transfer is properly done, the arc of closure on the articulator should duplicate the arc exhibited by the patient.</p><p>A face-bow transfer could be used when cusped posterior teeth are selected; when balanced occlusion in eccentric positions is desired; and when interocclusal check records are used for verification of jaw relationships. Some authors reported that if cuspless teeth and a monoplane occlusion are selected, a face-bow transfer is unnecessary. Others recommend the use of a face-bow even for cuspless teeth, to provide more accurate placement of the casts on the articulator than would be obtained by simply placing them arbitrarily.</p>"},{"k":"4th year · TMJ and mandibular movement","t":"Kinematic versus arbitrary face-bows, and the 13 mm average point","b":"<p>There are two types of face-bow: the kinematic and the arbitrary.</p><p>The <b>kinematic</b> face-bow is used to locate the hinge axis accurately. It is attached to a clutch which is in turn attached to the mandibular teeth. As the mandible makes opening and closing movements, the condyle styli move in an arc. The kinematic face-bow is generally <b>not</b> used for complete-denture fabrication, because the resiliency of the soft tissues makes precise location of the rotational centers almost impossible.</p><p>Several varieties of <b>arbitrary</b> face-bows are available. All are based on an average location of the hinge axis. It is located over measured points on the face, or by some type of earpiece. One average measurement places the rotational point <b>13 mm anterior to the distal edge of the tragus</b> of the ear, along a line from the superior-inferior center of the tragus to the outer canthus of the eye. The condyle styli of the face-bow are then placed directly over the dots. This technique is used with Hanau H-2 and Dentatus articulators.</p><img class=\"fig\" src=\"prostho-img/file10/facebow-13mm.jpg\" alt=\"\"><p class=\"cap\">Left: measuring an arbitrary hinge-axis point in front of the ear. Right: a face-bow relating that point (A) to the orbitale/canthus line and the bite fork, for transfer to the articulator.</p><p>On a fully adjustable articulator the “true hinge axis” must be located. On a semi-adjustable articulator the “arbitrary hinge axis” is used, and this is determined by the manufacturer of the face-bow and articulator system.</p><p>Recording mandibular movements is affected by the TMJ, muscular involvements, neuromuscular regulation of mandibular motion, and the ligaments.</p>"},{"k":"اختبر نفسك","t":"Complete-denture impressions — key choices","b":"<div class=\"qbox\" data-ans=\"2\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The lecture lists the five impression objectives in a definite sequence. Retention is listed:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">First, because nothing else matters until the denture sticks</button><button type=\"button\" class=\"opt\" data-i=\"1\">Second, immediately after preservation</button><button type=\"button\" class=\"opt\" data-i=\"2\">Last, because if the other objectives are achieved, retention will be adequate</button><button type=\"button\" class=\"opt\" data-i=\"3\">As an alternative to support, never together with it</button></div><div class=\"qexp\" hidden><p>الترتيب: حفاظ، دعم، ثبات، تجميل، وبعدين تثبيت. إذا الأربعة الأولى تحقّقت، التثبيت عادة يكفي.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Adhesion, as used in complete-denture retention, is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The attraction of saliva molecules to each other</button><button type=\"button\" class=\"opt\" data-i=\"1\">The attraction of unlike molecules — saliva to the denture</button><button type=\"button\" class=\"opt\" data-i=\"2\">The only role of atmospheric pressure</button><button type=\"button\" class=\"opt\" data-i=\"3\">Mechanical locking into a bony undercut</button></div><div class=\"qexp\" hidden><p>الالتصاق (adhesion) تجاذب المختلف: اللعاب ويه الطقم. التماسك (cohesion) هو تجاذب جزيئات اللعاب ويه بعض.</p></div></div><div class=\"qbox\" data-ans=\"2\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">According to this lecture, the available supporting area of an edentulous mandible compared with the maxilla is about:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Equal in both jaws</button><button type=\"button\" class=\"opt\" data-i=\"1\">24 cm² in the mandible and 14 cm² in the maxilla</button><button type=\"button\" class=\"opt\" data-i=\"2\">14 cm² in the mandible and 24 cm² in the maxilla</button><button type=\"button\" class=\"opt\" data-i=\"3\">50 cm² in each jaw</button></div><div class=\"qexp\" hidden><p>هذه المحاضرة تعطي 14 سم² للفك السفلي و 24 سم² للعلوي. يعني السفلي يحمل على مساحة أصغر.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">In the mucostatic (non-pressure) technique, border molding is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Always done with green-stick compound</button><button type=\"button\" class=\"opt\" data-i=\"1\">Not done; the mucosa and jaws are recorded relaxed, in an oversized tray, with a highly fluid material</button><button type=\"button\" class=\"opt\" data-i=\"2\">Replaced by a closed-mouth wax-rim record only</button><button type=\"button\" class=\"opt\" data-i=\"3\">Done only at the posterior palatal seal</button></div><div class=\"qexp\" hidden><p>الـ mucostatic: نسيج مرتاح، طابع واسع، مادة سائلة (جبس أو ألجينات)، وماكو تشكيل حواف. التثبيت أساساً توتر سطحي، والختم المحيطي ضعيف.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A risk of dentures made from a mucocompressive / functional impression is that:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The tissues never rebound, so the denture is always more stable at rest</button><button type=\"button\" class=\"opt\" data-i=\"1\">Tissue rebound at rest can displace the denture, and constant functional pressure can limit circulation and lead to residual-ridge resorption</button><button type=\"button\" class=\"opt\" data-i=\"2\">The material cannot record any functional form</button><button type=\"button\" class=\"opt\" data-i=\"3\">Border molding is impossible afterwards</button></div><div class=\"qexp\" hidden><p>النسيج مرن ويرجع مكانه بالراحة فالطقم ينزاح، والضغط المستمر وقت الوظيفة يضر الدورة الدموية ويساعد الامتصاص.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A slightly under-extended custom tray is fabricated on an overextended preliminary cast because the primary impression:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Is always underextended and must be ignored</button><button type=\"button\" class=\"opt\" data-i=\"1\">Has minimal tissue control, so it is typically overextended; a denture poured directly from it would also be overextended and not retentive</button><button type=\"button\" class=\"opt\" data-i=\"2\">Is poured in a metal die and cannot be trimmed</button><button type=\"button\" class=\"opt\" data-i=\"3\">Already includes a perfect posterior palatal seal</button></div><div class=\"qexp\" hidden><p>الأولية غالباً زائدة الامتداد. لا تسوي الطقم مباشرة عليها. الطابع الخاص يجي أقصر شوي على هالصبّة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">For an alginate primary impression, material is often pre-placed by finger into:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Only the oropharynx</button><button type=\"button\" class=\"opt\" data-i=\"1\">The palatal vault, retromylohyoid spaces and/or buccal vestibules, to avoid voids</button><button type=\"button\" class=\"opt\" data-i=\"2\">The nasal floor</button><button type=\"button\" class=\"opt\" data-i=\"3\">The external auditory meatus</button></div><div class=\"qexp\" hidden><p>حتى ما تطلع فراغات أو نقص، عبّي بإصبعك الأماكن اللي الطابع ما يوصلها زين: قبة الحنك، فضاء خلف الضرس اللامي، والدهليز الشدقي.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Impression compound for a primary impression is softened in a water-bath at:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">20–25°C</button><button type=\"button\" class=\"opt\" data-i=\"1\">55–70°C</button><button type=\"button\" class=\"opt\" data-i=\"2\">100–110°C</button><button type=\"button\" class=\"opt\" data-i=\"3\">Ice-water temperature only</button></div><div class=\"qexp\" hidden><p>الكمباوند يلينة بحمام ماء 55 إلى 70 م°. للعلوي شكل كرة، وللسفلي رول.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A sharp border on an impression usually indicates that the impression is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Correctly extended in that area</button><button type=\"button\" class=\"opt\" data-i=\"1\">Under-extended in that area</button><button type=\"button\" class=\"opt\" data-i=\"2\">Only over-extended in that area</button><button type=\"button\" class=\"opt\" data-i=\"3\">Made of metal</button></div><div class=\"qexp\" hidden><p>الحافة الحادة علامة نقص امتداد بهالمنطقة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">On the special tray, the flange should stand how far from the mucobuccal fold, and maxillary over-extension must not interfere with the:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">0.5 mm; incisive papilla</button><button type=\"button\" class=\"opt\" data-i=\"1\">2 mm; pterygomandibular raphe</button><button type=\"button\" class=\"opt\" data-i=\"2\">10 mm; palatine raphe only</button><button type=\"button\" class=\"opt\" data-i=\"3\">No clearance; masseteric notch</button></div><div class=\"qexp\" hidden><p>الحافة تبعد 2 ملم عن الطية المخاطية الشدقية. بالعلوي لا تتعارض ويه الرفاء الجناحي الفكي.</p></div></div>"},{"k":"اختبر نفسك","t":"Border molding, TMJ and mandibular movement — key choices","b":"<div class=\"qbox\" data-ans=\"2\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The material of choice for single-step (simultaneous) border molding is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Green-stick compound</button><button type=\"button\" class=\"opt\" data-i=\"1\">Impression plaster only</button><button type=\"button\" class=\"opt\" data-i=\"2\">Polyether</button><button type=\"button\" class=\"opt\" data-i=\"3\">Modeling wax at room temperature</button></div><div class=\"qexp\" hidden><p>التشكيل المتزامن لكل المحيط بخطوة واحدة مادته البولي إيثر. القطاعي مادته الكمباوند الأخضر.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">When recording the anterior lingual border of a mandibular tray, protruding the tongue records flange ______, and touching the anterior palate records flange ______.</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">width; length</button><button type=\"button\" class=\"opt\" data-i=\"1\">length; width</button><button type=\"button\" class=\"opt\" data-i=\"2\">thickness only; nothing else</button><button type=\"button\" class=\"opt\" data-i=\"3\">the masseteric notch; the vibrating line</button></div><div class=\"qexp\" hidden><p>إخراج اللسان يسجّل طول الحافة اللسانية؛ لمس مقدمة الحنك يسجّل عرضها.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The masseteric notch is produced when:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The patient says “ah”</button><button type=\"button\" class=\"opt\" data-i=\"1\">The patient closes willfully while the operator presses downward; the masseter, acting on the buccinator, depresses the impression</button><button type=\"button\" class=\"opt\" data-i=\"2\">The tongue touches the upper lip</button><button type=\"button\" class=\"opt\" data-i=\"3\">Green-stick compound is chilled in ice only</button></div><div class=\"qexp\" hidden><p>المريض يعض بإرادته وانت تضغط لتحت. الماضغة تؤثر على المبوقة وتعمل انخفاض اسمه masseteric notch.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Movement in the upper TMJ compartment is chiefly ______; movement in the lower compartment is ______.</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Hinge-like; gliding</button><button type=\"button\" class=\"opt\" data-i=\"1\">Gliding (condyle and disc as a unit); hinge-like</button><button type=\"button\" class=\"opt\" data-i=\"2\">Only Bennett shift; only Posselt’s envelope</button><button type=\"button\" class=\"opt\" data-i=\"3\">Vertical only; horizontal only</button></div><div class=\"qexp\" hidden><p>الحجرة العليا: انزلاق أمامي خلفي، اللقمة والقرص كوحدة. الحجرة السفلى: حركة مفصلية.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Centric relation, in this lecture, is described as a purely rotary movement about the transverse horizontal axis, occurring in the:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Upper TMJ compartment</button><button type=\"button\" class=\"opt\" data-i=\"1\">Lower TMJ compartment, and it is reproducible and useful for maxillomandibular records</button><button type=\"button\" class=\"opt\" data-i=\"2\">Coronoid space only</button><button type=\"button\" class=\"opt\" data-i=\"3\">Soft palate</button></div><div class=\"qexp\" hidden><p>CR دوران خالص حول محور المفصلة، بين اللقمة والسطح السفلي للقرص (الحجرة السفلى)، وقابلة للتكرار فتفيد بالتسجيل.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Posselt (1952) described average border limits of about:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">1 mm laterally, 10 mm opening, 50 mm protrusion</button><button type=\"button\" class=\"opt\" data-i=\"1\">10 mm laterally, 50–60 mm opening, 9 mm protrusion and 1 mm retrusion</button><button type=\"button\" class=\"opt\" data-i=\"2\">60 mm laterally and 9 mm opening</button><button type=\"button\" class=\"opt\" data-i=\"3\">No numeric limits, only muscle names</button></div><div class=\"qexp\" hidden><p>حدود Posselt: جانب 10 ملم، فتح 50–60 ملم، بروز تقريباً 9 ملم، ورجوع حوالي 1 ملم.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Border movements in the horizontal plane produce a characteristic ______ tracing; in the coronal plane a ______ tracing; in the sagittal plane a ______ tracing.</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Shield; beak; diamond</button><button type=\"button\" class=\"opt\" data-i=\"1\">Diamond; shield; beak</button><button type=\"button\" class=\"opt\" data-i=\"2\">Beak; diamond; shield</button><button type=\"button\" class=\"opt\" data-i=\"3\">Envelope only; nothing else; Gothic arch only</button></div><div class=\"qexp\" hidden><p>أفقي: ماسة (diamond). إكليلي: درع (shield). سهمي: منقار (beak). جمع الثلاثة يعطي غلاف الحركة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Bennett movement is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Opening around the true hinge axis only</button><button type=\"button\" class=\"opt\" data-i=\"1\">The bodily side shift of the mandible, which may be recorded in the region of the advancing and balancing (non-working) side</button><button type=\"button\" class=\"opt\" data-i=\"2\">A synonym for mucostatic impression technique</button><button type=\"button\" class=\"opt\" data-i=\"3\">The 13 mm face-bow measurement</button></div><div class=\"qexp\" hidden><p>بينيت: إزاحة جسم الفك كله للجانب، وقد تتسجل بجهة التقدم وكذلك جهة التوازن.</p></div></div><div class=\"qbox\" data-ans=\"2\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A Class III articulator:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Accepts only a single static registration and no horizontal motion</button><button type=\"button\" class=\"opt\" data-i=\"1\">Permits motion that is not oriented to the TMJs</button><button type=\"button\" class=\"opt\" data-i=\"2\">Simulates condylar pathways with averages or mechanical equivalents, orients the casts to the joints, and may be arcon or non-arcon (semi-adjustable)</button><button type=\"button\" class=\"opt\" data-i=\"3\">Is fully adjustable and must accept three-dimensional pantographic registrations</button></div><div class=\"qexp\" hidden><p>الصنف III هو تقريباً المفصلة نصف القابلة للتعديل. الصنف IV كاملة التعديل وتقبل تسجيلات ثلاثية الأبعاد.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The kinematic face-bow is generally not used for complete-denture fabrication because:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">It cannot be attached to any clutch</button><button type=\"button\" class=\"opt\" data-i=\"1\">Soft-tissue resiliency makes precise location of the rotational centers almost impossible</button><button type=\"button\" class=\"opt\" data-i=\"2\">It locates only the orbitale, never the hinge axis</button><button type=\"button\" class=\"opt\" data-i=\"3\">Hanau H-2 articulators reject all face-bows</button></div><div class=\"qexp\" hidden><p>النسيج الرخو تحت الطقم مرن، فما تقدر تحدّد مراكز الدوران بدقة. لذلك نستخدم فيسبو عشوائي بنقطة متوسطة، ومنها 13 ملم أمام الحافة الخلفية لوترة الأذن على خط الوترة–زاوية العين.</p></div></div>"},{"k":"اختبر نفسك","t":"Self-test — File 10 (score at the end)","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Close adaptation to undistorted mucosa is described as most important for:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Esthetics of the lip only</button><button type=\"button\" class=\"opt\" data-i=\"1\">Stability (resistance to horizontal movement)</button><button type=\"button\" class=\"opt\" data-i=\"2\">The 13 mm face-bow mark</button><button type=\"button\" class=\"opt\" data-i=\"3\">Class IV articulator programming only</button></div><div class=\"qexp\" hidden><p>الثبات مقاومة الحركة الأفقية، وأهم شيء انطباق قريب على غشاء غير مشوّه. يقل إذا ارتفاع الحافة نقص أو النسيج الرخو زاد حركته.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Mechanical interlock of an undercut as a retention factor is described as usually:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The most favorable and safest form of retention</button><button type=\"button\" class=\"opt\" data-i=\"1\">Unfavorable for the patient, because soft tissue may be damaged during insertion and removal</button><button type=\"button\" class=\"opt\" data-i=\"2\">Identical to cohesion</button><button type=\"button\" class=\"opt\" data-i=\"3\">The reason mucostatic impressions need no tray</button></div><div class=\"qexp\" hidden><p>التشابك الميكانيكي بالـ undercut عادة مو مناسب، لأن النسيج ينجرح ويه الإدخال والإخراج.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">For the primary impression, the jaw should be at the operator’s ______ for the upper impression and at the ______ for the lower.</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Shoulder; elbow</button><button type=\"button\" class=\"opt\" data-i=\"1\">Elbow; shoulder</button><button type=\"button\" class=\"opt\" data-i=\"2\">Knee; waist</button><button type=\"button\" class=\"opt\" data-i=\"3\">Eye level for both</button></div><div class=\"qexp\" hidden><p>العلوي بمستوى مرفق الطبيب، والسفلي بمستوى كتفه. والمريض جالس مستقيم ومرتاح.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A stock edentulous tray is selected approximately:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">2 mm smaller than the residual ridge</button><button type=\"button\" class=\"opt\" data-i=\"1\">5 mm larger than the outside surface of the residual ridge</button><button type=\"button\" class=\"opt\" data-i=\"2\">20 mm short of the vibrating line</button><button type=\"button\" class=\"opt\" data-i=\"3\">In contact with the pterygomandibular raphe at the first try-in</button></div><div class=\"qexp\" hidden><p>الطابع الجاهز أكبر من السطح الخارجي للحافة بحوالي 5 ملم. يتركز بقيحة الشفة فوق اللجام الشفوي.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Selective-pressure trays are constructed with:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Greater relief over primary stress-bearing areas and no relief elsewhere</button><button type=\"button\" class=\"opt\" data-i=\"1\">Less relief in the primary stress-bearing area and greater relief in the non-bearing areas</button><button type=\"button\" class=\"opt\" data-i=\"2\">Uniform 10 mm spacing everywhere</button><button type=\"button\" class=\"opt\" data-i=\"3\">No tray at all, only a wash</button></div><div class=\"qexp\" hidden><p>تفريج أقل بمناطق تحمل الضغط الأساسية حتى الضغط يروح إلها، وتفريج أكبر بالمناطق اللي ما تتحمل.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">After mandibular border molding is complete, a final check is that the patient can:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Whistle only</button><button type=\"button\" class=\"opt\" data-i=\"1\">Touch the entire upper lip with the tongue without displacing the tray</button><button type=\"button\" class=\"opt\" data-i=\"2\">Close in centric occlusion on the empty tray</button><button type=\"button\" class=\"opt\" data-i=\"3\">Retrude 10 mm</button></div><div class=\"qexp\" hidden><p>إذا اللسان لمس كل الشفة العلوية والطابع ما انزاح، الحافة اللسانية غالباً زينة. إذا انزاح، في زيادة امتداد.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Before a ZOE final impression, escape vents are made:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Only at the hamular notches</button><button type=\"button\" class=\"opt\" data-i=\"1\">In the palatine-raphe area and on either side, after the wax spacer is removed</button><button type=\"button\" class=\"opt\" data-i=\"2\">Through the tray handle only</button><button type=\"button\" class=\"opt\" data-i=\"3\">Never; vents would ruin the seal</button></div><div class=\"qexp\" hidden><p>شيل شمع التفريج، وافتح منافذ بخروج المادة عند الرفاء الحنكي وعلى الجهتين.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The intersection of the hinge, sagittal and vertical mandibular axes is called the:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Bennett angle</button><button type=\"button\" class=\"opt\" data-i=\"1\">Center of rotation</button><button type=\"button\" class=\"opt\" data-i=\"2\">Masseteric notch</button><button type=\"button\" class=\"opt\" data-i=\"3\">Gothic arch</button></div><div class=\"qexp\" hidden><p>نقطة تقاطع المحاور الثلاثة هي مركز الدوران.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A face-bow is a caliper-like device used to record and transfer the:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Tongue rest position only</button><button type=\"button\" class=\"opt\" data-i=\"1\">Patient’s maxilla / hinge-axis relationship to the articulator when the maxillary cast is mounted</button><button type=\"button\" class=\"opt\" data-i=\"2\">Soft-palate classification of House</button><button type=\"button\" class=\"opt\" data-i=\"3\">Shade of the anterior teeth</button></div><div class=\"qexp\" hidden><p>إذا النقل انعمل صح، قوس الإغلاق على المفصلة يطابق قوس المريض.</p></div></div><div class=\"qbox\" data-ans=\"0\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">One common arbitrary hinge-axis point is located:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">13 mm anterior to the distal edge of the tragus, along a line from the mid-tragus to the outer canthus of the eye</button><button type=\"button\" class=\"opt\" data-i=\"1\">13 mm posterior to the outer canthus, ignoring the ear</button><button type=\"button\" class=\"opt\" data-i=\"2\">At the mandibular foramen only</button><button type=\"button\" class=\"opt\" data-i=\"3\">On the tip of the nose</button></div><div class=\"qexp\" hidden><p>13 ملم أمام الحافة الخلفية لوترة الأذن، على خط من منتصف الوترة إلى الزاوية الوحشية للعين. تُستخدم ويه Hanau H-2 و Dentatus.</p></div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا الملف العاشر من المرحلة الرابعة، صفحتين موضوعين ويه بعض: شلون ناخذ طبعة الطقم الكامل، وبعدين تشريح المفصل الفكي وحركات الفك، لأن الطقم لازم يمشي ويه حركة فك المريض.</p><p>احفظ ترتيب أهداف الطبعة، والفروق بين الطبعة الساكنة والضاغطة والانتقائية، وبعدين شلون يتفصّل المفصل والحركات الحدودية لـ Posselt.</p>","<p>الطبعة نسخة سالبة للأسنان والأنسجة، تدخل جل وبعدين تتصلب وهي لامسة للأنسجة. طبعة الطقم الكامل تسجّل كل منطقة الدعم والثبات وختم الحواف بالفم بلا أسنان.</p><p>خمسة أهداف، والترتيب مهم:</p><p><b>الحفاظ:</b> بعد القلع التحفيز يروح والحافة تمتص. طريقة الطبعة ومادتها، عبر قاعدة الطقم، تكمل تأثيرها على صحة العظم واللثة.</p><p><b>الدعم:</b> مقاومة القوة اللي تدفع الطقم باتجاه النسيج. أكبر تغطية توزّع الحمل، وهذا يساعد الحفاظ والثبات والتثبيت.</p><p><b>الثبات:</b> مقاومة الحركة الأفقية. أهم شيء انطباق قريب على غشاء غير مشوّه. الثبات يقل إذا ارتفاع الحافة نقص، أو النسيج الرخو زاد حركته.</p><p><b>التجميل:</b> سماكة الحافة حسب كمية الضياع. الدهليز يتعبّى، بس مو زيادة، حتى شكل الوجه يرجع.</p><p><b>التثبيت:</b> إذا الأربعة الأولى تحقّقت، التثبيت عادة يكفي.</p>","<p>ستة عوامل للتثبيت:</p><p><b>الضغط الجوي:</b> يعتمد على الختم المحيطي. الحافة تمتد داخل النسيج المتحرك، بس مو لدرجة تجرحه.</p><p><b>الالتصاق (adhesion):</b> تجاذب جزيئات مختلفة، يعني اللعاب يلتصق بالطقم.</p><p><b>التماسك (cohesion):</b> جزيئات اللعاب تتجاذب ويه بعض.</p><p><b>التشابك الميكانيكي</b> داخل الـ undercut عادة مو مناسب للمريض، لأن النسيج الرخو ينجرح وقت الإدخال والإخراج.</p><p><b>تحكم العضلات وتحمّل المريض</b> تأثيرهم كبير. أحياناً الطقم ثابت وشكله زين مو لأن الطبعة دقيقة، بل لأن الشفة واللسان والخد تكيّفوا، والمريض تحمّل.</p>","<p>طبعة الفك السفلي مو بس “علوي مصغّر”. ستة فروقات:</p><p>مقعد الأساس شكله وحجمه مختلف؛ تحت الغشاء بالأسفل في تراكيب ثانية؛ عظم الدعم على قمة الحافة غالباً يختلف بين الفكين؛ اللسان يعقّد الطبعة السفلية؛ مساحة الدعم المتاحة <b>14 سم²</b> بالفك السفلي مقابل <b>24 سم²</b> بالعلوي (يعني الحمل السفلي على مساحة أصغر)؛ والدعم السفلي يجي من جسم الفك السفلي.</p><p>لهذا الطبعة السفلية أصعب، والختم المحيطي والدعم لازم ينحسبون بهدوء.</p>","<p>أسهل تصنيف حسب الضغط وقت الطبعة: بلا ضغط (mucostatic)، ضغط انتقائي، وضغط (mucocompressive).</p><p>الـ <b>mucostatic</b>: نريد النسيج وهو مرتاح، بأقل ضغط ممكن ويه جلوس الطابع وتصلب المادة. هيج ما نشوّه النسيج، وقاعدة الطقم تطابق النسيج بدون حمل.</p><p>شروطها: الفك والغشاء مرتاحين، <b>ماكو تشكيل حواف</b>؛ طابع أكبر من اللازم (فيه فراغ/spacing)؛ مادة سائلة جداً (جبس طبعة أو ألجينات)؛ التثبيت يعتمد أساساً على التوتر السطحي بين السطحين. الطقم ينطبق زين على منطقة الدعم، بس <b>ختمه المحيطي ضعيف</b>.</p>","<p>بتقنية الضغط، الطبعة تنضغط إما بإصبع الطبيب، أو بأسنان المريض — وهالأخيرة اسمها <b>طبعة وظيفية</b>.</p><p>الطبعة الوظيفية: طقم مسلّم، نرفّع وجهه الداخلي ونعبّيه بمادة تبطين بطيئة التصلب. المريض يلبسه أيام حتى النسيج ينطبع وهو يشتغل. بعدين المختبر يحوّلها لمادة تبطين صلبة. الهدف: قاعدة تطابق النسيج وهو محمل وظيفياً. المواد: كمباوند، شموع، وتبطين طري.</p><p>المشكلة: النسيج مرن ويرجع مكانه إذا الحمل راح، فالطقم ينزاح وقت الراحة. ووقت الوظيفة الضغط المستمر يقلل الدورة الدموية ويساعد امتصاص الحافة. يعني هالتقنية مو بدون ثمن.</p>","<p>الضغط الانتقائي: طابع خاص، تفريج أقل بمنطقة تحمل الضغط الأساسية، وتفريج أكبر بالمناطق اللي ما تتحمل. يعني الضغط الأكبر يروح للأماكن اللي العظم والنسيج يقدرون يحملون، والضغط الأقل للمناطق الحساسة. هيج الطقم يحمّل النسيج بانتقاء وقت الوظيفة، فيحسّن الثبات والتثبيت.</p><p><b>الطبعة والفم مفتوح:</b> الطابع يوصّل المادة ويه أنسجة الدعم، وبعلاقة تقريبية ويه الحواف، والفم مفتوح وبدون ضغط إضافي. الفكرة: الطقم ما ينخلع ويه قوة العض. وهم تعطي مجال للأنسجة اللي تنسحب فوق حواف الطقم وقت الكلام. السطح يطابق النسيج المرتاح، وقد ما ينطبق مثالي إذا صار حمل إطباقي.</p><p><b>الطبعة والفم مغلق:</b> حواف شمع على الصبّة الأولية، المريض يعض عليها، ونترك مجال واسع للّجم، وهو يشكّل الحواف بالعض والتكشير والمص والبلع.</p>","<p>حسب التسلسل: أولية وبعدين نهائية (ثانوية).</p><p>المريض جالس مستقيم ومرتاح. الفك بمستوى <b>مرفق</b> الطبيب للطبعة العلوية، وبمستوى <b>كتف</b> الطبيب للسفلية.</p><p>هدف الأولية: تسجّل <b>كل</b> منطقة تحمل الطقم. إذا قصّرت هسه، الطبعة النهائية تصير صعبة، والطقم النهائي تثبيته ضعيف. لا تقول “عدّلها بالنهائية” — الأولية مهمة.</p><p>السيطرة على الأنسجة بالأولية قليلة، فغالباً تمتد زيادة. إذا سويت طقم مباشرة على هالصبّة، الطقم هم زائد الامتداد وتثبيته ضعيف. لذلك لاحقاً نسوي طابع خاص أقصر شوي على هالصبّة الزايدة.</p>","<p>الطابع الجاهز معدني أو بلاستك، مثقّب أو لا. اختار مقاس أكبر من السطح الخارجي للحافة بحوالي <b>5 ملم</b>. ركّزه بحيث تقيحة الشفة بالطابع تجي فوق اللجام الشفوي. بالعلوي: الامتداد الخلفي يوصل خط الاهتزاز ويغطي الحدبات ويه مجال. بالسفلي: يوصل الشعبة الصاعدة.</p><p>الأولية تكون أدق ما نقدر، وزيادة امتداد الحواف أفضل من النقص، لأن الطابع الخاص راح ينعمل أقصر شوي على هالصبّة.</p><p>المادة تكون لزجة نسبياً حتى تعوّض نقص الطابع: ألجينات، أو بوتي سيليكون، أو كمباوند.</p>","<p>ممكن تضيف شمع أو كمباوند لحافة الطابع الجاهز قبل الطبعة حتى تطوّلها. وحتى ما تطلع فراغات أو نقص، حط مادة بإصبعك بالأماكن اللي الطابع ما يوصلها زين: غالباً قبة الحنك، فضاء خلف الضرس اللامي، والدهليز الشدقي.</p><p>الطابع المحمّل ينحط ويتدار من حدبة لحدبة، حتى الهواء ما ينحبس والمادة تجري للحواف. سند الطابع، والمريض يمص ويشد الخدود والشفاه لتحت. حرّك الفك يمين ويسار حتى تنطبع مسافة الناتئ الإكليلي.</p><p>بالسفلي: اللسان مرفوع، زلّ الطابع بين اللسان والحافة، وبعدين المريض يرخي لسانه وانت تقعد الطابع. بعد الجلوس: يمص الشفاه للداخل، يفتح وايد، ويطلع اللسان ويحرّكه للجانب. شكل الطبعة لازم يشبه الطقم النهائي.</p>","<p>الكمباوند مادة حرارية لزجة، تلين بحمام ماء <b>55 إلى 70 م°</b>. للعلوي تتحمّل شكل كرة، وللسفلي شكل رول. الجلوس مثل الألجينات، بس حواف الطابع الجاهز ما تحتاج تعديل. ما تحتاج لاصق طابع، وعادة ما تحتاج تحط مادة مسبقاً بالفم.</p><p>البوتي صلبة، والأفضل طابع معدني، بس البلاستك يكفي ويه لاصق. أكثر مرونة من الكمباوند فيناسب الـ undercuts. عيبها الأساسي سعرها.</p><p>ستة أغلاط شائعة: مكان الطابع غلط وما انطبعت منطقة؛ الطابع باين من خلال المادة (ضغط شوّه الطبعة)؛ فراغ كبير ما يتصلح على الصبّة؛ شكل حافة غلط من طول الطابع — الحافة الحادة غالباً تعني نقص امتداد؛ الطابع تحرك ويه التصلب؛ وتفاصيل ضعيفة من خلط غلط أو المادة بدأت تتصلب قبل ما تقعد بالكامل.</p>","<p>الطبعة النهائية (الثانوية) هي إكمال تسجيل السطح، وتُعمل عشان تصنيع التعويض، وبطابع فردي (خاص). لازم تنصب بحجر حتى تطلع الصبّة الرئيسية (master cast).</p><p>موادها: أوكسيد الزنك والأوجينول، جبس طبعة، ألجينات، والمواد المرنة (قاعدة مطاطية).</p><p>الطابع الخاص ينعمل على صبّة أولية مفرّجة: طبقة واحدة من شمع القاعدة فوق كل مناطق <b>غير تحمّل الضغط</b> — هذا “شمع التفريج”. وحتى الطابع ينشال من الصبّة، الـ undercuts الزايدة وعدم انتظام النسيج يتسدّون بأقل شمع لازم — “شمع الـ block-out”.</p>","<p>تصحيح المختبر: الحافة تبعد <b>2 ملم</b> عن الطية المخاطية الشدقية؛ مجال كافي للجام؛ والحافة ملساء مدورة ملمّعة (افحصها بالخنصر).</p><p>تصحيح السريري داخل فم المريض: نفس الـ 2 ملم ومجال اللجم؛ حواف ملساء مدورة؛ تثبيت وثبات معقولين؛ وماكو زيادة امتداد. بالعلوي: لا يتداخل ويه الرفاء الجناحي الفكي. بالسفلي: لا تطويل شدقي بمنطقة العضلة المبوقة، ولا لساني بمنطقة تحت اللسان أو الضرس اللامي أو خلفه.</p>","<p>تشكيل الحواف بطريقتين:</p><p><b>خطوة واحدة (متزامن):</b> كل المحيط يتعدّل مرة وحدة. المادة المختارة بولي إيثر. ميزتها: خطوة واحدة، وفرصة الغلط أقل إذا تحط صح. عيبها: صعبة وتحتاج طبيب متمرس.</p><p><b>قطاعي (تدريجي):</b> أجزاء المحيط تتعدّل كل جزء لحاله. المادة المختارة كمباوند العود الأخضر (green stick).</p>","<p>تشكيل حواف الطابع العلوي، خطوة خطوة:</p><p>1) ارفع الشفتين وبعدين مدّهن للخارج، لتحت، وللداخل.</p><p>2) ارفع الخد وشده للخارج، لتحت، وللداخل.</p><p>3) اللجام الشدقي: حرّك الخد لورا وقدام.</p><p>4) المنطقة الشدقية الخلفية: شد الخد للخارج ولتحت وللداخل، وبعدين المريض يفتح وايد ويحرّك الفك يمين ويسار (حتى الناتئ الإكليلي يشكّل المنطقة).</p><p>5) الجزء الخلفي من الحنك: المريض يقول «آه» وانت تعدّل الحد الخلفي.</p>","<p>تشكيل حواف الطابع السفلي:</p><p>1) الجزء الشفوي: حرّك الشفة للخارج، لفوق، وللداخل.</p><p>2) اللجام الشدقي: الخد للخارج، لفوق، لورا، وقدام.</p><p>3) الميزاب الشدقي الخلفي: ابعِد الخد زين وحرّكه لفوق وللداخل.</p><p>4) فعل العضلة الماضغة: المريض يعض بإرادته وانت تضغط لتحت. الماضغة تؤثر على المبوقة وتعمل انخفاض بالطبعة اسمه <b>تغلم الماضغة (masseteric notch)</b>.</p><p>5) الحافة اللسانية الأمامية: المريض يطلّع لسانه (هذا يسجّل <b>طول</b> الحافة)، وبعدين يلمس مقدمة الحنك (هذا يسجّل <b>عرض</b> الحافة).</p><p>6) الحافة اللسانية الخلفية: يطلّع اللسان ويحرّكه لدهليز اليمين واليسار.</p><p>7) الوسادة خلف الضرس: يفتح فمه وايد.</p><p>8) بعد ما تخلّص: لازم يقدر يلمس كل الشفة العلوية بلسانه بدون ما الطابع ينزاح. إذا انزاح، في زيادة امتداد لساني.</p>","<p>الطبعة النهائية بأوكسيد الزنك والأوجينول:</p><p>شيل شمع التفريج، واعمل فتحات خروج بمكان الرفاء الحنكي وعلى الجهتين حتى المادة الزايدة تطلع. اخلط طولين متساويين من الأساس والمسرّع حسب التعليمات. وزّع الخليط المتجانس على وجه الطابع الداخلي والحافة. أدخل الطابع، ركّزه باللجام الشفوي ومقبض الطابع، وقعّده. قلّد وظيفة النسيج، وابقَ ضاغط لين المادة تتصلب. شيل الطبعة، اغسلها بماء بارد، وافحص السطح زين.</p><p>وهم صارت طبعات رقمية بماسح داخل الفم وCAD/CAM للطقم الكامل. يستخدمون موسّع خاص يبعد الشفتين والخدود والدهليز ويه المسح.</p>","<p>المفصل الفكي الصدغي هو تمفصل لقمة الفك (اللقمة) والقرص بين السطوح ويه الحفرة الفكية (الحُقّة) بالعظم الصدغي. أربعة أجزاء: الحفرة الفكية؛ اللقمة؛ القرص المفصلي (الهلالة) اللي يقسم المفصل إلى حجرتين عليا وسفلى؛ والتجويف الزليلي.</p><p>الطقم البديل لازم يشتغل منسجم ويه مفصل المريض. اللقم تمشي داخل الحفرة: لقدام، لليمين واليسار، وأحياناً شوية لورا. القرص مربوط بحوافه بالمحفظة. الحركة بالحجرة <b>العليا</b> أساساً انزلاق أمامي خلفي، واللقة والقرص يتحركون كوحدة. بالحجرة <b>السفلى</b> الحركة مفصلية مثل المفصلة. لهذا مسارات اللقم هي اللي تتحكم بحركة الفك. والحركة نتيجة عضلات المضغ وفوق اللامي وتحت اللامي.</p>","<p>الأربطة اللي تأثر على حركة الفك: الرباط الفكي الصدغي والمحفظي؛ الرباط الوتدي الفكي؛ والرباط الإبري الفكي. الأوليان يربطون الفك بالجمجمة عند المفصلين؛ والوتدي والإبري يحدّون بعض الحركات.</p><p>العضلات ثلاث مجموعات:</p><p><b>الإغلاق:</b> الماضغة، الصدغية، والجناحية الإنسية. أليافها تقريباً عمودية، ومنشأها فوق اندغالها على الفك. هنّ القوة اللي تسحب الفك لتحت الفك العلوي.</p><p><b>الانزلاق:</b> الجناحية الوحشية. الاثنين سوية يسحبون الفك لقدام؛ وحدة لحاله تسحبه للجانب. هي آلية توجيه الفك (steering).</p><p><b>الفتح:</b> عضلات فوق اللامي (منشأها تحت الفك) وتحت اللامي (فعلها لتحت وورا). ومن الخافضات هم الجلدية العنقية (platysma) والجناحية الوحشية.</p><p>علاج صناعة الأسنان مرتبط مباشرة بالمفصل، لأن الإطباق جزء أساسي من علاج الطقم الكامل. المفصل يأثر على الطقم، والطقم يأثر على صحة ووظيفة المفصل.</p>","<p>عضلات المضغ الأربع أزواج: الصدغية والماضغة والجناحية الإنسية يغلقون الفك (يرفعونه ضد الفك العلوي). الجناحية الوحشية توجّه الفك: الاثنين لقدام، واحدة للجانب، وتساعد هم بالفتح.</p><p>إذا نسيت، تذكّر: الغالقات أليافها عمودية ومنشأها أعلى من اندغالها. الموجّهة (الجناحية الوحشية) هي اللي “تقود” الفك مثل مقود السيارة.</p>","<p>ثلاث محاور يتحرك عليها الفك:</p><p><b>محور المفصلة (المحور الأفقي المستعرض):</b> خط تخيلي يدور حوله الفك بمستوى السهمي، يعني الفتح والإغلاق.</p><p><b>المحور السهمي:</b> خط تخيلي من الأمام للخلف، يدور حوله الفك إذا شفناه بالمستوى الجبهي (يعني يميل لجهة).</p><p><b>المحور العمودي:</b> خط تخيلي يدور حوله الفك عبر المستوى الأفقي (يلتف يمين ويسار).</p><p>اللقة تمشي على المنحدر الخلفي للبارزة المفصلية لحد قمتها، وأحياناً جزء من المنحدر الأمامي. نقطة تقاطع المحاور الثلاثة هي <b>مركز الدوران</b>.</p>","<p>حركات الفك نوعين: أساسية ووظيفية.</p><p>الأساسية تصير على مستوى المفصل، ونوعين:</p><p><b>دوران:</b> بين اللقمة والسطح السفلي للقرص، يعني بالحجرة <b>السفلى</b>. العلاقة المركزية (CR) — وتسمى أيضاً أعلى وأخلف وأوسط أو أكثر موضع خلفي — هي دوران خالص حول المحور الأفقي المستعرض. هالحركة قابلة للتكرار وثابتة، لذلك مفيدة بتسجيل علاقة الفكين.</p><p><b>انتقال أو انزلاق:</b> بالحجرة <b>العليا</b>، بين السطح العلوي للقرص والحفرة الفكية.</p><p>كل حركات الفك، إلا الفتح والإغلاق بأقصى موضع خلفي (حركة المفصلة النهائية الخلفية)، هي مزيج دوران وانتقال، ونسميها حركات وظيفية.</p>","<p>الحركات الوظيفية: كل شيء إلا حركة المفصلة النهائية. مزيج دوران وانتقال، وتشمل: فتح وإغلاق؛ أمام وورا بشكل متناظر؛ وحركة جانبية غير متناظرة.</p><p>الفتح والإغلاق أهم الحركات، وينقسمون لعادة (habitual) وحدود (border).</p><p>حدود الفك حسب <b>Posselt سنة 1952</b>: جانب حوالي <b>10 ملم</b>، فتح <b>50 إلى 60 ملم</b>، بروز تقريباً <b>9 ملم</b>، ورجوع حوالي <b>1 ملم</b>. هذي أقصى مواضع يوصلها الفك بأي اتجاه، ويحدّها الأعصاب والعظم والعضلات والأسنان (إذا موجودة) والأربطة.</p>","<p>الحركة الحدودية الأمامية بالمستوى السهمي قوس واحد (دوران وانتقال). الخلفية قوسين: دوران لحد فتح المفصلة النهائية، وبعدين انتقال لحد أقصى فتح.</p><p>خريطة المستوى السهمي هي رسم أقصى حركة عمودية وأمامية-خلفية للقواطع السفلية من جنب الرأس. تشمل الإطباق المركزي (CO) حيث الأسنان تتعشق أفضل ما يمكن، وإذا رجّعنا الفك لأقصى موضع خلفي علوي لمفصلة نهائية يحدّه المفصل — وهذا غالباً العلاقة المركزية (CR).</p><p>الرسم المميز بالمستوى السهمي شكل <b>منقار</b>: من CR إلى CO، بعدين حافة بحافة (ER) بتوجيه القواطع، بعدين أقصى بروز (MP)، بعدين قوس لتحت لأقصى فتح (MMO). الطبيب يرجّع الفك؛ ويه الإغلاق يدور بعد الانتقال (RAT) حول محور يمر بالثقبة الفكية، وبعدين اللقمة ترجع لـ CR، والفكين يكمّل قوس حول محور المفصلة الحقيقي اللي يمر باللقمة (THA).</p>","<p>بالمستوى الأفقي الرسم المميز <b>ماسة (diamond)</b>: من CR ل أقصى يمين، لأقصى بروز، لأقصى يسار، ويرجع للمركز. تتبع رأس السهم (Gothic arch) يتطابق ويه هالنمط.</p><p>بالمستوى الإكليلي (الجبهي) الرسم <b>درع (shield)</b>: من CO لانفصال بتوجيه الناب يمين، لأقصى يمين، قوس لتحت لأقصى فتح، قوس لفوق لأقصى يسار، يرجع لانفصال الناب يسار، وبعدين لـ CO.</p><p>إذا جمعنا حدود المستويات الثلاثة، نحصل على فضاء ثلاثي الأبعاد يتحرك داخله الفك: هذا <b>غلاف الحركة (envelope of motion)</b>، وصفه Posselt سنة 1952.</p>","<p>أربع حركات مهمة جداً لخدمة الطقم الكامل:</p><p>1) حركة مفصلية للفتح والإغلاق حتى يدخل الأكل.</p><p>2) حركة بروزيّة للإمساك وقطع الأكل.</p><p>3) حركة جانبية يمين أو يسار لطحن الأكل الليفي وغيره.</p><p>4) <b>حركة بينيت (Bennett)</b>: إزاحة جانبية لجسم الفك كله، وإذا صارت ممكن تتسجل بمنطقة الجهة المتقدمة وكذلك جهة التوازن (غير العاملة).</p><p>الحركات الوظيفية: المضغ، البلع، الكلام، والتثاؤب. والحركات <b>فوق الوظيفية (parafunctional)</b>: صرير، نقر، أو طحن الأسنان.</p>","<p>تسجيل مسارات اللقم معناه نسجّل طريق أو موضع اللقم بالحركات الحدودية، حتى نبرمج المفصلة فتقلّد حركة فك المريض.</p><p>كيف؟ تتبع شامل (pantographic) لمفصلة كاملة التعديل؛ وتسجيلات بين الإطباق (فيسبو، علاقة مركزية، بروز، وجانبي) لمفصلة نصف قابلة للتعديل.</p><p>المفصلة جهاز ميكانيكي يقلّد حركة الفك، أربعة أصناف:</p><p><b>I</b> ماسكة بسيطة تقبل تسجيل ثابت واحد وفيها حركة عمودية (غير قابلة للتعديل).</p><p><b>II</b> تسمح بحركة أفقية وعمودية، بس ما توجّه الحركة نسبة للمفصل الفكي.</p><p><b>III</b> تقلّد مسارات اللقم بمتوسطات أو مكافئات ميكانيكية، وتسمح بتوجيه الصبّات نسبة للمفاصل، وقد تكون arcon أو non-arcon (نصف قابلة للتعديل).</p><p><b>IV</b> تقبل تسجيلات ثلاثية الأبعاد، وتوجّه الصبّات وتقلّد حركات الفك (كاملة التعديل).</p>","<p>الزيارة الثالثة بالطقم الكامل (خطوة سريرية): توجيه مستوى الإطباق، البعد العمودي، نقل الفيسبو، والعلاقة المركزية.</p><p>أهدافها: مستوى الإطباق يحدّد المستوى الأفقي والعمودي للأسنان؛ البعد العمودي يحدّد المسافة بين الحواف والفك مرتاح، وبين الحواف وهي متطبقة؛ الفيسبو يسجّل موضع الفكين نسبة لمحور فتح الفك وينقله حتى الصبّات على المفصلة تكون بنفس العلاقة؛ والعلاقة المركزية تسجّل أكثر موضع خلفي للفك السفلي نسبة للعلوي وتنقله للمفصلة.</p><p>الفيسبو جهاز مثل الفرجار يسجّل علاقة الفك العلوي بمحور المفصلة وينقلها ويه تركيب الصبّة العلوية. إذا انعمل صح، قوس الإغلاق على المفصلة لازم يطابق قوس المريض.</p><p>يستخدم خصوصاً إذا اخترنا أضراس ذات حدبات، أو نريد إطباق متوازن بالوضعيات اللامركزية، أو نستخدم تسجيلات فحص بين الإطباق. بعض المؤلفين يقولون إذا الأسنان بلا حدبات والإطباق مستوٍ، الفيسبو مو ضروري. غيرهم يوصون بيه حتى ويه الأسنان المسطحة، لأن وضع الصبّات يكون أدق من الرص العشوائي.</p>","<p>نوعان من الفيسبو: حركي (kinematic) وعشوائي (arbitrary).</p><p>الحركي يحدّد محور المفصلة بدقة. يتربط بمسكة (clutch) على أسنان الفك السفلي، ويه الفتح والإغلاق أقلام اللقم ترسم قوس. عموماً <b>ما يُستخدم</b> بالطقم الكامل، لأن مرونة النسيج الرخو تخلّي تحديد مراكز الدوران بدقة شبه مستحيل.</p><p>العشوائي يعتمد موقع متوسط للمحور. إما نقاط مقاسة على الوجه، أو قطعة أذن. قياس متوسط شائع: نقطة الدوران <b>13 ملم أمام الحافة الخلفية لوترة الأذن (tragus)</b>، على خط من منتصف الوترة (من فوق لتحت) إلى الزاوية الوحشية للعين (outer canthus). أقلام اللقم تنحط فوق هالنقاط. هالطريقة ويه مفصلة Hanau H-2 و Dentatus.</p><p>المفصلة كاملة التعديل تحتاج محور المفصلة الحقيقي. النصف قابلة للتعديل تستخدم المحور العشوائي حسب نظام الشركة.</p><p>وأخيرًا: تسجيل حركات الفك يتأثر بالمفصل، والعضلات، والتنظيم العصبي العضلي، والأربطة.</p>","<p>أسئلة طبعات الطقم الكامل. اقرأ بهدوء؛ الجواب يظهر بعد الضغط ويا شرح عراقي.</p>","<p>أسئلة تشكيل الحواف، المفصل، والحركات. ركّز على الحجرة العليا والسفلى، ورسوم Posselt، والفيسبو.</p>","<p>اختبار الملف العاشر. عشر أسئلة من الطبعات والمفصل والفيسبو. اضغط الزر بنهاية الشريحة حتى تشوف درجتك.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
