@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Prosthodontics File 11 — Vertical Jaw Relation, Trial Denture, Insertion and Complications</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Prosthodontics · 4th year</div>
+    <h1>Vertical and Horizontal Jaw Relations, Trial Denture, Insertion and Complications</h1>
+    <p style="margin:0 0 16px"><p>PDF pages 343–374 (Dr. Ihab Nabeel Al-mgotar / Safi). Every important point from the lectures is covered, with detailed simple Iraqi Arabic explanations, figures, in-slide questions and a scored self-test.</p></p>
+    <ul>
+      <li><</li>
+      <li>u</li>
+      <li>l</li>
+      <li>></li>
+      <li><</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li>V</li>
+      <li>e</li>
+      <li>r</li>
+      <li>t</li>
+      <li>i</li>
+      <li>c</li>
+      <li>a</li>
+      <li>l</li>
+      <li> </li>
+      <li>d</li>
+      <li>i</li>
+      <li>m</li>
+      <li>e</li>
+      <li>n</li>
+      <li>s</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li> </li>
+      <li>a</li>
+      <li>t</li>
+      <li> </li>
+      <li>r</li>
+      <li>e</li>
+      <li>s</li>
+      <li>t</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>i</li>
+      <li>n</li>
+      <li> </li>
+      <li>o</li>
+      <li>c</li>
+      <li>c</li>
+      <li>l</li>
+      <li>u</li>
+      <li>s</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li>,</li>
+      <li> </li>
+      <li>f</li>
+      <li>r</li>
+      <li>e</li>
+      <li>e</li>
+      <li>w</li>
+      <li>a</li>
+      <li>y</li>
+      <li> </li>
+      <li>s</li>
+      <li>p</li>
+      <li>a</li>
+      <li>c</li>
+      <li>e</li>
+      <li>,</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>t</li>
+      <li>h</li>
+      <li>e</li>
+      <li> </li>
+      <li>e</li>
+      <li>f</li>
+      <li>f</li>
+      <li>e</li>
+      <li>c</li>
+      <li>t</li>
+      <li>s</li>
+      <li> </li>
+      <li>o</li>
+      <li>f</li>
+      <li> </li>
+      <li>e</li>
+      <li>r</li>
+      <li>r</li>
+      <li>o</li>
+      <li>r</li>
+      <li>s</li>
+      <li>.</li>
+      <li><</li>
+      <li>/</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li><</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li>M</li>
+      <li>e</li>
+      <li>t</li>
+      <li>h</li>
+      <li>o</li>
+      <li>d</li>
+      <li>s</li>
+      <li> </li>
+      <li>o</li>
+      <li>f</li>
+      <li> </li>
+      <li>r</li>
+      <li>e</li>
+      <li>c</li>
+      <li>o</li>
+      <li>r</li>
+      <li>d</li>
+      <li>i</li>
+      <li>n</li>
+      <li>g</li>
+      <li> </li>
+      <li>V</li>
+      <li>D</li>
+      <li>R</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>V</li>
+      <li>D</li>
+      <li>O</li>
+      <li>,</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>c</li>
+      <li>e</li>
+      <li>n</li>
+      <li>t</li>
+      <li>r</li>
+      <li>i</li>
+      <li>c</li>
+      <li> </li>
+      <li>r</li>
+      <li>e</li>
+      <li>l</li>
+      <li>a</li>
+      <li>t</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li> </li>
+      <li>f</li>
+      <li>o</li>
+      <li>r</li>
+      <li> </li>
+      <li>c</li>
+      <li>o</li>
+      <li>m</li>
+      <li>p</li>
+      <li>l</li>
+      <li>e</li>
+      <li>t</li>
+      <li>e</li>
+      <li> </li>
+      <li>d</li>
+      <li>e</li>
+      <li>n</li>
+      <li>t</li>
+      <li>u</li>
+      <li>r</li>
+      <li>e</li>
+      <li>s</li>
+      <li>.</li>
+      <li><</li>
+      <li>/</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li><</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li>T</li>
+      <li>r</li>
+      <li>i</li>
+      <li>a</li>
+      <li>l</li>
+      <li>-</li>
+      <li>d</li>
+      <li>e</li>
+      <li>n</li>
+      <li>t</li>
+      <li>u</li>
+      <li>r</li>
+      <li>e</li>
+      <li> </li>
+      <li>e</li>
+      <li>x</li>
+      <li>a</li>
+      <li>m</li>
+      <li>i</li>
+      <li>n</li>
+      <li>a</li>
+      <li>t</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li>,</li>
+      <li> </li>
+      <li>e</li>
+      <li>s</li>
+      <li>t</li>
+      <li>h</li>
+      <li>e</li>
+      <li>t</li>
+      <li>i</li>
+      <li>c</li>
+      <li>s</li>
+      <li>,</li>
+      <li> </li>
+      <li>p</li>
+      <li>h</li>
+      <li>o</li>
+      <li>n</li>
+      <li>e</li>
+      <li>t</li>
+      <li>i</li>
+      <li>c</li>
+      <li>s</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>t</li>
+      <li>h</li>
+      <li>e</li>
+      <li> </li>
+      <li>p</li>
+      <li>o</li>
+      <li>s</li>
+      <li>t</li>
+      <li>e</li>
+      <li>r</li>
+      <li>i</li>
+      <li>o</li>
+      <li>r</li>
+      <li> </li>
+      <li>p</li>
+      <li>a</li>
+      <li>l</li>
+      <li>a</li>
+      <li>t</li>
+      <li>a</li>
+      <li>l</li>
+      <li> </li>
+      <li>s</li>
+      <li>e</li>
+      <li>a</li>
+      <li>l</li>
+      <li>.</li>
+      <li><</li>
+      <li>/</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li><</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li>I</li>
+      <li>n</li>
+      <li>s</li>
+      <li>e</li>
+      <li>r</li>
+      <li>t</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li>,</li>
+      <li> </li>
+      <li>P</li>
+      <li>I</li>
+      <li>P</li>
+      <li>,</li>
+      <li> </li>
+      <li>s</li>
+      <li>e</li>
+      <li>l</li>
+      <li>e</li>
+      <li>c</li>
+      <li>t</li>
+      <li>i</li>
+      <li>v</li>
+      <li>e</li>
+      <li> </li>
+      <li>g</li>
+      <li>r</li>
+      <li>i</li>
+      <li>n</li>
+      <li>d</li>
+      <li>i</li>
+      <li>n</li>
+      <li>g</li>
+      <li>,</li>
+      <li> </li>
+      <li>p</li>
+      <li>a</li>
+      <li>t</li>
+      <li>i</li>
+      <li>e</li>
+      <li>n</li>
+      <li>t</li>
+      <li> </li>
+      <li>i</li>
+      <li>n</li>
+      <li>s</li>
+      <li>t</li>
+      <li>r</li>
+      <li>u</li>
+      <li>c</li>
+      <li>t</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li>s</li>
+      <li>,</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>c</li>
+      <li>o</li>
+      <li>m</li>
+      <li>m</li>
+      <li>o</li>
+      <li>n</li>
+      <li> </li>
+      <li>p</li>
+      <li>o</li>
+      <li>s</li>
+      <li>t</li>
+      <li>-</li>
+      <li>i</li>
+      <li>n</li>
+      <li>s</li>
+      <li>e</li>
+      <li>r</li>
+      <li>t</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li> </li>
+      <li>c</li>
+      <li>o</li>
+      <li>m</li>
+      <li>p</li>
+      <li>l</li>
+      <li>i</li>
+      <li>c</li>
+      <li>a</li>
+      <li>t</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li>s</li>
+      <li>.</li>
+      <li><</li>
+      <li>/</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li><</li>
+      <li>/</li>
+      <li>u</li>
+      <li>l</li>
+      <li>></li>
+      <li>Total run time: <b>1 hour 4 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 32</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Prosthodontics · File 11","t":"Vertical and Horizontal Jaw Relations, Trial Denture, Insertion and Complications","b":"<p>University of Baghdad, College of Dentistry — Prosthodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This 4th-year file covers PDF pages 343–374 (Dr. Ihab Nabeel Al-mgotar / Safi):</p><ul><li>Vertical jaw relation — rest and occlusal vertical dimension, freeway space, recording methods, and the effects of errors.</li><li>Horizontal jaw relation — centric relation for complete dentures, hand position, and recording at the correct OVD.</li><li>The trial denture: extra- and intra-oral examination, phonetics, esthetics, posterior palatal seal, and the roles of patient and technician.</li><li>Insertion of the finished complete denture, PIP and occlusal correction, patient instructions, and common post-insertion complications.</li></ul><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end.</p>"},{"k":"4th year · Vertical jaw relation","t":"Key definitions: vertical dimension, rest, occlusion, and freeway space","b":"<p>A <b>maxillomandibular relationship record</b> is a registration of any positional relationship of the mandible relative to the maxillae; these records may be made at any vertical, horizontal, or lateral orientation.</p><p><b>Vertical dimension</b> is the distance between two selected anatomic or marked points (usually one on the tip of the nose and the other on the chin), one on a fixed and one on a movable member.</p><p>Vertical jaw relation can be recorded in two positions:</p><ol><li><b>Rest vertical dimension (physiologic rest position)</b> — the same two points when the person is resting comfortably in an upright position and the associated muscles are in a state of minimal contractual activity.</li><li><b>Vertical dimension of occlusion (VDO)</b> — the same two points when the teeth are in maximal intercuspal position, or when the occlusal rims are in contact in centric occlusion.</li></ol><p><b>Interocclusal rest distance (freeway space)</b> is the difference between the rest vertical dimension and the occlusal vertical dimension: <b>2–4 mm</b>.</p><p>In a normal dentulous patient the teeth do not maintain contact at rest. That space exists only at rest; during occlusion the teeth come into contact and the space is lost. The same relationship should be produced in the complete denture. Once VDO is recorded, it should be verified with the vertical dimension at rest: VDO should always be <b>2–4 mm less</b> than vertical dimension at rest. The denture is fabricated at VDO so that freeway space is formed at rest.</p><img class=\"fig\" src=\"prostho-img/file11/facial-vd-measurement.jpg\" alt=\"\"><p class=\"cap\">Vertical dimension is measured on the face between two selected points, usually the tip of the nose and the chin.</p>"},{"k":"4th year · Vertical jaw relation","t":"Why vertical relation is critical, what affects it, and why it matters","b":"<p>This relation is the easiest to record, but it is very critical. Errors in vertical dimension are the first to produce severe discomfort in the temporomandibular joint; the muscles of mastication and the joint will be strained.</p><p>Factors affecting vertical jaw relation:</p><ol><li><b>Teeth</b> act as occlusal vertical stops and establish the relationship of the mandible to the maxilla in a vertical direction in dentulous patients.</li><li><b>Musculature.</b> The opening and closing muscles tend to be in a state of minimal tonic contraction; this determines the vertical jaw relation. Muscles that elevate the mandible (closing muscles) and gravity also help to control the tonic balance that maintains the physiologic rest position.</li></ol><p>Importance of vertical jaw relation:</p><ol><li>Functional roles: mastication, respiration, deglutition, phonetics.</li><li>A psychological role.</li><li>An esthetic role.</li><li>A comfortable role, by maintaining the health of tissue, mucosa, bone, muscles and the TMJ.</li></ol>"},{"k":"4th year · Vertical jaw relation","t":"Effects of an increased, and of a decreased, vertical relation","b":"<p>Effects of <b>increased</b> vertical relation:</p><ol><li>Speech problems.</li><li>Sensation of bulky dentures.</li><li>Premature contact and clicking during function.</li><li>Increased rate of residual-ridge resorption.</li><li>TMJ and muscle pain and fatigue.</li><li>Poor esthetics, such as separated lips and display of the teeth.</li><li>Inability to open the mouth widely.</li><li>Loss of biting power.</li><li>Difficulty in swallowing.</li><li>Increased volume (cubical space) of the oral cavity.</li></ol><p>Effects of <b>decreased</b> vertical relation:</p><ol><li>Poor esthetics: thin-lipped appearance, and prominence of the mandible and chin.</li><li>Excessive wrinkles and folds at the corners of the mouth, which may lead to angular cheilitis.</li><li>Loss of biting power and decreased chewing ability.</li><li>Muscular fatigue and pain in the TMJ region.</li><li>Cheek biting.</li><li>Neuralgia or other features.</li><li>Decreased volume (cubical space) of the oral cavity.</li></ol>"},{"k":"4th year · Vertical jaw relation","t":"Vertical dimension at rest: why we record it, and how it can go wrong","b":"<p>Vertical dimension at rest is the length of the face when the mandible is in the rest position. It is influenced by the muscles of mastication and by the muscles involved in speech, deglutition and breathing. It is essential to record it because it acts as a reference point when recording VDO.</p><p>The formula is: <b>VD at rest = VD at occlusion + freeway space</b>.</p><p>It should be recorded at the <b>physiological</b> rest position of the mandible. In patients with prolonged edentulousness, the mandible may shift to a <b>habitual</b> rest position. The complete denture should not be fabricated from that habitual position, so the physiological rest position must be determined first. When functional movements (swallowing, wetting the lips) are performed, the mandible comes to the physiological rest position before going to the habitual rest position.</p><p>Considerations while recording it:</p><ul><li>Any neuromuscular disease can influence the rest position.</li><li>The patient cannot maintain the physiological rest position for an indefinite period, so it should be recorded quickly.</li><li>An incorrect measurement of rest position can lead to a faulty VDO and to injury of the supporting structures and the TMJ.</li></ul>"},{"k":"4th year · Vertical jaw relation","t":"Six methods of recording rest vertical dimension","b":"<p>VDR is usually measured on the face with a ruler, between two selected points marked with an indelible marker or a triangle of adhesive tape above and below the mouth, mostly on the nose and chin. Methods:</p><p><b>1. Facial measurements after swallowing and relaxing.</b> The patient sits or stands upright, head erect, eyes looking straight ahead. Ask the patient to swallow, wipe the lips with the tongue, relax the facial muscles and drop the shoulders. Then measure VDR and repeat until a consistent measurement is obtained.</p><p><b>2. Tactile sensation.</b> The patient stands erect and opens wide until the muscles of mastication feel uncomfortable, then closes slowly and stops when the muscles feel totally relaxed and comfortable. The distance is recorded and compared with the swallowing method. This relies on the patient’s perception of relaxation and will vary, so at least one additional method should confirm the readings.</p><p><b>3. Anatomic landmarks (Willis guide).</b> The distance between the pupil of the eye and the rima oris (corners of the mouth), and the distance between the anterior nasal spine and the lower border of the mandible, should be equal if the jaws are at rest. Accuracy is questionable in patients with facial asymmetry.</p><p><b>4. Phonetics (speech).</b> In the first method the patient repeatedly pronounces the letter “m” a certain number of times, and the distance is measured immediately after the patient stops. In the second method the dentist keeps talking to the patient and measures the distance immediately after the patient stops talking.</p><p><b>5. Electromyographic method.</b></p><p><b>6. Facial expression.</b></p>"},{"k":"4th year · Vertical jaw relation","t":"Measuring VDO: mechanical methods (ridge relation and pre-extraction records)","b":"<p>Vertical relation of occlusion is the vertical dimension of the face when the teeth or occlusal rims are in contact in centric occlusion. Methods are roughly grouped as mechanical and physiological.</p><p><b>Mechanical methods — ridge relation.</b> The incisive papilla is a stable landmark and changes little with residual-ridge resorption. In the natural dentition the distance from the incisive papilla to the incisal edge of the mandibular incisors is about <b>4 mm</b>. The incisal edge of the maxillary central incisor is on average <b>6 mm</b> below the incisive papilla, so the average vertical overlap of the opposing central incisors is about <b>2 mm</b>. These measurements must be checked in the trial dentures on the articulator, but they do not appear relevant in severe ridge resorption.</p><p>The mandible is parallel to the maxilla only at occlusion. Adjusting the patient’s mandible to be parallel to the maxilla, associated with a <b>5°</b> opening of the jaw in the TMJ, gives a correct amount of jaw separation. This cannot be taken as a standard in patients who had periodontal disease or who lost their teeth at different periods of time.</p><p><b>Pre-extraction records.</b> Profile photographs are made and enlarged to life size, with the teeth in maximum occlusion; measurements of the same landmarks on the photograph and on the face are compared, and can be re-evaluated at try-in. A disadvantage is that the angulation of the photograph might differ from the patient’s posture. Articulated dentulous casts mounted in CR can later be compared with edentulous casts on a separate articulator; this is valuable when the ridges were not sacrificed during extraction or resorbed during a long wait. Facial measurements: two points are marked on the upper and lower halves of the face before extraction, and the occlusal vertical dimension is recorded (for example with dividers or calipers from chin to the base of the nose) for use after extraction.</p><p><b>Measurements from former dentures.</b> The patient’s existing denture is a valuable record. A Boley gauge is used to measure the distance between the borders of the maxillary and mandibular dentures when both are in occlusion; that measurement is used to determine VDO.</p>"},{"k":"4th year · Vertical jaw relation","t":"Physiological methods of measuring VDO","b":"<p>These methods are used especially for the edentulous patient with no pre-extraction record.</p><p><b>a. Power point (maximum force), suggested by Boos.</b> The theory is that when the teeth come into contact, maximum force (the power point), measured by a bimeter, is exerted when that contact occurs at the correct VDO. A bimeter attached to the mandibular record base has a dial that shows the pressure acting on it.</p><img class=\"fig\" src=\"prostho-img/file11/occlusal-rims-bases.jpg\" alt=\"\"><p class=\"cap\">Wax occlusal rims on record bases are used both for a tentative VDO and, later, for the most frequently used clinical tests of rest space, esthetics and speech.</p><p><b>b. Wax occlusal rims.</b> A tentative vertical dimension is measured with the rims and the casts are articulated in a tentative centric relation. A tracing device can be attached to the rims for a graphic tracing. Facial expression and esthetics are used for the final value.</p><p><b>c. Physiological rest position.</b> A suggested method is to have the patient relaxed with the wax rims in place, trunk upright and head unsupported. The patient swallows and lets the jaw relax. When relaxation is obvious, the lips are carefully parted to reveal how much interocclusal space is present between the rims. It should be <b>2–4 mm in the premolar regions</b>. If it is more than 4 mm, VDO may be considered too small, and vice versa. The rims are adjusted until the dentist is satisfied with the interocclusal space, patient comfort, speech and esthetics. This method is not an exact guide by itself; used with other methods it helps determine the relation of the mandible to the maxillae.</p>"},{"k":"4th year · Vertical jaw relation","t":"Phonetics, esthetics, swallowing threshold, and the three everyday tests","b":"<p><b>d. Phonetics and esthetics.</b> Production of the <b>ch, s and j</b> sounds brings the anterior teeth close together. If the distance is too large, VDO may be too small. If the anterior teeth click together when these sounds are made, VDO is probably too great. Esthetics is also affected: skin tone, contour, and support of the lips by the anteroposterior position of the teeth. In decreased VDO the lips are not correctly supported and will be more nearly vertical than when they were supported by natural teeth. The esthetic guide is to select teeth the same size as the natural teeth and to estimate the amount of tissue lost from the alveolar ridges.</p><p><b>e. Swallowing threshold.</b> The theory is that when a person swallows, the teeth come together with a very light contact at the beginning of the swallowing cycle, and a record at that point is used as VDO. A cone of soft wax is built on the lower denture base so that it contacts the upper occlusion rim when the jaws are open too wide. Flow of saliva is stimulated with a piece of candy; repeated swallowing gradually reduces the height of the wax cone until the mandible reaches the level of VDO.</p><p>The most frequently used tests that aid the dentist in establishing the correct VDO by means of occlusion rims are:</p><ol><li>Visual observation of the space between the rims when the mandible is in its physiological rest position.</li><li>Judgment of the overall esthetic facial support.</li><li>Phonetic tests, including observations when the “s” sound is enunciated accurately and repeatedly — the average speaking space.</li></ol><p>A further assessment and confirmation of this tentative determination will occur later at the try-in appointment, when teeth are set in the wax trial dentures and VDO is verified in the mouth. The same methods can again be used before the dentures are completed.</p>"},{"k":"4th year · Horizontal jaw relation","t":"Centric relation is the correct horizontal position for complete dentures","b":"<p>The correct horizontal relationship for fabricating complete dentures is always the <b>centric relation</b> position.</p><p><b>Centric occlusion</b> is the occlusion of the opposing teeth when the mandible is in centric relation.</p><p><b>Centric relation</b> is the maxillomandibular relationship in which the condyles articulate with the thinnest avascular portion of their respective discs, with the complex in the anterior-superior position against the slopes of the articular eminences. It is restricted to a purely rotary movement about the transverse horizontal axis. Centric relation is located by detecting the only retruded position of the mandible to the maxilla in which a clinician can obtain a purely vertical hinge movement of the mandible in relation to the maxilla.</p><p>The clinician must be able to manipulate the patient’s mandible to CR because:</p><ol><li>It is the starting reference point for complete-denture fabrication; it is repeatable and can be verified, and it is a functional position for denture occlusion.</li><li>Complete dentures should always be fabricated so that their initial and complete final occlusal position is coincident with centric relation; that position then becomes the patient’s centric occlusion.</li><li>Because the CR position is somewhat dependent on head posture, the head should be held fairly upright.</li></ol>"},{"k":"4th year · Horizontal jaw relation","t":"Hand position, practice, and five ways to guide the jaw into CR","b":"<p>The position of the dentist’s hands is an important factor in making accurate CR records and in maintaining the record bases in their correct position. The non-dominant hand is inverted and placed in the mouth so that the soft tissue of the thumb and index finger lies on the opposing buccal surfaces of the maxillary and mandibular occlusion rims, between the occlusal surfaces in the first-molar region. The other hand is used to help guide the patient to CR. Care should be exercised to avoid displacing the mandibular record base in the posterior direction.</p><p>Because it is sometimes difficult to get the patient into CR, it is a good idea to practice this position with the patient before attempting to make the recording. The patient should be close to the correct OVD before CR is attempted. It is advisable to instruct the patient to “let your jaw relax, close slowly.”</p><p>Methods used to position the jaw in centric relation:</p><ol><li>Having the patient completely relax the mandible while the clinician gently shakes the mandible up and down.</li><li>Placing the tip of the tongue in the top and back of the mouth.</li><li>Telling the patient to “stick out the upper teeth.”</li><li>Tipping the chair and the patient back, to allow gravity to help position the mandible.</li><li>Using a mirror so that the patient can see the CR mandibular position.</li></ol><p>The maxillary master cast has now been properly placed on the articulator using a face-bow recording. The mandibular occlusion rim has been adjusted so that there is unrestricted contact with the maxillary rim at the correct occluding vertical dimension, and it is in centric relation. This horizontal relationship will now be captured with some type of recording material. Because the recording must be made at the correct OVD, space must now be created to allow room for the record material. Once the maxillary cast is properly positioned, the occlusion rims are placed on their respective casts and the records are seated together. Observe the casts for possible contact in the posterior areas; if they make contact, the cast must be trimmed until there is no cast-to-cast contact.</p>"},{"k":"4th year · Trial denture","t":"What a trial denture is, why it matters, and the aims of try-in","b":"<p>A <b>trial denture</b> is a preliminary arrangement of artificial teeth prepared for placement in the patient’s mouth to evaluate esthetics, phonetics, and maxillomandibular relationships. A <b>trial base</b> is an interim material or device representing the base of a removable denture, used for making maxillomandibular relationship records and for the waxing of the trial denture. <b>Trial placement</b> is the process of placing a trial denture in the mouth for evaluation.</p><p>Importance of the trial denture:</p><ol><li>It is the last opportunity to evaluate many of the previous steps already accomplished.</li><li>It permits the patient to assess the appearance of the denture.</li><li>It allows identification and correction of any errors before the dentures are finished.</li></ol><p>Objectives of the try-in procedure:</p><ol><li>To verify the maxillomandibular records that were made without teeth: to check acceptance of the established vertical dimension, and to verify that centric occlusion and centric relation coincide.</li><li>To determine that the position of the teeth and denture base is compatible with the surrounding oral tissues.</li><li>To evaluate tooth selection and arrangement for esthetic requirements.</li><li>To make additional interocclusal maxillomandibular records if needed for further adjustment of the articulator (for example a protrusive interocclusal record).</li></ol><p>Aspects of the try-in stage: an extra-oral examination on the articulator (accuracy of the cast, denture base, teeth and their relation), and an intra-oral examination that checks the trial dentures separately and then together in the patient’s mouth.</p>"},{"k":"4th year · Trial denture","t":"Extra-oral examination: master cast, bases, articulator and teeth","b":"<p><b>The master cast.</b> The finished denture is processed on it, so it should have a good shape; be free from air bubbles or scratches; and be free from wax debris (debris leads to improper adaptation of the trial bases and to false relationships). Any undercuts on the cast should be relieved so that the trial bases do not scratch it.</p><p><b>The trial denture bases</b> must be stable; their borders should be smooth and round, with no sharp edges; and the borders should be shaped to conform to the depth and width of the sulci.</p><p><b>On the articulator</b> the mounted casts are checked for: maintenance of VDO (the top of the incisal pin is flush with the upper member, and the pin is in contact with the incisal table); the mounting rings firmly screwed in position; smooth movement from centric to eccentric positions without cuspal interlocking; and the trial bases lying properly on their casts with the teeth meeting evenly in centric relation.</p><p><b>The teeth.</b> It is the dentist’s responsibility to select the proper shade and shape and to determine that the teeth are set correctly. Excess wax is eliminated so that false tooth relationships or overlooked occlusion are avoided. The relation of both upper and lower teeth to the opposing ridges must be checked: excessive anterior tooth contact on the articulator should be corrected, to avoid excessive forces on the maxillary anterior ridge (an area already a target for bone loss). In a Class I jaw relationship the upper anterior teeth should overlap the lower anterior teeth by about <b>1–2 mm</b> in both the horizontal and the vertical planes.</p>"},{"k":"4th year · Trial denture","t":"Intra-oral assessment of each denture: retention, stability and extension","b":"<p>Each denture is assessed individually for physical retention, stability, extension of the bases, and relationship to the neutral zone. The dentures are then assessed together for vertical dimension, CR position, esthetics and phonetics, and the posterior palatal seal is established.</p><p><b>Physical retention.</b> If the prognosis for upper retention is good, dislodgement should be difficult. Lower retention is often poor because of the relatively small bearing area and the difficulty of obtaining an efficient border seal. Retention of the trial denture is less than that of the completed denture because of the absence of a posterior palatal seal and because of poorer adaptation of the trial base to the tissues. The trial denture should stay in position when the mouth is opened. Looseness of the upper trial denture makes an accurate assessment of occlusion impossible (a denture fixative may be used), especially in patients with unfavorable anatomy. Loss of retention may come from absence of a border seal caused by: under-extension; inadequate width of flange; an ineffective seal at the posterior border; or a poor fit of the denture base.</p><p><b>Stability</b> is tested by applying pressure in a tissue-ward direction with the ball of the index finger in the premolar and molar regions on each side alternately. This pressure must be directed at right angles to the occlusal surface where displacement occurs. Causes of instability: warpage of the denture base; posterior teeth set buccal to the underlying alveolar ridge; and a hard unrelieved area in the midline, for example a torus palatinus.</p><p><b>Extension.</b> The borders must conform to the depth and width of the sulci. The posterior border of the upper trial base should extend from one hamular notch to the other along the vibrating line of the soft palate. The lower denture should cover the retromolar pad, to buttress the denture against the backward pressure of the lower lip. If marked over-extension is present, stretching of the sulcus tissues and their elastic recoil will dislodge the denture — so if the denture is displaced immediately after being seated, over-extension should be suspected. Under-extension is seen when the depth of the sulcus is greater than that of the flange; correction usually means a new impression in the trial denture. Failure to do this will reduce physical retention of the finished dentures and give inadequate distribution of load.</p>"},{"k":"4th year · Trial denture","t":"Neutral zone, checking VDO together, and correcting it","b":"<p>Positioning teeth in the <b>neutral zone</b> is of particular importance in the lower denture, because physical retention is relatively weak. Identification of the zone will have been attempted while shaping the record block at the earlier visit; the trial denture must now be checked to see that that assessment was correct and has been transferred accurately. When the lower denture is inserted, it should remain in place when the mouth is half open and the tongue is positioned so that its tip lies just behind the lower anterior teeth.</p><p>When the dentures are assessed together, VDO and rest must be evaluated because the final position of the anterior and posterior teeth depends on the vertical space available. Factors that govern the final determination include: occlusion compared with the previous VDO at two skin points; upper/lower teeth and gingival visibility; facial profile and mid/lower-face proportions; relaxed facial posture; inter-arch space with breathing, swallowing and speaking; and the patient’s perception of jaw position.</p><p><b>VDO too small</b> (freeway space too large): correct by adding the appropriate thickness of wax to the occlusal surfaces of the posterior teeth on one of the dentures, adjusting the wax to produce an even occlusion at the desired VDO, and then re-recording the jaw relationship in the retruded contact position.</p><p><b>VDO too large</b> (freeway space too small or absent): teeth will have to be removed from one of the dentures and replaced with a wax rim before the new recording can be made.</p>"},{"k":"4th year · Trial denture","t":"Checking centric relation in the mouth and on the articulator (Aluwax)","b":"<p><b>Intra-oral observation of intercuspation.</b> The patient is guided into CR by a thumb placed on the anteroinferior portion of the chin and the index fingers bilaterally on the buccal flanges of the lower denture. Any error in CR will be apparent when the teeth slide over each other.</p><p><b>Extra-oral articulator method.</b> Process:</p><ol><li>Impression material (for example Aluwax) is placed over the mandibular posterior teeth.</li><li>The wax is sealed, the denture is placed in the mouth, then only the wax portion is immersed in a water bath at <b>130°F for 30 seconds</b>; the denture is placed back in the patient’s mouth; the mandible is guided into CR so that the upper teeth make contact with the wax; the denture is removed, chilled in ice water, and returned to the mouth for re-checking.</li><li>Once CR is confirmed, the trial dentures are locked on the articulator. The opposing teeth should fit the indentations in every way (anteriorly, posteriorly, laterally and vertically) if the original CR was correct.</li><li>If they do not fit, the mandibular cast should be separated and remounted with the last occlusal record.</li><li>The new mounting is again checked to prove or disprove its correctness.</li><li><b>Do not remount the upper cast</b>, because the face-bow transfer will be destroyed.</li></ol>"},{"k":"4th year · Trial denture","t":"Esthetic evaluation of the trial denture (eight points)","b":"<p>Esthetic evaluation:</p><ol><li><b>Central or midline.</b> Stand in front of the patient some distance away; a wrong center line will be obvious. If in doubt, drop an imaginary line from the midpoint of the interpupillary line; the contact area between the two central incisors should coincide with this line.</li><li><b>Anterior plane.</b> Observed from some distance; any marked slope up or down should be noted and corrected.</li><li><b>Size, form and shade.</b> The six upper anterior teeth should be approximately the width between the corners of the mouth. Form should be in harmony with face form, but not necessarily identical with the outline of the face. Color should blend so the teeth do not become the main focal point. The influence of sex, age and personality must be considered when developing harmony among tooth form, arrangement and the patient.</li><li><b>Lip support and profile.</b> The upper lip should be adequately and properly supported by the upper anterior teeth. The labial surfaces of the central incisors will be about <b>8–10 mm</b> in front of the middle of the incisive papilla. The further the papilla is located labially, the greater the maxillary ridge resorption, and the further the anterior teeth must be positioned. In many instances the inclination of the anterior teeth is similar to the profile of the face.</li><li><b>Amount of tooth visible.</b> This depends on the length of the upper lip. With a long lip no teeth are visible at rest, and the teeth are shown in smiling only. With a short lip, the full crown may be visible below the upper lip even at rest, and on smiling a large amount of denture base as well as teeth is visible. The lower teeth must be level with the corner of the mouth when the patient opens slightly.</li><li><b>Regularity of teeth.</b> Few natural teeth exhibit perfection; to avoid an artificial look in the incisor region, especially in middle age, a little irregularity (rotating and overlapping) is usually desirable.</li><li><b>Harmony of the maxillary incisal edges with the smiling line of the lower lip.</b> Usually the incisal plane of the maxillary anterior teeth follows the contour of the lower lip during smiling.</li><li><b>Buccal corridor.</b> A buccal corridor should usually be evident between the teeth and the cheek. A wide upper arch causes a crowded appearance and obliterates the corridor; a narrow upper arch increases the corridor, which then looks like a dark space between teeth and cheek.</li></ol><img class=\"fig\" src=\"prostho-img/file11/lips-at-rest.jpg\" alt=\"\"><p class=\"cap\">Lip support and the amount of tooth visible at rest depend on lip length and on the anteroposterior position of the upper anterior teeth.</p>"},{"k":"4th year · Trial denture","t":"Phonetics, the posterior palatal seal, and the roles of patient and technician","b":"<p><b>Labiodental sounds (f, v)</b> are made between the upper incisors and the posterior one-third of the lower lip. They are affected by the anteroposterior position and the length of the upper anterior teeth. If the upper anteriors are short, a “v” will sound more like an “f”; if they are long, an “f” will sound more like a “v.”</p><p><b>Linguoalveolar / sibilant sounds (z, s, ch, and related sounds).</b> During pronunciation of sibilants the teeth come close together but do not touch. Silverman’s closest speaking space is used for determining proper vertical dimension. Clattering of the teeth indicates excess vertical height. “S” resembles “sh,” or a whistling sound, when there is an insufficient degree of jaw separation.</p><p><b>Bilabial sounds (p, b, m)</b> help determine the correct degree of jaw separation. When the vertical dimension is too high, the patient will not be able to purse the lips together and articulation of these sounds may be distorted.</p><p><b>Incorporation of the posterior palatal seal.</b> The patient keeps the mouth open and says “ah.” Two lines are drawn with an indelible pencil across the palate from one hamular notch to the other, to detect the anterior and posterior vibrating lines. The trial base is inserted so that the markings transfer to the base, then seated on the master cast to transfer them to the cast. The area between the anterior and posterior vibrating lines is scraped in the master cast to a depth of <b>1 to 1.5 mm</b> on either side of the mid-palatine raphe; in the region of the mid-palatine raphe it should be only <b>0.5 to 1 mm</b> in depth.</p><p>The patient’s role: to record wishes and expectations; to agree any alteration in form from previous dentures; and, with any accompanying person, to agree that the trial dentures are acceptable and that the patient is happy to proceed to completion. The technician’s role: to have replicated the registration records faithfully; to place teeth according to prosthodontic norms; to provide stable bases; to ensure that balanced occlusion/articulation is provided according to the clinician’s prescription; to have articulated the casts appropriately and set condylar angles to any prescription given; and to ensure that the wax-work is complementary to the age and personality of the patient.</p>"},{"k":"4th year · Insertion of the complete denture","t":"Three evaluations, sources of inaccuracy, and preparing the tissues","b":"<p>The moment new dentures are placed in the mouth, all the procedures of construction are subject to review: the choice of materials, and the technical and clinical effectiveness and skill used, are exposed to three evaluations — by the dentist, by the patient, and by the friends and family who will be viewing the dentures.</p><p>The dentist’s evaluation should be the most critical, because dentists know the potentialities and limitations of treatment. The patient’s reaction may range from intense acceptance to fear and apprehension, and will greatly depend on the dentist’s tempering of expectations, previous denture-wearing experience, and comments of other people. A friend’s evaluation may not be accurate: friends cannot know how the patient feels, cannot judge eating and speaking efficiency, cannot know the difficulties of a poor foundation, and have not been exposed to the information the dentist gave the patient; they can add to the patient’s difficulties.</p><p>The first step at the insertion appointment is to review with the patient the instructions given during the diagnostic phase, and to discuss any that the patient does not understand. Inaccuracies in the material and method used to reach this stage must be recognized and eliminated before the patient wears the denture. They may result from: technical errors or errors in judgment made by the dentist; technical errors developed in the laboratory; or inherent deficiencies of the material used.</p><p>Ideally the patient should be instructed to keep any previous denture out of the mouth for <b>12 to 24 hours</b> immediately before the insertion appointment, so that the new dentures are seated on healthy, undistorted tissues. An acceptable alternative is to have the existing dentures relined with a soft temporary material to minimize tissue-distortion problems.</p>"},{"k":"4th year · Insertion of the complete denture","t":"Inspecting the denture, and using pressure-indicating paste (PIP)","b":"<p>Before the dentures are placed in the mouth they should be inspected digitally and with magnifying loupes to be sure that: the tissue surface has no imperfections; the polished surface is smooth; the flanges have no sharp angles and are not too thick; and the borders are round and smooth with no obvious over-extension.</p><p>Supporting mucosa varies in compressibility under load, so despite accurate impressions and models some adjustments over thin mucosa or undercuts will make the patient more comfortable. PIP is essential to evaluate and improve adaptation of the denture to the tissue. PIP helps because: pressure spots may have been present in an otherwise acceptable final impression; processing changes can create a slight contraction of the maxillary denture base, and it is common to relieve the lateral surfaces in the tuberosity area to compensate; bilateral undercuts can interfere with initial placement and may need relief; it is common to provide relief for the thin mucosa over the lingual bony prominence of the mylohyoid-muscle insertion; and with advanced resorption the mental and incisive-canal nerves may have so little tissue over them that they require relief.</p><p>Procedure: dry the denture first, then run the brush in the same direction and apply a thin even layer of PIP onto the surface of the denture. <b>Do not have the patient bite</b> when using PIP at this point, because uncorrected occlusal errors may shift the denture and create an erroneous PIP pattern.</p><p>Four possible patterns when reading PIP:</p><ol><li>A clean wipe on the periphery results from cheek rubbing during insertion — <b>do not adjust</b> a clean-wipe area.</li><li>Disturbed brush lines indicate the desirable tissue contact.</li><li>Undisturbed brush lines indicate no tissue contact yet.</li><li>Pink acrylic show-through spots indicate excessive tissue contact and pressure; these are where the base should be adjusted to relieve the interference.</li></ol>"},{"k":"4th year · Insertion of the complete denture","t":"Adjusting the borders, testing retention and stability, and why occlusion may be wrong","b":"<p>The denture borders are evaluated to determine whether the extensions and contour are compatible with the available vestibular spaces; whether the borders are properly relieved to accommodate the frenum attachments and the reflection of the tissues in the hamular-notch area; and whether the dentures are stable during speech and swallowing. Apply disclosing wax to an incrementally dried denture border, warm the wax in a water bath for 5 seconds, seat the denture firmly with even finger pressure, and instruct the patient to go through the necessary border-molding movements. Carefully remove the denture without smearing the wax, adjust any visible pressure area or over-extension, and repeat until no over-extended border is indicated.</p><p><b>Retention.</b> The upper denture should offer resistance when pulled downwards by finger and thumb gripping the incisors. The lower denture will not normally offer significant resistance to attempted displacement, because it has a relatively inefficient border seal. <b>Stability.</b> Neither denture should rock when finger pressure is applied alternately to either side of the occlusal surfaces in the first-molar region.</p><p>Errors in occlusion can result from: a change in the state of the TMJs; inaccurate maxillomandibular relation records by the dentist; errors in the transfer of those records; ill-fitting temporary record bases; a change of VDO on the articulator; incorrect arrangement of the posterior teeth; failure to close the flasks completely during processing; use of too much pressure in closing the flasks; and unavoidable processing changes during polymerization.</p>"},{"k":"4th year · Insertion of the complete denture","t":"Selective grinding: intra-oral versus extra-oral, and why wax is preferred in the mouth","b":"<p>There are two types of selective grinding: intra-oral (inside the mouth) and extra-oral (on the articulator in the laboratory).</p><p>Intra-orally, articulating paper and a wax sheet may be used to detect premature contacts, although it is preferable to use a wax sheet because a premature contact will cause the cusps to penetrate through the wax, indicating that heavy contact is present. Articulating paper is not preferred over the wax sheet for these reasons: the presence of saliva complicates its use intra-orally; it is difficult to place the paper on both sides of the arch at the same time; the paper may color even teeth that are not in occlusion; and mucosal displacement and tipping of the dentures can bring non-occluding teeth into contact with the paper.</p><p>Extra-oral selective grinding is done in the laboratory either: (1) after deflasking, before polishing, by remounting the casts with the dentures in plaster on the articulator and then correcting the occlusion; or (2) after polishing, at the insertion stage, when occlusal changes are difficult to correct by intra-oral grinding — a new centric-relation record is taken, the dentures are remounted, and grinding is performed in the laboratory.</p><p>Extra-oral selective grinding is more preferable than intra-oral grinding because: it reduces patient participation; it permits the dentist to see the procedures better; it provides a stable working foundation (the bases are not shifting on resilient tissues); the absence of saliva makes more accurate markings with articulating paper or tape possible; and corrections can be made away from the patient, preventing occasional objections when patients see their new dentures being altered.</p>"},{"k":"4th year · Insertion of the complete denture","t":"Rules for correcting centric, working, balancing and protrusive contacts","b":"<p><b>Correction of an error in centric occlusion.</b> If the cusp is high in the centric and in the eccentric position, reduce the premature cusp. If the cusp is high in the centric and not in the eccentric position, deepen the fossae or the marginal ridges.</p><p><b>Correction of working occlusion.</b> On the working side, reduce the inner inclines of the buccal cusps of the maxillary teeth and the lingual cusps of the mandibular teeth (<b>BULL rule</b>: Buccal Upper, Lingual Lower).</p><p><b>Correction of non-working (balancing) occlusion.</b> On the non-working side, reduce the inner inclines of the mandibular buccal cusps. If it is necessary to eliminate a centric cusp to correct balancing prematurities, eliminate the mandibular buccal cusp. This maintains the centric occlusal contact on the maxillary lingual cusp, which will better direct the forces of mastication against the mandibular denture.</p><p><b>Correction of protrusive occlusion.</b> To achieve balance in protrusive excursion, reduce the distal inclines of the maxillary cusps and the mesial inclines of the mandibular cusps. After completing the selective grinding needed to establish and maintain the desired occlusion, refine the occlusal anatomy.</p>"},{"k":"4th year · Insertion of the complete denture","t":"Instructions: appearance, learning to chew (6–8 weeks), speaking, and saliva","b":"<p>Educating patients about the limitations of dentures as mechanical substitutes for living tissues must be a continuing process from the initial contact until adjustments are completed. Patients must be reminded that their physical, mental and oral conditions are individual; they cannot compare their progress with other persons’ experiences. Complaints that are annoying and painful to some may be of secondary importance to others.</p><p><b>Appearance.</b> Appearance with new dentures will become more natural with time. Initially the dentures may feel strange and bulky and will cause a feeling of fullness of the lips and cheeks. The lips will not adapt immediately to the fullness of the denture borders and may initially present a distorted appearance. Muscle tension may cause an awkward appearance, which will improve after the patient becomes relaxed and more confident.</p><p><b>Mastication.</b> Eating with dentures is a developed skill. Learning to chew satisfactorily usually requires at least <b>6 to 8 weeks</b>. Patients will become discouraged unless they are aware that this learning period is to be expected. New memory patterns often must be established for both the facial muscles and the muscles of mastication. Once the habit patterns become automatic, chewing can take place without conscious effort. The muscles of the tongue, cheeks and lips must be trained to maintain the dentures in position on the residual ridges during mastication. Patients should begin chewing relatively soft food cut into small pieces, and if possible should chew on both sides of the mouth at the same time. People who have gone without dentures for long periods and have learned to crush food between the ridges, or between the tongue and the hard palate, usually need a longer adjustment time. An excess flow of saliva is expected for the first few days; in a relatively short time the salivary glands accommodate and normal production returns.</p><p><b>Speaking.</b> The problem is not as difficult as might be expected. The adaptability of the tongue is so great that most patients master speech with new dentures within a few weeks. Even a 0.5 mm change at the linguogingival border of the anterior teeth would cause a speech defect, especially in the production of “s” sounds, if the tongue could not adapt. Patients should be advised to read aloud and repeat words or phrases that are difficult to pronounce. They are usually much more conscious of small irregularities in their speech than those to whom they are speaking.</p>"},{"k":"4th year · Insertion of the complete denture","t":"Oral-hygiene instructions for the new denture wearer","b":"<p>Patients must be convinced of the importance of maintaining good oral hygiene for the health of the oral cavity.</p><ul><li>They should be instructed to rinse their dentures and their mouths after meals whenever possible.</li><li>Once a day it is essential that the dentures be removed and placed in a soaking type of cleanser for a minimum of <b>30 minutes</b>.</li><li>Before the dentures are placed in the cleanser they should be brushed gently with a soft brush and a non-abrasive detergent on all surfaces.</li><li>The dentures should be brushed over a basin partially filled with water, or covered with a wet washcloth, to prevent breakage if they are dropped.</li><li>Patients should be discouraged from using toothpastes, because most contain an abrasive material that will wear away the surface of acrylic resin.</li><li>The mucosal surfaces of the residual ridges and the dorsal surface of the tongue also should be brushed daily with a soft brush.</li></ul>"},{"k":"4th year · Complete-denture complications","t":"Why problems arise, and the most common complaints","b":"<p>Fabrication of a complete denture is based on psychological interaction between the patient and the dentist; healthy communication plays a significant role in the success of treatment. A range of post-insertion problems may arise with new complete dentures. Causes may relate to failure of the dentist to prepare and educate the patient about the new experience, failure of the patient to adapt to the prosthesis, or faults in the construction. The practitioner should realize that problems such as pain and looseness may have a single underlying cause. Careful discussion and a thorough clinical examination are needed to understand the problems and to plan their management.</p><p>The patient needs a complete denture for mastication, esthetics, phonetics and comfort. Even when the dentures are compatible with the oral structures, enough time is required for adaptation and tissue conditioning; for example, 6–8 weeks are needed for adaptation to mastication.</p><p>Many problems have been reported, including looseness or instability; the lower denture rising when the mouth is opened; a feeling of space in the upper denture; phonetic problems; inability to eat most foods; clicking while eating or talking; food under the dentures; tenderness when swallowing; halitosis; dry mouth; unusual tastes or loss of taste; saliva under the dentures; dislodgement when drinking; drooling at the corners of the mouth; excessive salivation; excessive bulk; cheek, lip or tongue biting; burning sensation; pain and discomfort; sore spots; TMJ problems; and gagging.</p><p>The most common complaints reported include: pain/discomfort; looseness of one or both dentures; speech problems; and chewing problems.</p>"},{"k":"4th year · Complete-denture complications","t":"Pain and discomfort: over-extension, freeway space, and pain on the crest","b":"<p>Pain or discomfort is a particularly common finding with new dentures, and can have many causes.</p><p><b>Over-extended periphery</b> is probably the most frequent etiological factor. It should be suspected initially if there is an area of well-circumscribed soreness in the sulcus, which may appear as erythema or ulceration of the mucosa. The procedure is facilitated by using PIP: a small amount is applied to the suspected area of over-extension with a sponge, the denture is reinserted and muscle-trimmed, then removed. On inspection the PIP will have rubbed off in the over-extended area. This should be adjusted with a fluted acrylic trimming bur in a straight handpiece, and the procedure repeated.</p><p><b>Freeway-space problem.</b> If there is pain across the entire lower denture-bearing area, the patient may have too little freeway space. If the patient complains that this pain increases through the duration of the day, it is almost certainly due to lack of freeway space. Speech may be affected, and further symptoms include unsatisfactory appearance and pain or tiredness in the jaw muscles. In some cases there is too much freeway space, and this may also cause muscular discomfort.</p><p><b>Pain on the crest of the alveolar ridge</b> may be due to the poor quality of the supporting tissues or to the unemployed-ridge phenomenon. Prominent areas of bone have thin mucosa overlying them and offer poor support. When the area is sufficiently relieved, the clinician should be able to apply gentle finger pressure to the denture without causing pain. A further possible treatment option is to provide a permanent resilient lining in the denture.</p>"},{"k":"4th year · Complete-denture complications","t":"Looseness: what to check, and why a denture sometimes “drops occasionally”","b":"<p>When the patient complains of looseness, check: peripheral extensions; the posterior palatal seal; adaptation of the bases; occlusion; the shape of the polished surface; and tooth position.</p><p>In the absence of pain and of associated over-extension of the periphery, looseness is in all probability a result of failure to obtain a peripheral seal. A further etiological factor may be poor adaptation of the denture to the underlying tissues; this should be suspected if the patient complains that food accumulates beneath the denture. The extension should be checked, and areas of under-extension modified with green-stick tracing compound. The post-dam region of the maxillary denture should also be assessed, and green-stick compound added if the post dam is found to be deficient. Common areas for under-extension in the mandibular denture are the distolingual pouch and the retromolar-pad region.</p><p>If the denture is reasonably retentive but occasionally drops without apparent reason, this may be due to:</p><ul><li>A low frenal attachment occasionally displacing the denture — providing more relief for the frenum may help.</li><li>The width of the polished surface around the maxillary tuberosities. When the mouth is opened wide, the coronoid process can encroach upon the neutral zone in this region. If the adjacent polished surface is bulky, the denture can be displaced. Reduce the thickness of the polished surface gradually until the patient can open without displacing the denture, then polish it.</li><li>If the impression and polished surfaces are satisfactory, the problem may be related to the occlusion. Check occlusion in centric relation and in excursive movements. If there is locking of cusps in excursion, the dentures can be displaced. Identify and adjust these contacts until balanced articulation is achieved.</li></ul>"},{"k":"4th year · Complete-denture complications","t":"Speech problems and chewing problems (including cheek or lip biting)","b":"<p><b>Speech problems</b> are sometimes minor. If the patient is not overly concerned, they should be encouraged to resolve the problem by adapting to the new denture. If there is significant difficulty, the areas to check are:</p><ol><li>The freeway space — if this has been reduced too much, speech is often affected. The patient frequently complains of “a mouthful of teeth.” This will have to be addressed as previously described.</li><li>The thickness of the palatal acrylic — if this is bulky, the problem may be resolved by reducing the bulk.</li></ol><p><b>Chewing problems</b> may present as unsatisfactory chewing function, or as biting of the cheeks or lips when chewing food. If chewing function has deteriorated with the new dentures, consider:</p><ul><li><b>The teeth are too flat.</b> If the cuspal angles are too shallow, or if the occlusal surfaces have been adjusted excessively, the patient may not be able to comminute food properly. Using an interocclusal record, the technician should remount the dentures on an articulator and replace the posterior teeth with appropriate cuspal anatomy.</li><li><b>Insufficient freeway space</b> causes pain in the mandibular denture-bearing tissues, and chewing problems can be a secondary complaint. There may also be insufficient space to accommodate large amounts of food.</li><li><b>Excessive freeway space.</b> Add wax to the occlusal surface of one or both dentures to reduce freeway space and record a new jaw relationship. After a new trial-denture stage, process and return the dentures.</li></ul><p>If the patient is biting the cheeks or lips when eating, the problem is likely to be due to insufficient horizontal overlap. It may be possible to provide some overlap by adjusting the incisal edges or the buccal aspects of the mandibular teeth. A further option is to add a layer of wax to the teeth of the maxillary denture to increase the horizontal overlap, and ask the technician to move the maxillary teeth in a buccal or labial direction as indicated by the wax.</p>"},{"k":"اختبر نفسك","t":"Vertical and horizontal jaw relations — key choices","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Freeway space (interocclusal rest distance) is the difference between rest vertical dimension and VDO, and is normally:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">0 mm — the teeth should touch at rest</button><button type=\"button\" class=\"opt\" data-i=\"1\">2–4 mm, and VDO should always be 2–4 mm less than rest vertical dimension</button><button type=\"button\" class=\"opt\" data-i=\"2\">8–10 mm in the premolar region</button><button type=\"button\" class=\"opt\" data-i=\"3\">Equal to the Willis-guide measurement</button></div><div class=\"qexp\" hidden><p>فراغ الطريق 2–4 ملم. الطقم يُصنع على بعد الإطباق حتى ويه الراحة يبقى هالفراغ. بعد الإطباق دائماً أقل من بعد الراحة بهالكمية.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Errors in vertical dimension are described as the first to produce:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Only a change in tooth shade</button><button type=\"button\" class=\"opt\" data-i=\"1\">Severe discomfort in the TMJ, with strain of the muscles of mastication and the joint</button><button type=\"button\" class=\"opt\" data-i=\"2\">An automatic increase in freeway space that corrects itself</button><button type=\"button\" class=\"opt\" data-i=\"3\">A better buccal corridor</button></div><div class=\"qexp\" hidden><p>البعد العمودي أسهل تسجيل، بس أغلاطته أول شي توجع المفصل وتشد العضلات.</p></div></div><div class=\"qbox\" data-ans=\"2\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">An increased vertical relation may cause all of the following EXCEPT:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Clicking, speech problems and a sensation of bulky dentures</button><button type=\"button\" class=\"opt\" data-i=\"1\">Separated lips, difficulty swallowing, and increased residual-ridge resorption</button><button type=\"button\" class=\"opt\" data-i=\"2\">A thin-lipped appearance, a prominent chin, and wrinkles that may lead to angular cheilitis</button><button type=\"button\" class=\"opt\" data-i=\"3\">Loss of biting power and inability to open the mouth widely</button></div><div class=\"qexp\" hidden><p>الشكل الرقيق والذقن البارز والتجاعيد اللي قد تسبب التهاب زاوية الفم هي من <b>نقص</b> البعد العمودي، مو زيادته.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">In patients with prolonged edentulousness the mandible may shift to a habitual rest position. The complete denture should be fabricated from:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">That habitual rest position, because it is more comfortable</button><button type=\"button\" class=\"opt\" data-i=\"1\">The physiological rest position, which appears after functional movements such as swallowing or wetting the lips, before the jaw goes to the habitual position</button><button type=\"button\" class=\"opt\" data-i=\"2\">Maximum opening only</button><button type=\"button\" class=\"opt\" data-i=\"3\">The Willis guide even when the face is asymmetrical</button></div><div class=\"qexp\" hidden><p>لا تصنع الطقم على الوضع المعتاد. حدّد الوضع الفسيولوجي أولاً — يظهر بعد البلع أو تبليل الشفاه قبل ما يرجع للمعتاد. وسجّل بسرعة لأن المريض ما يحافظ عليه وقت طويل.</p></div></div><div class=\"qbox\" data-ans=\"0\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">With a Willis guide, the jaws are considered at rest when:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The distance from the pupil to the corner of the mouth equals the distance from the anterior nasal spine to the lower border of the mandible</button><button type=\"button\" class=\"opt\" data-i=\"1\">The patient pronounces “s” and the teeth click</button><button type=\"button\" class=\"opt\" data-i=\"2\">The bimeter shows zero pressure</button><button type=\"button\" class=\"opt\" data-i=\"3\">The incisal pin is off the table</button></div><div class=\"qexp\" hidden><p>إذا المسافتين متساويتان، الفكين يُعتبران بوضع الراحة. الدقة مشكوكة إذا الوجه غير متناظر.</p></div></div><div class=\"qbox\" data-ans=\"0\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">In the natural dentition, the average distances used in ridge-relation assessment of VDO are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Incisive papilla to mandibular incisal edge about 4 mm; maxillary central incisal edge about 6 mm below the papilla; average vertical overlap about 2 mm</button><button type=\"button\" class=\"opt\" data-i=\"1\">10 mm, 2 mm and 8 mm respectively</button><button type=\"button\" class=\"opt\" data-i=\"2\">They are most reliable in severe ridge resorption</button><button type=\"button\" class=\"opt\" data-i=\"3\">They replace the need for any phonetic test</button></div><div class=\"qexp\" hidden><p>4 ملم، 6 ملم، وتراكب 2 ملم. تنفحص بتجربة الشمع على المفصلة، بس ما تفيد إذا الامتصاص شديد.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The most frequently used tests for establishing VDO with occlusion rims are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Only a bimeter power-point reading</button><button type=\"button\" class=\"opt\" data-i=\"1\">Visual observation of the space at physiological rest, judgment of esthetic facial support, and phonetic tests with a repeatedly accurate “s” (average speaking space)</button><button type=\"button\" class=\"opt\" data-i=\"2\">A life-size profile photograph alone</button><button type=\"button\" class=\"opt\" data-i=\"3\">Cast-to-cast contact in the posterior area</button></div><div class=\"qexp\" hidden><p>ثلاث اختبارات يومية: فراغ الراحة، دعم الوجه، وحرف «س». والتأكيد النهائي يجي بجلسة التجربة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">For complete dentures, the correct horizontal relationship is always:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Habitual occlusion, wherever the patient happens to close</button><button type=\"button\" class=\"opt\" data-i=\"1\">Centric relation, and the dentures should be fabricated so that their final occlusal position is coincident with CR (which then becomes the patient’s CO)</button><button type=\"button\" class=\"opt\" data-i=\"2\">Maximum protrusion</button><button type=\"button\" class=\"opt\" data-i=\"3\">The position obtained with the head fully tipped back and no practice</button></div><div class=\"qexp\" hidden><p>دائماً العلاقة المركزية. الإطباق النهائي يتطابق وياها ويصير إطباق المريض المركزي. الرأس شبه منتصب لأن CR تعتمد شوي على وضع الرأس.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">When making a CR record, space is created for the recording material, and after the records are seated on the casts you must:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Accept any posterior cast-to-cast contact as a useful stop</button><button type=\"button\" class=\"opt\" data-i=\"1\">Trim the casts until there is no cast-to-cast contact in the posterior areas</button><button type=\"button\" class=\"opt\" data-i=\"2\">Remount the maxillary cast to close any gap</button><button type=\"button\" class=\"opt\" data-i=\"3\">Reduce freeway space to zero</button></div><div class=\"qexp\" hidden><p>إذا الصبّات تلامست من الخلف، قلّمهما لين يروح التماس. التسجيل لازم يكون على بعد الإطباق الصحيح ويه مجال للمادة.</p></div></div>"},{"k":"اختبر نفسك","t":"Trial denture and insertion — key choices","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Retention of a trial denture is less than that of the finished denture mainly because of:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The presence of a deeper posterior palatal seal on the trial base</button><button type=\"button\" class=\"opt\" data-i=\"1\">Absence of a posterior palatal seal, and poorer adaptation of the trial base to the tissues</button><button type=\"button\" class=\"opt\" data-i=\"2\">The use of porcelain teeth only</button><button type=\"button\" class=\"opt\" data-i=\"3\">Over-extension that is always desirable at try-in</button></div><div class=\"qexp\" hidden><p>طقم التجربة تثبيته أضعف: ماكو ختم حنكي خلفي، وانطباق القاعدة أضعف. إذا العلوي ارتخى، تقييم الإطباق ما يصير دقيق.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Stability of a trial denture is tested by tissue-ward pressure with the index finger, alternately in the premolar and molar regions, directed:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Parallel to the occlusal surface</button><button type=\"button\" class=\"opt\" data-i=\"1\">At right angles to the occlusal surface where displacement occurs</button><button type=\"button\" class=\"opt\" data-i=\"2\">Only on the palatal midline</button><button type=\"button\" class=\"opt\" data-i=\"3\">Against the coronoid process</button></div><div class=\"qexp\" hidden><p>الضغط عمودي على السطح الإطباقي، يمين ويسار بالتناوب. أسباب عدم الثبات تشمل اعوجاج القاعدة، أضراس شدقية بالنسبة للحافة، وفطور حنكي بلا تفريج.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">If VDO is too large (freeway space too small or absent) at try-in, the lecture says you should:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Add wax to the posterior occlusal surfaces of one denture and re-record in retruded contact</button><button type=\"button\" class=\"opt\" data-i=\"1\">Remove the teeth from one of the dentures, replace them with a wax rim, and then make a new recording</button><button type=\"button\" class=\"opt\" data-i=\"2\">Scrape 1–1.5 mm from the mid-palatine raphe only</button><button type=\"button\" class=\"opt\" data-i=\"3\">Ask the patient to adapt for 6–8 weeks without change</button></div><div class=\"qexp\" hidden><p>إذا البعد كبير والفراغ ناقص أو معدوم: شيل الأسنان من طقم واحد وبدلها بحافة شمع، وبعدين سجّل من جديد. أما إذا البعد صغير (الفراغ كبير) فتضيف شمع على إطباق الأضراس وتعيد التسجيل.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">After an Aluwax CR check on the articulator, if the opposing teeth do not fit the indentations you should remount:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The upper cast, because the face-bow is unimportant</button><button type=\"button\" class=\"opt\" data-i=\"1\">The mandibular cast with the last occlusal record; do not remount the upper cast, because the face-bow transfer would be destroyed</button><button type=\"button\" class=\"opt\" data-i=\"2\">Both casts at random</button><button type=\"button\" class=\"opt\" data-i=\"3\">Neither cast; deepen every fossa instead</button></div><div class=\"qexp\" hidden><p>إذا ما دخلت الأسنان بالطبعات، افصل الصبّة السفلية وأعد تركيبها ويه آخر تسجيل. لا تعيد تركيب العلوية حتى ما تخرب نقل الفيسبو.</p></div></div><div class=\"qbox\" data-ans=\"2\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The labial surfaces of the maxillary central incisors should lie about ______ in front of the middle of the incisive papilla.</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">2 mm</button><button type=\"button\" class=\"opt\" data-i=\"1\">4 mm</button><button type=\"button\" class=\"opt\" data-i=\"2\">8–10 mm</button><button type=\"button\" class=\"opt\" data-i=\"3\">20 mm</button></div><div class=\"qexp\" hidden><p>8–10 ملم قدام منتصف الحليمة. كل ما الحليمة أقدم (شفوية)، الامتصاص أكبر، والأسنان لازم تتقدم أكثر.</p></div></div><div class=\"qbox\" data-ans=\"0\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">When scraping the posterior palatal seal into the master cast, the depth should be:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">1–1.5 mm on either side of the mid-palatine raphe, and only 0.5–1 mm in the region of the raphe itself</button><button type=\"button\" class=\"opt\" data-i=\"1\">5 mm everywhere, including the raphe</button><button type=\"button\" class=\"opt\" data-i=\"2\">No scraping; the seal is added only in acrylic after insertion</button><button type=\"button\" class=\"opt\" data-i=\"3\">0.1 mm, and only in the hamular notches</button></div><div class=\"qexp\" hidden><p>المريض يقول «آه»، وتنقل خطي الاهتزاز للقاعدة ثم للصبّة. العمق 1–1.5 ملم على الجانبين، وعند الرفاء الأوسط 0.5–1 ملم فقط.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">When reading PIP at insertion, pink acrylic show-through spots mean ______, and a clean wipe on the periphery means ______.</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Desirable contact; heavy pressure that must be ground</button><button type=\"button\" class=\"opt\" data-i=\"1\">Excessive pressure that should be adjusted; cheek rubbing during insertion, which should not be adjusted</button><button type=\"button\" class=\"opt\" data-i=\"2\">No contact yet; a torus that must be removed surgically the same day</button><button type=\"button\" class=\"opt\" data-i=\"3\">A freeway-space error; a phonetic defect</button></div><div class=\"qexp\" hidden><p>الوردي الباين = ضغط زايد يُعدَّل. المسحة النظيفة بالحافة من احتكاك الخد ويه الإدخال — لا تعدّلها. وما تخلي المريض يعض ويه PIP بهالمرحلة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">On the working side, selective grinding follows the BULL rule, which means reduce the inner inclines of:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The lingual cusps of the maxillary teeth and the buccal cusps of the mandibular teeth</button><button type=\"button\" class=\"opt\" data-i=\"1\">The buccal cusps of the maxillary teeth and the lingual cusps of the mandibular teeth</button><button type=\"button\" class=\"opt\" data-i=\"2\">Only the maxillary palatal cusps</button><button type=\"button\" class=\"opt\" data-i=\"3\">Every cusp that marks, without a rule</button></div><div class=\"qexp\" hidden><p>BULL: Buccal Upper, Lingual Lower — المنحدرات الداخلية للحدبات الشدقية العلوية واللسانية السفلية.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Learning to chew satisfactorily with new complete dentures usually requires at least:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">One day, if the impressions were accurate</button><button type=\"button\" class=\"opt\" data-i=\"1\">6 to 8 weeks, beginning with soft food cut into small pieces, preferably chewing on both sides at once</button><button type=\"button\" class=\"opt\" data-i=\"2\">Six months without any soft food</button><button type=\"button\" class=\"opt\" data-i=\"3\">No practice, because mastication is automatic from insertion</button></div><div class=\"qexp\" hidden><p>المضغ مهارة تتعلّم خلال 6–8 أسابيع. الأكل الطري المقطّع، والجهتين إذا قدر. اللي عاش بلا طقم فترة طويلة يحتاج وقت أطول.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Patients should be discouraged from cleaning dentures with ordinary toothpaste because:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">It increases freeway space</button><button type=\"button\" class=\"opt\" data-i=\"1\">Most toothpastes contain an abrasive that will wear away the acrylic-resin surface</button><button type=\"button\" class=\"opt\" data-i=\"2\">It destroys the face-bow transfer</button><button type=\"button\" class=\"opt\" data-i=\"3\">It is the only way to relieve a torus palatinus</button></div><div class=\"qexp\" hidden><p>فرشاة ناعمة ومنظّف غير كاشط، وفوق حوض فيه مي أو فوطة مبلولة حتى إذا وقع ما ينكسر. مرة باليوم نقع 30 دقيقة على الأقل. ولا تستخدم معجون أسنان كاشط.</p></div></div>"},{"k":"اختبر نفسك","t":"Self-test — File 11 (score at the end)","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The formula given in the lecture is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">VDO = VDR + freeway space</button><button type=\"button\" class=\"opt\" data-i=\"1\">VDR = VDO + freeway space</button><button type=\"button\" class=\"opt\" data-i=\"2\">Freeway space = VDO + VDR</button><button type=\"button\" class=\"opt\" data-i=\"3\">VDR is always 2–4 mm less than VDO</button></div><div class=\"qexp\" hidden><p>بعد الراحة = بعد الإطباق + فراغ الطريق. يعني بعد الإطباق أصغر بـ 2–4 ملم.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Swallowing-threshold VDO is recorded by building a cone of soft wax on the lower base so that it contacts the upper rim when the jaws are too wide open, then:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Heating the cone to 130°F and leaving it overnight</button><button type=\"button\" class=\"opt\" data-i=\"1\">Stimulating saliva with a piece of candy; repeated swallowing gradually reduces the cone until the mandible reaches the level of VDO</button><button type=\"button\" class=\"opt\" data-i=\"2\">Asking the patient to bite through the cone in one closing movement</button><button type=\"button\" class=\"opt\" data-i=\"3\">Scraping the mid-palatine raphe</button></div><div class=\"qexp\" hidden><p>قطعة حلوى تزود اللعاب، والبلع المتكرر يقصّر مخروط الشمع لين يوصل بعد الإطباق.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">If a trial denture is displaced immediately after being seated, you should first suspect:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Under-extension of the flange</button><button type=\"button\" class=\"opt\" data-i=\"1\">Over-extension, because stretched sulcus tissues recoil and dislodge the denture</button><button type=\"button\" class=\"opt\" data-i=\"2\">A missing face-bow only</button><button type=\"button\" class=\"opt\" data-i=\"3\">Too much posterior palatal seal depth at the raphe</button></div><div class=\"qexp\" hidden><p>الزيادة تمطّ النسيج ويرجع يخلع الطقم. النقص يتشاف إذا عمق الميزاب أكبر من الحافة، وغالباً يحتاج طبعة جديدة بالطقم التجريبي.</p></div></div><div class=\"qbox\" data-ans=\"0\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">If upper anterior teeth are too short, a “v” sound tends to resemble an “f”; if they are too long:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">An “f” tends to resemble a “v”</button><button type=\"button\" class=\"opt\" data-i=\"1\">Only “m” is affected</button><button type=\"button\" class=\"opt\" data-i=\"2\">Sibilants become impossible even with a correct VDO</button><button type=\"button\" class=\"opt\" data-i=\"3\">The BULL rule is reversed</button></div><div class=\"qexp\" hidden><p>f و v بين القواطع العلوية والثلث الخلفي للشفة السفلية، ويتأثرون بمكان وطول الأمامية.</p></div></div><div class=\"qbox\" data-ans=\"0\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Ideally, any previous denture should be left out of the mouth for ______ immediately before the insertion appointment (or relined with a soft temporary material).</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">12 to 24 hours, so the new dentures seat on healthy, undistorted tissues</button><button type=\"button\" class=\"opt\" data-i=\"1\">10 minutes only</button><button type=\"button\" class=\"opt\" data-i=\"2\">One month without an alternative liner</button><button type=\"button\" class=\"opt\" data-i=\"3\">No time; wearing the old denture until the chair improves the impression</button></div><div class=\"qexp\" hidden><p>12–24 ساعة بلا طقم قديم، أو تبطين طري مؤقت، حتى الأنسجة تكون سليمة وغير مشوّهة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">For a balancing (non-working) prematurity that requires elimination of a centric cusp, the lecture says to eliminate:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The maxillary palatal cusp, so that all force goes to the upper denture</button><button type=\"button\" class=\"opt\" data-i=\"1\">The mandibular buccal cusp, thereby maintaining centric contact on the maxillary lingual cusp, which better directs force against the mandibular denture</button><button type=\"button\" class=\"opt\" data-i=\"2\">Both maxillary buccal cusps only</button><button type=\"button\" class=\"opt\" data-i=\"3\">The incisal edges of the lower anteriors</button></div><div class=\"qexp\" hidden><p>شيل الحدبة الشدقية السفلية حتى يبقى التماس المركزي على الحدبة اللسانية العلوية، والقوى تتوجّه أفضل ضد الطقم السفلي.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Pain across the entire lower denture-bearing area that increases through the day is almost certainly due to:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A deficient post dam only</button><button type=\"button\" class=\"opt\" data-i=\"1\">Lack of freeway space</button><button type=\"button\" class=\"opt\" data-i=\"2\">A low frenal attachment only</button><button type=\"button\" class=\"opt\" data-i=\"3\">A bulky buccal corridor</button></div><div class=\"qexp\" hidden><p>نقص فراغ الطريق يسبب ألم على كل مساحة التحمل السفلية يزيد خلال اليوم، وقد يأثر على النطق والشكل ويتعب عضلات الفك. الزيادة بالفراغ هم قد تسبب عدم راحة عضلية.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A reasonably retentive upper denture that occasionally drops when the mouth is opened wide, with satisfactory impression and polished surfaces elsewhere, should make you check:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Only the shade of the anterior teeth</button><button type=\"button\" class=\"opt\" data-i=\"1\">A low frenum, bulky polished surface around the maxillary tuberosities (coronoid encroachment), and locking cusps in excursion</button><button type=\"button\" class=\"opt\" data-i=\"2\">Whether the patient used toothpaste that morning</button><button type=\"button\" class=\"opt\" data-i=\"3\">The Willis guide alone</button></div><div class=\"qexp\" hidden><p>لجام واطئ، سطح لامع سميك حول الحدبات (الناتئ الإكليلي يضغط ويه الفتح الواسع)، أو تقفّل حدبات بالطرق — ثلاث أسباب شائعة للنزول الأحياناً.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">If chewing has deteriorated because the posterior teeth are too flat, the recommended treatment is to:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Tell the patient to wait 6–8 weeks with no further change</button><button type=\"button\" class=\"opt\" data-i=\"1\">Use an interocclusal record, remount the dentures on an articulator, and replace the posterior teeth with appropriate cuspal anatomy</button><button type=\"button\" class=\"opt\" data-i=\"2\">Reduce the palatal acrylic only</button><button type=\"button\" class=\"opt\" data-i=\"3\">Add a permanent metal palate</button></div><div class=\"qexp\" hidden><p>إذا زوايا الحدبات ضحلة أو الإطباق تعدّل زيادة، المريض ما يگدر يطحن الأكل. إعادة تركيب وتبديل الأضراس بتشريح مناسب.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Cheek or lip biting with new dentures is likely due to insufficient horizontal overlap. One option is to:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Remove freeway space completely</button><button type=\"button\" class=\"opt\" data-i=\"1\">Adjust mandibular incisal edges or buccal aspects, or add wax on the maxillary teeth and ask the technician to move those teeth buccally or labially as the wax indicates</button><button type=\"button\" class=\"opt\" data-i=\"2\">Deepen the mid-palatine raphe to 3 mm</button><button type=\"button\" class=\"opt\" data-i=\"3\">Use the BULL rule on the anterior teeth only</button></div><div class=\"qexp\" hidden><p>التراكب الأفقي الناقص يخلّي الخد أو الشفة تنعض. عدّل السفلي، أو زيد التراكب بشمع على العلوي وحرّك الأسنان للشدق أو الشفة حسب الشمع.</p></div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا الملف الحادي عشر من المرحلة الرابعة: البعد العمودي للفك (وقت الراحة ووقت الإطباق)، العلاقة الأفقية (العلاقة المركزية)، تجربة الشمع، تسليم الطقم الكامل، ومضاعفات ما بعد التسليم.</p><p>الفكرة الذهبية: البعد العمودي أسهل تسجيل، بس أغلاطته أول شي توجع المفصل والعضلات. والطقم الكامل يُصنع دائماً على العلاقة المركزية.</p>","<p>تسجيل علاقة الفكين يعني تسجّل أي موضع للفك السفلي نسبة للعلوي: عمودي أو أفقي أو جانبي.</p><p>البعد العمودي: المسافة بين نقطتين، عادة رأس الأنف والذقن — وحدة ثابتة ووحدة تتحرك.</p><p>موضعين: <b>بعد الراحة</b> (المريض مرتاح مستقيم، والعضلات بأقل تقلص)، و<b>بعد الإطباق (VDO)</b> لما الأسنان أو حواف الشمع تتلامس بالإطباق المركزي.</p><p>الفرق بينهم اسمه <b>المسافة بين الإطباق أو freeway space</b>، ومقداره <b>2–4 ملم</b>. بالأسنان الطبيعية الأسنان ما تتلامس ويه الراحة. نفس العلاقة لازم نصيرها بالطقم: نصنع الطقم على بعد الإطباق، حتى ويه الراحة يبقى فراغ 2–4 ملم. بعد الإطباق دائماً أقل من بعد الراحة بهالكمية.</p>","<p>هالعلاقة أسهل شي تسجّله، بس أخطر شي إذا غلطت. أغلاط البعد العمودي أول ما توجع المفصل الفكي، والعضلات والمفصل ينشدّون.</p><p>العوامل: <b>الأسنان</b> توقف عمودية تحدد العلاقة بالفم اللي فيه أسنان؛ و<b>العضلات</b> (الفتح والإغلاق) تكون بتوتر بسيط، وهذا يحدّد البعد. العضلات الرافعة والجاذبية يساعدون يحافظون على وضع الراحة الفسيولوجي.</p><p>ليش مهم؟ وظيفة (مضغ، تنفس، بلع، نطق)، جانب نفسي، تجميل، وراحة تحفظ صحة النسيج والعظم والعضلات والمفصل.</p>","<p>إذا البعد <b>زايد</b>: مشاكل نطق؛ الطقم يحس ثقيل؛ تماس مبكر وطقطقة ويه الوظيفة؛ امتصاص الحافة يزيد؛ ألم وتعب بالمفصل والعضلات؛ شكل سيء (شفاه مفصولة وأسنان باينة زيادة)؛ ما يگدر يفتح فمه وايد؛ قوة العض تضيع؛ بلع صعب؛ وتجويف الفم يصير أوسع.</p><p>إذا البعد <b>ناقص</b>: شكل سيء (شفة رقيقة، والفك والذقن بارزين)؛ تجاعيد وثنيات بزوايا الفم قد تسبب التهاب زاوية الفم؛ قوة العض والمضغ تقل؛ تعب وألم بالمفصل؛ عض الخد؛ أحياناً ألم عصبي؛ وتجويف الفم يصير أضيق.</p><p>احفظ الاتجاهين: الزيادة توسّع الفم وتطقطق وتوجع؛ النقص يخلي الوجه مطوي والذقن بارز وقد يعض خدّه.</p>","<p>بعد الراحة هو طول الوجه والفك مرتاح. يتأثر بعضلات المضغ والنطق والبلع والتنفس. نحتاجه كمرجع حتى نحدّد بعد الإطباق.</p><p>القانون: <b>بعد الراحة = بعد الإطباق + فراغ الطريق (2–4 ملم)</b>.</p><p>لازم ينسجل ويه الوضع <b>الفسيولوجي</b> مو الوضع <b>العادي المعتاد</b> اللي يصير بعد سنين بلا أسنان. الطقم ما ينصنع على المعتاد. إذا المريض يبلع أو يبلل شفايفه، الفك يمر بالوضع الفسيولوجي قبل ما يرجع للمعتاد — استغل هاللحظة.</p><p>انتبه: مرض عصبي عضلي يغيّر الوضع؛ المريض ما يقدر يحافظ على الراحة الفسيولوجية وقت طويل فسجّل بسرعة؛ وإذا قست غلط، بعد الإطباق يطلع غلط ويجرح الأنسجة والمفصل.</p>","<p>عادة نقيس بعد الراحة بمسطرة بين نقطتين (علامة ثابتة أو شريط لاصق) على الأنف والذقن. ست طرق:</p><p><b>1) بعد البلع والاسترخاء:</b> المريض مستقيم، رأسه منتصب، عيونه لقدام. يبلع، يمسح شفايفه بلسانه، يرخي عضلات الوجه وينزّل كتفه. قِس وكرّر لين الرقم يثبت.</p><p><b>2) الإحساس اللمسي:</b> يفتح وايد لين يحس عدم راحة بعضلات المضغ، وبعدين يسكر ببطء ويوقف لما يحس العضلات مرتاحة تماماً. قارن ويه طريقة البلع. تعتمد على إحساس المريض فتتغيّر — أكّد بطريقة ثانية على الأقل.</p><p><b>3) العلامات التشريحية (دليل Willis):</b> المسافة من بؤبؤ العين لزاوية الفم المفروض تساوي المسافة من الشوكة الأنفية الأمامية للحد السفلي للفك. دقتّها مشكوكة إذا الوجه غير متناظر.</p><p><b>4) النطق:</b> إما يكرر حرف «م» وتقيس فور ما يوقف، أو تحچي وياه وتقيس فور ما يسكت.</p><p>وهم في طريقة تخطيط كهربائي للعضلات، وملاحظة تعبير الوجه.</p>","<p>بعد الإطباق هو بعد الوجه لما الأسنان أو حواف الشمع متلامسة بالإطباق المركزي. الطرق ميكانيكية وفسيولوجية.</p><p>من الميكانيك: علاقة الحواف. الحليمة القاطعة علامة ثابتة تقريباً ما تتغيّر ويه الامتصاص. طبيعيةً المسافة من الحليمة لحافة القواطع السفلية حوالي <b>4 ملم</b>، وحافة القاطع العلوي متوسط <b>6 ملم</b> تحت الحليمة، فالتراكب العمودي حوالي <b>2 ملم</b>. هالقياسات تنفحص بتجربة الشمع على المفصلة، بس ما تفيد إذا الامتصاص شديد.</p><p>الحواف تصير متوازية فقط بالإطباق. إذا عدّلت الفك حتى يصير موازي للعلوي ويه فتحة حوالي <b>5°</b> بالمفصل، هذا يعطي مقدار فصل مناسب. ما يُعتمد كمعيار إذا كان عنده التهاب لثة أو فقد أسنانه بأوقات مختلفة.</p><p>سجلات ما قبل القلع: صور جانبية بحجم الحياة والأسنان بأقصى إطباق (عيبها زاوية الصورة قد تختلف عن وقفة المريض)؛ صبّات مركبّة قبل القلع تقارن ويه صبّات بلا أسنان (تفيد إذا الحافة ما تضحيّت أو ما امتصت انتظار طويل)؛ وقياس وجهي بنقطتين قبل القلع (فرجار من الذقن لقاعدة الأنف). والطقم القديم هم سجل ثمين: مقياس Boley بين حدود الطقمين وهما متطبقين يعطيك بعد الإطباق.</p>","<p>هالطرق خصوصاً للمريض بلا أسنان وما عنده سجل قبل القلع.</p><p><b>نقطة القوة (Boos):</b> النظرية تقول إن أقصى قوة (تنقاس بجهاز bimeter على قاعدة الفك السفلي) تصير لما التماس يحدث على البعد العمودي الصحيح.</p><p><b>حواف الشمع:</b> تقيس بعد مؤقت، تركّب الصبّات بعلاقة مركزية مؤقتة، ممكن تضيف جهاز تتبع، والشكل وتعبير الوجه يحدّدون القيمة النهائية.</p><p><b>وضع الراحة الفسيولوجي:</b> المريض مرتاح، جذعه مستقيم ورأسه بدون دعم، يبلع ويرخي فكه. لما يتبين الاسترخاء، افتح الشفتين بحذر وشوف الفراغ بين الحواف. المفروض <b>2–4 ملم بمنطقة الضواحك</b>. إذا أكثر من 4 ملم، بعد الإطباق غالباً صغير، والعكس بالعكس. عدّل الحواف لين ترتاح ويه الفراغ والراحة والنطق والشكل. هالطريقة وحدها مو دليل قاطع — استخدمها ويه طرق ثانية.</p>","<p><b>النطق والشكل:</b> أصوات ch و s و j تقرّب الأمامية. إذا المسافة كبيرة، بعد الإطباق قد يكون صغير؛ إذا الأسنان تطقطق ويه هالأصوات، البعد غالباً زايد. الشكل هم يتأثر: لون الجلد ودعم الشفة بمكان الأسنان. إذا البعد ناقص، الشفة ما تدعم صح وتصير أقرب للعمودي. الدليل التجميلي: اختار أسنان بنفس حجم الطبيعية، وقدّر كمية النسيج الضائع من الحافة.</p><p><b>عتبة البلع:</b> بداية البلع الأسنان تلمس لمس خفيف، وهاللحظة تُستخدم كبعد إطباق. ابنِ مخروط شمع طري على القاعدة السفلية يلمس الحافة العلوية والفك مفتوح زايد. قطعة حلوى تزود اللعاب، والبلع المتكرر يقلل ارتفاع المخروط لين الفك يوصل مستوى بعد الإطباق.</p><p>أكثر ثلاثة اختبارات مستخدمة ويه حواف الشمع: تشوف الفراغ ويه الراحة الفسيولوجية؛ تحكم دعم الوجه التجميلي؛ واختبار النطق ويه حرف «س» المتكرر (متوسط مسافة الكلام). وهالتحديد المؤقت يتأكد بعدين بجلسة التجربة لما الأسنان مركبة بالشمع.</p>","<p>للطقم الكامل، العلاقة الأفقية الصحيحة دائماً <b>العلاقة المركزية (CR)</b>.</p><p><b>الإطباق المركزي (CO)</b> هو إطباق الأسنان المقابلة لما الفك يكون بالعلاقة المركزية.</p><p>العلاقة المركزية: اللقم تتمفصل ويه أنحف جزء عديم الأوعية من أقراصها، والمجمع بموضع أمامي-علوي ضد منحدرات البارزة المفصلية. الحركة دوران خالص حول المحور الأفقي المستعرض. نلاقيها بالموضع المرتجع الوحيد اللي تكدر تحصل فيه حركة مفصلة عمودية خالصة.</p><p>ليش لازم تعرف توصّل المريض لـ CR؟ لأنها نقطة البداية المرجعية، قابلة للتكرار والتحقق، وموضع وظيفي لإطباق الطقم. الطقم الكامل يُصنع بحيث إطباقه النهائي الأول والكامل يتطابق ويه CR، وبعدين هذا يصير إطباق المريض المركزي. ولأن CR تعتمد شوي على وضع الرأس، خلّ الرأس شبه منتصب.</p>","<p>وضع اليد مهم حتى التسجيل يكون دقيق والقواعد ما تزحف. اليد غير المسيطرة تنقلب وتدخل الفم: لحم الإبهام والسبابة على السطوح الشدقية المتقابلة لحواف الشمع، بين السطوح الإطباقية بمنطقة الرحى الأولى. اليد الثانية تساعد توجّه المريض لـ CR. احذر تزحف القاعدة السفلية للخلف.</p><p>تمرّن ويه المريض قبل التسجيل. خله قريب من بعد الإطباق الصحيح قبل ما تحاول CR. وعله تقول: «رخي فكك، سكّر ببطء».</p><p>خمس طرق توصّل الفك لـ CR: أرخي الفك تماماً والطبيب يهزه بلطف لفوق وتحت؛ رأس اللسان فوق وورا بالفم؛ قول له «طلّع الأسنان العلوية»؛ ميل الكرسي والمريض لورا حتى الجاذبية تساعد؛ أو استخدم مرآة حتى يشوف الموضع بنفسه.</p><p>الصبّة العلوية مركبة بالفيسبو، والحافة السفلية معدّلة حتى التماس حر على البعد الصحيح وهي بـ CR. هسه نسجّل بمادة، ولازم نترك مجال للمادة على نفس البعد. بعد ما تركّب التسجيلات على الصبّات، تأكد ماكو تماس خلفي بين الصبّتين؛ إذا في تماس، قلّم الصبّة لين يروح.</p>","<p>طقم التجربة ترتيب أولي للأسنان الصناعية، ندخله فم المريض حتى نقيّم الشكل والنطق وعلاقات الفكين. القاعدة التجريبية مادة مؤقتة تمثل القاعدة، تُستخدم لتسجيل علاقات الفكين ولتشميع طقم التجربة. والتنجيد التجريبي هو وضع هالطقم بالفم للتقييم.</p><p>أهميته: آخر فرصة تفحص الخطوات السابقة؛ المريض يشوف الشكل؛ وأي غلط يتصلح قبل ما نكبس الطقم النهائي.</p><p>الأهداف: تثبّت تسجيلات الفكين اللي انعملت بلا أسنان (البعد العمودي، وإن CO و CR متطابقين)؛ تتأكد مكان الأسنان والقاعدة مناسب للأنسجة؛ تقييم اختيار وترتيب الأسنان للشكل؛ وإذا تحتاج تسجيلات إضافية (مثل بروز) تعدّل المفصلة.</p><p>الجانبان: فحص خارج الفم على المفصلة، وفحص داخل الفم — كل طقم لحاله وبعدين الاثنين سوية.</p>","<p>الصبّة الرئيسية ينكبس عليها الطقم النهائي، فلازم شكلها زين، بلا فقاعات أو خدوش، وبلا بقايا شمع (البقايا تخلّي القاعدة ما تنطبق وتعطي علاقة غلط). أي undercut بالصبّة يتفرّج حتى القاعدة التجريبية ما تخدشها.</p><p>القواعد لازم ثابتة، حوافها ملساء مدورة بلا حواف حادة، ومشكّلة حسب عمق وعرض الميزاب.</p><p>على المفصلة: بعد الإطباق محفوظ (رأس الدبوس الإكليلي بمستوى العضو العلوي، والدبوس لامس الطاولة)؛ حلقات التركيب مشدودة؛ الحركة من المركزي للامركزي ناعمة بلا تشابك حدبات؛ والقواعد جالسة والسنان تلتقي بانتظام بالعلاقة المركزية.</p><p>اختيار اللون والشكل وترتيب الأسنان مسؤولية الطبيب. شيل الشمع الزايد حتى ما تغطي علاقة غلط. إذا في تماس أمامي زايد على المفصلة، صلّحه حتى ما ينهدم العظم الأمامي العلوي (أصلاً معرض للامتصاص). بالصف الأول: الأمامية العلوية تتراكب على السفلية حوالي <b>1–2 ملم</b> أفقياً وعمودياً.</p>","<p>كل طقم يُفحص لحاله: تثبيت، ثبات، امتداد، وعلاقته بالمنطقة المحايدة. وبعدين الاثنين سوية: البعد العمودي، العلاقة المركزية، الشكل والنطق، وتثبيت الختم الحنكي الخلفي.</p><p>التثبيت العلوي إذا الإنذار زين، خلعه صعب. السفلي غالباً أضعف لأن المساحة صغيرة والختم أصعب. تثبيت طقم التجربة أقل من النهائي: ماكو ختم حنكي خلفي، وانطباق القاعدة التجريبية أضعف. المفروض يبقى بمكانه ويه فتح الفم. إذا العلوي مرتخي، تقييم الإطباق ما يصير دقيق (ممكن تستخدم لاصق). ضياع التثبيت من ختم حواف ناقص: نقص امتداد، عرض حافة غير كافي، ختم خلفي فاشل، أو انطباق قاعدة ضعيف.</p><p>الثبات: اضغط بإصبعك باتجاه النسيج بمنطقة الضواحك والأضراس يمين ويسار بالتناوب، والضغط عمودي على السطح الإطباقي. أسباب عدم الثبات: اعوجاج القاعدة؛ أضراس مرتبة شدقي بالنسبة للحافة؛ أو منطقة صلبة بخط الوسط بلا تفريج (مثل فطور حنكي).</p><p>الامتداد: الحواف تطابق عمق وعرض الميزاب. الحد الخلفي العلوي من قلح شصي لقلح شصي على خط الاهتزاز. السفلي يغطي الوسادة خلف الضرس حتى يقاوم ضغط الشفة السفلية للخلف. إذا انزاح فور ما تقعده، اشتبه بزيادة امتداد (النسيج يتمطط ويرجع يخلع الطقم). النقص تشوفه إذا عمق الميزاب أكبر من الحافة، وغالباً يحتاج طبعة جديدة بالطقم التجريبي.</p>","<p>المنطقة المحايدة مهمة خاصة بالطقم السفلي لأن تثبيته الفيزيائي ضعيف. حاولت تحددها ويه تشكيل حواف التسجيل بالزيارة السابقة؛ هسه تأكد إن التقييم انتقل صح لطقم التجربة. إذا ركبته، لازم يبقى بمكانه والفم نصف مفتوح، ورأس اللسان يجي خلف الأمامية السفلية مباشرة.</p><p>لما تفحصهم سوية، قيّم بعد الإطباق والراحة لأن مكان الأسنان النهائي يعتمد على المسافة العمودية. شوف: الإطباق مقارنة بالبعد السابق على نقطتين بالجلد؛ ظهور الأسنان واللثة؛ شكل ونسب الوجه؛ وضع الراحة؛ المسافة ويه التنفس والبلع والكلام؛ وإحساس المريض بموضع فكه.</p><p>إذا بعد الإطباق <b>صغير</b> (فراغ الطريق كبير): ضيف شمع مناسب على إطباق الأضراس بطقم واحد، عدّله حتى الإطباق منتظم على البعد المطلوب، وأعد تسجيل العلاقة بموضع التماس المرتجع.</p><p>إذا بعد الإطباق <b>كبير</b> (الفراغ صغير أو معدوم): شيل الأسنان من طقم واحد وبدلها بحافة شمع، وبعدين سجّل من جديد.</p>","<p>داخل الفم: وجّه المريض لـ CR — إبهامك على الجزء الأمامي السفلي من الذقن، والسبابتين على الحواف الشدقية للطقم السفلي من الجهتين. أي غلط بـ CR يبين لما الأسنان تزلق فوق بعض.</p><p>على المفصلة (طريقة خارج الفم): حط مادة طبعة مثل Aluwax فوق الأضراس السفلية. ثبّت الشمع، ركّب الطقم، غطّس جزء الشمع فقط بحمام ماء <b>130 فهرنهايت لمدة 30 ثانية</b>، رجّعه للفم، وجّه الفك لـ CR حتى الأسنان العلوية تطبع بالشمع، شيله وبرّده بماء مثلج، ورجّعه للتأكيد.</p><p>إذا CR انأكد، قفل أطقم التجربة على المفصلة. الأسنان المقابلة لازم تدخل الطبعات من كل الجهات (قدام وورا وجانب وفوق) إذا العلاقة الأصلية صحيحة. إذا ما دخلت: افصل الصبّة <b>السفلية</b> وأعد تركيبها ويه آخر تسجيل. افحص التركيب الجديد مرة ثانية. <b>لا تعيد تركيب الصبّة العلوية</b> حتى ما تخرب نقل الفيسبو.</p>","<p>تقييم الشكل بثمانية نقاط:</p><p><b>1) خط الوسط:</b> قف قدام المريض من مسافة؛ الخط الغلط يبان. إذا شكّيت، انزل خط تخيلي من منتصف الخط بين الحدقتين؛ نقطة تماس القاطعين لازم تتطابق وياه.</p><p><b>2) المستوى الأمامي:</b> من بعيد، أي ميل واضح لفوق أو لتحت يتصلح.</p><p><b>3) الحجم والشكل واللون:</b> الستة الأمامية العلوية تقريباً بعرض ما بين زوايا الفم. الشكل ينسجم ويه الوجه مو بالضرورة نسخة عنه. اللون يندمج حتى الأسنان ما تصير مركز النظر. الجنس والعمر والشخصية مهمين.</p><p><b>4) دعم الشفة:</b> الأمامية العلوية تدعم الشفة. السطوح الشفوية للقاطعين حوالي <b>8–10 ملم</b> قدام منتصف الحليمة القاطعة. كل ما الحليمة أقدم (شفوية)، الامتصاص أكبر، والأسنان لازم تتحرّك أكثر لقدام. ميل الأسنان غالباً يشبه مقطع الوجه.</p><p><b>5) كمية ظهور السن:</b> تعتمد على طول الشفة العلوية. الشفة الطويلة: ما تبين أسنان بالراحة، تبين بالابتسامة فقط. الشفة القصيرة: التاج كامل قد يبان حتى بالراحة، وبالابتسامة قاعدة الطقم هم تبين. السفلية تصير بمستوى زاوية الفم لما يفتح شوي.</p><p><b>6) الانتظام:</b> الأسنان الطبيعية نادراً مثالية؛ شوية دوران أو تداخل يبعد الشكل الاصطناعي، خصوصاً بأواسط العمر.</p><p><b>7) انسجام حواف القواطع العلوية ويه خط ابتسامة الشفة السفلية.</b></p><p><b>8) الممر الشدقي:</b> لازم يبين فراغ بين الأسنان والخد. القوس العريض يلغي الممر ويعطي ازدحام؛ الضيق يزود الممر ويصير فضاء مظلم.</p>","<p>أصوات f و v بين القواطع العلوية والثلث الخلفي للشفة السفلية، وتتأثر بمكان وطول الأمامية العلوية. إذا قصيرة، الـ v تصير أشبه بـ f؛ إذا طويلة، الـ f تصير أشبه بـ v.</p><p>أصوات الصفير (z, s, ch): الأسنان تقترب وما تتلامس. مسافة أقرب كلام لـ Silverman تفيد لتحديد البعد العمودي. الطقطقة تعني البعد زايد. إذا «س» تصير مثل «ش» أو صفير، فصل الفكين ناقص.</p><p>أصوات p, b, m تساعد تحدد فصل الفكين. إذا البعد عالي، المريض ما يگدر يضم شفايفه، والنطق يتشوّه.</p><p>الختم الحنكي الخلفي: المريض يفتح ويقول «آه». خطين بقلم ثابت من قلح شصي لقلح شصي يحدّدون خط الاهتزاز الأمامي والخلفي. ركّب القاعدة حتى العلامات تنتقل إلها، وبعدين للصبّة. المنطقة بين الخطين تُكشط بالصبّة بعمق <b>1–1.5 ملم</b> على جانبي الرفاء الحنكي الأوسط، وعند الرفاء نفسه <b>0.5–1 ملم</b> فقط.</p><p>دور المريض: يسجّل رغباته، يوافق على أي تغيير عن الطقم السابق، وهو ومن وياه يوافقون إن التجربة مقبولة ويكملون. دور الفني: ينقل التسجيلات بأمانة، يرتب الأسنان حسب الأصول، قواعد ثابتة، إطباق متوازن حسب الوصفة، مفصلة وزوايا لقم حسب الوصفة، والشمع يناسب عمر وشخصية المريض.</p>","<p>لحظة التسليم، كل خطوات التصنيع تتعرض لثلاثة تقييمات: تقييم الطبيب (هذا المفروض الأصرم، لأنه يعرف حدود العلاج)، تقييم المريض (من قبول شديد لخوف، ويعتمد على شلون ضبطت توقعاته وتجربته السابقة وكلام الناس)، وتقييم الأصدقاء والأهل — وهذا قد ما يكون دقيق لأنهم ما يعرفون إحساس المريض ولا كفاءة الأكل والنطق ولا صعوبة الأساس الضعيف، وقد يزيدون مشكلته.</p><p>أول خطوة بجلسة التسليم: راجع التعليمات اللي انعطت من مرحلة التشخيص، وناقش اللي ما فهمه. وأي عدم دقة بالمادة أو الطريقة لازم ينكشف ويتصلح قبل اللبس. الأسباب ثلاثة: غلط الطبيب (تقني أو بالحكم)، غلط المختبر، أو نقص متأصل بالمادة.</p><p>المثالي: المريض يشيل طقمه القديم <b>12 إلى 24 ساعة</b> قبل التسليم حتى الأنسجة تكون سليمة وغير مشوّهة. البديل المقبول: تبطين مؤقت طري للطقم القديم حتى التشوه يقل.</p>","<p>قبل ما تركّب الطقم بالفم، افحصه بإيدك وبكبّر: الوجه النسيجي بلا عيوب؛ السطح اللامع أملس؛ الحواف بلا زوايا حادة ومو سميكة زيادة؛ والحدود مدورة ملساء بلا زيادة امتداد واضحة.</p><p>الغشاء متفاوت الانضغاط، فحتى ويه طبعة دقيقة راح تحتاج تعديلات فوق المناطق الرقيقة أو الـ undercuts. معجون مؤشر الضغط (PIP) أساسي. يفيد لأن: نقاط ضغط قد تكون موجودة بطبعة نهائية مقبولة؛ تغيّر الكبس قد يقبض القاعدة العلوية شوي (غالباً نرفّع السطوح الجانبية بمنطقة الحدبة)؛ undercuts ثنائية تعرقل الإدخال؛ الغشاء الرقيق فوق بروز الضرس اللامي يحتاج تفريج؛ وويه الامتصاص المتقدم أعصاب الذقن والقناة القاطعة قد تحتاج تفريج.</p><p>الإجراء: نشّف الطقم، مرّر الفرشاة باتجاه واحد، وطبقة رقيقة منتظمة من PIP. <b>لا تخلي المريض يعض</b> بهالمرحلة، لأن أغلاط الإطباق غير المصححة تزحف الطقم وتعطيك نمط غلط.</p><p>أربعة أنماط: مسحة نظيفة بالحافة من احتكاك الخد ويه الإدخال — <b>لا تعدّلها</b>؛ خطوط الفرشاة مضطربة = تماس مطلوب؛ خطوط غير مضطربة = بعد ماكو تماس؛ بورسل/أكريلك وردي باين = ضغط زايد، وهنا تعدّل.</p>","<p>قيّم الحواف: هل الامتداد والشكل يناسبون فضاء الدهليز؟ هل في تفريج كافٍ للّجم ولانعكاس النسيج بمنطقة القلح الشصي؟ وهل الطقم ثابت ويه الكلام والبلع؟ حط شمع كاشف على حافة منشّفة بالتدريج، دفّيه بحمام ماء 5 ثواني، قعد الطقم بضغط أصابع متساوٍ، والمريض يعمل حركات تشكيل الحواف. شيل بحذر بلا ما تمسح الشمع، وعدّل أي ضغط أو زيادة، وكرّر لين ما يبقى زيادة.</p><p>التثبيت: الطقم العلوي يقاوم إذا سحبته لتحت ماسكاً القواطع بالإبهام والسبابة. السفلي عادة ما يقاوم بشكل واضح لأن ختمه أضعف. الثبات: ولا طقم يهتز إذا ضغطت بالتناوب على جهتي الإطباق بمنطقة الرحى الأولى.</p><p>أغلاط الإطباق تجي من: تغيّر بحالة المفصل؛ تسجيل علاقة غلط من الطبيب؛ غلط بنقل التسجيل؛ قواعد تسجيل مؤقتة ما تنطبق؛ تغيّر البعد العمودي على المفصلة؛ ترتيب أضراس غلط؛ وعاء الكبس (flask) ما انسكر بالكامل وقت الكبس؛ ضغط زايد ويه إغلاق الوعاء؛ وتغيّرات الكبس اللي ما تنضبط أثناء البلمرة.</p>","<p>التعديل الانتقائي نوعين: داخل الفم، وخارج الفم (على المفصلة بالمختبر).</p><p>داخل الفم تستخدم ورق الكربون أو صفيحة شمع لكشف التماس المبكر. الشمع أفضل لأن الحدبة تخترق الشمع فتبين إن التماس ثقيل. الورق مو مفضّل لأن: اللعاب يعرقل استخدامه؛ صعب تحطه على الجهتين بنفس الوقت؛ قد يلوّن حتى أسنان مو متطبقة؛ وإزاحة الغشاء وميلان الطقم يخلّون أسنان غير متلامسة تصبغ الورق.</p><p>خارج الفم: إما بعد إخراج الطقم من الوعاء وقبل التلميع (إعادة تركيب الصبّات ويه الطقم بالجبس على المفصلة وتصحيح الإطباق)، أو بعد التلميع بجلسة التسليم إذا التغيير صعب يتصلح داخل الفم — تسجّل علاقة مركزية جديدة، تعيد التركيب، وتعدّل بالمختبر.</p><p>التعديل خارج الفم أفضل لأن: مشاركة المريض تقل؛ تشوف الشغل أوضح؛ الأساس ثابت والقواعد ما تزحف على نسيج مرن؛ بلا لعاب علامات الورق أدق؛ والتصحيح بعيد عن عين المريض حتى ما يعترض وهو يشوف طقمه الجديد يتعدّل.</p>","<p>غلط بالإطباق المركزي: إذا الحدبة عالية بالمركزي <b>و</b> باللامركزي، قلّل الحدبة المبكرة. إذا عالية بالمركزي بس مو باللامركزي، عمّق الحفر أو الحواف الهامشية.</p><p>جهة العمل: قلّل المنحدرات الداخلية للحدبات <b>الشدقية العلوية</b> والحدبات <b>اللسانية السفلية</b> — قاعدة <b>BULL</b>.</p><p>جهة التوازن (غير العاملة): قلّل المنحدرات الداخلية للحدبات الشدقية السفلية. إذا اضطررت تشيل حدبة مركزية حتى تصلّح التماس المبكر بالتوازن، شيل الحدبة الشدقية السفلية. هيج يبقى التماس المركزي على الحدبة اللسانية العلوية، والقوى تتوجّه أفضل ضد الطقم السفلي.</p><p>البروز: حتى تحصل توازن، قلّل المنحدرات الخلفية لحدبات العلوي والمنحدرات الأمامية لحدبات السفلي. بعد ما تخلّص، نعّم التشريح الإطباقي.</p>","<p>تعليم المريض إن الطقم بديل ميكانيكي للنسيج الحي عملية مستمرة من أول زيارة لين تخلص التعديلات. كل مريض حالة فردية، لا يقارن نفسه بغيره. شكوى موجعة لواحد قد تكون ثانوية لثاني.</p><p>الشكل يصير أطبيعي ويه الوقت. بالبداية الطقم غريب وثقيل ويعطي إحساس امتلاء بالشفاه والخدود. الشفة ما تتأقلم فوراً ويه امتلاء الحواف وقد يبان الشكل مشوّه. توتر العضلات يعطي منظر محرج، ويتحسّن لما يرتاح ويثق بنفسه.</p><p>الأكل ويه الطقم مهارة تتعلّم. المضغ المرضي يحتاج عادة <b>6 إلى 8 أسابيع</b>. لازم يعرف إن هالفترة متوقعة حتى ما يحبط. العضلات تحتاج ذاكرة جديدة، ولما العادة تصير تلقائية المضغ يتم بلا تفكير. اللسان والخد والشفاه لازم يتعلّمون يثبتون الطقم على الحافة ويه المضغ. يبدأ بأكل طري مقطّع صغير، وإذا يگدر يمضغ الجهتين بنفس الوقت. اللي عاش بلا طقم فترة طويلة وتعلّم يسحق الأكل بين الحواف أو بين اللسان والحنك، يحتاج وقت أطول. زيادة اللعاب أول أيام متوقعة، وبعدين الغدد تتأقلم ويرجع الطبيعي.</p><p>النطق أسهل مما يتوقعون: اللسان يتكيّف وأكثر المرضى يتقنون الكلام خلال أسابيع. حتى تغيير 0.5 ملم عند الحد اللساني اللثوي للأمامية كان سيسبب عيب نطق (خصوصاً حرف س) لو اللسان ما يتكيّف. انصحه يقرأ بصوت عالي ويكرر الكلمات الصعبة. هو أحس بعيوب نطقه الصغيرة من اللي يسمعونه.</p>","<p>أقنع المريض إن نظافة الفم والطقم مهمة لصحة الفم.</p><p>يغسل الطقم ويفمه بعد الأكل كلما قدر. مرة باليوم على الأقل يشيل الطقم ويحطه بمحلول نقع مدة أدناها <b>30 دقيقة</b>. قبل النقع يفرك كل السطوح بلطف بفرشاة ناعمة ومنظّف غير كاشط. يفرك فوق حوض فيه مي، أو فوق فوطة مبلولة، حتى إذا وقع ما ينكسر. لا يستخدم معجون أسنان لأن أغلبه كاشط ويأكل سطح الأكريلك. وهم فرّش غشاء الحواف وظهر اللسان يومياً بفرشاة ناعمة.</p>","<p>نجاح الطقم يعتمد هم على التواصل النفسي بينك وبين المريض. مشاكل ما بعد التسليم قد تجي من: تقصير الطبيب بتعليم المريض عن التجربة الجديدة، أو فشل المريض بالتكيّف، أو أغلاط بالتصنيع. انتبه: الألم والارتخاء قد يكون لهم سبب واحد تحتهم. احچي ويه المريض وافحص زين قبل ما تخطط العلاج.</p><p>المريض يريد الطقم للمضغ والشكل والنطق والراحة. حتى إذا الطقم متوافق ويه الفم، يحتاج وقت للتكيّف وتهيئة الأنسجة — مثلاً 6–8 أسابيع للمضغ.</p><p>المشاكل كثيرة: ارتخاء، الطقم السفلي يطلع ويه الفتح، إحساس فراغ بالعلوي، نطق، ما يگدر يأكل، طقطقة، أكل تحت الطقم، ألم ويه البلع، رائحة، جفاف، طعم غريب أو ضياع الطعم، لعاب تحت الطقم، ينخلع ويه الشرب، سيلان من زوايا الفم، لعاب زايد، حجم زايد، عض خد أو شفة أو لسان، حرقة، ألم ونقاط وجعة، مشاكل مفصل، وغثيان.</p><p>أكثر الشكاوى شيوعاً أربعة: ألم/عدم راحة؛ ارتخاء واحد أو الاثنين؛ مشاكل نطق؛ ومشاكل مضغ. هذي الأربعة نشرحها بالشرائح الجاية.</p>","<p>الألم شائع ويه الطقم الجديد، وأسبابه متعددة.</p><p><b>زيادة امتداد الحافة</b> غالباً السبب الأكثر تكراراً. اشتبه فيها إذا في وجع محدد بالدهليز، احمرار أو تقرح. حط شوية PIP على المنطقة المشبوهة بإسفنجة، ركّب الطقم وشكّل العضلات، وشيله: المعجون ينمسح بمكان الزيادة. عدّل بسنبلة أكريلك مشطوفة على قبضة مستقيمة، وكرّر.</p><p><b>مشكلة فراغ الطريق:</b> إذا الألم على كل مساحة تحمل الطقم السفلي، قد يكون الفراغ قليل. إذا الألم يزيد على مدار اليوم، هذا شبه أكيد من نقص الفراغ. النطق قد يتأثر، وهم الشكل مو مرضي وألم أو تعب بعضلات الفك. وأحياناً الفراغ زايد وهم يسبب عدم راحة عضلية.</p><p><b>ألم على قمة الحافة:</b> قد يكون من ضعف الأنسجة الداعمة أو ظاهرة الحافة غير الموظفة. المناطق العظمية البارزة غشاؤها رقيق ودعمها ضعيف. إذا فرّجت كفاية، تكدر تضغط بإصبعك بلطف بلا ألم. خيار ثاني: تبطين مرن دائم بالطقم.</p>","<p>إذا اشتكى من الارتخاء، افحص: امتداد الحواف؛ الختم الحنكي الخلفي؛ انطباق القواعد؛ الإطباق؛ شكل السطح اللامع؛ ومكان الأسنان.</p><p>إذا ماكو ألم وماكو زيادة امتداد، الارتخاء غالباً من فشل الختم المحيطي. سبب ثاني: انطباق ضعيف على الأنسجة — اشتبه فيه إذا الأكل يتجمّع تحت الطقم. افحص الامتداد وعدّل النقص بكمباوند أخضر. قيّم منطقة السد الخلفي العلوي، وإذا ناقصة ضيف كمباوند أخضر. أكثر مناطق النقص بالسفلي: الجيب اللساني الخلفي ومنطقة الوسادة خلف الضرس.</p><p>إذا الطقم ثابت نوعاً ما بس ينزل أحياناً بلا سبب واضح: لجام واطئ يزحزحه أحياناً (زيد تفريج اللجام)؛ أو السطح اللامع سميك حول الحدبات العلوية — ويه الفتح الواسع الناتئ الإكليلي يضغط على المنطقة المحايدة ويخلع الطقم، فقلّل السمك تدريجياً لين يفتح بلا ما ينخلع وبعدين لمّع؛ أو إذا سطحي الطبعة واللمعان زينين، المشكلة بالإطباق — افحص المركزي والحركات، وإذا الحدبات تتقفل بالطرق، الطقم ينخلع. عدّل لين يصيّر إطباق متوازن.</p>","<p>مشاكل النطق أحياناً بسيطة. إذا المريض مو قلقان وايد، شجّعه يتكيّف. إذا الصعوبة واضحة، افحص: فراغ الطريق — إذا تقلّص زيادة، النطق يتأثر وغالباً يقول «فمي مليان أسنان»؛ وسماكة أكريلك الحنك — إذا سميك، قلّله.</p><p>مشاكل المضغ: إما وظيفة مضغ غير مرضية، أو عض خد أو شفة ويه الأكل. إذا المضغ ساء ويه الطقم الجديد: الأسنان مسطحة زيادة (زوايا الحدبات ضحلة أو الإطباق تعدّل زيادة) — سجّل علاقة وأعد تركيب الطقم على المفصلة وبدّل الأضراس بتشريح حدبات مناسب؛ فراغ الطريق ناقص (ألم بالحافة السفلية، والمضغ شكوى ثانوية، وهم ما يتحمّل أكل كثير)؛ أو فراغ الطريق زايد — ضيف شمع على إطباق طقم واحد أو الاثنين، سجّل علاقة جديدة، سوّ تجربة شمع جديدة، وكبّس ورجّع الطقم.</p><p>إذا يعض خده أو شفته ويه الأكل، غالباً التراكب الأفقي ناقص. ممكن تعدّل حواف القواطع أو السطوح الشدقية للأسنان السفلية حتى تحصل تراكب. أو ضيف طبقة شمع على أسنان العلوي لزيادة التراكب الأفقي، وطلب من الفني يحرّك الأسنان العلوية شدقي أو شفوي حسب الشمع.</p>","<p>أسئلة البعد العمودي والعلاقة المركزية. اقرأ بهدوء؛ الجواب يظهر بعد الضغط ويا شرح عراقي.</p>","<p>أسئلة تجربة الشمع والتسليم. ركّز على الختم، إعادة التركيب، PIP، وقاعدة BULL.</p>","<p>اختبار الملف الحادي عشر. عشر أسئلة من البعد العمودي، التجربة، التسليم والمضاعفات. اضغط الزر بنهاية الشريحة حتى تشوف درجتك.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>

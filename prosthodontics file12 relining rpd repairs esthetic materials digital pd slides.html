@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Prosthodontics File 12 — Relining, RPD Repairs, Esthetic Materials and Digital Partial Dentures</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Prosthodontics · 4th year</div>
+    <h1>Relining Complete Dentures, RPD Repairs, Esthetic Materials and Digital Partial Dentures</h1>
+    <p style="margin:0 0 16px"><p>PDF pages 376–400 (Dr. Ihab Nabeel Al-mgotar / Safi). Every important point from the lectures is covered, with detailed simple Iraqi Arabic explanations, figures, in-slide questions and a scored self-test.</p></p>
+    <ul>
+      <li><</li>
+      <li>u</li>
+      <li>l</li>
+      <li>></li>
+      <li><</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li>R</li>
+      <li>e</li>
+      <li>l</li>
+      <li>i</li>
+      <li>n</li>
+      <li>i</li>
+      <li>n</li>
+      <li>g</li>
+      <li> </li>
+      <li>i</li>
+      <li>n</li>
+      <li>d</li>
+      <li>i</li>
+      <li>c</li>
+      <li>a</li>
+      <li>t</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li>s</li>
+      <li>,</li>
+      <li> </li>
+      <li>c</li>
+      <li>l</li>
+      <li>o</li>
+      <li>s</li>
+      <li>e</li>
+      <li>d</li>
+      <li>-</li>
+      <li> </li>
+      <li>v</li>
+      <li>e</li>
+      <li>r</li>
+      <li>s</li>
+      <li>u</li>
+      <li>s</li>
+      <li> </li>
+      <li>o</li>
+      <li>p</li>
+      <li>e</li>
+      <li>n</li>
+      <li>-</li>
+      <li>m</li>
+      <li>o</li>
+      <li>u</li>
+      <li>t</li>
+      <li>h</li>
+      <li> </li>
+      <li>t</li>
+      <li>e</li>
+      <li>c</li>
+      <li>h</li>
+      <li>n</li>
+      <li>i</li>
+      <li>q</li>
+      <li>u</li>
+      <li>e</li>
+      <li>,</li>
+      <li> </li>
+      <li>i</li>
+      <li>m</li>
+      <li>p</li>
+      <li>r</li>
+      <li>e</li>
+      <li>s</li>
+      <li>s</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li> </li>
+      <li>s</li>
+      <li>t</li>
+      <li>e</li>
+      <li>p</li>
+      <li>s</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>l</li>
+      <li>a</li>
+      <li>b</li>
+      <li>o</li>
+      <li>r</li>
+      <li>a</li>
+      <li>t</li>
+      <li>o</li>
+      <li>r</li>
+      <li>y</li>
+      <li> </li>
+      <li>c</li>
+      <li>a</li>
+      <li>u</li>
+      <li>t</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li>s</li>
+      <li>.</li>
+      <li><</li>
+      <li>/</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li><</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li>R</li>
+      <li>e</li>
+      <li>p</li>
+      <li>a</li>
+      <li>i</li>
+      <li>r</li>
+      <li> </li>
+      <li>v</li>
+      <li>e</li>
+      <li>r</li>
+      <li>s</li>
+      <li>u</li>
+      <li>s</li>
+      <li> </li>
+      <li>r</li>
+      <li>e</li>
+      <li>m</li>
+      <li>a</li>
+      <li>k</li>
+      <li>e</li>
+      <li>,</li>
+      <li> </li>
+      <li>d</li>
+      <li>e</li>
+      <li>n</li>
+      <li>t</li>
+      <li>u</li>
+      <li>r</li>
+      <li>e</li>
+      <li>-</li>
+      <li>b</li>
+      <li>a</li>
+      <li>s</li>
+      <li>e</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>t</li>
+      <li>o</li>
+      <li>o</li>
+      <li>t</li>
+      <li>h</li>
+      <li> </li>
+      <li>r</li>
+      <li>e</li>
+      <li>p</li>
+      <li>a</li>
+      <li>i</li>
+      <li>r</li>
+      <li>s</li>
+      <li>,</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>1</li>
+      <li>8</li>
+      <li>-</li>
+      <li>g</li>
+      <li>a</li>
+      <li>u</li>
+      <li>g</li>
+      <li>e</li>
+      <li> </li>
+      <li>c</li>
+      <li>l</li>
+      <li>a</li>
+      <li>s</li>
+      <li>p</li>
+      <li>-</li>
+      <li>a</li>
+      <li>r</li>
+      <li>m</li>
+      <li> </li>
+      <li>r</li>
+      <li>e</li>
+      <li>p</li>
+      <li>a</li>
+      <li>i</li>
+      <li>r</li>
+      <li>.</li>
+      <li><</li>
+      <li>/</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li><</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li>E</li>
+      <li>s</li>
+      <li>t</li>
+      <li>h</li>
+      <li>e</li>
+      <li>t</li>
+      <li>i</li>
+      <li>c</li>
+      <li>-</li>
+      <li>z</li>
+      <li>o</li>
+      <li>n</li>
+      <li>e</li>
+      <li> </li>
+      <li>m</li>
+      <li>a</li>
+      <li>t</li>
+      <li>e</li>
+      <li>r</li>
+      <li>i</li>
+      <li>a</li>
+      <li>l</li>
+      <li>s</li>
+      <li>,</li>
+      <li> </li>
+      <li>f</li>
+      <li>l</li>
+      <li>a</li>
+      <li>n</li>
+      <li>g</li>
+      <li>e</li>
+      <li> </li>
+      <li>c</li>
+      <li>h</li>
+      <li>a</li>
+      <li>r</li>
+      <li>a</li>
+      <li>c</li>
+      <li>t</li>
+      <li>e</li>
+      <li>r</li>
+      <li>i</li>
+      <li>z</li>
+      <li>a</li>
+      <li>t</li>
+      <li>i</li>
+      <li>o</li>
+      <li>n</li>
+      <li>,</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>e</li>
+      <li>s</li>
+      <li>t</li>
+      <li>h</li>
+      <li>e</li>
+      <li>t</li>
+      <li>i</li>
+      <li>c</li>
+      <li> </li>
+      <li>c</li>
+      <li>l</li>
+      <li>a</li>
+      <li>s</li>
+      <li>p</li>
+      <li> </li>
+      <li>d</li>
+      <li>e</li>
+      <li>s</li>
+      <li>i</li>
+      <li>g</li>
+      <li>n</li>
+      <li>s</li>
+      <li>.</li>
+      <li><</li>
+      <li>/</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li><</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li>D</li>
+      <li>i</li>
+      <li>g</li>
+      <li>i</li>
+      <li>t</li>
+      <li>a</li>
+      <li>l</li>
+      <li> </li>
+      <li>R</li>
+      <li>P</li>
+      <li>D</li>
+      <li> </li>
+      <li>d</li>
+      <li>e</li>
+      <li>s</li>
+      <li>i</li>
+      <li>g</li>
+      <li>n</li>
+      <li> </li>
+      <li>f</li>
+      <li>r</li>
+      <li>o</li>
+      <li>m</li>
+      <li> </li>
+      <li>a</li>
+      <li> </li>
+      <li>s</li>
+      <li>c</li>
+      <li>a</li>
+      <li>n</li>
+      <li>n</li>
+      <li>e</li>
+      <li>d</li>
+      <li> </li>
+      <li>d</li>
+      <li>e</li>
+      <li>f</li>
+      <li>i</li>
+      <li>n</li>
+      <li>i</li>
+      <li>t</li>
+      <li>i</li>
+      <li>v</li>
+      <li>e</li>
+      <li> </li>
+      <li>c</li>
+      <li>a</li>
+      <li>s</li>
+      <li>t</li>
+      <li>,</li>
+      <li> </li>
+      <li>r</li>
+      <li>a</li>
+      <li>p</li>
+      <li>i</li>
+      <li>d</li>
+      <li> </li>
+      <li>p</li>
+      <li>r</li>
+      <li>o</li>
+      <li>t</li>
+      <li>o</li>
+      <li>t</li>
+      <li>y</li>
+      <li>p</li>
+      <li>i</li>
+      <li>n</li>
+      <li>g</li>
+      <li> </li>
+      <li>a</li>
+      <li>n</li>
+      <li>d</li>
+      <li> </li>
+      <li>c</li>
+      <li>l</li>
+      <li>i</li>
+      <li>n</li>
+      <li>i</li>
+      <li>c</li>
+      <li>a</li>
+      <li>l</li>
+      <li> </li>
+      <li>s</li>
+      <li>t</li>
+      <li>e</li>
+      <li>p</li>
+      <li>s</li>
+      <li>.</li>
+      <li><</li>
+      <li>/</li>
+      <li>l</li>
+      <li>i</li>
+      <li>></li>
+      <li><</li>
+      <li>/</li>
+      <li>u</li>
+      <li>l</li>
+      <li>></li>
+      <li>Total run time: <b>40 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 20</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Prosthodontics · File 12","t":"Relining Complete Dentures, RPD Repairs, Esthetic Materials and Digital Partial Dentures","b":"<p>University of Baghdad, College of Dentistry — Prosthodontics syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This 4th-year file covers PDF pages 376–400 (Dr. Ihab Nabeel Al-mgotar / Safi):</p><ul><li>Relining complete dentures — indications, decision factors, closed- versus open-mouth technique, impression steps, and laboratory cautions.</li><li>Repairs of fractured partial dentures — when to repair or remake, denture-base and tooth repairs, and an 18-gauge wire clasp-arm repair.</li><li>Esthetic denture materials — the esthetic zone, base materials (PMMA, polyamide, acetal, polycarbonate, PEEK), flange characterization, and esthetic clasp types.</li><li>Digital partial dentures and rapid prototyping — why a conventional functional impression is still used, electronic surveying, and the clinical steps.</li></ul><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end.</p>"},{"k":"4th year · Relining complete dentures","t":"Why patients present, what relining is, and preparing abused tissues","b":"<p>Patients often present with existing complete dentures that are still structurally sound but are not retentive or stable because they no longer properly fit the soft tissues and residual ridges. They may show obvious occlusal and/or facial changes, and poor esthetics because excessive bone loss under the prostheses has resulted in a loss of face height or repositioning of the anterior teeth. OVD and occlusion may also be compromised because dramatic tissue changes have caused the dentures to lose their proper ridge orientation. The tissue underlying the dentures is frequently abused and irritated. Most of these changes result from poorly fitting dentures. If the changes are not too great, and the dentures are still in reasonably good condition, these problems may be corrected by relining.</p><p><b>Relining</b> is a procedure to resurface the tissue (intaglio) surface of an existing denture with new denture-base material. Other indications may include flange-length problems or non-displaced fractures of existing dentures.</p><p>If conditions have led to abused supporting tissues, some corrective actions must be taken <b>before</b> the relining procedures. A tissue-conditioning material is often used, in conjunction with other procedures such as surgery, to return abused oral tissues to a healthy state. Because tissue-conditioning material has a short usable functional life, both the tissues and the material must be examined frequently, and the material replaced as necessary.</p>"},{"k":"4th year · Relining complete dentures","t":"When a reline is appropriate, and how the impression differs from a conventional one","b":"<p>The decision to reline an existing denture is based on these factors:</p><ol><li>The occluding vertical dimension must be correct, or it must be able to be corrected during the impression procedure for the reline.</li><li>The patient’s centric-relation occlusal position must be stable, or correctable through occlusal adjustment.</li><li>The general appearance of the teeth must be satisfactory to the patient, and there should not be severe occlusal wear.</li><li>Speech patterns should also be satisfactory. As stated previously, the soft tissue must be healthy or correctable.</li></ol><p>Making the impression for a reline is much like the conventional final-impression technique, but there are differences and several additional objectives that must be achieved simultaneously. The most obvious differences are:</p><ol><li>An existing denture is used in place of the custom impression tray.</li><li>The relining final impression must be completed while maintaining the correct OVD and making sure that the patient remains in the centric-relation position through the border-molding procedures and the final set of the impression material. Maintaining OVD and CR is <b>not</b> a consideration when making a conventional final impression.</li></ol><p>An occlusal equilibration of the existing dentures may be necessary before the reline, to ensure adequate positioning of the dentures during the impression procedures.</p>"},{"k":"4th year · Relining complete dentures","t":"Ideal candidates, the 1.5 mm relief, and which arch to reline first","b":"<p>Dentures that show simple looseness without apparent occlusal disharmony, and without noticeable changes in VDO or appearance, are ideal candidates for relining. Because these dentures fit closely to the underlying tissues, an extra step is necessary before the final impression. The viscosity of the impression material can prevent a denture from being properly seated if insufficient space (or insufficient relief) exists for the material. Even if tissue conditioning was done, some areas of the denture may still place unacceptable forces on the tissues. Therefore approximately <b>1.5 mm of resin must be removed</b> from the tissue side of the denture before the impression. This may be difficult or impossible in dentures whose base is little more than 1 mm thick.</p><img class=\"fig\" src=\"prostho-img/file12/reduce-intaglio.jpg\" alt=\"\"><p class=\"cap\">Resin is reduced on the intaglio surface to create space for the impression material and to eliminate undercuts before a reline impression is made.</p><p>When both the maxillary and mandibular dentures require relining, one denture at a time is relined rather than attempting opposing relines simultaneously. Usually the <b>less stable</b> of the two is relined first. If there is no significant difference in stability or retention, the maxillary denture is often selected. Once relined, it will provide a stable opposing arch when the mandibular denture is relined.</p>"},{"k":"4th year · Relining complete dentures","t":"Closed-mouth versus open-mouth reline technique","b":"<p>Dentures may be relined using either a closed-mouth or an open-mouth technique. Because one of the primary objectives of a denture reline is maintaining the proper occlusion, many clinicians select the <b>closed-mouth</b> technique. The primary difference is that with the closed-mouth technique the patient is required to close and maintain the dentures in proper occlusion at the correct OVD while the impression material sets.</p><p>With the open-mouth technique the patient is not allowed to maintain occlusal contact. The open-mouth technique usually requires extensive occlusal equilibration at insertion, and can even allow the denture to be misaligned in its proper relationship to the residual ridges.</p>"},{"k":"4th year · Relining complete dentures","t":"Impression technique: creating space, eliminating undercuts, and placing tissue stops","b":"<p>Impression technique:</p><ol><li>The denture flanges are reduced so that <b>2–3 mm</b> of space exists between the flanges and the depth of the vestibules, to provide space for the border-molding material.</li><li>To allow the laboratory technicians to remove the denture from the master cast during processing, enough resin is removed from the tissue side to eliminate <b>all resin undercuts</b> on the denture base.</li><li>To create space for the impression material, reduce at least <b>one millimeter</b> of the remaining unreduced denture-base material over the entire tissue surface.</li><li>At this point, space for the material has been created, but the plane of occlusion has been changed and VDO has been overly reduced by approximately 1–1.5 mm. This loss is regained by adding <b>four “stops.”</b> Small tissue stops are created with spots of heavy-bodied vinyl polysiloxane about <b>3 mm in diameter</b>, placed in the canine and second-molar areas. The denture is gently seated, and the patient is closed into the CR position at the proper OVD. Border molding is then completed as with a conventional impression, except that VDO and centric occlusion must not be compromised. The occlusion is continuously evaluated to make sure no changes in denture position have occurred.</li></ol><img class=\"fig\" src=\"prostho-img/file12/reline-border.jpg\" alt=\"\"><p class=\"cap\">After space has been created and tissue stops have restored the correct OVD, the flanges are border-molded, still with the patient in the correct centric occlusion.</p>"},{"k":"4th year · Relining complete dentures","t":"Escape vents, seating the wash, and laboratory cautions","b":"<p>Five to the end of the impression sequence:</p><ol><li>Four to six holes are placed into the maxillary denture, spaced approximately <b>12 mm (half an inch)</b> apart through the palate, with a round bur (#6). These holes are escape vents to minimize hydraulic pressure during the wash impression. Three holes are generally placed following the midline raphe, beginning with one hole at the incisive foramen; two holes are cut on each side lateral to the midline, in approximately the canine areas. Avoid making these holes through the existing denture teeth. Generally, unless the denture is very large, no holes are required on the mandibular arch — unless the ridges are massive and hydraulic pressure may prevent complete seating. When required, holes may be placed about 12 mm apart.</li><li>The impression material is mixed and loaded uniformly inside the denture. For the maxillary denture, the denture is seated onto the ridges by exerting gentle pressure <b>upward and backward</b>. The patient is instructed to close into centric occlusion, and the clinician must manipulate the denture until the desired occlusion is achieved at the correct VDO.</li><li>While maintaining the correct occlusal position, the musculature is border-molded in the same manner as a conventional complete-denture impression. Centric occlusion, OVD and denture position are all examined for correctness. The material is allowed to set according to the manufacturer’s instructions.</li><li>After the material has set, the denture is removed and excess impression material is trimmed from the denture and from the surfaces of the teeth. The denture is then ready for the laboratory.</li></ol><div class=\"figrow\"><img src=\"prostho-img/file12/palatal-vents.jpg\" alt=\"\"><img src=\"prostho-img/file12/reline-wash.jpg\" alt=\"\"></div><p class=\"cap\">Left: palatal escape vents reduce hydraulic pressure during the wash. Right: a completed wash impression in the existing denture, which now acts as the tray.</p><p>If the clinician or staff pours the final impression in dental stone, the denture must <b>not</b> be removed from the cast before submission to the laboratory. If it is removed, it may be impossible for the technician to reseat the denture properly, and the correct cast/occlusion orientation will be lost. The technicians will invest the denture in a processing flask before removing it from the cast. If any resin undercuts were not removed before the impression, it may be impossible to remove the denture without breaking the cast. If a posterior palatal seal is required, it is usually cut into the cast just before processing.</p><p>The denture is returned from the laboratory just as if it were any other new denture; insertion, adjustment and post-insertion procedures are the same. Because no face-bow was made, the relined dentures will have remount casts but no index to place the maxillary remount cast/denture on the articulator in the proper relationship to the condyles. A face-bow recording and a CR record may be necessary for extensive occlusal equilibration.</p>"},{"k":"4th year · Repairs of fractured partial dentures","t":"Repair or remake? And repairing a missing base segment","b":"<p>Deciding to repair or remake an existing RPD is sometimes difficult. Consider: the patient’s financial status; physiological age; the frequency of appointments (production time); medical status; the degree of difficulty of the impression-making procedures; and the associated dental-laboratory fees. Frequently it is more expedient to remake an RPD than to devote the time, effort and laboratory fees needed to repair a framework that is only marginally acceptable and may require replacement in the near future. Simple repairs or additions can usually be accomplished with or without impressions, and many times in the dental office without outside laboratory support.</p><p>RPD base breakage ranges from complete loss of a denture-base border segment to fracture or loss of a portion of the denture base proper. Complete loss of a segment of the border will require a rebasing or relining impression procedure.</p><ol><li>When an entire portion of the denture base is missing, the base must be corrected with autopolymerizing acrylic resin, stick compound, or both, so that the impression material can be accurately carried into place. A reline impression using an elastomeric impression material is made; the RPD acts as a tray.</li><li>The completed impression is boxed and poured with dental stone to secure a master cast.</li><li>The new denture-flange segment is repaired with either autopolymerizing or heat-cured acrylic resin. Heat-cured repairs are best accomplished by a dental laboratory service.</li></ol>"},{"k":"4th year · Repairs of fractured partial dentures","t":"When the fractured base segment is still available, and repairing acrylic teeth","b":"<p>When the fractured segment of the RPD denture base is still available, the repair is a relatively simple in-office procedure. The fractured pieces are approximated and joined with sticky wax. The tissue surface of the RPD is poured with dental stone. When the master cast is sufficiently hard, the RPD is removed and the junction of the segments is enlarged to approximately <b>2–3 mm</b> in width. A separating medium is applied to the working cast, the RPD segments are replaced on the stone cast, and the 2–3 mm space is for the repair acrylic resin. Autopolymerizing acrylic resin is added in a “salt and pepper” fashion (sprinkled on) until the repair site is slightly overfilled. For a denser repair with less internal porosity, the RPD still on the stone cast is placed in a temperature-controlled pressure bath at <b>30 p.s.i. at about 120°F for 30 minutes</b>. The site is then trimmed and finished with acrylic burs in a low-speed handpiece, and polished with conventional grades of pumice and finally an acrylic-resin polish.</p><img class=\"fig\" src=\"prostho-img/file12/base-repair-diagram.jpg\" alt=\"\"><p class=\"cap\">When the broken base segment is still available, the pieces are joined, a stone index is poured, a 2–3 mm repair gap is created, and autopolymerizing resin is added “salt and pepper.”</p><p>There are two basic types of denture teeth used in RPD treatment: dental porcelain and acrylic resin. If an acrylic-resin denture tooth is dislodged from a new RPD, the common cause is an incomplete chemical bond between the tooth and the denture base, which may be caused by wax residue or oils left between the two resins when the RPD was processed. The tooth can normally be reseated and repaired with autopolymerizing acrylic resin; processing, finishing and polishing are the same as for a base repair. When the tooth is abraded or fractured, it must be carefully cut out at slow speed with an acrylic bur to create space for a similarly sized new tooth, which is selected, adjusted to the site, and checked to leave adequate room for the repair resin. Occasionally anterior denture teeth are positioned against the residual ridge with little or no flange; in those instances an impression must be made with the RPD in place and the repair completed on a stone cast. When denture teeth are repaired, the occlusion of the RPD in centric and eccentric positions must be carefully checked and adjusted as necessary.</p>"},{"k":"4th year · Repairs of fractured partial dentures","t":"Complex repairs, why frameworks break, and replacing a clasp arm with 18-gauge wire","b":"<p>Complex repairs or modifications include: repair or replacement of a clasp assembly or any part of it; repair of a major or minor connector; and repair of the RPD after the loss of an abutment tooth. All complex repairs require proper impression procedures. The most frequent type of component breakage is fracture of one or more parts of the clasp assembly (clasp arms, the occlusal rest, or the area between the minor and major connector). The cause should be determined and corrected. If the design was inadequate and stress on the framework was too great, a new design and a new RPD are indicated. More commonly the fracture is caused by the patient or the dentist mishandling the chromium-cobalt alloy (dropping the prosthesis, bending it on a dental lathe, or adjusting the clasp arm beyond the elastic limit of the metal).</p><p>A clasp arm is the component most subject to fracture, and it can be repaired by either of two techniques: embedding an <b>18-gauge</b> wire into the denture base as a substitute clasp arm; or constructing a new clasp assembly and soldering or welding it to the existing framework. The in-office wire method, used on a selected basis, is as follows:</p><ol><li>The buccal retentive clasp is usually the most commonly fractured or deformed component. An 18-gauge platinum-gold-palladium (PGP) or wrought wire can replace this retentive arm.</li><li>The fractured RPD is placed in the mouth and its position and fit are verified. An alginate impression of both the RPD and the natural teeth is made in a stock tray. Ensure that the RPD has not been dislodged from the teeth or pulled loose from the alginate.</li><li>The impression is poured immediately with dental stone to create a working cast.</li><li>The fractured portion of the clasp arm is removed from the framework, and an area is created in the acrylic-resin denture base. The 18-gauge PGP or wrought wire is contoured to the stone replica of the abutment with orthodontic pliers. A retention loop is fashioned in the distal end of the wire so that it can be mechanically bound into the acrylic base. The completed wire is secured with sticky wax on the stone abutment. Autopolymerizing acrylic is added “salt and pepper” to complete mechanical retention. The assembly is cured in a temperature- and pressure-controlled unit in warm water (about <b>120°F for 30 minutes at 30 p.s.i.</b>).</li><li>The RPD is carefully removed from the repair cast, the new arm and acrylic are finished and polished, and the RPD is checked intra-orally for proper contact of the wire into the retentive undercut. Adjustments are made when necessary to increase or decrease frictional retention.</li></ol><p>Additional repairs (a lingual reciprocal arm, broken occlusal rests, replacing extracted teeth, even fractured major connectors, or restoring fractured abutments under an existing RPD) are possible, but each is complex and time-consuming. Evaluate the conditions that led to the need for the repair. It is often more prudent to correct those conditions and remake the RPD than to repair a prosthesis of marginal use. It is beyond the scope of this discussion to elaborate on those advanced procedures.</p>"},{"k":"4th year · Esthetic denture materials","t":"The esthetic zone, and denture-base materials (PMMA, nylon, acetal, polycarbonate, PEEK)","b":"<p>The term <b>esthetic zone</b> describes the teeth and gingiva as they are observed when a patient emits a hearty laugh; this laugh should be described, drawn in the treatment plan, or displayed in a photograph. This practice helps the dentist avoid including unwarranted displays of clasps and other metal components in the plan. Esthetic dentistry describes the efforts made to restore teeth or prostheses without drawing attention to those changes.</p><p>Denture-base materials:</p><ol><li><b>Polymethyl methacrylate (PMMA)</b> has been the most popular material used for denture fabrication since its introduction in <b>1937</b>. It has several advantages, including an excellent esthetic characteristic.</li><li><b>Polyamide resin (Valplast and Flexiplast).</b> In recent years nylon polymer has attracted attention as a denture-base material. There are no metal clasps, only tissue-coloured clasps that blend with the natural teeth, thus providing excellent esthetics. Nylon is unbreakable and lightweight, and is ideal for patients considering a removable partial denture and for those allergic to monomer.</li><li><b>Thermoplastic acetal</b> is an unbreakable thermoplastic resin RPD material. A rapid-injection system developed the first tooth-coloured clasps with thermoplastic fluoropolymer; acetal resin is used for tooth-coloured clasps.</li><li><b>Thermoplastic polycarbonate</b> is a polymer chain of bisphenol-A carbonate. Like acetal it is very strong, resists fracturing, and is quite flexible. However, polycarbonate does not wear as well as acetal under occlusal force and consequently will not maintain vertical dimension as long. Polycarbonate is <b>not suitable for full or partial dentures</b> but is ideal for provisional crowns and bridges. It has a natural translucency and finishes very well, yielding excellent esthetics.</li><li><b>Polyether ether ketone (PEEK)</b> can be a non-metallic alternative for RPD framework construction. Used as a precision attachment it shows favorable stress distribution, decreasing the strains around the abutment teeth and the alveolar ridge, especially distal to the abutments, compared with other treatment options. Studies have shown the applicability of PEEK, allowing a metal-free restoration with superior mechanical properties.</li></ol><div class=\"figrow\"><img src=\"prostho-img/file12/polyamide-rpd.jpg\" alt=\"\"><img src=\"prostho-img/file12/flexible-rpd.jpg\" alt=\"\"></div><p class=\"cap\">Polyamide (nylon) RPDs use tissue-coloured clasps that blend with the teeth and gingiva, and they are unbreakable, lightweight, and useful for patients allergic to monomer.</p>"},{"k":"4th year · Esthetic denture materials","t":"Flange design in the esthetic zone, tinting, and the Virginia RPD","b":"<p>When treatment planning for a patient who displays all of the anterior teeth and attached gingiva, attention must be paid to the denture flanges of RPD prostheses. Acrylic-resin flanges of RPDs are used to replace missing bone, and alveolar defects vary from person to person. In the esthetic zone, inaccurate placement of the tooth–gingival junctions of the artificial teeth relative to the natural teeth leads to thick, bulky denture flanges that replace hard and soft tissue apically and proximally, resulting in readily visible esthetic compromises. Occasionally it is possible to replace the artificial tooth with little or no denture flange.</p><p>Tinting or characterization techniques are critically important for patients whose attached gingival tissues have melanin pigmentation, or coloration that does not match the available colors of acrylic resin. Characterization of acrylic resins is a simple technique that involves gently sifting colored powder and liquid into the denture mold prior to processing the acrylic resin.</p><p>The <b>Virginia removable partial denture</b> uses a silicone gasket around the teeth to compensate for lost bone and gingival height. Patients generally favour it. Disadvantages are hygiene problems, caries potential, and liner lifespan.</p>"},{"k":"4th year · Esthetic denture materials","t":"Clasp materials: chromium, wrought wire, gold and technopolymer","b":"<p>The clasp assembly must ideally not affect esthetics adversely. Careful selection of clasp position on the individual tooth, clasp type, clasp material, clasp locations in the dentition, and the number of clasps is important.</p><p>Clasp materials:</p><ol><li><b>Cast chromium clasps</b> cover large areas of the tooth and as a result a large area of metal is displayed. Because of their relative rigidity, a well-defined, limited-sized undercut should be employed.</li><li><b>Wrought-wire clasps</b> may be esthetically more acceptable than cast chromium clasps because of different light reflection from the round surface. Because of their flexibility they can engage larger undercuts and may therefore be less visible.</li><li><b>Gold-alloy clasps</b> were thought to have good flexibility and resiliency and are esthetically more pleasing, but they are expensive.</li><li><b>Technopolymer clasps</b> were developed to address the esthetic concerns of RPDs. They are manufactured from thermoplastic acetal resin (polyoxymethylene), a highly crystalline material that ensures greater flexibility. Their advantage is esthetic acceptability, as several tooth shades are available for use anteriorly. Disadvantages include: bulkiness and lack of adjustability; the need for special equipment and increased cost; and significantly greater deformation of acetal-resin direct retainers than of their metal-alloy counterparts, leading to the loss of some of their retentive characteristics.</li></ol>"},{"k":"4th year · Esthetic denture materials","t":"Esthetic clasp designs: C-clasp, back-action, Equipoise and hidden clasps","b":"<p><b>1. Circumferential clasp / C-clasp.</b> This commonly used clasp encircles a tooth by more than 180°. It is esthetically undesirable when used anteriorly because it has an occlusal origin and metal is displayed. Acceptability may increase slightly depending on the type of material used.</p><p><b>2. Back-action clasp.</b> The clasp arm bends backwards at the buccal bulge of the tooth to reach the distal undercut, increasing its length and making it less obvious. Back-action clasps with mesial rests were reported to have excellent results with regard to mechanical behavior.</p><img class=\"fig\" src=\"prostho-img/file12/equipoise-clasp.jpg\" alt=\"\"><p class=\"cap\">The Equipoise clasp places its tip in a preparation on the proximal enamel of the abutment, aiming at esthetics and favorable load distribution.</p><p><b>3. Equipoise clasp.</b> This was developed claiming to address all the requirements of a successful clasp as well as esthetics and favorable load distribution to the abutment. Clasp tips are placed in preparations in the enamel of the proximal surfaces of the abutment teeth. It was shown to be a practical and viable option for improved esthetics and acceptable retention.</p><img class=\"fig\" src=\"prostho-img/file12/hidden-clasp.jpg\" alt=\"\"><p class=\"cap\">Hidden clasps, advocated for Kennedy Class IV, achieve their esthetic quality by engaging proximal undercuts that are often naturally present.</p><p><b>4. Hidden clasp.</b> These clasps have been advocated for Kennedy Class IV situations. The design achieves its esthetic qualities by engaging the proximal undercuts often naturally present on teeth. Disadvantages include: complex designs; permanent deformation after repeated flexure; abutment displacement, as no reciprocation is provided; rotation of the clasp if a restricted path of placement is not used, with resultant loss of retention; variable retention; and difficulty in cleaning. (In the diagram: r = retainer that emerges from the denture base to engage the undercut on the proximal tooth surfaces; b = bracing arm; p = proximal minor connector with relief space to allow flexure of the retainer.)</p>"},{"k":"4th year · Esthetic denture materials","t":"Ball-clasp, twin-flex (spring) clasp, and semi-precision attachments","b":"<p><b>5. Ball-clasp.</b> This clasp engages the undercut in the embrasure between two teeth, which is useful when teeth have short clinical crowns or if no natural buccal undercut is present. The clasp also acts as a rest because it passes over the occlusal embrasure. It has very little flexibility, and both teeth need to be reciprocated.</p><p><b>6. Twin-flex clasp or spring-clasp.</b> This is a flexible clasp utilizing mesial-distal retention. It is an adjustable clasp and can be used with the normal conventional path of insertion, with resultant improved esthetics. It consists of a wire clasp soldered into a channel that is cast in the major connector. Disadvantages include irreparability once fractured, the major connector being very thick over the wire, increased cost due to extra laboratory procedures, and toxicity because of galvanic corrosion.</p><p><b>7. Attachments</b> solved the esthetic problems associated with employing clasps, especially in the anterior region. A semi-precision attachment utilized with a cast-metal-framework RPD can enhance both retention and esthetics and increase the patient’s self-confidence. To enhance clinical success with a semi-precision attachment, it is recommended to involve at least <b>two abutment teeth in distal-extension cases</b>, aiming to eliminate the hazardous impact of excessive abutment loading, by utilizing an adjustable retentive plastic insert.</p>"},{"k":"4th year · Digital partial dentures","t":"Why a fully intra-oral digital impression is still limited, and the current digital concept","b":"<p>The fabrication of computer-aided dental prostheses has become common practice. In prosthodontics, CAD-CAM technology has been applied not only to inlays, onlays and crowns, but also to complex fixed and removable dental prostheses.</p><p>For a removable prosthesis, because an intra-oral scanner stitches narrow areas, it is difficult to scan the distally extended, flat and broad edentulous area. A functional impression is not possible, as the technique is image-based. Therefore, at present, a digital concept is used in which the metal structure for a partial denture is designed in a virtual space based on data obtained by <b>scanning a definitive cast fabricated with a conventional functional impression</b>.</p><p>Unlike the existing method, in which a wax pattern is made on a definitive cast, an RPD is designed on a computer. Based on this design, a three-dimensional pattern is printed using rapid prototyping, with a resin that can be eliminated. The pattern subsequently undergoes investment, elimination and casting, thereby completing the fabrication of a digital RPD framework.</p>"},{"k":"4th year · Digital partial dentures","t":"Advantages of the digital method, limits of the evidence, and the clinical steps","b":"<p>A digital fabrication method has various advantages over conventional methods:</p><ul><li>Electronic surveying performed in the virtual space may determine the path of insertion and removal, and control the undercut amount through computation in a more straightforward and accurate way than conventional surveying. An undercut with a desired gauge may be formed quantitatively at the position where the end of a retaining arm will be positioned. This information can be used for the fabrication of surveyed crowns and the framework of the RPD.</li><li>The design data may be saved for future use should there be a need to refabricate or modify the prosthesis.</li><li>The total time of prosthesis fabrication is substantially reduced by eliminating some processes, including cast duplication and investment-cast fabrication.</li><li>Multiple prosthesis patterns may be simultaneously produced in a short time frame.</li></ul><p>Although different methods to generate a digital RPD have been described, methods that can produce sufficient accuracy for clinical use have been limited. A previous study analyzed errors in the design process and accuracy in the mouth after completion, but it was a preliminary study in a small number of participants, so clinical effectiveness and accuracy could not be fully assessed; analysis on a larger number of participants was needed.</p><p>Clinical steps given in the lecture:</p><ul><li>Intra-oral functional impressions, including border molding, are made, from which a definitive cast is obtained. The cast is scanned with a laboratory scanner.</li><li>The files are extracted and loaded onto the CAD software.</li><li>The RPD framework is designed by setting a surveying axis and computing the undercut to determine an ideal path of insertion and removal.</li><li>The appropriate components — major connector, clasps, rests, proximal plates and finish line — are designed.</li><li>Based on the completed design, a pattern is printed in resin with a rapid-prototyping machine.</li><li>The pattern is invested, eliminated and cast to generate the RPD framework.</li><li>The RPD is completed by the conventional method, using heat-polymerized resin and artificial teeth.</li><li>After adjustments to ensure that the rests are seated on the rest seats of the abutment teeth, the denture is delivered.</li></ul>"},{"k":"اختبر نفسك","t":"Relining and RPD repairs — key choices","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Relining is defined as a procedure to:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Remake the teeth and the polished surfaces of a denture</button><button type=\"button\" class=\"opt\" data-i=\"1\">Resurface the tissue (intaglio) surface of an existing denture with new denture-base material</button><button type=\"button\" class=\"opt\" data-i=\"2\">Convert a complete denture into an RPD</button><button type=\"button\" class=\"opt\" data-i=\"3\">Replace only the posterior palatal seal with metal</button></div><div class=\"qexp\" hidden><p>التبطين تغطية الوجه النسيجي الداخلي للطقم الموجود بمادة قاعدة جديدة. إذا الأنسجة متعبة، عالجها ويه مادة تهيئة قبل ما تبطّن.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A reline impression differs from a conventional final impression mainly because:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A custom tray is always made first, and OVD is ignored</button><button type=\"button\" class=\"opt\" data-i=\"1\">The existing denture is used as the tray, and the correct OVD and CR must be maintained through border molding and the set of the material</button><button type=\"button\" class=\"opt\" data-i=\"2\">No border molding is ever done</button><button type=\"button\" class=\"opt\" data-i=\"3\">The patient must not close at any time</button></div><div class=\"qexp\" hidden><p>الطقم هو الطابع، ولازم تحافظ على البعد العمودي والعلاقة المركزية طول الشغل. بالطبعة التقليدية هالشي مو هدف.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">When both complete dentures need relining, the lecture says you should reline:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Both at the same visit, poured together</button><button type=\"button\" class=\"opt\" data-i=\"1\">One at a time, usually the less stable first; if they are similar, the maxillary denture is often chosen so that it can later stabilize the lower reline</button><button type=\"button\" class=\"opt\" data-i=\"2\">The mandibular denture only, always</button><button type=\"button\" class=\"opt\" data-i=\"3\">Neither until both are remade</button></div><div class=\"qexp\" hidden><p>واحد واحد، والأقل ثباتاً أولاً. إذا متساويين، غالباً العلوي أولاً حتى يصير قوس مقابل ثابت.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Many clinicians prefer a closed-mouth reline because:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The patient is not allowed to maintain occlusal contact, which protects the joints</button><button type=\"button\" class=\"opt\" data-i=\"1\">The patient closes and maintains proper occlusion at the correct OVD while the material sets, helping to keep the occlusion</button><button type=\"button\" class=\"opt\" data-i=\"2\">It always avoids any need for tissue stops</button><button type=\"button\" class=\"opt\" data-i=\"3\">Escape vents are never required</button></div><div class=\"qexp\" hidden><p>الهدف الأساسي الحفاظ على الإطباق. الطريقة المفتوحة عادة تحتاج تعديل إطباق واسع ويه التسليم وقد تحرّف توجه الطقم على الحافة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">After reducing the intaglio, four tissue stops of heavy-bodied VPS, about 3 mm in diameter, are placed in the:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Incisive papilla and hamular notches only</button><button type=\"button\" class=\"opt\" data-i=\"1\">Canine and second-molar areas, and the patient is closed into CR at the proper OVD</button><button type=\"button\" class=\"opt\" data-i=\"2\">Midline raphe only</button><button type=\"button\" class=\"opt\" data-i=\"3\">Polished labial flange only</button></div><div class=\"qexp\" hidden><p>التقليل ينقص البعد 1–1.5 ملم. الأربع نقاط بمنطقة الناب والرحى الثانية ترجّع البعد، والمريض يعض بـ CR على البعد الصحيح.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Palatal escape vents in a maxillary reline are typically:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">One large hole through a central incisor</button><button type=\"button\" class=\"opt\" data-i=\"1\">Four to six holes about 12 mm apart, made with a #6 round bur, including holes along the midline raphe starting at the incisive foramen</button><button type=\"button\" class=\"opt\" data-i=\"2\">Never used, because they destroy the seal</button><button type=\"button\" class=\"opt\" data-i=\"3\">Placed only in the mandibular denture as a routine</button></div><div class=\"qexp\" hidden><p>الفتحات تقلل الضغط الهيدروليكي. السفلي عادة ما يحتاج فتحات إلا إذا الحافة ضخمة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">If the clinician pours the reline impression in stone, the denture should:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Be removed from the cast immediately and sent loose to the laboratory</button><button type=\"button\" class=\"opt\" data-i=\"1\">Remain on the cast when submitted, because if it is removed the technician may be unable to reseat it and the cast/occlusion orientation will be lost</button><button type=\"button\" class=\"opt\" data-i=\"2\">Be boiled off the cast before flasking</button><button type=\"button\" class=\"opt\" data-i=\"3\">Have all undercuts added back in wax</button></div><div class=\"qexp\" hidden><p>لا تشيل الطقم من الصبّة قبل إرساله. الفني يستثمره بالوعاء وهو بعد عليها. لذلك شيل كل undercuts الأكريلك قبل الطبعة حتى الصبّة ما تنكسر.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">When a fractured RPD base segment is still available, the junction is enlarged to about ______ and the resin is cured at about ______.</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">0.5 mm; ice-water for 2 minutes</button><button type=\"button\" class=\"opt\" data-i=\"1\">2–3 mm; 30 p.s.i. at about 120°F for 30 minutes</button><button type=\"button\" class=\"opt\" data-i=\"2\">10 mm; 212°F at atmospheric pressure only</button><button type=\"button\" class=\"opt\" data-i=\"3\">No gap; the pieces are glued with cyanoacrylate only</button></div><div class=\"qexp\" hidden><p>وسّع خط الكسر 2–3 ملم، ضيف أكريلك ذاتي «ملح وفلفل»، وكبّس 30 باوند بحوالي 120 ف لمدة 30 دقيقة حتى الكثافة تزيد والمسام تقل.</p></div></div><div class=\"qbox\" data-ans=\"0\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">An acrylic denture tooth dislodged from a new RPD is commonly caused by:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">An incomplete chemical bond from wax residue or oils left between the tooth and the base at processing</button><button type=\"button\" class=\"opt\" data-i=\"1\">Always a design error that requires a new framework</button><button type=\"button\" class=\"opt\" data-i=\"2\">A deficient posterior palatal seal</button><button type=\"button\" class=\"opt\" data-i=\"3\">Use of a #6 bur through the tooth</button></div><div class=\"qexp\" hidden><p>بقايا الشمع أو الزيوت تمنع الربط الكيميائي. غالباً ترجّع السن وتثبّته بأكريلك ذاتي، وبعدين تفحص الإطباق.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The most frequent RPD component to fracture is a clasp arm. An in-office substitute uses:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A 24-gauge aluminum wire glued to the major connector</button><button type=\"button\" class=\"opt\" data-i=\"1\">An 18-gauge PGP or wrought wire with a retention loop embedded in the acrylic base, after an alginate impression and a stone working cast</button><button type=\"button\" class=\"opt\" data-i=\"2\">A gold inlay soldered to the occlusal rest only</button><button type=\"button\" class=\"opt\" data-i=\"3\">No impression; the wire is adapted freehand in the mouth and worn immediately</button></div><div class=\"qexp\" hidden><p>سلك قياس 18 (PGP أو مطاوع) بعروة تثبيت بالقاعدة، بعد طبعة ألجينات وصبّة حجر، وكبس 120 ف / 30 باوند / 30 دقيقة. حدّد سبب الكسر؛ إذا التصميم ضعيف، طقم جديد أفضل.</p></div></div>"},{"k":"اختبر نفسك","t":"Esthetic materials and digital RPDs — key choices","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">PMMA has been the most popular denture-base material since its introduction in:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">1890</button><button type=\"button\" class=\"opt\" data-i=\"1\">1937</button><button type=\"button\" class=\"opt\" data-i=\"2\">2001</button><button type=\"button\" class=\"opt\" data-i=\"3\">It has never been used for denture bases</button></div><div class=\"qexp\" hidden><p>البولي ميثيل ميثاكريلات من 1937، وميزته التجميلية ممتازة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Polyamide (nylon, Valplast/Flexiplast) is described as:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Always requiring metal clasps</button><button type=\"button\" class=\"opt\" data-i=\"1\">Unbreakable and lightweight, with tissue-coloured clasps and useful for patients allergic to monomer</button><button type=\"button\" class=\"opt\" data-i=\"2\">Unsuitable for any partial denture</button><button type=\"button\" class=\"opt\" data-i=\"3\">Identical to polycarbonate in wear resistance</button></div><div class=\"qexp\" hidden><p>ماكو كلابسب معدني، الأذرع بلون النسيج. مناسب لحساسية المونومر.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Thermoplastic polycarbonate is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Ideal for complete and partial dentures because it maintains VDO better than acetal</button><button type=\"button\" class=\"opt\" data-i=\"1\">Not suitable for full or partial dentures, but ideal for provisional crowns and bridges</button><button type=\"button\" class=\"opt\" data-i=\"2\">The only material used for precision attachments</button><button type=\"button\" class=\"opt\" data-i=\"3\">A metal alloy</button></div><div class=\"qexp\" hidden><p>قوي ومرن، بس تآكله أكثر من الأسيتال فما يحافظ على البعد العمودي بنفس المدة. ممتاز للتيجان والجسور المؤقتة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Disadvantages of the Virginia RPD (silicone gasket around the teeth) include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">That patients never accept it</button><button type=\"button\" class=\"opt\" data-i=\"1\">Hygiene problems, caries potential, and liner lifespan</button><button type=\"button\" class=\"opt\" data-i=\"2\">That it cannot compensate for lost gingival height</button><button type=\"button\" class=\"opt\" data-i=\"3\">That it must always be made of PEEK</button></div><div class=\"qexp\" hidden><p>المرضى عموماً يفضلونه لأنه يعوّض ارتفاع العظم واللثة، بس النظافة والتسوس وعمر التبطين عيوب مهمة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Compared with cast chromium clasps, wrought-wire clasps may be less visible because:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">They must engage smaller undercuts and always start from the occlusal</button><button type=\"button\" class=\"opt\" data-i=\"1\">Different light reflection from the round surface, and their flexibility lets them engage larger undercuts</button><button type=\"button\" class=\"opt\" data-i=\"2\">They are always tooth-coloured acetal</button><button type=\"button\" class=\"opt\" data-i=\"3\">They have no flexibility at all</button></div><div class=\"qexp\" hidden><p>السطح المستدير يعكس الضوء بشكل مختلف، والمرونة تسمح بـ undercut أكبر فيكون أقل بياناً. الكروم المصبوب يغطي مساحة كبيرة ويحتاج undercut محدد صغير.</p></div></div><div class=\"qbox\" data-ans=\"3\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Disadvantages of technopolymer (acetal) clasps include all EXCEPT:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Bulkiness and lack of adjustability</button><button type=\"button\" class=\"opt\" data-i=\"1\">Need for special equipment and increased cost</button><button type=\"button\" class=\"opt\" data-i=\"2\">Greater deformation than metal retainers, with some loss of retention</button><button type=\"button\" class=\"opt\" data-i=\"3\">That several tooth shades are available for anterior use (this is an advantage)</button></div><div class=\"qexp\" hidden><p>توفر درجات لون للسن ميزة تجميلية. العيوب: السمك، صعوبة التعديل، أجهزة خاصة وتكلفة، وتشوه أكبر من المعدن.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Hidden clasps are advocated especially for Kennedy Class ______, and one listed disadvantage is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">I; that they always provide perfect reciprocation</button><button type=\"button\" class=\"opt\" data-i=\"1\">IV; no reciprocation is provided, so the abutment may be displaced, among other problems</button><button type=\"button\" class=\"opt\" data-i=\"2\">III only; they cannot engage proximal undercuts</button><button type=\"button\" class=\"opt\" data-i=\"3\">II; they are irreparable because of galvanic corrosion only</button></div><div class=\"qexp\" hidden><p>صنف IV. العيوب تشمل تصميماً معقداً، تشوهاً دائماً، إزاحة الدعامة بلا مقابِل، دوران إذا طريق الإدخال مو مقيد، تثبيتاً متغيراً، وصعوبة تنظيف.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">For a semi-precision attachment on a distal-extension RPD, the lecture recommends involving at least:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">One abutment tooth only, to simplify the design</button><button type=\"button\" class=\"opt\" data-i=\"1\">Two abutment teeth, to reduce excessive loading, using an adjustable retentive plastic insert</button><button type=\"button\" class=\"opt\" data-i=\"2\">No abutments, only a silicone gasket</button><button type=\"button\" class=\"opt\" data-i=\"3\">Four implants in every case</button></div><div class=\"qexp\" hidden><p>دعامتين على الأقل بالنهاية الحرة حتى الحمل ما ينركز على دعامة واحدة، ويه قطعة بلاستيكية مثبتة قابلة للتعديل.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">At present, a digital RPD metal framework is typically designed from:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A purely intra-oral scan of a long distal-extension ridge, which easily records a functional impression</button><button type=\"button\" class=\"opt\" data-i=\"1\">A laboratory scan of a definitive cast made from a conventional functional impression</button><button type=\"button\" class=\"opt\" data-i=\"2\">A photograph of the patient’s hearty laugh only</button><button type=\"button\" class=\"opt\" data-i=\"3\">An unadjusted stock tray with no border molding</button></div><div class=\"qexp\" hidden><p>الماسح داخل الفم صعب يمسح المساحة الخلفية الواسعة المسطحة، والطبعة الوظيفية مو ممكنة لأنها تقنية صور. لذلك نمسح صبّة نهائية من طبعة وظيفية تقليدية.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Electronic surveying in a virtual space is said to:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Be less accurate than a conventional surveyor in every study of large samples</button><button type=\"button\" class=\"opt\" data-i=\"1\">Determine the path of insertion and control undercut amount computationally, so a desired gauge can be formed quantitatively where the clasp tip will sit</button><button type=\"button\" class=\"opt\" data-i=\"2\">Eliminate any need to design rests or major connectors</button><button type=\"button\" class=\"opt\" data-i=\"3\">Replace heat-polymerized resin and artificial teeth at delivery</button></div><div class=\"qexp\" hidden><p>المسح الإلكتروني أدق وأبسط بحساب الـ undercut. البيانات تنحفظ، والوقت يقل بإلغاء استنساخ الصبّة وصبّة الاستثمار. بس الأدلة السريرية على الدقة بعد محدودة في الدراسة الأولية المذكورة.</p></div></div>"},{"k":"اختبر نفسك","t":"Self-test — File 12 (score at the end)","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Before relining, abused supporting tissues should be:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Ignored if the denture is structurally sound</button><button type=\"button\" class=\"opt\" data-i=\"1\">Returned to a healthy state, often with a tissue conditioner that must be examined frequently and replaced as necessary</button><button type=\"button\" class=\"opt\" data-i=\"2\">Relieved by extracting the residual ridge</button><button type=\"button\" class=\"opt\" data-i=\"3\">Recorded only after the laboratory flasks the denture</button></div><div class=\"qexp\" hidden><p>مادة تهيئة النسيج عمرها قصير. افحص النسيج والمادة وبدّل لما يلزم، وأحياناً ويه جراحة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A denture whose base is little more than 1 mm thick may be a problem for relining because:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Escape vents cannot be placed in any thick denture</button><button type=\"button\" class=\"opt\" data-i=\"1\">Removing the recommended 1.5 mm of intaglio resin may be difficult or impossible</button><button type=\"button\" class=\"opt\" data-i=\"2\">Closed-mouth technique is illegal in thin bases</button><button type=\"button\" class=\"opt\" data-i=\"3\">Tissue stops must be 10 mm in diameter</button></div><div class=\"qexp\" hidden><p>لازم حوالي 1.5 ملم مجال للمادة حتى الطقم ينقعد وما يضغط زيادة. القاعدة الرقيقة تعرقل هالخطوة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The open-mouth reline technique usually:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Guarantees that occlusion will be preserved without equilibration</button><button type=\"button\" class=\"opt\" data-i=\"1\">Requires extensive occlusal equilibration at insertion and can misalign the denture relative to the residual ridges</button><button type=\"button\" class=\"opt\" data-i=\"2\">Is the only technique that uses tissue stops</button><button type=\"button\" class=\"opt\" data-i=\"3\">Is preferred by many clinicians for that reason</button></div><div class=\"qexp\" hidden><p>المفتوحة ما تخلي المريض يحافظ على التماس الإطباقي، فالإطباق والتوجه على الحافة يتأثران.</p></div></div><div class=\"qbox\" data-ans=\"0\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">If a posterior palatal seal is required for a relined maxillary denture, it is usually:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Cut into the cast just before processing</button><button type=\"button\" class=\"opt\" data-i=\"1\">Always added with green stick after the patient has worn the denture for a year</button><button type=\"button\" class=\"opt\" data-i=\"2\">Never used on a relined denture</button><button type=\"button\" class=\"opt\" data-i=\"3\">Drilled through the existing central incisors</button></div><div class=\"qexp\" hidden><p>عادة يُكشط بالصبّة قبل الكبس. وتذكر: لا تشيل الطقم من الصبّة قبل إرساله للمختبر.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Because no face-bow is made for a typical reline, extensive occlusal equilibration may require:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Only intra-oral articulating paper, never a remount</button><button type=\"button\" class=\"opt\" data-i=\"1\">A face-bow recording and a CR record, since remount casts have no index relating the maxillary denture to the condyles</button><button type=\"button\" class=\"opt\" data-i=\"2\">Reprocessing the teeth in polycarbonate</button><button type=\"button\" class=\"opt\" data-i=\"3\">A Virginia silicone gasket</button></div><div class=\"qexp\" hidden><p>صبّات إعادة التركيب موجودة، بس ماكو دليل يوضع العلوي بعلاقته الصحيحة ويه اللقم. فيسبو وCR قد يلزمان إذا التعديل واسع. إجراءات التسليم مثل الطقم الجديد.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">It is often more expedient to remake an RPD than to repair a marginally acceptable framework when you also consider:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Only the shade of the anterior teeth</button><button type=\"button\" class=\"opt\" data-i=\"1\">Financial status, physiological age, appointment time, medical status, impression difficulty, and laboratory fees</button><button type=\"button\" class=\"opt\" data-i=\"2\">The year PMMA was introduced, and nothing else</button><button type=\"button\" class=\"opt\" data-i=\"3\">Whether the patient can pronounce “m”</button></div><div class=\"qexp\" hidden><p>هالعوامل الستة تدخل بقرار التصليح أو إعادة الصنع. الإطار الحدّي قد يحتاج تبديل قريب، فإعادة الصنع أوفر للوقت والجهد.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A ball-clasp is useful when teeth have short clinical crowns or no natural buccal undercut, but:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">It is highly flexible and needs no reciprocation</button><button type=\"button\" class=\"opt\" data-i=\"1\">It has very little flexibility, also acts as a rest as it crosses the occlusal embrasure, and both teeth need to be reciprocated</button><button type=\"button\" class=\"opt\" data-i=\"2\">It is the clasp of choice for every Kennedy Class IV hidden-clasp case</button><button type=\"button\" class=\"opt\" data-i=\"3\">It is made only of PEEK</button></div><div class=\"qexp\" hidden><p>يمسك undercut المسافة بين سنّين ويعبر المسافة الإطباقية فيعمل مسند. مرونته قليلة والسنّين يحتاجون مقابَلة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A listed disadvantage of the twin-flex (spring) clasp is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">That it cannot be used with a conventional path of insertion</button><button type=\"button\" class=\"opt\" data-i=\"1\">Irreparability once fractured, a thickened major connector over the wire, extra laboratory cost, and toxicity from galvanic corrosion</button><button type=\"button\" class=\"opt\" data-i=\"2\">That it is never esthetic</button><button type=\"button\" class=\"opt\" data-i=\"3\">That it has no mesial-distal retention</button></div><div class=\"qexp\" hidden><p>سلك ملحوم بقناة مصبوبة بالموصل الرئيسي، مرن وقابل للتعديل، بس إذا انكسر ما يتصلح، والموصل يصير سميك، وفيه تآكل غلفاني.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Inaccurate placement of artificial tooth–gingival junctions relative to the natural teeth in the esthetic zone leads to:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Automatically better lip support</button><button type=\"button\" class=\"opt\" data-i=\"1\">Thick, bulky flanges that replace tissue apically and proximally, with readily visible esthetic compromises</button><button type=\"button\" class=\"opt\" data-i=\"2\">No need for tinting even when gingiva is pigmented</button><button type=\"button\" class=\"opt\" data-i=\"3\">A mandatory metal clasp on every incisor</button></div><div class=\"qexp\" hidden><p>الحافة السميكة تبان ويه الضحك. أحياناً تكدر تعوّض السن بحافة قليلة أو بلا حافة. والتلوين مهم إذا اللثة مصبّغة بالميلانين.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">After a digital RPD framework is cast from a printed eliminable-resin pattern, the denture is completed:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Entirely in the CAD software, with no acrylic or teeth</button><button type=\"button\" class=\"opt\" data-i=\"1\">By the conventional method, using heat-polymerized resin and artificial teeth, then adjusted so the rests seat before delivery</button><button type=\"button\" class=\"opt\" data-i=\"2\">Only with polycarbonate bases</button><button type=\"button\" class=\"opt\" data-i=\"3\">By intra-oral welding of the printed pattern, without investment or casting</button></div><div class=\"qexp\" hidden><p>التصميم والطباعة والصب للهيكل رقمية، بس إكمال القاعدة والأسنان بالطريقة التقليدية، وبعدين تعديل المساند والتسليم.</p></div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا الملف الثاني عشر: تبطين الطقم الكامل، تصليح الطقم الجزئي المكسور، مواد الشكل التجميلي، والطقم الجزئي الرقمي والطباعة السريعة.</p><p>الفكرة الذهبية بالتبطين: الطقم القديم يصير طابع، بس لازم تحافظ على البعد العمودي والعلاقة المركزية طول الطبعة. وإذا الاثنين يحتاجون تبطين، بطّن الأقل ثباتاً أولاً، واحد واحد مو الاثنين سوية.</p>","<p>المريض يجيك بطقم كامل بنيته بعد زينة، بس مو ثابت ولا متثبت لأن ما عاد ينطبق على الأنسجة والحافة. قد تشوف تغيّر بالإطباق أو الوجه، وشكل سيء لأن امتصاص العظم قلّل ارتفاع الوجه أو زحزح الأمامية. البعد العمودي والإطباق قد ينخربون لأن الطقم ضيع توجهه الصحيح على الحافة. والأنسجة تحت الطقم غالباً متعبة ومتهيّجة من طقم سيء الانطباق. إذا التغيير مو كبير والطقم بحالة معقولة، هالمشاكل تنصلح بالتبطين.</p><p><b>التبطين (relining)</b> معناها نغطّي الوجه النسيجي (الداخلي) للطقم الموجود بمادة قاعدة جديدة. وهم ينفع لمشاكل طول الحافة أو كسور غير مزاحمة.</p><p>إذا الأنسجة متعبة، عالجها <b>قبل</b> التبطين. غالباً نستخدم مادة تهيئة النسيج، وأحياناً ويه جراحة، حتى ترجع سليمة. هالمادة عمرها الوظيفي قصير، فافحص النسيج والمادة كثيراً وبدّلها لما يلزم.</p>","<p>قرار التبطين يعتمد على: البعد العمودي الإطباقي صحيح أو قابل للتصحيح ويه الطبعة؛ وضع الإطباق على العلاقة المركزية ثابت أو ينصلح بتعديل إطباق؛ شكل الأسنان يرضي المريض وماكو تآكل إطباقي شديد؛ والنطق مرضي. والأنسجة لازم تكون سليمة أو قابلة للإصلاح.</p><p>الطبعة تشبه الطبعة النهائية التقليدية، بس في فروقات: الطقم الموجود هو الطابع (مو طابع خاص جديد)؛ ولازم تحافظ على البعد العمودي الصحيح، والمريض يبقى بالعلاقة المركزية طول تشكيل الحواف وحتى تتصلب المادة. بهالنقطتين الطبعة التقليدية ما تهتم: هي تسجّل النسيج بس، مو الإطباق.</p><p>قد تحتاج تعديل إطباق للطقم الموجود قبل التبطين حتى ينقعد صح ويه الطبعة.</p>","<p>الطقم المثالي للتبطين: مرتخي بس، بلا خلل إطباق واضح وبلا تغيّر ملحوظ بالبعد العمودي أو الشكل. لأن هذا الطقم أصلاً قريب من النسيج، لزوجة مادة الطبعة قد تمنعه ينقعد إذا ماكو مجال كافٍ. حتى بعد تهيئة النسيج، بعض المناطق قد تضغط زيادة. لذلك انزع حوالي <b>1.5 ملم أكريلك</b> من الوجه النسيجي قبل الطبعة. إذا القاعدة أصلاً حوالي 1 ملم، هالخطوة قد تصير صعبة أو مستحيلة.</p><p>إذا الطقمين يحتاجون تبطين: بطّن <b>واحد واحد</b>، مو الاثنين سوية. عادة الأقل ثباتاً أولاً. إذا ماكو فرق واضح، غالباً نبدأ بالعلوي حتى بعد ما يتبطّن يصير قوس مقابل ثابت ويه تبطين السفلي.</p>","<p>التبطين يتم إما والفم <b>مغلق</b> أو <b>مفتوح</b>. لأن هدف أساسي هو الحفاظ على الإطباق الصحيح، كثير من الأطباء يختارون الطريقة المغلقة: المريض يعض ويحافظ على إطباق صحيح على البعد العمودي المطلوب لين المادة تتصلب.</p><p>بالطريقة المفتوحة المريض ما يُسمح له يحافظ على التماس الإطباقي. هذي عادة تحتاج تعديل إطباق واسع ويه التسليم، وقد تخلي الطقم ينحرف عن توجهه الصحيح على الحافة. يعني إذا هدفك تحافظ على الإطباق، المغلقة أأمن.</p>","<p>خطوات الطبعة:</p><p>1) قلّل الحواف حتى يبقى فراغ <b>2–3 ملم</b> بينها وبين عمق الدهليز، مجال لمادة تشكيل الحواف.</p><p>2) شيل كل الـ undercuts الأكريلكية من الوجه النسيجي حتى الفني يگدر يشيل الطقم من الصبّة ويه الكبس بدون ما يكسرها.</p><p>3) قلّل على الأقل <b>1 ملم</b> من باقي القاعدة على كل الوجه النسيجي حتى يصير مجال لمادة الطبعة.</p><p>4) هسه البعد العمودي نقص حوالي 1–1.5 ملم ومستوى الإطباق تغيّر. رجّع هالنقص بـ <b>أربع نقاط إيقاف (stops)</b> من سيليكون ثقيل القوام، قطر كل وحدة حوالي <b>3 ملم</b>، بمنطقة الناب والرحى الثانية. قعد الطقم بلطف، والمريض يعض بـ CR على البعد الصحيح. بعدين شكّل الحواف مثل الطبعة التقليدية، بس لا تساوم على البعد ولا على الإطباق المركزي. وراقب الإطباق باستمرار حتى تتأكد إن موضع الطقم ما تغيّر.</p>","<p>5) بالعلوي: 4 إلى 6 فتحات بسنبلة مدورة رقم 6، المسافة بينها حوالي <b>12 ملم (نصف إنج)</b> عبر الحنك، حتى الضغط الهيدروليكي ما يمنع القعود. عادة ثلاث فتحات على الرفاء الأوسط تبدأ من الثقبة القاطعة، وفتحتين بكل جهة قرب منطقة الناب. لا تخرق الأسنان. بالسفلي عادة ما تحتاج فتحات إلا إذا الحافة ضخمة وفي خوف من الضغط. إذا احتجت، نفس المسافة 12 ملم.</p><p>6) حمّل المادة بانتظام. بالعلوي قعد الطقم بضغط لطيف <b>لفوق وورا</b>، والمريض يعض بالإطباق المركزي، وعدّل لين الإطباق والبعد يصحّون.</p><p>7) وأنت محافظ على الإطباق، شكّل العضلات مثل الطبعة التقليدية، وافحص الإطباق والبعد وموضع الطقم، وخلّ المادة تتصلب حسب التعليمات.</p><p>8) بعد التصلب شيل الزوايد عن الطقم وعن الأسنان، وجهّزه للمختبر.</p><p>إذا انت صببت الطبعة بالحجر، <b>لا تشيل الطقم من الصبّة</b> قبل ما تودّيه للمختبر — إذا شلته قد ما يگدر الفني يرجّعه بنفس التوجه والإطباق يضيع. الفني يستثمر الطقم بوعاء الكبس وهو بعد على الصبّة. إذا نسيت تشيل الـ undercuts، الصبّة قد تنكسر. والختم الحنكي الخلفي عادة يُكشط بالصبّة قبل الكبس.</p><p>الرجوع مثل تسليم طقم جديد. لأن ما انعمل فيسبو، عندك صبّات إعادة تركيب بلا دليل يوضع العلوي بعلاقته الصحيحة ويه اللقم. قد تحتاج فيسبو وتسجيل CR إذا التعديل الإطباقي واسع.</p>","<p>قرار التصليح أو إعادة الصنع صعب أحياناً. فكّر بـ: الوضع المادي للمريض، عمره الفسيولوجي، عدد المواعيد (وقت العيادة)، حالته الطبية، صعوبة الطبعة، وأجور المختبر. غالباً إعادة صنع الطقم الجزئي أسرع وأفيد من تصليح هيكل مقبول بالكاد وقد يحتاج تبديل قريب. التصليحات البسيطة كثير منها تنعمل بالعيادة ويه أو بلا طبعة، وبدون مختبر خارجي.</p><p>كسر القاعدة يتراوح من ضياع قطعة حافة كاملة إلى كسر جزء من القاعدة نفسها. ضياع قطعة الحافة يحتاج طبعة إعادة قاعدة أو تبطين.</p><p>إذا جزء كامل من القاعدة ضايع: صلّح الشكل أولاً بأكريلك ذاتي التصلب أو كمباوند عود أو الاثنين، حتى مادة الطبعة تنوصل للمكان. سوّ طبعة تبطين بمادة مرنة، والطقم الجزئي هو الطابع. علب الطبعة وصبّها بحجر لصبّة رئيسية. القطعة الجديدة تُصلح بأكريلك ذاتي أو حراري — والإصلاح الحراري أفضل بالمختبر.</p>","<p>إذا القطعة المكسورة بعد موجودة، التصليح بسيط بالعيادة: قرّب القطع وثبّتها بشمع لاصق، صبّ الوجه النسيجي بحجر. لما الصبّة تتصلب، شيل الطقم ووسّع خط الكسر إلى حوالي <b>2–3 ملم</b>. حط مادة فاصلة، رجّع القطع على الصبّة، والفراغ للأكريلك المصلّح. ضيف الأكريلك الذاتي بطريقة «ملح وفلفل» (رش متناوب للمونومر والبوليمر) لين الموقع يمتلئ شوي زيادة. حتى الكثافة تزيد والمسام تقل: حط الطقم وهو على صبّة الحجر بحمام ضغط حراري <b>30 باوند/إنج²، حوالي 120 فهرنهايت، لمدة 30 دقيقة</b>. بعدين شذّب بسنابل أكريلك بسرعة واطية ولمّع بالمسحوق ثم ملمع أكريلك.</p><p>أسنان الطقم نوعين: بورسلين وأكريلك. إذا سن أكريلك انخلع من طقم جديد، السبب الشائع ربط كيميائي ناقص بين السن والقاعدة من بقايا شمع أو زيوت وقت الكبس. غالباً ترجّعه وتثبّته بأكريلك ذاتي. إذا السن متآكل أو مكسور، اقطعه بحذر بسرعة واطية وركب سن جديد بنفس الحجم واترك مجال للأكريلك. إذا الأمامية مرتبة على الحافة بلا حافة أكريلك تقريباً، لازم طبعة والطقم بمكانه والإصلاح على صبّة حجر. وبعد أي تصليح، افحص الإطباق المركزي واللامركزي وعدّل.</p>","<p>الإصلاحات المعقدة تشمل: تصليح أو تبديل مجموعة الكلابسب أو جزء منها؛ تصليح الموصل الرئيسي أو الثانوي؛ وتصليح الطقم بعد فقد دعامة. كلها تحتاج طبعات صحيحة. أكثر كسر شيوعاً بأجزاء مجموعة الكلابسب (ذراع، مسند إطباقي، أو المنطقة بين الموصل الثانوي والرئيسي). حدّد السبب وصلّحه. إذا التصميم أصلاً ضعيف والضغط زايد، لازم تصميم وطقم جديد. الأغلب الكسر من سوء التعامل ويه سبيكة الكروم-كوبالت: وقع، انحنى على المخرطة، أو تعديل الذراع تجاوز حد المرونة.</p><p>ذراع الكلابسب أكثر جزء ينكسر، ويتصلح بطريقتين: طمر سلك قياس <b>18</b> بقاعدة الأكريلك كذراع بديل؛ أو صنع مجموعة كلابسب جديدة ولحمها أو لحامها بالهيكل. طريقة العيادة (حسب الحالة): عادة الذراع الشدقي المثبت هو اللي ينكسر. سلك 18 من PGP (بلاتين-ذهب-بلاديوم) أو سلك مطاوع يبدله. ركّب الطقم وتأكد انطباقه، وخذ طبعة ألجينات للطقم والأسنان بطابع جاهز — تأكد الطقم ما انخلع من الأسنان ولا انسحب من الألجينات. صبّ فوراً بحجر. شيل الجزء المكسور وافتح مجال بالأكريلك. شكّل السلك على نسخة الدعامة بكماشة تقويم، واعمل عروة تثبيت بطرفه البعيد حتى ينمسك ميكانيكياً بالقاعدة. ثبّته بشمع لاصق، وضيف أكريلك ذاتي «ملح وفلفل»، وكبّسه بحمام حوالي <b>120 ف لمدة 30 دقيقة بضغط 30 باوند</b>. شيله بحذر، لمّع، وافحص تماس السلك بالـ undercut المثبت وعدّل الاحتكاك إذا لزم.</p><p>تصليحات ثانية (ذراع مقابل لساني، مستندات مكسورة، تعويض سن مقلوع، حتى موصل رئيسي، أو ترميم دعامة تحت طقم موجود) ممكنة بس معقدة. قيّم سبب العطل؛ غالباً أحكَم تصحّح السبب وتعيد صنع الطقم بدل تصليح تعويض حدّي. تفاصيل هالإجراءات المتقدمة خارج نطاق هالمحاضرة.</p>","<p><b>المنطقة التجميلية</b> هي الأسنان واللثة اللي تبين ويه ضحكة قوية. وصف هالضحكة أو ارسمها أو صوّرها بالخطة حتى ما تحط كلابسب أو معدن باين بدون داعي. طب الأسنان التجميلي معناها ترمم من دون ما تلفت النظر للتغيير.</p><p>مواد القاعدة:</p><p><b>PMMA</b> الأشهر من سنة <b>1937</b>، وميزتها التجميلية ممتازة.</p><p><b>البولي أميد (نايلون، Valplast و Flexiplast)</b>: ماكو كلابسب معدني، بس أذرع بلون النسيج تندمج ويه الأسنان. ما ينكسر، خفيف، مناسب للطقم الجزئي ولحساسية المونومر.</p><p><b>الأسيتال الحراري</b>: راتنج لا ينكسر، ويُستخدم لكلابسب بلون السن.</p><p><b>البولي كربونات</b>: قوي ومرن ويقاوم الكسر مثل الأسيتال، بس تآكله بالإطباق أكثر فما يحافظ على البعد العمودي بنفس المدة. <b>مو مناسب للطقم الكامل أو الجزئي</b>، بس ممتاز للتيجان والجسور المؤقتة، وشفافيته طبيعية وتلميعه ممتاز.</p><p><b>PEEK</b>: بديل لا معدني لهيكل الطقم الجزئي. ويه الوصلة الدقيقة يوزّع الجهد بشكل مناسب ويقلل الإجهاد حول الدعامة والحافة، خصوصاً خلف الدعامة. دراسات بيّنت إمكانية استخدامه كترميم بلا معدن ويه خصائص ميكانيكية متفوقة.</p>","<p>إذا المريض يبين كل أسنانه الأمامية واللثة الملتصقة ويه الضحك، انتبه لحواف الطقم الجزئي. حافة الأكريلك تعوّض العظم الضائع، والعيوب تختلف من شخص لشخص. إذا مكان التقاء السن الصناعية باللثة ما يطابق الطبيعية، الحافة تصير سميكة فجّة وتعوّض النسيج قميّاً وتقريباً بشكل باين وقبيح. أحياناً تكدر تعوّض السن بحافة قليلة أو بلا حافة.</p><p>التلوين (characterization) مهم جداً إذا لثة المريض فيها صباغ ميلانين أو لون ما يطابق ألوان الأكريلك المتوفرة. الطريقة بسيطة: ننخل بلطف بودرة وسائل ملون بقوالب الطقم قبل كبس الأكريلك.</p><p>طقم <b>فيرجينيا</b> الجزئي يستخدم حلقة سيليكون حول الأسنان لتعويض ارتفاع العظم واللثة الضائع. المرضى عموماً يفضلونه. عيوبه: مشاكل نظافة، احتمال تسوس، وعمر التبطين محدود.</p>","<p>مجموعة الكلابسب المفروض ما تضر الشكل. اختار بعناية: مكان الكلابسب على السن، نوعه، مادته، مواضعه بالقوس، وعدد الأذرع.</p><p><b>كلابسب الكروم المصبوب</b> يغطي مساحة كبيرة من السن فالمعدن يبان وايد. ولأنه صلب نسبياً، استخدم undercut محدد وصغير.</p><p><b>السلك المطاوع</b> أجمل غالباً لأن انعكاس الضوء من سطحه المستدير مختلف. ولأنه ألين، يگدر يمسك undercut أكبر فيكون أقل بياناً.</p><p><b>سبيكة الذهب</b> اعتُبرت مرنة وراجعة الشكل وأجمل، بس غالية.</p><p><b>الكلابسب التقني البوليمري (أسيتال / بولي أوكسي ميثيلين)</b> انعمل للشكل: عدة درجات لون للسن الأمامية. عيوبه: سميك وصعب التعديل؛ يحتاج أجهزة خاصة وتكلفة أعلى؛ وتشوهه أكبر بكثير من المعدن فيضيع جزء من التثبيت.</p>","<p><b>الكلابسب المحيطي (C):</b> يلف السن أكثر من 180°. تجميلياً مو مرغوب بالأمام لأن منشأه إطباقي والمعدن يبان. القبول يزيد شوي حسب المادة.</p><p><b>الكلابسب ذو الفعل الراجع (back-action):</b> الذراع ينثني لورا عند الانتفاخ الشدقي حتى يوصل الـ undercut البعيد، فيطول ويقل ظهوره. ويه مسند أنسي نُقل إن سلوكه الميكانيكي ممتاز.</p><p><b>Equipoise:</b> يُدّعى إنه يلبي شروط الكلابسب الناجح ويه الشكل وتوزيع الحمل. رأس الذراع ينحط بتحضير بميناء السطح التقريبي للدعامة. اعتُبر خيار عملي لشكل أحسن وتثبيت مقبول.</p><p><b>الكلابسب المخفي:</b> يُنصح به بحالات Kennedy صنف IV. يمسك الـ undercuts التقريبية اللي غالباً موجودة طبيعياً. عيوبه: تصميم معقد؛ تشوه دائم بعد ثني متكرر؛ إزاحة الدعامة لأنه ماكو مقابِل (reciprocation)؛ دوران الكلابسب إذا ما استخدمت طريق إدخال مقيد فيضيع التثبيت؛ تثبيت متغير؛ وصعوبة التنظيف.</p>","<p><b>كلابسب الكرة (ball):</b> يمسك الـ undercut بالمسافة بين سنّين، مفيد إذا التيجان السريرية قصيرة أو ماكو undercut شدقي طبيعي. هم يشتغل مسند لأنه يعدّي فوق المسافة الإطباقية. مرونته قليلة جداً، والسنّين يحتاجون مقابَلة.</p><p><b>Twin-flex أو الكلابسب النابض:</b> مرن يستخدم تثبيتاً أنسياً-بعيداً، قابل للتعديل، ويه طريق الإدخال التقليدي فيحسّن الشكل. سلك ملحوم داخل قناة مصبوبة بالموصل الرئيسي. عيوبه: إذا انكسر ما يتصلح؛ الموصل الرئيسي يصير سميك فوق السلك؛ تكلفة أعلى لإجراءات مختبر إضافية؛ وسمية بسبب التآكل الغلفاني.</p><p><b>الوصلات (attachments)</b> حلّت مشكلة شكل الكلابسب خصوصاً بالأمام. وصلة نصف دقيقة ويه هيكل معدني مصبوب تحسّن التثبيت والشكل وثقة المريض. لنجاحها سريرياً بالنهاية الحرة، يُنصح بإشراك <b>دعامتين على الأقل</b> حتى ما ينحمل حمل زايد على دعامة واحدة، باستخدام قطعة بلاستيكية مثبتة قابلة للتعديل.</p>","<p>تصنيع التعويضات بمساعدة الحاسوب صار شائع. في صناعة الأسنان، تقنية CAD-CAM انطبقت مو بس على الحشوات والتيجان، هم على التعويضات الثابتة والمعقدة والجزئية المتحركة.</p><p>للطقم الجزئي، الماسح داخل الفم يلصق صور لمناطق ضيقة، فصعب يمسح المساحة الخلفية المسطحة الواسعة بلا أسنان. وطبعة وظيفية بالمعنى التقليدي مو ممكنة لأن التقنية تعتمد على الصورة مو على النسيج وهو يشتغل. لذلك حالياً المفهوم الرقمي هو: نصمم الهيكل المعدني بفضاء افتراضي اعتماداً على بيانات <b>مسح صبّة نهائية اتعملَت من طبعة وظيفية تقليدية</b>.</p><p>بدل ما نعمل نموذج شمع على الصبّة، نصمم الطقم الجزئي على الحاسوب. من هالتصميم نطبع نموذج ثلاثي الأبعاد براتنج قابل للإزالة (rapid prototyping)، وبعدين استثمار، حرق/إزالة، وصب، فيكتمل هيكل الطقم الجزئي الرقمي.</p>","<p>مميزات الطريقة الرقمية:</p><p>المسح الإلكتروني بالفضاء الافتراضي يحدّد طريق الإدخال والإخراج، ويضبط مقدار الـ undercut بالحساب بشكل أبسط وأدق من المسح التقليدي. تكدر تكوّن undercut بمقياس مطلوب عند مكان نهاية ذراع التثبيت، وهالمعلومة تفيد لتيجان المسح وهيكل الطقم.</p><p>بيانات التصميم تنحفظ إذا احتجت تعيد صنع أو تعدّل التعويض لاحقاً. الوقت الكلي يقل لأن بعض الخطوات تلغى (مثل استنساخ الصبّة وصبّة الاستثمار). وتكدر تطبع عدة نماذج بنفس الوقت بفترة قصيرة.</p><p>بس انتبه: الطرق المختلفة وُصفت، لكن اللي تطلع بدقة كافية للاستخدام السريري بعد محدودة. دراسة سابقة حلّلت أخطاء التصميم والدقة داخل الفم، بس كانت أولية وعلى عدد قليل من المشاركين، فما تكفي لتقييم الفعالية والدقة؛ نحتاج عدد أكبر.</p><p>الخطوات السريرية: طبعة وظيفية داخل الفم ويه تشكيل حواف → صبّة نهائية → مسح بمختبر → تحميل الملفات على برنامج التصميم → تحديد محور المسح وحساب الـ undercut لطريق إدخال مثالي → تصميم الموصل الرئيسي والكلابسب والمساند والصفائح التقريبية وخط الإنهاء → طباعة نموذج راتنجي → استثمار وإزالة وصب للهيكل → إكمال الطقم بالطريقة التقليدية (أكريلك حراري وأسنان صناعية) → تعديل حتى المساند تنقعد بمقاعدها، وبعدين التسليم.</p>","<p>أسئلة التبطين وتصليح الطقم الجزئي. اقرأ بهدوء؛ الجواب يظهر بعد الضغط ويا شرح عراقي.</p>","<p>أسئلة المواد التجميلية والطقم الجزئي الرقمي. ركّز على شو يناسب الطقم، وعيوب الكلابسب، ومحدوديات المسح داخل الفم.</p>","<p>اختبار الملف الثاني عشر. عشر أسئلة من التبطين والتصليح والمواد الرقمية. اضغط الزر بنهاية الشريحة حتى تشوف درجتك.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
