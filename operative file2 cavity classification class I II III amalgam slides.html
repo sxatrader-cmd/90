@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Operative File 2 — Cavity Classification and Class I–III Amalgam</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Operative (Conservative) Dentistry · Dr. Linz Lectures 4–6</div>
+    <h1>Cavity Classification, and Class I, II and III Amalgam Preparations</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lectures 4–6 by Dr. Linz (PDF pages 31–51): how cavities are classified, G.V. Black’s seven steps, and the Class I, II and III amalgam preparations.</p>
+    <ul>
+      <li>Simple, compound and complex cavities, Sites 1–3, and Black’s seven steps from outline to the toilet of the cavity</li>
+      <li>Class I and II: a facio-lingual width of no more than ¼ ICD, a 90°–110° cavosurface, and occlusal amalgam 1.5–2.0 mm thick</li>
+      <li>Class II: a 2 mm marginal ridge, a No. 245 bur, an isthmus no wider than ¼ ICD, and 0.5 mm clearance with the adjacent tooth</li>
+      <li>Class III amalgam: usually the distal of a canine; initial axial depth 0.5 mm inside the DEJ (0.75 mm on the root); a No. 14 bur cuts a 0.25 mm gingival groove</li>
+      <li>Total run time: <b>38 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 19</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Operative · File 2","t":"Cavity classification, and Class I, II and III amalgam preparations","b":"<p>University of Baghdad, College of Dentistry — Operative (conservative) dentistry syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file covers PDF pages 31–51: Lecture 4 by Dr. Linz (classification of cavities, G.V. Black’s steps, and the Class I amalgam preparation), Lecture 5 (the Class II amalgam preparation), and Lecture 6 (the Class III amalgam restoration).</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Medical terms stay in English next to the Arabic. Numbers in these lectures are kept as written, including a facio-lingual width of one-quarter of the intercuspal distance and an amalgam thickness of 1.5–2.0 mm. The lecture writes “900–1100” for the cavosurface angle; that means 90°–110°.</p>"},{"k":"Dr. Linz · Lecture 4","t":"How cavities are classified: simple, compound or complex, and by site","b":"<p>Classification of a cavity, according to the tooth surfaces involved: a <b>simple cavity</b> involves only one surface of the tooth, for example an occlusal cavity (O), Class I. A <b>compound cavity</b> involves two surfaces, for example mesio-occlusal (MO), Class II. A <b>complex cavity</b> involves three or more surfaces.</p><p>According to the site involved: <b>Site 1</b> — pits, fissures and enamel defects on the occlusal surfaces of posterior teeth, or other smooth surfaces. <b>Site 2</b> — proximal enamel in relation to areas in contact with adjacent teeth. <b>Site 3</b> — the cervical one-third of the crown, or, after gingival recession, the exposed root surface.</p>"},{"k":"Dr. Linz · Lecture 4","t":"G.V. Black’s classes as this lecture lists them, including Class V on the root near the CEJ","b":"<p>According to G.V. Black, <b>Class I</b> restorations are used in Class I lesions on: the occlusal pits and fissures of premolars and molars; the facial and lingual pits and fissures of mandibular molars; and the palatal pits of maxillary incisors, most frequently in the pit near the cingulum. <b>Class II</b> restorations are the extension of a Class I restoration into the proximal surfaces of premolars and molars, and may be two-surface, three-surface, or four-surface (or more) restorations of posterior teeth. <b>Class III</b> affects the interproximal surface of incisors and canines. <b>Class IV</b> involves a larger surface area, including the incisal edges and the interproximal surface of incisors and canines. <b>Class V</b> is the gingival third of the facial or lingual surfaces of any tooth, and the root of a tooth near the cemento-enamel junction (CEJ).</p><p>A following heading in this lecture is written “Cl IV: incisal edge of anterior teeth or on cusp tip of posterior teeth.” That description is <b>Class VI</b> as Lecture 1 already defined it; the wording is kept, and the mismatch is noted rather than silently changed.</p>"},{"k":"Dr. Linz · Lecture 4","t":"Objectives of cavity preparation, and G.V. Black’s seven steps","b":"<p>Objectives of cavity preparation in this lecture: (1) to remove diseased tissue as necessary and at the same time provide protection to the pulp; (2) to locate the margins of the restoration as conservatively as possible; (3) to ensure the cavity form, so that it should not fail under the force of mastication of the tooth; (4) to allow the functional placement of the restorative material.</p><p>Steps in cavity preparation, given by G.V. Black: obtain <b>outline form</b>; obtain <b>resistance form</b>; obtain <b>retention form</b>; obtain <b>convenience form</b>; <b>removal of remaining carious dentine</b>; <b>finishing of enamel walls and margins</b>; and performing the <b>toilet of the cavity</b> (cleaning).</p>"},{"k":"Dr. Linz · Lecture 4","t":"Class I outline form, and “extension for prevention” even when a fissure looks sound","b":"<p>Outline form is the shape of the cavity which the cavosurface line angle of the cavity assumes after preparation. Access: gain initial access via the most carious part of the tooth, and margins should be placed on sound tooth structure. In Class I, all occlusal fissures, and at least those in the developmental grooves, have been included in the preparation even when caries has not extended throughout the fissure, because carious dentine, although not evident visually or radiographically, may be seen at the base of fissures. There is strong evidence that carious dentine may be present at the base of a sealed fissure — this is <b>extension for prevention</b>.</p>"},{"k":"Dr. Linz · Lecture 4","t":"Class I retention: walls that converge occlusally, and a flat floor","b":"<p>Retention form is the shape of the cavity that permits the restoration to resist displacement through a tipping or lifting force. To provide retention: opposing walls should be parallel to each other, or converge occlusally (the lecture writes “50”; in the same lecture cavosurface angles are written “900–1100” for 90°–110°, so this is most likely <b>5°</b>) — this convergence is done on the buccal and lingual walls; the floor of the cavity should be flat to prevent restoration movement; and the outline form should be as small as possible to prevent a displacing force on it.</p>"},{"k":"Dr. Linz · Lecture 4","t":"Class I resistance: no more than one-quarter of the intercuspal distance, and a 90°–110° cavosurface","b":"<p>Resistance form is the shape of the cavity that enables both the tooth and the restoration to withstand occlusal forces without fracture. Prevention of fracture of the tooth: the facio-lingual width of the preparation should not exceed <b>one-quarter of the intercuspal distance (¼ ICD)</b>; unsupported enamel is removed by making the margin <b>90°–110°</b> (the lecture writes “900–1100”), because less than 90° leaves the tooth more subject to fracture; a smooth pulpal floor prevents a stress-concentration area; mesial and distal walls should be parallel and slightly diverge occlusally, to be within the enamel-rod direction and to prevent unsupported enamel at the marginal ridge; and all internal line angles should be rounded to prevent stress concentration.</p><p>Preventing fracture of the restoration: the margins or cavosurface line angle should be 90°–110° — if more than this, the restoration may fracture; facio-lingual width should be ¼ ICD, because a larger surface area is exposed to more force and fracture may occur; occlusal amalgam should have a thickness of <b>1.5–2.0 mm</b> to resist fracture during function; and the pulpal floor should be smooth to prevent a concentration area on the restoration.</p>"},{"k":"Dr. Linz · Lecture 4","t":"Convenience form (1.5–2 mm depth), removal of remaining caries, finishing, and cleaning","b":"<p>Convenience form is the shape of the cavity that allows adequate observation and accessibility; this is achieved by giving a good depth of <b>1.5–2 mm</b> and a width of <b>¼ ICD</b>. Removal of remaining caries: deep dentinal caries can be removed with a spoon excavator or a large round bur in a slow-speed handpiece. Finishing enamel walls means making the wall smooth and removing unsupported enamel. Cleaning the preparation (the toilet of the cavity) is the removal of all debris by washing the cavity and drying it.</p>"},{"k":"Dr. Linz · Lecture 4","t":"Quiz: ¼ ICD, a 1.5–2 mm amalgam thickness, and extension for prevention","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A simple, compound or complex cavity, and Black’s steps in this lecture, are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">A simple cavity always involves three surfaces; Black’s steps start with cementation</button><button type=\"button\" class=\"opt\" data-i=\"1\">A simple cavity involves one surface (for example occlusal Class I); a compound cavity involves two (for example MO Class II); a complex cavity involves three or more. Site 1 is pits, fissures and enamel defects; Site 2 is proximal enamel at contact; Site 3 is the cervical third or an exposed root. Black’s seven steps are outline, resistance, retention, convenience, removal of remaining carious dentine, finishing of enamel walls and margins, and the toilet of the cavity. Class II is described here as the extension of a Class I restoration into the proximal surfaces of premolars and molars</button><button type=\"button\" class=\"opt\" data-i=\"2\">Site 3 is only the occlusal fissure of a molar</button><button type=\"button\" class=\"opt\" data-i=\"3\">Convenience form is obtained before outline form in Black’s list</button></div><div class=\"qexp\" hidden><p>البسيطة سطح واحد، المركّبة سطحان، المعقّدة ثلاثة فأكثر. موقع 3 هو الثلث العنقي أو الجذر المكشوف. خطوات بلاك سبع تبدأ بالكفاف وتنتهي بتنظيف الحفرة. صنف II بهالمحاضرة امتداد صنف I للتقريبي.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Class I resistance, retention and outline in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The facio-lingual width may be half the intercuspal distance; amalgam may be 0.5 mm thick; sound fissures must never be included</button><button type=\"button\" class=\"opt\" data-i=\"1\">Facio-lingual width must not exceed one-quarter of the intercuspal distance (¼ ICD). The cavosurface angle should be 90°–110° (less than 90° risks tooth fracture; more than 110° risks restoration fracture). Occlusal amalgam should be 1.5–2.0 mm thick. Buccal and lingual walls are parallel or converge occlusally; the pulpal floor is flat and smooth; mesial and distal walls slightly diverge occlusally with the enamel rods; internal line angles are rounded. In Class I, all occlusal fissures (at least those in the developmental grooves) are included even when caries has not obviously extended through the fissure — extension for prevention — because carious dentine may be present at the base of a sealed fissure. Convenience form uses a depth of 1.5–2 mm and a width of ¼ ICD. Remaining deep caries is removed with a spoon excavator or a large slow-speed round bur</button><button type=\"button\" class=\"opt\" data-i=\"2\">A cavosurface angle of 140° is recommended to protect the amalgam</button><button type=\"button\" class=\"opt\" data-i=\"3\">The pulpal floor should be left irregular so that the amalgam locks in place</button></div><div class=\"qexp\" hidden><p>العرض ما يتجاوز ربع المسافة بين الحدبات. زاوية سطح الحفرة 90°–110°. سمك الملغم 1.5–2 ملم. تضم الشقوق حتى لو باينة سليمة (امتداد للوقاية). العمق 1.5–2 ملم. النخر العميق بمعلقة أو فرازة مدورة بطيئة.</p></div></div>"},{"k":"Dr. Linz · Lecture 5","t":"A Class II amalgam: two, three or four surfaces, and the outline (¼ ICD, a 2 mm marginal ridge, 1.5–2 mm depth)","b":"<p>Preparations involving the proximal surfaces of posterior teeth are termed Class II. The following surfaces may be involved: a two-surface cavity, a three-surface cavity, or a four-surface (or more) cavity for posterior teeth.</p><p>Step 1 — outline form and initial depth: establishing the outline form means placing the preparation margins in the positions they will occupy in the final preparation. Typical features: the width of the facio-lingual walls should be <b>¼ ICD</b>; marginal-ridge strength is preserved (<b>2 mm thickness</b> of marginal ridge); the depth of the preparation into dentine should be <b>1.5–2 mm</b>. The extent of the carious lesion affects the outline, because the objective is to extend to sound tooth structure. The ideal outline includes all pits and fissures even if they are sound, to prevent them from becoming carious in the future (extension for prevention).</p>"},{"k":"Dr. Linz · Lecture 5","t":"Class II resistance: ¼ ICD, a 90°–110° margin, 1.5–2 mm of amalgam, and a rounded axio-pulpal line angle","b":"<p>Step 2 — resistance form: the shape of the cavity that prevents fracture of the remaining tooth structure and of the restoration. Factors that prevent fracture of the tooth: facio-lingual width must not exceed ¼ ICD; unsupported enamel is removed by making the margin 90°–110°, because less than 90° leaves the tooth more subject to fracture; a smooth pulpal floor and gingival seat prevent a stress-concentration area; mesial and distal walls should be parallel and slightly diverge occlusally, to stay within the enamel-rod direction and prevent unsupported enamel at the marginal ridge; all internal line angles should be rounded; a box shape of Class II; and a rounded gingival cavosurface line angle. Facial and lingual walls converge occlusally (as the lecture’s figure notes).</p><p>Preventing fracture of the restoration: the cavosurface line angle should be 90°–110° — if more than this, the restoration may fracture; facio-lingual width should be ¼ ICD; occlusal amalgam should have a thickness of 1.5–2.0 mm; the pulpal floor and gingival seat should be smooth; and the axio-pulpal line angle should be rounded.</p>"},{"k":"Dr. Linz · Lecture 5","t":"Class II retention: a dovetail, occlusal convergence of the box, and locks in the axiofacial and axiolingual line angles","b":"<p>Step 3 — retention form: the shape that permits the restoration to resist displacement through a tipping or lifting force. To provide retention: facial and lingual walls should be parallel to each other or converge occlusally (again written “50,” most likely 5°); the pulpal floor and gingival seat should be flat; a <b>dovetail</b> preparation increases retention (the lecture contrasts an incorrect dovetail with a correct one); the width of the cavity; the occlusal convergence of the box (seen from the proximal view); and retentive grooves or locks in the <b>axiofacial and axiolingual line angles</b>.</p>"},{"k":"Dr. Linz · Lecture 5","t":"The clinical occlusal step: a No. 245 bur, 1.5–2 mm depth, and an isthmus no wider than ¼ ICD","b":"<p>Steps 4–7 are as in Class I: convenience form provides adequate observation, accessibility and ease of operation; remaining deep dentinal caries is removed with a spoon excavator or a large slow-speed round bur; enamel walls are finished smooth and free of unsupported enamel; and the preparation is washed and dried.</p><p>Clinically, the occlusal outline (the occlusal step) of a Class II amalgam is similar to that of Class I. Enter the pit nearest the involved proximal surface with a punch cut using a <b>No. 245 bur</b>. The long axis of the bur and the long axis of the tooth crown should remain parallel during cutting; the bur should be rotating when applied to the tooth and should not stop rotating until it is removed. Proper depth of the initial entry cut is <b>1.5–2 mm</b>. While maintaining the same depth and bur orientation, move the bur to extend the outline to include the central groove and the opposite pit, which provides dovetail retention. The <b>isthmus width</b> should be as narrow as possible and no wider than ¼ ICD. It may be necessary to tilt the bur to create a slight occlusal convergence of the facial and lingual walls, and mesial and distal walls that diverge occlusally.</p>"},{"k":"Dr. Linz · Lecture 5","t":"The proximal box: a ditch cut at the DEJ, and 0.5 mm clearance from the adjacent tooth","b":"<p>Objectives for extension of the proximal margins: to include all caries, faults or existing restorative material; to remove unsupported enamel; and to establish <b>not more than 0.5 mm clearance</b> with the adjacent proximal surface facially, lingually and gingivally. The initial procedure in preparing the outline of the proximal box is isolation of the proximal enamel by the <b>proximal ditch cut</b> — a very important conservative step. Place the bur over the DEJ in the pulpal floor near the remaining marginal ridge; allow the end of the bur to cut the ditch gingivally, then move the bur facially and lingually along the DEJ; this creates the axial wall. The ditch should extend gingivally just beyond the caries or the proximal contact area. The location of the final proximal margins (facial, lingual, gingival) should be established with hand instruments (chisel, hatchets, gingival margin trimmers). Remove the weakened enamel along the gingival wall with a gingival margin trimmer in a scraping motion. Ideally the minimal clearance of the completed gingival margin with the adjacent tooth is <b>0.5 mm</b>.</p>"},{"k":"Dr. Linz · Lecture 5","t":"Quiz: a 2 mm marginal ridge, bur 245, 0.5 mm clearance, and a rounded axio-pulpal angle","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Class II outline and resistance in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">The marginal ridge may be reduced to 0.2 mm; amalgam thickness is unimportant; the axio-pulpal line angle should be sharp</button><button type=\"button\" class=\"opt\" data-i=\"1\">Facio-lingual width is ¼ ICD; a 2 mm thickness of marginal ridge is preserved; depth into dentine is 1.5–2 mm; all pits and fissures are included even if sound (extension for prevention). Resistance also uses a 90°–110° cavosurface, slightly diverging mesial and distal walls, rounded internal line angles, a box shape, a rounded gingival cavosurface, a smooth pulpal floor and gingival seat, occlusal amalgam 1.5–2.0 mm thick, and a rounded axio-pulpal line angle</button><button type=\"button\" class=\"opt\" data-i=\"2\">A cavosurface greater than 110° is preferred, because it thickens the amalgam margin</button><button type=\"button\" class=\"opt\" data-i=\"3\">Class II never includes more than two surfaces</button></div><div class=\"qexp\" hidden><p>العرض ¼ ICD، الحافة الهامشية 2 ملم، العمق 1.5–2 ملم، وامتداد للوقاية. الزاوية المحورية-اللبية مدوّرة، وسمك الملغم 1.5–2 ملم، وحافة 90°–110°.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The clinical Class II sequence in this lecture is:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Start the proximal box with a hand chisel only, with no bur; contact must be left closed; a dovetail is a fault</button><button type=\"button\" class=\"opt\" data-i=\"1\">Enter the pit nearest the involved proximal surface with a punch cut using a No. 245 bur, kept parallel to the long axis of the crown and kept rotating until removed; initial depth 1.5–2 mm. Extend along the central groove to the opposite pit for a dovetail; the isthmus is as narrow as possible and no wider than ¼ ICD. Isolate proximal enamel with a proximal ditch cut: the bur is placed over the DEJ near the remaining ridge, cut gingivally, then moved facially and lingually along the DEJ to create the axial wall, just beyond caries or contact. Final facial, lingual and gingival margins are refined with a chisel, hatchets and gingival margin trimmers; weakened gingival enamel is scraped away with a GMT. Ideal clearance with the adjacent tooth is 0.5 mm facially, lingually and gingivally. Retention also uses a dovetail, occlusal convergence of the box, and locks in the axiofacial and axiolingual line angles</button><button type=\"button\" class=\"opt\" data-i=\"2\">The bur must be stationary when it first touches the tooth</button><button type=\"button\" class=\"opt\" data-i=\"3\">Clearance with the adjacent tooth should be at least 2 mm in every direction</button></div><div class=\"qexp\" hidden><p>ابدأ بفرازة 245 من الحفرة الأقرب، عمق 1.5–2 ملم، وهي تدور لين تطلع. البرزخ أضيق من أو يساوي ¼ ICD. خندق تقريبي على الـ DEJ، والحواف تُنتهى يدوياً. الفراغ ويه المجاور 0.5 ملم. التثبيت بذيل حمامة وأقفال بالزوايا المحورية.</p></div></div>"},{"k":"Dr. Linz · Lecture 6","t":"Class III amalgam: few indications, usually the distal of a canine, and why it is rarely used on incisors","b":"<p>A Class III restoration is indicated for defects in the proximal surface of incisors and canines without incisal-edge involvement. Few indications exist for a Class III amalgam. It is generally reserved for the <b>distal surface of maxillary and mandibular canines</b> if: (1) the preparation is extensive with only minimal facial involvement; (2) the gingival margin primarily involves cementum; (3) moisture control is difficult. For esthetic reasons, amalgam is rarely indicated for the proximal surfaces of incisors and the mesial surface of canines.</p><p>Contraindications: Class III amalgam restorations are usually contraindicated in esthetically important areas, because many patients object to metal restorations that are visible. Advantages: amalgam restorations are stronger than other Class III direct restorations; they are generally easier to place; they are less expensive to the patient; and they are usually easier to finish and polish without damage to the adjacent surfaces. Disadvantages: metallic colour; and a less conservative cavity preparation when compared with that of esthetic restorative materials.</p>"},{"k":"Dr. Linz · Lecture 6","t":"Class III resistance and retention: 90° margins, 1 mm of amalgam, a gingival groove and an incisal cove","b":"<p>Outline form may include only the proximal surface. A lingual dovetail may be indicated if one existed previously, or if additional retention is needed for a larger restoration. Resistance against post-restorative fracture is provided by: (1) cavosurface and amalgam margins of <b>90 degrees</b>; (2) removal of unsupported enamel; (3) sufficient bulk of amalgam (a minimal <b>1 mm thickness</b>); (4) rounded internal angles; (5) conserving the disto-incisal tooth structure as much as possible, to reduce the risk of fracture. Retention is provided by: (1) the box-like preparation form; (2) a gingival groove, an incisal cove, and sometimes a lingual dovetail.</p>"},{"k":"Dr. Linz · Lecture 6","t":"Preparing a Class III amalgam: 0.5 mm inside the DEJ, a No. 14 bur, and a 0.25 mm gingival groove","b":"<p>A lingual-access preparation on the distal surface of the maxillary canine is described for esthetic reasons; a facial approach for a mandibular canine may be indicated if the lesion is more facial than lingual. The initial entry conserves the marginal ridge. Bur size depends on the size of the lesion; options may include a <b>No. 2</b> (or smaller) round bur. The bur is positioned so that the entry cut penetrates into the carious lesion. Ideally its long axis is perpendicular to the lingual surface, but directed at a mesial angle as close to the adjacent tooth as possible — this conserves the marginal-ridge enamel. Initial axial depth is <b>0.5 mm inside the DEJ</b>, or <b>0.75 mm</b> axial depth when the gingival margin is on the root surface (in cementum). Infected dentine deeper than this limited initial axial depth is removed later during final tooth preparation. The cavity is made in a box-like form.</p><p>The gingival retention groove is prepared by placing a <b>No. 14 round bur</b> (rotating at low speed) in the axio-facio-gingival point angle, positioned in the dentine to maintain <b>0.2 mm of dentine between the groove and the DEJ</b>. The rotating bur is moved lingually along the axio-gingival line angle. If less retention is needed, two gingival coves may be used instead of a continuous groove, placed in the axio-gingivo-facial and axio-gingivo-lingual point angles. The diameter of the No. 14 round bur is <b>0.5 mm</b>, and the depth of the groove should be half this diameter (<b>0.25 mm</b>). An incisal retention cove is prepared with the same bur in the axio-incisal point angle. If a lingual dovetail is needed, it is prepared only after the initial proximal portion has been completed — otherwise the tooth structure needed for the isthmus may be removed while the proximal outline is cut. The lingual dovetail should be conservative, generally not extending beyond the mesio-distal midpoint of the lingual surface (this varies with the extent of the proximal caries). The axial depth of the dovetail should approximate <b>1 mm</b>.</p>"},{"k":"Dr. Linz · Lectures 4–6","t":"Self-test: ¼ ICD, the No. 245 bur, distal-canine indications, and a 0.25 mm groove","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The shared Class I and Class II numbers in this lecture are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Width may be ½ ICD; amalgam is 0.3 mm thick; pits that look sound must be left untouched</button><button type=\"button\" class=\"opt\" data-i=\"1\">Facio-lingual width must not exceed ¼ ICD; cavosurface 90°–110°; occlusal amalgam 1.5–2.0 mm thick; preparation depth 1.5–2 mm. Class II also preserves a 2 mm marginal ridge, uses a rounded axio-pulpal line angle, a No. 245 bur for the punch cut (kept rotating and parallel to the crown axis), an isthmus no wider than ¼ ICD, a proximal ditch along the DEJ, 0.5 mm clearance with the adjacent tooth, and locks in the axiofacial and axiolingual line angles. Remaining deep caries is removed with a spoon or a large slow-speed round bur. Outline includes fissures even if sound (extension for prevention)</button><button type=\"button\" class=\"opt\" data-i=\"2\">A No. 245 bur is used only after the amalgam has been carved</button><button type=\"button\" class=\"opt\" data-i=\"3\">Gingival clearance in Class II should be zero, so that contact is never opened</button></div><div class=\"qexp\" hidden><p>¼ ICD، حافة 90°–110°، سمك 1.5–2 ملم، عمق 1.5–2 ملم. بصنف II الحافة الهامشية 2 ملم، فرازة 245، البرزخ ≤ ¼ ICD، فراغ 0.5 ملم، والزاوية المحورية-اللبية مدوّرة.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A Class III amalgam in this lecture is used, and prepared, as follows:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">It is the first choice for the mesial of a central incisor; axial depth is 3 mm; a dovetail is cut before the proximal box</button><button type=\"button\" class=\"opt\" data-i=\"1\">Few indications exist; it is generally reserved for the distal of a maxillary or mandibular canine when the preparation is extensive with only minimal facial involvement, the gingival margin is mainly on cementum, or moisture control is difficult. It is rarely used on incisors or the mesial of canines for esthetic reasons. Advantages include strength, ease of placement and of finishing, and lower cost; disadvantages are colour and a less conservative preparation. Resistance: 90° margins, unsupported enamel removed, at least 1 mm of amalgam, rounded internals, and conservation of disto-incisal structure. Retention: a box, a gingival groove, an incisal cove, and sometimes a lingual dovetail. Entry is often lingual on a maxillary canine (facial may be used on a mandibular canine if the lesion is more facial). Initial axial depth is 0.5 mm inside the DEJ, or 0.75 mm when the gingival margin is on the root. A No. 14 round bur (0.5 mm diameter) cuts a gingival groove 0.25 mm deep, leaving 0.2 mm of dentine between the groove and the DEJ. A lingual dovetail, if needed, is cut only after the proximal portion, generally not beyond the mid-lingual, at about 1 mm axial depth</button><button type=\"button\" class=\"opt\" data-i=\"2\">The No. 14 bur is run at high speed without water, and the groove is 2 mm deep</button><button type=\"button\" class=\"opt\" data-i=\"3\">A Class III amalgam is stronger if the incisal edge is always included</button></div><div class=\"qexp\" hidden><p>غالباً وحشي الناب فقط، ونادراً على القواطع. العمق الأولي 0.5 ملم داخل الـ DEJ أو 0.75 ملم على الجذر. فرازة 14 تعمل أخدود 0.25 ملم ويه 0.2 ملم عاج لحد الـ DEJ. ذيل الحمامة بعد الجزء التقريبي، عمق حوالي 1 ملم. سمك الملغم على الأقل 1 ملم.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Black’s seven steps, in the order this lecture lists them, start and end with:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Toilet of the cavity first, then cementation of a crown, and outline last</button><button type=\"button\" class=\"opt\" data-i=\"1\">Outline form; resistance form; retention form; convenience form; removal of remaining carious dentine; finishing of enamel walls and margins; and the toilet (cleaning) of the cavity. Convenience form in Class I is achieved with a depth of 1.5–2 mm and a width of ¼ ICD</button><button type=\"button\" class=\"opt\" data-i=\"2\">Retention is obtained before outline form</button><button type=\"button\" class=\"opt\" data-i=\"3\">Remaining caries is left under the amalgam as a liner</button></div><div class=\"qexp\" hidden><p>الترتيب: كفاف، مقاومة، تثبيت، تسهيل، شيل النخر الباقي، إنهاء جدران المينا، وتنظيف الحفرة. التسهيل بصنف I عمق 1.5–2 ملم وعرض ¼ ICD.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">In these lectures, what is the maximum facio-lingual width of a Class I or Class II amalgam preparation, and how thick should the occlusal amalgam be?</button><div class=\"flash-a\" hidden>The facio-lingual width must not exceed one-quarter of the intercuspal distance (¼ ICD). Occlusal amalgam should be 1.5–2.0 mm thick.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا ثاني ملف معالجة: محاضرات د. لنز 4 (تصنيف الحفر وخطوات بلاك وصنف I)، و 5 (صنف II)، و 6 (صنف III بالملغم). صفحات 31–51. شرح عراقي مفصل ويه أسئلة. العرض الشدقي-اللساني ربع المسافة بين الحدبات، وسمك الملغم 1.5–2 ملم. المحاضرة كتبت 900–1100 والمقصود 90°–110°.</p>","<p>التصنيف حسب عدد السطوح: حفرة <b>بسيطة</b> سطح واحد فقط (مثلاً إطباقية O، صنف I). حفرة <b>مركّبة (compound)</b> سطحان (مثلاً إنسية-إطباقية MO، صنف II). حفرة <b>معقّدة (complex)</b> ثلاثة سطوح أو أكثر.</p><p>حسب الموقع: <b>موقع 1</b> حفر وشقوق وعيوب مينا على إطباق الخلفية أو سطوح ملساء أخرى. <b>موقع 2</b> المينا التقريبي عند تماس السن المجاور. <b>موقع 3</b> الثلث العنقي من التاج، أو سطح الجذر المكشوف بعد انحسار اللثة.</p>","<p>حسب بلاك بهالمحاضرة: <b>صنف I</b> حفر وشقوق إطباق الضواحك والأرحاء، وحفر وجهية ولسانية للأرحاء السفلية، وحفر حنكية للقواطع العلوية (غالباً قرب الحديبة). <b>صنف II</b> امتداد صنف I للسطح التقريبي للخلفية: سطحان أو ثلاثة أو أربعة فأكثر. <b>صنف III</b> السطح التقريبي للقواطع والأنياب. <b>صنف IV</b> مساحة أكبر تشمل الحافة القاطعة والسطح التقريبي. <b>صنف V</b> الثلث اللثوي الوجهي أو اللساني لأي سن، وجذر السن قرب الملتقى الملاطي-المينائي.</p><p>بعدها المحاضرة كتبت عنوان “Cl IV” ووصفت حفر أو بلى على الحافة القاطعة أو رؤوس الحدبات — هذا وصف <b>الصنف VI</b> بمحاضرة 1. نخلي النص وننبّه للاختلاف.</p>","<p>أهداف التحضير: شيل النسيج المريض مع حماية اللب؛ حواف الترميم بأكثر شكل محافظ؛ شكل الحفرة يتحمل قوى المضغ؛ وتسهيل وضع المادة الوظيفية.</p><p>خطوات بلاك السبع: شكل <b>الكفاف (outline)</b>؛ شكل <b>المقاومة (resistance)</b>؛ شكل <b>التثبيت (retention)</b>؛ شكل <b>التسهيل (convenience)</b>؛ <b>إزالة العاج النخر الباقي</b>؛ <b>إنهاء جدران وحواف المينا</b>؛ و<b>تنظيف الحفرة (toilet)</b>.</p>","<p>شكل الكفاف هو شكل الحفرة اللي تاخذه زاوية سطح الحفرة بعد التحضير. ادخل من أكثر جزء نخر، والحواف على بنية سليمة. بصنف I تضم كل الشقوق الإطباقية، وعلى الأقل اللي بالأخاديد التطورية، حتى لو النخر ما امتد بكل الشق، لأن العاج النخر قد يكون بقاعدة الشق وما يبان بالعين أو بالأشعة — حتى بشق مختوم. هذا اسمه <b>الامتداد للوقاية (extension for prevention)</b>.</p>","<p>التثبيت يمنع إزاحة الترميم بقوة قلب أو رفع. الجدران المتقابلة متوازية أو تتقارب إطباقياً (المحاضرة كتبت “50”، وبنفس الأسلوب 900 تعني 90°، فالغالب المقصود <b>5 درجات</b>) — هالتقارب على الجدار الشدقي واللساني. الأرضية مسطحة حتى الترميم ما يتحرك. والكفاف أصغر ما يمكن حتى تقل قوة الإزاحة.</p>","<p>المقاومة تخلي السن والترميم يتحمّلون القوة بلا كسر. لحماية السن: العرض الشدقي-اللساني ما يتجاوز <b>ربع المسافة بين الحدبات (¼ ICD)</b>؛ الحافة <b>90°–110°</b> (أقل من 90° يعرّض السن للكسر)؛ أرضية لبية ملساء؛ الجدران الإنسية والوحشية متوازية وتتباعد إطباقياً بشوي ويه اتجاه قضبان المينا حتى ما يبقى مينا غير مدعوم عند الحافة الهامشية؛ وكل الزوايا الداخلية مدوّرة.</p><p>لحماية الترميم: زاوية سطح الحفرة 90°–110° (إذا أكبر، الترميم ينكسر)؛ العرض ¼ ICD؛ سمك الملغم الإطباقي <b>1.5–2.0 ملم</b>؛ والأرضية اللبية ملساء.</p>","<p>شكل التسهيل يعطي رؤية ووصول كافي: عمق <b>1.5–2 ملم</b> وعرض <b>¼ ICD</b>. العاج النخر العميق ينشال بمعلقة أو فرازة مدورة كبيرة ويه قبضة بطيئة. إنهاء جدران المينا: تنعيم وشيل المينا غير المدعوم. تنظيف الحفرة: غسل وتجفيف لإزالة كل البقايا.</p>","<p>سؤالان على التصنيف، وربع المسافة بين الحدبات، وسمك 1.5–2 ملم، والامتداد للوقاية.</p>","<p>صنف II يشمل السطح التقريبي للأسنان الخلفية: سطحان أو ثلاثة أو أربعة فأكثر.</p><p>خطوة 1 — الكفاف والعمق الأولي: حط الحواف بمواضعها النهائية. العرض الشدقي-اللساني <b>¼ ICD</b>؛ تحافظ على قوة الحافة الهامشية (<b>سمك 2 ملم</b>)؛ العمق داخل العاج <b>1.5–2 ملم</b>. الامتداد لوصل البنية السليمة، والكفاف المثالي يضم كل الحفر والشقوق حتى لو سليمة (امتداد للوقاية).</p>","<p>خطوة 2 — المقاومة: عرض ما يتجاوز ¼ ICD؛ حافة 90°–110°؛ أرضية لبية ومقعد لثوي أملس؛ الجدران الإنسية والوحشية تتباعد إطباقياً بشوي ويه قضبان المينا؛ الزوايا الداخلية مدوّرة؛ شكل صندوق؛ وزاوية سطح الحفرة اللثوية مدوّرة. الجدران الشدقية واللسانية تتقارب إطباقياً.</p><p>لحماية الترميم: الحافة 90°–110°؛ العرض ¼ ICD؛ سمك الملغم 1.5–2 ملم؛ الأرضية والمقعد ملسين؛ و<b>الزاوية المحورية-اللبية مدوّرة</b>.</p>","<p>خطوة 3 — التثبيت: الجدران الشدقية واللسانية متوازية أو تتقارب إطباقياً (مكتوبة “50”، الغالب 5°)؛ الأرضية والمقعد اللثوي مسطّحين؛ تحضير <b>ذيل الحمامة (dovetail)</b> يزيد التثبيت؛ عرض الحفرة؛ تقارب الصندوق إطباقياً من المنظر التقريبي؛ و<b>أخاديد أو أقفال تثبيت</b> بالزاويتين المحورية-الوجهية والمحورية-اللسانية.</p>","<p>الخطوات 4–7 مثل صنف I: تسهيل، شيل النخر العميق، إنهاء المينا، وغسل وتجفيف.</p><p>سريرياً، الخطوة الإطباقية تشبه صنف I. ادخل الحفرة الأقرب للسطح التقريبي المصاب بقطع وكزي ويه فرازة <b>رقم 245</b>. محور الفرازة يبقى موازي لمحور تاج السن، والفرازة تدور من أول لمس لين تطلع. العمق الأولي <b>1.5–2 ملم</b>. امتد على الأخدود المركزي والحفرة المقابلة لتعمل ذيل الحمامة. عرض <b>البرزخ (isthmus)</b> أضيق ما يمكن وما يتجاوز ¼ ICD. يمكن تميل الفرازة حتى الجدران الشدقية واللسانية تتقارب إطباقياً، والإنسية والوحشية تتباعد.</p>","<p>أهداف امتداد الحواف التقريبية: تضم كل النخر والعيوب والترميمي القديم؛ شيل المينا غير المدعوم؛ و<b>فراغ لا يزيد على 0.5 ملم</b> ويه السطح التقريبي المجاور شدقياً ولسانياً ولثوياً. أول خطوة مهمة هي <b>قطع الخندق التقريبي</b>: حط الفرازة فوق الـ DEJ بأرضية اللب قرب الحافة الهامشية الباقية، اقطع لثوياً بعدين حرّك شدقياً ولسانياً على الملتقى حتى يتكون الجدار المحوري. الخندق ينزل لثوياً مجرد ما يتجاوز النخر أو التماس. الحواف النهائية تتحدد بأدوات يدوية (إزميل، فأس، مقلّم الحافة اللثوية)، والمينا الضعيف على الجدار اللثوي ينشال بالمقلّم بحركة كشط. الفراغ المثالي الأدنى للحافة اللثوية ويه السن المجاور <b>0.5 ملم</b>.</p>","<p>سؤالان على الحافة الهامشية 2 ملم، فرازة 245، فراغ 0.5 ملم، والزاوية المحورية-اللبية المدوّرة.</p>","<p>صنف III لعيوب السطح التقريبي للقواطع والأنياب بلا إصابة الحافة القاطعة. استطبابات الملغم قليلة، وغالباً تُحفظ ل<b>السطح الوحشي لأنياب الفكين</b> إذا: التحضير واسع ويه إصابة وجهية بسيطة؛ الحافة اللثوية أساساً على الملاط؛ أو السيطرة على الرطوبة صعبة. جمالياً، نادراً يُستخدم على تقريبي القواطع أو إنسي الناب.</p><p>الموانع: المناطق المهمة جمالياً، لأن المريض يعترض على المعدن الظاهر. المزايا: أقوى من باقي الترميمات المباشرة لصنف III، أسهل وضعاً، أرخص، وأسهل إنهاء وتلميع بلا ضرر للمجاور. العيوب: لون معدني، وتحضير أقل محافظة من المواد التجميلية.</p>","<p>الكفاف قد يكون السطح التقريبي فقط. ذيل حمامة لساني يُذكر إذا كان موجوداً من قبل، أو إذا احتجت تثبيت إضافي لترميم أكبر. المقاومة: حواف <b>90 درجة</b>؛ شيل المينا غير المدعوم؛ سمك ملغم لا يقل عن <b>1 ملم</b>؛ زوايا داخلية مدوّرة؛ والحفاظ على البنية الوحشية-القاطعة قدر الإمكان. التثبيت: شكل الصندوق؛ أخدود لثوي، وتجويف قاطع (cove)، وأحياناً ذيل حمامة لساني.</p>","<p>للناب العلوي يُفضَّل دخول لساني على السطح الوحشي جمالياً؛ للناب السفلي يمكن دخول وجهي إذا الآفة وجهية أكثر. ابدأ بفرازة مدورة <b>رقم 2</b> أو أصغر، محورها عمودي على اللساني ومائل إنسياً أقرب ما يمكن للمجاور حتى تنحفظ الحافة الهامشية. العمق المحوري الأولي <b>0.5 ملم داخل الـ DEJ</b>، أو <b>0.75 ملم</b> إذا الحافة اللثوية على الجذر (الملاط). العاج المصاب الأعمق ينشال بعدين. الحفرة صندوقية.</p><p>أخدود التثبيت اللثوي بفرازة مدورة <b>رقم 14</b> بسرعة واطية من الزاوية المحورية-الوجهية-اللثوية، ويه <b>0.2 ملم عاج بين الأخدود والـ DEJ</b>، وتحرّك لسانياً على الخط المحوري-اللثوي. إذا التثبيت أقل، تجويفان بدل أخدود مستمر. قطر الفرازة 14 هو <b>0.5 ملم</b>، وعمق الأخدود نصف القطر (<b>0.25 ملم</b>). التجويف القاطع بنفس الفرازة بالزاوية المحورية-القاطعة. ذيل الحمامة اللساني يُحضَّر فقط بعد الجزء التقريبي، وما يتجاوز عادة منتصف السطح اللساني، وعمقه المحوري حوالي <b>1 ملم</b>.</p>","<p>ثلاثة أسئلة ختامية على الأرقام المشتركة، واستطباب صنف III، وخطوات بلاك، ويه بطاقة ¼ ICD وسمك الملغم وزر الدرجة.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>

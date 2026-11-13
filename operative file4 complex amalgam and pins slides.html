@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Operative File 4 — Complex Amalgam Restorations and Pins</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Operative (Conservative) Dentistry · Dr. Linz Lecture 11</div>
+    <h1>Complex Amalgam Restorations, Cusp Capping and Pins</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lecture 11 by Dr. Linz (PDF pages 71–83): complex posterior amalgam restorations, cusp capping, slots and pins, the Thread Mate System, and why amalgam restorations fail.</p>
+    <ul>
+      <li>When a complex amalgam is indicated, and cusp capping once the occlusal opening exceeds two thirds of the intercuspal distance (at least 2 mm of amalgam)</li>
+      <li>Secondary retention: horizontal coves, vertical locks, and slots 0.5 mm pulpal to the DEJ and at least 0.5 mm deep</li>
+      <li>Self-threading, cemented and friction-locked pins; TMS sizes Regular, Minim, Minikin and Minuta; a 2 mm depth-stop drill at 300–500 rpm</li>
+      <li>Five places a pin-retained restoration can fail, how to manage a broken, loose or perforating pin, and why amalgams fail</li>
+      <li>Total run time: <b>34 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 17</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Operative · File 4","t":"Complex amalgam restorations, cusp capping, pins, and why amalgams fail","b":"<p>University of Baghdad, College of Dentistry — Operative (conservative) dentistry syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file covers PDF pages 71–83: Lecture 11 by Dr. Linz on complex posterior amalgam restorations, including indications, cusp capping, secondary retention (coves, locks, slots and pins), the Thread Mate System (TMS), pinhole placement, problems with pins, and the common reasons an amalgam restoration fails.</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Medical terms stay in English next to the Arabic. Numbers in this lecture are kept as written, including a minimum 2 mm cusp reduction, a slot 0.5 mm pulpal to the DEJ and at least 0.5 mm deep, and self-threading pinholes 0.1 mm smaller than the pin and about 1.5–2 mm deep.</p>"},{"k":"Dr. Linz · Lecture 11","t":"When a complex amalgam is considered, and when it is not","b":"<p>Complex posterior amalgam restorations should be considered when large amounts of tooth structure are missing, when one or more cusps need capping, and when increased resistance and retention forms are needed (the lecture’s figure shows a mesio-occluso-disto-facial-lingual, MODFL, complex amalgam).</p><p>Indications: (1) control restorations in teeth that have a questionable pulpal and/or periodontal prognosis; (2) control restorations in teeth with acute and severe caries; (3) foundations (abutment teeth for fixed prostheses).</p><p>Contraindications: (1) if the area to be restored is esthetically important for the patient; (2) if the tooth cannot be properly restored with a direct restoration because of anatomic and/or functional considerations.</p>"},{"k":"Dr. Linz · Lecture 11","t":"Resistance and retention: pins, slots and bonding when conventional features are not enough","b":"<p>Resistance and retention form: (1) in a tooth severely involved with caries, any undermined enamel or weak tooth structure subject to fracture must be removed and restored; (2) when conventional retention features are not adequate because of insufficient remaining tooth structure, pins, slots, and amalgam-bonding techniques may be used to enhance retention; (3) the retention features needed depend on the amount of tooth structure remaining and the tooth being restored — as more tooth structure is lost, more auxiliary retention is required; (4) pins, slots and bonding also provide additional resistance form to the restoration.</p><p>When possible, opposing vertical walls should be prepared to converge occlusally, to enhance primary retention form. The pulpal and gingival walls should be relatively flat and perpendicular to the long axis of the tooth.</p>"},{"k":"Dr. Linz · Lecture 11","t":"Cusp capping: when the occlusal opening exceeds two-thirds of the intercuspal distance","b":"<p>Capping cusps: (a) when caries is extensive, reduction of one or more of the cusps for capping may be indicated; (b) when the facial-lingual extension of the occlusal preparation exceeds <b>two thirds of the distance between the facial and lingual cusp tips</b> (the intercuspal distance), reduction of the cusp(s) for amalgam is usually required for adequate resistance form; (c) the reduction should be <b>2 mm as a minimum depth</b> on the occlusal surface of each cusp to be capped, using the side of a carbide fissure bur, to ensure that the final restoration has restored cusps with a minimal thickness of <b>2 mm of amalgam</b>; (d) the occlusal contour of the reduced cusp should be similar to the normal contour of the unreduced cusp. Any sharp internal corners of the tooth preparation should be rounded to reduce stress concentration in the amalgam and thus improve its resistance to fracture from occlusal forces.</p>"},{"k":"Dr. Linz · Lecture 11","t":"Secondary retention: coves and locks first, then slots 0.5 mm pulpal to the DEJ","b":"<p>Cusp reduction significantly diminishes retention form by decreasing the height of the vertical walls, so secondary retention means are required, which may include:</p><p>(1) Coves and locks: coves are prepared in a <b>horizontal</b> plane and locks are prepared in a <b>vertical</b> plane. These locks and coves should be prepared <b>before</b> preparing pinholes and inserting pins.</p><p>(2) Slots: which may be prepared along the gingival floor, or in addition to pinholes. The slot should be prepared <b>0.5 mm pulpal to the dentino-enamel junction</b> and at least <b>0.5 mm in depth</b>.</p><p>(3) Pins placed into prepared pinholes provide auxiliary resistance and retention forms. A pin-retained amalgam restoration is any filling that may need one or more pins to provide adequate resistance and retention forms.</p>"},{"k":"Dr. Linz · Lecture 11","t":"Advantages and disadvantages of a pin-retained amalgam, including 4 mm of occlusal clearance","b":"<p>Advantages: (1) conservative — the pin is more conservative in tooth cutting than a slot and a crown preparation; (2) time value — a pinned amalgam needs only one visit, whereas the cast may need two visits; (3) resistance and retention are better by using pins; (4) more economic than a cast.</p><p>Disadvantages: (1) it is difficult to penetrate when there is little dentine left; (2) stress is induced into tooth structure; (3) perforation may occur to the pulp or to the external tooth surface; (4) it requires at least <b>4 mm of occlusal clearance</b>.</p>"},{"k":"Dr. Linz · Lecture 11","t":"Three pin types: self-threading, cemented, and friction-locked — hole sizes and depths","b":"<p><b>Self-threading pins</b>: the pin is retained by threads on its surface engaging the dentine when it is inserted. It is the most retentive type and the most widely used. However, vertical and horizontal stresses can be generated in the dentine, causing craze lines related to the size of the pin. The diameter of the pinhole is <b>0.1 mm smaller</b> than the pin diameter; the elasticity of dentine allows insertion into a hole of smaller diameter. The depth of the pinhole is about <b>1.5–2 mm</b>.</p><p><b>Cemented pins</b>: threaded or serrated stainless-steel pins cemented into pinholes <b>0.05 mm larger</b> than the diameter of the pin. The cement may be any standard dental luting agent such as zinc phosphate or polycarboxylate. Cemented pins produce less stress in the dentine. The depth of the pinhole should be <b>3 mm</b>.</p><p><b>Friction-locked pins</b>: the diameter of the prepared pinhole is <b>0.025 mm less</b> than the diameter of the pin; the pin is tapped in place and retained by the resiliency of dentine. It is <b>2–3 times more retentive</b> than cemented pins, and is inserted by a specially designed instrument.</p><p>For retention in dentine and amalgam: the self-threading pin is the most retentive, the friction-locked pin is intermediate, and the cemented pin is the least retentive. The number and depth of the elevations (serrations or threads) on the pin influence retention in the amalgam; the shape of the self-threading pin gives it the greatest retention value.</p>"},{"k":"Dr. Linz · Lecture 11","t":"Quiz: two-thirds of the ICD, a 2 mm cap, and the three pin types","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">A complex amalgam, cusp capping and secondary retention in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Cusps are never reduced; slots are cut 3 mm into enamel; coves are vertical and locks are horizontal</button><button type=\"button\" class=\"opt\" data-i=\"1\">A complex amalgam is considered when large amounts of tooth are missing, when one or more cusps need capping, or when more resistance and retention are needed. Indications include a control restoration with a questionable pulp or periodontium, acute severe caries, and a foundation for a fixed prosthesis. It is contraindicated in an esthetically important area, or when a direct restoration cannot restore the tooth anatomically or functionally. If the facial-lingual occlusal extension exceeds two thirds of the intercuspal distance, cusp reduction is usually required: a minimum 2 mm occlusal reduction with the side of a carbide fissure bur, so that at least 2 mm of amalgam covers the cusp; the reduced contour follows the original, and sharp internal corners are rounded. Opposing vertical walls should converge occlusally when possible; pulpal and gingival walls are relatively flat and perpendicular to the long axis. After cusp reduction, secondary retention is needed: horizontal coves and vertical locks (prepared before pinholes), slots 0.5 mm pulpal to the DEJ and at least 0.5 mm deep, and pins. Pins, slots and bonding also add resistance</button><button type=\"button\" class=\"opt\" data-i=\"2\">A 0.5 mm amalgam thickness is enough over a capped cusp</button><button type=\"button\" class=\"opt\" data-i=\"3\">Locks and coves should be cut only after the pins have been seated</button></div><div class=\"qexp\" hidden><p>إذا فتحة الإطباق تجاوزت ثلثي المسافة بين الحدبات، قلّل الحدبة 2 ملم على الأقل حتى يبقى 2 ملم ملغم. التجاويف أفقية والأقفال عمودية قبل الثقوب. الأخدود 0.5 ملم لبيّاً عن الـ DEJ وبعمق 0.5 ملم على الأقل.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">The three types of pin, and the advantages of a pin-retained amalgam, are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Cemented pins are the most retentive; all three types use a hole 0.5 mm smaller than the pin and 0.5 mm deep; a pin always needs two visits</button><button type=\"button\" class=\"opt\" data-i=\"1\">Self-threading is the most retentive and most widely used: the hole is 0.1 mm smaller than the pin and about 1.5–2 mm deep, but insertion can craze the dentine. Cemented pins (zinc phosphate or polycarboxylate) go into a hole 0.05 mm larger than the pin, 3 mm deep, and produce less stress — they are the least retentive. Friction-locked pins go into a hole 0.025 mm smaller, are tapped in and held by dentine resiliency, and are 2–3 times more retentive than cemented pins (intermediate overall). Advantages of pins: more conservative cutting than a slot or a crown, one visit rather than two for a cast, better resistance and retention, and less cost. Disadvantages: difficult when little dentine remains, stress in the tooth, possible pulp or external perforation, and a need for at least 4 mm of occlusal clearance</button><button type=\"button\" class=\"opt\" data-i=\"2\">Friction-locked pins are cemented with glass ionomer into an oversized hole</button><button type=\"button\" class=\"opt\" data-i=\"3\">A pin-retained amalgam is less conservative than preparing a full crown</button></div><div class=\"qexp\" hidden><p>الذاتي أكثر تثبيت (ثقب أصغر 0.1 ملم، عمق 1.5–2 ملم). المُلصَق أقل تثبيت (ثقب أكبر 0.05، عمق 3 ملم). الاحتكاك وسط (أصغر 0.025، أقوى 2–3 مرات من المُلصَق). يحتاج 4 ملم فراغ إطباقي على الأقل.</p></div></div>"},{"k":"Dr. Linz · Lecture 11","t":"How far a pin may extend, when it may be bent, and why more than 2 mm is contraindicated","b":"<p>Orientation, number and diameter: retention is provided by placing the pins in a non-parallel manner. Excessive bending of pins to improve retention in amalgam is not desirable, because bending interferes with adequate condensation of amalgam around the pin, and bending may weaken the pins. Pins should be bent only to provide an adequate amount of amalgam (approximately <b>1 mm</b>) between the pin and the external surface of the finished restoration.</p><p>Extension of the pin into amalgam and dentine: extension of the pin into dentine and amalgam greater than <b>2 mm</b> is unnecessary for pin retention and is contraindicated, in order to preserve the strength of the dentine and the amalgam. When the pin is placed, it should not exceed 2 mm in length in the amalgam; if it is longer, the excess should be cut. It is desired to have at least <b>2 mm of thickness of amalgam occlusal to the end of the pin</b> to prevent weakening of the restoration.</p>"},{"k":"Dr. Linz · Lecture 11","t":"TMS pin sizes: Regular, Minim, Minikin and Minuta — and how many pins to use","b":"<p>Two factors determine the appropriate pin size: the amount of dentine available to safely receive the pin, and the amount of retention desired. In the Thread Mate System (TMS) four sizes are available, from the largest to the smallest: <b>Regular, Minim, Minikin and Minuta</b>. The <b>Minikin</b> pins are usually the pins of choice for severely involved posterior teeth, to reduce the risk of dentine crazing, pulpal penetration, and potential perforation. The <b>Minim</b> pins are usually used as a backup when the pinhole for the Minikin was over-prepared. The <b>Regular</b> (largest) pin is rarely used because a significant amount of stress in the tooth (dentine and enamel) may be created during its insertion. The <b>Minuta</b> pin is usually too small to provide adequate retention in posterior teeth, so it can be of benefit for providing retention for anterior-teeth restorations.</p><p>Number of pins: (a) as a rule, <b>one pin per cusp or marginal ridge</b>; (b) the fewest pins possible should be used to achieve the desired retention; (c) if more than one pin is used, <b>3–5 mm of space between pins</b> is required; (d) as the number of pins increases, the retention of the restoration increases, while an excessive number of pins can fracture the tooth and significantly weaken the amalgam restoration.</p>"},{"k":"Dr. Linz · Lecture 11","t":"Where the pinhole may go: halfway to the pulp, and no closer than 0.5–1 mm to the DEJ","b":"<p>Location: (a) occlusal clearance should be sufficient to provide <b>2 mm of amalgam over the pin</b>; (b) pinholes should be located halfway between the pulp and the DEJ or the external surface of the tooth root. The pinhole should be positioned no closer than <b>0.5 to 1 mm to the DEJ</b>, or no closer than <b>1 to 1.5 mm to the external surface</b> of the tooth; (c) the pinhole should be parallel to the adjacent external surface of the tooth; (d) a minimum space of <b>0.5 mm</b> is required around the circumference of the pin for adequate condensation of amalgam; (e) pinholes should be prepared on a flat surface that is perpendicular to the proposed direction of the pinhole.</p><p>Several posterior teeth have anatomic features that may preclude safe pinhole placement. External perforation may result from pinhole placement: (i) over the prominent mesial concavity of the maxillary first premolar; (ii) over bifurcation areas of the lower molars and trifurcation areas of the upper molars; (iii) the distal aspect of mandibular molars and the lingual aspect of maxillary molars, because of root angulations of these teeth just apical to the CEJ; (iv) teeth that are rotated in the arch; (v) abnormally tilted teeth.</p>"},{"k":"Dr. Linz · Lecture 11","t":"Preparing the pinhole: a No. ¼ pilot, a 2 mm twist drill, and 300–500 rpm, kept spinning","b":"<p>The drill is a twist drill made with an aluminum shank, which acts as a heat absorber, and is colour-coded so that it can be easily matched with the appropriate pin size. A drill with a limited depth of <b>2 mm</b> should be used to prepare the hole.</p><p>When the pinhole locations have been determined, a <b>No. ¼ round bur</b> is first used to prepare a starting hole. The purpose of this hole is to permit more accurate placement of the twist drill and to prevent the drill from “crawling” once it has begun to rotate. Put the handpiece on clockwise rotation at very low speed (<b>300 to 500 rpm</b>). Prepare the hole parallel to the nearest external tooth surface: align the twist drill with the external tooth surface, and drill the hole in one continuous motion until the depth is reached, then pull the drill without stopping the rotation, to prevent breaking of the drill while it is in the hole. Care must be exercised when preparing pinholes in mesially tilted molars, to prevent external perforation on the mesial surface and pulpal penetration on the distal surface (an incorrect angulation of the twist drill is shown in the lecture’s figure).</p>"},{"k":"Dr. Linz · Lecture 11","t":"TMS designs: standard, self-shearing, two-in-one, Link Series and Link Plus","b":"<p>For each of the four sizes of pins, several designs are available: standard, self-shearing, two-in-one, Link Series, and Link Plus. The <b>Link Series and Link Plus</b> pins are recommended. TMS pins are available in titanium or stainless steel plated with gold. When the pin reaches the bottom of the hole, the top portion of the pin shears off, leaving a length of pin extending from the dentine. Handpiece chucks and hand wrenches are available for the TMS regular self-shearing, Minikin, Minim, Minuta, Link Series and Link Plus pins.</p>"},{"k":"Dr. Linz · Lecture 11","t":"Five places a pin-retained restoration can fail, and what to do if a drill or pin breaks","b":"<p>The failure of pin-retained restorations might occur at any of five different locations: (a) within the restoration (restoration fracture); (b) at the interface between the pin and the restorative material (pin–restoration separation); (c) within the pin (pin fracture); (d) at the interface between the pin and the dentine (pin–dentine separation); (e) within the dentine (dentine fracture).</p><p>Broken drills and broken pins: a twist drill will break if it is stressed laterally or allowed to stop rotating before being removed from the pinhole. Pins also may break during bending if care is not exercised. The treatment for both broken drills and broken pins is to choose an alternate location, at least <b>1.5 mm away</b> from the broken item, and prepare another pinhole. Loose pins: the pin should be removed from the tooth and the pinhole re-prepared with the next largest size drill, and the appropriate pin inserted. Preparing another pinhole of the same size <b>1.5 mm</b> from the original pinhole also is acceptable.</p>"},{"k":"Dr. Linz · Lecture 11","t":"Pulp penetration and external perforation: haemorrhage, calcium hydroxide, and a new hole","b":"<p>Penetration into the pulp and perforation of the external tooth surface: it is obvious if there is haemorrhage in the pinhole following removal of the drill; the operator can also feel an abrupt loss of resistance of the drill to hand pressure. In an asymptomatic tooth, a pulpal penetration is treated as any other small mechanical exposure: control the haemorrhage, then place a calcium-hydroxide liner over the opening of the pinhole, and prepare another hole <b>1.5 to 2 mm away</b>.</p><p>Perforation of the external surface can occur occlusal or apical to the gingival attachment. When the perforation occurs occlusal to the gingival attachment, the pin can be cut off flush with the tooth surface and no further treatment is needed; or the pin can be removed, if still present, and the external aspect of the pinhole enlarged slightly and restored with amalgam. If the perforation occurs apical to the attachment, reflect the tissue surgically, remove the necessary bone, enlarge the pinhole slightly, and restore with amalgam.</p>"},{"k":"Dr. Linz · Lecture 11","t":"Why an amalgam restoration fails: secondary caries, a sharp axio-pulpal angle, and more","b":"<p>The failure of an amalgam restoration may include: (1) <b>Secondary caries</b> — in Class I and Class II amalgam restorations, caries around the margins was the predominant cause of restoration failure. Also, an amalgam restoration in high-caries-incidence individuals may fail as a result of secondary caries.</p><p>(2) <b>Isthmus fractures or marginal-ridge fracture</b> of the restoration. The marginal-ridge fracture in a Class II restoration may be caused by: (a) an axio-pulpal line angle that is not rounded; (b) a marginal ridge left too high; (c) improper removal of the matrix.</p><p>(3) <b>Tooth fractures</b>: excessive tooth cutting or excessive caries may result in a large cavity with thin walls that cannot withstand occlusal forces. Also, sharp internal line angles may cause stress concentration of the restoration on the tooth walls and lead to fracture.</p><p>(4) <b>Improper marginal adaptation and marginal fractures</b>, mainly caused by improper marginal preparation; improper carving and finishing; excess mercury; use of low-copper amalgam; and amalgam expansion.</p><p>(5) Other reasons include faults in the clinical procedures during amalgam placement, such as a gingival overhang of the restoration (due to not using, or improperly using, the wedge), and an improper contact area with the adjacent tooth, which will lead to periodontal problems.</p>"},{"k":"Dr. Linz · Lecture 11","t":"Self-test: Minikin pins, 3–5 mm spacing, a 2 mm drill, and five failure sites","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Pin extension, TMS sizes and how many pins to place, in this lecture, are:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Every pin should extend 4 mm into both dentine and amalgam; Regular pins are first choice in posterior teeth; as many pins as will fit should be used, 0.5 mm apart</button><button type=\"button\" class=\"opt\" data-i=\"1\">Extension of a pin into dentine and amalgam greater than 2 mm is unnecessary and contraindicated. In amalgam the pin should not exceed 2 mm; cut any excess. At least 2 mm of amalgam should remain occlusal to the end of the pin. Pins may be placed non-parallel, but should be bent only to leave about 1 mm of amalgam between the pin and the external surface of the finished restoration — excessive bending weakens the pin and interferes with condensation. TMS sizes from largest to smallest are Regular, Minim, Minikin and Minuta. Minikin is usually chosen for severely involved posterior teeth (less crazing, pulpal penetration and perforation). Minim is the backup if a Minikin hole is over-prepared. Regular is rarely used because of stress. Minuta is usually too small for posterior teeth and may help anterior restorations. As a rule, one pin per cusp or marginal ridge; use the fewest pins possible; leave 3–5 mm between pins if more than one is used. More pins increase retention, but too many can fracture the tooth and weaken the amalgam</button><button type=\"button\" class=\"opt\" data-i=\"2\">Minuta pins are first choice for every molar, and pins must always be bent sharply into a parallel group</button><button type=\"button\" class=\"opt\" data-i=\"3\">A pin may safely end 0.2 mm below the occlusal surface of the amalgam</button></div><div class=\"qexp\" hidden><p>المسمار ما يدخل أكثر من 2 ملم بالعاج والملغم، ويبقى 2 ملم ملغم فوقه. Minikin عادة للخلفية الشديدة، Minim احتياطي، Regular نادر، Minuta للأمامية. مسمار واحد لكل حدبة أو حافة، و3–5 ملم بين المسامير.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Pinhole location and preparation in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Place the hole on the DEJ itself, at high speed, and stop the drill before withdrawing it</button><button type=\"button\" class=\"opt\" data-i=\"1\">Provide 2 mm of amalgam over the pin. Locate the hole halfway between the pulp and the DEJ or external root surface: no closer than 0.5–1 mm to the DEJ, and no closer than 1–1.5 mm to the external surface; parallel to the adjacent external surface; on a flat surface perpendicular to the proposed hole; with at least 0.5 mm around the pin for condensation. Avoid the mesial concavity of a maxillary first premolar, molar furcations, the distal of mandibular molars and the lingual of maxillary molars just apical to the CEJ, and rotated or abnormally tilted teeth. Use a colour-coded aluminum-shank twist drill with a 2 mm depth stop. Start with a No. ¼ round bur so the drill does not crawl. Run clockwise at 300–500 rpm, align with the external surface, drill in one continuous motion, and withdraw still rotating. In a mesially tilted molar, a wrong angle may perforate mesially or enter the pulp distally. Link Series and Link Plus are the recommended TMS designs (titanium, or gold-plated stainless steel); the top shears off when the pin reaches the bottom of the hole</button><button type=\"button\" class=\"opt\" data-i=\"2\">A No. 8 bur at 400,000 rpm is used to start every pinhole on a sloping enamel wall</button><button type=\"button\" class=\"opt\" data-i=\"3\">Pinholes may safely be placed over the furcation of a molar if the bur is new</button></div><div class=\"qexp\" hidden><p>2 ملم ملغم فوق المسمار. الثقب بمنتصف المسافة، لا أقرب من 0.5–1 ملم للـ DEJ ولا 1–1.5 ملم للخارج. ابدأ بفرازة ¼، مثقاب عمق 2 ملم، 300–500 دورة، واسحبه وهو يدور. Link Series و Link Plus مُوصى بهما.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">If a pin breaks, loosens, or penetrates the pulp, and why amalgams fail, this lecture says:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Leave a broken drill in place and continue condensing; a pulp penetration is ignored if the tooth is quiet; secondary caries is a rare cause of failure</button><button type=\"button\" class=\"opt\" data-i=\"1\">Failure of a pin-retained restoration may occur in five places: within the restoration, at the pin–restoration interface, within the pin, at the pin–dentine interface, or within the dentine. A drill breaks if stressed laterally or if rotation stops before withdrawal; a pin may break during bending. For a broken drill or pin, prepare a new hole at least 1.5 mm away. A loose pin is removed and the hole is re-prepared with the next largest drill, or a same-size hole is cut 1.5 mm away. Pulp penetration (haemorrhage in the hole, or a sudden loss of drill resistance) in an asymptomatic tooth is treated as a small mechanical exposure: control bleeding, place a calcium-hydroxide liner over the opening, and prepare another hole 1.5–2 mm away. An external perforation occlusal to the attachment may be cut flush and left, or removed, slightly enlarged and restored with amalgam; apical to the attachment, reflect tissue, remove necessary bone, enlarge slightly and restore with amalgam. Amalgam failure may be from secondary caries (the predominant cause around Class I and II margins, and in high-caries patients); isthmus or marginal-ridge fracture (unrounded axio-pulpal angle, a ridge left too high, or improper matrix removal); tooth fracture (thin walls or sharp internal angles); poor marginal adaptation (poor preparation, poor carving, excess mercury, low-copper amalgam, or expansion); or clinical faults such as a gingival overhang (no wedge, or a poor one) and a poor contact, which cause periodontal problems</button><button type=\"button\" class=\"opt\" data-i=\"2\">An apical perforation is always left untreated so that bone can fill the hole</button><button type=\"button\" class=\"opt\" data-i=\"3\">An unrounded axio-pulpal line angle protects the Class II marginal ridge from fracture</button></div><div class=\"qexp\" hidden><p>خمس مناطق فشل للمسامير. المكسور أو المرتخي: ثقب جديد على بعد 1.5 ملم على الأقل. اختراق اللب: سيطرة نزف، هيدروكسيد كالسيوم، وثقب جديد 1.5–2 ملم. فشل الملغم غالباً نخر ثانوي، أو كسر البرزخ إذا الزاوية المحورية-اللبية مو مدوّرة.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">In this lecture, when is cusp capping usually required, and how much amalgam must cover the reduced cusp?</button><div class=\"flash-a\" hidden>When the facial-lingual extension of the occlusal preparation exceeds two thirds of the intercuspal distance, cusp reduction is usually required. Reduce at least 2 mm so that the restored cusp has a minimal thickness of 2 mm of amalgam.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا رابع ملف معالجة: محاضرة د. لنز 11 عن ترميمات الملغم المعقّدة (صفحات 71–83): الاستطبابات، تغطية الحدبات، التثبيت الإضافي (تجاويف وأقفال وأخاديد ومسامير)، نظام TMS، ومشاكل المسامير وأسباب فشل الملغم. الأرقام مثل تقليل الحدبة 2 ملم، والأخدود 0.5 ملم، وثقب المسمار الذاتي 1.5–2 ملم تبقى كما بالمحاضرة.</p>","<p>الملغم المعقّد يُفكّر فيه لما يضيع جزء كبير من السن، أو تحتاج تغطية حدبة أو أكثر، أو تحتاج مقاومة وتثبيت أكبر (بالمحاضرة مثال MODFL: إنسي-إطباقي-وحشي-وجهي-لساني).</p><p>الاستطبابات: ترميم سيطرة لأسنان تشخيص لبّها أو لثتها مشكوك؛ ترميم سيطرة ويه نخر حاد وشديد؛ وأساسات (أسنان دعامات للتعويض الثابت).</p><p>الموانع: إذا المنطقة مهمة جمالياً للمريض؛ أو إذا السن ما ينرمّم بشكل صحيح بترميم مباشر بسبب الشكل التشريحي أو الوظيفة.</p>","<p>إذا النخر شديد، شيل كل المينا غير المدعوم والبنية الضعيفة القابلة للكسر. إذا التثبيت التقليدي ما يكفي لقلة البنية الباقية، استخدم مسامير (<b>pins</b>) وأخاديد (<b>slots</b>) وتقنيات ربط الملغم. كل ما ضاع أكثر من السن، تحتاج تثبيت إضافي أكثر. المسامير والأخاديد والربط تزيد المقاومة هم.</p><p>إذا ممكن، الجدران العمودية المتقابلة تتقارب إطباقياً للتثبيت الأولي. الجدران اللبية واللثوية تكون مسطحة تقريباً وعمودية على المحور الطويل للسن.</p>","<p>تغطية الحدبات: إذا النخر واسع، ممكن تقلّل حدبة أو أكثر. إذا الامتداد الشدقي-اللساني للتحضير الإطباقي يتجاوز <b>ثلثي المسافة بين رؤوس الحدبات</b>، عادة يلزم تقليل الحدبة للمقاومة. التقليل <b>2 ملم كحد أدنى</b> على إطباق كل حدبة تُغطى، بجانب فرازة شق كاربيد، حتى يبقى سمك ملغم لا يقل عن <b>2 ملم</b> فوق الحدبة. محيط الحدبة بعد التقليل يبقى مشابه للطبيعي. أي زاوية داخلية حادة تُدوَّر حتى ما يتركز الإجهاد وينكسر الملغم.</p>","<p>تقليل الحدبة يقصّر الجدران العمودية فيقل التثبيت، لذلك تحتاج وسائل تثبيت ثانوية:</p><p>(1) التجاويف (<b>coves</b>) بمستوى <b>أفقي</b>، والأقفال (<b>locks</b>) بمستوى <b>عمودي</b>. تتحضّر <b>قبل</b> ثقوب ومسامير التثبيت.</p><p>(2) الأخاديد (<b>slots</b>) على الأرضية اللثوية، أو إضافة لثقوب المسامير. الأخدود <b>0.5 ملم لبيّاً عن الملتقى المينائي-العاجي</b> وعمقه على الأقل <b>0.5 ملم</b>.</p><p>(3) المسامير داخل ثقوبها تثبيت ومقاومة إضافية. أي حشوة تحتاج مسمار أو أكثر تُسمى ترميم ملغم مثبت بالمسامير.</p>","<p>المزايا: أكثر محافظة بقطع السن من الأخدود وتحضير التاج؛ جلسة واحدة مقابل زيارتين للمصبوب؛ مقاومة وتثبيت أفضل؛ وأرخص من المصبوب.</p><p>العيوب: صعب إذا العاج قليل؛ يولّد إجهاد ببنية السن؛ ممكن تثقب اللب أو السطح الخارجي؛ ويحتاج على الأقل <b>4 ملم فراغ إطباقي</b>.</p>","<p><b>المسمار الذاتي اللولب</b>: الأكثر تثبيتاً والأكثر استخداماً. الخيوط تمسك بالعاج، بس يولّد إجهادات وقد يعمل خطوط تشقق حسب حجم المسمار. قطر الثقب <b>أصغر بـ 0.1 ملم</b> من المسمار (مرونة العاج تسمح بالإدخال). عمق الثقب حوالي <b>1.5–2 ملم</b>.</p><p><b>المسمار المُلصَق</b>: فولاذ مقاوم للصدأ ملولب أو مسنّن داخل ثقب <b>أكبر بـ 0.05 ملم</b>، يُلصق بفوسفات الزنك أو البولي كاربوكسيلات. إجهاده أقل. عمق الثقب <b>3 ملم</b>.</p><p><b>المسمار المقفل بالاحتكاك</b>: الثقب <b>أصغر بـ 0.025 ملم</b>، يُطرق بمكانه ويُمسَك بمرونة العاج. تثبيته <b>2–3 أضعاف</b> المُلصَق، ويُدخل بأداة خاصة.</p><p>ترتيب التثبيت: الذاتي أكثر شي، بعدين الاحتكاك، والمُلصَق أقل شي. شكل الخيوط يعطي الذاتي أعلى قيمة تثبيت داخل الملغم هم.</p>","<p>سؤالان على تغطية الحدبة وثلثي المسافة، وأنواع المسامير الثلاثة.</p>","<p>التثبيت يزيد إذا المسامير مو متوازية. بس ثني المسامير زيادة مو مرغوب: يعيق رص الملغم حول المسمار وقد يضعّفه. الثني فقط حتى يبقى حوالي <b>1 ملم</b> ملغم بين المسمار والسطح الخارجي للترميم النهائي.</p><p>امتداد المسمار داخل العاج والملغم أكثر من <b>2 ملم</b> مو لازم وممنوع، حتى ما تضعف قوة العاج والملغم. إذا طلع أطول من 2 ملم داخل الملغم، اقطع الزائد. ويفضّل يبقى على الأقل <b>2 ملم ملغم إطباقياً فوق نهاية المسمار</b> حتى الترميم ما يضعف.</p>","<p>حجم المسمار يعتمد على كمية العاج الآمنة ومقدار التثبيت المطلوب. بنظام <b>TMS</b> أربعة أحجام من الأكبر للأصغر: <b>Regular، Minim، Minikin، Minuta</b>. <b>Minikin</b> عادة الخيار للأسنان الخلفية الشديدة الإصابة حتى يقل تشقق العاج واختراق اللب والانثقاب. <b>Minim</b> احتياطي إذا ثقب الـ Minikin اتوسع زيادة. <b>Regular</b> نادراً يُستخدم لأن إدخاله يولّد إجهاد كبير. <b>Minuta</b> صغير جداً للخلفية، ويفيد أكثر بتثبيت ترميمات الأمامية.</p><p>العدد: قاعدة عامة <b>مسمار واحد لكل حدبة أو حافة هامشية</b>؛ استخدم أقل عدد يكفي؛ إذا أكثر من مسمار اترك <b>3–5 ملم</b> بينهما. كل ما زاد العدد زاد التثبيت، بس الكثرة تكسر السن وتضعّف الملغم.</p>","<p>الموقع: فراغ إطباقي يكفي لـ <b>2 ملم ملغم فوق المسمار</b>؛ الثقب بمنتصف المسافة بين اللب والـ DEJ أو السطح الخارجي للجذر. لا أقرب من <b>0.5–1 ملم للـ DEJ</b>، ولا أقرب من <b>1–1.5 ملم للسطح الخارجي</b>. الثقب يوازي السطح الخارجي المجاور. حول المسمار على الأقل <b>0.5 ملم</b> حتى ينرص الملغم. والثقب على سطح مسطح عمودي على اتجاه الثقب المقترح.</p><p>أماكن خطر الانثقاب الخارجي: التقعر الإنسي البارز للضاحك الأول العلوي؛ مناطق تفرع الأرحاء السفلية وتثليث العلوية؛ الجانب الوحشي للأرحاء السفلية واللساني للعلوية بسبب ميل الجذر تحت الملتقى الملاطي-المينائي مباشرة؛ الأسنان المدوّرة بالقوس؛ والأسنان المائلة بشكل غير طبيعي.</p>","<p>المثقاب لولبي ويه ساق ألمنيوم يمتص الحرارة، ومُرمَّز باللون حسب حجم المسمار. استخدم مثقاب بعمق محدود <b>2 ملم</b>.</p><p>بعد تحديد المكان، ابدأ بفرازة مدورة <b>رقم ¼</b> حتى المثقاب اللولبي ينحط بدقة وما “يزحف” أول ما يدور. القبضة باتجاه عقارب الساعة بسرعة واطية جداً (<b>300–500 دورة/دقيقة</b>). الثقب يوازي أقرب سطح خارجي، بحركة واحدة مستمرة لحد العمق، واسحب المثقاب وهو بعداً يدور حتى ما ينكسر جوه الثقب. بالأرحاء المائلة إنسياً انتبه: ميل غلط يثقب السطح الإنسي من برّه أو يدخل اللب من الوحشي.</p>","<p>لكل حجم عدة تصاميم: قياسي، ذاتي القص، اثنان-في-واحد، وسلسلة Link و Link Plus. <b>Link Series و Link Plus مُوصى بهما</b>. المسامير تيتانيوم أو فولاذ مطلي بالذهب. لما المسمار يوصل قاع الثقب، الجزء العلوي ينقص ويبقي طول بارز من العاج. في ظرف قبضة ومفاتيح يدوية لكل الأنواع.</p>","<p>فشل ترميم المسامير ممكن بخمسة أماكن: كسر الترميم نفسه؛ انفصال المسمار عن مادة الترميم؛ كسر المسمار؛ انفصال المسمار عن العاج؛ أو كسر العاج.</p><p>المثقاب ينكسر إذا انضغط جانبياً أو وقف عن الدوران قبل ما ينسحب. المسمار هم ممكن ينكسر وقت الثني. العلاج: مكان بديل على الأقل <b>1.5 ملم</b> عن القطعة المكسورة، وثقب جديد. إذا المسمار مرتخي: شيله وأعد تحضير الثقب بالحجم الأكبر التالي، أو سوّ ثقب بنفس الحجم على بعد <b>1.5 ملم</b>.</p>","<p>اختراق اللب أو انثقاب السطح الخارجي: يبان إذا طلع نزف بالثقب بعد سحب المثقاب، أو إذا حسّيت فجأة إن مقاومة المثقاب راحت. بالسن بدون أعراض، اختراق اللب يُعامل مثل أي انكشاف ميكانيكي صغير: سيطر على النزف، حط بطانة هيدروكسيد كالسيوم على فتحة الثقب، وسوّ ثقب ثاني على بعد <b>1.5–2 ملم</b>.</p><p>الانثقاب الخارجي ممكن فوق أو تحت الارتباط اللثوي. إذا فوق الارتباط: اقطع المسمار بمستوى سطح السن وخلّه، أو شيله ووسّع الثقب الخارجي بشوي ورمّمه بملغم. إذا تحت الارتباط: ارفع النسيج جراحياً، شيل العظم اللازم، وسّع الثقب بشوي، ورمّم بملغم.</p>","<p>أسباب فشل الملغم: (1) <b>نخر ثانوي</b> حول الحواف هو السبب الأغلب بصنف I و II، وخصوصاً عند الأشخاص ذوي النخر العالي.</p><p>(2) <b>كسر البرزخ أو الحافة الهامشية</b> بصنف II: زاوية محورية-لبية مو مدوّرة؛ حافة هامشية متروكة عالية زيادة؛ أو شيل المصفوفة بطريقة غلط.</p><p>(3) <b>كسر السن</b>: قطع أو نخر زايد يخلي الجدران رقيقة ما تتحمل المضغ، والزوايا الداخلية الحادة تركّز الإجهاد.</p><p>(4) <b>تكيّف هامشي سيئ وكسر الحواف</b>: تحضير حاشية غلط، نحت وإنهاء غلط، زئبق زايد، ملغم نحاسي واطي، أو تمدد الملغم.</p><p>(5) أخطاء سريرية مثل بروز لثوي (ما استخدم الإسفين أو استخدمه غلط)، وتماس غير صحيح ويه السن المجاور يسبب مشاكل لثوية.</p>","<p>ثلاثة أسئلة ختامية على أحجام TMS ومكان الثقب ومشاكل المسامير وأسباب فشل الملغم، وبطاقة تغطية الحدبة، وزر الدرجة.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
