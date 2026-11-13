@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>Operative File 11 — Deep Caries, Vital Pulp Therapy and Fluoride Materials</title>
+<style>
+
+:root{ color-scheme: light only; supported-color-schemes: light; }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+/* Force light everywhere - some in-app browsers force a dark canvas */
+html,body,header,main,footer,div,section,p,ul,ol,li,table,tr,td,th,h1,h2,b,i,br{
+  background-color:transparent;
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000;
+}
+html{background:#ffffff !important;}
+body{background:#ffffff !important;}
+header,footer{background:#ffffff !important;}
+main{background:#ffffff !important;}
+#start{background:#ffffff !important;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.62;
+  -webkit-text-size-adjust:100%;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
+}
+/* ---------- start screen ---------- */
+#start{position:fixed;inset:0;background:#fff;z-index:99;display:flex;align-items:center;justify-content:center;padding:24px;}
+#start .card{max-width:620px;text-align:left;}
+#start h1{font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em;}
+#start .sub{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#555 !important;-webkit-text-fill-color:#555 !important;margin-bottom:20px;}
+#start ul{margin:0 0 24px;padding-left:20px;}
+#start li{margin-bottom:7px;}
+#startBtn{
+  display:block;width:100%;padding:17px 20px;font-size:17px;font-weight:700;
+  font-family:inherit;background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;
+  border:none;border-radius:2px;cursor:pointer;letter-spacing:.02em;
+}
+#startBtn:active{background:#333333 !important;}
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:20;background:#fff;
+  border-bottom:2px solid #000;padding:10px 16px calc(10px + env(safe-area-inset-top,0px));
+  padding-top:calc(10px + env(safe-area-inset-top,0px));
+}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#444 !important;-webkit-text-fill-color:#444 !important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.09em;color:#444 !important;-webkit-text-fill-color:#444 !important;flex:none;}
+#track{height:3px;background:#e2e2e2 !important;margin-top:8px;}
+#fill{height:100%;background:#000000 !important;width:0%;transition:width .35s ease;}
+/* ---------- slide ---------- */
+main{flex:1;padding:22px 18px 26px;max-width:760px;margin:0 auto;width:100%;}
+h2{font-size:25px;line-height:1.22;margin:0 0 16px;letter-spacing:-.012em;}
+main p{margin:0 0 13px;}
+main ul,main ol{margin:0 0 13px;padding-left:23px;}
+main li{margin-bottom:7px;}
+b{font-weight:700;}
+.hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;font-weight:700;padding:1px 3px;border-radius:2px;}
+.note{font-size:15px;color:#444 !important;-webkit-text-fill-color:#444 !important;border-left:3px solid #000;padding:2px 0 2px 12px;margin-top:16px;font-style:italic;}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:15.5px;}
+.tbl td,.tbl th{border:1px solid #b9b9b9;padding:8px 10px;text-align:left;vertical-align:top;}
+.tbl th{background:#f0f0f0 !important;font-weight:700;}
+.tbl tr td:first-child{width:42%;}
+.ar{font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;line-height:1.95;}
+.ar ul{padding-left:0;padding-right:22px;}
+.ar .note{border-left:none;border-right:3px solid #000;padding:2px 12px 2px 0;}
+/* ---------- Iraqi Arabic explanation box ---------- */
+.arx{direction:rtl;text-align:right;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;padding:12px 15px 6px;margin:22px 0 4px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:17.5px;line-height:1.9;}
+.arx .arlbl{display:block;font-weight:700;color:#0b5cad !important;-webkit-text-fill-color:#0b5cad !important;margin-bottom:4px;font-size:16px;}
+.arx p{margin:0 0 9px;}
+.arx ul{margin:0 0 9px;padding-left:0;padding-right:22px;}
+.arx li{margin-bottom:6px;}
+/* ---------- footer controls ---------- */
+footer{
+  position:sticky;bottom:0;z-index:20;background:#fff;border-top:2px solid #000;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));
+}
+.ctrls{display:flex;align-items:center;gap:11px;max-width:760px;margin:0 auto;}
+button.nav{
+  font-family:inherit;font-size:16px;font-weight:700;padding:14px 16px;border-radius:2px;cursor:pointer;
+  border:2px solid #000000;background:#ffffff !important;color:#000000 !important;-webkit-text-fill-color:#000000 !important;flex:1;
+}
+button.nav:disabled{border-color:#c9c9c9;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;cursor:not-allowed;background:#f4f4f4 !important;}
+#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;flex:1.45;}
+#next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;border-color:#cfcfcf;}
+#clock{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:27px;font-weight:700;
+  min-width:88px;text-align:center;letter-spacing:.02em;font-variant-numeric:tabular-nums;flex:none;
+}
+#clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+#clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;font-size:17px;}
+@media (max-width:400px){
+  body{font-size:16px;}
+  h2{font-size:22px;}
+  #clock{font-size:23px;min-width:74px;}
+  button.nav{font-size:15px;padding:13px 10px;}
+}
+@media (prefers-reduced-motion:reduce){#fill{transition:none;}}
+
+/* Hard override: if the host browser forces dark mode, stay light */
+@media (prefers-color-scheme: dark){
+  html,body,header,main,footer,#start{background:#ffffff !important;}
+  html,body,header,main,footer,#start,p,li,h1,h2,b,i,td,th,div,span{color:#000000 !important;-webkit-text-fill-color:#000000 !important;}
+  .hl{background:#ffec3d !important;color:#c40000 !important;-webkit-text-fill-color:#c40000 !important;}
+  #startBtn,#next{background:#000000 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;}
+  #next:disabled{background:#eeeeee !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  button.nav{background:#ffffff !important;}
+  button.nav:disabled{background:#f4f4f4 !important;color:#9a9a9a !important;-webkit-text-fill-color:#9a9a9a !important;}
+  .tbl th{background:#f0f0f0 !important;}
+  #track{background:#e2e2e2 !important;}
+  #fill{background:#000000 !important;}
+  .note,.kicker,.count{color:#444444 !important;-webkit-text-fill-color:#444444 !important;}
+  #clock.free{color:#8a8a8a !important;-webkit-text-fill-color:#8a8a8a !important;}
+  #clock.done{color:#1a7a1a !important;-webkit-text-fill-color:#1a7a1a !important;}
+}
+
+
+/* ---------- figures ---------- */
+.fig{display:block;max-width:100%;width:auto;height:auto;margin:8px auto 6px;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;}
+.figrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;margin:8px 0 6px;}
+.figrow img{max-width:calc(50% - 6px);height:auto;border:1px solid #cfcfcf;border-radius:4px;background:#fff !important;flex:1 1 160px;}
+.cap{font-size:13.5px;color:#444 !important;-webkit-text-fill-color:#444 !important;text-align:center;margin:0 0 14px;font-style:italic;line-height:1.45;}
+
+/* ---------- interactive: quiz ---------- */
+.qbox{direction:rtl;text-align:right;background:#fff8e8 !important;border:2px solid #b8860b;border-radius:8px;padding:12px 14px 10px;margin:18px 0 6px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+.qlbl{display:block;font-weight:700;color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;margin-bottom:6px;font-size:15.5px;}
+.qq{margin:0 0 10px;font-size:16.5px;line-height:1.7;font-weight:700;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+button.opt{
+  font-family:inherit;font-size:15.5px;line-height:1.55;text-align:right;padding:10px 12px;
+  border:2px solid #c9a227;border-radius:6px;background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;width:100%;
+}
+button.opt:active{background:#fff3c4 !important;}
+button.opt.correct{background:#d3f9d8 !important;border-color:#2b8a3e !important;font-weight:700;}
+button.opt.wrong{background:#ffe3e3 !important;border-color:#c92a2a !important;}
+.qbox.answered button.opt{cursor:default;}
+.qexp{margin:10px 0 2px;padding:8px 10px;background:#eef6ff !important;border-right:3px solid #0b5cad;border-radius:4px;font-size:16px;line-height:1.85;}
+.qexp b{font-weight:700;}
+
+/* ---------- interactive: flashcard ---------- */
+.flash{direction:rtl;text-align:right;margin:16px 0 6px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;}
+button.flash-q{
+  font-family:inherit;font-size:16px;line-height:1.7;text-align:right;padding:12px 14px;width:100%;
+  border:2px dashed #0b5cad;border-radius:8px;background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;
+  cursor:pointer;font-weight:700;
+}
+button.flash-q.open{border-style:solid;background:#e7f0fb !important;}
+.flash-a{margin:8px 0 0;padding:10px 12px;background:#eef6ff !important;border:1px solid #0b5cad;border-radius:8px;font-size:16.5px;line-height:1.9;}
+
+/* ---------- self-test score ---------- */
+.score{direction:rtl;text-align:center;margin:14px 0;padding:12px;background:#eef6ff !important;border:2px solid #0b5cad;border-radius:8px;
+  font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;font-size:18px;font-weight:700;}
+button.scorebtn{
+  display:block;width:100%;margin:12px 0 4px;padding:14px 16px;font-family:"Geeza Pro","Al Bayan","Segoe UI",Tahoma,sans-serif;
+  font-size:17px;font-weight:700;border:none;border-radius:8px;cursor:pointer;
+  background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;
+}
+
+@media (max-width:400px){
+  .figrow img{max-width:100%;flex-basis:100%;}
+  button.opt{font-size:15px;padding:9px 10px;}
+}
+
+@media (prefers-color-scheme: dark){
+  .fig,.figrow img{background:#fff !important;}
+  .cap{color:#444 !important;-webkit-text-fill-color:#444 !important;}
+  .qbox{background:#fff8e8 !important;}
+  .qlbl{color:#8a5a00 !important;-webkit-text-fill-color:#8a5a00 !important;}
+  button.opt{background:#ffffff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.opt.correct{background:#d3f9d8 !important;}
+  button.opt.wrong{background:#ffe3e3 !important;}
+  .qexp,.flash-a,.score{background:#eef6ff !important;}
+  button.flash-q{background:#f1f7ff !important;color:#000 !important;-webkit-text-fill-color:#000 !important;}
+  button.scorebtn{background:#0b5cad !important;color:#fff !important;-webkit-text-fill-color:#fff !important;}
+}
+
+</style>
+</head>
+<body style="background:#ffffff;color:#000000;">
+
+<div id="start">
+  <div class="card">
+    <div class="sub">University of Baghdad · College of Dentistry · Operative (Conservative) Dentistry · Dr. Ahmed H. Ali Lecture 11</div>
+    <h1>Deep-Seated Caries, Vital Pulp Therapy, and Fluoride-Releasing Materials</h1>
+    <p style="margin:0 0 16px">English slides with a detailed, very simple Iraqi Arabic explanation of Lecture 11 by Dr. Ahmed H. Ali (PDF pages 212–219) on vital pulp therapy, and a lecture on fluoride-releasing materials (pages 220–227).</p>
+    <ul>
+      <li>Indirect pulp capping when the lesion is three-quarters of the dentine on a radiograph, with a stepwise re-entry at 3–6 months</li>
+      <li>Direct capping for a 24-hour uninflamed exposure (about 80% success); a Cvek pulpotomy of 1–2 mm (about 95% after trauma)</li>
+      <li>Calcium hydroxide’s tunnel defects versus a stable MTA bridge, a 4–6 week wait, and recall from 3–4 weeks</li>
+      <li>GIC, RMGI, compomers (3 mm or 2 mm increments, 40-second cure, fluoride for at least 300 days) and giomers with fluoride recharge</li>
+      <li>Total run time: <b>26 minutes</b>.</li>
+    </ul>
+    <button id="startBtn">Start</button>
+  </div>
+</div>
+
+<header>
+  <div class="bar">
+    <div class="kicker" id="kicker">&nbsp;</div>
+    <div class="count" id="count">1 / 13</div>
+  </div>
+  <div id="track"><div id="fill"></div></div>
+</header>
+
+<main id="stage" style="background:#ffffff;color:#000000;"></main>
+
+<footer>
+  <div class="ctrls">
+    <button class="nav" id="back" disabled>&larr; Back</button>
+    <div id="clock">2:00</div>
+    <button class="nav" id="next" disabled>Next &rarr;</button>
+  </div>
+</footer>
+
+<script>
+var SLIDE_SECONDS = 120;
+var SLIDES = [{"k":"Operative · File 11","t":"Deep-seated caries, vital pulp therapy, and fluoride-releasing materials","b":"<p>University of Baghdad, College of Dentistry — Operative (conservative) dentistry syllabus for the certificate equivalency exam (October 2025 attempt).</p><p>This file covers PDF pages 212–227: Lecture 11 by Dr. Ahmed H. Ali on management of deep-seated carious lesions and vital pulp therapy (a protective liner, indirect and direct pulp capping, and partial and full pulpotomy), then a lecture on fluoride-releasing materials (varnish, glass ionomer, resin-modified glass ionomer, compomers and giomers).</p><p class=\"note\">Every slide has a detailed, very simple Iraqi Arabic explanation, with in-slide questions and a short self-test at the end. Medical terms stay in English next to the Arabic. Numbers in these lectures are kept as written, including a lesion extending to three-quarters of the dentine thickness on a radiograph, a stepwise re-entry at 3–6 months, a direct-capping prognosis of about 80%, a partial-pulpotomy success of about 95% after trauma, and compomer increments of 3 mm or 2 mm cured for at least 40 seconds.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 11","t":"Deep caries: judge remaining dentine by hardness, and try to keep a vital pulp","b":"<p>Dental pulp is highly vascularized and has the potential to heal. Every effort should be made to maintain its integrity and vitality. In asymptomatic, vital teeth with deep lesions, strategies for conservative carious-tissue removal that reduce tissue loss and/or the risk of pulp exposure have to be balanced against removing adequate tissue to maximize restoration longevity. The criterion used to guide carious-dentine removal is <b>hardness</b>, judged by tactile feedback during examination. In asymptomatic vital teeth with a very deep carious lesion that may lead to a potential pulp exposure, strategies to preserve vitality are called <b>vital pulp therapy</b>: a restorative procedure that aims to treat teeth with compromised pulp without the full removal of all healthy pulp tissue.</p><p>For teeth diagnosed with a normal pulp or reversible pulpitis, a <b>protective liner</b> is a material placed on the pulpal surface of a cavity preparation, covering exposed dentinal tubules, as a barrier between the restorative material or cement and the pulp. Calcium hydroxide and glass-ionomer cement are frequently used as a liner and a protective base. Indication: in a tooth with a normal pulp, when dentine is exposed and all caries is removed, a protective radiopaque liner may be placed to minimize thermal and chemical pulp injury, promote healing and induce reactionary dentine, or minimize post-operative sensitivity. Objectives: preserve vitality, promote healing and tertiary dentine, and minimize microleakage. Adverse post-treatment signs or symptoms such as sensitivity, pain or swelling should not occur.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 11","t":"Indirect pulp capping: leave bacteria-free dentine when the lesion is three-quarters of the way through on a radiograph","b":"<p>Sir John Tomes stated in 1859 that it is better that a layer of discolored dentine be allowed to remain for the protection of the pulp rather than run the risk of sacrificing the tooth. To achieve indirect pulp protection, carious dentine near the pulp is preserved to avoid exposure and is covered with a suitable material. This is especially applicable if exposure is suspected in a deep lesion extending to <b>three-quarters of the dentine thickness</b> on the radiograph. Demineralized dentine, if free of bacteria, will remineralize once the source of infection has been eliminated. A caries-disclosing solution may help identify bacteria-free demineralized dentine, but it may also stain deep dentine close to the pulp and result in over-excavation. Placement of a suitable material directly on this demineralized dentine is called indirect pulp capping (IPC), or indirect pulp protection.</p><p>Selective carious-tissue removal — partial removal leaving bacteria-free demineralized (affected) dentine — can be performed either as incomplete caries removal with no subsequent re-entry (one visit) or as stepwise caries removal with subsequent re-entry (two visits). Both techniques result in fewer pulp exposures. The difference: in one-step incomplete removal there is no reopening after <b>3–6 months</b>; in stepwise removal there is a second entry to remove the remaining soft affected dentine completely. Materials: an antibacterial liner such as calcium hydroxide, MTA, Biodentine or zinc oxide–eugenol, aimed at stimulating secondary dentine; or that liner followed by an adhesive base such as glass ionomer or resin-modified glass ionomer, to combine an antibacterial barrier with an adhesive seal. Indications: a radiographically evident deep lesion encroaching on the pulp; no history of spontaneous pain; and a normal response to vitality testing.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 11","t":"The stepwise IPC visit, then direct capping only for a recent (24-hour) uninflamed exposure","b":"<p>Stepwise excavation and IPC: (1) isolate with a rubber dam; (2) remove all peripheral carious dentine with a large round bur or a spoon excavator; (3) debride the area adjacent to the pulp of only the soft carious dentine; (4) place Ca(OH)<sub>2</sub> and ZOE-type liners; (5) apply a base or adhesive cement over the lining for complete sealing; (6) after 3–6 months or more, remove the cement; (7) inspect the internal surface for remineralization and hard-dentine formation; (8) remove any residual soft dentine; (9) place the permanent restoration.</p><p>Direct pulp capping is the dressing of an exposed pulp with the objective of maintaining vitality. Indications: teeth with recent (<b>24-hour</b>) traumatic exposures, or mechanical non-carious exposures during cavity preparation; it should be considered only for immature permanent teeth, or for mature permanent teeth with simple restorative needs. Mature teeth with inflamed pulps, as with carious pulp exposures, should not be pulp-capped. Pre-operative tooth sensitivity has frequently been mentioned as a contraindication. Requirements for success: (1) the pulp is not inflamed (signs and symptoms not of irreversible pulpitis); (2) hemorrhage is properly controlled — mechanical pressure with a sterile dry cotton pellet, or one soaked in saline, hydrogen peroxide, or sodium hypochlorite at <b>2.5%, 3%, or 5.25%</b> (a biocompatible and effective hemostatic before capping); chlorhexidine has also been described as an effective hemostatic; (3) a non-toxic capping material is applied — traditionally calcium hydroxide (antibacterial, disinfects the superficial pulp); MTA and Biodentine can also be used.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 11","t":"Why MTA is preferred to calcium hydroxide, an 80% success rate, and recall from 3–4 weeks onward","b":"<p>Major disadvantages of calcium hydroxide: (1) they do not seal the exposed pulp from the external environment, so an additional base such as a resin-modified glass ionomer can be placed to help seal against bacterial ingress during healing; (2) dentine bridges beneath calcium hydroxide pulp caps contain “tunnel defects” that leave the pulp open to recurring infection via microleakage — in comparison, MTA helps form a dentine bridge free of tunnel defects; (3) calcium hydroxide materials tend to soften, disintegrate and dissolve over time, leaving voids, whereas MTA is dimensionally stable, does not dissolve, and can provide a good barrier. Zinc oxide–eugenol, glass ionomers and resin adhesives have also been proposed, but MTA is an alkaline material that stimulates dentinal bridging and appears to have particular promise.</p><p>Technique: after anaesthesia, place a rubber dam, disinfect with chlorhexidine, and rinse gently with anaesthetic or sterile saline. If there is hemorrhage, dab with a sterile cotton pellet until it ceases (sodium hypochlorite or chlorhexidine may help). Mix pure calcium hydroxide with sterile water, saline or anaesthetic and apply directly to the exposure; a hard-setting calcium hydroxide liner is preferable if the pulp is small. Next, apply and light-cure a resin-modified glass-ionomer base/liner to protect the dressing and provide a better seal. Finally, use a good temporary and wait <b>4–6 weeks</b> for the final restoration. Recall with EPT, thermal testing, and palpation and percussion at <b>3–4 weeks, 3 months, 6 months, 12 months</b>, and every year thereafter, with periodic radiographs (and, for immature teeth, continued root development). Hard-tissue barriers can sometimes be seen as early as <b>6 weeks</b>. Prognosis: success relies on disinfection of superficial pulp and dentine and on a bacteria-tight seal; the reported prognosis for direct pulp capping is in the range of <b>80%</b> when performed under ideal conditions (an uninflamed pulp and a good coronal seal).</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 11","t":"Cvek (partial) pulpotomy: remove 1–2 mm, and a 95% success rate after trauma","b":"<p>A partial pulpotomy, or Cvek pulpotomy, describes removal of inflamed pulp tissue to the level of healthy coronal pulp, using a sterile diamond rotating at high speed under copious water spray. Excision is complete when the pulp stump no longer bleeds excessively. If the inflamed tissue is removed, the healthy underlying tissue is more likely to remain healthy and to seal the exposure with hard-tissue bridging. Pulpotomies have been used routinely in primary and young permanent teeth after traumatic exposures; their use in mature permanent teeth is a relatively new concept and is considered unproven for carious exposures. Indications are similar to those for direct pulp capping (an immature permanent tooth, or a mature one with uncomplicated restorative needs). Choose a partial pulpotomy rather than simple capping when the extent of pulpal inflammation is expected to be greater than normal.</p><p>Technique: after anaesthesia, isolation and disinfection as for direct capping, remove <b>1–2 mm</b> of superficial pulp at the exposure with a sharp, sterile diamond at very high speed and copious water spray. If excessive bleeding continues, extend the preparation apically. Rinse with sterile saline or anaesthetic and dry with a sterile cotton pellet; stop cutting when the tissue is vascular and non-bleeding. Sodium hypochlorite or chlorhexidine can facilitate hemostasis; avoid forming a blood clot, which compromises the prognosis. Apply a thin layer of pure calcium hydroxide, or a hard-setting liner such as Dycal if the pulp is not large enough for further tissue loss. Then place an RMGI liner or base, a dentine/enamel adhesive and a restorative material. Recall is as for pulp capping. Advantages over direct capping: superficial inflamed tissue is removed; calcium hydroxide disinfects and removes additional inflamed tissue; and the pulpotomy provides space for the materials of a bacteria-tight seal. Prognosis is in the range of <b>95%</b> for traumatized teeth, where the level of inflammation is very predictable; the success rate for carious exposures is currently unknown. A full pulpotomy removes the entire coronal pulp to the level of the root-canal orifice(s), and is indicated when inflammation is likely more extensive, or if the coronal pulp is rather small. The technique and recall intervals are similar, with calcium hydroxide capping at the orifices.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 11","t":"Quiz: three-quarters of the dentine, a 3–6 month re-entry, 80% and 95% success figures","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Indirect pulp capping in this lecture is indicated and performed as follows:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">It is used only after a carious exposure in a tooth with spontaneous pain; all soft dentine next to the pulp must be removed at the first visit, and a disclosing dye must always be followed into the pulp</button><button type=\"button\" class=\"opt\" data-i=\"1\">The guide for removing carious dentine is hardness. IPC preserves bacteria-free demineralized dentine near the pulp to avoid exposure, especially when the lesion extends to three-quarters of the dentine thickness on a radiograph. Tomes (1859) preferred leaving discolored dentine to protecting the pulp by risking the tooth. Selective removal may be one visit (no re-entry) or stepwise with re-entry at 3–6 months to remove remaining soft affected dentine; both reduce exposures. Liners include calcium hydroxide, MTA, Biodentine or ZOE, often with a glass-ionomer or RMGI adhesive base. Indications: a deep radiographic lesion encroaching on the pulp, no spontaneous pain, and a normal vitality test. After rubber-dam isolation, clear peripheral caries, debride only soft caries next to the pulp, line, seal, re-enter at 3–6 months or more, inspect for hard remineralized dentine, remove residual soft dentine, and place the permanent restoration. A disclosing dye may help but can stain deep dentine and lead to over-excavation</button><button type=\"button\" class=\"opt\" data-i=\"2\">Stepwise IPC never uses a liner, and the second visit is always at 3 days</button><button type=\"button\" class=\"opt\" data-i=\"3\">A normal vitality test and the absence of spontaneous pain are contraindications to IPC</button></div><div class=\"qexp\" hidden><p>إذا النخر وصل ثلاثة أرباع العاج بالأشعة، غطِّ غير مباشر. إعادة الدخول بعد 3–6 أشهر بالطريقة المتدرجة. بلا ألم تلقائي ويه اختبار حيوية طبيعي.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Direct capping and pulpotomy in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Carious exposures in mature teeth are the first choice for direct capping; calcium hydroxide seals better than MTA; partial pulpotomy success after trauma is about 40%</button><button type=\"button\" class=\"opt\" data-i=\"1\">Direct capping is for a recent (24-hour) traumatic or mechanical non-carious exposure, in an immature permanent tooth or a mature one with simple needs — not for a mature inflamed/carious exposure, and pre-operative sensitivity is often a contraindication. The pulp must not be irreversibly inflamed; haemorrhage is controlled with dry cotton, saline, peroxide, NaOCl at 2.5%, 3% or 5.25%, or chlorhexidine. Calcium hydroxide does not seal, its bridges may have tunnel defects, and it can dissolve — so an RMGI base is added; MTA is stable, forms a bridge without tunnel defects, and is promising. After capping, wait 4–6 weeks for the final restoration; recall at 3–4 weeks, 3, 6 and 12 months and yearly. A hard-tissue barrier may appear by 6 weeks. Ideal-condition success is about 80%. A Cvek (partial) pulpotomy removes 1–2 mm of superficial pulp with a high-speed diamond under water until bleeding stops, and is chosen when inflammation is expected to be greater than normal; success is about 95% after trauma, and is unknown for carious exposures (unproven in mature teeth). A full pulpotomy takes the coronal pulp to the orifices when inflammation is more extensive or the coronal pulp is small. Avoid a blood clot</button><button type=\"button\" class=\"opt\" data-i=\"2\">A blood clot over the pulp improves the prognosis of a Cvek pulpotomy</button><button type=\"button\" class=\"opt\" data-i=\"3\">Direct capping of a carious exposure in a mature tooth has the same 95% figure as a traumatic Cvek pulpotomy in this lecture</button></div><div class=\"qexp\" hidden><p>التغطية المباشرة لانكشاف رضحي خلال 24 ساعة، نجاح حوالي 80%. البتر الجزئي 1–2 ملم، نجاح حوالي 95% بعد الرضح، وغير معروف للانكشاف النخري. الـ MTA أفضل ختماً من هيدروكسيد الكالسيوم.</p></div></div>"},{"k":"Dr. Ahmed H. Ali","t":"How fluoride protects, and why root caries needs more of it than enamel caries","b":"<p>Caries is the most prevalent non-communicable disease in the world, a multifactorial disease with a bacterial etiology. Bacteria metabolize sucrose or other cariogenic sugars (fructose and glucose) and secrete organic acids (lactic, propionic and formic) that cause loss of calcium and phosphates from the tooth. Minerals can be replaced during periods of neutral pH from calcium and phosphates in saliva. The availability of fluoride ions enhances remineralization and prevents demineralization. High-risk patients need specialized treatment before, during and after definitive restorative care. In addition to professionally applied fluorides and fluoride dentifrices, fluorides may be introduced with fluoride-releasing restorative materials.</p><p>Fluorides work in at least four different ways (three are listed here in full): (1) inhibition of demineralization — fluoride binds calcium and phosphate ions in enamel that dissolve under acid attack from plaque bacteria; (2) enhancing remineralization — topical fluoride (pastes and varnishes) speeds growth of a new surface on partially demineralized subsurface crystals by adsorbing to the crystal surface and attracting calcium and then phosphate ions; (3) antimicrobial action — fluorides interfere with decay-causing bacteria, reduce their acid production by reducing carbohydrate metabolism, and thus slow demineralization. Fluoride-releasing restoratives are often recommended for root-surface caries because root structure is primarily dentine, and these lesions require significantly greater amounts of fluoride than enamel lesions to promote remineralization. Ability to release and take up fluoride ranks from superior (GIC) to inferior (resin composite).</p>"},{"k":"Dr. Ahmed H. Ali","t":"Fluoride varnish and conventional glass ionomer: a liquid of pH ≤ 1.0, and chemical adhesion","b":"<p>Fluoride varnish is effective in preventing caries on permanent teeth, and has recently been shown to prevent or reduce caries in the primary teeth of young children. Application is quick and easy: small droplets are applied directly to the tooth surface.</p><p>Glass-ionomer cement consists of ion-cross-linked polymer matrices surrounding glass-reinforcing filler particles. Restorative GIC was based on a polyacrylic-acid liquid mixed with a complex aluminosilicate powder containing calcium and fluoride. The acidic liquid (pH <b>≤ 1.0</b>) dissolves portions of the periphery of the silicate glass, releasing calcium, aluminium, fluoride, silicon and other ions, and generating true chemical bonds at all internal and external interfaces when reaction conditions are correct. Set materials have modest properties compared with composite, but relatively good adhesion and the ability to release fluoride into neighboring tooth structure to suppress caries. Main characteristics: chemical bond to enamel and dentine with insignificant heat or shrinkage; biocompatibility with pulp and periodontal tissues; fluoride release with a cariostatic and antimicrobial action; less volumetric setting contraction; and a coefficient of thermal expansion similar to tooth structure. These advantages make them successful as luting cements and liners. As restorations they are the least durable (moisture-sensitive, low esthetics, strength and wear resistance) — which may be adequate for primary teeth that will exfoliate in several years.</p>"},{"k":"Dr. Ahmed H. Ali","t":"Resin-modified glass ionomer: a stronger, more shrinkable hybrid that still releases fluoride","b":"<p>The simplest resin-modified glass ionomers add a small number of resin components such as HEMA to the liquid of a conventional GIC; more complex materials modify the polyacid with light-polymerizable side chains. Characteristics: they bond chemically to enamel and dentine with insignificant heat or shrinkage and without signs of marginal leakage; shear bond strength to dentine is significantly higher than that of conventional GIC and is stable; they can bond directly to resin composite, useful in GIC/composite laminate restorations; they are highly biocompatible, with better adaptation and seal than conventional GIC; the set structure shows a dramatic increase in compressive strength but is rather brittle, comparatively low in tensile strength and low in abrasion resistance, making it unsuitable for high-stress posterior areas; fluoride release and uptake were higher than or the same as conventional GIC, with no adverse effect on bond strength; they have greater curing shrinkage than conventional chemically cured cement, so incremental placement should always be used to ensure complete curing at depth and to minimize shrinkage.</p><p>Clinical use: usually a two-paste system that can harden without light-curing, with a longer working time, then a sharp set once light-initiated. Most manufacturers state that immediate polishing can be carried out after light-curing, but the setting reaction continues slowly for at least 24 hours and the best result is obtained if finishing is delayed. When immediate polishing is required, care must be taken not to overheat the restoration, as this may cause excessive drying and cracking and may prevent setting of the ionomeric component. It is a highly desirable alternative to amalgam for restoring primary teeth, and as a liner/base material.</p>"},{"k":"Dr. Ahmed H. Ali","t":"Compomers: at least 300 days of fluoride, increments of 3 mm or 2 mm, and a 40-second cure","b":"<p>Polyacid-modified resin composites (compomers) contain the major ingredients of both composites (the resin component) and glass ionomer (polyalkenoate acid and glass fillers) except for water. Fluoride release is more than composite but lower than GICs; although low, it has been reported to last at least <b>300 days</b>. Characteristics: two bonding mechanisms — a self-adhesive property via carboxyl (–COOH) groups that can form ionic bonds with calcium of the tooth surface without acid etching, and adhesion through a primer/adhesive system; they can only be hardened through light-curing; bond strength to dentine is significantly lower than that of RMGI and chemically cured GIC; often one component with an adhesive system; little is known about clinical wear of recently marketed products; some studies found fluoride release significantly less than RMGI or other fluoride-releasing resin composites, with antibacterial action decreasing significantly over time, though caries inhibition was higher than conventional resin composite; radiopacity differs from dentine and is slightly higher than enamel, which is desirable for detecting recurrent caries.</p><p>Clinical use: easy to manipulate; no acid-etching procedure is required before placement if the adhesive provides sufficient bond; the consistency is easy to apply and contour without stickiness, so less time is needed for finishing — especially beneficial in children. Curing shrinkage is similar to conventional hybrid composites, so placement in increments of <b>3 mm or less</b> is recommended for Dyract AP, and <b>2 mm or less</b> for other newer compomers, each cured for at least <b>40 seconds</b>. Finishing can be undertaken immediately after curing with fluted tungsten-carbide burs or polishing discs. They may or may not have typical true-GIC features such as chemical adhesion and long-term fluoride release, so follow the manufacturer’s instructions. Used as a liner/base, a restoration and a fissure sealant.</p>"},{"k":"Dr. Ahmed H. Ali","t":"Giomer: pre-reacted glass ionomer in a resin, with fluoride recharge and an antiplaque film","b":"<p>A newer product category called “giomer” has been reported in many studies to overcome weaknesses of compomers, which are often technique-sensitive, have limited fluoride release, and are affected by water sorption that decreases physical properties with time. A giomer is a tooth-coloured restorative that uses a resin base and pre-reacted glass-ionomer (PRG) technology. S-PRG technology delivers some properties of glass ionomer, such as fluoride release and recharge, which helps prevent caries recurrence, and also properties of composite resin such as excellent aesthetics, easy polishability, biocompatibility and a smooth surface finish. Moreover, it has an antiplaque effect by forming a material-film layer with saliva that is reported to minimize plaque adhesion and inhibit bacterial colonization. Giomers report comparable microleakage scores to those of composite resins in permanent teeth.</p>"},{"k":"Dr. Ahmed H. Ali · Lecture 11 and fluoride materials","t":"Self-test: 24-hour exposures, 4–6 weeks to the final restoration, and 3 mm versus 2 mm compomer layers","b":"<div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Vital pulp therapy choices in this lecture, from a liner to a full pulpotomy, include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Every carious exposure in a mature tooth should be directly capped with softening calcium hydroxide alone, with no recall</button><button type=\"button\" class=\"opt\" data-i=\"1\">A protective liner on exposed dentine of a normal pulp aims to cut thermal and chemical injury, induce reactionary dentine and limit sensitivity. IPC (especially when the lesion is three-quarters of the dentine radiographically) leaves bacteria-free demineralized dentine, in one visit or stepwise with re-entry at 3–6 months, using Ca(OH)₂, MTA, Biodentine or ZOE plus an adhesive base, in a tooth without spontaneous pain and with normal vitality. Direct capping is for a 24-hour traumatic or mechanical non-carious exposure in an immature tooth or a simply restored mature tooth — not a carious mature exposure. Control bleeding with cotton, saline, peroxide, 2.5–5.25% NaOCl or chlorhexidine; cover Ca(OH)₂ with RMGI; wait 4–6 weeks for the final restoration; recall from 3–4 weeks onward. Ideal success is about 80%; a barrier may show by 6 weeks. MTA avoids tunnel defects and dissolution. A Cvek pulpotomy removes 1–2 mm under water spray (about 95% after trauma; unknown for caries). A full pulpotomy goes to the orifices when inflammation is more extensive</button><button type=\"button\" class=\"opt\" data-i=\"2\">A full pulpotomy is the first-line treatment for every reversible pulpitis with a protective liner only</button><button type=\"button\" class=\"opt\" data-i=\"3\">Hardness of remaining dentine is irrelevant; colour of the dentine is the only guide to excavation</button></div><div class=\"qexp\" hidden><p>التغطية المباشرة خلال 24 ساعة، وانتظار 4–6 أسابيع للترميم النهائي، ونجاح حوالي 80%. البتر الجزئي 1–2 ملم ونجاح حوالي 95% بعد الرضح.</p></div></div><div class=\"qbox\" data-ans=\"1\"><span class=\"qlbl\">اختبر نفسك</span><p class=\"qq\">Fluoride-releasing materials in this lecture include:</p><div class=\"opts\"><button type=\"button\" class=\"opt\" data-i=\"0\">Composite releases more fluoride than GIC; a compomer cannot be light-cured; varnish is useless on primary teeth</button><button type=\"button\" class=\"opt\" data-i=\"1\">Fluoride inhibits demineralization, speeds remineralization and reduces bacterial acid; root caries needs more fluoride than enamel caries. Release and recharge rank GIC superior and resin composite inferior. Varnish helps permanent teeth and, more recently, primary teeth of young children. Conventional GIC (liquid pH ≤ 1.0) bonds chemically, is biocompatible and releases fluoride, but as a filling it is the least durable and may suffice in exfoliating primary teeth. RMGI (often with HEMA) has a higher, stable shear bond to dentine, bonds to composite, releases fluoride at least as well as conventional GIC, but shrinks more (place incrementally) and is brittle for high-stress posteriors; finishing is best delayed 24 hours, and overheating can crack it and stop the ionomeric set. It is a desirable amalgam alternative in primary teeth and as a liner/base. Compomers release more fluoride than composite but less than GIC, lasting at least 300 days; they light-cure only, may bond without etch via carboxyl groups, and are easy in children. Place Dyract AP in increments of 3 mm or less, and other newer compomers in 2 mm or less, each cured at least 40 seconds. Giomers use pre-reacted glass-ionomer (S-PRG) technology for fluoride release and recharge plus composite-like aesthetics, an antiplaque salivary film, and microleakage scores comparable to composite in permanent teeth</button><button type=\"button\" class=\"opt\" data-i=\"2\">Dyract AP may be placed in a single 6 mm increment and left uncured</button><button type=\"button\" class=\"opt\" data-i=\"3\">A giomer has no fluoride recharge and cannot be polished</button></div><div class=\"qexp\" hidden><p>إطلاق الفلوريد أعلى بالأيونومر وأقل بالكمبوزت. الكمبومر يدوم إطلاقه 300 يوم على الأقل؛ Dyract AP طبقات 3 ملم أو أقل، والباقي 2 ملم أو أقل، وصلّب 40 ثانية. الجيومر يعيد شحن الفلوريد.</p></div></div><div class=\"flash\"><button type=\"button\" class=\"flash-q\">In this lecture, what is the reported success range for direct pulp capping under ideal conditions, and for a partial (Cvek) pulpotomy after trauma?</button><div class=\"flash-a\" hidden>Direct pulp capping is in the range of 80% under ideal conditions (an uninflamed pulp and a good coronal seal). A partial pulpotomy is in the range of 95% for traumatized teeth; the rate for carious exposures is unknown.</div></div><div class=\"testwrap\"><button type=\"button\" class=\"scorebtn\">شوف نتيجتك</button></div>"}];
+var AR = ["<p>هذا حادي عشر ملف معالجة: محاضرة د. أحمد ح. علي 11 عن النخر العميق وعلاج اللب الحي (صفحات 212–219)، وبعدها مواد مطلقة للفلوريد (صفحات 220–227). الأرقام مثل امتداد النخر لثلاثة أرباع العاج، وإعادة الدخول بعد 3–6 أشهر، ونجاح التغطية المباشرة حوالي 80%، والبتر الجزئي حوالي 95% بعد الرضح، وطبقات الكمبومر 3 أو 2 ملم تُصلَّب 40 ثانية على الأقل تبقى كما بالمحاضرة.</p>","<p>اللب نسيج وعائي وله قدرة على الشفاء، فحافظ على حيويته. بالأسنان الحيوية بلا أعراض ويه نخر عميق، وازن بين الحفاظ على النسيج وتقليل خطر الانكشاف من جهة، وإزالة كافية لدوام الترميم من جهة. معيار الإزالة هو <b>الصلابة</b> باللمس. إذا النخر عميق جداً وقد يكشف اللب، استخدم <b>علاج اللب الحي</b>: تعالج لب متضرر بدون شيل كل النسيج السليم.</p><p>البطانة الواقية على السطح اللبي تغطي الأقنية كحاجز (غالباً هيدروكسيد كالسيوم وأيونومر). تُستخدم بلب سليم بعد شيل كل النخر لتقليل الأذى الحراري والكيميائي، وتحفيز الشفاء والعاج التفاعلي، وتقليل الحساسية. ما المفروض تصير حساسية أو ألم أو تورم بعد العلاج.</p>","<p>تومز سنة 1859: أفضل تترك طبقة عاج متغير اللون لحماية اللب من أن تخاطر بالسن. التغطية غير المباشرة تبقي العاج النخر قرب اللب وتغطيه بمادة مناسبة، خصوصاً إذا الآفة تمتد ل<b>ثلاثة أرباع سمك العاج</b> بالأشعة. العاج المنزوع الكلس والخالي من البكتيريا يتمعدن بعد قطع مصدر الخمج. صبغة النخر قد تساعد، بس ممكن تلوّن العاج العميق وتخليك تحفر زيادة.</p><p>الإزالة الانتقائية: زيارة واحدة بلا إعادة دخول، أو متدرجة ويه إعادة دخول بعد <b>3–6 أشهر</b> لشيل العاج المتأثر الطري المتبقي. الاثنتان تقللان الانكشاف. البطانة: هيدروكسيد كالسيوم أو MTA أو Biodentine أو ZOE، وغالباً فوقها قاعدة أيونومر أو معدّلة بالراتنج للختم. الاستطباب: نخر عميق بالأشعة يقترب من اللب، بلا ألم تلقائي، واستجابة حيوية طبيعية.</p>","<p>خطوات التغطية غير المباشرة المتدرجة: اعزل بسد مطاطي؛ شيل النخر المحيطي؛ بجانب اللب شيل فقط العاج الطري؛ حط هيدروكسيد كالسيوم وبطانة ZOE؛ قاعدة أو إسمنت لاصق للختم؛ بعد 3–6 أشهر أو أكثر شيل الإسمنت وتفقّد تمعدن وعاج صلب؛ شيل أي طري باقي؛ حط الترميم الدائم.</p><p>التغطية المباشرة لضياع مكشوف بهدف بقاء الحيوية. الاستطباب: انكشاف رضحي حديث (<b>24 ساعة</b>) أو ميكانيكي غير نخري؛ للأسنان الدائمة غير الناضجة، أو الناضجة ويه حاجة ترميمية بسيطة. الأسنان الناضجة ويه لب ملتهب (انكشاف نخري) <b>لا تُغطَّى</b>، والحساسية قبل العمل مذكورة كمانع. النجاح يتطلب لب غير ملتهب، سيطرة على النزف (قطن جاف أو محلول ملحي أو ماء أكسجين أو هيبوكلوريت <b>2.5% أو 3% أو 5.25%</b>، أو كلورهيكسيدين)، ومادة غير سامة (هيدروكسيد كالسيوم تقليدياً، أو MTA و Biodentine).</p>","<p>عيوب هيدروكسيد الكالسيوم: ما يختم اللب (حط قاعدة أيونومر معدّلة فوقه)؛ الجسر العاجي فيه عيوب نفقية تدخل منها البكتيريا — الـ MTA يساعد على جسر بلا هالعيوب؛ ويذوب مع الوقت بينما الـ MTA مستقر الأبعاد. الـ MTA قاعدي ويحفز الجسر ويظهر واعداً.</p><p>بعد التخدير والعزل والتطهير بالكلورهيكسيدين: سيطر على النزف، حط هيدروكسيد كالسيوم (القاسي مفضّل إذا اللب صغير)، بعدين قاعدة أيونومر معدّلة تُصلَّب بالضوء، وترميم مؤقت جيد، وانتظر <b>4–6 أسابيع</b> للترميم النهائي. المتابعة باختبارات الحيوية والجس والقرع عند <b>3–4 أسابيع، و3 و6 و12 شهر</b> وكل سنة، ويه أشعة. حاجز نسيجي صلب قد يبان من <b>6 أسابيع</b>. الإنذار حوالي <b>80%</b> بظروف مثالية (لب غير ملتهب وختم تاجي جيد).</p>","<p>البتر الجزئي (Cvek): شيل اللب الملتهب لحد اللب التاجي السليم بفرازة ألماس معقمة بسرعة عالية ويه رذاذ ماء غزير، لحد ما النزف الزائد يوقف. روتيني بعد الرضح بالأسنان اللبنية والدائمة الفتية؛ بالأسنان الناضجة مفهوم أحدث، و<b>غير مثبت للانكشاف النخري</b>. يُختار بدل التغطية إذا الالتهاب المتوقع أكبر من الطبيعي.</p><p>اشيل <b>1–2 ملم</b> من اللب السطحي؛ إذا النزف استمر انزل أكثر. لا تترك جلطة. حط هيدروكسيد كالسيوم (أو Dycal إذا اللب صغير)، بعدين قاعدة أيونومر معدّلة وترميم. النجاح حوالي <b>95%</b> بعد الرضح؛ للانكشاف النخري غير معروف. البتر الكامل يشيل كل اللب التاجي لحد فوهات الأقنية إذا الالتهاب أوسع أو اللب التاجي صغير.</p>","<p>سؤالان على التغطية غير المباشرة والمتدرجة، ونسب النجاح 80% و 95%.</p>","<p>النخر أكثر الأمراض غير المعدية انتشاراً. البكتيريا تحوّل السكر لحوامض تسحب الكالسيوم والفوسفات، واللعاب يعيدها بـ pH متعادل. الفلوريد يعزّز إعادة التمعدن ويمنع النزع. المرضى عاليو الخطورة يحتاجون فلوريد قبل وأثناء وبعد الترميم، ومنها المواد المطلقة للفلوريد.</p><p>ثلاثة طرق مذكورة بالكامل: يمنع نزع الكلس بربط الكالسيوم والفوسفات؛ يسرّع إعادة التمعدن (المعاجين والورنيش)؛ ويقلل حمض البكتيريا بخفض أيض الكربوهيدرات. تُفضَّل المواد المطلقة للفلوريد لنخر الجذر لأن الجذر أساساً عاج ويحتاج فلوريد أكثر من المينا. الإطلاق من الأيونومر أعلى ومن الكمبوزت أقل.</p>","<p>ورنيش الفلوريد فعّال بالأسنان الدائمة، وأظهر أيضاً وقاية أو تقليل نخر الأسنان اللبنية عند الأطفال. يُطبَّق قطرات صغيرة مباشرة على السطح.</p><p>الأيونومر الزجاجي: سائل حامض بولي أكريليك ويه مسحوق سيليكات ألومنيوم فيه كالسيوم وفلوريد. السائل <b>pH ≤ 1.0</b> يذيب محيط الزجاج ويطلق أيونات ويعمل ارتباط كيميائي حقيقي. خواصه أقل من الكمبوزت، بس التصاقه جيد ويطلق فلوريد. يرتبط بلا حرارة أو انكماش يُذكر، متوافق حيوياً، مضاد للنخر، وانكماشه الحجمي أقل ومعامل تمدده قريب من السن. ناجح كإلصاق وبطانة؛ كترميم هو الأقل دواماً (حسّاس للرطوبة وجماله وقوته أضعف) وقد يكفي للأسنان اللبنية اللي راح تسقط.</p>","<p>الأيونومر المعدّل بالراتنج: أبسطه إضافة HEMA لسائل التقليدي، أو سلاسل جانبية تتبلمر بالضوء. ارتباطه الكيميائي أقوى وأكثر ثباتاً من التقليدي، ويرتبط مباشرة بالكمبوزت (ترميم رقائقي). متوافق حيوياً وختمه أحسن. قوة الضغط تزيد كثيراً، بس هش وقوة شده ومقاومة سحله واطية، فما يناسب المناطق الخلفية عالية الإجهاد. إطلاق الفلوريد أعلى أو مساوٍ للتقليدي. انكماش التصلب أكبر، لذلك حطه طبقات.</p><p>عادة عجينتان، يتجمد حتى بلا ضوء، وزمن عمل أطول، ويتصلب بسرعة ويه الضوء. التلميع فوراً ممكن حسب الشركة، بس التفاعل يكمل 24 ساعة على الأقل والنتيجة أفضل إذا أخّرت الإنهاء. إذا لمعّت فوراً لا تسخّن الترميم حتى ما ينشف ويتشقق ويفسد الجزء الأيونومري. بديل مرغوب للملغم بأسنان الأطفال، وكبطانة أو قاعدة.</p>","<p>الكمبومر يجمع مكونات الكمبوزت والأيونومر ما عدا الماء. يطلق فلوريد أكثر من الكمبوزت وأقل من الأيونومر، ويستمر الإطلاق على الأقل <b>300 يوم</b>. يرتبط من غير حفر عبر مجموعات الكاربوكسيل، وهم عبر نظام لاصق؛ يتصلب بالضوء فقط؛ وقوة ربطه للعاج أضعف من الأيونومر المعدّل والتقليدي. إظهاره الشعاعي أعلى بشوي من المينا، مفيد لكشف النخر الراجع.</p><p>سهل التطبيق للأطفال وبلا حفر إذا المادة اللاصقة كافية. انكماشه يشبه الهجين: طبقات <b>3 ملم أو أقل</b> لـ Dyract AP، و<b>2 ملم أو أقل</b> لباقي الكمبومرات الأحدث، وكل طبقة تُصلَّب <b>40 ثانية</b> على الأقل. الإنهاء فوراً بعد التصلب. استخدمه بحذر حسب تعليمات الشركة: بطانة أو ترميم أو مانع شقوق.</p>","<p>الجيومر فئة أحدث تُذكر إنها تتغلب على ضعف الكمبومر (حسّاس للتقنية، إطلاق فلوريد محدود، وامتزاز الماء يضعّف الخواص مع الوقت). أساسه راتنج ويه تقنية أيونومر زجاجي متفاعل مسبقاً (PRG / S-PRG): إطلاق وإعادة شحن فلوريد مثل الأيونومر، وجمال وتلميع وملمس أملس مثل الكمبوزت، وهم طبقة ويه اللعاب تقلل التصاق اللويحة واستعمار البكتيريا. درجات التسرب المجهري تُذكر مقاربة للكمبوزت بالأسنان الدائمة.</p>","<p>سؤالان ختاميان وبطاقة على نسب 80% و 95%، وزر الدرجة.</p>"];
+
+var i = 0;
+var unlocked = 0;
+var rem = [];
+for (var z = 0; z < SLIDES.length; z++) rem.push(SLIDE_SECONDS);
+var ticker = null;
+
+var stage  = document.getElementById('stage');
+var kicker = document.getElementById('kicker');
+var count  = document.getElementById('count');
+var fill   = document.getElementById('fill');
+var clock  = document.getElementById('clock');
+var backB  = document.getElementById('back');
+var nextB  = document.getElementById('next');
+
+function mmss(s){
+  var m = Math.floor(s / 60), r = s % 60;
+  return m + ':' + (r < 10 ? '0' : '') + r;
+}
+
+function isCleared(n){ return n < unlocked; }
+
+function paintClock(){
+  if (isCleared(i)){
+    clock.className = 'free';
+    clock.textContent = 'done';
+  } else if (rem[i] <= 0){
+    clock.className = 'done';
+    clock.textContent = '0:00';
+  } else {
+    clock.className = '';
+    clock.textContent = mmss(rem[i]);
+  }
+}
+
+function paintButtons(){
+  backB.disabled = (i === 0);
+  nextB.disabled = !(isCleared(i) || rem[i] <= 0) || (i === SLIDES.length - 1);
+  nextB.textContent = (i === SLIDES.length - 1) ? 'Last slide' : 'Next \u2192';
+}
+
+function stopTicker(){
+  if (ticker){ clearInterval(ticker); ticker = null; }
+}
+
+function startTicker(){
+  stopTicker();
+  if (isCleared(i) || rem[i] <= 0) return;
+  ticker = setInterval(function(){
+    rem[i]--;
+    if (rem[i] <= 0){
+      rem[i] = 0;
+      stopTicker();
+      if (i === unlocked) unlocked = i + 1;
+    }
+    paintClock();
+    paintButtons();
+  }, 1000);
+}
+
+function render(){
+  var s = SLIDES[i];
+  kicker.textContent = s.k;
+  count.textContent  = (i + 1) + ' / ' + SLIDES.length;
+  fill.style.width   = (((i + 1) / SLIDES.length) * 100) + '%';
+  stage.innerHTML    = '<h2>' + s.t + '</h2>' + s.b +
+    (AR[i] ? '<div class="arx"><span class="arlbl">الشرح بالعراقي</span>' + AR[i] + '</div>' : '');
+  window.scrollTo(0, 0);
+  paintClock();
+  paintButtons();
+  startTicker();
+}
+
+function go(n){
+  if (n < 0 || n >= SLIDES.length) return;
+  if (n > unlocked) return;
+  stopTicker();
+  i = n;
+  render();
+}
+
+backB.addEventListener('click', function(){ go(i - 1); });
+nextB.addEventListener('click', function(){ if (!nextB.disabled) go(i + 1); });
+
+document.addEventListener('keydown', function(e){
+  if (document.getElementById('start')) return;
+  if (e.key === 'ArrowLeft'){ go(i - 1); }
+  if (e.key === 'ArrowRight'){ if (!nextB.disabled) go(i + 1); }
+});
+
+document.getElementById('startBtn').addEventListener('click', function(){
+  var sc = document.getElementById('start');
+  sc.parentNode.removeChild(sc);
+  render();
+});
+
+stage.addEventListener('click', function(e){
+  var t = e.target;
+  var opt = t.closest ? t.closest('.opt') : null;
+  if (opt){
+    var box = opt.closest('.qbox');
+    if (!box || box.classList.contains('answered')) return;
+    var ans = parseInt(box.getAttribute('data-ans'), 10);
+    box.classList.add('answered');
+    var opts = box.querySelectorAll('.opt');
+    for (var k = 0; k < opts.length; k++){
+      var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+      if (oi === ans) opts[k].classList.add('correct');
+      else if (opts[k] === opt) opts[k].classList.add('wrong');
+    }
+    var exp = box.querySelector('.qexp');
+    if (exp) exp.hidden = false;
+    return;
+  }
+  var fq = t.closest ? t.closest('.flash-q') : null;
+  if (fq){
+    var fl = fq.closest('.flash');
+    var a = fl.querySelector('.flash-a');
+    if (a){ a.hidden = !a.hidden; fq.classList.toggle('open'); }
+    return;
+  }
+  var sb = t.closest ? t.closest('.scorebtn') : null;
+  if (sb){
+    var wrap = sb.closest('.testwrap') || stage;
+    var boxes = wrap.querySelectorAll('.qbox');
+    var right = 0, total = boxes.length;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered')){
+        var ans = parseInt(boxes[k].getAttribute('data-ans'), 10);
+        var ok = boxes[k].querySelector('.opt.correct');
+        var pickedWrong = boxes[k].querySelector('.opt.wrong');
+        /* correct if they picked the right button (no .wrong) after answering */
+        if (ok && !pickedWrong) right++;
+        else if (ok && pickedWrong) { /* wrong pick */ }
+        else {}
+        /* recount: if answered and the clicked one was correct, there is no .wrong */
+        if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+      }
+    }
+    /* fix double count — recompute cleanly */
+    right = 0;
+    for (var k = 0; k < boxes.length; k++){
+      if (boxes[k].classList.contains('answered') && !boxes[k].querySelector('.opt.wrong')) right++;
+    }
+    var unanswered = 0;
+    for (var k = 0; k < boxes.length; k++){ if (!boxes[k].classList.contains('answered')) unanswered++; }
+    var dest = wrap.querySelector('.score');
+    if (!dest){
+      dest = document.createElement('div');
+      dest.className = 'score';
+      sb.parentNode.insertBefore(dest, sb.nextSibling);
+    }
+    var msg;
+    if (unanswered) msg = 'جاوب على كل الأسئلة أولاً — باقي ' + unanswered + ' سؤال.';
+    else if (right === total) msg = 'ممتاز! ' + right + ' من ' + total + ' — كلها صح.';
+    else if (right >= Math.ceil(total*0.7)) msg = 'زين، ' + right + ' من ' + total + '. رجّع راجع الغلط.';
+    else msg = 'حصلت ' + right + ' من ' + total + '. لا تستعجل — ارجع للشرح وحاول مرة ثانية.';
+    dest.textContent = msg;
+  }
+});
+
+</script>
+</body>
+</html>
